@@ -51,6 +51,12 @@ namespace PlcConnect
             if (Result == 0)
             {
                 LabelPlcError.Content = LabelPlcError.Content + " PDU Negotiated : " + Client.PduSizeNegotiated.ToString();
+
+                ShowPlcStatus();
+                ReadCPUInfo();
+                ReadOrderCode();
+                ReadDateTime();
+
                 //TxtIP.Enabled = false;
                 //TxtRack.Enabled = false;
                 //TxtSlot.Enabled = false;
@@ -82,6 +88,15 @@ namespace PlcConnect
                 LabelPlcError.Content = LabelPlcError.Content + " (" + Client.ExecutionTime.ToString() + " ms)";
         }
 
+        void ReadDateTime()
+        {
+
+            DateTime DT = new DateTime();
+            if (Client.GetPlcDateTime(ref DT) == 0)
+            {
+                LabelPlcDateTime.Content = DT.ToLongDateString() + " - " + DT.ToLongTimeString();
+            }
+        }
         void ReadCPUInfo()
         {
             S7Client.S7CpuInfo Info = new S7Client.S7CpuInfo();
@@ -94,25 +109,23 @@ namespace PlcConnect
             ShowResult(Result);
             if (Result == 0)
             {
-                //txtModuleTypeName.Text = Info.ModuleTypeName;
-                //txtSerialNumber.Text = Info.SerialNumber;
-                //txtCopyright.Text = Info.Copyright;
-               // txtAsName.Text = Info.ASName;
-                //txtModuleName.Text = Info.ModuleName;
+
+                LabelPlcCpuInfo.Content = Info.ModuleTypeName + " " + Info.SerialNumber + " " + Info.Copyright + " " + Info.ASName + " " + Info.ModuleName;
+
+
             }
         }
 
         void ReadOrderCode()
         {
             S7Client.S7OrderCode Info = new S7Client.S7OrderCode();
-           // txtOrderCode.Text = "";
-           // txtVersion.Text = "";
+            // txtOrderCode.Text = "";
+            // txtVersion.Text = "";
             int Result = Client.GetOrderCode(ref Info);
             ShowResult(Result);
             if (Result == 0)
             {
-               // txtOrderCode.Text = Info.Code;
-               // txtVersion.Text = Info.V1.ToString() + "." + Info.V2.ToString() + "." + Info.V3.ToString();
+                LabelPlcOrderCode.Content = Info.Code + " " + Info.V1.ToString() + "." + Info.V2.ToString() + "." + Info.V3.ToString();
             }
         }
 
@@ -127,28 +140,28 @@ namespace PlcConnect
                 {
                     case S7Consts.S7CpuStatusRun:
                         {
-                           // lblStatus.Text = "RUN";
-                           // lblStatus.ForeColor = System.Drawing.Color.LimeGreen;
+                            LabelPlcStatus.Content = "RUN";
+                            // lblStatus.ForeColor = System.Drawing.Color.LimeGreen;
                             break;
                         }
                     case S7Consts.S7CpuStatusStop:
                         {
-                           // lblStatus.Text = "STOP";
-                           // lblStatus.ForeColor = System.Drawing.Color.Red;
+                            LabelPlcStatus.Content = "STOP";
+                            // lblStatus.ForeColor = System.Drawing.Color.Red;
                             break;
                         }
                     default:
                         {
-                           // lblStatus.Text = "Unknown";
-                           // lblStatus.ForeColor = System.Drawing.Color.Black;
+                            LabelPlcStatus.Content = "Unknown";
+                            // lblStatus.ForeColor = System.Drawing.Color.Black;
                             break;
                         }
                 }
             }
             else
             {
-               // lblStatus.Text = "Unknown";
-               // lblStatus.ForeColor = System.Drawing.Color.Black;
+                // lblStatus.Text = "Unknown";
+                // lblStatus.ForeColor = System.Drawing.Color.Black;
             }
         }
 
@@ -168,9 +181,6 @@ namespace PlcConnect
             return "0x" + Result;
         }
 
-
-
-
-
+                     
     }
 }
