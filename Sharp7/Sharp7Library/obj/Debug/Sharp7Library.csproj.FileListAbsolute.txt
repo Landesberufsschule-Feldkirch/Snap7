@@ -1,0 +1,6 @@
+c:\git\Sharp7\Sharp7\Sharp7Library\bin\Debug\Sharp7Library.dll
+c:\git\Sharp7\Sharp7\Sharp7Library\bin\Debug\Sharp7Library.pdb
+c:\git\Sharp7\Sharp7\Sharp7Library\obj\Debug\Sharp7Library.csprojAssemblyReference.cache
+c:\git\Sharp7\Sharp7\Sharp7Library\obj\Debug\Sharp7Library.csproj.CoreCompileInputs.cache
+c:\git\Sharp7\Sharp7\Sharp7Library\obj\Debug\Sharp7Library.dll
+c:\git\Sharp7\Sharp7\Sharp7Library\obj\Debug\Sharp7Library.pdb
