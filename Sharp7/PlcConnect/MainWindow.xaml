@@ -53,7 +53,7 @@
         <Label Content="PLC CPU Info" x:Name="LabelPlcCpuInfo" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="4" FontSize="8" />
         <Label Content="PLC Date Time" x:Name="LabelPlcDateTime" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="5" FontSize="8" />
         <Label Content="PLC Order Code" x:Name="LabelPlcOrderCode" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="6" FontSize="8" />
-        <Label Content="PLC Error" x:Name="LabelPlcError" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="7" FontSize="8" />
+        <Label Content="PLC Error:" x:Name="LabelPlcError" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="7" FontSize="8" />
 
         <Rectangle  Fill="LightSkyBlue" Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="0"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
         <Rectangle  Fill="LightGray" Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="0"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />

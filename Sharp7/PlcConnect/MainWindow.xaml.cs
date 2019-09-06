@@ -34,7 +34,16 @@ namespace PlcConnect
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
-            int Result;
+            int Result = -2;
+
+            //If Snap7 client hasn't been initialised
+            if (Client == null)
+            {
+                Client = new S7Client(); //Initialise Snap7 Client
+                //Completion = new S7Client.S7CliCompletion(CompletionProc);
+                //Client.SetAsCallBack(Completion, IntPtr.Zero);
+            }
+
             //int Rack = System.Convert.ToInt32(TxtRack.Text);
             //int Slot = System.Convert.ToInt32(TxtSlot.Text);
             Result = Client.ConnectTo("192.168.0.10", 0, 0); //s7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
