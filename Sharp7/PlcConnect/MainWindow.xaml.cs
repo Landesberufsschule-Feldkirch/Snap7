@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Sharp7;
 
 namespace PlcConnect
@@ -22,105 +12,74 @@ namespace PlcConnect
     public partial class MainWindow : Window
     {
         private S7Client Client;
-        private byte[] Buffer = new byte[65536];
-        private byte[] DB_A = new byte[1024];
-        private byte[] DB_B = new byte[1024];
-        private byte[] DB_C = new byte[1024];
+        private bool TaskAktiv;
 
+        private byte[] DigOutput = new byte[1024];
+        private byte[] DigInput = new byte[1024];
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
             int Result = -2;
 
-            //If Snap7 client hasn't been initialised
             if (Client == null)
             {
-                Client = new S7Client(); //Initialise Snap7 Client
-                //Completion = new S7Client.S7CliCompletion(CompletionProc);
-                //Client.SetAsCallBack(Completion, IntPtr.Zero);
+                Client = new S7Client();
             }
 
-            //int Rack = System.Convert.ToInt32(TxtRack.Text);
-            //int Slot = System.Convert.ToInt32(TxtSlot.Text);
-            Result = Client.ConnectTo("192.168.0.10", 0, 0); //s7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
+            TaskAktiv = true;
+            System.Threading.Tasks.Task.Run(() => BackgroundWorker());
+
+            LabelPlcStatus.Content = "";
+            LabelPlcError.Content = "";
+
+            //S7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
+            Result = Client.ConnectTo("192.168.0.10", 0, 0);
             ShowResult(Result);
             if (Result == 0)
             {
                 LabelPlcError.Content = LabelPlcError.Content + " PDU Negotiated : " + Client.PduSizeNegotiated.ToString();
+                ButtonConnect.IsEnabled = false;
+                ButtonDisconnect.IsEnabled = true;
 
                 ShowPlcStatus();
-                ReadCPUInfo();
                 ReadOrderCode();
-                ReadDateTime();
-
-                //TxtIP.Enabled = false;
-                //TxtRack.Enabled = false;
-                //TxtSlot.Enabled = false;
-                //ConnectBtn.Enabled = false;
-                //DisconnectBtn.Enabled = true;
-                //tabControl.Enabled = true;
             }
-
         }
 
         private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
         {
-            Client.Disconnect();
-            LabelPlcError.Content = "Disconnected";
-            //TxtIP.Enabled = true;
-            //TxtRack.Enabled = true;
-            //TxtSlot.Enabled = true;
-            //ConnectBtn.Enabled = true;
-            //DisconnectBtn.Enabled = false;
-            //tabControl.Enabled = false;
+            TaskAktiv = false;
 
+            LabelPlcStatus.Content = "Disconnected";
+            LabelPlcError.Content = "";
+            LabelPlcOrderCode.Content = "";
+
+            ButtonConnect.IsEnabled = true;
+            ButtonDisconnect.IsEnabled = false;
         }
 
         private void ShowResult(int Result)
         {
-            // This function returns a textual explaination of the error code
-            LabelPlcError.Content = Client.ErrorText(Result);
             if (Result == 0)
+            {
                 LabelPlcError.Content = LabelPlcError.Content + " (" + Client.ExecutionTime.ToString() + " ms)";
-        }
-
-        void ReadDateTime()
-        {
-
-            DateTime DT = new DateTime();
-            if (Client.GetPlcDateTime(ref DT) == 0)
-            {
-                LabelPlcDateTime.Content = DT.ToLongDateString() + " - " + DT.ToLongTimeString();
+                LabelPlcError.Background = Brushes.LawnGreen;
             }
-        }
-        void ReadCPUInfo()
-        {
-            S7Client.S7CpuInfo Info = new S7Client.S7CpuInfo();
-            //txtModuleTypeName.Text = "";
-            //txtSerialNumber.Text = "";
-            //txtCopyright.Text = "";
-            //txtAsName.Text = "";
-            //txtModuleName.Text = "";
-            int Result = Client.GetCpuInfo(ref Info);
-            ShowResult(Result);
-            if (Result == 0)
+            else
             {
-
-                LabelPlcCpuInfo.Content = Info.ModuleTypeName + " " + Info.SerialNumber + " " + Info.Copyright + " " + Info.ASName + " " + Info.ModuleName;
-
-
+                LabelPlcError.Content = "ERROR! " + Client.ErrorText(Result);
+                LabelPlcError.Background = Brushes.Red;
             }
         }
 
         void ReadOrderCode()
         {
             S7Client.S7OrderCode Info = new S7Client.S7OrderCode();
-            // txtOrderCode.Text = "";
-            // txtVersion.Text = "";
             int Result = Client.GetOrderCode(ref Info);
             ShowResult(Result);
             if (Result == 0)
@@ -139,48 +98,46 @@ namespace PlcConnect
                 switch (Status)
                 {
                     case S7Consts.S7CpuStatusRun:
-                        {
-                            LabelPlcStatus.Content = "RUN";
-                            // lblStatus.ForeColor = System.Drawing.Color.LimeGreen;
-                            break;
-                        }
+                        LabelPlcStatus.Content = "RUN";
+                        LabelPlcStatus.Background = Brushes.LawnGreen;
+                        break;
+
                     case S7Consts.S7CpuStatusStop:
-                        {
-                            LabelPlcStatus.Content = "STOP";
-                            // lblStatus.ForeColor = System.Drawing.Color.Red;
-                            break;
-                        }
+                        LabelPlcStatus.Content = "STOP";
+                        LabelPlcStatus.Background = Brushes.Red;
+                        break;
+
                     default:
-                        {
-                            LabelPlcStatus.Content = "Unknown";
-                            // lblStatus.ForeColor = System.Drawing.Color.Black;
-                            break;
-                        }
+                        LabelPlcStatus.Content = "Unknown";
+                        LabelPlcStatus.Background = Brushes.Cyan;
+                        break;
                 }
             }
             else
             {
-                // lblStatus.Text = "Unknown";
-                // lblStatus.ForeColor = System.Drawing.Color.Black;
+                LabelPlcStatus.Content = "Unknown";
+                LabelPlcStatus.Background = Brushes.Cyan;
             }
         }
 
-        string HexByte(byte B)
+        public void BackgroundWorker()
         {
-            string Result = Convert.ToString(B, 16);
-            if (Result.Length < 2)
-                Result = "0" + Result;
-            return "0x" + Result;
+            while (TaskAktiv)
+            {
+                DatenRangieren();
+
+                if (Client != null)
+                {
+                    Client.WriteArea(S7Consts.S7AreaDB, 1, 0, 1, S7Consts.S7WLByte, DigInput);
+                    Client.ReadArea(S7Consts.S7AreaDB, 2, 0, 1, S7Consts.S7WLByte, DigOutput);
+                }
+
+                Task.Delay(50);
+            }
+
+            Client.Disconnect();
+
         }
 
-        string HexWord(ushort W)
-        {
-            string Result = Convert.ToString(W, 16);
-            while (Result.Length < 4)
-                Result = "0" + Result;
-            return "0x" + Result;
-        }
-
-                     
     }
 }
