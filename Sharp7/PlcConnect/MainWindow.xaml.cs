@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Net.NetworkInformation;
 using Sharp7;
 
 namespace PlcConnect
@@ -11,15 +11,32 @@ namespace PlcConnect
     /// </summary>
     public partial class MainWindow : Window
     {
+        public const string SPS_IP_Adresse = "192.168.0.10";    //S7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
+        public const int SPS_Timeout = 1000;
+        public const int SPS_Rack = 0;
+        public const int SPS_Slot = 0;
+
+        public const int DB_DigInput = 1;
+        public const int DB_DigOutput = 2;
+        public const int Startbyte_0 = 0;
+        public const int AnzahlByte_1 = 1;
+        public const int BitMuster_01 = 0x01;
+        public const int BitMuster_02 = 0x02;
+
+        public const float Rahmenbreite_1px = 1;
+        public const float Rahmenbreite_5px = 5;
+
         private S7Client Client;
-        private bool TaskAktiv;
+        public bool TaskAktiv;
+        public bool FensterAktiv = true;
 
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
         public MainWindow()
         {
             InitializeComponent();
-
+            BilderEinlesen();
+            System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
@@ -32,13 +49,13 @@ namespace PlcConnect
             }
 
             TaskAktiv = true;
-            System.Threading.Tasks.Task.Run(() => BackgroundWorker());
+            System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
+
 
             LabelPlcStatus.Content = "";
             LabelPlcError.Content = "";
 
-            //S7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
-            Result = Client.ConnectTo("192.168.0.10", 0, 0);
+            Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
             ShowResult(Result);
             if (Result == 0)
             {
@@ -54,6 +71,7 @@ namespace PlcConnect
         private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
         {
             TaskAktiv = false;
+            Client.Disconnect();
 
             LabelPlcStatus.Content = "Disconnected";
             LabelPlcError.Content = "";
@@ -120,24 +138,57 @@ namespace PlcConnect
             }
         }
 
-        public void BackgroundWorker()
+        public void DatenRangieren_Task()
         {
-            while (TaskAktiv)
+            while (TaskAktiv && FensterAktiv)
             {
                 DatenRangieren();
 
-                if (Client != null)
+                if ((Client != null) && TaskAktiv)
                 {
-                    Client.WriteArea(S7Consts.S7AreaDB, 1, 0, 1, S7Consts.S7WLByte, DigInput);
-                    Client.ReadArea(S7Consts.S7AreaDB, 2, 0, 1, S7Consts.S7WLByte, DigOutput);
+                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
+                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_1, DigOutput);
                 }
 
                 Task.Delay(50);
             }
-
-            Client.Disconnect();
-
         }
 
+        public void SPS_Pingen_Task()
+        {
+            while (FensterAktiv)
+            {
+                Ping pingSender = new Ping();
+
+                PingReply reply = pingSender.Send(SPS_IP_Adresse, SPS_Timeout);
+                if (reply.Status == IPStatus.Success)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        LabelPlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
+                        if (!TaskAktiv)
+                        {
+                            ButtonConnect.IsEnabled = true;
+                        }
+                    });
+                }
+                else
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        LabelPlcPing.Content = "Keine Verbindung zur S7-1200!";
+                        ButtonConnect.IsEnabled = false;
+                    });
+                }
+
+                Task.Delay(500);
+
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            FensterAktiv = false;
+        }
     }
 }

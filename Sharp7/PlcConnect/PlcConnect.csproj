@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BilderEinlesen.cs" />
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Sharp7.cs" />
     <Compile Include="MainWindow.xaml.cs">

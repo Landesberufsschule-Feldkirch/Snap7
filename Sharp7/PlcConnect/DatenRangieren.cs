@@ -4,47 +4,66 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace PlcConnect
-
 {
-
     public partial class MainWindow
     {
         public void DatenRangieren()
         {
             this.Dispatcher.Invoke(() =>
             {
-                AusgaengeSchreiben(ButtonStart.IsPressed, DigInput, 0, 0x01);
-                AusgaengeSchreiben(ButtonStop.IsPressed, DigInput, 0, 0x02);
+                BitmusterSchreiben(ButtonStart.IsPressed, DigInput, Startbyte_0, BitMuster_01);
+                BitmusterSchreiben(ButtonStop.IsPressed, DigInput, Startbyte_0, BitMuster_02);
 
-                ButtonRahmenAendern(ButtonStart, DigInput, 0, 0x01, 5, 1);
-                ButtonRahmenAendern(ButtonStop, DigInput, 0, 0x02, 5, 1);
+                ButtonRahmenAendern(BitmusterTesten(DigInput, Startbyte_0, BitMuster_01), ButtonStart, Rahmenbreite_5px, Rahmenbreite_1px);
+                ButtonRahmenAendern(BitmusterTesten(DigInput, Startbyte_0, BitMuster_02), ButtonStop, Rahmenbreite_5px, Rahmenbreite_1px);
 
-                KreisFarbeUmschalten(KreisBetrieb, DigOutput, 0, 0x01, Colors.Green, Colors.White);
-                KreisFarbeUmschalten(KreisStoerung, DigOutput, 0, 0x02, Colors.Red, Colors.White);
-
+                KreisFarbeUmschalten(BitmusterTesten(DigOutput, Startbyte_0, BitMuster_01), KreisBetrieb, Colors.Green, Colors.White);
+                KreisFarbeUmschalten(BitmusterTesten(DigOutput, Startbyte_0, BitMuster_02), KreisStoerung, Colors.Red, Colors.White);
             });
-
         }
 
+        public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
+        {
+            if ((ByteArray[ByteNummer] & BitMuster) == BitMuster)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        void AusgaengeSchreiben(bool Bedingung, byte[] Ausgaenge, byte Byte, UInt16 BitMuster)
+        void BitmusterSchreiben(bool Bedingung, byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
         {
             byte BitEin = (byte)(BitMuster & 0xFF);
             byte BitAus = (byte)(~BitMuster & 0xFF);
 
-            if (Bedingung) Ausgaenge[Byte] |= BitEin;
-            else Ausgaenge[Byte] &= BitAus;
+            if (Bedingung)
+            {
+                ByteArray[ByteNummer] |= BitEin;
+            }
+            else
+            {
+                ByteArray[ByteNummer] &= BitAus;
+            }
         }
 
-        void KreisFarbeUmschalten(Ellipse ellipse, byte[] Eingaenge, byte Byte, byte BitMuster, Color FarbeEin, Color FarbeAus)
+        void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
         {
-            if ((Eingaenge[Byte] & BitMuster) == BitMuster) ellipse.Fill = new SolidColorBrush(FarbeEin);
-            else ellipse.Fill = new SolidColorBrush(FarbeAus);
+            if (Wert)
+            {
+                ellipse.Fill = new SolidColorBrush(FarbeEin);
+            }
+            else
+            {
+                ellipse.Fill = new SolidColorBrush(FarbeAus);
+            }
         }
 
-        void ButtonRahmenAendern(Button button, byte[] Ausgaenge, byte Byte, byte BitMuster, double StaerkeEin, double StaerkeAus)
+        void ButtonRahmenAendern(bool Wert, Button button, double StaerkeEin, double StaerkeAus)
         {
-            if ((Ausgaenge[Byte] & BitMuster) == BitMuster)
+            if (Wert)
             {
                 button.BorderThickness = new System.Windows.Thickness(StaerkeEin);
             }
@@ -52,7 +71,6 @@ namespace PlcConnect
             {
                 button.BorderThickness = new System.Windows.Thickness(StaerkeAus);
             }
-
         }
 
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlcConnect"
         mc:Ignorable="d"
-        Title="PlcConnect" Height="450" Width="800">
+        Title="PlcConnect" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -35,8 +35,8 @@
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
-            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -56,7 +56,8 @@
 
         <Label Content="PLC Status" x:Name="LabelPlcStatus" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="4" />
         <Label Content="PLC Error:" x:Name="LabelPlcError" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="5"  />
-        <Label Content="PLC Order Code" x:Name="LabelPlcOrderCode" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="11"  />
+        <Label Content="PLC Ping:" x:Name="LabelPlcPing" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="10"  />
+        <Label Content="PLC Order Code:" x:Name="LabelPlcOrderCode" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="11"  />
         
 
         <Rectangle  Fill="LightSkyBlue" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
