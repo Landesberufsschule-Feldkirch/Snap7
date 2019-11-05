@@ -46,146 +46,148 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Label Content="V0.0 " Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
+        <Label x:Name="lbl_VersionsInfo" Content="V0.0 " Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
 
-        <Rectangle  Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black"  />
+        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="4" Stroke="Black"  />
+        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="6"  Grid.RowSpan="6" Stroke="Black"  />
 
-        <Button x:Name="ButtonConnect" Content="Connect" Grid.Column="15" Grid.Row="3" Click="ButtonConnect_Click"  />
-        <Button x:Name="ButtonDisconnect" Content="Disconnect" Grid.Column="17" Grid.Row="3" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
+        <Button x:Name="btn_Connect" Content="Connect" Grid.Column="15" Grid.Row="3" Click="ButtonConnect_Click"  />
+        <Button x:Name="btn_Disconnect" Content="Disconnect" Grid.Column="17" Grid.Row="3" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
 
-        <Label Content="PLC Status" x:Name="LabelPlcStatus" Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="7" />
-        <Label Content="PLC Error:" x:Name="LabelPlcError" Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="8"  />
-        <Label Content="PLC Ping:" x:Name="LabelPlcPing" Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="9"  />
-        <Label Content="PLC Order Code:" x:Name="LabelPlcOrderCode" Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="2"  />
+        <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
 
-        <Rectangle  Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
-
-        <Label Content="Y1" Grid.Column="2" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Image  x:Name="Y1_Ein" Grid.Column="3" Grid.Row="4" Visibility="Hidden">
+        <Label Content="Q1" Grid.Column="2" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Image x:Name="img_Q1_Ein" Grid.Column="3" Grid.Row="4" Visibility="Hidden">
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
             </Image.Source>
         </Image>
 
-        <Image  x:Name="Y1_Aus" Grid.Column="3" Grid.Row="4" >
+        <Image x:Name="img_Q1_Aus" Grid.Column="3" Grid.Row="4" >
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
             </Image.Source>
         </Image>
 
-        <Label Content="Y2" Grid.Column="2" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Button x:Name="Button_Y2_Ein" Click="Button_Y2_Ein_Click" Grid.Column="3" Grid.Row="8" Visibility="Hidden">
-            <Image  x:Name="Y2_Ein">
+        <Label Content="Q2" Grid.Column="2" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_Q2_Ein" Click="btn_Q2_Ein_Click" Grid.Column="3" Grid.Row="8" Visibility="Hidden">
+            <Image x:Name="img_Q2_Ein">
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Button x:Name="Button_Y2_Aus" Click="Button_Y2_Aus_Click" Grid.Column="3" Grid.Row="8">
-            <Image  x:Name="Y2_Aus" >
+        <Button x:Name="btn_Q2_Aus" Click="btn_Q2_Aus_Click" Grid.Column="3" Grid.Row="8">
+            <Image  x:Name="img_Q2_Aus" >
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Label Content="Y3" Grid.Column="5" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Image  x:Name="Y3_Ein" Grid.Column="6" Grid.Row="4"  Visibility="Hidden">
+        <Label Content="Q3" Grid.Column="5" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Image x:Name="img_Q3_Ein" Grid.Column="6" Grid.Row="4"  Visibility="Hidden">
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
             </Image.Source>
         </Image>
 
-        <Image  x:Name="Y3_Aus" Grid.Column="6" Grid.Row="4" >
+        <Image x:Name="img_Q3_Aus" Grid.Column="6" Grid.Row="4" >
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
             </Image.Source>
         </Image>
 
-        <Label Content="Y4" Grid.Column="5" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Button x:Name="Button_Y4_Ein" Click="Button_Y4_Ein_Click" Grid.Column="6" Grid.Row="8" Visibility="Hidden">
-            <Image  x:Name="Y4_Ein">
+        <Label Content="Q4" Grid.Column="5" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_Q4_Ein" Click="btn_Q4_Ein_Click" Grid.Column="6" Grid.Row="8" Visibility="Hidden">
+            <Image x:Name="img_Q4_Ein">
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Button x:Name="Button_Y4_Aus" Click="Button_Y4_Aus_Click" Grid.Column="6" Grid.Row="8">
-            <Image  x:Name="Y4_Aus">
+        <Button x:Name="btn_Q4_Aus" Click="btn_Q4_Aus_Click" Grid.Column="6" Grid.Row="8">
+            <Image x:Name="img_Q4_Aus">
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Label Content="Y5" Grid.Column="8" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Image  x:Name="Y5_Ein" Grid.Column="9" Grid.Row="4"  Visibility="Hidden">
+        <Label Content="Q5" Grid.Column="8" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Image x:Name="img_Q5_Ein" Grid.Column="9" Grid.Row="4"  Visibility="Hidden">
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
             </Image.Source>
         </Image>
 
-        <Image  x:Name="Y5_Aus" Grid.Column="9" Grid.Row="4" >
+        <Image x:Name="img_Q5_Aus" Grid.Column="9" Grid.Row="4" >
             <Image.Source>
                 <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
             </Image.Source>
         </Image>
 
-        <Label Content="Y6" Grid.Column="8" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Button x:Name="Button_Y6_Ein" Click="Button_Y6_Ein_Click" Grid.Column="9" Grid.Row="8" Visibility="Hidden">
-            <Image  x:Name="Y6_Ein">
+        <Label Content="Q6" Grid.Column="8" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_Q6_Ein" Click="btn_Q6_Ein_Click" Grid.Column="9" Grid.Row="8" Visibility="Hidden">
+            <Image x:Name="img_Q6_Ein">
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischEin.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Button x:Name="Button_Y6_Aus" Click="Button_Y6_Aus_Click" Grid.Column="9" Grid.Row="8">
-            <Image  x:Name="Y6_Aus">
+        <Button x:Name="btn_Q6_Aus" Click="btn_Q6_Aus_Click" Grid.Column="9" Grid.Row="8">
+            <Image x:Name="img_Q6_Aus">
                 <Image.Source>
                     <BitmapImage UriSource="Bilder/VentilElektrischAus.jpg"/>
                 </Image.Source>
             </Image>
         </Button>
 
-        <Rectangle x:Name="Zuleitung" Fill="Blue" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="8" Margin="0,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_1a" Fill="Blue" Grid.Column="3" Grid.Row="3" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_2a" Fill="Blue" Grid.Column="6" Grid.Row="3" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_3a" Fill="Blue" Grid.Column="9" Grid.Row="3" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_1b" Fill="LightBlue" Grid.Column="3" Grid.Row="5" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_2b" Fill="LightBlue" Grid.Column="6" Grid.Row="5" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Zuleitung_3b" Fill="LightBlue" Grid.Column="9" Grid.Row="5" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Zuleitung" Fill="Blue" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="8" Margin="0,0,20,0"/>
+        <Rectangle x:Name="rct_Zuleitung_1a" Fill="Blue" Grid.Column="3" Grid.Row="3" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Zuleitung_2a" Fill="Blue" Grid.Column="6" Grid.Row="3" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Zuleitung_3a" Fill="Blue" Grid.Column="9" Grid.Row="3" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Zuleitung_1b" Fill="LightBlue" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" Margin="40,0,20,0" Canvas.ZIndex="1"/>
+        <Rectangle x:Name="rct_Zuleitung_2b" Fill="LightBlue" Grid.Column="6" Grid.Row="5" Grid.RowSpan="2" Margin="40,0,20,0" Canvas.ZIndex="1"/>
+        <Rectangle x:Name="rct_Zuleitung_3b" Fill="LightBlue" Grid.Column="9" Grid.Row="5" Grid.RowSpan="2" Margin="40,0,20,0" Canvas.ZIndex="1"/>
 
-        <Rectangle x:Name="Behaelter_1_Leer" Fill="LightBlue" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6"/>
-        <Rectangle x:Name="Behaelter_2_Leer" Fill="LightBlue" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="6"/>
-        <Rectangle x:Name="Behaelter_3_Leer" Fill="LightBlue" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="6"/>
+        <Rectangle x:Name="rct_Behaelter_1_Leer" Fill="LightBlue" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6"/>
+        <Rectangle x:Name="rct_Behaelter_2_Leer" Fill="LightBlue" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="6"/>
+        <Rectangle x:Name="rct_Behaelter_3_Leer" Fill="LightBlue" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="6"/>
 
-        <Rectangle x:Name="Behaelter_1_Voll" Fill="Blue" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,30,0,0"  />
-        <Rectangle x:Name="Behaelter_2_Voll" Fill="Blue" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,50,0,0" />
-        <Rectangle x:Name="Behaelter_3_Voll" Fill="Blue" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,105,0,0" />
+        <Rectangle x:Name="rct_Behaelter_1_Voll" Fill="Blue" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,30,0,0"  Canvas.ZIndex="2" />
+        <Rectangle x:Name="rct_Behaelter_2_Voll" Fill="Blue" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,50,0,0"  Canvas.ZIndex="2"/>
+        <Rectangle x:Name="rct_Behaelter_3_Voll" Fill="Blue" Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="6" Margin="0,105,0,0" Canvas.ZIndex="2"/>
 
 
-        <Label Content="S1" x:Name="S1" Background="LawnGreen" Grid.Column="5" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
-        <Label Content="S3" x:Name="S3" Background="LawnGreen" Grid.Column="8" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
-        <Label Content="S5" x:Name="S5" Background="LawnGreen" Grid.Column="11" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
+        <Label x:Name="lbl_B1" Content="B1"  Background="LawnGreen" Grid.Column="5" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
+        <Label x:Name="lbl_B3" Content="B3" Background="LawnGreen" Grid.Column="8" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
+        <Label x:Name="lbl_B5" Content="B5" Background="LawnGreen" Grid.Column="11" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,20,175"/>
 
-        <Label Content="S2" x:Name="S2" Background="Red" Grid.Column="5" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
-        <Label Content="S4" x:Name="S4" Background="Red" Grid.Column="8" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
-        <Label Content="S6" x:Name="S6" Background="Red" Grid.Column="11" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
+        <Label x:Name="lbl_B2" Content="B2"  Background="Red" Grid.Column="5" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
+        <Label x:Name="lbl_B4" Content="B4" Background="Red" Grid.Column="8" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
+        <Label x:Name="lbl_B6" Content="B6" Background="Red" Grid.Column="11" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,175,20,0"/>
 
-        <Rectangle x:Name="Ableitung_1a" Fill="Blue" Grid.Column="3" Grid.Row="7" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung_2a" Fill="Blue" Grid.Column="6" Grid.Row="7" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung_3a" Fill="Blue" Grid.Column="9" Grid.Row="7" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung_1b" Fill="LightBlue" Grid.Column="3" Grid.Row="9" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung_2b" Fill="LightBlue" Grid.Column="6" Grid.Row="9" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung_3b" Fill="LightBlue" Grid.Column="9" Grid.Row="9" Margin="40,0,20,0"/>
-        <Rectangle x:Name="Ableitung" Fill="LightBlue" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="8" Margin="40,0,0,0"/>
+        <Rectangle x:Name="rct_Ableitung_1a" Fill="Blue" Grid.Column="3" Grid.Row="7" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung_2a" Fill="Blue" Grid.Column="6" Grid.Row="7" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung_3a" Fill="Blue" Grid.Column="9" Grid.Row="7" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung_1b" Fill="LightBlue" Grid.Column="3" Grid.Row="9" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung_2b" Fill="LightBlue" Grid.Column="6" Grid.Row="9" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung_3b" Fill="LightBlue" Grid.Column="9" Grid.Row="9" Margin="40,0,20,0"/>
+        <Rectangle x:Name="rct_Ableitung" Fill="LightBlue" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="8" Margin="40,0,0,0"/>
 
-     
+        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="13" Grid.Row="5"  Grid.ColumnSpan="6" />
+
+        <Button x:Name="btn_Automatik_123" Content="1-2-3" Grid.Column="15"  Grid.Row="7" Click="btn_123_Click"/>
+        <Button x:Name="btn_Automatik_132" Content="1-3-2" Grid.Column="17"  Grid.Row="7" Click="btn_132_Click"/>
+        <Button x:Name="btn_Automatik_321" Content="3-2-1" Grid.Column="15"  Grid.Row="9" Click="btn_321_Click"/>
+        <Ellipse x:Name="circ_Stoerung" Grid.Column="11" Fill="LightGray" HorizontalAlignment="Left" Height="35" Grid.Row="3" Stroke="Black" Width="35"/>
+
+        <Label x:Name="lbl_P1" Content="P1" Grid.Column="10" Grid.Row="3" VerticalAlignment="Center" />
+
 
     </Grid>
-
-
 </Window>

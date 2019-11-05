@@ -31,51 +31,73 @@ namespace BehälterSteuerung
         public const int DB_DigOutput = 2;
         public const int Startbyte_0 = 0;
         public const int AnzahlByte_1 = 1;
-        public const int BitMuster_01 = 0x01;
-        public const int BitMuster_02 = 0x02;
+
 
         public const float Rahmenbreite_1px = 1;
         public const float Rahmenbreite_5px = 5;
 
         private S7Client Client;
         public bool TaskAktiv;
+        public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
 
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
+
+        bool Ventil_Q2 = false;
+        bool Ventil_Q4 = false;
+        bool Ventil_Q6 = false;
+
+        bool Pegel_B1 = false;
+        bool Pegel_B2 = false;
+        bool Pegel_B3 = false;
+        bool Pegel_B4 = false;
+        bool Pegel_B5 = false;
+        bool Pegel_B6 = false;
+
+        double Pegel_1 = 0.7;
+        double Pegel_2 = 0.5;
+        double Pegel_3 = 0.3;
+
+        public bool AutomatikModusAktiv;
+        public string AutomatikSchrittschaltwerk;
+        public bool Automatik_123_Aktiv;
+        public bool Automatik_132_Aktiv;
+        public bool Automatik_321_Aktiv;
+
         public MainWindow()
         {
             InitializeComponent();
+            EinAusgabeFelderInitialisieren();
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
+            System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
             int Result = -2;
 
+            Pegel_1 = 0.7;
+            Pegel_2 = 0.5;
+            Pegel_3 = 0.3;
+
             if (Client == null)
             {
                 Client = new S7Client();
             }
 
-            TaskAktiv = true;
-            System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
-
-
-            LabelPlcStatus.Content = "";
-            LabelPlcError.Content = "";
 
             Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
-            ShowResult(Result);
             if (Result == 0)
             {
-                LabelPlcError.Content = LabelPlcError.Content + " PDU Negotiated : " + Client.PduSizeNegotiated.ToString();
-                ButtonConnect.IsEnabled = false;
-                ButtonDisconnect.IsEnabled = true;
+                btn_Connect.IsEnabled = false;
+                btn_Disconnect.IsEnabled = true;
 
-                ShowPlcStatus();
-                ReadOrderCode();
+                TaskAktiv = true;
+                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
+
+
         }
 
         private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
@@ -83,85 +105,23 @@ namespace BehälterSteuerung
             TaskAktiv = false;
             Client.Disconnect();
 
-            LabelPlcStatus.Content = "Disconnected";
-            LabelPlcError.Content = "";
-            LabelPlcOrderCode.Content = "";
-
-            ButtonConnect.IsEnabled = true;
-            ButtonDisconnect.IsEnabled = false;
+            btn_Connect.IsEnabled = true;
+            btn_Disconnect.IsEnabled = false;
         }
 
-        private void ShowResult(int Result)
-        {
-            if (Result == 0)
-            {
-                LabelPlcError.Content = LabelPlcError.Content + " (" + Client.ExecutionTime.ToString() + " ms)";
-                LabelPlcError.Background = Brushes.LawnGreen;
-            }
-            else
-            {
-                LabelPlcError.Content = "ERROR! " + Client.ErrorText(Result);
-                LabelPlcError.Background = Brushes.Red;
-            }
-        }
 
-        void ReadOrderCode()
-        {
-            S7Client.S7OrderCode Info = new S7Client.S7OrderCode();
-            int Result = Client.GetOrderCode(ref Info);
-            ShowResult(Result);
-            if (Result == 0)
-            {
-                LabelPlcOrderCode.Content = Info.Code + " " + Info.V1.ToString() + "." + Info.V2.ToString() + "." + Info.V3.ToString();
-            }
-        }
-
-        void ShowPlcStatus()
-        {
-            int Status = 0;
-            int Result = Client.PlcGetStatus(ref Status);
-            ShowResult(Result);
-            if (Result == 0)
-            {
-                switch (Status)
-                {
-                    case S7Consts.S7CpuStatusRun:
-                        LabelPlcStatus.Content = "RUN";
-                        LabelPlcStatus.Background = Brushes.LawnGreen;
-                        break;
-
-                    case S7Consts.S7CpuStatusStop:
-                        LabelPlcStatus.Content = "STOP";
-                        LabelPlcStatus.Background = Brushes.Red;
-                        break;
-
-                    default:
-                        LabelPlcStatus.Content = "Unknown";
-                        LabelPlcStatus.Background = Brushes.Cyan;
-                        break;
-                }
-            }
-            else
-            {
-                LabelPlcStatus.Content = "Unknown";
-                LabelPlcStatus.Background = Brushes.Cyan;
-            }
-        }
 
         public void DatenRangieren_Task()
         {
             while (TaskAktiv && FensterAktiv)
             {
-                Logikfunktionen();
-                DatenRangieren();
-
                 if ((Client != null) && TaskAktiv)
                 {
                     Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
                     Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_1, DigOutput);
                 }
 
-                Task.Delay(50);
+                Task.Delay(100);
             }
         }
 
@@ -176,10 +136,10 @@ namespace BehälterSteuerung
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        LabelPlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
+                        lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
                         if (!TaskAktiv)
                         {
-                            ButtonConnect.IsEnabled = true;
+                            btn_Connect.IsEnabled = true;
                         }
                     });
                 }
@@ -187,8 +147,8 @@ namespace BehälterSteuerung
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        LabelPlcPing.Content = "Keine Verbindung zur S7-1200!";
-                        ButtonConnect.IsEnabled = false;
+                        lbl_PlcPing.Content = "Keine Verbindung zur S7-1200!";
+                        btn_Connect.IsEnabled = false;
                     });
                 }
 
@@ -202,29 +162,74 @@ namespace BehälterSteuerung
             FensterAktiv = false;
         }
 
-        private void Button_Y2_Ein_Click(object sender, RoutedEventArgs e)
+        private void btn_Q2_Ein_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!AutomatikModusAktiv) Ventil_Q2 = false;
         }
-        private void Button_Y2_Aus_Click(object sender, RoutedEventArgs e)
+        private void btn_Q2_Aus_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!AutomatikModusAktiv) Ventil_Q2 = true;
         }
-        private void Button_Y4_Ein_Click(object sender, RoutedEventArgs e)
+        private void btn_Q4_Ein_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!AutomatikModusAktiv) Ventil_Q4 = false;
         }
-        private void Button_Y4_Aus_Click(object sender, RoutedEventArgs e)
+        private void btn_Q4_Aus_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!AutomatikModusAktiv) Ventil_Q4 = true;
         }
-        private void Button_Y6_Ein_Click(object sender, RoutedEventArgs e)
+        private void btn_Q6_Ein_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!AutomatikModusAktiv) Ventil_Q6 = false;
         }
-        private void Button_Y6_Aus_Click(object sender, RoutedEventArgs e)
+        private void btn_Q6_Aus_Click(object sender, RoutedEventArgs e)
         {
+            if (!AutomatikModusAktiv) Ventil_Q6 = true;
+        }
 
+        private void btn_123_Click(object sender, RoutedEventArgs e)
+        {
+            AutomatikModusAktiv = true;
+            AutomatikSchrittschaltwerk = "Init";
+            Automatik_123_Aktiv = true;
+
+            AutomatikDeaktivieren();
+        }
+        private void btn_132_Click(object sender, RoutedEventArgs e)
+        {
+            AutomatikModusAktiv = true;
+            AutomatikSchrittschaltwerk = "Init";
+            Automatik_132_Aktiv = true;
+
+            AutomatikDeaktivieren();
+        }
+        private void btn_321_Click(object sender, RoutedEventArgs e)
+        {
+            AutomatikModusAktiv = true;
+            AutomatikSchrittschaltwerk = "Init";
+            Automatik_321_Aktiv = true;
+
+            AutomatikDeaktivieren();
+        }
+
+        private void AutomatikDeaktivieren()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                btn_Automatik_123.IsEnabled = false;
+                btn_Automatik_132.IsEnabled = false;
+                btn_Automatik_321.IsEnabled = false;
+            });
+        }
+
+        private void AutomatikAktivieren()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                btn_Automatik_123.IsEnabled = true;
+                btn_Automatik_132.IsEnabled = true;
+                btn_Automatik_321.IsEnabled = true;
+            });
         }
     }
 }

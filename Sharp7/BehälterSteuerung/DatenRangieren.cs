@@ -7,15 +7,6 @@ namespace BehälterSteuerung
 {
     public partial class MainWindow
     {
-        public void DatenRangieren()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
- 
-
-            });
-        }
-
         public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
         {
             if ((ByteArray[ByteNummer] & BitMuster) == BitMuster)
@@ -43,28 +34,11 @@ namespace BehälterSteuerung
             }
         }
 
-        void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
-        {
-            if (Wert)
-            {
-                ellipse.Fill = new SolidColorBrush(FarbeEin);
-            }
-            else
-            {
-                ellipse.Fill = new SolidColorBrush(FarbeAus);
-            }
-        }
 
-        void ButtonRahmenAendern(bool Wert, Button button, double StaerkeEin, double StaerkeAus)
+        void EinAusgabeFelderInitialisieren()
         {
-            if (Wert)
-            {
-                button.BorderThickness = new System.Windows.Thickness(StaerkeEin);
-            }
-            else
-            {
-                button.BorderThickness = new System.Windows.Thickness(StaerkeAus);
-            }
+            foreach (byte b in DigInput) { DigInput[b] = 0; }
+            foreach (byte b in DigOutput) { DigOutput[b] = 0; }
         }
 
     }
