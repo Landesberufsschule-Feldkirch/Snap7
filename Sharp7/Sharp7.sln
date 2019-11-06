@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcConnect", "PlcConnect\Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehälterSteuerung", "BehälterSteuerung\BehälterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
