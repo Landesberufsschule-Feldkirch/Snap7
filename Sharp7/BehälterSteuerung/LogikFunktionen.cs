@@ -123,48 +123,26 @@ namespace BehälterSteuerung
             }
 
             TankFuellen();
-
         }
 
         public void TankFuellen()
         {
 
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q1))
-            {
-                Pegel_1 += FuellGeschwindigkeit;
-            }
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q3))
-            {
-                Pegel_2 += FuellGeschwindigkeit;
-            }
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q5))
-            {
-                Pegel_3 += FuellGeschwindigkeit;
-            }
+            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q1)) Pegel_1 += FuellGeschwindigkeit;
+            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q3)) Pegel_2 += FuellGeschwindigkeit;
+            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q5)) Pegel_3 += FuellGeschwindigkeit;
         }
         public void ManuelleFunktionen()
         {
-            if (Ventil_Q2)
-            {
-                Pegel_1 -= SinkGeschwindigkeit;
-            }
-            if (Ventil_Q4)
-            {
-                Pegel_2 -= SinkGeschwindigkeit;
-            }
-            if (Ventil_Q6)
-            {
-                Pegel_3 -= SinkGeschwindigkeit;
-            }
+            if (Ventil_Q2) Pegel_1 -= SinkGeschwindigkeit;
+            if (Ventil_Q4) Pegel_2 -= SinkGeschwindigkeit;
+            if (Ventil_Q6) Pegel_3 -= SinkGeschwindigkeit;
 
             TankFuellen();
-
         }
 
         public void LimitsUeberwachen()
         {
-
-
             if (Pegel_1 > 0.95) Pegel_B1 = true; else Pegel_B1 = false;
             if (Pegel_2 > 0.95) Pegel_B3 = true; else Pegel_B3 = false;
             if (Pegel_3 > 0.95) Pegel_B5 = true; else Pegel_B5 = false;
@@ -199,77 +177,14 @@ namespace BehälterSteuerung
                 rct_Behaelter_2_Voll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel_2), 0, 0);
                 rct_Behaelter_3_Voll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel_3), 0, 0);
 
-                if (Ventil_Q2)
-                {
-                    btn_Q2_Ein.Visibility = System.Windows.Visibility.Visible;
-                    btn_Q2_Aus.Visibility = System.Windows.Visibility.Hidden;
-                }
-                else
-                {
-                    btn_Q2_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    btn_Q2_Aus.Visibility = System.Windows.Visibility.Visible;
-                }
+                btn_Sichtbarkeit(Ventil_Q2, btn_Q2_Ein, btn_Q2_Aus);
+                btn_Sichtbarkeit(Ventil_Q4, btn_Q4_Ein, btn_Q4_Aus);
+                btn_Sichtbarkeit(Ventil_Q6, btn_Q6_Ein, btn_Q6_Aus);
 
-                if (Ventil_Q4)
-                {
-                    btn_Q4_Ein.Visibility = System.Windows.Visibility.Visible;
-                    btn_Q4_Aus.Visibility = System.Windows.Visibility.Hidden;
-                }
-                else
-                {
-                    btn_Q4_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    btn_Q4_Aus.Visibility = System.Windows.Visibility.Visible;
-                }
+                img_Sichtbarkeit(BitPos_Q1, img_Q1_Ein, img_Q1_Aus, rct_Zuleitung_1b);
+                img_Sichtbarkeit(BitPos_Q3, img_Q3_Ein, img_Q3_Aus, rct_Zuleitung_2b);
+                img_Sichtbarkeit(BitPos_Q5, img_Q5_Ein, img_Q5_Aus, rct_Zuleitung_3b);
 
-                if (Ventil_Q6)
-                {
-                    btn_Q6_Ein.Visibility = System.Windows.Visibility.Visible;
-                    btn_Q6_Aus.Visibility = System.Windows.Visibility.Hidden;
-                }
-                else
-                {
-                    btn_Q6_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    btn_Q6_Aus.Visibility = System.Windows.Visibility.Visible;
-                }
-
-                if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q1))
-                {
-                    img_Q1_Ein.Visibility = System.Windows.Visibility.Visible;
-                    img_Q1_Aus.Visibility = System.Windows.Visibility.Hidden;
-                    rct_Zuleitung_1b.Fill = System.Windows.Media.Brushes.Blue;
-                }
-                else
-                {
-                    img_Q1_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    img_Q1_Aus.Visibility = System.Windows.Visibility.Visible;
-                    rct_Zuleitung_1b.Fill = System.Windows.Media.Brushes.LightBlue;
-                }
-
-                if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q3))
-                {
-                    img_Q3_Ein.Visibility = System.Windows.Visibility.Visible;
-                    img_Q3_Aus.Visibility = System.Windows.Visibility.Hidden;
-                    rct_Zuleitung_2b.Fill = System.Windows.Media.Brushes.Blue;
-                }
-                else
-                {
-                    img_Q3_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    img_Q3_Aus.Visibility = System.Windows.Visibility.Visible;
-                    rct_Zuleitung_2b.Fill = System.Windows.Media.Brushes.LightBlue;
-                }
-
-                if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q5))
-                {
-                    img_Q5_Ein.Visibility = System.Windows.Visibility.Visible;
-                    img_Q5_Aus.Visibility = System.Windows.Visibility.Hidden;
-                    rct_Zuleitung_3b.Fill = System.Windows.Media.Brushes.Blue;
-                }
-                else
-                {
-                    img_Q5_Ein.Visibility = System.Windows.Visibility.Hidden;
-                    img_Q5_Aus.Visibility = System.Windows.Visibility.Visible;
-                    rct_Zuleitung_3b.Fill = System.Windows.Media.Brushes.LightBlue;
-                }
 
 
                 if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_P1))
@@ -298,7 +213,6 @@ namespace BehälterSteuerung
                     rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.Blue;
                     rct_Ableitung.Fill = System.Windows.Media.Brushes.Blue;
                 }
-
                 else
                 {
                     rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.LightBlue;
@@ -308,8 +222,6 @@ namespace BehälterSteuerung
                 }
 
             });
-
         }
-
     }
 }

@@ -55,7 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Display.cs" />
     <Compile Include="LogikFunktionen.cs" />
+    <Compile Include="S7_1200.cs" />
     <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
