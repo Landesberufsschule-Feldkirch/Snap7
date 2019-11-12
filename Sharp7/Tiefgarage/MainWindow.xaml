@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tiefgarage"
         mc:Ignorable="d"
-        Title="Tiefgarage" Height="400" Width="1000">
+        Title="Tiefgarage" Height="700" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -40,6 +40,14 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -48,71 +56,75 @@
         <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="13" Grid.Row="5"  Grid.ColumnSpan="6" />
 
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="1"  Grid.RowSpan="4" Stroke="Black"  />
-        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="6"  Grid.RowSpan="4" Stroke="Black"  />
+        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="7"  Grid.RowSpan="5" Stroke="Black"  />
+        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="14"  Grid.RowSpan="4" Stroke="Black"  />
+
 
         <Button x:Name="btn_Connect" Content="Connect" Grid.Column="14" Grid.Row="3" Click="ButtonConnect_Click"  />
         <Button x:Name="btn_Disconnect" Content="Disconnect" Grid.Column="16" Grid.Row="3" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
 
-        <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="10" Stroke="Black" Panel.ZIndex="-1" />
-        <Label x:Name="lbl_FahrzeugZaehler" Content="Autos in der Garage: 0" Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="7" />
-        <Label x:Name="lbl_PersonenZaehler" Content="Personen in der Garage: 0" Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="8" />
+        <Button x:Name="AlleDraussenParken" Grid.ColumnSpan="3" Content="Draussen parken!" Grid.Column="14" Grid.Row="8" Click="AlleDraussenParken_Click"/>
+        <Button x:Name="AlleDrinnenParken" Grid.ColumnSpan="3" Content="Drinnen parken!" Grid.Column="14" Grid.Row="10" Click="AlleDrinnenParken_Click"/>
+
+        <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="18" Stroke="Black" Panel.ZIndex="-1" />
+        <Label x:Name="lbl_FahrzeugZaehler" Content="Autos in der Garage: 0" Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="15" />
+        <Label x:Name="lbl_PersonenZaehler" Content="Personen in der Garage: 0" Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="16" />
 
 
-        <Rectangle x:Name="Wand_draussen_links" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Fill="DarkGray" Margin="0,0,0,20" />
-        <Rectangle x:Name="Wand_draussen_rechts" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="4" Fill="DarkGray" Margin="0,0,0,20" />
-        <Rectangle x:Name="Wand_einfahrt_links" Grid.Column="4"  Grid.Row="4" Grid.RowSpan="3" Fill="DarkGray" Margin="50,0,0,0" />
-        <Rectangle x:Name="Wand_einfahrt_rechts" Grid.Column="9"  Grid.Row="4" Grid.RowSpan="3" Fill="DarkGray" Margin="0,0,50,0" />
-        <Rectangle x:Name="Wand_drinnen_links" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="6" Fill="DarkGray" Margin="0,20,0,0" />
-        <Rectangle x:Name="Wand_drinnen_rechts" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="6" Fill="DarkGray" Margin="0,20,50,0" />
-        <Rectangle x:Name="Wand_garage_links" Grid.Column="3"  Grid.Row="7" Grid.RowSpan="4" Fill="DarkGray" Margin="0,0,50,0" />
-        <Rectangle x:Name="Wand_garage_rechts" Grid.Column="11"  Grid.Row="7" Grid.RowSpan="4" Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle x:Name="Wand_draussen_links" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="8" Fill="DarkGray" Margin="0,0,0,20" />
+        <Rectangle x:Name="Wand_draussen_rechts" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="8" Fill="DarkGray" Margin="0,0,0,20" />
+        <Rectangle x:Name="Wand_einfahrt_links" Grid.Column="4"  Grid.Row="8" Grid.RowSpan="4" Fill="DarkGray" Margin="50,0,0,0" />
+        <Rectangle x:Name="Wand_einfahrt_rechts" Grid.Column="9"  Grid.Row="8" Grid.RowSpan="4" Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle x:Name="Wand_drinnen_links" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="11" Fill="DarkGray" Margin="0,20,0,0" />
+        <Rectangle x:Name="Wand_drinnen_rechts" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="11" Fill="DarkGray" Margin="0,20,50,0" />
+        <Rectangle x:Name="Wand_garage_links" Grid.Column="3"  Grid.Row="12" Grid.RowSpan="7" Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle x:Name="Wand_garage_rechts" Grid.Column="11"  Grid.Row="12" Grid.RowSpan="7" Fill="DarkGray" Margin="0,0,50,0" />
 
-        <Ellipse x:Name="circ_Lampe_draussen_links" Grid.Column="5" Grid.Row="4"  Fill="Yellow" Stroke="Black" Margin="5,15,45,0"/>
-        <Ellipse x:Name="circ_Lampe_drinnen_links" Grid.Column="5" Grid.Row="6"  Fill="Yellow" Height="20" Stroke="Black" Margin="5,0,45,15"/>
-        <Label x:Name="lbl_Lampe_draussen_links" Grid.Column="5" Grid.Row="4" Content="P1" Margin="25,10,20,0"/>
-        <Label x:Name="lbl_Lampe_drinnen_links" Grid.Column="5" Grid.Row="6" Content="P2" Margin="30,0,15,10"/>
+        <Ellipse x:Name="circ_Lampe_draussen_links" Grid.Column="5" Grid.Row="8"  Fill="Yellow" Stroke="Black" Margin="5,15,45,0"/>
+        <Ellipse x:Name="circ_Lampe_drinnen_links" Grid.Column="5" Grid.Row="10"  Fill="Yellow" Height="20" Stroke="Black" Margin="5,0,45,15"/>
+        <Label x:Name="lbl_Lampe_draussen_links" Grid.Column="5" Grid.Row="8" Content="P1" Margin="25,10,20,0"/>
+        <Label x:Name="lbl_Lampe_drinnen_links" Grid.Column="5" Grid.Row="10" Content="P2" Margin="30,0,15,10"/>
 
-        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="4"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,15,10,0"/>
-        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="6"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,0,10,15"/>
+        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="8"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,15,10,0"/>
+        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="10"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,0,10,15"/>
 
-        <Label x:Name="lbl_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="4" Content="B1" Margin="18,10,26,0"/>
-        <Label x:Name="lbl_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="6" Content="B2" Margin="18,0,26,10"/>
+        <Label x:Name="lbl_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="8" Content="B1" Margin="18,10,26,0"/>
+        <Label x:Name="lbl_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="10" Content="B2" Margin="18,0,26,10"/>
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
-            <Button x:Name="btn_auto_1_draussen_Ein" Click="btn_auto_1_draussen_Click"  Canvas.Top="10" Canvas.Left="10" >
+            <Button x:Name="btn_auto_1" Click="btn_Click">
                 <Image x:Name="img_auto_1" Width="80" Source="Bilder/auto_1.jpg"/>
             </Button>
 
-            <Button x:Name="btn_auto_2_draussen_Ein" Click="btn_auto_2_draussen_Click"  Canvas.Top="10" Canvas.Left="100" >
+            <Button x:Name="btn_auto_2" Click="btn_Click">
                 <Image x:Name="img_auto_2" Width="80" Source="Bilder/auto_2.jpg"/>
             </Button>
 
 
-            <Button x:Name="btn_auto_3_draussen_Ein" Click="btn_auto_3_draussen_Click"  Canvas.Top="10" Canvas.Left="200" >
+            <Button x:Name="btn_auto_3" Click="btn_Click">
                 <Image x:Name="img_auto_3" Width="80" Source="Bilder/auto_3.jpg"/>
             </Button>
 
-            <Button x:Name="btn_auto_4_draussen_Ein" Click="btn_auto_4_draussen_Click" Canvas.Top="10" Canvas.Left="300" >
+            <Button x:Name="btn_auto_4" Click="btn_Click">
                 <Image x:Name="img_auto_4" Width="80" Source="Bilder/auto_4.jpg"/>
             </Button>
 
 
-            <Button x:Name="btn_mensch_1_draussen_Ein" Click="btn_mensch_1_draussen_Click"   Canvas.Top="10" Canvas.Left="500" >
-                <Image x:Name="img_mensch_1" Height="50" Source="Bilder/mensch_1.jpg"/>
+            <Button x:Name="btn_person_1" Click="btn_Click">
+                <Image x:Name="img_person_1" Height="50" Source="Bilder/mensch_1.jpg"/>
             </Button>
 
-            <Button x:Name="btn_mensch_2_draussen_Ein" Click="btn_mensch_2_draussen_Click"   Canvas.Top="10" Canvas.Left="540" >
-                <Image x:Name="img_mensch_2" Height="50" Source="Bilder/mensch_2.jpg"/>
+            <Button x:Name="btn_person_2" Click="btn_Click">
+                <Image x:Name="img_person_2" Height="50" Source="Bilder/mensch_2.jpg"/>
             </Button>
 
-            <Button x:Name="btn_mensch_3_draussen_Ein" Click="btn_mensch_1_draussen_Click"  Canvas.Top="10" Canvas.Left="580" >
-                <Image x:Name="img_mensch_3" Height="50" Source="Bilder/mensch_3.jpg"/>
+            <Button x:Name="btn_person_3" Click="btn_Click">
+                <Image x:Name="img_person_3" Height="50" Source="Bilder/mensch_3.jpg"/>
             </Button>
 
-            <Button x:Name="btn_mensch_4_draussen_Ein" Click="btn_mensch_4_draussen_Click"  Canvas.Top="10" Canvas.Left="620" >
-
-                <Image x:Name="img_mensch_4" Height="50" Source="Bilder/mensch_4.jpg"/>
+            <Button x:Name="btn_person_4" Click="btn_Click">
+                <Image x:Name="img_person_4" Height="50" Source="Bilder/mensch_4.jpg"/>
             </Button>
 
 
@@ -120,6 +132,7 @@
 
 
         </Canvas>
+
 
 
 

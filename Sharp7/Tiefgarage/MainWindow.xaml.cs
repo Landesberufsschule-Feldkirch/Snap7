@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.NetworkInformation;
 using Sharp7;
+using System.Collections.ObjectModel;
 
 namespace Tiefgarage
 {
@@ -41,6 +42,76 @@ namespace Tiefgarage
 
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
+
+        public int FahrzeugPersonGeklickt = -1;
+        public enum Rolle
+        {
+            Auto = 0,
+            Person
+        }
+        public enum FahrzeugPerson
+        {
+            Auto_1 = 0,
+            Auto_2,
+            Auto_3,
+            Auto_4,
+            Person_1,
+            Person_2,
+            Person_3,
+            Person_4
+        }
+
+
+        public class AlleFahrzeugePersonen
+        {
+            public Button btnBezeichnung { get; set; }
+            public Rolle Rolle { get; set; }
+            public double x_aktuell { get; set; }
+            public double y_aktuell { get; set; }
+            public double x_draussen { get; set; }
+            public double y_draussen { get; set; }
+            public double x_drinnen { get; set; }
+            public double y_drinnen { get; set; }
+            public string Bewegung { get; set; }
+            public AlleFahrzeugePersonen(Button btnBezeichnung, Rolle Rolle, double x_draussen, double y_draussen, double x_drinnen, double y_drinnen, string Bewegung)
+            {
+                this.btnBezeichnung = btnBezeichnung;
+                this.Rolle = Rolle;
+                this.x_draussen = x_draussen;
+                this.y_draussen = y_draussen;
+                this.x_drinnen = x_drinnen;
+                this.y_drinnen = y_drinnen;
+                this.Bewegung = Bewegung;
+            }
+            public void draussenParken()
+            {
+                x_aktuell = x_draussen;
+                y_aktuell = y_draussen;
+            }
+            public void drinnenParken()
+            {
+                x_aktuell = x_drinnen;
+                y_aktuell = y_drinnen;
+            }
+            public void updatePosition()
+            {
+                btnBezeichnung.SetValue(Canvas.LeftProperty, x_aktuell);
+                btnBezeichnung.SetValue(Canvas.TopProperty, y_aktuell);
+            }
+
+            public void btnAktivieren()
+            {
+                btnBezeichnung.IsEnabled = true;
+            }
+            public void btnDeaktivieren()
+            {
+                btnBezeichnung.IsEnabled = false;
+            }
+        }
+
+        public ObservableCollection<AlleFahrzeugePersonen> gAlleFahrzeugePersonen = new ObservableCollection<AlleFahrzeugePersonen>();
+
+
 
         public MainWindow()
         {
@@ -88,6 +159,11 @@ namespace Tiefgarage
         {
             while (TaskAktiv && FensterAktiv)
             {
+
+                BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
+                BitmusterSchreiben(Pegel_B2, DigInput, Startbyte_0, BitPos_B2);
+
+
                 if ((Client != null) && TaskAktiv)
                 {
                     Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
@@ -135,30 +211,47 @@ namespace Tiefgarage
             FensterAktiv = false;
         }
 
-        private void btn_auto_1_draussen_Click(object sender, RoutedEventArgs e)
-        {           
-        }
-        private void btn_auto_2_draussen_Click(object sender, RoutedEventArgs e)
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-        }
-        private void btn_auto_3_draussen_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void btn_auto_4_draussen_Click(object sender, RoutedEventArgs e)
-        {
+
+            Button btn = sender as Button;
+
+            switch (btn.Name)
+            {
+                case "btn_auto_1": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Auto_1; break;
+                case "btn_auto_2": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Auto_2; break;
+                case "btn_auto_3": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Auto_3; break;
+                case "btn_auto_4": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Auto_4; break;
+
+                case "btn_person_1": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Person_1; break;
+                case "btn_person_2": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Person_2; break;
+                case "btn_person_3": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Person_3; break;
+                case "btn_person_4": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Person_4; break;
+
+                default:
+                    break;
+            }
+
+            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
+            {
+                fp.btnDeaktivieren();
+            }
         }
 
-        private void btn_mensch_1_draussen_Click(object sender, RoutedEventArgs e)
+        private void AlleDraussenParken_Click(object sender, RoutedEventArgs e)
         {
+            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
+            {
+                fp.draussenParken();
+            }
         }
-        private void btn_mensch_2_draussen_Click(object sender, RoutedEventArgs e)
+
+        private void AlleDrinnenParken_Click(object sender, RoutedEventArgs e)
         {
-        }
-        private void btn_mensch_3_draussen_Click(object sender, RoutedEventArgs e)
-        {
-        }
-        private void btn_mensch_4_draussen_Click(object sender, RoutedEventArgs e)
-        {
+            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
+            {
+                fp.drinnenParken();
+            }
         }
     }
 }
