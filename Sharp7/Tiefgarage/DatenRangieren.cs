@@ -1,12 +1,32 @@
 ﻿using System;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+using System.Threading.Tasks;
 
 namespace Tiefgarage
 {
     public partial class MainWindow
     {
+        public const int BitPos_B1 = 0x0001;
+        public const int BitPos_B2 = 0x0002;
+
+        public bool Pegel_B1 = true;
+        public bool Pegel_B2 = true;
+
+        public void DatenRangieren_Task()
+        {
+            while (TaskAktiv && FensterAktiv)
+            {
+                BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
+                BitmusterSchreiben(Pegel_B2, DigInput, Startbyte_0, BitPos_B2);
+
+                if ((Client != null) && TaskAktiv)
+                {
+                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
+                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_2, DigOutput);
+                }
+
+                Task.Delay(100);
+            }
+        }
         public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
         {
             if ((ByteArray[ByteNummer] & BitMuster) == BitMuster) return true;
@@ -20,28 +40,6 @@ namespace Tiefgarage
 
             if (Bedingung) ByteArray[ByteNummer] |= BitEin;
             else ByteArray[ByteNummer] &= BitAus;
-        }
-
-        void EinAusgabeFelderInitialisieren()
-        {
-            foreach (byte b in DigInput) { DigInput[b] = 0; }
-            foreach (byte b in DigOutput) { DigOutput[b] = 0; }
-
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_auto_1, Rolle.Auto, 10, 10, 110, 370, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_auto_2, Rolle.Auto, 100, 10, 110, 420, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_auto_3, Rolle.Auto, 200, 10, 110, 470, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_auto_4, Rolle.Auto, 300, 10, 110, 520, "Draussen parken"));
-
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_person_1, Rolle.Person, 500, 10, 210, 545, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_person_2, Rolle.Person, 540, 10, 240, 545, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_person_3, Rolle.Person, 580, 10, 270, 545, "Draussen parken"));
-            gAlleFahrzeugePersonen.Add(new AlleFahrzeugePersonen(btn_person_4, Rolle.Person, 620, 10, 300, 545, "Draussen parken"));
-
-            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
-            {
-                fp.draussenParken();
-            }
-
         }
 
     }

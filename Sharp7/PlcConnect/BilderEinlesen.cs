@@ -12,14 +12,8 @@ namespace PlcConnect
         public void BilderEinlesen()
         {
             List<string> BilderListe = new List<string>();
-
             DirectoryInfo Pfad = new DirectoryInfo(@"Bilder");
-
-            foreach (var file in Pfad.GetFiles("*"))
-            {
-                BilderListe.Add(file.Name);
-            }
-
+            foreach (var file in Pfad.GetFiles("*")) BilderListe.Add(file.Name);
         }
 
     }
