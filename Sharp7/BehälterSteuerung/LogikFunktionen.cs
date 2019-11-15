@@ -1,27 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿using System.Threading.Tasks;
 
 namespace BehälterSteuerung
 {
     public partial class MainWindow
     {
-        public const int BitPos_Q1 = 0x0001;
-        public const int BitPos_Q3 = 0x0002;
-        public const int BitPos_Q5 = 0x0004;
-        public const int BitPos_P1 = 0x0008;
-
-        public const int BitPos_B1 = 0x0001;
-        public const int BitPos_B2 = 0x0002;
-        public const int BitPos_B3 = 0x0004;
-        public const int BitPos_B4 = 0x0008;
-        public const int BitPos_B5 = 0x0010;
-        public const int BitPos_B6 = 0x0020;
-
         public const double SinkGeschwindigkeit = 0.00005;
-        public const double FuellGeschwindigkeit = 3 * SinkGeschwindigkeit;
+        public const double FuellGeschwindigkeit = 0.2 * SinkGeschwindigkeit; // damit drei Behälter gleichzeit leer sein können
 
         public double PegelOffset_1;
         public double PegelOffset_2;
@@ -43,20 +27,12 @@ namespace BehälterSteuerung
                 LimitsUeberwachen();
                 AnzeigeAktualisieren();
 
-                BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
-                BitmusterSchreiben(Pegel_B2, DigInput, Startbyte_0, BitPos_B2);
-                BitmusterSchreiben(Pegel_B3, DigInput, Startbyte_0, BitPos_B3);
-                BitmusterSchreiben(Pegel_B4, DigInput, Startbyte_0, BitPos_B4);
-                BitmusterSchreiben(Pegel_B5, DigInput, Startbyte_0, BitPos_B5);
-                BitmusterSchreiben(Pegel_B6, DigInput, Startbyte_0, BitPos_B6);
-
                 Task.Delay(100);
             }
         }
 
         public void AutomatikFunktionen()
         {
-
             switch (AutomatikSchrittschaltwerk)
             {
 
@@ -121,17 +97,9 @@ namespace BehälterSteuerung
                     AutomatikSchrittschaltwerk = "Init";
                     break;
             }
-
             TankFuellen();
         }
-
-        public void TankFuellen()
-        {
-
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q1)) Pegel_1 += FuellGeschwindigkeit;
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q3)) Pegel_2 += FuellGeschwindigkeit;
-            if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_Q5)) Pegel_3 += FuellGeschwindigkeit;
-        }
+        
         public void ManuelleFunktionen()
         {
             if (Ventil_Q2) Pegel_1 -= SinkGeschwindigkeit;
@@ -139,6 +107,13 @@ namespace BehälterSteuerung
             if (Ventil_Q6) Pegel_3 -= SinkGeschwindigkeit;
 
             TankFuellen();
+        }
+
+        public void TankFuellen()
+        {
+            if (Ventil_Q1) Pegel_1 += FuellGeschwindigkeit;
+            if (Ventil_Q3) Pegel_2 += FuellGeschwindigkeit;
+            if (Ventil_Q5) Pegel_3 += FuellGeschwindigkeit;
         }
 
         public void LimitsUeberwachen()
@@ -161,67 +136,6 @@ namespace BehälterSteuerung
             if (Pegel_3 < 0) Pegel_3 = 0;
             if (Pegel_3 > 1) Pegel_3 = 1;
         }
-
-        public void AnzeigeAktualisieren()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                if (Pegel_B1) lbl_B1.Background = System.Windows.Media.Brushes.Red; else lbl_B1.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (Pegel_B2) lbl_B2.Background = System.Windows.Media.Brushes.Red; else lbl_B2.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (Pegel_B3) lbl_B3.Background = System.Windows.Media.Brushes.Red; else lbl_B3.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (Pegel_B4) lbl_B4.Background = System.Windows.Media.Brushes.Red; else lbl_B4.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (Pegel_B5) lbl_B5.Background = System.Windows.Media.Brushes.Red; else lbl_B5.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (Pegel_B6) lbl_B6.Background = System.Windows.Media.Brushes.Red; else lbl_B6.Background = System.Windows.Media.Brushes.LawnGreen;
-
-                rct_Behaelter_1_Voll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel_1), 0, 0);
-                rct_Behaelter_2_Voll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel_2), 0, 0);
-                rct_Behaelter_3_Voll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel_3), 0, 0);
-
-                btn_Sichtbarkeit(Ventil_Q2, btn_Q2_Ein, btn_Q2_Aus);
-                btn_Sichtbarkeit(Ventil_Q4, btn_Q4_Ein, btn_Q4_Aus);
-                btn_Sichtbarkeit(Ventil_Q6, btn_Q6_Ein, btn_Q6_Aus);
-
-                img_Sichtbarkeit(BitPos_Q1, img_Q1_Ein, img_Q1_Aus, rct_Zuleitung_1b);
-                img_Sichtbarkeit(BitPos_Q3, img_Q3_Ein, img_Q3_Aus, rct_Zuleitung_2b);
-                img_Sichtbarkeit(BitPos_Q5, img_Q5_Ein, img_Q5_Aus, rct_Zuleitung_3b);
-
-
-
-                if (BitmusterTesten(DigOutput, Startbyte_0, BitPos_P1))
-                {
-                    circ_Stoerung.Fill = System.Windows.Media.Brushes.Red;
-                }
-                else
-                {
-                    circ_Stoerung.Fill = System.Windows.Media.Brushes.LightGray;
-                }
-
-                if (Pegel_1 > 0.1) rct_Ableitung_1a.Fill = System.Windows.Media.Brushes.Blue; else rct_Ableitung_1a.Fill = System.Windows.Media.Brushes.LightBlue;
-                if (Pegel_2 > 0.1) rct_Ableitung_2a.Fill = System.Windows.Media.Brushes.Blue; else rct_Ableitung_2a.Fill = System.Windows.Media.Brushes.LightBlue;
-                if (Pegel_3 > 0.1) rct_Ableitung_3a.Fill = System.Windows.Media.Brushes.Blue; else rct_Ableitung_3a.Fill = System.Windows.Media.Brushes.LightBlue;
-
-                if (
-                    ((Pegel_1 > 0.1) && Ventil_Q2)
-                    ||
-                    ((Pegel_2 > 0.1) && Ventil_Q4)
-                    ||
-                    ((Pegel_3 > 0.1) && Ventil_Q6)
-                    )
-                {
-                    rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.Blue;
-                    rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.Blue;
-                    rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.Blue;
-                    rct_Ableitung.Fill = System.Windows.Media.Brushes.Blue;
-                }
-                else
-                {
-                    rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.LightBlue;
-                    rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.LightBlue;
-                    rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.LightBlue;
-                    rct_Ableitung.Fill = System.Windows.Media.Brushes.LightBlue;
-                }
-
-            });
-        }
+        
     }
 }
