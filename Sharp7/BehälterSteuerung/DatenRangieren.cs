@@ -25,20 +25,22 @@ namespace BehälterSteuerung
         double Pegel_2 = 0.5;
         double Pegel_3 = 0.3;
 
-        public const int BitPos_Q1 = 0x0001;
-        public const int BitPos_Q3 = 0x0002;
-        public const int BitPos_Q5 = 0x0004;
-        public const int BitPos_P1 = 0x0008;
 
-        public const int BitPos_B1 = 0x0001;
-        public const int BitPos_B2 = 0x0002;
-        public const int BitPos_B3 = 0x0004;
-        public const int BitPos_B4 = 0x0008;
-        public const int BitPos_B5 = 0x0010;
-        public const int BitPos_B6 = 0x0020;
+        const int BitPos_Q1 = 0x0001;
+        const int BitPos_Q3 = 0x0002;
+        const int BitPos_Q5 = 0x0004;
+        const int BitPos_P1 = 0x0008;
+
+        const int BitPos_B1 = 0x0001;
+        const int BitPos_B2 = 0x0002;
+        const int BitPos_B3 = 0x0004;
+        const int BitPos_B4 = 0x0008;
+        const int BitPos_B5 = 0x0010;
+        const int BitPos_B6 = 0x0020;
 
         public void DatenRangieren_Task()
         {
+
             while (TaskAktiv && FensterAktiv)
             {
                 BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
@@ -77,6 +79,6 @@ namespace BehälterSteuerung
             if (Bedingung) ByteArray[ByteNummer] |= BitEin;
             else ByteArray[ByteNummer] &= BitAus;
         }
-        
+
     }
 }

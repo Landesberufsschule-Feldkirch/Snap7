@@ -4,7 +4,6 @@
     {
         public void AnzeigeAktualisieren()
         {
-
             this.Dispatcher.Invoke(() =>
                        {
                            if (FensterAktiv)
@@ -22,24 +21,17 @@
 
         public void alleBtnAktivieren()
         {
-            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    fp.btnAktivieren();
-                });
-            }
+            this.Dispatcher.Invoke(() =>
+                  {
+                      foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen) fp.btnAktivieren();
+                  });
         }
         public void alleBtnDeaktivieren()
         {
-            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    fp.btnDeaktivieren();
-                });
-            }
-
+            this.Dispatcher.Invoke(() =>
+                  {
+                      foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen) fp.btnDeaktivieren();
+                  });
         }
     }
 }
