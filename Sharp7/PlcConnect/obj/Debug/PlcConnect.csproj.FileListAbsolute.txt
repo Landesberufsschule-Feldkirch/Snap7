@@ -43,17 +43,3 @@ h:\git\Sharp7\Sharp7\PlcConnect\obj\Debug\PlcConnect.csproj.GenerateResource.cac
 h:\git\Sharp7\Sharp7\PlcConnect\obj\Debug\PlcConnect.csproj.CoreCompileInputs.cache
 h:\git\Sharp7\Sharp7\PlcConnect\obj\Debug\PlcConnect.exe
 h:\git\Sharp7\Sharp7\PlcConnect\obj\Debug\PlcConnect.pdb
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\MainWindow.g.cs
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\App.g.cs
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect_Content.g.cs
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect_MarkupCompile.cache
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect_MarkupCompile.lref
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.exe
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.pdb
-k:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.exe.config
-k:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.exe
-k:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.pdb
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\MainWindow.baml
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.g.resources
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.Properties.Resources.resources
-k:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.csproj.GenerateResource.cache
