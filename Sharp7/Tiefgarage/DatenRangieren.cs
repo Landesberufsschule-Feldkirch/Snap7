@@ -1,45 +1,60 @@
-﻿using System;
+﻿using Sharp7;
 using System.Threading.Tasks;
 
 namespace Tiefgarage
 {
     public partial class MainWindow
     {
-        public const int BitPos_B1 = 0x0001;
-        public const int BitPos_B2 = 0x0002;
+        public bool Pegel_B1;
+        public bool Pegel_B2;
+        public bool Pegel_B1_Alt;
+        public bool Pegel_B2_Alt;
 
-        public bool Pegel_B1 = true;
-        public bool Pegel_B2 = true;
+        public int AnzahlFahrzeuge = 0;
+        public int AnzahlPersonen = 0;
+        public int AnzahlFahrzeuge_Alt = -1;
+        public int AnzahlPersonen_Alt = -1;
+
+        enum Datenbausteine
+        {
+            Input = 1,
+            Output = 2
+        }
+        enum BytePosition
+        {
+            Byte_0 = 0
+        }
+        enum AnzahlByte
+        {
+            Byte_1 = 1
+        }
+        enum BitPosAusgang
+        {
+        }
+        enum BitPosEingang
+        {
+            B1 = 0,
+            B2
+        }
 
         public void DatenRangieren_Task()
         {
             while (TaskAktiv && FensterAktiv)
             {
-                BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
-                BitmusterSchreiben(Pegel_B2, DigInput, Startbyte_0, BitPos_B2);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B1, Pegel_B1);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B2, Pegel_B2);
 
                 if ((Client != null) && TaskAktiv)
                 {
-                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
-                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_2, DigOutput);
+                    Client.DBWrite((int)Datenbausteine.Input, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
+                    Client.DBRead((int)Datenbausteine.Output, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
+
+                AnzahlFahrzeuge = DigOutput[0];
+                AnzahlPersonen = DigOutput[1];
 
                 Task.Delay(100);
             }
-        }
-        public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
-        {
-            if ((ByteArray[ByteNummer] & BitMuster) == BitMuster) return true;
-            else return false;
-        }
-
-        void BitmusterSchreiben(bool Bedingung, byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
-        {
-            byte BitEin = (byte)(BitMuster & 0xFF);
-            byte BitAus = (byte)(~BitMuster & 0xFF);
-
-            if (Bedingung) ByteArray[ByteNummer] |= BitEin;
-            else ByteArray[ByteNummer] &= BitAus;
         }
 
     }

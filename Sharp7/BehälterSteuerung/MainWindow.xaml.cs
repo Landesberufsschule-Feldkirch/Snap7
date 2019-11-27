@@ -1,46 +1,24 @@
-﻿using Sharp7;
-using System.Windows;
+﻿using System.Windows;
 
 namespace BehälterSteuerung
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-
-
-
-        public const float Rahmenbreite_1px = 1;
-        public const float Rahmenbreite_5px = 5;
-
- 
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
-
-
-
-        public bool AutomatikModusAktiv;
-        public string AutomatikSchrittschaltwerk;
-        public bool Automatik_123_Aktiv;
-        public bool Automatik_132_Aktiv;
-        public bool Automatik_321_Aktiv;
 
         public MainWindow()
         {
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
+            AlleBehaelterInitialisieren();
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
-            Pegel_1 = 0.7;
-            Pegel_2 = 0.5;
-            Pegel_3 = 0.3;
-
             VerbindungErstellen();
         }
 
@@ -49,10 +27,6 @@ namespace BehälterSteuerung
             VerbindungTrennen();
         }
 
-
-
-
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
@@ -60,72 +34,58 @@ namespace BehälterSteuerung
 
         private void btn_Q2_Ein_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q2 = false;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[0].VentilUnten = false;
         }
         private void btn_Q2_Aus_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q2 = true;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[0].VentilUnten = true;
         }
         private void btn_Q4_Ein_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q4 = false;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[1].VentilUnten = false;
         }
         private void btn_Q4_Aus_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q4 = true;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[1].VentilUnten = true;
         }
         private void btn_Q6_Ein_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q6 = false;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[2].VentilUnten = false;
         }
         private void btn_Q6_Aus_Click(object sender, RoutedEventArgs e)
         {
-            if (!AutomatikModusAktiv) Ventil_Q6 = true;
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[2].VentilUnten = true;
         }
-
-        private void btn_123_Click(object sender, RoutedEventArgs e)
+        private void btn_Q8_Ein_Click(object sender, RoutedEventArgs e)
         {
-            AutomatikModusAktiv = true;
-            AutomatikSchrittschaltwerk = "Init";
-            Automatik_123_Aktiv = true;
-
-            AutomatikDeaktivieren();
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[3].VentilUnten = false;
         }
-        private void btn_132_Click(object sender, RoutedEventArgs e)
+        private void btn_Q8_Aus_Click(object sender, RoutedEventArgs e)
         {
-            AutomatikModusAktiv = true;
-            AutomatikSchrittschaltwerk = "Init";
-            Automatik_132_Aktiv = true;
-
-            AutomatikDeaktivieren();
+            if (!AutomatikModusNochAktiv) gAlleBehaelter[3].VentilUnten = true;
         }
-        private void btn_321_Click(object sender, RoutedEventArgs e)
+
+        private void btn_1234_Click(object sender, RoutedEventArgs e)
         {
-            AutomatikModusAktiv = true;
-            AutomatikSchrittschaltwerk = "Init";
-            Automatik_321_Aktiv = true;
-
-            AutomatikDeaktivieren();
+            AutomatikBetriebStarten(AutomatikModus.Modus_1234);
+            AutomatikKnoepfeDeaktivieren();
         }
-
-        private void AutomatikDeaktivieren()
+        private void btn_1324_Click(object sender, RoutedEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                btn_Automatik_123.IsEnabled = false;
-                btn_Automatik_132.IsEnabled = false;
-                btn_Automatik_321.IsEnabled = false;
-            });
+            AutomatikBetriebStarten(AutomatikModus.Modus_1324);
+            AutomatikKnoepfeDeaktivieren();
+        }
+        private void btn_1432_Click(object sender, RoutedEventArgs e)
+        {
+            AutomatikBetriebStarten(AutomatikModus.Modus_1432);
+            AutomatikKnoepfeDeaktivieren();
+        }
+        private void btn_4321_Click(object sender, RoutedEventArgs e)
+        {
+            AutomatikBetriebStarten(AutomatikModus.Modus_4321);
+            AutomatikKnoepfeDeaktivieren();
         }
 
-        private void AutomatikAktivieren()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                btn_Automatik_123.IsEnabled = true;
-                btn_Automatik_132.IsEnabled = true;
-                btn_Automatik_321.IsEnabled = true;
-            });
-        }
+
     }
 }

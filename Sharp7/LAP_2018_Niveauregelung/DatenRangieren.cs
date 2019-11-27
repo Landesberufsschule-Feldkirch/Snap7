@@ -1,45 +1,68 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Sharp7;
 
 namespace LAP_2018_Niveauregelung
 {
     public partial class MainWindow
     {
-        public const int BitPos_B1 = 0x0001;
-        public const int BitPos_B2 = 0x0002;
+        public bool B1 = false;
+        public bool B2 = false;
+        public bool B3 = false;
+        public bool F1 = true;
+        public bool F2 = true;
+        public bool M1 = false;
+        public bool M2 = false;
+        public bool Y1 = false;
 
-        public bool Pegel_B1 = true;
-        public bool Pegel_B2 = true;
+        enum Datenbausteine
+        {
+            Input = 1,
+            Output = 2
+        }
+        enum BytePosition
+        {
+            Byte_0 = 0
+        }
+        enum AnzahlByte
+        {
+            Byte_1 = 1
+        }
+        enum BitPosAusgang
+        {
+            M1 = 0,
+            M2
+        }
+        enum BitPosEingang
+        {
+            B1 = 0,
+            B2,
+            B3,
+            F1,
+            F2
+        }
 
         public void DatenRangieren_Task()
         {
-            while (TaskAktiv && FensterAktiv)
+            while (FensterAktiv)
             {
-                BitmusterSchreiben(Pegel_B1, DigInput, Startbyte_0, BitPos_B1);
-                BitmusterSchreiben(Pegel_B2, DigInput, Startbyte_0, BitPos_B2);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B1, B1);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B2, B2);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B3, B3);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.F1, F1);
+                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.F2, F2);
 
-                if ((Client != null) && TaskAktiv)
+                if ((Client != null))
                 {
-                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
-                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_2, DigOutput);
+                    Client.DBWrite((int)Datenbausteine.Input, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
+                    Client.DBRead((int)Datenbausteine.Output, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
+
+                M1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M1);
+                M2 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M2);
 
                 Task.Delay(100);
             }
-        }
-        public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
-        {
-            if ((ByteArray[ByteNummer] & BitMuster) == BitMuster) return true;
-            else return false;
-        }
-
-        void BitmusterSchreiben(bool Bedingung, byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
-        {
-            byte BitEin = (byte)(BitMuster & 0xFF);
-            byte BitAus = (byte)(~BitMuster & 0xFF);
-
-            if (Bedingung) ByteArray[ByteNummer] |= BitEin;
-            else ByteArray[ByteNummer] &= BitAus;
         }
 
     }

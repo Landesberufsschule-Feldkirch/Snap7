@@ -16,17 +16,13 @@ using System.Windows.Shapes;
 
 namespace LAP_2018_Niveauregelung
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
-        public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
 
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +39,7 @@ namespace LAP_2018_Niveauregelung
 
         private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
         {
-            VerbindungTrennen();    
+            VerbindungTrennen();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -51,5 +47,21 @@ namespace LAP_2018_Niveauregelung
             FensterAktiv = false;
         }
 
+
+        private void VentilClick(object sender, RoutedEventArgs e)
+        {
+            Y1 = !Y1;
+        }
+
+
+        private void BtnF1_Click(object sender, RoutedEventArgs e)
+        {
+            F1 = !F1;
+        }
+
+        private void BtnF2_Click(object sender, RoutedEventArgs e)
+        {
+            F2 = !F2;
+        }
     }
 }

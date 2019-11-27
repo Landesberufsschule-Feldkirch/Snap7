@@ -4,12 +4,8 @@ using System.Windows.Controls;
 
 namespace Tiefgarage
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
-    {
-
+    {       
         public enum Rolle
         {
             Auto = 0,
@@ -29,10 +25,13 @@ namespace Tiefgarage
 
         public class AlleFahrzeugePersonen
         {
+            private double xy_Delta = 0.1;
             public Button btnBezeichnung { get; set; }
             public Rolle Rolle { get; set; }
             public double x_aktuell { get; set; }
             public double y_aktuell { get; set; }
+            public double x_alt { get; set; }
+            public double y_alt { get; set; }
             public double x_draussen { get; set; }
             public double y_draussen { get; set; }
             public double x_drinnen { get; set; }
@@ -47,6 +46,9 @@ namespace Tiefgarage
                 this.x_drinnen = x_drinnen;
                 this.y_drinnen = y_drinnen;
                 this.Bewegung = Bewegung;
+
+                x_alt = 0;
+                y_alt = 0;
             }
             public void draussenParken()
             {
@@ -60,8 +62,16 @@ namespace Tiefgarage
             }
             public void updatePosition()
             {
-                btnBezeichnung.SetValue(Canvas.LeftProperty, x_aktuell);
-                btnBezeichnung.SetValue(Canvas.TopProperty, y_aktuell);
+                if (System.Math.Abs(x_alt - x_aktuell) > xy_Delta){
+                    x_alt = x_aktuell;
+                    btnBezeichnung.SetValue(Canvas.LeftProperty, x_aktuell);
+                }
+
+                if (System.Math.Abs(y_alt - y_aktuell) > xy_Delta)
+                {
+                    y_alt = y_aktuell;
+                    btnBezeichnung.SetValue(Canvas.TopProperty, y_aktuell);
+                }
             }
 
             public void btnAktivieren()

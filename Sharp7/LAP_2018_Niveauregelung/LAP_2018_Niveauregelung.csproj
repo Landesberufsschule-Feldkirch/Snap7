@@ -99,5 +99,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Pumpe_Aus.jpg" />
+    <Resource Include="Bilder\Pumpe_Ein.jpg" />
+    <Resource Include="Bilder\Schwimmerschalter.jpg" />
+    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\VentilElektrischAus.jpg" />
+    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

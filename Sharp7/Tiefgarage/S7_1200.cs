@@ -47,7 +47,6 @@ namespace Tiefgarage
             btn_Disconnect.IsEnabled = false;
         }
 
-
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)

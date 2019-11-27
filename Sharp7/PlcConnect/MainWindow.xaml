@@ -44,8 +44,8 @@
         <Button x:Name="ButtonStart" Content="Start" Grid.Column="2" Grid.Row="2" />
         <Button x:Name="ButtonStop" Content="Stop" Grid.Column="4" Grid.Row="2"  />
 
-        <Button x:Name="ButtonConnect" Content="Connect" Grid.Column="10" Grid.Row="2" Click="ButtonConnect_Click"  />
-        <Button x:Name="ButtonDisconnect" Content="Disconnect" Grid.Column="12" Grid.Row="2" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
+        <Button x:Name="btnConnect" Content="Connect" Grid.Column="10" Grid.Row="2" Click="ButtonConnect_Click"  />
+        <Button x:Name="btnDisconnect" Content="Disconnect" Grid.Column="12" Grid.Row="2" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
 
         <Ellipse x:Name="KreisBetrieb" Fill="LawnGreen" Stroke="Black" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"   />
         <Label Content="Betrieb" x:Name="LabelBetrieb" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="8,12,14,12" Width="48"/>
@@ -54,10 +54,10 @@
         <Label Content="Störung" x:Name="LabelStoerung" Grid.Column="4" Grid.Row="4" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="6,12,12,12" Width="52"/>
 
 
-        <Label Content="PLC Status" x:Name="LabelPlcStatus" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="4" />
-        <Label Content="PLC Error:" x:Name="LabelPlcError" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="5"  />
-        <Label Content="PLC Ping:" x:Name="LabelPlcPing" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="10"  />
-        <Label Content="PLC Order Code:" x:Name="LabelPlcOrderCode" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="11"  />
+        <Label Content="PLC Status" x:Name="lblPlcStatus" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="4" />
+        <Label Content="PLC Error:" x:Name="lblPlcError" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="5"  />
+        <Label Content="PLC Ping:" x:Name="lblPlcPing" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="10"  />
+        <Label Content="PLC Order Code:" x:Name="lblPlcOrderCode" Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="11"  />
         
 
         <Rectangle  Fill="LightSkyBlue" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />

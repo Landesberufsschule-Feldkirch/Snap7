@@ -11,12 +11,7 @@ namespace BehälterSteuerung
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-
-        public const int DB_DigInput = 1;
-        public const int DB_DigOutput = 2;
-        public const int Startbyte_0 = 0;
-        public const int AnzahlByte_1 = 1;
-
+        
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
         public void VerbindungErstellen()

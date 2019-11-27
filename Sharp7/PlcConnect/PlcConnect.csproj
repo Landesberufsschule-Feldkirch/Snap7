@@ -79,7 +79,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BilderEinlesen.cs" />
+    <Compile Include="AnzeigeAktualisieren.cs" />
     <Compile Include="DatenRangieren.cs" />
+    <Compile Include="S7_1200.cs" />
     <Compile Include="Sharp7.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

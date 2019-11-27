@@ -1,75 +1,58 @@
-﻿using System;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿using Sharp7;
+using System.Threading.Tasks;
 
 namespace PlcConnect
 {
     public partial class MainWindow
     {
-        public void DatenRangieren()
+        public bool S1;
+        public bool S2;
+        public bool M1;
+        public bool P1;
+
+        enum Datenbausteine
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                BitmusterSchreiben(ButtonStart.IsPressed, DigInput, Startbyte_0, BitMuster_01);
-                BitmusterSchreiben(ButtonStop.IsPressed, DigInput, Startbyte_0, BitMuster_02);
-
-                ButtonRahmenAendern(BitmusterTesten(DigInput, Startbyte_0, BitMuster_01), ButtonStart, Rahmenbreite_5px, Rahmenbreite_1px);
-                ButtonRahmenAendern(BitmusterTesten(DigInput, Startbyte_0, BitMuster_02), ButtonStop, Rahmenbreite_5px, Rahmenbreite_1px);
-
-                KreisFarbeUmschalten(BitmusterTesten(DigOutput, Startbyte_0, BitMuster_01), KreisBetrieb, Colors.Green, Colors.White);
-                KreisFarbeUmschalten(BitmusterTesten(DigOutput, Startbyte_0, BitMuster_02), KreisStoerung, Colors.Red, Colors.White);
-            });
+            Input = 1,
+            Output = 2
+        }
+        enum BytePosition
+        {
+            Byte_0 = 0
+        }
+        enum AnzahlByte
+        {
+            Byte_1 = 1
+        }
+        enum BitPosAusgang
+        {
+            M1 = 0,
+            P1
+        }
+        enum BitPosEingang
+        {
+            S1 = 0,
+            S2
         }
 
-        public bool BitmusterTesten(byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
+        public void DatenRangieren_Task()
         {
-            if ((ByteArray[ByteNummer] & BitMuster) == BitMuster)
+            while (TaskAktiv && FensterAktiv)
             {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+                AnzeigeAktualisieren();
 
-        void BitmusterSchreiben(bool Bedingung, byte[] ByteArray, byte ByteNummer, UInt16 BitMuster)
-        {
-            byte BitEin = (byte)(BitMuster & 0xFF);
-            byte BitAus = (byte)(~BitMuster & 0xFF);
+                if ((Client != null) && TaskAktiv)
+                {
+                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S1, ButtonStart.IsPressed);
+                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S2, ButtonStop.IsPressed);
 
-            if (Bedingung)
-            {
-                ByteArray[ByteNummer] |= BitEin;
-            }
-            else
-            {
-                ByteArray[ByteNummer] &= BitAus;
-            }
-        }
+                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
+                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_1, DigOutput);
 
-        void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
-        {
-            if (Wert)
-            {
-                ellipse.Fill = new SolidColorBrush(FarbeEin);
-            }
-            else
-            {
-                ellipse.Fill = new SolidColorBrush(FarbeAus);
-            }
-        }
+                    M1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M1);
+                    P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+                }
 
-        void ButtonRahmenAendern(bool Wert, Button button, double StaerkeEin, double StaerkeAus)
-        {
-            if (Wert)
-            {
-                button.BorderThickness = new System.Windows.Thickness(StaerkeEin);
-            }
-            else
-            {
-                button.BorderThickness = new System.Windows.Thickness(StaerkeAus);
+                Task.Delay(100);
             }
         }
 
