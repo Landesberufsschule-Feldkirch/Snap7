@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Ti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_Niveauregelung", "LAP_2018_Niveauregelung\LAP_2018_Niveauregelung.csproj", "{D886D544-5996-4C5F-83A3-A5BEF7B0142F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_Abfuellanlage", "LAP_2018_Abfuellanlage\LAP_2018_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D886D544-5996-4C5F-83A3-A5BEF7B0142F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D886D544-5996-4C5F-83A3-A5BEF7B0142F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D886D544-5996-4C5F-83A3-A5BEF7B0142F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
