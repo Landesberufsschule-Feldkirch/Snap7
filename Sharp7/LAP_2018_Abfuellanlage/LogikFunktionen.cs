@@ -31,6 +31,8 @@ namespace LAP_2018_Abfuellanlage
 
                 AnzeigeAktualisieren();
 
+                foreach (Flaschen flasche in gAlleFlaschen) { flasche.FlascheBewegen(); }
+
                 Task.Delay(100);
             }
         }

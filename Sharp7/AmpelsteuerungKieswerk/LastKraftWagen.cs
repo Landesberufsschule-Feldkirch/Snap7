@@ -67,11 +67,11 @@ namespace AmpelsteuerungKieswerk
         public ObservableCollection<LKW> gAlleLKW = new ObservableCollection<LKW>();
         public void AlleLKWInitialisieren()
         {
-            gAlleLKW.Add(new LKW(btn_lkw_1, 10, 10, 400, 10));
-            gAlleLKW.Add(new LKW(btn_lkw_2, 10, 80, 500, 80));
-            gAlleLKW.Add(new LKW(btn_lkw_3, 10, 150, 600, 150));
-            gAlleLKW.Add(new LKW(btn_lkw_4, 10, 220, 700, 220));
-            gAlleLKW.Add(new LKW(btn_lkw_5, 10, 290, 800, 290));
+            gAlleLKW.Add(new LKW(btn_lkw_1, 10, 10, 1300, 10));
+            gAlleLKW.Add(new LKW(btn_lkw_2, 10, 80, 1300, 80));
+            gAlleLKW.Add(new LKW(btn_lkw_3, 10, 150, 1300, 150));
+            gAlleLKW.Add(new LKW(btn_lkw_4, 10, 220, 1300, 220));
+            gAlleLKW.Add(new LKW(btn_lkw_5, 10, 290, 1300, 290));
         }
     }
 }

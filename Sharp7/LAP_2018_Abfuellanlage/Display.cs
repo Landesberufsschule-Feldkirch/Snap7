@@ -14,7 +14,7 @@ namespace LAP_2018_Abfuellanlage
                        {
                            if (FensterAktiv)
                            {
-
+                               foreach (Flaschen flasche in gAlleFlaschen) { flasche.AnzeigeAktualisieren(FensterAktiv); }
 
                            }
                        });

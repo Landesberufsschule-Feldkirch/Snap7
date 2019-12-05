@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Flaschen.cs" />
     <Compile Include="S7_1200.cs" />
     <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
@@ -98,6 +99,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Schwimmerschalter.jpg" />
+    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
+    <Resource Include="Bilder\VentilElektrischAus.jpg" />
+    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Kellerbier.jpg" />
+    <Resource Include="Bilder\OberLänder.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Fransziskaner.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,6 +73,8 @@ namespace LAP_2018_Abfuellanlage
 
         void EinAusgabeFelderInitialisieren()
         {
+            AlleFlaschenInitialisieren();
+            AlleFlaschenParken();
             foreach (byte b in DigInput) DigInput[b] = 0;
             foreach (byte b in DigOutput) DigOutput[b] = 0;
         }
