@@ -42,19 +42,24 @@ namespace PlcConnect
 
                 if ((Client != null) && TaskAktiv)
                 {
-                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S1, ButtonStart.IsPressed);
-                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S2, ButtonStop.IsPressed);
+                    S7.SetBitAt(ref DigInput, InByte(BitPosEingang.S1), InBit(BitPosEingang.S1), ButtonStart.IsPressed);
+                    S7.SetBitAt(ref DigInput, InByte(BitPosEingang.S2), InBit(BitPosEingang.S2), ButtonStop.IsPressed);
 
                     Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
                     Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_1, DigOutput);
 
-                    M1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M1);
-                    P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+                    M1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.M1), OutBit(BitPosAusgang.M1));
+                    P1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P1), OutBit(BitPosAusgang.P1));
                 }
 
                 Task.Delay(100);
             }
         }
+
+        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
     }
 }

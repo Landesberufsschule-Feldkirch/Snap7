@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_Niveauregelung", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_Abfuellanlage", "LAP_2018_Abfuellanlage\LAP_2018_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmpelsteuerungKieswerk", "AmpelsteuerungKieswerk\AmpelsteuerungKieswerk.csproj", "{9A9A470D-877F-4168-94E5-047C8D83F59A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A9A470D-877F-4168-94E5-047C8D83F59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A9A470D-877F-4168-94E5-047C8D83F59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A9A470D-877F-4168-94E5-047C8D83F59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A9A470D-877F-4168-94E5-047C8D83F59A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

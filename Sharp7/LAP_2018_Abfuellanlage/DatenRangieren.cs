@@ -65,14 +65,14 @@ namespace LAP_2018_Abfuellanlage
 
    
 
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B1, B1);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B2, B2);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B3, B3);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.F1, F1);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.F2, F2);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S1, S1);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S2, S2);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S3, S3);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.B1, B1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.B2, B2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.B3, B3);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.F1, F1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.F2, F2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.S1, S1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.S2, S2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.S3, S3);
 
                 if ((Client != null))
                 {
@@ -80,17 +80,22 @@ namespace LAP_2018_Abfuellanlage
                     Client.DBRead((int)Datenbausteine.Output, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
 
-                M1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M1);
-                M2 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.M2);
-                P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
-                P2 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P2);
-                P3 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P3);
+                M1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.M1), OutBit(BitPosAusgang.M1));
+                M2 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.M2), OutBit(BitPosAusgang.M2));
+                P1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P1), OutBit(BitPosAusgang.P1));
+                P2 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P2), OutBit(BitPosAusgang.P2));
+                P3 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P3), OutBit(BitPosAusgang.P3));
 
 
 
                 Task.Delay(100);
             }
         }
+
+        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
     }
 }

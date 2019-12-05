@@ -41,8 +41,8 @@ namespace Tiefgarage
         {
             while (TaskAktiv && FensterAktiv)
             {
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B1, Pegel_B1);
-                S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.B2, Pegel_B2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), Pegel_B1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), Pegel_B2);
 
                 if ((Client != null) && TaskAktiv)
                 {
@@ -57,5 +57,9 @@ namespace Tiefgarage
             }
         }
 
+        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
     }
 }

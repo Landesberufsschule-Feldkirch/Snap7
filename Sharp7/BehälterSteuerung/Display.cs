@@ -2,7 +2,7 @@
 {
     public partial class MainWindow
     {
-        public void AbleitungenAnzeigen()
+        public void AbleitungenAnzeigen(bool FensterAktiv)
         {
             bool AbleitungenVoll = false;
 
@@ -11,25 +11,29 @@
                 if ((beh.Pegel > 0.1) && beh.VentilUnten) AbleitungenVoll = true;
             }
 
-            if (AbleitungenVoll)
+            if (FensterAktiv)
             {
-                rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.Blue;
-                rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.Blue;
-                rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.Blue;
-                rct_Ableitung_4b.Fill = System.Windows.Media.Brushes.Blue;
-                rct_Ableitung.Fill = System.Windows.Media.Brushes.Blue;
-            }
-            else
-            {
-                rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.LightBlue;
-                rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.LightBlue;
-                rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.LightBlue;
-                rct_Ableitung_4b.Fill = System.Windows.Media.Brushes.LightBlue;
-                rct_Ableitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                if (AbleitungenVoll)
+                {
+                    rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.Blue;
+                    rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.Blue;
+                    rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.Blue;
+                    rct_Ableitung_4b.Fill = System.Windows.Media.Brushes.Blue;
+                    rct_Ableitung.Fill = System.Windows.Media.Brushes.Blue;
+                }
+                else
+                {
+                    rct_Ableitung_1b.Fill = System.Windows.Media.Brushes.LightBlue;
+                    rct_Ableitung_2b.Fill = System.Windows.Media.Brushes.LightBlue;
+                    rct_Ableitung_3b.Fill = System.Windows.Media.Brushes.LightBlue;
+                    rct_Ableitung_4b.Fill = System.Windows.Media.Brushes.LightBlue;
+                    rct_Ableitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                }
+
+                if (Leuchte_P1) circ_Stoerung.Fill = System.Windows.Media.Brushes.Red;
+                else circ_Stoerung.Fill = System.Windows.Media.Brushes.LightGray;
             }
 
-            if (Leuchte_P1) circ_Stoerung.Fill = System.Windows.Media.Brushes.Red;
-            else circ_Stoerung.Fill = System.Windows.Media.Brushes.LightGray;
         }
 
         private void AutomatikKnoepfeDeaktivieren()

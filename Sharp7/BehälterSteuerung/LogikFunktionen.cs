@@ -45,8 +45,8 @@ namespace BehälterSteuerung
 
                 this.Dispatcher.Invoke(() =>
                                    {
-                                       foreach (Behaelter beh in gAlleBehaelter) beh.AnzeigeAktualisieren();
-                                       AbleitungenAnzeigen();
+                                       foreach (Behaelter beh in gAlleBehaelter) beh.AnzeigeAktualisieren(FensterAktiv);
+                                       AbleitungenAnzeigen(FensterAktiv);
                                    });
 
                 Task.Delay(100);

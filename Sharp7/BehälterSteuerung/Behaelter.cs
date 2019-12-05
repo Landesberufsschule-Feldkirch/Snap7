@@ -9,12 +9,9 @@ namespace BehälterSteuerung
     {
         public class Behaelter
         {
-            private int BytePositionSchwimmerschalterOben;
-            private int BytePositionSchwimmerschalterUnten;
             private int BitPositionSchwimmerschalterOben;
             private int BitPositionSchwimmerschalterUnten;
 
-            private int BytePositionVentilOben;
             private int BitPositionVentilOben;
 
             private double SinkGeschwindigkeit = 0.00005;
@@ -48,8 +45,7 @@ namespace BehälterSteuerung
                                 Rectangle Zuleitung, Rectangle Ableitung, Rectangle BehalterFuellstand,
                                 Label SchwimmerschalterOben, Label SchwimmerschalterUnten,
                                 Button btnVentilUntenEin, Button btnVentilUntenAus,
-                                int BytePosSchwimmerschalterOben, int BitPosSchwimmerschalterOben, int BytePosSchwimmerschalterUnten, int BitPosSchwimmerschalterUnten,
-                                int BytePosVentilOben, int BitPosVentilOben)
+                                int BitPosSchwimmerschalterOben, int BitPosSchwimmerschalterUnten, int BitPosVentilOben)
             {
                 this.Pegel = Pegel;
 
@@ -68,11 +64,8 @@ namespace BehälterSteuerung
                 this.btnVentilUntenEin = btnVentilUntenEin;
                 this.btnVentilUntenAus = btnVentilUntenAus;
 
-                this.BytePositionSchwimmerschalterOben = BytePosSchwimmerschalterOben;
-                this.BytePositionSchwimmerschalterUnten = BytePosSchwimmerschalterUnten;
                 this.BitPositionSchwimmerschalterOben = BitPosSchwimmerschalterOben;
                 this.BitPositionSchwimmerschalterUnten = BitPosSchwimmerschalterUnten;
-                this.BytePositionVentilOben = BytePosVentilOben;
                 this.BitPositionVentilOben = BitPosVentilOben;
             }
             public void PegelUeberwachen()
@@ -95,50 +88,54 @@ namespace BehälterSteuerung
                 if (Pegel > 0.95) SchwimmerschalterOben = true; else SchwimmerschalterOben = false;
                 if (Pegel > 0.05) SchwimmerschalterUnten = true; else SchwimmerschalterUnten = false;
             }
-            public void AnzeigeAktualisieren()
+            public void AnzeigeAktualisieren(bool FensterAktiv)
             {
-                if (SchwimmerschalterOben) lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.LawnGreen;
-                if (SchwimmerschalterUnten) lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.LawnGreen;
-
-                if (VentilOben)
+                if (FensterAktiv)
                 {
-                    imgVentilObenEin.Visibility = System.Windows.Visibility.Visible;
-                    imgVentilObenAus.Visibility = System.Windows.Visibility.Hidden;
-                    rctZuleitung.Fill = System.Windows.Media.Brushes.Blue;
-                }
-                else
-                {
-                    imgVentilObenEin.Visibility = System.Windows.Visibility.Hidden;
-                    imgVentilObenAus.Visibility = System.Windows.Visibility.Visible;
-                    rctZuleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                    if (SchwimmerschalterOben) lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.LawnGreen;
+                    if (SchwimmerschalterUnten) lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.LawnGreen;
+
+                    if (VentilOben)
+                    {
+                        imgVentilObenEin.Visibility = System.Windows.Visibility.Visible;
+                        imgVentilObenAus.Visibility = System.Windows.Visibility.Hidden;
+                        rctZuleitung.Fill = System.Windows.Media.Brushes.Blue;
+                    }
+                    else
+                    {
+                        imgVentilObenEin.Visibility = System.Windows.Visibility.Hidden;
+                        imgVentilObenAus.Visibility = System.Windows.Visibility.Visible;
+                        rctZuleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                    }
+
+                    if (VentilUnten)
+                    {
+                        imgVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
+                        imgVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
+                        btnVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
+                        btnVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
+                    }
+                    else
+                    {
+                        imgVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
+                        imgVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
+                        btnVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
+                        btnVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
+                    }
+
+                    if (VentilUnten && (Pegel > 0.1)) rctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else rctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+
+                    rctBehaelterFuellstand.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
                 }
 
-                if (VentilUnten)
-                {
-                    imgVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
-                    imgVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
-                    btnVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
-                    btnVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
-                }
-                else
-                {
-                    imgVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
-                    imgVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
-                    btnVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
-                    btnVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
-                }
-
-                if (VentilUnten && (Pegel > 0.1)) rctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else rctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
-
-                rctBehaelterFuellstand.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
             }
 
             public void BehalterDatenRangieren(ref byte[] BufferInput, ref byte[] BufferOutput)
             {
-                S7.SetBitAt(ref BufferInput, BytePositionSchwimmerschalterOben, BitPositionSchwimmerschalterOben, SchwimmerschalterOben);
-                S7.SetBitAt(ref BufferInput, BytePositionSchwimmerschalterUnten, BitPositionSchwimmerschalterUnten, SchwimmerschalterUnten);
+                S7.SetBitAt(ref BufferInput, (BitPositionSchwimmerschalterOben / 8), (BitPositionSchwimmerschalterOben % 8), SchwimmerschalterOben);
+                S7.SetBitAt(ref BufferInput, (BitPositionSchwimmerschalterUnten / 8), (BitPositionSchwimmerschalterUnten % 8), SchwimmerschalterUnten);
 
-                VentilOben = S7.GetBitAt(BufferOutput, BytePositionVentilOben, BytePositionVentilOben);
+                VentilOben = S7.GetBitAt(BufferOutput, (BitPositionVentilOben / 8), (BitPositionVentilOben % 8));
             }
             public void AutomatikmodusStarten(double Startpegel)
             {
@@ -149,10 +146,10 @@ namespace BehälterSteuerung
         public ObservableCollection<Behaelter> gAlleBehaelter = new ObservableCollection<Behaelter>();
         public void AlleBehaelterInitialisieren()
         {
-            gAlleBehaelter.Add(new Behaelter(0.9, img_Q1_Ein, img_Q1_Aus, img_Q2_Ein, img_Q2_Aus, rct_Ableitung_1a, rct_Ableitung_1a, rct_Behaelter_1_Voll, lbl_B1, lbl_B2, btn_Q2_Ein, btn_Q2_Aus, (int)BytePosition.Byte_0, (int)BitPosEingang.B1, (int)BytePosition.Byte_0, (int)BitPosEingang.B2, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q1));
-            gAlleBehaelter.Add(new Behaelter(0.7, img_Q3_Ein, img_Q3_Aus, img_Q4_Ein, img_Q4_Aus, rct_Ableitung_2a, rct_Ableitung_2a, rct_Behaelter_2_Voll, lbl_B3, lbl_B4, btn_Q4_Ein, btn_Q4_Aus, (int)BytePosition.Byte_0, (int)BitPosEingang.B3, (int)BytePosition.Byte_0, (int)BitPosEingang.B4, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q3));
-            gAlleBehaelter.Add(new Behaelter(0.5, img_Q5_Ein, img_Q5_Aus, img_Q6_Ein, img_Q6_Aus, rct_Ableitung_3a, rct_Ableitung_3a, rct_Behaelter_3_Voll, lbl_B5, lbl_B6, btn_Q6_Ein, btn_Q6_Aus, (int)BytePosition.Byte_0, (int)BitPosEingang.B5, (int)BytePosition.Byte_0, (int)BitPosEingang.B6, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q5));
-            gAlleBehaelter.Add(new Behaelter(0.3, img_Q7_Ein, img_Q7_Aus, img_Q8_Ein, img_Q8_Aus, rct_Ableitung_4a, rct_Ableitung_4a, rct_Behaelter_4_Voll, lbl_B7, lbl_B8, btn_Q8_Ein, btn_Q8_Aus, (int)BytePosition.Byte_0, (int)BitPosEingang.B7, (int)BytePosition.Byte_0, (int)BitPosEingang.B8, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q7));
+            gAlleBehaelter.Add(new Behaelter(0.9, img_Q1_Ein, img_Q1_Aus, img_Q2_Ein, img_Q2_Aus, rct_Ableitung_1a, rct_Ableitung_1a, rct_Behaelter_1_Voll, lbl_B1, lbl_B2, btn_Q2_Ein, btn_Q2_Aus, (int)BitPosEingang.B1, (int)BitPosEingang.B2, (int)BitPosAusgang.Q1));
+            gAlleBehaelter.Add(new Behaelter(0.7, img_Q3_Ein, img_Q3_Aus, img_Q4_Ein, img_Q4_Aus, rct_Ableitung_2a, rct_Ableitung_2a, rct_Behaelter_2_Voll, lbl_B3, lbl_B4, btn_Q4_Ein, btn_Q4_Aus, (int)BitPosEingang.B3, (int)BitPosEingang.B4, (int)BitPosAusgang.Q3));
+            gAlleBehaelter.Add(new Behaelter(0.5, img_Q5_Ein, img_Q5_Aus, img_Q6_Ein, img_Q6_Aus, rct_Ableitung_3a, rct_Ableitung_3a, rct_Behaelter_3_Voll, lbl_B5, lbl_B6, btn_Q6_Ein, btn_Q6_Aus, (int)BitPosEingang.B5, (int)BitPosEingang.B6, (int)BitPosAusgang.Q5));
+            gAlleBehaelter.Add(new Behaelter(0.3, img_Q7_Ein, img_Q7_Aus, img_Q8_Ein, img_Q8_Aus, rct_Ableitung_4a, rct_Ableitung_4a, rct_Behaelter_4_Voll, lbl_B7, lbl_B8, btn_Q8_Ein, btn_Q8_Aus, (int)BitPosEingang.B7, (int)BitPosEingang.B8, (int)BitPosAusgang.Q7));
         }
 
     }
