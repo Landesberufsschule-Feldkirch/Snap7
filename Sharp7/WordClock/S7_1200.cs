@@ -3,7 +3,7 @@ using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 
-namespace LAP_2018_Abfuellanlage
+namespace WordClock
 {
     public partial class MainWindow
     {
@@ -21,7 +21,6 @@ namespace LAP_2018_Abfuellanlage
 
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
-        private byte[] AnalogInput = new byte[1024];
 
         public void VerbindungErstellen()
         {
@@ -32,16 +31,21 @@ namespace LAP_2018_Abfuellanlage
             if (Result == 0)
             {
                 btn_Connect.IsEnabled = false;
+                btn_Disconnect.IsEnabled = true;
+
+                TaskAktiv = true;
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
 
         public void VerbindungTrennen()
         {
+            TaskAktiv = false;
             Client.Disconnect();
-            btn_Connect.IsEnabled = true;
-        }
 
+            btn_Connect.IsEnabled = true;
+            btn_Disconnect.IsEnabled = false;
+        }
 
         public void SPS_Pingen_Task()
         {
@@ -74,8 +78,6 @@ namespace LAP_2018_Abfuellanlage
 
         void EinAusgabeFelderInitialisieren()
         {
-            AlleFlaschenInitialisieren();
-            AlleFlaschenParken();
             foreach (byte b in DigInput) DigInput[b] = 0;
             foreach (byte b in DigOutput) DigOutput[b] = 0;
         }

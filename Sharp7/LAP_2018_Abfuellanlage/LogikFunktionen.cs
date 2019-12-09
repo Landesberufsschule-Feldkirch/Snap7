@@ -5,33 +5,34 @@ namespace LAP_2018_Abfuellanlage
     public partial class MainWindow
     {
 
-        double Pegel = 0.95;
-        double FuellGeschwindigkeit = 0.000008;
+        double Pegel = 1;
         double LeerGeschwindigkeit = 0.00001;
 
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
-            {
+            {     
                 S1 = TasterSimulation(ref S1_Zaehler);
                 S2 = !TasterSimulation(ref S2_Zaehler);
                 S3 = TasterSimulation(ref S3_Zaehler);
+                S4 = TasterSimulation(ref S4_Zaehler);
 
-
-                if (M1) Pegel += FuellGeschwindigkeit;
-                if (M2) Pegel += FuellGeschwindigkeit;
-                if (Y1) Pegel -= LeerGeschwindigkeit;
-
-                if (Pegel > 1) Pegel = 1;
+                if (K1) Pegel -= LeerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
-                B1 = (Pegel > 0.1);
-                B2 = (Pegel > 0.5);
-                B3 = (Pegel > 0.9);
+                PegelByte = (byte)(100 * Pegel);
+                PegelInt = (ushort)(27648 * Pegel);
 
                 AnzeigeAktualisieren();
 
-                foreach (Flaschen flasche in gAlleFlaschen) { flasche.FlascheBewegen(); }
+                if (K2)
+                {
+                    int AktFlasche = gAlleFlaschen[0].getAktuelleFlasche();
+                    gAlleFlaschen[AktFlasche].FlascheVereinzeln();
+                }                
+
+                B1 = false;
+                foreach (Flaschen flasche in gAlleFlaschen) { B1 |= flasche.FlascheBewegen(M1); }
 
                 Task.Delay(100);
             }

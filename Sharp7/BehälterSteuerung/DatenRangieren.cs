@@ -9,8 +9,10 @@ namespace BehälterSteuerung
 
         enum Datenbausteine
         {
-            Input = 1,
-            Output = 2
+            DigIn = 1,
+            DigOut,
+            AnIn,
+            AnOut
         }
         enum BytePosition
         {
@@ -48,8 +50,8 @@ namespace BehälterSteuerung
 
                 if ((Client != null) && TaskAktiv)
                 {
-                    Client.DBWrite((int)Datenbausteine.Input, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
-                    Client.DBRead((int)Datenbausteine.Output, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+                    Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
+                    Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
 
                Leuchte_P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);

@@ -1,13 +1,29 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace LAP_2018_Abfuellanlage
+namespace WordClock
 {
 
     public partial class MainWindow : Window
     {
 
+        public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,26 +48,7 @@ namespace LAP_2018_Abfuellanlage
             FensterAktiv = false;
         }
 
-        private void btnF5_Click(object sender, RoutedEventArgs e)
-        {
-            F5 = !F5;
-        }
 
-        private void btnS1_Click(object sender, RoutedEventArgs e)
-        {
-            S1_Zaehler = 10;
-        }
-        private void btnS2_Click(object sender, RoutedEventArgs e)
-        {
-            S2_Zaehler = 10;
-        }
-        private void btnS3_Click(object sender, RoutedEventArgs e)
-        {
-            S3_Zaehler = 10;
-        }
-        private void btnS4_Click(object sender, RoutedEventArgs e)
-        {
-            S4_Zaehler = 10;
-        }
     }
+
 }

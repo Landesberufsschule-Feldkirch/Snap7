@@ -1,68 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace LAP_2018_Abfuellanlage
 {
+    enum BewegungSchritt
+    {
+        Oberhalb,
+        Vereinzeln,
+        Fahren,
+        Runtergefallen,
+        Fertig
+    }
     public partial class MainWindow : Window
     {
 
+
         public class Flaschen
         {
-            enum BewegungSchritt
-            {
-                Vereinzeln,
-                Fahren,
-                Runtergefallen,
-                Fertig
-            }
-
+            public static int AktuelleFlasche = 0;
+            public static int AnzahlFlaschen = 0;
+            int ID;
             public Image imgFlasche;
             bool Sichtbar = true;
             public double x_Start { get; set; }
             public double y_Start { get; set; }
+            private BewegungSchritt bewegungSchritt;
 
             private double x_Aktuell;
             private double y_Aktuell;
 
-            private BewegungSchritt bewegungSchritt;
 
-            private readonly double BewegungIncrement = 0.01;
-            private readonly double x_Foerderband_Rechts = 630;
+
+            private readonly double x_StartPosition = 105;
+            private readonly double BewegungIncrement = 0.005;
+            private readonly double x_B1_Links = 450;
+            private readonly double x_B1_Rechts = 500;
+            private readonly double x_Foerderband_Rechts = 640;
+            private readonly double y_VereinzlerVentil = 385;
+            private readonly double y_FlachenHoehe = 80;
             private readonly double y_Foerderband = 525;
             private readonly double y_Boden = 700;
 
-            public Flaschen(Image imgFlasche, double x_Start, double y_Start)
+            public Flaschen(int ID, Image imgFlasche)
             {
+                this.ID = ID;
                 this.imgFlasche = imgFlasche;
-                this.x_Start = x_Start;
-                this.y_Start = y_Start;
-                this.bewegungSchritt = BewegungSchritt.Vereinzeln;
+                this.bewegungSchritt = BewegungSchritt.Oberhalb;
+                AnzahlFlaschen++;
             }
 
             public void FlaschenParken()
             {
-                x_Aktuell = x_Start;
-                y_Aktuell = y_Start;
+                x_Aktuell = x_StartPosition;
+                y_Aktuell = y_VereinzlerVentil - ID * y_FlachenHoehe;
             }
 
-            public void FlascheBewegen()
+            public void FlascheVereinzeln()
             {
+                if (bewegungSchritt == BewegungSchritt.Oberhalb) bewegungSchritt = BewegungSchritt.Vereinzeln;
+            }
+
+            public int getAktuelleFlasche() { return AktuelleFlasche; }
+            // public BewegungSchritt GetStatus() { return bewegungSchritt; }
+            public bool FlascheBewegen(bool M1)
+            {
+                double y_Neu;
+
+
                 switch (bewegungSchritt)
                 {
+                    case BewegungSchritt.Oberhalb:
+                        y_Neu = y_VereinzlerVentil - (ID - AktuelleFlasche) * y_FlachenHoehe;
+                        if (y_Aktuell < y_Neu) y_Aktuell += BewegungIncrement;
+                        break;
+
+
                     case BewegungSchritt.Vereinzeln:
                         if (y_Aktuell < y_Foerderband) y_Aktuell += BewegungIncrement;
-                        else bewegungSchritt = BewegungSchritt.Fahren;
+                        else
+                        {
+                            bewegungSchritt = BewegungSchritt.Fahren;
+                            if (AktuelleFlasche < AnzahlFlaschen - 1) AktuelleFlasche++;
+                        }
                         break;
 
                     case BewegungSchritt.Fahren:
-                        if (x_Aktuell < x_Foerderband_Rechts) x_Aktuell += BewegungIncrement;
-                        else bewegungSchritt = BewegungSchritt.Runtergefallen;
+                        if (M1)
+                        {
+                            if (x_Aktuell < x_Foerderband_Rechts) x_Aktuell += BewegungIncrement;
+                            else bewegungSchritt = BewegungSchritt.Runtergefallen;
+                        }
                         break;
 
                     case BewegungSchritt.Runtergefallen:
@@ -80,6 +108,9 @@ namespace LAP_2018_Abfuellanlage
                         y_Aktuell = y_Start;
                         break;
                 }
+
+                if ((x_Aktuell > x_B1_Links) && (x_Aktuell < x_B1_Rechts)) return true; else return false;
+
 
             }
 
@@ -106,12 +137,14 @@ namespace LAP_2018_Abfuellanlage
 
         public void AlleFlaschenInitialisieren()
         {
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_1, 102, 10));
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_2, 102, 90));
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_3, 102, 170));
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_4, 102, 250));
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_5, 102, 330));
-            gAlleFlaschen.Add(new Flaschen(imgFlasche_6, 102, 410));
+
+            gAlleFlaschen.Add(new Flaschen(0, imgFlasche_1));
+            gAlleFlaschen.Add(new Flaschen(1, imgFlasche_2));
+            gAlleFlaschen.Add(new Flaschen(2, imgFlasche_3));
+            gAlleFlaschen.Add(new Flaschen(3, imgFlasche_4));
+            gAlleFlaschen.Add(new Flaschen(4, imgFlasche_5));
+            gAlleFlaschen.Add(new Flaschen(5, imgFlasche_6));
+
         }
 
         public void AlleFlaschenParken()

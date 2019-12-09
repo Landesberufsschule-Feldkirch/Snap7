@@ -12,8 +12,10 @@ namespace PlcConnect
 
         enum Datenbausteine
         {
-            Input = 1,
-            Output = 2
+            DigIn = 1,
+            DigOut,
+            AnIn,
+            AnOut
         }
         enum BytePosition
         {
