@@ -16,17 +16,7 @@ namespace BehälterSteuerung
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
         }
-
-        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungErstellen();
-        }
-
-        private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungTrennen();
-        }
-
+           
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;

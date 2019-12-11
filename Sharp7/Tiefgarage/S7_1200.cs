@@ -30,23 +30,11 @@ namespace Tiefgarage
             Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
             if (Result == 0)
             {
-                btn_Connect.IsEnabled = false;
-                btn_Disconnect.IsEnabled = true;
-
                 TaskAktiv = true;
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
-
-        public void VerbindungTrennen()
-        {
-            TaskAktiv = false;
-            Client.Disconnect();
-
-            btn_Connect.IsEnabled = true;
-            btn_Disconnect.IsEnabled = false;
-        }
-
+           
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)
@@ -61,13 +49,12 @@ namespace Tiefgarage
                     {
                         if (reply.Status == IPStatus.Success)
                         {
-                            lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
-                            btn_Connect.IsEnabled = true;
+                            if (TaskAktiv) lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
+                            else VerbindungErstellen();
                         }
                         else
                         {
                             lbl_PlcPing.Content = "Keine Verbindung zur S7-1200!";
-                            btn_Connect.IsEnabled = false;
                         }
                     }
                 });

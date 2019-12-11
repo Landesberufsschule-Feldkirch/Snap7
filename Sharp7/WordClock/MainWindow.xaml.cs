@@ -23,8 +23,11 @@ namespace WordClock
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
-        TimeSpan Time;
-        System.Timers.Timer timer = new System.Timers.Timer(100);
+
+        public TimeSpan Time;
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,41 +35,20 @@ namespace WordClock
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
 
-            DateTime date = DateTime.Now;
-            TimeZone time = TimeZone.CurrentTimeZone;
-            TimeSpan difference = time.GetUtcOffset(date);
-            Time = difference;
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-            timer.Enabled = true;
-
+            DateTime dateTime = DateTime.Now;
+            Time = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 
-        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            TimeSpan time = new TimeSpan(0, 0, 10);
-            Time = new TimeSpan(Time.Ticks + time.Ticks);
-
-            Dispatcher.Invoke(() =>
-            {
-                secondHand.Angle =Time.Seconds * 6;
-                minuteHand.Angle = Time.Minutes * 6;
-                hourHand.Angle = Time.Hours * 30 + Time.Minutes * 0.5;
-            });
-        }
-
-        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungErstellen();
-        }
-
-        private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungTrennen();
-        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
+        }
+
+        private void ZeitUebernehmen_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime dateTime = DateTime.Now;
+            Time = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
     }
 }

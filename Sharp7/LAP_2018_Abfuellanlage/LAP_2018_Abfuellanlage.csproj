@@ -101,8 +101,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Schwimmerschalter.jpg" />
-    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
     <Resource Include="Bilder\VentilElektrischAus.jpg" />
     <Resource Include="Bilder\VentilElektrischEin.jpg" />
   </ItemGroup>
@@ -112,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\Fransziskaner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
+    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

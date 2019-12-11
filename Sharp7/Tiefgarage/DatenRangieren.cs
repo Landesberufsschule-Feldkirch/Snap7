@@ -28,7 +28,8 @@ namespace Tiefgarage
         }
         enum AnzahlByte
         {
-            Byte_1 = 1
+            Byte_1 = 1,
+            Byte_2
         }
         enum BitPosAusgang
         {
@@ -49,7 +50,7 @@ namespace Tiefgarage
                 if ((Client != null) && TaskAktiv)
                 {
                     Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
-                    Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+                    Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_2, DigOutput);
                 }
 
                 AnzahlFahrzeuge = DigOutput[0];

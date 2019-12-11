@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BehälterSteuerung"
         mc:Ignorable="d"
-        Title="BehälterSteuerung" Height="550" Width="1000" Closing="Window_Closing">
+        Title="BehälterSteuerung" Height="650" Width="1000" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -45,17 +45,14 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-
-        <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="4" Stroke="Black"  />
-        <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="6"  Grid.RowSpan="6" Stroke="Black"  />
-
-        <Button x:Name="btn_Connect" Content="Connect" Grid.Column="18" Grid.Row="3" Click="ButtonConnect_Click"  />
-        <Button x:Name="btn_Disconnect" Content="Disconnect" Grid.Column="20" Grid.Row="3" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
+        <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="10" Stroke="Black"  />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
 
@@ -223,7 +220,7 @@
         <Rectangle x:Name="rct_Ableitung_4b" Fill="LightBlue" Grid.Column="12" Grid.Row="9" Margin="40,0,20,0"/>
         <Rectangle x:Name="rct_Ableitung" Fill="LightBlue" Grid.Column="3" Grid.Row="10" Grid.ColumnSpan="11" Margin="40,0,0,0"/>
 
-        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="16" Grid.Row="5"  Grid.ColumnSpan="6" />
+        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="2" Grid.Row="13"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
 
         <Button x:Name="btn_Automatik_1234" Content="1-2-3-4" Grid.Column="18"  Grid.Row="7" Click="btn_1234_Click"/>
         <Button x:Name="btn_Automatik_1324" Content="1-3-2-4" Grid.Column="20"  Grid.Row="7" Click="btn_1324_Click"/>

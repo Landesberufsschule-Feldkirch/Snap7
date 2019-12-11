@@ -5,15 +5,15 @@ namespace WordClock
 {
     public partial class MainWindow
     {
-        public bool Pegel_B1;
-        public bool Pegel_B2;
-        public bool Pegel_B1_Alt;
-        public bool Pegel_B2_Alt;
 
-        public int AnzahlFahrzeuge = 0;
-        public int AnzahlPersonen = 0;
-        public int AnzahlFahrzeuge_Alt = -1;
-        public int AnzahlPersonen_Alt = -1;
+        public ushort DatumJahr;
+        public byte DatumMonat;
+        public byte DatumTag;
+        public byte DatumWochentag;
+        public byte Stunde;
+        public byte Minute;
+        public byte Sekunde;
+        public byte Nanosekunde;
 
         enum Datenbausteine
         {
@@ -24,36 +24,56 @@ namespace WordClock
         }
         enum BytePosition
         {
-            Byte_0 = 0
+            Byte_0 = 0,
+            Byte_1,
+            Byte_2,
+            Byte_3,
+            Byte_4,
+            Byte_5,
+            Byte_6,
+            Byte_7,
+            Byte_8,
+            Byte_9
+
+
         }
         enum AnzahlByte
         {
-            Byte_1 = 1
+            Byte_1 = 1,
+            Byte_2,
+            Byte_3,
+            Byte_4,
+            Byte_5,
+            Byte_6,
+            Byte_7,
+            Byte_8,
+            Byte_9,
+            Byte_10
         }
         enum BitPosAusgang
         {
         }
         enum BitPosEingang
         {
-            B1 = 0,
-            B2
         }
 
         public void DatenRangieren_Task()
         {
             while (TaskAktiv && FensterAktiv)
             {
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), Pegel_B1);
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), Pegel_B2);
+                S7.SetWordAt(DigInput, (int)BytePosition.Byte_0, DatumJahr);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_2, DatumMonat);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_3, DatumTag);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_4, DatumWochentag);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_5, Stunde);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_6, Minute);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_7, Sekunde);
+                S7.SetByteAt(DigInput, (int)BytePosition.Byte_8, Nanosekunde);
 
                 if ((Client != null) && TaskAktiv)
                 {
-                    Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
-                    Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+                    Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_10, DigInput);
                 }
-
-                AnzahlFahrzeuge = DigOutput[0];
-                AnzahlPersonen = DigOutput[1];
 
                 Task.Delay(100);
             }

@@ -5,7 +5,7 @@ namespace LAP_2018_Abfuellanlage
 
     public partial class MainWindow : Window
     {
-
+        public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
         public MainWindow()
@@ -17,17 +17,7 @@ namespace LAP_2018_Abfuellanlage
 
         }
 
-        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungErstellen();
-        }
-
-        private void ButtonDisconnect_Click(object sender, RoutedEventArgs e)
-        {
-            VerbindungTrennen();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+            private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
         }

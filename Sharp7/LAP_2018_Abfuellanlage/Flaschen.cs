@@ -34,8 +34,8 @@ namespace LAP_2018_Abfuellanlage
 
             private readonly double x_StartPosition = 105;
             private readonly double BewegungIncrement = 0.005;
-            private readonly double x_B1_Links = 450;
-            private readonly double x_B1_Rechts = 500;
+            private readonly double x_B1_Links = 418;
+            private readonly double x_B1_Rechts = 450;
             private readonly double x_Foerderband_Rechts = 640;
             private readonly double y_VereinzlerVentil = 385;
             private readonly double y_FlachenHoehe = 80;

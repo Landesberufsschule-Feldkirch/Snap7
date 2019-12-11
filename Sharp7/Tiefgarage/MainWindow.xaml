@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tiefgarage"
         mc:Ignorable="d"
-        Title="Tiefgarage" Height="700" Width="1000" Closing="Window_Closing">
+        Title="Tiefgarage" Height="900" Width="1000" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -48,20 +48,18 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo" Content="V0.1 " Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="13" Grid.Row="5"  Grid.ColumnSpan="6" />
-
-        <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="1"  Grid.RowSpan="4" Stroke="Black"  />
+        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="3" Grid.Row="21"  Grid.ColumnSpan="4" Background="LightSeaGreen" />
+        
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="7"  Grid.RowSpan="5" Stroke="Black"  />
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5" Grid.Row="14"  Grid.RowSpan="4" Stroke="Black"  />
-
-
-        <Button x:Name="btn_Connect" Content="Connect" Grid.Column="14" Grid.Row="3" Click="ButtonConnect_Click"  />
-        <Button x:Name="btn_Disconnect" Content="Disconnect" Grid.Column="16" Grid.Row="3" Click="ButtonDisconnect_Click"  IsEnabled="False"  />
 
         <Button x:Name="AlleDraussenParken" Grid.ColumnSpan="3" Content="Draussen parken!" Grid.Column="14" Grid.Row="8" Click="AlleDraussenParken_Click"/>
         <Button x:Name="AlleDrinnenParken" Grid.ColumnSpan="3" Content="Drinnen parken!" Grid.Column="14" Grid.Row="10" Click="AlleDrinnenParken_Click"/>

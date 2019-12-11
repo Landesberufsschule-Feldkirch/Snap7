@@ -30,16 +30,10 @@ namespace LAP_2018_Niveauregelung
             Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
             if (Result == 0)
             {
-                btn_Connect.IsEnabled = false;
-                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
+                TaskAktiv = true; System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
 
-        public void VerbindungTrennen()
-        {
-            Client.Disconnect();
-            btn_Connect.IsEnabled = true;
-        }
 
 
         public void SPS_Pingen_Task()
@@ -56,13 +50,12 @@ namespace LAP_2018_Niveauregelung
                     {
                         if (reply.Status == IPStatus.Success)
                         {
-                            lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
-                            btn_Connect.IsEnabled = true;
+                            if (TaskAktiv) lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
+                            else VerbindungErstellen();
                         }
                         else
                         {
                             lbl_PlcPing.Content = "Keine Verbindung zur S7-1200!";
-                            btn_Connect.IsEnabled = false;
                         }
                     }
                 });
