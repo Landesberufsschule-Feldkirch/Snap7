@@ -11,7 +11,7 @@ namespace AmpelsteuerungKieswerk
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-        
+
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
         public void VerbindungErstellen()
@@ -22,21 +22,9 @@ namespace AmpelsteuerungKieswerk
             Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
             if (Result == 0)
             {
-                btn_Connect.IsEnabled = false;
-                btn_Disconnect.IsEnabled = true;
-
                 TaskAktiv = true;
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
-        }
-
-        public void VerbindungTrennen()
-        {
-            TaskAktiv = false;
-            Client.Disconnect();
-
-            btn_Connect.IsEnabled = true;
-            btn_Disconnect.IsEnabled = false;
         }
 
         public void SPS_Pingen_Task()
@@ -53,13 +41,12 @@ namespace AmpelsteuerungKieswerk
                     {
                         if (reply.Status == IPStatus.Success)
                         {
-                            lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
-                            btn_Connect.IsEnabled = true;
+                            if (TaskAktiv) lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
+                            else VerbindungErstellen();
                         }
                         else
                         {
                             lbl_PlcPing.Content = "Keine Verbindung zur S7-1200!";
-                            btn_Connect.IsEnabled = false;
                         }
                     }
                 });
@@ -67,14 +54,8 @@ namespace AmpelsteuerungKieswerk
                 Task.Delay(500);
             }
         }
-         
-        void EinAusgabeFelderInitialisieren()
-        {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
 
-            foreach(LKW lkw in gAlleLKW) { lkw.linksParken (); }
-        }
+       
 
     }
 }
