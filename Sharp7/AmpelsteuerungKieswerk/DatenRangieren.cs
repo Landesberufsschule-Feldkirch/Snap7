@@ -5,14 +5,12 @@ namespace AmpelsteuerungKieswerk
 {
     public partial class MainWindow
     {
-        bool Leuchte_P1 = false;
-
         enum Datenbausteine
         {
             DigIn = 1,
             DigOut,
             AnIn,
-            AnOut               
+            AnOut
         }
         enum BytePosition
         {
@@ -24,29 +22,29 @@ namespace AmpelsteuerungKieswerk
         }
         enum BitPosAusgang
         {
-            Q1 = 0,
-            Q3,
-            Q5,
-            Q7,
-            P1
+            P1 = 0,
+            P2,
+            P3,
+            P4,
+            P5,
+            P6
         }
         enum BitPosEingang
         {
             B1 = 0,
             B2,
             B3,
-            B4,
-            B5,
-            B6,
-            B7,
-            B8
+            B4
         }
 
         public void DatenRangieren_Task()
         {
             while (TaskAktiv && FensterAktiv)
             {
-                foreach (LKW lkw in gAlleLKW) lkw.LKWDatenRangieren(ref DigInput, ref DigOutput);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B3);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B4);
 
                 if ((Client != null) && TaskAktiv)
                 {
@@ -54,11 +52,21 @@ namespace AmpelsteuerungKieswerk
                     Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
 
-               Leuchte_P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+                P1_links_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+                P2_links_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P2);
+                P3_links_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P3);
+                P4_rechts_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P4);
+                P5_rechts_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P5);
+                P6_rechts_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P6);
 
                 Task.Delay(100);
             }
         }
+
+        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
     }
 }

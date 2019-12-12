@@ -79,47 +79,47 @@
         <Rectangle x:Name="Wand_unten_2" Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="10" Fill="DarkGray" Margin="60,0,0,20" />
         <Rectangle x:Name="Wand_unten_3" Grid.Column="16"  Grid.Row="10" Grid.RowSpan="4" Fill="DarkGray" Margin="0,0,50,0" />
 
-        <Rectangle x:Name="rct_Ampel_links" Grid.Column="6" Grid.Row="3" Grid.RowSpan="3" Fill="DarkSlateGray" Margin="-1,-1,34,-1"/>
-        <Ellipse x:Name="circ_Ampel_links_rot" Grid.Column="6" Grid.Row="3" Fill="Red" Margin="0,0,35,0"/>
-        <Ellipse x:Name="circ_Ampel_links_gelb" Grid.Column="6" Grid.Row="4" Fill="Yellow" Margin="0,0,35,0"/>
-        <Ellipse x:Name="circ_Ampel_links_gruen" Grid.Column="6" Grid.Row="5" Fill="Green" Margin="0,0,35,0"/>
+        <Rectangle x:Name="rct_Ampel_links" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Fill="DarkSlateGray" Margin="-1,-1,34,-1"/>
+        <Ellipse x:Name="circ_Ampel_links_rot" Grid.Column="6" Grid.Row="2" Fill="Red" Margin="0,0,35,0"/>
+        <Ellipse x:Name="circ_Ampel_links_gelb" Grid.Column="6" Grid.Row="3" Fill="Yellow" Margin="0,0,35,0"/>
+        <Ellipse x:Name="circ_Ampel_links_gruen" Grid.Column="6" Grid.Row="4" Fill="Green" Margin="0,0,35,0"/>
 
-        <Rectangle x:Name="rct_Ampel_rechts" Grid.Column="16" Grid.Row="3" Grid.RowSpan="3" Fill="DarkSlateGray" Margin="34,-1,-1,-1"/>
-        <Ellipse x:Name="circ_Ampel_rechts_rot" Grid.Column="16" Grid.Row="3" Fill="Red" Margin="35,0,0,0"/>
-        <Ellipse x:Name="circ_Ampel_rechts_gelb" Grid.Column="16" Grid.Row="4" Fill="Yellow" Margin="35,0,0,0"/>
-        <Ellipse x:Name="circ_Ampel_rechts_gruen" Grid.Column="16" Grid.Row="5" Fill="Green" Margin="35,0,0,0"/>
+        <Rectangle x:Name="rct_Ampel_rechts" Grid.Column="16" Grid.Row="2" Grid.RowSpan="3" Fill="DarkSlateGray" Margin="34,-1,-1,-1"/>
+        <Ellipse x:Name="circ_Ampel_rechts_rot" Grid.Column="16" Grid.Row="2" Fill="Red" Margin="35,0,0,0"/>
+        <Ellipse x:Name="circ_Ampel_rechts_gelb" Grid.Column="16" Grid.Row="3" Fill="Yellow" Margin="35,0,0,0"/>
+        <Ellipse x:Name="circ_Ampel_rechts_gruen" Grid.Column="16" Grid.Row="4" Fill="Green" Margin="35,0,0,0"/>
 
-        <Ellipse x:Name="circ_Lampe_draussen_links" Grid.Column="5" Grid.Row="8"  Fill="Yellow" Stroke="Black" Margin="5,15,45,0"/>
-        <Ellipse x:Name="circ_Lampe_drinnen_links" Grid.Column="5" Grid.Row="10"  Fill="Yellow" Height="20" Stroke="Black" Margin="5,0,45,15"/>
-        <Label x:Name="lbl_Lampe_draussen_links" Grid.Column="5" Grid.Row="8" Content="P1" Margin="25,10,20,0"/>
-        <Label x:Name="lbl_Lampe_drinnen_links" Grid.Column="5" Grid.Row="10" Content="P2" Margin="30,0,15,10"/>
-
-        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="8"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,15,10,0"/>
-        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="10"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,0,10,15"/>
-
-        <Label x:Name="lbl_Lichtschranke_draussen_rechts" Grid.Column="8" Grid.Row="8" Content="B1" Margin="18,10,26,0"/>
-        <Label x:Name="lbl_Lichtschranke_drinnen_rechts" Grid.Column="8" Grid.Row="10" Content="B2" Margin="18,0,26,10"/>
+        <Ellipse x:Name="circ_Lichtschranke_draussen_links" Grid.Column="5" Grid.Row="9"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="50,15,0,0"/>
+        <Ellipse x:Name="circ_Lichtschranke_drinnen_links" Grid.Column="6" Grid.Row="9"  Fill="LawnGreen" Height="20" Stroke="Black"  Margin="50,15,0,0"/>
+        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts" Grid.Column="16" Grid.Row="9"  Fill="LawnGreen" Height="20" Stroke="Black"  Margin="0,15,50,0"/>
+        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts" Grid.Column="17" Grid.Row="9"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="0,15,50,0"/>
 
 
-        <Canvas Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
+        <Label Grid.Column="5" Grid.Row="9" Content="B1" Margin="25,10,0,0"/>
+        <Label Grid.Column="6" Grid.Row="9" Content="B2" Margin="25,10,0,0"/>
+        <Label Grid.Column="15" Grid.Row="9" Content="B3" Margin="45,10,0,0"/>
+        <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="45,10,0,0"/>
 
-            <Button x:Name="btn_lkw_1" Click="btn_Click">
+
+        <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
+
+            <Button x:Name="btn_lkw_1" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_1" Height="60" Source="Bilder/LKW_braun.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_2" Click="btn_Click">
+            <Button x:Name="btn_lkw_2" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_2" Height="60" Source="Bilder/LKW_gelb.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_3" Click="btn_Click">
+            <Button x:Name="btn_lkw_3" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_3" Height="60" Source="Bilder/LKW_gruen.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_4" Click="btn_Click">
+            <Button x:Name="btn_lkw_4" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_4" Height="60" Source="Bilder/LKW_pink.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_5" Click="btn_Click">
+            <Button x:Name="btn_lkw_5" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_5" Height="60" Source="Bilder/LKW_rot.PNG"/>
             </Button>
 

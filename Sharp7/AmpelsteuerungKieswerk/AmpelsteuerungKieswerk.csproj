@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Ampel.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="LastKraftWagen.cs" />
     <Compile Include="S7_1200.cs" />

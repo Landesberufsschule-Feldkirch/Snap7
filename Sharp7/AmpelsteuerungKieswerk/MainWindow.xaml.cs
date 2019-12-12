@@ -16,7 +16,6 @@ namespace AmpelsteuerungKieswerk
         {
             InitializeComponent();
             AlleLKWInitialisieren();
-            AlleAmpelnInitialisieren();
             EinAusgabeFelderInitialisieren();
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
@@ -33,13 +32,15 @@ namespace AmpelsteuerungKieswerk
 
             switch (btn.Name)
             {
-
+                case "btn_lkw_1": gAlleLKW[0].Losfahren(); break;
+                case "btn_lkw_2": gAlleLKW[1].Losfahren(); break;
+                case "btn_lkw_3": gAlleLKW[2].Losfahren(); break;
+                case "btn_lkw_4": gAlleLKW[3].Losfahren(); break;
+                case "btn_lkw_5": gAlleLKW[4].Losfahren(); break;
 
                 default:
                     break;
             }
-
-
         }
 
         private void AlleLinksParken_Click(object sender, RoutedEventArgs e)
