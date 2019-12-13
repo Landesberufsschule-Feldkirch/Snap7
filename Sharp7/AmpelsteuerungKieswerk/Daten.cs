@@ -9,11 +9,11 @@ namespace AmpelsteuerungKieswerk
 
         public void AlleLKWInitialisieren()
         {
-            gAlleLKW.Add(new LKW(btn_lkw_1));
-            gAlleLKW.Add(new LKW(btn_lkw_2));
-            gAlleLKW.Add(new LKW(btn_lkw_3));
-            gAlleLKW.Add(new LKW(btn_lkw_4));
-            gAlleLKW.Add(new LKW(btn_lkw_5));
+            gAlleLKW.Add(new LKW(btn_lkw_1, img_lkw_1));
+            gAlleLKW.Add(new LKW(btn_lkw_2, img_lkw_2));
+            gAlleLKW.Add(new LKW(btn_lkw_3, img_lkw_3));
+            gAlleLKW.Add(new LKW(btn_lkw_4, img_lkw_4));
+            gAlleLKW.Add(new LKW(btn_lkw_5, img_lkw_5));
         }
 
         void EinAusgabeFelderInitialisieren()

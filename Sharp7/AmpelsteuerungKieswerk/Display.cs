@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace AmpelsteuerungKieswerk
@@ -33,7 +32,7 @@ namespace AmpelsteuerungKieswerk
             else ellipse.Fill = new SolidColorBrush(FarbeAus);
         }
 
-        void GridRasterEinblenden(bool Aktiv)
+        void GridRasterEinblenden()
         {
             
             for (var i = 0; i < 1000; i += 50)
@@ -61,7 +60,6 @@ namespace AmpelsteuerungKieswerk
                 else line.StrokeThickness = 2;
                 myCanvas.Children.Add(line);
             }
-
         }
 
 

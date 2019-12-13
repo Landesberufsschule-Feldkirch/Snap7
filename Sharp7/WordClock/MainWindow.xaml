@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordClock"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="1000" Closing="Window_Closing">
+        Title="MainWindow"  Height="450" Width="750" Closing="Window_Closing">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -42,14 +42,14 @@
         </Grid.RowDefinitions>
 
 
-        <Label x:Name="lbl_VersionsInfo" Content="V0.0 " Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"  Content="" Grid.Column="2" Grid.Row="11"  Grid.ColumnSpan="10" Background="LightSkyBlue" />
-        <Rectangle Fill="LightGray" Grid.Column="2" Grid.ColumnSpan="10" Grid.Row="1"  Grid.RowSpan="9" Stroke="Black"  />
+        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                    HorizontalAlignment="Right"/>
+        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="11"                   Background="LightSkyBlue" />
+        <Rectangle Fill="LightGray"                             Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="1"  Grid.RowSpan="9" Stroke="Black"  />
 
         <Button x:Name="ZeitUebernehmen" Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen" Click="ZeitUebernehmen_Click" />
 
-        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit" Grid.Column="7" Grid.Row="7" Grid.ColumnSpan="2" />
-        <Slider x:Name="sldGeschwindigkeit" Grid.Column="7" Grid.ColumnSpan="4"  Grid.Row="8" Maximum="100" Minimum="1" SmallChange="1" Value="10" Background="LawnGreen" Margin="0,0,0,10" />
+        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7"  />
+        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Maximum="100" Minimum="1" SmallChange="1" Value="10" Background="LawnGreen" Margin="0,0,0,10" />
 
         <Image Source="images/backGround.png" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" />
 
