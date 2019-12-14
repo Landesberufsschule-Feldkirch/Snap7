@@ -37,12 +37,14 @@ namespace AmpelsteuerungKieswerk
             
             for (var i = 0; i < 1000; i += 50)
             {
-                var line = new Line();
-                line.Stroke = Brushes.Cyan;
-                line.X1 = 10;
-                line.X2 = 2000;
-                line.Y1 = i;
-                line.Y2 = i;
+                var line = new Line
+                {
+                    Stroke = Brushes.Cyan,
+                    X1 = 10,
+                    X2 = 2000,
+                    Y1 = i,
+                    Y2 = i
+                };
                 if ((i % 100) == 0) line.StrokeThickness = 5;
                 else line.StrokeThickness = 2;
                 myCanvas.Children.Add(line);
@@ -50,12 +52,14 @@ namespace AmpelsteuerungKieswerk
 
             for (var i = 0; i < 2000; i += 50)
             {
-                var line = new Line();
-                line.Stroke = Brushes.Violet;
-                line.X1 = i;
-                line.X2 = i;
-                line.Y1 = 0;
-                line.Y2 = 1000;
+                var line = new Line
+                {
+                    Stroke = Brushes.Violet,
+                    X1 = i,
+                    X2 = i,
+                    Y1 = 0,
+                    Y2 = 1000
+                };
                 if ((i % 100) == 0) line.StrokeThickness = 5;
                 else line.StrokeThickness = 2;
                 myCanvas.Children.Add(line);

@@ -29,7 +29,7 @@ namespace AmpelsteuerungKieswerk
         }
 
         static int AnzahlLKW;
-        private int ID;
+        private readonly int ID;
         private LKW_Richtungen LKW_Richtung = LKW_Richtungen.NachRechts;
         private LKW_Richtungen LKW_RichtungAlt = LKW_Richtungen.NachRechts;
         public Button btnLKW { get; set; }
@@ -39,8 +39,6 @@ namespace AmpelsteuerungKieswerk
         public double y_LKW_Parkposition { get; set; }
 
         private LKW_Positionen LKW_Position = LKW_Positionen.LinksGeparkt;
-
-        private bool B1, B2, B3, B4;
 
         private readonly double x_ParkpositionLinks = 10;
         private readonly double x_ParkpositionRechts = 1300;
@@ -62,17 +60,17 @@ namespace AmpelsteuerungKieswerk
 
         public LKW(Button btn, Image img)
         {
-            this.ID = AnzahlLKW;
+            ID = AnzahlLKW;
             AnzahlLKW++;
 
-            this.btnLKW = btn;
-            this.imgLKW = img;
-            this.y_LKW_Parkposition = y_ParkpositionOben + this.ID * (10 + HoeheLWK);
+            btnLKW = btn;
+            imgLKW = img;
+            y_LKW_Parkposition = y_ParkpositionOben + ID * (10 + HoeheLWK);
         }
 
-        public void AnzeigeAktualisieren(bool FensterAktiv)
+        public void AnzeigeAktualisieren(bool fensterAktiv)
         {
-            if (FensterAktiv)
+            if (fensterAktiv)
             {
                 btnLKW.SetValue(Canvas.LeftProperty, x_LKW_Aktuell);
                 btnLKW.SetValue(Canvas.TopProperty, y_LKW_Aktuell);
@@ -82,15 +80,19 @@ namespace AmpelsteuerungKieswerk
                     if (LKW_Richtung == LKW_Richtungen.NachRechts)
                     {
                         imgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
-                        ScaleTransform flipTrans = new ScaleTransform();
-                        flipTrans.ScaleX = 1;
+                        ScaleTransform flipTrans = new ScaleTransform
+                        {
+                            ScaleX = 1
+                        };
                         imgLKW.RenderTransform = flipTrans;
                     }
                     if (LKW_Richtung == LKW_Richtungen.NachLinks)
                     {
                         imgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
-                        ScaleTransform flipTrans = new ScaleTransform();
-                        flipTrans.ScaleX = -1;
+                        ScaleTransform flipTrans = new ScaleTransform
+                        {
+                            ScaleX = -1
+                        };
                         imgLKW.RenderTransform = flipTrans;
                     }
                 }
@@ -100,8 +102,8 @@ namespace AmpelsteuerungKieswerk
         }
 
 
-        public void linksParken() { LKW_Position = LKW_Positionen.LinksGeparkt; }
-        public void rechtsParken() { LKW_Position = LKW_Positionen.RechtsGeparkt; }
+        public void LinksParken() { LKW_Position = LKW_Positionen.LinksGeparkt; }
+        public void RechtsParken() { LKW_Position = LKW_Positionen.RechtsGeparkt; }
 
         public void Losfahren()
         {
@@ -109,7 +111,7 @@ namespace AmpelsteuerungKieswerk
             if (LKW_Position == LKW_Positionen.RechtsGeparkt) LKW_Position = LKW_Positionen.RL_RechtsWaagrecht;
         }
 
-        public Tuple<bool, bool, bool, bool> LastwagenFahren()
+        public (bool b1, bool b2, bool b3, bool b4) LastwagenFahren()
         {
             switch (LKW_Position)
             {
@@ -173,12 +175,7 @@ namespace AmpelsteuerungKieswerk
                 default: break;
             }
 
-            B1 = LichtschrankeUnterbrochen(x_B1);
-            B2 = LichtschrankeUnterbrochen(x_B2);
-            B3 = LichtschrankeUnterbrochen(x_B3);
-            B4 = LichtschrankeUnterbrochen(x_B4);
-
-            return new Tuple<bool, bool, bool, bool>(B1, B2, B3, B4);
+            return (LichtschrankeUnterbrochen(x_B1), LichtschrankeUnterbrochen(x_B2), LichtschrankeUnterbrochen(x_B3), LichtschrankeUnterbrochen(x_B4));
         }
 
         bool LichtschrankeUnterbrochen(double xPos)

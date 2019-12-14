@@ -26,11 +26,11 @@ namespace AmpelsteuerungKieswerk
 
                 foreach (LKW lkw in gAlleLKW)
                 {
-                    var Lichtschranken = lkw.LastwagenFahren();
-                    if (Lichtschranken.Item1) B1 = true;
-                    if (Lichtschranken.Item2) B2 = true;
-                    if (Lichtschranken.Item3) B3 = true;
-                    if (Lichtschranken.Item4) B4 = true;
+                    var (b1, b2, b3, b4) = lkw.LastwagenFahren();
+                    B1 |= b1;
+                    B2 |= b2;
+                    B3 |= b3;
+                    B4 |= b4;
                 }
 
                 this.Dispatcher.Invoke(() =>

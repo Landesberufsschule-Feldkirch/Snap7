@@ -21,7 +21,7 @@ namespace AmpelsteuerungKieswerk
             foreach (byte b in DigInput) DigInput[b] = 0;
             foreach (byte b in DigOutput) DigOutput[b] = 0;
 
-            foreach (LKW lkw in gAlleLKW) { lkw.linksParken(); }
+            foreach (LKW lkw in gAlleLKW) { lkw.LinksParken(); }
         }
     }
 }

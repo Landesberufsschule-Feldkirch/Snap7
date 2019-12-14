@@ -6,17 +6,12 @@ namespace LAP_2018_Abfuellanlage
     {
 
         double Pegel = 1;
-        double LeerGeschwindigkeit = 0.00001;
+       private readonly double LeerGeschwindigkeit = 0.00001;
 
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
-            {     
-                S1 = TasterSimulation(ref S1_Zaehler);
-                S2 = !TasterSimulation(ref S2_Zaehler);
-                S3 = TasterSimulation(ref S3_Zaehler);
-                S4 = TasterSimulation(ref S4_Zaehler);
-
+            {           
                 if (K1) Pegel -= LeerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
@@ -36,16 +31,6 @@ namespace LAP_2018_Abfuellanlage
 
                 Task.Delay(100);
             }
-        }
-
-        public bool TasterSimulation(ref int Zaehler)
-        {
-            if (Zaehler > 0)
-            {
-                Zaehler--;
-                return true;
-            }
-            else return false;
         }
     }
 }

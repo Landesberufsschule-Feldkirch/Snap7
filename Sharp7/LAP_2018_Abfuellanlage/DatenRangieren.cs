@@ -24,11 +24,6 @@ namespace LAP_2018_Abfuellanlage
         public byte PegelByte;
         public ushort PegelInt;
 
-        int S1_Zaehler = 0;
-        int S2_Zaehler = 0;
-        int S3_Zaehler = 0;
-        int S4_Zaehler = 0;
-
         enum Datenbausteine
         {
             DigIn = 1,

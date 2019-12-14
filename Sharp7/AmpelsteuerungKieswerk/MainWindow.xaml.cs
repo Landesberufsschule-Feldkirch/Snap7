@@ -37,8 +37,8 @@ namespace AmpelsteuerungKieswerk
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { FensterAktiv = false; }
-        private void AlleLinksParken_Click(object sender, RoutedEventArgs e) { foreach (LKW lkw in gAlleLKW) { lkw.linksParken(); } }
-        private void AlleRechtsParken_Click(object sender, RoutedEventArgs e) { foreach (LKW lkw in gAlleLKW) { lkw.rechtsParken(); } }
+        private void AlleLinksParken_Click(object sender, RoutedEventArgs e) { foreach (LKW lkw in gAlleLKW) { lkw.LinksParken(); } }
+        private void AlleRechtsParken_Click(object sender, RoutedEventArgs e) { foreach (LKW lkw in gAlleLKW) { lkw.RechtsParken(); } }
     }
 }
 

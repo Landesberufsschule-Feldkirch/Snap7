@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace LAP_2018_Abfuellanlage
 {
@@ -17,31 +18,46 @@ namespace LAP_2018_Abfuellanlage
 
         }
 
-            private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
         }
 
-        private void btnF5_Click(object sender, RoutedEventArgs e)
+        private void BtnF5_Click(object sender, RoutedEventArgs e)
         {
             F5 = !F5;
         }
 
-        private void btnS1_Click(object sender, RoutedEventArgs e)
+        private void BtnS1_Click(object sender, RoutedEventArgs e)
         {
-            S1_Zaehler = 10;
+            S1 = RichtungUmdrehen(btnS1);
         }
-        private void btnS2_Click(object sender, RoutedEventArgs e)
+        private void BtnS2_Click(object sender, RoutedEventArgs e)
         {
-            S2_Zaehler = 10;
+            S2 = !RichtungUmdrehen(btnS2);
         }
-        private void btnS3_Click(object sender, RoutedEventArgs e)
+        private void BtnS3_Click(object sender, RoutedEventArgs e)
         {
-            S3_Zaehler = 10;
+            S3 = RichtungUmdrehen(btnS3);
         }
-        private void btnS4_Click(object sender, RoutedEventArgs e)
+        private void BtnS4_Click(object sender, RoutedEventArgs e)
         {
-            S4_Zaehler = 10;
+            S4 = RichtungUmdrehen(btnS4);
         }
+
+        private bool RichtungUmdrehen(Button knopf)
+        {
+            if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Release;
+                return true;
+            }
+            else
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Press;
+                return false;
+            }
+        }
+
     }
 }
