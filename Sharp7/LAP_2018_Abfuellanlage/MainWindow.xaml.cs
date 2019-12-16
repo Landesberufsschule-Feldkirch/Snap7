@@ -13,9 +13,12 @@ namespace LAP_2018_Abfuellanlage
         {
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
+            AlleFlaschenInitialisieren();
+            AlleFlaschenParken();
+
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
-
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -30,22 +33,22 @@ namespace LAP_2018_Abfuellanlage
 
         private void BtnS1_Click(object sender, RoutedEventArgs e)
         {
-            S1 = RichtungUmdrehen(btnS1);
+            S1 = ButtonFunktionPressReleaseAendern(btnS1);
         }
         private void BtnS2_Click(object sender, RoutedEventArgs e)
         {
-            S2 = !RichtungUmdrehen(btnS2);
+            S2 = !ButtonFunktionPressReleaseAendern(btnS2);
         }
         private void BtnS3_Click(object sender, RoutedEventArgs e)
         {
-            S3 = RichtungUmdrehen(btnS3);
+            S3 = ButtonFunktionPressReleaseAendern(btnS3);
         }
         private void BtnS4_Click(object sender, RoutedEventArgs e)
         {
-            S4 = RichtungUmdrehen(btnS4);
+            S4 = ButtonFunktionPressReleaseAendern(btnS4);
         }
 
-        private bool RichtungUmdrehen(Button knopf)
+        private bool ButtonFunktionPressReleaseAendern(Button knopf)
         {
             if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
             {

@@ -1,4 +1,6 @@
 ﻿using Sharp7;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PlcConnect
@@ -40,21 +42,23 @@ namespace PlcConnect
         {
             while (TaskAktiv && FensterAktiv)
             {
-                AnzeigeAktualisieren();
-
+                
                 if ((Client != null) && TaskAktiv)
                 {
                     S7.SetBitAt(ref DigInput, InByte(BitPosEingang.S1), InBit(BitPosEingang.S1), ButtonStart.IsPressed);
                     S7.SetBitAt(ref DigInput, InByte(BitPosEingang.S2), InBit(BitPosEingang.S2), ButtonStop.IsPressed);
 
-                    Client.DBWrite(DB_DigInput, Startbyte_0, AnzahlByte_1, DigInput);
-                    Client.DBRead(DB_DigOutput, Startbyte_0, AnzahlByte_1, DigOutput);
+                    if ((Client != null))
+                    {
+                        Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
+                        Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+                    }
 
                     M1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.M1), OutBit(BitPosAusgang.M1));
                     P1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P1), OutBit(BitPosAusgang.P1));
                 }
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
 
@@ -62,6 +66,14 @@ namespace PlcConnect
         private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
         private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
         private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
 
     }
 }

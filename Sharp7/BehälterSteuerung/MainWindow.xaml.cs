@@ -13,8 +13,10 @@ namespace BehälterSteuerung
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
             AlleBehaelterInitialisieren();
+
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
            
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

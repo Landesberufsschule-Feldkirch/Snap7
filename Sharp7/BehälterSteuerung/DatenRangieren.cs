@@ -1,4 +1,6 @@
 ﻿using Sharp7;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BehälterSteuerung
@@ -6,7 +8,6 @@ namespace BehälterSteuerung
     public partial class MainWindow
     {
         bool Leuchte_P1 = false;
-
         enum Datenbausteine
         {
             DigIn = 1,
@@ -54,10 +55,23 @@ namespace BehälterSteuerung
                     Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
                 }
 
-               Leuchte_P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+                Leuchte_P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
+        }
+
+        //private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        //private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
         }
 
     }

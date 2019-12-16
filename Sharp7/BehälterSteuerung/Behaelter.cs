@@ -9,14 +9,10 @@ namespace BehälterSteuerung
     {
         public class Behaelter
         {
-            private int BitPositionSchwimmerschalterOben;
-            private int BitPositionSchwimmerschalterUnten;
+            private readonly int BitPositionSchwimmerschalterOben;
+            private readonly int BitPositionSchwimmerschalterUnten;
+            private readonly int BitPositionVentilOben;
 
-            private int BitPositionVentilOben;
-
-            private double SinkGeschwindigkeit = 0.00005;
-            private double FuellGeschwindigkeit = 0.2 * 0.00005;
-            private double HoeheFuellBalken = 200.0;
             public double Pegel { get; set; }
             public double InternerPegel { get; set; }
 
@@ -25,48 +21,52 @@ namespace BehälterSteuerung
             public bool VentilOben;
             public bool VentilUnten { get; set; }
 
-            Image imgVentilObenEin;
-            Image imgVentilObenAus;
-            Image imgVentilUntenEin;
-            Image imgVentilUntenAus;
+            private readonly Image ImgVentilObenEin;
+            private readonly Image ImgVentilObenAus;
+            private readonly Image ImgVentilUntenEin;
+            private readonly Image ImgVentilUntenAus;
 
-            Rectangle rctZuleitung;
-            Rectangle rctAbleitung;
-            Rectangle rctBehaelterFuellstand;
+            private readonly Rectangle RctZuleitung;
+            private readonly Rectangle RctAbleitung;
+            private readonly Rectangle RctBehaelterFuellstand;
 
-            Label lblSchwimmerschalterOben;
-            Label lblSchwimmerschalterUnten;
+            private readonly Label LblSchwimmerschalterOben;
+            private readonly Label LblSchwimmerschalterUnten;
 
-            Button btnVentilUntenEin;
-            Button btnVentilUntenAus;
+            private readonly Button BtnVentilUntenEin;
+            private readonly Button BtnVentilUntenAus;
 
-            public Behaelter(double Pegel,
+            private readonly double SinkGeschwindigkeit = 0.005;
+            private readonly double FuellGeschwindigkeit = 0.2 * 0.005;
+            private readonly double HoeheFuellBalken = 200.0;
+
+            public Behaelter(double NeuerPegel,
                                 Image VentilObenEin, Image VentilObenAus, Image VentilUntenEin, Image VentilUntenAus,
                                 Rectangle Zuleitung, Rectangle Ableitung, Rectangle BehalterFuellstand,
                                 Label SchwimmerschalterOben, Label SchwimmerschalterUnten,
-                                Button btnVentilUntenEin, Button btnVentilUntenAus,
+                                Button VentUntenEin, Button VentUntenAus,
                                 int BitPosSchwimmerschalterOben, int BitPosSchwimmerschalterUnten, int BitPosVentilOben)
             {
-                this.Pegel = Pegel;
+                Pegel = NeuerPegel;
 
-                this.imgVentilObenEin = VentilObenEin;
-                this.imgVentilObenAus = VentilObenAus;
-                this.imgVentilUntenEin = VentilUntenEin;
-                this.imgVentilUntenAus = VentilUntenAus;
+                ImgVentilObenEin = VentilObenEin;
+                ImgVentilObenAus = VentilObenAus;
+                ImgVentilUntenEin = VentilUntenEin;
+                ImgVentilUntenAus = VentilUntenAus;
 
-                this.rctZuleitung = Zuleitung;
-                this.rctAbleitung = Ableitung;
-                this.rctBehaelterFuellstand = BehalterFuellstand;
+                RctZuleitung = Zuleitung;
+                RctAbleitung = Ableitung;
+                RctBehaelterFuellstand = BehalterFuellstand;
 
-                this.lblSchwimmerschalterOben = SchwimmerschalterOben;
-                this.lblSchwimmerschalterUnten = SchwimmerschalterUnten;
+                LblSchwimmerschalterOben = SchwimmerschalterOben;
+                LblSchwimmerschalterUnten = SchwimmerschalterUnten;
+            
+                BtnVentilUntenEin = VentUntenEin;
+                BtnVentilUntenAus = VentUntenAus;
 
-                this.btnVentilUntenEin = btnVentilUntenEin;
-                this.btnVentilUntenAus = btnVentilUntenAus;
-
-                this.BitPositionSchwimmerschalterOben = BitPosSchwimmerschalterOben;
-                this.BitPositionSchwimmerschalterUnten = BitPosSchwimmerschalterUnten;
-                this.BitPositionVentilOben = BitPosVentilOben;
+                BitPositionSchwimmerschalterOben = BitPosSchwimmerschalterOben;
+                BitPositionSchwimmerschalterUnten = BitPosSchwimmerschalterUnten;
+                BitPositionVentilOben = BitPosVentilOben;
             }
             public void PegelUeberwachen()
             {
@@ -88,44 +88,44 @@ namespace BehälterSteuerung
                 if (Pegel > 0.95) SchwimmerschalterOben = true; else SchwimmerschalterOben = false;
                 if (Pegel > 0.05) SchwimmerschalterUnten = true; else SchwimmerschalterUnten = false;
             }
-            public void AnzeigeAktualisieren(bool FensterAktiv)
+            public void BehaelterAnzeigen(bool FensterAktiv)
             {
                 if (FensterAktiv)
                 {
-                    if (SchwimmerschalterOben) lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.LawnGreen;
-                    if (SchwimmerschalterUnten) lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.Red; else lblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.LawnGreen;
+                    if (SchwimmerschalterOben) LblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.Red; else LblSchwimmerschalterOben.Background = System.Windows.Media.Brushes.LawnGreen;
+                    if (SchwimmerschalterUnten) LblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.Red; else LblSchwimmerschalterUnten.Background = System.Windows.Media.Brushes.LawnGreen;
 
                     if (VentilOben)
                     {
-                        imgVentilObenEin.Visibility = System.Windows.Visibility.Visible;
-                        imgVentilObenAus.Visibility = System.Windows.Visibility.Hidden;
-                        rctZuleitung.Fill = System.Windows.Media.Brushes.Blue;
+                        ImgVentilObenEin.Visibility = System.Windows.Visibility.Visible;
+                        ImgVentilObenAus.Visibility = System.Windows.Visibility.Hidden;
+                        RctZuleitung.Fill = System.Windows.Media.Brushes.Blue;
                     }
                     else
                     {
-                        imgVentilObenEin.Visibility = System.Windows.Visibility.Hidden;
-                        imgVentilObenAus.Visibility = System.Windows.Visibility.Visible;
-                        rctZuleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                        ImgVentilObenEin.Visibility = System.Windows.Visibility.Hidden;
+                        ImgVentilObenAus.Visibility = System.Windows.Visibility.Visible;
+                        RctZuleitung.Fill = System.Windows.Media.Brushes.LightBlue;
                     }
 
                     if (VentilUnten)
                     {
-                        imgVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
-                        imgVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
-                        btnVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
-                        btnVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
+                        ImgVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
+                        ImgVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
+                        BtnVentilUntenEin.Visibility = System.Windows.Visibility.Visible;
+                        BtnVentilUntenAus.Visibility = System.Windows.Visibility.Hidden;
                     }
                     else
                     {
-                        imgVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
-                        imgVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
-                        btnVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
-                        btnVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
+                        ImgVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
+                        ImgVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
+                        BtnVentilUntenEin.Visibility = System.Windows.Visibility.Hidden;
+                        BtnVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
                     }
 
-                    if (VentilUnten && (Pegel > 0.1)) rctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else rctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                    if (VentilUnten && (Pegel > 0.1)) RctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else RctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
 
-                    rctBehaelterFuellstand.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
+                    RctBehaelterFuellstand.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
                 }
 
             }

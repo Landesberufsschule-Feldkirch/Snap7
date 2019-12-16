@@ -1,63 +1,60 @@
-﻿namespace Tiefgarage
+﻿using System.Threading;
+using System.Windows.Controls;
+
+namespace Tiefgarage
 {
     public partial class MainWindow
     {
+        public void Display_Task()
+        {
+            while (FensterAktiv)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (FensterAktiv)
+                    {
+                        AnzeigeAktualisieren();
+                    }
+                });
+                Thread.Sleep(10);
+            }
+        }
+
         public void AnzeigeAktualisieren()
         {
+            lbl_FahrzeugZaehler.Content = "Autos in der Garage: " + AnzahlFahrzeuge.ToString();
+            lbl_PersonenZaehler.Content = "Personen in der Garage: " + AnzahlPersonen.ToString();
+
+            foreach (Button btn in gAlleButtons)
+            {
+                var fp = btn.Tag as FahrzeugPerson;
+                fp.UpdatePosition();
+            }
+
+            if (Pegel_B1) circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
+            if (Pegel_B2) circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
+        }
+
+        public void AlleBtnAktivieren()
+        {
             this.Dispatcher.Invoke(() =>
-                       {
-                           if (FensterAktiv)
-                           {
-
-                               if (AnzahlFahrzeuge_Alt != AnzahlFahrzeuge)
-                               {
-                                   AnzahlFahrzeuge_Alt = AnzahlFahrzeuge;
-                                   lbl_FahrzeugZaehler.Content = "Autos in der Garage: " + AnzahlFahrzeuge.ToString();
-                               }
-
-                               if (AnzahlPersonen_Alt != AnzahlPersonen)
-                               {
-                                   AnzahlPersonen_Alt = AnzahlPersonen;
-                                   lbl_PersonenZaehler.Content = "Personen in der Garage: " + AnzahlPersonen.ToString();
-                               }
-
-                               foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen) fp.updatePosition();
-
-                               if (Pegel_B1_Alt != Pegel_B1)
-                               {
-                                   Pegel_B1_Alt = Pegel_B1;
-                                   if (Pegel_B1) circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
-                               }
-                               if (Pegel_B2_Alt != Pegel_B2)
-                               {
-                                   Pegel_B2_Alt = Pegel_B2;
-                                   if (Pegel_B2) circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
-
-                               }
-                           }
-                       });
-        }
-
-        public void alleBtnAktivieren()
-        {
-            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
             {
-                this.Dispatcher.Invoke(() =>
+                foreach (Button btn in gAlleButtons)
                 {
-                    fp.btnAktivieren();
-                });
-            }
+                    btn.IsEnabled = true;
+                }
+            });
         }
-        public void alleBtnDeaktivieren()
+        public void AlleBtnDeaktivieren()
         {
-            foreach (AlleFahrzeugePersonen fp in gAlleFahrzeugePersonen)
+            this.Dispatcher.Invoke(() =>
             {
-                this.Dispatcher.Invoke(() =>
+                foreach (Button btn in gAlleButtons)
                 {
-                    fp.btnDeaktivieren();
-                });
-            }
-
+                    btn.IsEnabled = false;
+                }
+            });
         }
+
     }
 }

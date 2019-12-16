@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Daten.cs" />
     <Compile Include="FahrzeugePersonen.cs" />
     <Compile Include="FahrzeugePersonenBewegen.cs" />
     <Compile Include="Lichtschranken.cs" />

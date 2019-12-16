@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Synchronisiereinrichtung
 {
@@ -17,7 +18,7 @@ namespace Synchronisiereinrichtung
 
                                    });
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
 

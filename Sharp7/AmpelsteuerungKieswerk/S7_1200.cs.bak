@@ -30,8 +30,6 @@ namespace AmpelsteuerungKieswerk
             }
         }
 
-    
-
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)
@@ -58,8 +56,9 @@ namespace AmpelsteuerungKieswerk
 
                 Thread.Sleep(100);
             }
-        }     
-  
+        }
+
+
 
     }
 }

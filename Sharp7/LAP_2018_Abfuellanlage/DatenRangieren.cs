@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace LAP_2018_Abfuellanlage
 {
@@ -62,7 +62,7 @@ namespace LAP_2018_Abfuellanlage
 
         public void DatenRangieren_Task()
         {
-            while (FensterAktiv)
+            while (TaskAktiv && FensterAktiv)
             {
                 S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), (int)BitPosEingang.B1, B1);
                 S7.SetBitAt(ref DigInput, InByte(BitPosEingang.F5), (int)BitPosEingang.F5, F5);
@@ -86,15 +86,23 @@ namespace LAP_2018_Abfuellanlage
                 K2 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.K2), OutBit(BitPosAusgang.K2));
                 P1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P1), OutBit(BitPosAusgang.P1));
                 P2 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P2), OutBit(BitPosAusgang.P2));
-                
-                Task.Delay(100);
+
+                Thread.Sleep(100);
             }
         }
 
         private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
-        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        //private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
         private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
         private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
 
     }
 }

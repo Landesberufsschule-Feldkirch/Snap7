@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -59,14 +59,21 @@ namespace AmpelsteuerungKieswerk
                 P5_rechts_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P5);
                 P6_rechts_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P6);
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
 
         private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
         private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
-        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
-        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
     }
 }

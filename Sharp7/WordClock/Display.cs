@@ -1,18 +1,28 @@
-﻿namespace WordClock
+﻿using System.Threading;
+
+namespace WordClock
 {
     public partial class MainWindow
     {
+        public void Display_Task()
+        {
+            while (FensterAktiv)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (FensterAktiv)
+                    {
+                        AnzeigeAktualisieren();
+                    }
+                });
+                Thread.Sleep(10);
+            }
+        }
+
         public void AnzeigeAktualisieren()
         {
-            this.Dispatcher.Invoke(() =>
-                       {
-                           if (FensterAktiv)
-                           {
-                               secondHand.Angle = Time.Seconds * 6;
-                               minuteHand.Angle = Time.Minutes * 6;
-                               hourHand.Angle = Time.Hours * 30 + Time.Minutes * 0.5;
-                           }
-                       });
+            secondHand.Angle = Time.Seconds * 6;
+            minuteHand.Angle = Time.Minutes * 6;
         }
 
     }

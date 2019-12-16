@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
 
 namespace Tiefgarage
 {
@@ -10,13 +10,11 @@ namespace Tiefgarage
             {
                 if (FahrzeugPersonGeklickt >= 0)
                 {
-                    LichtschrankenStatusBerechnen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].y_aktuell, gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].Rolle);
-                    FahrzeugPersonenBewegen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt]);
+                   // LichtschrankenStatusBerechnen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].Y_aktuell, gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].Rolle);
+                   // FahrzeugPersonenBewegen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt]);
                 }
 
-                AnzeigeAktualisieren();
-
-                Task.Delay(100);
+                Thread.Sleep(10);
             }
         }
     }

@@ -15,8 +15,11 @@ namespace Tiefgarage
         {
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
+            AlleFahrzeugePersonenInitialisieren();
+
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
            
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -24,10 +27,12 @@ namespace Tiefgarage
             FensterAktiv = false;
         }
 
-        private void btn_Click(object sender, RoutedEventArgs e)
+        private void Btn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-
+            var fp = btn.Tag as FahrzeugPerson;
+            fp.Losfahren();
+            /*
             switch (btn.Name)
             {
                 case "btn_auto_1": FahrzeugPersonGeklickt = (int)FahrzeugPerson.Auto_1; break;
@@ -43,18 +48,18 @@ namespace Tiefgarage
                 default:
                     break;
             }
-
-            alleBtnDeaktivieren();
+            */
+            AlleBtnDeaktivieren();
         }
 
         private void AlleDraussenParken_Click(object sender, RoutedEventArgs e)
         {
-            alleDraussenParken();
+            AlleDraussenParken();
         }
 
         private void AlleDrinnenParken_Click(object sender, RoutedEventArgs e)
         {
-            alleDrinnenParken();
+            AlleDrinnenParken();
         }
     }
 }

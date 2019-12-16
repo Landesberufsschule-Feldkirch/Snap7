@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Tiefgarage
 {
@@ -7,13 +7,9 @@ namespace Tiefgarage
     {
         public bool Pegel_B1;
         public bool Pegel_B2;
-        public bool Pegel_B1_Alt;
-        public bool Pegel_B2_Alt;
 
         public int AnzahlFahrzeuge = 0;
         public int AnzahlPersonen = 0;
-        public int AnzahlFahrzeuge_Alt = -1;
-        public int AnzahlPersonen_Alt = -1;
 
         enum Datenbausteine
         {
@@ -56,13 +52,21 @@ namespace Tiefgarage
                 AnzahlFahrzeuge = DigOutput[0];
                 AnzahlPersonen = DigOutput[1];
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
 
         private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
         private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
-        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
-        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
     }
 }

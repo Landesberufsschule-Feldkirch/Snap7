@@ -32,8 +32,10 @@ namespace WordClock
         {
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
+
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task());
 
             DateTime dateTime = DateTime.Now;
             Time = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);

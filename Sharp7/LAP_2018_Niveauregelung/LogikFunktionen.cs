@@ -1,23 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
 
 namespace LAP_2018_Niveauregelung
 {
     public partial class MainWindow
     {
+        private double Pegel = 0.95;
 
-        double Pegel = 0.95;
-        double FuellGeschwindigkeit = 0.000008;
-        double LeerGeschwindigkeit = 0.00001;
+        private readonly double FuellGeschwindigkeit = 0.0008;
+        private readonly double LeerGeschwindigkeit = 0.001;
 
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
             {
-                S1 = TasterSimulation(ref S1_Zaehler);
-                S2 = !TasterSimulation(ref S2_Zaehler);
-                S3 = TasterSimulation(ref S3_Zaehler);
-
-
                 if (M1) Pegel += FuellGeschwindigkeit;
                 if (M2) Pegel += FuellGeschwindigkeit;
                 if (Y1) Pegel -= LeerGeschwindigkeit;
@@ -29,20 +24,8 @@ namespace LAP_2018_Niveauregelung
                 B2 = (Pegel > 0.5);
                 B3 = (Pegel > 0.9);
 
-                AnzeigeAktualisieren();
-
-                Task.Delay(100);
+                Thread.Sleep(10);
             }
-        }
-
-        public bool TasterSimulation(ref int Zaehler)
-        {
-            if (Zaehler > 0)
-            {
-                Zaehler--;
-                return true;
-            }
-            else return false;
         }
     }
 }

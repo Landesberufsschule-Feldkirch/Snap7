@@ -1,4 +1,6 @@
 ﻿using Sharp7;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LAP_2018_Niveauregelung
@@ -21,9 +23,6 @@ namespace LAP_2018_Niveauregelung
         public bool P2 = false;
         public bool P3 = false;
 
-        int S1_Zaehler = 0;
-        int S2_Zaehler = 0;
-        int S3_Zaehler = 0;
 
         enum Datenbausteine
         {
@@ -62,7 +61,7 @@ namespace LAP_2018_Niveauregelung
 
         public void DatenRangieren_Task()
         {
-            while (FensterAktiv)
+            while (TaskAktiv && FensterAktiv)
             {
                 S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B1);
                 S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B2), InBit(BitPosEingang.B2), B2);
@@ -84,8 +83,8 @@ namespace LAP_2018_Niveauregelung
                 P1 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P1), OutBit(BitPosAusgang.P1));
                 P2 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P2), OutBit(BitPosAusgang.P2));
                 P3 = S7.GetBitAt(DigOutput, OutByte(BitPosAusgang.P3), OutBit(BitPosAusgang.P3));
-                               
-                Task.Delay(100);
+
+                Thread.Sleep(100);
             }
         }
 
@@ -93,5 +92,13 @@ namespace LAP_2018_Niveauregelung
         private int InBit(BitPosEingang Pos) {      return ((int)Pos) % 8;  }
         private int OutByte(BitPosAusgang Pos) {    return ((int)Pos) / 8;  }
         private int OutBit(BitPosAusgang Pos) {     return ((int)Pos) % 8;  }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
     }
 }

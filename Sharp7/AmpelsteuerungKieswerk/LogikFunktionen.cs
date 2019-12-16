@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Windows.Controls;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -12,11 +13,6 @@ namespace AmpelsteuerungKieswerk
 
         public void Logikfunktionen_Task()
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                //GridRasterEinblenden();
-            });
-
             while (FensterAktiv)
             {
                 B1 = false;
@@ -24,24 +20,21 @@ namespace AmpelsteuerungKieswerk
                 B3 = false;
                 B4 = false;
 
-                foreach (LKW lkw in gAlleLKW)
-                {
-                    var (b1, b2, b3, b4) = lkw.LastwagenFahren();
-                    B1 |= b1;
-                    B2 |= b2;
-                    B3 |= b3;
-                    B4 |= b4;
-                }
-
                 this.Dispatcher.Invoke(() =>
                                    {
-                                       foreach (LKW lkw in gAlleLKW) lkw.AnzeigeAktualisieren(FensterAktiv);
-                                       AnzeigeAktualisieren(FensterAktiv);
+                                       foreach (Button btn in gAlleButton)
+                                       {
+                                           var lkw = btn.Tag as LKW;
+                                           var (b1, b2, b3, b4) = lkw.LastwagenFahren();
+                                           B1 |= b1;
+                                           B2 |= b2;
+                                           B3 |= b3;
+                                           B4 |= b4;
+                                       }
                                    });
 
-                Task.Delay(100);
+                Thread.Sleep(10);// Idente Verzögerung zu Display
             }
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Sharp7;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Synchronisiereinrichtung
@@ -11,9 +12,11 @@ namespace Synchronisiereinrichtung
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-        
+
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
+        private byte[] AnalogOutput = new byte[1024];
+        private byte[] AnalogInput = new byte[1024];
         public void VerbindungErstellen()
         {
             int Result = -2;
@@ -53,15 +56,10 @@ namespace Synchronisiereinrichtung
                     }
                 });
 
-                Task.Delay(500);
+                Thread.Sleep(100);
             }
         }
-         
-        void EinAusgabeFelderInitialisieren()
-        {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-        }
+   
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace WordClock
 {
@@ -22,11 +22,9 @@ namespace WordClock
                 Stunde = (byte)Time.Hours;
                 Minute = (byte)Time.Minutes;
                 Sekunde = (byte)Time.Seconds;
-                Nanosekunde = 0;
+                Nanosekunde = 0;               
 
-                AnzeigeAktualisieren();
-
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
     }

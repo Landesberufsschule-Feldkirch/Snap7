@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace LAP_2018_Niveauregelung
 {
@@ -7,16 +8,18 @@ namespace LAP_2018_Niveauregelung
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
-        
+
         public MainWindow()
         {
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
+
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
-           private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
         }
@@ -40,16 +43,29 @@ namespace LAP_2018_Niveauregelung
 
         private void btnS1_Click(object sender, RoutedEventArgs e)
         {
-            S1_Zaehler = 10;
+            S1 = ButtonFunktionPressReleaseAendern(btnS1);
         }
         private void btnS2_Click(object sender, RoutedEventArgs e)
         {
-            S2_Zaehler = 10;
+            S2 = !ButtonFunktionPressReleaseAendern(btnS2);
         }
         private void btnS3_Click(object sender, RoutedEventArgs e)
         {
-            S3_Zaehler = 10;
+            S3 = ButtonFunktionPressReleaseAendern(btnS3);
         }
 
+        private bool ButtonFunktionPressReleaseAendern(Button knopf)
+        {
+            if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Release;
+                return true;
+            }
+            else
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Press;
+                return false;
+            }
+        }
     }
 }

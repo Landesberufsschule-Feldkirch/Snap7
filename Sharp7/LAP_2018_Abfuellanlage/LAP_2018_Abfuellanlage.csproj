@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Flaschen.cs" />
+    <Compile Include="FlaschenBewegen.cs" />
     <Compile Include="S7_1200.cs" />
     <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Threading;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -6,9 +7,23 @@ namespace PlcConnect
 {
     public partial class MainWindow
     {
-
         public const float Rahmenbreite_1px = 1;
         public const float Rahmenbreite_5px = 5;
+
+        public void Display_Task()
+        {
+            while (FensterAktiv)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (FensterAktiv)
+                    {
+                        AnzeigeAktualisieren();
+                    }
+                });
+                Thread.Sleep(10);
+            }
+        }
 
         public void AnzeigeAktualisieren()
         {

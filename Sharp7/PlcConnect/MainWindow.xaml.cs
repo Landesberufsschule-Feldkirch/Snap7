@@ -15,6 +15,7 @@ namespace PlcConnect
             InitializeComponent();
             BilderEinlesen();
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
         private void ButtonConnect_Click(object sender, RoutedEventArgs e)

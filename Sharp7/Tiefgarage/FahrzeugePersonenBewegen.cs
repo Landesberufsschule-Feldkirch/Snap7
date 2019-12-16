@@ -1,8 +1,8 @@
 ﻿namespace Tiefgarage
 {
-    public partial class MainWindow
+    public partial class FahrzeugPerson
     {
-        public const double FahrenSchrittweite = 0.01;
+        private readonly double FahrenSchrittweite = 1;
 
         public enum FahrenRichtung
         {
@@ -18,12 +18,12 @@
             DraussenEinparken
             // DraussenEingeparkt
         }
-        public void FahrzeugPersonenBewegen(AlleFahrzeugePersonen fp)
+        public void Bewegen(FahrzeugPerson fp)
         {
-            if (fp.Bewegung < FahrenRichtung.DrinnenParken) FahrzeugPersonenHineinfahren(fp); else FahrzeugPersonenHinausfahren(fp);
+            if (fp.Bewegung < FahrenRichtung.DrinnenParken) Hineinfahren(fp); else Hinausfahren(fp);
         }
 
-        public void FahrzeugPersonenHineinfahren(AlleFahrzeugePersonen fp)
+        public void Hineinfahren(FahrzeugPerson fp)
         {
             double Limit;
 
@@ -34,38 +34,40 @@
                     break;
 
                 case FahrenRichtung.DraussenSenkrechtFahren:
-                    if (fp.Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
-                    if (fp.y_aktuell < Limit) fp.y_aktuell += FahrenSchrittweite;
+                    if (fp.FP_Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
+                    if (fp.Y_aktuell < Limit) fp.Y_aktuell += FahrenSchrittweite;
                     else fp.Bewegung = FahrenRichtung.DraussenWaagrechtFahren;
                     break;
 
                 case FahrenRichtung.DraussenWaagrechtFahren:
-                    if (fp.Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
-                    if (fp.x_aktuell < 300) fp.x_aktuell += FahrenSchrittweite;
+                    if (fp.FP_Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
+                    if (fp.X_aktuell < 300) fp.X_aktuell += FahrenSchrittweite;
                     else
                     {
-                        if (fp.x_aktuell > Limit) fp.x_aktuell -= FahrenSchrittweite;
+                        if (fp.X_aktuell > Limit) fp.X_aktuell -= FahrenSchrittweite;
                         else fp.Bewegung = FahrenRichtung.HineinFahren;
                     }
                     break;
 
                 case FahrenRichtung.HineinFahren:
-                    if (fp.y_aktuell < fp.y_drinnen) fp.y_aktuell += FahrenSchrittweite;
+                    if (fp.Y_aktuell < fp.Y_drinnen) fp.Y_aktuell += FahrenSchrittweite;
                     else fp.Bewegung = FahrenRichtung.DrinnenEinparken;
                     break;
 
                 case FahrenRichtung.DrinnenEinparken:
-                    if (fp.x_aktuell > fp.x_drinnen + 1) fp.x_aktuell -= FahrenSchrittweite;
+                    if (fp.X_aktuell > fp.X_drinnen + 1) fp.X_aktuell -= FahrenSchrittweite;
                     else
                     {
-                        if (fp.x_aktuell < fp.x_drinnen - 1) fp.x_aktuell += FahrenSchrittweite;
+                        if (fp.X_aktuell < fp.X_drinnen - 1) fp.X_aktuell += FahrenSchrittweite;
                         else
                         {
                             fp.Bewegung = FahrenRichtung.DrinnenParken;
+                            /*
                             FahrzeugPersonGeklickt = -1;
                             Pegel_B1 = true;
                             Pegel_B2 = true;
-                            alleBtnAktivieren();
+                            AlleBtnAktivieren();
+                            */
                         }
                     }
                     break;
@@ -75,7 +77,7 @@
             }
         }
 
-        public void FahrzeugPersonenHinausfahren(AlleFahrzeugePersonen fp)
+        public void Hinausfahren(FahrzeugPerson fp)
         {
             double Limit;
 
@@ -86,39 +88,41 @@
                     break;
 
                 case FahrenRichtung.DrinnenAusparken:
-                    if (fp.Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
-                    if (fp.x_aktuell < Limit) fp.x_aktuell += FahrenSchrittweite;
+                    if (fp.FP_Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
+                    if (fp.X_aktuell < Limit) fp.X_aktuell += FahrenSchrittweite;
                     else
                     {
-                        if (fp.x_aktuell > Limit + 1) fp.x_aktuell -= FahrenSchrittweite;
+                        if (fp.X_aktuell > Limit + 1) fp.X_aktuell -= FahrenSchrittweite;
                         else fp.Bewegung = FahrenRichtung.HinausFahren;
                     }
                     break;
 
                 case FahrenRichtung.HinausFahren:
-                    if (fp.Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
-                    if (fp.y_aktuell > Limit) fp.y_aktuell -= FahrenSchrittweite;
+                    if (fp.FP_Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
+                    if (fp.Y_aktuell > Limit) fp.Y_aktuell -= FahrenSchrittweite;
                     else fp.Bewegung = FahrenRichtung.DraussenAufDieSeiteFahren;
                     break;
 
                 case FahrenRichtung.DraussenAufDieSeiteFahren:
-                    if (fp.x_aktuell > fp.x_draussen + 1) fp.x_aktuell -= FahrenSchrittweite;
+                    if (fp.X_aktuell > fp.X_draussen + 1) fp.X_aktuell -= FahrenSchrittweite;
                     else
                     {
-                        if (fp.x_aktuell < fp.x_draussen - 1) fp.x_aktuell += FahrenSchrittweite;
+                        if (fp.X_aktuell < fp.X_draussen - 1) fp.X_aktuell += FahrenSchrittweite;
                         else fp.Bewegung = FahrenRichtung.DraussenEinparken;
                     }
                     break;
 
                 case FahrenRichtung.DraussenEinparken:
-                    if (fp.y_aktuell > fp.y_draussen) fp.y_aktuell -= FahrenSchrittweite;
+                    if (fp.Y_aktuell > fp.Y_draussen) fp.Y_aktuell -= FahrenSchrittweite;
                     else
                     {
                         fp.Bewegung = FahrenRichtung.DraussenParken;
+                        /*
                         FahrzeugPersonGeklickt = -1;
                         Pegel_B1 = true;
                         Pegel_B2 = true;
-                        alleBtnAktivieren();
+                        AlleBtnAktivieren();
+                        */
                     }
                     break;
 

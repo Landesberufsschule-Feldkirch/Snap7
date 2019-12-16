@@ -7,7 +7,7 @@
         public const double B2_Pos_1 = 280.0;
         public const double B2_Pos_2 = 320.0;
 
-        public void LichtschrankenStatusBerechnen(double y_Pos, Rolle rolle)
+        public void LichtschrankenStatusBerechnen(double y_Pos, FahrzeugPerson.Rolle rolle)
         {
             if ((y_Pos < B1_Pos_1) || (y_Pos > B2_Pos_2))
             {
@@ -18,7 +18,7 @@
             {
                 switch (rolle)
                 {
-                    case Rolle.Auto:
+                    case FahrzeugPerson.Rolle.Auto:
                         if ((y_Pos > B1_Pos_1) && (y_Pos < B1_Pos_2))
                         {
                             Pegel_B1 = false;
@@ -36,7 +36,7 @@
                         }
                         break;
 
-                    case Rolle.Person:
+                    case FahrzeugPerson.Rolle.Person:
                         if ((y_Pos > B1_Pos_1) && (y_Pos < B1_Pos_2))
                         {
                             Pegel_B1 = false;

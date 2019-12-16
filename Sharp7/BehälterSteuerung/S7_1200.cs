@@ -1,6 +1,6 @@
 ﻿using Sharp7;
 using System.Net.NetworkInformation;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace BehälterSteuerung
 {
@@ -11,9 +11,11 @@ namespace BehälterSteuerung
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-        
+
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
+        private byte[] AnalogOutput = new byte[1024];
+        private byte[] AnalogInput = new byte[1024];
         public void VerbindungErstellen()
         {
             int Result = -2;
@@ -25,16 +27,13 @@ namespace BehälterSteuerung
                 TaskAktiv = true;
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
-        }
-
-    
+        }    
 
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)
             {
                 Ping pingSender = new Ping();
-
                 PingReply reply = pingSender.Send(SPS_IP_Adresse, SPS_Timeout);
 
                 this.Dispatcher.Invoke(() =>
@@ -53,15 +52,8 @@ namespace BehälterSteuerung
                     }
                 });
 
-                Task.Delay(500);
+                Thread.Sleep(100);
             }
-        }
-         
-        void EinAusgabeFelderInitialisieren()
-        {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-        }
-
+        } 
     }
 }

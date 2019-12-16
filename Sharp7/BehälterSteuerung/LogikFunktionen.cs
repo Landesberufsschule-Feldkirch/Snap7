@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
 
 namespace BehälterSteuerung
 {
@@ -11,16 +11,11 @@ namespace BehälterSteuerung
             Modus_1432,
             Modus_4321
         }
-
-        public const double SinkGeschwindigkeit = 0.00003;
-        public const double FuellGeschwindigkeit = 0.15 * SinkGeschwindigkeit; // damit alle Behälter gleichzeit leer sein können
-
+             
         public double PegelOffset_1;
         public double PegelOffset_2;
         public double PegelOffset_3;
         public double PegelOffset_4;
-
-        public const double HoeheFuellBalken = 200.0;
 
         public bool Tank_1_AutomatischEntleeren;
         public bool Tank_2_AutomatischEntleeren;
@@ -28,7 +23,6 @@ namespace BehälterSteuerung
         public bool Tank_4_AutomatischEntleeren;
 
         public bool AutomatikModusNochAktiv = false;
-
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
@@ -43,13 +37,7 @@ namespace BehälterSteuerung
 
                 if (!AutomatikModusNochAktiv) AutomatikKnoepfeAktivieren();
 
-                this.Dispatcher.Invoke(() =>
-                                   {
-                                       foreach (Behaelter beh in gAlleBehaelter) beh.AnzeigeAktualisieren(FensterAktiv);
-                                       AbleitungenAnzeigen(FensterAktiv);
-                                   });
-
-                Task.Delay(100);
+                Thread.Sleep(10);
             }
         }
 

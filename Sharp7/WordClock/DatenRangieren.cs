@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace WordClock
 {
@@ -75,7 +75,7 @@ namespace WordClock
                     Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_10, DigInput);
                 }
 
-                Task.Delay(100);
+                Thread.Sleep(100);
             }
         }
 
@@ -83,5 +83,13 @@ namespace WordClock
         private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
         private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
         private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+
+        void EinAusgabeFelderInitialisieren()
+        {
+            foreach (byte b in DigInput) DigInput[b] = 0;
+            foreach (byte b in DigOutput) DigOutput[b] = 0;
+            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
+            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+        }
     }
 }

@@ -1,7 +1,28 @@
-﻿namespace BehälterSteuerung
+﻿using System.Threading;
+
+namespace BehälterSteuerung
 {
     public partial class MainWindow
     {
+        public void Display_Task()
+        {
+            while (FensterAktiv)
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    if (FensterAktiv)
+                    {
+                        foreach (Behaelter beh in gAlleBehaelter) beh.BehaelterAnzeigen(FensterAktiv);
+                        AbleitungenAnzeigen(FensterAktiv);
+                    }
+                });
+
+                Thread.Sleep(10);
+            }
+        }
+
+
+
         public void AbleitungenAnzeigen(bool FensterAktiv)
         {
             bool AbleitungenVoll = false;

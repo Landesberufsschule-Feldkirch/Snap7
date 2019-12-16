@@ -1,6 +1,6 @@
 ﻿using Sharp7;
 using System.Net.NetworkInformation;
-using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace LAP_2018_Abfuellanlage
@@ -12,17 +12,11 @@ namespace LAP_2018_Abfuellanlage
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-
-        public const int DB_DigInput = 1;
-        public const int DB_DigOutput = 2;
-        public const int Startbyte_0 = 0;
-        public const int AnzahlByte_1 = 1;
-        public const int AnzahlByte_2 = 2;
-
+        
         private byte[] DigOutput = new byte[1024];
         private byte[] DigInput = new byte[1024];
+        private byte[] AnalogOutput = new byte[1024];
         private byte[] AnalogInput = new byte[1024];
-
         public void VerbindungErstellen()
         {
             int Result = -2;
@@ -35,8 +29,6 @@ namespace LAP_2018_Abfuellanlage
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
-
-  
 
         public void SPS_Pingen_Task()
         {
@@ -62,17 +54,8 @@ namespace LAP_2018_Abfuellanlage
                     }
                 });
 
-                Task.Delay(500);
+                Thread.Sleep(100);
             }
         }
-
-        void EinAusgabeFelderInitialisieren()
-        {
-            AlleFlaschenInitialisieren();
-            AlleFlaschenParken();
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-        }
-
     }
 }

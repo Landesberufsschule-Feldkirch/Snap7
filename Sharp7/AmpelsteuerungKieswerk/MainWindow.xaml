@@ -60,8 +60,8 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="26" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="7"  Grid.ColumnSpan="9" Grid.Row="15" Background="LightSeaGreen" />
+        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "         Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
+        <Label x:Name="lbl_PlcPing"         Content="S7-1200"       Grid.Column="7"     Grid.ColumnSpan="7" Grid.Row="15" Background="LightSeaGreen" />
 
         <Rectangle Fill="LightGray"                                 Grid.Column="23" Grid.ColumnSpan="5"    Grid.Row="2"  Grid.RowSpan="5" Stroke="Black" />
         <Button x:Name="AlleLinksParken" Content="Links parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                    Click="AlleLinksParken_Click"/>
@@ -96,23 +96,23 @@
         <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="45,10,0,0"/>
 
         <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
-            <Button x:Name="btn_lkw_1" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
+            <Button x:Name="btn_lkw_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_1" Height="60" Source="Bilder/LKW_braun.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_2" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
+            <Button x:Name="btn_lkw_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_2" Height="60" Source="Bilder/LKW_gelb.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_3" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
+            <Button x:Name="btn_lkw_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_3" Height="60" Source="Bilder/LKW_gruen.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_4" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
+            <Button x:Name="btn_lkw_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_4" Height="60" Source="Bilder/LKW_pink.PNG"/>
             </Button>
 
-            <Button x:Name="btn_lkw_5" Click="btn_Click" Background="White" Foreground="White" BorderBrush="White">
+            <Button x:Name="btn_lkw_5" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_5" Height="60" Source="Bilder/LKW_rot.PNG"/>
             </Button>
         </Canvas>
