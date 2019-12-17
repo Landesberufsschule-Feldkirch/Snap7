@@ -28,7 +28,7 @@ namespace AmpelsteuerungKieswerk
 
         public (bool b1, bool b2, bool b3, bool b4) LastwagenFahren()
         {
-            Tuple<double, double> KurveDatenpunkte;
+            (double x, double y) KurveDatenpunkte;
 
             switch (LKW_Position)
             {
@@ -40,8 +40,8 @@ namespace AmpelsteuerungKieswerk
                     break;
                 case LKW_Positionen.LR_LinkeKurve:
                     KurveDatenpunkte = LinkeKurve.PunktBestimmen(KurvePosition);
-                    X_LKW_Aktuell = KurveDatenpunkte.Item1;
-                    Y_LKW_Aktuell = KurveDatenpunkte.Item2;
+                    X_LKW_Aktuell = KurveDatenpunkte.x;
+                    Y_LKW_Aktuell = KurveDatenpunkte.y;
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) LKW_Position = LKW_Positionen.LR_Waagrecht;
                     break;
@@ -52,8 +52,8 @@ namespace AmpelsteuerungKieswerk
                     break;
                 case LKW_Positionen.LR_RechtKurve:
                     KurveDatenpunkte = RechteKurve.PunktBestimmen(KurvePosition);
-                    X_LKW_Aktuell = KurveDatenpunkte.Item1;
-                    Y_LKW_Aktuell = KurveDatenpunkte.Item2;
+                    X_LKW_Aktuell = KurveDatenpunkte.x;
+                    Y_LKW_Aktuell = KurveDatenpunkte.y;
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) LKW_Position = LKW_Positionen.RechtsGeparkt;
                     break;
@@ -68,8 +68,8 @@ namespace AmpelsteuerungKieswerk
 
                 case LKW_Positionen.RL_RechteKurve:
                     KurveDatenpunkte = RechteKurve.PunktBestimmen(KurvePosition);
-                    X_LKW_Aktuell = KurveDatenpunkte.Item1;
-                    Y_LKW_Aktuell = KurveDatenpunkte.Item2;
+                    X_LKW_Aktuell = KurveDatenpunkte.x;
+                    Y_LKW_Aktuell = KurveDatenpunkte.y;
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) LKW_Position = LKW_Positionen.RL_Waagrecht;
                     break;
@@ -80,8 +80,8 @@ namespace AmpelsteuerungKieswerk
                     break;
                 case LKW_Positionen.RL_LinkeKurve:
                     KurveDatenpunkte = LinkeKurve.PunktBestimmen(KurvePosition);
-                    X_LKW_Aktuell = KurveDatenpunkte.Item1;
-                    Y_LKW_Aktuell = KurveDatenpunkte.Item2;
+                    X_LKW_Aktuell = KurveDatenpunkte.x;
+                    Y_LKW_Aktuell = KurveDatenpunkte.y;
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) LKW_Position = LKW_Positionen.LinksGeparkt;
                     break;

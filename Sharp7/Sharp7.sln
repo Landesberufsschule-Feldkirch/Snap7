@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synchronisiereinrichtung", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rohrpost", "Rohrpost\Rohrpost.csproj", "{F053E1F3-5474-4FEC-AAC6-116337968F1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilties", "Utilties\Utilties.csproj", "{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{F053E1F3-5474-4FEC-AAC6-116337968F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F053E1F3-5474-4FEC-AAC6-116337968F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F053E1F3-5474-4FEC-AAC6-116337968F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

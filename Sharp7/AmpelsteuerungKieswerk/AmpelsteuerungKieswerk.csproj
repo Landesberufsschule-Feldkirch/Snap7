@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BezierCurve.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="LastKraftWagen.cs" />
     <Compile Include="LastKraftWagenBewegen.cs" />
@@ -109,6 +108,12 @@
     <Resource Include="Bilder\LKW_gruen.PNG" />
     <Resource Include="Bilder\LKW_pink.PNG" />
     <Resource Include="Bilder\LKW_rot.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilties\Utilties.csproj">
+      <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
+      <Name>Utilties</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

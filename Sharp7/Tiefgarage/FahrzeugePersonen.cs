@@ -1,4 +1,6 @@
-﻿namespace Tiefgarage
+﻿using Utilities;
+
+namespace Tiefgarage
 {
     public partial class FahrzeugPerson
     {
@@ -8,8 +10,8 @@
             Person
         }
 
-        static int AnzahlFahrzeuge;
-        static int AnzahlPersonen;
+        static int AnzahlFahrzeuge = 0;
+        static int AnzahlPersonen = 0;
 
         public Rolle FP_Rolle { get; set; }
         public double X_aktuell { get; set; }

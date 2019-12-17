@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Utilities;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -55,29 +56,27 @@ namespace AmpelsteuerungKieswerk
 
         public void LastwagenAnzeigen(bool fensterAktiv, Button btn)
         {
-            if (fensterAktiv)
+            if (!fensterAktiv) return;
+
+            btn.SetValue(Canvas.LeftProperty, X_LKW_Aktuell);
+            btn.SetValue(Canvas.TopProperty, Y_LKW_Aktuell);
+
+            if (LKW_RichtungAlt == LKW_Richtung) return;
+
+            if (LKW_Richtung == LKW_Richtungen.NachRechts)
             {
-                btn.SetValue(Canvas.LeftProperty, X_LKW_Aktuell);
-                btn.SetValue(Canvas.TopProperty, Y_LKW_Aktuell);
-
-                if (LKW_RichtungAlt != LKW_Richtung)
-                {
-                    if (LKW_Richtung == LKW_Richtungen.NachRechts)
-                    {
-                        ImgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
-                        ScaleTransform flipTrans = new ScaleTransform { ScaleX = 1 };
-                        ImgLKW.RenderTransform = flipTrans;
-                    }
-                    if (LKW_Richtung == LKW_Richtungen.NachLinks)
-                    {
-                        ImgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
-                        ScaleTransform flipTrans = new ScaleTransform { ScaleX = -1 };
-                        ImgLKW.RenderTransform = flipTrans;
-                    }
-                }
-
-                LKW_RichtungAlt = LKW_Richtung;
+                ImgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
+                ScaleTransform flipTrans = new ScaleTransform { ScaleX = 1 };
+                ImgLKW.RenderTransform = flipTrans;
             }
+            if (LKW_Richtung == LKW_Richtungen.NachLinks)
+            {
+                ImgLKW.RenderTransformOrigin = new Point(0.5, 0.5);
+                ScaleTransform flipTrans = new ScaleTransform { ScaleX = -1 };
+                ImgLKW.RenderTransform = flipTrans;
+            }
+
+            LKW_RichtungAlt = LKW_Richtung;
         }
 
         public void LinksParken() { LKW_Position = LKW_Positionen.LinksGeparkt; }
@@ -95,6 +94,5 @@ namespace AmpelsteuerungKieswerk
             if (X_LKW_Aktuell > xPos) return false;
             return true;
         }
-
     }
 }

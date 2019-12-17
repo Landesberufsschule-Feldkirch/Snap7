@@ -126,36 +126,6 @@
             <Button x:Name="btn_person_4" Click="Btn_Click">
                 <Image x:Name="img_person_4" Height="50" Source="Bilder/mensch_4.jpg"/>
             </Button>
-
-            <Path x:Name="Bezier11" Stroke="Black">
-                <Path.Data>
-                     <PathGeometry Figures="M 10,10  C 10,110 350,150 350,250" /> 
-                </Path.Data>              
-            </Path>
-            
-            <Path x:Name="Bezier12" Stroke="Black">
-                <Path.Data>
-                    <PathGeometry Figures="M 120,10  C 120,110 350,150 350,250" />
-                </Path.Data>
-            </Path>
-
-            <Path x:Name="Bezier21" Stroke="Black" StrokeThickness="4">
-                <Path.Data>
-                    <PathGeometry Figures="M 350,400  C 350,500     200,650     100,650" />
-                </Path.Data>
-            </Path>
-
-            <Path x:Name="Bezier22" Stroke="Black">
-                <Path.Data>
-                    <PathGeometry Figures="M 350,400  C 350,500 200,550 100,550" />
-                </Path.Data>
-            </Path>
-
-            <Path x:Name="Bezier24" Stroke="Black">
-                <Path.Data>
-                    <PathGeometry Figures="M 350,400  C 350,500 200,600 200,700" />
-                </Path.Data>
-            </Path>
             
         </Canvas>
 
