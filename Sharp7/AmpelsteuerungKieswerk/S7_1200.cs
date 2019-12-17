@@ -1,7 +1,6 @@
 ﻿using Sharp7;
 using System.Net.NetworkInformation;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -26,7 +25,7 @@ namespace AmpelsteuerungKieswerk
             if (Result == 0)
             {
                 TaskAktiv = true;
-                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
+                //System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
 

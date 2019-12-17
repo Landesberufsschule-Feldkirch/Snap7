@@ -17,12 +17,12 @@ namespace WordClock
 
                 DatumJahr = (ushort)DateTime.Now.Year;
                 DatumMonat = (byte)DateTime.Now.Month;
-                DatumTag = (byte) DateTime.Now.Day;
+                DatumTag = (byte)DateTime.Now.Day;
                 DatumWochentag = (byte)DateTime.Now.DayOfWeek;
                 Stunde = (byte)Time.Hours;
                 Minute = (byte)Time.Minutes;
                 Sekunde = (byte)Time.Seconds;
-                Nanosekunde = 0;               
+                Nanosekunde = 0;
 
                 Thread.Sleep(100);
             }

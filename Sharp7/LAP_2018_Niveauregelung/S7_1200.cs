@@ -25,10 +25,11 @@ namespace LAP_2018_Niveauregelung
             Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
             if (Result == 0)
             {
-                TaskAktiv = true; System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
+                TaskAktiv = true;
+                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
-               
+
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)

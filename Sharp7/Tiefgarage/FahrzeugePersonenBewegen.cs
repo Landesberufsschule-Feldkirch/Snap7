@@ -1,134 +1,96 @@
-﻿namespace Tiefgarage
+﻿using System;
+
+namespace Tiefgarage
 {
     public partial class FahrzeugPerson
     {
-        private readonly double FahrenSchrittweite = 1;
+        private readonly double xy_Bewegung = 1;
+        private readonly double KurveGeschwindigkeit = 0.002;
+
+        private double KurvePosition;
 
         public enum FahrenRichtung
         {
-            DraussenParken = 0,
-            DraussenSenkrechtFahren,
-            DraussenWaagrechtFahren,
-            HineinFahren,
-            DrinnenEinparken,
-            DrinnenParken,
-            DrinnenAusparken,
-            HinausFahren,
-            DraussenAufDieSeiteFahren,
-            DraussenEinparken
-            // DraussenEingeparkt
-        }
-        public void Bewegen(FahrzeugPerson fp)
-        {
-            if (fp.Bewegung < FahrenRichtung.DrinnenParken) Hineinfahren(fp); else Hinausfahren(fp);
-        }
+            ObenGeparkt = 0,
+            AbwaertsKurveOben,
+            AbwaertsSenkrecht,
+            AbwaertsKurveUnten,
 
-        public void Hineinfahren(FahrzeugPerson fp)
-        {
-            double Limit;
+            UntenGeparkt,
 
-            switch (fp.Bewegung)
+            AufwaertsKurveUnten,
+            AufwaertsSenkrecht,
+            AufwaertsKurveOben
+        }
+        public Tuple<bool, bool> Bewegen()
+        {
+            Tuple<double, double> KurveDatenpunkte;
+      
+            switch (Bewegung)
             {
-                case FahrenRichtung.DraussenParken:
-                    fp.Bewegung = FahrenRichtung.DraussenSenkrechtFahren;
+                case FahrenRichtung.ObenGeparkt:
+                    X_aktuell = X_oben;
+                    Y_aktuell = Y_oben;
+                    KurvePosition = 0;
                     break;
 
-                case FahrenRichtung.DraussenSenkrechtFahren:
-                    if (fp.FP_Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
-                    if (fp.Y_aktuell < Limit) fp.Y_aktuell += FahrenSchrittweite;
-                    else fp.Bewegung = FahrenRichtung.DraussenWaagrechtFahren;
+                case FahrenRichtung.AbwaertsKurveOben:
+                    KurveDatenpunkte = KurveOben.PunktBestimmen(KurvePosition);
+                    X_aktuell = KurveDatenpunkte.Item1;
+                    Y_aktuell = KurveDatenpunkte.Item2;
+                    KurvePosition += KurveGeschwindigkeit;
+                    if (KurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
                     break;
 
-                case FahrenRichtung.DraussenWaagrechtFahren:
-                    if (fp.FP_Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
-                    if (fp.X_aktuell < 300) fp.X_aktuell += FahrenSchrittweite;
-                    else
-                    {
-                        if (fp.X_aktuell > Limit) fp.X_aktuell -= FahrenSchrittweite;
-                        else fp.Bewegung = FahrenRichtung.HineinFahren;
-                    }
+                case FahrenRichtung.AbwaertsSenkrecht:
+                    if (Y_aktuell < Y_Fahrspur_unten) Y_aktuell += xy_Bewegung;
+                    else Bewegung = FahrenRichtung.AbwaertsKurveUnten;
+                    KurvePosition = 0;
                     break;
 
-                case FahrenRichtung.HineinFahren:
-                    if (fp.Y_aktuell < fp.Y_drinnen) fp.Y_aktuell += FahrenSchrittweite;
-                    else fp.Bewegung = FahrenRichtung.DrinnenEinparken;
+                case FahrenRichtung.AbwaertsKurveUnten:
+                    KurveDatenpunkte = KurveUnten.PunktBestimmen(KurvePosition);
+                    X_aktuell = KurveDatenpunkte.Item1;
+                    Y_aktuell = KurveDatenpunkte.Item2;
+                    KurvePosition += KurveGeschwindigkeit;
+                    if (KurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
                     break;
 
-                case FahrenRichtung.DrinnenEinparken:
-                    if (fp.X_aktuell > fp.X_drinnen + 1) fp.X_aktuell -= FahrenSchrittweite;
-                    else
-                    {
-                        if (fp.X_aktuell < fp.X_drinnen - 1) fp.X_aktuell += FahrenSchrittweite;
-                        else
-                        {
-                            fp.Bewegung = FahrenRichtung.DrinnenParken;
-                            /*
-                            FahrzeugPersonGeklickt = -1;
-                            Pegel_B1 = true;
-                            Pegel_B2 = true;
-                            AlleBtnAktivieren();
-                            */
-                        }
-                    }
+                case FahrenRichtung.UntenGeparkt:
+                    X_aktuell = X_unten;
+                    Y_aktuell = Y_unten;
+                    KurvePosition = 1;
                     break;
+
+
+                case FahrenRichtung.AufwaertsKurveUnten:
+                    KurveDatenpunkte = KurveUnten.PunktBestimmen(KurvePosition);
+                    X_aktuell = KurveDatenpunkte.Item1;
+                    Y_aktuell = KurveDatenpunkte.Item2;
+                    KurvePosition -= KurveGeschwindigkeit;
+                    if (KurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
+                    break;
+
+                case FahrenRichtung.AufwaertsSenkrecht:
+                    if (Y_aktuell > Y_Fahrspur_oben) Y_aktuell -= xy_Bewegung;
+                    else Bewegung = FahrenRichtung.AufwaertsKurveOben;
+                    KurvePosition = 1;
+                    break;
+
+                case FahrenRichtung.AufwaertsKurveOben:
+                    KurveDatenpunkte = KurveOben.PunktBestimmen(KurvePosition);
+                    X_aktuell = KurveDatenpunkte.Item1;
+                    Y_aktuell = KurveDatenpunkte.Item2;
+                    KurvePosition -= KurveGeschwindigkeit;
+                    if (KurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
+                    break;
+
 
                 default:
                     break;
             }
-        }
-
-        public void Hinausfahren(FahrzeugPerson fp)
-        {
-            double Limit;
-
-            switch (fp.Bewegung)
-            {
-                case FahrenRichtung.DrinnenParken:
-                    fp.Bewegung = FahrenRichtung.DrinnenAusparken;
-                    break;
-
-                case FahrenRichtung.DrinnenAusparken:
-                    if (fp.FP_Rolle == Rolle.Auto) Limit = 310; else Limit = 370;
-                    if (fp.X_aktuell < Limit) fp.X_aktuell += FahrenSchrittweite;
-                    else
-                    {
-                        if (fp.X_aktuell > Limit + 1) fp.X_aktuell -= FahrenSchrittweite;
-                        else fp.Bewegung = FahrenRichtung.HinausFahren;
-                    }
-                    break;
-
-                case FahrenRichtung.HinausFahren:
-                    if (fp.FP_Rolle == Rolle.Auto) Limit = 180; else Limit = 160;
-                    if (fp.Y_aktuell > Limit) fp.Y_aktuell -= FahrenSchrittweite;
-                    else fp.Bewegung = FahrenRichtung.DraussenAufDieSeiteFahren;
-                    break;
-
-                case FahrenRichtung.DraussenAufDieSeiteFahren:
-                    if (fp.X_aktuell > fp.X_draussen + 1) fp.X_aktuell -= FahrenSchrittweite;
-                    else
-                    {
-                        if (fp.X_aktuell < fp.X_draussen - 1) fp.X_aktuell += FahrenSchrittweite;
-                        else fp.Bewegung = FahrenRichtung.DraussenEinparken;
-                    }
-                    break;
-
-                case FahrenRichtung.DraussenEinparken:
-                    if (fp.Y_aktuell > fp.Y_draussen) fp.Y_aktuell -= FahrenSchrittweite;
-                    else
-                    {
-                        fp.Bewegung = FahrenRichtung.DraussenParken;
-                        /*
-                        FahrzeugPersonGeklickt = -1;
-                        Pegel_B1 = true;
-                        Pegel_B2 = true;
-                        AlleBtnAktivieren();
-                        */
-                    }
-                    break;
-
-                default:
-                    break;
-            }
+            
+            return new Tuple<bool, bool>(LichtschrankeUnterbrochen(Y_Position_B1), LichtschrankeUnterbrochen(Y_Position_B2) );
         }
     }
 }

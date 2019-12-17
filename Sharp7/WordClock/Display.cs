@@ -24,6 +24,5 @@ namespace WordClock
             secondHand.Angle = Time.Seconds * 6;
             minuteHand.Angle = Time.Minutes * 6;
         }
-
     }
 }

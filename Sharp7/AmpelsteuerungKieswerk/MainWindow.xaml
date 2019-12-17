@@ -114,8 +114,8 @@
 
             <Button x:Name="btn_lkw_5" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_lkw_5" Height="60" Source="Bilder/LKW_rot.PNG"/>
-            </Button>
+            </Button>            
         </Canvas>
-
+        
     </Grid>
 </Window>

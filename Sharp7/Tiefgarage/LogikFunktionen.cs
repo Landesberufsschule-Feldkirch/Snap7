@@ -8,12 +8,6 @@ namespace Tiefgarage
         {
             while (FensterAktiv)
             {
-                if (FahrzeugPersonGeklickt >= 0)
-                {
-                   // LichtschrankenStatusBerechnen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].Y_aktuell, gAlleFahrzeugePersonen[FahrzeugPersonGeklickt].Rolle);
-                   // FahrzeugPersonenBewegen(gAlleFahrzeugePersonen[FahrzeugPersonGeklickt]);
-                }
-
                 Thread.Sleep(10);
             }
         }

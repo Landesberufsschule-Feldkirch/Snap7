@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -9,25 +10,20 @@ namespace AmpelsteuerungKieswerk
     {
         public void Display_Task()
         {
-            while (FensterAktiv)
-            {
-                this.Dispatcher.Invoke(() =>
+            this.Dispatcher.Invoke(() =>
+                        {
+                            if (FensterAktiv)
                             {
-                                if (FensterAktiv)
+                                //GridRasterEinblenden();
+                                AnzeigeAktualisieren();
+
+                                foreach (Button btn in gAlleButton)
                                 {
-                                    //GridRasterEinblenden();
-                                    AnzeigeAktualisieren();
-
-                                    foreach (Button btn in gAlleButton)
-                                    {
-                                        var lkw = btn.Tag as LKW;
-                                        lkw.LastwagenAnzeigen(FensterAktiv, btn);
-                                    }
+                                    var lkw = btn.Tag as LKW;
+                                    lkw.LastwagenAnzeigen(FensterAktiv, btn);
                                 }
-                            });
-
-                Thread.Sleep(10); // Idente Verzögerung zu Logikfunktionen
-            }
+                            }
+                        });
         }
 
         public void AnzeigeAktualisieren()

@@ -1,8 +1,6 @@
 ﻿using Sharp7;
 using System.Net.NetworkInformation;
 using System.Threading;
-using System.Threading.Tasks;
-
 
 namespace WordClock
 {
@@ -32,7 +30,7 @@ namespace WordClock
             }
         }
 
-   
+
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)
@@ -60,7 +58,5 @@ namespace WordClock
                 Thread.Sleep(100);
             }
         }
-
-  
     }
 }

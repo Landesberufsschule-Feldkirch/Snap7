@@ -14,28 +14,26 @@ namespace AmpelsteuerungKieswerk
         private enum LKW_Positionen
         {
             LinksGeparkt = 0,
-            LR_LinksWaagrecht,
-            LR_LinksSenkrecht,
-            LR_NachRechts,
-            LR_RechtsSenkrecht,
-            LR_RechtsWaagrecht,
+            LR_LinkeKurve,
+            LR_Waagrecht,
+            LR_RechtKurve,
             RechtsGeparkt,
-            RL_RechtsWaagrecht,
-            RL_RechtsSenkrecht,
-            RL_NachLinks,
-            RL_LinksSenkrecht,
-            RL_LinksWaagrecht
+            RL_RechteKurve,
+            RL_Waagrecht,
+            RL_LinkeKurve
         }
 
         static int AnzahlLKW;
         private readonly int ID;
         private LKW_Richtungen LKW_Richtung = LKW_Richtungen.NachRechts;
         private LKW_Richtungen LKW_RichtungAlt = LKW_Richtungen.NachRechts;
-        private Image ImgLKW;
+        private readonly Image ImgLKW;
         private double X_LKW_Aktuell;
         private double Y_LKW_Aktuell;
-        private double Y_LKW_Parkposition;
-               
+        private readonly double Y_LKW_Parkposition;
+        private readonly BezierCurve LinkeKurve;
+        private readonly BezierCurve RechteKurve;
+
         public LKW(Image img)
         {
             ID = AnzahlLKW;
@@ -43,6 +41,16 @@ namespace AmpelsteuerungKieswerk
 
             ImgLKW = img;
             Y_LKW_Parkposition = y_ParkpositionOben + ID * (10 + HoeheLWK);
+
+            LinkeKurve = new BezierCurve(x_ParkpositionLinks, Y_LKW_Parkposition,
+                x_ParkpositionLinks + 100, Y_LKW_Parkposition,
+                x_EndeLinkeKurve - 100, y_Fahrspur,
+                x_EndeLinkeKurve, y_Fahrspur);
+
+            RechteKurve = new BezierCurve(x_AnfangRechteKurve, y_Fahrspur,
+                x_AnfangRechteKurve + 100, y_Fahrspur,
+                x_ParkpositionRechts - 100, Y_LKW_Parkposition,
+                x_ParkpositionRechts, Y_LKW_Parkposition);
         }
 
         public void LastwagenAnzeigen(bool fensterAktiv, Button btn)
@@ -77,8 +85,8 @@ namespace AmpelsteuerungKieswerk
 
         public void Losfahren()
         {
-            if (LKW_Position == LKW_Positionen.LinksGeparkt) LKW_Position = LKW_Positionen.LR_LinksWaagrecht;
-            if (LKW_Position == LKW_Positionen.RechtsGeparkt) LKW_Position = LKW_Positionen.RL_RechtsWaagrecht;
+            if (LKW_Position == LKW_Positionen.LinksGeparkt) LKW_Position = LKW_Positionen.LR_LinkeKurve;
+            if (LKW_Position == LKW_Positionen.RechtsGeparkt) LKW_Position = LKW_Positionen.RL_RechteKurve;
         }
 
         bool LichtschrankeUnterbrochen(double xPos)

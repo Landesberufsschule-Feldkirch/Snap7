@@ -5,7 +5,6 @@ namespace WordClock
 {
     public partial class MainWindow
     {
-
         public ushort DatumJahr;
         public byte DatumMonat;
         public byte DatumTag;
@@ -34,8 +33,6 @@ namespace WordClock
             Byte_7,
             Byte_8,
             Byte_9
-
-
         }
         enum AnzahlByte
         {
@@ -79,10 +76,10 @@ namespace WordClock
             }
         }
 
-        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
-        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
-        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
-        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
+        //private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        //private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
         void EinAusgabeFelderInitialisieren()
         {

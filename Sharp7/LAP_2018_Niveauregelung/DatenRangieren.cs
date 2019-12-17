@@ -1,7 +1,5 @@
 ﻿using Sharp7;
-using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace LAP_2018_Niveauregelung
 {
@@ -88,10 +86,10 @@ namespace LAP_2018_Niveauregelung
             }
         }
 
-        private int InByte(BitPosEingang Pos) {     return ((int)Pos) / 8;  }
-        private int InBit(BitPosEingang Pos) {      return ((int)Pos) % 8;  }
-        private int OutByte(BitPosAusgang Pos) {    return ((int)Pos) / 8;  }
-        private int OutBit(BitPosAusgang Pos) {     return ((int)Pos) % 8;  }
+        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
+        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
+        private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
+        private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
         void EinAusgabeFelderInitialisieren()
         {

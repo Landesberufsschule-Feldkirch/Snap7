@@ -19,7 +19,7 @@ namespace AmpelsteuerungKieswerk
 
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
-            System.Threading.Tasks.Task.Run(() => Display_Task());
+            //System.Threading.Tasks.Task.Run(() => Display_Task()); Die Lichtschranken werden sonst 
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)

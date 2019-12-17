@@ -33,7 +33,10 @@ namespace AmpelsteuerungKieswerk
                                        }
                                    });
 
-                Thread.Sleep(10);// Idente Verzögerung zu Display
+                Display_Task();
+                if (TaskAktiv) DatenRangieren_Task();
+
+                Thread.Sleep(10);
             }
         }
     }

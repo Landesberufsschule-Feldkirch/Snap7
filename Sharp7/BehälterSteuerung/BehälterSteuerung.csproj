@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaelter.cs" />
+    <Compile Include="Daten.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="LogikFunktionen.cs" />
     <Compile Include="S7_1200.cs" />

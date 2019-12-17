@@ -5,8 +5,8 @@ namespace Tiefgarage
 {
     public partial class MainWindow
     {
-        public bool Pegel_B1;
-        public bool Pegel_B2;
+        public bool B1;
+        public bool B2;
 
         public int AnzahlFahrzeuge = 0;
         public int AnzahlPersonen = 0;
@@ -40,8 +40,8 @@ namespace Tiefgarage
         {
             while (TaskAktiv && FensterAktiv)
             {
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), Pegel_B1);
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), Pegel_B2);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B1);
+                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B2);
 
                 if ((Client != null) && TaskAktiv)
                 {

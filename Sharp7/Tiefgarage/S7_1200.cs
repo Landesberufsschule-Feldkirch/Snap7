@@ -28,7 +28,7 @@ namespace Tiefgarage
                 System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
-           
+
         public void SPS_Pingen_Task()
         {
             while (FensterAktiv)
@@ -55,6 +55,6 @@ namespace Tiefgarage
 
                 Task.Delay(500);
             }
-        }  
+        }
     }
 }

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BezierCurve.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="LastKraftWagen.cs" />
     <Compile Include="LastKraftWagenBewegen.cs" />
