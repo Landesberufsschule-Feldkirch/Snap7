@@ -24,12 +24,11 @@ namespace Synchronisiereinrichtung
 
                         TxtSpannungGenerator.Text = "U = " + System.Math.Round(SpannungGenerator, 1).ToString() + "V";
                         TxtFrequenzGenerator.Text = "f = " + System.Math.Round(FrequenzGenerator, 1).ToString() + "Hz";
+                        TxtLeistungGenerator.Text = "P = " + System.Math.Round(LeistungGenerator, 1).ToString() + "W";
 
                         TxtSpannungNetz.Text = "U = " + System.Math.Round(SpannungNetz, 1).ToString() + "V";
                         TxtFrequenzNetz.Text = "f = " + System.Math.Round(FrequenzNetz, 1).ToString() + "Hz";
-
-
-
+                        TxtLeistungNetz.Text = "P = " + System.Math.Round(LeistungNetz, 1).ToString() + "W";
                     }
                 });
                 Thread.Sleep(10);

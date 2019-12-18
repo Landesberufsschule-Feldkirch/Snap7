@@ -6,7 +6,6 @@ namespace Synchronisiereinrichtung
 {
     public partial class MainWindow
     {
-
         public enum SynchronisierungAuswahl
         {
             U_f = 0,
@@ -39,9 +38,11 @@ namespace Synchronisiereinrichtung
                                {
                                    UNetz = (short)SldNetzSpannung.Value;
                                    fNetz = (short)SldNetzFrequenz.Value;
+                                   PNetz = (short)SldNetzLeistung.Value;
 
                                    SpannungNetz = S7Analog.S7_Analog_2_Double(UNetz, 1000, 1);
                                    FrequenzNetz = S7Analog.S7_Analog_2_Double(fNetz, 100, 1);
+                                   LeistungNetz = S7Analog.S7_Analog_2_Double(PNetz, 1000, 1);
 
                                    if (DebugWindowAktiv)
                                    {

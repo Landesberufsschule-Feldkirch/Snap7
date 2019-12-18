@@ -15,6 +15,7 @@ namespace Synchronisiereinrichtung
         public short fNetz;
         public short UGenerator;
         public short UNetz;
+        public short PNetz;
         public short ph;
 
         public double Drehzahl;
@@ -22,6 +23,8 @@ namespace Synchronisiereinrichtung
         public double FrequenzNetz;
         public double SpannungGenerator;
         public double SpannungNetz;
+        public double LeistungNetz;
+        public double LeistungGenerator;
         public double Phasenlage;
 
         enum Datenbausteine
@@ -58,6 +61,7 @@ namespace Synchronisiereinrichtung
                     S7.SetIntAt(AnalogInput, 4, fNetz);
                     S7.SetIntAt(AnalogInput, 6, UGenerator);
                     S7.SetIntAt(AnalogInput, 8, fGenerator);
+                    S7.SetIntAt(AnalogInput, 8, PNetz);
                     S7.SetIntAt(AnalogInput, 10, ph);
 
                     Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
@@ -68,7 +72,7 @@ namespace Synchronisiereinrichtung
 
                     Q1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q1);
                 }
-                
+
                 Thread.Sleep(100);
             }
         }
