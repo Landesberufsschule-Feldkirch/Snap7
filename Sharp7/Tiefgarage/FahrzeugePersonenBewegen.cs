@@ -23,64 +23,52 @@ namespace Tiefgarage
             AufwaertsKurveOben
         }
         public Tuple<bool, bool> Bewegen()
-        {
-            (double x, double y) KurveDatenpunkte;
-      
+        {      
             switch (Bewegung)
             {
                 case FahrenRichtung.ObenGeparkt:
-                    X_aktuell = X_oben;
-                    Y_aktuell = Y_oben;
+                    PosAktuell = ParkenOben;
                     KurvePosition = 0;
                     break;
 
                 case FahrenRichtung.AbwaertsKurveOben:
-                    KurveDatenpunkte = KurveOben.PunktBestimmen(KurvePosition);
-                    X_aktuell = KurveDatenpunkte.x;
-                    Y_aktuell = KurveDatenpunkte.y;
+                    PosAktuell = KurveOben.PunktBestimmen(KurvePosition);
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AbwaertsSenkrecht:
-                    if (Y_aktuell < Y_Fahrspur_unten) Y_aktuell += xy_Bewegung;
+                    if (PosAktuell.Y < Y_Fahrspur_unten) PosAktuell.Y += xy_Bewegung;
                     else Bewegung = FahrenRichtung.AbwaertsKurveUnten;
                     KurvePosition = 0;
                     break;
 
                 case FahrenRichtung.AbwaertsKurveUnten:
-                    KurveDatenpunkte = KurveUnten.PunktBestimmen(KurvePosition);
-                    X_aktuell = KurveDatenpunkte.x;
-                    Y_aktuell = KurveDatenpunkte.y;
+                    PosAktuell = KurveUnten.PunktBestimmen(KurvePosition);
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
                     break;
 
                 case FahrenRichtung.UntenGeparkt:
-                    X_aktuell = X_unten;
-                    Y_aktuell = Y_unten;
+                    PosAktuell = ParkenUnten;
                     KurvePosition = 1;
                     break;
 
 
                 case FahrenRichtung.AufwaertsKurveUnten:
-                    KurveDatenpunkte = KurveUnten.PunktBestimmen(KurvePosition);
-                    X_aktuell = KurveDatenpunkte.x;
-                    Y_aktuell = KurveDatenpunkte.y;
+                    PosAktuell = KurveUnten.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AufwaertsSenkrecht:
-                    if (Y_aktuell > Y_Fahrspur_oben) Y_aktuell -= xy_Bewegung;
+                    if (PosAktuell.Y > Y_Fahrspur_oben) PosAktuell.Y -= xy_Bewegung;
                     else Bewegung = FahrenRichtung.AufwaertsKurveOben;
                     KurvePosition = 1;
                     break;
 
                 case FahrenRichtung.AufwaertsKurveOben:
-                    KurveDatenpunkte = KurveOben.PunktBestimmen(KurvePosition);
-                    X_aktuell = KurveDatenpunkte.x;
-                    Y_aktuell = KurveDatenpunkte.y;
+                    PosAktuell = KurveOben.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
                     break;

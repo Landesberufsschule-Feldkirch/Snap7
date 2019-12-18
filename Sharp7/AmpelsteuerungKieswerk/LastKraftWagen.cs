@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using Utilities;
+using Utilties;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -29,11 +30,22 @@ namespace AmpelsteuerungKieswerk
         private LKW_Richtungen LKW_Richtung = LKW_Richtungen.NachRechts;
         private LKW_Richtungen LKW_RichtungAlt = LKW_Richtungen.NachRechts;
         private readonly Image ImgLKW;
-        private double X_LKW_Aktuell;
-        private double Y_LKW_Aktuell;
+        private Punkt PosAktuell;
+        private readonly Punkt ParkPosLinks;
+        private readonly Punkt ParkPosRechts;
+        private readonly Punkt WegPosLinks;
+        private readonly Punkt WegPosRechts;
+
         private readonly double Y_LKW_Parkposition;
         private readonly BezierCurve LinkeKurve;
         private readonly BezierCurve RechteKurve;
+
+        private readonly double x_ParkpositionLinks = 10;
+        private readonly double x_EndeLinkeKurve = 250;
+        private readonly double x_AnfangRechteKurve = 1100;
+        private readonly double x_ParkpositionRechts = 1340;
+        private readonly double y_ParkpositionOben = 10;
+        private readonly double y_Fahrspur = 200;
 
         public LKW(Image img)
         {
@@ -43,23 +55,27 @@ namespace AmpelsteuerungKieswerk
             ImgLKW = img;
             Y_LKW_Parkposition = y_ParkpositionOben + ID * (10 + HoeheLWK);
 
-            LinkeKurve = new BezierCurve(x_ParkpositionLinks, Y_LKW_Parkposition,
-                x_ParkpositionLinks + 100, Y_LKW_Parkposition,
-                x_EndeLinkeKurve - 100, y_Fahrspur,
-                x_EndeLinkeKurve, y_Fahrspur);
+            ParkPosLinks = new Punkt(x_ParkpositionLinks, Y_LKW_Parkposition);
+            Punkt KontrollPunktLinks1 = new Punkt(x_ParkpositionLinks + 100, Y_LKW_Parkposition);
+            Punkt KontrollPunktLinks2 = new Punkt(x_EndeLinkeKurve - 100, y_Fahrspur);
 
-            RechteKurve = new BezierCurve(x_AnfangRechteKurve, y_Fahrspur,
-                x_AnfangRechteKurve + 100, y_Fahrspur,
-                x_ParkpositionRechts - 100, Y_LKW_Parkposition,
-                x_ParkpositionRechts, Y_LKW_Parkposition);
+            ParkPosRechts = new Punkt(x_ParkpositionRechts, Y_LKW_Parkposition);
+            Punkt KontrollPunktRechts1 = new Punkt(x_AnfangRechteKurve + 100, y_Fahrspur);
+            Punkt KontrollPunktRechts2 = new Punkt(x_ParkpositionRechts - 100, Y_LKW_Parkposition);
+
+            WegPosLinks = new Punkt(x_EndeLinkeKurve, y_Fahrspur);
+            WegPosRechts = new Punkt(x_AnfangRechteKurve, y_Fahrspur);
+
+            LinkeKurve = new BezierCurve(ParkPosLinks, KontrollPunktLinks1, KontrollPunktLinks2, WegPosLinks);
+            RechteKurve = new BezierCurve(WegPosRechts, KontrollPunktRechts1, KontrollPunktRechts2, ParkPosRechts);
         }
 
         public void LastwagenAnzeigen(bool fensterAktiv, Button btn)
         {
             if (!fensterAktiv) return;
 
-            btn.SetValue(Canvas.LeftProperty, X_LKW_Aktuell);
-            btn.SetValue(Canvas.TopProperty, Y_LKW_Aktuell);
+            btn.SetValue(Canvas.LeftProperty, PosAktuell.X);
+            btn.SetValue(Canvas.TopProperty, PosAktuell.Y);
 
             if (LKW_RichtungAlt == LKW_Richtung) return;
 
@@ -90,8 +106,8 @@ namespace AmpelsteuerungKieswerk
 
         bool LichtschrankeUnterbrochen(double xPos)
         {
-            if (X_LKW_Aktuell + BreiteLKW < xPos) return false;
-            if (X_LKW_Aktuell > xPos) return false;
+            if (PosAktuell.X + BreiteLKW < xPos) return false;
+            if (PosAktuell.X > xPos) return false;
             return true;
         }
     }

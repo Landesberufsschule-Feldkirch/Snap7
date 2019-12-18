@@ -1,4 +1,5 @@
 ﻿using Utilities;
+using Utilties;
 
 namespace Tiefgarage
 {
@@ -14,12 +15,11 @@ namespace Tiefgarage
         static int AnzahlPersonen = 0;
 
         public Rolle FP_Rolle { get; set; }
-        public double X_aktuell { get; set; }
-        public double Y_aktuell { get; set; }
-        private readonly double X_oben;
-        private readonly double Y_oben;
-        private readonly double X_unten;
-        private readonly double Y_unten;
+        public Punkt PosAktuell { get; set; }
+        public readonly Punkt ParkenOben;
+        public readonly Punkt ParkenUnten;
+        public readonly Punkt EingangOben;
+        public readonly Punkt EingangUnten;
 
         private readonly BezierCurve KurveOben;
         private readonly BezierCurve KurveUnten;
@@ -27,7 +27,6 @@ namespace Tiefgarage
         private readonly double X_ErstesFahrzeug_Oben = 10;
         private readonly double X_ErstePerson_Oben = 500;
         private readonly double Y_FahrzeugPersonen_Oben = 10;
-
         private readonly double X_Fahrzeuge_Unten_Links = 110;
         private readonly double X_Fahrzeuge_Unten_Rechts = 810;
         private readonly double Y_ErstesFahrzeug_Unten = 500;
@@ -44,7 +43,6 @@ namespace Tiefgarage
         private readonly double Y_Fahrspur_oben = 250;
         private readonly double Y_Fahrspur_unten = 400;
 
-
         private readonly double Y_LichtschrankenHoehePerson = 15;
         private readonly double Y_LichtschrankenHoehFahrzeug = 50;
 
@@ -55,6 +53,14 @@ namespace Tiefgarage
 
         public FahrzeugPerson(Rolle Rolle)
         {
+            double X_oben;
+            double Y_oben;
+            double X_unten;
+            double Y_unten;
+
+            Punkt KontrollPunktUnten1;
+            Punkt KontrollPunktUnten2;
+
             FP_Rolle = Rolle;
 
             Y_oben = Y_FahrzeugPersonen_Oben;
@@ -67,22 +73,16 @@ namespace Tiefgarage
                     X_unten = X_Fahrzeuge_Unten_Links;
                     Y_unten = Y_ErstesFahrzeug_Unten + AnzahlFahrzeuge * HoeheFahrzeug;
 
-                    KurveUnten = new BezierCurve(X_Fahrspur, Y_Fahrspur_unten,
-                        X_Fahrspur, Y_Fahrspur_unten + 100,
-                        X_unten + 100, Y_unten,
-                        X_unten, Y_unten
-                        );
+                    KontrollPunktUnten1 = new Punkt(X_Fahrspur, Y_Fahrspur_unten + 100);
+                    KontrollPunktUnten2 = new Punkt(X_unten + 100, Y_unten);
                 }
                 else
                 {
                     X_unten = X_Fahrzeuge_Unten_Rechts;
                     Y_unten = Y_ErstesFahrzeug_Unten + (AnzahlFahrzeuge - 4) * HoeheFahrzeug;
 
-                    KurveUnten = new BezierCurve(X_Fahrspur, Y_Fahrspur_unten,
-                        X_Fahrspur, Y_Fahrspur_unten + 100,
-                        X_unten - 100, Y_unten,
-                        X_unten, Y_unten
-                        );
+                    KontrollPunktUnten1 = new Punkt(X_Fahrspur, Y_Fahrspur_unten + 100);
+                    KontrollPunktUnten2 = new Punkt(X_unten - 100, Y_unten);
                 }
                 AnzahlFahrzeuge++;
             }
@@ -91,23 +91,27 @@ namespace Tiefgarage
                 X_oben = X_ErstePerson_Oben + AnzahlPersonen * BreitePerson;
                 X_unten = X_ErstePerson_Unten + AnzahlPersonen * BreitePerson;
                 Y_unten = Y_Personen_Unten;
-                AnzahlPersonen++;
 
-                KurveUnten = new BezierCurve(X_Fahrspur, Y_Fahrspur_unten,
-                       X_Fahrspur, Y_Fahrspur_unten + 100,
-                       X_unten, Y_unten - 100,
-                       X_unten, Y_unten
-                       );
+
+                KontrollPunktUnten1 = new Punkt(X_Fahrspur, Y_Fahrspur_unten + 100);
+                KontrollPunktUnten2 = new Punkt(X_unten, Y_unten - 100);
+
+                AnzahlPersonen++;
             }
 
-            KurveOben = new BezierCurve(X_oben, Y_oben,
-                X_oben, Y_oben + 100,
-                X_Fahrspur, Y_Fahrspur_oben - 100,
-                X_Fahrspur, Y_Fahrspur_oben
-                );
+            ParkenOben = new Punkt(X_oben, Y_oben);
+            Punkt KontrollPunktOben1 = new Punkt(X_oben, Y_oben + 100);
+            Punkt KontrollPunktOben2 = new Punkt(X_Fahrspur, Y_Fahrspur_oben - 100);
+            EingangOben = new Punkt(X_Fahrspur, Y_Fahrspur_oben);
+
+            EingangUnten = new Punkt(X_Fahrspur, Y_Fahrspur_unten);
+            ParkenUnten = new Punkt(X_unten, Y_unten);
+
+
+            KurveOben = new BezierCurve(ParkenOben, KontrollPunktOben1, KontrollPunktOben2, EingangOben);
+            KurveUnten = new BezierCurve(EingangUnten, KontrollPunktUnten1, KontrollPunktUnten2, ParkenUnten);
 
             DraussenParken();
-
         }
         public void Losfahren()
         {
@@ -115,26 +119,20 @@ namespace Tiefgarage
             if (Bewegung == FahrenRichtung.UntenGeparkt) Bewegung = FahrenRichtung.AufwaertsKurveUnten;
         }
 
-        public void DraussenParken()
-        {
-            Bewegung = FahrenRichtung.ObenGeparkt;
-        }
-        public void DrinnenParken()
-        {
-            Bewegung = FahrenRichtung.UntenGeparkt;
-        }
+        public void DraussenParken() { Bewegung = FahrenRichtung.ObenGeparkt; }
+        public void DrinnenParken() { Bewegung = FahrenRichtung.UntenGeparkt; }
 
         bool LichtschrankeUnterbrochen(double Pos)
         {
             if (FP_Rolle == Rolle.Fahrzeug)
             {
-                if (Y_aktuell < Pos) return false;
-                if (Y_aktuell > Pos + Y_LichtschrankenHoehFahrzeug) return false;
+                if (PosAktuell.Y < Pos) return false;
+                if (PosAktuell.Y > Pos + Y_LichtschrankenHoehFahrzeug) return false;
             }
             else
             {
-                if (Y_aktuell < Pos) return false;
-                if (Y_aktuell > Pos + Y_LichtschrankenHoehePerson) return false;
+                if (PosAktuell.Y < Pos) return false;
+                if (PosAktuell.Y > Pos + Y_LichtschrankenHoehePerson) return false;
             }
             return true;
         }

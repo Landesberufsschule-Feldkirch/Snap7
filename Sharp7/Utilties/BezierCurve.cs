@@ -43,15 +43,11 @@ namespace Utilities
             pt_y3 = py3;
         }
 
-        public Punkt PunkteBestimmen(double t)
+        public Punkt PunktBestimmen(double t)
         {
             return new Punkt(X_Berechnen(t), Y_Berechnen(t));
         }
 
-        public (double x, double y) PunktBestimmen(double t)
-        {
-            return (X_Berechnen(t), Y_Berechnen(t));
-        }
 
         private double X_Berechnen(double t)
         {
