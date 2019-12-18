@@ -1,5 +1,5 @@
 ﻿using System;
-using Utilties;
+using Utilities;
 
 namespace Utilities
 {

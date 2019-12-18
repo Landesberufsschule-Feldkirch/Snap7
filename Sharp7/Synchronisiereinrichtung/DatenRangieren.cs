@@ -5,7 +5,24 @@ namespace Synchronisiereinrichtung
 {
     public partial class MainWindow
     {
-        bool Leuchte_P1 = false;
+        bool Q1;
+
+        public int Y;
+        public int Ie;
+
+        public short n;
+        public short fGenerator;
+        public short fNetz;
+        public short UGenerator;
+        public short UNetz;
+        public short ph;
+
+        public double Drehzahl;
+        public double FrequenzGenerator;
+        public double FrequenzNetz;
+        public double SpannungGenerator;
+        public double SpannungNetz;
+        public double Phasenlage;
 
         enum Datenbausteine
         {
@@ -24,36 +41,34 @@ namespace Synchronisiereinrichtung
         }
         enum BitPosAusgang
         {
-            Q1 = 0,
-            Q3,
-            Q5,
-            Q7,
-            P1
+            Q1 = 0
         }
         enum BitPosEingang
         {
-            B1 = 0,
-            B2,
-            B3,
-            B4,
-            B5,
-            B6,
-            B7,
-            B8
         }
 
         public void DatenRangieren_Task()
         {
             while (TaskAktiv && FensterAktiv)
             {
-                if ((Client != null) && TaskAktiv)
+                if ((Client != null) && TaskAktiv && !DebugWindowAktiv)
                 {
+                    S7.SetIntAt(AnalogInput, 0, n);
+                    S7.SetIntAt(AnalogInput, 2, UNetz);
+                    S7.SetIntAt(AnalogInput, 4, fNetz);
+                    S7.SetIntAt(AnalogInput, 6, UGenerator);
+                    S7.SetIntAt(AnalogInput, 8, fGenerator);
+                    S7.SetIntAt(AnalogInput, 10, ph);
+
                     Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
                     Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+
+                    Y = S7.GetIntAt(AnalogOutput, 0);
+                    Ie = S7.GetIntAt(AnalogOutput, 2);
+
+                    Q1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q1);
                 }
-
-                Leuchte_P1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
-
+                
                 Thread.Sleep(100);
             }
         }

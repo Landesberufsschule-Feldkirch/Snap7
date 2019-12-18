@@ -1,28 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Synchronisiereinrichtung
 {
 
     public partial class MainWindow : Window
     {
-
+        public SecondWindow secondWindow;
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
-
+        public bool DebugWindowAktiv;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +19,8 @@ namespace Synchronisiereinrichtung
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
+
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -38,6 +28,25 @@ namespace Synchronisiereinrichtung
             FensterAktiv = false;
         }
 
+        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        {
+            DebugWindowAktiv = true;
+            secondWindow = new SecondWindow();
+            secondWindow.Show();
+        }
 
+        public void AuswahlGeaendert(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+
+            switch (radioButton.Content)
+            {
+                case "Spannung / Frequenz": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;
+                case "U / f / Phasenlage": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase; break;
+                case "U / f / Phasenlage / Leistung": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistung; break;
+                default:
+                    break;
+            }
+        }
     }
 }

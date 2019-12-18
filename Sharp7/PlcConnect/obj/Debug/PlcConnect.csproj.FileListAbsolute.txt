@@ -31,7 +31,6 @@ c:\git\Sharp7\Sharp7\PlcConnect\obj\Debug\PlcConnect.pdb
 K:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.exe.config
 K:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.exe
 K:\git\Snap7\Sharp7\PlcConnect\bin\Debug\PlcConnect.pdb
-K:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect.csprojAssemblyReference.cache
 K:\git\Snap7\Sharp7\PlcConnect\obj\Debug\MainWindow.g.cs
 K:\git\Snap7\Sharp7\PlcConnect\obj\Debug\App.g.cs
 K:\git\Snap7\Sharp7\PlcConnect\obj\Debug\PlcConnect_Content.g.cs

@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="S7_1200.cs" />
+    <Compile Include="SecondWindow.xaml.cs">
+      <DependentUpon>SecondWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +75,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SecondWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -106,6 +113,12 @@
   <ItemGroup>
     <Resource Include="Bilder\VentilElektrischAus.jpg" />
     <Resource Include="Bilder\VentilElektrischEin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilties\Utilties.csproj">
+      <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
+      <Name>Utilties</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

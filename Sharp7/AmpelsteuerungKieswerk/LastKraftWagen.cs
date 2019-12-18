@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using Utilities;
-using Utilties;
 
 namespace AmpelsteuerungKieswerk
 {
