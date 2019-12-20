@@ -26,12 +26,13 @@ namespace Synchronisiereinrichtung
                 Drehzahl += Y * Y_n_Faktor;
                 Drehzahl *= n_BremsFaktor;
 
-                SpannungGenerator = Drehzahl * S7Analog.S7_Analog_2_Double(Ie, 10, 2) / 10;
+                SpannungGenerator = Drehzahl * S7Analog.S7_Analog_2_Double(Ie, 10) / 10;
                 FrequenzGenerator = Drehzahl / 30;
 
                 n = S7Analog.S7_Analog_2_Short(Drehzahl, 5000);
                 UGenerator = S7Analog.S7_Analog_2_Short(SpannungGenerator, 1000);
                 fGenerator = S7Analog.S7_Analog_2_Short(FrequenzGenerator, 100);
+                UDiff = S7Analog.S7_Analog_2_Short(SpannungDifferenz, 1000);
                 ph = S7Analog.S7_Analog_2_Short(Phasenlage, 1);
 
                 this.Dispatcher.Invoke(() =>
@@ -40,9 +41,9 @@ namespace Synchronisiereinrichtung
                                    fNetz = (short)SldNetzFrequenz.Value;
                                    PNetz = (short)SldNetzLeistung.Value;
 
-                                   SpannungNetz = S7Analog.S7_Analog_2_Double(UNetz, 1000, 1);
-                                   FrequenzNetz = S7Analog.S7_Analog_2_Double(fNetz, 100, 1);
-                                   LeistungNetz = S7Analog.S7_Analog_2_Double(PNetz, 1000, 1);
+                                   SpannungNetz = S7Analog.S7_Analog_2_Double(UNetz, 1000);
+                                   FrequenzNetz = S7Analog.S7_Analog_2_Double(fNetz, 100);
+                                   LeistungNetz = S7Analog.S7_Analog_2_Double(PNetz, 1000);
 
                                    if (DebugWindowAktiv)
                                    {

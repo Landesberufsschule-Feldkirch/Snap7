@@ -67,6 +67,8 @@ namespace AmpelsteuerungKieswerk
 
             LinkeKurve = new BezierCurve(ParkPosLinks, KontrollPunktLinks1, KontrollPunktLinks2, WegPosLinks);
             RechteKurve = new BezierCurve(WegPosRechts, KontrollPunktRechts1, KontrollPunktRechts2, ParkPosRechts);
+
+            PosAktuell = ParkPosLinks;
         }
 
         public void LastwagenAnzeigen(bool fensterAktiv, Button btn)

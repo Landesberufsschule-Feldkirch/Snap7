@@ -25,7 +25,7 @@ namespace AmpelsteuerungKieswerk
             if (Result == 0)
             {
                 TaskAktiv = true;
-                //System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
+                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
             }
         }
 

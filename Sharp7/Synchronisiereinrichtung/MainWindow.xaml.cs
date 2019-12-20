@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using CircularGauge;
 
 namespace Synchronisiereinrichtung
 {
@@ -20,7 +21,7 @@ namespace Synchronisiereinrichtung
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
 
-
+            GaugeDifferenzSpannung.CurrentValue = 100;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -46,6 +47,31 @@ namespace Synchronisiereinrichtung
                 case "U / f / Phasenlage / Leistung": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistung; break;
                 default:
                     break;
+            }
+        }
+
+        private void BtnStarten_Click(object sender, RoutedEventArgs e)
+        {
+            S1 = ButtonFunktionPressReleaseAendern(BtnStarten);
+        }
+
+        private void BtnStoppen_Click(object sender, RoutedEventArgs e)
+        {
+            S2 = !ButtonFunktionPressReleaseAendern(BtnStoppen);
+        }
+
+
+        private bool ButtonFunktionPressReleaseAendern(Button knopf)
+        {
+            if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Release;
+                return true;
+            }
+            else
+            {
+                knopf.ClickMode = System.Windows.Controls.ClickMode.Press;
+                return false;
             }
         }
     }

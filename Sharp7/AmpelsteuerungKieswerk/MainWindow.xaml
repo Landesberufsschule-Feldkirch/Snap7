@@ -90,10 +90,10 @@
         <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts"     Grid.Column="16"    Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="0,15,50,0"/>
         <Ellipse x:Name="circ_Lichtschranke_draussen_rechts"    Grid.Column="17"    Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="0,15,50,0"/>
 
-        <Label Grid.Column="5"  Grid.Row="9" Content="B1" Margin="25,10,0,0"/>
-        <Label Grid.Column="6"  Grid.Row="9" Content="B2" Margin="25,10,0,0"/>
-        <Label Grid.Column="15" Grid.Row="9" Content="B3" Margin="45,10,0,0"/>
-        <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="45,10,0,0"/>
+        <Label Grid.Column="5"  Grid.Row="9" Content="B1" Margin="23,7,0,0" FontSize="12pt"/>
+        <Label Grid.Column="6"  Grid.Row="9" Content="B2" Margin="23,7,0,0" FontSize="12pt"/>
+        <Label Grid.Column="15" Grid.Row="9" Content="B3" Margin="43,7,0,0" FontSize="12pt"/>
+        <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="43,7,0,0" FontSize="12pt"/>
 
         <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
             <Button x:Name="btn_lkw_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">

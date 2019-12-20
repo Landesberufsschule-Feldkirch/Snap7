@@ -12,9 +12,9 @@
             return (int)(27648 * db / scal);
         }
 
-        public static double S7_Analog_2_Double(int wert, double scal, int stellen)
+        public static double S7_Analog_2_Double(int wert, double scal)
         {
-            return System.Math.Round(((double)(wert) * scal / 27648), stellen);
+            return (double)(wert) * scal / 27648;
         }
 
     }

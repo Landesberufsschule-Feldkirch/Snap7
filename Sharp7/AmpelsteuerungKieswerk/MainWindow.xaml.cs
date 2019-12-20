@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace AmpelsteuerungKieswerk
@@ -11,15 +12,19 @@ namespace AmpelsteuerungKieswerk
 
         public int FahrzeugPersonGeklickt = -1;
 
+        private static Mutex _mutex = new Mutex(false, "Lichtschranke");
+
+
         public MainWindow()
         {
             InitializeComponent();
             AlleLKWInitialisieren();
             EinAusgabeFelderInitialisieren();
+      
 
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
-            //System.Threading.Tasks.Task.Run(() => Display_Task()); Die Lichtschranken werden sonst 
+            System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -39,7 +44,8 @@ namespace AmpelsteuerungKieswerk
                 lkw.LinksParken();
             }
         }
-        private void AlleRechtsParken_Click(object sender, RoutedEventArgs e) {
+        private void AlleRechtsParken_Click(object sender, RoutedEventArgs e)
+        {
             foreach (Button btn in gAlleButton)
             {
                 var lkw = btn.Tag as LKW;

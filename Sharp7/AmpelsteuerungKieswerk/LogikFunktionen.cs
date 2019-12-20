@@ -15,13 +15,14 @@ namespace AmpelsteuerungKieswerk
         {
             while (FensterAktiv)
             {
-                B1 = false;
-                B2 = false;
-                B3 = false;
-                B4 = false;
-
                 this.Dispatcher.Invoke(() =>
                                    {
+                                       _mutex.WaitOne();
+                                       B1 = false;
+                                       B2 = false;
+                                       B3 = false;
+                                       B4 = false;
+
                                        foreach (Button btn in gAlleButton)
                                        {
                                            var lkw = btn.Tag as LKW;
@@ -31,11 +32,8 @@ namespace AmpelsteuerungKieswerk
                                            B3 |= b3;
                                            B4 |= b4;
                                        }
+                                       _mutex.ReleaseMutex();
                                    });
-
-                Display_Task();
-                if (TaskAktiv) DatenRangieren_Task();
-
                 Thread.Sleep(10);
             }
         }

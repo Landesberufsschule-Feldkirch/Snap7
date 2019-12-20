@@ -5,7 +5,9 @@ namespace Synchronisiereinrichtung
 {
     public partial class MainWindow
     {
-        bool Q1;
+        public bool Q1;
+        public bool S1;
+        public bool S2;
 
         public int Y;
         public int Ie;
@@ -16,6 +18,7 @@ namespace Synchronisiereinrichtung
         public short UGenerator;
         public short UNetz;
         public short PNetz;
+        public short UDiff;
         public short ph;
 
         public double Drehzahl;
@@ -25,6 +28,7 @@ namespace Synchronisiereinrichtung
         public double SpannungNetz;
         public double LeistungNetz;
         public double LeistungGenerator;
+        public double SpannungDifferenz;
         public double Phasenlage;
 
         enum Datenbausteine
@@ -48,6 +52,8 @@ namespace Synchronisiereinrichtung
         }
         enum BitPosEingang
         {
+            S1 = 0,
+            S2
         }
 
         public void DatenRangieren_Task()
@@ -61,8 +67,9 @@ namespace Synchronisiereinrichtung
                     S7.SetIntAt(AnalogInput, 4, fNetz);
                     S7.SetIntAt(AnalogInput, 6, UGenerator);
                     S7.SetIntAt(AnalogInput, 8, fGenerator);
-                    S7.SetIntAt(AnalogInput, 8, PNetz);
-                    S7.SetIntAt(AnalogInput, 10, ph);
+                    S7.SetIntAt(AnalogInput, 10, PNetz);
+                    S7.SetIntAt(AnalogInput, 12, UDiff);
+                    S7.SetIntAt(AnalogInput, 14, ph);
 
                     Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
                     Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
@@ -70,6 +77,8 @@ namespace Synchronisiereinrichtung
                     Y = S7.GetIntAt(AnalogOutput, 0);
                     Ie = S7.GetIntAt(AnalogOutput, 2);
 
+                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S1, S1);
+                    S7.SetBitAt(ref DigInput, (int)BytePosition.Byte_0, (int)BitPosEingang.S2, S2);
                     Q1 = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.Q1);
                 }
 

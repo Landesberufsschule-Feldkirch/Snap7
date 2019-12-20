@@ -16,8 +16,8 @@ namespace Synchronisiereinrichtung
                 {
                     if (FensterAktiv)
                     {
-                        TxtVentilOeffnung.Text = S7Analog.S7_Analog_2_Double(Y, 100, 1).ToString() + "%";
-                        TxtErregerstrom.Text = S7Analog.S7_Analog_2_Double(Ie, 10, 1).ToString() + "A";
+                        TxtVentilOeffnung.Text = System.Math.Round(S7Analog.S7_Analog_2_Double(Y, 100),1).ToString() + "%";
+                        TxtErregerstrom.Text = System.Math.Round(S7Analog.S7_Analog_2_Double(Ie, 10), 1).ToString() + "A";
                         BildEinblenden(Q1, ImgSchalterEin, ImgSchalterAus);
 
                         TxtDrehzahl.Text = "n = " + System.Math.Round(Drehzahl, 1).ToString() + "RPM";

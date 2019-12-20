@@ -1,5 +1,7 @@
 ﻿namespace AmpelsteuerungKieswerk
 {
+
+
     public partial class LKW
     {
         private LKW_Positionen LKW_Position = LKW_Positionen.LinksGeparkt;
