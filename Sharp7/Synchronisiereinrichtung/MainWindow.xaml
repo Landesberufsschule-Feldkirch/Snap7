@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
         xmlns:local="clr-namespace:Synchronisiereinrichtung"
         mc:Ignorable="d"
-        Title="Synchronisiereinrichtung" Height="1280" Width="1700" Closing="Window_Closing">
+        Title="Synchronisiereinrichtung" Height="1000" Width="1700" Closing="Window_Closing">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -68,15 +68,12 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="30"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
+        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="26"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
 
         <Button x:Name="DebugWindow" Content="!" Grid.Column="27" Grid.Row="1" Click="DebugWindowOeffnen" />
 
@@ -85,47 +82,47 @@
         <Image      x:Name="VentilZuleitungAus" Source="Bilder/VentilElektrischAus.jpg" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="45,0,22,25"  />
         <Image      x:Name="VentilZuleitungEin" Source="Bilder/VentilElektrischEin.jpg" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="4" Margin="45,0,22,25" Visibility="Hidden" />
         <Label Content="Y1"                                                             Grid.Column="4"                     Grid.Row="2" Margin="0,0,0,19" FontSize="14pt" Grid.RowSpan="2"/>
-        <Rectangle x:Name="AbleitunSenkrecht"                                           Grid.Column="6"                     Grid.Row="4" Fill="LightBlue" Grid.RowSpan="4" Margin="22,5,22,0"/>
+        <Rectangle x:Name="AbleitunSenkrecht"                                           Grid.Column="6"                     Grid.Row="4" Grid.RowSpan="3"    Fill="LightBlue"  Margin="22,5,22,0"/>
 
 
-        <Label Content="G1"                                 Grid.Column="16" Grid.Row="6" Margin="38,0,0,34" Grid.RowSpan="2" />
-        <Rectangle x:Name="ErregungBatteriePlus"            Grid.Column="17" Grid.Row="6" Fill="Red" Margin="0,0,0,25"/>
-        <Rectangle x:Name="ErregungBatterieMinus"           Grid.Column="17" Grid.Row="6" Fill="Black" Margin="17,15,17,16"/>
-        <Rectangle x:Name="ErregungBatterieMinusSenkrecht"  Grid.Column="17" Grid.Row="6" Fill="Black" Margin="32,15,32,0"/>
+        <Label Content="G1"                                 Grid.Column="16" Grid.Row="4"  Grid.RowSpan="3" Margin="28,26,0,34" FontSize="16pt"/>
+        <Rectangle x:Name="ErregungBatteriePlus"            Grid.Column="17" Grid.Row="5" Fill="Red" Margin="0,0,0,25"/>
+        <Rectangle x:Name="ErregungBatterieMinus"           Grid.Column="17" Grid.Row="5" Fill="Black" Margin="17,15,17,16"/>
+        <Rectangle x:Name="ErregungBatterieMinusSenkrecht"  Grid.Column="17" Grid.Row="5" Fill="Black" Margin="32,15,32,-36"/>
 
-        <Rectangle x:Name="ErregungZuleitungWaagrecht"      Grid.Column="10" Grid.ColumnSpan="8" Grid.Row="4" Grid.RowSpan="2" Fill="Red" Margin="67,32,32,32" />
+        <Rectangle x:Name="ErregungZuleitungWaagrecht"      Grid.Column="10" Grid.ColumnSpan="8"    Grid.Row="3" Grid.RowSpan="2" Fill="Red" Margin="67,32,32,32" />
 
-        <Rectangle x:Name="ErregungZuleitungSenkrechtLinks" Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" Fill="Red" Margin="67,0,67,0" />
-        <Rectangle x:Name="ErregungZuleitungSenkrechtRechts" Grid.Column="17" Grid.Row="5" Fill="Red" Margin="32,0,32,0"/>
+        <Rectangle x:Name="ErregungZuleitungSenkrechtLinks" Grid.Column="10"  Grid.ColumnSpan="2"   Grid.Row="4" Grid.RowSpan="2" Fill="Red" Margin="67,0,67,0" />
+        <Rectangle x:Name="ErregungZuleitungSenkrechtRechts" Grid.Column="17"                       Grid.Row="4" Fill="Red" Margin="32,0,32,0"/>
 
-        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="8"  Grid.RowSpan="4" Fill="#FF4545C3"/>
-        <Rectangle x:Name="Welle"                                               Grid.Column="8"                         Grid.Row="9" Grid.RowSpan="2" Stroke="Black" Margin="0,25"/>
-        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="7"  Grid.RowSpan="6" Fill="Red"/>
-        <Label Content="Turbine"                                                Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" Margin="55,12" />
-        <Label Content="Generator"                                              Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" Margin="6,12" />
+        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="7"  Grid.RowSpan="4" Fill="#FF4545C3"/>
+        <Rectangle x:Name="Welle"                                               Grid.Column="8"                         Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Margin="0,25"/>
+        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="6"  Grid.RowSpan="6" Fill="Red"/>
+        <Label Content="Turbine"                                                Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
+        <Label Content="Generator"                                              Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
 
-        <Rectangle x:Name="StromGeneratorSenkrecht"                             Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="13" Grid.RowSpan="3" Fill="Black"  Margin="68,0,68,33" />
-        <Rectangle x:Name="StromGeneratorWaagrecht"                             Grid.Column="10" Grid.ColumnSpan="5"    Grid.Row="14" Grid.RowSpan="2" Fill="Black" Margin="68,32,50,33"  />
-        <Rectangle x:Name="StromNetzWaagrecht"                                  Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="14" Grid.RowSpan="2" Fill="Black" Margin="0,32,0,33" />
-        <Image x:Name="ImgSchalterAus" Source="Bilder/Schalter.jpg"             Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="13" Grid.RowSpan="3" Margin="0,13,0,0"/>
-        <Image x:Name="ImgSchalterEin" Source="Bilder/SchalterBetaetigt.jpg"    Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="12" Grid.RowSpan="5" Margin="0,1,0,25" />
-        <Label Content="Q1"                                                     Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="15" Grid.RowSpan="2"  Margin="51,0,45,34" FontSize="16pt" />
+        <Rectangle x:Name="StromGeneratorSenkrecht"                             Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="12" Grid.RowSpan="3" Fill="Black"  Margin="68,0,68,33" />
+        <Rectangle x:Name="StromGeneratorWaagrecht"                             Grid.Column="10" Grid.ColumnSpan="5"    Grid.Row="13" Grid.RowSpan="2" Fill="Black" Margin="68,32,50,33"  />
+        <Rectangle x:Name="StromNetzWaagrecht"                                  Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="13" Grid.RowSpan="2" Fill="Black" Margin="0,32,0,33" />
+        <Image x:Name="ImgSchalterAus" Source="Bilder/Schalter.jpg"             Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="12" Grid.RowSpan="3" Margin="0,13,0,0"/>
+        <Image x:Name="ImgSchalterEin" Source="Bilder/SchalterBetaetigt.jpg"    Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="11" Grid.RowSpan="5" Margin="0,1,0,25" />
+        <Label Content="Q1"                                                     Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="14" Grid.RowSpan="2"  Margin="51,0,45,34" FontSize="16pt" />
 
-        <TextBlock x:Name="TxtVentilOeffnung"       Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt">y = 0%</TextBlock>
-        <TextBlock x:Name="TxtErregerstrom"         Grid.Column="13" Grid.ColumnSpan="3"    Grid.Row="5" FontSize="16pt">I<Run FontSize="12pt" BaselineAlignment="TextBottom">E</Run> = 0A</TextBlock>
-        <TextBlock x:Name="TxtDrehzahl"             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="13" FontSize="16pt">n = 0 min<Run FontSize="12pt" BaselineAlignment="TextTop">-1</Run></TextBlock>
+        <TextBlock x:Name="TxtVentilOeffnung"       Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2">y = 0%</TextBlock>
+        <TextBlock x:Name="TxtErregerstrom"         Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt">I<Run FontSize="12pt" BaselineAlignment="TextBottom">E</Run> = 0A</TextBlock>
+        <TextBlock x:Name="TxtDrehzahl"             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="12" FontSize="16pt">n = 0 min<Run FontSize="12pt" BaselineAlignment="TextTop">-1</Run></TextBlock>
 
-        <Label Content="Generator"                  Grid.Column="11" Grid.ColumnSpan="4"    Grid.Row="16" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
-        <TextBlock x:Name="TxtSpannungGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">U = 0V</TextBlock>
-        <TextBlock x:Name="TxtFrequenzGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt">f = 0Hz</TextBlock>
-        <TextBlock x:Name="TxtLeistungGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="20" FontSize="16pt">P = 0W</TextBlock>
+        <Label Content="Generator"                  Grid.Column="11" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
+        <TextBlock x:Name="TxtSpannungGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt">U = 0V</TextBlock>
+        <TextBlock x:Name="TxtFrequenzGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt">f = 0Hz</TextBlock>
+        <TextBlock x:Name="TxtLeistungGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">P = 0W</TextBlock>
 
-        <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="16" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
-        <TextBlock x:Name="TxtSpannungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">U = 0V</TextBlock>
-        <TextBlock x:Name="TxtFrequenzNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt">f = 0Hz</TextBlock>
-        <TextBlock x:Name="TxtLeistungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="20" FontSize="16pt">P = 0W</TextBlock>
+        <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
+        <TextBlock x:Name="TxtSpannungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt">U = 0V</TextBlock>
+        <TextBlock x:Name="TxtFrequenzNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt">f = 0Hz</TextBlock>
+        <TextBlock x:Name="TxtLeistungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">P = 0W</TextBlock>
 
-        <Rectangle x:Name="RectAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="16" Fill="LightGray" />
+        <Rectangle x:Name="RctAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="15" Fill="LightGray" />
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
 
         <RadioButton                                Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="4"  GroupName="RbAuswahl" FontSize="12pt" Checked="AuswahlGeaendert" IsChecked="True">Spannung / Frequenz</RadioButton>
@@ -137,14 +134,14 @@
 
         <Label Content="Netz"                       Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="10" VerticalAlignment="Center" FontSize="16pt" />
         <Label Content="Spannung"                   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
-        <Slider x:Name="SldNetzSpannung"            Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Maximum="27648" />
+        <Slider x:Name="SldNetzSpannung"            Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Maximum="27648" Value="11058" />
         <Label Content="Frequenz"                   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
-        <Slider x:Name="SldNetzFrequenz"            Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="14" Maximum="27648" />
-        <Label Content="Leistung"                   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
-        <Slider x:Name="SldNetzLeistung"            Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="16" Maximum="27648" />
+        <Slider x:Name="SldNetzFrequenz"            Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Maximum="27648" Value="13829" />
+        <Label  x:Name="LblLeistung"  Content="Leistung"                   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
+        <Slider x:Name="SldNetzLeistung"            Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Maximum="27648" />
 
 
-        <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="21" Grid.RowSpan="10" 
+        <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10" 
                                         Radius="150" 
                                         ScaleRadius="110" 
                                         ScaleStartAngle="120" 
