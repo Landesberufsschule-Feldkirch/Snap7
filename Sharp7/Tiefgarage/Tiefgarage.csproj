@@ -121,9 +121,9 @@
     <Resource Include="Bilder\mensch_8.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilties\Utilties.csproj">
+    <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
-      <Name>Utilties</Name>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

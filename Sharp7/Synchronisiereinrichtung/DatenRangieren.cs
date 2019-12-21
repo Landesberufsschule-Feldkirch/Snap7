@@ -5,32 +5,36 @@ namespace Synchronisiereinrichtung
 {
     public partial class MainWindow
     {
-        public bool Q1;
-        public bool S1;
-        public bool S2;
+        public bool Q1 { get; set; }
+        public bool Q1alt { get; set; }
+        public bool S1 { get; set; }
+        public bool S2 { get; set; }
 
-        public int Y;
-        public int Ie;
+        public int Y { get; set; }
+        public int Ie { get; set; }
 
-        public short n;
-        public short fGenerator;
-        public short fNetz;
-        public short UGenerator;
-        public short UNetz;
-        public short PNetz;
-        public short UDiff;
-        public short ph;
+        public short n { get; set; }
+        public short fGenerator { get; set; }
+        public short fNetz { get; set; }
+        public short UGenerator { get; set; }
+        public short UNetz { get; set; }
+        public short PNetz { get; set; }
+        public short UDiff { get; set; }
+        public short ph { get; set; }
 
-        public double Drehzahl;
-        public double FrequenzGenerator;
-        public double FrequenzNetz;
-        public double SpannungGenerator;
-        public double SpannungNetz;
-        public double LeistungNetz;
-        public double LeistungGenerator;
-        public double SpannungDifferenz;
-        public double Phasenlage;
+        public double Drehzahl { get; set; }
+        public double FrequenzGenerator { get; set; }
+        public double FrequenzNetz { get; set; }
+        public double SpannungGenerator { get; set; }
+        public double SpannungNetz { get; set; }
+        public double SpannungDifferenz { get; set; }
+        public double LeistungNetz { get; set; }
+        public double LeistungGenerator { get; set; }
+        public double SpannungsUnterschiedSynchronisieren { get; set; }
+        public double FrequenzDifferenz { get; set; }
+        public double Phasenlage { get; set; }
 
+        public bool MaschineTot { get; set; }
         enum Datenbausteine
         {
             DigIn = 1,

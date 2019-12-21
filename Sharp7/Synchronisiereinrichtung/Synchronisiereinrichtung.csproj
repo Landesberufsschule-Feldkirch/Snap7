@@ -119,9 +119,9 @@
       <Project>{6efd5895-177b-4bbb-af52-29f4d53b3fbd}</Project>
       <Name>CircularGauge</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utilties\Utilties.csproj">
+    <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
-      <Name>Utilties</Name>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
