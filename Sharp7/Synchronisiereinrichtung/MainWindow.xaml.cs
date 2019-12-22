@@ -46,7 +46,6 @@ namespace Synchronisiereinrichtung
         {
             realTimeGraph = new RealTimeGraph();
             realTimeGraph.Show();
-            ViewModel.Start();
         }
 
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
@@ -59,7 +58,7 @@ namespace Synchronisiereinrichtung
                 case "U_f": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;
                 case "U_f_Phasenlage": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase; break;
                 case "U_f_Leistung": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistung; break;
-                case "U_f_Leistungsfaktor":AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor; break;
+                case "U_f_Leistungsfaktor": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor; break;
                 default:
                     break;
             }
@@ -90,7 +89,7 @@ namespace Synchronisiereinrichtung
             }
         }
 
-      
+
     }
 
 

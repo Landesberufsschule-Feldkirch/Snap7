@@ -47,7 +47,7 @@ namespace Synchronisiereinrichtung
 
                 WinkelNetz = RestKlasse.WinkelBerechnen(Zeitdauer, FrequenzNetz, WinkelNetz);
                 WinkelGenerator = RestKlasse.WinkelBerechnen(Zeitdauer, FrequenzGenerator, WinkelGenerator);
-                
+
                 MomentanSpannungNetz = RestKlasse.GetSpannung(WinkelNetz, SpannungNetz);
                 MomentanSpannungGenerator = RestKlasse.GetSpannung(WinkelGenerator, SpannungGenerator);
 
@@ -55,8 +55,6 @@ namespace Synchronisiereinrichtung
                 FrequenzDifferenz = FrequenzNetz - FrequenzGenerator;
                 Zeiger SpannungsDiff = new Zeiger(MomentanSpannungGenerator, MomentanSpannungNetz);
                 SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
-
-                Console.WriteLine($"Netz: {WinkelNetz} Gen: {WinkelGenerator} Diff {Math.Abs(WinkelNetz) - Math.Abs(WinkelGenerator)} Länge: {SpannungsUnterschiedSynchronisieren}");
 
                 if (Q1alt != Q1)
                 {

@@ -2,12 +2,8 @@
 using RealTimeGraphX.Renderers;
 using RealTimeGraphX.WPF;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Synchronisiereinrichtung
@@ -31,8 +27,11 @@ namespace Synchronisiereinrichtung
             //Controller.Surface = null;
         }
 
-        private void Start()
+        public void Start()
         {
+            Random random = new Random();
+
+
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
@@ -41,7 +40,7 @@ namespace Synchronisiereinrichtung
                 while (true)
                 {
                     //Get the current elapsed time and mouse position.
-                    var y = System.Windows.Forms.Cursor.Position.Y;
+                    var y = random.Next(0, 100); // System.Windows.Forms.Cursor.Position.Y;
                     var x = watch.Elapsed;
 
                     //Push the x,y to the controller.
