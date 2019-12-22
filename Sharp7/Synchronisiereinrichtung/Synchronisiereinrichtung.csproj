@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RealTimeGraphX">
+      <HintPath>..\..\..\RealTimeGraphX\RealTimeGraphX.WPF\bin\Debug\RealTimeGraphX.dll</HintPath>
+    </Reference>
+    <Reference Include="RealTimeGraphX.WPF">
+      <HintPath>..\..\..\RealTimeGraphX\RealTimeGraphX.WPF\bin\Debug\RealTimeGraphX.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RealTimeGraph.xaml.cs">
+      <DependentUpon>RealTimeGraph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RealTimeGraphModel.cs" />
     <Compile Include="S7_1200.cs" />
     <Compile Include="SecondWindow.xaml.cs">
       <DependentUpon>SecondWindow.xaml</DependentUpon>
@@ -75,6 +85,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RealTimeGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SecondWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +137,9 @@
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\icon_graph.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

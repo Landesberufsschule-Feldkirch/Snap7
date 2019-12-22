@@ -19,17 +19,15 @@ namespace AmpelsteuerungKieswerk
 
                                 foreach (Button btn in gAlleButton)
                                 {
-
                                     var lkw = btn.Tag as LKW;
-                                    _mutex.WaitOne();
-                                    lkw.LastwagenAnzeigen(FensterAktiv, btn);
-                                    _mutex.ReleaseMutex();
+                                    lock (lockit)
+                                    {
+                                        lkw.LastwagenAnzeigen(FensterAktiv, btn);
+                                    }
                                 }
                             }
                         });
-
                 Thread.Sleep(10);
-
             }
         }
 

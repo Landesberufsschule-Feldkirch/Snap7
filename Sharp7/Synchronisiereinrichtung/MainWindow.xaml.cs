@@ -9,6 +9,7 @@ namespace Synchronisiereinrichtung
     public partial class MainWindow : Window
     {
         public SecondWindow secondWindow;
+        public RealTimeGraph realTimeGraph;
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
@@ -39,6 +40,13 @@ namespace Synchronisiereinrichtung
             DebugWindowAktiv = true;
             secondWindow = new SecondWindow();
             secondWindow.Show();
+        }
+
+        private void GraphWindow_Click(object sender, RoutedEventArgs e)
+        {
+            realTimeGraph = new RealTimeGraph();
+            realTimeGraph.Show();
+            ViewModel.Start();
         }
 
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
@@ -82,6 +90,7 @@ namespace Synchronisiereinrichtung
             }
         }
 
+      
     }
 
 

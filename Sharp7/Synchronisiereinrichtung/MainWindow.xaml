@@ -76,7 +76,10 @@
         <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="26"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
 
         <Button x:Name="DebugWindow" Content="!" Grid.Column="27" Grid.Row="1" Click="DebugWindowOeffnen" />
-
+        <Button x:Name="GraphWindow"  Grid.Column="2" Grid.Row="24" Click="GraphWindow_Click">
+            <Image Source="Bilder/icon_graph.png" />
+        </Button>
+        
         <Rectangle  x:Name="ZuleitungLinks"                                             Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Fill="Blue"/>
         <Rectangle  x:Name="AbleitungRechts"                                            Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" Fill="LightBlue" Margin="0,5,22,5"/>
         <Image      x:Name="VentilZuleitungAus" Source="Bilder/VentilElektrischAus.jpg" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="45,0,22,25"  />

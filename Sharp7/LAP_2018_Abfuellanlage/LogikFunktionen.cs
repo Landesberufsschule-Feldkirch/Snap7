@@ -5,8 +5,8 @@ namespace LAP_2018_Abfuellanlage
     public partial class MainWindow
     {
         double Pegel = 1;
-        private readonly double LeerGeschwindigkeit = 0.00001;
-        private readonly int SiemensAnalogwertMax = 27648;
+        private readonly double LeerGeschwindigkeit = 0.000_01;
+        private readonly int SiemensAnalogwertMax = 27_648;
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
