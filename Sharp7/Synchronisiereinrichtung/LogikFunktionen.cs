@@ -36,7 +36,7 @@ namespace Synchronisiereinrichtung
                 Drehzahl += Y * Y_n_Faktor;
                 Drehzahl *= n_BremsFaktor;
 
-                SpannungGenerator = Drehzahl * S7Analog.S7_Analog_2_Double(Ie, 10) / 20;
+                SpannungGenerator = Drehzahl * MagnetischerKreis.Magnetisierungskennlinie(S7Analog.S7_Analog_2_Double(Ie, 10)) / 2;
                 FrequenzGenerator = Drehzahl / 30;
 
                 n = S7Analog.S7_Analog_2_Short(Drehzahl, 5000);
@@ -97,5 +97,17 @@ namespace Synchronisiereinrichtung
         }
 
 
+
+
     }
+    public class MagnetischerKreis
+    {
+
+        public static double Magnetisierungskennlinie(double strom)
+        {
+            return 1 - Math.Exp(-strom);
+        }
+
+    }
+
 }
