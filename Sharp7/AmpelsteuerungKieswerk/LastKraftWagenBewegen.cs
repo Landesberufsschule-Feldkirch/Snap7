@@ -38,18 +38,14 @@
                     break;
                 case LKW_Positionen.LR_RechtKurve:
                     PosAktuell = RechteKurve.PunktBestimmen(KurvePosition);
-
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) LKW_Position = LKW_Positionen.RechtsGeparkt;
                     break;
-
                 case LKW_Positionen.RechtsGeparkt:
                     PosAktuell = ParkPosRechts;
                     LKW_Richtung = LKW_Richtungen.NachLinks;
                     KurvePosition = 1;
                     break;
-
-
                 case LKW_Positionen.RL_RechteKurve:
                     PosAktuell = RechteKurve.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;

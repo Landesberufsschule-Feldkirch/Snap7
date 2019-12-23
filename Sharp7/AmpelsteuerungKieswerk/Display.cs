@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -9,20 +10,23 @@ namespace AmpelsteuerungKieswerk
     {
         public void Display_Task()
         {
+            DatenRangieren.AmpelChangedEvent += DatenRangieren_AmpelChangedEvent;
+
+            DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Rot, AmpelZustand.Rot));
+
             while (FensterAktiv)
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                         {
                             if (FensterAktiv)
                             {
                                 AnzeigeAktualisieren();
-
-                                foreach (Button btn in gAlleButton)
+                                lock (lockit)
                                 {
-                                    var lkw = btn.Tag as LKW;
-                                    lock (lockit)
+                                    foreach (Button btn in gAlleButton)
                                     {
-                                        lkw.LastwagenAnzeigen(FensterAktiv, btn);
+                                        var lkw = btn.Tag as LKW;
+                                        lkw?.LastwagenAnzeigen(FensterAktiv, btn);
                                     }
                                 }
                             }
@@ -31,28 +35,69 @@ namespace AmpelsteuerungKieswerk
             }
         }
 
+        private void DatenRangieren_AmpelChangedEvent(object sender, AmpelZustandEventArgs e)
+        {
+            KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.White);
+            KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.White);
+            KreisFarbeUmschalten(circ_Ampel_links_gruen, Colors.White);
+
+            KreisFarbeUmschalten(circ_Ampel_rechts_rot, Colors.White);
+            KreisFarbeUmschalten(circ_Ampel_rechts_gelb, Colors.White);
+            KreisFarbeUmschalten(circ_Ampel_rechts_gruen, Colors.White);
+
+            switch (e.AmpelZustandLinks)
+            {
+                case AmpelZustand.Rot:
+                    KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.Red);
+                    break;
+                case AmpelZustand.Gelb:
+                    KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.Yellow);
+                    break;
+                case AmpelZustand.Grün:
+                    KreisFarbeUmschalten(circ_Ampel_links_gruen, Colors.LawnGreen);
+                    break;
+                default:
+                    break;
+            }
+
+            switch (e.AmpelZustandLinks)
+            {
+                case AmpelZustand.Rot:
+                    KreisFarbeUmschalten(circ_Ampel_rechts_rot, Colors.Red);
+                    break;
+                case AmpelZustand.Gelb:
+                    KreisFarbeUmschalten(circ_Ampel_rechts_gelb, Colors.Yellow);
+                    break;
+                case AmpelZustand.Grün:
+                    KreisFarbeUmschalten(circ_Ampel_rechts_gruen, Colors.LawnGreen);
+                    break;
+                default:
+                    break;
+            }
+        }
         public void AnzeigeAktualisieren()
         {
-            KreisFarbeUmschalten(P1_links_gruen, circ_Ampel_links_gruen, Colors.LawnGreen, Colors.White);
-            KreisFarbeUmschalten(P2_links_gelb, circ_Ampel_links_gelb, Colors.Yellow, Colors.White);
-            KreisFarbeUmschalten(P3_links_rot, circ_Ampel_links_rot, Colors.Red, Colors.White);
-
-            KreisFarbeUmschalten(P4_rechts_gruen, circ_Ampel_rechts_gruen, Colors.LawnGreen, Colors.White);
-            KreisFarbeUmschalten(P5_rechts_gelb, circ_Ampel_rechts_gelb, Colors.Yellow, Colors.White);
-            KreisFarbeUmschalten(P6_rechts_rot, circ_Ampel_rechts_rot, Colors.Red, Colors.White);
-
             KreisFarbeUmschalten(B1, circ_Lichtschranke_draussen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B2, circ_Lichtschranke_drinnen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B3, circ_Lichtschranke_drinnen_rechts, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B4, circ_Lichtschranke_draussen_rechts, Colors.Red, Colors.LightGray);
         }
-
         void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
         {
-            if (Wert) ellipse.Fill = new SolidColorBrush(FarbeEin);
-            else ellipse.Fill = new SolidColorBrush(FarbeAus);
+            Dispatcher.Invoke(() =>
+            {
+                if (Wert) ellipse.Fill = new SolidColorBrush(FarbeEin);
+                else ellipse.Fill = new SolidColorBrush(FarbeAus);
+            });
         }
+        void KreisFarbeUmschalten(Ellipse ellipse, Color farbe)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                ellipse.Fill = new SolidColorBrush(farbe);
+            });
 
+        }
         void GridRasterEinblenden()
         {
             for (var i = 0; i < 1000; i += 50)

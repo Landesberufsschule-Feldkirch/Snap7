@@ -664,7 +664,7 @@ namespace Sharp7
             if (Bit > 7) Bit = 7;
             return (Buffer[Pos] & Mask[Bit]) != 0;
         }
-        public static void SetBitAt(ref byte[] Buffer, int Pos, int Bit, bool Value)
+        public static void SetBitAt(byte[] Buffer, int Pos, int Bit, bool Value)
         {
             byte[] Mask = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
             if (Bit < 0) Bit = 0;

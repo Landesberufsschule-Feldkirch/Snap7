@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcConnect", "PlcConnect\PlcConnect.csproj", "{5CF4B854-A672-4AEF-9E53-E3A919C389EA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehälterSteuerung", "BehälterSteuerung\BehälterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
@@ -35,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5CF4B854-A672-4AEF-9E53-E3A919C389EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CF4B854-A672-4AEF-9E53-E3A919C389EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CF4B854-A672-4AEF-9E53-E3A919C389EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CF4B854-A672-4AEF-9E53-E3A919C389EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A825B70B-5261-4DC2-A0B9-92D371EA2D83}.Release|Any CPU.ActiveCfg = Release|Any CPU

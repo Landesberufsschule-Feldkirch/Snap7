@@ -26,6 +26,9 @@ namespace Synchronisiereinrichtung
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
 
+            if (System.Diagnostics.Debugger.IsAttached)
+                DebugWindow.Visibility = Visibility.Visible;
+
             MessgeraetDifferenzSpannung = new Messgeraet(0);
             GaugeDifferenzSpannung.DataContext = MessgeraetDifferenzSpannung;
         }
@@ -33,6 +36,7 @@ namespace Synchronisiereinrichtung
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FensterAktiv = false;
+            Application.Current.Shutdown();
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

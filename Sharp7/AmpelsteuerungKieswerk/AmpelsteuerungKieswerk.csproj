@@ -55,10 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AmpelZustandArgs.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="LastKraftWagen.cs" />
     <Compile Include="LastKraftWagenBewegen.cs" />
     <Compile Include="S7_1200.cs" />
+    <Compile Include="SensorenZustandArgs.cs" />
     <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

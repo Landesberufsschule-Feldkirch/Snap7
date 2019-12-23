@@ -4,61 +4,60 @@ using System.Threading;
 
 namespace AmpelsteuerungKieswerk
 {
-    public partial class MainWindow
+    public class S7_1200
     {
-        private S7Client Client;
+        private readonly S7Client Client = new S7Client();
         public const string SPS_IP_Adresse = "192.168.0.10";    //S7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-
-        private byte[] DigOutput = new byte[1024];
-        private byte[] DigInput = new byte[1024];
-        private byte[] AnalogOutput = new byte[1024];
-        private byte[] AnalogInput = new byte[1024];
-        public void VerbindungErstellen()
+        readonly DatenRangieren DatenRangieren;
+        readonly MainWindow MainWindow;
+        private bool TaskAktive = true;
+        public S7_1200(MainWindow window, DatenRangieren datenRangieren)
         {
-            int Result = -2;
-            if (Client == null) Client = new S7Client();
+            MainWindow = window;
+            DatenRangieren = datenRangieren;
 
-            Result = Client.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
-            if (Result == 0)
-            {
-                TaskAktiv = true;
-                System.Threading.Tasks.Task.Run(() => DatenRangieren_Task());
-            }
+            System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
         }
 
-    
-
-        public void SPS_Pingen_Task()
+        ~S7_1200()
         {
-            while (FensterAktiv)
+            TaskAktive = false;
+        }
+
+        private void SPS_Pingen_Task()
+        {
+            while (TaskAktive)
             {
-                Ping pingSender = new Ping();
+                var pingSender = new Ping();
+                var reply = pingSender.Send(SPS_IP_Adresse, SPS_Timeout);
 
-                PingReply reply = pingSender.Send(SPS_IP_Adresse, SPS_Timeout);
-
-                this.Dispatcher.Invoke(() =>
+                if (reply.Status == IPStatus.Success)
                 {
-                    if (FensterAktiv)
+                    MainWindow.SpsDatenschreiben($"S7-1200 sichtbar (Ping: {reply.RoundtripTime.ToString() }ms)");
+                    var res = Client?.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
+                    if (res == 0)
                     {
-                        if (reply.Status == IPStatus.Success)
+                        while (TaskAktive)
                         {
-                            if (TaskAktiv) lbl_PlcPing.Content = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime.ToString() + "ms)";
-                            else VerbindungErstellen();
-                        }
-                        else
-                        {
-                            lbl_PlcPing.Content = "Keine Verbindung zur S7-1200!";
+                            DatenRangieren.Task(Client);
+
+                            Thread.Sleep(10);
                         }
                     }
-                });
 
+                    //  else TODO fehlerbehandlung
+                }
+                else
+                {
+                    MainWindow.SpsDatenschreiben("Keine Verbindung zur S7-1200!");
+                }
                 Thread.Sleep(100);
             }
-        }     
-  
 
+            Client.Disconnect();
+        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Sharp7;
-using System.Threading;
+using System;
 
 namespace AmpelsteuerungKieswerk
 {
-    public partial class MainWindow
+    public class DatenRangieren
     {
         enum Datenbausteine
         {
@@ -37,31 +37,63 @@ namespace AmpelsteuerungKieswerk
             B4
         }
 
-        public void DatenRangieren_Task()
+        public DatenRangieren(MainWindow window)
         {
+            Array.Clear(DigInput, 0, DigInput.Length);
+            Array.Clear(DigOutput, 0, DigOutput.Length);
 
-            while (TaskAktiv && FensterAktiv)
+            window.SensorenChanged += Window_SensorenChanged;
+        }
+
+        private void Window_SensorenChanged(object sender, SensorenZustandArgs e)
+        {
+            B1 = e.B1;
+            B2 = e.B2;
+            B3 = e.B3;
+            B4 = e.B4;
+        }
+        private bool B1, B2, B3, B4;
+
+        private readonly byte[] DigOutput = new byte[1024];
+        private byte[] DigInput = new byte[1024];
+
+        private AmpelZustand AmpelLinks = AmpelZustand.Rot;
+        private AmpelZustand AmpelRechts = AmpelZustand.Rot;
+
+        public void Task(S7Client client)
+        {
+            S7.SetBitAt(DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B1);
+            S7.SetBitAt(DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B2);
+            S7.SetBitAt(DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B3);
+            S7.SetBitAt(DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B4);
+
+            client?.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
+            client?.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
+
+            var p1_links_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
+            var p2_links_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P2);
+            var p3_links_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P3);
+            var p4_rechts_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P4);
+            var p5_rechts_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P5);
+            var p6_rechts_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P6);
+
+            var ampelLinks = GetAmpelZustand(p1_links_gruen, p2_links_gelb, p3_links_rot);
+            var ampelRechts = GetAmpelZustand(p4_rechts_gruen, p5_rechts_gelb, p6_rechts_rot);
+
+            if (ampelLinks != AmpelLinks || ampelRechts != AmpelRechts)
             {
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B1);
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B2);
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B1), B3);
-                S7.SetBitAt(ref DigInput, InByte(BitPosEingang.B1), InBit(BitPosEingang.B2), B4);
+                OnAmpelChanged(new AmpelZustandEventArgs(ampelLinks, ampelRechts));
 
-                if ((Client != null) && TaskAktiv)
-                {
-                    Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigInput);
-                    Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_1, DigOutput);
-                }
-
-                P1_links_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P1);
-                P2_links_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P2);
-                P3_links_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P3);
-                P4_rechts_gruen = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P4);
-                P5_rechts_gelb = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P5);
-                P6_rechts_rot = S7.GetBitAt(DigOutput, (int)BytePosition.Byte_0, (int)BitPosAusgang.P6);
-
-                Thread.Sleep(10);
+                AmpelRechts = ampelRechts;
+                AmpelLinks = ampelLinks;
             }
+        }
+
+        public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
+
+        private void OnAmpelChanged(AmpelZustandEventArgs e)
+        {
+            AmpelChangedEvent?.Invoke(this, e);
         }
 
         private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
@@ -69,12 +101,11 @@ namespace AmpelsteuerungKieswerk
         //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
         //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
 
-        void EinAusgabeFelderInitialisieren()
+        private AmpelZustand GetAmpelZustand(bool grün, bool gelb, bool rot)
         {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
-            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+            if (rot) return AmpelZustand.Rot;
+            if (gelb) return AmpelZustand.Gelb;
+            return AmpelZustand.Grün;
         }
     }
 }

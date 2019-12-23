@@ -1,23 +1,19 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Windows.Controls;
 
 namespace AmpelsteuerungKieswerk
 {
-
     public partial class MainWindow
     {
         public static object lockit = new object();
-        public bool P3_links_rot = true;
-        public bool P2_links_gelb, P1_links_gruen;
-        public bool P6_rechts_rot = true;
-        public bool P5_rechts_gelb, P4_rechts_gruen;
         public bool B1, B2, B3, B4;
-        
+
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                                    {
                                        lock (lockit)
                                        {
@@ -35,10 +31,18 @@ namespace AmpelsteuerungKieswerk
                                                B3 |= b3;
                                                B4 |= b4;
                                            }
+                                           OnSensoreChanged(new SensorenZustandArgs(B1, B2, B3, B4));
                                        }
                                    });
                 Thread.Sleep(10);
             }
+        }
+
+        public event EventHandler<SensorenZustandArgs> SensorenChanged;
+
+        protected virtual void OnSensoreChanged(SensorenZustandArgs e)
+        {
+            SensorenChanged?.Invoke(this, e);
         }
     }
 }
