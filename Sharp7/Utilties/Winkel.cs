@@ -8,10 +8,10 @@ namespace Utilities
         {
             return value / 180d * Math.PI;
         }
+
         public static int Rad2Deg(double value)
         {
             return (int)(value * 180 / Math.PI);
         }
-
     }
 }

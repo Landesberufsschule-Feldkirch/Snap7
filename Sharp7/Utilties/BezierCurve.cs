@@ -1,5 +1,4 @@
 ﻿using System;
-using Utilities;
 
 namespace Utilities
 {
@@ -48,7 +47,6 @@ namespace Utilities
             return new Punkt(X_Berechnen(t), Y_Berechnen(t));
         }
 
-
         private double X_Berechnen(double t)
         {
             return (
@@ -58,6 +56,7 @@ namespace Utilities
                 pt_x3 * Math.Pow(t, 3)
             );
         }
+
         private double Y_Berechnen(double t)
         {
             return (
@@ -67,6 +66,5 @@ namespace Utilities
                 pt_y3 * Math.Pow(t, 3)
             );
         }
-
     }
 }

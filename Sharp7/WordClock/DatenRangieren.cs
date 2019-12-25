@@ -1,26 +1,18 @@
 ﻿using Sharp7;
-using System.Threading;
 
 namespace WordClock
 {
-    public partial class MainWindow
+    public class DatenRangieren
     {
-        public ushort DatumJahr;
-        public byte DatumMonat;
-        public byte DatumTag;
-        public byte DatumWochentag;
-        public byte Stunde;
-        public byte Minute;
-        public byte Sekunde;
-        public byte Nanosekunde;
+        public ushort DatumJahr { get; set; }
+        public byte DatumMonat { get; set; }
+        public byte DatumTag { get; set; }
+        public byte DatumWochentag { get; set; }
+        public byte Stunde { get; set; }
+        public byte Minute { get; set; }
+        public byte Sekunde { get; set; }
+        public byte Nanosekunde { get; set; }
 
-        enum Datenbausteine
-        {
-            DigIn = 1,
-            DigOut,
-            AnIn,
-            AnOut
-        }
         enum BytePosition
         {
             Byte_0 = 0,
@@ -34,59 +26,25 @@ namespace WordClock
             Byte_8,
             Byte_9
         }
-        enum AnzahlByte
+
+        public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            Byte_1 = 1,
-            Byte_2,
-            Byte_3,
-            Byte_4,
-            Byte_5,
-            Byte_6,
-            Byte_7,
-            Byte_8,
-            Byte_9,
-            Byte_10
+            S7.SetWordAt(digInput, (int)BytePosition.Byte_0, DatumJahr);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_2, DatumMonat);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_3, DatumTag);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_4, DatumWochentag);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_5, Stunde);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_6, Minute);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_7, Sekunde);
+            S7.SetByteAt(digInput, (int)BytePosition.Byte_8, Nanosekunde);
         }
-        enum BitPosAusgang
+        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-        }
-        enum BitPosEingang
-        {
+            // es werden keine Werte von der SPS geschrieben
         }
 
-        public void DatenRangieren_Task()
+        public DatenRangieren()
         {
-            while (TaskAktiv && FensterAktiv)
-            {
-                S7.SetWordAt(DigInput, (int)BytePosition.Byte_0, DatumJahr);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_2, DatumMonat);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_3, DatumTag);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_4, DatumWochentag);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_5, Stunde);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_6, Minute);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_7, Sekunde);
-                S7.SetByteAt(DigInput, (int)BytePosition.Byte_8, Nanosekunde);
-
-                if ((Client != null) && TaskAktiv)
-                {
-                    Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, (int)AnzahlByte.Byte_10, DigInput);
-                }
-
-                Thread.Sleep(100);
-            }
-        }
-
-        //private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
-        //private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
-        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
-        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
-
-        void EinAusgabeFelderInitialisieren()
-        {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
-            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
         }
     }
 }

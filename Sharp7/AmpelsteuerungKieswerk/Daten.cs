@@ -7,6 +7,7 @@ namespace AmpelsteuerungKieswerk
     public partial class MainWindow : Window
     {
         public ObservableCollection<Button> gAlleButton = new ObservableCollection<Button>();
+
         public void AlleLKWInitialisieren()
         {
             btn_lkw_1.Tag = new LKW(img_lkw_1);

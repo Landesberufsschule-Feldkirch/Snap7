@@ -1,4 +1,4 @@
-﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
+﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com)
 
 All rights reserved.
 
@@ -15,23 +15,14 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWE
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 DAMAGE.*/
 
-
 using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Windows.Data;
 using System.Globalization;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Media;
 
 namespace CircularGauge
 {
-
     /// <summary>
     /// Converts the given color to a SolidColorBrush
     /// </summary>
@@ -58,10 +49,9 @@ namespace CircularGauge
         }
     }
 
-
-    /// <summary>   
-    /// A type converter for converting image offset into render transform  
-    /// </summary>   
+    /// <summary>
+    /// A type converter for converting image offset into render transform
+    /// </summary>
     public class ImageOffsetConverter : IValueConverter
     {
         public object Convert(
@@ -86,7 +76,6 @@ namespace CircularGauge
         }
     }
 
-
     /// <summary>
     /// Converts radius to diameter
     /// </summary>
@@ -100,7 +89,7 @@ namespace CircularGauge
         {
             double dblVal = (double)value;
 
-            return (dblVal *2);
+            return (dblVal * 2);
         }
 
         public object ConvertBack(
@@ -112,7 +101,7 @@ namespace CircularGauge
             throw new NotImplementedException();
         }
     }
-    
+
     /// <summary>
     /// Calculates the pointer position
     /// </summary>
@@ -162,7 +151,7 @@ namespace CircularGauge
             RotateTransform rt = new RotateTransform();
             TranslateTransform tt = new TranslateTransform();
 
-            tt.Y = dblVal ;
+            tt.Y = dblVal;
             tg.Children.Add(rt);
             tg.Children.Add(tt);
 
@@ -202,7 +191,6 @@ namespace CircularGauge
             }
 
             return i;
-            
         }
 
         public object ConvertBack(
@@ -227,8 +215,7 @@ namespace CircularGauge
             CultureInfo culture)
         {
             double dbl = (double)value;
-            return (dbl*2) * 0.94;
-
+            return (dbl * 2) * 0.94;
         }
 
         public object ConvertBack(
@@ -262,7 +249,6 @@ namespace CircularGauge
             radBrush.GradientStops.Add(g1);
             radBrush.GradientStops.Add(g2);
             return radBrush;
-
         }
 
         public object ConvertBack(

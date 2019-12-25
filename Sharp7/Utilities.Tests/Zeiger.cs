@@ -4,16 +4,14 @@ namespace Utilities.Tests
 {
     public class Zeiger
     {
-
         [Theory]
-        [InlineData(0,0,0,0,0)]
-        [InlineData(1,1,0,0,0)]
-        [InlineData(1,0,1,0,0)]
-        [InlineData(1,0,0,1,0)]
-        [InlineData(1,0,0,0,1)]
+        [InlineData(0, 0, 0, 0, 0)]
+        [InlineData(1, 1, 0, 0, 0)]
+        [InlineData(1, 0, 1, 0, 0)]
+        [InlineData(1, 0, 0, 1, 0)]
+        [InlineData(1, 0, 0, 0, 1)]
         public void test(double exp, double x1, double y1, double x2, double y2)
         {
-
             var p1 = new Punkt(x1, y1);
             var p2 = new Punkt(x2, y2);
 

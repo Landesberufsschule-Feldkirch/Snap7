@@ -12,6 +12,7 @@ namespace AmpelsteuerungKieswerk
             NachRechts = 0,
             NachLinks
         }
+
         private enum LKW_Positionen
         {
             LinksGeparkt = 0,
@@ -24,7 +25,7 @@ namespace AmpelsteuerungKieswerk
             RL_LinkeKurve
         }
 
-        static int AnzahlLKW;
+        private static int AnzahlLKW;
         private readonly int ID;
         private LKW_Richtungen LKW_Richtung = LKW_Richtungen.NachRechts;
         private LKW_Richtungen LKW_RichtungAlt = LKW_Richtungen.NachRechts;
@@ -96,8 +97,15 @@ namespace AmpelsteuerungKieswerk
             LKW_RichtungAlt = LKW_Richtung;
         }
 
-        public void LinksParken() { LKW_Position = LKW_Positionen.LinksGeparkt; }
-        public void RechtsParken() { LKW_Position = LKW_Positionen.RechtsGeparkt; }
+        public void LinksParken()
+        {
+            LKW_Position = LKW_Positionen.LinksGeparkt;
+        }
+
+        public void RechtsParken()
+        {
+            LKW_Position = LKW_Positionen.RechtsGeparkt;
+        }
 
         public void Losfahren()
         {
@@ -105,7 +113,7 @@ namespace AmpelsteuerungKieswerk
             if (LKW_Position == LKW_Positionen.RechtsGeparkt) LKW_Position = LKW_Positionen.RL_RechteKurve;
         }
 
-        bool LichtschrankeUnterbrochen(double xPos)
+        private bool LichtschrankeUnterbrochen(double xPos)
         {
             if (PosAktuell.X + BreiteLKW < xPos) return false;
             if (PosAktuell.X > xPos) return false;

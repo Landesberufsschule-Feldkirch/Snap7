@@ -75,7 +75,8 @@
         <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
         <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="26"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
 
-        <Button x:Name="DebugWindow" Content="set manual" Visibility="Hidden" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" Grid.ColumnSpan="2" Margin="50,9,42,0" Grid.RowSpan="2" />
+        <Button x:Name="DebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" Visibility="Hidden"/>
+        
         <Button x:Name="GraphWindow"  Grid.Column="2" Grid.Row="24" Click="GraphWindow_Click">
             <Image Source="Bilder/icon_graph.png" />
         </Button>

@@ -2,13 +2,15 @@
 
 namespace AmpelsteuerungKieswerk
 {
-
     public enum AmpelZustand
     {
         Rot,
+        RotUndGelb,
         Gelb,
-        Grün
+        Gruen,
+        Aus
     }
+
     public class AmpelZustandEventArgs : EventArgs
     {
         public AmpelZustand AmpelZustandLinks { get; set; }

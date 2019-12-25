@@ -1,4 +1,4 @@
-﻿using System.Threading;
+﻿using Kommunikation;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,21 +9,19 @@ namespace AmpelsteuerungKieswerk
         public bool TaskAktiv { get; set; }
         public bool DatenRangierenAktiv { get; set; } = true;
         public bool FensterAktiv { get; set; } = true;
-
         public int FahrzeugPersonGeklickt { get; set; } = -1;
 
-        private readonly S7_1200 S7_1200;
-        private DatenRangieren DatenRangieren;
-
+      
         public MainWindow()
         {
             InitializeComponent();
             AlleLKWInitialisieren();
-            DatenRangieren = new DatenRangieren(this);
-            S7_1200 = new S7_1200(this, DatenRangieren);
-            
+
+            DatenRangieren datenRangieren = new DatenRangieren(this);
+            S7_1200 s7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput );
+
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
-            System.Threading.Tasks.Task.Run(() => Display_Task());
+            System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200));
         }
 
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -34,13 +32,12 @@ namespace AmpelsteuerungKieswerk
             lkw?.Losfahren();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) { 
-            
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             FensterAktiv = false;
             Application.Current.Shutdown();
-        
-        
         }
+
         private void AlleLinksParken_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button btn in gAlleButton)
@@ -49,6 +46,7 @@ namespace AmpelsteuerungKieswerk
                 lkw?.LinksParken();
             }
         }
+
         private void AlleRechtsParken_Click(object sender, RoutedEventArgs e)
         {
             foreach (Button btn in gAlleButton)
@@ -56,15 +54,6 @@ namespace AmpelsteuerungKieswerk
                 var lkw = btn.Tag as LKW;
                 lkw?.RechtsParken();
             }
-        }
-
-        public void SpsDatenschreiben(string text)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                lbl_PlcPing.Content = text;
-            });
-        }
+        }     
     }
 }
-

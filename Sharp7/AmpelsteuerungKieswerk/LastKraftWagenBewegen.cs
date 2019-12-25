@@ -1,7 +1,5 @@
 ﻿namespace AmpelsteuerungKieswerk
 {
-
-
     public partial class LKW
     {
         private LKW_Positionen LKW_Position = LKW_Positionen.LinksGeparkt;
@@ -26,36 +24,43 @@
                     KurvePosition = 0;
                     LKW_Richtung = LKW_Richtungen.NachRechts;
                     break;
+
                 case LKW_Positionen.LR_LinkeKurve:
                     PosAktuell = LinkeKurve.PunktBestimmen(KurvePosition);
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) LKW_Position = LKW_Positionen.LR_Waagrecht;
                     break;
+
                 case LKW_Positionen.LR_Waagrecht:
                     if (PosAktuell.X < x_AnfangRechteKurve) PosAktuell.X += xy_Bewegung;
                     else LKW_Position = LKW_Positionen.LR_RechtKurve;
                     KurvePosition = 0;
                     break;
+
                 case LKW_Positionen.LR_RechtKurve:
                     PosAktuell = RechteKurve.PunktBestimmen(KurvePosition);
                     KurvePosition += KurveGeschwindigkeit;
                     if (KurvePosition >= 1) LKW_Position = LKW_Positionen.RechtsGeparkt;
                     break;
+
                 case LKW_Positionen.RechtsGeparkt:
                     PosAktuell = ParkPosRechts;
                     LKW_Richtung = LKW_Richtungen.NachLinks;
                     KurvePosition = 1;
                     break;
+
                 case LKW_Positionen.RL_RechteKurve:
                     PosAktuell = RechteKurve.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) LKW_Position = LKW_Positionen.RL_Waagrecht;
                     break;
+
                 case LKW_Positionen.RL_Waagrecht:
                     if (PosAktuell.X > x_EndeLinkeKurve) PosAktuell.X -= xy_Bewegung;
                     else LKW_Position = LKW_Positionen.RL_LinkeKurve;
                     KurvePosition = 1;
                     break;
+
                 case LKW_Positionen.RL_LinkeKurve:
                     PosAktuell = LinkeKurve.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;

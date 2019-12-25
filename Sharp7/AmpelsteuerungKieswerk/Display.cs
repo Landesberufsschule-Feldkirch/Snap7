@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Kommunikation;
 using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,9 +8,9 @@ namespace AmpelsteuerungKieswerk
 {
     public partial class MainWindow
     {
-        public void Display_Task()
+        public void Display_Task(S7_1200 s7_1200)
         {
-            DatenRangieren.AmpelChangedEvent += DatenRangieren_AmpelChangedEvent;
+            //DatenRangieren.AmpelChangedEvent += DatenRangieren_AmpelChangedEvent;
 
             DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Rot, AmpelZustand.Rot));
 
@@ -20,7 +20,7 @@ namespace AmpelsteuerungKieswerk
                         {
                             if (FensterAktiv)
                             {
-                                AnzeigeAktualisieren();
+                                AnzeigeAktualisieren(s7_1200);
                                 lock (lockit)
                                 {
                                     foreach (Button btn in gAlleButton)
@@ -50,12 +50,15 @@ namespace AmpelsteuerungKieswerk
                 case AmpelZustand.Rot:
                     KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.Red);
                     break;
+
                 case AmpelZustand.Gelb:
                     KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.Yellow);
                     break;
-                case AmpelZustand.Grün:
+
+                case AmpelZustand.Gruen:
                     KreisFarbeUmschalten(circ_Ampel_links_gruen, Colors.LawnGreen);
                     break;
+
                 default:
                     break;
             }
@@ -65,24 +68,30 @@ namespace AmpelsteuerungKieswerk
                 case AmpelZustand.Rot:
                     KreisFarbeUmschalten(circ_Ampel_rechts_rot, Colors.Red);
                     break;
+
                 case AmpelZustand.Gelb:
                     KreisFarbeUmschalten(circ_Ampel_rechts_gelb, Colors.Yellow);
                     break;
-                case AmpelZustand.Grün:
+
+                case AmpelZustand.Gruen:
                     KreisFarbeUmschalten(circ_Ampel_rechts_gruen, Colors.LawnGreen);
                     break;
+
                 default:
                     break;
             }
         }
-        public void AnzeigeAktualisieren()
+
+        public void AnzeigeAktualisieren(S7_1200 s7_1200)
         {
+            lbl_PlcPing.Content = s7_1200.GetSpsStatus();
             KreisFarbeUmschalten(B1, circ_Lichtschranke_draussen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B2, circ_Lichtschranke_drinnen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B3, circ_Lichtschranke_drinnen_rechts, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B4, circ_Lichtschranke_draussen_rechts, Colors.Red, Colors.LightGray);
         }
-        void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
+
+        private void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)
         {
             Dispatcher.Invoke(() =>
             {
@@ -90,15 +99,16 @@ namespace AmpelsteuerungKieswerk
                 else ellipse.Fill = new SolidColorBrush(FarbeAus);
             });
         }
-        void KreisFarbeUmschalten(Ellipse ellipse, Color farbe)
+
+        private void KreisFarbeUmschalten(Ellipse ellipse, Color farbe)
         {
             Dispatcher.Invoke(() =>
             {
                 ellipse.Fill = new SolidColorBrush(farbe);
             });
-
         }
-        void GridRasterEinblenden()
+
+        private void GridRasterEinblenden()
         {
             for (var i = 0; i < 1000; i += 50)
             {

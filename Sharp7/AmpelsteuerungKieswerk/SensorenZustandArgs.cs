@@ -1,12 +1,11 @@
-﻿
-
-namespace AmpelsteuerungKieswerk
+﻿namespace AmpelsteuerungKieswerk
 {
     public enum SensorZustand
     {
         Ein,
         Aus
     }
+
     public class SensorenZustandArgs
     {
         public bool B1 { get; set; }

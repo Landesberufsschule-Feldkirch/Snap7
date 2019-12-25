@@ -4,8 +4,8 @@ namespace Utilities
 {
     public class Zeiger
     {
-        readonly Punkt Anfang;
-        readonly Punkt Ende;
+        private readonly Punkt Anfang;
+        private readonly Punkt Ende;
 
         public Zeiger(Punkt anfang, Punkt ende)
         {

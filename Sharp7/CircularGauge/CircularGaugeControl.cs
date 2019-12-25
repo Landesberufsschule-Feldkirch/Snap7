@@ -1,4 +1,4 @@
-﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
+﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com)
 
 All rights reserved.
 
@@ -6,36 +6,27 @@ Redistribution and use in source and binary forms, with or without modification,
 
 1.Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-2.Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in 
+2.Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in
  the documentation and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
 
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
 
-BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
 
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 
 DAMAGE.*/
 
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace CircularGauge
 {
@@ -52,6 +43,7 @@ namespace CircularGauge
 
         //Private variables
         private Grid rootGrid;
+
         private Path rangeIndicator;
         private Path pointer;
         private Ellipse pointerCap;
@@ -61,25 +53,25 @@ namespace CircularGauge
         private Double arcradius2;
         private int animatingSpeedFactor = 6;
 
-        #endregion
+        #endregion Private variables
 
         #region Dependency properties
 
         /// <summary>
-        /// Dependency property to Get/Set the current value 
+        /// Dependency property to Get/Set the current value
         /// </summary>
         public static readonly DependencyProperty CurrentValueProperty =
             DependencyProperty.Register("CurrentValue", typeof(double), typeof(CircularGaugeControl),
             new PropertyMetadata(Double.MinValue, new PropertyChangedCallback(CircularGaugeControl.OnCurrentValuePropertyChanged)));
 
         /// <summary>
-        /// Dependency property to Get/Set the Minimum Value 
+        /// Dependency property to Get/Set the Minimum Value
         /// </summary>
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(double), typeof(CircularGaugeControl), null);
 
         /// <summary>
-        /// Dependency property to Get/Set the Maximum Value 
+        /// Dependency property to Get/Set the Maximum Value
         /// </summary>
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(double), typeof(CircularGaugeControl), null);
@@ -309,8 +301,7 @@ namespace CircularGauge
         public static readonly DependencyProperty RangeIndicatorLightRadiusProperty =
             DependencyProperty.Register("RangeIndicatorLightRadius", typeof(double), typeof(CircularGaugeControl), null);
 
-
-        #endregion
+        #endregion Dependency properties
 
         #region Wrapper properties
 
@@ -508,6 +499,7 @@ namespace CircularGauge
                 SetValue(OptimalRangeEndValueProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets the Optimal Range Start Value
         /// </summary>
@@ -537,7 +529,6 @@ namespace CircularGauge
                 SetValue(ImageSourceProperty, value);
             }
         }
-
 
         /// <summary>
         /// Gets/Sets the Image offset
@@ -569,7 +560,6 @@ namespace CircularGauge
             }
         }
 
-
         /// <summary>
         /// Gets/Sets the Image width and height
         /// </summary>
@@ -584,8 +574,9 @@ namespace CircularGauge
                 SetValue(ImageSizeProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Range Indicator Radius 
+        /// Gets/Sets the Range Indicator Radius
         /// </summary>
         public double RangeIndicatorRadius
         {
@@ -600,7 +591,7 @@ namespace CircularGauge
         }
 
         /// <summary>
-        /// Gets/Sets the Range Indicator Thickness 
+        /// Gets/Sets the Range Indicator Thickness
         /// </summary>
         public double RangeIndicatorThickness
         {
@@ -613,8 +604,9 @@ namespace CircularGauge
                 SetValue(RangeIndicatorThicknessProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Scale Label Radius 
+        /// Gets/Sets the Scale Label Radius
         /// </summary>
         public double ScaleLabelRadius
         {
@@ -627,8 +619,9 @@ namespace CircularGauge
                 SetValue(ScaleLabelRadiusProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Scale Label Size 
+        /// Gets/Sets the Scale Label Size
         /// </summary>
         public Size ScaleLabelSize
         {
@@ -641,8 +634,9 @@ namespace CircularGauge
                 SetValue(ScaleLabelSizeProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Scale Label Font Size 
+        /// Gets/Sets the Scale Label Font Size
         /// </summary>
         public double ScaleLabelFontSize
         {
@@ -655,8 +649,9 @@ namespace CircularGauge
                 SetValue(ScaleLabelFontSizeProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Scale Label Foreground 
+        /// Gets/Sets the Scale Label Foreground
         /// </summary>
         public Color ScaleLabelForeground
         {
@@ -669,8 +664,9 @@ namespace CircularGauge
                 SetValue(ScaleLabelForegroundProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Major Tick Size 
+        /// Gets/Sets the Major Tick Size
         /// </summary>
         public Size MajorTickSize
         {
@@ -685,7 +681,7 @@ namespace CircularGauge
         }
 
         /// <summary>
-        /// Gets/Sets the Minor Tick Size 
+        /// Gets/Sets the Minor Tick Size
         /// </summary>
         public Size MinorTickSize
         {
@@ -698,8 +694,9 @@ namespace CircularGauge
                 SetValue(MinorTickSizeProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Major Tick Color 
+        /// Gets/Sets the Major Tick Color
         /// </summary>
         public Color MajorTickColor
         {
@@ -712,8 +709,9 @@ namespace CircularGauge
                 SetValue(MajorTickColorProperty, value);
             }
         }
+
         /// <summary>
-        /// Gets/Sets the Minor Tick Color 
+        /// Gets/Sets the Minor Tick Color
         /// </summary>
         public Color MinorTickColor
         {
@@ -742,7 +740,6 @@ namespace CircularGauge
             }
         }
 
-
         /// <summary>
         /// Gets/Sets option to reset the pointer to minimum on start up, Default is true
         /// </summary>
@@ -759,7 +756,7 @@ namespace CircularGauge
         }
 
         /// <summary>
-        /// Gets/Sets scale value precision 
+        /// Gets/Sets scale value precision
         /// </summary>
         public int ScaleValuePrecision
         {
@@ -772,6 +769,7 @@ namespace CircularGauge
                 SetValue(ScaleValuePrecisionProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets Below Optimal Range Color
         /// </summary>
@@ -816,6 +814,7 @@ namespace CircularGauge
                 SetValue(AboveOptimalRangeColorProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets Dial Text
         /// </summary>
@@ -830,6 +829,7 @@ namespace CircularGauge
                 SetValue(DialTextProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets Dial Text Color
         /// </summary>
@@ -844,6 +844,7 @@ namespace CircularGauge
                 SetValue(DialTextColorProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets Dial Text Font Size
         /// </summary>
@@ -858,6 +859,7 @@ namespace CircularGauge
                 SetValue(DialTextFontSizeProperty, value);
             }
         }
+
         /// <summary>
         /// Gets/Sets Dial Text Offset
         /// </summary>
@@ -888,22 +890,24 @@ namespace CircularGauge
             }
         }
 
-        #endregion
+        #endregion Wrapper properties
 
         #region Constructor
+
         static CircularGaugeControl()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircularGaugeControl), new FrameworkPropertyMetadata(typeof(CircularGaugeControl)));
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Methods
+
         private static void OnCurrentValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //Get access to the instance of CircularGaugeConrol whose property value changed
             CircularGaugeControl gauge = d as CircularGaugeControl;
             gauge.OnCurrentValueChanged(e);
-
         }
 
         private static void OnOptimalRangeEndValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -914,8 +918,8 @@ namespace CircularGauge
             {
                 gauge.OptimalRangeEndValue = gauge.MaxValue;
             }
-
         }
+
         private static void OnOptimalRangeStartValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //Get access to the instance of CircularGaugeConrol whose property value changed
@@ -924,8 +928,6 @@ namespace CircularGauge
             {
                 gauge.OptimalRangeStartValue = gauge.MinValue;
             }
-
-
         }
 
         public virtual void OnCurrentValueChanged(DependencyPropertyChangedEventArgs e)
@@ -963,7 +965,6 @@ namespace CircularGauge
                 {
                     oldValue = MinValue;
                     isInitialValueSet = true;
-
                 }
                 if (oldValue < 0)
                 {
@@ -991,9 +992,7 @@ namespace CircularGauge
 
                 //Animate the pointer from the old value to the new value
                 AnimatePointer(oldcurrentvalueAngle, newcurrentvalueAngle);
-
             }
-
         }
 
         /// <summary>
@@ -1001,7 +1000,7 @@ namespace CircularGauge
         /// </summary>
         /// <param name="oldcurrentvalueAngle"></param>
         /// <param name="newcurrentvalueAngle"></param>
-        void AnimatePointer(double oldcurrentvalueAngle, double newcurrentvalueAngle)
+        private void AnimatePointer(double oldcurrentvalueAngle, double newcurrentvalueAngle)
         {
             if (pointer != null)
             {
@@ -1029,14 +1028,13 @@ namespace CircularGauge
         /// Move pointer without animating
         /// </summary>
         /// <param name="angleValue"></param>
-        void MovePointer(double angleValue)
+        private void MovePointer(double angleValue)
         {
             if (pointer != null)
             {
                 TransformGroup tg = pointer.RenderTransform as TransformGroup;
                 RotateTransform rt = tg.Children[0] as RotateTransform;
                 rt.Angle = angleValue;
-
             }
         }
 
@@ -1045,23 +1043,20 @@ namespace CircularGauge
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void sb_Completed(object sender, EventArgs e)
+        private void sb_Completed(object sender, EventArgs e)
         {
             if (this.CurrentValue > OptimalRangeEndValue)
             {
                 lightIndicator.Fill = GetRangeIndicatorGradEffect(AboveOptimalRangeColor);
-
             }
             else if (this.CurrentValue <= OptimalRangeEndValue && this.CurrentValue >= OptimalRangeStartValue)
             {
                 lightIndicator.Fill = GetRangeIndicatorGradEffect(OptimalRangeColor);
-
             }
             else if (this.CurrentValue < OptimalRangeStartValue)
             {
                 lightIndicator.Fill = GetRangeIndicatorGradEffect(BelowOptimalRangeColor);
             }
-
         }
 
         /// <summary>
@@ -1071,7 +1066,6 @@ namespace CircularGauge
         /// <returns></returns>
         private GradientBrush GetRangeIndicatorGradEffect(Color gradientColor)
         {
-
             LinearGradientBrush gradient = new LinearGradientBrush();
             gradient.StartPoint = new Point(0, 0);
             gradient.EndPoint = new Point(1, 1);
@@ -1094,8 +1088,6 @@ namespace CircularGauge
             return gradient;
         }
 
-
-
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -1109,7 +1101,7 @@ namespace CircularGauge
             DrawScale();
             DrawRangeIndicator();
 
-            //Set Zindex of pointer and pointer cap to a really high number so that it stays on top of the 
+            //Set Zindex of pointer and pointer cap to a really high number so that it stays on top of the
             //scale and the range indicator
             Canvas.SetZIndex(pointer, 100000);
             Canvas.SetZIndex(pointerCap, 100001);
@@ -1119,19 +1111,15 @@ namespace CircularGauge
                 //Reset Pointer
                 MovePointer(ScaleStartAngle);
             }
-
-
-
         }
-
 
         //Drawing the scale with the Scale Radius
         private void DrawScale()
         {
-            //Calculate one major tick angle 
+            //Calculate one major tick angle
             Double majorTickUnitAngle = ScaleSweepAngle / MajorDivisionsCount;
 
-            //Obtaining One minor tick angle 
+            //Obtaining One minor tick angle
             Double minorTickUnitAngle = ScaleSweepAngle / MinorDivisionsCount;
 
             //Obtaining One major ticks value
@@ -1143,8 +1131,7 @@ namespace CircularGauge
             // Drawing Major scale ticks
             for (Double i = ScaleStartAngle; i <= (ScaleStartAngle + ScaleSweepAngle); i = i + majorTickUnitAngle)
             {
-
-                //Majortick is drawn as a rectangle 
+                //Majortick is drawn as a rectangle
                 Rectangle majortickrect = new Rectangle();
                 majortickrect.Height = MajorTickSize.Height;
                 majortickrect.Width = MajorTickSize.Width;
@@ -1193,7 +1180,6 @@ namespace CircularGauge
                     minvalue = Math.Round(minvalue, ScaleValuePrecision);
                     tb.Text = minvalue.ToString();
                     minvalue = minvalue + majorTicksUnitValue;
-
                 }
                 else
                 {
@@ -1205,7 +1191,6 @@ namespace CircularGauge
                 rootGrid.Children.Add(majortickrect);
                 rootGrid.Children.Add(tb);
 
-
                 //Drawing the minor axis ticks
                 Double onedegree = ((i + majorTickUnitAngle) - i) / (MinorDivisionsCount);
 
@@ -1214,7 +1199,7 @@ namespace CircularGauge
                     //Drawing the minor scale
                     for (Double mi = i + onedegree; mi < (i + majorTickUnitAngle); mi = mi + onedegree)
                     {
-                        //here the minortick is drawn as a rectangle 
+                        //here the minortick is drawn as a rectangle
                         Rectangle mr = new Rectangle();
                         mr.Height = MinorTickSize.Height;
                         mr.Width = MinorTickSize.Width;
@@ -1239,17 +1224,13 @@ namespace CircularGauge
                         minortickgp.Children.Add(minorticktt);
                         mr.RenderTransform = minortickgp;
                         rootGrid.Children.Add(mr);
-
-
                     }
-
                 }
-
             }
         }
 
         /// <summary>
-        /// Obtaining the Point (x,y) in the circumference 
+        /// Obtaining the Point (x,y) in the circumference
         /// </summary>
         /// <param name="angle"></param>
         /// <param name="radius"></param>
@@ -1274,7 +1255,7 @@ namespace CircularGauge
             Double optimalEndAngle;
             double db;
 
-            //Checking whether the  OptimalRangeStartvalue is -ve 
+            //Checking whether the  OptimalRangeStartvalue is -ve
             if (OptimalRangeStartValue < 0)
             {
                 db = MinValue + Math.Abs(OptimalRangeStartValue);
@@ -1305,7 +1286,7 @@ namespace CircularGauge
 
             Double optimalEndAngleFromStart = (ScaleStartAngle + optimalEndAngle);
 
-            //Calculating the Radius of the two arc for segment 
+            //Calculating the Radius of the two arc for segment
             arcradius1 = (RangeIndicatorRadius + RangeIndicatorThickness);
             arcradius2 = RangeIndicatorRadius;
 
@@ -1344,34 +1325,31 @@ namespace CircularGauge
 
         private void DrawSegment(Point p1, Point p2, Point p3, Point p4, bool reflexangle, Color clr)
         {
-
             // Segment Geometry
             PathSegmentCollection segments = new PathSegmentCollection();
 
             // First line segment from pt p1 - pt p2
             segments.Add(new LineSegment() { Point = p2 });
 
-            //Arc drawn from pt p2 - pt p3 with the RangeIndicatorRadius 
+            //Arc drawn from pt p2 - pt p3 with the RangeIndicatorRadius
             segments.Add(new ArcSegment()
             {
                 Size = new Size(arcradius2, arcradius2),
                 Point = p3,
                 SweepDirection = SweepDirection.Clockwise,
                 IsLargeArc = reflexangle
-
             });
 
             // Second line segment from pt p3 - pt p4
             segments.Add(new LineSegment() { Point = p4 });
 
-            //Arc drawn from pt p4 - pt p1 with the Radius of arcradius1 
+            //Arc drawn from pt p4 - pt p1 with the Radius of arcradius1
             segments.Add(new ArcSegment()
             {
                 Size = new Size(arcradius1, arcradius1),
                 Point = p1,
                 SweepDirection = SweepDirection.Counterclockwise,
                 IsLargeArc = reflexangle
-
             });
 
             // Defining the segment path properties
@@ -1382,8 +1360,6 @@ namespace CircularGauge
             }
             else
                 rangestrokecolor = Colors.White;
-
-
 
             rangeIndicator = new Path()
             {
@@ -1409,11 +1385,10 @@ namespace CircularGauge
 
             //Set Z index of range indicator
             rangeIndicator.SetValue(Canvas.ZIndexProperty, 150);
-            // Adding the segment to the root grid 
+            // Adding the segment to the root grid
             rootGrid.Children.Add(rangeIndicator);
-
         }
 
-        #endregion
+        #endregion Methods
     }
 }
