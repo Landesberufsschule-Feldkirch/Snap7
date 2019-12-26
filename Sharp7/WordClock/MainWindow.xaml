@@ -49,7 +49,7 @@
         <Button x:Name="ZeitUebernehmen" Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen" Click="ZeitUebernehmen_Click" />
 
         <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7"  />
-        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="10" Background="LawnGreen" Margin="0,0,0,10" />
+        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="1" Background="LawnGreen" ValueChanged="sldGeschwindigkeit_ValueChanged"  />
 
         <Image Source="images/backGround.png" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" />
 

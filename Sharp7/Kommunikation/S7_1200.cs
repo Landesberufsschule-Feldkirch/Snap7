@@ -30,7 +30,6 @@ namespace Kommunikation
         private byte[] AnalogInput = new byte[1024];
         private byte[] AnalogOutput = new byte[1024];
 
-
         private readonly int AnzahlByteDigInput;
         private readonly int AnzahlByteDigOutput;
         private readonly int AnzahlByteAnalogInput;
@@ -41,12 +40,10 @@ namespace Kommunikation
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-
         private bool TaskAktive = true;
-
         string SpsStatus = "Keine Verbindung zur S7-1200!";
 
-        public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
+        public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput,  Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
             AnzahlByteDigInput = anzahlByteDigInput;
             AnzahlByteDigOutput = anzahlByteDigOutput;
