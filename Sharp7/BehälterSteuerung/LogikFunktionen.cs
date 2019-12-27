@@ -2,7 +2,7 @@
 
 namespace BehälterSteuerung
 {
-    public partial class MainWindow
+    public class Logikfunktionen
     {
         public enum AutomatikModus
         {
@@ -23,6 +23,8 @@ namespace BehälterSteuerung
         public bool Tank_4_AutomatischEntleeren;
 
         public bool AutomatikModusNochAktiv = false;
+
+        public Logikfunktionen() { }
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)

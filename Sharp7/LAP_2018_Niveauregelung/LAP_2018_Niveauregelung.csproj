@@ -55,8 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="S7_1200.cs" />
-    <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +106,12 @@
   <ItemGroup>
     <Resource Include="Bilder\VentilElektrischAus.jpg" />
     <Resource Include="Bilder\VentilElektrischEin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
+      <Project>{5ae0e553-cab9-4f1c-a805-b61db2733a0e}</Project>
+      <Name>Kommunikation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

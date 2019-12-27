@@ -2,8 +2,9 @@
 
 namespace Tiefgarage
 {
-    public partial class MainWindow
+    public class Logikfunktionen
     {
+        public Logikfunktionen() { }
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)

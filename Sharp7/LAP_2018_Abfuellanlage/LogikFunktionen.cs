@@ -2,11 +2,13 @@
 
 namespace LAP_2018_Abfuellanlage
 {
-    public partial class MainWindow
+    public class Logikfunktionen
     {
         double Pegel = 1;
         private readonly double LeerGeschwindigkeit = 0.000_01;
         private readonly int SiemensAnalogwertMax = 27_648;
+
+        public Logikfunktionen() { }
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)

@@ -65,11 +65,9 @@
       <DependentUpon>RealTimeGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="RealTimeGraphModel.cs" />
-    <Compile Include="S7_1200.cs" />
     <Compile Include="SecondWindow.xaml.cs">
       <DependentUpon>SecondWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,6 +130,10 @@
     <ProjectReference Include="..\CircularGauge\CircularGauge.csproj">
       <Project>{6efd5895-177b-4bbb-af52-29f4d53b3fbd}</Project>
       <Name>CircularGauge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
+      <Project>{5ae0e553-cab9-4f1c-a805-b61db2733a0e}</Project>
+      <Name>Kommunikation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>

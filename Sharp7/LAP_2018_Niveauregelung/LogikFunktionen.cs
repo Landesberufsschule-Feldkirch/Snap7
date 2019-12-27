@@ -2,12 +2,14 @@
 
 namespace LAP_2018_Niveauregelung
 {
-    public partial class MainWindow
+    public class Logikfunktionen
     {
         private double Pegel = 0.95;
 
         private readonly double FuellGeschwindigkeit = 0.0008;
         private readonly double LeerGeschwindigkeit = 0.001;
+
+        public Logikfunktionen() { }
 
         public void Logikfunktionen_Task()
         {

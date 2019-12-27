@@ -5,7 +5,7 @@ using Utilities;
 
 namespace Synchronisiereinrichtung
 {
-    public partial class MainWindow
+    public class Logikfunktionen
     {
         public enum SynchronisierungAuswahl
         {
@@ -17,6 +17,7 @@ namespace Synchronisiereinrichtung
 
         public SynchronisierungAuswahl AuswahlSynchronisierung { get; set; }
 
+        public Logikfunktionen() { }
         public void Logikfunktionen_Task()
         {
             const double Y_n_Faktor = 0.001;

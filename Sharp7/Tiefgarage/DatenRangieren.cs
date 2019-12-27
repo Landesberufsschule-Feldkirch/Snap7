@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Tiefgarage
 {
-    public partial class MainWindow
+    public class DatenRangieren
     {
         public bool B1;
         public bool B2;
@@ -11,13 +11,7 @@ namespace Tiefgarage
         public int AnzahlFahrzeuge = 0;
         public int AnzahlPersonen = 0;
 
-        enum Datenbausteine
-        {
-            DigIn = 1,
-            DigOut,
-            AnIn,
-            AnOut
-        }
+     
         enum BytePosition
         {
             Byte_0 = 0
@@ -56,17 +50,18 @@ namespace Tiefgarage
             }
         }
 
-        private int InByte(BitPosEingang Pos) { return ((int)Pos) / 8; }
-        private int InBit(BitPosEingang Pos) { return ((int)Pos) % 8; }
-        //private int OutByte(BitPosAusgang Pos) { return ((int)Pos) / 8; }
-        //private int OutBit(BitPosAusgang Pos) { return ((int)Pos) % 8; }
-
-        void EinAusgabeFelderInitialisieren()
+        public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            foreach (byte b in DigInput) DigInput[b] = 0;
-            foreach (byte b in DigOutput) DigOutput[b] = 0;
-            foreach (byte b in AnalogOutput) AnalogOutput[b] = 0;
-            foreach (byte b in AnalogInput) AnalogInput[b] = 0;
+            // Daten lesen        
+        }
+        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        {
+            // es werden keine Werte von der SPS geschrieben
+        }
+
+        public DatenRangieren(Logikfunktionen logikfunktionen)
+        {
+            this.logikfunktionen = logikfunktionen;
         }
     }
 }

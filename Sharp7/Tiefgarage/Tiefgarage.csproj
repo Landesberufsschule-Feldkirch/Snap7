@@ -58,8 +58,6 @@
     <Compile Include="Daten.cs" />
     <Compile Include="FahrzeugePersonen.cs" />
     <Compile Include="FahrzeugePersonenBewegen.cs" />
-    <Compile Include="S7_1200.cs" />
-    <Compile Include="Sharp7.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +119,10 @@
     <Resource Include="Bilder\mensch_8.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
+      <Project>{5ae0e553-cab9-4f1c-a805-b61db2733a0e}</Project>
+      <Name>Kommunikation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
       <Name>Utilities</Name>

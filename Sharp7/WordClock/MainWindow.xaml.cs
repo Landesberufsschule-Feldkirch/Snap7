@@ -11,6 +11,7 @@ namespace WordClock
 
         Logikfunktionen logikfunktionen;
         DatenRangieren datenRangieren;
+		
         public MainWindow()
         {
             logikfunktionen = new Logikfunktionen();

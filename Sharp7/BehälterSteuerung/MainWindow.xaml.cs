@@ -8,11 +8,18 @@ namespace BehälterSteuerung
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
 
+        Logikfunktionen logikfunktionen;
+        DatenRangieren datenRangieren;
         public MainWindow()
         {
+            logikfunktionen = new Logikfunktionen();
+            datenRangieren = new DatenRangieren(logikfunktionen);
+
             InitializeComponent();
             EinAusgabeFelderInitialisieren();
             AlleBehaelterInitialisieren();
+
+            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
