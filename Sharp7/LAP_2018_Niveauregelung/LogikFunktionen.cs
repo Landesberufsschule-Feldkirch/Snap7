@@ -4,27 +4,29 @@ namespace LAP_2018_Niveauregelung
 {
     public class Logikfunktionen
     {
-        private double Pegel = 0.95;
-
+        readonly MainWindow mainWindow;
         private readonly double FuellGeschwindigkeit = 0.0008;
         private readonly double LeerGeschwindigkeit = 0.001;
 
-        public Logikfunktionen() { }
+        public Logikfunktionen(MainWindow window)
+        {
+            mainWindow = window;
+        }
 
         public void Logikfunktionen_Task()
         {
-            while (FensterAktiv)
+            while (mainWindow.FensterAktiv)
             {
-                if (M1) Pegel += FuellGeschwindigkeit;
-                if (M2) Pegel += FuellGeschwindigkeit;
-                if (Y1) Pegel -= LeerGeschwindigkeit;
+                if (mainWindow.M1) mainWindow.Pegel += FuellGeschwindigkeit;
+                if (mainWindow.M2) mainWindow.Pegel += FuellGeschwindigkeit;
+                if (mainWindow.Y1) mainWindow.Pegel -= LeerGeschwindigkeit;
 
-                if (Pegel > 1) Pegel = 1;
-                if (Pegel < 0) Pegel = 0;
+                if (mainWindow.Pegel > 1) mainWindow.Pegel = 1;
+                if (mainWindow.Pegel < 0) mainWindow.Pegel = 0;
 
-                B1 = (Pegel > 0.1);
-                B2 = (Pegel > 0.5);
-                B3 = (Pegel > 0.9);
+                mainWindow.B1 = (mainWindow.Pegel > 0.1);
+                mainWindow.B2 = (mainWindow.Pegel > 0.5);
+                mainWindow.B3 = (mainWindow.Pegel > 0.9);
 
                 Thread.Sleep(10);
             }

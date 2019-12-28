@@ -60,10 +60,10 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36"/>
-        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="3"  Grid.ColumnSpan="5"    Grid.Row="23"   Background="LightSeaGreen" />
+        <Label x:Name="lbl_VersionsInfo"    Content="V1.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36"/>
+        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="13"  Grid.ColumnSpan="6"    Grid.Row="23"   Background="LightSeaGreen" />
 
-        <Rectangle Fill="LightGray"         Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="17" Margin="0,5"   />
+        <Rectangle Fill="LightGray"         Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="17"  />
 
         <Button x:Name="btnS1" Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" Click="btnS1_Click" Margin="0,30,0,5">
             <Button.Resources>
@@ -170,6 +170,6 @@
         <Button x:Name="btnVentilAus" Click="VentilClick" Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2">
             <Image x:Name="imgVentilAus" Source="Bilder/VentilElektrischAus.jpg"/>
         </Button>
-        
+
     </Grid>
 </Window>

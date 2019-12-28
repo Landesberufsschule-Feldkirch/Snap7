@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Kommunikation;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LAP_2018_Abfuellanlage
@@ -6,8 +7,28 @@ namespace LAP_2018_Abfuellanlage
 
     public partial class MainWindow : Window
     {
-        public bool TaskAktiv;
-        public bool DatenRangierenAktiv = true;
+
+
+        public bool B1;
+        public bool F5 = true;
+        public bool M1;
+        public bool M2;
+
+        public bool S1;
+        public bool S2;
+        public bool S3;
+        public bool S4;
+
+        public bool P1;
+        public bool P2;
+
+        public bool K1;
+        public bool K2;
+
+        public byte PegelByte;
+        public ushort PegelInt;
+
+        public double Pegel = 1;
         public bool FensterAktiv = true;
 
         Logikfunktionen logikfunktionen;
@@ -15,19 +36,17 @@ namespace LAP_2018_Abfuellanlage
 
         public MainWindow()
         {
-            logikfunktionen = new Logikfunktionen();
-            datenRangieren = new DatenRangieren(logikfunktionen);
+            logikfunktionen = new Logikfunktionen(this);
+            datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
-            
-            EinAusgabeFelderInitialisieren();
+
             AlleFlaschenInitialisieren();
             AlleFlaschenParken();
 
             S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
-            System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+            System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
