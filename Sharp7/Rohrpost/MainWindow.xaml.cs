@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Kommunikation;
+using System.Windows;
 
 namespace Rohrpost
 {
@@ -10,8 +11,8 @@ namespace Rohrpost
 
         public MainWindow()
         {
-            logikfunktionen = new Logikfunktionen();
-            datenRangieren = new DatenRangieren(logikfunktionen);
+            logikfunktionen = new Logikfunktionen(this);
+            datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
 

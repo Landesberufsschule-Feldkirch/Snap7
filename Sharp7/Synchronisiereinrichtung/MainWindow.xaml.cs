@@ -1,19 +1,65 @@
-﻿using System.ComponentModel;
+﻿using Kommunikation;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using CircularGauge;
 
 namespace Synchronisiereinrichtung
 {
 
     public partial class MainWindow : Window
     {
+
+        public enum SynchronisierungAuswahl
+        {
+            U_f = 0,
+            U_f_Phase,
+            U_f_Phase_Leistung,
+            U_f_Phase_Leistungsfaktor
+        }
+
+
         public SecondWindow secondWindow;
         public RealTimeGraph realTimeGraph;
+
+
+        public bool Q1;
+        public bool Q1alt;
+        public bool S1;
+        public bool S2;
+
+        public int Y;
+        public int Ie;
+
+        public short n;
+        public short fGenerator;
+        public short fNetz;
+        public short UGenerator;
+        public short UNetz;
+        public short PNetz;
+        public short UDiff;
+        public short ph;
+
+        public double Drehzahl;
+        public double FrequenzGenerator;
+        public double FrequenzNetz;
+        public double SpannungGenerator;
+        public double SpannungNetz;
+        public double SpannungDifferenz;
+        public double LeistungNetz;
+        public double LeistungGenerator;
+        public double SpannungsUnterschiedSynchronisieren;
+        public double FrequenzDifferenz;
+        public double Phasenlage;
+
+        public bool MaschineTot;
+
+        public SynchronisierungAuswahl AuswahlSynchronisierung;
+
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
         public bool DebugWindowAktiv;
+
         Messgeraet MessgeraetDifferenzSpannung;
 
         Logikfunktionen logikfunktionen;
@@ -21,21 +67,26 @@ namespace Synchronisiereinrichtung
 
         public MainWindow()
         {
-            logikfunktionen = new Logikfunktionen();
-            datenRangieren = new DatenRangieren(logikfunktionen);
+
+
+            logikfunktionen = new Logikfunktionen(this);
+            datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
-
+            
             S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-
-            EinAusgabeFelderInitialisieren();
-
-            System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
-            System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
+                   
+            System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
 
             if (System.Diagnostics.Debugger.IsAttached)
-                DebugWindow.Visibility = Visibility.Visible;
+            {
+                btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            }
 
             MessgeraetDifferenzSpannung = new Messgeraet(0);
             GaugeDifferenzSpannung.DataContext = MessgeraetDifferenzSpannung;
@@ -63,8 +114,7 @@ namespace Synchronisiereinrichtung
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
-
-
+            
             switch (radioButton.Name)
             {
                 case "U_f": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;

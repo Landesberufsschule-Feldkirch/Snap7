@@ -7,17 +7,12 @@ namespace Synchronisiereinrichtung
 {
     public class Logikfunktionen
     {
-        public enum SynchronisierungAuswahl
+        readonly MainWindow mainWindow;
+
+        public Logikfunktionen(MainWindow window)
         {
-            U_f = 0,
-            U_f_Phase,
-            U_f_Phase_Leistung,
-            U_f_Phase_Leistungsfaktor
+            mainWindow = window;
         }
-
-        public SynchronisierungAuswahl AuswahlSynchronisierung { get; set; }
-
-        public Logikfunktionen() { }
         public void Logikfunktionen_Task()
         {
             const double Y_n_Faktor = 0.001;
@@ -27,41 +22,64 @@ namespace Synchronisiereinrichtung
             double WinkelGenerator = 0;
             double WinkelNetz = 0;
 
-
             Punkt MomentanSpannungGenerator;
             Punkt MomentanSpannungNetz;
 
 
-            while (FensterAktiv)
+            while (mainWindow.FensterAktiv)
             {
-                Drehzahl += Y * Y_n_Faktor;
-                Drehzahl *= n_BremsFaktor;
+                mainWindow.Drehzahl += mainWindow.Y * Y_n_Faktor;
+                mainWindow.Drehzahl *= n_BremsFaktor;
 
-                SpannungGenerator = Drehzahl * MagnetischerKreis.Magnetisierungskennlinie(S7Analog.S7_Analog_2_Double(Ie, 10)) / 2;
-                FrequenzGenerator = Drehzahl / 30;
+                mainWindow.SpannungGenerator = mainWindow.Drehzahl * MagnetischerKreis.Magnetisierungskennlinie(S7Analog.S7_Analog_2_Double(mainWindow.Ie, 10)) / 2;
+                mainWindow.FrequenzGenerator = mainWindow.Drehzahl / 30;
 
-                n = S7Analog.S7_Analog_2_Short(Drehzahl, 5000);
-                UGenerator = S7Analog.S7_Analog_2_Short(SpannungGenerator, 1000);
-                fGenerator = S7Analog.S7_Analog_2_Short(FrequenzGenerator, 100);
-                UDiff = S7Analog.S7_Analog_2_Short(SpannungsUnterschiedSynchronisieren, 1000);
-                ph = S7Analog.S7_Analog_2_Short(Phasenlage, 1);
+                mainWindow.n = S7Analog.S7_Analog_2_Short(mainWindow.Drehzahl, 5000);
+                mainWindow.UGenerator = S7Analog.S7_Analog_2_Short(mainWindow.SpannungGenerator, 1000);
+                mainWindow.fGenerator = S7Analog.S7_Analog_2_Short(mainWindow.FrequenzGenerator, 100);
+                mainWindow.UDiff = S7Analog.S7_Analog_2_Short(mainWindow.SpannungsUnterschiedSynchronisieren, 1000);
+                mainWindow.ph = S7Analog.S7_Analog_2_Short(mainWindow.Phasenlage, 1);
 
-                WinkelNetz = RestKlasse.WinkelBerechnen(Zeitdauer, FrequenzNetz, WinkelNetz);
-                WinkelGenerator = RestKlasse.WinkelBerechnen(Zeitdauer, FrequenzGenerator, WinkelGenerator);
+                WinkelNetz = RestKlasse.WinkelBerechnen(Zeitdauer, mainWindow.FrequenzNetz, WinkelNetz);
+                WinkelGenerator = RestKlasse.WinkelBerechnen(Zeitdauer, mainWindow.FrequenzGenerator, WinkelGenerator);
 
-                MomentanSpannungNetz = RestKlasse.GetSpannung(WinkelNetz, SpannungNetz);
-                MomentanSpannungGenerator = RestKlasse.GetSpannung(WinkelGenerator, SpannungGenerator);
+                MomentanSpannungNetz = RestKlasse.GetSpannung(WinkelNetz, mainWindow.SpannungNetz);
+                MomentanSpannungGenerator = RestKlasse.GetSpannung(WinkelGenerator, mainWindow.SpannungGenerator);
 
-                SpannungDifferenz = SpannungNetz - SpannungGenerator;
-                FrequenzDifferenz = FrequenzNetz - FrequenzGenerator;
+                mainWindow.SpannungDifferenz = mainWindow.SpannungNetz - mainWindow.SpannungGenerator;
+                mainWindow.FrequenzDifferenz = mainWindow.FrequenzNetz - mainWindow.FrequenzGenerator;
                 Zeiger SpannungsDiff = new Zeiger(MomentanSpannungGenerator, MomentanSpannungNetz);
-                SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
+                mainWindow.SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
 
-                if (Q1alt != Q1)
+                if (mainWindow.Q1alt != mainWindow.Q1)
                 {
-                    Q1alt = Q1;
-                    if (FrequenzDifferenz > 2) MaschineTot = true;
-                    if (SpannungDifferenz > 10) MaschineTot = true;
+                    mainWindow.Q1alt = mainWindow.Q1;
+                    switch (mainWindow.AuswahlSynchronisierung)
+                    {
+                        case MainWindow.SynchronisierungAuswahl.U_f:
+                            if (mainWindow.FrequenzDifferenz > 2) mainWindow.MaschineTot = true;
+                            if (mainWindow.SpannungDifferenz > 25) mainWindow.MaschineTot = true;
+                            break;
+
+                        case MainWindow.SynchronisierungAuswahl.U_f_Phase:
+                            if (mainWindow.FrequenzDifferenz > 1) mainWindow.MaschineTot = true;
+                            if (mainWindow.SpannungDifferenz > 10) mainWindow.MaschineTot = true;
+                            break;
+
+                        case MainWindow.SynchronisierungAuswahl.U_f_Phase_Leistung:
+                            if (mainWindow.FrequenzDifferenz > 0.9) mainWindow.MaschineTot = true;
+                            if (mainWindow.SpannungDifferenz > 10) mainWindow.MaschineTot = true;
+                            break;
+
+                        case MainWindow.SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
+                            if (mainWindow.FrequenzDifferenz > 0.8) mainWindow.MaschineTot = true;
+                            if (mainWindow.SpannungDifferenz > 10) mainWindow.MaschineTot = true;
+                            break;
+
+                        default:
+
+                            break;
+                    }
                 }
                 Thread.Sleep((int)Zeitdauer);
             }

@@ -23,7 +23,7 @@ namespace Tiefgarage
             AufwaertsKurveOben
         }
         public Tuple<bool, bool> Bewegen()
-        {      
+        {
             switch (Bewegung)
             {
                 case FahrenRichtung.ObenGeparkt:
@@ -77,8 +77,8 @@ namespace Tiefgarage
                 default:
                     break;
             }
-            
-            return new Tuple<bool, bool>(LichtschrankeUnterbrochen(Y_Position_B1), LichtschrankeUnterbrochen(Y_Position_B2) );
+
+            return new Tuple<bool, bool>(LichtschrankeUnterbrochen(Y_Position_B1), LichtschrankeUnterbrochen(Y_Position_B2));
         }
     }
 }

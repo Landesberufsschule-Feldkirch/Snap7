@@ -57,7 +57,7 @@ namespace BehälterSteuerung
 
         }
 
-        private void AutomatikKnoepfeDeaktivieren()
+        public void AutomatikKnoepfeDeaktivieren()
         {
             this.Dispatcher.Invoke(() =>
             {
@@ -68,7 +68,7 @@ namespace BehälterSteuerung
             });
         }
 
-        private void AutomatikKnoepfeAktivieren()
+        public void AutomatikKnoepfeAktivieren()
         {
             this.Dispatcher.Invoke(() =>
             {

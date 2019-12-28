@@ -4,10 +4,14 @@ namespace Tiefgarage
 {
     public class Logikfunktionen
     {
-        public Logikfunktionen() { }
+        readonly MainWindow mainWindow;
+        public Logikfunktionen(MainWindow window)
+        {
+            mainWindow = window;
+        }
         public void Logikfunktionen_Task()
         {
-            while (FensterAktiv)
+            while (mainWindow.FensterAktiv)
             {
                 Thread.Sleep(10);
             }

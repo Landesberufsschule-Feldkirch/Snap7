@@ -93,37 +93,37 @@
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
-            <Button x:Name="btn_auto_1" Click="Btn_Click">
+            <Button x:Name="btn_auto_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_auto_1" Width="80" Source="Bilder/auto_1.jpg"/>
             </Button>
 
-            <Button x:Name="btn_auto_2" Click="Btn_Click">
+            <Button x:Name="btn_auto_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_auto_2" Width="80" Source="Bilder/auto_2.jpg"/>
             </Button>
 
 
-            <Button x:Name="btn_auto_3" Click="Btn_Click">
+            <Button x:Name="btn_auto_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_auto_3" Width="80" Source="Bilder/auto_3.jpg"/>
             </Button>
 
-            <Button x:Name="btn_auto_4" Click="Btn_Click">
+            <Button x:Name="btn_auto_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_auto_4" Width="80" Source="Bilder/auto_4.jpg"/>
             </Button>
 
 
-            <Button x:Name="btn_person_1" Click="Btn_Click">
+            <Button x:Name="btn_person_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_person_1" Height="50" Source="Bilder/mensch_1.jpg"/>
             </Button>
 
-            <Button x:Name="btn_person_2" Click="Btn_Click">
+            <Button x:Name="btn_person_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_person_2" Height="50" Source="Bilder/mensch_2.jpg"/>
             </Button>
 
-            <Button x:Name="btn_person_3" Click="Btn_Click">
+            <Button x:Name="btn_person_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_person_3" Height="50" Source="Bilder/mensch_3.jpg"/>
             </Button>
 
-            <Button x:Name="btn_person_4" Click="Btn_Click">
+            <Button x:Name="btn_person_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
                 <Image x:Name="img_person_4" Height="50" Source="Bilder/mensch_4.jpg"/>
             </Button>
             

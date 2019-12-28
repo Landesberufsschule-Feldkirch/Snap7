@@ -5,6 +5,27 @@ namespace BehälterSteuerung
 {
     public partial class MainWindow
     {
+        enum BitPosEingang
+        {
+            B1 = 0,
+            B2,
+            B3,
+            B4,
+            B5,
+            B6,
+            B7,
+            B8
+        }
+
+        enum BitPosAusgang
+        {
+            Q1 = 0,
+            Q3,
+            Q5,
+            Q7,
+            P1
+        }
+
         public ObservableCollection<Behaelter> gAlleBehaelter = new ObservableCollection<Behaelter>();
         public void AlleBehaelterInitialisieren()
         {

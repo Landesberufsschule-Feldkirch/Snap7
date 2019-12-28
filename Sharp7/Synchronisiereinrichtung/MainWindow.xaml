@@ -73,10 +73,10 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="26"  Grid.ColumnSpan="5"  Background="LightSeaGreen"/>
+        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="20" Grid.Row="20"  Grid.ColumnSpan="7"  Background="LightSeaGreen"/>
 
-        <Button x:Name="DebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" Visibility="Hidden"/>
-        
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen"/>
+
         <Button x:Name="GraphWindow"  Grid.Column="2" Grid.Row="24" Click="GraphWindow_Click">
             <Image Source="Bilder/icon_graph.png" />
         </Button>
@@ -134,8 +134,6 @@
         <RadioButton x:Name="U_f_Leistung"          Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="6"  GroupName="RbAuswahl" FontSize="12pt" Checked="AuswahlGeaendert">U / f / Phasenlage / Leistung</RadioButton>
         <RadioButton x:Name="U_f_Leistungsfaktor"   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="7"  GroupName="RbAuswahl" FontSize="12pt" Checked="AuswahlGeaendert">U / f / Phasenlage / Leistung / cos φ</RadioButton>
 
-
-
         <Button x:Name="BtnStarten" Content="Starten"      Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Click="BtnStarten_Click"/>
         <Button x:Name="BtnStoppen" Content="Stoppen"   Grid.Column="24" Grid.ColumnSpan="2" Grid.Row="8" Background="Red" Click="BtnStoppen_Click"/>
 
@@ -188,9 +186,6 @@
                                         DialText="Black"
                                         DialTextColor="Black"
                                        />
-
-
-
 
     </Grid>
 </Window>

@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Rohrpost
 {
-   public class Logikfunktionen
+    public class Logikfunktionen
     {
-        public Logikfunktionen() { }
+        readonly MainWindow mainWindow;
+
+        public Logikfunktionen(MainWindow window)
+        {
+            mainWindow = window;
+        }
     }
 }
