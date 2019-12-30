@@ -103,7 +103,11 @@
       <Name>Kommunikation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Video\Baugruppe2.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\VentilElektrischAus.jpg" />
     <Resource Include="Bilder\VentilElektrischEin.jpg" />

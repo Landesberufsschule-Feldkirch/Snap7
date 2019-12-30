@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Sharp7;
+using System;
+using System.IO;
 using System.Net.NetworkInformation;
 using System.Threading;
-using Sharp7;
+using Utilities;
 
 namespace Kommunikation
 {
@@ -21,6 +24,8 @@ namespace Kommunikation
         {
             Byte_0 = 0
         }
+
+
 
         readonly Action<byte[], byte[]> CallbackInput;
         readonly Action<byte[], byte[]> CallbackOutput;
@@ -43,8 +48,17 @@ namespace Kommunikation
         private bool TaskAktive = true;
         string SpsStatus = "Keine Verbindung zur S7-1200!";
 
-        public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput,  Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
+
+        public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
+
+            using (StreamReader file = File.OpenText(@"IpAdressen.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                IpAdressen SPS_Client = (IpAdressen)serializer.Deserialize(file, typeof(IpAdressen));
+            }
+
+
             AnzahlByteDigInput = anzahlByteDigInput;
             AnzahlByteDigOutput = anzahlByteDigOutput;
             AnzahlByteAnalogInput = anzahlByteAnalogInput;

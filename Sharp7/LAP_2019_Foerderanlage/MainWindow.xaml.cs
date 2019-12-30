@@ -32,13 +32,28 @@ namespace LAP_2019_Foerderanlage
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
+         var b =   videoFoerderschnecke.IsLoaded;
 
+            videoFoerderschnecke.Play();
+            System.Timers.Timer tim = new System.Timers.Timer(5000);
+            tim.Elapsed += Tim_Elapsed;
+            tim.Start();
             S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
+        private void Tim_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Dispatcher.Invoke(() =>
+            {
+  videoFoerderschnecke.Stop();
+            videoFoerderschnecke.Play();
+
+            });
+          
+        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
