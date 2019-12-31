@@ -25,8 +25,6 @@ namespace Kommunikation
             Byte_0 = 0
         }
 
-
-
         readonly Action<byte[], byte[]> CallbackInput;
         readonly Action<byte[], byte[]> CallbackOutput;
 
@@ -41,23 +39,16 @@ namespace Kommunikation
         private readonly int AnzahlByteAnalogOutput;
 
         private readonly S7Client Client = new S7Client();
-        public const string SPS_IP_Adresse = "192.168.0.10";    //S7-1200 DC/DC/DC hängt bei jedem Platz auf der IP Adresse 192.168.0.10
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
         private bool TaskAktive = true;
         string SpsStatus = "Keine Verbindung zur S7-1200!";
-
+        readonly IpAdressen SPS_Client;
 
         public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
-
-            using (StreamReader file = File.OpenText(@"IpAdressen.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                IpAdressen SPS_Client = (IpAdressen)serializer.Deserialize(file, typeof(IpAdressen));
-            }
-
+            SPS_Client = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText(@"IpAdressen.json"));
 
             AnzahlByteDigInput = anzahlByteDigInput;
             AnzahlByteDigOutput = anzahlByteDigOutput;
@@ -89,14 +80,14 @@ namespace Kommunikation
             while (TaskAktive)
             {
                 var pingSender = new Ping();
-                var reply = pingSender.Send(SPS_IP_Adresse, SPS_Timeout);
+                var reply = pingSender.Send(SPS_Client.Adress, SPS_Timeout);
 
                 CallbackInput(DigInput, AnalogInput); // zum Testen ohne SPS
 
                 if (reply.Status == IPStatus.Success)
                 {
                     SpsStatus = "S7-1200 sichtbar (Ping: {reply.RoundtripTime.ToString() }ms)";
-                    var res = Client?.ConnectTo(SPS_IP_Adresse, SPS_Rack, SPS_Slot);
+                    var res = Client?.ConnectTo(SPS_Client.Adress, SPS_Rack, SPS_Slot);
                     if (res == 0)
                     {
                         while (TaskAktive)
