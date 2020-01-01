@@ -3,13 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:LAP_2019_Foerderanlage"
         mc:Ignorable="d"
-        Title="LAP 2019 Förderanlage" Height="950" Width="1200" Closing="Window_Closing">
+        Title="LAP 2019 Förderanlage" Height="950" Width="1400" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="70"/>
@@ -64,32 +68,52 @@
         <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36"/>
         <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="15"  Grid.ColumnSpan="6"    Grid.Row="23"   Background="LightSeaGreen" Margin="0,0,8,0" />
 
-        <Rectangle x:Name="rctHintergrund" Grid.Column="1" Grid.ColumnSpan="12" Grid.Row="1" Grid.RowSpan="23" Fill="#FFDDDDDD"/>
-
-        <MediaElement Name="videoFoerderschnecke" Source="Video/Baugruppe2.mp4" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="3" Grid.RowSpan="10" LoadedBehavior="Manual"  >
-
-        </MediaElement>
-
-        <Ellipse x:Name="cirSchneckeAus" Fill="Gray"   Grid.Column="3" Grid.Row="11" Grid.RowSpan="2"  />
-        <Ellipse x:Name="cirSchneckeEin" Fill="Green"  Grid.Column="3" Grid.Row="11" Grid.RowSpan="2" Height="60" Width="60"  Panel.ZIndex="5"   />
-        <Label x:Name="lblM2" Content="M2"             Grid.Column="3" Grid.Row="11" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
+        <Rectangle x:Name="rctHintergrund" Grid.Column="1" Grid.ColumnSpan="16" Grid.Row="1" Grid.RowSpan="23" Fill="#eeeeee"/>
 
 
+        <Image x:Name="imgSchneckenfoerderer"  gif:ImageBehavior.RepeatBehavior="0x"
+                gif:ImageBehavior.AnimatedSource="Bilder\Schneckenfoerderer.gif" 
+                Grid.Column="4" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"   />
 
-        <Image x:Name="imgVentilEin" Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
-        <Image x:Name="imgVentilAus" Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
-        <Label x:Name="lblY1" Content="Y1"                                      Grid.Column="9"                     Grid.Row="14"                   FontSize="14pt" Margin="10,5,0,0"/>
+        <Polygon x:Name="polyLagersilo" Grid.Column="4" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
+                 Stroke="Black" StrokeThickness="2" Fill="Silver">
+            <Polygon.Points>
+                <Point X="10" Y="10" />
+                <Point X="140" Y="10" />
+                <Point X="50" Y="180" />
+                <Point X="10" Y="180" />
+            </Polygon.Points>
+        </Polygon>
 
-        <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="9" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0"  />
+        <Label Content="Lagersilo" Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14pt" Margin="22,25,34,10" Grid.RowSpan="2" />
 
-        <Ellipse x:Name="cirRolleLinks" Fill="Gray"     Grid.Column="5" Grid.Row="19" Grid.RowSpan="2"  />
-        <Ellipse x:Name="cirRolleLinksEin" Fill="Green" Grid.Column="5" Grid.Row="19" Grid.RowSpan="2" Height="60" Width="60"  Panel.ZIndex="5"   />
-        <Label x:Name="lblM1" Content="M1"              Grid.Column="5" Grid.Row="19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
+        <Ellipse x:Name="cirSchneckeAus" Fill="Gray"   Grid.Column="4" Grid.Row="9" Grid.RowSpan="2"  />
+        <Ellipse x:Name="cirSchneckeEin" Fill="Green"  Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60"  Panel.ZIndex="5"   />
+        <Label x:Name="lblM2" Content="M2"             Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
 
-        <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="11" Grid.Row="19" Grid.RowSpan="2"  />
 
-        <Rectangle x:Name="rctForderbandOben" Fill="Gray"  Grid.Column="5" Grid.ColumnSpan="7" Grid.Row="19" Margin="40,0,35,27"/>
-        <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="5" Grid.ColumnSpan="7" Grid.Row="20" Margin="40,27,35,0"/>
+        <Rectangle x:Name="rctMaterialsilo"             Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="3"  Grid.RowSpan="8"  Fill="Gray"  />
+        <Rectangle x:Name="rctMaterialsiloFuellstand"   Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="7"  Fill="Firebrick" Margin="0,24,0,0" />
+        <Label Content="Materialsilo"                   Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="3"  HorizontalAlignment="Center" FontSize="14pt"  />
+
+        <Rectangle x:Name="rctFuellenOben"              Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="11"                   Fill="Firebrick" Margin="62,0"  />
+
+        <Image x:Name="imgVentilEin" Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="2"                  Margin="50,0,19,0" />
+        <Image x:Name="imgVentilAus" Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="2"                  Margin="50,0,19,0" />
+        <Label x:Name="lblY1" Content="Y1"                                      Grid.Column="11"                     Grid.Row="14"                   FontSize="14pt" Margin="10,5,0,0"/>
+
+        <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="11" Grid.Row="14" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="62,0"  />
+
+        <Ellipse x:Name="cirRolleLinks" Fill="Gray"     Grid.Column="7" Grid.Row="16" Grid.RowSpan="2"  />
+        <Ellipse x:Name="cirRolleLinksEin" Fill="Green" Grid.Column="7" Grid.Row="16" Grid.RowSpan="2" Height="60" Width="60"  Panel.ZIndex="5"   />
+        <Label x:Name="lblM1" Content="M1"              Grid.Column="7" Grid.Row="16" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
+
+        <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="13" Grid.Row="16" Grid.RowSpan="2"  />
+
+        <Rectangle x:Name="rctForderbandOben" Fill="Gray"  Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="16" Margin="40,0,35,27"/>
+        <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Margin="40,27,35,0"/>
+        <Label Content="Förderband"                        Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="16" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"   />
+
 
 
     </Grid>
