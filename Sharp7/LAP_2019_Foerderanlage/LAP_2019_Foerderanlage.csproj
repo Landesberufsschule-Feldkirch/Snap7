@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\Schneckenfoerderer.gif" />
+    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
+    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
     <Content Include="Video\Baugruppe2.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

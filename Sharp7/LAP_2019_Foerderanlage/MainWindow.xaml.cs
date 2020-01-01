@@ -44,5 +44,14 @@ namespace LAP_2019_Foerderanlage
             FensterAktiv = false;
         }
 
+        private void WagenNachLinks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WagenNachRechts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
