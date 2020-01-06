@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Threading;
-using Utilities;
 
 namespace Kommunikation
 {

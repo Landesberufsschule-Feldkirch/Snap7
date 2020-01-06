@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -98,8 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
-      <Project>{5ae0e553-cab9-4f1c-a805-b61db2733a0e}</Project>
+      <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilties\Utilities.csproj">
+      <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

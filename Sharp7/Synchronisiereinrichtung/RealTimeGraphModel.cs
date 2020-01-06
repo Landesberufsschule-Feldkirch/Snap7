@@ -40,7 +40,7 @@ namespace Synchronisiereinrichtung
                 while (true)
                 {
                     //Get the current elapsed time and mouse position.
-                    var y = random.Next(0, 100); // System.Windows.Forms.Cursor.Position.Y;
+                    var y =  System.Windows.Forms.Cursor.Position.Y;
                     var x = watch.Elapsed;
 
                     //Push the x,y to the controller.
