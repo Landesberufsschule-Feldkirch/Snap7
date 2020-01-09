@@ -99,9 +99,9 @@ namespace Synchronisiereinrichtung
 
                         if (DebugWindowAktiv)
                         {
-                            Q1 = secondWindow.Q1;
-                            Y = (int)secondWindow.Sld_Y.Value;
-                            Ie = (int)secondWindow.Sld_Ie.Value;
+                            Q1 = setManualWindow.Q1;
+                            Y = (int)setManualWindow.Sld_Y.Value;
+                            Ie = (int)setManualWindow.Sld_Ie.Value;
                         }
                     }
                 });

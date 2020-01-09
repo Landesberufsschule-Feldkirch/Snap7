@@ -36,12 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RealTimeGraphX">
-      <HintPath>..\..\..\RealTimeGraphX\RealTimeGraphX.WPF\bin\Debug\RealTimeGraphX.dll</HintPath>
-    </Reference>
-    <Reference Include="RealTimeGraphX.WPF">
-      <HintPath>..\..\..\RealTimeGraphX\RealTimeGraphX.WPF\bin\Debug\RealTimeGraphX.WPF.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -64,12 +58,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RealTimeGraph.xaml.cs">
-      <DependentUpon>RealTimeGraph.xaml</DependentUpon>
+    <Compile Include="RealTimeGraphWindow.xaml.cs">
+      <DependentUpon>RealTimeGraphWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RealTimeGraphModel.cs" />
-    <Compile Include="SecondWindow.xaml.cs">
-      <DependentUpon>SecondWindow.xaml</DependentUpon>
+    <Compile Include="SetManualWindow.xaml.cs">
+      <DependentUpon>SetManualWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -86,11 +80,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RealTimeGraph.xaml">
+    <Page Include="RealTimeGraphWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SecondWindow.xaml">
+    <Page Include="SetManualWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +131,14 @@
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj">
+      <Project>{6b9774f7-960d-438e-ad81-c6b9be328d50}</Project>
+      <Name>RealTimeGraphX.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealTimeGraphX\RealTimeGraphX.csproj">
+      <Project>{6eb2b4c7-2489-433d-af1b-a7f80d22a2f8}</Project>
+      <Name>RealTimeGraphX</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>

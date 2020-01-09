@@ -9,6 +9,9 @@ namespace Synchronisiereinrichtung
     public partial class MainWindow : Window
     {
 
+        public SetManualWindow setManualWindow;
+        public RealTimeGraphWindow realTimeGraphWindow;
+
         public enum SynchronisierungAuswahl
         {
             U_f = 0,
@@ -16,12 +19,7 @@ namespace Synchronisiereinrichtung
             U_f_Phase_Leistung,
             U_f_Phase_Leistungsfaktor
         }
-
-
-        public SecondWindow secondWindow;
-        public RealTimeGraph realTimeGraph;
-
-
+        
         public bool Q1;
         public bool Q1alt;
         public bool S1;
@@ -101,14 +99,14 @@ namespace Synchronisiereinrichtung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            secondWindow = new SecondWindow();
-            secondWindow.Show();
+            setManualWindow = new SetManualWindow();
+            setManualWindow.Show();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraph = new RealTimeGraph();
-            realTimeGraph.Show();
+            realTimeGraphWindow = new RealTimeGraphWindow();
+            realTimeGraphWindow.Show();
         }
 
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
