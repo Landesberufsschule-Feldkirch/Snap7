@@ -119,7 +119,7 @@ namespace Synchronisiereinrichtung
 
 
     }
-    public class MagnetischerKreis
+    public static class MagnetischerKreis
     {
 
         public static double Magnetisierungskennlinie(double strom)

@@ -8,10 +8,6 @@ namespace Synchronisiereinrichtung
 
     public partial class MainWindow : Window
     {
-
-        public SetManualWindow setManualWindow;
-        public RealTimeGraphWindow realTimeGraphWindow;
-
         public enum SynchronisierungAuswahl
         {
             U_f = 0,
@@ -19,7 +15,7 @@ namespace Synchronisiereinrichtung
             U_f_Phase_Leistung,
             U_f_Phase_Leistungsfaktor
         }
-        
+
         public bool Q1;
         public bool Q1alt;
         public bool S1;
@@ -63,17 +59,22 @@ namespace Synchronisiereinrichtung
         Logikfunktionen logikfunktionen;
         DatenRangieren datenRangieren;
 
+        public SetManualWindow setManualWindow;
+        public RealTimeGraphWindow realTimeGraphWindow;
+
         public MainWindow()
         {
+
+            realTimeGraphWindow = new RealTimeGraphWindow(this);
 
 
             logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
-            
+
             S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-                   
+
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
 
@@ -105,14 +106,14 @@ namespace Synchronisiereinrichtung
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraphWindow = new RealTimeGraphWindow();
+            realTimeGraphWindow = new RealTimeGraphWindow(this);
             realTimeGraphWindow.Show();
         }
 
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
-            
+
             switch (radioButton.Name)
             {
                 case "U_f": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;
