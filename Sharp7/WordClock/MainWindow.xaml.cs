@@ -7,6 +7,9 @@ namespace WordClock
 {
     public partial class MainWindow : Window
     {
+
+        ZweitesFenster zweitesFenster = new ZweitesFenster();
+        
         public bool FensterAktiv = true;
 
         Logikfunktionen logikfunktionen;
@@ -14,6 +17,8 @@ namespace WordClock
 		
         public MainWindow()
         {
+            zweitesFenster.Show();
+
             logikfunktionen = new Logikfunktionen();
             datenRangieren = new DatenRangieren(logikfunktionen);
 
