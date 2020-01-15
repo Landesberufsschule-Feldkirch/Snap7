@@ -10,9 +10,8 @@ namespace AmpelsteuerungKieswerk
     {
         public void Display_Task(S7_1200 s7_1200)
         {
-            //DatenRangieren.AmpelChangedEvent += DatenRangieren_AmpelChangedEvent;
 
-            DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Rot, AmpelZustand.Rot));
+           DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Aus, AmpelZustand.Aus));
 
             while (FensterAktiv)
             {
@@ -35,7 +34,7 @@ namespace AmpelsteuerungKieswerk
             }
         }
 
-        private void DatenRangieren_AmpelChangedEvent(object sender, AmpelZustandEventArgs e)
+        public void DatenRangieren_AmpelChangedEvent(object sender, AmpelZustandEventArgs e)
         {
             KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.White);
             KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.White);
@@ -51,6 +50,11 @@ namespace AmpelsteuerungKieswerk
                     KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.Red);
                     break;
 
+                case AmpelZustand.RotUndGelb:
+                    KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.Red);
+                    KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.Yellow);
+                    break;
+
                 case AmpelZustand.Gelb:
                     KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.Yellow);
                     break;
@@ -59,14 +63,20 @@ namespace AmpelsteuerungKieswerk
                     KreisFarbeUmschalten(circ_Ampel_links_gruen, Colors.LawnGreen);
                     break;
 
+                case AmpelZustand.Aus:
                 default:
                     break;
             }
 
-            switch (e.AmpelZustandLinks)
+            switch (e.AmpelZustandRechts)
             {
                 case AmpelZustand.Rot:
                     KreisFarbeUmschalten(circ_Ampel_rechts_rot, Colors.Red);
+                    break;
+
+                case AmpelZustand.RotUndGelb:
+                    KreisFarbeUmschalten(circ_Ampel_rechts_rot, Colors.Red);
+                    KreisFarbeUmschalten(circ_Ampel_rechts_gelb, Colors.Yellow);
                     break;
 
                 case AmpelZustand.Gelb:
@@ -77,6 +87,7 @@ namespace AmpelsteuerungKieswerk
                     KreisFarbeUmschalten(circ_Ampel_rechts_gruen, Colors.LawnGreen);
                     break;
 
+                case AmpelZustand.Aus:
                 default:
                     break;
             }

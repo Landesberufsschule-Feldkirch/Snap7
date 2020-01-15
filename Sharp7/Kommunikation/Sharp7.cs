@@ -679,8 +679,8 @@ namespace Sharp7
         {
             byte[] Mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
 
-            var Bit = BitPos / 8;
-            var Pos = BitPos % 8;
+            var Bit = BitPos % 8;
+            var Pos = BitPos / 8;
 
             if (Bit < 0) Bit = 0;
             if (Bit > 7) Bit = 7;
@@ -691,8 +691,8 @@ namespace Sharp7
         {
             byte[] Mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
 
-            var Bit = BitPos / 8;
-            var Pos = BitPos % 8;
+            var Bit = BitPos % 8;
+            var Pos = BitPos / 8;
 
             if (Bit < 0) Bit = 0;
             if (Bit > 7) Bit = 7;

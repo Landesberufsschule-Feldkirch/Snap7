@@ -8,18 +8,14 @@ namespace Tiefgarage
     {
 
         public bool FensterAktiv = true;
-                public int FahrzeugPersonGeklickt = -1;
-
-
+        public int FahrzeugPersonGeklickt = -1;
+        
         public bool B1;
         public bool B2;
 
         public int AnzahlFahrzeuge = 0;
         public int AnzahlPersonen = 0;
-
-
-
-
+                     
         Logikfunktionen logikfunktionen;
         DatenRangieren datenRangieren;
 
@@ -30,7 +26,7 @@ namespace Tiefgarage
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 s7_1200 = new S7_1200(2, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             AlleFahrzeugePersonenInitialisieren();
 

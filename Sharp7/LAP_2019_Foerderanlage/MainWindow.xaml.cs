@@ -26,6 +26,9 @@ namespace LAP_2019_Foerderanlage
 
         public bool Y1;     // Materialschieber Silo
 
+        public short MaterialsiloPegel; // für die SPS1
+        public int FuSpeed; // von der SPS
+
         public enum Richtung
         {
             stehen = 0,
@@ -57,7 +60,7 @@ namespace LAP_2019_Foerderanlage
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 s7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());

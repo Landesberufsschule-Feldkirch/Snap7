@@ -42,7 +42,7 @@ namespace LAP_2018_Niveauregelung
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             mainWindow.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
-            mainWindow.M2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
+            mainWindow.M2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M2);
             mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
             mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
             mainWindow.P3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);

@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Utilities;
 
 namespace LAP_2019_Foerderanlage
 {
@@ -74,6 +75,8 @@ namespace LAP_2019_Foerderanlage
                 if (mainWindow.MaterialSiloFuellstand > 1) mainWindow.MaterialSiloFuellstand = 1;
                 if (mainWindow.MaterialSiloFuellstand < 0) mainWindow.MaterialSiloFuellstand = 0;
 
+
+                mainWindow.MaterialsiloPegel = S7Analog.S7_Analog_2_Short(mainWindow.MaterialSiloFuellstand, 1);
 
                 Thread.Sleep(100);
             }

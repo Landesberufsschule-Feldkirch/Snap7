@@ -18,7 +18,7 @@ namespace AmpelsteuerungKieswerk
             AlleLKWInitialisieren();
 
             DatenRangieren datenRangieren = new DatenRangieren(this);
-            S7_1200 s7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput );
+            S7_1200 s7_1200 = new S7_1200(2, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput );
 
             System.Threading.Tasks.Task.Run(() => Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200));

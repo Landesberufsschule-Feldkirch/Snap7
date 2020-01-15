@@ -28,12 +28,29 @@ namespace LAP_2019_Foerderanlage
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
-        {
-            //
+        {            
+            S7.SetBitAt(digInput, (int)BitPosEingang.S0, mainWindow.S0);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F4, mainWindow.F4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S4, mainWindow.S4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S5, mainWindow.S5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S6, mainWindow.S6);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S7, mainWindow.S7);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S8, mainWindow.S8);
+
+            S7.SetIntAt(anInput, 0, mainWindow.MaterialsiloPegel);
+
         }
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            //
+            mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            mainWindow.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
+            mainWindow.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
+            mainWindow.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
+
+            mainWindow.FuSpeed = S7.GetIntAt(anOutput, 0);
         }
 
         public DatenRangieren(MainWindow window)

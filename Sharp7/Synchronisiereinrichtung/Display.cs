@@ -17,7 +17,7 @@ namespace Synchronisiereinrichtung
                 {
                     if (FensterAktiv)
                     {
-
+                        /*
                         switch (AuswahlSynchronisierung)
                         {
                             case SynchronisierungAuswahl.U_f:
@@ -103,6 +103,7 @@ namespace Synchronisiereinrichtung
                             Y = (int)setManualWindow.Sld_Y.Value;
                             Ie = (int)setManualWindow.Sld_Ie.Value;
                         }
+                        */
                     }
                 });
                 Thread.Sleep(10);

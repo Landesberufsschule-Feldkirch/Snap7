@@ -16,6 +16,9 @@ namespace Synchronisiereinrichtung
             U_f_Phase_Leistungsfaktor
         }
 
+        Kraftwerk kraftwerk;
+
+
         public bool Q1;
         public bool Q1alt;
         public bool S1;
@@ -24,30 +27,8 @@ namespace Synchronisiereinrichtung
         public int Y;
         public int Ie;
 
-        public short n;
-        public short fGenerator;
-        public short fNetz;
-        public short UGenerator;
-        public short UNetz;
-        public short PNetz;
-        public short UDiff;
-        public short ph;
 
-        public double Drehzahl;
-        public double FrequenzGenerator;
-        public double FrequenzNetz;
-        public double SpannungGenerator;
-        public double SpannungNetz;
-        public double SpannungDifferenz;
-        public double LeistungNetz;
-        public double LeistungGenerator;
-        public double SpannungsUnterschiedSynchronisieren;
-        public double FrequenzDifferenz;
-        public double Phasenlage;
 
-        public bool MaschineTot;
-
-        public SynchronisierungAuswahl AuswahlSynchronisierung;
 
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
@@ -64,6 +45,7 @@ namespace Synchronisiereinrichtung
 
         public MainWindow()
         {
+            kraftwerk = new Kraftwerk();
 
             realTimeGraphWindow = new RealTimeGraphWindow(this);
 
@@ -73,10 +55,11 @@ namespace Synchronisiereinrichtung
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 s7_1200 = new S7_1200(2, 2, 100, 100, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
+            System.Threading.Tasks.Task.Run(() => kraftwerk.KraftwerkTask());
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -113,7 +96,7 @@ namespace Synchronisiereinrichtung
         public void AuswahlGeaendert(object sender, RoutedEventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
-
+            /*
             switch (radioButton.Name)
             {
                 case "U_f": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;
@@ -123,6 +106,7 @@ namespace Synchronisiereinrichtung
                 default:
                     break;
             }
+            */
         }
 
         private void BtnStarten_Click(object sender, RoutedEventArgs e)

@@ -28,10 +28,10 @@ namespace LAP_2018_Abfuellanlage
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.F5, mainWindow.F5);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.S3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.S4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, mainWindow.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S4, mainWindow.S4);
 
             S7.SetByteAt(anInput, 0, mainWindow.PegelByte);
             S7.SetWordAt(anInput, 2, mainWindow.PegelInt);

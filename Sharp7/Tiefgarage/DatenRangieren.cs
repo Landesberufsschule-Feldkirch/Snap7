@@ -14,8 +14,7 @@ namespace Tiefgarage
             B1 = 0,
             B2
         }
-
-
+        
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.B1);

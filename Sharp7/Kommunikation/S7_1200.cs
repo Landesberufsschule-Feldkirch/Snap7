@@ -96,7 +96,7 @@ namespace Kommunikation
                             if (AnzahlByteDigInput > 0) Client?.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, AnzahlByteDigInput, DigInput);
                             if (AnzahlByteDigOutput > 0) Client?.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, AnzahlByteDigOutput, DigOutput);
                             if (AnzahlByteAnalogInput > 0) Client?.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte_0, AnzahlByteAnalogInput, AnalogInput);
-                            if (AnzahlByteAnalogOutput > 0) Client?.DBWrite((int)Datenbausteine.AnOut, (int)BytePosition.Byte_0, AnzahlByteAnalogOutput, AnalogOutput);
+                            if (AnzahlByteAnalogOutput > 0) Client?.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte_0, AnzahlByteAnalogOutput, AnalogOutput);
 
                             CallbackOutput(DigOutput, AnalogOutput);
 
