@@ -39,10 +39,10 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnSchalterQ1" Grid.Column="10" Grid.Row="2" Content="Q1" Click="SchalterQ1_Click"/>
+        <Button x:Name="BtnSchalterQ1" Grid.Column="10" Grid.Row="2" Content="Q1" Command="{Binding Kraftwerk.}"  />
         <Button x:Name="BtnReset" Grid.Column="10" Grid.Row="4" Content="Reset" Click="BtnReset_Click" />
         <Label x:Name="Lbl_Y" Grid.Column="2" Grid.Row="2" Content="Y"/>
-        <Slider x:Name="Sld_Y" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="6" Maximum="27648" />
+        <Slider x:Name="Sld_Y" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="6" Maximum="27648" Value="{Binding Kraftwerk.VentilPosition, UpdateSourceTrigger=LostFocus}" />
         <Label x:Name="Lbl_Ie" Grid.Column="2" Grid.Row="3" Content="Ie"/>
         <Slider x:Name="Sld_Ie" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="6" Maximum="27648" />
     </Grid>

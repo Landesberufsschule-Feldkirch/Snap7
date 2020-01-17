@@ -44,9 +44,11 @@ namespace Synchronisiereinrichtung
         public SetManualWindow setManualWindow;
         public RealTimeGraphWindow realTimeGraphWindow;
 
+        public Synchronisiereinrichtung.Kraftwerk.ViewModels.KraftwerkViewModel _kraftwerkViewModel;
+
         public MainWindow()
         {
-            Kraftwerk.Kraftwerk kraftwerk = new Kraftwerk.Kraftwerk();
+            //Kraftwerk.Kraftwerk kraftwerk = new Kraftwerk.Kraftwerk();
 
             realTimeGraphWindow = new RealTimeGraphWindow(this);
 
@@ -54,14 +56,16 @@ namespace Synchronisiereinrichtung
             logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
 
+            _kraftwerkViewModel = new KraftwerkViewModel();
+
             InitializeComponent();
-            DataContext = new KraftwerkViewModel();
+            DataContext = _kraftwerkViewModel;
 
             S7_1200 s7_1200 = new S7_1200(2, 2, 100, 100, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
-            System.Threading.Tasks.Task.Run(() =>   kraftwerk.KraftwerkTask());
+            
 
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -86,6 +90,7 @@ namespace Synchronisiereinrichtung
         {
             DebugWindowAktiv = true;
             setManualWindow = new SetManualWindow();
+            setManualWindow._kraftwerkViewModel = _kraftwerkViewModel;
             setManualWindow.Show();
         }
 

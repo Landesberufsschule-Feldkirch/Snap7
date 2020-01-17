@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Synchronisiereinrichtung.Kraftwerk.ViewModels;
+using System.Windows;
 
 namespace Synchronisiereinrichtung
 {
@@ -7,10 +8,13 @@ namespace Synchronisiereinrichtung
 
         public bool Q1;
         public bool Reset;
-        
+
+        public Synchronisiereinrichtung.Kraftwerk.ViewModels.KraftwerkViewModel _kraftwerkViewModel;
+
         public SetManualWindow()
         {
             InitializeComponent();
+            DataContext = _kraftwerkViewModel;
         }
 
         private void SchalterQ1_Click(object sender, RoutedEventArgs e)
