@@ -61,6 +61,7 @@
     <Compile Include="Kraftwerk\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Kraftwerk.cs" />
+    <Compile Include="Kraftwerk\KraftwerkVM.cs" />
     <Compile Include="Kraftwerk\MagnetischerKreis.cs" />
     <Compile Include="GraphWindow\MainWindowVM.cs" />
     <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">

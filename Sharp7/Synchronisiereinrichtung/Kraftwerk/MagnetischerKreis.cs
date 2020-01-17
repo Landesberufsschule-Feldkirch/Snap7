@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung
+namespace Synchronisiereinrichtung.Kraftwerk
 {
     public class MagnetischerKreis
     {

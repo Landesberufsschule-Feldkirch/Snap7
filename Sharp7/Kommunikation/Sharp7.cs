@@ -707,7 +707,7 @@ namespace Sharp7
 
         #region Get/Set 8 bit signed value (S7 SInt) -128..127
 
-        public static int GetSIntAt(byte[] Buffer, int Pos)
+        public static int GetSint8At(byte[] Buffer, int Pos)
         {
             int Value = Buffer[Pos];
             if (Value < 128)
@@ -716,7 +716,7 @@ namespace Sharp7
                 return (int)(Value - 256);
         }
 
-        public static void SetSIntAt(byte[] Buffer, int Pos, int Value)
+        public static void SetSint8At(byte[] Buffer, int Pos, int Value)
         {
             if (Value < -128) Value = -128;
             if (Value > 127) Value = 127;
@@ -727,7 +727,7 @@ namespace Sharp7
 
         #region Get/Set 16 bit signed value (S7 int) -32768..32767
 
-        public static int GetIntAt(byte[] Buffer, int Pos)
+        public static int GetSint16At(byte[] Buffer, int Pos)
         {
             return (int)((Buffer[Pos] << 8) | Buffer[Pos + 1]);
         }
@@ -742,7 +742,7 @@ namespace Sharp7
 
         #region Get/Set 32 bit signed value (S7 DInt) -2147483648..2147483647
 
-        public static int GetDIntAt(byte[] Buffer, int Pos)
+        public static int GetSint32At(byte[] Buffer, int Pos)
         {
             int Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -752,7 +752,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetDIntAt(byte[] Buffer, int Pos, int Value)
+        public static void SetSint32At(byte[] Buffer, int Pos, int Value)
         {
             Buffer[Pos + 3] = (byte)(Value & 0xFF);
             Buffer[Pos + 2] = (byte)((Value >> 8) & 0xFF);
@@ -764,7 +764,7 @@ namespace Sharp7
 
         #region Get/Set 64 bit signed value (S7 LInt) -9223372036854775808..9223372036854775807
 
-        public static Int64 GetLIntAt(byte[] Buffer, int Pos)
+        public static Int64 GetSint64At(byte[] Buffer, int Pos)
         {
             Int64 Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -778,7 +778,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetLIntAt(byte[] Buffer, int Pos, Int64 Value)
+        public static void SetSint64At(byte[] Buffer, int Pos, Int64 Value)
         {
             Buffer[Pos + 7] = (byte)(Value & 0xFF);
             Buffer[Pos + 6] = (byte)((Value >> 8) & 0xFF);
@@ -794,12 +794,12 @@ namespace Sharp7
 
         #region Get/Set 8 bit unsigned value (S7 USInt) 0..255
 
-        public static byte GetUSIntAt(byte[] Buffer, int Pos)
+        public static byte GetUint8At(byte[] Buffer, int Pos)
         {
             return Buffer[Pos];
         }
 
-        public static void SetUSIntAt(byte[] Buffer, int Pos, byte Value)
+        public static void SetUint8At(byte[] Buffer, int Pos, byte Value)
         {
             Buffer[Pos] = Value;
         }
@@ -808,12 +808,12 @@ namespace Sharp7
 
         #region Get/Set 16 bit unsigned value (S7 UInt) 0..65535
 
-        public static UInt16 GetUIntAt(byte[] Buffer, int Pos)
+        public static UInt16 GetUint16At(byte[] Buffer, int Pos)
         {
             return (UInt16)((Buffer[Pos] << 8) | Buffer[Pos + 1]);
         }
 
-        public static void SetUIntAt(byte[] Buffer, int Pos, UInt16 Value)
+        public static void SetUint16At(byte[] Buffer, int Pos, UInt16 Value)
         {
             Buffer[Pos] = (byte)(Value >> 8);
             Buffer[Pos + 1] = (byte)(Value & 0x00FF);
@@ -823,7 +823,7 @@ namespace Sharp7
 
         #region Get/Set 32 bit unsigned value (S7 UDInt) 0..4294967296
 
-        public static UInt32 GetUDIntAt(byte[] Buffer, int Pos)
+        public static UInt32 GetUint32At(byte[] Buffer, int Pos)
         {
             UInt32 Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -833,7 +833,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetUDIntAt(byte[] Buffer, int Pos, UInt32 Value)
+        public static void SetUint32At(byte[] Buffer, int Pos, UInt32 Value)
         {
             Buffer[Pos + 3] = (byte)(Value & 0xFF);
             Buffer[Pos + 2] = (byte)((Value >> 8) & 0xFF);
@@ -845,7 +845,7 @@ namespace Sharp7
 
         #region Get/Set 64 bit unsigned value (S7 ULint) 0..18446744073709551616
 
-        public static UInt64 GetULIntAt(byte[] Buffer, int Pos)
+        public static UInt64 GetUint64At(byte[] Buffer, int Pos)
         {
             UInt64 Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -859,7 +859,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetULintAt(byte[] Buffer, int Pos, UInt64 Value)
+        public static void SetUint64At(byte[] Buffer, int Pos, UInt64 Value)
         {
             Buffer[Pos + 7] = (byte)(Value & 0xFF);
             Buffer[Pos + 6] = (byte)((Value >> 8) & 0xFF);
@@ -891,12 +891,12 @@ namespace Sharp7
 
         public static UInt16 GetWordAt(byte[] Buffer, int Pos)
         {
-            return GetUIntAt(Buffer, Pos);
+            return GetUint16At(Buffer, Pos);
         }
 
         public static void SetWordAt(byte[] Buffer, int Pos, UInt16 Value)
         {
-            SetUIntAt(Buffer, Pos, Value);
+            SetUint16At(Buffer, Pos, Value);
         }
 
         #endregion Get/Set 16 bit word (S7 Word) 16#0000..16#FFFF
@@ -905,12 +905,12 @@ namespace Sharp7
 
         public static UInt32 GetDWordAt(byte[] Buffer, int Pos)
         {
-            return GetUDIntAt(Buffer, Pos);
+            return GetUint32At(Buffer, Pos);
         }
 
         public static void SetDWordAt(byte[] Buffer, int Pos, UInt32 Value)
         {
-            SetUDIntAt(Buffer, Pos, Value);
+            SetUint32At(Buffer, Pos, Value);
         }
 
         #endregion Get/Set 32 bit word (S7 DWord) 16#00000000..16#FFFFFFFF
@@ -919,12 +919,12 @@ namespace Sharp7
 
         public static UInt64 GetLWordAt(byte[] Buffer, int Pos)
         {
-            return GetULIntAt(Buffer, Pos);
+            return GetUint64At(Buffer, Pos);
         }
 
         public static void SetLWordAt(byte[] Buffer, int Pos, UInt64 Value)
         {
-            SetULintAt(Buffer, Pos, Value);
+            SetUint64At(Buffer, Pos, Value);
         }
 
         #endregion Get/Set 64 bit word (S7 LWord) 16#0000000000000000..16#FFFFFFFFFFFFFFFF
@@ -933,7 +933,7 @@ namespace Sharp7
 
         public static Single GetRealAt(byte[] Buffer, int Pos)
         {
-            UInt32 Value = GetUDIntAt(Buffer, Pos);
+            UInt32 Value = GetUint32At(Buffer, Pos);
             byte[] bytes = BitConverter.GetBytes(Value);
             return BitConverter.ToSingle(bytes, 0);
         }
@@ -953,7 +953,7 @@ namespace Sharp7
 
         public static Double GetLRealAt(byte[] Buffer, int Pos)
         {
-            UInt64 Value = GetULIntAt(Buffer, Pos);
+            UInt64 Value = GetUint64At(Buffer, Pos);
             byte[] bytes = BitConverter.GetBytes(Value);
             return BitConverter.ToDouble(bytes, 0);
         }
@@ -1035,7 +1035,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime(1990, 1, 1).AddDays(GetIntAt(Buffer, Pos));
+                return new DateTime(1990, 1, 1).AddDays(GetSint16At(Buffer, Pos));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1056,7 +1056,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime(0).AddMilliseconds(S7.GetDIntAt(Buffer, Pos));
+                return new DateTime(0).AddMilliseconds(S7.GetSint32At(Buffer, Pos));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1067,7 +1067,7 @@ namespace Sharp7
         public static void SetTODAt(byte[] Buffer, int Pos, DateTime Value)
         {
             TimeSpan Time = Value.TimeOfDay;
-            SetDIntAt(Buffer, Pos, (Int32)Math.Round(Time.TotalMilliseconds));
+            SetSint32At(Buffer, Pos, (Int32)Math.Round(Time.TotalMilliseconds));
         }
 
         #endregion Get/Set TOD (S7 TIME_OF_DAY)
@@ -1079,7 +1079,7 @@ namespace Sharp7
             // .NET Tick = 100 ns, S71500 Tick = 1 ns
             try
             {
-                return new DateTime(Math.Abs(GetLIntAt(Buffer, Pos) / 100));
+                return new DateTime(Math.Abs(GetSint64At(Buffer, Pos) / 100));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1090,7 +1090,7 @@ namespace Sharp7
         public static void SetLTODAt(byte[] Buffer, int Pos, DateTime Value)
         {
             TimeSpan Time = Value.TimeOfDay;
-            SetLIntAt(Buffer, Pos, (Int64)Time.Ticks * 100);
+            SetSint64At(Buffer, Pos, (Int64)Time.Ticks * 100);
         }
 
         #endregion Get/Set LTOD (S7 1500 LONG TIME_OF_DAY)
@@ -1101,7 +1101,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime((GetLIntAt(Buffer, Pos) / 100) + bias);
+                return new DateTime((GetSint64At(Buffer, Pos) / 100) + bias);
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1111,7 +1111,7 @@ namespace Sharp7
 
         public static void SetLDTAt(byte[] Buffer, int Pos, DateTime Value)
         {
-            SetLIntAt(Buffer, Pos, (Value.Ticks - bias) * 100);
+            SetSint64At(Buffer, Pos, (Value.Ticks - bias) * 100);
         }
 
         #endregion GET/SET LDT (S7 1500 Long Date and Time)
@@ -1129,7 +1129,7 @@ namespace Sharp7
             Hour = Buffer[Pos + 5];
             Min = Buffer[Pos + 6];
             Sec = Buffer[Pos + 7];
-            MSec = (int)GetUDIntAt(Buffer, Pos + 8) / 1000000;
+            MSec = (int)GetUint32At(Buffer, Pos + 8) / 1000000;
 
             try
             {
@@ -1163,7 +1163,7 @@ namespace Sharp7
             Buffer[Pos + 5] = Hour;
             Buffer[Pos + 6] = Min;
             Buffer[Pos + 7] = Sec;
-            SetDIntAt(Buffer, Pos + 8, NanoSecs);
+            SetSint32At(Buffer, Pos + 8, NanoSecs);
         }
 
         #endregion Get/Set DTL (S71200/1500 Date and Time)
@@ -2844,7 +2844,7 @@ namespace Sharp7
                         Info.BlkLang = PDU[43];
                         Info.BlkType = PDU[44];
                         Info.BlkNumber = S7.GetWordAt(PDU, 45);
-                        Info.LoadSize = S7.GetDIntAt(PDU, 47);
+                        Info.LoadSize = S7.GetSint32At(PDU, 47);
                         Info.CodeDate = SiemensTimestamp(S7.GetWordAt(PDU, 59));
                         Info.IntfDate = SiemensTimestamp(S7.GetWordAt(PDU, 65));
                         Info.SBBLength = S7.GetWordAt(PDU, 67);
@@ -3065,10 +3065,10 @@ namespace Sharp7
             _LastError = ReadSZL(0x0131, 0x001, ref SZL, ref Size);
             if (_LastError == 0)
             {
-                Info.MaxPduLength = S7.GetIntAt(PDU, 2);
-                Info.MaxConnections = S7.GetIntAt(PDU, 4);
-                Info.MaxMpiRate = S7.GetDIntAt(PDU, 6);
-                Info.MaxBusRate = S7.GetDIntAt(PDU, 10);
+                Info.MaxPduLength = S7.GetSint16At(PDU, 2);
+                Info.MaxConnections = S7.GetSint16At(PDU, 4);
+                Info.MaxMpiRate = S7.GetSint32At(PDU, 6);
+                Info.MaxBusRate = S7.GetSint32At(PDU, 10);
             }
             if (_LastError == 0)
                 Time_ms = Environment.TickCount - Elapsed;

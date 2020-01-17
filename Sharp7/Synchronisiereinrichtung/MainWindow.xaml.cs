@@ -1,4 +1,5 @@
 ﻿using Kommunikation;
+using Synchronisiereinrichtung.Kraftwerk.ViewModels;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +17,7 @@ namespace Synchronisiereinrichtung
             U_f_Phase_Leistungsfaktor
         }
 
-        Kraftwerk kraftwerk;
+        // Kraftwerk.Kraftwerk kraftwerk;
 
 
         public bool Q1;
@@ -45,7 +46,7 @@ namespace Synchronisiereinrichtung
 
         public MainWindow()
         {
-            kraftwerk = new Kraftwerk();
+            Kraftwerk.Kraftwerk kraftwerk = new Kraftwerk.Kraftwerk();
 
             realTimeGraphWindow = new RealTimeGraphWindow(this);
 
@@ -54,12 +55,13 @@ namespace Synchronisiereinrichtung
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
+            DataContext = new KraftwerkViewModel();
 
             S7_1200 s7_1200 = new S7_1200(2, 2, 100, 100, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
-            System.Threading.Tasks.Task.Run(() => kraftwerk.KraftwerkTask());
+            System.Threading.Tasks.Task.Run(() =>   kraftwerk.KraftwerkTask());
 
             if (System.Diagnostics.Debugger.IsAttached)
             {

@@ -1,8 +1,10 @@
-﻿using Utilities;
+﻿using System.ComponentModel;
+using System.Threading;
+using Utilities;
 
-namespace Synchronisiereinrichtung
+namespace Synchronisiereinrichtung.Kraftwerk
 {
-    public class Kraftwerk
+    public class Kraftwerk : INotifyPropertyChanged
     {
 
 
@@ -58,7 +60,8 @@ namespace Synchronisiereinrichtung
         public double FrequenzDifferenz;
         public double Phasenlage;
 
-        public double Zeitdauer;
+
+
 
         #endregion
 
@@ -70,24 +73,48 @@ namespace Synchronisiereinrichtung
 
         public void KraftwerkTask()
         {
-            generator.MaschineAntreiben(Y);
-            Generator_n = generator.Drehzahl();
-            Generator_U = generator.Spannung(S7Analog.S7_Analog_2_Double(Gen_Ie, 10));
-            Generator_f = generator.Frequenz();
 
-            Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Frequenz, Netz_Winkel);
-            Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
+            double _Y = 0.0;
 
-            Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, Spannung);
-            Generator_Momentanspannung = DrehstromZeiger.GetSpannung(Generator_Winkel, Generator_U);
+            const double Zeitdauer = 10;//ms
 
-            FrequenzDifferenz = Frequenz - Generator_f;
-            Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
+            while (true)
+            {
 
-            SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
+
+                generator.MaschineAntreiben(Y);
+                Generator_n = generator.Drehzahl();
+                Generator_U = generator.Spannung(S7Analog.S7_Analog_2_Double(Gen_Ie, 10));
+                Generator_f = generator.Frequenz();
+
+                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Frequenz, Netz_Winkel);
+                Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
+
+                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, Spannung);
+                Generator_Momentanspannung = DrehstromZeiger.GetSpannung(Generator_Winkel, Generator_U);
+
+                FrequenzDifferenz = Frequenz - Generator_f;
+                Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
+
+                SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
+
+                WertebereicheUmrechnen();
+
+
+                #region Alt/Neu Vergleich
+                if (_Y != Y)
+                {
+                    _Y = Y;
+                    OnPropertyChanged("Kraftwerk.Y");
+                }
+
+                #endregion
+
+
+                Thread.Sleep((int)Zeitdauer);
+            }
+
         }
-
-
 
         public void WertebereicheUmrechnen()
         {
@@ -104,6 +131,7 @@ namespace Synchronisiereinrichtung
             Gen_P = S7Analog.S7_Analog_2_Short(Generator_P, 1000);
             UDiff = S7Analog.S7_Analog_2_Short(SpannungsUnterschiedSynchronisieren, 1000);
             ph = S7Analog.S7_Analog_2_Short(Phasenlage, 1);
+
 
         }
 
@@ -139,5 +167,17 @@ namespace Synchronisiereinrichtung
             }
 
         }
+
+        #region iNotifyPeropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
     }
 }

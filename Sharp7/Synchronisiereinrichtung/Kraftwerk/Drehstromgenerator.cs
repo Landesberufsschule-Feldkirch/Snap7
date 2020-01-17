@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung
+﻿namespace Synchronisiereinrichtung.Kraftwerk
 {
     public class Drehstromgenerator
     {

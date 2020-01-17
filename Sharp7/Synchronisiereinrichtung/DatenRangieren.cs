@@ -49,8 +49,8 @@ namespace Synchronisiereinrichtung
             {
                 mainWindow.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
 
-                mainWindow.Y = S7.GetIntAt(anOutput, 0);
-                mainWindow.Ie = S7.GetIntAt(anOutput, 2);
+                mainWindow.Y = S7.GetSint16At(anOutput, 0);
+                mainWindow.Ie = S7.GetSint16At(anOutput, 2);
             }
         }
 

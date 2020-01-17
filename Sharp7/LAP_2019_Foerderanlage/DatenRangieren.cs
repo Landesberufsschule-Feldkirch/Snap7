@@ -50,7 +50,7 @@ namespace LAP_2019_Foerderanlage
             mainWindow.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
             mainWindow.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
 
-            mainWindow.FuSpeed = S7.GetIntAt(anOutput, 0);
+            mainWindow.FuSpeed = S7.GetSint16At(anOutput, 0);
         }
 
         public DatenRangieren(MainWindow window)

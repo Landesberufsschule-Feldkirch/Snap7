@@ -1,7 +1,7 @@
 ﻿using System;
 using Utilities;
 
-namespace Synchronisiereinrichtung
+namespace Synchronisiereinrichtung.Kraftwerk
 {
     public static class DrehstromZeiger
     {

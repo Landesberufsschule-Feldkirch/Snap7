@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Threading;
+using System.Windows;
 
 namespace Kommunikation
 {
@@ -78,6 +79,8 @@ namespace Kommunikation
         {
             while (TaskAktive)
             {
+                int? ResultError;
+
                 var pingSender = new Ping();
                 var reply = pingSender.Send(SPS_Client.Adress, SPS_Timeout);
 
@@ -86,25 +89,40 @@ namespace Kommunikation
                 if (reply.Status == IPStatus.Success)
                 {
                     SpsStatus = "S7-1200 sichtbar (Ping: {reply.RoundtripTime.ToString() }ms)";
-                    var res = Client?.ConnectTo(SPS_Client.Adress, SPS_Rack, SPS_Slot);
+                    int? res = Client?.ConnectTo(SPS_Client.Adress, SPS_Rack, SPS_Slot);
                     if (res == 0)
                     {
                         while (TaskAktive)
                         {
                             CallbackInput(DigInput, AnalogInput);
 
-                            if (AnzahlByteDigInput > 0) Client?.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, AnzahlByteDigInput, DigInput);
-                            if (AnzahlByteDigOutput > 0) Client?.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, AnzahlByteDigOutput, DigOutput);
-                            if (AnzahlByteAnalogInput > 0) Client?.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte_0, AnzahlByteAnalogInput, AnalogInput);
-                            if (AnzahlByteAnalogOutput > 0) Client?.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte_0, AnzahlByteAnalogOutput, AnalogOutput);
+                            if (AnzahlByteDigInput > 0)
+                            {
+                                ResultError = Client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, AnzahlByteDigInput, DigInput);
+                                if (ResultError != 0) ErrorAnzeigen(ResultError.GetValueOrDefault());
+                            }
+                            if (AnzahlByteDigOutput > 0)
+                            {
+                                ResultError = Client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte_0, AnzahlByteDigOutput, DigOutput);
+                                if (ResultError != 0) ErrorAnzeigen(ResultError.GetValueOrDefault());
+                            }
+                            if (AnzahlByteAnalogInput > 0)
+                            {
+                                ResultError = Client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte_0, AnzahlByteAnalogInput, AnalogInput);
+                                if (ResultError != 0) ErrorAnzeigen(ResultError.GetValueOrDefault());
+                            }
+                            if (AnzahlByteAnalogOutput > 0)
+                            {
+                                ResultError = Client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte_0, AnzahlByteAnalogOutput, AnalogOutput);
+                                if (ResultError != 0) ErrorAnzeigen(ResultError.GetValueOrDefault());
+                            }
 
                             CallbackOutput(DigOutput, AnalogOutput);
 
                             Thread.Sleep(10);
                         }
                     }
-
-                    //  else TODO fehlerbehandlung
+                    else ErrorAnzeigen(res.GetValueOrDefault());
                 }
                 else
                 {
@@ -117,6 +135,11 @@ namespace Kommunikation
             }
 
             Client.Disconnect();
+        }
+        private void ErrorAnzeigen(int ResultError)
+        {
+            var ErrorText = Client?.ErrorText(ResultError);
+            MessageBox.Show("Nr: " + ResultError + " Text: " + ErrorText);
         }
     }
 }
