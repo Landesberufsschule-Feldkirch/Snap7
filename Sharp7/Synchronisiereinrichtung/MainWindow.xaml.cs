@@ -1,5 +1,5 @@
 ﻿using Kommunikation;
-using Synchronisiereinrichtung.Kraftwerk.ViewModels;
+using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,15 +43,11 @@ namespace Synchronisiereinrichtung
 
         public SetManualWindow setManualWindow;
         public RealTimeGraphWindow realTimeGraphWindow;
-
-        public Synchronisiereinrichtung.Kraftwerk.ViewModels.KraftwerkViewModel _kraftwerkViewModel;
+        public KraftwerkViewModel _kraftwerkViewModel;
 
         public MainWindow()
         {
-            //Kraftwerk.Kraftwerk kraftwerk = new Kraftwerk.Kraftwerk();
-
             realTimeGraphWindow = new RealTimeGraphWindow(this);
-
 
             logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
@@ -61,11 +57,16 @@ namespace Synchronisiereinrichtung
             InitializeComponent();
             DataContext = _kraftwerkViewModel;
 
+
+
+
+
+
             S7_1200 s7_1200 = new S7_1200(2, 2, 100, 100, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
-            
+
 
             if (System.Diagnostics.Debugger.IsAttached)
             {

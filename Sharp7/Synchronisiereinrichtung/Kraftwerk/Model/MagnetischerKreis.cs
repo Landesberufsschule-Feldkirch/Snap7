@@ -1,10 +1,11 @@
-﻿using System;
-
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
+
+    using System;
+
     public class MagnetischerKreis
     {
-        double Kennlinie;
+        readonly double Kennlinie;
 
         public MagnetischerKreis(double kennlinie)
         {

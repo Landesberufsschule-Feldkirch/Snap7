@@ -1,4 +1,4 @@
-﻿using Synchronisiereinrichtung.Kraftwerk.ViewModels;
+﻿using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using System.Windows;
 
 namespace Synchronisiereinrichtung
@@ -9,7 +9,7 @@ namespace Synchronisiereinrichtung
         public bool Q1;
         public bool Reset;
 
-        public Synchronisiereinrichtung.Kraftwerk.ViewModels.KraftwerkViewModel _kraftwerkViewModel;
+        public Synchronisiereinrichtung.Kraftwerk.ViewModel.KraftwerkViewModel _kraftwerkViewModel;
 
         public SetManualWindow()
         {

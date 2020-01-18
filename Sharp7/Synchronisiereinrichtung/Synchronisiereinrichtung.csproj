@@ -58,11 +58,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Kraftwerk\Commands\UpdateCommands.cs" />
+    <Compile Include="Kraftwerk\Commands\KraftwerkUpdateCommand.cs" />
     <Compile Include="Kraftwerk\Model\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\Model\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
-    <Compile Include="Kraftwerk\ViewModel\KraftwerkVM.cs" />
+    <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
     <Compile Include="Kraftwerk\Model\MagnetischerKreis.cs" />
     <Compile Include="GraphWindow\MainWindowVM.cs" />
     <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">

@@ -1,7 +1,7 @@
-﻿using System.Threading;
-
-namespace Synchronisiereinrichtung
+﻿namespace Synchronisiereinrichtung
 {
+
+    using System.Threading;
     public class Logikfunktionen
     {
         readonly MainWindow mainWindow;
@@ -14,15 +14,9 @@ namespace Synchronisiereinrichtung
         {
             const double Zeitdauer = 10;
 
-            double WinkelGenerator = 0;
-            double WinkelNetz = 0;
-
             while (mainWindow.FensterAktiv)
             {
-                if (mainWindow.Q1alt != mainWindow.Q1)
-                {
-                    mainWindow.Q1alt = mainWindow.Q1;
-                }
+
                 Thread.Sleep((int)Zeitdauer);
             }
         }

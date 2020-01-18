@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+{
+
+using System.ComponentModel;
 using System.Threading;
 using Utilities;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
-{
     public class Kraftwerk : INotifyPropertyChanged
     {
 
@@ -42,7 +43,23 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         Drehstromgenerator generator = new Drehstromgenerator(1 / 2, 1 / 30);
 
-        #region Variablen zum berechnen
+        #region Variablen für MVVM
+
+        private bool _Q1;
+        public bool SchalterQ1
+        {
+            get
+            {
+                return _Q1;
+            }
+            set
+            {
+                _Q1 = value;
+                OnPropertyChanged("SchalterQ1");
+            }
+        }
+
+
 
         private double _VentilPosition;
         public double VentilPosition
@@ -57,6 +74,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("VentilPosition");
             }
         } 
+
+
+
 
         public double Generator_n;
         public double Generator_f;
@@ -102,7 +122,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             while (true)
             {
-
 
                 generator.MaschineAntreiben(VentilPosition);
                 Generator_n = generator.Drehzahl();

@@ -1,8 +1,8 @@
-﻿using System;
-using Utilities;
-
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
+    using System;
+    using Utilities;
+
     public static class DrehstromZeiger
     {
 
