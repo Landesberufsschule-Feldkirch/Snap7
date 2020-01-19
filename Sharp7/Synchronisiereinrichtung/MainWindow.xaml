@@ -111,7 +111,7 @@
         <Image x:Name="ImgSchalterEin" Source="Bilder/SchalterBetaetigt.jpg"    Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="11" Grid.RowSpan="5" Margin="0,1,0,25" />
         <Label Content="Q1"                                                     Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="14" Grid.RowSpan="2"  Margin="51,0,45,34" FontSize="16pt" />
 
-        <TextBlock x:Name="TxtVentilOeffnung"       Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2" Text="{Binding Kraftwerk.VentilPosition}" />
+        <TextBox x:Name="TxtVentilOeffnung"       Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2" Text="{Binding Kraftwerk.VentilPosition, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock x:Name="TxtErregerstrom"         Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt">I<Run FontSize="12pt" BaselineAlignment="TextBottom">E</Run> = 0A</TextBlock>
         <TextBlock x:Name="TxtDrehzahl"             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="12" FontSize="16pt">n = 0 min<Run FontSize="12pt" BaselineAlignment="TextTop">-1</Run></TextBlock>
 

@@ -1,30 +1,14 @@
-﻿using Synchronisiereinrichtung.Kraftwerk.ViewModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Synchronisiereinrichtung
 {
     public partial class SetManualWindow : Window
     {
 
-        public bool Q1;
-        public bool Reset;
-
-        public Synchronisiereinrichtung.Kraftwerk.ViewModel.KraftwerkViewModel _kraftwerkViewModel;
-
-        public SetManualWindow()
+        public SetManualWindow( Synchronisiereinrichtung.Kraftwerk.ViewModel.KraftwerkViewModel kraftwerkViewModel)
         {
             InitializeComponent();
-            DataContext = _kraftwerkViewModel;
-        }
-
-        private void SchalterQ1_Click(object sender, RoutedEventArgs e)
-        {
-            Q1 = !Q1;
-        }
-
-        private void BtnReset_Click(object sender, RoutedEventArgs e)
-        {
-            Reset = true;
+            DataContext = kraftwerkViewModel;
         }
     }
 }

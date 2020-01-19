@@ -1,9 +1,10 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
 
-using System.ComponentModel;
-using System.Threading;
-using Utilities;
+    using System.ComponentModel;
+    using System.Threading;
+    using System.Windows.Input;
+    using Utilities;
 
     public class Kraftwerk : INotifyPropertyChanged
     {
@@ -45,35 +46,24 @@ using Utilities;
 
         #region Variablen für MVVM
 
-        private bool _Q1;
-        public bool SchalterQ1
-        {
-            get
-            {
-                return _Q1;
-            }
-            set
-            {
-                _Q1 = value;
-                OnPropertyChanged("SchalterQ1");
-            }
-        }
+        public bool Q1;
+
 
 
 
         private double _VentilPosition;
-        public double VentilPosition
+        public string VentilPosition
         {
             get
             {
-                return _VentilPosition;
+                return "Y=" + _VentilPosition + "%";
             }
             set
             {
-                _VentilPosition = value;
+                _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("VentilPosition");
             }
-        } 
+        }
 
 
 
@@ -109,7 +99,7 @@ using Utilities;
                 BinErster = true;
                 System.Threading.Tasks.Task.Run(() => KraftwerkTask());
 
-                VentilPosition = 10;
+                VentilPosition = "Y=10%";
             }
 
         }
@@ -122,8 +112,11 @@ using Utilities;
 
             while (true)
             {
+                _VentilPosition += 0.01;
 
-                generator.MaschineAntreiben(VentilPosition);
+                VentilPosition = $"Y={_VentilPosition}%";
+
+                generator.MaschineAntreiben(_VentilPosition);
                 Generator_n = generator.Drehzahl();
                 Generator_U = generator.Spannung(S7Analog.S7_Analog_2_Double(Gen_Ie, 10));
                 Generator_f = generator.Frequenz();

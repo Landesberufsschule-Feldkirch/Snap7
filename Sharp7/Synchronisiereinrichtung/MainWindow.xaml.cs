@@ -90,8 +90,7 @@ namespace Synchronisiereinrichtung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            setManualWindow = new SetManualWindow();
-            setManualWindow._kraftwerkViewModel = _kraftwerkViewModel;
+            setManualWindow = new SetManualWindow(_kraftwerkViewModel);
             setManualWindow.Show();
         }
 

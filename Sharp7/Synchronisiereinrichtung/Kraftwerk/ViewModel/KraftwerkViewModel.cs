@@ -1,6 +1,6 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
-
+    using System;
     using System.Diagnostics;
     using System.Windows.Input;
     using Synchronisiereinrichtung.Kraftwerk.Command;
@@ -15,6 +15,7 @@
         {
             _Kraftwerk = new Model.Kraftwerk();
             UpdateCommand = new KraftwerkUpdateCommand(this);
+            UpdateSchalterQ1 = new KraftwerkUpdateCommand(this);
         }
 
 
@@ -35,13 +36,21 @@
             Debug.Assert(false, "dummytext");
         }
 
-        public ICommand UpdateCommand()
+        public ICommand UpdateCommand
         {
-            // get;
-            //   private set;
+             get;
+               private set;
         }
 
+        public ICommand UpdateSchalterQ1
+        {
+            get;
+            set;
+        }
 
-
+        internal void SchalterQ1()
+        {
+            Debug.Assert(false, "Schalter Q1");
+        }
     }
 }

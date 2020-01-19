@@ -36,4 +36,39 @@
 
         #endregion
     }
+
+
+    public class KraftwerkUpdateQ1 : ICommand
+    {
+
+        private readonly KraftwerkViewModel _ViewModel;
+
+        public KraftwerkUpdateQ1(KraftwerkViewModel vm)
+        {
+            _ViewModel = vm;
+        }
+
+
+        #region iCommand Members
+
+        public event System.EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _ViewModel.CanUpdate;
+        }
+
+        public void Execute(object parameter)
+        {
+            _ViewModel.SchalterQ1();
+        }
+
+        #endregion
+    }
+
+
 }
