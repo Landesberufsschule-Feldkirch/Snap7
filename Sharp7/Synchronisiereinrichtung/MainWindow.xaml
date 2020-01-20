@@ -117,7 +117,7 @@
         <Image x:Name="ImgSchalterEin" Source="Bilder/SchalterBetaetigt.jpg"    Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="11" Grid.RowSpan="5" Margin="0,1,0,25" />
         <Label Content="Q1"                                                     Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="14" Grid.RowSpan="2"  Margin="51,0,45,34" FontSize="16pt" />
 
-        <TextBlock x:Name="TxtVentilOeffnung"       Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2" Text="{Binding Kraftwerk.VentilPosition, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2" Text="{Binding Kraftwerk.VentilPosition, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock x:Name="TxtErregerstrom"         Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt">I<Run FontSize="12pt" BaselineAlignment="TextBottom">E</Run> = 0A</TextBlock>
         <TextBlock x:Name="TxtDrehzahl"             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="12" FontSize="16pt">n = 0 min<Run FontSize="12pt" BaselineAlignment="TextTop">-1</Run></TextBlock>
 
@@ -127,9 +127,11 @@
         <TextBlock x:Name="TxtLeistungGenerator"    Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">P = 0W</TextBlock>
 
         <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
-        <TextBlock x:Name="TxtSpannungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt">U = 0V</TextBlock>
-        <TextBlock x:Name="TxtFrequenzNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt">f = 0Hz</TextBlock>
-        <TextBlock x:Name="TxtLeistungNetz"         Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt">P = 0W</TextBlock>
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.NetzSpannungString,  UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.NetzFrequenzString,  UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.NetzLeistungString,  UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.NetzCosPhiString,    UpdateSourceTrigger=PropertyChanged}" />
+
 
         <Rectangle x:Name="RctAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
@@ -139,7 +141,6 @@
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase}">U / f / Phasenlage</RadioButton>
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistung}">U / f / Phasenlage / Leistung</RadioButton>
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
-
         </StackPanel>
 
         <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=UpdateSchalterStart}" />
@@ -150,13 +151,13 @@
         <Label Content="Frequenz"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="Leistung"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="cos φ"      Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="induktiv"   Grid.Column="21" Grid.ColumnSpan="7"    Grid.Row="18"  Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="induktiv"   Grid.Column="21" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="kapazitiv"  Grid.Column="24" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
 
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Maximum="27648" Value="{Binding  Kraftwerk.NetzSpannung, Mode=TwoWay}"  />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Maximum="27648" Value="{Binding  Kraftwerk.NetzFrequenz, Mode=TwoWay}"  />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Maximum="27648" Value="{Binding  Kraftwerk.NetzLeistung, Mode=TwoWay}"  />
-        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Maximum="27648" Value="{Binding  Kraftwerk.NetzCosPhi, Mode=TwoWay}"    />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.NetzSpannungSlider, Mode=TwoWay}"  />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.NetzFrequenzSlider, Mode=TwoWay}"  />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.NetzLeistungSlider, Mode=TwoWay}"  />
+        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-1"  Maximum="1"    TickFrequency="0.1"  IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.NetzCosPhiSlider,   Mode=TwoWay}"    />
 
 
         <Ellipse x:Name="CircFehlermeldung" Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10" Visibility="Hidden"/>

@@ -4,10 +4,6 @@ using System.Windows.Data;
 
 namespace Synchronisiereinrichtung
 {
-
-
-
-
     public class EnumBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -33,6 +29,7 @@ namespace Synchronisiereinrichtung
             return Enum.Parse(targetType, parameterString);
         }
     }
+
     public enum SynchronisierungAuswahl
     {
         U_f = 0,
@@ -102,53 +99,53 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public bool KraftwerkStoppen;
 
 
-        private double _NetzSpannung = 1234;
-        public double NetzSpannung
+        private double _NetzspannungSlider = 400;
+        public double NetzSpannungSlider
         {
-            get { return _NetzSpannung; }
+            get { return _NetzspannungSlider; }
             set
             {
-                _NetzSpannung = value;
-                OnPropertyChanged("NetzSpannung");
+                _NetzspannungSlider = value;
+                OnPropertyChanged("NetzSpannungSlider");
             }
         }
 
 
-               
 
-        private double _NetzFrequenz = 1234;
-        public double NetzFrequenz
+
+        private double _NetzFrequenzSlider = 50;
+        public double NetzFrequenzSlider
         {
-            get { return _NetzFrequenz; }
+            get { return _NetzFrequenzSlider; }
             set
             {
-                _NetzFrequenz = value;
-                OnPropertyChanged("NetzFrequenz");
-            }
-        }
-
-        
-
-        private double _NetzCosPhi = 1234;
-        public double NetzCosPhi
-        {
-            get { return _NetzCosPhi; }
-            set
-            {
-                _NetzCosPhi = value;
-                OnPropertyChanged("NetzCosPhi");
+                _NetzFrequenzSlider = value;
+                OnPropertyChanged("NetzFrequenzSlider");
             }
         }
 
 
-        private double _NetzLeistung = 1234;
-        public double NetzLeistung
+
+        private double _NetzCosPhiSlider = 0;
+        public double NetzCosPhiSlider
         {
-            get { return _NetzLeistung; }
+            get { return _NetzCosPhiSlider; }
             set
             {
-                _NetzLeistung = value;
-                OnPropertyChanged("NetzLeistung");
+                _NetzCosPhiSlider = value;
+                OnPropertyChanged("NetzCosPhiSlider");
+            }
+        }
+
+
+        private double _NetzLeistungSlider = 600;
+        public double NetzLeistungSlider
+        {
+            get { return _NetzLeistungSlider; }
+            set
+            {
+                _NetzLeistungSlider = value;
+                OnPropertyChanged("NetzLeistungSlider");
             }
         }
 
@@ -158,16 +155,60 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         private double _VentilPosition;
         public string VentilPosition
         {
-            get
-            {
-                return "Y=" + _VentilPosition + "%";
-            }
+            get { return "Y=" + _VentilPosition + "%"; }
             set
             {
                 _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("VentilPosition");
             }
         }
+
+
+        private double _NetzSpannungString;
+        public string NetzSpannungString
+        {
+            get { return "U=" + _NetzSpannungString + "V"; }
+            set
+            {
+                _NetzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("NetzSpannungString");
+            }
+        }
+
+
+        private double _NetzFrequenzString;
+        public string NetzFrequenzString
+        {
+            get { return "f=" + _NetzFrequenzString + "Hz"; }
+            set
+            {
+                _NetzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                OnPropertyChanged("NetzFrequenzString");
+            }
+        }
+
+        private double _NetzLeistungString;
+        public string NetzLeistungString
+        {
+            get { return "P=" + _NetzLeistungString + "W"; }
+            set
+            {
+                _NetzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("NetzLeistungString");
+            }
+        }
+
+        private double _NetzCosPhiString;
+        public string NetzCosPhiString
+        {
+            get { return "cos φ=" + _NetzCosPhiString; }
+            set
+            {
+                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("NetzCosPhiString");
+            }
+        }
+
 
 
 
@@ -243,15 +284,17 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public void KraftwerkTask()
         {
-
-
             const double Zeitdauer = 10;//ms
 
             while (true)
             {
-                // _VentilPosition += 0.01; nur zum testen
-
+                // Sollwerte von den Slidern übernehmen
                 VentilPosition = $"Y={_VentilPosition}%";
+                NetzSpannungString = $"U={NetzSpannungSlider}V";
+                NetzFrequenzString = $"f={NetzFrequenzSlider}Hz";
+                NetzLeistungString = $"P={NetzLeistungSlider}W";
+                NetzCosPhiString = $"cos φ={NetzCosPhiSlider}";
+
 
                 generator.MaschineAntreiben(_VentilPosition);
                 Generator_n = generator.Drehzahl();
@@ -271,8 +314,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
                 WertebereicheUmrechnen();
 
-
-
                 Thread.Sleep((int)Zeitdauer);
             }
 
@@ -281,10 +322,10 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public void WertebereicheUmrechnen()
         {
             // Sollwerte --> SPS
-            Netz_U = S7Analog.S7_Analog_2_Short(Spannung, 1000);
-            Netz_f = S7Analog.S7_Analog_2_Short(Frequenz, 100);
-            Netz_P = S7Analog.S7_Analog_2_Short(Leistung, 1000);
-            Netz_cosPhi = S7Analog.S7_Analog_2_Short(Leistungsfaktor, 1);
+            Netz_U = S7Analog.S7_Analog_2_Short(NetzSpannungSlider, 1000);
+            Netz_f = S7Analog.S7_Analog_2_Short(NetzFrequenzSlider, 100);
+            Netz_P = S7Analog.S7_Analog_2_Short(NetzLeistungSlider, 1000);
+            Netz_cosPhi = S7Analog.S7_Analog_2_Short(NetzCosPhiSlider, 1);
 
             // Modell --> SPS
             Gen_n = S7Analog.S7_Analog_2_Short(Generator_n, 5000);
