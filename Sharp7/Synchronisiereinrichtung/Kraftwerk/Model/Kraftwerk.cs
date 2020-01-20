@@ -1,20 +1,70 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿using System;
+using System.Windows;
+using System.Windows.Data;
+
+namespace Synchronisiereinrichtung
 {
 
+
+
+
+    public class EnumBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string parameterString = parameter.ToString();
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
+
+            if (Enum.IsDefined(value.GetType(), value) == false)
+                return DependencyProperty.UnsetValue;
+
+            object parameterValue = Enum.Parse(value.GetType(), parameterString);
+
+            return parameterValue.Equals(value);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string parameterString = parameter.ToString();
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
+
+            return Enum.Parse(targetType, parameterString);
+        }
+    }
+    public enum SynchronisierungAuswahl
+    {
+        U_f = 0,
+        U_f_Phase,
+        U_f_Phase_Leistung,
+        U_f_Phase_Leistungsfaktor,
+        Unbekannt
+    }
+
+}
+
+namespace Synchronisiereinrichtung.Kraftwerk.Model
+{
+    using System;
     using System.ComponentModel;
     using System.Threading;
-    using System.Windows.Input;
+    using System.Windows;
+    using System.Windows.Data;
     using Utilities;
 
     public class Kraftwerk : INotifyPropertyChanged
     {
+
+
+
 
         private static bool BinErster = false;
         public bool MaschineTot;
 
         #region Sollwerte zur Bedienung
 
-        public MainWindow.SynchronisierungAuswahl AuswahlSynchronisierung;
+
         public double Spannung;
         public double Frequenz;
         public double Leistung;
@@ -48,6 +98,60 @@
 
         public bool Q1;
 
+        public bool KraftwerkStarten;
+        public bool KraftwerkStoppen;
+
+
+        private double _NetzSpannung = 1234;
+        public double NetzSpannung
+        {
+            get { return _NetzSpannung; }
+            set
+            {
+                _NetzSpannung = value;
+                OnPropertyChanged("NetzSpannung");
+            }
+        }
+
+
+               
+
+        private double _NetzFrequenz = 1234;
+        public double NetzFrequenz
+        {
+            get { return _NetzFrequenz; }
+            set
+            {
+                _NetzFrequenz = value;
+                OnPropertyChanged("NetzFrequenz");
+            }
+        }
+
+        
+
+        private double _NetzCosPhi = 1234;
+        public double NetzCosPhi
+        {
+            get { return _NetzCosPhi; }
+            set
+            {
+                _NetzCosPhi = value;
+                OnPropertyChanged("NetzCosPhi");
+            }
+        }
+
+
+        private double _NetzLeistung = 1234;
+        public double NetzLeistung
+        {
+            get { return _NetzLeistung; }
+            set
+            {
+                _NetzLeistung = value;
+                OnPropertyChanged("NetzLeistung");
+            }
+        }
+
 
 
 
@@ -67,6 +171,26 @@
 
 
 
+        private SynchronisierungAuswahl _SynchAuswahl = SynchronisierungAuswahl.U_f;
+        public SynchronisierungAuswahl SynchAuswahl
+        {
+
+            get
+            {
+                return _SynchAuswahl;
+            }
+
+            set
+            {
+                _SynchAuswahl = value;
+                OnPropertyChanged("SynchAuswahl");
+            }
+
+        }
+
+
+
+
 
         public double Generator_n;
         public double Generator_f;
@@ -74,6 +198,19 @@
         public double Generator_P;
         public double Generator_cosPhi;
         public double Generator_Winkel;
+
+        internal void Starten()
+        {
+            KraftwerkStarten = true;
+            KraftwerkStoppen = false;
+        }
+
+        internal void Stoppen()
+        {
+            KraftwerkStoppen = true;
+            KraftwerkStarten = false;
+        }
+
         public Punkt Generator_Momentanspannung;
 
         public double Netz_Winkel;
@@ -112,7 +249,7 @@
 
             while (true)
             {
-                _VentilPosition += 0.01;
+                // _VentilPosition += 0.01; nur zum testen
 
                 VentilPosition = $"Y={_VentilPosition}%";
 
@@ -160,28 +297,28 @@
 
         }
 
-        public void Synchronisieren()
+        internal void Synchronisieren()
         {
             var SpannungDifferenz = Spannung - Generator_U;
 
-            switch (AuswahlSynchronisierung)
+            switch (SynchAuswahl)
             {
-                case MainWindow.SynchronisierungAuswahl.U_f:
+                case SynchronisierungAuswahl.U_f:
                     if (FrequenzDifferenz > 2) MaschineTot = true;
                     if (SpannungDifferenz > 25) MaschineTot = true;
                     break;
 
-                case MainWindow.SynchronisierungAuswahl.U_f_Phase:
+                case SynchronisierungAuswahl.U_f_Phase:
                     if (FrequenzDifferenz > 1) MaschineTot = true;
                     if (SpannungDifferenz > 10) MaschineTot = true;
                     break;
 
-                case MainWindow.SynchronisierungAuswahl.U_f_Phase_Leistung:
+                case SynchronisierungAuswahl.U_f_Phase_Leistung:
                     if (FrequenzDifferenz > 0.9) MaschineTot = true;
                     if (SpannungDifferenz > 10) MaschineTot = true;
                     break;
 
-                case MainWindow.SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
+                case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
                     if (FrequenzDifferenz > 0.8) MaschineTot = true;
                     if (SpannungDifferenz > 10) MaschineTot = true;
                     break;
@@ -191,7 +328,19 @@
                     break;
             }
 
+
         }
+
+        internal void Reset()
+        {
+            MaschineTot = false;
+            Q1 = false;
+            Generator_n = 0;
+
+        }
+
+
+
 
         #region iNotifyPeropertyChanged Members
 
@@ -203,6 +352,8 @@
         }
 
         #endregion
+
+
 
     }
 }

@@ -1,23 +1,22 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
-    using System;
-    using System.Diagnostics;
-    using System.Windows.Input;
     using Synchronisiereinrichtung.Kraftwerk.Command;
+    using System.Windows.Input;
 
 
     public class KraftwerkViewModel
     {
 
         private readonly Model.Kraftwerk _Kraftwerk;
-
+     
         public KraftwerkViewModel()
         {
             _Kraftwerk = new Model.Kraftwerk();
-            UpdateCommand = new KraftwerkUpdateCommand(this);
-            UpdateSchalterQ1 = new KraftwerkUpdateCommand(this);
+            UpdateSchalterReset = new KraftwerkUpdateManualReset(this);
+            UpdateSchalterQ1 = new KraftwerkUpdateManualQ1(this);
+            UpdateSchalterStart = new KraftwerkUpdateStart(this);
+            UpdateSchalterStop = new KraftwerkUpdateStop(this);
         }
-
 
 
         public Model.Kraftwerk Kraftwerk
@@ -25,21 +24,36 @@
             get { return _Kraftwerk; }
         }
 
-        public bool CanUpdate
+
+       
+
+  
+
+
+
+        public bool CanUpdateQ1
+        {
+            get { return true; }
+        }
+        public bool CanUpdateReset
         {
             get { return true; }
         }
 
-        public void SaveChanges()
+        public bool CanUpdateStart
         {
-
-            Debug.Assert(false, "dummytext");
+            get { return true; }
+        }
+        public bool CanUpdateStop
+        {
+            get { return true; }
         }
 
-        public ICommand UpdateCommand
+
+        public ICommand UpdateSchalterReset
         {
-             get;
-               private set;
+            get;
+            private set;
         }
 
         public ICommand UpdateSchalterQ1
@@ -48,9 +62,43 @@
             set;
         }
 
+        public ICommand UpdateSchalterStart
+        {
+            get;
+            private set;
+        }
+
+        public ICommand UpdateSchalterStop
+        {
+            get;
+            set;
+        }
+
+
         internal void SchalterQ1()
         {
-            Debug.Assert(false, "Schalter Q1");
+            _Kraftwerk.Synchronisieren();
         }
+
+
+        public void SchalterReset()
+        {
+            _Kraftwerk.Reset();
+        }
+
+        internal void SchalterStart()
+        {
+            _Kraftwerk.Starten();
+        }
+
+        public void SchalterStop()
+        {
+            _Kraftwerk.Stoppen();
+        }
+
+
+
+
+
     }
 }

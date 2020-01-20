@@ -1,23 +1,19 @@
 ﻿using Kommunikation;
 using Synchronisiereinrichtung.Kraftwerk.ViewModel;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Synchronisiereinrichtung
 {
 
     public partial class MainWindow : Window
     {
-        public enum SynchronisierungAuswahl
-        {
-            U_f = 0,
-            U_f_Phase,
-            U_f_Phase_Leistung,
-            U_f_Phase_Leistungsfaktor
-        }
 
-        // Kraftwerk.Kraftwerk kraftwerk;
+   
+
 
 
         public bool Q1;
@@ -47,6 +43,9 @@ namespace Synchronisiereinrichtung
 
         public MainWindow()
         {
+
+       
+
             realTimeGraphWindow = new RealTimeGraphWindow(this);
 
             logikfunktionen = new Logikfunktionen(this);
@@ -116,15 +115,7 @@ namespace Synchronisiereinrichtung
             */
         }
 
-        private void BtnStarten_Click(object sender, RoutedEventArgs e)
-        {
-            S1 = ButtonFunktionPressReleaseAendern(BtnStarten);
-        }
 
-        private void BtnStoppen_Click(object sender, RoutedEventArgs e)
-        {
-            S2 = !ButtonFunktionPressReleaseAendern(BtnStoppen);
-        }
 
 
         private bool ButtonFunktionPressReleaseAendern(Button knopf)
@@ -142,6 +133,25 @@ namespace Synchronisiereinrichtung
         }
 
 
+
+
+
+    }
+
+
+    public class RadioButtonCheckedConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            return value.Equals(parameter);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter,
+            System.Globalization.CultureInfo culture)
+        {
+            return value.Equals(true) ? parameter : Binding.DoNothing;
+        }
     }
 
 
@@ -174,5 +184,10 @@ namespace Synchronisiereinrichtung
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
+
+
+
+
+
     }
 }
