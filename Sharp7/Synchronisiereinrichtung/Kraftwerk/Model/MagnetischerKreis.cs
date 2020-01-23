@@ -1,6 +1,5 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
-
     using System;
 
     public class MagnetischerKreis
@@ -16,7 +15,5 @@
         {
             return 1 - Math.Exp(-Kennlinie * strom);
         }
-
-
     }
 }

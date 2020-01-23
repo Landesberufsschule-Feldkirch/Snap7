@@ -1,20 +1,11 @@
 ﻿using Kommunikation;
 using Synchronisiereinrichtung.Kraftwerk.ViewModel;
-using System;
-using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Synchronisiereinrichtung
 {
-
     public partial class MainWindow : Window
     {
-
-   
-
-
 
         public bool Q1;
         public bool Q1alt;
@@ -25,16 +16,11 @@ namespace Synchronisiereinrichtung
         public int Ie;
 
 
-
-
         public bool TaskAktiv;
         public bool DatenRangierenAktiv = true;
         public bool FensterAktiv = true;
         public bool DebugWindowAktiv;
 
-        Messgeraet MessgeraetDifferenzSpannung;
-
-        Logikfunktionen logikfunktionen;
         DatenRangieren datenRangieren;
 
         public SetManualWindow setManualWindow;
@@ -42,13 +28,7 @@ namespace Synchronisiereinrichtung
         public KraftwerkViewModel _kraftwerkViewModel;
 
         public MainWindow()
-        {
-
-       
-
-            realTimeGraphWindow = new RealTimeGraphWindow(this);
-
-            logikfunktionen = new Logikfunktionen(this);
+        {         
             datenRangieren = new DatenRangieren(this);
 
             _kraftwerkViewModel = new KraftwerkViewModel();
@@ -56,28 +36,12 @@ namespace Synchronisiereinrichtung
             InitializeComponent();
             DataContext = _kraftwerkViewModel;
 
-
-
-
-
-
+            GaugeDifferenzSpannung.DataContext = _kraftwerkViewModel;
+           
             S7_1200 s7_1200 = new S7_1200(2, 2, 100, 100, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-
-            System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
-            System.Threading.Tasks.Task.Run(() => Display_Task());
-
-
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            }
-            else
-            {
-                btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
-            }
-
-            MessgeraetDifferenzSpannung = new Messgeraet(0);
-            GaugeDifferenzSpannung.DataContext = MessgeraetDifferenzSpannung;
+                                  
+            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
+            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -95,99 +59,9 @@ namespace Synchronisiereinrichtung
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraphWindow = new RealTimeGraphWindow(this);
+            realTimeGraphWindow = new RealTimeGraphWindow(_kraftwerkViewModel);
             realTimeGraphWindow.Show();
         }
-
-        public void AuswahlGeaendert(object sender, RoutedEventArgs e)
-        {
-            RadioButton radioButton = sender as RadioButton;
-            /*
-            switch (radioButton.Name)
-            {
-                case "U_f": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f; break;
-                case "U_f_Phasenlage": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase; break;
-                case "U_f_Leistung": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistung; break;
-                case "U_f_Leistungsfaktor": AuswahlSynchronisierung = SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor; break;
-                default:
-                    break;
-            }
-            */
-        }
-
-
-
-
-        private bool ButtonFunktionPressReleaseAendern(Button knopf)
-        {
-            if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
-            {
-                knopf.ClickMode = System.Windows.Controls.ClickMode.Release;
-                return true;
-            }
-            else
-            {
-                knopf.ClickMode = System.Windows.Controls.ClickMode.Press;
-                return false;
-            }
-        }
-
-
-
-
-
     }
 
-
-    public class RadioButtonCheckedConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter,
-            System.Globalization.CultureInfo culture)
-        {
-            return value.Equals(parameter);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter,
-            System.Globalization.CultureInfo culture)
-        {
-            return value.Equals(true) ? parameter : Binding.DoNothing;
-        }
-    }
-
-
-    public class Messgeraet : INotifyPropertyChanged
-    {
-        private double score;
-
-        public double Score
-        {
-            get { return score; }
-            set
-            {
-                score = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Score"));
-                }
-            }
-        }
-
-
-        public Messgeraet(double scr)
-        {
-            this.Score = scr;
-        }
-
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-
-
-
-
-    }
 }

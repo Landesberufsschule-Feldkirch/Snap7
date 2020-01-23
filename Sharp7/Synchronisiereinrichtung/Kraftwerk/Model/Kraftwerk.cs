@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Data;
+using Utilities;
+
 
 namespace Synchronisiereinrichtung
 {
@@ -43,202 +46,52 @@ namespace Synchronisiereinrichtung
 
 namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
-    using System;
-    using System.ComponentModel;
-    using System.Threading;
-    using System.Windows;
-    using System.Windows.Data;
-    using Utilities;
-
-    public class Kraftwerk : INotifyPropertyChanged
+    public class Kraftwerk
     {
+        private double Spannung;
+        private double Frequenz;
+        private double Leistung;
+        private double Leistungsfaktor;
 
 
+        private short Gen_Ie;
 
+        private short Gen_n;
+        private short Gen_U;
+        private short Gen_f;
+        private short Gen_P;
+        private short Gen_cosPhi;
 
-        private static bool BinErster = false;
-        public bool MaschineTot;
+        private short Netz_U;
+        private short Netz_f;
+        private short Netz_P;
+        private short Netz_cosPhi;
 
-        #region Sollwerte zur Bedienung
+        private short UDiff;
+        private short ph;
 
-
-        public double Spannung;
-        public double Frequenz;
-        public double Leistung;
-        public double Leistungsfaktor;
-
-        #endregion
-
-        #region Werte für die SPS
-
-        public short Gen_Ie;
-
-        public short Gen_n;
-        public short Gen_U;
-        public short Gen_f;
-        public short Gen_P;
-        public short Gen_cosPhi;
-
-        public short Netz_U;
-        public short Netz_f;
-        public short Netz_P;
-        public short Netz_cosPhi;
-
-        public short UDiff;
-        public short ph;
-
-        #endregion
-
-        Drehstromgenerator generator = new Drehstromgenerator(1 / 2, 1 / 30);
+        private readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
 
         #region Variablen für MVVM
 
-        public bool Q1;
+        private bool Q1;
 
-        public bool KraftwerkStarten;
-        public bool KraftwerkStoppen;
+        private bool KraftwerkStarten;
+        private bool KraftwerkStoppen;
 
-
-        private double _NetzspannungSlider = 400;
-        public double NetzSpannungSlider
-        {
-            get { return _NetzspannungSlider; }
-            set
-            {
-                _NetzspannungSlider = value;
-                OnPropertyChanged("NetzSpannungSlider");
-            }
-        }
+        public double Generator_n { get; set; }
+        public double Generator_f { get; set; }
+        public double Generator_U { get; set; }
+        private double Generator_P;
+        private double Generator_cosPhi;
 
 
 
 
-        private double _NetzFrequenzSlider = 50;
-        public double NetzFrequenzSlider
-        {
-            get { return _NetzFrequenzSlider; }
-            set
-            {
-                _NetzFrequenzSlider = value;
-                OnPropertyChanged("NetzFrequenzSlider");
-            }
-        }
+        private double SpannungsUnterschiedSynchronisieren;
+        private double FrequenzDifferenz;
+        private double Phasenlage;
 
-
-
-        private double _NetzCosPhiSlider = 0;
-        public double NetzCosPhiSlider
-        {
-            get { return _NetzCosPhiSlider; }
-            set
-            {
-                _NetzCosPhiSlider = value;
-                OnPropertyChanged("NetzCosPhiSlider");
-            }
-        }
-
-
-        private double _NetzLeistungSlider = 600;
-        public double NetzLeistungSlider
-        {
-            get { return _NetzLeistungSlider; }
-            set
-            {
-                _NetzLeistungSlider = value;
-                OnPropertyChanged("NetzLeistungSlider");
-            }
-        }
-
-
-
-
-        private double _VentilPosition;
-        public string VentilPosition
-        {
-            get { return "Y=" + _VentilPosition + "%"; }
-            set
-            {
-                _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("VentilPosition");
-            }
-        }
-
-
-        private double _NetzSpannungString;
-        public string NetzSpannungString
-        {
-            get { return "U=" + _NetzSpannungString + "V"; }
-            set
-            {
-                _NetzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzSpannungString");
-            }
-        }
-
-
-        private double _NetzFrequenzString;
-        public string NetzFrequenzString
-        {
-            get { return "f=" + _NetzFrequenzString + "Hz"; }
-            set
-            {
-                _NetzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("NetzFrequenzString");
-            }
-        }
-
-        private double _NetzLeistungString;
-        public string NetzLeistungString
-        {
-            get { return "P=" + _NetzLeistungString + "W"; }
-            set
-            {
-                _NetzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzLeistungString");
-            }
-        }
-
-        private double _NetzCosPhiString;
-        public string NetzCosPhiString
-        {
-            get { return "cos φ=" + _NetzCosPhiString; }
-            set
-            {
-                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzCosPhiString");
-            }
-        }
-
-
-
-
-        private SynchronisierungAuswahl _SynchAuswahl = SynchronisierungAuswahl.U_f;
-        public SynchronisierungAuswahl SynchAuswahl
-        {
-
-            get
-            {
-                return _SynchAuswahl;
-            }
-
-            set
-            {
-                _SynchAuswahl = value;
-                OnPropertyChanged("SynchAuswahl");
-            }
-
-        }
-
-
-
-
-
-        public double Generator_n;
-        public double Generator_f;
-        public double Generator_U;
-        public double Generator_P;
-        public double Generator_cosPhi;
-        public double Generator_Winkel;
 
         internal void Starten()
         {
@@ -251,66 +104,50 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             KraftwerkStoppen = true;
             KraftwerkStarten = false;
         }
-
-        public Punkt Generator_Momentanspannung;
-
-        public double Netz_Winkel;
-        public Punkt Netz_Momentanspannung;
-
-
-        public double SpannungsUnterschiedSynchronisieren;
-        public double FrequenzDifferenz;
-        public double Phasenlage;
-
-
-
-
         #endregion
+
+
+        public VisuSollwerte ViSoll { get; set; }
+        public VisuAnzeigenUmschalten ViAnzeige { get; set; }
 
         public Kraftwerk()
         {
-            // leerer Konstruktor
-            MaschineTot = false;
+            ViSoll = new VisuSollwerte();
+            ViAnzeige = new VisuAnzeigenUmschalten();
 
-            if (!BinErster)
-            {
-                BinErster = true;
-                System.Threading.Tasks.Task.Run(() => KraftwerkTask());
-
-                VentilPosition = "Y=10%";
-            }
-
+            System.Threading.Tasks.Task.Run(() => KraftwerkTask());
         }
 
         public void KraftwerkTask()
         {
             const double Zeitdauer = 10;//ms
 
+            double Generator_Winkel = 0;
+            double Netz_Winkel = 0;
+            Punkt Generator_Momentanspannung;
+            Punkt Netz_Momentanspannung;
+
             while (true)
             {
-                // Sollwerte von den Slidern übernehmen
-                VentilPosition = $"Y={_VentilPosition}%";
-                NetzSpannungString = $"U={NetzSpannungSlider}V";
-                NetzFrequenzString = $"f={NetzFrequenzSlider}Hz";
-                NetzLeistungString = $"P={NetzLeistungSlider}W";
-                NetzCosPhiString = $"cos φ={NetzCosPhiSlider}";
+                AnzeigeUmschalten();
 
-
-                generator.MaschineAntreiben(_VentilPosition);
+                generator.MaschineAntreiben(ViSoll.ManualVentilstellung);
                 Generator_n = generator.Drehzahl();
-                Generator_U = generator.Spannung(S7Analog.S7_Analog_2_Double(Gen_Ie, 10));
+                Generator_U = generator.Spannung(ViSoll.ManualErregerstrom);
                 Generator_f = generator.Frequenz();
 
-                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Frequenz, Netz_Winkel);
+                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, ViSoll.NetzFrequenzSlider, Netz_Winkel);
                 Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
 
-                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, Spannung);
+                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, ViSoll.NetzSpannungSlider);
                 Generator_Momentanspannung = DrehstromZeiger.GetSpannung(Generator_Winkel, Generator_U);
 
-                FrequenzDifferenz = Frequenz - Generator_f;
+                FrequenzDifferenz = Math.Abs(ViSoll.NetzFrequenzSlider - Generator_f);
                 Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
 
                 SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
+
+                ViAnzeige.SpannungsDifferenz = SpannungsDiff.Laenge();
 
                 WertebereicheUmrechnen();
 
@@ -319,13 +156,38 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         }
 
-        public void WertebereicheUmrechnen()
+        private void AnzeigeUmschalten()
+        {
+
+            ViAnzeige.VentilEinschalten(ViSoll.ManualVentilstellung > 1);
+            ViAnzeige.LeistungsschalterEinschalten(Q1);
+            ViAnzeige.MessgeraetAnzeigen(Math.Abs(FrequenzDifferenz) < 2);
+
+
+            // Sollwerte von den Slidern übernehmen
+            ViAnzeige.VentilPosition = $"Y={ ViSoll.ManualVentilstellung.ToString("N1")}%";
+            ViAnzeige.Erregerstrom = $"IE={ ViSoll.ManualErregerstrom.ToString("N1")}A";
+            ViAnzeige.Drehzahl = $"n={Generator_n.ToString("N1")}RPM";
+
+            ViAnzeige.NetzSpannungString = $"U={ ViSoll.NetzSpannungSlider}V";
+            ViAnzeige.NetzFrequenzString = $"f={ ViSoll.NetzFrequenzSlider}Hz";
+            ViAnzeige.NetzLeistungString = $"P={ ViSoll.NetzLeistungSlider}W";
+            ViAnzeige.NetzCosPhiString = $"cos φ={ ViSoll.NetzCosPhiSlider}";
+
+
+            ViAnzeige.GeneratorSpannungString = $"U={Generator_U.ToString("N1")}V";
+            ViAnzeige.GeneratorFrequenzString = $"f={Generator_f.ToString("N2")}Hz";
+            ViAnzeige.GeneratorLeistungString = $"P={Generator_P.ToString("N1")}W";
+            ViAnzeige.GeneratorCosPhiString = $"cos φ={Generator_cosPhi.ToString("N1")}";
+
+        }
+        private void WertebereicheUmrechnen()
         {
             // Sollwerte --> SPS
-            Netz_U = S7Analog.S7_Analog_2_Short(NetzSpannungSlider, 1000);
-            Netz_f = S7Analog.S7_Analog_2_Short(NetzFrequenzSlider, 100);
-            Netz_P = S7Analog.S7_Analog_2_Short(NetzLeistungSlider, 1000);
-            Netz_cosPhi = S7Analog.S7_Analog_2_Short(NetzCosPhiSlider, 1);
+            Netz_U = S7Analog.S7_Analog_2_Short(ViSoll.NetzSpannungSlider, 1000);
+            Netz_f = S7Analog.S7_Analog_2_Short(ViSoll.NetzFrequenzSlider, 100);
+            Netz_P = S7Analog.S7_Analog_2_Short(ViSoll.NetzLeistungSlider, 1000);
+            Netz_cosPhi = S7Analog.S7_Analog_2_Short(ViSoll.NetzCosPhiSlider, 1);
 
             // Modell --> SPS
             Gen_n = S7Analog.S7_Analog_2_Short(Generator_n, 5000);
@@ -334,38 +196,36 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             Gen_P = S7Analog.S7_Analog_2_Short(Generator_P, 1000);
             UDiff = S7Analog.S7_Analog_2_Short(SpannungsUnterschiedSynchronisieren, 1000);
             ph = S7Analog.S7_Analog_2_Short(Phasenlage, 1);
-
-
         }
 
         internal void Synchronisieren()
         {
-            var SpannungDifferenz = Spannung - Generator_U;
+            var SpannungDifferenz = Math.Abs(Spannung - Generator_U);
+            Q1 = true;
 
-            switch (SynchAuswahl)
+            switch (ViSoll.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
-                    if (FrequenzDifferenz > 2) MaschineTot = true;
-                    if (SpannungDifferenz > 25) MaschineTot = true;
+                    if (FrequenzDifferenz > 2) ViAnzeige.MaschineTot(true);
+                    if (SpannungDifferenz > 25) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase:
-                    if (FrequenzDifferenz > 1) MaschineTot = true;
-                    if (SpannungDifferenz > 10) MaschineTot = true;
+                    if (FrequenzDifferenz > 1) ViAnzeige.MaschineTot(true);
+                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase_Leistung:
-                    if (FrequenzDifferenz > 0.9) MaschineTot = true;
-                    if (SpannungDifferenz > 10) MaschineTot = true;
+                    if (FrequenzDifferenz > 0.9) ViAnzeige.MaschineTot(true);
+                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
-                    if (FrequenzDifferenz > 0.8) MaschineTot = true;
-                    if (SpannungDifferenz > 10) MaschineTot = true;
+                    if (FrequenzDifferenz > 0.8) ViAnzeige.MaschineTot(true);
+                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 default:
-
                     break;
             }
 
@@ -374,27 +234,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         internal void Reset()
         {
-            MaschineTot = false;
+            ViAnzeige.MaschineTot(false);
             Q1 = false;
             Generator_n = 0;
-
         }
-
-
-
-
-        #region iNotifyPeropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
-
-
-
     }
 }

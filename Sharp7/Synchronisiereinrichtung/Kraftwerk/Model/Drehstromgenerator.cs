@@ -8,7 +8,7 @@
         readonly double SpannungsFaktor;
         readonly double DrehzahlFaktor;
 
-        const double Y_n_Faktor = 0.001;
+        const double Y_n_Faktor = 0.28;
         const double n_BremsFaktor = 0.991;
 
 

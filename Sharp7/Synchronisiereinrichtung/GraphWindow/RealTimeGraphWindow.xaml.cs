@@ -4,12 +4,11 @@ namespace Synchronisiereinrichtung
 {
     public partial class RealTimeGraphWindow : Window
     {
-        private readonly MainWindow mainWindow;
-        public RealTimeGraphWindow(MainWindow mainWindow)
+        public RealTimeGraphWindow(Synchronisiereinrichtung.Kraftwerk.ViewModel.KraftwerkViewModel kraftwerkViewModel)
         {
-            this.mainWindow = mainWindow;
+
             InitializeComponent();
-            DataContext = new MainWindowVM(mainWindow);
+            DataContext = kraftwerkViewModel;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

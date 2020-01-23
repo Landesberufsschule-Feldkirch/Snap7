@@ -5,7 +5,6 @@
 
     public static class DrehstromZeiger
     {
-
         public static double WinkelBerechnen(double zeit, double freqenz, double winkel)
         {
             double PeriodenDauer = 1000 / freqenz; // in ms
@@ -20,8 +19,6 @@
             var strangSpannung = spannung / Math.Sqrt(3);
             return new Punkt(strangSpannung, winkel, 0);
         }
-
-
 
         public static (double diffF, double diffV) GetDifferenz(double vNetz, double vGenerator, double fNetz, double fGen)
         {

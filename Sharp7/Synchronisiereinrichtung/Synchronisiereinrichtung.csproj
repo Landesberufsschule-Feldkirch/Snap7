@@ -65,9 +65,10 @@
     <Compile Include="Kraftwerk\Model\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\Model\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
+    <Compile Include="Kraftwerk\Model\VisuSollwerte.cs" />
+    <Compile Include="Kraftwerk\Model\VisuAnzeigenUmschalten.cs" />
     <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
     <Compile Include="Kraftwerk\Model\MagnetischerKreis.cs" />
-    <Compile Include="GraphWindow\MainWindowVM.cs" />
     <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">
       <DependentUpon>RealTimeGraphWindow.xaml</DependentUpon>
     </Compile>
@@ -84,8 +85,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatenRangieren.cs" />
-    <Compile Include="Display.cs" />
-    <Compile Include="LogikFunktionen.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
