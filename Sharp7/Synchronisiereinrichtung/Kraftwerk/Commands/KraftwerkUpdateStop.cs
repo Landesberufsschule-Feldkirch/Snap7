@@ -1,18 +1,16 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.Command
 {
-    using System.Windows.Input;
     using Synchronisiereinrichtung.Kraftwerk.ViewModel;
+    using System.Windows.Input;
 
     public class KraftwerkUpdateStop : ICommand
     {
-
         private readonly KraftwerkViewModel _ViewModel;
 
         public KraftwerkUpdateStop(KraftwerkViewModel vm)
         {
             _ViewModel = vm;
         }
-
 
         #region iCommand Members
 
@@ -32,6 +30,6 @@
             _ViewModel.SchalterStop();
         }
 
-        #endregion
+        #endregion iCommand Members
     }
 }

@@ -8,43 +8,41 @@
         Title="SetManualWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnM1_RL" Grid.Column="5" Grid.Row="3" Content="M1 RL"  Height="35" VerticalAlignment="Top" Click="BtnM1_RL_Click"/>
-        <Button x:Name="btnM1_LL" Grid.Column="3" Grid.Row="3" Content="M1 LL"  Height="35" VerticalAlignment="Top" Click="BtnM1_LL_Click"/>
-        <Button x:Name="btnM2" Grid.Column="3" Grid.Row="5" Content="M2"  Height="35" VerticalAlignment="Top" Click="BtnM2_Click"/>
+        <Button x:Name="btnM1_RL" Grid.Column="5" Grid.Row="3" Content="M1 RL"  Height="35" VerticalAlignment="Top" Click="BtnM1_RL_Click" />
+        <Button x:Name="btnM1_LL" Grid.Column="3" Grid.Row="3" Content="M1 LL"  Height="35" VerticalAlignment="Top" Click="BtnM1_LL_Click" />
+        <Button x:Name="btnM2" Grid.Column="3" Grid.Row="5" Content="M2"  Height="35" VerticalAlignment="Top" Click="BtnM2_Click" />
 
-        <Button x:Name="btnY1" Grid.Column="3" Grid.Row="7" Content="Y1"  Height="35" VerticalAlignment="Top" Click="BtnY1_Click"/>
-        
+        <Button x:Name="btnY1" Grid.Column="3" Grid.Row="7" Content="Y1"  Height="35" VerticalAlignment="Top" Click="BtnY1_Click" />
     </Grid>
-
 </Window>

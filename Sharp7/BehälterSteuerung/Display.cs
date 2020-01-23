@@ -21,8 +21,6 @@ namespace BehälterSteuerung
             }
         }
 
-
-
         public void AbleitungenAnzeigen(bool FensterAktiv)
         {
             bool AbleitungenVoll = false;
@@ -54,7 +52,6 @@ namespace BehälterSteuerung
                 if (Leuchte_P1) circ_Stoerung.Fill = System.Windows.Media.Brushes.Red;
                 else circ_Stoerung.Fill = System.Windows.Media.Brushes.LightGray;
             }
-
         }
 
         public void AutomatikKnoepfeDeaktivieren()
@@ -78,6 +75,5 @@ namespace BehälterSteuerung
                 btn_Automatik_4321.IsEnabled = true;
             });
         }
-
     }
 }

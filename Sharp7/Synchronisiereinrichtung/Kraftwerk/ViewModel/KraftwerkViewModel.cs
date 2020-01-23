@@ -1,7 +1,7 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
-    using RealTimeGraphX.DataPoints;
     using RealTimeGraphX.WPF;
+    using RealTimeGraphX.DataPoints;
     using Synchronisiereinrichtung.Kraftwerk.Command;
     using System;
     using System.Collections.Generic;
@@ -10,7 +10,6 @@
     using System.Threading.Tasks;
     using System.Windows.Input;
     using System.Windows.Media;
-
 
     public class KraftwerkViewModel
     {
@@ -25,11 +24,9 @@
             UpdateSchalterStart = new KraftwerkUpdateStart(this);
             UpdateSchalterStop = new KraftwerkUpdateStop(this);
 
-
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
         }
-
 
         private void MulticontrollerFuellen()
         {
@@ -107,17 +104,11 @@
             get { return _Kraftwerk; }
         }
 
-
-
-
-
-
-
-
         public bool CanUpdateQ1
         {
             get { return true; }
         }
+
         public bool CanUpdateReset
         {
             get { return true; }
@@ -127,11 +118,11 @@
         {
             get { return true; }
         }
+
         public bool CanUpdateStop
         {
             get { return true; }
         }
-
 
         public ICommand UpdateSchalterReset
         {
@@ -157,12 +148,10 @@
             set;
         }
 
-
         internal void SchalterQ1()
         {
             _Kraftwerk.Synchronisieren();
         }
-
 
         public void SchalterReset()
         {
@@ -178,10 +167,5 @@
         {
             _Kraftwerk.Stoppen();
         }
-
-
-
-
-
     }
 }

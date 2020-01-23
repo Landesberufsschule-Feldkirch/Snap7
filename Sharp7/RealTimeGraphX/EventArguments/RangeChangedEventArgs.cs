@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealTimeGraphX.EventArguments
 {
@@ -37,7 +33,6 @@ namespace RealTimeGraphX.EventArguments
         /// </summary>
         public RangeChangedEventArgs()
         {
-
         }
 
         /// <summary>
@@ -47,7 +42,7 @@ namespace RealTimeGraphX.EventArguments
         /// <param name="maximumX">The maximum x value.</param>
         /// <param name="minimumY">The minimum y value.</param>
         /// <param name="maximumY">The maximum y value.</param>
-        public RangeChangedEventArgs(GraphDataPoint minimumX, GraphDataPoint maximumX,GraphDataPoint minimumY,GraphDataPoint maximumY) : this()
+        public RangeChangedEventArgs(GraphDataPoint minimumX, GraphDataPoint maximumX, GraphDataPoint minimumY, GraphDataPoint maximumY) : this()
         {
             MinimumX = minimumX;
             MaximumX = maximumX;

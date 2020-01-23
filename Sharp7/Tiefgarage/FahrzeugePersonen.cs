@@ -10,8 +10,8 @@ namespace Tiefgarage
             Person
         }
 
-        static int AnzahlFahrzeuge = 0;
-        static int AnzahlPersonen = 0;
+        private static int AnzahlFahrzeuge = 0;
+        private static int AnzahlPersonen = 0;
 
         public Rolle FP_Rolle { get; set; }
         public Punkt PosAktuell { get; set; }
@@ -91,7 +91,6 @@ namespace Tiefgarage
                 X_unten = X_ErstePerson_Unten + AnzahlPersonen * BreitePerson;
                 Y_unten = Y_Personen_Unten;
 
-
                 KontrollPunktUnten1 = new Punkt(X_Fahrspur, Y_Fahrspur_unten + 100);
                 KontrollPunktUnten2 = new Punkt(X_unten, Y_unten - 100);
 
@@ -106,22 +105,29 @@ namespace Tiefgarage
             EingangUnten = new Punkt(X_Fahrspur, Y_Fahrspur_unten);
             ParkenUnten = new Punkt(X_unten, Y_unten);
 
-
             KurveOben = new BezierCurve(ParkenOben, KontrollPunktOben1, KontrollPunktOben2, EingangOben);
             KurveUnten = new BezierCurve(EingangUnten, KontrollPunktUnten1, KontrollPunktUnten2, ParkenUnten);
 
             DraussenParken();
         }
+
         public void Losfahren()
         {
             if (Bewegung == FahrenRichtung.ObenGeparkt) Bewegung = FahrenRichtung.AbwaertsKurveOben;
             if (Bewegung == FahrenRichtung.UntenGeparkt) Bewegung = FahrenRichtung.AufwaertsKurveUnten;
         }
 
-        public void DraussenParken() { Bewegung = FahrenRichtung.ObenGeparkt; }
-        public void DrinnenParken() { Bewegung = FahrenRichtung.UntenGeparkt; }
+        public void DraussenParken()
+        {
+            Bewegung = FahrenRichtung.ObenGeparkt;
+        }
 
-        bool LichtschrankeUnterbrochen(double Pos)
+        public void DrinnenParken()
+        {
+            Bewegung = FahrenRichtung.UntenGeparkt;
+        }
+
+        private bool LichtschrankeUnterbrochen(double Pos)
         {
             if (FP_Rolle == Rolle.Fahrzeug)
             {
@@ -135,6 +141,5 @@ namespace Tiefgarage
             }
             return true;
         }
-
     }
 }

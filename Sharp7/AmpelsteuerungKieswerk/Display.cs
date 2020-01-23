@@ -10,8 +10,7 @@ namespace AmpelsteuerungKieswerk
     {
         public void Display_Task(S7_1200 s7_1200)
         {
-
-           DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Aus, AmpelZustand.Aus));
+            DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Aus, AmpelZustand.Aus));
 
             while (FensterAktiv)
             {

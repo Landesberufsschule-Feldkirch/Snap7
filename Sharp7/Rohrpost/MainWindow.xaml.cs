@@ -5,9 +5,8 @@ namespace Rohrpost
 {
     public partial class MainWindow : Window
     {
-
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
 
         public MainWindow()
         {

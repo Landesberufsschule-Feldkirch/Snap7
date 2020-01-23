@@ -2,15 +2,14 @@
 {
     public class Drehstromgenerator
     {
-        readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
+        private readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
 
-        double n;
-        readonly double SpannungsFaktor;
-        readonly double DrehzahlFaktor;
+        private double n;
+        private readonly double SpannungsFaktor;
+        private readonly double DrehzahlFaktor;
 
-        const double Y_n_Faktor = 0.28;
-        const double n_BremsFaktor = 0.991;
-
+        private const double Y_n_Faktor = 0.28;
+        private const double n_BremsFaktor = 0.991;
 
         public Drehstromgenerator(double spannungsFaktor, double drehzahlFaktor)
         {
@@ -23,6 +22,7 @@
             n += Y * Y_n_Faktor;
             n *= n_BremsFaktor;
         }
+
         public double Drehzahl()
         {
             return n;

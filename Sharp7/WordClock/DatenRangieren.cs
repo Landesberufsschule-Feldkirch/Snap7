@@ -5,7 +5,8 @@ namespace WordClock
     public class DatenRangieren
     {
         private readonly Logikfunktionen logikfunktionen;
-        enum BytePosition
+
+        private enum BytePosition
         {
             Byte_0 = 0,
             Byte_1,
@@ -32,6 +33,7 @@ namespace WordClock
             S7.SetByteAt(digInput, (int)BytePosition.Byte_7, zeiten.Sekunde);
             S7.SetByteAt(digInput, (int)BytePosition.Byte_8, zeiten.Nanosekunde);
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             // es werden keine Werte von der SPS geschrieben

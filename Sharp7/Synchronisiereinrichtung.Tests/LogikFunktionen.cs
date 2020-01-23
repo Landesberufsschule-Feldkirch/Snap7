@@ -15,8 +15,8 @@ namespace SynchronisiereinrichtungTests
         [InlineData(0, 100, 10, 0)]
         public void WinkelBerechnen(int exp, int time, double freq, int winkel)
         {
-          //  var res = Synchronisiereinrichtung.DrehstromZeiger.WinkelBerechnen(time, freq, winkel);
-          //  Assert.Equal(exp, res);
+            //  var res = Synchronisiereinrichtung.DrehstromZeiger.WinkelBerechnen(time, freq, winkel);
+            //  Assert.Equal(exp, res);
         }
 
         /*

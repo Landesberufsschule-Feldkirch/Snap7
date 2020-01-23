@@ -8,6 +8,7 @@ namespace AmpelsteuerungKieswerk
     {
         public static object lockit = new object();
         public bool B1, B2, B3, B4;
+
         public void Logikfunktionen_Task()
         {
             while (FensterAktiv)

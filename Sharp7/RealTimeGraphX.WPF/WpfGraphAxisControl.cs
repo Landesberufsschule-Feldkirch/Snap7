@@ -121,7 +121,7 @@ namespace RealTimeGraphX.WPF
         protected override void OnControllerChanged(IGraphController oldController, IGraphController newController)
         {
             base.OnControllerChanged(oldController, newController);
-            
+
             if (newController != null)
             {
                 newController.RequestVirtualRangeChange();

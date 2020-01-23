@@ -23,7 +23,7 @@ namespace RealTimeGraphX
         /// </summary>
         event EventHandler<RangeChangedEventArgs> VirtualRangeChanged;
 
-        #endregion
+        #endregion Events
 
         #region Properties
 
@@ -83,7 +83,7 @@ namespace RealTimeGraphX
         /// </summary>
         void Clear();
 
-        #endregion
+        #endregion Properties
 
         #region Commands
 
@@ -92,7 +92,7 @@ namespace RealTimeGraphX
         /// </summary>
         GraphCommand ClearCommand { get; }
 
-        #endregion
+        #endregion Commands
 
         #region Methods
 
@@ -101,7 +101,7 @@ namespace RealTimeGraphX
         /// </summary>
         void RequestVirtualRangeChange();
 
-        #endregion
+        #endregion Methods
     }
 
     /// <summary>
@@ -129,9 +129,8 @@ namespace RealTimeGraphX
         /// </summary>
         IGraphSurface<TDataSeries> Surface { get; set; }
 
-        #endregion
+        #endregion Properties
     }
-
 
     /// <summary>
     /// Represents a graph controller capable of pushing data points to it's associated <see cref="IGraphRenderer{TDataSeries}">Graph Renderer</see>
@@ -153,7 +152,7 @@ namespace RealTimeGraphX
         /// </summary>
         GraphRange<TXDataPoint, TYDataPoint> Range { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Methods
 
@@ -167,7 +166,7 @@ namespace RealTimeGraphX
 
         /// <summary>
         /// Submits the specified collections of x and y data points.
-        /// If the controller has more than one data series the data points will be distributed evenly. 
+        /// If the controller has more than one data series the data points will be distributed evenly.
         /// </summary>
         /// <param name="xx">X data point collection.</param>
         /// <param name="yy">Y data point collection.</param>
@@ -180,6 +179,6 @@ namespace RealTimeGraphX
         /// <param name="yyyy">Y matrix.</param>
         void PushData(IEnumerable<IEnumerable<TXDataPoint>> xxxx, IEnumerable<IEnumerable<TYDataPoint>> yyyy);
 
-        #endregion
+        #endregion Methods
     }
 }

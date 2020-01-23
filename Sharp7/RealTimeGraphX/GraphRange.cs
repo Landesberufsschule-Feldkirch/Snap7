@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RealTimeGraphX
+﻿namespace RealTimeGraphX
 {
     /// <summary>
     ///  Represents a graph x/y data points boundaries.
@@ -41,6 +35,7 @@ namespace RealTimeGraphX
     public class GraphRange<XDataPoint, YDataPoint> : GraphObject, IGraphRange where XDataPoint : GraphDataPoint where YDataPoint : GraphDataPoint
     {
         private XDataPoint _maximumX;
+
         /// <summary>
         /// Gets or sets the maximum x value.
         /// </summary>
@@ -51,6 +46,7 @@ namespace RealTimeGraphX
         }
 
         private YDataPoint _minimumY;
+
         /// <summary>
         /// Gets or sets the minimum x value.
         /// </summary>
@@ -61,6 +57,7 @@ namespace RealTimeGraphX
         }
 
         private YDataPoint _maximumY;
+
         /// <summary>
         /// Gets or sets the maximum y value.
         /// </summary>
@@ -71,6 +68,7 @@ namespace RealTimeGraphX
         }
 
         private bool _autoY;
+
         /// <summary>
         /// Gets or sets a value indicating whether to automatically adjust the graph <see cref="MaximumY"/> and <see cref="MinimumY"/> according to the current visible data points.
         /// </summary>

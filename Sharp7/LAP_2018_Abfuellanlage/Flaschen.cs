@@ -5,7 +5,7 @@ namespace LAP_2018_Abfuellanlage
 {
     public partial class Flaschen
     {
-        enum BewegungSchritt
+        private enum BewegungSchritt
         {
             Oberhalb,
             Vereinzeln,
@@ -13,12 +13,13 @@ namespace LAP_2018_Abfuellanlage
             Runtergefallen,
             Fertig
         }
+
         private static int AktuelleFlasche = 0;
         public static int AnzahlFlaschen = 0;
 
         private readonly int ID;
         private readonly Image imgFlasche;
-        bool Sichtbar = true;
+        private bool Sichtbar = true;
         private double X_Start { get; set; }
         public double Y_Start { get; set; }
         private BewegungSchritt bewegungSchritt;
@@ -43,7 +44,11 @@ namespace LAP_2018_Abfuellanlage
         {
             if (bewegungSchritt == BewegungSchritt.Oberhalb) bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
-        public int GetAktuelleFlasche() { return AktuelleFlasche; }
+
+        public int GetAktuelleFlasche()
+        {
+            return AktuelleFlasche;
+        }
 
         public void AnzeigeAktualisieren(bool FensterAktiv)
         {
@@ -61,5 +66,4 @@ namespace LAP_2018_Abfuellanlage
             }
         }
     }
-
 }

@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Data;
 using Utilities;
 
-
 namespace Synchronisiereinrichtung
 {
     public class EnumBooleanConverter : IValueConverter
@@ -41,7 +40,6 @@ namespace Synchronisiereinrichtung
         U_f_Phase_Leistungsfaktor,
         Unbekannt
     }
-
 }
 
 namespace Synchronisiereinrichtung.Kraftwerk.Model
@@ -52,7 +50,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         private double Frequenz;
         private double Leistung;
         private double Leistungsfaktor;
-
 
         private short Gen_Ie;
 
@@ -85,13 +82,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         private double Generator_P;
         private double Generator_cosPhi;
 
-
-
-
         private double SpannungsUnterschiedSynchronisieren;
         private double FrequenzDifferenz;
         private double Phasenlage;
-
 
         internal void Starten()
         {
@@ -104,8 +97,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             KraftwerkStoppen = true;
             KraftwerkStarten = false;
         }
-        #endregion
 
+        #endregion Variablen für MVVM
 
         public VisuSollwerte ViSoll { get; set; }
         public VisuAnzeigenUmschalten ViAnzeige { get; set; }
@@ -153,16 +146,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
                 Thread.Sleep((int)Zeitdauer);
             }
-
         }
 
         private void AnzeigeUmschalten()
         {
-
             ViAnzeige.VentilEinschalten(ViSoll.ManualVentilstellung > 1);
             ViAnzeige.LeistungsschalterEinschalten(Q1);
             ViAnzeige.MessgeraetAnzeigen(Math.Abs(FrequenzDifferenz) < 2);
-
 
             // Sollwerte von den Slidern übernehmen
             ViAnzeige.VentilPosition = $"Y={ ViSoll.ManualVentilstellung.ToString("N1")}%";
@@ -174,13 +164,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             ViAnzeige.NetzLeistungString = $"P={ ViSoll.NetzLeistungSlider}W";
             ViAnzeige.NetzCosPhiString = $"cos φ={ ViSoll.NetzCosPhiSlider}";
 
-
             ViAnzeige.GeneratorSpannungString = $"U={Generator_U.ToString("N1")}V";
             ViAnzeige.GeneratorFrequenzString = $"f={Generator_f.ToString("N2")}Hz";
             ViAnzeige.GeneratorLeistungString = $"P={Generator_P.ToString("N1")}W";
             ViAnzeige.GeneratorCosPhiString = $"cos φ={Generator_cosPhi.ToString("N1")}";
-
         }
+
         private void WertebereicheUmrechnen()
         {
             // Sollwerte --> SPS
@@ -228,8 +217,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 default:
                     break;
             }
-
-
         }
 
         internal void Reset()

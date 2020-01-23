@@ -1,14 +1,12 @@
-﻿using System;
+﻿using RealTimeGraphX.EventArguments;
+using RealTimeGraphX.Renderers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Drawing;
-using RealTimeGraphX.EventArguments;
-using RealTimeGraphX.Renderers;
-using System.Diagnostics;
 
 namespace RealTimeGraphX
 {
@@ -49,7 +47,7 @@ namespace RealTimeGraphX
             public bool IsClearSeries { get; set; }
         }
 
-        #endregion
+        #endregion Pending Series Class
 
         #region Events
 
@@ -63,7 +61,7 @@ namespace RealTimeGraphX
         /// </summary>
         public event EventHandler<RangeChangedEventArgs> VirtualRangeChanged;
 
-        #endregion
+        #endregion Events
 
         #region Properties
 
@@ -84,6 +82,7 @@ namespace RealTimeGraphX
         public ObservableCollection<TDataSeries> DataSeriesCollection { get; }
 
         private IGraphRenderer<TDataSeries> _renderer;
+
         /// <summary>
         /// Gets or sets the graph renderer.
         /// </summary>
@@ -100,6 +99,7 @@ namespace RealTimeGraphX
         }
 
         private IGraphSurface<TDataSeries> _surface;
+
         /// <summary>
         /// Gets or sets the rendering surface.
         /// </summary>
@@ -114,6 +114,7 @@ namespace RealTimeGraphX
         }
 
         private GraphRange<TXDataPoint, TYDataPoint> _range;
+
         /// <summary>
         /// Gets or sets the graph range (data point boundaries).
         /// </summary>
@@ -169,7 +170,7 @@ namespace RealTimeGraphX
         /// </summary>
         public GraphDataPoint VirtualMaximumY { get; private set; }
 
-        #endregion
+        #endregion Properties
 
         #region Commands
 
@@ -178,7 +179,7 @@ namespace RealTimeGraphX
         /// </summary>
         public GraphCommand ClearCommand { get; private set; }
 
-        #endregion
+        #endregion Commands
 
         #region Constructors
 
@@ -204,7 +205,7 @@ namespace RealTimeGraphX
             _render_thread.Start();
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Render Thread
 
@@ -351,7 +352,7 @@ namespace RealTimeGraphX
             }
         }
 
-        #endregion
+        #endregion Render Thread
 
         #region Protected Methods
 
@@ -400,7 +401,7 @@ namespace RealTimeGraphX
             return (float)(Surface.GetSize().Height - (y * Surface.GetSize().Height / 100));
         }
 
-        #endregion
+        #endregion Protected Methods
 
         #region Public Methods
 
@@ -484,7 +485,6 @@ namespace RealTimeGraphX
             int first_count_x = xxxxList[0].Count;
             int first_count_y = yyyyList[0].Count;
 
-
             bool is_data_valid = true;
 
             for (int i = 0; i < xxxxList.Count; i++)
@@ -546,6 +546,6 @@ namespace RealTimeGraphX
             OnVirtualRangeChanged(Range.MaximumX, Range.MaximumX, Range.MinimumY, Range.MaximumY);
         }
 
-        #endregion
+        #endregion Public Methods
     }
 }

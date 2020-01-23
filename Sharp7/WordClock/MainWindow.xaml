@@ -9,67 +9,65 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-
-        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                    HorizontalAlignment="Right"/>
+        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                    HorizontalAlignment="Right" />
         <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="11"                   Background="LightSkyBlue" />
-        <Rectangle Fill="LightGray"                             Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="1"  Grid.RowSpan="9" Stroke="Black"  />
+        <Rectangle Fill="LightGray"                             Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="1"  Grid.RowSpan="9" Stroke="Black" />
 
         <Button x:Name="ZeitUebernehmen" Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen" Click="ZeitUebernehmen_Click" />
 
-        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7"  />
-        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="1" Background="LawnGreen" ValueChanged="sldGeschwindigkeit_ValueChanged"  />
+        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7" />
+        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="1" Background="LawnGreen" ValueChanged="sldGeschwindigkeit_ValueChanged" />
 
         <Image Source="images/backGround.png" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" />
 
-        <Rectangle Margin="104,10,104,105" Name="rectangleSecond" Stroke="Red" Fill="Red" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" >
+        <Rectangle Margin="104,10,104,105" Name="rectangleSecond" Stroke="Red" Fill="Red" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
             <Rectangle.RenderTransform>
                 <RotateTransform x:Name="secondHand" CenterX="0" CenterY="95" Angle="0" />
             </Rectangle.RenderTransform>
         </Rectangle>
- 
-        <Rectangle Margin="103,20,103,105" Name="rectangleMinute" Stroke="LightGreen" Fill="Green" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" >
+
+        <Rectangle Margin="103,20,103,105" Name="rectangleMinute" Stroke="LightGreen" Fill="Green" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
             <Rectangle.RenderTransform>
                 <RotateTransform x:Name="minuteHand" CenterX="0" CenterY="85" Angle="0" />
             </Rectangle.RenderTransform>
         </Rectangle>
 
-        <Rectangle Margin="102,40,102,105" Name="rectangleHour" Stroke="LightYellow" Fill="Yellow" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" >
+        <Rectangle Margin="102,40,102,105" Name="rectangleHour" Stroke="LightYellow" Fill="Yellow" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
             <Rectangle.RenderTransform>
                 <RotateTransform x:Name="hourHand" CenterX="0" CenterY="65" Angle="0" />
             </Rectangle.RenderTransform>
         </Rectangle>
-
     </Grid>
 </Window>

@@ -6,6 +6,7 @@ namespace Tiefgarage
     public partial class MainWindow
     {
         public ObservableCollection<Button> gAlleButtons = new ObservableCollection<Button>();
+
         public void AlleFahrzeugePersonenInitialisieren()
         {
             btn_auto_1.Tag = new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug);
@@ -35,6 +36,7 @@ namespace Tiefgarage
                 fahrPer.DraussenParken();
             }
         }
+
         public void AlleDrinnenParken()
         {
             foreach (Button btn in gAlleButtons)

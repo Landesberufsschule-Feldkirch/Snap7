@@ -61,7 +61,7 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo"    Content="V2.0 "         Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Right" />
-        <Label x:Name="lbl_PlcPing"         Content="S7-1200"       Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="LightSeaGreen"  />
+        <Label x:Name="lbl_PlcPing"         Content="S7-1200"       Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="LightSeaGreen" />
 
         <Rectangle Fill="LightGray"                                 Grid.Column="23" Grid.ColumnSpan="5"    Grid.Row="2"  Grid.RowSpan="5" Stroke="Black" />
         <Button x:Name="AlleLinksParken" Content="Links parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                    Click="AlleLinksParken_Click" />

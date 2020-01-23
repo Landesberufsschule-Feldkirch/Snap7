@@ -1,18 +1,16 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.Command
 {
-    using System.Windows.Input;
     using Synchronisiereinrichtung.Kraftwerk.ViewModel;
-    
+    using System.Windows.Input;
+
     public class KraftwerkUpdateManualQ1 : ICommand
     {
-
         private readonly KraftwerkViewModel _ViewModel;
 
         public KraftwerkUpdateManualQ1(KraftwerkViewModel vm)
         {
             _ViewModel = vm;
         }
-
 
         #region iCommand Members
 
@@ -32,6 +30,6 @@
             _ViewModel.SchalterQ1();
         }
 
-        #endregion
+        #endregion iCommand Members
     }
 }

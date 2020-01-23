@@ -5,7 +5,6 @@ namespace BehälterSteuerung
 {
     public partial class MainWindow : Window
     {
-
         public enum AutomatikModus
         {
             Modus_1234 = 0,
@@ -29,8 +28,9 @@ namespace BehälterSteuerung
 
         public bool AutomatikModusNochAktiv = false;
 
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
+
         public MainWindow()
         {
             logikfunktionen = new Logikfunktionen(this);
@@ -54,30 +54,37 @@ namespace BehälterSteuerung
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[0].VentilUnten = false;
         }
+
         private void btn_Q2_Aus_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[0].VentilUnten = true;
         }
+
         private void btn_Q4_Ein_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[1].VentilUnten = false;
         }
+
         private void btn_Q4_Aus_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[1].VentilUnten = true;
         }
+
         private void btn_Q6_Ein_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[2].VentilUnten = false;
         }
+
         private void btn_Q6_Aus_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[2].VentilUnten = true;
         }
+
         private void btn_Q8_Ein_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[3].VentilUnten = false;
         }
+
         private void btn_Q8_Aus_Click(object sender, RoutedEventArgs e)
         {
             if (!AutomatikModusNochAktiv) gAlleBehaelter[3].VentilUnten = true;
@@ -88,22 +95,24 @@ namespace BehälterSteuerung
             AutomatikBetriebStarten(AutomatikModus.Modus_1234);
             AutomatikKnoepfeDeaktivieren();
         }
+
         private void btn_1324_Click(object sender, RoutedEventArgs e)
         {
             AutomatikBetriebStarten(AutomatikModus.Modus_1324);
             AutomatikKnoepfeDeaktivieren();
         }
+
         private void btn_1432_Click(object sender, RoutedEventArgs e)
         {
             AutomatikBetriebStarten(AutomatikModus.Modus_1432);
             AutomatikKnoepfeDeaktivieren();
         }
+
         private void btn_4321_Click(object sender, RoutedEventArgs e)
         {
             AutomatikBetriebStarten(AutomatikModus.Modus_4321);
             AutomatikKnoepfeDeaktivieren();
         }
-
 
         public void AutomatikBetriebStarten(AutomatikModus Modus)
         {
@@ -145,7 +154,5 @@ namespace BehälterSteuerung
                     break;
             }
         }
-
-
     }
 }

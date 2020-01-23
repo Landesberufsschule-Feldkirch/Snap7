@@ -1,8 +1,5 @@
-﻿using System.Windows;
-
-namespace LAP_2018_Abfuellanlage
+﻿namespace LAP_2018_Abfuellanlage
 {
-
     public partial class Flaschen
     {
         private readonly double x_StartPosition = 105;

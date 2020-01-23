@@ -8,9 +8,10 @@ namespace LAP_2019_Foerderanlage
 {
     public partial class MainWindow
     {
-        const int PosWagenMengeOffset_X = 12;
-        const int PosWagenLabelOffset_X = 75;
-        const int MaterialSiloHoehe = 8 * 35;
+        private const int PosWagenMengeOffset_X = 12;
+        private const int PosWagenLabelOffset_X = 75;
+        private const int MaterialSiloHoehe = 8 * 35;
+
         public void Display_Task()
         {
             while (FensterAktiv)
@@ -23,7 +24,6 @@ namespace LAP_2019_Foerderanlage
                     }
                 });
 
-
                 if (DebugWindowAktiv)
                 {
                     Q3_RL = setManualWindow.M1_RL;
@@ -35,9 +35,9 @@ namespace LAP_2019_Foerderanlage
                 Thread.Sleep(10);
             }
         }
+
         public void AnzeigeAktualisieren()
         {
-
             rctMaterialsiloFuellstand.Margin = new System.Windows.Thickness(0, MaterialSiloHoehe * (1 - MaterialSiloFuellstand), 0, 0);
 
             polyWagen.SetValue(Canvas.LeftProperty, WagenPosition_X);
@@ -72,6 +72,7 @@ namespace LAP_2019_Foerderanlage
         {
             if (Bedingung) poly.Visibility = System.Windows.Visibility.Visible; else poly.Visibility = System.Windows.Visibility.Hidden;
         }
+
         public void ImgSichbarkeitUmschalten(bool Bedingung, Image imgEin, Image imgAus)
         {
             if (Bedingung) imgEin.Visibility = System.Windows.Visibility.Visible; else imgEin.Visibility = System.Windows.Visibility.Hidden;
@@ -83,7 +84,7 @@ namespace LAP_2019_Foerderanlage
             if (Bedingung) circ.Visibility = System.Windows.Visibility.Visible; else circ.Visibility = System.Windows.Visibility.Hidden;
         }
 
-        void RechteckHintergrundfarbeAendern(bool Bedingung, Rectangle rechteck, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
+        private void RechteckHintergrundfarbeAendern(bool Bedingung, Rectangle rechteck, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) rechteck.Fill = brushEin; else rechteck.Fill = brushAus;
         }

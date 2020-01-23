@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace RealTimeGraphX
@@ -31,7 +29,6 @@ namespace RealTimeGraphX
         /// <param name="action">The action.</param>
         public GraphCommand(Action action) : this(action, null)
         {
-
         }
 
         /// <summary>

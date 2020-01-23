@@ -12,9 +12,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             VisibilityVentilEin = "Hidden";
         }
 
-
-
         private double _VentilPosition;
+
         public string VentilPosition
         {
             get { return "Y=" + _VentilPosition + "%"; }
@@ -25,8 +24,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
         private double _Erregerstrom;
+
         public string Erregerstrom
         {
             get { return "IE=" + _Erregerstrom + "A"; }
@@ -38,6 +37,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _Drehzahl;
+
         public string Drehzahl
         {
             get { return "n=" + _Drehzahl + "RPM"; }
@@ -48,10 +48,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
-
-
         private double _GeneratorSpannungString;
+
         public string GeneratorSpannungString
         {
             get { return "U=" + _GeneratorSpannungString + "V"; }
@@ -62,8 +60,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
         private double _GeneratorFrequenzString;
+
         public string GeneratorFrequenzString
         {
             get { return "f=" + _GeneratorFrequenzString + "Hz"; }
@@ -75,6 +73,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _GeneratorLeistungString;
+
         public string GeneratorLeistungString
         {
             get { return "P=" + _GeneratorLeistungString + "W"; }
@@ -86,6 +85,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _GeneratorCosPhiString;
+
         public string GeneratorCosPhiString
         {
             get { return "cos φ=" + _GeneratorCosPhiString; }
@@ -96,12 +96,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
-
-
-
-
         private double _NetzSpannungString;
+
         public string NetzSpannungString
         {
             get { return "U=" + _NetzSpannungString + "V"; }
@@ -112,8 +108,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
         private double _NetzFrequenzString;
+
         public string NetzFrequenzString
         {
             get { return "f=" + _NetzFrequenzString + "Hz"; }
@@ -125,6 +121,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzLeistungString;
+
         public string NetzLeistungString
         {
             get { return "P=" + _NetzLeistungString + "W"; }
@@ -136,6 +133,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzCosPhiString;
+
         public string NetzCosPhiString
         {
             get { return "cos φ=" + _NetzCosPhiString; }
@@ -146,13 +144,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
-
-
-
-
-
-        #region Messgerät 
+        #region Messgerät
 
         public void MessgeraetAnzeigen(bool val)
         {
@@ -160,8 +152,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             else VisibilityMessgeraetSichtbar = "Hidden";
         }
 
-
         private string _VisibilityMessgeraetSichtbar;
+
         public string VisibilityMessgeraetSichtbar
         {
             get { return _VisibilityMessgeraetSichtbar; }
@@ -173,6 +165,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _SpannungsDifferenz;
+
         public double SpannungsDifferenz
         {
             get { return _SpannungsDifferenz; }
@@ -183,17 +176,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        #endregion
-
-
-
-
-
-
-
-
-
-
+        #endregion Messgerät
 
         #region Maschine tot
 
@@ -203,6 +186,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private string _VisibilityMaschineTotAnzeigen;
+
         public string VisibilityMaschineTot
         {
             get { return _VisibilityMaschineTotAnzeigen; }
@@ -213,9 +197,10 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        #endregion
+        #endregion Maschine tot
 
         #region Leistungsschalter
+
         public void LeistungsschalterEinschalten(bool val)
         {
             if (val)
@@ -230,8 +215,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-
         private string _LeistungsschalterEin;
+
         public string LeistungsschalterEin
         {
             get { return _LeistungsschalterEin; }
@@ -243,6 +228,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private string _LeistungsschalterAus;
+
         public string LeistungsschalterAus
         {
             get { return _LeistungsschalterAus; }
@@ -253,11 +239,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        #endregion
+        #endregion Leistungsschalter
 
         #region Ventil
 
         private string _VisibilityVentilAus;
+
         public string VisibilityVentilAus
         {
             get { return _VisibilityVentilAus; }
@@ -269,6 +256,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private string _VisibilityVentilEin;
+
         public string VisibilityVentilEin
         {
             get { return _VisibilityVentilEin; }
@@ -293,9 +281,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        #endregion
-
-
+        #endregion Ventil
 
         #region iNotifyPeropertyChanged Members
 
@@ -306,6 +292,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion
+        #endregion iNotifyPeropertyChanged Members
     }
 }

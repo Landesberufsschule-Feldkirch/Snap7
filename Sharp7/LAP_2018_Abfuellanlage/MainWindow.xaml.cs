@@ -4,7 +4,6 @@ using System.Windows.Controls;
 
 namespace LAP_2018_Abfuellanlage
 {
-
     public partial class MainWindow : Window
     {
         public bool B1;
@@ -29,8 +28,8 @@ namespace LAP_2018_Abfuellanlage
         public double Pegel = 1;
         public bool FensterAktiv = true;
 
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
 
         public MainWindow()
         {
@@ -62,14 +61,17 @@ namespace LAP_2018_Abfuellanlage
         {
             S1 = ButtonFunktionPressReleaseAendern(btnS1);
         }
+
         private void BtnS2_Click(object sender, RoutedEventArgs e)
         {
             S2 = !ButtonFunktionPressReleaseAendern(btnS2);
         }
+
         private void BtnS3_Click(object sender, RoutedEventArgs e)
         {
             S3 = ButtonFunktionPressReleaseAendern(btnS3);
         }
+
         private void BtnS4_Click(object sender, RoutedEventArgs e)
         {
             S4 = ButtonFunktionPressReleaseAendern(btnS4);
@@ -88,6 +90,5 @@ namespace LAP_2018_Abfuellanlage
                 return false;
             }
         }
-
     }
 }

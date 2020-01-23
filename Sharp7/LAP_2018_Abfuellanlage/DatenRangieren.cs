@@ -4,9 +4,9 @@ namespace LAP_2018_Abfuellanlage
 {
     public class DatenRangieren
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
             M1 = 0,
             K1,
@@ -14,7 +14,8 @@ namespace LAP_2018_Abfuellanlage
             P1,
             P2
         }
-        enum BitPosEingang
+
+        private enum BitPosEingang
         {
             B1 = 0,
             F5,
@@ -35,8 +36,8 @@ namespace LAP_2018_Abfuellanlage
 
             S7.SetByteAt(anInput, 0, mainWindow.PegelByte);
             S7.SetWordAt(anInput, 2, mainWindow.PegelInt);
-
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             mainWindow.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
@@ -50,6 +51,5 @@ namespace LAP_2018_Abfuellanlage
         {
             mainWindow = window;
         }
-
     }
 }

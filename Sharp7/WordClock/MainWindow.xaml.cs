@@ -1,20 +1,17 @@
 ﻿using Kommunikation;
-using System;
-using System.Threading;
 using System.Windows;
 
 namespace WordClock
 {
     public partial class MainWindow : Window
     {
+        private ZweitesFenster zweitesFenster = new ZweitesFenster();
 
-        ZweitesFenster zweitesFenster = new ZweitesFenster();
-        
         public bool FensterAktiv = true;
 
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
-		
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
+
         public MainWindow()
         {
             zweitesFenster.Show();

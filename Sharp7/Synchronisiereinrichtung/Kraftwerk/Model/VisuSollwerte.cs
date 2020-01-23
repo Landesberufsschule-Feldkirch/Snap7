@@ -16,8 +16,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             SynchAuswahl = SynchronisierungAuswahl.U_f;
         }
 
-
         private double _ManualVentilstellung;
+
         public double ManualVentilstellung
         {
             get { return _ManualVentilstellung; }
@@ -29,6 +29,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _ManualErregerstrom;
+
         public double ManualErregerstrom
         {
             get { return _ManualErregerstrom; }
@@ -40,6 +41,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzSpannungSlider;
+
         public double NetzSpannungSlider
         {
             get { return _NetzSpannungSlider; }
@@ -51,6 +53,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzFrequenzSlider;
+
         public double NetzFrequenzSlider
         {
             get { return _NetzFrequenzSlider; }
@@ -62,6 +65,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzCosPhiSlider;
+
         public double NetzCosPhiSlider
         {
             get { return _NetzCosPhiSlider; }
@@ -73,6 +77,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private double _NetzLeistungSlider;
+
         public double NetzLeistungSlider
         {
             get { return _NetzLeistungSlider; }
@@ -84,9 +89,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         private SynchronisierungAuswahl _SynchAuswahl;
+
         public SynchronisierungAuswahl SynchAuswahl
         {
-
             get { return _SynchAuswahl; }
             set
             {
@@ -94,7 +99,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("SynchAuswahl");
             }
         }
-
 
         #region iNotifyPeropertyChanged Members
 
@@ -105,9 +109,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion
-
-
-
+        #endregion iNotifyPeropertyChanged Members
     }
 }

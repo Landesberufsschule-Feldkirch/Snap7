@@ -4,7 +4,7 @@
 
     public class MagnetischerKreis
     {
-        readonly double Kennlinie;
+        private readonly double Kennlinie;
 
         public MagnetischerKreis(double kennlinie)
         {

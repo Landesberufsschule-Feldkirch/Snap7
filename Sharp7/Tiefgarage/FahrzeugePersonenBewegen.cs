@@ -22,6 +22,7 @@ namespace Tiefgarage
             AufwaertsSenkrecht,
             AufwaertsKurveOben
         }
+
         public Tuple<bool, bool> Bewegen()
         {
             switch (Bewegung)
@@ -54,7 +55,6 @@ namespace Tiefgarage
                     KurvePosition = 1;
                     break;
 
-
                 case FahrenRichtung.AufwaertsKurveUnten:
                     PosAktuell = KurveUnten.PunktBestimmen(KurvePosition);
                     KurvePosition -= KurveGeschwindigkeit;
@@ -72,7 +72,6 @@ namespace Tiefgarage
                     KurvePosition -= KurveGeschwindigkeit;
                     if (KurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
                     break;
-
 
                 default:
                     break;

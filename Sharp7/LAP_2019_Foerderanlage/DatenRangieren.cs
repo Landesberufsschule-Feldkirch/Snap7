@@ -4,9 +4,9 @@ namespace LAP_2019_Foerderanlage
 {
     public class DatenRangieren
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
             P1 = 0, // Anlage Ein
             P2,     //Sammelstörung
@@ -14,7 +14,8 @@ namespace LAP_2019_Foerderanlage
             Q4_LL,  // Förderband Linkslauf
             XFU     // Freigabe FU (Schneckenförderer)
         }
-        enum BitPosEingang
+
+        private enum BitPosEingang
         {
             S0 = 0, // Anlage Aus
             S1,     // Anlage Ein
@@ -28,7 +29,7 @@ namespace LAP_2019_Foerderanlage
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
-        {            
+        {
             S7.SetBitAt(digInput, (int)BitPosEingang.S0, mainWindow.S0);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
@@ -40,8 +41,8 @@ namespace LAP_2019_Foerderanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, mainWindow.S8);
 
             S7.SetIntAt(anInput, 0, mainWindow.MaterialsiloPegel);
-
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
@@ -57,6 +58,5 @@ namespace LAP_2019_Foerderanlage
         {
             mainWindow = window;
         }
-
     }
 }

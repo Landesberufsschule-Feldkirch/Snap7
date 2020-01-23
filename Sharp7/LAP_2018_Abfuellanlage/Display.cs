@@ -8,6 +8,7 @@ namespace LAP_2018_Abfuellanlage
     public partial class MainWindow
     {
         private readonly double HoeheFuellBalken = 9 * 35;
+
         public void Display_Task()
         {
             while (FensterAktiv)
@@ -22,6 +23,7 @@ namespace LAP_2018_Abfuellanlage
                 Thread.Sleep(10);
             }
         }
+
         public void AnzeigeAktualisieren()
         {
             foreach (Flaschen flasche in gAlleFlaschen) { flasche.AnzeigeAktualisieren(FensterAktiv); }
@@ -41,29 +43,30 @@ namespace LAP_2018_Abfuellanlage
             RechteckSichbarkeitUmschalten((K1 && (Pegel > 0.01)), rctFuellenUnten);
         }
 
-        void KnopfHintergrundfarbeAendern(bool Bedingung, Button Knopf, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
+        private void KnopfHintergrundfarbeAendern(bool Bedingung, Button Knopf, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) Knopf.Background = brushEin; else Knopf.Background = brushAus;
         }
 
-        void RechteckHintergrundfarbeAendern(bool Bedingung, Rectangle rechteck, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
+        private void RechteckHintergrundfarbeAendern(bool Bedingung, Rectangle rechteck, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) rechteck.Fill = brushEin; else rechteck.Fill = brushAus;
         }
 
-        void KreisHintergrundfarbeAendern(bool Bedingung, Ellipse kreis, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
+        private void KreisHintergrundfarbeAendern(bool Bedingung, Ellipse kreis, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) kreis.Fill = brushEin; else kreis.Fill = brushAus;
         }
+
         public static void BildSichbarkeitUmschalten(bool Bedingung, Image imgEin, Image imgAus)
         {
             if (Bedingung) imgEin.Visibility = System.Windows.Visibility.Visible; else imgEin.Visibility = System.Windows.Visibility.Hidden;
             if (Bedingung) imgAus.Visibility = System.Windows.Visibility.Hidden; else imgAus.Visibility = System.Windows.Visibility.Visible;
         }
+
         public static void RechteckSichbarkeitUmschalten(bool Bedingung, Rectangle rechteck)
         {
             if (Bedingung) rechteck.Visibility = System.Windows.Visibility.Visible; else rechteck.Visibility = System.Windows.Visibility.Hidden;
         }
-
     }
 }

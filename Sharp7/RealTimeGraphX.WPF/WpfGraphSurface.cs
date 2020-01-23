@@ -64,7 +64,7 @@ namespace RealTimeGraphX.WPF
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController<WpfGraphDataSeries>), typeof(WpfGraphSurface), new PropertyMetadata(null, (d, e) => (d as WpfGraphSurface).OnControllerChanged(e.OldValue as IGraphController<WpfGraphDataSeries>, e.NewValue as IGraphController<WpfGraphDataSeries>)));
 
-        #endregion
+        #endregion Properties
 
         #region Constructors
 
@@ -84,7 +84,7 @@ namespace RealTimeGraphX.WPF
             SizeChanged += WpfGraphSurface_SizeChanged;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Apply Template
 
@@ -104,7 +104,7 @@ namespace RealTimeGraphX.WPF
             _selection_canvas.MouseMove += OnSelectionCanvasMouseMove;
         }
 
-        #endregion
+        #endregion Apply Template
 
         #region Protected Methods
 
@@ -255,7 +255,7 @@ namespace RealTimeGraphX.WPF
             }
         }
 
-        #endregion
+        #endregion Protected Methods
 
         #region IGraphSurface
 
@@ -360,7 +360,7 @@ namespace RealTimeGraphX.WPF
             return _zoom_rect;
         }
 
-        #endregion
+        #endregion IGraphSurface
 
         #region Event Handlers
 
@@ -375,6 +375,6 @@ namespace RealTimeGraphX.WPF
             _size_changed = true;
         }
 
-        #endregion
+        #endregion Event Handlers
     }
 }

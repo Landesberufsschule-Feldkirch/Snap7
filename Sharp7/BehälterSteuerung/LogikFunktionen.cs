@@ -4,12 +4,13 @@ namespace BehälterSteuerung
 {
     public class Logikfunktionen
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public Logikfunktionen(MainWindow window)
         {
             mainWindow = window;
         }
+
         public void Logikfunktionen_Task()
         {
             while (mainWindow.FensterAktiv)
@@ -27,6 +28,5 @@ namespace BehälterSteuerung
                 Thread.Sleep(10);
             }
         }
-
     }
 }

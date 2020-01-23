@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealTimeGraphX
 {
@@ -40,14 +36,14 @@ namespace RealTimeGraphX
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
-        #endregion
+        #endregion IComparable
 
         #region Logical Operators
 
@@ -101,7 +97,7 @@ namespace RealTimeGraphX
             return a.CompareTo(b) != 0;
         }
 
-        #endregion
+        #endregion Logical Operators
 
         #region Arithmetic Operators
 
@@ -149,7 +145,7 @@ namespace RealTimeGraphX
             return (GraphDataPoint)a.Multiply(b);
         }
 
-        #endregion
+        #endregion Arithmetic Operators
 
         #region IGraphDataPoint
 
@@ -233,7 +229,7 @@ namespace RealTimeGraphX
         /// <returns></returns>
         public abstract IGraphDataPoint Parse(string value);
 
-        #endregion
+        #endregion IGraphDataPoint
 
         #region Properties
 
@@ -245,7 +241,7 @@ namespace RealTimeGraphX
             get { return GetType(); }
         }
 
-        #endregion
+        #endregion Properties
     }
 
     /// <summary>
@@ -263,7 +259,7 @@ namespace RealTimeGraphX
         /// </summary>
         public T Value { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Constructors
 
@@ -272,7 +268,6 @@ namespace RealTimeGraphX
         /// </summary>
         public GraphDataPoint()
         {
-
         }
 
         /// <summary>
@@ -284,7 +279,7 @@ namespace RealTimeGraphX
             Value = value;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region IComparable
 
@@ -321,14 +316,14 @@ namespace RealTimeGraphX
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
             return -1937169414 + EqualityComparer<T>.Default.GetHashCode(Value);
         }
 
-        #endregion
+        #endregion IComparable
 
         #region ToString
 
@@ -343,7 +338,7 @@ namespace RealTimeGraphX
             return Value.ToString();
         }
 
-        #endregion
+        #endregion ToString
 
         #region IGraphDataPoint
 
@@ -365,7 +360,7 @@ namespace RealTimeGraphX
             Value = (T)value;
         }
 
-        #endregion
+        #endregion IGraphDataPoint
 
         #region Parsing
 
@@ -379,7 +374,7 @@ namespace RealTimeGraphX
             return Activator.CreateInstance<TDataType>().Parse(value) as TDataType;
         }
 
-        #endregion
+        #endregion Parsing
 
         #region Implicit Operators
 
@@ -407,6 +402,6 @@ namespace RealTimeGraphX
             return instance.Value;
         }
 
-        #endregion
+        #endregion Implicit Operators
     }
 }

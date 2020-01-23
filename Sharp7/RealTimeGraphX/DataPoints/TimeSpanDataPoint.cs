@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
@@ -19,7 +15,6 @@ namespace RealTimeGraphX.DataPoints
         /// </summary>
         public TimeSpanDataPoint() : base()
         {
-
         }
 
         /// <summary>
@@ -28,7 +23,6 @@ namespace RealTimeGraphX.DataPoints
         /// <param name="value">The value.</param>
         public TimeSpanDataPoint(TimeSpan value) : base(value)
         {
-
         }
 
         /// <summary>

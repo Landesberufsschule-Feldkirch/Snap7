@@ -1,8 +1,5 @@
-﻿using RealTimeGraphX.EventArguments;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 
 namespace RealTimeGraphX
 {

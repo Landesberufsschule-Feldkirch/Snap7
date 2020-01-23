@@ -4,10 +4,9 @@ namespace LAP_2018_Niveauregelung
 {
     public class DatenRangieren
     {
+        private readonly MainWindow mainWindow;
 
-        readonly MainWindow mainWindow;
-
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
             M1 = 0,
             M2,
@@ -15,7 +14,8 @@ namespace LAP_2018_Niveauregelung
             P2,
             P3
         }
-        enum BitPosEingang
+
+        private enum BitPosEingang
         {
             B1 = 0,
             B2,
@@ -26,7 +26,6 @@ namespace LAP_2018_Niveauregelung
             S2,
             S3
         }
-
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
@@ -39,6 +38,7 @@ namespace LAP_2018_Niveauregelung
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
             S7.SetBitAt(digInput, (int)BitPosEingang.S3, mainWindow.S3);
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             mainWindow.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);

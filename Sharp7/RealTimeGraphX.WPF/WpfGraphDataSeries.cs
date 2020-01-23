@@ -31,7 +31,7 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         internal System.Drawing.Pen GdiPen { get; set; }
 
-        #endregion
+        #endregion Internal Properties
 
         private String _name;
         /// <summary>

@@ -51,7 +51,6 @@ namespace RealTimeGraphX.WPF
             RowDefinitions.Clear();
             ColumnDefinitions.Clear();
 
-
             if (Orientation == Orientation.Vertical)
             {
                 for (int i = 0; i < InternalChildren.Count; i++)

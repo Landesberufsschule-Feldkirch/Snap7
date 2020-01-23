@@ -17,7 +17,6 @@ namespace LAP_2019_Foerderanlage
         public bool S7;     // Wagen Position rechts
         public bool S8;     // Wagen voll
 
-
         public bool P1;     // Anlage Ein
         public bool P2;     // Sammelstörung
         public bool Q3_RL;  // Förderband Rechtslauf
@@ -49,12 +48,11 @@ namespace LAP_2019_Foerderanlage
 
         public bool AnimationGestartet;
 
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
 
         public MainWindow()
         {
-
             logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
 

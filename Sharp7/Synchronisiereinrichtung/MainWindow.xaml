@@ -9,136 +9,133 @@
         xmlns:src="clr-namespace:Synchronisiereinrichtung"
         Title="Synchronisiereinrichtung" Height="1000" Width="1700" Closing="Window_Closing">
 
-
     <Grid>
         <Grid.Resources>
             <src:EnumBooleanConverter  x:Key="enumBooleanConverter" />
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right"/>
-        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="20" Grid.Row="22"  Grid.ColumnSpan="7"  Background="LightSeaGreen"/>
+        <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" />
+        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="20" Grid.Row="22"  Grid.ColumnSpan="7"  Background="LightSeaGreen" />
 
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen"/>
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" />
 
         <Button x:Name="GraphWindow"  Grid.Column="2" Grid.Row="24" Click="GraphWindow_Click">
             <Image Source="Bilder/icon_graph.png" />
         </Button>
 
-        <Rectangle  x:Name="ZuleitungLinks"                                             Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Fill="Blue"/>
-        <Rectangle  x:Name="AbleitungRechts"                                            Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" Fill="LightBlue" Margin="0,5,22,5"/>
+        <Rectangle  x:Name="ZuleitungLinks"                                             Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Fill="Blue" />
+        <Rectangle  x:Name="AbleitungRechts"                                            Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" Fill="LightBlue" Margin="0,5,22,5" />
         <Image      x:Name="VentilZuleitungAus" Source="Bilder/VentilElektrischAus.jpg" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="45,0,22,25" Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityVentilAus}" />
         <Image      x:Name="VentilZuleitungEin" Source="Bilder/VentilElektrischEin.jpg" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="45,0,22,25" Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityVentilEin}" />
-        <Label Content="Y1"                                                             Grid.Column="4"                     Grid.Row="2" Margin="0,0,0,19" FontSize="14pt" Grid.RowSpan="2"/>
-        <Rectangle x:Name="AbleitunSenkrecht"                                           Grid.Column="6"                     Grid.Row="4" Grid.RowSpan="3"    Fill="LightBlue"  Margin="22,5,22,0"/>
+        <Label Content="Y1"                                                             Grid.Column="4"                     Grid.Row="2" Margin="0,0,0,19" FontSize="14pt" Grid.RowSpan="2" />
+        <Rectangle x:Name="AbleitunSenkrecht"                                           Grid.Column="6"                     Grid.Row="4" Grid.RowSpan="3"    Fill="LightBlue"  Margin="22,5,22,0" />
 
-
-        <Label Content="G1"                                 Grid.Column="16" Grid.Row="4"  Grid.RowSpan="3" Margin="28,26,0,34" FontSize="16pt"/>
-        <Rectangle x:Name="ErregungBatteriePlus"            Grid.Column="17" Grid.Row="5" Fill="Red" Margin="0,0,0,25"/>
-        <Rectangle x:Name="ErregungBatterieMinus"           Grid.Column="17" Grid.Row="5" Fill="Black" Margin="17,15,17,16"/>
-        <Rectangle x:Name="ErregungBatterieMinusSenkrecht"  Grid.Column="17" Grid.Row="5" Fill="Black" Margin="32,15,32,-36"/>
+        <Label Content="G1"                                 Grid.Column="16" Grid.Row="4"  Grid.RowSpan="3" Margin="28,26,0,34" FontSize="16pt" />
+        <Rectangle x:Name="ErregungBatteriePlus"            Grid.Column="17" Grid.Row="5" Fill="Red" Margin="0,0,0,25" />
+        <Rectangle x:Name="ErregungBatterieMinus"           Grid.Column="17" Grid.Row="5" Fill="Black" Margin="17,15,17,16" />
+        <Rectangle x:Name="ErregungBatterieMinusSenkrecht"  Grid.Column="17" Grid.Row="5" Fill="Black" Margin="32,15,32,-36" />
 
         <Rectangle x:Name="ErregungZuleitungWaagrecht"      Grid.Column="10" Grid.ColumnSpan="8"    Grid.Row="3" Grid.RowSpan="2" Fill="Red" Margin="67,32,32,32" />
 
         <Rectangle x:Name="ErregungZuleitungSenkrechtLinks" Grid.Column="10"  Grid.ColumnSpan="2"   Grid.Row="4" Grid.RowSpan="2" Fill="Red" Margin="67,0,67,0" />
-        <Rectangle x:Name="ErregungZuleitungSenkrechtRechts" Grid.Column="17"                       Grid.Row="4" Fill="Red" Margin="32,0,32,0"/>
+        <Rectangle x:Name="ErregungZuleitungSenkrechtRechts" Grid.Column="17"                       Grid.Row="4" Fill="Red" Margin="32,0,32,0" />
 
-        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="7"  Grid.RowSpan="4" Fill="#FF4545C3"/>
-        <Rectangle x:Name="Welle"                                               Grid.Column="8"                         Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Margin="0,25"/>
-        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="6"  Grid.RowSpan="6" Fill="Red"/>
+        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="7"  Grid.RowSpan="4" Fill="#FF4545C3" />
+        <Rectangle x:Name="Welle"                                               Grid.Column="8"                         Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Margin="0,25" />
+        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="6"  Grid.RowSpan="6" Fill="Red" />
         <Label Content="Turbine"                                                Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
         <Label Content="Generator"                                              Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
 
         <Rectangle x:Name="StromGeneratorSenkrecht"                             Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="12" Grid.RowSpan="3" Fill="Black"  Margin="68,0,68,33" />
-        <Rectangle x:Name="StromGeneratorWaagrecht"                             Grid.Column="10" Grid.ColumnSpan="5"    Grid.Row="13" Grid.RowSpan="2" Fill="Black" Margin="68,32,50,33"  />
+        <Rectangle x:Name="StromGeneratorWaagrecht"                             Grid.Column="10" Grid.ColumnSpan="5"    Grid.Row="13" Grid.RowSpan="2" Fill="Black" Margin="68,32,50,33" />
         <Rectangle x:Name="StromNetzWaagrecht"                                  Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="13" Grid.RowSpan="2" Fill="Black" Margin="0,32,0,33" />
         <Image x:Name="ImgSchalterAus" Source="Bilder/Schalter.jpg"             Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="12" Grid.RowSpan="3" Margin="0,13,0,0" Visibility="{Binding Kraftwerk.ViAnzeige.LeistungsschalterAus}" />
         <Image x:Name="ImgSchalterEin" Source="Bilder/SchalterBetaetigt.jpg"    Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="11" Grid.RowSpan="5" Margin="0,1,0,25" Visibility="{Binding Kraftwerk.ViAnzeige.LeistungsschalterEin}" />
         <Label Content="Q1"                                                     Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="14" Grid.RowSpan="2" Margin="51,0,45,34" FontSize="16pt" />
 
-            <TextBlock Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2"    Text="{Binding Kraftwerk.ViAnzeige.VentilPosition}" />
-            <TextBlock Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt"                     Text="{Binding Kraftwerk.ViAnzeige.Erregerstrom}" />
-            <TextBlock Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="12" FontSize="16pt"                    Text="{Binding Kraftwerk.ViAnzeige.Drehzahl}" />
+        <TextBlock Grid.Column="5"  Grid.ColumnSpan="2"    Grid.Row="2" FontSize="16pt" Grid.RowSpan="2"    Text="{Binding Kraftwerk.ViAnzeige.VentilPosition}" />
+        <TextBlock Grid.Column="14" Grid.ColumnSpan="2"    Grid.Row="3" FontSize="16pt"                     Text="{Binding Kraftwerk.ViAnzeige.Erregerstrom}" />
+        <TextBlock Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="12" FontSize="16pt"                    Text="{Binding Kraftwerk.ViAnzeige.Drehzahl}" />
 
-        <Label Content="Generator"                  Grid.Column="11" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
-            <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorSpannungString}" />
-            <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorFrequenzString}" />
-            <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorLeistungString}" />
-            <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorCosPhiString}" />
-        
-        <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12"/>
-            <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzSpannungString}" />
-            <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzFrequenzString}" />
-            <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzLeistungString}" />
-            <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzCosPhiString}" />
+        <Label Content="Generator"                  Grid.Column="11" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorSpannungString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorFrequenzString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorLeistungString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorCosPhiString}" />
 
+        <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzSpannungString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzFrequenzString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzLeistungString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzCosPhiString}" />
 
         <Rectangle x:Name="RctAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
 
-        <StackPanel Orientation="Vertical" Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4"  >
+        <StackPanel Orientation="Vertical" Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f}">Spannung / Frequenz</RadioButton>
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase}">U / f / Phasenlage</RadioButton>
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistung}">U / f / Phasenlage / Leistung</RadioButton>
@@ -156,28 +153,27 @@
         <Label Content="induktiv"   Grid.Column="21" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="kapazitiv"  Grid.Column="24" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
 
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzSpannungSlider, Mode=TwoWay}"  />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzFrequenzSlider, Mode=TwoWay}"  />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzLeistungSlider, Mode=TwoWay}"  />
-        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-1"  Maximum="1"    TickFrequency="0.1"  IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzCosPhiSlider,   Mode=TwoWay}"  />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzSpannungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzFrequenzSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzLeistungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-1"  Maximum="1"    TickFrequency="0.1"  IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzCosPhiSlider,   Mode=TwoWay}" />
 
-
-        <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}"/>
+        <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}" />
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="14" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}">Synchronisierung fehlgeschlagen!</TextBlock>
 
-        <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10" 
-                                        Radius="150" 
-                                        ScaleRadius="110" 
-                                        ScaleStartAngle="120" 
+        <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10"
+                                        Radius="150"
+                                        ScaleRadius="110"
+                                        ScaleStartAngle="120"
                                         ScaleSweepAngle="300"
-                                        PointerLength="85" 
-                                        PointerCapRadius="35" 
-                                        MinValue="0" 
-                                        MaxValue="400" 
-                                        MajorDivisionsCount="8" 
-                                        MinorDivisionsCount="16" 
-                                        CurrentValue="{Binding Kraftwerk.ViAnzeige.SpannungsDifferenz}"                                    
+                                        PointerLength="85"
+                                        PointerCapRadius="35"
+                                        MinValue="0"
+                                        MaxValue="400"
+                                        MajorDivisionsCount="8"
+                                        MinorDivisionsCount="16"
+                                        CurrentValue="{Binding Kraftwerk.ViAnzeige.SpannungsDifferenz}"
                                         ImageSize="40,50"
                                         RangeIndicatorThickness="8"
                                         RangeIndicatorRadius="120"
@@ -195,12 +191,10 @@
                                         GaugeBackgroundColor="Black"
                                         PointerThickness ="16"
                                         OptimalRangeStartValue="0"
-                                        OptimalRangeEndValue="25" 
-                                        DialTextOffset="40" 
+                                        OptimalRangeEndValue="25"
+                                        DialTextOffset="40"
                                         DialText="Black"
                                         DialTextColor="Black"
-                                        Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMessgeraetSichtbar}" 
-                                        />
-
+                                        Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMessgeraetSichtbar}" />
     </Grid>
 </Window>

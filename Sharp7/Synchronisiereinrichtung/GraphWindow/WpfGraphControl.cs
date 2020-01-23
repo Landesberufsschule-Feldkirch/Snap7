@@ -14,6 +14,7 @@ namespace Synchronisiereinrichtung
             get { return (IGraphController)GetValue(ControllerProperty); }
             set { SetValue(ControllerProperty, value); }
         }
+
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController), typeof(WpfGraphControl), new PropertyMetadata(null));
 

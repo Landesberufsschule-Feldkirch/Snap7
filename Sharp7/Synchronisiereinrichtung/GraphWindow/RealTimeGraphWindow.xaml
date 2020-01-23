@@ -28,8 +28,8 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <local:WpfGraphControl Margin="10" Controller="{Binding MultiController}" />
 

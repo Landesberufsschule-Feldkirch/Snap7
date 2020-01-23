@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
@@ -17,7 +15,6 @@ namespace RealTimeGraphX.DataPoints
         /// </summary>
         public Int32DataPoint() : base()
         {
-
         }
 
         /// <summary>
@@ -26,7 +23,6 @@ namespace RealTimeGraphX.DataPoints
         /// <param name="value">The value.</param>
         public Int32DataPoint(int value) : base(value)
         {
-
         }
 
         /// <summary>

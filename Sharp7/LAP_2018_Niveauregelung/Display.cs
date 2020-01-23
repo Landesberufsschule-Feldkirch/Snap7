@@ -4,7 +4,8 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace LAP_2018_Niveauregelung
-{    public partial class MainWindow
+{
+    public partial class MainWindow
     {
         private readonly double HoeheFuellBalken = 315;
 
@@ -58,16 +59,19 @@ namespace LAP_2018_Niveauregelung
             if (Bedingung) btnEin.Visibility = System.Windows.Visibility.Visible; else btnEin.Visibility = System.Windows.Visibility.Hidden;
             if (Bedingung) btnAus.Visibility = System.Windows.Visibility.Hidden; else btnAus.Visibility = System.Windows.Visibility.Visible;
         }
+
         public void ImgSichbarkeitUmschalten(bool Bedingung, Image imgEin, Image imgAus)
         {
             if (Bedingung) imgEin.Visibility = System.Windows.Visibility.Visible; else imgEin.Visibility = System.Windows.Visibility.Hidden;
             if (Bedingung) imgAus.Visibility = System.Windows.Visibility.Hidden; else imgAus.Visibility = System.Windows.Visibility.Visible;
         }
+
         public void RctFarbenUmschalten(bool Bedingung, Rectangle Rechteck, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) Rechteck.Fill = brushEin;
             else Rechteck.Fill = brushAus;
         }
+
         public void CircFarbenUmschalten(bool Bedingung, Ellipse circ, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)
         {
             if (Bedingung) circ.Fill = brushEin;

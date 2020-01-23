@@ -6,18 +6,17 @@ namespace Tiefgarage
 {
     public partial class MainWindow : Window
     {
-
         public bool FensterAktiv = true;
         public int FahrzeugPersonGeklickt = -1;
-        
+
         public bool B1;
         public bool B2;
 
         public int AnzahlFahrzeuge = 0;
         public int AnzahlPersonen = 0;
-                     
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
 
         public MainWindow()
         {

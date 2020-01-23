@@ -4,9 +4,9 @@ namespace BehälterSteuerung
 {
     public class DatenRangieren
     {
-        MainWindow mainWindow;
+        private MainWindow mainWindow;
 
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
             Q1 = 0,
             Q3,
@@ -30,6 +30,5 @@ namespace BehälterSteuerung
         {
             mainWindow = window;
         }
-
     }
 }

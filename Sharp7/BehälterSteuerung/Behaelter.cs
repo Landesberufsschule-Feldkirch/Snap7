@@ -12,7 +12,7 @@ namespace BehälterSteuerung
 
         public double Pegel { get; set; }
         public double InternerPegel { get; set; }
-        
+
         public bool SchwimmerschalterOben;
         public bool SchwimmerschalterUnten;
         public bool VentilOben;
@@ -65,6 +65,7 @@ namespace BehälterSteuerung
             BitPositionSchwimmerschalterUnten = BitPosSchwimmerschalterUnten;
             BitPositionVentilOben = BitPosVentilOben;
         }
+
         public void PegelUeberwachen()
         {
             if (InternerPegel > 0)
@@ -85,6 +86,7 @@ namespace BehälterSteuerung
             if (Pegel > 0.95) SchwimmerschalterOben = true; else SchwimmerschalterOben = false;
             if (Pegel > 0.05) SchwimmerschalterUnten = true; else SchwimmerschalterUnten = false;
         }
+
         public void BehaelterAnzeigen(bool FensterAktiv)
         {
             if (FensterAktiv)
@@ -131,7 +133,6 @@ namespace BehälterSteuerung
             S7.SetBitAt(BufferInput, BitPositionSchwimmerschalterOben, SchwimmerschalterOben);
             S7.SetBitAt(BufferInput, BitPositionSchwimmerschalterUnten, SchwimmerschalterUnten);
         }
-
 
         public void BehalterDatenRangierenOutput(byte[] BufferOutput)
         {

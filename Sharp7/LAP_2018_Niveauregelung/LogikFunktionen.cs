@@ -4,7 +4,7 @@ namespace LAP_2018_Niveauregelung
 {
     public class Logikfunktionen
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
         private readonly double FuellGeschwindigkeit = 0.0008;
         private readonly double LeerGeschwindigkeit = 0.001;
 

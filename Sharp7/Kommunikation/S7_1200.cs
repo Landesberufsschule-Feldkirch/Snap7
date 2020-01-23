@@ -9,6 +9,7 @@ using System.Windows;
 namespace Kommunikation
 {
 #pragma warning disable S101 // Types should be named in PascalCase
+
     public class S7_1200
 #pragma warning restore S101 // Types should be named in PascalCase
     {
@@ -25,8 +26,8 @@ namespace Kommunikation
             Byte_0 = 0
         }
 
-        readonly Action<byte[], byte[]> CallbackInput;
-        readonly Action<byte[], byte[]> CallbackOutput;
+        private readonly Action<byte[], byte[]> CallbackInput;
+        private readonly Action<byte[], byte[]> CallbackOutput;
 
         private byte[] DigInput = new byte[1024];
         private byte[] DigOutput = new byte[1024];
@@ -43,8 +44,8 @@ namespace Kommunikation
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
         private bool TaskAktive = true;
-        string SpsStatus = "Keine Verbindung zur S7-1200!";
-        readonly IpAdressen SPS_Client;
+        private string SpsStatus = "Keine Verbindung zur S7-1200!";
+        private readonly IpAdressen SPS_Client;
 
         public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
@@ -75,6 +76,7 @@ namespace Kommunikation
         {
             return SpsStatus;
         }
+
         private void SPS_Pingen_Task()
         {
             while (TaskAktive)
@@ -136,6 +138,7 @@ namespace Kommunikation
 
             Client.Disconnect();
         }
+
         private void ErrorAnzeigen(int ResultError)
         {
             var ErrorText = Client?.ErrorText(ResultError);

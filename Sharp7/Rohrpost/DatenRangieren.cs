@@ -1,15 +1,14 @@
-﻿using Sharp7;
-
-namespace Rohrpost
+﻿namespace Rohrpost
 {
     public class DatenRangieren
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
         }
-        enum BitPosEingang
+
+        private enum BitPosEingang
         {
         }
 
@@ -17,6 +16,7 @@ namespace Rohrpost
         {
             //
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             //
@@ -26,6 +26,5 @@ namespace Rohrpost
         {
             mainWindow = window;
         }
-
     }
 }

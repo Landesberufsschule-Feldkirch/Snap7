@@ -4,13 +4,14 @@ namespace Synchronisiereinrichtung
 {
     public class DatenRangieren
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
-        enum BitPosAusgang
+        private enum BitPosAusgang
         {
             Q1 = 0
         }
-        enum BitPosEingang
+
+        private enum BitPosEingang
         {
             S1 = 0,
             S2
@@ -20,7 +21,6 @@ namespace Synchronisiereinrichtung
         {
             mainWindow = window;
         }
-
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
@@ -53,6 +53,5 @@ namespace Synchronisiereinrichtung
                 mainWindow.Ie = S7.GetSint16At(anOutput, 2);
             }
         }
-
     }
 }

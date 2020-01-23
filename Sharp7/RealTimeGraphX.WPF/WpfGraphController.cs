@@ -17,6 +17,5 @@ namespace RealTimeGraphX.WPF
         where TXDataPoint : GraphDataPoint
         where TYDataPoint : GraphDataPoint
     {
-
     }
 }

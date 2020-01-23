@@ -15,7 +15,6 @@
 
         public static Punkt GetSpannung(double winkel, double spannung)
         {
-
             var strangSpannung = spannung / Math.Sqrt(3);
             return new Punkt(strangSpannung, winkel, 0);
         }

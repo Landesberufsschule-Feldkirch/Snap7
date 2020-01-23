@@ -24,11 +24,11 @@ namespace LAP_2018_Niveauregelung
         public bool P2 = false;
         public bool P3 = false;
 
-
         public bool FensterAktiv = true;
 
-        Logikfunktionen logikfunktionen;
-        DatenRangieren datenRangieren;
+        private Logikfunktionen logikfunktionen;
+        private DatenRangieren datenRangieren;
+
         public MainWindow()
         {
             logikfunktionen = new Logikfunktionen(this);
@@ -47,12 +47,10 @@ namespace LAP_2018_Niveauregelung
             FensterAktiv = false;
         }
 
-
         private void VentilClick(object sender, RoutedEventArgs e)
         {
             Y1 = !Y1;
         }
-
 
         private void BtnF1_Click(object sender, RoutedEventArgs e)
         {
@@ -68,10 +66,12 @@ namespace LAP_2018_Niveauregelung
         {
             S1 = ButtonFunktionPressReleaseAendern(btnS1);
         }
+
         private void btnS2_Click(object sender, RoutedEventArgs e)
         {
             S2 = !ButtonFunktionPressReleaseAendern(btnS2);
         }
+
         private void btnS3_Click(object sender, RoutedEventArgs e)
         {
             S3 = ButtonFunktionPressReleaseAendern(btnS3);

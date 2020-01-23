@@ -30,7 +30,6 @@ namespace AmpelsteuerungKieswerk
             B4
         }
 
-
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, B1);
@@ -38,6 +37,7 @@ namespace AmpelsteuerungKieswerk
             S7.SetBitAt(digInput, (int)BitPosEingang.B3, B3);
             S7.SetBitAt(digInput, (int)BitPosEingang.B4, B4);
         }
+
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             var p1_links_rot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);

@@ -9,70 +9,70 @@
         Title="LAP 2019 Förderanlage" Height="1050" Width="1400" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
 
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36"/>
+        <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36" />
         <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="16"  Grid.ColumnSpan="7"    Grid.Row="23"   Background="LightSeaGreen" />
 
-        <Rectangle x:Name="rctHintergrund" Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" Margin="-24,0,34,0"/>
+        <Rectangle x:Name="rctHintergrund" Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" Margin="-24,0,34,0" />
 
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Margin="0,2,0,33" Grid.RowSpan="2"/>
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Margin="0,2,0,33" Grid.RowSpan="2" />
 
         <Image  x:Name="imgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
                 gif:ImageBehavior.RepeatBehavior="Forever"
@@ -80,9 +80,8 @@
                 gif:ImageBehavior.AutoStart="False"
                 gif:ImageBehavior.AnimatedSource="Bilder\Schneckenfoerderer.gif" />
 
-
         <Rectangle Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="8"  Fill="#eeeeee" Margin="0,27,0,0" />
-        <Rectangle Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="2"  Fill="#eeeeee" Margin="0,0,0,29"  />
+        <Rectangle Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="2"  Fill="#eeeeee" Margin="0,0,0,29" />
 
         <Polygon x:Name="polyLagersilo" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
                  Stroke="Black" StrokeThickness="2" Fill="Silver">
@@ -95,46 +94,42 @@
         </Polygon>
 
         <Label Content="Lagersilo"          Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2"  HorizontalAlignment="Center" FontSize="14pt" Margin="22,25,34,10" Grid.RowSpan="2" />
-        <Label Content="Schneckenförderer"  Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3"  FontSize="14pt" RenderTransformOrigin="0.5,0.5"    >
+        <Label Content="Schneckenförderer"  Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3"  FontSize="14pt" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-26"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="-26" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
 
+        <Ellipse x:Name="cirSchneckeAus" Fill="Gray"   Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" />
+        <Ellipse x:Name="cirSchneckeEin" Fill="Green"  Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden"  Panel.ZIndex="5" />
+        <Label x:Name="lblM2" Content="M2"             Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
-
-        <Ellipse x:Name="cirSchneckeAus" Fill="Gray"   Grid.Column="5" Grid.Row="9" Grid.RowSpan="2"  />
-        <Ellipse x:Name="cirSchneckeEin" Fill="Green"  Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden"  Panel.ZIndex="5"   />
-        <Label x:Name="lblM2" Content="M2"             Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
-
-
-        <Rectangle x:Name="rctMaterialsilo"             Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray"  />
+        <Rectangle x:Name="rctMaterialsilo"             Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
         <Rectangle x:Name="rctMaterialsiloFuellstand"   Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick" />
-        <Label Content="Materialsilo"                   Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt"  />
+        <Label Content="Materialsilo"                   Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" />
 
-        <Rectangle x:Name="rctFuellenOben"              Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12"                   Fill="Firebrick" Margin="62,0"  />
+        <Rectangle x:Name="rctFuellenOben"              Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12"                   Fill="Firebrick" Margin="62,0" />
 
         <Image x:Name="imgVentilEin" Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
         <Image x:Name="imgVentilAus" Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
-        <Label x:Name="lblY1" Content="Y1"                                      Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Label x:Name="lblY1" Content="Y1"                                      Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
-        <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="11" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="62,0"  />
+        <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="11" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="62,0" />
 
-        <Ellipse x:Name="cirRolleLinks" Fill="Gray"     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2"  />
-        <Ellipse x:Name="cirRolleLinksEin" Fill="Green" Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden" Panel.ZIndex="5"   />
-        <Label x:Name="lblM1" Content="M1"              Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10"   />
+        <Ellipse x:Name="cirRolleLinks" Fill="Gray"     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" />
+        <Ellipse x:Name="cirRolleLinksEin" Fill="Green" Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden" Panel.ZIndex="5" />
+        <Label x:Name="lblM1" Content="M1"              Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
-        <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="13" Grid.Row="17" Grid.RowSpan="2"  />
+        <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" />
 
-        <Rectangle x:Name="rctForderbandOben" Fill="Gray"  Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Margin="40,0,35,27"/>
-        <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Margin="40,27,35,0"/>
-        <Label Content="Förderband"                        Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"   />
-
+        <Rectangle x:Name="rctForderbandOben" Fill="Gray"  Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Margin="40,0,35,27" />
+        <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Margin="40,27,35,0" />
+        <Label Content="Förderband"                        Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
 
         <Polygon x:Name="polyPfeilLinkslauf" Grid.Column="7" Grid.Row="16" Visibility="Hidden"
                  Stroke="Black" StrokeThickness="2" Fill="YellowGreen">
@@ -150,7 +145,7 @@
         </Polygon>
 
         <Polygon x:Name="polyPfeilRechtslauf" Grid.Column="7" Grid.Row="16" Visibility="Hidden"
-                 Stroke="Black" StrokeThickness="2" Fill="GreenYellow" >
+                 Stroke="Black" StrokeThickness="2" Fill="GreenYellow">
             <Polygon.Points>
                 <Point X="2" Y="12" />
                 <Point X="42" Y="12" />
@@ -162,19 +157,16 @@
             </Polygon.Points>
         </Polygon>
 
+        <Image x:Name="imgS7Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" />
+        <Image x:Name="imgS7Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" />
+        <Label Content="S7"                                                         Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-
-        <Image x:Name="imgS7Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2"  />
-        <Image x:Name="imgS7Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2"  />
-        <Label Content="S7"                                                         Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18"  />
-
-
-        <Image x:Name="imgS8Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2"  />
-        <Image x:Name="imgS8Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2"  />
-        <Label Content="S8"                                                         Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18"  />
+        <Image x:Name="imgS8Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" />
+        <Image x:Name="imgS8Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" />
+        <Label Content="S8"                                                         Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
         <Button x:Name="WagenNachLinks" Content="NachLinks" Grid.Column="2" Grid.Row="26" Background="LawnGreen" Click="WagenNachLinks_Click" />
-        <Button x:Name="WagenNachRechts" Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen" Click="WagenNachRechts_Click"/>
+        <Button x:Name="WagenNachRechts" Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen" Click="WagenNachRechts_Click" />
 
         <Canvas Grid.Column="2" Grid.ColumnSpan="7" Grid.Row="19" Grid.RowSpan="5">
 
@@ -196,9 +188,7 @@
             </Polygon>
 
             <Rectangle x:Name="rctMaterialwagenMenge"   Fill="Firebrick" Width="256" Height="88" Canvas.Left="12" Canvas.Top="10" />
-            <Label x:Name="lblMaterialWagen" Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Canvas.Left="74" Canvas.Top="106" Width="130"  />
+            <Label x:Name="lblMaterialWagen" Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Canvas.Left="74" Canvas.Top="106" Width="130" />
         </Canvas>
-
-
     </Grid>
 </Window>
