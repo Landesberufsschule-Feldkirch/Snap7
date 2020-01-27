@@ -11,11 +11,8 @@ namespace Synchronisiereinrichtung
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string parameterString = parameter.ToString();
-            if (parameterString == null)
-                return DependencyProperty.UnsetValue;
-
-            if (Enum.IsDefined(value.GetType(), value) == false)
-                return DependencyProperty.UnsetValue;
+            if (parameterString == null) return DependencyProperty.UnsetValue;
+            if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
 
             object parameterValue = Enum.Parse(value.GetType(), parameterString);
 
@@ -46,67 +43,43 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Kraftwerk
     {
-        private double Spannung;
-        private double Frequenz;
-        private double Leistung;
-        private double Leistungsfaktor;
+        private readonly KraftwerkStatemachine kraftwerkStatemachine;
+        private double FrequenzDifferenz;
+        public readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
 
-        private short Gen_Ie;
 
-        private short Gen_n;
-        private short Gen_U;
-        private short Gen_f;
-        private short Gen_P;
-        private short Gen_cosPhi;
+        public bool Q1 { get; set; }
 
-        private short Netz_U;
-        private short Netz_f;
-        private short Netz_P;
-        private short Netz_cosPhi;
+        public bool KraftwerkStarten { get; set; }
+        public bool KraftwerkStoppen { get; set; }
 
-        private short UDiff;
-        private short ph;
+        public double Ventil_Y { get; set; }
 
-        private readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
-
-        #region Variablen für MVVM
-
-        private bool Q1;
-
-        private bool KraftwerkStarten;
-        private bool KraftwerkStoppen;
-
+        public double Generator_Ie { get; set; }
         public double Generator_n { get; set; }
         public double Generator_f { get; set; }
         public double Generator_U { get; set; }
-        private double Generator_P;
-        private double Generator_cosPhi;
+        public double Generator_P { get; set; }
+        public double Generator_CosPhi { get; set; }
+        public double SpannungsdifferenzGeneratorNetz { get; set; }
 
-        private double SpannungsUnterschiedSynchronisieren;
-        private double FrequenzDifferenz;
-        private double Phasenlage;
+        public double Netz_U { get; set; }
+        public double Netz_f { get; set; }
+        public double Netz_P { get; set; }
+        public double Netz_CosPhi { get; set; }
 
-        internal void Starten()
-        {
-            KraftwerkStarten = true;
-            KraftwerkStoppen = false;
-        }
-
-        internal void Stoppen()
-        {
-            KraftwerkStoppen = true;
-            KraftwerkStarten = false;
-        }
-
-        #endregion Variablen für MVVM
 
         public VisuSollwerte ViSoll { get; set; }
         public VisuAnzeigenUmschalten ViAnzeige { get; set; }
+
+
+
 
         public Kraftwerk()
         {
             ViSoll = new VisuSollwerte();
             ViAnzeige = new VisuAnzeigenUmschalten();
+            kraftwerkStatemachine = new KraftwerkStatemachine(this);
 
             System.Threading.Tasks.Task.Run(() => KraftwerkTask());
         }
@@ -122,96 +95,108 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             while (true)
             {
-                AnzeigeUmschalten();
+                Sollwerte2Anzeige();
 
-                generator.MaschineAntreiben(ViSoll.ManualVentilstellung);
-                Generator_n = generator.Drehzahl();
-                Generator_U = generator.Spannung(ViSoll.ManualErregerstrom);
-                Generator_f = generator.Frequenz();
+                kraftwerkStatemachine.Aufrufen();
 
-                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, ViSoll.NetzFrequenzSlider, Netz_Winkel);
+
+
+
+                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Netz_f, Netz_Winkel);
                 Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
 
-                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, ViSoll.NetzSpannungSlider);
+                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, Netz_U);
                 Generator_Momentanspannung = DrehstromZeiger.GetSpannung(Generator_Winkel, Generator_U);
 
-                FrequenzDifferenz = Math.Abs(ViSoll.NetzFrequenzSlider - Generator_f);
+                FrequenzDifferenz = Math.Abs(Netz_f - Generator_f);
                 Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
 
-                SpannungsUnterschiedSynchronisieren = SpannungsDiff.Laenge();
+                switch (ViSoll.SynchAuswahl)
+                {
+                    case SynchronisierungAuswahl.U_f_Phase:
+                    case SynchronisierungAuswahl.U_f_Phase_Leistung:
+                    case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
+                        SpannungsdifferenzGeneratorNetz = SpannungsDiff.Laenge();
+                        break;
 
-                ViAnzeige.SpannungsDifferenz = SpannungsDiff.Laenge();
+                    default:
+                        SpannungsdifferenzGeneratorNetz = Math.Abs(Netz_U - Generator_U);
+                        break;
+                }
 
-                WertebereicheUmrechnen();
+                ViAnzeige.SpannungsDifferenz = SpannungsdifferenzGeneratorNetz;
 
                 Thread.Sleep((int)Zeitdauer);
             }
         }
 
-        private void AnzeigeUmschalten()
+        internal void Starten()
         {
-            ViAnzeige.VentilEinschalten(ViSoll.ManualVentilstellung > 1);
+            KraftwerkStarten = true;
+            KraftwerkStoppen = false;
+        }
+
+        internal void Stoppen()
+        {
+            KraftwerkStoppen = true;
+            KraftwerkStarten = false;
+        }
+
+        private void Sollwerte2Anzeige()
+        {
+            Ventil_Y = ViSoll.Y();
+            Generator_Ie = ViSoll.Ie();
+
+            Netz_f = ViSoll.Netz_f();
+            Netz_U = ViSoll.Netz_U();
+            Netz_P = ViSoll.Netz_P();
+            Netz_CosPhi = ViSoll.Netz_CosPhi();
+
+
+            ViAnzeige.VentilEinschalten(Ventil_Y > 1);
             ViAnzeige.LeistungsschalterEinschalten(Q1);
             ViAnzeige.MessgeraetAnzeigen(Math.Abs(FrequenzDifferenz) < 2);
 
-            // Sollwerte von den Slidern übernehmen
-            ViAnzeige.VentilPosition = $"Y={ ViSoll.ManualVentilstellung.ToString("N1")}%";
-            ViAnzeige.Erregerstrom = $"IE={ ViSoll.ManualErregerstrom.ToString("N1")}A";
-            ViAnzeige.Drehzahl = $"n={Generator_n.ToString("N1")}RPM";
+            ViAnzeige.Y(Ventil_Y);
+            ViAnzeige.Ie(Generator_Ie);
 
-            ViAnzeige.NetzSpannungString = $"U={ ViSoll.NetzSpannungSlider}V";
-            ViAnzeige.NetzFrequenzString = $"f={ ViSoll.NetzFrequenzSlider}Hz";
-            ViAnzeige.NetzLeistungString = $"P={ ViSoll.NetzLeistungSlider}W";
-            ViAnzeige.NetzCosPhiString = $"cos φ={ ViSoll.NetzCosPhiSlider}";
+            ViAnzeige.N(Generator_n);
+            ViAnzeige.Generator_U(Generator_U);
+            ViAnzeige.Generator_f(Generator_f);
+            ViAnzeige.Generator_P(Generator_P);
+            ViAnzeige.Generator_CosPhi(Generator_CosPhi);
 
-            ViAnzeige.GeneratorSpannungString = $"U={Generator_U.ToString("N1")}V";
-            ViAnzeige.GeneratorFrequenzString = $"f={Generator_f.ToString("N2")}Hz";
-            ViAnzeige.GeneratorLeistungString = $"P={Generator_P.ToString("N1")}W";
-            ViAnzeige.GeneratorCosPhiString = $"cos φ={Generator_cosPhi.ToString("N1")}";
+            ViAnzeige.Netz_U(Netz_U);
+            ViAnzeige.Netz_f(Netz_f);
+            ViAnzeige.Netz_P(Netz_P);
+            ViAnzeige.Netz_CosPhi(Netz_CosPhi);
         }
 
-        private void WertebereicheUmrechnen()
-        {
-            // Sollwerte --> SPS
-            Netz_U = S7Analog.S7_Analog_2_Short(ViSoll.NetzSpannungSlider, 1000);
-            Netz_f = S7Analog.S7_Analog_2_Short(ViSoll.NetzFrequenzSlider, 100);
-            Netz_P = S7Analog.S7_Analog_2_Short(ViSoll.NetzLeistungSlider, 1000);
-            Netz_cosPhi = S7Analog.S7_Analog_2_Short(ViSoll.NetzCosPhiSlider, 1);
-
-            // Modell --> SPS
-            Gen_n = S7Analog.S7_Analog_2_Short(Generator_n, 5000);
-            Gen_U = S7Analog.S7_Analog_2_Short(Generator_U, 1000);
-            Gen_f = S7Analog.S7_Analog_2_Short(Generator_f, 100);
-            Gen_P = S7Analog.S7_Analog_2_Short(Generator_P, 1000);
-            UDiff = S7Analog.S7_Analog_2_Short(SpannungsUnterschiedSynchronisieren, 1000);
-            ph = S7Analog.S7_Analog_2_Short(Phasenlage, 1);
-        }
 
         internal void Synchronisieren()
         {
-            var SpannungDifferenz = Math.Abs(Spannung - Generator_U);
             Q1 = true;
 
             switch (ViSoll.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
                     if (FrequenzDifferenz > 2) ViAnzeige.MaschineTot(true);
-                    if (SpannungDifferenz > 25) ViAnzeige.MaschineTot(true);
+                    if (SpannungsdifferenzGeneratorNetz > 25) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase:
                     if (FrequenzDifferenz > 1) ViAnzeige.MaschineTot(true);
-                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
+                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase_Leistung:
                     if (FrequenzDifferenz > 0.9) ViAnzeige.MaschineTot(true);
-                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
+                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
                     if (FrequenzDifferenz > 0.8) ViAnzeige.MaschineTot(true);
-                    if (SpannungDifferenz > 10) ViAnzeige.MaschineTot(true);
+                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
                     break;
 
                 default:

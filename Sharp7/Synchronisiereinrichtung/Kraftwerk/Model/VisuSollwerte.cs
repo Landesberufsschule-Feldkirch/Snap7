@@ -16,6 +16,10 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             SynchAuswahl = SynchronisierungAuswahl.U_f;
         }
 
+        #region Ventil
+
+        public double Y() { return ManualVentilstellung; }
+
         private double _ManualVentilstellung;
 
         public double ManualVentilstellung
@@ -27,6 +31,11 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("ManualVentilstellung");
             }
         }
+
+        #endregion
+
+        #region Erregerstrom
+        public double Ie() { return ManualErregerstrom; }
 
         private double _ManualErregerstrom;
 
@@ -40,6 +49,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
+        #endregion
+
+        #region Netzspannung
+
+        public double Netz_U() { return NetzSpannungSlider; }
+
         private double _NetzSpannungSlider;
 
         public double NetzSpannungSlider
@@ -51,6 +66,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("NetzSpannungSlider");
             }
         }
+
+        #endregion
+
+        #region Netzfrequenz
+
+        public double Netz_f() { return NetzFrequenzSlider; }
 
         private double _NetzFrequenzSlider;
 
@@ -64,6 +85,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
+        #endregion
+
+        #region NetzLeistungsfaktor
+
+        public double Netz_CosPhi() { return NetzCosPhiSlider; }
+
         private double _NetzCosPhiSlider;
 
         public double NetzCosPhiSlider
@@ -76,6 +103,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
+        #endregion
+
+        #region Netzleistung
+
+        public double Netz_P() { return NetzLeistungSlider; }
+
         private double _NetzLeistungSlider;
 
         public double NetzLeistungSlider
@@ -87,6 +120,8 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("NetzLeistungSlider");
             }
         }
+
+        #endregion
 
         private SynchronisierungAuswahl _SynchAuswahl;
 

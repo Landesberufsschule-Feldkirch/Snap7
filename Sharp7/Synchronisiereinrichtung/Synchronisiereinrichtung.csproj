@@ -65,6 +65,9 @@
     <Compile Include="Kraftwerk\Model\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\Model\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
+    <Compile Include="Kraftwerk\Model\KraftwerkStateAus.cs" />
+    <Compile Include="Kraftwerk\Model\KraftwerkStateHochfahren.cs" />
+    <Compile Include="Kraftwerk\Model\KraftwerkStatemachine.cs" />
     <Compile Include="Kraftwerk\Model\VisuSollwerte.cs" />
     <Compile Include="Kraftwerk\Model\VisuAnzeigenUmschalten.cs" />
     <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
@@ -161,6 +164,10 @@
   <ItemGroup>
     <Resource Include="Bilder\icon_graph.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Stateless">
+      <Version>4.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

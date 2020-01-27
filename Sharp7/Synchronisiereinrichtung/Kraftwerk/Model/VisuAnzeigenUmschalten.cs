@@ -7,81 +7,21 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public VisuAnzeigenUmschalten()
         {
             VisibilityMaschineTot = "Hidden";
-
             VisibilityVentilAus = "Visible";
             VisibilityVentilEin = "Hidden";
         }
 
-        private double _VentilPosition;
 
-        public string VentilPosition
+        #region Leistungsfaktor
+
+        public void Generator_CosPhi(double val)
         {
-            get { return "Y=" + _VentilPosition + "%"; }
-            set
-            {
-                _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("VentilPosition");
-            }
+            GeneratorCosPhiString = $"cos φ={val.ToString("N1")}";
         }
 
-        private double _Erregerstrom;
-
-        public string Erregerstrom
+        public void Netz_CosPhi(double val)
         {
-            get { return "IE=" + _Erregerstrom + "A"; }
-            set
-            {
-                _Erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
-                OnPropertyChanged("Erregerstrom");
-            }
-        }
-
-        private double _Drehzahl;
-
-        public string Drehzahl
-        {
-            get { return "n=" + _Drehzahl + "RPM"; }
-            set
-            {
-                _Drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
-                OnPropertyChanged("Drehzahl");
-            }
-        }
-
-        private double _GeneratorSpannungString;
-
-        public string GeneratorSpannungString
-        {
-            get { return "U=" + _GeneratorSpannungString + "V"; }
-            set
-            {
-                _GeneratorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorSpannungString");
-            }
-        }
-
-        private double _GeneratorFrequenzString;
-
-        public string GeneratorFrequenzString
-        {
-            get { return "f=" + _GeneratorFrequenzString + "Hz"; }
-            set
-            {
-                _GeneratorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("GeneratorFrequenzString");
-            }
-        }
-
-        private double _GeneratorLeistungString;
-
-        public string GeneratorLeistungString
-        {
-            get { return "P=" + _GeneratorLeistungString + "W"; }
-            set
-            {
-                _GeneratorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorLeistungString");
-            }
+            NetzCosPhiString = $"cos φ={val}";
         }
 
         private double _GeneratorCosPhiString;
@@ -96,27 +36,44 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        private double _NetzSpannungString;
 
-        public string NetzSpannungString
+
+        private double _NetzCosPhiString;
+
+        public string NetzCosPhiString
         {
-            get { return "U=" + _NetzSpannungString + "V"; }
+            get { return "cos φ=" + _NetzCosPhiString; }
             set
             {
-                _NetzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzSpannungString");
+                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("NetzCosPhiString");
             }
         }
 
-        private double _NetzFrequenzString;
+        #endregion
 
-        public string NetzFrequenzString
+        #region Leistung
+
+        public void Generator_P(double val)
         {
-            get { return "f=" + _NetzFrequenzString + "Hz"; }
+            GeneratorLeistungString = $"P={val.ToString("N1")}W";
+        }
+
+        public void Netz_P(double val)
+        {
+            NetzLeistungString = $"P={val}W";
+        }
+
+
+        private double _GeneratorLeistungString;
+
+        public string GeneratorLeistungString
+        {
+            get { return "P=" + _GeneratorLeistungString + "W"; }
             set
             {
-                _NetzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("NetzFrequenzString");
+                _GeneratorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("GeneratorLeistungString");
             }
         }
 
@@ -132,17 +89,122 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        private double _NetzCosPhiString;
+        #endregion
 
-        public string NetzCosPhiString
+        #region Freqenz
+        public void Generator_f(double val)
         {
-            get { return "cos φ=" + _NetzCosPhiString; }
+            GeneratorFrequenzString = $"f={val.ToString("N2")}Hz";
+        }
+
+        public void Netz_f(double val)
+        {
+            NetzFrequenzString = $"f={val}Hz";
+        }
+
+        private double _GeneratorFrequenzString;
+
+        public string GeneratorFrequenzString
+        {
+            get { return "f=" + _GeneratorFrequenzString + "Hz"; }
             set
             {
-                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzCosPhiString");
+                _GeneratorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                OnPropertyChanged("GeneratorFrequenzString");
             }
         }
+        private double _NetzFrequenzString;
+
+        public string NetzFrequenzString
+        {
+            get { return "f=" + _NetzFrequenzString + "Hz"; }
+            set
+            {
+                _NetzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                OnPropertyChanged("NetzFrequenzString");
+            }
+        }
+        #endregion
+
+        #region Spannung
+
+        public void Generator_U(double val)
+        {
+            GeneratorSpannungString = $"U={val.ToString("N1")}V";
+        }
+
+        public void Netz_U(double val)
+        {
+            NetzSpannungString = $"U={val}V";
+        }
+
+
+        private double _GeneratorSpannungString;
+
+        public string GeneratorSpannungString
+        {
+            get { return "U=" + _GeneratorSpannungString + "V"; }
+            set
+            {
+                _GeneratorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("GeneratorSpannungString");
+            }
+        }
+
+        private double _NetzSpannungString;
+
+        public string NetzSpannungString
+        {
+            get { return "U=" + _NetzSpannungString + "V"; }
+            set
+            {
+                _NetzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("NetzSpannungString");
+            }
+        }
+
+        #endregion
+
+        #region IE
+
+        public void Ie(double val)
+        {
+            Erregerstrom = $"IE={ val.ToString("N1")}A";
+        }
+
+        private double _Erregerstrom;
+
+        public string Erregerstrom
+        {
+            get { return "IE=" + _Erregerstrom + "A"; }
+            set
+            {
+                _Erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
+                OnPropertyChanged("Erregerstrom");
+            }
+        }
+
+        #endregion
+
+        #region n
+
+        public void N(double val)
+        {
+            Drehzahl = $"n={val.ToString("N1")}RPM";
+        }
+
+        private double _Drehzahl;
+        public string Drehzahl
+        {
+            get { return "n=" + _Drehzahl + "RPM"; }
+            set
+            {
+                _Drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
+                OnPropertyChanged("Drehzahl");
+            }
+        }
+
+        #endregion
 
         #region Messgerät
 
@@ -242,6 +304,24 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         #endregion Leistungsschalter
 
         #region Ventil
+
+
+        private double _VentilPosition;
+
+        public string VentilPosition
+        {
+            get { return "Y=" + _VentilPosition + "%"; }
+            set
+            {
+                _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                OnPropertyChanged("VentilPosition");
+            }
+        }
+
+        public void Y(double val)
+        {
+            VentilPosition = $"Y={ val.ToString("N1")}%";
+        }
 
         private string _VisibilityVentilAus;
 

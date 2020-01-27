@@ -65,6 +65,12 @@
                 Stroke = Colors.Gray,
             });
 
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            {
+                Name = "Spannungsdifferenz Ud",
+                Stroke = Colors.YellowGreen,
+            });
+
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
@@ -76,15 +82,17 @@
                     {
                         Kraftwerk.ViSoll.ManualVentilstellung,
                         Kraftwerk.ViSoll.ManualErregerstrom,
-                        Kraftwerk.Generator_n,// mainWindow.n,
-                       Kraftwerk.Generator_f, // mainWindow.fGenerator,
-                       Kraftwerk.Generator_U // mainWindow.UGenerator,
+                        Kraftwerk.Generator_n,
+                        Kraftwerk.Generator_f,
+                        Kraftwerk.Generator_U,
+                        Kraftwerk.SpannungsdifferenzGeneratorNetz
                     };
 
                     var x = watch.Elapsed;
 
                     List<TimeSpanDataPoint> xx = new List<TimeSpanDataPoint>()
                     {
+                        x,
                         x,
                         x,
                         x,
@@ -104,68 +112,18 @@
             get { return _Kraftwerk; }
         }
 
-        public bool CanUpdateQ1
-        {
-            get { return true; }
-        }
+        public bool CanUpdateQ1 { get { return true; } }
+        public bool CanUpdateReset { get { return true; } }
+        public bool CanUpdateStart { get { return true; } }
+        public bool CanUpdateStop { get { return true; } }
+        public ICommand UpdateSchalterReset { get; private set; }
+        public ICommand UpdateSchalterQ1 { get; private set; }
+        public ICommand UpdateSchalterStart { get; private set; }
+        public ICommand UpdateSchalterStop { get; private set; }
 
-        public bool CanUpdateReset
-        {
-            get { return true; }
-        }
-
-        public bool CanUpdateStart
-        {
-            get { return true; }
-        }
-
-        public bool CanUpdateStop
-        {
-            get { return true; }
-        }
-
-        public ICommand UpdateSchalterReset
-        {
-            get;
-            private set;
-        }
-
-        public ICommand UpdateSchalterQ1
-        {
-            get;
-            set;
-        }
-
-        public ICommand UpdateSchalterStart
-        {
-            get;
-            private set;
-        }
-
-        public ICommand UpdateSchalterStop
-        {
-            get;
-            set;
-        }
-
-        internal void SchalterQ1()
-        {
-            _Kraftwerk.Synchronisieren();
-        }
-
-        public void SchalterReset()
-        {
-            _Kraftwerk.Reset();
-        }
-
-        internal void SchalterStart()
-        {
-            _Kraftwerk.Starten();
-        }
-
-        public void SchalterStop()
-        {
-            _Kraftwerk.Stoppen();
-        }
+        internal void SchalterQ1() { _Kraftwerk.Synchronisieren(); }
+        public void SchalterReset() { _Kraftwerk.Reset(); }
+        internal void SchalterStart() { _Kraftwerk.Starten(); }
+        public void SchalterStop() { _Kraftwerk.Stoppen(); }
     }
 }
