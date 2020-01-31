@@ -21,7 +21,7 @@ namespace WordClock
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 s7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             System.Threading.Tasks.Task.Run(() => logikfunktionen.LogikFunktionenTask(FensterAktiv));
             System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200, logikfunktionen));

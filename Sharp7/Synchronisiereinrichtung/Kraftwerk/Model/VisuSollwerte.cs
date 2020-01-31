@@ -11,7 +11,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             NetzSpannungSlider = 400;
             NetzFrequenzSlider = 50;
-            NetzCosPhiSlider = 0;
+            NetzPhasenverschiebungSlider = 0;
             NetzLeistungSlider = 600;
             SynchAuswahl = SynchronisierungAuswahl.U_f;
         }
@@ -89,17 +89,17 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         #region NetzLeistungsfaktor
 
-        public double Netz_CosPhi() { return NetzCosPhiSlider; }
+        public double Netz_Phasenverschiebung() { return NetzPhasenverschiebungSlider; }
 
-        private double _NetzCosPhiSlider;
+        private double _NetzPhasenverschiebungSlider;
 
-        public double NetzCosPhiSlider
+        public double NetzPhasenverschiebungSlider
         {
-            get { return _NetzCosPhiSlider; }
+            get { return _NetzPhasenverschiebungSlider; }
             set
             {
-                _NetzCosPhiSlider = value;
-                OnPropertyChanged("NetzCosPhiSlider");
+                _NetzPhasenverschiebungSlider = value;
+                OnPropertyChanged("NetzPhasenverschiebungSlider");
             }
         }
 

@@ -51,7 +51,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" />
+        <Label x:Name="lbl_VersionsInfo" Content="V1.1 " Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" />
         <Rectangle Fill="LightGray"                      Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="10" Stroke="Black" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
@@ -181,20 +181,21 @@
         <Rectangle x:Name="rct_Zuleitung_2a"    Grid.Column="6"                         Grid.Row="3"                    Fill="Blue"      Margin="40,0,20,0" />
         <Rectangle x:Name="rct_Zuleitung_3a"    Grid.Column="9"                         Grid.Row="3"                    Fill="Blue"      Margin="40,0,20,0" />
         <Rectangle x:Name="rct_Zuleitung_4a"    Grid.Column="12"                        Grid.Row="3"                    Fill="Blue"      Margin="40,0,20,0" />
-        <Rectangle x:Name="rct_Zuleitung_1b"    Grid.Column="3"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="1" />
-        <Rectangle x:Name="rct_Zuleitung_2b"    Grid.Column="6"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="1" />
-        <Rectangle x:Name="rct_Zuleitung_3b"    Grid.Column="9"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="1" />
-        <Rectangle x:Name="rct_Zuleitung_4b"    Grid.Column="12"                        Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="1" />
 
         <Rectangle x:Name="rct_Behaelter_1_Leer"    Grid.Column="3"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="LightBlue" />
         <Rectangle x:Name="rct_Behaelter_2_Leer"    Grid.Column="6"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="LightBlue" />
         <Rectangle x:Name="rct_Behaelter_3_Leer"    Grid.Column="9"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="LightBlue" />
         <Rectangle x:Name="rct_Behaelter_4_Leer"    Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="6"   Fill="LightBlue" />
 
-        <Rectangle x:Name="rct_Behaelter_1_Voll"    Grid.Column="3"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,30,0,0"  Canvas.ZIndex="2" />
-        <Rectangle x:Name="rct_Behaelter_2_Voll"    Grid.Column="6"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,50,0,0"  Canvas.ZIndex="2" />
-        <Rectangle x:Name="rct_Behaelter_3_Voll"    Grid.Column="9"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,100,0,0" Canvas.ZIndex="2" />
-        <Rectangle x:Name="rct_Behaelter_4_Voll"    Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,150,0,0" Canvas.ZIndex="2" />
+        <Rectangle x:Name="rct_Zuleitung_1b"    Grid.Column="3"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="2" />
+        <Rectangle x:Name="rct_Zuleitung_2b"    Grid.Column="6"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="2" />
+        <Rectangle x:Name="rct_Zuleitung_3b"    Grid.Column="9"                         Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="2" />
+        <Rectangle x:Name="rct_Zuleitung_4b"    Grid.Column="12"                        Grid.Row="5" Grid.RowSpan="2"   Fill="LightBlue" Margin="40,0,20,0" Canvas.ZIndex="2" />
+        
+        <Rectangle x:Name="rct_Behaelter_1_Voll"    Grid.Column="3"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,30,0,0"  Canvas.ZIndex="3" />
+        <Rectangle x:Name="rct_Behaelter_2_Voll"    Grid.Column="6"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,50,0,0"  Canvas.ZIndex="3" />
+        <Rectangle x:Name="rct_Behaelter_3_Voll"    Grid.Column="9"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,100,0,0" Canvas.ZIndex="3" />
+        <Rectangle x:Name="rct_Behaelter_4_Voll"    Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,150,0,0" Canvas.ZIndex="3" />
 
         <Label x:Name="lbl_B1" Content=" B1"    Grid.Column="5"     Grid.Row="6" Background="LawnGreen" Margin="0,0,20,175" />
         <Label x:Name="lbl_B3" Content=" B3"    Grid.Column="8"     Grid.Row="6" Background="LawnGreen" Margin="0,0,20,175" />

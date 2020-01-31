@@ -124,13 +124,13 @@
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorSpannungString}" />
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorFrequenzString}" />
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorLeistungString}" />
-        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorCosPhiString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorPhasenverschiebungString}" />
 
         <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzSpannungString}" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzFrequenzString}" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzLeistungString}" />
-        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzCosPhiString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzPhasenverschiebungString}" />
 
         <Rectangle x:Name="RctAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
@@ -149,14 +149,14 @@
         <Label Content="Spannung"   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="Frequenz"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="Leistung"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="cos φ"      Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="induktiv"   Grid.Column="21" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="kapazitiv"  Grid.Column="24" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="Phasenverschiebung φ "  Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="induktiv"   Grid.Column="25" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="kapazitiv"  Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
 
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzSpannungSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzFrequenzSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzLeistungSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-1"  Maximum="1"    TickFrequency="0.1"  IsSnapToTickEnabled="True" Value="{Binding  Kraftwerk.ViSoll.NetzCosPhiSlider,   Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzSpannungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzFrequenzSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzLeistungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-90" Maximum="90"    TickFrequency="1"  IsSnapToTickEnabled="True"   Value="{Binding  Kraftwerk.ViSoll.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
 
         <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}" />
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>
@@ -191,7 +191,7 @@
                                         GaugeBackgroundColor="Black"
                                         PointerThickness ="16"
                                         OptimalRangeStartValue="0"
-                                        OptimalRangeEndValue="25"
+                                        OptimalRangeEndValue="25" 
                                         DialTextOffset="40"
                                         DialText="Black"
                                         DialTextColor="Black"

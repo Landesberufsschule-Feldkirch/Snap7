@@ -35,12 +35,12 @@ namespace Synchronisiereinrichtung
             S7.SetIntAt(anInput, 2, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_U, 1000));
             S7.SetIntAt(anInput, 4, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_f, 100));
             S7.SetIntAt(anInput, 6, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_P, 1000));
-            S7.SetIntAt(anInput, 8, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_CosPhi, 1));
+            S7.SetIntAt(anInput, 8, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_Phasenverschiebung, 100));
 
             S7.SetIntAt(anInput, 10, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_U, 1000));
             S7.SetIntAt(anInput, 12, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_f, 100));
             S7.SetIntAt(anInput, 14, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_P, 1000));
-            S7.SetIntAt(anInput, 16, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_CosPhi, 1));
+            S7.SetIntAt(anInput, 16, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_Phasenverschiebung, 1));
 
             S7.SetIntAt(anInput, 18, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
         }

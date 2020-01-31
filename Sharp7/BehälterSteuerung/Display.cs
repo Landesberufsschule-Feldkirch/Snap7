@@ -73,6 +73,13 @@ namespace BehälterSteuerung
                 btn_Automatik_1324.IsEnabled = true;
                 btn_Automatik_1432.IsEnabled = true;
                 btn_Automatik_4321.IsEnabled = true;
+
+
+                for (var i = 0; i < 4; i++)
+                {
+                    gAlleBehaelter[i].VentilUnten = false;
+                }
+
             });
         }
     }

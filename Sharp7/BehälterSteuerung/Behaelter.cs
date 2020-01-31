@@ -122,7 +122,7 @@ namespace BehälterSteuerung
                     BtnVentilUntenAus.Visibility = System.Windows.Visibility.Visible;
                 }
 
-                if (VentilUnten && (Pegel > 0.1)) RctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else RctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
+                if (Pegel > 0) RctAbleitung.Fill = System.Windows.Media.Brushes.Blue; else RctAbleitung.Fill = System.Windows.Media.Brushes.LightBlue;
 
                 RctBehaelterFuellstand.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
             }

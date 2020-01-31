@@ -16,8 +16,7 @@ namespace WordClock
             Byte_5,
             Byte_6,
             Byte_7,
-            Byte_8,
-            Byte_9
+            Byte_8
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)

@@ -25,7 +25,7 @@ namespace Tiefgarage
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(2, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 s7_1200 = new S7_1200(1, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             AlleFahrzeugePersonenInitialisieren();
 

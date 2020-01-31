@@ -43,9 +43,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Kraftwerk
     {
-        private readonly KraftwerkStatemachine kraftwerkStatemachine;
-        private double FrequenzDifferenz;
         public readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
+        public readonly Statemachine kraftwerkStatemachine;
+        public double FrequenzDifferenz;
 
 
         public bool Q1 { get; set; }
@@ -60,13 +60,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Generator_f { get; set; }
         public double Generator_U { get; set; }
         public double Generator_P { get; set; }
-        public double Generator_CosPhi { get; set; }
+        public double Generator_Phasenverschiebung { get; set; }
         public double SpannungsdifferenzGeneratorNetz { get; set; }
 
         public double Netz_U { get; set; }
         public double Netz_f { get; set; }
         public double Netz_P { get; set; }
-        public double Netz_CosPhi { get; set; }
+        public double Netz_Phasenverschiebung { get; set; }
 
 
         public VisuSollwerte ViSoll { get; set; }
@@ -79,7 +79,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         {
             ViSoll = new VisuSollwerte();
             ViAnzeige = new VisuAnzeigenUmschalten();
-            kraftwerkStatemachine = new KraftwerkStatemachine(this);
+            kraftwerkStatemachine = new Statemachine(this);
 
             System.Threading.Tasks.Task.Run(() => KraftwerkTask());
         }
@@ -97,10 +97,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             {
                 Sollwerte2Anzeige();
 
-                kraftwerkStatemachine.Aufrufen();
-
-
-
+                kraftwerkStatemachine.Fire(Statemachine.Trigger.Aktualisieren);
 
                 Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Netz_f, Netz_Winkel);
                 Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
@@ -150,13 +147,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             Netz_f = ViSoll.Netz_f();
             Netz_U = ViSoll.Netz_U();
             Netz_P = ViSoll.Netz_P();
-            Netz_CosPhi = ViSoll.Netz_CosPhi();
+            Netz_Phasenverschiebung = ViSoll.Netz_Phasenverschiebung();
 
 
             ViAnzeige.VentilEinschalten(Ventil_Y > 1);
             ViAnzeige.LeistungsschalterEinschalten(Q1);
-            ViAnzeige.MessgeraetAnzeigen(Math.Abs(FrequenzDifferenz) < 2);
-
+           
             ViAnzeige.Y(Ventil_Y);
             ViAnzeige.Ie(Generator_Ie);
 
@@ -164,51 +160,33 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             ViAnzeige.Generator_U(Generator_U);
             ViAnzeige.Generator_f(Generator_f);
             ViAnzeige.Generator_P(Generator_P);
-            ViAnzeige.Generator_CosPhi(Generator_CosPhi);
+            ViAnzeige.Generator_Phasenverschiebung (Generator_Phasenverschiebung);
 
             ViAnzeige.Netz_U(Netz_U);
             ViAnzeige.Netz_f(Netz_f);
             ViAnzeige.Netz_P(Netz_P);
-            ViAnzeige.Netz_CosPhi(Netz_CosPhi);
-        }
-
-
-        internal void Synchronisieren()
-        {
-            Q1 = true;
+            ViAnzeige.Netz_Phasenverschiebung(Netz_Phasenverschiebung);
 
             switch (ViSoll.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
-                    if (FrequenzDifferenz > 2) ViAnzeige.MaschineTot(true);
-                    if (SpannungsdifferenzGeneratorNetz > 25) ViAnzeige.MaschineTot(true);
-                    break;
-
-                case SynchronisierungAuswahl.U_f_Phase:
-                    if (FrequenzDifferenz > 1) ViAnzeige.MaschineTot(true);
-                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
-                    break;
-
-                case SynchronisierungAuswahl.U_f_Phase_Leistung:
-                    if (FrequenzDifferenz > 0.9) ViAnzeige.MaschineTot(true);
-                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
-                    break;
-
-                case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
-                    if (FrequenzDifferenz > 0.8) ViAnzeige.MaschineTot(true);
-                    if (SpannungsdifferenzGeneratorNetz > 10) ViAnzeige.MaschineTot(true);
+                    ViAnzeige.MessgeraetOptimalerBereich = 10;
                     break;
 
                 default:
+                    ViAnzeige.MessgeraetOptimalerBereich = 50;
                     break;
             }
         }
 
+        internal void Synchronisieren()
+        {
+            kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
+        }
+
         internal void Reset()
         {
-            ViAnzeige.MaschineTot(false);
-            Q1 = false;
-            Generator_n = 0;
+            kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
         }
     }
 }

@@ -12,41 +12,44 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
 
+
+
+
         #region Leistungsfaktor
 
-        public void Generator_CosPhi(double val)
+        public void Generator_Phasenverschiebung(double val)
         {
-            GeneratorCosPhiString = $"cos φ={val.ToString("N1")}";
+            GeneratorPhasenverschiebungString = $"cos φ={val.ToString("N1")}";
         }
 
-        public void Netz_CosPhi(double val)
+        public void Netz_Phasenverschiebung(double val)
         {
-            NetzCosPhiString = $"cos φ={val}";
+            NetzPhasenverschiebungString = $"cos φ={val}";
         }
 
-        private double _GeneratorCosPhiString;
+        private double _GeneratorPhasenverschiebungString;
 
-        public string GeneratorCosPhiString
+        public string GeneratorPhasenverschiebungString
         {
-            get { return "cos φ=" + _GeneratorCosPhiString; }
+            get { return "cos φ=" + _GeneratorPhasenverschiebungString; }
             set
             {
-                _GeneratorCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("GeneratorCosPhiString");
+                _GeneratorPhasenverschiebungString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("GeneratorPhasenverschiebungString");
             }
         }
 
 
 
-        private double _NetzCosPhiString;
+        private double _NetzPhasenverschiebungString;
 
-        public string NetzCosPhiString
+        public string NetzPhasenverschiebungString
         {
-            get { return "cos φ=" + _NetzCosPhiString; }
+            get { return "cos φ=" + _NetzPhasenverschiebungString; }
             set
             {
-                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzCosPhiString");
+                _NetzPhasenverschiebungString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("NetzPhasenverschiebungString");
             }
         }
 
@@ -208,6 +211,18 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         #region Messgerät
 
+        // OptimalRangeEndValue= "{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}" 
+
+        private double _MessgeraetOptimalerBereich;
+        public double MessgeraetOptimalerBereich
+        {
+            get { return _MessgeraetOptimalerBereich; }
+            set
+            {
+                _MessgeraetOptimalerBereich = value;
+                OnPropertyChanged("MessgeraetOptimalerBereich");
+            }
+        }
         public void MessgeraetAnzeigen(bool val)
         {
             if (val) VisibilityMessgeraetSichtbar = "Visible";
@@ -245,6 +260,11 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public void MaschineTot(bool val)
         {
             if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden";
+        }
+
+        public bool IstMaschineTot()
+        {
+            if (VisibilityMaschineTot == "Visible") return true; else return false;
         }
 
         private string _VisibilityMaschineTotAnzeigen;

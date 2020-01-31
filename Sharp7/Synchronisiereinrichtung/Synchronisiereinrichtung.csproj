@@ -65,9 +65,13 @@
     <Compile Include="Kraftwerk\Model\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\Model\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
-    <Compile Include="Kraftwerk\Model\KraftwerkStateAus.cs" />
-    <Compile Include="Kraftwerk\Model\KraftwerkStateHochfahren.cs" />
-    <Compile Include="Kraftwerk\Model\KraftwerkStatemachine.cs" />
+    <Compile Include="Kraftwerk\Model\StateAus.cs" />
+    <Compile Include="Kraftwerk\Model\StateBelasten.cs" />
+    <Compile Include="Kraftwerk\Model\StateHerunterfahren.cs" />
+    <Compile Include="Kraftwerk\Model\StateHochfahren.cs" />
+    <Compile Include="Kraftwerk\Model\Statemachine.cs" />
+    <Compile Include="Kraftwerk\Model\StateReset.cs" />
+    <Compile Include="Kraftwerk\Model\StateSynchronisieren.cs" />
     <Compile Include="Kraftwerk\Model\VisuSollwerte.cs" />
     <Compile Include="Kraftwerk\Model\VisuAnzeigenUmschalten.cs" />
     <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
