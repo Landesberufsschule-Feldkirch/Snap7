@@ -93,9 +93,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Netz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
-            if (_NetzPhasenverschiebungSlider < 1) _NetzPhasenverschiebungSlider = 1;
-            if (_NetzPhasenverschiebungSlider > 179) _NetzPhasenverschiebungSlider = 179;
-
             if (_NetzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
             else return Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
         }

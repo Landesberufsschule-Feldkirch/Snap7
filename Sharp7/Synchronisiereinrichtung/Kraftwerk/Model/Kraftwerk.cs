@@ -45,9 +45,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
     {
         public readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
         public readonly Statemachine kraftwerkStatemachine;
-        public double FrequenzDifferenz;
+        public double FrequenzDifferenz = 5;
 
-
+        private double optimalerSpannungswert;
         public bool Q1 { get; set; }
 
         public bool KraftwerkStarten { get; set; }
@@ -172,11 +172,19 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             switch (ViSoll.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
-                    ViAnzeige.MessgeraetOptimalerBereich = 10;
+                    if (optimalerSpannungswert != 10)
+                    {
+                        optimalerSpannungswert = 10;
+                        ViAnzeige.MessgeraetOptimalerBereich = optimalerSpannungswert;
+                    }
                     break;
 
                 default:
-                    ViAnzeige.MessgeraetOptimalerBereich = 50;
+                    if (optimalerSpannungswert != 100)
+                    {
+                        optimalerSpannungswert = 100;
+                        ViAnzeige.MessgeraetOptimalerBereich = optimalerSpannungswert;
+                    }
                     break;
             }
         }

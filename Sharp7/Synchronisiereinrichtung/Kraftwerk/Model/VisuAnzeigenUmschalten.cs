@@ -16,12 +16,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public void Generator_CosPhi(double val)
         {
-            GeneratorCosPhiString = $"cos φ={val.ToString("N1")}";
+            GeneratorCosPhiString = $"cos φ={val.ToString("N2")}";
         }
 
         public void Netz_CosPhi(double val)
         {
-            NetzCosPhiString = $"cos φ={val}";
+            NetzCosPhiString = $"cos φ={val.ToString("N2")}";
         }
 
         private double _GeneratorCosPhiString;
@@ -207,8 +207,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         #endregion
 
         #region Messgerät
-
-        // OptimalRangeEndValue= "{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}" 
+        //"{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}"
 
         private double _MessgeraetOptimalerBereich;
         public double MessgeraetOptimalerBereich

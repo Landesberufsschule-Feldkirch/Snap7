@@ -192,7 +192,7 @@
                                         GaugeBackgroundColor="Black"
                                         PointerThickness ="16"
                                         OptimalRangeStartValue="0"
-                                        OptimalRangeEndValue="25" 
+                                        OptimalRangeEndValue= "25"  
                                         DialTextOffset="40"
                                         DialText="Black"
                                         DialTextColor="Black"
