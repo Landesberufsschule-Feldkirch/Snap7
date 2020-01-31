@@ -27,6 +27,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             kraftWerk.ViAnzeige.MessgeraetAnzeigen(Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
 
+            if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
             if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
         }
 

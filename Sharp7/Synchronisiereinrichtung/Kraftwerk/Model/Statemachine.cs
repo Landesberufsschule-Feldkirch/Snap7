@@ -92,6 +92,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 .OnExit(() => stateHochfahren.OnExit())
                 .InternalTransition(Trigger.Aktualisieren, t => stateHochfahren.Doing())
                 .Permit(Trigger.Synchronisieren, State.Synchronisieren)
+                .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.VentilGeschlossen, State.Aus)
                 .Permit(Trigger.Reset, State.Reset);
 

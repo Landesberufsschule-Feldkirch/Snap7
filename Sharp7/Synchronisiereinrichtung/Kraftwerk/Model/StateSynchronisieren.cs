@@ -17,7 +17,7 @@
             switch (kraftWerk.ViSoll.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
-                    if ((kraftWerk.FrequenzDifferenz > 2) || (kraftWerk.SpannungsdifferenzGeneratorNetz > 5)) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+                    if ((kraftWerk.FrequenzDifferenz > 0.5) || (kraftWerk.SpannungsdifferenzGeneratorNetz > 5)) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
                     else kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Belasten);
                     break;
 

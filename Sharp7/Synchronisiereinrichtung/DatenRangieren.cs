@@ -51,8 +51,8 @@ namespace Synchronisiereinrichtung
             {
                 viewModel.Kraftwerk.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
 
-                viewModel.Kraftwerk.Ventil_Y = S7.GetSint16At(anOutput, 0);
-                viewModel.Kraftwerk.Generator_Ie = S7.GetSint16At(anOutput, 2);
+                viewModel.Kraftwerk.Ventil_Y = S7Analog.S7_Analog_2_Double(S7.GetSint16At(anOutput, 0), 100);
+                viewModel.Kraftwerk.Generator_Ie = S7Analog.S7_Analog_2_Double(S7.GetSint16At(anOutput, 2), 10);
             }
         }
     }
