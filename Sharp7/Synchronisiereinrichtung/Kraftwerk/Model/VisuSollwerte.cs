@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
@@ -11,7 +12,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             NetzSpannungSlider = 400;
             NetzFrequenzSlider = 50;
-            NetzPhasenverschiebungSlider = 0;
+            NetzPhasenverschiebungSlider = 90; // der Einstellbereich geht von 0 ..180
             NetzLeistungSlider = 600;
             SynchAuswahl = SynchronisierungAuswahl.U_f;
         }
@@ -89,7 +90,15 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         #region NetzLeistungsfaktor
 
-        public double Netz_Phasenverschiebung() { return NetzPhasenverschiebungSlider; }
+        public double Netz_CosPhi()
+        {
+            // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
+            if (_NetzPhasenverschiebungSlider < 1) _NetzPhasenverschiebungSlider = 1;
+            if (_NetzPhasenverschiebungSlider > 179) _NetzPhasenverschiebungSlider = 179;
+
+            if (_NetzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
+            else return Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
+        }
 
         private double _NetzPhasenverschiebungSlider;
 

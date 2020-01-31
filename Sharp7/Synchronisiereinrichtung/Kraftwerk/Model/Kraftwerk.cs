@@ -60,13 +60,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Generator_f { get; set; }
         public double Generator_U { get; set; }
         public double Generator_P { get; set; }
-        public double Generator_Phasenverschiebung { get; set; }
+        public double Generator_CosPhi { get; set; }
         public double SpannungsdifferenzGeneratorNetz { get; set; }
 
         public double Netz_U { get; set; }
         public double Netz_f { get; set; }
         public double Netz_P { get; set; }
-        public double Netz_Phasenverschiebung { get; set; }
+        public double Netz_CosPhi { get; set; }
 
 
         public VisuSollwerte ViSoll { get; set; }
@@ -147,12 +147,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             Netz_f = ViSoll.Netz_f();
             Netz_U = ViSoll.Netz_U();
             Netz_P = ViSoll.Netz_P();
-            Netz_Phasenverschiebung = ViSoll.Netz_Phasenverschiebung();
+            Netz_CosPhi = ViSoll.Netz_CosPhi();
 
 
             ViAnzeige.VentilEinschalten(Ventil_Y > 1);
             ViAnzeige.LeistungsschalterEinschalten(Q1);
-           
+
             ViAnzeige.Y(Ventil_Y);
             ViAnzeige.Ie(Generator_Ie);
 
@@ -160,12 +160,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             ViAnzeige.Generator_U(Generator_U);
             ViAnzeige.Generator_f(Generator_f);
             ViAnzeige.Generator_P(Generator_P);
-            ViAnzeige.Generator_Phasenverschiebung (Generator_Phasenverschiebung);
+            ViAnzeige.Generator_CosPhi(Generator_CosPhi);
 
             ViAnzeige.Netz_U(Netz_U);
             ViAnzeige.Netz_f(Netz_f);
             ViAnzeige.Netz_P(Netz_P);
-            ViAnzeige.Netz_Phasenverschiebung(Netz_Phasenverschiebung);
+            ViAnzeige.Netz_CosPhi(Netz_CosPhi);
+
+            ViAnzeige.Status(kraftwerkStatemachine.StatusAusgeben());
 
             switch (ViSoll.SynchAuswahl)
             {

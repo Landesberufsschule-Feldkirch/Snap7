@@ -12,44 +12,41 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
 
-
-
-
         #region Leistungsfaktor
 
-        public void Generator_Phasenverschiebung(double val)
+        public void Generator_CosPhi(double val)
         {
-            GeneratorPhasenverschiebungString = $"cos φ={val.ToString("N1")}";
+            GeneratorCosPhiString = $"cos φ={val.ToString("N1")}";
         }
 
-        public void Netz_Phasenverschiebung(double val)
+        public void Netz_CosPhi(double val)
         {
-            NetzPhasenverschiebungString = $"cos φ={val}";
+            NetzCosPhiString = $"cos φ={val}";
         }
 
-        private double _GeneratorPhasenverschiebungString;
+        private double _GeneratorCosPhiString;
 
-        public string GeneratorPhasenverschiebungString
+        public string GeneratorCosPhiString
         {
-            get { return "cos φ=" + _GeneratorPhasenverschiebungString; }
+            get { return "cos φ=" + _GeneratorCosPhiString; }
             set
             {
-                _GeneratorPhasenverschiebungString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("GeneratorPhasenverschiebungString");
+                _GeneratorCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("GeneratorCosPhiString");
             }
         }
 
 
 
-        private double _NetzPhasenverschiebungString;
+        private double _NetzCosPhiString;
 
-        public string NetzPhasenverschiebungString
+        public string NetzCosPhiString
         {
-            get { return "cos φ=" + _NetzPhasenverschiebungString; }
+            get { return "cos φ=" + _NetzCosPhiString; }
             set
             {
-                _NetzPhasenverschiebungString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzPhasenverschiebungString");
+                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                OnPropertyChanged("NetzCosPhiString");
             }
         }
 
@@ -382,6 +379,27 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
         #endregion Ventil
+
+        #region Kraftwerk Status
+
+        public void Status(string val)
+        {
+            KraftwerkStatus = "Status: " + val;
+        }
+
+        private string _KraftwerkStatus;
+
+        public string KraftwerkStatus
+        {
+            get { return _KraftwerkStatus; }
+            set
+            {
+                _KraftwerkStatus = value;
+                OnPropertyChanged("KraftwerkStatus");
+            }
+        }
+
+        #endregion
 
         #region iNotifyPeropertyChanged Members
 

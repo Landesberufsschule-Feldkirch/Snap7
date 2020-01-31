@@ -23,9 +23,11 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             kraftWerk.Generator_U = kraftWerk.generator.Spannung(kraftWerk.Generator_Ie);
             kraftWerk.Generator_f = kraftWerk.generator.Frequenz();
             kraftWerk.Generator_P = 0;
-            kraftWerk.Generator_Phasenverschiebung = 0;
+            kraftWerk.Generator_CosPhi = 1;
 
             kraftWerk.ViAnzeige.MessgeraetAnzeigen(Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
+
+            if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
         }
 
         public void OnExit()

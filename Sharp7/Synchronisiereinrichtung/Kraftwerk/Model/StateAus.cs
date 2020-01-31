@@ -20,7 +20,7 @@
             kraftWerk.Generator_U = 0;
             kraftWerk.Generator_f = 0;
             kraftWerk.Generator_P = 0;
-            kraftWerk.Generator_Phasenverschiebung = 0;
+            kraftWerk.Generator_CosPhi = 1;
 
             kraftWerk.ViAnzeige.MessgeraetAnzeigen(false);
 

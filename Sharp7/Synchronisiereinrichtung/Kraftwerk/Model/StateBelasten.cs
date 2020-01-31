@@ -11,8 +11,8 @@
 
         public void OnEntry()
         {
-            kraftWerk.generator.SynchronisierungVentil(kraftWerk.Ventil_Y);
-            kraftWerk.generator.SynchronisierungErregerstrom(kraftWerk.Generator_Ie);
+            kraftWerk.generator.SynchronisierungVentil(kraftWerk.Ventil_Y);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor
+            kraftWerk.generator.SynchronisierungErregerstrom(kraftWerk.Generator_Ie); // gibt ab jetzt den Leistungsfaktor und nicht mehr die Spannung vor
         }
 
         public void Doing()
@@ -26,8 +26,9 @@
             kraftWerk.generator.MaschineLeistungFahren(kraftWerk.Ventil_Y);
             kraftWerk.generator.PhasenSchieberbetrieb(kraftWerk.Generator_Ie);
             kraftWerk.Generator_P = kraftWerk.generator.Leistung();
-            kraftWerk.Generator_Phasenverschiebung = kraftWerk.generator.Winkel();
+            kraftWerk.Generator_CosPhi = kraftWerk.generator.CosPhi();
 
+            if (kraftWerk.Generator_P > 5000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
         }
 
         public void OnExit()

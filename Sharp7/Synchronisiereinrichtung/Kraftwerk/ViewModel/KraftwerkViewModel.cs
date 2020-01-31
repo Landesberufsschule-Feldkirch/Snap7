@@ -71,6 +71,12 @@
                 Stroke = Colors.YellowGreen,
             });
 
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            {
+                Name = "Leistung P",
+                Stroke = Colors.AliceBlue,
+            });
+
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
@@ -85,13 +91,15 @@
                         Kraftwerk.Generator_n,
                         Kraftwerk.Generator_f,
                         Kraftwerk.Generator_U,
-                        Kraftwerk.SpannungsdifferenzGeneratorNetz
+                        Kraftwerk.SpannungsdifferenzGeneratorNetz,
+                        Kraftwerk.Generator_P
                     };
 
                     var x = watch.Elapsed;
 
                     List<TimeSpanDataPoint> xx = new List<TimeSpanDataPoint>()
                     {
+                        x,
                         x,
                         x,
                         x,

@@ -77,8 +77,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V1.0 " Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" />
-        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="20" Grid.Row="22"  Grid.ColumnSpan="7"  Background="LightSeaGreen" />
+        <Label x:Name="lbl_VersionsInfo" Content="V1.0 "    Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" />
+        <Label x:Name="lbl_PlcPing"         Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="LightSeaGreen"    Content="S7-1200"    />
+        <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding Kraftwerk.ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" />
 
@@ -103,9 +104,9 @@
         <Rectangle x:Name="ErregungZuleitungSenkrechtLinks" Grid.Column="10"  Grid.ColumnSpan="2"   Grid.Row="4" Grid.RowSpan="2" Fill="Red" Margin="67,0,67,0" />
         <Rectangle x:Name="ErregungZuleitungSenkrechtRechts" Grid.Column="17"                       Grid.Row="4" Fill="Red" Margin="32,0,32,0" />
 
-        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="7"  Grid.RowSpan="4" Fill="#FF4545C3" />
+        <Rectangle x:Name="Turbine"                                             Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="7" Grid.RowSpan="4" Fill="#FF4545C3" />
         <Rectangle x:Name="Welle"                                               Grid.Column="8"                         Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Margin="0,25" />
-        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="6"  Grid.RowSpan="6" Fill="Red" />
+        <Rectangle x:Name="Generator"                                           Grid.Column="9" Grid.ColumnSpan="4"     Grid.Row="6" Grid.RowSpan="6" Fill="Red" />
         <Label Content="Turbine"                                                Grid.Column="5" Grid.ColumnSpan="3"     Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
         <Label Content="Generator"                                              Grid.Column="10" Grid.ColumnSpan="2"    Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt" />
 
@@ -124,13 +125,13 @@
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorSpannungString}" />
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorFrequenzString}" />
         <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorLeistungString}" />
-        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorPhasenverschiebungString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.GeneratorCosPhiString}" />
 
         <Label Content="Netz"                       Grid.Column="16" Grid.ColumnSpan="4"    Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="20pt" Margin="0,12" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="16" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzSpannungString}" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzFrequenzString}" />
         <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzLeistungString}" />
-        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzPhasenverschiebungString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding Kraftwerk.ViAnzeige.NetzCosPhiString}" />
 
         <Rectangle x:Name="RctAuswahl"             Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
@@ -149,14 +150,14 @@
         <Label Content="Spannung"   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="Frequenz"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="Leistung"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="Phasenverschiebung φ "  Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="cos φ"      Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="induktiv"   Grid.Column="25" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
         <Label Content="kapazitiv"  Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
 
         <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzSpannungSlider, Mode=TwoWay}" />
         <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzFrequenzSlider, Mode=TwoWay}" />
         <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzLeistungSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="-90" Maximum="90"    TickFrequency="1"  IsSnapToTickEnabled="True"   Value="{Binding  Kraftwerk.ViSoll.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
+        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="0"   Maximum="180"    TickFrequency="1"   IsSnapToTickEnabled="True"  Value="{Binding  Kraftwerk.ViSoll.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
 
         <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}" />
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding Kraftwerk.ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>

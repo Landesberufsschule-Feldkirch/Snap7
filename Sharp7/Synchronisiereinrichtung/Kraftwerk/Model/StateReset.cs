@@ -12,12 +12,12 @@
         {
             kraftWerk.Q1 = false;
             kraftWerk.ViAnzeige.MaschineTot(false);
-        }
-       public void Doing()
-        {
             kraftWerk.generator.Reset();
-
-            kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Ausschalten);
+            kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Neustart);
+        }
+        public void Doing()
+        {
+            // nichts zu tun
         }
 
         public void OnExit()

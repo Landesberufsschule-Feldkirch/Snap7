@@ -6,17 +6,17 @@
 
         private double n;
         private double P;
-        private double Phasenverschiebung;
+        private double cosPhi;
         private readonly double SpannungsFaktor;
         private readonly double DrehzahlFaktor;
-        
+
         public double SynchVentil;
         public double SynchErregerstrom;
 
         private const double Y_n_Faktor = 0.28;
         private const double n_BremsFaktor = 0.991;
 
-        private double Y_LeistungsFaktor = 0.1;
+        private double Y_LeistungsFaktor = 15;
         private double Y_LeistungsBremse = 0.9;
 
         private double LeistungsfaktorFaktor = 1;
@@ -89,23 +89,23 @@
 
         }
 
-        public double Winkel()
+        public double CosPhi()
         {
-            return Phasenverschiebung;
+            return cosPhi;
         }
 
         public void PhasenSchieberbetrieb(double Ie)
         {
             if (Ie == SynchErregerstrom)
             {
-                Phasenverschiebung = 1;
+                cosPhi = 1;
             }
             else
             {
                 if (Ie > SynchErregerstrom)
                 {
                     // übererregt -> kapazitiv
-                    Phasenverschiebung =  90 - LeistungsfaktorFaktor * (Ie - SynchErregerstrom);
+                    cosPhi = 90 - LeistungsfaktorFaktor * (Ie - SynchErregerstrom);
 
                 }
                 else
@@ -113,8 +113,8 @@
                     // untererregt ->induktiv
                 }
 
-                
-               
+
+
             }
         }
     }

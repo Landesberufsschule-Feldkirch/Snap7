@@ -67,9 +67,10 @@
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
     <Compile Include="Kraftwerk\Model\StateAus.cs" />
     <Compile Include="Kraftwerk\Model\StateBelasten.cs" />
-    <Compile Include="Kraftwerk\Model\StateHerunterfahren.cs" />
+    <Compile Include="Kraftwerk\Model\StateLeistungsschalterAus.cs" />
     <Compile Include="Kraftwerk\Model\StateHochfahren.cs" />
     <Compile Include="Kraftwerk\Model\Statemachine.cs" />
+    <Compile Include="Kraftwerk\Model\StateMaschineTot.cs" />
     <Compile Include="Kraftwerk\Model\StateReset.cs" />
     <Compile Include="Kraftwerk\Model\StateSynchronisieren.cs" />
     <Compile Include="Kraftwerk\Model\VisuSollwerte.cs" />
