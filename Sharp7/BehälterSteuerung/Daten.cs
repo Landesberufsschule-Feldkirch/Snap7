@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace BehälterSteuerung
+namespace BehaelterSteuerung
 {
     public partial class MainWindow
     {
@@ -25,6 +25,7 @@ namespace BehälterSteuerung
             P1
         }
 
+        /*
         public ObservableCollection<Behaelter> gAlleBehaelter = new ObservableCollection<Behaelter>();
 
         public void AlleBehaelterInitialisieren()
@@ -34,5 +35,6 @@ namespace BehälterSteuerung
             gAlleBehaelter.Add(new Behaelter(0.5, img_Q5_Ein, img_Q5_Aus, img_Q6_Ein, img_Q6_Aus, rct_Zuleitung_3b, rct_Ableitung_3a, rct_Behaelter_3_Voll, lbl_B5, lbl_B6, btn_Q6_Ein, btn_Q6_Aus, (int)BitPosEingang.B5, (int)BitPosEingang.B6, (int)BitPosAusgang.Q5));
             gAlleBehaelter.Add(new Behaelter(0.3, img_Q7_Ein, img_Q7_Aus, img_Q8_Ein, img_Q8_Aus, rct_Zuleitung_4b, rct_Ableitung_4a, rct_Behaelter_4_Voll, lbl_B7, lbl_B8, btn_Q8_Ein, btn_Q8_Aus, (int)BitPosEingang.B7, (int)BitPosEingang.B8, (int)BitPosAusgang.Q7));
         }
+        */
     }
 }

@@ -29,7 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,10 +71,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Behaelter.cs" />
+    <Compile Include="Commands\UpdateBtnAutomatik_1234.cs" />
+    <Compile Include="Commands\UpdateBtnAutomatik_1324.cs" />
+    <Compile Include="Commands\UpdateBtnAutomatik_1432.cs" />
+    <Compile Include="Commands\UpdateBtnAutomatik_4321.cs" />
+    <Compile Include="Commands\UpdateBtnVentil_Q2.cs" />
+    <Compile Include="Commands\UpdateBtnVentil_Q4.cs" />
+    <Compile Include="Commands\UpdateBtnVentil_Q6.cs" />
+    <Compile Include="Commands\UpdateBtnVentil_Q8.cs" />
+    <Compile Include="Model\AlleBehaelter.cs" />
+    <Compile Include="Model\Behaelter.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="LogikFunktionen.cs" />
+    <Compile Include="Model\VisuAnzeigen.cs" />
+    <Compile Include="ViewModel\BehaelterViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -141,5 +152,6 @@
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

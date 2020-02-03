@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BehälterSteuerung.Properties
+namespace BehaelterSteuerung.Properties
 {
 
 

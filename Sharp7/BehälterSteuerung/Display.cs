@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace BehälterSteuerung
+namespace BehaelterSteuerung
 {
     public partial class MainWindow
     {
@@ -12,8 +12,8 @@ namespace BehälterSteuerung
                 {
                     if (FensterAktiv)
                     {
-                        foreach (Behaelter beh in gAlleBehaelter) beh.BehaelterAnzeigen(FensterAktiv);
-                        AbleitungenAnzeigen(FensterAktiv);
+                       // foreach (Behaelter beh in gAlleBehaelter) beh.BehaelterAnzeigen(FensterAktiv);
+                       // AbleitungenAnzeigen(FensterAktiv);
                     }
                 });
 
@@ -24,7 +24,7 @@ namespace BehälterSteuerung
         public void AbleitungenAnzeigen(bool FensterAktiv)
         {
             bool AbleitungenVoll = false;
-
+/*
             foreach (Behaelter beh in gAlleBehaelter)
             {
                 if ((beh.Pegel > 0.1) && beh.VentilUnten) AbleitungenVoll = true;
@@ -52,10 +52,12 @@ namespace BehälterSteuerung
                 if (Leuchte_P1) circ_Stoerung.Fill = System.Windows.Media.Brushes.Red;
                 else circ_Stoerung.Fill = System.Windows.Media.Brushes.LightGray;
             }
+            */
         }
 
         public void AutomatikKnoepfeDeaktivieren()
         {
+            /*
             this.Dispatcher.Invoke(() =>
             {
                 btn_Automatik_1234.IsEnabled = false;
@@ -63,12 +65,14 @@ namespace BehälterSteuerung
                 btn_Automatik_1432.IsEnabled = false;
                 btn_Automatik_4321.IsEnabled = false;
             });
+            */
         }
 
         public void AutomatikKnoepfeAktivieren()
         {
             this.Dispatcher.Invoke(() =>
             {
+                /*
                 btn_Automatik_1234.IsEnabled = true;
                 btn_Automatik_1324.IsEnabled = true;
                 btn_Automatik_1432.IsEnabled = true;
@@ -79,6 +83,7 @@ namespace BehälterSteuerung
                 {
                     gAlleBehaelter[i].VentilUnten = false;
                 }
+                */
 
             });
         }

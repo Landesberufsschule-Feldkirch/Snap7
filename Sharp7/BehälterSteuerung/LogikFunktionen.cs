@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace BehälterSteuerung
+namespace BehaelterSteuerung
 {
     public class Logikfunktionen
     {
@@ -16,7 +16,7 @@ namespace BehälterSteuerung
             while (mainWindow.FensterAktiv)
             {
                 mainWindow.AutomatikModusNochAktiv = false;
-
+                /*
                 foreach (Behaelter beh in mainWindow.gAlleBehaelter)
                 {
                     beh.PegelUeberwachen();
@@ -24,7 +24,7 @@ namespace BehälterSteuerung
                 }
 
                 if (!mainWindow.AutomatikModusNochAktiv) mainWindow.AutomatikKnoepfeAktivieren();
-
+                */
                 Thread.Sleep(10);
             }
         }

@@ -1,6 +1,6 @@
 ﻿using Sharp7;
 
-namespace BehälterSteuerung
+namespace BehaelterSteuerung
 {
     public class DatenRangieren
     {
@@ -17,18 +17,18 @@ namespace BehälterSteuerung
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenInput(digInput);
+          //  foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenInput(digInput);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            mainWindow.Leuchte_P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenOutput(digOutput);
+           // mainWindow.Leuchte_P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+//foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenOutput(digOutput);
         }
 
         public DatenRangieren(MainWindow window)
         {
-            mainWindow = window;
+          //  mainWindow = window;
         }
     }
 }
