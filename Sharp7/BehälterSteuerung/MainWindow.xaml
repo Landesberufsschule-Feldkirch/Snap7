@@ -111,10 +111,10 @@
         <Rectangle Grid.Column="9"  Grid.Row="5" Grid.RowSpan="2"   Fill="{Binding AlleBehaelter.ViAnzeige.ColorZuleitung_3b}" Margin="40,0,20,0" Canvas.ZIndex="2" />
         <Rectangle Grid.Column="12" Grid.Row="5" Grid.RowSpan="2"   Fill="{Binding AlleBehaelter.ViAnzeige.ColorZuleitung_4b}" Margin="40,0,20,0" Canvas.ZIndex="2" />
 
-        <Rectangle x:Name="rct_Behaelter_1_Voll"    Grid.Column="3"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,30,0,0"  Canvas.ZIndex="3" />
-        <Rectangle x:Name="rct_Behaelter_2_Voll"    Grid.Column="6"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,50,0,0"  Canvas.ZIndex="3" />
-        <Rectangle x:Name="rct_Behaelter_3_Voll"    Grid.Column="9"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,100,0,0" Canvas.ZIndex="3" />
-        <Rectangle x:Name="rct_Behaelter_4_Voll"    Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="0,150,0,0" Canvas.ZIndex="3" />
+        <Rectangle Grid.Column="3"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="{Binding AlleBehaelter.ViAnzeige.Margin1}"   Canvas.ZIndex="3" />
+        <Rectangle Grid.Column="6"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="{Binding AlleBehaelter.ViAnzeige.Margin2}"   Canvas.ZIndex="3" />
+        <Rectangle Grid.Column="9"  Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="{Binding AlleBehaelter.ViAnzeige.Margin3}"   Canvas.ZIndex="3" />
+        <Rectangle Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="6"   Fill="Blue" Margin="{Binding AlleBehaelter.ViAnzeige.Margin4}"   Canvas.ZIndex="3" />
 
         <Label Content=" B1"    Grid.Column="5"     Grid.Row="6" Background="{Binding AlleBehaelter.ViAnzeige.ColorLabelB1}" Margin="0,0,20,175" />
         <Label Content=" B3"    Grid.Column="8"     Grid.Row="6" Background="{Binding AlleBehaelter.ViAnzeige.ColorLabelB3}" Margin="0,0,20,175" />

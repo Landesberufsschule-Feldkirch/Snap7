@@ -81,6 +81,11 @@ namespace BehaelterSteuerung.Model
             BitPositionVentilOben = BitPosVentilOben;
         }
 
+        internal bool VentilObenEingeschaltet()
+        {
+            return VentilOben;
+        }
+
         public Behaelter()
         {
         }

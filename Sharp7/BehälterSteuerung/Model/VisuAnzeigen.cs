@@ -1,6 +1,7 @@
 ﻿namespace BehaelterSteuerung.Model
 {
     using System.ComponentModel;
+    using System.Windows;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -63,6 +64,11 @@
             EnableAutomatik1432 = "true";
             EnableAutomatik4321 = "true";
 
+
+            Margin1 = new Thickness(0, 30, 0, 0);
+            Margin2 = new Thickness(0, 50, 0, 0);
+            Margin3 = new Thickness(0, 70, 0, 0);
+            Margin4 = new Thickness(0, 90, 0, 0);
         }
 
 
@@ -765,7 +771,7 @@
         }
         #endregion
 
-        
+
 
         #region Color P1
         public void FarbeCircle_P1(bool val)
@@ -838,6 +844,81 @@
             }
         }
         #endregion
+
+
+
+        #region Margin1
+        public void Margin_1(double val)
+        {
+            Margin1 = new Thickness(0, 30, 0, 0);
+        }
+
+        private Thickness _Margin1;
+        public Thickness Margin1
+        {
+            get { return _Margin1; }
+            set
+            {
+                _Margin1 = value;
+                OnPropertyChanged("Margin1");
+            }
+        }
+        #endregion
+
+        #region Margin2
+        public void Margin_2(double val)
+        {
+            Margin2 = new Thickness(0, 30, 0, 0);
+        }
+
+        private Thickness _Margin2;
+        public Thickness Margin2
+        {
+            get { return _Margin2; }
+            set
+            {
+                _Margin2 = value;
+                OnPropertyChanged("Margin2");
+            }
+        }
+        #endregion
+
+        #region Margin3
+        public void Margin_3(double val)
+        {
+            Margin3 = new Thickness(0, 30, 0, 0);
+        }
+
+        private Thickness _Margin3;
+        public Thickness Margin3
+        {
+            get { return _Margin3; }
+            set
+            {
+                _Margin3 = value;
+                OnPropertyChanged("Margin3");
+            }
+        }
+        #endregion
+
+        #region Margin4
+        public void Margin_4(double val)
+        {
+            Margin4 = new Thickness(0, 30, 0, 0);
+        }
+
+        private Thickness _Margin4;
+        public Thickness Margin4
+        {
+            get { return _Margin4; }
+            set
+            {
+                _Margin4 = value;
+                OnPropertyChanged("Margin4");
+            }
+        }
+        #endregion
+
 
 
 

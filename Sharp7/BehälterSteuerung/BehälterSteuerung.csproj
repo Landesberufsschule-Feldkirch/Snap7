@@ -83,7 +83,6 @@
     <Compile Include="Model\Behaelter.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="Display.cs" />
-    <Compile Include="LogikFunktionen.cs" />
     <Compile Include="Model\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\BehaelterViewModel.cs" />
     <Page Include="MainWindow.xaml">

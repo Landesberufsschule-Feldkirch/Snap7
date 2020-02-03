@@ -16,6 +16,7 @@
 
         public VisuAnzeigen ViAnzeige { get; set; }
         private readonly List<Behaelter> alleBehaelter = new List<Behaelter>();
+        private bool AutomatikModusAktiv;
 
         public AlleBehaelter()
         {
@@ -31,12 +32,42 @@
 
         private void AlleBehaelterTask()
         {
+            bool AutomatikModusNochAktiv;
 
             while (true)
             {
 
+                AutomatikModusNochAktiv = false;
+
+                foreach (Behaelter beh in alleBehaelter)
+                {
+                    beh.PegelUeberwachen();
+
+                    if ((beh.InternerPegel > 0.01)) AutomatikModusNochAktiv = true;
+                }
+                if (AutomatikModusAktiv && !AutomatikModusNochAktiv)
+                {
+                    AlleAutomatikKnoepfeAktivieren();
+                    AutomatikModusAktiv = false;
+                }
+
+
+                AnzeigeAktualisieren();
+
                 Thread.Sleep(10);
             }
+        }
+
+        private void AnzeigeAktualisieren()
+        {
+            ViAnzeige.VisibilityVentilQ1(alleBehaelter[0].VentilObenEingeschaltet());
+            ViAnzeige.VisibilityVentilQ3(alleBehaelter[1].VentilObenEingeschaltet());
+            ViAnzeige.VisibilityVentilQ5(alleBehaelter[2].VentilObenEingeschaltet());
+            ViAnzeige.VisibilityVentilQ7(alleBehaelter[3].VentilObenEingeschaltet());
+
+
+
+
         }
 
         internal void VentilQ2() { alleBehaelter[0].VentilUntenUmschalten(); }
@@ -69,7 +100,7 @@
         private void AutomatikBetriebStarten(AutomatikModus modus)
         {
             AlleAutomatikKnoepfeDeaktivieren();
-
+            AutomatikModusAktiv = true;
             switch (modus)
             {
                 case AutomatikModus.Modus_1234:

@@ -20,9 +20,8 @@ namespace BehaelterSteuerung
         public bool Tank_3_AutomatischEntleeren;
         public bool Tank_4_AutomatischEntleeren;
 
-        public bool AutomatikModusNochAktiv = false;
+       
 
-        private Logikfunktionen logikfunktionen;
         private DatenRangieren datenRangieren;
 
         private BehaelterSteuerung.ViewModel.BehaelterViewModel behaelterViewModel;
@@ -31,17 +30,14 @@ namespace BehaelterSteuerung
         {
             behaelterViewModel = new BehaelterSteuerung.ViewModel.BehaelterViewModel();
 
-            logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
             DataContext = behaelterViewModel;
 
-           // AlleBehaelterInitialisieren();
 
             S7_1200 s7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            System.Threading.Tasks.Task.Run(() => logikfunktionen.Logikfunktionen_Task());
             System.Threading.Tasks.Task.Run(() => Display_Task());
         }
 
