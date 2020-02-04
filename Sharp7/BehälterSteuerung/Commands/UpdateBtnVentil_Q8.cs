@@ -2,10 +2,10 @@
 {
     using BehaelterSteuerung.ViewModel;
     using System.Windows.Input;
-    class BehaltersteuerungUpdateVentilQ8 : ICommand
+    class BehaltersteuerungBtnVentilQ8 : ICommand
     {
         private readonly BehaelterViewModel _ViewModel;
-        public BehaltersteuerungUpdateVentilQ8(BehaelterViewModel vm)
+        public BehaltersteuerungBtnVentilQ8(BehaelterViewModel vm)
         {
             _ViewModel = vm;
         }

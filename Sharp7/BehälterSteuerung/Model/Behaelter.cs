@@ -7,9 +7,6 @@ namespace BehaelterSteuerung.Model
 {
     public class Behaelter
     {
-
-
-
         private readonly int BitPositionSchwimmerschalterOben;
         private readonly int BitPositionSchwimmerschalterUnten;
         private readonly int BitPositionVentilOben;

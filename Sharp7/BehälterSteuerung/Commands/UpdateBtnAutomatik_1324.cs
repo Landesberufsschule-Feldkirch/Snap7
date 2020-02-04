@@ -2,10 +2,10 @@
 {
     using BehaelterSteuerung.ViewModel;
     using System.Windows.Input;
-    class BehaltersteuerungUpdateAutomatik1324 : ICommand
+    class BehaltersteuerungBtnAutomatik1324 : ICommand
     {
         private readonly BehaelterViewModel _ViewModel;
-        public BehaltersteuerungUpdateAutomatik1324(BehaelterViewModel vm)
+        public BehaltersteuerungBtnAutomatik1324(BehaelterViewModel vm)
         {
             _ViewModel = vm;
         }
