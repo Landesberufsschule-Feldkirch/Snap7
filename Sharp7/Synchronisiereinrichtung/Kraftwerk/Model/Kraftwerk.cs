@@ -49,12 +49,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         private double optimalerSpannungswert;
         public bool Q1 { get; set; }
-
         public bool KraftwerkStarten { get; set; }
         public bool KraftwerkStoppen { get; set; }
-
         public double Ventil_Y { get; set; }
-
         public double Generator_Ie { get; set; }
         public double Generator_n { get; set; }
         public double Generator_f { get; set; }
@@ -62,17 +59,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Generator_P { get; set; }
         public double Generator_CosPhi { get; set; }
         public double SpannungsdifferenzGeneratorNetz { get; set; }
-
         public double Netz_U { get; set; }
         public double Netz_f { get; set; }
         public double Netz_P { get; set; }
         public double Netz_CosPhi { get; set; }
-
-
         public VisuSollwerte ViSoll { get; set; }
         public VisuAnzeigenUmschalten ViAnzeige { get; set; }
-
-
 
 
         public Kraftwerk()

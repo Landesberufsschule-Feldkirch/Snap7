@@ -14,15 +14,15 @@
     public class KraftwerkViewModel
     {
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
-        private readonly Model.Kraftwerk _Kraftwerk;
+        private readonly Model.Kraftwerk kraftwerk;
 
         public KraftwerkViewModel()
         {
-            _Kraftwerk = new Model.Kraftwerk();
-            UpdateSchalterReset = new KraftwerkUpdateManualReset(this);
-            UpdateSchalterQ1 = new KraftwerkUpdateManualQ1(this);
-            UpdateSchalterStart = new KraftwerkUpdateStart(this);
-            UpdateSchalterStop = new KraftwerkUpdateStop(this);
+            kraftwerk = new Model.Kraftwerk();
+            ButtonSchalterReset = new KraftwerkBtnManualReset(this);
+            ButtonSchalterQ1 = new KraftwerkBtnManualQ1(this);
+            ButtonSchalterStart = new KraftwerkBtnStart(this);
+            ButtonSchalterStop = new KraftwerkBtnStop(this);
 
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
@@ -115,23 +115,24 @@
             });
         }
 
-        public Model.Kraftwerk Kraftwerk
-        {
-            get { return _Kraftwerk; }
-        }
+        public Model.Kraftwerk Kraftwerk { get { return kraftwerk; } }
+
 
         public bool CanUpdateQ1 { get { return true; } }
         public bool CanUpdateReset { get { return true; } }
         public bool CanUpdateStart { get { return true; } }
         public bool CanUpdateStop { get { return true; } }
-        public ICommand UpdateSchalterReset { get; private set; }
-        public ICommand UpdateSchalterQ1 { get; private set; }
-        public ICommand UpdateSchalterStart { get; private set; }
-        public ICommand UpdateSchalterStop { get; private set; }
 
-        internal void SchalterQ1() { _Kraftwerk.Synchronisieren(); }
-        public void SchalterReset() { _Kraftwerk.Reset(); }
-        internal void SchalterStart() { _Kraftwerk.Starten(); }
-        public void SchalterStop() { _Kraftwerk.Stoppen(); }
+
+        public ICommand ButtonSchalterReset { get; private set; }
+        public ICommand ButtonSchalterQ1 { get; private set; }
+        public ICommand ButtonSchalterStart { get; private set; }
+        public ICommand ButtonSchalterStop { get; private set; }
+
+
+        internal void SchalterQ1() { kraftwerk.Synchronisieren(); }
+        public void SchalterReset() { kraftwerk.Reset(); }
+        internal void SchalterStart() { kraftwerk.Starten(); }
+        public void SchalterStop() { kraftwerk.Stoppen(); }
     }
 }

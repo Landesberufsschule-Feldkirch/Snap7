@@ -3,13 +3,13 @@
     using Synchronisiereinrichtung.Kraftwerk.ViewModel;
     using System.Windows.Input;
 
-    public class KraftwerkUpdateManualReset : ICommand
+    public class KraftwerkBtnManualReset : ICommand
     {
-        private readonly KraftwerkViewModel _ViewModel;
+        private readonly KraftwerkViewModel viewModel;
 
-        public KraftwerkUpdateManualReset(KraftwerkViewModel vm)
+        public KraftwerkBtnManualReset(KraftwerkViewModel vm)
         {
-            _ViewModel = vm;
+            viewModel = vm;
         }
 
         #region iCommand Members
@@ -22,12 +22,12 @@
 
         public bool CanExecute(object parameter)
         {
-            return _ViewModel.CanUpdateReset;
+            return viewModel.CanUpdateReset;
         }
 
         public void Execute(object parameter)
         {
-            _ViewModel.SchalterReset();
+            viewModel.SchalterReset();
         }
 
         #endregion iCommand Members

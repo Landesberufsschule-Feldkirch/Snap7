@@ -34,8 +34,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnSchalterQ1"  Grid.Column="11" Grid.Row="2" Command="{Binding UpdateSchalterQ1}" Content="Q1" />
-        <Button x:Name="BtnReset"       Grid.Column="11" Grid.Row="4" Command="{Binding UpdateSchalterReset}" Content="Reset" />
+        <Button x:Name="BtnSchalterQ1"  Grid.Column="11" Grid.Row="2" Command="{Binding ButtonSchalterQ1}" Content="Q1" />
+        <Button x:Name="BtnReset"       Grid.Column="11" Grid.Row="4" Command="{Binding ButtonSchalterReset}" Content="Reset" />
 
         <Label  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Content="Ventilstellung Y" />
         <Label  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Content="Erregerstrom Ie" />

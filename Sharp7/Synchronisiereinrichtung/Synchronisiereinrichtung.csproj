@@ -58,10 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Kraftwerk\Commands\KraftwerkUpdateManualQ1.cs" />
-    <Compile Include="Kraftwerk\Commands\KraftwerkUpdateManualReset.cs" />
-    <Compile Include="Kraftwerk\Commands\KraftwerkUpdateStart.cs" />
-    <Compile Include="Kraftwerk\Commands\KraftwerkUpdateStop.cs" />
+    <Compile Include="Kraftwerk\Commands\KraftwerkBtnManualQ1.cs" />
+    <Compile Include="Kraftwerk\Commands\KraftwerkBtnManualReset.cs" />
+    <Compile Include="Kraftwerk\Commands\KraftwerkBtnStart.cs" />
+    <Compile Include="Kraftwerk\Commands\KraftwerkBtnStop.cs" />
     <Compile Include="Kraftwerk\Model\Drehstromgenerator.cs" />
     <Compile Include="Kraftwerk\Model\DrehstromZeiger.cs" />
     <Compile Include="Kraftwerk\Model\Kraftwerk.cs" />
