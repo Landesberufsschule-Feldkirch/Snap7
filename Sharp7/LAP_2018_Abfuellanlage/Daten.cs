@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 
+
 namespace LAP_2018_Abfuellanlage
 {
     public partial class MainWindow
     {
+        /*
         public ObservableCollection<Flaschen> gAlleFlaschen = new ObservableCollection<Flaschen>();
 
         public void AlleFlaschenInitialisieren()
@@ -20,5 +22,7 @@ namespace LAP_2018_Abfuellanlage
         {
             foreach (Flaschen flasche in gAlleFlaschen) { flasche.FlaschenParken(); }
         }
+
+    */
     }
 }

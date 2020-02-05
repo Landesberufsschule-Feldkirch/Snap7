@@ -26,6 +26,7 @@ namespace LAP_2018_Abfuellanlage
 
         public void AnzeigeAktualisieren()
         {
+            /*
             foreach (Flaschen flasche in gAlleFlaschen) { flasche.AnzeigeAktualisieren(FensterAktiv); }
 
             BildSichbarkeitUmschalten(K1, imgVentilFuellenEin, imgVentilFuellenAus);
@@ -41,6 +42,7 @@ namespace LAP_2018_Abfuellanlage
             rctBehaelterVoll.Margin = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - Pegel), 0, 0);
             RechteckHintergrundfarbeAendern((Pegel > 0.01), rctFuellenOben, Brushes.Blue, Brushes.LightBlue);
             RechteckSichbarkeitUmschalten((K1 && (Pegel > 0.01)), rctFuellenUnten);
+            */
         }
 
         private void KnopfHintergrundfarbeAendern(bool Bedingung, Button Knopf, System.Windows.Media.Brush brushEin, System.Windows.Media.Brush brushAus)

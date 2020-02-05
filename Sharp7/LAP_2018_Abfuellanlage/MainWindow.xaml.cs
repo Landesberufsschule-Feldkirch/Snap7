@@ -31,15 +31,20 @@ namespace LAP_2018_Abfuellanlage
         private Logikfunktionen logikfunktionen;
         private DatenRangieren datenRangieren;
 
+        private LAP_2018_Abfuellanlage.ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
+
         public MainWindow()
         {
+            abfuellanlageViewModel = new ViewModel.AbfuellanlageViewModel(this);
+
             logikfunktionen = new Logikfunktionen(this);
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
+            DataContext = abfuellanlageViewModel;
 
-            AlleFlaschenInitialisieren();
-            AlleFlaschenParken();
+           // AlleFlaschenInitialisieren();
+          //  AlleFlaschenParken();
 
             S7_1200 s7_1200 = new S7_1200(2, 2, 4, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 

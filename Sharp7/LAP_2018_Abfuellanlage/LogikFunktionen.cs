@@ -17,6 +17,7 @@ namespace LAP_2018_Abfuellanlage
         {
             while (mainWindow.FensterAktiv)
             {
+                /*
                 if (mainWindow.K1) mainWindow.Pegel -= LeerGeschwindigkeit;
                 if (mainWindow.Pegel < 0) mainWindow.Pegel = 0;
 
@@ -31,6 +32,7 @@ namespace LAP_2018_Abfuellanlage
 
                 mainWindow.B1 = false;
                 foreach (Flaschen flasche in mainWindow.gAlleFlaschen) { mainWindow.B1 |= flasche.FlascheBewegen(mainWindow.M1); }
+                */
 
                 Thread.Sleep(100);
             }

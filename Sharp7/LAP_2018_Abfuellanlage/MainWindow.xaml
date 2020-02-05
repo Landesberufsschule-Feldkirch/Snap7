@@ -65,7 +65,7 @@
 
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="16" />
 
-        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" Click="BtnS1_Click" ClickMode="Press">
+        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
