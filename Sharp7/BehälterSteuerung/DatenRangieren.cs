@@ -4,7 +4,19 @@ namespace BehaelterSteuerung
 {
     public class DatenRangieren
     {
-        private MainWindow mainWindow;
+        private readonly BehaelterSteuerung.ViewModel.BehaelterViewModel viewModel;
+
+        private enum BitPosEingang
+        {
+            B1 = 0,
+            B2,
+            B3,
+            B4,
+            B5,
+            B6,
+            B7,
+            B8
+        }
 
         private enum BitPosAusgang
         {
@@ -15,20 +27,31 @@ namespace BehaelterSteuerung
             P1
         }
 
+        public DatenRangieren(ViewModel.BehaelterViewModel behaelterViewModel)
+        {
+            viewModel = behaelterViewModel;
+        }
+
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-          //  foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenInput(digInput);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.AlleBehaelter.alleBehaelter[0].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.AlleBehaelter.alleBehaelter[0].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.AlleBehaelter.alleBehaelter[1].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.AlleBehaelter.alleBehaelter[1].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B5, viewModel.AlleBehaelter.alleBehaelter[2].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B6, viewModel.AlleBehaelter.alleBehaelter[2].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B7, viewModel.AlleBehaelter.alleBehaelter[3].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B8, viewModel.AlleBehaelter.alleBehaelter[3].SchwimmerschalterUnten);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-           // mainWindow.Leuchte_P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-//foreach (Behaelter beh in mainWindow.gAlleBehaelter) beh.BehalterDatenRangierenOutput(digOutput);
-        }
+            viewModel.AlleBehaelter.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
 
-        public DatenRangieren(MainWindow window)
-        {
-          //  mainWindow = window;
+            viewModel.AlleBehaelter.alleBehaelter[0].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            viewModel.AlleBehaelter.alleBehaelter[1].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
+            viewModel.AlleBehaelter.alleBehaelter[2].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q5);
+            viewModel.AlleBehaelter.alleBehaelter[3].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q7);
         }
     }
 }

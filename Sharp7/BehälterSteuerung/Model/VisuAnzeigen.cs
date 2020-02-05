@@ -5,6 +5,9 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
+
+        private readonly double HoeheFuellBalken = 200.0;
+
         public VisuAnzeigen()
         {
 
@@ -365,7 +368,7 @@
             set
             {
                 _VisibilityVentilQ8Ein = value;
-                OnPropertyChanged("VisibilityVentilQ18in");
+                OnPropertyChanged("VisibilityVentilQ8Ein");
             }
         }
 
@@ -776,7 +779,7 @@
         #region Color P1
         public void FarbeCircle_P1(bool val)
         {
-            if (val) ColorCircle_P1 = "red"; else ColorCircle_P1 = "lightgray";
+            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray";
         }
 
         private string _ColorCircle_P1;
@@ -848,9 +851,9 @@
 
 
         #region Margin1
-        public void Margin_1(double val)
+        public void Margin_1(double pegel)
         {
-            Margin1 = new Thickness(0, 30, 0, 0);
+            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _Margin1;
@@ -866,9 +869,9 @@
         #endregion
 
         #region Margin2
-        public void Margin_2(double val)
+        public void Margin_2(double pegel)
         {
-            Margin2 = new Thickness(0, 30, 0, 0);
+            Margin2 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _Margin2;
@@ -884,9 +887,9 @@
         #endregion
 
         #region Margin3
-        public void Margin_3(double val)
+        public void Margin_3(double pegel)
         {
-            Margin3 = new Thickness(0, 30, 0, 0);
+            Margin3 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _Margin3;
@@ -902,9 +905,9 @@
         #endregion
 
         #region Margin4
-        public void Margin_4(double val)
+        public void Margin_4(double pegel)
         {
-            Margin4 = new Thickness(0, 30, 0, 0);
+            Margin4 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _Margin4;

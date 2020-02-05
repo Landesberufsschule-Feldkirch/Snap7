@@ -4,10 +4,10 @@
     using System.Windows.Input;
     class BehaltersteuerungBtnVentilQ4 : ICommand
     {
-        private readonly BehaelterViewModel _ViewModel;
+        private readonly BehaelterViewModel viewModel;
         public BehaltersteuerungBtnVentilQ4(BehaelterViewModel vm)
         {
-            _ViewModel = vm;
+            viewModel = vm;
         }
 
         #region ICommand Members
@@ -17,15 +17,8 @@
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return _ViewModel.CanUpdateVentilQ4;
-        }
-
-        public void Execute(object parameter)
-        {
-            _ViewModel.VentilQ4();
-        }
+        public bool CanExecute(object parameter) { return viewModel.CanUpdateVentilQ4; }
+        public void Execute(object parameter) { viewModel.VentilQ4(); }
         #endregion
     }
 }

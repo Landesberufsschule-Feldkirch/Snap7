@@ -1,6 +1,5 @@
 ﻿namespace BehaelterSteuerung.Model
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
 
@@ -15,17 +14,18 @@
         }
 
         public VisuAnzeigen ViAnzeige { get; set; }
-        private readonly List<Behaelter> alleBehaelter = new List<Behaelter>();
+        public bool P1 { get; set; }
+        public readonly List<Behaelter> alleBehaelter = new List<Behaelter>();
         private bool AutomatikModusAktiv;
 
         public AlleBehaelter()
         {
             ViAnzeige = new VisuAnzeigen();
 
-            alleBehaelter.Add(new Behaelter());
-            alleBehaelter.Add(new Behaelter());
-            alleBehaelter.Add(new Behaelter());
-            alleBehaelter.Add(new Behaelter());
+            alleBehaelter.Add(new Behaelter(0.2));
+            alleBehaelter.Add(new Behaelter(0.4));
+            alleBehaelter.Add(new Behaelter(0.6));
+            alleBehaelter.Add(new Behaelter(0.8));
 
             System.Threading.Tasks.Task.Run(() => AlleBehaelterTask());
         }
@@ -42,15 +42,18 @@
                 foreach (Behaelter beh in alleBehaelter)
                 {
                     beh.PegelUeberwachen();
+                    if (AutomatikModusAktiv)
+                    {
+                        if (beh.Pegel < 0.99 && beh.Pegel > 0.01) beh.VentilUnten = true; else beh.VentilUnten = false;
+                        if ((beh.Pegel > 0.01)) AutomatikModusNochAktiv = true;
+                    }
 
-                    if ((beh.InternerPegel > 0.01)) AutomatikModusNochAktiv = true;
                 }
                 if (AutomatikModusAktiv && !AutomatikModusNochAktiv)
                 {
                     AlleAutomatikKnoepfeAktivieren();
                     AutomatikModusAktiv = false;
                 }
-
 
                 AnzeigeAktualisieren();
 
@@ -60,14 +63,54 @@
 
         private void AnzeigeAktualisieren()
         {
-            ViAnzeige.VisibilityVentilQ1(alleBehaelter[0].VentilObenEingeschaltet());
-            ViAnzeige.VisibilityVentilQ3(alleBehaelter[1].VentilObenEingeschaltet());
-            ViAnzeige.VisibilityVentilQ5(alleBehaelter[2].VentilObenEingeschaltet());
-            ViAnzeige.VisibilityVentilQ7(alleBehaelter[3].VentilObenEingeschaltet());
+            ViAnzeige.VisibilityVentilQ1(alleBehaelter[0].VentilOben);
+            ViAnzeige.VisibilityVentilQ3(alleBehaelter[1].VentilOben);
+            ViAnzeige.VisibilityVentilQ5(alleBehaelter[2].VentilOben);
+            ViAnzeige.VisibilityVentilQ7(alleBehaelter[3].VentilOben);
+
+            ViAnzeige.FarbeZuleitung1b(alleBehaelter[0].VentilOben);
+            ViAnzeige.FarbeZuleitung2b(alleBehaelter[1].VentilOben);
+            ViAnzeige.FarbeZuleitung3b(alleBehaelter[2].VentilOben);
+            ViAnzeige.FarbeZuleitung4b(alleBehaelter[3].VentilOben);
 
 
+            ViAnzeige.Margin_1(alleBehaelter[0].Pegel);
+            ViAnzeige.Margin_2(alleBehaelter[1].Pegel);
+            ViAnzeige.Margin_3(alleBehaelter[2].Pegel);
+            ViAnzeige.Margin_4(alleBehaelter[3].Pegel);
 
 
+            ViAnzeige.FarbeAbleitung1a(alleBehaelter[0].Pegel > 0.01);
+            ViAnzeige.FarbeAbleitung2a(alleBehaelter[1].Pegel > 0.01);
+            ViAnzeige.FarbeAbleitung3a(alleBehaelter[2].Pegel > 0.01);
+            ViAnzeige.FarbeAbleitung4a(alleBehaelter[3].Pegel > 0.01);
+
+            ViAnzeige.VisibilityVentilQ2(alleBehaelter[0].VentilUnten);
+            ViAnzeige.VisibilityVentilQ4(alleBehaelter[1].VentilUnten);
+            ViAnzeige.VisibilityVentilQ6(alleBehaelter[2].VentilUnten);
+            ViAnzeige.VisibilityVentilQ8(alleBehaelter[3].VentilUnten);
+
+            ViAnzeige.FarbeAbleitung1b(alleBehaelter[0].VentilUnten);
+            ViAnzeige.FarbeAbleitung2b(alleBehaelter[1].VentilUnten);
+            ViAnzeige.FarbeAbleitung3b(alleBehaelter[2].VentilUnten);
+            ViAnzeige.FarbeAbleitung4b(alleBehaelter[3].VentilUnten);
+
+            ViAnzeige.FarbeAbleitungGesamt(alleBehaelter[0].VentilUnten
+                || alleBehaelter[1].VentilUnten
+                || alleBehaelter[2].VentilUnten
+                || alleBehaelter[3].VentilUnten);
+
+
+            ViAnzeige.FarbeLabelB1(alleBehaelter[0].SchwimmerschalterOben);
+            ViAnzeige.FarbeLabelB2(alleBehaelter[0].SchwimmerschalterUnten);
+            ViAnzeige.FarbeLabelB3(alleBehaelter[1].SchwimmerschalterOben);
+            ViAnzeige.FarbeLabelB4(alleBehaelter[1].SchwimmerschalterUnten);
+            ViAnzeige.FarbeLabelB5(alleBehaelter[2].SchwimmerschalterOben);
+            ViAnzeige.FarbeLabelB6(alleBehaelter[2].SchwimmerschalterUnten);
+            ViAnzeige.FarbeLabelB7(alleBehaelter[3].SchwimmerschalterOben);
+            ViAnzeige.FarbeLabelB8(alleBehaelter[3].SchwimmerschalterUnten);
+
+            ViAnzeige.FarbeCircle_P1(P1);
         }
 
         internal void VentilQ2() { alleBehaelter[0].VentilUntenUmschalten(); }
@@ -88,7 +131,6 @@
             ViAnzeige.EnableAutomatik1432 = "false";
             ViAnzeige.EnableAutomatik4321 = "false";
         }
-
         private void AlleAutomatikKnoepfeAktivieren()
         {
             ViAnzeige.EnableAutomatik1234 = "true";
@@ -96,7 +138,6 @@
             ViAnzeige.EnableAutomatik1432 = "true";
             ViAnzeige.EnableAutomatik4321 = "true";
         }
-
         private void AutomatikBetriebStarten(AutomatikModus modus)
         {
             AlleAutomatikKnoepfeDeaktivieren();
@@ -125,18 +166,21 @@
                     break;
 
                 case AutomatikModus.Modus_4321:
+                    alleBehaelter[3].AutomatikmodusStarten(1.2);
+                    alleBehaelter[2].AutomatikmodusStarten(2.4);
+                    alleBehaelter[1].AutomatikmodusStarten(3.6);
+                    alleBehaelter[0].AutomatikmodusStarten(4.8);
+                    break;
+
                 default:
-                    alleBehaelter[3].AutomatikmodusStarten(0);
-                    alleBehaelter[2].AutomatikmodusStarten(0);
-                    alleBehaelter[1].AutomatikmodusStarten(0);
                     alleBehaelter[0].AutomatikmodusStarten(0);
+                    alleBehaelter[1].AutomatikmodusStarten(0);
+                    alleBehaelter[2].AutomatikmodusStarten(0);
+                    alleBehaelter[3].AutomatikmodusStarten(0);
                     break;
 
             }
 
         }
-
-
-
     }
 }

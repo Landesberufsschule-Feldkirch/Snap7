@@ -81,8 +81,6 @@
     <Compile Include="Commands\UpdateBtnVentil_Q8.cs" />
     <Compile Include="Model\AlleBehaelter.cs" />
     <Compile Include="Model\Behaelter.cs" />
-    <Compile Include="Daten.cs" />
-    <Compile Include="Display.cs" />
     <Compile Include="Model\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\BehaelterViewModel.cs" />
     <Page Include="MainWindow.xaml">

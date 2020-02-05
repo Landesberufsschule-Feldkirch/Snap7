@@ -4,10 +4,10 @@
     using System.Windows.Input;
     class BehaltersteuerungBtnAutomatik4321 : ICommand
     {
-        private readonly BehaelterViewModel _ViewModel;
+        private readonly BehaelterViewModel viewModel;
         public BehaltersteuerungBtnAutomatik4321(BehaelterViewModel vm)
         {
-            _ViewModel = vm;
+            viewModel = vm;
         }
 
         #region ICommand Members
@@ -17,15 +17,8 @@
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return _ViewModel.CanUpdateAutomatik4321;
-        }
-
-        public void Execute(object parameter)
-        {
-            _ViewModel.Automatik4321();
-        }
+        public bool CanExecute(object parameter) { return viewModel.CanUpdateAutomatik4321; }
+        public void Execute(object parameter) { viewModel.Automatik4321(); }
         #endregion
     }
 }
