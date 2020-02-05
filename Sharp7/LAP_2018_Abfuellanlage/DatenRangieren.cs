@@ -27,6 +27,7 @@ namespace LAP_2018_Abfuellanlage
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
+            /*
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.F5, mainWindow.F5);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
@@ -36,15 +37,18 @@ namespace LAP_2018_Abfuellanlage
 
             S7.SetByteAt(anInput, 0, mainWindow.PegelByte);
             S7.SetWordAt(anInput, 2, mainWindow.PegelInt);
+            */
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
+            /*
             mainWindow.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
             mainWindow.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
             mainWindow.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
             mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
             mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            */
         }
 
         public DatenRangieren(MainWindow window)

@@ -26,17 +26,22 @@ namespace LAP_2018_Abfuellanlage.Model
         private double x_Aktuell;
         private double y_Aktuell;
 
+
+        public Flaschen()
+        {
+            ID = AnzahlFlaschen;
+            AnzahlFlaschen++;
+            bewegungSchritt = BewegungSchritt.Oberhalb;
+        }
+
         public Flaschen(int NeueID, Image Flasche)
         {
             ID = NeueID;
             imgFlasche = Flasche;
-            bewegungSchritt = BewegungSchritt.Oberhalb;
-            AnzahlFlaschen++;
+
         }
 
-        public Flaschen()
-        {
-        }
+
 
         public void FlaschenParken()
         {
@@ -54,8 +59,9 @@ namespace LAP_2018_Abfuellanlage.Model
             return AktuelleFlasche;
         }
 
-        public void AnzeigeAktualisieren(bool FensterAktiv)
+        public void AnzeigeAktualisieren()
         {
+            /*
             if (FensterAktiv)
             {
                 if (Sichtbar)
@@ -68,6 +74,7 @@ namespace LAP_2018_Abfuellanlage.Model
                     imgFlasche.Visibility = Visibility.Collapsed;
                 }
             }
+            */
         }
     }
 }

@@ -20,14 +20,14 @@
             VisibilityVentilQ7Ein = "hidden";
             VisibilityVentilQ8Ein = "hidden";
 
-            VisibilityVentilQ1Aus = "Visible";
-            VisibilityVentilQ2Aus = "Visible";
-            VisibilityVentilQ3Aus = "Visible";
-            VisibilityVentilQ4Aus = "Visible";
-            VisibilityVentilQ5Aus = "Visible";
-            VisibilityVentilQ6Aus = "Visible";
-            VisibilityVentilQ7Aus = "Visible";
-            VisibilityVentilQ8Aus = "Visible";
+            VisibilityVentilQ1Aus = "visible";
+            VisibilityVentilQ2Aus = "visible";
+            VisibilityVentilQ3Aus = "visible";
+            VisibilityVentilQ4Aus = "visible";
+            VisibilityVentilQ5Aus = "visible";
+            VisibilityVentilQ6Aus = "visible";
+            VisibilityVentilQ7Aus = "visible";
+            VisibilityVentilQ8Aus = "visible";
 
             ColorZuleitung_1b = "blue";
             ColorZuleitung_2b = "blue";
