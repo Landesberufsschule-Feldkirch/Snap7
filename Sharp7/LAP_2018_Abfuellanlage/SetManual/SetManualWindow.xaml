@@ -1,0 +1,35 @@
+﻿<Window x:Class="LAP_2018_Abfuellanlage.SetManual.SetManual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAP_2018_Abfuellanlage.SetManual"
+        mc:Ignorable="d"
+        Title="SetManual" Height="300" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="5" Grid.Row="4" Command="{Binding BtnManualK1}" Content="K1" />
+        <Button Grid.Column="3" Grid.Row="4" Command="{Binding BtnManualK2}" Content="K2" />
+        <Button Grid.Column="3" Grid.Row="6" Command="{Binding BtnManualM1}" Content="M1" />
+    </Grid>
+</Window>

@@ -3,7 +3,7 @@
     using LAP_2018_Abfuellanlage.Commands;
     using System.Windows.Input;
 
-    class AbfuellanlageViewModel
+    public class AbfuellanlageViewModel
     {
 
         public readonly Model.AlleFlaschen alleFlaschen;
@@ -39,6 +39,6 @@
         internal void TasterS1() { alleFlaschen.TasterS1(); }
         internal void TasterS2() { alleFlaschen.TasterS2(); }
         internal void TasterS3() { alleFlaschen.TasterS3(); }
-        internal void TasterS4() { alleFlaschen.TasterS5(); }
+        internal void TasterS4() { alleFlaschen.TasterS4(); }
     }
 }

@@ -23,14 +23,14 @@ namespace WordClock
         {
             Zeiten zeiten = logikfunktionen.getZeit();
 
-            S7.SetWordAt(digInput, (int)BytePosition.Byte_0, zeiten.DatumJahr);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_2, zeiten.DatumMonat);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_3, zeiten.DatumTag);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_4, zeiten.DatumWochentag);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_5, zeiten.Stunde);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_6, zeiten.Minute);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_7, zeiten.Sekunde);
-            S7.SetByteAt(digInput, (int)BytePosition.Byte_8, zeiten.Nanosekunde);
+            S7.SetUint_16_At(digInput, (int)BytePosition.Byte_0, zeiten.DatumJahr);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_2, zeiten.DatumMonat);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_3, zeiten.DatumTag);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_4, zeiten.DatumWochentag);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_5, zeiten.Stunde);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, zeiten.Minute);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, zeiten.Sekunde);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, zeiten.Nanosekunde);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)

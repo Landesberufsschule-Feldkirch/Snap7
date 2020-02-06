@@ -707,7 +707,7 @@ namespace Sharp7
 
         #region Get/Set 8 bit signed value (S7 SInt) -128..127
 
-        public static int GetSint8At(byte[] Buffer, int Pos)
+        public static int GetSint_8_At(byte[] Buffer, int Pos)
         {
             int Value = Buffer[Pos];
             if (Value < 128)
@@ -716,7 +716,7 @@ namespace Sharp7
                 return (int)(Value - 256);
         }
 
-        public static void SetSint8At(byte[] Buffer, int Pos, int Value)
+        public static void SetSint_8_At(byte[] Buffer, int Pos, int Value)
         {
             if (Value < -128) Value = -128;
             if (Value > 127) Value = 127;
@@ -727,12 +727,12 @@ namespace Sharp7
 
         #region Get/Set 16 bit signed value (S7 int) -32768..32767
 
-        public static int GetSint16At(byte[] Buffer, int Pos)
+        public static int GetSint_16_At(byte[] Buffer, int Pos)
         {
             return (int)((Buffer[Pos] << 8) | Buffer[Pos + 1]);
         }
 
-        public static void SetIntAt(byte[] Buffer, int Pos, Int16 Value)
+        public static void SetSint_16_At(byte[] Buffer, int Pos, Int16 Value)
         {
             Buffer[Pos] = (byte)(Value >> 8);
             Buffer[Pos + 1] = (byte)(Value & 0x00FF);
@@ -742,7 +742,7 @@ namespace Sharp7
 
         #region Get/Set 32 bit signed value (S7 DInt) -2147483648..2147483647
 
-        public static int GetSint32At(byte[] Buffer, int Pos)
+        public static int GetSint_32_At(byte[] Buffer, int Pos)
         {
             int Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -752,7 +752,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetSint32At(byte[] Buffer, int Pos, int Value)
+        public static void SetSint_32_At(byte[] Buffer, int Pos, int Value)
         {
             Buffer[Pos + 3] = (byte)(Value & 0xFF);
             Buffer[Pos + 2] = (byte)((Value >> 8) & 0xFF);
@@ -764,7 +764,7 @@ namespace Sharp7
 
         #region Get/Set 64 bit signed value (S7 LInt) -9223372036854775808..9223372036854775807
 
-        public static Int64 GetSint64At(byte[] Buffer, int Pos)
+        public static Int64 GetSint_64_At(byte[] Buffer, int Pos)
         {
             Int64 Result;
             Result = Buffer[Pos]; Result <<= 8;
@@ -778,7 +778,7 @@ namespace Sharp7
             return Result;
         }
 
-        public static void SetSint64At(byte[] Buffer, int Pos, Int64 Value)
+        public static void SetSint_64_At(byte[] Buffer, int Pos, Int64 Value)
         {
             Buffer[Pos + 7] = (byte)(Value & 0xFF);
             Buffer[Pos + 6] = (byte)((Value >> 8) & 0xFF);
@@ -875,12 +875,12 @@ namespace Sharp7
 
         #region Get/Set 8 bit word (S7 Byte) 16#00..16#FF
 
-        public static byte GetByteAt(byte[] Buffer, int Pos)
+        public static byte GetUint_8_At(byte[] Buffer, int Pos)
         {
             return Buffer[Pos];
         }
 
-        public static void SetByteAt(byte[] Buffer, int Pos, byte Value)
+        public static void SetUInt_8_At(byte[] Buffer, int Pos, byte Value)
         {
             Buffer[Pos] = Value;
         }
@@ -889,12 +889,12 @@ namespace Sharp7
 
         #region Get/Set 16 bit word (S7 Word) 16#0000..16#FFFF
 
-        public static UInt16 GetWordAt(byte[] Buffer, int Pos)
+        public static UInt16 GetUint_16_At(byte[] Buffer, int Pos)
         {
             return GetUint16At(Buffer, Pos);
         }
 
-        public static void SetWordAt(byte[] Buffer, int Pos, UInt16 Value)
+        public static void SetUint_16_At(byte[] Buffer, int Pos, UInt16 Value)
         {
             SetUint16At(Buffer, Pos, Value);
         }
@@ -903,12 +903,12 @@ namespace Sharp7
 
         #region Get/Set 32 bit word (S7 DWord) 16#00000000..16#FFFFFFFF
 
-        public static UInt32 GetDWordAt(byte[] Buffer, int Pos)
+        public static UInt32 GetUint_32_At(byte[] Buffer, int Pos)
         {
             return GetUint32At(Buffer, Pos);
         }
 
-        public static void SetDWordAt(byte[] Buffer, int Pos, UInt32 Value)
+        public static void SetUint_32_At(byte[] Buffer, int Pos, UInt32 Value)
         {
             SetUint32At(Buffer, Pos, Value);
         }
@@ -917,12 +917,12 @@ namespace Sharp7
 
         #region Get/Set 64 bit word (S7 LWord) 16#0000000000000000..16#FFFFFFFFFFFFFFFF
 
-        public static UInt64 GetLWordAt(byte[] Buffer, int Pos)
+        public static UInt64 GetUint_64_At(byte[] Buffer, int Pos)
         {
             return GetUint64At(Buffer, Pos);
         }
 
-        public static void SetLWordAt(byte[] Buffer, int Pos, UInt64 Value)
+        public static void SetUint_64_At(byte[] Buffer, int Pos, UInt64 Value)
         {
             SetUint64At(Buffer, Pos, Value);
         }
@@ -1035,7 +1035,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime(1990, 1, 1).AddDays(GetSint16At(Buffer, Pos));
+                return new DateTime(1990, 1, 1).AddDays(GetSint_16_At(Buffer, Pos));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1045,7 +1045,7 @@ namespace Sharp7
 
         public static void SetDateAt(byte[] Buffer, int Pos, DateTime Value)
         {
-            SetIntAt(Buffer, Pos, (Int16)(Value - new DateTime(1990, 1, 1)).Days);
+            SetSint_16_At(Buffer, Pos, (Int16)(Value - new DateTime(1990, 1, 1)).Days);
         }
 
         #endregion Get/Set DATE (S7 DATE)
@@ -1056,7 +1056,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime(0).AddMilliseconds(S7.GetSint32At(Buffer, Pos));
+                return new DateTime(0).AddMilliseconds(S7.GetSint_32_At(Buffer, Pos));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1067,7 +1067,7 @@ namespace Sharp7
         public static void SetTODAt(byte[] Buffer, int Pos, DateTime Value)
         {
             TimeSpan Time = Value.TimeOfDay;
-            SetSint32At(Buffer, Pos, (Int32)Math.Round(Time.TotalMilliseconds));
+            SetSint_32_At(Buffer, Pos, (Int32)Math.Round(Time.TotalMilliseconds));
         }
 
         #endregion Get/Set TOD (S7 TIME_OF_DAY)
@@ -1079,7 +1079,7 @@ namespace Sharp7
             // .NET Tick = 100 ns, S71500 Tick = 1 ns
             try
             {
-                return new DateTime(Math.Abs(GetSint64At(Buffer, Pos) / 100));
+                return new DateTime(Math.Abs(GetSint_64_At(Buffer, Pos) / 100));
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1090,7 +1090,7 @@ namespace Sharp7
         public static void SetLTODAt(byte[] Buffer, int Pos, DateTime Value)
         {
             TimeSpan Time = Value.TimeOfDay;
-            SetSint64At(Buffer, Pos, (Int64)Time.Ticks * 100);
+            SetSint_64_At(Buffer, Pos, (Int64)Time.Ticks * 100);
         }
 
         #endregion Get/Set LTOD (S7 1500 LONG TIME_OF_DAY)
@@ -1101,7 +1101,7 @@ namespace Sharp7
         {
             try
             {
-                return new DateTime((GetSint64At(Buffer, Pos) / 100) + bias);
+                return new DateTime((GetSint_64_At(Buffer, Pos) / 100) + bias);
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -1111,7 +1111,7 @@ namespace Sharp7
 
         public static void SetLDTAt(byte[] Buffer, int Pos, DateTime Value)
         {
-            SetSint64At(Buffer, Pos, (Value.Ticks - bias) * 100);
+            SetSint_64_At(Buffer, Pos, (Value.Ticks - bias) * 100);
         }
 
         #endregion GET/SET LDT (S7 1500 Long Date and Time)
@@ -1163,7 +1163,7 @@ namespace Sharp7
             Buffer[Pos + 5] = Hour;
             Buffer[Pos + 6] = Min;
             Buffer[Pos + 7] = Sec;
-            SetSint32At(Buffer, Pos + 8, NanoSecs);
+            SetSint_32_At(Buffer, Pos + 8, NanoSecs);
         }
 
         #endregion Get/Set DTL (S71200/1500 Date and Time)
@@ -1961,7 +1961,7 @@ namespace Sharp7
                 RecvPacket(PDU, 0, 4);
                 if (_LastError == 0)
                 {
-                    Size = S7.GetWordAt(PDU, 2);
+                    Size = S7.GetUint_16_At(PDU, 2);
                     // Check 0 bytes Data Packet (only TPKT+COTP = 7 bytes)
                     if (Size == IsoHSize)
                         RecvPacket(PDU, 4, 3); // Skip remaining 3 bytes and Done is still false
@@ -2019,7 +2019,7 @@ namespace Sharp7
         {
             int Length;
             // Set PDU Size Requested
-            S7.SetWordAt(S7_PN, 23, (ushort)_PduSizeRequested);
+            S7.SetUint_16_At(S7_PN, 23, (ushort)_PduSizeRequested);
             // Sends the connection request telegram
             SendPacket(S7_PN);
             if (_LastError == 0)
@@ -2031,7 +2031,7 @@ namespace Sharp7
                     if ((Length == 27) && (PDU[17] == 0) && (PDU[18] == 0))  // 20 = size of Negotiate Answer
                     {
                         // Get PDU Size Negotiated
-                        _PDULength = S7.GetWordAt(PDU, 25);
+                        _PDULength = S7.GetUint_16_At(PDU, 25);
                         if (_PDULength <= 0)
                             _LastError = S7Consts.errCliNegotiatingPDU;
                     }
@@ -2284,7 +2284,7 @@ namespace Sharp7
                 PDU[27] = (byte)Area;
                 // Set Area
                 if (Area == S7Consts.S7AreaDB)
-                    S7.SetWordAt(PDU, 25, (ushort)DBNumber);
+                    S7.SetUint_16_At(PDU, 25, (ushort)DBNumber);
 
                 // Adjusts Start and word length
                 if ((WordLen == S7Consts.S7WLBit) || (WordLen == S7Consts.S7WLCounter) || (WordLen == S7Consts.S7WLTimer))
@@ -2296,7 +2296,7 @@ namespace Sharp7
                     Address = Start << 3;
 
                 // Num elements
-                S7.SetWordAt(PDU, 23, (ushort)NumElements);
+                S7.SetUint_16_At(PDU, 23, (ushort)NumElements);
 
                 // Address into the PLC (only 3 bytes)
                 PDU[30] = (byte)(Address & 0x0FF);
@@ -2398,16 +2398,16 @@ namespace Sharp7
                 // Setup the telegram
                 Array.Copy(S7_RW, 0, PDU, 0, Size_WR);
                 // Whole telegram Size
-                S7.SetWordAt(PDU, 2, (ushort)IsoSize);
+                S7.SetUint_16_At(PDU, 2, (ushort)IsoSize);
                 // Data Length
                 Length = DataSize + 4;
-                S7.SetWordAt(PDU, 15, (ushort)Length);
+                S7.SetUint_16_At(PDU, 15, (ushort)Length);
                 // Function
                 PDU[17] = (byte)0x05;
                 // Set DB Number
                 PDU[27] = (byte)Area;
                 if (Area == S7Consts.S7AreaDB)
-                    S7.SetWordAt(PDU, 25, (ushort)DBNumber);
+                    S7.SetUint_16_At(PDU, 25, (ushort)DBNumber);
 
                 // Adjusts Start and word length
                 if ((WordLen == S7Consts.S7WLBit) || (WordLen == S7Consts.S7WLCounter) || (WordLen == S7Consts.S7WLTimer))
@@ -2423,7 +2423,7 @@ namespace Sharp7
                 }
 
                 // Num elements
-                S7.SetWordAt(PDU, 23, (ushort)NumElements);
+                S7.SetUint_16_At(PDU, 23, (ushort)NumElements);
                 // Address into the PLC
                 PDU[30] = (byte)(Address & 0x0FF);
                 Address = Address >> 8;
@@ -2448,7 +2448,7 @@ namespace Sharp7
                         break;
                 };
                 // Length
-                S7.SetWordAt(PDU, 33, (ushort)Length);
+                S7.SetUint_16_At(PDU, 33, (ushort)Length);
 
                 // Copies the Data
                 Array.Copy(Buffer, Offset, PDU, 35, DataSize);
@@ -2502,7 +2502,7 @@ namespace Sharp7
 
             // Fills Header
             Array.Copy(S7_MRD_HEADER, 0, PDU, 0, S7_MRD_HEADER.Length);
-            S7.SetWordAt(PDU, 13, (ushort)(ItemsCount * S7Item.Length + 2));
+            S7.SetUint_16_At(PDU, 13, (ushort)(ItemsCount * S7Item.Length + 2));
             PDU[18] = (byte)ItemsCount;
             // Fills the Items
             Offset = 19;
@@ -2510,9 +2510,9 @@ namespace Sharp7
             {
                 Array.Copy(S7_MRD_ITEM, S7Item, S7Item.Length);
                 S7Item[3] = (byte)Items[c].WordLen;
-                S7.SetWordAt(S7Item, 4, (ushort)Items[c].Amount);
+                S7.SetUint_16_At(S7Item, 4, (ushort)Items[c].Amount);
                 if (Items[c].Area == S7Consts.S7AreaDB)
-                    S7.SetWordAt(S7Item, 6, (ushort)Items[c].DBNumber);
+                    S7.SetUint_16_At(S7Item, 6, (ushort)Items[c].DBNumber);
                 S7Item[8] = (byte)Items[c].Area;
 
                 // Address into the PLC
@@ -2530,7 +2530,7 @@ namespace Sharp7
             if (Offset > _PDULength)
                 return S7Consts.errCliSizeOverPDU;
 
-            S7.SetWordAt(PDU, 2, (ushort)Offset); // Whole size
+            S7.SetUint_16_At(PDU, 2, (ushort)Offset); // Whole size
             SendPacket(PDU, Offset);
 
             if (_LastError != 0)
@@ -2546,11 +2546,11 @@ namespace Sharp7
                 return _LastError;
             }
             // Check Global Operation Result
-            _LastError = CpuError(S7.GetWordAt(PDU, 17));
+            _LastError = CpuError(S7.GetUint_16_At(PDU, 17));
             if (_LastError != 0)
                 return _LastError;
             // Get true ItemsCount
-            int ItemsRead = S7.GetByteAt(PDU, 20);
+            int ItemsRead = S7.GetUint8At(PDU, 20);
             if ((ItemsRead != ItemsCount) || (ItemsRead > MaxVars))
             {
                 _LastError = S7Consts.errCliInvalidPlcAnswer;
@@ -2564,7 +2564,7 @@ namespace Sharp7
                 Array.Copy(PDU, Offset, S7ItemRead, 0, Length - Offset);
                 if (S7ItemRead[0] == 0xff)
                 {
-                    ItemSize = (int)S7.GetWordAt(S7ItemRead, 2);
+                    ItemSize = (int)S7.GetUint_16_At(S7ItemRead, 2);
                     if ((S7ItemRead[1] != TS_ResOctet) && (S7ItemRead[1] != TS_ResReal) && (S7ItemRead[1] != TS_ResBit))
                         ItemSize = ItemSize >> 3;
                     Marshal.Copy(S7ItemRead, 4, Items[c].pData, ItemSize);
@@ -2602,7 +2602,7 @@ namespace Sharp7
             // Fills Header
             Array.Copy(S7_MWR_HEADER, 0, PDU, 0, S7_MWR_HEADER.Length);
             ParLength = ItemsCount * S7_MWR_PARAM.Length + 2;
-            S7.SetWordAt(PDU, 13, (ushort)ParLength);
+            S7.SetUint_16_At(PDU, 13, (ushort)ParLength);
             PDU[18] = (byte)ItemsCount;
             // Fills Params
             Offset = S7_MWR_HEADER.Length;
@@ -2611,8 +2611,8 @@ namespace Sharp7
                 Array.Copy(S7_MWR_PARAM, 0, S7ParItem, 0, S7_MWR_PARAM.Length);
                 S7ParItem[3] = (byte)Items[c].WordLen;
                 S7ParItem[8] = (byte)Items[c].Area;
-                S7.SetWordAt(S7ParItem, 4, (ushort)Items[c].Amount);
-                S7.SetWordAt(S7ParItem, 6, (ushort)Items[c].DBNumber);
+                S7.SetUint_16_At(S7ParItem, 4, (ushort)Items[c].Amount);
+                S7.SetUint_16_At(S7ParItem, 6, (ushort)Items[c].DBNumber);
                 // Address into the PLC
                 int Address = Items[c].Start;
                 S7ParItem[11] = (byte)(Address & 0x0FF);
@@ -2649,9 +2649,9 @@ namespace Sharp7
                     ItemDataSize = Items[c].Amount;
 
                 if ((S7DataItem[1] != TS_ResOctet) && (S7DataItem[1] != TS_ResBit))
-                    S7.SetWordAt(S7DataItem, 2, (ushort)(ItemDataSize * 8));
+                    S7.SetUint_16_At(S7DataItem, 2, (ushort)(ItemDataSize * 8));
                 else
-                    S7.SetWordAt(S7DataItem, 2, (ushort)ItemDataSize);
+                    S7.SetUint_16_At(S7DataItem, 2, (ushort)ItemDataSize);
 
                 Marshal.Copy(Items[c].pData, S7DataItem, 4, ItemDataSize);
                 if (ItemDataSize % 2 != 0)
@@ -2668,19 +2668,19 @@ namespace Sharp7
             if (Offset > _PDULength)
                 return S7Consts.errCliSizeOverPDU;
 
-            S7.SetWordAt(PDU, 2, (ushort)Offset); // Whole size
-            S7.SetWordAt(PDU, 15, (ushort)DataLength); // Whole size
+            S7.SetUint_16_At(PDU, 2, (ushort)Offset); // Whole size
+            S7.SetUint_16_At(PDU, 15, (ushort)DataLength); // Whole size
             SendPacket(PDU, Offset);
 
             RecvIsoPacket();
             if (_LastError == 0)
             {
                 // Check Global Operation Result
-                _LastError = CpuError(S7.GetWordAt(PDU, 17));
+                _LastError = CpuError(S7.GetUint_16_At(PDU, 17));
                 if (_LastError != 0)
                     return _LastError;
                 // Get true ItemsCount
-                int ItemsWritten = S7.GetByteAt(PDU, 20);
+                int ItemsWritten = S7.GetUint8At(PDU, 20);
                 if ((ItemsWritten != ItemsCount) || (ItemsWritten > MaxVars))
                 {
                     _LastError = S7Consts.errCliInvalidPlcAnswer;
@@ -2837,24 +2837,24 @@ namespace Sharp7
                 int Length = RecvIsoPacket();
                 if (Length > 32) // the minimum expected
                 {
-                    ushort Result = S7.GetWordAt(PDU, 27);
+                    ushort Result = S7.GetUint_16_At(PDU, 27);
                     if (Result == 0)
                     {
                         Info.BlkFlags = PDU[42];
                         Info.BlkLang = PDU[43];
                         Info.BlkType = PDU[44];
-                        Info.BlkNumber = S7.GetWordAt(PDU, 45);
-                        Info.LoadSize = S7.GetSint32At(PDU, 47);
-                        Info.CodeDate = SiemensTimestamp(S7.GetWordAt(PDU, 59));
-                        Info.IntfDate = SiemensTimestamp(S7.GetWordAt(PDU, 65));
-                        Info.SBBLength = S7.GetWordAt(PDU, 67);
-                        Info.LocalData = S7.GetWordAt(PDU, 71);
-                        Info.MC7Size = S7.GetWordAt(PDU, 73);
+                        Info.BlkNumber = S7.GetUint_16_At(PDU, 45);
+                        Info.LoadSize = S7.GetSint_32_At(PDU, 47);
+                        Info.CodeDate = SiemensTimestamp(S7.GetUint_16_At(PDU, 59));
+                        Info.IntfDate = SiemensTimestamp(S7.GetUint_16_At(PDU, 65));
+                        Info.SBBLength = S7.GetUint_16_At(PDU, 67);
+                        Info.LocalData = S7.GetUint_16_At(PDU, 71);
+                        Info.MC7Size = S7.GetUint_16_At(PDU, 73);
                         Info.Author = S7.GetCharsAt(PDU, 75, 8).Trim(new char[] { (char)0 });
                         Info.Family = S7.GetCharsAt(PDU, 83, 8).Trim(new char[] { (char)0 });
                         Info.Header = S7.GetCharsAt(PDU, 91, 8).Trim(new char[] { (char)0 });
                         Info.Version = PDU[99];
-                        Info.CheckSum = S7.GetWordAt(PDU, 101);
+                        Info.CheckSum = S7.GetUint_16_At(PDU, 101);
                     }
                     else
                         _LastError = CpuError(Result);
@@ -2965,7 +2965,7 @@ namespace Sharp7
                 Length = RecvIsoPacket();
                 if (Length > 30) // the minimum expected
                 {
-                    if ((S7.GetWordAt(PDU, 27) == 0) && (PDU[29] == 0xFF))
+                    if ((S7.GetUint_16_At(PDU, 27) == 0) && (PDU[29] == 0xFF))
                     {
                         DT = S7.GetDateTimeAt(PDU, 35);
                     }
@@ -2996,7 +2996,7 @@ namespace Sharp7
                 Length = RecvIsoPacket();
                 if (Length > 30) // the minimum expected
                 {
-                    if (S7.GetWordAt(PDU, 27) != 0)
+                    if (S7.GetUint_16_At(PDU, 27) != 0)
                         _LastError = S7Consts.errCliInvalidPlcAnswer;
                 }
                 else
@@ -3065,10 +3065,10 @@ namespace Sharp7
             _LastError = ReadSZL(0x0131, 0x001, ref SZL, ref Size);
             if (_LastError == 0)
             {
-                Info.MaxPduLength = S7.GetSint16At(PDU, 2);
-                Info.MaxConnections = S7.GetSint16At(PDU, 4);
-                Info.MaxMpiRate = S7.GetSint32At(PDU, 6);
-                Info.MaxBusRate = S7.GetSint32At(PDU, 10);
+                Info.MaxPduLength = S7.GetSint_16_At(PDU, 2);
+                Info.MaxConnections = S7.GetSint_16_At(PDU, 4);
+                Info.MaxMpiRate = S7.GetSint_32_At(PDU, 6);
+                Info.MaxBusRate = S7.GetSint_32_At(PDU, 10);
             }
             if (_LastError == 0)
                 Time_ms = Environment.TickCount - Elapsed;
@@ -3094,14 +3094,14 @@ namespace Sharp7
             {
                 if (First)
                 {
-                    S7.SetWordAt(S7_SZL_FIRST, 11, ++Seq_out);
-                    S7.SetWordAt(S7_SZL_FIRST, 29, (ushort)ID);
-                    S7.SetWordAt(S7_SZL_FIRST, 31, (ushort)Index);
+                    S7.SetUint_16_At(S7_SZL_FIRST, 11, ++Seq_out);
+                    S7.SetUint_16_At(S7_SZL_FIRST, 29, (ushort)ID);
+                    S7.SetUint_16_At(S7_SZL_FIRST, 31, (ushort)Index);
                     SendPacket(S7_SZL_FIRST);
                 }
                 else
                 {
-                    S7.SetWordAt(S7_SZL_NEXT, 11, ++Seq_out);
+                    S7.SetUint_16_At(S7_SZL_NEXT, 11, ++Seq_out);
                     PDU[24] = (byte)Seq_in;
                     SendPacket(S7_SZL_NEXT);
                 }
@@ -3115,14 +3115,14 @@ namespace Sharp7
                     {
                         if (Length > 32) // the minimum expected
                         {
-                            if ((S7.GetWordAt(PDU, 27) == 0) && (PDU[29] == (byte)0xFF))
+                            if ((S7.GetUint_16_At(PDU, 27) == 0) && (PDU[29] == (byte)0xFF))
                             {
                                 // Gets Amount of this slice
-                                DataSZL = S7.GetWordAt(PDU, 31) - 8; // Skips extra params (ID, Index ...)
+                                DataSZL = S7.GetUint_16_At(PDU, 31) - 8; // Skips extra params (ID, Index ...)
                                 Done = PDU[26] == 0x00;
                                 Seq_in = (byte)PDU[24]; // Slice sequence
-                                SZL.Header.LENTHDR = S7.GetWordAt(PDU, 37);
-                                SZL.Header.N_DR = S7.GetWordAt(PDU, 39);
+                                SZL.Header.LENTHDR = S7.GetUint_16_At(PDU, 37);
+                                SZL.Header.N_DR = S7.GetUint_16_At(PDU, 39);
                                 Array.Copy(PDU, 41, SZL.Data, Offset, DataSZL);
                                 //                                SZL.Copy(PDU, 41, Offset, DataSZL);
                                 Offset += DataSZL;
@@ -3138,10 +3138,10 @@ namespace Sharp7
                     {
                         if (Length > 32) // the minimum expected
                         {
-                            if ((S7.GetWordAt(PDU, 27) == 0) && (PDU[29] == (byte)0xFF))
+                            if ((S7.GetUint_16_At(PDU, 27) == 0) && (PDU[29] == (byte)0xFF))
                             {
                                 // Gets Amount of this slice
-                                DataSZL = S7.GetWordAt(PDU, 31);
+                                DataSZL = S7.GetUint_16_At(PDU, 31);
                                 Done = PDU[26] == 0x00;
                                 Seq_in = (byte)PDU[24]; // Slice sequence
                                 Array.Copy(PDU, 37, SZL.Data, Offset, DataSZL);
@@ -3283,7 +3283,7 @@ namespace Sharp7
                 int Length = RecvIsoPacket();
                 if (Length > 30) // the minimum expected
                 {
-                    ushort Result = S7.GetWordAt(PDU, 27);
+                    ushort Result = S7.GetUint_16_At(PDU, 27);
                     if (Result == 0)
                     {
                         switch (PDU[44])
@@ -3341,7 +3341,7 @@ namespace Sharp7
                 Length = RecvIsoPacket();
                 if (Length > 32) // the minimum expected
                 {
-                    ushort Result = S7.GetWordAt(PDU, 27);
+                    ushort Result = S7.GetUint_16_At(PDU, 27);
                     if (Result != 0)
                         _LastError = CpuError(Result);
                 }
@@ -3364,7 +3364,7 @@ namespace Sharp7
                 Length = RecvIsoPacket();
                 if (Length > 30) // the minimum expected
                 {
-                    ushort Result = S7.GetWordAt(PDU, 27);
+                    ushort Result = S7.GetUint_16_At(PDU, 27);
                     if (Result != 0)
                         _LastError = CpuError(Result);
                 }
@@ -3382,11 +3382,11 @@ namespace Sharp7
             _LastError = ReadSZL(0x0232, 0x0004, ref SZL, ref Size);
             if (_LastError == 0)
             {
-                Protection.sch_schal = S7.GetWordAt(SZL.Data, 2);
-                Protection.sch_par = S7.GetWordAt(SZL.Data, 4);
-                Protection.sch_rel = S7.GetWordAt(SZL.Data, 6);
-                Protection.bart_sch = S7.GetWordAt(SZL.Data, 8);
-                Protection.anl_sch = S7.GetWordAt(SZL.Data, 10);
+                Protection.sch_schal = S7.GetUint_16_At(SZL.Data, 2);
+                Protection.sch_par = S7.GetUint_16_At(SZL.Data, 4);
+                Protection.sch_rel = S7.GetUint_16_At(SZL.Data, 6);
+                Protection.bart_sch = S7.GetUint_16_At(SZL.Data, 8);
+                Protection.anl_sch = S7.GetUint_16_At(SZL.Data, 10);
             }
             return _LastError;
         }
@@ -3401,7 +3401,7 @@ namespace Sharp7
             Time_ms = 0;
             int Elapsed = Environment.TickCount;
             Array.Copy(TPKT_ISO, 0, PDU, 0, TPKT_ISO.Length);
-            S7.SetWordAt(PDU, 2, (ushort)(Size + TPKT_ISO.Length));
+            S7.SetUint_16_At(PDU, 2, (ushort)(Size + TPKT_ISO.Length));
             try
             {
                 Array.Copy(Buffer, 0, PDU, TPKT_ISO.Length, Size);

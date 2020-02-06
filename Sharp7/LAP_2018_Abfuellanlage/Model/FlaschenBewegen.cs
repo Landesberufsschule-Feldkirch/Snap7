@@ -20,11 +20,11 @@
             {
                 case BewegungSchritt.Oberhalb:
                     y_Neu = y_VereinzlerVentil - (ID - AktuelleFlasche) * y_FlachenHoehe;
-                    if (y_Aktuell < y_Neu) y_Aktuell += BewegungIncrement;
+                    if (AkuellePosition.Y < y_Neu) AkuellePosition.Y += BewegungIncrement;
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    if (y_Aktuell < y_Foerderband) y_Aktuell += BewegungIncrement;
+                    if (AkuellePosition.Y < y_Foerderband) AkuellePosition.Y += BewegungIncrement;
                     else
                     {
                         bewegungSchritt = BewegungSchritt.Fahren;
@@ -35,13 +35,13 @@
                 case BewegungSchritt.Fahren:
                     if (M1)
                     {
-                        if (x_Aktuell < x_Foerderband_Rechts) x_Aktuell += BewegungIncrement;
+                        if (AkuellePosition.X < x_Foerderband_Rechts) AkuellePosition.X += BewegungIncrement;
                         else bewegungSchritt = BewegungSchritt.Runtergefallen;
                     }
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    if (y_Aktuell < y_Boden) y_Aktuell += BewegungIncrement;
+                    if (AkuellePosition.Y < y_Boden) AkuellePosition.Y += BewegungIncrement;
                     else bewegungSchritt = BewegungSchritt.Fertig;
                     break;
 
@@ -51,12 +51,12 @@
 
                 default:
                     bewegungSchritt = BewegungSchritt.Vereinzeln;
-                    x_Aktuell = X_Start;
-                    y_Aktuell = Y_Start;
+                    AkuellePosition.X = X_Start;
+                    AkuellePosition.Y = Y_Start;
                     break;
             }
 
-            if ((x_Aktuell > x_B1_Links) && (x_Aktuell < x_B1_Rechts)) return true;
+            if ((AkuellePosition.X > x_B1_Links) && (AkuellePosition.X < x_B1_Rechts)) return true;
             return false;
         }
     }

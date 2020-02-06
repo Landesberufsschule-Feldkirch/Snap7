@@ -24,8 +24,8 @@ namespace Tiefgarage
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            mainWindow.AnzahlFahrzeuge = S7.GetByteAt(digOutput, 0);
-            mainWindow.AnzahlPersonen = S7.GetByteAt(digOutput, 1);
+            mainWindow.AnzahlFahrzeuge = S7.GetUint8At(digOutput, 0);
+            mainWindow.AnzahlPersonen = S7.GetUint8At(digOutput, 1);
         }
 
         public DatenRangieren(MainWindow window)

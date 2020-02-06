@@ -40,7 +40,7 @@ namespace LAP_2019_Foerderanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, mainWindow.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, mainWindow.S8);
 
-            S7.SetIntAt(anInput, 0, mainWindow.MaterialsiloPegel);
+            S7.SetSint_16_At(anInput, 0, mainWindow.MaterialsiloPegel);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
@@ -51,7 +51,7 @@ namespace LAP_2019_Foerderanlage
             mainWindow.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
             mainWindow.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
 
-            mainWindow.FuSpeed = S7.GetSint16At(anOutput, 0);
+            mainWindow.FuSpeed = S7.GetSint_16_At(anOutput, 0);
         }
 
         public DatenRangieren(MainWindow window)

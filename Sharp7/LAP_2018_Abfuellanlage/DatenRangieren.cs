@@ -1,10 +1,12 @@
 ﻿using Sharp7;
+using Utilities;
 
 namespace LAP_2018_Abfuellanlage
 {
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
+        private readonly ViewModel.AbfuellanlageViewModel viewModel;
 
         private enum BitPosAusgang
         {
@@ -27,33 +29,38 @@ namespace LAP_2018_Abfuellanlage
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, mainWindow.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, mainWindow.F5);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, mainWindow.S3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S4, mainWindow.S4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleFlaschen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F5, viewModel.alleFlaschen.F5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.alleFlaschen.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.alleFlaschen.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.alleFlaschen.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S4, viewModel.alleFlaschen.S4);
 
-            S7.SetByteAt(anInput, 0, mainWindow.PegelByte);
-            S7.SetWordAt(anInput, 2, mainWindow.PegelInt);
-            */
+            S7.SetUInt_8_At(anInput, 0, (byte)(viewModel.alleFlaschen.Pegel * 100.0));
+            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Short(viewModel.alleFlaschen.Pegel, 100));
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            /*
-            mainWindow.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
-            mainWindow.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-            mainWindow.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            */
+            if (mainWindow.DebugWindowAktiv)
+            {
+                //
+            }
+            else
+            {
+                viewModel.alleFlaschen.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
+                viewModel.alleFlaschen.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
+                viewModel.alleFlaschen.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
+                viewModel.alleFlaschen.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+                viewModel.alleFlaschen.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            }
+
         }
 
-        public DatenRangieren(MainWindow window)
+        public DatenRangieren(MainWindow mw, ViewModel.AbfuellanlageViewModel vm)
         {
-            mainWindow = window;
+            mainWindow = mw;
+            viewModel = vm;
         }
     }
 }
