@@ -1,0 +1,33 @@
+﻿<Window x:Class="LAP_2018_Niveauregelung.SetManual.SetManualWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAP_2018_Niveauregelung.SetManual"
+        mc:Ignorable="d"
+        Title="SetManualWindow" Height="250" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="SetM1" Grid.Column="3" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM1}" Content="M1" />
+        <Button x:Name="SetM2" Grid.Column="5" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM2}" Content="M2" />
+
+    </Grid>
+</Window>
