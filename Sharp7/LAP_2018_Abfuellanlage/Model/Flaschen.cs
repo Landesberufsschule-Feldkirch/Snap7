@@ -46,14 +46,14 @@ namespace LAP_2018_Abfuellanlage.Model
             if (bewegungSchritt == BewegungSchritt.Oberhalb) bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
 
-        public bool FlascheBewegen(bool M1, int AnzahlFlaschen, ref int AktuelleFlasche)
+        public (bool, int) FlascheBewegen(bool M1, int AnzahlFlaschen, int aktuelleFlasche)
         {
             double y_Neu;
 
             switch (bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:
-                    y_Neu = VereinzelnerVentil.Y - HoeheFlasche * (ID - AktuelleFlasche);
+                    y_Neu = VereinzelnerVentil.Y - HoeheFlasche * (ID - aktuelleFlasche);
                     if (AktuellePosition.Y < y_Neu) AktuellePosition.Y += BewegungIncrement;
                     break;
 
@@ -62,7 +62,7 @@ namespace LAP_2018_Abfuellanlage.Model
                     else
                     {
                         bewegungSchritt = BewegungSchritt.Fahren;
-                        if (AktuelleFlasche < AnzahlFlaschen - 1) AktuelleFlasche++;
+                        if (aktuelleFlasche < AnzahlFlaschen - 1) aktuelleFlasche++;
                     }
                     break;
 
@@ -89,8 +89,8 @@ namespace LAP_2018_Abfuellanlage.Model
                     break;
             }
 
-            if ((AktuellePosition.X > SensorB1Links.X) && (AktuellePosition.X < SensorB1Rechts.X)) return true;
-            return false;
+            if ((AktuellePosition.X > SensorB1Links.X) && (AktuellePosition.X < SensorB1Rechts.X)) return (true, aktuelleFlasche);
+            return (false, aktuelleFlasche);
         }
     }
 }

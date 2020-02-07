@@ -63,9 +63,14 @@ namespace LAP_2018_Abfuellanlage.Model
                 if (Pegel < 0) Pegel = 0;
 
                 if (K2) alleFlaschen[AktuelleFlasche].FlascheVereinzeln();
-                
+
                 B1 = false;
-                foreach (Flaschen flasche in alleFlaschen) { B1 |= flasche.FlascheBewegen(M1, AnzahlFlaschen, ref AktuelleFlasche); }
+                foreach (Flaschen flasche in alleFlaschen)
+                {
+                    var lichtschranke = false;
+                    (lichtschranke, AktuelleFlasche) = flasche.FlascheBewegen(M1, AnzahlFlaschen, AktuelleFlasche);
+                    B1 |= lichtschranke;
+                }
 
                 AnzeigeAktualisieren();
                 Thread.Sleep(10);
