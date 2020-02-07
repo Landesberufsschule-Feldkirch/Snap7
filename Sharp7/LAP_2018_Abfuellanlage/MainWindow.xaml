@@ -67,7 +67,7 @@
         
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
-        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" Command="{Binding BtnTasterS1}" FontSize="14pt">
+        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}" FontSize="14pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -75,7 +75,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS2" Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  Command="{Binding BtnTasterS2}" FontSize="14pt">
+        <Button x:Name="btnS2" Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  ClickMode="Press" Command="{Binding BtnTasterS2}" FontSize="14pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -83,7 +83,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS3" Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  Command="{Binding BtnTasterS3}" FontSize="10pt">
+        <Button x:Name="btnS3" Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  ClickMode="Press" Command="{Binding BtnTasterS3}" FontSize="10pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -91,7 +91,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS4" Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  Command="{Binding BtnTasterS4}" FontSize="10pt">
+        <Button x:Name="btnS4" Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  ClickMode="Press" Command="{Binding BtnTasterS4}" FontSize="10pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -99,7 +99,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnF5" Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" Background="{Binding  AlleFlaschen.ViAnzeige.ColorCircle_F5}"  Command="{Binding BtnTasterF5}" FontSize="9pt" >
+        <Button x:Name="btnF5" Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" ClickMode="Press" Background="{Binding  AlleFlaschen.ViAnzeige.ColorCircle_F5}"  Command="{Binding BtnTasterF5}" FontSize="9pt" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -154,12 +154,12 @@
         <Label Content="B1" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="24">
-            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft1}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop1}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage1}" />
-            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft2}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop2}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage2}" />
-            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft3}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop3}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage3}" />
-            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft4}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop4}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage4}" />
-            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft5}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop5}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage5}" />
-            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft6}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.Imagetop6}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage6}" />
+            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft1}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop1}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage1}" />
+            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft2}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop2}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage2}" />
+            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft3}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop3}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage3}" />
+            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft4}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop4}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage4}" />
+            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft5}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop5}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage5}" />
+            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft6}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop6}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage6}" />
 
 
 

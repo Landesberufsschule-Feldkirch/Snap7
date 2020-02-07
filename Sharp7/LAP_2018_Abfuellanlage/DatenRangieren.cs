@@ -42,11 +42,7 @@ namespace LAP_2018_Abfuellanlage
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            if (mainWindow.DebugWindowAktiv)
-            {
-                //
-            }
-            else
+            if (!mainWindow.DebugWindowAktiv)
             {
                 viewModel.alleFlaschen.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
                 viewModel.alleFlaschen.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
@@ -54,7 +50,6 @@ namespace LAP_2018_Abfuellanlage
                 viewModel.alleFlaschen.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
                 viewModel.alleFlaschen.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
             }
-
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.AbfuellanlageViewModel vm)

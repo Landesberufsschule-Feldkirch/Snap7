@@ -7,11 +7,8 @@ namespace LAP_2018_Abfuellanlage.Model
     public class AlleFlaschen
     {
         private readonly MainWindow mainWindow;
-
         public VisuAnzeigen ViAnzeige { get; set; }
-
         public readonly List<Flaschen> alleFlaschen = new List<Flaschen>();
-        
 
         public bool B1 { get; set; }
         public bool F5 { get; set; }
@@ -24,22 +21,22 @@ namespace LAP_2018_Abfuellanlage.Model
         public bool S2 { get; set; }
         public bool S3 { get; set; }
         public bool S4 { get; set; }
-
         public double Pegel { get; set; }
 
+        private readonly int AnzahlFlaschen;
+        private int AktuelleFlasche;
 
         public AlleFlaschen(MainWindow mw)
         {
             mainWindow = mw;
-
             ViAnzeige = new VisuAnzeigen();
 
-            alleFlaschen.Add(new Flaschen());
-            alleFlaschen.Add(new Flaschen());
-            alleFlaschen.Add(new Flaschen());
-            alleFlaschen.Add(new Flaschen());
-            alleFlaschen.Add(new Flaschen());
-            alleFlaschen.Add(new Flaschen());
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
+            alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
 
             F5 = true;
             Pegel = 0.4;
@@ -52,48 +49,44 @@ namespace LAP_2018_Abfuellanlage.Model
         internal void TasterS2() { S2 = ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
         internal void TasterS3() { S3 = ButtonFunktionPressReleaseAendern(mainWindow.btnS3); }
         internal void TasterS4() { S4 = ButtonFunktionPressReleaseAendern(mainWindow.btnS4); }
+        internal void SetManualK1() { if (mainWindow.DebugWindowAktiv) { K1 = ButtonFunktionPressReleaseAendern(mainWindow.setManualWindow.SetK1); } }
+        internal void SetManualK2() { if (mainWindow.DebugWindowAktiv) { K2 = ButtonFunktionPressReleaseAendern(mainWindow.setManualWindow.SetK2); } }
+        internal void SetManualM1() { if (mainWindow.DebugWindowAktiv) { M1 = ButtonFunktionPressReleaseAendern(mainWindow.setManualWindow.SetM1); } }
 
         private void AlleFlaschenTask()
         {
-            double LeerGeschwindigkeit = 0.000_01;
+            double LeerGeschwindigkeit = 0.001;
 
             while (true)
             {
                 if (K1) Pegel -= LeerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
-                
-                if (K2)
-                {
-                    int AktFlasche = alleFlaschen[0].GetAktuelleFlasche();
-                    alleFlaschen[AktFlasche].FlascheVereinzeln();
-                }
 
+                if (K2) alleFlaschen[AktuelleFlasche].FlascheVereinzeln();
+                
                 B1 = false;
-                foreach (Flaschen flasche in alleFlaschen) { B1 |= flasche.FlascheBewegen(M1); }
-                
-                AnzeigeAktualisieren();
+                foreach (Flaschen flasche in alleFlaschen) { B1 |= flasche.FlascheBewegen(M1, AnzahlFlaschen, ref AktuelleFlasche); }
 
+                AnzeigeAktualisieren();
                 Thread.Sleep(10);
             }
         }
 
-
         private void AnzeigeAktualisieren()
         {
-            ViAnzeige.PositionImage_1(alleFlaschen[0].AktuellePosition());
-            ViAnzeige.PositionImage_2(alleFlaschen[1].AktuellePosition());
-            ViAnzeige.PositionImage_3(alleFlaschen[2].AktuellePosition());
-            ViAnzeige.PositionImage_4(alleFlaschen[3].AktuellePosition());
-            ViAnzeige.PositionImage_5(alleFlaschen[4].AktuellePosition());
-            ViAnzeige.PositionImage_6(alleFlaschen[5].AktuellePosition());
+            ViAnzeige.PositionImage_1(alleFlaschen[0].AktuellePosition);
+            ViAnzeige.PositionImage_2(alleFlaschen[1].AktuellePosition);
+            ViAnzeige.PositionImage_3(alleFlaschen[2].AktuellePosition);
+            ViAnzeige.PositionImage_4(alleFlaschen[3].AktuellePosition);
+            ViAnzeige.PositionImage_5(alleFlaschen[4].AktuellePosition);
+            ViAnzeige.PositionImage_6(alleFlaschen[5].AktuellePosition);
 
-            ViAnzeige.VisibilityFlasche1(alleFlaschen[0].FlascheSichtbar());
-            ViAnzeige.VisibilityFlasche2(alleFlaschen[1].FlascheSichtbar());
-            ViAnzeige.VisibilityFlasche3(alleFlaschen[2].FlascheSichtbar());
-            ViAnzeige.VisibilityFlasche4(alleFlaschen[3].FlascheSichtbar());
-            ViAnzeige.VisibilityFlasche5(alleFlaschen[4].FlascheSichtbar());
-            ViAnzeige.VisibilityFlasche6(alleFlaschen[5].FlascheSichtbar());
-
+            ViAnzeige.VisibilityFlasche1(alleFlaschen[0].Sichtbar);
+            ViAnzeige.VisibilityFlasche2(alleFlaschen[1].Sichtbar);
+            ViAnzeige.VisibilityFlasche3(alleFlaschen[2].Sichtbar);
+            ViAnzeige.VisibilityFlasche4(alleFlaschen[3].Sichtbar);
+            ViAnzeige.VisibilityFlasche5(alleFlaschen[4].Sichtbar);
+            ViAnzeige.VisibilityFlasche6(alleFlaschen[5].Sichtbar);
 
             ViAnzeige.VisibilitySensorB1(B1);
             ViAnzeige.VisibilityVentilK1(K1);

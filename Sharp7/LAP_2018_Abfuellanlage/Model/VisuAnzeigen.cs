@@ -59,8 +59,8 @@
         #region Image1
         public void PositionImage_1(Punkt pos)
         {
-            ImageTop1 = pos.Y;
             ImageLeft1 = pos.X;
+            ImageTop1 = pos.Y;
         }
 
         private double _ImageTop1;
@@ -89,8 +89,8 @@
         #region Image2
         public void PositionImage_2(Punkt pos)
         {
-            ImageTop2 = pos.Y;
             ImageLeft2 = pos.X;
+            ImageTop2 = pos.Y;
         }
 
         private double _ImageTop2;
@@ -119,8 +119,8 @@
         #region Image3
         public void PositionImage_3(Punkt pos)
         {
-            ImageTop3 = pos.Y;
             ImageLeft3 = pos.X;
+            ImageTop3 = pos.Y;
         }
 
         private double _ImageTop3;
@@ -149,8 +149,8 @@
         #region Image4
         public void PositionImage_4(Punkt pos)
         {
-            ImageTop4 = pos.Y;
             ImageLeft4 = pos.X;
+            ImageTop4 = pos.Y;
         }
 
         private double _ImageTop4;
@@ -179,8 +179,8 @@
         #region Image5
         public void PositionImage_5(Punkt pos)
         {
-            ImageTop5 = pos.Y;
             ImageLeft5 = pos.X;
+            ImageTop5 = pos.Y;
         }
 
         private double _ImageTop5;
@@ -209,8 +209,8 @@
         #region Image6
         public void PositionImage_6(Punkt pos)
         {
-            ImageTop6 = pos.Y;
             ImageLeft6 = pos.X;
+            ImageTop6 = pos.Y;
         }
 
         private double _ImageTop6;
@@ -235,10 +235,6 @@
             }
         }
         #endregion
-
-
-
-
 
 
 
@@ -489,8 +485,6 @@
 
 
 
-
-
         #region Color F5
         public void FarbeCircle_F5(bool val)
         {
@@ -526,7 +520,6 @@
             }
         }
         #endregion
-
 
         #region Color P1
         public void FarbeCircle_P1(bool val)
@@ -584,7 +577,6 @@
 
 
 
-
         #region Margin1
         public void Margin_1(double pegel)
         {
@@ -615,6 +607,5 @@
         }
 
         #endregion iNotifyPeropertyChanged Members
-
     }
 }

@@ -8,7 +8,7 @@ namespace LAP_2018_Abfuellanlage
 
         public bool DebugWindowAktiv;
 
-        private SetManual.SetManual setManualWindow;
+        public SetManual.SetManual setManualWindow;
         private DatenRangieren datenRangieren;
         private ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
 

@@ -61,9 +61,11 @@
     <Compile Include="Commands\AbfuellanlageBtnTasterS2.cs" />
     <Compile Include="Commands\AbfuellanlageBtnTasterS3.cs" />
     <Compile Include="Commands\AbfuellanlageBtnTasterS4.cs" />
+    <Compile Include="Commands\AbfuellanlageSetManualK1.cs" />
+    <Compile Include="Commands\AbfuellanlageSetManualK2.cs" />
+    <Compile Include="Commands\AbfuellanlageSetManualM1.cs" />
     <Compile Include="Model\AlleFlaschen.cs" />
     <Compile Include="Model\Flaschen.cs" />
-    <Compile Include="Model\FlaschenBewegen.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
     </Compile>
