@@ -14,17 +14,22 @@ namespace WordClock
         private Logikfunktionen logikfunktionen;
         private DatenRangieren datenRangieren;
 
+        private ViewModel.WordClockViewModel wordClockViewModel;
+
         public MainWindow()
         {
+            wordClockViewModel = new ViewModel.WordClockViewModel(this);
+
             logikfunktionen = new Logikfunktionen();
             datenRangieren = new DatenRangieren(logikfunktionen);
 
             InitializeComponent();
+            DataContext = wordClockViewModel;
 
             S7_1200 s7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            System.Threading.Tasks.Task.Run(() => logikfunktionen.LogikFunktionenTask(FensterAktiv));
-            System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200, logikfunktionen));
+           // System.Threading.Tasks.Task.Run(() => logikfunktionen.LogikFunktionenTask(FensterAktiv));
+          //  System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200, logikfunktionen));
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 10) RotiertesRechteckHinzufuegen(2, 10, i);
@@ -37,12 +42,12 @@ namespace WordClock
 
         private void ZeitUebernehmen_Click(object sender, RoutedEventArgs e)
         {
-            logikfunktionen.ZeitUebernehmen();
+           // logikfunktionen.ZeitUebernehmen();
         }
 
         private void sldGeschwindigkeit_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            logikfunktionen.setGeschwindigkeit(sldGeschwindigkeit.Value);
+           // logikfunktionen.setGeschwindigkeit(sldGeschwindigkeit.Value);
         }
 
 

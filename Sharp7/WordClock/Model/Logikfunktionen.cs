@@ -5,6 +5,7 @@ namespace WordClock
 {
     public class Logikfunktionen
     {
+        /*
         private int Geschwindigkeit = 1;
         private TimeSpan timeSpan;
         private Zeiten zeiten;
@@ -44,5 +45,6 @@ namespace WordClock
         {
             return zeiten;
         }
+        */
     }
 }

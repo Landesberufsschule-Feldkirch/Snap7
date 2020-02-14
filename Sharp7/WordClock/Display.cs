@@ -19,7 +19,7 @@ namespace WordClock
 
         public void AnzeigeAktualisieren(S7_1200 s7_1200, Logikfunktionen logikfunktionen)
         {
-            Zeiten zeiten = logikfunktionen.getZeit();
+           // Zeiten zeiten = logikfunktionen.getZeit();
             lbl_PlcPing.Content = s7_1200.GetSpsStatus();
 
           //  secondHand.Angle = zeiten.Sekunde * 6;

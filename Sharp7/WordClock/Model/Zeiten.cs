@@ -1,4 +1,6 @@
-﻿namespace WordClock
+﻿using System;
+
+namespace WordClock.Model
 {
     public class Zeiten
     {
@@ -21,6 +23,16 @@
             Minute = minute;
             Sekunde = sekunde;
             Nanosekunde = nanosekunde;
+        }
+
+        internal void SetActualtime()
+        {
+          //
+        }
+
+        internal void SetSpeed()
+        {
+           //
         }
     }
 }

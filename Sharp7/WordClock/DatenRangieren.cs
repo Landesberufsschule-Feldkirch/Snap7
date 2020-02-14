@@ -21,6 +21,7 @@ namespace WordClock
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
+            /*
             Zeiten zeiten = logikfunktionen.getZeit();
 
             S7.SetUint_16_At(digInput, (int)BytePosition.Byte_0, zeiten.DatumJahr);
@@ -31,6 +32,7 @@ namespace WordClock
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, zeiten.Minute);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, zeiten.Sekunde);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, zeiten.Nanosekunde);
+            */
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
