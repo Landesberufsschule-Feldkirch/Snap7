@@ -58,8 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\WordClockSetActualTime.cs" />
-    <Compile Include="Commands\WordClockSetSpeed.cs" />
+    <Compile Include="Commands\WordClockSetCurrentTime.cs" />
+    <Compile Include="Model\VisuAnzeigen.cs" />
+    <Compile Include="Model\VisuSollwerte.cs" />
     <Compile Include="Model\Zeiten.cs" />
     <Compile Include="ViewModel\WordClockViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -71,8 +72,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatenRangieren.cs" />
-    <Compile Include="Display.cs" />
-    <Compile Include="Model\Logikfunktionen.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

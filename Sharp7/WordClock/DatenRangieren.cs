@@ -4,7 +4,7 @@ namespace WordClock
 {
     public class DatenRangieren
     {
-        private readonly Logikfunktionen logikfunktionen;
+        private readonly ViewModel.WordClockViewModel viewModel;
 
         private enum BytePosition
         {
@@ -21,18 +21,14 @@ namespace WordClock
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            /*
-            Zeiten zeiten = logikfunktionen.getZeit();
-
-            S7.SetUint_16_At(digInput, (int)BytePosition.Byte_0, zeiten.DatumJahr);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_2, zeiten.DatumMonat);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_3, zeiten.DatumTag);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_4, zeiten.DatumWochentag);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_5, zeiten.Stunde);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, zeiten.Minute);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, zeiten.Sekunde);
-            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, zeiten.Nanosekunde);
-            */
+            S7.SetUint_16_At(digInput, (int)BytePosition.Byte_0, viewModel.Zeiten.DatumJahr);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_2, viewModel.Zeiten.DatumMonat);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_3, viewModel.Zeiten.DatumTag);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_4, viewModel.Zeiten.DatumWochentag);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_5, viewModel.Zeiten.Stunde);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, viewModel.Zeiten.Minute);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, viewModel.Zeiten.Sekunde);
+            S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, 0);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
@@ -40,9 +36,9 @@ namespace WordClock
             // es werden keine Werte von der SPS geschrieben
         }
 
-        public DatenRangieren(Logikfunktionen logikfunktionen)
+        public DatenRangieren(ViewModel.WordClockViewModel vm)
         {
-            this.logikfunktionen = logikfunktionen;
+            viewModel = vm;
         }
     }
 }
