@@ -58,10 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Zeiten.cs" />
-    <Compile Include="ZweitesFenster.xaml.cs">
-      <DependentUpon>ZweitesFenster.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\Zeiten.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,15 +69,11 @@
     </Compile>
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Display.cs" />
-    <Compile Include="Logikfunktionen.cs" />
+    <Compile Include="Model\Logikfunktionen.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ZweitesFenster.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -117,6 +110,10 @@
       <Project>{5ae0e553-cab9-4f1c-a805-b61db2733a0e}</Project>
       <Name>Kommunikation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

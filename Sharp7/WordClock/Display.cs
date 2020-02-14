@@ -22,9 +22,9 @@ namespace WordClock
             Zeiten zeiten = logikfunktionen.getZeit();
             lbl_PlcPing.Content = s7_1200.GetSpsStatus();
 
-            secondHand.Angle = zeiten.Sekunde * 6;
-            minuteHand.Angle = zeiten.Minute * 6;
-            hourHand.Angle = zeiten.Stunde * 30 + zeiten.Minute * 0.5;
+          //  secondHand.Angle = zeiten.Sekunde * 6;
+          //  minuteHand.Angle = zeiten.Minute * 6;
+          //  hourHand.Angle = zeiten.Stunde * 30 + zeiten.Minute * 0.5;
         }
     }
 }

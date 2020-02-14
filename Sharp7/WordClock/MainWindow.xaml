@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordClock"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="750" Closing="Window_Closing">
+        Title="MainWindow"  Height="600" Width="800" Closing="Window_Closing">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -37,37 +37,85 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo"    Content="V0.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                    HorizontalAlignment="Right" />
-        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="11"                   Background="LightSkyBlue" />
-        <Rectangle Fill="LightGray"                             Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="1"  Grid.RowSpan="9" Stroke="Black" />
+        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14"                   Background="LightSkyBlue" />
+        <Rectangle Fill="LightGray"                             Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="12" Stroke="Black" />
 
-        <Button x:Name="ZeitUebernehmen" Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen" Click="ZeitUebernehmen_Click" />
+        <Button x:Name="ZeitUebernehmen" Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="4" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen" Click="ZeitUebernehmen_Click" />
 
-        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7" />
-        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="1" Background="LawnGreen" ValueChanged="sldGeschwindigkeit_ValueChanged" />
+        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="9" Grid.ColumnSpan="2"     Grid.Row="7" />
+        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="8" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000"  SmallChange="1" Value="1" Background="LawnGreen" ValueChanged="sldGeschwindigkeit_ValueChanged" />
 
-        <Image Source="images/backGround.png" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6" />
 
-        <Rectangle Margin="104,10,104,105" Name="rectangleSecond" Stroke="Red" Fill="Red" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
-            <Rectangle.RenderTransform>
-                <RotateTransform x:Name="secondHand" CenterX="0" CenterY="95" Angle="0" />
-            </Rectangle.RenderTransform>
-        </Rectangle>
+        <Canvas x:Name="canvasUhr" Width="420"  Grid.Column="3" Grid.Row="3" >
+            <Ellipse x:Name="circUhr" Fill="White" Canvas.Left="0" Canvas.Top="0" Width="300" Height="300" />
 
-        <Rectangle Margin="103,20,103,105" Name="rectangleMinute" Stroke="LightGreen" Fill="Green" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
-            <Rectangle.RenderTransform>
-                <RotateTransform x:Name="minuteHand" CenterX="0" CenterY="85" Angle="0" />
-            </Rectangle.RenderTransform>
-        </Rectangle>
+            <Polygon x:Name="polyStundenZeiger" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                <Polygon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="5" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Polygon.RenderTransform>
+                <Polygon.Points>
+                    <Point X="5" Y="170" />
+                    <Point X="5" Y="130" />
+                    <Point X="6" Y="35" />
+                    <Point X="14" Y="35" />
+                    <Point X="15" Y="130" />
+                    <Point X="15" Y="170" />
+                </Polygon.Points>
+            </Polygon>
 
-        <Rectangle Margin="102,40,102,105" Name="rectangleHour" Stroke="LightYellow" Fill="Yellow" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="6">
-            <Rectangle.RenderTransform>
-                <RotateTransform x:Name="hourHand" CenterX="0" CenterY="65" Angle="0" />
-            </Rectangle.RenderTransform>
-        </Rectangle>
+            <Polygon x:Name="polyMinutenZeiger" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0"  Fill="Black"  RenderTransformOrigin="0.5,0.5">
+                <Polygon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="15" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Polygon.RenderTransform>
+                <Polygon.Points>
+                    <Point X="6" Y="170" />
+                    <Point X="6" Y="130" />
+                    <Point X="7" Y="10" />
+                    <Point X="13" Y="10" />
+                    <Point X="14" Y="130" />
+                    <Point X="14" Y="170" />
+                </Polygon.Points>
+            </Polygon>
+
+            <Path Fill="Red" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" RenderTransformOrigin="0.5,0.5" >
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+                <Path.Data>
+                    <CombinedGeometry GeometryCombineMode="Union">
+                        <CombinedGeometry.Geometry1>
+                            <RectangleGeometry Rect="8,10,4,180"/>
+                        </CombinedGeometry.Geometry1>
+                        <CombinedGeometry.Geometry2>
+                            <EllipseGeometry Center="10,20" RadiusX="10" RadiusY="10"/>
+                        </CombinedGeometry.Geometry2>
+                    </CombinedGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
     </Grid>
 </Window>
