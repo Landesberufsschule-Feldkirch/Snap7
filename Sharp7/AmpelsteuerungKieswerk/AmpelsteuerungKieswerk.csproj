@@ -14,7 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-	<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,8 +58,9 @@
     </ApplicationDefinition>
     <Compile Include="AmpelZustandArgs.cs" />
     <Compile Include="Daten.cs" />
-    <Compile Include="LastKraftWagen.cs" />
-    <Compile Include="LastKraftWagenBewegen.cs" />
+    <Compile Include="Model\AlleLastKraftWagen.cs" />
+    <Compile Include="Model\LastKraftWagen.cs" />
+    <Compile Include="Model\LastKraftWagenBewegen.cs" />
     <Compile Include="SensorenZustandArgs.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +120,10 @@
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

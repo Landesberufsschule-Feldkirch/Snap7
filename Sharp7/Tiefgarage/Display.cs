@@ -20,6 +20,7 @@ namespace Tiefgarage
 
         public void AnzeigeAktualisieren()
         {
+            /*
             Tuple<bool, bool> Lichtschranken;
 
             lbl_FahrzeugZaehler.Content = "Autos in der Garage: " + AnzahlFahrzeuge.ToString();
@@ -42,6 +43,7 @@ namespace Tiefgarage
 
             if (B1) circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_draussen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
             if (B2) circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.Red; else circ_Lichtschranke_drinnen_rechts.Fill = System.Windows.Media.Brushes.LawnGreen;
+            */
         }
     }
 }

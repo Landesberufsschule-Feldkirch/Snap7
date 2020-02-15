@@ -9,6 +9,7 @@ namespace Tiefgarage
 
         public void AlleFahrzeugePersonenInitialisieren()
         {
+            /*
             btn_auto_1.Tag = new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug);
             btn_auto_2.Tag = new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug);
             btn_auto_3.Tag = new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug);
@@ -26,14 +27,15 @@ namespace Tiefgarage
             gAlleButtons.Add(btn_person_2);
             gAlleButtons.Add(btn_person_3);
             gAlleButtons.Add(btn_person_4);
+            */
         }
 
         public void AlleDraussenParken()
         {
             foreach (Button btn in gAlleButtons)
             {
-                var fahrPer = btn.Tag as FahrzeugPerson;
-                fahrPer.DraussenParken();
+                //var fahrPer = btn.Tag as FahrzeugPerson;
+                //fahrPer.DraussenParken();
             }
         }
 
@@ -41,8 +43,8 @@ namespace Tiefgarage
         {
             foreach (Button btn in gAlleButtons)
             {
-                var fahrPer = btn.Tag as FahrzeugPerson;
-                fahrPer.DrinnenParken();
+                // var fahrPer = btn.Tag as FahrzeugPerson;
+                //fahrPer.DrinnenParken();
             }
         }
     }

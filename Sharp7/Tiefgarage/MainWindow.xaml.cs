@@ -41,8 +41,8 @@ namespace Tiefgarage
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            var fp = btn.Tag as FahrzeugPerson;
-            fp.Losfahren();
+            //var fp = btn.Tag as FahrzeugPerson;
+            //fp.Losfahren();
         }
 
         private void AlleDraussenParken_Click(object sender, RoutedEventArgs e)
