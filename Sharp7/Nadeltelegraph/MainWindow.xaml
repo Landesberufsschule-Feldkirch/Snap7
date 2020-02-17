@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nadeltelegraph"
         mc:Ignorable="d"
-        Title="Nadeltelegraph" Height="950" Width="1000">
+        Title="Nadeltelegraph" Height="1150" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -21,341 +21,320 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
             <ColumnDefinition />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V0.0 "    Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" />
-        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="8"  Grid.ColumnSpan="6" Grid.Row="21"  Background="LightSeaGreen"  />
+        <Label x:Name="lbl_VersionsInfo" Content="V0.0 "    Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" />
+        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="8"  Grid.ColumnSpan="6" Grid.Row="22"  Background="LightSeaGreen"  />
 
+        <Polygon x:Name="Hintergrund" Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
+            <Polygon.Points>
+                <Point X="0"    Y="500"  />
+                <Point X="400"  Y="0" />
+                <Point X="800"  Y="500" />
+                <Point X="400"  Y="1000" />
+            </Polygon.Points>
+        </Polygon>
 
-        <Canvas Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="1" Grid.RowSpan="25" Background="LightBlue">
+        <!--nach rechts oben -->
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.Width1UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width2UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.Width3UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width4UpRight}"  />
 
-            <Polygon Stroke="Black" StrokeThickness="2" Fill="Silver">
-                <Polygon.Points>
-                    <Point X="350" Y="0" />
-                    <Point X="700" Y="400" />
-                    <Point X="350" Y="800" />
-                    <Point X="0" Y="400" />
-                </Polygon.Points>
-            </Polygon>
+        <!--nach rechts unten -->
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
 
-            <!--nach rechts oben -->
-            <Line X1="100" Y1="400"    X2="350" Y2="50"    Stroke="Orange"    StrokeThickness="8" />
-            <Line X1="200" Y1="400"    X2="450" Y2="50"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="300" Y1="400"    X2="550" Y2="50"    Stroke="Red"    StrokeThickness="8" />
-            <Line X1="400" Y1="400"    X2="650" Y2="50"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="500" Y1="400"    X2="750" Y2="50"    Stroke="Orange"    StrokeThickness="8" />
+        <!--nach links oben -->
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width2UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.Width3UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width4UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.Width5UpLeft}"  />
 
-            <!--nach rechts unten -->
-            <Line X1="100" Y1="400"    X2="350" Y2="750"    Stroke="Orange"    StrokeThickness="8" />
-            <Line X1="200" Y1="400"    X2="450" Y2="750"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="300" Y1="400"    X2="550" Y2="750"    Stroke="Red"    StrokeThickness="8" />
-            <Line X1="400" Y1="400"    X2="650" Y2="750"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="500" Y1="400"    X2="750" Y2="750"    Stroke="Orange"    StrokeThickness="8" />
-
-            <!--nach links oben -->
-            <Line X1="100" Y1="50"    X2="350" Y2="400"    Stroke="Orange"    StrokeThickness="8" />
-            <Line X1="200" Y1="50"    X2="450" Y2="400"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="300" Y1="50"    X2="550" Y2="400"    Stroke="Red"    StrokeThickness="8" />
-            <Line X1="400" Y1="50"    X2="650" Y2="400"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="500" Y1="50"    X2="750" Y2="400"    Stroke="Orange"    StrokeThickness="8" />
-
-            <!--nach links unten -->
-            <Line X1="100" Y1="750"    X2="350" Y2="400"    Stroke="Orange"    StrokeThickness="8" />
-            <Line X1="200" Y1="750"    X2="450" Y2="400"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="300" Y1="750"    X2="550" Y2="400"    Stroke="Red"    StrokeThickness="8" />
-            <Line X1="400" Y1="750"    X2="650" Y2="400"    Stroke="OrangeRed"    StrokeThickness="8" />
-            <Line X1="500" Y1="750"    X2="750" Y2="400"    Stroke="Orange"    StrokeThickness="8" />
+        <!--nach links unten -->
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width2DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.Width3DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width4DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.Width5DownLeft}"  />
 
 
 
+      
+        <Polygon x:Name="Zeiger1"  Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+            <Polygon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Polygon.RenderTransform>
+            <Polygon.Points>
+                <Point X="0" Y="50" />
+                <Point X="10" Y="100" />
+                <Point X="20" Y="50" />
+                <Point X="10" Y="0" />
+            </Polygon.Points>
+        </Polygon>
 
-            <Polygon x:Name="Zeiger1" Stroke="Black" StrokeThickness="2" Fill="Yellow" Canvas.Left="100" Canvas.Top="350" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
-                <Polygon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="20"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Polygon.RenderTransform>
-                <Polygon.Points>
-                    <Point X="0" Y="50" />
-                    <Point X="10" Y="100" />
-                    <Point X="20" Y="50" />
-                    <Point X="10" Y="0" />
-                </Polygon.Points>
-            </Polygon>
+        <Polygon x:Name="Zeiger2" Grid.Column="5" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+            <Polygon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Polygon.RenderTransform>
+            <Polygon.Points>
+                <Point X="0" Y="50" />
+                <Point X="10" Y="100" />
+                <Point X="20" Y="50" />
+                <Point X="10" Y="0" />
+            </Polygon.Points>
+        </Polygon>
 
-            <Polygon x:Name="Zeiger2" Stroke="Black" StrokeThickness="2" Fill="Yellow" Canvas.Left="230" Canvas.Top="350" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
-                <Polygon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-20"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Polygon.RenderTransform>
-                <Polygon.Points>
-                    <Point X="0" Y="50" />
-                    <Point X="10" Y="100" />
-                    <Point X="20" Y="50" />
-                    <Point X="10" Y="0" />
-                </Polygon.Points>
-            </Polygon>
+        <Polygon x:Name="Zeiger3" Grid.Column="7" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+            <Polygon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Polygon.RenderTransform>
+            <Polygon.Points>
+                <Point X="0" Y="50" />
+                <Point X="10" Y="100" />
+                <Point X="20" Y="50" />
+                <Point X="10" Y="0" />
+            </Polygon.Points>
+        </Polygon>
 
-            <Polygon x:Name="Zeiger3" Stroke="Black" StrokeThickness="2" Fill="Yellow" Canvas.Left="330" Canvas.Top="350" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
-                <Polygon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Polygon.RenderTransform>
-                <Polygon.Points>
-                    <Point X="0" Y="50" />
-                    <Point X="10" Y="100" />
-                    <Point X="20" Y="50" />
-                    <Point X="10" Y="0" />
-                </Polygon.Points>
-            </Polygon>
+        <Polygon x:Name="Zeiger4" Grid.Column="9" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+            <Polygon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Polygon.RenderTransform>
+            <Polygon.Points>
+                <Point X="0" Y="50" />
+                <Point X="10" Y="100" />
+                <Point X="20" Y="50" />
+                <Point X="10" Y="0" />
+            </Polygon.Points>
+        </Polygon>
 
-            <Polygon x:Name="Zeiger4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Canvas.Left="430" Canvas.Top="350" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
-                <Polygon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="20"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Polygon.RenderTransform>
-                <Polygon.Points>
-                    <Point X="0" Y="50" />
-                    <Point X="10" Y="100" />
-                    <Point X="20" Y="50" />
-                    <Point X="10" Y="0" />
-                </Polygon.Points>
-            </Polygon>
-
-            <Polygon x:Name="Zeiger5" Stroke="Black" StrokeThickness="2" Fill="Yellow" Canvas.Left="530" Canvas.Top="350" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
-                <Polygon.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-20"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Polygon.RenderTransform>
-                <Polygon.Points>
-                    <Point X="0" Y="50" />
-                    <Point X="10" Y="100" />
-                    <Point X="20" Y="50" />
-                    <Point X="10" Y="0" />
-                </Polygon.Points>
-            </Polygon>
+        <Polygon x:Name="Zeiger5" Grid.Column="11" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+            <Polygon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Polygon.RenderTransform>
+            <Polygon.Points>
+                <Point X="0" Y="50" />
+                <Point X="10" Y="100" />
+                <Point X="20" Y="50" />
+                <Point X="10" Y="0" />
+            </Polygon.Points>
+        </Polygon>
 
 
+        <Button x:Name="btnA" Content="A" Grid.Column="7" Grid.Row="4" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeA}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="A" Canvas.Left="336" Canvas.Top="28" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeA}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnB" Content="B" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeB}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="B" Canvas.Left="251" Canvas.Top="129" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeB}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnD" Content="D" Grid.Column="8" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeD}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="D" Canvas.Left="366" Canvas.Top="129" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeD}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnE" Content="E" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeE}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="E" Canvas.Left="184" Canvas.Top="239" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeE}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnF" Content="F" Grid.Column="7" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeF}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="F" Canvas.Left="320" Canvas.Top="235" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeF}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnG" Content="G" Grid.Column="9" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeG}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="G" Canvas.Left="468" Canvas.Top="235" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeG}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnH" Content="H" Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeH}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="H" Canvas.Left="156" Canvas.Top="305" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeH}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnI" Content="I" Grid.Column="6" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeI}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="I" Canvas.Left="298" Canvas.Top="305" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeI}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnK" Content="K" Grid.Column="8" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeK}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="K" Canvas.Left="417" Canvas.Top="305" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeK}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnL" Content="L" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeL}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="L" Canvas.Left="525" Canvas.Top="321" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeL}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnM" Content="M" Grid.Column="4" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeM}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="M" Canvas.Left="138" Canvas.Top="425" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeM}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnN" Content="N" Grid.Column="6" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeN}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="N" Canvas.Left="255" Canvas.Top="406" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeN}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnO" Content="O" Grid.Column="8" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeO}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="O" Canvas.Left="388" Canvas.Top="419" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeO}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnP" Content="P" Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeP}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="P" Canvas.Left="513" Canvas.Top="419" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeP}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnR" Content="R" Grid.Column="5" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeR}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="R" Canvas.Left="184" Canvas.Top="494" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeR}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnS" Content="S" Grid.Column="7" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeS}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="S" Canvas.Left="320" Canvas.Top="494" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeS}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnT" Content="T" Grid.Column="9" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeT}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="T" Canvas.Left="468" Canvas.Top="494" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeT}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnV" Content="V" Grid.Column="6" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeV}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="V" Canvas.Left="251" Canvas.Top="589" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeV}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+        <Button x:Name="btnW" Content="W" Grid.Column="8" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeW}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
-            <Button Content="W" Canvas.Left="399" Canvas.Top="589" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeW}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-            <Button Content="Y" Canvas.Left="320" Canvas.Top="688" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeY}" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="25" />
-                    </Style>
-                </Button.Resources>
-            </Button>
-
-        </Canvas>
+        <Button x:Name="btnY" Content="Y" Grid.Column="7" Grid.Row="18" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="Press" Command="{Binding BtnBuchstabeY}" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
     </Grid>

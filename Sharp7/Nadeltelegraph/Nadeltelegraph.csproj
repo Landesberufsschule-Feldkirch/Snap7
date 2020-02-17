@@ -55,6 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\NadeltelegraphBuchstabeA.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeB.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeD.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeE.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeF.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeG.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeH.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeI.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeK.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeL.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeM.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeN.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeO.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeP.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeR.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeS.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeT.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeV.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeW.cs" />
+    <Compile Include="Commands\NadeltelegraphBuchstabeY.cs" />
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="ViewModel\NadeltelegraphViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -97,9 +117,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
