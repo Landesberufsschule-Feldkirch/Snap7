@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmpelsteuerungKieswerk"
         mc:Ignorable="d"
-        Title="Ampelsteuerung Kieswerk" Height="600" Width="1700" Closing="Window_Closing">
+        Title="Ampelsteuerung Kieswerk" Height="600" Width="1700">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -64,31 +64,31 @@
         <Label x:Name="lbl_PlcPing"         Content="S7-1200"       Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="LightSeaGreen" />
 
         <Rectangle Fill="LightGray"                                 Grid.Column="23" Grid.ColumnSpan="5"    Grid.Row="2"  Grid.RowSpan="5" Stroke="Black" />
-        <Button x:Name="AlleLinksParken" Content="Links parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                    Click="AlleLinksParken_Click" />
-        <Button x:Name="AlleRechtsParken" Content="Rechts parken!"  Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="5"                    Click="AlleRechtsParken_Click" />
+        <Button Content="Links parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                     Command="{Binding BtnLinksParken}"/>
+        <Button Content="Rechts parken!"  Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="5"                     Command="{Binding BtnRechtsParken}"/>
 
-        <Rectangle x:Name="Wand_oben_1" Grid.Column="6"                         Grid.Row="2" Grid.RowSpan="4"   Fill="DarkGray" Margin="50,0,0,0" />
-        <Rectangle x:Name="Wand_oben_2" Grid.Column="6" Grid.ColumnSpan="10"    Grid.Row="5"                    Fill="DarkGray" Margin="60,20,0,0" />
-        <Rectangle x:Name="Wand_oben_3" Grid.Column="16"                        Grid.Row="2" Grid.RowSpan="4"   Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle Grid.Column="6"                         Grid.Row="2" Grid.RowSpan="4"   Fill="DarkGray" Margin="50,0,0,0" />
+        <Rectangle Grid.Column="6" Grid.ColumnSpan="10"    Grid.Row="5"                    Fill="DarkGray" Margin="60,20,0,0" />
+        <Rectangle Grid.Column="16"                        Grid.Row="2" Grid.RowSpan="4"   Fill="DarkGray" Margin="0,0,50,0" />
 
-        <Rectangle x:Name="Wand_unten_1" Grid.Column="6"                        Grid.Row="10" Grid.RowSpan="4"  Fill="DarkGray" Margin="50,0,0,0" />
-        <Rectangle x:Name="Wand_unten_2" Grid.Column="6" Grid.ColumnSpan="10"   Grid.Row="10"                   Fill="DarkGray" Margin="60,0,0,20" />
-        <Rectangle x:Name="Wand_unten_3" Grid.Column="16"                       Grid.Row="10" Grid.RowSpan="4"  Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle Grid.Column="6"                        Grid.Row="10" Grid.RowSpan="4"  Fill="DarkGray" Margin="50,0,0,0" />
+        <Rectangle Grid.Column="6" Grid.ColumnSpan="10"   Grid.Row="10"                   Fill="DarkGray" Margin="60,0,0,20" />
+        <Rectangle Grid.Column="16"                       Grid.Row="10" Grid.RowSpan="4"  Fill="DarkGray" Margin="0,0,50,0" />
 
-        <Rectangle x:Name="rct_Ampel_links"         Grid.Column="6"     Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"    Margin="-1,-1,34,-1" />
-        <Ellipse x:Name="circ_Ampel_links_rot"      Grid.Column="6"     Grid.Row="2"                    Fill="Red"              Margin="2,2,37,2" />
-        <Ellipse x:Name="circ_Ampel_links_gelb"     Grid.Column="6"     Grid.Row="3"                    Fill="Yellow"           Margin="2,2,37,2" />
-        <Ellipse x:Name="circ_Ampel_links_gruen"    Grid.Column="6"     Grid.Row="4"                    Fill="Green"            Margin="2,2,37,2" />
+        <Rectangle  Grid.Column="6"     Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"                                            Margin="-1,-1,34,-1" />
+        <Ellipse    Grid.Column="6"     Grid.Row="2"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorLinksRot}"     Margin="2,2,37,2" />
+        <Ellipse    Grid.Column="6"     Grid.Row="3"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorLinksGelb}"    Margin="2,2,37,2" />
+        <Ellipse    Grid.Column="6"     Grid.Row="4"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorLinksGruen}"   Margin="2,2,37,2" />
 
-        <Rectangle x:Name="rct_Ampel_rechts"        Grid.Column="16"    Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"    Margin="34,-1,-1,-1" />
-        <Ellipse x:Name="circ_Ampel_rechts_rot"     Grid.Column="16"    Grid.Row="2"                    Fill="Red"              Margin="37,2,2,2" />
-        <Ellipse x:Name="circ_Ampel_rechts_gelb"    Grid.Column="16"    Grid.Row="3"                    Fill="Yellow"           Margin="37,2,2,2" />
-        <Ellipse x:Name="circ_Ampel_rechts_gruen"   Grid.Column="16"    Grid.Row="4"                    Fill="Green"            Margin="37,2,2,2" />
+        <Rectangle  Grid.Column="16"    Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"                                            Margin="34,-1,-1,-1" />
+        <Ellipse    Grid.Column="16"    Grid.Row="2"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorRechtsRot}"    Margin="37,2,2,2" />
+        <Ellipse    Grid.Column="16"    Grid.Row="3"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorRechtsGelb}"   Margin="37,2,2,2" />
+        <Ellipse    Grid.Column="16"    Grid.Row="4"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorRechtsGruen}"  Margin="37,2,2,2" />
 
-        <Ellipse x:Name="circ_Lichtschranke_draussen_links"     Grid.Column="5"     Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
-        <Ellipse x:Name="circ_Lichtschranke_drinnen_links"      Grid.Column="6"     Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
-        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts"     Grid.Column="16"    Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
-        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts"    Grid.Column="17"    Grid.Row="9"        Fill="LawnGreen"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
+        <Ellipse    Grid.Column="5"     Grid.Row="9"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorB1}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
+        <Ellipse    Grid.Column="6"     Grid.Row="9"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorB2}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
+        <Ellipse    Grid.Column="16"    Grid.Row="9"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorB3}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
+        <Ellipse    Grid.Column="17"    Grid.Row="9"                    Fill="{Binding AlleLastKraftWagen.ViAnzeige.ColorB4}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
 
         <Label Grid.Column="5"  Grid.Row="9" Content="B1" Margin="23,7,0,0" FontSize="12pt" />
         <Label Grid.Column="6"  Grid.Row="9" Content="B2" Margin="23,7,0,0" FontSize="12pt" />
@@ -96,24 +96,25 @@
         <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="43,7,0,0" FontSize="12pt" />
 
         <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
-            <Button x:Name="btn_lkw_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_lkw_1" Height="60" Source="Bilder/LKW_braun.PNG" />
+
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw1Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw1Top}" Command="{Binding BtnLkw1}">
+                <Image Height="60" Source="Bilder/LKW_braun.PNG" />
             </Button>
 
-            <Button x:Name="btn_lkw_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_lkw_2" Height="60" Source="Bilder/LKW_gelb.PNG" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw2Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw2Top}" Command="{Binding BtnLkw2}">
+                <Image Height="60" Source="Bilder/LKW_gelb.PNG" />
             </Button>
 
-            <Button x:Name="btn_lkw_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_lkw_3" Height="60" Source="Bilder/LKW_gruen.PNG" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw3Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw3Top}" Command="{Binding BtnLkw3}">
+                <Image Height="60" Source="Bilder/LKW_gruen.PNG" />
             </Button>
 
-            <Button x:Name="btn_lkw_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_lkw_4" Height="60" Source="Bilder/LKW_pink.PNG" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw4Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw4Top}" Command="{Binding BtnLkw4}">
+                <Image Height="60" Source="Bilder/LKW_pink.PNG" />
             </Button>
 
-            <Button x:Name="btn_lkw_5" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_lkw_5" Height="60" Source="Bilder/LKW_rot.PNG" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw5Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw5Top}" Command="{Binding BtnLkw5}">
+                <Image Height="60" Source="Bilder/LKW_rot.PNG" />
             </Button>
         </Canvas>
     </Grid>

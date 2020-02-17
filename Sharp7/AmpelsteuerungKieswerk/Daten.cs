@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using AmpelsteuerungKieswerk.Model;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,6 +11,7 @@ namespace AmpelsteuerungKieswerk
 
         public void AlleLKWInitialisieren()
         {
+            /*
             btn_lkw_1.Tag = new LKW(img_lkw_1);
             btn_lkw_2.Tag = new LKW(img_lkw_2);
             btn_lkw_3.Tag = new LKW(img_lkw_3);
@@ -21,6 +23,7 @@ namespace AmpelsteuerungKieswerk
             gAlleButton.Add(btn_lkw_3);
             gAlleButton.Add(btn_lkw_4);
             gAlleButton.Add(btn_lkw_5);
+            */
         }
     }
 }

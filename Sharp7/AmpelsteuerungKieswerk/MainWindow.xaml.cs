@@ -1,6 +1,7 @@
 ﻿using Kommunikation;
 using System.Windows;
 using System.Windows.Controls;
+using AmpelsteuerungKieswerk.Model;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -11,9 +12,18 @@ namespace AmpelsteuerungKieswerk
         public bool FensterAktiv { get; set; } = true;
         public int FahrzeugPersonGeklickt { get; set; } = -1;
 
+
+        private ViewModel.AmpelsteuerungKieswerkViewModel ampelsteuerungKieswerkViewModel;
+
         public MainWindow()
         {
+
+            ampelsteuerungKieswerkViewModel = new ViewModel.AmpelsteuerungKieswerkViewModel(this);
+
             InitializeComponent();
+            DataContext = ampelsteuerungKieswerkViewModel;
+
+
             AlleLKWInitialisieren();
 
             DatenRangieren datenRangieren = new DatenRangieren(this);
@@ -23,36 +33,6 @@ namespace AmpelsteuerungKieswerk
             System.Threading.Tasks.Task.Run(() => Display_Task(s7_1200));
         }
 
-        private void Btn_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-
-            var lkw = btn.Tag as LKW;
-            lkw?.Losfahren();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            FensterAktiv = false;
-            Application.Current.Shutdown();
-        }
-
-        private void AlleLinksParken_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (Button btn in gAlleButton)
-            {
-                var lkw = btn.Tag as LKW;
-                lkw?.LinksParken();
-            }
-        }
-
-        private void AlleRechtsParken_Click(object sender, RoutedEventArgs e)
-        {
-            foreach (Button btn in gAlleButton)
-            {
-                var lkw = btn.Tag as LKW;
-                lkw?.RechtsParken();
-            }
-        }
+   
     }
 }

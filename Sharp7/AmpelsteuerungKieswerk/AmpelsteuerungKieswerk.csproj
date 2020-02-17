@@ -56,12 +56,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AmpelZustandArgs.cs" />
+    <Compile Include="Model\AmpelZustandArgs.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLinksParken.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLkw1.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLKW2.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLKW3.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLKW4.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnLKW5.cs" />
+    <Compile Include="Commands\AmpelsteuerungBtnRechtsParken.cs" />
     <Compile Include="Daten.cs" />
     <Compile Include="Model\AlleLastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagenBewegen.cs" />
-    <Compile Include="SensorenZustandArgs.cs" />
+    <Compile Include="Model\SensorenZustandArgs.cs" />
+    <Compile Include="Model\VisuAnzeigen.cs" />
+    <Compile Include="ViewModel\AmpelsteuerungKieswerkViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,9 +130,6 @@
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

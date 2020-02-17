@@ -30,7 +30,7 @@ namespace AmpelsteuerungKieswerk.Model
         private LKW_Richtungen LKW_Richtung = LKW_Richtungen.NachRechts;
         private LKW_Richtungen LKW_RichtungAlt = LKW_Richtungen.NachRechts;
         private readonly Image ImgLKW;
-        private Punkt PosAktuell;
+
         private readonly Punkt ParkPosLinks;
         private readonly Punkt ParkPosRechts;
         private readonly Punkt WegPosLinks;
@@ -47,12 +47,12 @@ namespace AmpelsteuerungKieswerk.Model
         private readonly double y_ParkpositionOben = 10;
         private readonly double y_Fahrspur = 200;
 
-        public LKW(Image img)
-        {
-            ID = AnzahlLKW;
-            AnzahlLKW++;
+        public Punkt AktuellePosition { get; set; }
 
-            ImgLKW = img;
+
+        public LKW(int id)
+        {
+            ID = id;
             Y_LKW_Parkposition = y_ParkpositionOben + ID * (10 + HoeheLWK);
 
             ParkPosLinks = new Punkt(x_ParkpositionLinks, Y_LKW_Parkposition);
@@ -69,15 +69,17 @@ namespace AmpelsteuerungKieswerk.Model
             LinkeKurve = new BezierCurve(ParkPosLinks, KontrollPunktLinks1, KontrollPunktLinks2, WegPosLinks);
             RechteKurve = new BezierCurve(WegPosRechts, KontrollPunktRechts1, KontrollPunktRechts2, ParkPosRechts);
 
-            PosAktuell = ParkPosLinks;
+            AktuellePosition = ParkPosLinks;
         }
+
+
 
         public void LastwagenAnzeigen(bool fensterAktiv, Button btn)
         {
             if (!fensterAktiv) return;
 
-            btn.SetValue(Canvas.LeftProperty, PosAktuell.X);
-            btn.SetValue(Canvas.TopProperty, PosAktuell.Y);
+            btn.SetValue(Canvas.LeftProperty, AktuellePosition.X);
+            btn.SetValue(Canvas.TopProperty, AktuellePosition.Y);
 
             if (LKW_RichtungAlt == LKW_Richtung) return;
 
@@ -115,8 +117,8 @@ namespace AmpelsteuerungKieswerk.Model
 
         private bool LichtschrankeUnterbrochen(double xPos)
         {
-            if (PosAktuell.X + BreiteLKW < xPos) return false;
-            if (PosAktuell.X > xPos) return false;
+            if (AktuellePosition.X + BreiteLKW < xPos) return false;
+            if (AktuellePosition.X > xPos) return false;
             return true;
         }
     }

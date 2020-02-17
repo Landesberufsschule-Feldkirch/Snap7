@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Controls;
+using AmpelsteuerungKieswerk.Model;
+
 
 namespace AmpelsteuerungKieswerk
 {
@@ -11,8 +13,10 @@ namespace AmpelsteuerungKieswerk
 
         public void Logikfunktionen_Task()
         {
+            /*
             while (FensterAktiv)
             {
+                
                 Dispatcher.Invoke(() =>
                                    {
                                        lock (lockit)
@@ -36,6 +40,7 @@ namespace AmpelsteuerungKieswerk
                                    });
                 Thread.Sleep(10);
             }
+            */
         }
 
         public event EventHandler<SensorenZustandArgs> SensorenChanged;

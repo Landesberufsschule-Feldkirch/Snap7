@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using AmpelsteuerungKieswerk.Model;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -11,7 +12,7 @@ namespace AmpelsteuerungKieswerk
         public void Display_Task(S7_1200 s7_1200)
         {
             DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Aus, AmpelZustand.Aus));
-
+            /*
             while (FensterAktiv)
             {
                 Dispatcher.Invoke(() =>
@@ -31,10 +32,13 @@ namespace AmpelsteuerungKieswerk
                         });
                 Thread.Sleep(10);
             }
+    */
+
         }
 
         public void DatenRangieren_AmpelChangedEvent(object sender, AmpelZustandEventArgs e)
         {
+            /*
             KreisFarbeUmschalten(circ_Ampel_links_rot, Colors.White);
             KreisFarbeUmschalten(circ_Ampel_links_gelb, Colors.White);
             KreisFarbeUmschalten(circ_Ampel_links_gruen, Colors.White);
@@ -90,15 +94,18 @@ namespace AmpelsteuerungKieswerk
                 default:
                     break;
             }
+            */
         }
 
         public void AnzeigeAktualisieren(S7_1200 s7_1200)
         {
+            /*
             lbl_PlcPing.Content = s7_1200.GetSpsStatus();
             KreisFarbeUmschalten(B1, circ_Lichtschranke_draussen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B2, circ_Lichtschranke_drinnen_links, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B3, circ_Lichtschranke_drinnen_rechts, Colors.Red, Colors.LightGray);
             KreisFarbeUmschalten(B4, circ_Lichtschranke_draussen_rechts, Colors.Red, Colors.LightGray);
+            */
         }
 
         private void KreisFarbeUmschalten(bool Wert, Ellipse ellipse, Color FarbeEin, Color FarbeAus)

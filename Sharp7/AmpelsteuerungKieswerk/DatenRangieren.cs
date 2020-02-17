@@ -1,8 +1,11 @@
 ﻿using Sharp7;
 using System;
+using AmpelsteuerungKieswerk.Model;
+
 
 namespace AmpelsteuerungKieswerk
 {
+
     public class DatenRangieren
     {
         private bool B1, B2, B3, B4;
@@ -65,7 +68,7 @@ namespace AmpelsteuerungKieswerk
 
             AmpelChangedEvent += window.DatenRangieren_AmpelChangedEvent;
         }
-
+        
         private void Window_SensorenChanged(object sender, SensorenZustandArgs e)
         {
             B1 = e.B1;
