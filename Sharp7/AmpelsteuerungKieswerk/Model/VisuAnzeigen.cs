@@ -2,11 +2,10 @@
 {
     using System.ComponentModel;
     using Utilities;
+    using static AmpelsteuerungKieswerk.Model.LKW;
 
     public class VisuAnzeigen
     {
-
-
         public VisuAnzeigen()
         {
             ColorB1 = "LightGray";
@@ -31,6 +30,12 @@
             PosLkw4Top = 100;
             PosLkw5Left = 10;
             PosLkw5Top = 130;
+
+            DirectionLkw1 = 1;
+            DirectionLkw2 = 1;
+            DirectionLkw3 = 1;
+            DirectionLkw4 = 1;
+            DirectionLkw5 = 1;
         }
 
 
@@ -218,6 +223,95 @@
 
 
 
+        #region RichtungLkw1
+        public void RichtungLkw1(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1;
+        }
+
+        private int _DirectionLkw1;
+        public int DirectionLkw1
+        {
+            get { return _DirectionLkw1; }
+            set
+            {
+                _DirectionLkw1 = value;
+                OnPropertyChanged("DirectionLkw1");
+            }
+        }
+        #endregion
+
+        #region RichtungLkw2
+        public void RichtungLkw2(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1;
+        }
+
+        private int _DirectionLkw2;
+        public int DirectionLkw2
+        {
+            get { return _DirectionLkw2; }
+            set
+            {
+                _DirectionLkw2 = value;
+                OnPropertyChanged("DirectionLkw2");
+            }
+        }
+        #endregion
+
+        #region RichtungLkw3
+        public void RichtungLkw3(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1;
+        }
+
+        private int _DirectionLkw3;
+        public int DirectionLkw3
+        {
+            get { return _DirectionLkw3; }
+            set
+            {
+                _DirectionLkw3 = value;
+                OnPropertyChanged("DirectionLkw3");
+            }
+        }
+        #endregion
+
+        #region RichtungLkw4
+        public void RichtungLkw4(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1;
+        }
+
+        private int _DirectionLkw4;
+        public int DirectionLkw4
+        {
+            get { return _DirectionLkw4; }
+            set
+            {
+                _DirectionLkw4 = value;
+                OnPropertyChanged("DirectionLkw4");
+            }
+        }
+        #endregion
+
+        #region RichtungLkw5
+        public void RichtungLkw5(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1;
+        }
+
+        private int _DirectionLkw5;
+        public int DirectionLkw5
+        {
+            get { return _DirectionLkw5; }
+            set
+            {
+                _DirectionLkw5 = value;
+                OnPropertyChanged("DirectionLkw5");
+            }
+        }
+        #endregion
 
 
 
@@ -294,7 +388,7 @@
             set
             {
                 _PosLkw3Left = value;
-                OnPropertyChanged("PosLkw1Left");
+                OnPropertyChanged("PosLkw3Left");
             }
         }
         private double _PosLkw3Top;

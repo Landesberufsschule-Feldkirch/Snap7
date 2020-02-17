@@ -1,14 +1,13 @@
-﻿using Sharp7;
-using System;
-using AmpelsteuerungKieswerk.Model;
-
-
-namespace AmpelsteuerungKieswerk
+﻿namespace AmpelsteuerungKieswerk
 {
+    using AmpelsteuerungKieswerk.Model;
+    using Sharp7;
+    using System;
 
     public class DatenRangieren
     {
-        private bool B1, B2, B3, B4;
+        private readonly MainWindow mainWindow;
+        private readonly ViewModel.AmpelsteuerungKieswerkViewModel viewModel;
 
         private AmpelZustand AmpelLinks = AmpelZustand.Rot;
         private AmpelZustand AmpelRechts = AmpelZustand.Rot;
@@ -35,10 +34,14 @@ namespace AmpelsteuerungKieswerk
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, B4);
+
+            // mainWindow.lbl_PlcPing.Content = S7_1200.GetSpsStatus();
+
+
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleLastKraftWagen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleLastKraftWagen.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.alleLastKraftWagen.B3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.alleLastKraftWagen.B4);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
@@ -62,20 +65,14 @@ namespace AmpelsteuerungKieswerk
             }
         }
 
-        public DatenRangieren(MainWindow window)
+        public DatenRangieren(MainWindow mw, ViewModel.AmpelsteuerungKieswerkViewModel vm)
         {
-            window.SensorenChanged += Window_SensorenChanged;
+            mainWindow = mw;
+            viewModel = vm;
 
-            AmpelChangedEvent += window.DatenRangieren_AmpelChangedEvent;
+            AmpelChangedEvent += viewModel.alleLastKraftWagen.DatenRangieren_AmpelChangedEvent;
         }
-        
-        private void Window_SensorenChanged(object sender, SensorenZustandArgs e)
-        {
-            B1 = e.B1;
-            B2 = e.B2;
-            B3 = e.B3;
-            B4 = e.B4;
-        }
+
 
         private void OnAmpelChanged(AmpelZustandEventArgs e)
         {

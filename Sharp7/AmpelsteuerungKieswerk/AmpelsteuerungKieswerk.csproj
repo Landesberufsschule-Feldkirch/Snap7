@@ -64,10 +64,8 @@
     <Compile Include="Commands\AmpelsteuerungBtnLKW4.cs" />
     <Compile Include="Commands\AmpelsteuerungBtnLKW5.cs" />
     <Compile Include="Commands\AmpelsteuerungBtnRechtsParken.cs" />
-    <Compile Include="Daten.cs" />
     <Compile Include="Model\AlleLastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagen.cs" />
-    <Compile Include="Model\LastKraftWagenBewegen.cs" />
     <Compile Include="Model\SensorenZustandArgs.cs" />
     <Compile Include="Model\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\AmpelsteuerungKieswerkViewModel.cs" />
@@ -80,8 +78,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatenRangieren.cs" />
-    <Compile Include="Display.cs" />
-    <Compile Include="LogikFunktionen.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -22,6 +22,5 @@
         public bool CanExecute(object parameter) { return viewModel.CanButtonLkw3; }
         public void Execute(object parameter) { viewModel.TasterLkw3(); }
         #endregion
-
     }
 }

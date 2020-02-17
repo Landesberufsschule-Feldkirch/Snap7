@@ -98,24 +98,60 @@
         <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw1Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw1Top}" Command="{Binding BtnLkw1}">
-                <Image Height="60" Source="Bilder/LKW_braun.PNG" />
+                <Image Height="60" Source="Bilder/LKW_braun.PNG"  RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="{Binding AlleLastKraftWagen.ViAnzeige.DirectionLkw1}"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw2Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw2Top}" Command="{Binding BtnLkw2}">
-                <Image Height="60" Source="Bilder/LKW_gelb.PNG" />
+                <Image Height="60" Source="Bilder/LKW_gelb.PNG"  RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="{Binding AlleLastKraftWagen.ViAnzeige.DirectionLkw2}"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw3Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw3Top}" Command="{Binding BtnLkw3}">
-                <Image Height="60" Source="Bilder/LKW_gruen.PNG" />
+                <Image Height="60" Source="Bilder/LKW_gruen.PNG"  RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="{Binding AlleLastKraftWagen.ViAnzeige.DirectionLkw3}"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw4Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw4Top}" Command="{Binding BtnLkw4}">
-                <Image Height="60" Source="Bilder/LKW_pink.PNG" />
+                <Image Height="60" Source="Bilder/LKW_pink.PNG"  RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="{Binding AlleLastKraftWagen.ViAnzeige.DirectionLkw4}"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw5Left}" Canvas.Top="{Binding AlleLastKraftWagen.ViAnzeige.PosLkw5Top}" Command="{Binding BtnLkw5}">
-                <Image Height="60" Source="Bilder/LKW_rot.PNG" />
+                <Image Height="60" Source="Bilder/LKW_rot.PNG"  RenderTransformOrigin="0.5,0.5" >
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="{Binding AlleLastKraftWagen.ViAnzeige.DirectionLkw5}"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
+
         </Canvas>
     </Grid>
 </Window>

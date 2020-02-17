@@ -22,6 +22,5 @@
         public bool CanExecute(object parameter) { return viewModel.CanButtonRechtsParken; }
         public void Execute(object parameter) { viewModel.TasterRechtsParken(); }
         #endregion
-
     }
 }
