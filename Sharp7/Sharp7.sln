@@ -31,9 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2019_Foerderanlage", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kommunikation", "Kommunikation\Kommunikation.csproj", "{B017D739-A408-49BD-A9B2-974F7A573C41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeGraphX", "RealTimeGraphX\RealTimeGraphX.csproj", "{6EB2B4C7-2489-433D-AF1B-A7F80D22A2F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeGraphX", "RealTimeGraphX\RealTimeGraphX.csproj", "{6EB2B4C7-2489-433D-AF1B-A7F80D22A2F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeGraphX.WPF", "RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj", "{9409AAD7-A253-4EBA-A6B8-9FDCF6A0808A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeGraphX.WPF", "RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj", "{6B9774F7-960D-438E-AD81-C6B9BE328D50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadeltelegraph", "Nadeltelegraph\Nadeltelegraph.csproj", "{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,10 +103,14 @@ Global
 		{6EB2B4C7-2489-433D-AF1B-A7F80D22A2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EB2B4C7-2489-433D-AF1B-A7F80D22A2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EB2B4C7-2489-433D-AF1B-A7F80D22A2F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9409AAD7-A253-4EBA-A6B8-9FDCF6A0808A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9409AAD7-A253-4EBA-A6B8-9FDCF6A0808A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9409AAD7-A253-4EBA-A6B8-9FDCF6A0808A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9409AAD7-A253-4EBA-A6B8-9FDCF6A0808A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9774F7-960D-438E-AD81-C6B9BE328D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9774F7-960D-438E-AD81-C6B9BE328D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9774F7-960D-438E-AD81-C6B9BE328D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9774F7-960D-438E-AD81-C6B9BE328D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
