@@ -4,7 +4,7 @@
     using Utilities;
     using static AmpelsteuerungKieswerk.Model.LKW;
 
-    public class VisuAnzeigen
+    public class VisuAnzeigen : INotifyPropertyChanged
     {
         public VisuAnzeigen()
         {
@@ -16,7 +16,7 @@
             ColorLinksRot = "White";
             ColorLinksGelb = "White";
             ColorLinksGruen = "White";
-            ColorRechtsRot =   "White";
+            ColorRechtsRot = "White";
             ColorRechtsGelb = "White";
             ColorRechtsGruen = "White";
 
