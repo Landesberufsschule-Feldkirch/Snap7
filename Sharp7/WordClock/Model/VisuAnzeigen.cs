@@ -9,7 +9,33 @@
             WinkelStunden = 0;
             WinkelMinuten = 0;
             WinkelSekunden = 0;
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
         }
+
+
+        private string _SpsStatus;
+        public string SpsStatus
+        {
+            get { return _SpsStatus; }
+            set
+            {
+                _SpsStatus = value;
+                OnPropertyChanged("SpsStatus");
+            }
+        }
+
+        private string _SpsColor;
+        public string SpsColor
+        {
+            get { return _SpsColor; }
+            set
+            {
+                _SpsColor = value;
+                OnPropertyChanged("SpsColor");
+            }
+        }
+
 
         private double _WinkelStunden;
         public double WinkelStunden
@@ -22,7 +48,8 @@
             }
         }
 
-        
+
+
         private double _WinkelMinuten;
         public double WinkelMinuten
         {

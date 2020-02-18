@@ -9,7 +9,7 @@
 
         public WordClockViewModel(MainWindow mainWindow)
         {
-            zeiten = new Model.Zeiten();
+            zeiten = new Model.Zeiten(mainWindow);
             BtnSetCurrentTime = new WordClockSetCurrentTime(this);
         }
 

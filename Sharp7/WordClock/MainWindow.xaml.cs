@@ -10,9 +10,11 @@ namespace WordClock
     {
         private DatenRangieren datenRangieren;
         private ViewModel.WordClockViewModel wordClockViewModel;
+        public S7_1200 s7_1200;
 
         public MainWindow()
         {
+
             wordClockViewModel = new ViewModel.WordClockViewModel(this);
 
             datenRangieren = new DatenRangieren(wordClockViewModel);
@@ -20,7 +22,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = wordClockViewModel;
 
-            S7_1200 s7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            s7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);
@@ -28,19 +30,18 @@ namespace WordClock
 
         private void RotiertesRechteckHinzufuegen(double breite, double hoehe, double winkel)
         {
-
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = breite;
-            rectangle.Height = hoehe;
-            rectangle.Fill = Brushes.Black;
+            Rectangle rect = new Rectangle();
+            rect.Width = breite;
+            rect.Height = hoehe;
+            rect.Fill = Brushes.Black;
 
             RotateTransform rotateTransform = new RotateTransform(winkel, breite / 2, 150);
-            rectangle.RenderTransform = rotateTransform;
+            rect.RenderTransform = rotateTransform;
 
-            Canvas.SetLeft(rectangle, 150 - breite / 2);
-            Canvas.SetTop(rectangle, 0);
+            Canvas.SetLeft(rect, 150 - breite / 2);
+            Canvas.SetTop(rect, 0);
 
-            canvasUhr.Children.Add(rectangle);
+            canvasUhr.Children.Add(rect);
         }
     }
 }

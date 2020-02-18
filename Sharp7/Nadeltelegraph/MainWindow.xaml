@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nadeltelegraph"
         mc:Ignorable="d"
-        Title="Nadeltelegraph" Height="1150" Width="850">
+        Title="Nadeltelegraph" Height="1050" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -52,50 +52,52 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="lbl_VersionsInfo" Content="V0.0 "    Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" />
-        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="8"  Grid.ColumnSpan="6" Grid.Row="22"  Background="LightSeaGreen"  />
+        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="LightSeaGreen"  />
+
+        <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding Nadeltelegraph.ViAnzeige.ColorP0}" />
 
         <Polygon x:Name="Hintergrund" Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
             <Polygon.Points>
-                <Point X="0"    Y="500"  />
-                <Point X="400"  Y="0" />
-                <Point X="800"  Y="500" />
-                <Point X="400"  Y="1000" />
+                <Point X="30"   Y="500"  />
+                <Point X="385"  Y="40" />
+                <Point X="730"  Y="500" />
+                <Point X="385"  Y="960" />
             </Polygon.Points>
         </Polygon>
 
         <!--nach rechts oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.Width1UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width2UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.Width3UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width4UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width1UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width2UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width3UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width4UpRight}"  />
 
         <!--nach rechts unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.Width1DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width1DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width2DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width3DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width4DownRight}"  />
 
         <!--nach links oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width2UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.Width3UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width4UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.Width5UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width2UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width3UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width4UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width5UpLeft}"  />
 
         <!--nach links unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width2DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.Width3DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.Width4DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.Width5DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width2DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width3DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width4DownLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding Nadeltelegraph.ViAnzeige.Width5DownLeft}"  />
 
 
 
-      
+
         <Polygon x:Name="Zeiger1"  Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="{Binding Nadeltelegraph.ViAnzeige.AngleNeedle1}"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Polygon.RenderTransform>
@@ -112,7 +114,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="{Binding Nadeltelegraph.ViAnzeige.AngleNeedle2}"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Polygon.RenderTransform>
@@ -129,7 +131,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="{Binding Nadeltelegraph.ViAnzeige.AngleNeedle3}"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Polygon.RenderTransform>
@@ -146,7 +148,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="{Binding Nadeltelegraph.ViAnzeige.AngleNeedle4}"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Polygon.RenderTransform>
@@ -163,7 +165,7 @@
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="{Binding Nadeltelegraph.ViAnzeige.AngleNeedle5}"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Polygon.RenderTransform>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Threading;
 using System.Windows.Controls;
 
 namespace Nadeltelegraph.Model
@@ -6,54 +6,89 @@ namespace Nadeltelegraph.Model
     public class Nadeltelegraph
     {
         private readonly MainWindow mainWindow;
+        public char Zeichen { get; set; }
+        public bool P0 { get; set; }
+        public bool P1L { get; set; }
+        public bool P1R { get; set; }
+        public bool P2L { get; set; }
+        public bool P2R { get; set; }
+        public bool P3L { get; set; }
+        public bool P3R { get; set; }
+        public bool P4L { get; set; }
+        public bool P4R { get; set; }
+        public bool P5L { get; set; }
+        public bool P5R { get; set; }
+        public VisuAnzeigen ViAnzeige { get; set; }
 
-        public bool TasteA { get; set; }
-        public bool TasteB { get; set; }
-        public bool TasteD { get; set; }
-        public bool TasteE { get; set; }
-        public bool TasteF { get; set; }
-        public bool TasteG { get; set; }
-        public bool TasteH { get; set; }
-        public bool TasteI { get; set; }
-        public bool TasteK { get; set; }
-        public bool TasteL { get; set; }
-        public bool TasteM { get; set; }
-        public bool TasteN { get; set; }
-        public bool TasteO { get; set; }
-        public bool TasteP { get; set; }
-        public bool TasteR { get; set; }
-        public bool TasteS { get; set; }
-        public bool TasteT { get; set; }
-        public bool TasteV { get; set; }
-        public bool TasteW { get; set; }
-        public bool TasteY { get; set; }
-
-
-        public Nadeltelegraph(MainWindow mainWindow)
+        public Nadeltelegraph(MainWindow mw)
         {
-            this.mainWindow = mainWindow;
+            mainWindow = mw;
+            ViAnzeige = new VisuAnzeigen();
+
+            Zeichen = ' ';
+            System.Threading.Tasks.Task.Run(() => NadeltelegraphTask());
         }
 
-        internal void BuchstabeA() { TasteA = ButtonFunktionPressReleaseAendern(mainWindow.btnA); }
-        internal void BuchstabeB() { TasteB = ButtonFunktionPressReleaseAendern(mainWindow.btnB); }
-        internal void BuchstabeD() { TasteD = ButtonFunktionPressReleaseAendern(mainWindow.btnD); }
-        internal void BuchstabeE() { TasteE = ButtonFunktionPressReleaseAendern(mainWindow.btnE); }
-        internal void BuchstabeF() { TasteF = ButtonFunktionPressReleaseAendern(mainWindow.btnF); }
-        internal void BuchstabeG() { TasteG = ButtonFunktionPressReleaseAendern(mainWindow.btnG); }
-        internal void BuchstabeH() { TasteH = ButtonFunktionPressReleaseAendern(mainWindow.btnH); }
-        internal void BuchstabeI() { TasteI = ButtonFunktionPressReleaseAendern(mainWindow.btnI); }
-        internal void BuchstabeK() { TasteK = ButtonFunktionPressReleaseAendern(mainWindow.btnK); }
-        internal void BuchstabeL() { TasteL = ButtonFunktionPressReleaseAendern(mainWindow.btnL); }
-        internal void BuchstabeM() { TasteM = ButtonFunktionPressReleaseAendern(mainWindow.btnM); }
-        internal void BuchstabeN() { TasteN = ButtonFunktionPressReleaseAendern(mainWindow.btnN); }
-        internal void BuchstabeO() { TasteO = ButtonFunktionPressReleaseAendern(mainWindow.btnO); }
-        internal void BuchstabeP() { TasteP = ButtonFunktionPressReleaseAendern(mainWindow.btnP); }
-        internal void BuchstabeR() { TasteR = ButtonFunktionPressReleaseAendern(mainWindow.btnR); }
-        internal void BuchstabeS() { TasteS = ButtonFunktionPressReleaseAendern(mainWindow.btnS); }
-        internal void BuchstabeT() { TasteT = ButtonFunktionPressReleaseAendern(mainWindow.btnT); }
-        internal void BuchstabeV() { TasteV = ButtonFunktionPressReleaseAendern(mainWindow.btnV); }
-        internal void BuchstabeW() { TasteW = ButtonFunktionPressReleaseAendern(mainWindow.btnW); }
-        internal void BuchstabeY() { TasteY = ButtonFunktionPressReleaseAendern(mainWindow.btnY); }
+        private void NadeltelegraphTask()
+        {
+            while (true)
+            {             
+                AnzeigeAktualisieren();
+                Thread.Sleep(10);
+            }
+        }
+
+        private void AnzeigeAktualisieren()
+        {
+            ViAnzeige.FarbeP0(P0);
+           
+            ViAnzeige.Breite1UpRight(P1R);
+            ViAnzeige.Breite2UpRight(P2R);
+            ViAnzeige.Breite3UpRight(P3R);
+            ViAnzeige.Breite4UpRight(P4R);         
+             
+            ViAnzeige.Breite1DownRight(P1L);
+            ViAnzeige.Breite2DownRight(P2L);
+            ViAnzeige.Breite3DownRight(P3L);
+            ViAnzeige.Breite4DownRight(P4L);
+ 
+            ViAnzeige.Breite2UpLeft(P2L);
+            ViAnzeige.Breite3UpLeft(P3L);
+            ViAnzeige.Breite4UpLeft(P4L);
+            ViAnzeige.Breite5UpLeft(P5L);
+
+            ViAnzeige.Breite2DownLeft(P2R);
+            ViAnzeige.Breite3DownLeft(P3R);
+            ViAnzeige.Breite4DownLeft(P4R);
+            ViAnzeige.Breite5DownLeft(P5R);          
+
+            ViAnzeige.WinkelNadel1(P1R, P1L);
+            ViAnzeige.WinkelNadel2(P2R, P2L);
+            ViAnzeige.WinkelNadel3(P3R, P3L);
+            ViAnzeige.WinkelNadel4(P4R, P4L);
+            ViAnzeige.WinkelNadel5(P5R, P5L);
+        }
+
+        internal void BuchstabeA() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnA)) Zeichen = 'A'; else Zeichen = ' '; }
+        internal void BuchstabeB() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnB)) Zeichen = 'B'; else Zeichen = ' '; }
+        internal void BuchstabeD() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnD)) Zeichen = 'D'; else Zeichen = ' '; }
+        internal void BuchstabeE() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnE)) Zeichen = 'E'; else Zeichen = ' '; }
+        internal void BuchstabeF() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnF)) Zeichen = 'F'; else Zeichen = ' '; }
+        internal void BuchstabeG() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnG)) Zeichen = 'G'; else Zeichen = ' '; }
+        internal void BuchstabeH() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnH)) Zeichen = 'H'; else Zeichen = ' '; }
+        internal void BuchstabeI() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnI)) Zeichen = 'I'; else Zeichen = ' '; }
+        internal void BuchstabeK() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnK)) Zeichen = 'K'; else Zeichen = ' '; }
+        internal void BuchstabeL() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnL)) Zeichen = 'L'; else Zeichen = ' '; }
+        internal void BuchstabeM() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnM)) Zeichen = 'M'; else Zeichen = ' '; }
+        internal void BuchstabeN() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnN)) Zeichen = 'N'; else Zeichen = ' '; }
+        internal void BuchstabeO() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnO)) Zeichen = 'O'; else Zeichen = ' '; }
+        internal void BuchstabeP() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnP)) Zeichen = 'P'; else Zeichen = ' '; }
+        internal void BuchstabeR() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnR)) Zeichen = 'R'; else Zeichen = ' '; }
+        internal void BuchstabeS() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnS)) Zeichen = 'S'; else Zeichen = ' '; }
+        internal void BuchstabeT() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnT)) Zeichen = 'T'; else Zeichen = ' '; }
+        internal void BuchstabeV() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnV)) Zeichen = 'V'; else Zeichen = ' '; }
+        internal void BuchstabeW() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnW)) Zeichen = 'W'; else Zeichen = ' '; }
+        internal void BuchstabeY() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnY)) Zeichen = 'Y'; else Zeichen = ' '; }
 
         private bool ButtonFunktionPressReleaseAendern(Button knopf)
         {
@@ -68,6 +103,5 @@ namespace Nadeltelegraph.Model
                 return false;
             }
         }
-
     }
 }

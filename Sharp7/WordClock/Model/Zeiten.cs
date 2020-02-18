@@ -18,9 +18,11 @@ namespace WordClock.Model
         public VisuSollwerte ViSoll { get; set; }
 
         private TimeSpan timeSpan;
+        private MainWindow mainWindow;
 
-        public Zeiten()
+        public Zeiten(MainWindow mw)
         {
+            mainWindow = mw;
             ViAnzeige = new VisuAnzeigen();
             ViSoll = new VisuSollwerte();
 
@@ -67,6 +69,12 @@ namespace WordClock.Model
             ViAnzeige.WinkelSekunden = Sekunde * 6;
             ViAnzeige.WinkelMinuten = Minute * 6;
             ViAnzeige.WinkelStunden = Stunde * 30 + Minute * 0.5;
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
         }
 
         internal void SetCurrentTime()
