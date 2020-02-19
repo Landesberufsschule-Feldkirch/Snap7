@@ -56,14 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\AmpelZustandArgs.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLinksParken.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLkw1.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLKW2.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLKW3.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLKW4.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnLKW5.cs" />
-    <Compile Include="Commands\AmpelsteuerungBtnRechtsParken.cs" />
     <Compile Include="Model\AlleLastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagen.cs" />
     <Compile Include="Model\SensorenZustandArgs.cs" />

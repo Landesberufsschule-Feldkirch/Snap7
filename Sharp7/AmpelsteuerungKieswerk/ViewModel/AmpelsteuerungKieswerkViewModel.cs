@@ -11,42 +11,115 @@
         public AmpelsteuerungKieswerkViewModel(MainWindow mainWindow)
         {
             alleLastKraftWagen = new Model.AlleLastKraftWagen(mainWindow);
-
-            BtnLkw1 = new AmpelsteuerungBtnLkw1(this);
-            BtnLkw2 = new AmpelsteuerungBtnLkw2(this);
-            BtnLkw3 = new AmpelsteuerungBtnLkw3(this);
-            BtnLkw4 = new AmpelsteuerungBtnLkw4(this);
-            BtnLkw5 = new AmpelsteuerungBtnLkw5(this);
-            BtnLinksParken = new AmpelsteuerungBtnLinksParken(this);
-            BtnRechtsParken = new AmpelsteuerungBtnRechtsParken(this);
         }
 
         public Model.AlleLastKraftWagen AlleLastKraftWagen { get { return alleLastKraftWagen; } }
 
-        public bool CanButtonLkw1 { get { return true; } }
-        public bool CanButtonLkw2 { get { return true; } }
-        public bool CanButtonLkw3 { get { return true; } }
-        public bool CanButtonLkw4 { get { return true; } }
-        public bool CanButtonLkw5 { get { return true; } }
-        public bool CanButtonLinksParken { get { return true; } }
-        public bool CanButtonRechtsParken { get { return true; } }
 
+        #region BtnLkw1
+        private ICommand _btnLkw1;
+        public ICommand BtnLkw1
+        {
+            get
+            {
+                if (_btnLkw1 == null)
+                {
+                    _btnLkw1 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw1(), p => true);
+                }
+                return _btnLkw1;
+            }
+        }
+        #endregion
 
-        public ICommand BtnLkw1 { get; private set; }
-        public ICommand BtnLkw2 { get; private set; }
-        public ICommand BtnLkw3 { get; private set; }
-        public ICommand BtnLkw4 { get; private set; }
-        public ICommand BtnLkw5 { get; private set; }
-        public ICommand BtnLinksParken { get; private set; }
-        public ICommand BtnRechtsParken { get; private set; }
+        #region BtnLkw2
+        private ICommand _btnLkw2;
+        public ICommand BtnLkw2
+        {
+            get
+            {
+                if (_btnLkw2 == null)
+                {
+                    _btnLkw2 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw2(), p => true);
+                }
+                return _btnLkw2;
+            }
+        }
+        #endregion
 
-        internal void TasterLkw1() { alleLastKraftWagen.TasterLkw1(); }
-        internal void TasterLkw2() { alleLastKraftWagen.TasterLkw2(); }
-        internal void TasterLkw3() { alleLastKraftWagen.TasterLkw3(); }
-        internal void TasterLkw4() { alleLastKraftWagen.TasterLkw4(); }
-        internal void TasterLkw5() { alleLastKraftWagen.TasterLkw5(); }
-        internal void TasterLinksParken() { alleLastKraftWagen.TasterLinksParken(); }
-        internal void TasterRechtsParken() { alleLastKraftWagen.TasterRechtsParken(); }
+        #region BtnLkw3
+        private ICommand _btnLkw3;
+        public ICommand BtnLkw3
+        {
+            get
+            {
+                if (_btnLkw3 == null)
+                {
+                    _btnLkw3 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw3(), p => true);
+                }
+                return _btnLkw3;
+            }
+        }
+        #endregion
+
+        #region BtnLkw4
+        private ICommand _btnLkw4;
+        public ICommand BtnLkw4
+        {
+            get
+            {
+                if (_btnLkw4 == null)
+                {
+                    _btnLkw4 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw4(), p => true);
+                }
+                return _btnLkw4;
+            }
+        }
+        #endregion
+
+        #region BtnLkw5
+        private ICommand _btnLkw5;
+        public ICommand BtnLkw5
+        {
+            get
+            {
+                if (_btnLkw5 == null)
+                {
+                    _btnLkw5 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw5(), p => true);
+                }
+                return _btnLkw5;
+            }
+        }
+        #endregion
+
+        #region BtnLinksParken
+        private ICommand _btnLinksParken;
+        public ICommand BtnLinksParken
+        {
+            get
+            {
+                if (_btnLinksParken == null)
+                {
+                    _btnLinksParken = new RelayCommand(p => this.alleLastKraftWagen.TasterLinksParken(), p => true);
+                }
+                return _btnLinksParken;
+            }
+        }
+        #endregion
+
+        #region BtnRechtsParken
+        private ICommand _btnRechtsParken;
+        public ICommand BtnRechtsParken
+        {
+            get
+            {
+                if (_btnRechtsParken == null)
+                {
+                    _btnRechtsParken = new RelayCommand(p => this.alleLastKraftWagen.TasterRechtsParken(), p => true);
+                }
+                return _btnRechtsParken;
+            }
+        }
+        #endregion
 
     }
 }
