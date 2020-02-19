@@ -6,9 +6,9 @@
     public class BehaelterViewModel
     {
         public readonly Model.AlleBehaelter alleBehaelter;
-        public BehaelterViewModel()
+        public BehaelterViewModel(MainWindow mw)
         {
-            alleBehaelter = new Model.AlleBehaelter();
+            alleBehaelter = new Model.AlleBehaelter(mw);
 
             BtnVentilQ2 = new BehaltersteuerungBtnVentilQ2(this);
             BtnVentilQ4 = new BehaltersteuerungBtnVentilQ4(this);

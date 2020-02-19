@@ -77,8 +77,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V1.0 "    Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" />
-        <Label x:Name="lbl_PlcPing"         Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="LightSeaGreen"    Content="S7-1200"    />
+        <Label Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="V1.0 " />
+        <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding Kraftwerk.ViAnzeige.SpsColor}" Content="{Binding Kraftwerk.ViAnzeige.SpsStatus}"  />
+        
         <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding Kraftwerk.ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="18" Grid.Row="2" Click="DebugWindowOeffnen" />

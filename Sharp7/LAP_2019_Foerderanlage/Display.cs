@@ -66,6 +66,13 @@ namespace LAP_2019_Foerderanlage
                 var controller = ImageBehavior.GetAnimationController(imgSchneckenfoerderer);
                 if (XFU) controller.Play(); else controller.Pause();
             }
+            /*
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
+            */
         }
 
         public void PolySichbarkeitSchalten(bool Bedingung, Polygon poly)

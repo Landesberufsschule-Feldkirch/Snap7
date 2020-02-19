@@ -57,8 +57,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V0.1 "    Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" />
-        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="3"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="LightSeaGreen" />
+        <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
+        <Label Grid.Column="3"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="{Binding Zeiten.ViAnzeige.SpsColor}" Content="{Binding Zeiten.ViAnzeige.SpsStatus}" />
 
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5"    Grid.Row="1" Grid.RowSpan="5"   Stroke="Black" />
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5"    Grid.Row="8"  Grid.RowSpan="5" Stroke="Black" />

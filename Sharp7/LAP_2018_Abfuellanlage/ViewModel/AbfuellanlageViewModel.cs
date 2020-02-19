@@ -13,6 +13,7 @@
         {
             alleFlaschen = new Model.AlleFlaschen(mainWindow);
 
+            BtnNachfuellen = new AbfuellanlageBtnNachfuellen(this);
             BtnTasterF5 = new AbfuellanlageBtnTasterF5(this);
             BtnTasterS1 = new AbfuellanlageBtnTasterS1(this);
             BtnTasterS2 = new AbfuellanlageBtnTasterS2(this);
@@ -27,7 +28,7 @@
         public Model.AlleFlaschen AlleFlaschen { get { return alleFlaschen; } }
 
 
-
+        public bool CanButtonNachfuellen { get { return true; } }
         public bool CanButtonF5 { get { return true; } }
         public bool CanButtonS1 { get { return true; } }
         public bool CanButtonS2 { get { return true; } }
@@ -38,6 +39,8 @@
         public bool CanSetManualM1 { get { return true; } }
 
 
+
+        public ICommand BtnNachfuellen { get; private set; }
         public ICommand BtnTasterF5 { get; private set; }
         public ICommand BtnTasterS1 { get; private set; }
         public ICommand BtnTasterS2 { get; private set; }
@@ -48,6 +51,7 @@
         public ICommand SetManualM1 { get; private set; }
 
 
+        internal void TasterNachfuellen() { alleFlaschen.TasterNachfuellen(); }
         internal void TasterF5() { alleFlaschen.TasterF5(); }
         internal void TasterS1() { alleFlaschen.TasterS1(); }
         internal void TasterS2() { alleFlaschen.TasterS2(); }

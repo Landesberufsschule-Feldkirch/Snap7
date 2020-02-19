@@ -44,8 +44,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo"    Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V0.0 "     />
-        <Label x:Name="lbl_PlcPing"         Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding Zeiten.ViAnzeige.SpsColor}" Content="{Binding Zeiten.ViAnzeige.SpsStatus}"  />
+        <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V0.0 "   />
+        <Label Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding Zeiten.ViAnzeige.SpsColor}" Content="{Binding Zeiten.ViAnzeige.SpsStatus}" />
         <Rectangle Fill="LightGray"         Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="12" Stroke="Black" />
 
         <Button Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="4" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}"  />

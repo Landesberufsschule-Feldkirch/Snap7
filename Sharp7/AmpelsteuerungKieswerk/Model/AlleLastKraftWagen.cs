@@ -72,6 +72,12 @@
             ViAnzeige.RichtungLkw3(AlleLkw[2].LKW_Richtung);
             ViAnzeige.RichtungLkw4(AlleLkw[3].LKW_Richtung);
             ViAnzeige.RichtungLkw5(AlleLkw[4].LKW_Richtung);
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
         }
 
         internal void TasterLkw1() { AlleLkw[0].Losfahren(); }

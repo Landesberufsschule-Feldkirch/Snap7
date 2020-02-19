@@ -29,9 +29,6 @@
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-
-            // mainWindow.lbl_PlcPing.Content = S7_1200.GetSpsStatus();
-
             S7.SetUint8At(digInput, 0, (byte)viewModel.nadeltelegraph.Zeichen);
         }
 

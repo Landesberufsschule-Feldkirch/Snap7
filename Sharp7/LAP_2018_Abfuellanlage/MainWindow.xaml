@@ -60,11 +60,13 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V2.0 "    Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" />
-        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="13"  Grid.ColumnSpan="6" Grid.Row="21"  Background="LightSeaGreen"  />
+        <Label Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V2.0 "/>
+        <Label Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="21"  Background="{Binding AlleFlaschen.ViAnzeige.SpsColor}" Content="{Binding AlleFlaschen.ViAnzeige.SpsStatus}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
-        
+
+        <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14" Command="{Binding BtnNachfuellen}" />
+
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
         <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}" FontSize="14pt">

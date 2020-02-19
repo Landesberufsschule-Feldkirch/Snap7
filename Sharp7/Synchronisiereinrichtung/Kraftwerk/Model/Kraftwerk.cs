@@ -64,13 +64,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Netz_P { get; set; }
         public double Netz_CosPhi { get; set; }
         public VisuSollwerte ViSoll { get; set; }
-        public VisuAnzeigenUmschalten ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnzeige { get; set; }
+        private MainWindow mainWindow;
 
-
-        public Kraftwerk()
+        public Kraftwerk(MainWindow mw)
         {
+            mainWindow = mw;
             ViSoll = new VisuSollwerte();
-            ViAnzeige = new VisuAnzeigenUmschalten();
+            ViAnzeige = new VisuAnzeigen();
             kraftwerkStatemachine = new Statemachine(this);
 
             System.Threading.Tasks.Task.Run(() => KraftwerkTask());
@@ -133,8 +134,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         private void Sollwerte2Anzeige()
         {
-            Ventil_Y = ViSoll.Y();
-            Generator_Ie = ViSoll.Ie();
+            if (mainWindow.DebugWindowAktiv)
+            {
+                Ventil_Y = ViSoll.Y();
+                Generator_Ie = ViSoll.Ie();
+            }
+
 
             Netz_f = ViSoll.Netz_f();
             Netz_U = ViSoll.Netz_U();
@@ -178,6 +183,12 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                         ViAnzeige.MessgeraetOptimalerBereich = optimalerSpannungswert;
                     }
                     break;
+            }
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
             }
         }
 

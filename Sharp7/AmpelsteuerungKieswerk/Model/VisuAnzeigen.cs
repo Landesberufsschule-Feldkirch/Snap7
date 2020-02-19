@@ -8,6 +8,9 @@
     {
         public VisuAnzeigen()
         {
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
+
             ColorB1 = "LightGray";
             ColorB2 = "LightGray";
             ColorB3 = "LightGray";
@@ -38,6 +41,27 @@
             DirectionLkw5 = 1;
         }
 
+        private string _SpsStatus;
+        public string SpsStatus
+        {
+            get { return _SpsStatus; }
+            set
+            {
+                _SpsStatus = value;
+                OnPropertyChanged("SpsStatus");
+            }
+        }
+
+        private string _SpsColor;
+        public string SpsColor
+        {
+            get { return _SpsColor; }
+            set
+            {
+                _SpsColor = value;
+                OnPropertyChanged("SpsColor");
+            }
+        }
 
         #region Color B1
         public void FarbeB1(bool val)

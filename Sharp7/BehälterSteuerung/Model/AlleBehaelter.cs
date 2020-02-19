@@ -17,9 +17,11 @@
         public bool P1 { get; set; }
         public readonly List<Behaelter> alleBehaelter = new List<Behaelter>();
         private bool AutomatikModusAktiv;
+        private MainWindow mainWindow;
 
-        public AlleBehaelter()
+        public AlleBehaelter(MainWindow mw)
         {
+            mainWindow = mw;
             ViAnzeige = new VisuAnzeigen();
 
             alleBehaelter.Add(new Behaelter(0.2));
@@ -111,6 +113,12 @@
             ViAnzeige.FarbeLabelB8(alleBehaelter[3].SchwimmerschalterUnten);
 
             ViAnzeige.FarbeCircle_P1(P1);
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
         }
 
         internal void VentilQ2() { alleBehaelter[0].VentilUntenUmschalten(); }

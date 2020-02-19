@@ -9,6 +9,9 @@
         
         public VisuAnzeigen()
         {
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
+
             ColorThermorelais_F1 = "LawnGreen";
             ColorThermorelais_F2 = "LawnGreen";
 
@@ -43,6 +46,30 @@
 
 
             Margin1 = new Thickness(0, 30, 0, 0);
+        }
+
+
+
+        private string _SpsStatus;
+        public string SpsStatus
+        {
+            get { return _SpsStatus; }
+            set
+            {
+                _SpsStatus = value;
+                OnPropertyChanged("SpsStatus");
+            }
+        }
+
+        private string _SpsColor;
+        public string SpsColor
+        {
+            get { return _SpsColor; }
+            set
+            {
+                _SpsColor = value;
+                OnPropertyChanged("SpsColor");
+            }
         }
 
 

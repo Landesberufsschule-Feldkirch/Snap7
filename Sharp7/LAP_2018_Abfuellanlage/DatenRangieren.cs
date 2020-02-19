@@ -37,7 +37,7 @@ namespace LAP_2018_Abfuellanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S4, viewModel.alleFlaschen.S4);
 
             S7.SetUInt_8_At(anInput, 0, (byte)(viewModel.alleFlaschen.Pegel * 100.0));
-            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Short(viewModel.alleFlaschen.Pegel, 100));
+            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Short(viewModel.alleFlaschen.Pegel, 1));
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)

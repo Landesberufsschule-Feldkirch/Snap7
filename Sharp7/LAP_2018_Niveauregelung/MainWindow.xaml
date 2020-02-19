@@ -60,8 +60,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo"    Content="V2.0 "     Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36" />
-        <Label x:Name="lbl_PlcPing"         Content="S7-1200"   Grid.Column="13"  Grid.ColumnSpan="6"    Grid.Row="23"   Background="LightSeaGreen" />
+        <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36" Content="V2.0 "/>
+        <Label Grid.Column="13"  Grid.ColumnSpan="6"    Grid.Row="23"  Background="{Binding NiveauRegelung.ViAnzeige.SpsColor}" Content="{Binding NiveauRegelung.ViAnzeige.SpsStatus}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
         
@@ -83,7 +83,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS3" Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="Press" Command="{Binding BtnTasterS2}" >
+        <Button x:Name="btnS3" Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="Press" Command="{Binding BtnTasterS3}" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />

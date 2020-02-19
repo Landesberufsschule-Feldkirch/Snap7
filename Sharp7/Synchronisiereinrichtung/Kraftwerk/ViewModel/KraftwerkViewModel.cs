@@ -16,9 +16,9 @@
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
         private readonly Model.Kraftwerk kraftwerk;
 
-        public KraftwerkViewModel()
+        public KraftwerkViewModel(MainWindow mw)
         {
-            kraftwerk = new Model.Kraftwerk();
+            kraftwerk = new Model.Kraftwerk(mw);
             ButtonSchalterReset = new KraftwerkBtnManualReset(this);
             ButtonSchalterQ1 = new KraftwerkBtnManualQ1(this);
             ButtonSchalterStart = new KraftwerkBtnStart(this);

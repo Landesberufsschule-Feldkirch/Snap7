@@ -17,6 +17,7 @@ namespace Tiefgarage
 
         private Logikfunktionen logikfunktionen;
         private DatenRangieren datenRangieren;
+        public S7_1200 s7_1200;
 
         public MainWindow()
         {
@@ -25,7 +26,7 @@ namespace Tiefgarage
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(1, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+             s7_1200 = new S7_1200(1, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             AlleFahrzeugePersonenInitialisieren();
 

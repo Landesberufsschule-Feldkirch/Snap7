@@ -9,6 +9,9 @@
         int BreiteSchmal = 1;
         public VisuAnzeigen()
         {
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
+
             ColorP0 = "LightGray";
 
             AngleNeedle1 = 0;
@@ -37,6 +40,29 @@
             Width4DownLeft = 1;
             Width5DownLeft = 1;
         }
+
+        private string _SpsStatus;
+        public string SpsStatus
+        {
+            get { return _SpsStatus; }
+            set
+            {
+                _SpsStatus = value;
+                OnPropertyChanged("SpsStatus");
+            }
+        }
+
+        private string _SpsColor;
+        public string SpsColor
+        {
+            get { return _SpsColor; }
+            set
+            {
+                _SpsColor = value;
+                OnPropertyChanged("SpsColor");
+            }
+        }
+
 
 
         #region Color P0

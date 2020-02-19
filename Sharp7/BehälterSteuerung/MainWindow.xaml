@@ -51,7 +51,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V1.1 " Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" />
+        <Label  Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="V1.1 "/>
+        <Label Grid.Column="2" Grid.Row="13"  Grid.ColumnSpan="5"  Background="{Binding AlleBehaelter.ViAnzeige.SpsColor}" Content="{Binding AlleBehaelter.ViAnzeige.SpsStatus}" />
+
         <Rectangle Fill="LightGray"                      Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="10" Stroke="Black" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
@@ -138,8 +140,7 @@
 
         <Rectangle Fill="{Binding AlleBehaelter.ViAnzeige.ColorAbleitung_Gesamt}" Grid.Column="3"     Grid.ColumnSpan="11" Grid.Row="10" Margin="40,0,0,0" />
 
-        <Label x:Name="lbl_PlcPing"  Content="S7-1200" Grid.Column="2" Grid.Row="13"  Grid.ColumnSpan="5"  Background="LightSeaGreen" />
-
+       
         <Button Content="1-2-3-4" Grid.Column="18"  Grid.Row="7"  Command="{Binding BtnAutomatik1234}"  IsEnabled="{Binding AlleBehaelter.ViAnzeige.EnableAutomatik1234}" />
         <Button Content="1-3-2-4" Grid.Column="20"  Grid.Row="7"  Command="{Binding BtnAutomatik1324}"  IsEnabled="{Binding AlleBehaelter.ViAnzeige.EnableAutomatik1324}" />
         <Button Content="1-4-3-2" Grid.Column="18"  Grid.Row="9"  Command="{Binding BtnAutomatik1432}"  IsEnabled="{Binding AlleBehaelter.ViAnzeige.EnableAutomatik1432}" />

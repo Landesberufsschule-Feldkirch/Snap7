@@ -10,6 +10,8 @@
 
         public VisuAnzeigen()
         {
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
 
             VisibilityVentilQ1Ein = "hidden";
             VisibilityVentilQ2Ein = "hidden";
@@ -74,7 +76,27 @@
             Margin4 = new Thickness(0, 90, 0, 0);
         }
 
+        private string _SpsStatus;
+        public string SpsStatus
+        {
+            get { return _SpsStatus; }
+            set
+            {
+                _SpsStatus = value;
+                OnPropertyChanged("SpsStatus");
+            }
+        }
 
+        private string _SpsColor;
+        public string SpsColor
+        {
+            get { return _SpsColor; }
+            set
+            {
+                _SpsColor = value;
+                OnPropertyChanged("SpsColor");
+            }
+        }
 
         #region Visibility Ventil Q1
         public void VisibilityVentilQ1(bool val)

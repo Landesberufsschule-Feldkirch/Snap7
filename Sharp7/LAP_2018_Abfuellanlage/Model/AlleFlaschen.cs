@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Controls;
 
@@ -38,15 +39,17 @@ namespace LAP_2018_Abfuellanlage.Model
             alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
             alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
 
+            S2 = false;
             F5 = true;
             Pegel = 0.4;
 
             System.Threading.Tasks.Task.Run(() => AlleFlaschenTask());
         }
 
+        internal void TasterNachfuellen() { Pegel = 1; }
         internal void TasterF5() { if (F5) F5 = false; else F5 = true; }
         internal void TasterS1() { S1 = ButtonFunktionPressReleaseAendern(mainWindow.btnS1); }
-        internal void TasterS2() { S2 = ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
+        internal void TasterS2() { S2 = !ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
         internal void TasterS3() { S3 = ButtonFunktionPressReleaseAendern(mainWindow.btnS3); }
         internal void TasterS4() { S4 = ButtonFunktionPressReleaseAendern(mainWindow.btnS4); }
         internal void SetManualK1() { if (mainWindow.DebugWindowAktiv) { K1 = ButtonFunktionPressReleaseAendern(mainWindow.setManualWindow.SetK1); } }
@@ -106,6 +109,12 @@ namespace LAP_2018_Abfuellanlage.Model
             ViAnzeige.FarbeRectangleZuleitung(Pegel > 0.01);
 
             ViAnzeige.Margin_1(Pegel);
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
         }
 
         private bool ButtonFunktionPressReleaseAendern(Button knopf)

@@ -30,6 +30,9 @@ namespace LAP_2018_Niveauregelung.Model
             this.mainWindow = mainWindow;
             ViAnzeige = new VisuAnzeigen();
 
+            S2 = true;
+            F1 = true;
+            F2 = true;
             Pegel = 0.95;
 
             System.Threading.Tasks.Task.Run(() => NiveauRegelungTask());
@@ -60,8 +63,8 @@ namespace LAP_2018_Niveauregelung.Model
 
         private void AnzeigeAktualisieren()
         {
-            ViAnzeige.FarbeTherorelais_F1(F1);
-            ViAnzeige.FarbeTherorelais_F2(F2);            
+            ViAnzeige.FarbeTherorelais_F1(!F1);
+            ViAnzeige.FarbeTherorelais_F2(!F2);            
             ViAnzeige.FarbeCircle_P1(P1);
             ViAnzeige.FarbeCircle_P2(P2);
             ViAnzeige.FarbeCircle_P3(P3);
@@ -81,10 +84,16 @@ namespace LAP_2018_Niveauregelung.Model
             ViAnzeige.VisibilityVentilY1(Y1);
 
             ViAnzeige.Margin_1(Pegel);
+
+            if (mainWindow.s7_1200 != null)
+            {
+                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+            }
         }
 
         internal void TasterS1() { S1 = ButtonFunktionPressReleaseAendern(mainWindow.btnS1); }
-        internal void TasterS2() { S2 = ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
+        internal void TasterS2() { S2 = !ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
         internal void TasterS3() { S3 = ButtonFunktionPressReleaseAendern(mainWindow.btnS3); }
         internal void ThermorelaisF1() { F1 = !F1; }
         internal void ThermorelaisF2() { F2 = !F2; }

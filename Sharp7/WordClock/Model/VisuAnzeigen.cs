@@ -6,11 +6,12 @@
     {
         public VisuAnzeigen()
         {
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
+
             WinkelStunden = 0;
             WinkelMinuten = 0;
             WinkelSekunden = 0;
-            SpsStatus = "-";
-            SpsColor = "LightBlue";
         }
 
 

@@ -74,7 +74,7 @@
     <Compile Include="Kraftwerk\Model\StateReset.cs" />
     <Compile Include="Kraftwerk\Model\StateSynchronisieren.cs" />
     <Compile Include="Kraftwerk\Model\VisuSollwerte.cs" />
-    <Compile Include="Kraftwerk\Model\VisuAnzeigenUmschalten.cs" />
+    <Compile Include="Kraftwerk\Model\VisuAnzeigen.cs" />
     <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
     <Compile Include="Kraftwerk\Model\MagnetischerKreis.cs" />
     <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">

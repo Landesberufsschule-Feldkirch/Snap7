@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AbfuellanlageBtnNachfuellen.cs" />
     <Compile Include="Commands\AbfuellanlageBtnTasterF5.cs" />
     <Compile Include="Commands\AbfuellanlageBtnTasterS1.cs" />
     <Compile Include="Commands\AbfuellanlageBtnTasterS2.cs" />

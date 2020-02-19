@@ -7,6 +7,7 @@ namespace Nadeltelegraph
     {
         private DatenRangieren datenRangieren;
         private ViewModel.NadeltelegraphViewModel nadeltelegraphViewModel;
+        public S7_1200 s7_1200;
 
         public MainWindow()
         {
@@ -16,7 +17,7 @@ namespace Nadeltelegraph
             InitializeComponent();
             DataContext = nadeltelegraphViewModel;
 
-            S7_1200 s7_1200 = new S7_1200(1, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+             s7_1200 = new S7_1200(1, 2, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

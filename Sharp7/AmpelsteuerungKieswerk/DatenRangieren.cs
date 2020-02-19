@@ -33,11 +33,7 @@
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
-        {
-
-            // mainWindow.lbl_PlcPing.Content = S7_1200.GetSpsStatus();
-
-
+        {          
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleLastKraftWagen.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleLastKraftWagen.B2);
             S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.alleLastKraftWagen.B3);

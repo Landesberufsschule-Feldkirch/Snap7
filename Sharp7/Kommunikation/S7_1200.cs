@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Threading;
-using System.Windows;
 
 namespace Kommunikation
 {
@@ -42,7 +41,6 @@ namespace Kommunikation
         public const int SPS_Timeout = 1000;
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
-        private bool TaskAktive = true;
         private string SpsStatus = "Keine Verbindung zur S7-1200!";
         private bool SpsError;
         private readonly IpAdressen SPS_Client;
@@ -69,10 +67,6 @@ namespace Kommunikation
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
         }
 
-        ~S7_1200()
-        {
-            TaskAktive = false;
-        }
 
         public string GetSpsStatus() { return SpsStatus; }
         public bool GetSpsError() { return SpsError; }
@@ -81,7 +75,7 @@ namespace Kommunikation
         {
             bool FehlerAktiv;
 
-            while (TaskAktive)
+            while (true)
             {
                 int? ResultError;
 
@@ -96,7 +90,7 @@ namespace Kommunikation
                     int? res = Client?.ConnectTo(SPS_Client.Adress, SPS_Rack, SPS_Slot);
                     if (res == 0)
                     {
-                        while (TaskAktive)
+                        while (true)
                         {
                             FehlerAktiv = false;
 

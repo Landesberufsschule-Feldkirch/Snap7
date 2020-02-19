@@ -51,8 +51,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label x:Name="lbl_VersionsInfo" Content="V0.0 "    Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" />
-        <Label x:Name="lbl_PlcPing"     Content="S7-1200"   Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="LightSeaGreen"  />
+        <Label Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
+        <Label Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="{Binding Nadeltelegraph.ViAnzeige.SpsColor}" Content="{Binding Nadeltelegraph.ViAnzeige.SpsStatus}"  />
 
         <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding Nadeltelegraph.ViAnzeige.ColorP0}" />
 
