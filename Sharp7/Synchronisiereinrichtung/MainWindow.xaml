@@ -138,10 +138,10 @@
         <TextBlock x:Name="TextAuswahl"             Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
 
         <StackPanel Orientation="Vertical" Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f}">Spannung / Frequenz</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase}">U / f / Phasenlage</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistung}">U / f / Phasenlage / Leistung</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f}">Spannung / Frequenz</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase}">U / f / Phasenlage</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistung}">U / f / Phasenlage / Leistung</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
         </StackPanel>
 
         <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=BtnSchalterStart}" />

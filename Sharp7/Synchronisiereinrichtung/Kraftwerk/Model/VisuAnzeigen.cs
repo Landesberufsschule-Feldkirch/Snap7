@@ -14,7 +14,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             VisibilityVentilEin = "Hidden";
         }
 
-#region SPS Status und Farbe
+        #region SPS Status und Farbe
         private string _spsStatus;
         public string SpsStatus
         {
@@ -36,7 +36,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 OnPropertyChanged("SpsColor");
             }
         }
-#endregion
+        #endregion
 
 
 

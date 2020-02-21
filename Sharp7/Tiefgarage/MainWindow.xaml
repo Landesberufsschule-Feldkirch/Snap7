@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tiefgarage"
         mc:Ignorable="d"
-        Title="Tiefgarage" Height="900" Width="1000" Closing="Window_Closing">
+        Title="Tiefgarage" Height="900" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -58,70 +58,70 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
-        <Label Grid.Column="3"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="{Binding Zeiten.ViAnzeige.SpsColor}" Content="{Binding Zeiten.ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="3"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="{Binding AlleFahrzeugePersonen.ViAnzeige.SpsColor}" Content="{Binding AlleFahrzeugePersonen.ViAnzeige.SpsStatus}" />
 
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5"    Grid.Row="1" Grid.RowSpan="5"   Stroke="Black" />
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="5"    Grid.Row="8"  Grid.RowSpan="5" Stroke="Black" />
 
-        <Button x:Name="btnAlleDraussenParken" Content="Draussen parken!"  Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="2"   Click="AlleDraussenParken_Click" />
-        <Button x:Name="btnAlleDrinnenParken"  Content="Drinnen parken!"   Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="4"  Click="AlleDrinnenParken_Click" />
+        <Button Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="2"   Content="Draussen parken!"      Command="{Binding BtnDraussenParken}" />
+        <Button Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="4"   Content="Drinnen parken!"       Command="{Binding BtnDrinnenParken}" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="21" Stroke="Black" Panel.ZIndex="-1" />
-        <Label x:Name="lbl_FahrzeugZaehler" Content="Autos in der Garage: 0"    Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9" />
-        <Label x:Name="lbl_PersonenZaehler" Content="Personen in der Garage: 0" Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11" />
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9"   Content="{Binding AlleFahrzeugePersonen.ViAnzeige.AnzahlAutos}"/>
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11"  Content="{Binding AlleFahrzeugePersonen.ViAnzeige.AnzahlPersonen}"/>
 
-        <Rectangle x:Name="Wand_draussen_links"     Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
-        <Rectangle x:Name="Wand_draussen_rechts"    Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
-        <Rectangle x:Name="Wand_einfahrt_links"     Grid.Column="4"                     Grid.Row="10" Grid.RowSpan="5"  Fill="DarkGray" Margin="50,0,0,0" />
-        <Rectangle x:Name="Wand_einfahrt_rechts"    Grid.Column="9"                     Grid.Row="10" Grid.RowSpan="5"  Fill="DarkGray" Margin="0,0,50,0" />
-        <Rectangle x:Name="Wand_drinnen_links"      Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="14"                   Fill="DarkGray" Margin="0,20,0,0" />
-        <Rectangle x:Name="Wand_drinnen_rechts"     Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="14"                   Fill="DarkGray" Margin="0,20,50,0" />
-        <Rectangle x:Name="Wand_garage_links"       Grid.Column="3"                     Grid.Row="15" Grid.RowSpan="7"  Fill="DarkGray" Margin="0,0,50,0" />
-        <Rectangle x:Name="Wand_garage_rechts"      Grid.Column="11"                    Grid.Row="15" Grid.RowSpan="7"  Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
+        <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
+        <Rectangle Grid.Column="4"                     Grid.Row="10" Grid.RowSpan="5"  Fill="DarkGray" Margin="50,0,0,0" />
+        <Rectangle Grid.Column="9"                     Grid.Row="10" Grid.RowSpan="5"  Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="14"                   Fill="DarkGray" Margin="0,20,0,0" />
+        <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="14"                   Fill="DarkGray" Margin="0,20,50,0" />
+        <Rectangle Grid.Column="3"                     Grid.Row="15" Grid.RowSpan="7"  Fill="DarkGray" Margin="0,0,50,0" />
+        <Rectangle Grid.Column="11"                    Grid.Row="15" Grid.RowSpan="7"  Fill="DarkGray" Margin="0,0,50,0" />
 
-        <Ellipse x:Name="circ_Lampe_draussen_links"                 Grid.Column="5" Grid.Row="10"    Fill="Yellow" Stroke="Black" Margin="5,15,45,0" />
-        <Ellipse x:Name="circ_Lampe_drinnen_links"                  Grid.Column="5" Grid.Row="12"   Fill="Yellow" Height="20" Stroke="Black" Margin="5,0,45,15" />
-        <Label x:Name="lbl_Lampe_draussen_links"    Content="P1"    Grid.Column="5" Grid.Row="10"    Margin="25,10,20,0" />
-        <Label x:Name="lbl_Lampe_drinnen_links"     Content="P2"    Grid.Column="5" Grid.Row="12"   Margin="30,0,15,10" />
+        <Ellipse    Grid.Column="5" Grid.Row="10"       Fill="{Binding AlleFahrzeugePersonen.ViAnzeige.ColorP1}" Stroke="Black" Margin="5,15,45,0" />
+        <Ellipse    Grid.Column="5" Grid.Row="12"       Fill="{Binding AlleFahrzeugePersonen.ViAnzeige.ColorP1}" Height="20" Stroke="Black" Margin="5,0,45,15" />
+        <Label      Grid.Column="5" Grid.Row="10"       Margin="25,10,20,0" Content="P1"/>
+        <Label      Grid.Column="5" Grid.Row="12"       Margin="30,0,15,10" Content="P2"/>
 
-        <Ellipse x:Name="circ_Lichtschranke_draussen_rechts"    Grid.Column="8" Grid.Row="10"  Fill="LawnGreen" Height="20"  Stroke="Black" Margin="40,15,10,0" />
-        <Ellipse x:Name="circ_Lichtschranke_drinnen_rechts"     Grid.Column="8" Grid.Row="12"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,0,10,15" />
+        <Ellipse Grid.Column="8" Grid.Row="10"  Fill="LawnGreen" Height="20"  Stroke="Black" Margin="40,15,10,0" />
+        <Ellipse Grid.Column="8" Grid.Row="12"  Fill="LawnGreen" Height="20" Stroke="Black" Margin="40,0,10,15" />
 
-        <Label x:Name="lbl_Lichtschranke_draussen_rechts"   Content="B1"    Grid.Column="8" Grid.Row="10"    Margin="18,10,26,0" />
-        <Label x:Name="lbl_Lichtschranke_drinnen_rechts"    Content="B2"    Grid.Column="8" Grid.Row="12"   Margin="18,0,26,10" />
+        <Label  Grid.Column="8" Grid.Row="10"    Content="B1"       Margin="18,10,26,0" />
+        <Label  Grid.Column="8" Grid.Row="12"    Content="B2"       Margin="18,0,26,10" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
-            <Button x:Name="btn_auto_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_auto_1" Width="80" Source="Bilder/auto_1.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto1Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto1Top}" Command="{Binding BtnAuto1}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnableAuto1}">
+                <Image Width="80" Source="Bilder/auto_1.jpg" />
             </Button>
 
-            <Button x:Name="btn_auto_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_auto_2" Width="80" Source="Bilder/auto_2.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto2Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto2Top}" Command="{Binding BtnAuto2}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnableAuto2}">
+                <Image Width="80" Source="Bilder/auto_2.jpg" />
             </Button>
 
-            <Button x:Name="btn_auto_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_auto_3" Width="80" Source="Bilder/auto_3.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto3Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto3Top}" Command="{Binding BtnAuto3}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnableAuto3}">
+                <Image Width="80" Source="Bilder/auto_3.jpg" />
             </Button>
 
-            <Button x:Name="btn_auto_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_auto_4" Width="80" Source="Bilder/auto_4.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto4Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosAuto4Top}" Command="{Binding BtnAuto4}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnableAuto4}">
+                <Image Width="80" Source="Bilder/auto_4.jpg" />
             </Button>
 
-            <Button x:Name="btn_person_1" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_person_1" Height="50" Source="Bilder/mensch_1.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson1Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson1Top}" Command="{Binding BtnPerson1}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnablePerson1}">
+                <Image Height="50" Source="Bilder/mensch_1.jpg" />
             </Button>
 
-            <Button x:Name="btn_person_2" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_person_2" Height="50" Source="Bilder/mensch_2.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson2Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson2Top}" Command="{Binding BtnPerson2}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnablePerson2}">
+                <Image Height="50" Source="Bilder/mensch_2.jpg" />
             </Button>
 
-            <Button x:Name="btn_person_3" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_person_3" Height="50" Source="Bilder/mensch_3.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson3Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson3Top}" Command="{Binding BtnPerson3}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnablePerson3}">
+                <Image Height="50" Source="Bilder/mensch_3.jpg" />
             </Button>
 
-            <Button x:Name="btn_person_4" Click="Btn_Click" Background="White" Foreground="White" BorderBrush="White">
-                <Image x:Name="img_person_4" Height="50" Source="Bilder/mensch_4.jpg" />
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson4Left}" Canvas.Top="{Binding AlleFahrzeugePersonen.ViAnzeige.PosPerson4Top}" Command="{Binding BtnPerson4}"  IsEnabled="{Binding AlleFahrzeugePersonen.ViAnzeige.EnablePerson4}">
+                <Image Height="50" Source="Bilder/mensch_4.jpg" />
             </Button>
         </Canvas>
     </Grid>

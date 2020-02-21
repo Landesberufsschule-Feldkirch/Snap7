@@ -37,8 +37,6 @@ namespace WordClock.Model
             Minute = (byte)dateTime.Minute;
             Sekunde = (byte)dateTime.Second;
 
-            ViAnzeige = new VisuAnzeigen();
-
             System.Threading.Tasks.Task.Run(() => ZeitenTask());
         }
 

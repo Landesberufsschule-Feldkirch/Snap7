@@ -2,8 +2,27 @@
 
 namespace Tiefgarage.Model
 {
-    public partial class FahrzeugPerson
+    public class FahrzeugPerson
     {
+        private readonly double xy_Bewegung = 1;
+        private readonly double KurveGeschwindigkeit = 0.002;
+
+        private double KurvePosition;
+
+        public enum FahrenRichtung
+        {
+            ObenGeparkt = 0,
+            AbwaertsKurveOben,
+            AbwaertsSenkrecht,
+            AbwaertsKurveUnten,
+
+            UntenGeparkt,
+
+            AufwaertsKurveUnten,
+            AufwaertsSenkrecht,
+            AufwaertsKurveOben
+        }
+
         public enum Rolle
         {
             Fahrzeug = 0,
@@ -13,8 +32,8 @@ namespace Tiefgarage.Model
         private static int AnzahlFahrzeuge = 0;
         private static int AnzahlPersonen = 0;
 
-        public Rolle FP_Rolle { get; set; }
-        public Punkt PosAktuell { get; set; }
+       
+
         public readonly Punkt ParkenOben;
         public readonly Punkt ParkenUnten;
         public readonly Punkt EingangOben;
@@ -48,6 +67,9 @@ namespace Tiefgarage.Model
         private readonly double Y_Position_B1 = 300;
         private readonly double Y_Position_B2 = 330;
 
+        public Punkt AktuellePosition { get; set; }
+        public Rolle FP_Rolle { get; set; }
+
         public FahrenRichtung Bewegung { get; set; } = FahrenRichtung.ObenGeparkt;
 
         public FahrzeugPerson(Rolle Rolle)
@@ -59,6 +81,8 @@ namespace Tiefgarage.Model
 
             Punkt KontrollPunktUnten1;
             Punkt KontrollPunktUnten2;
+
+            AktuellePosition = new Punkt(0, 0);
 
             FP_Rolle = Rolle;
 
@@ -131,15 +155,77 @@ namespace Tiefgarage.Model
         {
             if (FP_Rolle == Rolle.Fahrzeug)
             {
-                if (PosAktuell.Y < Pos) return false;
-                if (PosAktuell.Y > Pos + Y_LichtschrankenHoehFahrzeug) return false;
+                if (AktuellePosition.Y < Pos) return false;
+                if (AktuellePosition.Y > Pos + Y_LichtschrankenHoehFahrzeug) return false;
             }
             else
             {
-                if (PosAktuell.Y < Pos) return false;
-                if (PosAktuell.Y > Pos + Y_LichtschrankenHoehePerson) return false;
+                if (AktuellePosition.Y < Pos) return false;
+                if (AktuellePosition.Y > Pos + Y_LichtschrankenHoehePerson) return false;
             }
             return true;
+        }
+
+
+        public (bool b1, bool b2, bool park) Bewegen()
+        {
+            bool AllesInParkPosition = false;
+
+            switch (Bewegung)
+            {
+                case FahrenRichtung.ObenGeparkt:
+                    AllesInParkPosition = true;
+                    AktuellePosition = ParkenOben;
+                    KurvePosition = 0;
+                    break;
+
+                case FahrenRichtung.AbwaertsKurveOben:
+                    AktuellePosition = KurveOben.PunktBestimmen(KurvePosition);
+                    KurvePosition += KurveGeschwindigkeit;
+                    if (KurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
+                    break;
+
+                case FahrenRichtung.AbwaertsSenkrecht:
+                    if (AktuellePosition.Y < Y_Fahrspur_unten) AktuellePosition.Y += xy_Bewegung;
+                    else Bewegung = FahrenRichtung.AbwaertsKurveUnten;
+                    KurvePosition = 0;
+                    break;
+
+                case FahrenRichtung.AbwaertsKurveUnten:
+                    AktuellePosition = KurveUnten.PunktBestimmen(KurvePosition);
+                    KurvePosition += KurveGeschwindigkeit;
+                    if (KurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
+                    break;
+
+                case FahrenRichtung.UntenGeparkt:
+                    AllesInParkPosition = true;
+                    AktuellePosition = ParkenUnten;
+                    KurvePosition = 1;
+                    break;
+
+                case FahrenRichtung.AufwaertsKurveUnten:
+                    AktuellePosition = KurveUnten.PunktBestimmen(KurvePosition);
+                    KurvePosition -= KurveGeschwindigkeit;
+                    if (KurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
+                    break;
+
+                case FahrenRichtung.AufwaertsSenkrecht:
+                    if (AktuellePosition.Y > Y_Fahrspur_oben) AktuellePosition.Y -= xy_Bewegung;
+                    else Bewegung = FahrenRichtung.AufwaertsKurveOben;
+                    KurvePosition = 1;
+                    break;
+
+                case FahrenRichtung.AufwaertsKurveOben:
+                    AktuellePosition = KurveOben.PunktBestimmen(KurvePosition);
+                    KurvePosition -= KurveGeschwindigkeit;
+                    if (KurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return (LichtschrankeUnterbrochen(Y_Position_B1), LichtschrankeUnterbrochen(Y_Position_B2), AllesInParkPosition);
         }
     }
 }
