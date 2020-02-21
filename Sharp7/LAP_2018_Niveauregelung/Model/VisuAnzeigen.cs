@@ -6,7 +6,7 @@
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly double HoeheFuellBalken = 315;
-        
+
         public VisuAnzeigen()
         {
             SpsStatus = "-";
@@ -50,7 +50,7 @@
 
 
 
-#region SPS Status und Farbe
+        #region SPS Status und Farbe
         private string _spsStatus;
         public string SpsStatus
         {
@@ -72,7 +72,7 @@
                 OnPropertyChanged("SpsColor");
             }
         }
-#endregion
+        #endregion
 
 
 
@@ -113,7 +113,7 @@
         }
         #endregion
 
-        
+
         #region Color P1
         public void FarbeCircle_P1(bool val)
         {
@@ -167,7 +167,7 @@
             }
         }
         #endregion
-               
+
 
         #region Color AbleitungOben
         public void FarbeAbleitungOben(bool val)
@@ -277,7 +277,7 @@
         }
         #endregion
 
-        
+
 
 
 
@@ -395,7 +395,7 @@
         }
         #endregion
 
-        
+
         #region Visibility Motor M1
         public void VisibilityMotorM1(bool val)
         {
@@ -471,7 +471,7 @@
             }
         }
         #endregion
-        
+
 
         #region Visibility Ventil Y1
         public void VisibilityVentilY1(bool val)
@@ -512,7 +512,7 @@
         #endregion
 
 
-               
+
 
         #region Margin1
         public void Margin_1(double pegel)

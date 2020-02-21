@@ -56,14 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\NiveauRegelungSetManualM1.cs" />
-    <Compile Include="Commands\NiveauRegelungSetManualM2.cs" />
-    <Compile Include="Commands\NiveauRegelungTasterS1.cs" />
-    <Compile Include="Commands\NiveauRegelungTasterS2.cs" />
-    <Compile Include="Commands\NiveauRegelungTasterS3.cs" />
-    <Compile Include="Commands\NiveauRegelungThermoRelaisF1.cs" />
-    <Compile Include="Commands\NiveauRegelungThermoRelaisF2.cs" />
-    <Compile Include="Commands\NiveauRegelungVentilY1.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\VisuAnzeigen.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
