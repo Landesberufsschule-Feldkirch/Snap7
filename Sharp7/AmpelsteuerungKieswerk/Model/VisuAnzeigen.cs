@@ -41,27 +41,31 @@
             DirectionLkw5 = 1;
         }
 
-        private string _SpsStatus;
+        #region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+        #endregion
+
+
 
         #region Color B1
         public void FarbeB1(bool val)
@@ -69,13 +73,13 @@
             if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
         }
 
-        private string _ColorB1;
+        private string _colorB1;
         public string ColorB1
         {
-            get { return _ColorB1; }
+            get { return _colorB1; }
             set
             {
-                _ColorB1 = value;
+                _colorB1 = value;
                 OnPropertyChanged("ColorB1");
             }
         }
@@ -87,13 +91,13 @@
             if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
         }
 
-        private string _ColorB2;
+        private string _colorB2;
         public string ColorB2
         {
-            get { return _ColorB2; }
+            get { return _colorB2; }
             set
             {
-                _ColorB2 = value;
+                _colorB2 = value;
                 OnPropertyChanged("ColorB2");
             }
         }
@@ -105,13 +109,13 @@
             if (val) ColorB3 = "Red"; else ColorB3 = "LightGray";
         }
 
-        private string _ColorB3;
+        private string _colorB3;
         public string ColorB3
         {
-            get { return _ColorB3; }
+            get { return _colorB3; }
             set
             {
-                _ColorB3 = value;
+                _colorB3 = value;
                 OnPropertyChanged("ColorB3");
             }
         }
@@ -123,13 +127,13 @@
             if (val) ColorB4 = "Red"; else ColorB4 = "LightGray";
         }
 
-        private string _ColorB4;
+        private string _colorB4;
         public string ColorB4
         {
-            get { return _ColorB4; }
+            get { return _colorB4; }
             set
             {
-                _ColorB4 = value;
+                _colorB4 = value;
                 OnPropertyChanged("ColorB4");
             }
         }
@@ -143,13 +147,13 @@
             if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White";
         }
 
-        private string _ColorLinksRot;
+        private string _colorLinksRot;
         public string ColorLinksRot
         {
-            get { return _ColorLinksRot; }
+            get { return _colorLinksRot; }
             set
             {
-                _ColorLinksRot = value;
+                _colorLinksRot = value;
                 OnPropertyChanged("ColorLinksRot");
             }
         }
@@ -161,13 +165,13 @@
             if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White";
         }
 
-        private string _ColorLinksGelb;
+        private string _colorLinksGelb;
         public string ColorLinksGelb
         {
-            get { return _ColorLinksGelb; }
+            get { return _colorLinksGelb; }
             set
             {
-                _ColorLinksGelb = value;
+                _colorLinksGelb = value;
                 OnPropertyChanged("ColorLinksGelb");
             }
         }
@@ -179,13 +183,13 @@
             if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White";
         }
 
-        private string _ColorLinksGruen;
+        private string _colorLinksGruen;
         public string ColorLinksGruen
         {
-            get { return _ColorLinksGruen; }
+            get { return _colorLinksGruen; }
             set
             {
-                _ColorLinksGruen = value;
+                _colorLinksGruen = value;
                 OnPropertyChanged("ColorLinksGruen");
             }
         }
@@ -197,13 +201,13 @@
             if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White";
         }
 
-        private string _ColorRechtsRot;
+        private string _colorRechtsRot;
         public string ColorRechtsRot
         {
-            get { return _ColorRechtsRot; }
+            get { return _colorRechtsRot; }
             set
             {
-                _ColorRechtsRot = value;
+                _colorRechtsRot = value;
                 OnPropertyChanged("ColorRechtsRot");
             }
         }
@@ -215,13 +219,13 @@
             if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White";
         }
 
-        private string _ColorRechtsGelb;
+        private string _colorRechtsGelb;
         public string ColorRechtsGelb
         {
-            get { return _ColorRechtsGelb; }
+            get { return _colorRechtsGelb; }
             set
             {
-                _ColorRechtsGelb = value;
+                _colorRechtsGelb = value;
                 OnPropertyChanged("ColorRechtsGelb");
             }
         }
@@ -233,13 +237,13 @@
             if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White";
         }
 
-        private string _ColorRechtsGruen;
+        private string _colorRechtsGruen;
         public string ColorRechtsGruen
         {
-            get { return _ColorRechtsGruen; }
+            get { return _colorRechtsGruen; }
             set
             {
-                _ColorRechtsGruen = value;
+                _colorRechtsGruen = value;
                 OnPropertyChanged("ColorRechtsGruen");
             }
         }
@@ -253,13 +257,13 @@
             if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1;
         }
 
-        private int _DirectionLkw1;
+        private int _directionLkw1;
         public int DirectionLkw1
         {
-            get { return _DirectionLkw1; }
+            get { return _directionLkw1; }
             set
             {
-                _DirectionLkw1 = value;
+                _directionLkw1 = value;
                 OnPropertyChanged("DirectionLkw1");
             }
         }
@@ -271,13 +275,13 @@
             if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1;
         }
 
-        private int _DirectionLkw2;
+        private int _directionLkw2;
         public int DirectionLkw2
         {
-            get { return _DirectionLkw2; }
+            get { return _directionLkw2; }
             set
             {
-                _DirectionLkw2 = value;
+                _directionLkw2 = value;
                 OnPropertyChanged("DirectionLkw2");
             }
         }
@@ -289,13 +293,13 @@
             if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1;
         }
 
-        private int _DirectionLkw3;
+        private int _directionLkw3;
         public int DirectionLkw3
         {
-            get { return _DirectionLkw3; }
+            get { return _directionLkw3; }
             set
             {
-                _DirectionLkw3 = value;
+                _directionLkw3 = value;
                 OnPropertyChanged("DirectionLkw3");
             }
         }
@@ -307,13 +311,13 @@
             if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1;
         }
 
-        private int _DirectionLkw4;
+        private int _directionLkw4;
         public int DirectionLkw4
         {
-            get { return _DirectionLkw4; }
+            get { return _directionLkw4; }
             set
             {
-                _DirectionLkw4 = value;
+                _directionLkw4 = value;
                 OnPropertyChanged("DirectionLkw4");
             }
         }
@@ -325,13 +329,13 @@
             if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1;
         }
 
-        private int _DirectionLkw5;
+        private int _directionLkw5;
         public int DirectionLkw5
         {
-            get { return _DirectionLkw5; }
+            get { return _directionLkw5; }
             set
             {
-                _DirectionLkw5 = value;
+                _directionLkw5 = value;
                 OnPropertyChanged("DirectionLkw5");
             }
         }
@@ -347,23 +351,23 @@
             PosLkw1Top = pos.Y;
         }
 
-        private double _PosLkw1Left;
+        private double _posLkw1Left;
         public double PosLkw1Left
         {
-            get { return _PosLkw1Left; }
+            get { return _posLkw1Left; }
             set
             {
-                _PosLkw1Left = value;
+                _posLkw1Left = value;
                 OnPropertyChanged("PosLkw1Left");
             }
         }
-        private double _PosLkw1Top;
+        private double _posLkw1Top;
         public double PosLkw1Top
         {
-            get { return _PosLkw1Top; }
+            get { return _posLkw1Top; }
             set
             {
-                _PosLkw1Top = value;
+                _posLkw1Top = value;
                 OnPropertyChanged("PosLkw1Top");
             }
         }
@@ -376,23 +380,23 @@
             PosLkw2Top = pos.Y;
         }
 
-        private double _PosLkw2Left;
+        private double _posLkw2Left;
         public double PosLkw2Left
         {
-            get { return _PosLkw2Left; }
+            get { return _posLkw2Left; }
             set
             {
-                _PosLkw2Left = value;
+                _posLkw2Left = value;
                 OnPropertyChanged("PosLkw2Left");
             }
         }
-        private double _PosLkw2Top;
+        private double _posLkw2Top;
         public double PosLkw2Top
         {
-            get { return _PosLkw2Top; }
+            get { return _posLkw2Top; }
             set
             {
-                _PosLkw2Top = value;
+                _posLkw2Top = value;
                 OnPropertyChanged("PosLkw2Top");
             }
         }
@@ -405,23 +409,23 @@
             PosLkw3Top = pos.Y;
         }
 
-        private double _PosLkw3Left;
+        private double _posLkw3Left;
         public double PosLkw3Left
         {
-            get { return _PosLkw3Left; }
+            get { return _posLkw3Left; }
             set
             {
-                _PosLkw3Left = value;
+                _posLkw3Left = value;
                 OnPropertyChanged("PosLkw3Left");
             }
         }
-        private double _PosLkw3Top;
+        private double _posLkw3Top;
         public double PosLkw3Top
         {
-            get { return _PosLkw3Top; }
+            get { return _posLkw3Top; }
             set
             {
-                _PosLkw3Top = value;
+                _posLkw3Top = value;
                 OnPropertyChanged("PosLkw3Top");
             }
         }
@@ -434,23 +438,23 @@
             PosLkw4Top = pos.Y;
         }
 
-        private double _PosLkw4Left;
+        private double _posLkw4Left;
         public double PosLkw4Left
         {
-            get { return _PosLkw4Left; }
+            get { return _posLkw4Left; }
             set
             {
-                _PosLkw4Left = value;
+                _posLkw4Left = value;
                 OnPropertyChanged("PosLkw4Left");
             }
         }
-        private double _PosLkw4Top;
+        private double _posLkw4Top;
         public double PosLkw4Top
         {
-            get { return _PosLkw4Top; }
+            get { return _posLkw4Top; }
             set
             {
-                _PosLkw4Top = value;
+                _posLkw4Top = value;
                 OnPropertyChanged("PosLkw4Top");
             }
         }
@@ -463,23 +467,23 @@
             PosLkw5Top = pos.Y;
         }
 
-        private double _PosLkw5Left;
+        private double _posLkw5Left;
         public double PosLkw5Left
         {
-            get { return _PosLkw5Left; }
+            get { return _posLkw5Left; }
             set
             {
-                _PosLkw5Left = value;
+                _posLkw5Left = value;
                 OnPropertyChanged("PosLkw5Left");
             }
         }
-        private double _PosLkw5Top;
+        private double _posLkw5Top;
         public double PosLkw5Top
         {
-            get { return _PosLkw5Top; }
+            get { return _posLkw5Top; }
             set
             {
-                _PosLkw5Top = value;
+                _posLkw5Top = value;
                 OnPropertyChanged("PosLkw5Top");
             }
         }

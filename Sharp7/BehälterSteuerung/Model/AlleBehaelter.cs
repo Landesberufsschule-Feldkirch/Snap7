@@ -17,7 +17,7 @@
         public bool P1 { get; set; }
         public readonly List<Behaelter> alleBehaelter = new List<Behaelter>();
         private bool AutomatikModusAktiv;
-        private MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public AlleBehaelter(MainWindow mw)
         {
@@ -65,6 +65,12 @@
 
         private void AnzeigeAktualisieren()
         {
+            bool AbleitungenUnten;
+            bool AbleitungUnten1;
+            bool AbleitungUnten2;
+            bool AbleitungUnten3;
+            bool AbleitungUnten4;
+
             ViAnzeige.VisibilityVentilQ1(alleBehaelter[0].VentilOben);
             ViAnzeige.VisibilityVentilQ3(alleBehaelter[1].VentilOben);
             ViAnzeige.VisibilityVentilQ5(alleBehaelter[2].VentilOben);
@@ -87,20 +93,22 @@
             ViAnzeige.FarbeAbleitung3a(alleBehaelter[2].Pegel > 0.01);
             ViAnzeige.FarbeAbleitung4a(alleBehaelter[3].Pegel > 0.01);
 
-            ViAnzeige.VisibilityVentilQ2(alleBehaelter[0].VentilUnten);
-            ViAnzeige.VisibilityVentilQ4(alleBehaelter[1].VentilUnten);
-            ViAnzeige.VisibilityVentilQ6(alleBehaelter[2].VentilUnten);
-            ViAnzeige.VisibilityVentilQ8(alleBehaelter[3].VentilUnten);
+            AbleitungUnten1 = alleBehaelter[0].Pegel > 0.01 && alleBehaelter[0].VentilUnten;
+            AbleitungUnten2 = alleBehaelter[1].Pegel > 0.01 && alleBehaelter[1].VentilUnten;
+            AbleitungUnten3 = alleBehaelter[2].Pegel > 0.01 && alleBehaelter[2].VentilUnten;
+            AbleitungUnten4 = alleBehaelter[3].Pegel > 0.01 && alleBehaelter[3].VentilUnten;
+            AbleitungenUnten = AbleitungUnten1 || AbleitungUnten2 || AbleitungUnten3 || AbleitungUnten4;
 
-            ViAnzeige.FarbeAbleitung1b(alleBehaelter[0].VentilUnten);
-            ViAnzeige.FarbeAbleitung2b(alleBehaelter[1].VentilUnten);
-            ViAnzeige.FarbeAbleitung3b(alleBehaelter[2].VentilUnten);
-            ViAnzeige.FarbeAbleitung4b(alleBehaelter[3].VentilUnten);
+            ViAnzeige.VisibilityVentilQ2(AbleitungUnten1);
+            ViAnzeige.VisibilityVentilQ4(AbleitungUnten2);
+            ViAnzeige.VisibilityVentilQ6(AbleitungUnten3);
+            ViAnzeige.VisibilityVentilQ8(AbleitungUnten4);         
 
-            ViAnzeige.FarbeAbleitungGesamt(alleBehaelter[0].VentilUnten
-                || alleBehaelter[1].VentilUnten
-                || alleBehaelter[2].VentilUnten
-                || alleBehaelter[3].VentilUnten);
+            ViAnzeige.FarbeAbleitung1b(AbleitungenUnten);
+            ViAnzeige.FarbeAbleitung2b(AbleitungenUnten);
+            ViAnzeige.FarbeAbleitung3b(AbleitungenUnten);
+            ViAnzeige.FarbeAbleitung4b(AbleitungenUnten);
+            ViAnzeige.FarbeAbleitungGesamt(AbleitungenUnten);
 
 
             ViAnzeige.FarbeLabelB1(alleBehaelter[0].SchwimmerschalterOben);

@@ -71,14 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\UpdateBtnAutomatik_1234.cs" />
-    <Compile Include="Commands\UpdateBtnAutomatik_1324.cs" />
-    <Compile Include="Commands\UpdateBtnAutomatik_1432.cs" />
-    <Compile Include="Commands\UpdateBtnAutomatik_4321.cs" />
-    <Compile Include="Commands\UpdateBtnVentil_Q2.cs" />
-    <Compile Include="Commands\UpdateBtnVentil_Q4.cs" />
-    <Compile Include="Commands\UpdateBtnVentil_Q6.cs" />
-    <Compile Include="Commands\UpdateBtnVentil_Q8.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\AlleBehaelter.cs" />
     <Compile Include="Model\Behaelter.cs" />
     <Compile Include="Model\VisuAnzeigen.cs" />

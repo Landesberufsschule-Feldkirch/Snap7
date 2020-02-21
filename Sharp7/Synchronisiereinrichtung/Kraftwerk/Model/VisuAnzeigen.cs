@@ -14,27 +14,31 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             VisibilityVentilEin = "Hidden";
         }
 
-        private string _SpsStatus;
+#region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+#endregion
+
+
 
 
         #region Leistungsfaktor

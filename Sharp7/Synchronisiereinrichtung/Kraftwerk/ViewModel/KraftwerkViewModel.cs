@@ -1,8 +1,8 @@
 ﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
-    using RealTimeGraphX.WPF;
     using RealTimeGraphX.DataPoints;
-    using Synchronisiereinrichtung.Kraftwerk.Command;
+    using RealTimeGraphX.WPF;
+    using Synchronisiereinrichtung.Kraftwerk.Commands;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -16,14 +16,9 @@
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
         private readonly Model.Kraftwerk kraftwerk;
 
-        public KraftwerkViewModel(MainWindow mw)
+        public KraftwerkViewModel(MainWindow mainWindow)
         {
-            kraftwerk = new Model.Kraftwerk(mw);
-            ButtonSchalterReset = new KraftwerkBtnManualReset(this);
-            ButtonSchalterQ1 = new KraftwerkBtnManualQ1(this);
-            ButtonSchalterStart = new KraftwerkBtnStart(this);
-            ButtonSchalterStop = new KraftwerkBtnStop(this);
-
+            kraftwerk = new Model.Kraftwerk(mainWindow);
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
         }
@@ -118,21 +113,65 @@
         public Model.Kraftwerk Kraftwerk { get { return kraftwerk; } }
 
 
-        public bool CanUpdateQ1 { get { return true; } }
-        public bool CanUpdateReset { get { return true; } }
-        public bool CanUpdateStart { get { return true; } }
-        public bool CanUpdateStop { get { return true; } }
+        #region BtnSchalterReset
+        private ICommand _btnSchalterReset;
+        public ICommand BtnSchalterReset
+        {
+            get
+            {
+                if (_btnSchalterReset == null)
+                {
+                    _btnSchalterReset = new RelayCommand(p => kraftwerk.Reset(), p => true);
+                }
+                return _btnSchalterReset;
+            }
+        }
+        #endregion
 
+        #region BtnSchalterQ1
+        private ICommand _btnSchalterQ1;
+        public ICommand BtnSchalterQ1
+        {
+            get
+            {
+                if (_btnSchalterQ1 == null)
+                {
+                    _btnSchalterQ1 = new RelayCommand(p => kraftwerk.Synchronisieren(), p => true);
+                }
+                return _btnSchalterQ1;
+            }
+        }
+        #endregion
 
-        public ICommand ButtonSchalterReset { get; private set; }
-        public ICommand ButtonSchalterQ1 { get; private set; }
-        public ICommand ButtonSchalterStart { get; private set; }
-        public ICommand ButtonSchalterStop { get; private set; }
+        #region BtnSchalterStart
+        private ICommand _btnSchalterStart;
+        public ICommand BtnSchalterStart
+        {
+            get
+            {
+                if (_btnSchalterStart == null)
+                {
+                    _btnSchalterStart = new RelayCommand(p => kraftwerk.Starten(), p => true);
+                }
+                return _btnSchalterStart;
+            }
+        }
+        #endregion
 
+        #region BtnSchalterStop
+        private ICommand _btnSchalterStop;
+        public ICommand BtnSchalterStop
+        {
+            get
+            {
+                if (_btnSchalterStop == null)
+                {
+                    _btnSchalterStop = new RelayCommand(p => kraftwerk.Stoppen(), p => true);
+                }
+                return _btnSchalterStop;
+            }
+        }
+        #endregion
 
-        internal void SchalterQ1() { kraftwerk.Synchronisieren(); }
-        public void SchalterReset() { kraftwerk.Reset(); }
-        internal void SchalterStart() { kraftwerk.Starten(); }
-        public void SchalterStop() { kraftwerk.Stoppen(); }
     }
 }

@@ -144,8 +144,8 @@
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=Kraftwerk.ViSoll.SynchAuswahl, Converter={StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
         </StackPanel>
 
-        <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=ButtonSchalterStart}" />
-        <Button Content="Stoppen"  Grid.Column="24" Grid.ColumnSpan="2" Grid.Row="8" Background="Red"       Command="{Binding Path=ButtonSchalterStop}" />
+        <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=BtnSchalterStart}" />
+        <Button Content="Stoppen"  Grid.Column="24" Grid.ColumnSpan="2" Grid.Row="8" Background="Red"       Command="{Binding Path=BtnSchalterStop}" />
 
         <Label Content="Netz"       Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="10" VerticalAlignment="Center" FontSize="16pt" />
         <Label Content="Spannung"   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />

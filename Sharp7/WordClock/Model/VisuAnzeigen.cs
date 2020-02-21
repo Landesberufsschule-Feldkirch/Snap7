@@ -15,65 +15,70 @@
         }
 
 
-        private string _SpsStatus;
+        #region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+        #endregion
 
 
-        private double _WinkelStunden;
+
+        #region WinkelStunden
+        private double _winkelStunden;
         public double WinkelStunden
         {
-            get { return _WinkelStunden; }
+            get { return _winkelStunden; }
             set
             {
-                _WinkelStunden = value;
+                _winkelStunden = value;
                 OnPropertyChanged("WinkelStunden");
             }
         }
+        #endregion
 
-
-
-        private double _WinkelMinuten;
+        #region WinkelMinuten
+        private double _winkelMinuten;
         public double WinkelMinuten
         {
-            get { return _WinkelMinuten; }
+            get { return _winkelMinuten; }
             set
             {
-                _WinkelMinuten = value;
+                _winkelMinuten = value;
                 OnPropertyChanged("WinkelMinuten");
             }
         }
+        #endregion
 
-
-        private double _WinkelSekunden;
+        #region WinkelSekunden
+        private double _winkelSekunden;
         public double WinkelSekunden
         {
-            get { return _WinkelSekunden; }
+            get { return _winkelSekunden; }
             set
             {
-                _WinkelSekunden = value;
+                _winkelSekunden = value;
                 OnPropertyChanged("WinkelSekunden");
             }
         }
-
+        #endregion
 
 
 

@@ -24,7 +24,7 @@
             {
                 if (_btnLkw1 == null)
                 {
-                    _btnLkw1 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw1(), p => true);
+                    _btnLkw1 = new RelayCommand(p => alleLastKraftWagen.TasterLkw1(), p => true);
                 }
                 return _btnLkw1;
             }
@@ -39,7 +39,7 @@
             {
                 if (_btnLkw2 == null)
                 {
-                    _btnLkw2 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw2(), p => true);
+                    _btnLkw2 = new RelayCommand(p => alleLastKraftWagen.TasterLkw2(), p => true);
                 }
                 return _btnLkw2;
             }
@@ -54,7 +54,7 @@
             {
                 if (_btnLkw3 == null)
                 {
-                    _btnLkw3 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw3(), p => true);
+                    _btnLkw3 = new RelayCommand(p => alleLastKraftWagen.TasterLkw3(), p => true);
                 }
                 return _btnLkw3;
             }
@@ -69,7 +69,7 @@
             {
                 if (_btnLkw4 == null)
                 {
-                    _btnLkw4 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw4(), p => true);
+                    _btnLkw4 = new RelayCommand(p => alleLastKraftWagen.TasterLkw4(), p => true);
                 }
                 return _btnLkw4;
             }
@@ -84,7 +84,7 @@
             {
                 if (_btnLkw5 == null)
                 {
-                    _btnLkw5 = new RelayCommand(p => this.alleLastKraftWagen.TasterLkw5(), p => true);
+                    _btnLkw5 = new RelayCommand(p => alleLastKraftWagen.TasterLkw5(), p => true);
                 }
                 return _btnLkw5;
             }
@@ -99,7 +99,7 @@
             {
                 if (_btnLinksParken == null)
                 {
-                    _btnLinksParken = new RelayCommand(p => this.alleLastKraftWagen.TasterLinksParken(), p => true);
+                    _btnLinksParken = new RelayCommand(p => alleLastKraftWagen.TasterLinksParken(), p => true);
                 }
                 return _btnLinksParken;
             }
@@ -114,12 +114,11 @@
             {
                 if (_btnRechtsParken == null)
                 {
-                    _btnRechtsParken = new RelayCommand(p => this.alleLastKraftWagen.TasterRechtsParken(), p => true);
+                    _btnRechtsParken = new RelayCommand(p => alleLastKraftWagen.TasterRechtsParken(), p => true);
                 }
                 return _btnRechtsParken;
             }
         }
         #endregion
-
     }
 }

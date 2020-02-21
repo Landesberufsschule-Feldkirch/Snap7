@@ -41,27 +41,31 @@
             Width5DownLeft = 1;
         }
 
-        private string _SpsStatus;
+#region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+#endregion
+
+
 
 
 
@@ -71,13 +75,13 @@
             if (val) ColorP0 = "Red"; else ColorP0 = "LightGray";
         }
 
-        private string _ColorP0;
+        private string _colorP0;
         public string ColorP0
         {
-            get { return _ColorP0; }
+            get { return _colorP0; }
             set
             {
-                _ColorP0 = value;
+                _colorP0 = value;
                 OnPropertyChanged("ColorP0");
             }
         }

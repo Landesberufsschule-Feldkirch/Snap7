@@ -10,16 +10,24 @@
         public WordClockViewModel(MainWindow mainWindow)
         {
             zeiten = new Model.Zeiten(mainWindow);
-            BtnSetCurrentTime = new WordClockSetCurrentTime(this);
         }
 
         public Model.Zeiten Zeiten { get { return zeiten; } }
 
 
-        public bool CanSetCurrentTime { get { return true; } }
-
-        public ICommand BtnSetCurrentTime { get; private set; }
-
-        public void SetCurrentTime() { zeiten.SetCurrentTime(); }
+        #region BtnSetCurrentTime
+        private ICommand _btnSetCurrentTime;
+        public ICommand BtnSetCurrentTime
+        {
+            get
+            {
+                if (_btnSetCurrentTime == null)
+                {
+                    _btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true);
+                }
+                return _btnSetCurrentTime;
+            }
+        }
+        #endregion
     }
 }

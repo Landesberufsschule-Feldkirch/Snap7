@@ -56,27 +56,31 @@
             Margin1 = new Thickness(0, 30, 0, 0);
         }
 
-        private string _SpsStatus;
+#region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+#endregion
+
+
 
 
         #region Image1
@@ -514,13 +518,13 @@
             if (val) ColorCircle_F5 = "red"; else ColorCircle_F5 = "lawngreen";
         }
 
-        private string _ColorCircle_F5;
+        private string _colorCircle_F5;
         public string ColorCircle_F5
         {
-            get { return _ColorCircle_F5; }
+            get { return _colorCircle_F5; }
             set
             {
-                _ColorCircle_F5 = value;
+                _colorCircle_F5 = value;
                 OnPropertyChanged("ColorCircle_F5");
             }
         }
@@ -532,13 +536,13 @@
             if (val) ColorCircle_M1 = "lawngreen"; else ColorCircle_M1 = "LightGray";
         }
 
-        private string _ColorCircle_M1;
+        private string _colorCircle_M1;
         public string ColorCircle_M1
         {
-            get { return _ColorCircle_M1; }
+            get { return _colorCircle_M1; }
             set
             {
-                _ColorCircle_M1 = value;
+                _colorCircle_M1 = value;
                 OnPropertyChanged("ColorCircle_M1");
             }
         }
@@ -550,13 +554,13 @@
             if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
         }
 
-        private string _ColorCircle_P1;
+        private string _colorCircle_P1;
         public string ColorCircle_P1
         {
-            get { return _ColorCircle_P1; }
+            get { return _colorCircle_P1; }
             set
             {
-                _ColorCircle_P1 = value;
+                _colorCircle_P1 = value;
                 OnPropertyChanged("ColorCircle_P1");
             }
         }
@@ -568,13 +572,13 @@
             if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
         }
 
-        private string _ColorCircle_P2;
+        private string _colorCircle_P2;
         public string ColorCircle_P2
         {
-            get { return _ColorCircle_P2; }
+            get { return _colorCircle_P2; }
             set
             {
-                _ColorCircle_P2 = value;
+                _colorCircle_P2 = value;
                 OnPropertyChanged("ColorCircle_P2");
             }
         }
@@ -586,13 +590,13 @@
             if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue";
         }
 
-        private string _ColorRectangleZuleitung;
+        private string _colorRectangleZuleitung;
         public string ColorRectangleZuleitung
         {
-            get { return _ColorRectangleZuleitung; }
+            get { return _colorRectangleZuleitung; }
             set
             {
-                _ColorRectangleZuleitung = value;
+                _colorRectangleZuleitung = value;
                 OnPropertyChanged("ColorRectangleZuleitung");
             }
         }
