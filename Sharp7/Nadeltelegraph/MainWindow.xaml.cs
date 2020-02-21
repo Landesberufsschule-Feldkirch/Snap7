@@ -5,8 +5,8 @@ namespace Nadeltelegraph
 {
     public partial class MainWindow : Window
     {
-        private DatenRangieren datenRangieren;
-        private ViewModel.NadeltelegraphViewModel nadeltelegraphViewModel;
+        private readonly DatenRangieren datenRangieren;
+        private readonly ViewModel.NadeltelegraphViewModel nadeltelegraphViewModel;
         public S7_1200 s7_1200;
 
         public MainWindow()
