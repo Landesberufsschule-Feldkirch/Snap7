@@ -50,27 +50,31 @@
 
 
 
-        private string _SpsStatus;
+#region SPS Status und Farbe
+        private string _spsStatus;
         public string SpsStatus
         {
-            get { return _SpsStatus; }
+            get { return _spsStatus; }
             set
             {
-                _SpsStatus = value;
+                _spsStatus = value;
                 OnPropertyChanged("SpsStatus");
             }
         }
 
-        private string _SpsColor;
+        private string _spsColor;
         public string SpsColor
         {
-            get { return _SpsColor; }
+            get { return _spsColor; }
             set
             {
-                _SpsColor = value;
+                _spsColor = value;
                 OnPropertyChanged("SpsColor");
             }
         }
+#endregion
+
+
 
 
         #region Color Thermorelais F1
@@ -79,13 +83,13 @@
             if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen";
         }
 
-        private string _ColorThermorelais_F1;
+        private string _colorThermorelais_F1;
         public string ColorThermorelais_F1
         {
-            get { return _ColorThermorelais_F1; }
+            get { return _colorThermorelais_F1; }
             set
             {
-                _ColorThermorelais_F1 = value;
+                _colorThermorelais_F1 = value;
                 OnPropertyChanged("ColorThermorelais_F1");
             }
         }
@@ -97,13 +101,13 @@
             if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen";
         }
 
-        private string _ColorThermorelais_F2;
+        private string _colorThermorelais_F2;
         public string ColorThermorelais_F2
         {
-            get { return _ColorThermorelais_F2; }
+            get { return _colorThermorelais_F2; }
             set
             {
-                _ColorThermorelais_F2 = value;
+                _colorThermorelais_F2 = value;
                 OnPropertyChanged("ColorThermorelais_F2");
             }
         }
@@ -116,13 +120,13 @@
             if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White";
         }
 
-        private string _ColorCircle_P1;
+        private string _colorCircle_P1;
         public string ColorCircle_P1
         {
-            get { return _ColorCircle_P1; }
+            get { return _colorCircle_P1; }
             set
             {
-                _ColorCircle_P1 = value;
+                _colorCircle_P1 = value;
                 OnPropertyChanged("ColorCircle_P1");
             }
         }
@@ -134,13 +138,13 @@
             if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White";
         }
 
-        private string _ColorCircle_P2;
+        private string _colorCircle_P2;
         public string ColorCircle_P2
         {
-            get { return _ColorCircle_P2; }
+            get { return _colorCircle_P2; }
             set
             {
-                _ColorCircle_P2 = value;
+                _colorCircle_P2 = value;
                 OnPropertyChanged("ColorCircle_P2");
             }
         }
@@ -152,13 +156,13 @@
             if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White";
         }
 
-        private string _ColorCircle_P3;
+        private string _colorCircle_P3;
         public string ColorCircle_P3
         {
-            get { return _ColorCircle_P3; }
+            get { return _colorCircle_P3; }
             set
             {
-                _ColorCircle_P3 = value;
+                _colorCircle_P3 = value;
                 OnPropertyChanged("ColorCircle_P3");
             }
         }
@@ -171,13 +175,13 @@
             if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue";
         }
 
-        private string _ColorAbleitungOben;
+        private string _colorAbleitungOben;
         public string ColorAbleitungOben
         {
-            get { return _ColorAbleitungOben; }
+            get { return _colorAbleitungOben; }
             set
             {
-                _ColorAbleitungOben = value;
+                _colorAbleitungOben = value;
                 OnPropertyChanged("ColorAbleitungOben");
             }
         }
@@ -189,13 +193,13 @@
             if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue";
         }
 
-        private string _ColorAbleitungUnten;
+        private string _colorAbleitungUnten;
         public string ColorAbleitungUnten
         {
-            get { return _ColorAbleitungUnten; }
+            get { return _colorAbleitungUnten; }
             set
             {
-                _ColorAbleitungUnten = value;
+                _colorAbleitungUnten = value;
                 OnPropertyChanged("ColorAbleitungUnten");
             }
         }
@@ -207,13 +211,13 @@
             if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue";
         }
 
-        private string _ColorZuleitungLinksWaagrecht;
+        private string _colorZuleitungLinksWaagrecht;
         public string ColorZuleitungLinksWaagrecht
         {
-            get { return _ColorZuleitungLinksWaagrecht; }
+            get { return _colorZuleitungLinksWaagrecht; }
             set
             {
-                _ColorZuleitungLinksWaagrecht = value;
+                _colorZuleitungLinksWaagrecht = value;
                 OnPropertyChanged("ColorZuleitungLinksWaagrecht");
             }
         }
@@ -225,13 +229,13 @@
             if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue";
         }
 
-        private string _ColorZuleitungLinksSenkrecht;
+        private string _colorZuleitungLinksSenkrecht;
         public string ColorZuleitungLinksSenkrecht
         {
-            get { return _ColorZuleitungLinksSenkrecht; }
+            get { return _colorZuleitungLinksSenkrecht; }
             set
             {
-                _ColorZuleitungLinksSenkrecht = value;
+                _colorZuleitungLinksSenkrecht = value;
                 OnPropertyChanged("ColorZuleitungLinksSenkrecht");
             }
         }
@@ -243,13 +247,13 @@
             if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue";
         }
 
-        private string _ColorZuleitungRechtsWaagrecht;
+        private string _colorZuleitungRechtsWaagrecht;
         public string ColorZuleitungRechtsWaagrecht
         {
-            get { return _ColorZuleitungRechtsWaagrecht; }
+            get { return _colorZuleitungRechtsWaagrecht; }
             set
             {
-                _ColorZuleitungRechtsWaagrecht = value;
+                _colorZuleitungRechtsWaagrecht = value;
                 OnPropertyChanged("ColorZuleitungRechtsWaagrecht");
             }
         }
@@ -261,13 +265,13 @@
             if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue";
         }
 
-        private string _ColorZuleitungRechtsSenkrecht;
+        private string _colorZuleitungRechtsSenkrecht;
         public string ColorZuleitungRechtsSenkrecht
         {
-            get { return _ColorZuleitungRechtsSenkrecht; }
+            get { return _colorZuleitungRechtsSenkrecht; }
             set
             {
-                _ColorZuleitungRechtsSenkrecht = value;
+                _colorZuleitungRechtsSenkrecht = value;
                 OnPropertyChanged("ColorZuleitungRechtsSenkrecht");
             }
         }

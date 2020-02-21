@@ -1,7 +1,6 @@
 ﻿namespace LAP_2018_Niveauregelung.ViewModel
 {
     using LAP_2018_Niveauregelung.Commands;
-    using System;
     using System.Windows.Input;
 
     public class NiveauRegelungViewModel
@@ -9,56 +8,133 @@
 
         public readonly Model.NiveauRegelung niveauRegelung;
 
-
         public NiveauRegelungViewModel(MainWindow mainWindow)
         {
-
             niveauRegelung = new Model.NiveauRegelung(mainWindow);
-
-            BtnTasterS1 = new NiveauRegelungTasterS1(this);
-            BtnTasterS2 = new NiveauRegelungTasterS2(this);
-            BtnTasterS3 = new NiveauRegelungTasterS3(this);
-            BtnThermorelaisF1 = new NiveauRegelungThermorelaisF1(this);
-            BtnThermorelaisF2 = new NiveauRegelungThermorelaisF2(this);
-            BtnSetManualM1 = new NiveauRegelungSetManualM1(this);
-            BtnSetManualM2 = new NiveauRegelungSetManualM2(this);
-            BtnVentilY1 = new NiveauRegelungVentilY1(this);
         }
-
-
 
         public Model.NiveauRegelung NiveauRegelung { get { return niveauRegelung; } }
 
 
 
-        public ICommand BtnTasterS1 { get; private set; }
-        public ICommand BtnTasterS2 { get; private set; }
-        public ICommand BtnTasterS3 { get; private set; }
-        public ICommand BtnThermorelaisF1 { get; private set; }
-        public ICommand BtnThermorelaisF2 { get; private set; }
-        public ICommand BtnSetManualM1 { get; private set; }
-        public ICommand BtnSetManualM2 { get; private set; }
-        public ICommand BtnVentilY1 { get; private set; }
+        #region BtnTasterS1
+        private ICommand _btnTasterS1;
+        public ICommand BtnTasterS1
+        {
+            get
+            {
+                if (_btnTasterS1 == null)
+                {
+                    _btnTasterS1 = new RelayCommand(p => niveauRegelung.TasterS1(), p => true);
+                }
+                return _btnTasterS1;
+            }
+        }
+        #endregion
 
+        #region BtnTasterS2
+        private ICommand _btnTasterS2;
+        public ICommand BtnTasterS2
+        {
+            get
+            {
+                if (_btnTasterS2 == null)
+                {
+                    _btnTasterS2 = new RelayCommand(p => niveauRegelung.TasterS2(), p => true);
+                }
+                return _btnTasterS2;
+            }
+        }
+        #endregion
 
-        public bool CanButtonS1 { get { return true; } }
-        public bool CanButtonS2 { get { return true; } }
-        public bool CanButtonS3 { get { return true; } }
-        public bool CanThermorelaisF1 { get { return true; } }
-        public bool CanThermorelaisF2 { get { return true; } }
-        public bool CanSetManualM1 { get { return true; } }
-        public bool CanSetManualM2 { get { return true; } }
-        public bool CanVentilY1 { get { return true; } }
+        #region BtnTasterS3
+        private ICommand _btnTasterS3;
+        public ICommand BtnTasterS3
+        {
+            get
+            {
+                if (_btnTasterS3 == null)
+                {
+                    _btnTasterS3 = new RelayCommand(p => niveauRegelung.TasterS3(), p => true);
+                }
+                return _btnTasterS3;
+            }
+        }
+        #endregion
+        
+        #region BtnThermorelaisF1
+        private ICommand _btnThermorelaisF1;
+        public ICommand BtnThermorelaisF1
+        {
+            get
+            {
+                if (_btnThermorelaisF1 == null)
+                {
+                    _btnThermorelaisF1 = new RelayCommand(p => niveauRegelung.ThermorelaisF1(), p => true);
+                }
+                return _btnThermorelaisF1;
+            }
+        }
+        #endregion
 
+        #region BtnThermorelaisF2
+        private ICommand _btnThermorelaisF2;
+        public ICommand BtnThermorelaisF2
+        {
+            get
+            {
+                if (_btnThermorelaisF2 == null)
+                {
+                    _btnThermorelaisF2 = new RelayCommand(p => niveauRegelung.ThermorelaisF2(), p => true);
+                }
+                return _btnThermorelaisF2;
+            }
+        }
+        #endregion
 
-        internal void TasterS1() { niveauRegelung.TasterS1(); }
-        internal void TasterS2() { niveauRegelung.TasterS2(); }
-        internal void TasterS3() { niveauRegelung.TasterS3(); }
-        internal void ThermorelaisF1() { niveauRegelung.ThermorelaisF1(); }
-        internal void ThermorelaisF2() { niveauRegelung.ThermorelaisF2(); }
-        internal void VentilY1() { niveauRegelung.VentilY1(); }
-        internal void SetManualM1() { niveauRegelung.SetManualM1(); }
-        internal void SetManualM2() { niveauRegelung.SetManualM2(); }
+        #region BtnVentilY1
+        private ICommand _btnVentilY1;
+        public ICommand BtnVentilY1
+        {
+            get
+            {
+                if (_btnVentilY1 == null)
+                {
+                    _btnVentilY1 = new RelayCommand(p => niveauRegelung.VentilY1(), p => true);
+                }
+                return _btnVentilY1;
+            }
+        }
+        #endregion
+        
+        #region BtnSetManualM1
+        private ICommand _btnSetManualM1;
+        public ICommand BtnSetManualM1
+        {
+            get
+            {
+                if (_btnSetManualM1 == null)
+                {
+                    _btnSetManualM1 = new RelayCommand(p => niveauRegelung.SetManualM1(), p => true);
+                }
+                return _btnSetManualM1;
+            }
+        }
+        #endregion
 
+        #region BtnSetManualM2
+        private ICommand _btnSetManualM2;
+        public ICommand BtnSetManualM2
+        {
+            get
+            {
+                if (_btnSetManualM2 == null)
+                {
+                    _btnSetManualM2 = new RelayCommand(p => niveauRegelung.SetManualM2(), p => true);
+                }
+                return _btnSetManualM2;
+            }
+        }
+        #endregion
     }
 }
