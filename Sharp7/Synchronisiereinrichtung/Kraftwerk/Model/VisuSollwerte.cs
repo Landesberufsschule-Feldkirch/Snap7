@@ -21,14 +21,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public double Y() { return ManualVentilstellung; }
 
-        private double _ManualVentilstellung;
+        private double _manualVentilstellung;
 
         public double ManualVentilstellung
         {
-            get { return _ManualVentilstellung; }
+            get { return _manualVentilstellung; }
             set
             {
-                _ManualVentilstellung = value;
+                _manualVentilstellung = value;
                 OnPropertyChanged("ManualVentilstellung");
             }
         }
@@ -38,14 +38,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         #region Erregerstrom
         public double Ie() { return ManualErregerstrom; }
 
-        private double _ManualErregerstrom;
+        private double _manualErregerstrom;
 
         public double ManualErregerstrom
         {
-            get { return _ManualErregerstrom; }
+            get { return _manualErregerstrom; }
             set
             {
-                _ManualErregerstrom = value;
+                _manualErregerstrom = value;
                 OnPropertyChanged("ManualErregerstrom");
             }
         }
@@ -56,14 +56,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public double Netz_U() { return NetzSpannungSlider; }
 
-        private double _NetzSpannungSlider;
+        private double _netzSpannungSlider;
 
         public double NetzSpannungSlider
         {
-            get { return _NetzSpannungSlider; }
+            get { return _netzSpannungSlider; }
             set
             {
-                _NetzSpannungSlider = value;
+                _netzSpannungSlider = value;
                 OnPropertyChanged("NetzSpannungSlider");
             }
         }
@@ -74,14 +74,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public double Netz_f() { return NetzFrequenzSlider; }
 
-        private double _NetzFrequenzSlider;
+        private double _netzFrequenzSlider;
 
         public double NetzFrequenzSlider
         {
-            get { return _NetzFrequenzSlider; }
+            get { return _netzFrequenzSlider; }
             set
             {
-                _NetzFrequenzSlider = value;
+                _netzFrequenzSlider = value;
                 OnPropertyChanged("NetzFrequenzSlider");
             }
         }
@@ -93,18 +93,18 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Netz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
-            if (_NetzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
-            else return Math.Cos(Math.PI * (_NetzPhasenverschiebungSlider - 90) / 180);
+            if (_netzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
+            else return Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
         }
 
-        private double _NetzPhasenverschiebungSlider;
+        private double _netzPhasenverschiebungSlider;
 
         public double NetzPhasenverschiebungSlider
         {
-            get { return _NetzPhasenverschiebungSlider; }
+            get { return _netzPhasenverschiebungSlider; }
             set
             {
-                _NetzPhasenverschiebungSlider = value;
+                _netzPhasenverschiebungSlider = value;
                 OnPropertyChanged("NetzPhasenverschiebungSlider");
             }
         }
@@ -115,28 +115,28 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public double Netz_P() { return NetzLeistungSlider; }
 
-        private double _NetzLeistungSlider;
+        private double _netzLeistungSlider;
 
         public double NetzLeistungSlider
         {
-            get { return _NetzLeistungSlider; }
+            get { return _netzLeistungSlider; }
             set
             {
-                _NetzLeistungSlider = value;
+                _netzLeistungSlider = value;
                 OnPropertyChanged("NetzLeistungSlider");
             }
         }
 
         #endregion
 
-        private SynchronisierungAuswahl _SynchAuswahl;
+        private SynchronisierungAuswahl _synchAuswahl;
 
         public SynchronisierungAuswahl SynchAuswahl
         {
-            get { return _SynchAuswahl; }
+            get { return _synchAuswahl; }
             set
             {
-                _SynchAuswahl = value;
+                _synchAuswahl = value;
                 OnPropertyChanged("SynchAuswahl");
             }
         }

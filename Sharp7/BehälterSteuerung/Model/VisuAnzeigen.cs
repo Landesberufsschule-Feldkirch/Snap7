@@ -116,24 +116,24 @@
             }
         }
 
-        private string _VisibilityVentilQ1Ein;
+        private string _visibilityVentilQ1Ein;
         public string VisibilityVentilQ1Ein
         {
-            get { return _VisibilityVentilQ1Ein; }
+            get { return _visibilityVentilQ1Ein; }
             set
             {
-                _VisibilityVentilQ1Ein = value;
+                _visibilityVentilQ1Ein = value;
                 OnPropertyChanged("VisibilityVentilQ1Ein");
             }
         }
 
-        private string _VisibilityVentilQ1Aus;
+        private string _visibilityVentilQ1Aus;
         public string VisibilityVentilQ1Aus
         {
-            get { return _VisibilityVentilQ1Aus; }
+            get { return _visibilityVentilQ1Aus; }
             set
             {
-                _VisibilityVentilQ1Aus = value;
+                _visibilityVentilQ1Aus = value;
                 OnPropertyChanged("VisibilityVentilQ1Aus");
             }
         }
@@ -154,24 +154,24 @@
             }
         }
 
-        private string _VisibilityVentilQ2Ein;
+        private string _visibilityVentilQ2Ein;
         public string VisibilityVentilQ2Ein
         {
-            get { return _VisibilityVentilQ2Ein; }
+            get { return _visibilityVentilQ2Ein; }
             set
             {
-                _VisibilityVentilQ2Ein = value;
+                _visibilityVentilQ2Ein = value;
                 OnPropertyChanged("VisibilityVentilQ2Ein");
             }
         }
 
-        private string _VisibilityVentilQ2Aus;
+        private string _visibilityVentilQ2Aus;
         public string VisibilityVentilQ2Aus
         {
-            get { return _VisibilityVentilQ2Aus; }
+            get { return _visibilityVentilQ2Aus; }
             set
             {
-                _VisibilityVentilQ2Aus = value;
+                _visibilityVentilQ2Aus = value;
                 OnPropertyChanged("VisibilityVentilQ2Aus");
             }
         }
@@ -193,24 +193,24 @@
             }
         }
 
-        private string _VisibilityVentilQ3Ein;
+        private string _visibilityVentilQ3Ein;
         public string VisibilityVentilQ3Ein
         {
-            get { return _VisibilityVentilQ3Ein; }
+            get { return _visibilityVentilQ3Ein; }
             set
             {
-                _VisibilityVentilQ3Ein = value;
+                _visibilityVentilQ3Ein = value;
                 OnPropertyChanged("VisibilityVentilQ3Ein");
             }
         }
 
-        private string _VisibilityVentilQ3Aus;
+        private string _visibilityVentilQ3Aus;
         public string VisibilityVentilQ3Aus
         {
-            get { return _VisibilityVentilQ3Aus; }
+            get { return _visibilityVentilQ3Aus; }
             set
             {
-                _VisibilityVentilQ3Aus = value;
+                _visibilityVentilQ3Aus = value;
                 OnPropertyChanged("VisibilityVentilQ3Aus");
             }
         }
@@ -234,24 +234,24 @@
             }
         }
 
-        private string _VisibilityVentilQ4Ein;
+        private string _visibilityVentilQ4Ein;
         public string VisibilityVentilQ4Ein
         {
-            get { return _VisibilityVentilQ4Ein; }
+            get { return _visibilityVentilQ4Ein; }
             set
             {
-                _VisibilityVentilQ4Ein = value;
+                _visibilityVentilQ4Ein = value;
                 OnPropertyChanged("VisibilityVentilQ4Ein");
             }
         }
 
-        private string _VisibilityVentilQ4Aus;
+        private string _visibilityVentilQ4Aus;
         public string VisibilityVentilQ4Aus
         {
-            get { return _VisibilityVentilQ4Aus; }
+            get { return _visibilityVentilQ4Aus; }
             set
             {
-                _VisibilityVentilQ4Aus = value;
+                _visibilityVentilQ4Aus = value;
                 OnPropertyChanged("VisibilityVentilQ4Aus");
             }
         }
@@ -272,24 +272,24 @@
             }
         }
 
-        private string _VisibilityVentilQ5Ein;
+        private string _visibilityVentilQ5Ein;
         public string VisibilityVentilQ5Ein
         {
-            get { return _VisibilityVentilQ5Ein; }
+            get { return _visibilityVentilQ5Ein; }
             set
             {
-                _VisibilityVentilQ5Ein = value;
+                _visibilityVentilQ5Ein = value;
                 OnPropertyChanged("VisibilityVentilQ5Ein");
             }
         }
 
-        private string _VisibilityVentilQ5Aus;
+        private string _visibilityVentilQ5Aus;
         public string VisibilityVentilQ5Aus
         {
-            get { return _VisibilityVentilQ5Aus; }
+            get { return _visibilityVentilQ5Aus; }
             set
             {
-                _VisibilityVentilQ5Aus = value;
+                _visibilityVentilQ5Aus = value;
                 OnPropertyChanged("VisibilityVentilQ5Aus");
             }
         }
@@ -310,24 +310,24 @@
             }
         }
 
-        private string _VisibilityVentilQ6Ein;
+        private string _visibilityVentilQ6Ein;
         public string VisibilityVentilQ6Ein
         {
-            get { return _VisibilityVentilQ6Ein; }
+            get { return _visibilityVentilQ6Ein; }
             set
             {
-                _VisibilityVentilQ6Ein = value;
+                _visibilityVentilQ6Ein = value;
                 OnPropertyChanged("VisibilityVentilQ6Ein");
             }
         }
 
-        private string _VisibilityVentilQ6Aus;
+        private string _visibilityVentilQ6Aus;
         public string VisibilityVentilQ6Aus
         {
-            get { return _VisibilityVentilQ6Aus; }
+            get { return _visibilityVentilQ6Aus; }
             set
             {
-                _VisibilityVentilQ6Aus = value;
+                _visibilityVentilQ6Aus = value;
                 OnPropertyChanged("VisibilityVentilQ6Aus");
             }
         }
@@ -348,24 +348,24 @@
             }
         }
 
-        private string _VisibilityVentilQ7Ein;
+        private string _visibilityVentilQ7Ein;
         public string VisibilityVentilQ7Ein
         {
-            get { return _VisibilityVentilQ7Ein; }
+            get { return _visibilityVentilQ7Ein; }
             set
             {
-                _VisibilityVentilQ7Ein = value;
+                _visibilityVentilQ7Ein = value;
                 OnPropertyChanged("VisibilityVentilQ7Ein");
             }
         }
 
-        private string _VisibilityVentilQ7Aus;
+        private string _visibilityVentilQ7Aus;
         public string VisibilityVentilQ7Aus
         {
-            get { return _VisibilityVentilQ7Aus; }
+            get { return _visibilityVentilQ7Aus; }
             set
             {
-                _VisibilityVentilQ7Aus = value;
+                _visibilityVentilQ7Aus = value;
                 OnPropertyChanged("VisibilityVentilQ7Aus");
             }
         }
@@ -386,24 +386,24 @@
             }
         }
 
-        private string _VisibilityVentilQ8Ein;
+        private string _visibilityVentilQ8Ein;
         public string VisibilityVentilQ8Ein
         {
-            get { return _VisibilityVentilQ8Ein; }
+            get { return _visibilityVentilQ8Ein; }
             set
             {
-                _VisibilityVentilQ8Ein = value;
+                _visibilityVentilQ8Ein = value;
                 OnPropertyChanged("VisibilityVentilQ8Ein");
             }
         }
 
-        private string _VisibilityVentilQ8Aus;
+        private string _visibilityVentilQ8Aus;
         public string VisibilityVentilQ8Aus
         {
-            get { return _VisibilityVentilQ8Aus; }
+            get { return _visibilityVentilQ8Aus; }
             set
             {
-                _VisibilityVentilQ8Aus = value;
+                _visibilityVentilQ8Aus = value;
                 OnPropertyChanged("VisibilityVentilQ8Aus");
             }
         }
@@ -822,52 +822,52 @@
 
 
         #region EnableAutomatik1234
-        private string _EnableAutomatik1234;
+        private string _enableAutomatik1234;
         public string EnableAutomatik1234
         {
-            get { return _EnableAutomatik1234; }
+            get { return _enableAutomatik1234; }
             set
             {
-                _EnableAutomatik1234 = value;
+                _enableAutomatik1234 = value;
                 OnPropertyChanged("EnableAutomatik1234");
             }
         }
         #endregion
 
         #region EnableAutomatik1324
-        private string _EnableAutomatik1324;
+        private string _enableAutomatik1324;
         public string EnableAutomatik1324
         {
-            get { return _EnableAutomatik1324; }
+            get { return _enableAutomatik1324; }
             set
             {
-                _EnableAutomatik1324 = value;
+                _enableAutomatik1324 = value;
                 OnPropertyChanged("EnableAutomatik1324");
             }
         }
         #endregion
 
         #region EnableAutomatik1432
-        private string _EnableAutomatik1432;
+        private string _enableAutomatik1432;
         public string EnableAutomatik1432
         {
-            get { return _EnableAutomatik1432; }
+            get { return _enableAutomatik1432; }
             set
             {
-                _EnableAutomatik1432 = value;
+                _enableAutomatik1432 = value;
                 OnPropertyChanged("EnableAutomatik1432");
             }
         }
         #endregion
 
         #region EnableAutomatik4321
-        private string _EnableAutomatik4321;
+        private string _enableAutomatik4321;
         public string EnableAutomatik4321
         {
-            get { return _EnableAutomatik4321; }
+            get { return _enableAutomatik4321; }
             set
             {
-                _EnableAutomatik4321 = value;
+                _enableAutomatik4321 = value;
                 OnPropertyChanged("EnableAutomatik4321");
             }
         }
@@ -881,13 +881,13 @@
             Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin1;
+        private Thickness _margin1;
         public Thickness Margin1
         {
-            get { return _Margin1; }
+            get { return _margin1; }
             set
             {
-                _Margin1 = value;
+                _margin1 = value;
                 OnPropertyChanged("Margin1");
             }
         }
@@ -899,13 +899,13 @@
             Margin2 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin2;
+        private Thickness _margin2;
         public Thickness Margin2
         {
-            get { return _Margin2; }
+            get { return _margin2; }
             set
             {
-                _Margin2 = value;
+                _margin2 = value;
                 OnPropertyChanged("Margin2");
             }
         }
@@ -917,13 +917,13 @@
             Margin3 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin3;
+        private Thickness _margin3;
         public Thickness Margin3
         {
-            get { return _Margin3; }
+            get { return _margin3; }
             set
             {
-                _Margin3 = value;
+                _margin3 = value;
                 OnPropertyChanged("Margin3");
             }
         }
@@ -935,13 +935,13 @@
             Margin4 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin4;
+        private Thickness _margin4;
         public Thickness Margin4
         {
-            get { return _Margin4; }
+            get { return _margin4; }
             set
             {
-                _Margin4 = value;
+                _margin4 = value;
                 OnPropertyChanged("Margin4");
             }
         }

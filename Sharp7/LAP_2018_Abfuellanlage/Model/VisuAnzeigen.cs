@@ -90,24 +90,24 @@
             ImageTop1 = pos.Y;
         }
 
-        private double _ImageTop1;
+        private double _imageTop1;
         public double ImageTop1
         {
-            get { return _ImageTop1; }
+            get { return _imageTop1; }
             set
             {
-                _ImageTop1 = value;
+                _imageTop1 = value;
                 OnPropertyChanged("ImageTop1");
             }
         }
 
-        private double _ImageLeft1;
+        private double _imageLeft1;
         public double ImageLeft1
         {
-            get { return _ImageLeft1; }
+            get { return _imageLeft1; }
             set
             {
-                _ImageLeft1 = value;
+                _imageLeft1 = value;
                 OnPropertyChanged("ImageLeft1");
             }
         }
@@ -120,24 +120,24 @@
             ImageTop2 = pos.Y;
         }
 
-        private double _ImageTop2;
+        private double _imageTop2;
         public double ImageTop2
         {
-            get { return _ImageTop2; }
+            get { return _imageTop2; }
             set
             {
-                _ImageTop2 = value;
+                _imageTop2 = value;
                 OnPropertyChanged("ImageTop2");
             }
         }
 
-        private double _ImageLeft2;
+        private double _imageLeft2;
         public double ImageLeft2
         {
-            get { return _ImageLeft2; }
+            get { return _imageLeft2; }
             set
             {
-                _ImageLeft2 = value;
+                _imageLeft2 = value;
                 OnPropertyChanged("ImageLeft2");
             }
         }
@@ -150,24 +150,24 @@
             ImageTop3 = pos.Y;
         }
 
-        private double _ImageTop3;
+        private double _imageTop3;
         public double ImageTop3
         {
-            get { return _ImageTop3; }
+            get { return _imageTop3; }
             set
             {
-                _ImageTop3 = value;
+                _imageTop3 = value;
                 OnPropertyChanged("ImageTop3");
             }
         }
 
-        private double _ImageLeft3;
+        private double _imageLeft3;
         public double ImageLeft3
         {
-            get { return _ImageLeft3; }
+            get { return _imageLeft3; }
             set
             {
-                _ImageLeft3 = value;
+                _imageLeft3 = value;
                 OnPropertyChanged("ImageLeft3");
             }
         }
@@ -180,24 +180,24 @@
             ImageTop4 = pos.Y;
         }
 
-        private double _ImageTop4;
+        private double _imageTop4;
         public double ImageTop4
         {
-            get { return _ImageTop4; }
+            get { return _imageTop4; }
             set
             {
-                _ImageTop4 = value;
+                _imageTop4 = value;
                 OnPropertyChanged("ImageTop4");
             }
         }
 
-        private double _ImageLeft4;
+        private double _imageLeft4;
         public double ImageLeft4
         {
-            get { return _ImageLeft4; }
+            get { return _imageLeft4; }
             set
             {
-                _ImageLeft4 = value;
+                _imageLeft4 = value;
                 OnPropertyChanged("ImageLeft4");
             }
         }
@@ -210,24 +210,24 @@
             ImageTop5 = pos.Y;
         }
 
-        private double _ImageTop5;
+        private double _imageTop5;
         public double ImageTop5
         {
-            get { return _ImageTop5; }
+            get { return _imageTop5; }
             set
             {
-                _ImageTop5 = value;
+                _imageTop5 = value;
                 OnPropertyChanged("ImageTop5");
             }
         }
 
-        private double _ImageLeft5;
+        private double _imageLeft5;
         public double ImageLeft5
         {
-            get { return _ImageLeft5; }
+            get { return _imageLeft5; }
             set
             {
-                _ImageLeft5 = value;
+                _imageLeft5 = value;
                 OnPropertyChanged("ImageLeft5");
             }
         }
@@ -240,24 +240,24 @@
             ImageTop6 = pos.Y;
         }
 
-        private double _ImageTop6;
+        private double _imageTop6;
         public double ImageTop6
         {
-            get { return _ImageTop6; }
+            get { return _imageTop6; }
             set
             {
-                _ImageTop6 = value;
+                _imageTop6 = value;
                 OnPropertyChanged("ImageTop6");
             }
         }
 
-        private double _ImageLeft6;
+        private double _imageLeft6;
         public double ImageLeft6
         {
-            get { return _ImageLeft6; }
+            get { return _imageLeft6; }
             set
             {
-                _ImageLeft6 = value;
+                _imageLeft6 = value;
                 OnPropertyChanged("ImageLeft6");
             }
         }
@@ -272,13 +272,13 @@
             if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
         }
 
-        private string _VisibilityImage1;
+        private string _visibilityImage1;
         public string VisibilityImage1
         {
-            get { return _VisibilityImage1; }
+            get { return _visibilityImage1; }
             set
             {
-                _VisibilityImage1 = value;
+                _visibilityImage1 = value;
                 OnPropertyChanged("VisibilityImage1");
             }
         }
@@ -290,13 +290,13 @@
             if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
         }
 
-        private string _VisibilityImage2;
+        private string _visibilityImage2;
         public string VisibilityImage2
         {
-            get { return _VisibilityImage2; }
+            get { return _visibilityImage2; }
             set
             {
-                _VisibilityImage2 = value;
+                _visibilityImage2 = value;
                 OnPropertyChanged("VisibilityImage2");
             }
         }
@@ -308,13 +308,13 @@
             if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
         }
 
-        private string _VisibilityImage3;
+        private string _visibilityImage3;
         public string VisibilityImage3
         {
-            get { return _VisibilityImage3; }
+            get { return _visibilityImage3; }
             set
             {
-                _VisibilityImage3 = value;
+                _visibilityImage3 = value;
                 OnPropertyChanged("VisibilityImage3");
             }
         }
@@ -326,13 +326,13 @@
             if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
         }
 
-        private string _VisibilityImage4;
+        private string _visibilityImage4;
         public string VisibilityImage4
         {
-            get { return _VisibilityImage4; }
+            get { return _visibilityImage4; }
             set
             {
-                _VisibilityImage4 = value;
+                _visibilityImage4 = value;
                 OnPropertyChanged("VisibilityImage4");
             }
         }
@@ -344,13 +344,13 @@
             if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden";
         }
 
-        private string _VisibilityImage5;
+        private string _visibilityImage5;
         public string VisibilityImage5
         {
-            get { return _VisibilityImage5; }
+            get { return _visibilityImage5; }
             set
             {
-                _VisibilityImage5 = value;
+                _visibilityImage5 = value;
                 OnPropertyChanged("VisibilityImage5");
             }
         }
@@ -362,13 +362,13 @@
             if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden";
         }
 
-        private string _VisibilityImage6;
+        private string _visibilityImage6;
         public string VisibilityImage6
         {
-            get { return _VisibilityImage6; }
+            get { return _visibilityImage6; }
             set
             {
-                _VisibilityImage6 = value;
+                _visibilityImage6 = value;
                 OnPropertyChanged("VisibilityImage6");
             }
         }
@@ -392,24 +392,24 @@
             }
         }
 
-        private string _Visibility_B1_Ein;
+        private string _visibility_B1_Ein;
         public string Visibility_B1_Ein
         {
-            get { return _Visibility_B1_Ein; }
+            get { return _visibility_B1_Ein; }
             set
             {
-                _Visibility_B1_Ein = value;
+                _visibility_B1_Ein = value;
                 OnPropertyChanged("Visibility_B1_Ein");
             }
         }
 
-        private string _Visibility_B1_Aus;
+        private string _visibility_B1_Aus;
         public string Visibility_B1_Aus
         {
-            get { return _Visibility_B1_Aus; }
+            get { return _visibility_B1_Aus; }
             set
             {
-                _Visibility_B1_Aus = value;
+                _visibility_B1_Aus = value;
                 OnPropertyChanged("Visibility_B1_Aus");
             }
         }
@@ -430,24 +430,24 @@
             }
         }
 
-        private string _Visibility_K1_Ein;
+        private string _visibility_K1_Ein;
         public string Visibility_K1_Ein
         {
-            get { return _Visibility_K1_Ein; }
+            get { return _visibility_K1_Ein; }
             set
             {
-                _Visibility_K1_Ein = value;
+                _visibility_K1_Ein = value;
                 OnPropertyChanged("Visibility_K1_Ein");
             }
         }
 
-        private string _Visibility_K1_Aus;
+        private string _visibility_K1_Aus;
         public string Visibility_K1_Aus
         {
-            get { return _Visibility_K1_Aus; }
+            get { return _visibility_K1_Aus; }
             set
             {
-                _Visibility_K1_Aus = value;
+                _visibility_K1_Aus = value;
                 OnPropertyChanged("Visibility_K1_Aus");
             }
         }
@@ -468,24 +468,24 @@
             }
         }
 
-        private string _Visibility_K2_Ein;
+        private string _visibility_K2_Ein;
         public string Visibility_K2_Ein
         {
-            get { return _Visibility_K2_Ein; }
+            get { return _visibility_K2_Ein; }
             set
             {
-                _Visibility_K2_Ein = value;
+                _visibility_K2_Ein = value;
                 OnPropertyChanged("Visibility_K2_Ein");
             }
         }
 
-        private string _Visibility_K2_Aus;
+        private string _visibility_K2_Aus;
         public string Visibility_K2_Aus
         {
-            get { return _Visibility_K2_Aus; }
+            get { return _visibility_K2_Aus; }
             set
             {
-                _Visibility_K2_Aus = value;
+                _visibility_K2_Aus = value;
                 OnPropertyChanged("Visibility_K2_Aus");
             }
         }
@@ -497,13 +497,13 @@
             if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
         }
 
-        private string _VisibilityRectangleAbleitung;
+        private string _visibilityRectangleAbleitung;
         public string VisibilityRectangleAbleitung
         {
-            get { return _VisibilityRectangleAbleitung; }
+            get { return _visibilityRectangleAbleitung; }
             set
             {
-                _VisibilityRectangleAbleitung = value;
+                _visibilityRectangleAbleitung = value;
                 OnPropertyChanged("VisibilityRectangleAbleitung");
             }
         }
@@ -610,13 +610,13 @@
             Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin1;
+        private Thickness _margin1;
         public Thickness Margin1
         {
-            get { return _Margin1; }
+            get { return _margin1; }
             set
             {
-                _Margin1 = value;
+                _margin1 = value;
                 OnPropertyChanged("Margin1");
             }
         }

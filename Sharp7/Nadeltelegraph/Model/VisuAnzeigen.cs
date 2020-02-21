@@ -97,13 +97,13 @@
             if (links) AngleNeedle1 = -WinkelNadel;
         }
 
-        private int _AngleNeedle1;
+        private int _angleNeedle1;
         public int AngleNeedle1
         {
-            get { return _AngleNeedle1; }
+            get { return _angleNeedle1; }
             set
             {
-                _AngleNeedle1 = value;
+                _angleNeedle1 = value;
                 OnPropertyChanged("AngleNeedle1");
             }
         }
@@ -117,13 +117,13 @@
             if (links) AngleNeedle2 = -WinkelNadel;
         }
 
-        private int _AngleNeedle2;
+        private int _angleNeedle2;
         public int AngleNeedle2
         {
-            get { return _AngleNeedle2; }
+            get { return _angleNeedle2; }
             set
             {
-                _AngleNeedle2 = value;
+                _angleNeedle2 = value;
                 OnPropertyChanged("AngleNeedle2");
             }
         }
@@ -137,13 +137,13 @@
             if (links) AngleNeedle3 = -WinkelNadel;
         }
 
-        private int _AngleNeedle3;
+        private int _angleNeedle3;
         public int AngleNeedle3
         {
-            get { return _AngleNeedle3; }
+            get { return _angleNeedle3; }
             set
             {
-                _AngleNeedle3 = value;
+                _angleNeedle3 = value;
                 OnPropertyChanged("AngleNeedle3");
             }
         }
@@ -157,13 +157,13 @@
             if (links) AngleNeedle4 = -WinkelNadel;
         }
 
-        private int _AngleNeedle4;
+        private int _angleNeedle4;
         public int AngleNeedle4
         {
-            get { return _AngleNeedle4; }
+            get { return _angleNeedle4; }
             set
             {
-                _AngleNeedle4 = value;
+                _angleNeedle4 = value;
                 OnPropertyChanged("AngleNeedle4");
             }
         }
@@ -177,13 +177,13 @@
             if (links) AngleNeedle5 = -WinkelNadel;
         }
 
-        private int _AngleNeedle5;
+        private int _angleNeedle5;
         public int AngleNeedle5
         {
-            get { return _AngleNeedle5; }
+            get { return _angleNeedle5; }
             set
             {
-                _AngleNeedle5 = value;
+                _angleNeedle5 = value;
                 OnPropertyChanged("AngleNeedle5");
             }
         }
@@ -198,13 +198,13 @@
             if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal;
         }
 
-        private int _Width1UpRight;
+        private int _width1UpRight;
         public int Width1UpRight
         {
-            get { return _Width1UpRight; }
+            get { return _width1UpRight; }
             set
             {
-                _Width1UpRight = value;
+                _width1UpRight = value;
                 OnPropertyChanged("Width1UpRight");
             }
         }
@@ -216,13 +216,13 @@
             if (val) Width2UpRight = BreiteBreit; else Width2UpRight = BreiteSchmal;
         }
 
-        private int _Width2UpRight;
+        private int _width2UpRight;
         public int Width2UpRight
         {
-            get { return _Width2UpRight; }
+            get { return _width2UpRight; }
             set
             {
-                _Width2UpRight = value;
+                _width2UpRight = value;
                 OnPropertyChanged("Width2UpRight");
             }
         }
@@ -234,13 +234,13 @@
             if (val) Width3UpRight = BreiteBreit; else Width3UpRight = BreiteSchmal;
         }
 
-        private int _Width3UpRight;
+        private int _width3UpRight;
         public int Width3UpRight
         {
-            get { return _Width3UpRight; }
+            get { return _width3UpRight; }
             set
             {
-                _Width3UpRight = value;
+                _width3UpRight = value;
                 OnPropertyChanged("Width3UpRight");
             }
         }
@@ -252,13 +252,13 @@
             if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal;
         }
 
-        private int _Width4UpRight;
+        private int _width4UpRight;
         public int Width4UpRight
         {
-            get { return _Width4UpRight; }
+            get { return _width4UpRight; }
             set
             {
-                _Width4UpRight = value;
+                _width4UpRight = value;
                 OnPropertyChanged("Width4UpRight");
             }
         }
@@ -271,13 +271,13 @@
             if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal;
         }
 
-        private int _Width2UpLeft;
+        private int _width2UpLeft;
         public int Width2UpLeft
         {
-            get { return _Width2UpLeft; }
+            get { return _width2UpLeft; }
             set
             {
-                _Width2UpLeft = value;
+                _width2UpLeft = value;
                 OnPropertyChanged("Width2UpLeft");
             }
         }
@@ -289,13 +289,13 @@
             if (val) Width3UpLeft = BreiteBreit; else Width3UpLeft = BreiteSchmal;
         }
 
-        private int _Width3UpLeft;
+        private int _width3UpLeft;
         public int Width3UpLeft
         {
-            get { return _Width3UpLeft; }
+            get { return _width3UpLeft; }
             set
             {
-                _Width3UpLeft = value;
+                _width3UpLeft = value;
                 OnPropertyChanged("Width3UpLeft");
             }
         }
@@ -307,13 +307,13 @@
             if (val) Width4UpLeft = BreiteBreit; else Width4UpLeft = BreiteSchmal;
         }
 
-        private int _Width4UpLeft;
+        private int _width4UpLeft;
         public int Width4UpLeft
         {
-            get { return _Width4UpLeft; }
+            get { return _width4UpLeft; }
             set
             {
-                _Width4UpLeft = value;
+                _width4UpLeft = value;
                 OnPropertyChanged("Width4UpLeft");
             }
         }
@@ -325,13 +325,13 @@
             if (val) Width5UpLeft = BreiteBreit; else Width5UpLeft = BreiteSchmal;
         }
 
-        private int _Width5UpLeft;
+        private int _width5UpLeft;
         public int Width5UpLeft
         {
-            get { return _Width5UpLeft; }
+            get { return _width5UpLeft; }
             set
             {
-                _Width5UpLeft = value;
+                _width5UpLeft = value;
                 OnPropertyChanged("Width5UpLeft");
             }
         }
@@ -345,13 +345,13 @@
             if (val) Width1DownRight = BreiteBreit; else Width1DownRight = BreiteSchmal;
         }
 
-        private int _Width1DownRight;
+        private int _width1DownRight;
         public int Width1DownRight
         {
-            get { return _Width1DownRight; }
+            get { return _width1DownRight; }
             set
             {
-                _Width1DownRight = value;
+                _width1DownRight = value;
                 OnPropertyChanged("Width1DownRight");
             }
         }
@@ -363,13 +363,13 @@
             if (val) Width2DownRight = BreiteBreit; else Width2DownRight = BreiteSchmal;
         }
 
-        private int _Width2DownRight;
+        private int _width2DownRight;
         public int Width2DownRight
         {
-            get { return _Width2DownRight; }
+            get { return _width2DownRight; }
             set
             {
-                _Width2DownRight = value;
+                _width2DownRight = value;
                 OnPropertyChanged("Width2DownRight");
             }
         }
@@ -381,13 +381,13 @@
             if (val) Width3DownRight = BreiteBreit; else Width3DownRight = BreiteSchmal;
         }
 
-        private int _Width3DownRight;
+        private int _width3DownRight;
         public int Width3DownRight
         {
-            get { return _Width3DownRight; }
+            get { return _width3DownRight; }
             set
             {
-                _Width3DownRight = value;
+                _width3DownRight = value;
                 OnPropertyChanged("Width3DownRight");
             }
         }
@@ -399,13 +399,13 @@
             if (val) Width4DownRight = BreiteBreit; else Width4DownRight = BreiteSchmal;
         }
 
-        private int _Width4DownRight;
+        private int _width4DownRight;
         public int Width4DownRight
         {
-            get { return _Width4DownRight; }
+            get { return _width4DownRight; }
             set
             {
-                _Width4DownRight = value;
+                _width4DownRight = value;
                 OnPropertyChanged("Width4DownRight");
             }
         }
@@ -419,13 +419,13 @@
             if (val) Width2DownLeft = BreiteBreit; else Width2DownLeft = BreiteSchmal;
         }
 
-        private int _Width2DownLeft;
+        private int _width2DownLeft;
         public int Width2DownLeft
         {
-            get { return _Width2DownLeft; }
+            get { return _width2DownLeft; }
             set
             {
-                _Width2DownLeft = value;
+                _width2DownLeft = value;
                 OnPropertyChanged("Width2DownLeft");
             }
         }
@@ -437,13 +437,13 @@
             if (val) Width3DownLeft = BreiteBreit; else Width3DownLeft = BreiteSchmal;
         }
 
-        private int _Width3DownLeft;
+        private int _width3DownLeft;
         public int Width3DownLeft
         {
-            get { return _Width3DownLeft; }
+            get { return _width3DownLeft; }
             set
             {
-                _Width3DownLeft = value;
+                _width3DownLeft = value;
                 OnPropertyChanged("Width3DownLeft");
             }
         }
@@ -455,13 +455,13 @@
             if (val) Width4DownLeft = BreiteBreit; else Width4DownLeft = BreiteSchmal;
         }
 
-        private int _Width4DownLeft;
+        private int _width4DownLeft;
         public int Width4DownLeft
         {
-            get { return _Width4DownLeft; }
+            get { return _width4DownLeft; }
             set
             {
-                _Width4DownLeft = value;
+                _width4DownLeft = value;
                 OnPropertyChanged("Width4DownLeft");
             }
         }
@@ -473,13 +473,13 @@
             if (val) Width5DownLeft = BreiteBreit; else Width5DownLeft = BreiteSchmal;
         }
 
-        private int _Width5DownLeft;
+        private int _width5DownLeft;
         public int Width5DownLeft
         {
-            get { return _Width5DownLeft; }
+            get { return _width5DownLeft; }
             set
             {
-                _Width5DownLeft = value;
+                _width5DownLeft = value;
                 OnPropertyChanged("Width5DownLeft");
             }
         }

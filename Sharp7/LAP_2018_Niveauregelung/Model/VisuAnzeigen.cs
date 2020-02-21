@@ -296,24 +296,24 @@
             }
         }
 
-        private string _Visibility_B1_Ein;
+        private string _visibility_B1_Ein;
         public string Visibility_B1_Ein
         {
-            get { return _Visibility_B1_Ein; }
+            get { return _visibility_B1_Ein; }
             set
             {
-                _Visibility_B1_Ein = value;
+                _visibility_B1_Ein = value;
                 OnPropertyChanged("Visibility_B1_Ein");
             }
         }
 
-        private string _Visibility_B1_Aus;
+        private string _visibility_B1_Aus;
         public string Visibility_B1_Aus
         {
-            get { return _Visibility_B1_Aus; }
+            get { return _visibility_B1_Aus; }
             set
             {
-                _Visibility_B1_Aus = value;
+                _visibility_B1_Aus = value;
                 OnPropertyChanged("Visibility_B1_Aus");
             }
         }
@@ -334,24 +334,24 @@
             }
         }
 
-        private string _Visibility_B2_Ein;
+        private string _visibility_B2_Ein;
         public string Visibility_B2_Ein
         {
-            get { return _Visibility_B2_Ein; }
+            get { return _visibility_B2_Ein; }
             set
             {
-                _Visibility_B2_Ein = value;
+                _visibility_B2_Ein = value;
                 OnPropertyChanged("Visibility_B2_Ein");
             }
         }
 
-        private string _Visibility_B2_Aus;
+        private string _visibility_B2_Aus;
         public string Visibility_B2_Aus
         {
-            get { return _Visibility_B2_Aus; }
+            get { return _visibility_B2_Aus; }
             set
             {
-                _Visibility_B2_Aus = value;
+                _visibility_B2_Aus = value;
                 OnPropertyChanged("Visibility_B2_Aus");
             }
         }
@@ -372,24 +372,24 @@
             }
         }
 
-        private string _Visibility_B3_Ein;
+        private string _visibility_B3_Ein;
         public string Visibility_B3_Ein
         {
-            get { return _Visibility_B3_Ein; }
+            get { return _visibility_B3_Ein; }
             set
             {
-                _Visibility_B3_Ein = value;
+                _visibility_B3_Ein = value;
                 OnPropertyChanged("Visibility_B3_Ein");
             }
         }
 
-        private string _Visibility_B3_Aus;
+        private string _visibility_B3_Aus;
         public string Visibility_B3_Aus
         {
-            get { return _Visibility_B3_Aus; }
+            get { return _visibility_B3_Aus; }
             set
             {
-                _Visibility_B3_Aus = value;
+                _visibility_B3_Aus = value;
                 OnPropertyChanged("Visibility_B3_Aus");
             }
         }
@@ -411,24 +411,24 @@
             }
         }
 
-        private string _Visibility_M1_Ein;
+        private string _visibility_M1_Ein;
         public string Visibility_M1_Ein
         {
-            get { return _Visibility_M1_Ein; }
+            get { return _visibility_M1_Ein; }
             set
             {
-                _Visibility_M1_Ein = value;
+                _visibility_M1_Ein = value;
                 OnPropertyChanged("Visibility_M1_Ein");
             }
         }
 
-        private string _Visibility_M1_Aus;
+        private string _visibility_M1_Aus;
         public string Visibility_M1_Aus
         {
-            get { return _Visibility_M1_Aus; }
+            get { return _visibility_M1_Aus; }
             set
             {
-                _Visibility_M1_Aus = value;
+                _visibility_M1_Aus = value;
                 OnPropertyChanged("Visibility_M1_Aus");
             }
         }
@@ -449,24 +449,24 @@
             }
         }
 
-        private string _Visibility_M2_Ein;
+        private string _visibility_M2_Ein;
         public string Visibility_M2_Ein
         {
-            get { return _Visibility_M2_Ein; }
+            get { return _visibility_M2_Ein; }
             set
             {
-                _Visibility_M2_Ein = value;
+                _visibility_M2_Ein = value;
                 OnPropertyChanged("Visibility_M2_Ein");
             }
         }
 
-        private string _Visibility_M2_Aus;
+        private string _visibility_M2_Aus;
         public string Visibility_M2_Aus
         {
-            get { return _Visibility_M2_Aus; }
+            get { return _visibility_M2_Aus; }
             set
             {
-                _Visibility_M2_Aus = value;
+                _visibility_M2_Aus = value;
                 OnPropertyChanged("Visibility_M2_Aus");
             }
         }
@@ -488,24 +488,24 @@
             }
         }
 
-        private string _Visibility_Ventil_Ein;
+        private string _visibility_Ventil_Ein;
         public string Visibility_Ventil_Ein
         {
-            get { return _Visibility_Ventil_Ein; }
+            get { return _visibility_Ventil_Ein; }
             set
             {
-                _Visibility_Ventil_Ein = value;
+                _visibility_Ventil_Ein = value;
                 OnPropertyChanged("Visibility_Ventil_Ein");
             }
         }
 
-        private string _Visibility_Ventil_Aus;
+        private string _visibility_Ventil_Aus;
         public string Visibility_Ventil_Aus
         {
-            get { return _Visibility_Ventil_Aus; }
+            get { return _visibility_Ventil_Aus; }
             set
             {
-                _Visibility_Ventil_Aus = value;
+                _visibility_Ventil_Aus = value;
                 OnPropertyChanged("Visibility_Ventil_Aus");
             }
         }
@@ -520,13 +520,13 @@
             Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
-        private Thickness _Margin1;
+        private Thickness _margin1;
         public Thickness Margin1
         {
-            get { return _Margin1; }
+            get { return _margin1; }
             set
             {
-                _Margin1 = value;
+                _margin1 = value;
                 OnPropertyChanged("Margin1");
             }
         }

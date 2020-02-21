@@ -53,28 +53,28 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             NetzCosPhiString = $"cos φ={val.ToString("N2")}";
         }
 
-        private double _GeneratorCosPhiString;
+        private double _generatorCosPhiString;
 
         public string GeneratorCosPhiString
         {
-            get { return "cos φ=" + _GeneratorCosPhiString; }
+            get { return "cos φ=" + _generatorCosPhiString; }
             set
             {
-                _GeneratorCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                _generatorCosPhiString = System.Convert.ToDouble(value.Substring(6));
                 OnPropertyChanged("GeneratorCosPhiString");
             }
         }
 
 
 
-        private double _NetzCosPhiString;
+        private double _netzCosPhiString;
 
         public string NetzCosPhiString
         {
-            get { return "cos φ=" + _NetzCosPhiString; }
+            get { return "cos φ=" + _netzCosPhiString; }
             set
             {
-                _NetzCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                _netzCosPhiString = System.Convert.ToDouble(value.Substring(6));
                 OnPropertyChanged("NetzCosPhiString");
             }
         }
@@ -94,26 +94,26 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
 
-        private double _GeneratorLeistungString;
+        private double _generatorLeistungString;
 
         public string GeneratorLeistungString
         {
-            get { return "P=" + _GeneratorLeistungString + "W"; }
+            get { return "P=" + _generatorLeistungString + "W"; }
             set
             {
-                _GeneratorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("GeneratorLeistungString");
             }
         }
 
-        private double _NetzLeistungString;
+        private double _netzLeistungString;
 
         public string NetzLeistungString
         {
-            get { return "P=" + _NetzLeistungString + "W"; }
+            get { return "P=" + _netzLeistungString + "W"; }
             set
             {
-                _NetzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("NetzLeistungString");
             }
         }
@@ -131,25 +131,25 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             NetzFrequenzString = $"f={val}Hz";
         }
 
-        private double _GeneratorFrequenzString;
+        private double _generatorFrequenzString;
 
         public string GeneratorFrequenzString
         {
-            get { return "f=" + _GeneratorFrequenzString + "Hz"; }
+            get { return "f=" + _generatorFrequenzString + "Hz"; }
             set
             {
-                _GeneratorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _generatorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
                 OnPropertyChanged("GeneratorFrequenzString");
             }
         }
-        private double _NetzFrequenzString;
+        private double _netzFrequenzString;
 
         public string NetzFrequenzString
         {
-            get { return "f=" + _NetzFrequenzString + "Hz"; }
+            get { return "f=" + _netzFrequenzString + "Hz"; }
             set
             {
-                _NetzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _netzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
                 OnPropertyChanged("NetzFrequenzString");
             }
         }
@@ -168,26 +168,26 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         }
 
 
-        private double _GeneratorSpannungString;
+        private double _generatorSpannungString;
 
         public string GeneratorSpannungString
         {
-            get { return "U=" + _GeneratorSpannungString + "V"; }
+            get { return "U=" + _generatorSpannungString + "V"; }
             set
             {
-                _GeneratorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("GeneratorSpannungString");
             }
         }
 
-        private double _NetzSpannungString;
+        private double _netzSpannungString;
 
         public string NetzSpannungString
         {
-            get { return "U=" + _NetzSpannungString + "V"; }
+            get { return "U=" + _netzSpannungString + "V"; }
             set
             {
-                _NetzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("NetzSpannungString");
             }
         }
@@ -201,14 +201,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             Erregerstrom = $"IE={ val.ToString("N1")}A";
         }
 
-        private double _Erregerstrom;
+        private double _erregerstrom;
 
         public string Erregerstrom
         {
-            get { return "IE=" + _Erregerstrom + "A"; }
+            get { return "IE=" + _erregerstrom + "A"; }
             set
             {
-                _Erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
+                _erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
                 OnPropertyChanged("Erregerstrom");
             }
         }
@@ -222,13 +222,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             Drehzahl = $"n={val.ToString("N1")}RPM";
         }
 
-        private double _Drehzahl;
+        private double _drehzahl;
         public string Drehzahl
         {
-            get { return "n=" + _Drehzahl + "RPM"; }
+            get { return "n=" + _drehzahl + "RPM"; }
             set
             {
-                _Drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
+                _drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
                 OnPropertyChanged("Drehzahl");
             }
         }
@@ -238,13 +238,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         #region Messgerät
         //"{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}"
 
-        private double _MessgeraetOptimalerBereich;
+        private double _messgeraetOptimalerBereich;
         public double MessgeraetOptimalerBereich
         {
-            get { return _MessgeraetOptimalerBereich; }
+            get { return _messgeraetOptimalerBereich; }
             set
             {
-                _MessgeraetOptimalerBereich = value;
+                _messgeraetOptimalerBereich = value;
                 OnPropertyChanged("MessgeraetOptimalerBereich");
             }
         }
@@ -254,26 +254,26 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             else VisibilityMessgeraetSichtbar = "Hidden";
         }
 
-        private string _VisibilityMessgeraetSichtbar;
+        private string _visibilityMessgeraetSichtbar;
 
         public string VisibilityMessgeraetSichtbar
         {
-            get { return _VisibilityMessgeraetSichtbar; }
+            get { return _visibilityMessgeraetSichtbar; }
             set
             {
-                _VisibilityMessgeraetSichtbar = value;
+                _visibilityMessgeraetSichtbar = value;
                 OnPropertyChanged("VisibilityMessgeraetSichtbar");
             }
         }
 
-        private double _SpannungsDifferenz;
+        private double _spannungsDifferenz;
 
         public double SpannungsDifferenz
         {
-            get { return _SpannungsDifferenz; }
+            get { return _spannungsDifferenz; }
             set
             {
-                _SpannungsDifferenz = value;
+                _spannungsDifferenz = value;
                 OnPropertyChanged("SpannungsDifferenz");
             }
         }
@@ -292,14 +292,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             if (VisibilityMaschineTot == "Visible") return true; else return false;
         }
 
-        private string _VisibilityMaschineTotAnzeigen;
+        private string _visibilityMaschineTotAnzeigen;
 
         public string VisibilityMaschineTot
         {
-            get { return _VisibilityMaschineTotAnzeigen; }
+            get { return _visibilityMaschineTotAnzeigen; }
             set
             {
-                _VisibilityMaschineTotAnzeigen = value;
+                _visibilityMaschineTotAnzeigen = value;
                 OnPropertyChanged("VisibilityMaschineTot");
             }
         }
@@ -322,26 +322,26 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
         }
 
-        private string _LeistungsschalterEin;
+        private string _leistungsschalterEin;
 
         public string LeistungsschalterEin
         {
-            get { return _LeistungsschalterEin; }
+            get { return _leistungsschalterEin; }
             set
             {
-                _LeistungsschalterEin = value;
+                _leistungsschalterEin = value;
                 OnPropertyChanged("LeistungsschalterEin");
             }
         }
 
-        private string _LeistungsschalterAus;
+        private string _leistungsschalterAus;
 
         public string LeistungsschalterAus
         {
-            get { return _LeistungsschalterAus; }
+            get { return _leistungsschalterAus; }
             set
             {
-                _LeistungsschalterAus = value;
+                _leistungsschalterAus = value;
                 OnPropertyChanged("LeistungsschalterAus");
             }
         }
@@ -351,14 +351,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         #region Ventil
 
 
-        private double _VentilPosition;
+        private double _ventilPosition;
 
         public string VentilPosition
         {
-            get { return "Y=" + _VentilPosition + "%"; }
+            get { return "Y=" + _ventilPosition + "%"; }
             set
             {
-                _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _ventilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged("VentilPosition");
             }
         }
@@ -368,26 +368,26 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             VentilPosition = $"Y={ val.ToString("N1")}%";
         }
 
-        private string _VisibilityVentilAus;
+        private string _visibilityVentilAus;
 
         public string VisibilityVentilAus
         {
-            get { return _VisibilityVentilAus; }
+            get { return _visibilityVentilAus; }
             set
             {
-                _VisibilityVentilAus = value;
+                _visibilityVentilAus = value;
                 OnPropertyChanged("VisibilityVentilAus");
             }
         }
 
-        private string _VisibilityVentilEin;
+        private string _visibilityVentilEin;
 
         public string VisibilityVentilEin
         {
-            get { return _VisibilityVentilEin; }
+            get { return _visibilityVentilEin; }
             set
             {
-                _VisibilityVentilEin = value;
+                _visibilityVentilEin = value;
                 OnPropertyChanged("VisibilityVentilEin");
             }
         }
@@ -415,14 +415,14 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             KraftwerkStatus = "Status: " + val;
         }
 
-        private string _KraftwerkStatus;
+        private string _kraftwerkStatus;
 
         public string KraftwerkStatus
         {
-            get { return _KraftwerkStatus; }
+            get { return _kraftwerkStatus; }
             set
             {
-                _KraftwerkStatus = value;
+                _kraftwerkStatus = value;
                 OnPropertyChanged("KraftwerkStatus");
             }
         }

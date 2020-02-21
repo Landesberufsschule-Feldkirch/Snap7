@@ -11,14 +11,14 @@
 
         public int GeschwindigkeitZeit() { return (int)GeschwindigkeitSlider; }
 
-        private double _GeschwindigkeitSlider;
+        private double _geschwindigkeitSlider;
 
         public double GeschwindigkeitSlider
         {
-            get { return _GeschwindigkeitSlider; }
+            get { return _geschwindigkeitSlider; }
             set
             {
-                _GeschwindigkeitSlider = value;
+                _geschwindigkeitSlider = value;
                 OnPropertyChanged("GeschwindigkeitSlider");
             }
         }
