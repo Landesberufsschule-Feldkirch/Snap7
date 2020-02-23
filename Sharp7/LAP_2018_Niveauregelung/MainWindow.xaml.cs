@@ -10,7 +10,7 @@ namespace LAP_2018_Niveauregelung
         public ViewModel.NiveauRegelungViewModel niveauRegelungViewModel;
 
         private DatenRangieren datenRangieren;
-        public S7_1200 s7_1200;
+        public S7_1200 S7_1200 { get; set; } 
 
         public MainWindow()
         {
@@ -21,7 +21,7 @@ namespace LAP_2018_Niveauregelung
             InitializeComponent();
             DataContext = niveauRegelungViewModel;
 
-            s7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

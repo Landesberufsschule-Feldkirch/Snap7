@@ -12,7 +12,7 @@ namespace Synchronisiereinrichtung
         private SetManualWindow setManualWindow;
         private RealTimeGraphWindow realTimeGraphWindow;
         private KraftwerkViewModel kraftwerkViewModel;
-        public S7_1200 s7_1200;
+        public S7_1200 S7_1200 { get; set; } 
 
         public MainWindow()
         {
@@ -25,7 +25,7 @@ namespace Synchronisiereinrichtung
             datenRangieren = new DatenRangieren(this, kraftwerkViewModel);
             GaugeDifferenzSpannung.ApplyTemplate();
 
-             s7_1200 = new S7_1200(1, 1, 20, 4, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+             S7_1200 = new S7_1200(1, 1, 20, 4, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;

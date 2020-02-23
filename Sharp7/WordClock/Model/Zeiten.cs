@@ -68,10 +68,10 @@ namespace WordClock.Model
             ViAnzeige.WinkelMinuten = Minute * 6;
             ViAnzeige.WinkelStunden = Stunde * 30 + Minute * 0.5;
 
-            if (mainWindow.s7_1200 != null)
+            if (mainWindow.S7_1200 != null)
             {
-                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
             }
         }
 

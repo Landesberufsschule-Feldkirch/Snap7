@@ -11,7 +11,7 @@ namespace LAP_2018_Abfuellanlage
         public SetManual.SetManual setManualWindow;
         private DatenRangieren datenRangieren;
         private ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
-        public S7_1200 s7_1200;
+        public S7_1200 S7_1200 { get; set; } 
 
         public MainWindow()
         {
@@ -21,7 +21,7 @@ namespace LAP_2018_Abfuellanlage
             InitializeComponent();
             DataContext = abfuellanlageViewModel;
 
-             s7_1200 = new S7_1200(1, 1, 4, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(1, 1, 4, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

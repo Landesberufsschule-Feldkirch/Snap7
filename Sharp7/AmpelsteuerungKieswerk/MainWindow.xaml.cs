@@ -8,7 +8,7 @@ namespace AmpelsteuerungKieswerk
 
         private ViewModel.AmpelsteuerungKieswerkViewModel ampelsteuerungKieswerkViewModel;
         private DatenRangieren datenRangieren;
-        public S7_1200 s7_1200;
+        public S7_1200 S7_1200 { get; set; } 
 
         public MainWindow()
         {
@@ -18,7 +18,7 @@ namespace AmpelsteuerungKieswerk
             InitializeComponent();
             DataContext = ampelsteuerungKieswerkViewModel;
 
-            s7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }   
     }
 }

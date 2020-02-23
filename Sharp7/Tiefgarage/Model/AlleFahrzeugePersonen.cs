@@ -86,10 +86,10 @@
             ViAnzeige.EnablePerson3 = AllesInParkposition;
             ViAnzeige.EnablePerson4 = AllesInParkposition;
 
-            if (mainWindow.s7_1200 != null)
+            if (mainWindow.S7_1200 != null)
             {
-                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
             }
         }
 

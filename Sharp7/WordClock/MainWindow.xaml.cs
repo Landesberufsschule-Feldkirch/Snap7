@@ -10,7 +10,7 @@ namespace WordClock
     {
         private DatenRangieren datenRangieren;
         private ViewModel.WordClockViewModel wordClockViewModel;
-        public S7_1200 s7_1200;
+        public S7_1200 S7_1200 { get; set; } 
 
         public MainWindow()
         {
@@ -22,7 +22,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = wordClockViewModel;
 
-            s7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

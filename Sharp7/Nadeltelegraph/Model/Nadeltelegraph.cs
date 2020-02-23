@@ -68,10 +68,10 @@ namespace Nadeltelegraph.Model
             ViAnzeige.WinkelNadel4(P4R, P4L);
             ViAnzeige.WinkelNadel5(P5R, P5L);
 
-            if (mainWindow.s7_1200 != null)
+            if (mainWindow.S7_1200 != null)
             {
-                if (mainWindow.s7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.s7_1200?.GetSpsStatus();
+                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
+                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
             }
         }
 
