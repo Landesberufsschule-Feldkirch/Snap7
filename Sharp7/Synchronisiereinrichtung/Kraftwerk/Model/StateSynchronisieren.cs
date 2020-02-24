@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateSynchronisieren
     {
@@ -12,9 +12,9 @@
         public void OnEntry()
         {
             kraftWerk.Q1 = true;
-            kraftWerk.ViAnzeige.MessgeraetAnzeigen(false);
+            kraftWerk.MessgeraetAnzeigen = false;
 
-            switch (kraftWerk.ViSoll.SynchAuswahl)
+            switch (kraftWerk.SynchAuswahl)
             {
                 case SynchronisierungAuswahl.U_f:
                     if ((kraftWerk.FrequenzDifferenz > 0.5) || (kraftWerk.SpannungsdifferenzGeneratorNetz > 5)) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);

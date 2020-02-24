@@ -7,10 +7,11 @@
     {
 
         public readonly Model.AlleLastKraftWagen alleLastKraftWagen;
-
+        public VisuAnzeigen ViAnzeige { get; set; }
         public AmpelsteuerungKieswerkViewModel(MainWindow mainWindow)
         {
             alleLastKraftWagen = new Model.AlleLastKraftWagen(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, alleLastKraftWagen);
         }
 
         public Model.AlleLastKraftWagen AlleLastKraftWagen { get { return alleLastKraftWagen; } }

@@ -74,7 +74,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\AlleBehaelter.cs" />
     <Compile Include="Model\Behaelter.cs" />
-    <Compile Include="Model\VisuAnzeigen.cs" />
+    <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\BehaelterViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

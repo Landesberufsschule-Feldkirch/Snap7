@@ -60,7 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DatenRangieren.cs" />
-    <Compile Include="Model\VisuAnzeigen.cs" />
+    <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\NadeltelegraphViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

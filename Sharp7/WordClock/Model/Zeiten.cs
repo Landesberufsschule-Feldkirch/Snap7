@@ -14,20 +14,17 @@ namespace WordClock.Model
         public byte Minute { get; set; }
         public byte Sekunde { get; set; }
 
-        public VisuAnzeigen ViAnzeige { get; set; }
-        public VisuSollwerte ViSoll { get; set; }
+        private double geschwindigkeitZeit;
 
         private TimeSpan timeSpan;
-        private MainWindow mainWindow;
 
-        public Zeiten(MainWindow mw)
+        public Zeiten()
         {
-            mainWindow = mw;
-            ViAnzeige = new VisuAnzeigen();
-            ViSoll = new VisuSollwerte();
+            geschwindigkeitZeit = 1;
 
             DateTime dateTime = DateTime.Now;
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
+
 
             DatumJahr = (ushort)dateTime.Year;
             DatumMonat = (byte)dateTime.Month;
@@ -40,6 +37,11 @@ namespace WordClock.Model
             System.Threading.Tasks.Task.Run(() => ZeitenTask());
         }
 
+
+        internal int GetSekunde() { return Sekunde; }
+        internal int GetMinute() { return Minute; }
+        internal int GetStunde() { return Stunde; }
+
         private void ZeitenTask()
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -49,29 +51,15 @@ namespace WordClock.Model
                 var elapsed = (int)stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
 
-                TimeSpan tSpan = new TimeSpan(0, 0, 0, 0, elapsed * ViSoll.GeschwindigkeitZeit());
+                TimeSpan tSpan = new TimeSpan(0, 0, 0, 0, elapsed * (int)geschwindigkeitZeit);
                 timeSpan = new TimeSpan(timeSpan.Ticks + tSpan.Ticks);
 
                 Stunde = (byte)timeSpan.Hours;
                 Minute = (byte)timeSpan.Minutes;
                 Sekunde = (byte)timeSpan.Seconds;
 
-                AnzeigeAktualisieren();
                 Thread.Sleep(10);
                 stopwatch.Stop();
-            }
-        }
-
-        private void AnzeigeAktualisieren()
-        {
-            ViAnzeige.WinkelSekunden = Sekunde * 6;
-            ViAnzeige.WinkelMinuten = Minute * 6;
-            ViAnzeige.WinkelStunden = Stunde * 30 + Minute * 0.5;
-
-            if (mainWindow.S7_1200 != null)
-            {
-                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
             }
         }
 
@@ -80,5 +68,7 @@ namespace WordClock.Model
             DateTime dateTime = DateTime.Now;
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
+
+        internal void SetGeschwindigkeit(double geschwindigkeitSlider)        { geschwindigkeitZeit = geschwindigkeitSlider;        }
     }
 }

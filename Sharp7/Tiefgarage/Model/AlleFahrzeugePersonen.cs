@@ -1,6 +1,5 @@
 ﻿namespace Tiefgarage.Model
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading;
 
@@ -8,45 +7,40 @@
     {
         public bool B1 { get; set; }
         public bool B2 { get; set; }
-        private bool AllesInParkposition = true;
+        public bool AllesInParkposition { get; set; }
 
         public int AnzahlAutos { get; set; }
         public int AnzahlPersonen { get; set; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public  List<FahrzeugPerson> AllePkwPersonen { get; set; }
 
-        private readonly MainWindow mainWindow;
-        private readonly List<FahrzeugPerson> alleFahrzeugePersonen = new List<FahrzeugPerson>();
-
-        public AlleFahrzeugePersonen(MainWindow mw)
+        public AlleFahrzeugePersonen()
         {
-            mainWindow = mw;
-            ViAnzeige = new VisuAnzeigen();
+            AllesInParkposition = true;
+            AllePkwPersonen = new List<FahrzeugPerson>
+            {
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug),
 
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug));
-
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Person));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Person));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Person));
-            alleFahrzeugePersonen.Add(new FahrzeugPerson(FahrzeugPerson.Rolle.Person));
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Person),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Person),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Person),
+                new FahrzeugPerson(FahrzeugPerson.Rolle.Person)
+            };
 
             System.Threading.Tasks.Task.Run(() => AlleFahrzeugePersonenTask());
-        }
-
-
+        }        
 
         private void AlleFahrzeugePersonenTask()
         {
-
             while (true)
             {
                 B1 = false;
                 B2 = false;
                 AllesInParkposition = true;
 
-                foreach (FahrzeugPerson fp in alleFahrzeugePersonen)
+                foreach (FahrzeugPerson fp in AllePkwPersonen)
                 {
                     var (b1, b2, park) = fp.Bewegen();
 
@@ -55,55 +49,21 @@
                     AllesInParkposition &= park;
                 }
 
-                AnzeigeAktualisieren();
                 Thread.Sleep(10);
             }
         }
+      
 
-        private void AnzeigeAktualisieren()
-        {
-            ViAnzeige.FarbeB1(B1);
-            ViAnzeige.FarbeB2(B2);
+        internal void DrinnenParken() { foreach (FahrzeugPerson fp in AllePkwPersonen) fp.DrinnenParken(); }
+        internal void DraussenParken() { foreach (FahrzeugPerson fp in AllePkwPersonen) fp.DraussenParken(); }
 
-            ViAnzeige.AnzahlAutosInDerTiefgarage(AnzahlAutos);
-            ViAnzeige.AnzahlPersonenInDerTiefgarage(AnzahlPersonen);
-
-            ViAnzeige.PositionAuto1(alleFahrzeugePersonen[0].AktuellePosition);
-            ViAnzeige.PositionAuto2(alleFahrzeugePersonen[1].AktuellePosition);
-            ViAnzeige.PositionAuto3(alleFahrzeugePersonen[2].AktuellePosition);
-            ViAnzeige.PositionAuto4(alleFahrzeugePersonen[3].AktuellePosition);
-            ViAnzeige.PositionPerson1(alleFahrzeugePersonen[4].AktuellePosition);
-            ViAnzeige.PositionPerson2(alleFahrzeugePersonen[5].AktuellePosition);
-            ViAnzeige.PositionPerson3(alleFahrzeugePersonen[6].AktuellePosition);
-            ViAnzeige.PositionPerson4(alleFahrzeugePersonen[7].AktuellePosition);
-
-            ViAnzeige.EnableAuto1 = AllesInParkposition;
-            ViAnzeige.EnableAuto2 = AllesInParkposition;
-            ViAnzeige.EnableAuto3 = AllesInParkposition;
-            ViAnzeige.EnableAuto4 = AllesInParkposition;
-            ViAnzeige.EnablePerson1 = AllesInParkposition;
-            ViAnzeige.EnablePerson2 = AllesInParkposition;
-            ViAnzeige.EnablePerson3 = AllesInParkposition;
-            ViAnzeige.EnablePerson4 = AllesInParkposition;
-
-            if (mainWindow.S7_1200 != null)
-            {
-                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
-            }
-        }
-
-
-        internal void DrinnenParken() { foreach (FahrzeugPerson fp in alleFahrzeugePersonen) fp.DrinnenParken(); }
-        internal void DraussenParken() { foreach (FahrzeugPerson fp in alleFahrzeugePersonen) fp.DraussenParken(); }
-
-        internal void Auto1() { alleFahrzeugePersonen[0].Losfahren(); }
-        internal void Auto2() { alleFahrzeugePersonen[1].Losfahren(); }
-        internal void Auto3() { alleFahrzeugePersonen[2].Losfahren(); }
-        internal void Auto4() { alleFahrzeugePersonen[3].Losfahren(); }
-        internal void Person1() { alleFahrzeugePersonen[4].Losfahren(); }
-        internal void Person2() { alleFahrzeugePersonen[5].Losfahren(); }
-        internal void Person3() { alleFahrzeugePersonen[6].Losfahren(); }
-        internal void Person4() { alleFahrzeugePersonen[7].Losfahren(); }
+        internal void Auto1() { AllePkwPersonen[0].Losfahren(); }
+        internal void Auto2() { AllePkwPersonen[1].Losfahren(); }
+        internal void Auto3() { AllePkwPersonen[2].Losfahren(); }
+        internal void Auto4() { AllePkwPersonen[3].Losfahren(); }
+        internal void Person1() { AllePkwPersonen[4].Losfahren(); }
+        internal void Person2() { AllePkwPersonen[5].Losfahren(); }
+        internal void Person3() { AllePkwPersonen[6].Losfahren(); }
+        internal void Person4() { AllePkwPersonen[7].Losfahren(); }
     }
 }

@@ -61,7 +61,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36" Content="V2.0 "/>
-        <Label Grid.Column="13"  Grid.ColumnSpan="6"    Grid.Row="23"  Background="{Binding NiveauRegelung.ViAnzeige.SpsColor}" Content="{Binding NiveauRegelung.ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="13"  Grid.ColumnSpan="6"    Grid.Row="23"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
         
@@ -95,9 +95,9 @@
         <Label Content="S2" Grid.Column="16" Grid.Row="3" Grid.RowSpan="2" Margin="22,22,5,22" />
         <Label Content="S3" Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" Margin="22,22,5,22" />
 
-        <Ellipse Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding NiveauRegelung.ViAnzeige.ColorCircle_P1}" />
-        <Ellipse Grid.Column="15" Grid.Row="12" Grid.RowSpan="2" Stroke="Black" Fill="{Binding NiveauRegelung.ViAnzeige.ColorCircle_P2}" />
-        <Ellipse Grid.Column="15" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding NiveauRegelung.ViAnzeige.ColorCircle_P3}" />
+        <Ellipse Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P1}" />
+        <Ellipse Grid.Column="15" Grid.Row="12" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P2}" />
+        <Ellipse Grid.Column="15" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P3}" />
 
         <Label Content="P1" Grid.Column="14"    Grid.Row="9"  Grid.RowSpan="2" Margin="22,22,5,22" />
         <Label Content="P2" Grid.Column="14"    Grid.Row="12" Grid.RowSpan="2" Margin="22,22,5,22" />
@@ -107,66 +107,66 @@
         <Label Content="Störung"    Grid.Column="15"    Grid.Row="12" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
         <Label Content="Füllstand"  Grid.Column="15"    Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-        <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding NiveauRegelung.ViAnzeige.ColorThermorelais_F1}" Command="{Binding BtnThermorelaisF1}" />
-        <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding NiveauRegelung.ViAnzeige.ColorThermorelais_F2}" Command="{Binding BtnThermorelaisF2}" />
+        <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnzeige.ColorThermorelais_F1}" Command="{Binding BtnThermorelaisF1}" />
+        <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding ViAnzeige.ColorThermorelais_F2}" Command="{Binding BtnThermorelaisF2}" />
 
         <Label Content="M1" Grid.Column="4" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
         <Label Content="M2" Grid.Column="8" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
 
-        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_M1_Ein}">
+        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M1_Ein}">
             <Image.RenderTransform>
                 <RotateTransform Angle="90" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_M1_Aus}">
+        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M1_Aus}">
             <Image.RenderTransform>
                 <RotateTransform Angle="90" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_M2_Ein}">
+        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M2_Ein}">
             <Image.RenderTransform>
                 <RotateTransform Angle="270" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_M2_Aus}">
+        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M2_Aus}">
             <Image.RenderTransform>
                 <RotateTransform Angle="270" />
             </Image.RenderTransform>
         </Image>
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4"  Grid.RowSpan="2"  Fill="Blue"         Margin="0,25,0,25" />
-        <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="2"  Fill="{Binding NiveauRegelung.ViAnzeige.ColorZuleitungLinksWaagrecht}"    Margin="0,25,50,25" />
-        <Rectangle Grid.Column="6"                     Grid.Row="4"  Grid.RowSpan="12" Fill="{Binding NiveauRegelung.ViAnzeige.ColorZuleitungLinksSenkrecht}"    Margin="0,25,50,0" Panel.ZIndex="9" />
+        <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="2"  Fill="{Binding ViAnzeige.ColorZuleitungLinksWaagrecht}"    Margin="0,25,50,25" />
+        <Rectangle Grid.Column="6"                     Grid.Row="4"  Grid.RowSpan="12" Fill="{Binding ViAnzeige.ColorZuleitungLinksSenkrecht}"    Margin="0,25,50,0" Panel.ZIndex="9" />
 
         <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="4"  Grid.RowSpan="2"  Fill="Blue"         Margin="0,25,0,25" />
-        <Rectangle Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="2"  Fill="{Binding NiveauRegelung.ViAnzeige.ColorZuleitungRechtsWaagrecht}"    Margin="50,25,0,25" />
-        <Rectangle Grid.Column="7"                     Grid.Row="4"  Grid.RowSpan="12" Fill="{Binding NiveauRegelung.ViAnzeige.ColorZuleitungRechtsSenkrecht}"    Margin="50,25,0,0" Panel.ZIndex="9" />
+        <Rectangle Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="2"  Fill="{Binding ViAnzeige.ColorZuleitungRechtsWaagrecht}"    Margin="50,25,0,25" />
+        <Rectangle Grid.Column="7"                     Grid.Row="4"  Grid.RowSpan="12" Fill="{Binding ViAnzeige.ColorZuleitungRechtsSenkrecht}"    Margin="50,25,0,0" Panel.ZIndex="9" />
 
         <Rectangle Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="7"  Grid.RowSpan="9"  Fill="LightBlue" />
-        <Rectangle Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="7"  Grid.RowSpan="9"  Fill="Blue"        Margin="{Binding NiveauRegelung.ViAnzeige.Margin1}" Panel.ZIndex="99" />
-        <Rectangle Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="2"  Fill="{Binding NiveauRegelung.ViAnzeige.ColorAbleitungOben}"         Margin="45,0,45,0" />
-        <Rectangle Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="18" Grid.RowSpan="4"  Fill="{Binding NiveauRegelung.ViAnzeige.ColorAbleitungUnten}"    Margin="45,0,45,0" />
+        <Rectangle Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="7"  Grid.RowSpan="9"  Fill="Blue"        Margin="{Binding ViAnzeige.Margin1}" Panel.ZIndex="99" />
+        <Rectangle Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="2"  Fill="{Binding ViAnzeige.ColorAbleitungOben}"         Margin="45,0,45,0" />
+        <Rectangle Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="18" Grid.RowSpan="4"  Fill="{Binding ViAnzeige.ColorAbleitungUnten}"    Margin="45,0,45,0" />
 
         <Label Content="B1" Grid.Column="9" Grid.Row="15" Margin="0,10,0,0"  Panel.ZIndex="9" />
         <Label Content="B2" Grid.Column="9" Grid.Row="12"  Margin="0,10,0,0"  Panel.ZIndex="9" />
         <Label Content="B3" Grid.Column="9" Grid.Row="8"  Margin="0,10,0,0"  Panel.ZIndex="9" />
 
-        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B1_Aus}"/>
-        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B1_Ein}" />
+        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B1_Aus}"/>
+        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B1_Ein}" />
 
-        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B2_Aus}"/>
-        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B2_Ein}" />
+        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B2_Aus}"/>
+        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B2_Ein}" />
 
-        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B3_Aus}"/>
-        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_B3_Ein}" />
+        <Image Source="Bilder/Schwimmerschalter.jpg"              Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B3_Aus}"/>
+        <Image Source="Bilder/Schwimmerschalter_Betaetigt.jpg"    Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B3_Ein}" />
 
 
         <Button Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" Command="{Binding BtnVentilY1}"/>
-        <Image Source="Bilder/VentilElektrischEin.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_Ventil_Ein}" />
-        <Image Source="Bilder/VentilElektrischAus.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding NiveauRegelung.ViAnzeige.Visibility_Ventil_Aus}" />
+        <Image Source="Bilder/VentilElektrischEin.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnzeige.Visibility_Ventil_Ein}" />
+        <Image Source="Bilder/VentilElektrischAus.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnzeige.Visibility_Ventil_Aus}" />
 
     </Grid>
 </Window>

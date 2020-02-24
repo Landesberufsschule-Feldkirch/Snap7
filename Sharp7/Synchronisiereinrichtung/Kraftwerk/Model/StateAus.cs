@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     public class StateAus
     {
@@ -22,7 +22,7 @@
             kraftWerk.Generator_P = 0;
             kraftWerk.Generator_CosPhi = 1;
 
-            kraftWerk.ViAnzeige.MessgeraetAnzeigen(false);
+            kraftWerk.MessgeraetAnzeigen=false;
 
             if (kraftWerk.Ventil_Y > 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Hochfahren);
         }

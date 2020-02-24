@@ -8,7 +8,7 @@ namespace LAP_2018_Abfuellanlage.Model
     public class AlleFlaschen
     {
         private readonly MainWindow mainWindow;
-        public VisuAnzeigen ViAnzeige { get; set; }
+
         public readonly List<Flaschen> alleFlaschen = new List<Flaschen>();
 
         public bool B1 { get; set; }
@@ -30,7 +30,6 @@ namespace LAP_2018_Abfuellanlage.Model
         public AlleFlaschen(MainWindow mw)
         {
             mainWindow = mw;
-            ViAnzeige = new VisuAnzeigen();
 
             alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
             alleFlaschen.Add(new Flaschen(AnzahlFlaschen++));
@@ -75,47 +74,10 @@ namespace LAP_2018_Abfuellanlage.Model
                     B1 |= lichtschranke;
                 }
 
-                AnzeigeAktualisieren();
                 Thread.Sleep(10);
             }
         }
 
-        private void AnzeigeAktualisieren()
-        {
-            ViAnzeige.PositionImage_1(alleFlaschen[0].AktuellePosition);
-            ViAnzeige.PositionImage_2(alleFlaschen[1].AktuellePosition);
-            ViAnzeige.PositionImage_3(alleFlaschen[2].AktuellePosition);
-            ViAnzeige.PositionImage_4(alleFlaschen[3].AktuellePosition);
-            ViAnzeige.PositionImage_5(alleFlaschen[4].AktuellePosition);
-            ViAnzeige.PositionImage_6(alleFlaschen[5].AktuellePosition);
-
-            ViAnzeige.VisibilityFlasche1(alleFlaschen[0].Sichtbar);
-            ViAnzeige.VisibilityFlasche2(alleFlaschen[1].Sichtbar);
-            ViAnzeige.VisibilityFlasche3(alleFlaschen[2].Sichtbar);
-            ViAnzeige.VisibilityFlasche4(alleFlaschen[3].Sichtbar);
-            ViAnzeige.VisibilityFlasche5(alleFlaschen[4].Sichtbar);
-            ViAnzeige.VisibilityFlasche6(alleFlaschen[5].Sichtbar);
-
-            ViAnzeige.VisibilitySensorB1(B1);
-            ViAnzeige.VisibilityVentilK1(K1);
-            ViAnzeige.VisibilityVentilK2(K2);
-            ViAnzeige.VisibilityAbleitung(K1 && (Pegel > 0.01));
-
-            ViAnzeige.FarbeCircle_F5(!F5);
-            ViAnzeige.FarbeCircle_M1(M1);
-            ViAnzeige.FarbeCircle_P1(P1);
-            ViAnzeige.FarbeCircle_P2(P2);
-
-            ViAnzeige.FarbeRectangleZuleitung(Pegel > 0.01);
-
-            ViAnzeige.Margin_1(Pegel);
-
-            if (mainWindow.S7_1200 != null)
-            {
-                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
-            }
-        }
 
         private bool ButtonFunktionPressReleaseAendern(Button knopf)
         {

@@ -39,7 +39,7 @@ namespace Synchronisiereinrichtung
     }
 }
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     public class Kraftwerk
     {
@@ -47,7 +47,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public readonly Statemachine kraftwerkStatemachine;
         public double FrequenzDifferenz = 5;
 
-        private double optimalerSpannungswert;
+        public double OptimalerSpannungswert { get; set; }
         public bool Q1 { get; set; }
         public bool KraftwerkStarten { get; set; }
         public bool KraftwerkStoppen { get; set; }
@@ -63,17 +63,18 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public double Netz_f { get; set; }
         public double Netz_P { get; set; }
         public double Netz_CosPhi { get; set; }
-        public VisuSollwerte ViSoll { get; set; }
-        public VisuAnzeigen ViAnzeige { get; set; }
-        private MainWindow mainWindow;
+        public bool MessgeraetAnzeigen { get; set; }
+        public bool MaschineTot { get; set; }
+        public Synchronisiereinrichtung.SynchronisierungAuswahl SynchAuswahl { get; set; }
+        public double SpannungsDifferenz { get; set; }
+        public double ManualVentilstellung { get; set; }
+        public double ManualErregerstrom { get; set; }
+        public double MessgeraetOptimalerBereich { get; set; }
 
-        public Kraftwerk(MainWindow mw)
+
+        public Kraftwerk()
         {
-            mainWindow = mw;
-            ViSoll = new VisuSollwerte();
-            ViAnzeige = new VisuAnzeigen();
             kraftwerkStatemachine = new Statemachine(this);
-
             System.Threading.Tasks.Task.Run(() => KraftwerkTask());
         }
 
@@ -88,8 +89,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             while (true)
             {
-                Sollwerte2Anzeige();
-
                 kraftwerkStatemachine.Fire(Statemachine.Trigger.Aktualisieren);
 
                 Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Netz_f, Netz_Winkel);
@@ -101,7 +100,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                 FrequenzDifferenz = Math.Abs(Netz_f - Generator_f);
                 Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
 
-                switch (ViSoll.SynchAuswahl)
+                switch (SynchAuswahl)
                 {
                     case SynchronisierungAuswahl.U_f_Phase:
                     case SynchronisierungAuswahl.U_f_Phase_Leistung:
@@ -114,7 +113,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
                         break;
                 }
 
-                ViAnzeige.SpannungsDifferenz = SpannungsdifferenzGeneratorNetz;
+                SpannungsDifferenz = SpannungsdifferenzGeneratorNetz;
 
                 Thread.Sleep((int)Zeitdauer);
             }
@@ -132,65 +131,6 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             KraftwerkStarten = false;
         }
 
-        private void Sollwerte2Anzeige()
-        {
-            if (mainWindow.DebugWindowAktiv)
-            {
-                Ventil_Y = ViSoll.Y();
-                Generator_Ie = ViSoll.Ie();
-            }
-
-
-            Netz_f = ViSoll.Netz_f();
-            Netz_U = ViSoll.Netz_U();
-            Netz_P = ViSoll.Netz_P();
-            Netz_CosPhi = ViSoll.Netz_CosPhi();
-
-
-            ViAnzeige.VentilEinschalten(Ventil_Y > 1);
-            ViAnzeige.LeistungsschalterEinschalten(Q1);
-
-            ViAnzeige.Y(Ventil_Y);
-            ViAnzeige.Ie(Generator_Ie);
-
-            ViAnzeige.N(Generator_n);
-            ViAnzeige.Generator_U(Generator_U);
-            ViAnzeige.Generator_f(Generator_f);
-            ViAnzeige.Generator_P(Generator_P);
-            ViAnzeige.Generator_CosPhi(Generator_CosPhi);
-
-            ViAnzeige.Netz_U(Netz_U);
-            ViAnzeige.Netz_f(Netz_f);
-            ViAnzeige.Netz_P(Netz_P);
-            ViAnzeige.Netz_CosPhi(Netz_CosPhi);
-
-            ViAnzeige.Status(kraftwerkStatemachine.StatusAusgeben());
-
-            switch (ViSoll.SynchAuswahl)
-            {
-                case SynchronisierungAuswahl.U_f:
-                    if (optimalerSpannungswert != 10)
-                    {
-                        optimalerSpannungswert = 10;
-                        ViAnzeige.MessgeraetOptimalerBereich = optimalerSpannungswert;
-                    }
-                    break;
-
-                default:
-                    if (optimalerSpannungswert != 100)
-                    {
-                        optimalerSpannungswert = 100;
-                        ViAnzeige.MessgeraetOptimalerBereich = optimalerSpannungswert;
-                    }
-                    break;
-            }
-
-            if (mainWindow.S7_1200 != null)
-            {
-                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
-            }
-        }
 
         internal void Synchronisieren()
         {

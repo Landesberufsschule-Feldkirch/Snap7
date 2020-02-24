@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateBelasten
     {
@@ -21,7 +21,7 @@
             kraftWerk.Generator_n = kraftWerk.generator.Drehzahl();
             kraftWerk.Generator_U = kraftWerk.Netz_U;
             kraftWerk.Generator_f = kraftWerk.Netz_f;
-            kraftWerk.ViAnzeige.MessgeraetAnzeigen(false);
+            kraftWerk.MessgeraetAnzeigen =false;
 
             kraftWerk.generator.MaschineLeistungFahren(kraftWerk.Ventil_Y);
             kraftWerk.generator.PhasenSchieberbetrieb(kraftWerk.Generator_Ie);

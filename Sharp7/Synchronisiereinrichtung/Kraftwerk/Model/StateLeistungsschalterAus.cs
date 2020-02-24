@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateLeistungsschalterAus
     {
@@ -23,7 +23,7 @@
             kraftWerk.Generator_P = 0;
             kraftWerk.Generator_CosPhi = 1;
 
-            kraftWerk.ViAnzeige.MessgeraetAnzeigen(false);
+            kraftWerk.MessgeraetAnzeigen = false;
 
             if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
             if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);

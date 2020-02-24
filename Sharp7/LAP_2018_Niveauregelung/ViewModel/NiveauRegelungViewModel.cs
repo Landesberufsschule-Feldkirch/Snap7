@@ -6,11 +6,13 @@
     public class NiveauRegelungViewModel
     {
 
-        public readonly Model.NiveauRegelung niveauRegelung;
+        public readonly Model.NiveauRegelung niveauRegelung; 
+        public VisuAnzeigen ViAnzeige { get; set; }
 
         public NiveauRegelungViewModel(MainWindow mainWindow)
         {
             niveauRegelung = new Model.NiveauRegelung(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, niveauRegelung);
         }
 
         public Model.NiveauRegelung NiveauRegelung { get { return niveauRegelung; } }

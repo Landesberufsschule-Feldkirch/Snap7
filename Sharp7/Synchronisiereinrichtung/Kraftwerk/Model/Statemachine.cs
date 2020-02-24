@@ -2,7 +2,7 @@
 using Stateless.Graph;
 using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     public class Statemachine
     {

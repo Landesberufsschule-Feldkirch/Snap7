@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateHochfahren
     {
@@ -25,7 +25,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             kraftWerk.Generator_P = 0;
             kraftWerk.Generator_CosPhi = 1;
 
-            kraftWerk.ViAnzeige.MessgeraetAnzeigen(Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
+            kraftWerk.MessgeraetAnzeigen = (Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
 
             if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
             if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);

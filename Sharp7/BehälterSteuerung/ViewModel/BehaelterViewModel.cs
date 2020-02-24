@@ -6,9 +6,12 @@
     public class BehaelterViewModel
     {
         public readonly Model.AlleBehaelter alleBehaelter;
+        public VisuAnzeigen ViAnzeige { get; set; }
+
         public BehaelterViewModel(MainWindow mainWindow)
         {
-            alleBehaelter = new Model.AlleBehaelter(mainWindow);       
+            alleBehaelter = new Model.AlleBehaelter();
+            ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);        
         }
 
         public Model.AlleBehaelter AlleBehaelter { get { return alleBehaelter; } }

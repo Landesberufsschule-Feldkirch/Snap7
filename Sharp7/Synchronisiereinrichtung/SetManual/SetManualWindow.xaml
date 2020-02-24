@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ViewModel="clr-namespace:Synchronisiereinrichtung.Kraftwerk.ViewModel" x:Class="Synchronisiereinrichtung.SetManualWindow"
+        xmlns:ViewModel="clr-namespace:Synchronisiereinrichtung.kraftwerk.ViewModel" x:Class="Synchronisiereinrichtung.SetManualWindow"
         mc:Ignorable="d"
         Title="SetManualWindow" Height="300" Width="800">
 
@@ -34,12 +34,12 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnSchalterQ1"  Grid.Column="11" Grid.Row="2" Command="{Binding BtnSchalterQ1}" Content="Q1" />
-        <Button x:Name="BtnReset"       Grid.Column="11" Grid.Row="4" Command="{Binding BtnSchalterReset}" Content="Reset" />
+        <Button Grid.Column="11" Grid.Row="2" Command="{Binding BtnSchalterQ1}"     Content="Q1" />
+        <Button Grid.Column="11" Grid.Row="4" Command="{Binding BtnSchalterReset}"  Content="Reset" />
 
         <Label  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Content="Ventilstellung Y" />
         <Label  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Content="Erregerstrom Ie" />
-        <Slider Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="6" Maximum="100" Value="{Binding Kraftwerk.ViSoll.ManualVentilstellung, Mode=TwoWay}" />
-        <Slider Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="6" Maximum="10"  Value="{Binding Kraftwerk.ViSoll.ManualErregerstrom, Mode=TwoWay}" />
+        <Slider Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="6" Maximum="100" Value="{Binding ViAnzeige.ManualVentilstellung, Mode=TwoWay}" />
+        <Slider Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="6" Maximum="10"  Value="{Binding ViAnzeige.ManualErregerstrom, Mode=TwoWay}" />
     </Grid>
 </Window>

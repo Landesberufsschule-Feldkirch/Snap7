@@ -7,10 +7,12 @@ namespace Tiefgarage.ViewModel
     {
 
         public readonly Model.AlleFahrzeugePersonen alleFahrzeugePersonen;
+        public VisuAnzeigen ViAnzeige { get; set; }
 
         public TiefgarageViewModel(MainWindow mainWindow)
         {
-            alleFahrzeugePersonen = new Model.AlleFahrzeugePersonen(mainWindow);
+            alleFahrzeugePersonen = new Model.AlleFahrzeugePersonen();
+            ViAnzeige = new VisuAnzeigen(mainWindow, alleFahrzeugePersonen);
         }
 
         public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen { get { return alleFahrzeugePersonen; } }
@@ -106,8 +108,8 @@ namespace Tiefgarage.ViewModel
                 return _btnAuto4;
             }
         }
-        #endregion    
-        
+        #endregion
+
         #region BtnPerson1
         private ICommand _btnPerson1;
         public ICommand BtnPerson1
@@ -121,8 +123,8 @@ namespace Tiefgarage.ViewModel
                 return _btnPerson1;
             }
         }
-        #endregion     
-        
+        #endregion
+
         #region BtnPerson2
         private ICommand _btnPerson2;
         public ICommand BtnPerson2
@@ -167,7 +169,5 @@ namespace Tiefgarage.ViewModel
             }
         }
         #endregion
-
-
     }
 }

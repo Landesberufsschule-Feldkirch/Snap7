@@ -6,10 +6,12 @@
     public class WordClockViewModel
     {
         public readonly Model.Zeiten zeiten;
+        public VisuAnzeigen ViAnzeige { get; set; }
 
         public WordClockViewModel(MainWindow mainWindow)
         {
-            zeiten = new Model.Zeiten(mainWindow);
+            zeiten = new Model.Zeiten();
+            ViAnzeige = new VisuAnzeigen(mainWindow, zeiten);
         }
 
         public Model.Zeiten Zeiten { get { return zeiten; } }

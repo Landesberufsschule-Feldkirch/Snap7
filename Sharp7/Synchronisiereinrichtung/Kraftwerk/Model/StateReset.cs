@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateReset
     {
@@ -11,7 +11,7 @@
         public void OnEntry()
         {
             kraftWerk.Q1 = false;
-            kraftWerk.ViAnzeige.MaschineTot(false);
+            kraftWerk.MaschineTot=false;
             kraftWerk.generator.Reset();
             kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Neustart);
         }

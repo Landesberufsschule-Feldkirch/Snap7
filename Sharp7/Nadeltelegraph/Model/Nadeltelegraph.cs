@@ -1,11 +1,9 @@
-﻿using System.Threading;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Nadeltelegraph.Model
 {
     public class Nadeltelegraph
     {
-        private readonly MainWindow mainWindow;
         public char Zeichen { get; set; }
         public bool P0 { get; set; }
         public bool P1L { get; set; }
@@ -18,63 +16,15 @@ namespace Nadeltelegraph.Model
         public bool P4R { get; set; }
         public bool P5L { get; set; }
         public bool P5R { get; set; }
-        public VisuAnzeigen ViAnzeige { get; set; }
 
+        MainWindow mainWindow;
         public Nadeltelegraph(MainWindow mw)
         {
             mainWindow = mw;
-            ViAnzeige = new VisuAnzeigen();
-
             Zeichen = ' ';
-            System.Threading.Tasks.Task.Run(() => NadeltelegraphTask());
         }
 
-        private void NadeltelegraphTask()
-        {
-            while (true)
-            {             
-                AnzeigeAktualisieren();
-                Thread.Sleep(10);
-            }
-        }
-
-        private void AnzeigeAktualisieren()
-        {
-            ViAnzeige.FarbeP0(P0);
-           
-            ViAnzeige.Breite1UpRight(P1R);
-            ViAnzeige.Breite2UpRight(P2R);
-            ViAnzeige.Breite3UpRight(P3R);
-            ViAnzeige.Breite4UpRight(P4R);         
-             
-            ViAnzeige.Breite1DownRight(P1L);
-            ViAnzeige.Breite2DownRight(P2L);
-            ViAnzeige.Breite3DownRight(P3L);
-            ViAnzeige.Breite4DownRight(P4L);
- 
-            ViAnzeige.Breite2UpLeft(P2L);
-            ViAnzeige.Breite3UpLeft(P3L);
-            ViAnzeige.Breite4UpLeft(P4L);
-            ViAnzeige.Breite5UpLeft(P5L);
-
-            ViAnzeige.Breite2DownLeft(P2R);
-            ViAnzeige.Breite3DownLeft(P3R);
-            ViAnzeige.Breite4DownLeft(P4R);
-            ViAnzeige.Breite5DownLeft(P5R);          
-
-            ViAnzeige.WinkelNadel1(P1R, P1L);
-            ViAnzeige.WinkelNadel2(P2R, P2L);
-            ViAnzeige.WinkelNadel3(P3R, P3L);
-            ViAnzeige.WinkelNadel4(P4R, P4L);
-            ViAnzeige.WinkelNadel5(P5R, P5L);
-
-            if (mainWindow.S7_1200 != null)
-            {
-                if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";
-                ViAnzeige.SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
-            }
-        }
-
+      
         internal void BuchstabeA() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnA)) Zeichen = 'A'; else Zeichen = ' '; }
         internal void BuchstabeB() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnB)) Zeichen = 'B'; else Zeichen = ' '; }
         internal void BuchstabeD() { if (ButtonFunktionPressReleaseAendern(mainWindow.btnD)) Zeichen = 'D'; else Zeichen = ' '; }

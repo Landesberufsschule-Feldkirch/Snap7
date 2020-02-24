@@ -66,7 +66,7 @@
             mainWindow = mw;
             viewModel = vm;
 
-            AmpelChangedEvent += viewModel.alleLastKraftWagen.DatenRangieren_AmpelChangedEvent;
+            AmpelChangedEvent +=  viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
         }
 
 

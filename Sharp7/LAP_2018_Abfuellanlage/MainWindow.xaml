@@ -61,7 +61,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V2.0 "/>
-        <Label Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="21"  Background="{Binding AlleFlaschen.ViAnzeige.SpsColor}" Content="{Binding AlleFlaschen.ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="21"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
@@ -101,7 +101,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnF5" Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" ClickMode="Press" Background="{Binding  AlleFlaschen.ViAnzeige.ColorCircle_F5}"  Command="{Binding BtnTasterF5}" FontSize="9pt" >
+        <Button x:Name="btnF5" Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" ClickMode="Press" Background="{Binding  ViAnzeige.ColorCircle_F5}"  Command="{Binding BtnTasterF5}" FontSize="9pt" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -115,8 +115,8 @@
         <Label Content="S4 " Grid.Column="16" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="F5 " Grid.Column="14" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
 
-        <Ellipse Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" Stroke="Black" Fill="{Binding AlleFlaschen.ViAnzeige.ColorCircle_P1}" />
-        <Ellipse Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" Stroke="Black" Fill="{Binding AlleFlaschen.ViAnzeige.ColorCircle_P2}" />
+        <Ellipse Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P1}" />
+        <Ellipse Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P2}" />
 
         <Label Content="P1 " Grid.Column="14" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="P2 " Grid.Column="14" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
@@ -127,23 +127,23 @@
         <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="0,0,50,0" />
         <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="50,0,0,0" />
 
-        <Image Source="Bilder\VentilElektrischAus.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_K2_Aus}" />
-        <Image Source="Bilder\VentilElektrischEin.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_K2_Ein}" />
+        <Image Source="Bilder\VentilElektrischAus.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_K2_Aus}" />
+        <Image Source="Bilder\VentilElektrischEin.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_K2_Ein}" />
         <Label Content="K2" Grid.Column="4" Grid.Row="14" Margin="32,5,4,0" FontSize="14pt"  />
 
         <Rectangle Fill="LightBlue"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
-        <Rectangle Fill="Blue"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding AlleFlaschen.ViAnzeige.Margin1}" />
+        <Rectangle Fill="Blue"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
 
-        <Rectangle Fill="{Binding AlleFlaschen.ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
+        <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
  
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_K1_Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_K1_Ein}" />
+        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.Visibility_K1_Aus}" />
+        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.Visibility_K1_Ein}" />
         <Label Content="K1" Grid.Column="7" Grid.Row="14" Margin="10,5,24,0" FontSize="14pt"  />
 
-        <Rectangle Fill="Blue" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0" Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityRectangleAbleitung}" />
+        <Rectangle Fill="Blue" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0" Visibility="{Binding ViAnzeige.VisibilityRectangleAbleitung}" />
 
         <Ellipse Fill="LightGray" Grid.Column="3" Grid.Row="19" Grid.RowSpan="2" />
-        <Ellipse Grid.Column="3" Grid.Row="19" Grid.RowSpan="2" Height="60" Width="60" Fill="{Binding AlleFlaschen.ViAnzeige.ColorCircle_M1}" Panel.ZIndex="5" />
+        <Ellipse Grid.Column="3" Grid.Row="19" Grid.RowSpan="2" Height="60" Width="60" Fill="{Binding ViAnzeige.ColorCircle_M1}" Panel.ZIndex="5" />
         <Label Content="M1" Grid.Column="3" Grid.Row="19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
         <Ellipse Fill="LightGray" Grid.Column="10" Grid.Row="19" Grid.RowSpan="2" />
@@ -151,17 +151,17 @@
         <Rectangle Fill="LightGray" Grid.Column="3" Grid.ColumnSpan="8" Grid.Row="19" Margin="40,0,35,27" />
         <Rectangle Fill="LightGray" Grid.Column="3" Grid.ColumnSpan="8" Grid.Row="20" Margin="40,27,35,0" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"         Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_B1_Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding AlleFlaschen.ViAnzeige.Visibility_B1_Ein}" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"         Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B1_Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_B1_Ein}" />
         <Label Content="B1" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="24">
-            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft1}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop1}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage1}" />
-            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft2}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop2}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage2}" />
-            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft3}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop3}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage3}" />
-            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft4}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop4}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage4}" />
-            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft5}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop5}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage5}" />
-            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding AlleFlaschen.ViAnzeige.ImageLeft6}" Canvas.Top="{Binding AlleFlaschen.ViAnzeige.ImageTop6}"  Visibility="{Binding AlleFlaschen.ViAnzeige.VisibilityImage6}" />
+            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft1}" Canvas.Top="{Binding ViAnzeige.ImageTop1}"  Visibility="{Binding ViAnzeige.VisibilityImage1}" />
+            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft2}" Canvas.Top="{Binding ViAnzeige.ImageTop2}"  Visibility="{Binding ViAnzeige.VisibilityImage2}" />
+            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft3}" Canvas.Top="{Binding ViAnzeige.ImageTop3}"  Visibility="{Binding ViAnzeige.VisibilityImage3}" />
+            <Image Source="Bilder/Fransziskaner.jpg"   Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft4}" Canvas.Top="{Binding ViAnzeige.ImageTop4}"  Visibility="{Binding ViAnzeige.VisibilityImage4}" />
+            <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft5}" Canvas.Top="{Binding ViAnzeige.ImageTop5}"  Visibility="{Binding ViAnzeige.VisibilityImage5}" />
+            <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft6}" Canvas.Top="{Binding ViAnzeige.ImageTop6}"  Visibility="{Binding ViAnzeige.VisibilityImage6}" />
 
 
 

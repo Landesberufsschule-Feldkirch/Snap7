@@ -59,8 +59,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Model\VisuAnzeigen.cs" />
-    <Compile Include="Model\VisuSollwerte.cs" />
+    <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="Model\Zeiten.cs" />
     <Compile Include="ViewModel\WordClockViewModel.cs" />
     <Page Include="MainWindow.xaml">

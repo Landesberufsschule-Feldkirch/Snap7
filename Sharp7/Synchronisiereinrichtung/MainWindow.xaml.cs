@@ -1,5 +1,5 @@
 ﻿using Kommunikation;
-using Synchronisiereinrichtung.Kraftwerk.ViewModel;
+using Synchronisiereinrichtung.kraftwerk.ViewModel;
 using System.Windows;
 
 namespace Synchronisiereinrichtung

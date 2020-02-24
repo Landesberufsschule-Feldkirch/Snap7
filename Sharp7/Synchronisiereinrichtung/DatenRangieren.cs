@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using Synchronisiereinrichtung.Kraftwerk.ViewModel;
+using Synchronisiereinrichtung.kraftwerk.ViewModel;
 using Utilities;
 
 namespace Synchronisiereinrichtung

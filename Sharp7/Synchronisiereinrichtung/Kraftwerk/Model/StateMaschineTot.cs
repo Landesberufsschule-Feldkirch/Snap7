@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     class StateMaschineTot
     {
@@ -11,7 +11,7 @@
 
         public void OnEntry()
         {
-            kraftWerk.ViAnzeige.MaschineTot(true);
+            kraftWerk.MaschineTot=true;
         }
 
         public void Doing()

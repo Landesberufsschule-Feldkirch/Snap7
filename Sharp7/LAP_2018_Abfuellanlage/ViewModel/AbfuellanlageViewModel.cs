@@ -7,10 +7,12 @@
     {
 
         public readonly Model.AlleFlaschen alleFlaschen;
+        public VisuAnzeigen ViAnzeige { get; set; }
 
         public AbfuellanlageViewModel(MainWindow mainWindow)
         {
             alleFlaschen = new Model.AlleFlaschen(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, alleFlaschen);
         }
 
         public Model.AlleFlaschen AlleFlaschen { get { return alleFlaschen; } }
