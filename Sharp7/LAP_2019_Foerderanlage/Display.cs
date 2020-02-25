@@ -14,6 +14,7 @@ namespace LAP_2019_Foerderanlage
 
         public void Display_Task()
         {
+            /*
             while (FensterAktiv)
             {
                 this.Dispatcher.Invoke(() =>
@@ -34,29 +35,16 @@ namespace LAP_2019_Foerderanlage
 
                 Thread.Sleep(10);
             }
+            */
         }
 
         public void AnzeigeAktualisieren()
         {
+            /*
             rctMaterialsiloFuellstand.Margin = new System.Windows.Thickness(0, MaterialSiloHoehe * (1 - MaterialSiloFuellstand), 0, 0);
 
-            polyWagen.SetValue(Canvas.LeftProperty, WagenPosition_X);
-            rctMaterialwagenMenge.SetValue(Canvas.LeftProperty, WagenPosition_X + PosWagenMengeOffset_X);
-            rctMaterialwagenMenge.SetValue(Canvas.TopProperty, 10 + 88 - WagenFuellstand);
-            rctMaterialwagenMenge.SetValue(Canvas.HeightProperty, WagenFuellstand);
-            lblMaterialWagen.SetValue(Canvas.LeftProperty, WagenPosition_X + PosWagenLabelOffset_X);
 
-            ImgSichbarkeitUmschalten(S7, imgS7Oeffner, imgS7Schliesser);
-            ImgSichbarkeitUmschalten(S8, imgS8Oeffner, imgS8Schliesser);
 
-            ImgSichbarkeitUmschalten(Y1, imgVentilEin, imgVentilAus);
-
-            circSichtbarkeitSchalten(XFU, cirSchneckeEin);                  // Schneckenförderer M1
-
-            circSichtbarkeitSchalten((Q3_RL | Q4_LL), cirRolleLinksEin);    // Förderband M1
-
-            PolySichbarkeitSchalten(Q3_RL, polyPfeilRechtslauf);
-            PolySichbarkeitSchalten(Q4_LL, polyPfeilLinkslauf);
 
             RechteckHintergrundfarbeAendern(MaterialSiloFuellstand > 0.01 & Y1, rctFuellenUnten, Brushes.Firebrick, Brushes.LightGray);
             RechteckHintergrundfarbeAendern(MaterialSiloFuellstand > 0.01, rctFuellenOben, Brushes.Firebrick, Brushes.LightGray);
@@ -66,7 +54,7 @@ namespace LAP_2019_Foerderanlage
                 var controller = ImageBehavior.GetAnimationController(imgSchneckenfoerderer);
                 if (XFU) controller.Play(); else controller.Pause();
             }
-            /*
+           
             if (mainWindow.S7_1200 != null)
             {
                 if (mainWindow.S7_1200.GetSpsError()) ViAnzeige.SpsColor = "Red"; else ViAnzeige.SpsColor = "LightGray";

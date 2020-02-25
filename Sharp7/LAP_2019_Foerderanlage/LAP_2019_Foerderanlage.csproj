@@ -56,9 +56,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SetManualWindow.xaml.cs">
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Model\Foerderanlage.cs" />
+    <Compile Include="Model\Silo.cs" />
+    <Compile Include="Model\Wagen.cs" />
+    <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\FoerderanlageViewModel.cs" />
+    <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,7 +80,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SetManualWindow.xaml">
+    <Page Include="SetManual\SetManualWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,10 +139,6 @@
       <Version>1.4.18</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

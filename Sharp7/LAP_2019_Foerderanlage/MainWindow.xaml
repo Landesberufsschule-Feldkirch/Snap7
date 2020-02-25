@@ -6,7 +6,7 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:LAP_2019_Foerderanlage"
         mc:Ignorable="d"
-        Title="LAP 2019 Förderanlage" Height="980" Width="1400" Closing="Window_Closing">
+        Title="LAP 2019 Förderanlage" Height="980" Width="1400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -25,14 +25,13 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
 
-            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -67,8 +66,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"    HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
-        <Label Grid.Column="16"  Grid.ColumnSpan="7"    Grid.Row="23"  Background="{Binding Zeiten.ViAnzeige.SpsColor}" Content="{Binding Zeiten.ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
+        <Label Grid.Column="16" Grid.ColumnSpan="7"  Grid.Row="23"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+
+
 
         <Rectangle x:Name="rctHintergrund" Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
@@ -105,25 +106,25 @@
             </Label.RenderTransform>
         </Label>
 
-        <Ellipse x:Name="cirSchneckeAus" Fill="Gray"   Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" />
-        <Ellipse x:Name="cirSchneckeEin" Fill="Green"  Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden"  Panel.ZIndex="5" />
-        <Label x:Name="lblM2" Content="M2"             Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse Fill="Gray"   Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" />
+        <Ellipse Fill="Green"  Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityM2Ein}"  Panel.ZIndex="5" />
+        <Label Content="M2"             Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
         <Rectangle x:Name="rctMaterialsilo"             Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
-        <Rectangle x:Name="rctMaterialsiloFuellstand"   Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick" />
+        <Rectangle x:Name="rctMaterialsiloFuellstand"   Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
         <Label Content="Materialsilo"                   Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" />
 
         <Rectangle x:Name="rctFuellenOben"              Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12"                   Fill="Firebrick" Margin="62,0" />
 
-        <Image x:Name="imgVentilEin" Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
-        <Image x:Name="imgVentilAus" Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"                  Margin="50,0,19,0" />
-        <Label x:Name="lblY1" Content="Y1"                                      Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Ein}"/>
+        <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Aus}"/>
+        <Label Content="Y1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
         <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="11" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="62,0" />
 
-        <Ellipse x:Name="cirRolleLinks" Fill="Gray"     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" />
-        <Ellipse x:Name="cirRolleLinksEin" Fill="Green" Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Visibility="Hidden" Panel.ZIndex="5" />
-        <Label x:Name="lblM1" Content="M1"              Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse Fill="Gray"     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" />
+        <Ellipse Fill="Green" Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityM1Ein}" Panel.ZIndex="5" />
+        <Label Content="M1"              Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
         <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" />
 
@@ -131,7 +132,7 @@
         <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Margin="40,27,35,0" />
         <Label Content="Förderband"                        Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
 
-        <Polygon x:Name="polyPfeilLinkslauf" Grid.Column="7" Grid.Row="16" Visibility="Hidden"
+        <Polygon x:Name="polyPfeilLinkslauf" Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilLinkslauf}"
                  Stroke="Black" StrokeThickness="2" Fill="YellowGreen">
             <Polygon.Points>
                 <Point X="2" Y="17" />
@@ -144,7 +145,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="polyPfeilRechtslauf" Grid.Column="7" Grid.Row="16" Visibility="Hidden"
+        <Polygon x:Name="polyPfeilRechtslauf" Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilRechtslauf}"
                  Stroke="Black" StrokeThickness="2" Fill="GreenYellow">
             <Polygon.Points>
                 <Point X="2" Y="12" />
@@ -157,20 +158,20 @@
             </Polygon.Points>
         </Polygon>
 
-        <Image x:Name="imgS7Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" />
-        <Image x:Name="imgS7Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" />
-        <Label Content="S7"                                                         Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Ein}"/>
+        <Label Content="S7"                                Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image x:Name="imgS8Schliesser" Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" />
-        <Image x:Name="imgS8Oeffner"    Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" />
-        <Label Content="S8"                                                         Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Aus}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Ein}"/>
+        <Label Content="S8"                                Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Button x:Name="WagenNachLinks" Content="NachLinks" Grid.Column="2" Grid.Row="26" Background="LawnGreen" Click="WagenNachLinks_Click" />
-        <Button x:Name="WagenNachRechts" Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen" Click="WagenNachRechts_Click" />
+        <Button Content="NachLinks" Grid.Column="2" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachLinks}"/>
+        <Button Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachRechts}"/>
 
         <Canvas Grid.Column="2" Grid.ColumnSpan="7" Grid.Row="19" Grid.RowSpan="5">
 
-            <Polygon x:Name="polyWagen" Stroke="Black" StrokeThickness="2" Fill="Silver">
+            <Polygon x:Name="polyWagen" Stroke="Black" StrokeThickness="2" Fill="Silver" Canvas.Left="{Binding ViAnzeige.PosWagenLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenTop}" >
                 <Polygon.Points>
                     <Point X="5" Y="5" />
                     <Point X="10" Y="5" />
@@ -187,8 +188,19 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Rectangle x:Name="rctMaterialwagenMenge"   Fill="Firebrick" Width="256" Height="88" Canvas.Left="12" Canvas.Top="10" />
-            <Label x:Name="lblMaterialWagen" Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Canvas.Left="74" Canvas.Top="106" Width="130" />
+            <Rectangle Fill="Firebrick" Width="256" Height="{Binding ViAnzeige.WagenFuellstand}" Canvas.Left="{Binding ViAnzeige.PosWagenInhaltLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenInhaltTop}" />
+            <Label Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Width="130" Canvas.Left="{Binding ViAnzeige.PosWagenBeschriftungLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenBeschriftungTop}"/>
         </Canvas>
+        <TabControl Grid.Column="16"  Grid.ColumnSpan="6"  Grid.Row="1" Grid.RowSpan="26"   >
+            <TabItem Header="Automatik" FontSize="14pt" >
+                <TabItem.CommandBindings>
+                  <!-- <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />-->  
+                </TabItem.CommandBindings>
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Handbetrieb" FontSize="14pt">
+                <Grid Background="#FFE5E5E5"  />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

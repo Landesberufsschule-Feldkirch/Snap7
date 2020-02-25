@@ -5,6 +5,7 @@ namespace LAP_2019_Foerderanlage
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
+        private readonly ViewModel.FoerderanlageViewModel foerderanlageViewModel;
 
         private enum BitPosAusgang
         {
@@ -30,6 +31,7 @@ namespace LAP_2019_Foerderanlage
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
+            /*
             S7.SetBitAt(digInput, (int)BitPosEingang.S0, mainWindow.S0);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
@@ -41,10 +43,12 @@ namespace LAP_2019_Foerderanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, mainWindow.S8);
 
             S7.SetSint_16_At(anInput, 0, mainWindow.MaterialsiloPegel);
+            */
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
+            /*
             mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
             mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
             mainWindow.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
@@ -52,11 +56,13 @@ namespace LAP_2019_Foerderanlage
             mainWindow.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
 
             mainWindow.FuSpeed = S7.GetSint_16_At(anOutput, 0);
+            */
         }
 
-        public DatenRangieren(MainWindow window)
+        public DatenRangieren(MainWindow mw, ViewModel.FoerderanlageViewModel vm)
         {
-            mainWindow = window;
+            mainWindow = mw;
+            foerderanlageViewModel = vm;
         }
     }
 }
