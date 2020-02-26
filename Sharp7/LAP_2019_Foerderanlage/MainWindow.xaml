@@ -28,7 +28,7 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
 
@@ -66,14 +66,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
-        <Label Grid.Column="16" Grid.ColumnSpan="7"  Grid.Row="23"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36"      Content="V0.0 "/>
+        <Label Grid.Column="16" Grid.ColumnSpan="7"  Grid.Row="26"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />
 
+        <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-
-        <Rectangle x:Name="rctHintergrund" Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
-
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" />
+        <Button Grid.Column="3"  Grid.Row="3" Background="{Binding ViAnzeige.ColorS2}" FontSize="14" Content="Not-Halt" Command="{Binding BtnS2}" />
+        <Button Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual"/>
 
         <Image  x:Name="imgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
                 gif:ImageBehavior.RepeatBehavior="Forever"
@@ -84,8 +83,7 @@
         <Rectangle Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="8"  Fill="#eeeeee" Margin="0,27,0,0" />
         <Rectangle Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="2"  Fill="#eeeeee" Margin="0,0,0,29" />
 
-        <Polygon x:Name="polyLagersilo" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
-                 Stroke="Black" StrokeThickness="2" Fill="Silver">
+        <Polygon Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7" Stroke="Black" StrokeThickness="2" Fill="Silver">
             <Polygon.Points>
                 <Point X="10" Y="10" />
                 <Point X="140" Y="10" />
@@ -94,8 +92,8 @@
             </Polygon.Points>
         </Polygon>
 
-        <Label Content="Lagersilo"          Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2"  HorizontalAlignment="Center" FontSize="14pt" Margin="22,25,34,10" Grid.RowSpan="2" />
-        <Label Content="Schneckenförderer"  Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3"  FontSize="14pt" RenderTransformOrigin="0.5,0.5">
+        <Label Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"    HorizontalAlignment="Center" FontSize="14pt" Margin="22,25,34,10" Content="Lagersilo" />
+        <Label Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3"                     FontSize="14pt" RenderTransformOrigin="0.5,0.5" Content="Schneckenförderer">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform />
@@ -108,32 +106,34 @@
 
         <Ellipse Fill="Gray"   Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" />
         <Ellipse Fill="Green"  Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityM2Ein}"  Panel.ZIndex="5" />
-        <Label Content="M2"             Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Label Content="M2"    Grid.Column="5" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
-        <Rectangle x:Name="rctMaterialsilo"             Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
-        <Rectangle x:Name="rctMaterialsiloFuellstand"   Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
-        <Label Content="Materialsilo"                   Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" />
+        <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
+        <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
+        <Label     Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" Content="Materialsilo"  />
 
-        <Rectangle x:Name="rctFuellenOben"              Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12"                   Fill="Firebrick" Margin="62,0" />
+        <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="LightGray" Margin="62,0"  />
+        <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialOben}" />
 
         <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Ein}"/>
         <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Aus}"/>
         <Label Content="Y1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
-        <Rectangle x:Name="rctFuellenUnten" Fill="Firebrick" Grid.Column="11" Grid.Row="15" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="62,0" />
+        <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2"  Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialUnten}"/>
 
-        <Ellipse Fill="Gray"     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" />
-        <Ellipse Fill="Green" Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityM1Ein}" Panel.ZIndex="5" />
-        <Label Content="M1"              Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Fill="Gray"/>
+        <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Fill="Green" Visibility="{Binding ViAnzeige.VisibilityM1Ein}" Panel.ZIndex="5" />
+        <Label     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Content="M1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse   Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Fill="Gray" />
 
-        <Ellipse x:Name="RolleRechtsAus" Fill="Gray"    Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" />
+        <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF4}" FontSize="14" Content="F4" Command="{Binding BtnF4}"/>
 
-        <Rectangle x:Name="rctForderbandOben" Fill="Gray"  Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Margin="40,0,35,27" />
-        <Rectangle x:Name="rctForderbandUnten" Fill="Gray" Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Margin="40,27,35,0" />
-        <Label Content="Förderband"                        Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
 
-        <Polygon x:Name="polyPfeilLinkslauf" Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilLinkslauf}"
-                 Stroke="Black" StrokeThickness="2" Fill="YellowGreen">
+        <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Fill="Gray" Margin="40,0,35,27" />
+        <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Fill="Gray" Margin="40,27,35,0" />
+        <Label     Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" Content="Förderband"/>
+
+        <Polygon Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilLinkslauf}" Stroke="Black" StrokeThickness="2" Fill="YellowGreen">
             <Polygon.Points>
                 <Point X="2" Y="17" />
                 <Point X="28" Y="2" />
@@ -145,8 +145,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="polyPfeilRechtslauf" Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilRechtslauf}"
-                 Stroke="Black" StrokeThickness="2" Fill="GreenYellow">
+        <Polygon Grid.Column="7" Grid.Row="16" Visibility="{Binding ViAnzeige.VisibilityPfeilRechtslauf}" Stroke="Black" StrokeThickness="2" Fill="GreenYellow">
             <Polygon.Points>
                 <Point X="2" Y="12" />
                 <Point X="42" Y="12" />
@@ -171,7 +170,7 @@
 
         <Canvas Grid.Column="2" Grid.ColumnSpan="7" Grid.Row="19" Grid.RowSpan="5">
 
-            <Polygon x:Name="polyWagen" Stroke="Black" StrokeThickness="2" Fill="Silver" Canvas.Left="{Binding ViAnzeige.PosWagenLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenTop}" >
+            <Polygon Stroke="Black" StrokeThickness="2" Fill="Silver" Canvas.Left="{Binding ViAnzeige.PosWagenLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenTop}" >
                 <Polygon.Points>
                     <Point X="5" Y="5" />
                     <Point X="10" Y="5" />
@@ -191,15 +190,81 @@
             <Rectangle Fill="Firebrick" Width="256" Height="{Binding ViAnzeige.WagenFuellstand}" Canvas.Left="{Binding ViAnzeige.PosWagenInhaltLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenInhaltTop}" />
             <Label Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Width="130" Canvas.Left="{Binding ViAnzeige.PosWagenBeschriftungLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenBeschriftungTop}"/>
         </Canvas>
-        <TabControl Grid.Column="16"  Grid.ColumnSpan="6"  Grid.Row="1" Grid.RowSpan="26"   >
-            <TabItem Header="Automatik" FontSize="14pt" >
+
+        <Label   Grid.Column="16" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Ellipse Grid.Column="17" Grid.Row="2" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorP1}" Stroke="Black" StrokeThickness="2" Margin="10"  />
+
+        <Label   Grid.Column="19" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Ellipse Grid.Column="20" Grid.Row="2" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorP2}" Stroke="Black" StrokeThickness="2" Margin="10"  />
+
+
+        <TabControl Grid.Column="16"  Grid.ColumnSpan="6"  Grid.Row="6" Grid.RowSpan="15" SelectedIndex="{Binding ViAnzeige.SelectedIndex, Mode=TwoWay}"  >
+            <TabItem Header="Automatik" FontSize="14pt">
                 <TabItem.CommandBindings>
-                  <!-- <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />-->  
+                  <!--  <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" /> -->
                 </TabItem.CommandBindings>
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Right" Content="S0 "/>
+                    <Button Grid.Column="2" Grid.Row="2" Content="Aus"  Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS0}"  Command="{Binding BtnS0}"/>
+                    <Label Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Right" Content="S1 "/>
+                    <Button Grid.Column="4" Grid.Row="2" Content="Ein"  Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}"  Command="{Binding BtnS1}"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Handbetrieb" FontSize="14pt">
-                <Grid Background="#FFE5E5E5"  />
+                <Grid Background="#FFE5E5E5"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Label  Grid.Column="1"                     Grid.Row="2" HorizontalContentAlignment="Right" Content="S9 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Content="Förderband RL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS9}"  Command="{Binding BtnS9}" />
+                    
+                    <Label  Grid.Column="1"                     Grid.Row="4" HorizontalContentAlignment="Right" Content="S10 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Content="Förderband LL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS10}"  Command="{Binding BtnS10}" />
+
+                    <Label  Grid.Column="1"                     Grid.Row="6" HorizontalContentAlignment="Right" Content="S11 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Content="Schneckenförderer"        Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS11}"  Command="{Binding BtnS11}" />
+
+                    <Label  Grid.Column="1"                     Grid.Row="8" HorizontalContentAlignment="Right" Content="S12 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="8" Content="Materialschieber"         Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS12}"  Command="{Binding BtnS12}" />
+
+
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

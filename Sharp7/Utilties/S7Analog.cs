@@ -4,12 +4,12 @@ namespace Utilities
 {
     public static class S7Analog
     {
-        public static short S7_Analog_2_Short(double db, double scal)
+        public static short S7_Analog_2_Int16(double db, double scal)
         {
             return Convert.ToInt16(Clamp(27648 * db / scal));
         }
 
-        public static int S7_Analog_2_Int(double db, double scal)
+        public static int S7_Analog_2_Int32(double db, double scal)
         {
             return Convert.ToInt32(Clamp(27648 * db / scal));
         }

@@ -31,18 +31,18 @@ namespace Synchronisiereinrichtung
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 
-            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_n, 10000));
-            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_U, 1000));
-            S7.SetSint_16_At(anInput, 4, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_f, 100));
-            S7.SetSint_16_At(anInput, 6, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_P, 10000));
-            S7.SetSint_16_At(anInput, 8, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Generator_CosPhi, 1));
+            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
+            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
+            S7.SetSint_16_At(anInput, 4, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
+            S7.SetSint_16_At(anInput, 6, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
+            S7.SetSint_16_At(anInput, 8, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
 
-            S7.SetSint_16_At(anInput, 10, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_U, 1000));
-            S7.SetSint_16_At(anInput, 12, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_f, 100));
-            S7.SetSint_16_At(anInput, 14, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_P, 10000));
-            S7.SetSint_16_At(anInput, 16, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.Netz_CosPhi, 1));
+            S7.SetSint_16_At(anInput, 10, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
+            S7.SetSint_16_At(anInput, 12, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
+            S7.SetSint_16_At(anInput, 14, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
+            S7.SetSint_16_At(anInput, 16, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
 
-            S7.SetSint_16_At(anInput, 18, S7Analog.S7_Analog_2_Short(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
+            S7.SetSint_16_At(anInput, 18, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)

@@ -183,7 +183,7 @@
             set
             {
                 _colorB1 = value;
-                OnPropertyChanged("ColorB1");
+                OnPropertyChanged(nameof(ColorB1));
             }
         }
         #endregion
@@ -201,7 +201,7 @@
             set
             {
                 _colorB2 = value;
-                OnPropertyChanged("ColorB2");
+                OnPropertyChanged(nameof(ColorB2));
             }
         }
         #endregion
@@ -219,7 +219,7 @@
             set
             {
                 _colorB3 = value;
-                OnPropertyChanged("ColorB3");
+                OnPropertyChanged(nameof(ColorB3));
             }
         }
         #endregion

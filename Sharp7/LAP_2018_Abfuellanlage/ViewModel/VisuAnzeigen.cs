@@ -19,6 +19,16 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
+
+            ClickModeBtnS1 = "Press";
+            ClickModeBtnS2 = "Press";
+            ClickModeBtnS3 = "Press";
+            ClickModeBtnS4 = "Press";
+            ClickModeBtnK1 = "Press";
+            ClickModeBtnK2 = "Press";
+            ClickModeBtnM1 = "Press";
+
+
             ImageTop1 = 10;
             ImageTop2 = 20;
             ImageTop3 = 30;
@@ -108,6 +118,16 @@
 
 
 
+        internal void TasterS1() { alleFlaschen.S1 = ClickModeButtonS1(); }
+        internal void TasterS2() { alleFlaschen.S2 = !ClickModeButtonS2(); }
+        internal void TasterS3() { alleFlaschen.S3 = ClickModeButtonS3(); }
+        internal void TasterS4() { alleFlaschen.S4 = ClickModeButtonS4(); }
+        internal void SetManualK1() { alleFlaschen.K1 = ClickModeButtonK1(); }
+        internal void SetManualK2() { alleFlaschen.K2 = ClickModeButtonK2(); }
+        internal void SetManualM1() { alleFlaschen.M1 = ClickModeButtonM1(); }
+
+
+
         #region SPS Status und Farbe
         private string _spsStatus;
         public string SpsStatus
@@ -131,6 +151,199 @@
             }
         }
         #endregion
+
+
+
+
+        #region ClickModeBtnS1
+        public bool ClickModeButtonS1()
+        {
+            if (ClickModeBtnS1 == "Press")
+            {
+                ClickModeBtnS1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS1;
+        public string ClickModeBtnS1
+        {
+            get { return _clickModeBtnS1; }
+            set
+            {
+                _clickModeBtnS1 = value;
+                OnPropertyChanged("ClickModeBtnS1");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS2
+        public bool ClickModeButtonS2()
+        {
+            if (ClickModeBtnS2 == "Press")
+            {
+                ClickModeBtnS2 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS2 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS2;
+        public string ClickModeBtnS2
+        {
+            get { return _clickModeBtnS2; }
+            set
+            {
+                _clickModeBtnS2 = value;
+                OnPropertyChanged("ClickModeBtnS2");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS3
+        public bool ClickModeButtonS3()
+        {
+            if (ClickModeBtnS3 == "Press")
+            {
+                ClickModeBtnS3 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS3 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS3;
+        public string ClickModeBtnS3
+        {
+            get { return _clickModeBtnS3; }
+            set
+            {
+                _clickModeBtnS3 = value;
+                OnPropertyChanged("ClickModeBtnS3");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS4
+        public bool ClickModeButtonS4()
+        {
+            if (ClickModeBtnS4 == "Press")
+            {
+                ClickModeBtnS4 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS4 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS4;
+        public string ClickModeBtnS4
+        {
+            get { return _clickModeBtnS4; }
+            set
+            {
+                _clickModeBtnS4 = value;
+                OnPropertyChanged("ClickModeBtnS4");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnK1
+        public bool ClickModeButtonK1()
+        {
+            if (ClickModeBtnK1 == "Press")
+            {
+                ClickModeBtnK1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK1;
+        public string ClickModeBtnK1
+        {
+            get { return _clickModeBtnK1; }
+            set
+            {
+                _clickModeBtnK1 = value;
+                OnPropertyChanged("ClickModeBtnK1");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnK2
+        public bool ClickModeButtonK2()
+        {
+            if (ClickModeBtnK2 == "Press")
+            {
+                ClickModeBtnK2 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK2 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK2;
+        public string ClickModeBtnK2
+        {
+            get { return _clickModeBtnK2; }
+            set
+            {
+                _clickModeBtnK2 = value;
+                OnPropertyChanged("ClickModeBtnK2");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnM1
+        public bool ClickModeButtonM1()
+        {
+            if (ClickModeBtnM1 == "Press")
+            {
+                ClickModeBtnM1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnM1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnM1;
+        public string ClickModeBtnM1
+        {
+            get { return _clickModeBtnM1; }
+            set
+            {
+                _clickModeBtnM1 = value;
+                OnPropertyChanged("ClickModeBtnM1");
+            }
+        }
+        #endregion
+
 
 
 

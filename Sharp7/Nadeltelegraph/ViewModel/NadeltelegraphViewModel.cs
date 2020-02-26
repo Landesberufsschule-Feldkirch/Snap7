@@ -9,7 +9,7 @@
         public VisuAnzeigen ViAnzeige { get; set; }
         public NadeltelegraphViewModel(MainWindow mainWindow)
         {
-            nadeltelegraph = new Model.Nadeltelegraph(mainWindow);
+            nadeltelegraph = new Model.Nadeltelegraph();
             ViAnzeige = new VisuAnzeigen(mainWindow, nadeltelegraph);
         }
 
@@ -25,7 +25,7 @@
             {
                 if (_btnBuchstabeA == null)
                 {
-                    _btnBuchstabeA = new RelayCommand(p => nadeltelegraph.BuchstabeA(), p => true);
+                    _btnBuchstabeA = new RelayCommand(p => ViAnzeige.BuchstabeA(), p => true);
                 }
                 return _btnBuchstabeA;
             }
@@ -40,7 +40,7 @@
             {
                 if (_btnBuchstabeB == null)
                 {
-                    _btnBuchstabeB = new RelayCommand(p => nadeltelegraph.BuchstabeB(), p => true);
+                    _btnBuchstabeB = new RelayCommand(p => ViAnzeige.BuchstabeB(), p => true);
                 }
                 return _btnBuchstabeB;
             }
@@ -55,7 +55,7 @@
             {
                 if (_btnBuchstabeD == null)
                 {
-                    _btnBuchstabeD = new RelayCommand(p => nadeltelegraph.BuchstabeD(), p => true);
+                    _btnBuchstabeD = new RelayCommand(p => ViAnzeige.BuchstabeD(), p => true);
                 }
                 return _btnBuchstabeD;
             }
@@ -70,7 +70,7 @@
             {
                 if (_btnBuchstabeE == null)
                 {
-                    _btnBuchstabeE = new RelayCommand(p => nadeltelegraph.BuchstabeE(), p => true);
+                    _btnBuchstabeE = new RelayCommand(p => ViAnzeige.BuchstabeE(), p => true);
                 }
                 return _btnBuchstabeE;
             }
@@ -85,7 +85,7 @@
             {
                 if (_btnBuchstabeF == null)
                 {
-                    _btnBuchstabeF = new RelayCommand(p => nadeltelegraph.BuchstabeF(), p => true);
+                    _btnBuchstabeF = new RelayCommand(p => ViAnzeige.BuchstabeF(), p => true);
                 }
                 return _btnBuchstabeF;
             }
@@ -100,7 +100,7 @@
             {
                 if (_btnBuchstabeG == null)
                 {
-                    _btnBuchstabeG = new RelayCommand(p => nadeltelegraph.BuchstabeG(), p => true);
+                    _btnBuchstabeG = new RelayCommand(p => ViAnzeige.BuchstabeG(), p => true);
                 }
                 return _btnBuchstabeG;
             }
@@ -115,7 +115,7 @@
             {
                 if (_btnBuchstabeH == null)
                 {
-                    _btnBuchstabeH = new RelayCommand(p => nadeltelegraph.BuchstabeH(), p => true);
+                    _btnBuchstabeH = new RelayCommand(p => ViAnzeige.BuchstabeH(), p => true);
                 }
                 return _btnBuchstabeH;
             }
@@ -130,7 +130,7 @@
             {
                 if (_btnBuchstabeI == null)
                 {
-                    _btnBuchstabeI = new RelayCommand(p => nadeltelegraph.BuchstabeI(), p => true);
+                    _btnBuchstabeI = new RelayCommand(p => ViAnzeige.BuchstabeI(), p => true);
                 }
                 return _btnBuchstabeI;
             }
@@ -145,7 +145,7 @@
             {
                 if (_btnBuchstabeK == null)
                 {
-                    _btnBuchstabeK = new RelayCommand(p => nadeltelegraph.BuchstabeK(), p => true);
+                    _btnBuchstabeK = new RelayCommand(p => ViAnzeige.BuchstabeK(), p => true);
                 }
                 return _btnBuchstabeK;
             }
@@ -160,7 +160,7 @@
             {
                 if (_btnBuchstabeL == null)
                 {
-                    _btnBuchstabeL = new RelayCommand(p => nadeltelegraph.BuchstabeL(), p => true);
+                    _btnBuchstabeL = new RelayCommand(p => ViAnzeige.BuchstabeL(), p => true);
                 }
                 return _btnBuchstabeL;
             }
@@ -175,7 +175,7 @@
             {
                 if (_btnBuchstabeM == null)
                 {
-                    _btnBuchstabeM = new RelayCommand(p => nadeltelegraph.BuchstabeM(), p => true);
+                    _btnBuchstabeM = new RelayCommand(p => ViAnzeige.BuchstabeM(), p => true);
                 }
                 return _btnBuchstabeM;
             }
@@ -190,7 +190,7 @@
             {
                 if (_btnBuchstabeN == null)
                 {
-                    _btnBuchstabeN = new RelayCommand(p => nadeltelegraph.BuchstabeN(), p => true);
+                    _btnBuchstabeN = new RelayCommand(p => ViAnzeige.BuchstabeN(), p => true);
                 }
                 return _btnBuchstabeN;
             }
@@ -205,7 +205,7 @@
             {
                 if (_btnBuchstabeO == null)
                 {
-                    _btnBuchstabeO = new RelayCommand(p => nadeltelegraph.BuchstabeO(), p => true);
+                    _btnBuchstabeO = new RelayCommand(p => ViAnzeige.BuchstabeO(), p => true);
                 }
                 return _btnBuchstabeO;
             }
@@ -220,7 +220,7 @@
             {
                 if (_btnBuchstabeP == null)
                 {
-                    _btnBuchstabeP = new RelayCommand(p => nadeltelegraph.BuchstabeP(), p => true);
+                    _btnBuchstabeP = new RelayCommand(p => ViAnzeige.BuchstabeP(), p => true);
                 }
                 return _btnBuchstabeP;
             }
@@ -235,7 +235,7 @@
             {
                 if (_btnBuchstabeR == null)
                 {
-                    _btnBuchstabeR = new RelayCommand(p => nadeltelegraph.BuchstabeR(), p => true);
+                    _btnBuchstabeR = new RelayCommand(p => ViAnzeige.BuchstabeR(), p => true);
                 }
                 return _btnBuchstabeR;
             }
@@ -250,7 +250,7 @@
             {
                 if (_btnBuchstabeS == null)
                 {
-                    _btnBuchstabeS = new RelayCommand(p => nadeltelegraph.BuchstabeS(), p => true);
+                    _btnBuchstabeS = new RelayCommand(p => ViAnzeige.BuchstabeS(), p => true);
                 }
                 return _btnBuchstabeS;
             }
@@ -265,7 +265,7 @@
             {
                 if (_btnBuchstabeT == null)
                 {
-                    _btnBuchstabeT = new RelayCommand(p => nadeltelegraph.BuchstabeT(), p => true);
+                    _btnBuchstabeT = new RelayCommand(p => ViAnzeige.BuchstabeT(), p => true);
                 }
                 return _btnBuchstabeT;
             }
@@ -280,7 +280,7 @@
             {
                 if (_btnBuchstabeV == null)
                 {
-                    _btnBuchstabeV = new RelayCommand(p => nadeltelegraph.BuchstabeV(), p => true);
+                    _btnBuchstabeV = new RelayCommand(p => ViAnzeige.BuchstabeV(), p => true);
                 }
                 return _btnBuchstabeV;
             }
@@ -295,7 +295,7 @@
             {
                 if (_btnBuchstabeW == null)
                 {
-                    _btnBuchstabeW = new RelayCommand(p => nadeltelegraph.BuchstabeW(), p => true);
+                    _btnBuchstabeW = new RelayCommand(p => ViAnzeige.BuchstabeW(), p => true);
                 }
                 return _btnBuchstabeW;
             }
@@ -310,7 +310,7 @@
             {
                 if (_btnBuchstabeY == null)
                 {
-                    _btnBuchstabeY = new RelayCommand(p => nadeltelegraph.BuchstabeY(), p => true);
+                    _btnBuchstabeY = new RelayCommand(p => ViAnzeige.BuchstabeY(), p => true);
                 }
                 return _btnBuchstabeY;
             }

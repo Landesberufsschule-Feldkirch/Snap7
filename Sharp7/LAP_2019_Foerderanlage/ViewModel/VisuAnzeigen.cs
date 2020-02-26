@@ -12,12 +12,34 @@
         private readonly MainWindow mainWindow;
         public readonly Model.Foerderanlage foerderanlage;
 
+
         public VisuAnzeigen(MainWindow mw, Model.Foerderanlage fa)
         {
             mainWindow = mw;
             foerderanlage = fa;
 
+            SpsStatus = "-";
+            SpsColor = "LightBlue";
+
+            SelectedIndex = 0; // Automatikbetrieb
+
             Margin1 = new System.Windows.Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
+
+
+            ClickModeBtnS0 = "Press";
+            ClickModeBtnS1 = "Press";
+            ClickModeBtnS9 = "Press";
+            ClickModeBtnS10 = "Press";
+            ClickModeBtnS11 = "Press";
+            ClickModeBtnS12 = "Press";
+
+            ClickModeBtnM1_RL = "Press";
+            ClickModeBtnM1_LL = "Press";
+            ClickModeBtnM2 = "Press";
+            ClickModeBtnY1 = "Press";
+            ClickModeBtnM1_LL_Y1 = "Press";
+
+            VisibilityBtnSetManual = "Visible";
 
             VisibilityM1Ein = "Hidden";
             VisibilityM2Ein = "Hidden";
@@ -31,8 +53,18 @@
             VisibilityS8Ein = "Visible";
             VisibilityS8Aus = "Hidden";
 
+            VisibilityMaterialOben = "Hidden";
+            VisibilityMaterialUnten = "Hidden";
+
             VisibilityPfeilLinkslauf = "Hidden";
             VisibilityPfeilRechtslauf = "Hidden";
+
+
+            ColorF4 = "LawnGreen";
+            ColorP1 = "LawnGreen";
+            ColorP2 = "LawnGreen";
+            ColorS2 = "LawnGreen";
+
 
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
@@ -48,11 +80,15 @@
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
 
+
+
         private void VisuAnzeigenTask()
         {
             while (true)
             {
                 FuellstandSilo(foerderanlage.Silo.GetFuellstand());
+
+                SichtbarkeitBtnSetManual(System.Diagnostics.Debugger.IsAttached);
 
                 SichtbarkeitPfeilLinkslauf(foerderanlage.Q4_LL);
                 SichtbarkeitPfeilRechtslauf(foerderanlage.Q3_RL);
@@ -65,14 +101,54 @@
                 SichtbarkeitS7(foerderanlage.Wagen.IstWagenRechts());
                 SichtbarkeitS8(foerderanlage.Wagen.IstWagenVoll());
 
+                SichtbarkeitMaterialOben(foerderanlage.Silo.GetFuellstand() > 0.01);
+                SichtbarkeitMaterialUnten((foerderanlage.Silo.GetFuellstand() > 0.01) && (foerderanlage.Y1));
+
+                FarbeF4(foerderanlage.F4);
+                FarbeP1(foerderanlage.P1);
+                FarbeP2(foerderanlage.P2);
+                FarbeS2(foerderanlage.S2);
+
+
                 PositionWagenBeschriftung(foerderanlage.Wagen.GetPosition());
                 PositionWagen(foerderanlage.Wagen.GetPosition());
                 PositionWagenInhalt(foerderanlage.Wagen.GetPosition(), foerderanlage.Wagen.GetFuellstand());
                 WagenFuellstand = foerderanlage.Wagen.GetFuellstand();
 
+                if (mainWindow.AnimationGestartet)
+                {
+                    if (foerderanlage.XFU) mainWindow.Controller.Play(); else mainWindow.Controller.Pause();
+                }
+
+                if (mainWindow.S7_1200 != null)
+                {
+                    if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
+                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                }
+
+
                 Thread.Sleep(10);
             }
         }
+
+        internal void SetS0() { foerderanlage.S12 = ClickModeButtonS0(); }
+        internal void SetS1() { foerderanlage.S12 = ClickModeButtonS1(); }
+        internal void SetS9() { foerderanlage.S12 = ClickModeButtonS9(); }
+        internal void SetS10() { foerderanlage.S12 = ClickModeButtonS10(); }
+        internal void SetS11() { foerderanlage.S12 = ClickModeButtonS11(); }
+        internal void SetS12() { foerderanlage.S12 = ClickModeButtonS12(); }
+
+
+        internal void SetManualM1_RL() { foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL(); }
+        internal void SetManualM1_LL() { foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL(); }
+        internal void SetManualM1_LL_Y1()
+        {
+            bool M1_LL_Y1 = ClickModeButtonM1_LL_Y1();
+            foerderanlage.Manual_M1_LL = M1_LL_Y1;
+            foerderanlage.Manual_Y1 = M1_LL_Y1;
+        }
+        internal void SetManualM2() { foerderanlage.Manual_M2 = ClickModeButtonM2(); }
+        internal void SetManualY1() { foerderanlage.Manual_Y1 = ClickModeButtonY1(); }
 
 
 
@@ -101,6 +177,333 @@
         #endregion
 
 
+        #region SelectedIndex
+
+        private int _selectedIndex;
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                _selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+
+                if (value == 0)
+                {
+                    foerderanlage.S5 = true;    // Automatikbetrieb
+                    foerderanlage.S6 = false;    // Handbetrieb
+                }
+                else
+                {
+                    foerderanlage.S5 = false;    // Automatikbetrieb
+                    foerderanlage.S6 = true;    // Handbetrieb
+                }
+            }
+        }
+
+        #endregion
+
+
+
+        #region ClickModeBtnS0
+        public bool ClickModeButtonS0()
+        {
+            if (ClickModeBtnS0 == "Press")
+            {
+                ClickModeBtnS0 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS0 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS0;
+        public string ClickModeBtnS0
+        {
+            get { return _clickModeBtnS0; }
+            set
+            {
+                _clickModeBtnS0 = value;
+                OnPropertyChanged(nameof(ClickModeBtnS0));
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS1
+        public bool ClickModeButtonS1()
+        {
+            if (ClickModeBtnS1 == "Press")
+            {
+                ClickModeBtnS1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS1;
+        public string ClickModeBtnS1
+        {
+            get { return _clickModeBtnS1; }
+            set
+            {
+                _clickModeBtnS1 = value;
+                OnPropertyChanged("ClickModeBtnS1");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS9
+        public bool ClickModeButtonS9()
+        {
+            if (ClickModeBtnS9 == "Press")
+            {
+                ClickModeBtnS9 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS9 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS9;
+        public string ClickModeBtnS9
+        {
+            get { return _clickModeBtnS9; }
+            set
+            {
+                _clickModeBtnS9 = value;
+                OnPropertyChanged("ClickModeBtnS9");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS10
+        public bool ClickModeButtonS10()
+        {
+            if (ClickModeBtnS10 == "Press")
+            {
+                ClickModeBtnS10 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS10 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS10;
+        public string ClickModeBtnS10
+        {
+            get { return _clickModeBtnS10; }
+            set
+            {
+                _clickModeBtnS10 = value;
+                OnPropertyChanged("ClickModeBtnS10");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS11
+        public bool ClickModeButtonS11()
+        {
+            if (ClickModeBtnS11 == "Press")
+            {
+                ClickModeBtnS11 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS11 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS11;
+        public string ClickModeBtnS11
+        {
+            get { return _clickModeBtnS11; }
+            set
+            {
+                _clickModeBtnS11 = value;
+                OnPropertyChanged("ClickModeBtnS11");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnS12
+        public bool ClickModeButtonS12()
+        {
+            if (ClickModeBtnS12 == "Press")
+            {
+                ClickModeBtnS12 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS12 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS12;
+        public string ClickModeBtnS12
+        {
+            get { return _clickModeBtnS12; }
+            set
+            {
+                _clickModeBtnS12 = value;
+                OnPropertyChanged("ClickModeBtnS12");
+            }
+        }
+        #endregion
+
+
+        #region ClickModeBtnM1_RL
+        public bool ClickModeButtonM1_RL()
+        {
+            if (ClickModeBtnM1_RL == "Press")
+            {
+                ClickModeBtnM1_RL = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnM1_RL = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnM1_RL;
+        public string ClickModeBtnM1_RL
+        {
+            get { return _clickModeBtnM1_RL; }
+            set
+            {
+                _clickModeBtnM1_RL = value;
+                OnPropertyChanged("ClickModeBtnM1_RL");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnM1_LL
+        public bool ClickModeButtonM1_LL()
+        {
+            if (ClickModeBtnM1_LL == "Press")
+            {
+                ClickModeBtnM1_LL = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnM1_LL = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnM1_LL;
+        public string ClickModeBtnM1_LL
+        {
+            get { return _clickModeBtnM1_LL; }
+            set
+            {
+                _clickModeBtnM1_LL = value;
+                OnPropertyChanged("ClickModeBtnM1_LL");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnM2
+        public bool ClickModeButtonM2()
+        {
+            if (ClickModeBtnM2 == "Press")
+            {
+                ClickModeBtnM2 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnM2 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnM2;
+        public string ClickModeBtnM2
+        {
+            get { return _clickModeBtnM2; }
+            set
+            {
+                _clickModeBtnM2 = value;
+                OnPropertyChanged("ClickModeBtnM2");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnY1
+        public bool ClickModeButtonY1()
+        {
+            if (ClickModeBtnY1 == "Press")
+            {
+                ClickModeBtnY1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnY1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnY1;
+        public string ClickModeBtnY1
+        {
+            get { return _clickModeBtnY1; }
+            set
+            {
+                _clickModeBtnY1 = value;
+                OnPropertyChanged("ClickModeBtnY1");
+            }
+        }
+        #endregion
+
+        #region ClickModeBtnM1_LL_Y1
+        public bool ClickModeButtonM1_LL_Y1()
+        {
+            if (ClickModeBtnM1_LL_Y1 == "Press")
+            {
+                ClickModeBtnM1_LL_Y1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnM1_LL_Y1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnM1_LL_Y1;
+        public string ClickModeBtnM1_LL_Y1
+        {
+            get { return _clickModeBtnM1_LL_Y1; }
+            set
+            {
+                _clickModeBtnM1_LL_Y1 = value;
+                OnPropertyChanged("ClickModeBtnM1_LL_Y1");
+            }
+        }
+        #endregion
+
+
         #region FuellstandSilo
         public void FuellstandSilo(double pegel)
         {
@@ -119,6 +522,33 @@
         }
         #endregion
 
+
+
+
+        #region Sichtbarkeit BtnSetManual
+        public void SichtbarkeitBtnSetManual(bool val)
+        {
+            if (val)
+            {
+                VisibilityBtnSetManual = "Visible";
+            }
+            else
+            {
+                VisibilityBtnSetManual = "Hidden";
+            }
+        }
+
+        private string _visibilityBtnSetManual;
+        public string VisibilityBtnSetManual
+        {
+            get { return _visibilityBtnSetManual; }
+            set
+            {
+                _visibilityBtnSetManual = value;
+                OnPropertyChanged("VisibilityBtnSetManual");
+            }
+        }
+        #endregion
 
         #region Sichtbarkeit PfeilLinkslauf
         public void SichtbarkeitPfeilLinkslauf(bool val)
@@ -170,7 +600,6 @@
         }
         #endregion
 
-
         #region Sichtbarkeit M1
         public void SichtbarkeitM1(bool val)
         {
@@ -220,8 +649,6 @@
             }
         }
         #endregion
-
-
 
         #region Sichtbarkeit Y1
         public void SichtbarkeitY1(bool val)
@@ -339,6 +766,137 @@
             }
         }
         #endregion
+
+        #region Sichtbarkeit MaterialOben
+        public void SichtbarkeitMaterialOben(bool val)
+        {
+            if (val)
+            {
+                VisibilityMaterialOben = "Visible";
+            }
+            else
+            {
+                VisibilityMaterialOben = "Hidden";
+            }
+        }
+
+
+
+        private string _visibilityMaterialOben;
+
+        public string VisibilityMaterialOben
+        {
+            get { return _visibilityMaterialOben; }
+            set
+            {
+                _visibilityMaterialOben = value;
+                OnPropertyChanged("VisibilityMaterialOben");
+            }
+        }
+        #endregion
+
+        #region Sichtbarkeit MaterialUnten
+        public void SichtbarkeitMaterialUnten(bool val)
+        {
+            if (val)
+            {
+                VisibilityMaterialUnten = "Visible";
+            }
+            else
+            {
+                VisibilityMaterialUnten = "Hidden";
+            }
+        }
+
+
+
+        private string _visibilityMaterialUnten;
+
+        public string VisibilityMaterialUnten
+        {
+            get { return _visibilityMaterialUnten; }
+            set
+            {
+                _visibilityMaterialUnten = value;
+                OnPropertyChanged("VisibilityMaterialUnten");
+            }
+        }
+        #endregion
+
+
+
+        #region Color F4
+        public void FarbeF4(bool val)
+        {
+            if (val) ColorF4 = "LawnGreen"; else ColorF4 = "Red";
+        }
+
+        private string _colorF4;
+        public string ColorF4
+        {
+            get { return _colorF4; }
+            set
+            {
+                _colorF4 = value;
+                OnPropertyChanged("ColorF4");
+            }
+        }
+        #endregion
+
+        #region Color P1
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
+        }
+
+        private string _colorP1;
+        public string ColorP1
+        {
+            get { return _colorP1; }
+            set
+            {
+                _colorP1 = value;
+                OnPropertyChanged("ColorP1");
+            }
+        }
+        #endregion
+
+        #region Color P2
+        public void FarbeP2(bool val)
+        {
+            if (val) ColorP2 = "Red"; else ColorP2 = "White";
+        }
+
+        private string _colorP2;
+        public string ColorP2
+        {
+            get { return _colorP2; }
+            set
+            {
+                _colorP2 = value;
+                OnPropertyChanged("ColorP2");
+            }
+        }
+        #endregion
+
+        #region Color S2
+        public void FarbeS2(bool val)
+        {
+            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
+        }
+
+        private string _colorS2;
+        public string ColorS2
+        {
+            get { return _colorS2; }
+            set
+            {
+                _colorS2 = value;
+                OnPropertyChanged("ColorS2");
+            }
+        }
+        #endregion
+
 
 
 

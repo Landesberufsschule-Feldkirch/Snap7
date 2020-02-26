@@ -74,8 +74,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatenRangieren.cs" />
-    <Compile Include="Display.cs" />
-    <Compile Include="LogikFunktionen.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

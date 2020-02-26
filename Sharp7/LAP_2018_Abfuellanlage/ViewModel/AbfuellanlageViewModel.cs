@@ -11,7 +11,7 @@
 
         public AbfuellanlageViewModel(MainWindow mainWindow)
         {
-            alleFlaschen = new Model.AlleFlaschen(mainWindow);
+            alleFlaschen = new Model.AlleFlaschen();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleFlaschen);
         }
 
@@ -56,7 +56,7 @@
             {
                 if (_btnTasterS1 == null)
                 {
-                    _btnTasterS1 = new RelayCommand(p => alleFlaschen.TasterS1(), p => true);
+                    _btnTasterS1 = new RelayCommand(p => ViAnzeige.TasterS1(), p => true);
                 }
                 return _btnTasterS1;
             }
@@ -71,7 +71,7 @@
             {
                 if (_btnTasterS2 == null)
                 {
-                    _btnTasterS2 = new RelayCommand(p => alleFlaschen.TasterS2(), p => true);
+                    _btnTasterS2 = new RelayCommand(p => ViAnzeige.TasterS2(), p => true);
                 }
                 return _btnTasterS2;
             }
@@ -86,7 +86,7 @@
             {
                 if (_btnTasterS3 == null)
                 {
-                    _btnTasterS3 = new RelayCommand(p => alleFlaschen.TasterS3(), p => true);
+                    _btnTasterS3 = new RelayCommand(p => ViAnzeige.TasterS3(), p => true);
                 }
                 return _btnTasterS3;
             }
@@ -101,7 +101,7 @@
             {
                 if (_btnTasterS4 == null)
                 {
-                    _btnTasterS4 = new RelayCommand(p => alleFlaschen.TasterS4(), p => true);
+                    _btnTasterS4 = new RelayCommand(p => ViAnzeige.TasterS4(), p => true);
                 }
                 return _btnTasterS4;
             }
@@ -116,7 +116,7 @@
             {
                 if (_setManualK1 == null)
                 {
-                    _setManualK1 = new RelayCommand(p => alleFlaschen.SetManualK1(), p => true);
+                    _setManualK1 = new RelayCommand(p => ViAnzeige.SetManualK1(), p => true);
                 }
                 return _setManualK1;
             }
@@ -131,7 +131,7 @@
             {
                 if (_setManualK2 == null)
                 {
-                    _setManualK2 = new RelayCommand(p => alleFlaschen.SetManualK2(), p => true);
+                    _setManualK2 = new RelayCommand(p => ViAnzeige.SetManualK2(), p => true);
                 }
                 return _setManualK2;
             }
@@ -146,7 +146,7 @@
             {
                 if (_setManualM1 == null)
                 {
-                    _setManualM1 = new RelayCommand(p => alleFlaschen.SetManualM1(), p => true);
+                    _setManualM1 = new RelayCommand(p => ViAnzeige.SetManualM1(), p => true);
                 }
                 return _setManualM1;
             }

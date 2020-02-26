@@ -1,12 +1,9 @@
 ﻿using System.Threading;
-using System.Windows.Controls;
 
 namespace LAP_2018_Niveauregelung.Model
 {
     public class NiveauRegelung
     {
-        private readonly MainWindow mainWindow;
-
         public bool B1 { get; set; }
         public bool B2 { get; set; }
         public bool B3 { get; set; }
@@ -24,10 +21,8 @@ namespace LAP_2018_Niveauregelung.Model
         public double Pegel { get; set; }
 
 
-        public NiveauRegelung(MainWindow mainWindow)
+        public NiveauRegelung()
         {
-            this.mainWindow = mainWindow;
-
             S2 = true;
             F1 = true;
             F2 = true;
@@ -59,27 +54,11 @@ namespace LAP_2018_Niveauregelung.Model
         }
 
 
-        internal void TasterS1() { S1 = ButtonFunktionPressReleaseAendern(mainWindow.btnS1); }
-        internal void TasterS2() { S2 = !ButtonFunktionPressReleaseAendern(mainWindow.btnS2); }
-        internal void TasterS3() { S3 = ButtonFunktionPressReleaseAendern(mainWindow.btnS3); }
+
         internal void ThermorelaisF1() { F1 = !F1; }
         internal void ThermorelaisF2() { F2 = !F2; }
-        internal void SetManualM1() { if (mainWindow.DebugWindowAktiv) { M1 = !M1; } }
-        internal void SetManualM2() { if (mainWindow.DebugWindowAktiv) { M2 = !M2; } }
+        internal void SetManualM1() { M1 = !M1; }
+        internal void SetManualM2() { M2 = !M2; }
         internal void VentilY1() { Y1 = !Y1; }
-
-        private bool ButtonFunktionPressReleaseAendern(Button knopf)
-        {
-            if (knopf.ClickMode == System.Windows.Controls.ClickMode.Press)
-            {
-                knopf.ClickMode = System.Windows.Controls.ClickMode.Release;
-                return true;
-            }
-            else
-            {
-                knopf.ClickMode = System.Windows.Controls.ClickMode.Press;
-                return false;
-            }
-        }
     }
 }

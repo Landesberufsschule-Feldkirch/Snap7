@@ -6,12 +6,12 @@
     public class NiveauRegelungViewModel
     {
 
-        public readonly Model.NiveauRegelung niveauRegelung; 
+        public readonly Model.NiveauRegelung niveauRegelung;
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public NiveauRegelungViewModel(MainWindow mainWindow)
         {
-            niveauRegelung = new Model.NiveauRegelung(mainWindow);
+            niveauRegelung = new Model.NiveauRegelung();
             ViAnzeige = new VisuAnzeigen(mainWindow, niveauRegelung);
         }
 
@@ -27,7 +27,7 @@
             {
                 if (_btnTasterS1 == null)
                 {
-                    _btnTasterS1 = new RelayCommand(p => niveauRegelung.TasterS1(), p => true);
+                    _btnTasterS1 = new RelayCommand(p => ViAnzeige.TasterS1(), p => true);
                 }
                 return _btnTasterS1;
             }
@@ -42,7 +42,7 @@
             {
                 if (_btnTasterS2 == null)
                 {
-                    _btnTasterS2 = new RelayCommand(p => niveauRegelung.TasterS2(), p => true);
+                    _btnTasterS2 = new RelayCommand(p => ViAnzeige.TasterS2(), p => true);
                 }
                 return _btnTasterS2;
             }
@@ -57,13 +57,13 @@
             {
                 if (_btnTasterS3 == null)
                 {
-                    _btnTasterS3 = new RelayCommand(p => niveauRegelung.TasterS3(), p => true);
+                    _btnTasterS3 = new RelayCommand(p => ViAnzeige.TasterS3(), p => true);
                 }
                 return _btnTasterS3;
             }
         }
         #endregion
-        
+
         #region BtnThermorelaisF1
         private ICommand _btnThermorelaisF1;
         public ICommand BtnThermorelaisF1
@@ -108,7 +108,7 @@
             }
         }
         #endregion
-        
+
         #region BtnSetManualM1
         private ICommand _btnSetManualM1;
         public ICommand BtnSetManualM1

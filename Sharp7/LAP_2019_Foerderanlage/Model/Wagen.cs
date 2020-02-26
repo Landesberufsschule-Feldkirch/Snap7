@@ -18,10 +18,10 @@
         private readonly Punkt AktuellePosition;
         private double WagenFuellstand;
 
-        private const double WagenGeschwindigkeit = 3;
+        private const double WagenGeschwindigkeit = 0.3;
 
-        private const double WagenFuellstandLeeren = 5;
-        private const double WagenFuellstandFuellen = 1;
+        private const double WagenFuellstandLeeren = 0.5;
+        private const double WagenFuellstandFuellen = 0.1;
         private const double WagenFuellstandVoll = 88;
 
         readonly Punkt LinkerAnschlag = new Punkt(0, 0);
@@ -68,6 +68,12 @@
             if (AktuellePosition.X == RechterAnschlag.X) EndlageRechts = true; else EndlageRechts = false;
             if (WagenFuellstand == WagenFuellstandVoll) WagenVoll = true; else WagenVoll = false;
             if ((AktuellePosition.X == LinkerAnschlag.X) && (WagenFuellstand > 0)) WagenFuellstand -= WagenFuellstandLeeren;
+        }
+
+        internal void Fuellen()
+        {
+            WagenFuellstand += WagenFuellstandFuellen;
+            if (WagenFuellstand > WagenFuellstandVoll) WagenFuellstand = WagenFuellstandVoll;
         }
 
         internal void NachRechts() { WagenRichtung = Richtung.nachRechts; }

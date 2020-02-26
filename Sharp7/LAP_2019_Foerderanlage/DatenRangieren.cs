@@ -1,4 +1,5 @@
 ﻿using Sharp7;
+using Utilities;
 
 namespace LAP_2019_Foerderanlage
 {
@@ -26,37 +27,41 @@ namespace LAP_2019_Foerderanlage
             S5,
             S6,
             S7,     // Wagen Position rechts
-            S8      // Wagen voll
+            S8,     // Wagen voll
+            S9,     // Handbetrieb Förderband RL
+            S10,    // Handbetrieb Förderband LL
+            S11,    // Handbetrieb Schneckenförderer
+            S12     // Handbetrieb Materialschieber
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.S0, mainWindow.S0);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, mainWindow.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, mainWindow.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F4, mainWindow.F4);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S4, mainWindow.S4);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S5, mainWindow.S5);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S6, mainWindow.S6);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S7, mainWindow.S7);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S8, mainWindow.S8);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S0, foerderanlageViewModel.foerderanlage.S0);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, foerderanlageViewModel.foerderanlage.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, foerderanlageViewModel.foerderanlage.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F4, foerderanlageViewModel.foerderanlage.F4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S5, foerderanlageViewModel.foerderanlage.S5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S6, foerderanlageViewModel.foerderanlage.S6);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S7, foerderanlageViewModel.foerderanlage.S7);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S8, foerderanlageViewModel.foerderanlage.S8);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S9, foerderanlageViewModel.foerderanlage.S8);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S10, foerderanlageViewModel.foerderanlage.S10);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S11, foerderanlageViewModel.foerderanlage.S11);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S12, foerderanlageViewModel.foerderanlage.S12);
 
-            S7.SetSint_16_At(anInput, 0, mainWindow.MaterialsiloPegel);
-            */
+            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(foerderanlageViewModel.foerderanlage.Silo.GetFuellstand(), 1));
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            /*
-            mainWindow.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            mainWindow.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            mainWindow.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
-            mainWindow.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
-            mainWindow.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
-
-            mainWindow.FuSpeed = S7.GetSint_16_At(anOutput, 0);
-            */
+            if (!mainWindow.DebugWindowAktiv)
+            {
+                foerderanlageViewModel.foerderanlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+                foerderanlageViewModel.foerderanlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+                foerderanlageViewModel.foerderanlage.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
+                foerderanlageViewModel.foerderanlage.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
+                foerderanlageViewModel.foerderanlage.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
+            }
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.FoerderanlageViewModel vm)
