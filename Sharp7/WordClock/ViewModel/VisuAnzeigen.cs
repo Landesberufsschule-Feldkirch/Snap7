@@ -54,7 +54,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -65,7 +65,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -81,7 +81,7 @@
             set
             {
                 _geschwindigkeitSlider = value;
-                OnPropertyChanged("GeschwindigkeitSlider");
+                OnPropertyChanged(nameof(GeschwindigkeitSlider));
                 zeiten.SetGeschwindigkeit(GeschwindigkeitSlider);
             }
         }
@@ -96,7 +96,7 @@
             set
             {
                 _winkelStunden = value;
-                OnPropertyChanged("WinkelStunden");
+                OnPropertyChanged(nameof(WinkelStunden));
             }
         }
         #endregion
@@ -109,7 +109,7 @@
             set
             {
                 _winkelMinuten = value;
-                OnPropertyChanged("WinkelMinuten");
+                OnPropertyChanged(nameof(WinkelMinuten));
             }
         }
         #endregion
@@ -122,7 +122,7 @@
             set
             {
                 _winkelSekunden = value;
-                OnPropertyChanged("WinkelSekunden");
+                OnPropertyChanged(nameof(WinkelSekunden));
             }
         }
         #endregion

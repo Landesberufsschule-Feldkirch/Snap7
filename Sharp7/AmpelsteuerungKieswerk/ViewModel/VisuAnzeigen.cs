@@ -152,7 +152,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -163,7 +163,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -237,7 +237,7 @@
             set
             {
                 _colorB4 = value;
-                OnPropertyChanged("ColorB4");
+                OnPropertyChanged(nameof(ColorB4));
             }
         }
         #endregion
@@ -257,7 +257,7 @@
             set
             {
                 _colorLinksRot = value;
-                OnPropertyChanged("ColorLinksRot");
+                OnPropertyChanged(nameof(ColorLinksRot));
             }
         }
         #endregion
@@ -275,7 +275,7 @@
             set
             {
                 _colorLinksGelb = value;
-                OnPropertyChanged("ColorLinksGelb");
+                OnPropertyChanged(nameof(ColorLinksGelb));
             }
         }
         #endregion
@@ -293,7 +293,7 @@
             set
             {
                 _colorLinksGruen = value;
-                OnPropertyChanged("ColorLinksGruen");
+                OnPropertyChanged(nameof(ColorLinksGruen));
             }
         }
         #endregion
@@ -311,7 +311,7 @@
             set
             {
                 _colorRechtsRot = value;
-                OnPropertyChanged("ColorRechtsRot");
+                OnPropertyChanged(nameof(ColorRechtsRot));
             }
         }
         #endregion
@@ -329,7 +329,7 @@
             set
             {
                 _colorRechtsGelb = value;
-                OnPropertyChanged("ColorRechtsGelb");
+                OnPropertyChanged(nameof(ColorRechtsGelb));
             }
         }
         #endregion
@@ -347,7 +347,7 @@
             set
             {
                 _colorRechtsGruen = value;
-                OnPropertyChanged("ColorRechtsGruen");
+                OnPropertyChanged(nameof(ColorRechtsGruen));
             }
         }
         #endregion
@@ -367,7 +367,7 @@
             set
             {
                 _directionLkw1 = value;
-                OnPropertyChanged("DirectionLkw1");
+                OnPropertyChanged(nameof(DirectionLkw1));
             }
         }
         #endregion
@@ -385,7 +385,7 @@
             set
             {
                 _directionLkw2 = value;
-                OnPropertyChanged("DirectionLkw2");
+                OnPropertyChanged(nameof(DirectionLkw2));
             }
         }
         #endregion
@@ -403,7 +403,7 @@
             set
             {
                 _directionLkw3 = value;
-                OnPropertyChanged("DirectionLkw3");
+                OnPropertyChanged(nameof(DirectionLkw3));
             }
         }
         #endregion
@@ -421,7 +421,7 @@
             set
             {
                 _directionLkw4 = value;
-                OnPropertyChanged("DirectionLkw4");
+                OnPropertyChanged(nameof(DirectionLkw4));
             }
         }
         #endregion
@@ -439,7 +439,7 @@
             set
             {
                 _directionLkw5 = value;
-                OnPropertyChanged("DirectionLkw5");
+                OnPropertyChanged(nameof(DirectionLkw5));
             }
         }
         #endregion
@@ -460,7 +460,7 @@
             set
             {
                 _posLkw1Left = value;
-                OnPropertyChanged("PosLkw1Left");
+                OnPropertyChanged(nameof(PosLkw1Left));
             }
         }
         private double _posLkw1Top;
@@ -470,7 +470,7 @@
             set
             {
                 _posLkw1Top = value;
-                OnPropertyChanged("PosLkw1Top");
+                OnPropertyChanged(nameof(PosLkw1Top));
             }
         }
         #endregion
@@ -489,7 +489,7 @@
             set
             {
                 _posLkw2Left = value;
-                OnPropertyChanged("PosLkw2Left");
+                OnPropertyChanged(nameof(PosLkw2Left));
             }
         }
         private double _posLkw2Top;
@@ -499,7 +499,7 @@
             set
             {
                 _posLkw2Top = value;
-                OnPropertyChanged("PosLkw2Top");
+                OnPropertyChanged(nameof(PosLkw2Top));
             }
         }
         #endregion
@@ -518,7 +518,7 @@
             set
             {
                 _posLkw3Left = value;
-                OnPropertyChanged("PosLkw3Left");
+                OnPropertyChanged(nameof(PosLkw3Left));
             }
         }
         private double _posLkw3Top;
@@ -528,7 +528,7 @@
             set
             {
                 _posLkw3Top = value;
-                OnPropertyChanged("PosLkw3Top");
+                OnPropertyChanged(nameof(PosLkw3Top));
             }
         }
         #endregion
@@ -547,7 +547,7 @@
             set
             {
                 _posLkw4Left = value;
-                OnPropertyChanged("PosLkw4Left");
+                OnPropertyChanged(nameof(PosLkw4Left));
             }
         }
         private double _posLkw4Top;
@@ -557,7 +557,7 @@
             set
             {
                 _posLkw4Top = value;
-                OnPropertyChanged("PosLkw4Top");
+                OnPropertyChanged(nameof(PosLkw4Top));
             }
         }
         #endregion
@@ -576,7 +576,7 @@
             set
             {
                 _posLkw5Left = value;
-                OnPropertyChanged("PosLkw5Left");
+                OnPropertyChanged(nameof(PosLkw5Left)); 
             }
         }
         private double _posLkw5Top;
@@ -586,7 +586,7 @@
             set
             {
                 _posLkw5Top = value;
-                OnPropertyChanged("PosLkw5Top");
+                OnPropertyChanged(nameof(PosLkw5Top));
             }
         }
         #endregion

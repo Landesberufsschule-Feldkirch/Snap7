@@ -99,7 +99,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -110,7 +110,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -129,7 +129,7 @@
             set
             {
                 _colorB1 = value;
-                OnPropertyChanged("ColorB1");
+                OnPropertyChanged(nameof(ColorB1));
             }
         }
         #endregion
@@ -147,7 +147,7 @@
             set
             {
                 _colorB2 = value;
-                OnPropertyChanged("ColorB2");
+                OnPropertyChanged(nameof(ColorB2));
             }
         }
         #endregion
@@ -161,7 +161,7 @@
             set
             {
                 _enableAuto1 = value;
-                OnPropertyChanged("EnableAuto1");
+                OnPropertyChanged(nameof(EnableAuto1));
             }
         }
         #endregion
@@ -174,7 +174,7 @@
             set
             {
                 _enableAuto2 = value;
-                OnPropertyChanged("EnableAuto2");
+                OnPropertyChanged(nameof(EnableAuto2));
             }
         }
         #endregion
@@ -187,7 +187,7 @@
             set
             {
                 _enableAuto3 = value;
-                OnPropertyChanged("EnableAuto3");
+                OnPropertyChanged(nameof(EnableAuto3));
             }
         }
         #endregion
@@ -196,11 +196,11 @@
         private bool _enableAuto4;
         public bool EnableAuto4
         {
-            get { return _enableAuto1; }
+            get { return _enableAuto4; }
             set
             {
                 _enableAuto4 = value;
-                OnPropertyChanged("EnableAuto4");
+                OnPropertyChanged(nameof(EnableAuto4));
             }
         }
         #endregion
@@ -213,7 +213,7 @@
             set
             {
                 _enablePerson1 = value;
-                OnPropertyChanged("EnablePerson1");
+                OnPropertyChanged(nameof(EnablePerson1));
             }
         }
         #endregion
@@ -226,7 +226,7 @@
             set
             {
                 _enablePerson2 = value;
-                OnPropertyChanged("EnablePerson2");
+                OnPropertyChanged(nameof(EnablePerson2));
             }
         }
         #endregion
@@ -239,7 +239,7 @@
             set
             {
                 _enablePerson3 = value;
-                OnPropertyChanged("EnablePerson3");
+                OnPropertyChanged(nameof(EnablePerson3));
             }
         }
         #endregion
@@ -252,7 +252,7 @@
             set
             {
                 _enablePerson4 = value;
-                OnPropertyChanged("EnablePerson4");
+                OnPropertyChanged(nameof(EnablePerson4));
             }
         }
         #endregion
@@ -272,7 +272,7 @@
             set
             {
                 _posAuto1Left = value;
-                OnPropertyChanged("PosAuto1Left");
+                OnPropertyChanged(nameof(PosAuto1Left));
             }
         }
         private double _posAuto1Top;
@@ -282,7 +282,7 @@
             set
             {
                 _posAuto1Top = value;
-                OnPropertyChanged("PosAuto1Top");
+                OnPropertyChanged(nameof(PosAuto1Top));
             }
         }
         #endregion
@@ -301,7 +301,7 @@
             set
             {
                 _posAuto2Left = value;
-                OnPropertyChanged("PosAuto2Left");
+                OnPropertyChanged(nameof(PosAuto2Left));
             }
         }
         private double _posAuto2Top;
@@ -311,7 +311,7 @@
             set
             {
                 _posAuto2Top = value;
-                OnPropertyChanged("PosAuto2Top");
+                OnPropertyChanged(nameof(PosAuto2Top));
             }
         }
         #endregion
@@ -330,7 +330,7 @@
             set
             {
                 _posAuto3Left = value;
-                OnPropertyChanged("PosAuto3Left");
+                OnPropertyChanged(nameof(PosAuto3Left));
             }
         }
         private double _posAuto3Top;
@@ -340,7 +340,7 @@
             set
             {
                 _posAuto3Top = value;
-                OnPropertyChanged("PosAuto3Top");
+                OnPropertyChanged(nameof(PosAuto3Top));
             }
         }
         #endregion
@@ -359,7 +359,7 @@
             set
             {
                 _posAuto4Left = value;
-                OnPropertyChanged("PosAuto4Left");
+                OnPropertyChanged(nameof(PosAuto4Left));
             }
         }
         private double _posAuto4Top;
@@ -369,7 +369,7 @@
             set
             {
                 _posAuto4Top = value;
-                OnPropertyChanged("PosAuto4Top");
+                OnPropertyChanged(nameof(PosAuto4Top));
             }
         }
         #endregion
@@ -390,7 +390,7 @@
             set
             {
                 _posPerson1Left = value;
-                OnPropertyChanged("PosPerson1Left");
+                OnPropertyChanged(nameof(PosPerson1Left));
             }
         }
         private double _posPerson1Top;
@@ -400,7 +400,7 @@
             set
             {
                 _posPerson1Top = value;
-                OnPropertyChanged("PosPerson1Top");
+                OnPropertyChanged(nameof(PosPerson1Top));
             }
         }
         #endregion
@@ -419,7 +419,7 @@
             set
             {
                 _posPerson2Left = value;
-                OnPropertyChanged("PosPerson2Left");
+                OnPropertyChanged(nameof(PosPerson2Left));
             }
         }
         private double _posPerson2Top;
@@ -429,7 +429,7 @@
             set
             {
                 _posPerson2Top = value;
-                OnPropertyChanged("PosPerson2Top");
+                OnPropertyChanged(nameof(PosPerson2Top));
             }
         }
         #endregion
@@ -448,7 +448,7 @@
             set
             {
                 _posPerson3Left = value;
-                OnPropertyChanged("PosPerson3Left");
+                OnPropertyChanged(nameof(PosPerson3Left));
             }
         }
         private double _posPerson3Top;
@@ -458,7 +458,7 @@
             set
             {
                 _posPerson3Top = value;
-                OnPropertyChanged("PosPerson3Top");
+                OnPropertyChanged(nameof(PosPerson3Top));
             }
         }
         #endregion
@@ -477,7 +477,7 @@
             set
             {
                 _posPerson4Left = value;
-                OnPropertyChanged("PosPerson4Left");
+                OnPropertyChanged(nameof(PosPerson4Left));
             }
         }
         private double _posPerson4Top;
@@ -487,7 +487,7 @@
             set
             {
                 _posPerson4Top = value;
-                OnPropertyChanged("PosPerson4Top");
+                OnPropertyChanged(nameof(PosPerson4Top));
             }
         }
         #endregion
@@ -506,7 +506,7 @@
             set
             {
                 _anzahlAutos = value;
-                OnPropertyChanged("AnzahlAutos");
+                OnPropertyChanged(nameof(AnzahlAutos));
             }
         }
         #endregion
@@ -524,7 +524,7 @@
             set
             {
                 _anzahlPersonen = value;
-                OnPropertyChanged("AnzahlPersonen");
+                OnPropertyChanged(nameof(AnzahlPersonen));
             }
         }
         #endregion

@@ -168,7 +168,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -179,7 +179,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -207,7 +207,7 @@
             set
             {
                 _visibilityVentilQ1Ein = value;
-                OnPropertyChanged("VisibilityVentilQ1Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ1Ein));
             }
         }
 
@@ -218,7 +218,7 @@
             set
             {
                 _visibilityVentilQ1Aus = value;
-                OnPropertyChanged("VisibilityVentilQ1Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ1Aus));
             }
         }
         #endregion
@@ -245,7 +245,7 @@
             set
             {
                 _visibilityVentilQ2Ein = value;
-                OnPropertyChanged("VisibilityVentilQ2Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ2Ein));
             }
         }
 
@@ -256,7 +256,7 @@
             set
             {
                 _visibilityVentilQ2Aus = value;
-                OnPropertyChanged("VisibilityVentilQ2Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ2Aus));
             }
         }
         #endregion
@@ -284,7 +284,7 @@
             set
             {
                 _visibilityVentilQ3Ein = value;
-                OnPropertyChanged("VisibilityVentilQ3Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ3Ein));
             }
         }
 
@@ -295,7 +295,7 @@
             set
             {
                 _visibilityVentilQ3Aus = value;
-                OnPropertyChanged("VisibilityVentilQ3Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ3Aus));
             }
         }
 
@@ -325,7 +325,7 @@
             set
             {
                 _visibilityVentilQ4Ein = value;
-                OnPropertyChanged("VisibilityVentilQ4Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ4Ein));
             }
         }
 
@@ -336,7 +336,7 @@
             set
             {
                 _visibilityVentilQ4Aus = value;
-                OnPropertyChanged("VisibilityVentilQ4Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ4Aus));
             }
         }
         #endregion
@@ -363,7 +363,7 @@
             set
             {
                 _visibilityVentilQ5Ein = value;
-                OnPropertyChanged("VisibilityVentilQ5Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ5Ein));
             }
         }
 
@@ -374,7 +374,7 @@
             set
             {
                 _visibilityVentilQ5Aus = value;
-                OnPropertyChanged("VisibilityVentilQ5Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ5Aus));
             }
         }
         #endregion
@@ -401,7 +401,7 @@
             set
             {
                 _visibilityVentilQ6Ein = value;
-                OnPropertyChanged("VisibilityVentilQ6Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ6Ein));
             }
         }
 
@@ -412,7 +412,7 @@
             set
             {
                 _visibilityVentilQ6Aus = value;
-                OnPropertyChanged("VisibilityVentilQ6Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ6Aus));
             }
         }
         #endregion
@@ -439,7 +439,7 @@
             set
             {
                 _visibilityVentilQ7Ein = value;
-                OnPropertyChanged("VisibilityVentilQ7Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ7Ein));
             }
         }
 
@@ -450,7 +450,7 @@
             set
             {
                 _visibilityVentilQ7Aus = value;
-                OnPropertyChanged("VisibilityVentilQ7Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ7Aus));
             }
         }
         #endregion
@@ -477,7 +477,7 @@
             set
             {
                 _visibilityVentilQ8Ein = value;
-                OnPropertyChanged("VisibilityVentilQ8Ein");
+                OnPropertyChanged(nameof(VisibilityVentilQ8Ein));
             }
         }
 
@@ -488,7 +488,7 @@
             set
             {
                 _visibilityVentilQ8Aus = value;
-                OnPropertyChanged("VisibilityVentilQ8Aus");
+                OnPropertyChanged(nameof(VisibilityVentilQ8Aus));
             }
         }
         #endregion
@@ -509,7 +509,7 @@
             set
             {
                 _colorZuleitung_1b = value;
-                OnPropertyChanged("ColorZuleitung_1b");
+                OnPropertyChanged(nameof(ColorZuleitung_1b));
             }
         }
         #endregion
@@ -527,7 +527,7 @@
             set
             {
                 _colorZuleitung_2b = value;
-                OnPropertyChanged("ColorZuleitung_2b");
+                OnPropertyChanged(nameof(ColorZuleitung_2b));
             }
         }
         #endregion
@@ -545,7 +545,7 @@
             set
             {
                 _colorZuleitung_3b = value;
-                OnPropertyChanged("ColorZuleitung_3b");
+                OnPropertyChanged(nameof(ColorZuleitung_3b));
             }
         }
         #endregion
@@ -563,7 +563,7 @@
             set
             {
                 _colorZuleitung_4b = value;
-                OnPropertyChanged("ColorZuleitung_4b");
+                OnPropertyChanged(nameof(ColorZuleitung_4b));
             }
         }
         #endregion
@@ -583,7 +583,7 @@
             set
             {
                 _colorAbleitung_1a = value;
-                OnPropertyChanged("ColorAbleitung_1a");
+                OnPropertyChanged(nameof(ColorAbleitung_1a));
             }
         }
         #endregion
@@ -601,7 +601,7 @@
             set
             {
                 _colorAbleitung_2a = value;
-                OnPropertyChanged("ColorAbleitung_2a");
+                OnPropertyChanged(nameof(ColorAbleitung_2a));
             }
         }
         #endregion
@@ -619,7 +619,7 @@
             set
             {
                 _colorAbleitung_3a = value;
-                OnPropertyChanged("ColorAbleitung_3a");
+                OnPropertyChanged(nameof(ColorAbleitung_3a));
             }
         }
         #endregion
@@ -637,7 +637,7 @@
             set
             {
                 _colorAbleitung_4a = value;
-                OnPropertyChanged("ColorAbleitung_4a");
+                OnPropertyChanged(nameof(ColorAbleitung_4a));
             }
         }
         #endregion
@@ -658,7 +658,7 @@
             set
             {
                 _colorAbleitung_1b = value;
-                OnPropertyChanged("ColorAbleitung_1b");
+                OnPropertyChanged(nameof(ColorAbleitung_1b));
             }
         }
         #endregion
@@ -676,7 +676,7 @@
             set
             {
                 _colorAbleitung_2b = value;
-                OnPropertyChanged("ColorAbleitung_2b");
+                OnPropertyChanged(nameof(ColorAbleitung_2b));
             }
         }
         #endregion
@@ -694,7 +694,7 @@
             set
             {
                 _colorAbleitung_3b = value;
-                OnPropertyChanged("ColorAbleitung_3b");
+                OnPropertyChanged(nameof(ColorAbleitung_3b));
             }
         }
         #endregion
@@ -712,7 +712,7 @@
             set
             {
                 _colorAbleitung_4b = value;
-                OnPropertyChanged("ColorAbleitung_4b");
+                OnPropertyChanged(nameof(ColorAbleitung_4b));
             }
         }
         #endregion
@@ -732,7 +732,7 @@
             set
             {
                 _colorAbleitung_Gesamt = value;
-                OnPropertyChanged("ColorAbleitung_Gesamt");
+                OnPropertyChanged(nameof(ColorAbleitung_Gesamt));
             }
         }
         #endregion
@@ -752,7 +752,7 @@
             set
             {
                 _colorLabelB1 = value;
-                OnPropertyChanged("ColorLabelB1");
+                OnPropertyChanged(nameof(ColorLabelB1));
             }
         }
         #endregion
@@ -770,7 +770,7 @@
             set
             {
                 _colorLabelB2 = value;
-                OnPropertyChanged("ColorLabelB2");
+                OnPropertyChanged(nameof(ColorLabelB2));
             }
         }
         #endregion
@@ -788,7 +788,7 @@
             set
             {
                 _colorLabelB3 = value;
-                OnPropertyChanged("ColorLabelB3");
+                OnPropertyChanged(nameof(ColorLabelB3));
             }
         }
         #endregion
@@ -806,7 +806,7 @@
             set
             {
                 _colorLabelB4 = value;
-                OnPropertyChanged("ColorLabelB4");
+                OnPropertyChanged(nameof(ColorLabelB4));
             }
         }
         #endregion
@@ -824,7 +824,7 @@
             set
             {
                 _colorLabelB5 = value;
-                OnPropertyChanged("ColorLabelB5");
+                OnPropertyChanged(nameof(ColorLabelB5));
             }
         }
         #endregion
@@ -842,7 +842,7 @@
             set
             {
                 _colorLabelB6 = value;
-                OnPropertyChanged("ColorLabelB6");
+                OnPropertyChanged(nameof(ColorLabelB6));
             }
         }
         #endregion
@@ -860,7 +860,7 @@
             set
             {
                 _colorLabelB7 = value;
-                OnPropertyChanged("ColorLabelB7");
+                OnPropertyChanged(nameof(ColorLabelB7));
             }
         }
         #endregion
@@ -878,7 +878,7 @@
             set
             {
                 _colorLabelB8 = value;
-                OnPropertyChanged("ColorLabelB8");
+                OnPropertyChanged(nameof(ColorLabelB8));
             }
         }
         #endregion
@@ -898,7 +898,7 @@
             set
             {
                 _colorCircle_P1 = value;
-                OnPropertyChanged("ColorCircle_P1");
+                OnPropertyChanged(nameof(ColorCircle_P1));
             }
         }
         #endregion
@@ -913,7 +913,7 @@
             set
             {
                 _enableAutomatik1234 = value;
-                OnPropertyChanged("EnableAutomatik1234");
+                OnPropertyChanged(nameof(EnableAutomatik1234));
             }
         }
         #endregion
@@ -926,7 +926,7 @@
             set
             {
                 _enableAutomatik1324 = value;
-                OnPropertyChanged("EnableAutomatik1324");
+                OnPropertyChanged(nameof(EnableAutomatik1324));
             }
         }
         #endregion
@@ -939,7 +939,7 @@
             set
             {
                 _enableAutomatik1432 = value;
-                OnPropertyChanged("EnableAutomatik1432");
+                OnPropertyChanged(nameof(EnableAutomatik1432));
             }
         }
         #endregion
@@ -952,7 +952,7 @@
             set
             {
                 _enableAutomatik4321 = value;
-                OnPropertyChanged("EnableAutomatik4321");
+                OnPropertyChanged(nameof(EnableAutomatik4321));
             }
         }
         #endregion
@@ -972,7 +972,7 @@
             set
             {
                 _margin1 = value;
-                OnPropertyChanged("Margin1");
+                OnPropertyChanged(nameof(Margin1));
             }
         }
         #endregion
@@ -990,7 +990,7 @@
             set
             {
                 _margin2 = value;
-                OnPropertyChanged("Margin2");
+                OnPropertyChanged(nameof(Margin2));
             }
         }
         #endregion
@@ -1008,7 +1008,7 @@
             set
             {
                 _margin3 = value;
-                OnPropertyChanged("Margin3");
+                OnPropertyChanged(nameof(Margin3));
             }
         }
         #endregion
@@ -1026,7 +1026,7 @@
             set
             {
                 _margin4 = value;
-                OnPropertyChanged("Margin4");
+                OnPropertyChanged(nameof(Margin4));
             }
         }
         #endregion

@@ -151,7 +151,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -162,7 +162,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -192,7 +192,7 @@
             set
             {
                 _clickModeBtnTasteA = value;
-                OnPropertyChanged("ClickModeBtnTasteA");
+                OnPropertyChanged(nameof(ClickModeBtnTasteA));
             }
         }
         #endregion
@@ -219,7 +219,7 @@
             set
             {
                 _clickModeBtnTasteB = value;
-                OnPropertyChanged("ClickModeBtnTasteB");
+                OnPropertyChanged(nameof(ClickModeBtnTasteB));
             }
         }
         #endregion
@@ -246,7 +246,7 @@
             set
             {
                 _clickModeBtnTasteD = value;
-                OnPropertyChanged("ClickModeBtnTasteD");
+                OnPropertyChanged(nameof(ClickModeBtnTasteD));
             }
         }
         #endregion
@@ -273,7 +273,7 @@
             set
             {
                 _clickModeBtnTasteE = value;
-                OnPropertyChanged("ClickModeBtnTasteE");
+                OnPropertyChanged(nameof(ClickModeBtnTasteE));
             }
         }
         #endregion
@@ -300,7 +300,7 @@
             set
             {
                 _clickModeBtnTasteF = value;
-                OnPropertyChanged("ClickModeBtnTasteF");
+                OnPropertyChanged(nameof(ClickModeBtnTasteF));
             }
         }
         #endregion
@@ -327,7 +327,7 @@
             set
             {
                 _clickModeBtnTasteG = value;
-                OnPropertyChanged("ClickModeBtnTasteG");
+                OnPropertyChanged(nameof(ClickModeBtnTasteG));
             }
         }
         #endregion
@@ -354,7 +354,7 @@
             set
             {
                 _clickModeBtnTasteH = value;
-                OnPropertyChanged("ClickModeBtnTasteH");
+                OnPropertyChanged(nameof(ClickModeBtnTasteH));
             }
         }
         #endregion
@@ -381,7 +381,7 @@
             set
             {
                 _clickModeBtnTasteI = value;
-                OnPropertyChanged("ClickModeBtnTasteI");
+                OnPropertyChanged(nameof(ClickModeBtnTasteI));
             }
         }
         #endregion
@@ -408,7 +408,7 @@
             set
             {
                 _clickModeBtnTasteK = value;
-                OnPropertyChanged("ClickModeBtnTasteK");
+                OnPropertyChanged(nameof(ClickModeBtnTasteK));
             }
         }
         #endregion
@@ -435,7 +435,7 @@
             set
             {
                 _clickModeBtnTasteL = value;
-                OnPropertyChanged("ClickModeBtnTasteL");
+                OnPropertyChanged(nameof(ClickModeBtnTasteL));
             }
         }
         #endregion
@@ -462,7 +462,7 @@
             set
             {
                 _clickModeBtnTasteM = value;
-                OnPropertyChanged("ClickModeBtnTasteM");
+                OnPropertyChanged(nameof(ClickModeBtnTasteM));
             }
         }
         #endregion
@@ -489,7 +489,7 @@
             set
             {
                 _clickModeBtnTasteN = value;
-                OnPropertyChanged("ClickModeBtnTasteN");
+                OnPropertyChanged(nameof(ClickModeBtnTasteN));
             }
         }
         #endregion
@@ -516,7 +516,7 @@
             set
             {
                 _clickModeBtnTasteO = value;
-                OnPropertyChanged("ClickModeBtnTasteO");
+                OnPropertyChanged(nameof(ClickModeBtnTasteO));
             }
         }
         #endregion
@@ -543,7 +543,7 @@
             set
             {
                 _clickModeBtnTasteP = value;
-                OnPropertyChanged("ClickModeBtnTasteP");
+                OnPropertyChanged(nameof(ClickModeBtnTasteP));
             }
         }
         #endregion
@@ -570,7 +570,7 @@
             set
             {
                 _clickModeBtnTasteR = value;
-                OnPropertyChanged("ClickModeBtnTasteR");
+                OnPropertyChanged(nameof(ClickModeBtnTasteR));
             }
         }
         #endregion
@@ -597,7 +597,7 @@
             set
             {
                 _clickModeBtnTasteS = value;
-                OnPropertyChanged("ClickModeBtnTasteS");
+                OnPropertyChanged(nameof(ClickModeBtnTasteS));
             }
         }
         #endregion
@@ -624,7 +624,7 @@
             set
             {
                 _clickModeBtnTasteT = value;
-                OnPropertyChanged("ClickModeBtnTasteT");
+                OnPropertyChanged(nameof(ClickModeBtnTasteT));
             }
         }
         #endregion
@@ -651,7 +651,7 @@
             set
             {
                 _clickModeBtnTasteV = value;
-                OnPropertyChanged("ClickModeBtnTasteV");
+                OnPropertyChanged(nameof(ClickModeBtnTasteV));
             }
         }
         #endregion
@@ -678,7 +678,7 @@
             set
             {
                 _clickModeBtnTasteW = value;
-                OnPropertyChanged("ClickModeBtnTasteW");
+                OnPropertyChanged(nameof(ClickModeBtnTasteW));
             }
         }
         #endregion
@@ -705,7 +705,7 @@
             set
             {
                 _clickModeBtnTasteY = value;
-                OnPropertyChanged("ClickModeBtnTasteY");
+                OnPropertyChanged(nameof(ClickModeBtnTasteY));
             }
         }
         #endregion
@@ -728,7 +728,7 @@
             set
             {
                 _colorP0 = value;
-                OnPropertyChanged("ColorP0");
+                OnPropertyChanged(nameof(ColorP0));
             }
         }
         #endregion
@@ -851,7 +851,7 @@
             set
             {
                 _width1UpRight = value;
-                OnPropertyChanged("Width1UpRight");
+                OnPropertyChanged(nameof(Width1UpRight));
             }
         }
         #endregion
@@ -869,7 +869,7 @@
             set
             {
                 _width2UpRight = value;
-                OnPropertyChanged("Width2UpRight");
+                OnPropertyChanged(nameof(Width2UpRight));
             }
         }
         #endregion
@@ -887,7 +887,7 @@
             set
             {
                 _width3UpRight = value;
-                OnPropertyChanged("Width3UpRight");
+                OnPropertyChanged(nameof(Width3UpRight));
             }
         }
         #endregion
@@ -905,7 +905,7 @@
             set
             {
                 _width4UpRight = value;
-                OnPropertyChanged("Width4UpRight");
+                OnPropertyChanged(nameof(Width4UpRight));
             }
         }
         #endregion
@@ -924,7 +924,7 @@
             set
             {
                 _width2UpLeft = value;
-                OnPropertyChanged("Width2UpLeft");
+                OnPropertyChanged(nameof(Width2UpLeft));
             }
         }
         #endregion
@@ -942,7 +942,7 @@
             set
             {
                 _width3UpLeft = value;
-                OnPropertyChanged("Width3UpLeft");
+                OnPropertyChanged(nameof(Width3UpLeft));
             }
         }
         #endregion
@@ -960,7 +960,7 @@
             set
             {
                 _width4UpLeft = value;
-                OnPropertyChanged("Width4UpLeft");
+                OnPropertyChanged(nameof(Width4UpLeft));
             }
         }
         #endregion
@@ -978,7 +978,7 @@
             set
             {
                 _width5UpLeft = value;
-                OnPropertyChanged("Width5UpLeft");
+                OnPropertyChanged(nameof(Width5UpLeft));
             }
         }
         #endregion
@@ -998,7 +998,7 @@
             set
             {
                 _width1DownRight = value;
-                OnPropertyChanged("Width1DownRight");
+                OnPropertyChanged(nameof(Width1DownRight));
             }
         }
         #endregion
@@ -1016,7 +1016,7 @@
             set
             {
                 _width2DownRight = value;
-                OnPropertyChanged("Width2DownRight");
+                OnPropertyChanged(nameof(Width2DownRight));
             }
         }
         #endregion
@@ -1034,7 +1034,7 @@
             set
             {
                 _width3DownRight = value;
-                OnPropertyChanged("Width3DownRight");
+                OnPropertyChanged(nameof(Width3DownRight));
             }
         }
         #endregion
@@ -1052,7 +1052,7 @@
             set
             {
                 _width4DownRight = value;
-                OnPropertyChanged("Width4DownRight");
+                OnPropertyChanged(nameof(Width4DownRight));
             }
         }
         #endregion
@@ -1072,7 +1072,7 @@
             set
             {
                 _width2DownLeft = value;
-                OnPropertyChanged("Width2DownLeft");
+                OnPropertyChanged(nameof(Width2DownLeft));
             }
         }
         #endregion
@@ -1090,7 +1090,7 @@
             set
             {
                 _width3DownLeft = value;
-                OnPropertyChanged("Width3DownLeft");
+                OnPropertyChanged(nameof(Width3DownLeft));
             }
         }
         #endregion
@@ -1108,7 +1108,7 @@
             set
             {
                 _width4DownLeft = value;
-                OnPropertyChanged("Width4DownLeft");
+                OnPropertyChanged(nameof(Width4DownLeft));
             }
         }
         #endregion
@@ -1126,7 +1126,7 @@
             set
             {
                 _width5DownLeft = value;
-                OnPropertyChanged("Width5DownLeft");
+                OnPropertyChanged(nameof(Width5DownLeft));
             }
         }
         #endregion

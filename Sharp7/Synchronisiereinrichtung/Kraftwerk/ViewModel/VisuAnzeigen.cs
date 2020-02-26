@@ -113,7 +113,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -124,7 +124,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -141,7 +141,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _manualVentilstellung = value;
-                OnPropertyChanged("ManualVentilstellung");
+                OnPropertyChanged(nameof(ManualVentilstellung));
             }
         }
 
@@ -158,7 +158,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _manualErregerstrom = value;
-                OnPropertyChanged("ManualErregerstrom");
+                OnPropertyChanged(nameof(ManualErregerstrom));
             }
         }
 
@@ -176,7 +176,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzSpannungSlider = value;
-                OnPropertyChanged("NetzSpannungSlider");
+                OnPropertyChanged(nameof(NetzSpannungSlider));
             }
         }
 
@@ -194,7 +194,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzFrequenzSlider = value;
-                OnPropertyChanged("NetzFrequenzSlider");
+                OnPropertyChanged(nameof(NetzFrequenzSlider));
             }
         }
 
@@ -217,7 +217,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzPhasenverschiebungSlider = value;
-                OnPropertyChanged("NetzPhasenverschiebungSlider");
+                OnPropertyChanged(nameof(NetzPhasenverschiebungSlider));
             }
         }
 
@@ -235,7 +235,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzLeistungSlider = value;
-                OnPropertyChanged("NetzLeistungSlider");
+                OnPropertyChanged(nameof(NetzLeistungSlider));
             }
         }
 
@@ -250,7 +250,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _synchAuswahl = value;
-                OnPropertyChanged("SynchAuswahl");
+                OnPropertyChanged(nameof(SynchAuswahl));
             }
         }
         #endregion
@@ -278,7 +278,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _generatorCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("GeneratorCosPhiString");
+                OnPropertyChanged(nameof(GeneratorCosPhiString));
             }
         }
 
@@ -292,7 +292,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzCosPhiString");
+                OnPropertyChanged(nameof(NetzCosPhiString));
             }
         }
 
@@ -319,7 +319,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _generatorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorLeistungString");
+                OnPropertyChanged(nameof(GeneratorLeistungString));
             }
         }
 
@@ -331,7 +331,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzLeistungString");
+                OnPropertyChanged(nameof(NetzLeistungString));
             }
         }
 
@@ -356,7 +356,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _generatorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("GeneratorFrequenzString");
+                OnPropertyChanged(nameof(GeneratorFrequenzString));
             }
         }
         private double _netzFrequenzString;
@@ -367,7 +367,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("NetzFrequenzString");
+                OnPropertyChanged(nameof(NetzFrequenzString));
             }
         }
         #endregion
@@ -393,7 +393,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _generatorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorSpannungString");
+                OnPropertyChanged(nameof(GeneratorSpannungString));
             }
         }
 
@@ -405,7 +405,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _netzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzSpannungString");
+                OnPropertyChanged(nameof(NetzSpannungString));
             }
         }
 
@@ -426,7 +426,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
-                OnPropertyChanged("Erregerstrom");
+                OnPropertyChanged(nameof(Erregerstrom));
             }
         }
 
@@ -446,7 +446,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
-                OnPropertyChanged("Drehzahl");
+                OnPropertyChanged(nameof(Drehzahl));
             }
         }
 
@@ -462,7 +462,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _messgeraetOptimalerBereich = value;
-                OnPropertyChanged("MessgeraetOptimalerBereich");
+                OnPropertyChanged(nameof(MessgeraetOptimalerBereich));
             }
         }
         public void MessgeraetAnzeigen(bool val)
@@ -479,7 +479,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _visibilityMessgeraetSichtbar = value;
-                OnPropertyChanged("VisibilityMessgeraetSichtbar");
+                OnPropertyChanged(nameof(VisibilityMessgeraetSichtbar));
             }
         }
 
@@ -491,7 +491,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _spannungsDifferenz = value;
-                OnPropertyChanged("SpannungsDifferenz");
+                OnPropertyChanged(nameof(SpannungsDifferenz));
             }
         }
 
@@ -517,7 +517,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _visibilityMaschineTotAnzeigen = value;
-                OnPropertyChanged("VisibilityMaschineTot");
+                OnPropertyChanged(nameof(VisibilityMaschineTot));
             }
         }
 
@@ -547,7 +547,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _leistungsschalterEin = value;
-                OnPropertyChanged("LeistungsschalterEin");
+                OnPropertyChanged(nameof(LeistungsschalterEin));
             }
         }
 
@@ -559,7 +559,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _leistungsschalterAus = value;
-                OnPropertyChanged("LeistungsschalterAus");
+                OnPropertyChanged(nameof(LeistungsschalterAus));
             }
         }
 
@@ -576,7 +576,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _ventilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("VentilPosition");
+                OnPropertyChanged(nameof(VentilPosition));
             }
         }
 
@@ -593,7 +593,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _visibilityVentilAus = value;
-                OnPropertyChanged("VisibilityVentilAus");
+                OnPropertyChanged(nameof(VisibilityVentilAus));
             }
         }
 
@@ -605,7 +605,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _visibilityVentilEin = value;
-                OnPropertyChanged("VisibilityVentilEin");
+                OnPropertyChanged(nameof(VisibilityVentilEin));
             }
         }
 
@@ -640,7 +640,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             set
             {
                 _kraftwerkStatus = value;
-                OnPropertyChanged("KraftwerkStatus");
+                OnPropertyChanged(nameof(KraftwerkStatus));
             }
         }
 

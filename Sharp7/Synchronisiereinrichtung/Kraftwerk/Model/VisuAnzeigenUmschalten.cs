@@ -32,7 +32,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _generatorCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("GeneratorCosPhiString");
+                OnPropertyChanged(nameof(GeneratorCosPhiString");
             }
         }
 
@@ -46,7 +46,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _netzCosPhiString = System.Convert.ToDouble(value.Substring(6));
-                OnPropertyChanged("NetzCosPhiString");
+                OnPropertyChanged(nameof(NetzCosPhiString");
             }
         }
 
@@ -73,7 +73,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _generatorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorLeistungString");
+                OnPropertyChanged(nameof(GeneratorLeistungString");
             }
         }
 
@@ -85,7 +85,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _netzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzLeistungString");
+                OnPropertyChanged(nameof(NetzLeistungString");
             }
         }
 
@@ -110,7 +110,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _generatorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("GeneratorFrequenzString");
+                OnPropertyChanged(nameof(GeneratorFrequenzString");
             }
         }
         private double _netzFrequenzString;
@@ -121,7 +121,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _netzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
-                OnPropertyChanged("NetzFrequenzString");
+                OnPropertyChanged(nameof(NetzFrequenzString");
             }
         }
         #endregion
@@ -147,7 +147,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _generatorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("GeneratorSpannungString");
+                OnPropertyChanged(nameof(GeneratorSpannungString");
             }
         }
 
@@ -159,7 +159,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _netzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("NetzSpannungString");
+                OnPropertyChanged(nameof(NetzSpannungString");
             }
         }
 
@@ -180,7 +180,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _Erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
-                OnPropertyChanged("Erregerstrom");
+                OnPropertyChanged(nameof(Erregerstrom");
             }
         }
 
@@ -200,7 +200,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _Drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
-                OnPropertyChanged("Drehzahl");
+                OnPropertyChanged(nameof(Drehzahl");
             }
         }
 
@@ -216,7 +216,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _MessgeraetOptimalerBereich = value;
-                OnPropertyChanged("MessgeraetOptimalerBereich");
+                OnPropertyChanged(nameof(MessgeraetOptimalerBereich");
             }
         }
         public void MessgeraetAnzeigen(bool val)
@@ -233,7 +233,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _visibilityMessgeraetSichtbar = value;
-                OnPropertyChanged("VisibilityMessgeraetSichtbar");
+                OnPropertyChanged(nameof(VisibilityMessgeraetSichtbar");
             }
         }
 
@@ -245,7 +245,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _SpannungsDifferenz = value;
-                OnPropertyChanged("SpannungsDifferenz");
+                OnPropertyChanged(nameof(SpannungsDifferenz");
             }
         }
 
@@ -271,7 +271,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _visibilityMaschineTotAnzeigen = value;
-                OnPropertyChanged("VisibilityMaschineTot");
+                OnPropertyChanged(nameof(VisibilityMaschineTot");
             }
         }
 
@@ -301,7 +301,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _LeistungsschalterEin = value;
-                OnPropertyChanged("LeistungsschalterEin");
+                OnPropertyChanged(nameof(LeistungsschalterEin");
             }
         }
 
@@ -313,7 +313,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _LeistungsschalterAus = value;
-                OnPropertyChanged("LeistungsschalterAus");
+                OnPropertyChanged(nameof(LeistungsschalterAus");
             }
         }
 
@@ -330,7 +330,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _VentilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
-                OnPropertyChanged("VentilPosition");
+                OnPropertyChanged(nameof(VentilPosition");
             }
         }
 
@@ -347,7 +347,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _visibilityVentilAus = value;
-                OnPropertyChanged("VisibilityVentilAus");
+                OnPropertyChanged(nameof(VisibilityVentilAus");
             }
         }
 
@@ -359,7 +359,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _visibilityVentilEin = value;
-                OnPropertyChanged("VisibilityVentilEin");
+                OnPropertyChanged(nameof(VisibilityVentilEin");
             }
         }
 
@@ -394,7 +394,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             set
             {
                 _KraftwerkStatus = value;
-                OnPropertyChanged("KraftwerkStatus");
+                OnPropertyChanged(nameof(KraftwerkStatus");
             }
         }
 

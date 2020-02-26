@@ -160,7 +160,7 @@
             set
             {
                 _spsStatus = value;
-                OnPropertyChanged("SpsStatus");
+                OnPropertyChanged(nameof(SpsStatus));
             }
         }
 
@@ -171,7 +171,7 @@
             set
             {
                 _spsColor = value;
-                OnPropertyChanged("SpsColor");
+                OnPropertyChanged(nameof(SpsColor));
             }
         }
         #endregion
@@ -186,7 +186,7 @@
             set
             {
                 _selectedIndex = value;
-                OnPropertyChanged("SelectedIndex");
+                OnPropertyChanged(nameof(SelectedIndex));
 
                 if (value == 0)
                 {
@@ -254,7 +254,7 @@
             set
             {
                 _clickModeBtnS1 = value;
-                OnPropertyChanged("ClickModeBtnS1");
+                OnPropertyChanged(nameof(ClickModeBtnS1));
             }
         }
         #endregion
@@ -281,7 +281,7 @@
             set
             {
                 _clickModeBtnS9 = value;
-                OnPropertyChanged("ClickModeBtnS9");
+                OnPropertyChanged(nameof(ClickModeBtnS9));
             }
         }
         #endregion
@@ -308,7 +308,7 @@
             set
             {
                 _clickModeBtnS10 = value;
-                OnPropertyChanged("ClickModeBtnS10");
+                OnPropertyChanged(nameof(ClickModeBtnS10));
             }
         }
         #endregion
@@ -335,7 +335,7 @@
             set
             {
                 _clickModeBtnS11 = value;
-                OnPropertyChanged("ClickModeBtnS11");
+                OnPropertyChanged(nameof(ClickModeBtnS11));
             }
         }
         #endregion
@@ -362,7 +362,7 @@
             set
             {
                 _clickModeBtnS12 = value;
-                OnPropertyChanged("ClickModeBtnS12");
+                OnPropertyChanged(nameof(ClickModeBtnS12));
             }
         }
         #endregion
@@ -390,7 +390,7 @@
             set
             {
                 _clickModeBtnM1_RL = value;
-                OnPropertyChanged("ClickModeBtnM1_RL");
+                OnPropertyChanged(nameof(ClickModeBtnM1_RL));
             }
         }
         #endregion
@@ -417,7 +417,7 @@
             set
             {
                 _clickModeBtnM1_LL = value;
-                OnPropertyChanged("ClickModeBtnM1_LL");
+                OnPropertyChanged(nameof(ClickModeBtnM1_LL));
             }
         }
         #endregion
@@ -444,7 +444,7 @@
             set
             {
                 _clickModeBtnM2 = value;
-                OnPropertyChanged("ClickModeBtnM2");
+                OnPropertyChanged(nameof(ClickModeBtnM2));
             }
         }
         #endregion
@@ -471,7 +471,7 @@
             set
             {
                 _clickModeBtnY1 = value;
-                OnPropertyChanged("ClickModeBtnY1");
+                OnPropertyChanged(nameof(ClickModeBtnY1));
             }
         }
         #endregion
@@ -498,7 +498,7 @@
             set
             {
                 _clickModeBtnM1_LL_Y1 = value;
-                OnPropertyChanged("ClickModeBtnM1_LL_Y1");
+                OnPropertyChanged(nameof(ClickModeBtnM1_LL_Y1));
             }
         }
         #endregion
@@ -517,7 +517,7 @@
             set
             {
                 _margin1 = value;
-                OnPropertyChanged("Margin1");
+                OnPropertyChanged(nameof(Margin1));
             }
         }
         #endregion
@@ -545,7 +545,7 @@
             set
             {
                 _visibilityBtnSetManual = value;
-                OnPropertyChanged("VisibilityBtnSetManual");
+                OnPropertyChanged(nameof(VisibilityBtnSetManual));
             }
         }
         #endregion
@@ -570,7 +570,7 @@
             set
             {
                 _visibilityPfeilLinkslauf = value;
-                OnPropertyChanged("VisibilityPfeilLinkslauf");
+                OnPropertyChanged(nameof(VisibilityPfeilLinkslauf));
             }
         }
         #endregion
@@ -595,7 +595,7 @@
             set
             {
                 _visibilityPfeilRechtslauf = value;
-                OnPropertyChanged("VisibilityPfeilRechtslauf");
+                OnPropertyChanged(nameof(VisibilityPfeilRechtslauf));
             }
         }
         #endregion
@@ -620,7 +620,7 @@
             set
             {
                 _visibilityM1Ein = value;
-                OnPropertyChanged("VisibilityM1Ein");
+                OnPropertyChanged(nameof(VisibilityM1Ein));
             }
         }
         #endregion
@@ -645,7 +645,7 @@
             set
             {
                 _visibilityM2Ein = value;
-                OnPropertyChanged("VisibilityM2Ein");
+                OnPropertyChanged(nameof(VisibilityM2Ein));
             }
         }
         #endregion
@@ -672,7 +672,7 @@
             set
             {
                 _visibilityY1Ein = value;
-                OnPropertyChanged("VisibilityY1Ein");
+                OnPropertyChanged(nameof(VisibilityY1Ein));
             }
         }
 
@@ -684,7 +684,7 @@
             set
             {
                 _visibilityY1Aus = value;
-                OnPropertyChanged("VisibilityY1Aus");
+                OnPropertyChanged(nameof(VisibilityY1Aus));
             }
         }
         #endregion
@@ -711,7 +711,7 @@
             set
             {
                 _visibilityS7Ein = value;
-                OnPropertyChanged("VisibilityS7Ein");
+                OnPropertyChanged(nameof(VisibilityS7Ein));
             }
         }
 
@@ -723,7 +723,7 @@
             set
             {
                 _visibilityS7Aus = value;
-                OnPropertyChanged("VisibilityS7Aus");
+                OnPropertyChanged(nameof(VisibilityS7Aus));
             }
         }
         #endregion
@@ -750,7 +750,7 @@
             set
             {
                 _visibilityS8Ein = value;
-                OnPropertyChanged("VisibilityS8Ein");
+                OnPropertyChanged(nameof(VisibilityS8Ein));
             }
         }
 
@@ -762,7 +762,7 @@
             set
             {
                 _visibilityS8Aus = value;
-                OnPropertyChanged("VisibilityS8Aus");
+                OnPropertyChanged(nameof(VisibilityS8Aus));
             }
         }
         #endregion
@@ -790,7 +790,7 @@
             set
             {
                 _visibilityMaterialOben = value;
-                OnPropertyChanged("VisibilityMaterialOben");
+                OnPropertyChanged(nameof(VisibilityMaterialOben));
             }
         }
         #endregion
@@ -818,7 +818,7 @@
             set
             {
                 _visibilityMaterialUnten = value;
-                OnPropertyChanged("VisibilityMaterialUnten");
+                OnPropertyChanged(nameof(VisibilityMaterialUnten));
             }
         }
         #endregion
@@ -838,7 +838,7 @@
             set
             {
                 _colorF4 = value;
-                OnPropertyChanged("ColorF4");
+                OnPropertyChanged(nameof(ColorF4));
             }
         }
         #endregion
@@ -856,7 +856,7 @@
             set
             {
                 _colorP1 = value;
-                OnPropertyChanged("ColorP1");
+                OnPropertyChanged(nameof(ColorP1));
             }
         }
         #endregion
@@ -874,7 +874,7 @@
             set
             {
                 _colorP2 = value;
-                OnPropertyChanged("ColorP2");
+                OnPropertyChanged(nameof(ColorP2));
             }
         }
         #endregion
@@ -892,7 +892,7 @@
             set
             {
                 _colorS2 = value;
-                OnPropertyChanged("ColorS2");
+                OnPropertyChanged(nameof(ColorS2));
             }
         }
         #endregion
@@ -914,7 +914,7 @@
             set
             {
                 _posWagenBeschriftungLeft = value;
-                OnPropertyChanged("PosWagenBeschriftungLeft");
+                OnPropertyChanged(nameof(PosWagenBeschriftungLeft));
             }
         }
         private double _posWagenBeschriftungTop;
@@ -924,7 +924,7 @@
             set
             {
                 _posWagenBeschriftungTop = value;
-                OnPropertyChanged("PosWagenBeschriftungTop");
+                OnPropertyChanged(nameof(PosWagenBeschriftungTop));
             }
         }
         #endregion
@@ -943,7 +943,7 @@
             set
             {
                 _posWagenLeft = value;
-                OnPropertyChanged("PosWagenLeft");
+                OnPropertyChanged(nameof(PosWagenLeft));
             }
         }
         private double _posWagenTop;
@@ -953,7 +953,7 @@
             set
             {
                 _posWagenTop = value;
-                OnPropertyChanged("PosWagenTop");
+                OnPropertyChanged(nameof(PosWagenTop));
             }
         }
         #endregion
@@ -972,7 +972,7 @@
             set
             {
                 _posWagenInhaltLeft = value;
-                OnPropertyChanged("PosWagenInhaltLeft");
+                OnPropertyChanged(nameof(PosWagenInhaltLeft));
             }
         }
         private double _posWagenInhaltTop;
@@ -982,7 +982,7 @@
             set
             {
                 _posWagenInhaltTop = value;
-                OnPropertyChanged("PosWagenInhaltTop");
+                OnPropertyChanged(nameof(PosWagenInhaltTop));
             }
         }
         #endregion
@@ -995,7 +995,7 @@
             set
             {
                 _wagenFuellstand = value;
-                OnPropertyChanged("WagenFuellstand");
+                OnPropertyChanged(nameof(WagenFuellstand));
             }
         }
         #endregion
