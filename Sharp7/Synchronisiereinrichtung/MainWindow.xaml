@@ -195,7 +195,7 @@
                                         OptimalRangeStartValue="0"
                                         OptimalRangeEndValue= "25"  
                                         DialTextOffset="40"
-                                        DialText="Black"
+                                        DialText="Differenzspannung"
                                         DialTextColor="Black"
                                         Visibility="{Binding ViAnzeige.VisibilityMessgeraetSichtbar}" />
     </Grid>
