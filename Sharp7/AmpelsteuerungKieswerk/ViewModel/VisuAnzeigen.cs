@@ -9,13 +9,12 @@
     {
         private readonly Model.AlleLastKraftWagen alleLastKraftWagen;
         private readonly MainWindow mainWindow;
-
         public VisuAnzeigen(MainWindow mw, Model.AlleLastKraftWagen alleLKW)
         {
             mainWindow = mw;
             alleLastKraftWagen = alleLKW;
             DatenRangieren_AmpelChangedEvent(null, new AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs(AmpelsteuerungKieswerk.Model.AmpelZustand.Aus, AmpelsteuerungKieswerk.Model.AmpelZustand.Aus));
-            
+
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
@@ -50,7 +49,6 @@
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -81,7 +79,6 @@
                 Thread.Sleep(10);
             }
         }
-        
         public void DatenRangieren_AmpelChangedEvent(object sender, AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs e)
         {
             FarbeLinksRot(false);
@@ -141,7 +138,6 @@
                     break;
             }
         }
-
 
 
         #region SPS Status und Farbe
@@ -444,7 +440,7 @@
         }
         #endregion
 
-        
+
 
         #region PositionLkw1
         public void PositionLkw1(Punkt pos)
@@ -576,7 +572,7 @@
             set
             {
                 _posLkw5Left = value;
-                OnPropertyChanged(nameof(PosLkw5Left)); 
+                OnPropertyChanged(nameof(PosLkw5Left));
             }
         }
         private double _posLkw5Top;
@@ -590,7 +586,7 @@
             }
         }
         #endregion
-                       
+
 
         #region iNotifyPeropertyChanged Members
 

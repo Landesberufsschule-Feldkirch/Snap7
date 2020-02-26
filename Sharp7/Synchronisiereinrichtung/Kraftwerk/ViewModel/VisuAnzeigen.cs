@@ -134,7 +134,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         public double Y() { return ManualVentilstellung; }
 
         private double _manualVentilstellung;
-
         public double ManualVentilstellung
         {
             get { return _manualVentilstellung; }
@@ -169,7 +168,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         public double Netz_U() { return NetzSpannungSlider; }
 
         private double _netzSpannungSlider;
-
         public double NetzSpannungSlider
         {
             get { return _netzSpannungSlider; }
@@ -187,7 +185,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         public double Netz_f() { return NetzFrequenzSlider; }
 
         private double _netzFrequenzSlider;
-
         public double NetzFrequenzSlider
         {
             get { return _netzFrequenzSlider; }
@@ -210,7 +207,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         }
 
         private double _netzPhasenverschiebungSlider;
-
         public double NetzPhasenverschiebungSlider
         {
             get { return _netzPhasenverschiebungSlider; }
@@ -645,6 +641,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         }
 
         #endregion
+
+
 
         #region iNotifyPeropertyChanged Members
 

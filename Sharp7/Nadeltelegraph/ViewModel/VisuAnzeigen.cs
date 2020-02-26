@@ -76,8 +76,6 @@
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
-
         private void VisuAnzeigenTask()
         {
             while (true)
