@@ -64,8 +64,21 @@
             }
         }
         #endregion
-
-
+        
+        #region BtnS7
+        private ICommand _btnS7;
+        public ICommand BtnS7
+        {
+            get
+            {
+                if (_btnS7 == null)
+                {
+                    _btnS7 = new RelayCommand(p => kompressoranlage.BtnS7(), p => true);
+                }
+                return _btnS7;
+            }
+        }
+        #endregion
 
     }
 }

@@ -1,0 +1,27 @@
+﻿using Kommunikation;
+using System.Windows;
+
+namespace LAP_2010_3_Ofentuersteuerung
+{
+    public partial class MainWindow : Window
+    {
+
+    public S7_1200 S7_1200 { get; set; }
+
+    private readonly DatenRangieren datenRangieren;
+    private readonly ViewModel.OfensteuerungViewModel ofensteuerungViewModel ;
+
+        public MainWindow()
+        {
+            ofensteuerungViewModel = new ViewModel.OfensteuerungViewModel(this);
+            datenRangieren = new DatenRangieren(ofensteuerungViewModel);
+
+            InitializeComponent();
+            DataContext = ofensteuerungViewModel;
+
+            S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+
+           
+        }
+    }
+}

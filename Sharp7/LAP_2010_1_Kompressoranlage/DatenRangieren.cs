@@ -1,50 +1,49 @@
 ﻿using Sharp7;
-using Utilities;
 
 namespace LAP_2010_1_Kompressoranlage
 {
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
         private readonly ViewModel.KompressoranlageViewModel kompressoranlageViewModel;
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Anlage Ein
-            P2,     //Sammelstörung
+            H1 = 0, // Störung
+            H2,     // Betriebsbereit
+            K1,     // Netzschütz
+            K2,     // Sternschütz
+            K3      // Dreieckschütz
         }
 
         private enum BitPosEingang
         {
-            S0 = 0, // Anlage Aus
-            S1,     // Anlage Ein
-            S2,     // Not-Halt
-            F4,     // Störung Motorschutzschalter
+            F5 = 0, // Störung Motorschutzschalter
+            S1,     // Taster Aus
+            S2,     // Taster Ein
+            S7,     // Druckschalter
+            S8      // Temperaturfühler Kompressor
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
-        {/*
-            S7.SetBitAt(digInput, (int)BitPosEingang.S0, foerderanlageViewModel.foerderanlage.S0);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, foerderanlageViewModel.foerderanlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, foerderanlageViewModel.foerderanlage.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F4, foerderanlageViewModel.foerderanlage.F4);
-            */
+        {
+            S7.SetBitAt(digInput, (int)BitPosEingang.F5, kompressoranlageViewModel.kompressoranlage.F5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, kompressoranlageViewModel.kompressoranlage.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, kompressoranlageViewModel.kompressoranlage.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S7, kompressoranlageViewModel.kompressoranlage.S7);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S8, kompressoranlageViewModel.kompressoranlage.S8);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            /*
-           
-                foerderanlageViewModel.foerderanlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                foerderanlageViewModel.foerderanlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-                foerderanlageViewModel.foerderanlage.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
-                foerderanlageViewModel.foerderanlage.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
-           */
+            kompressoranlageViewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
+            kompressoranlageViewModel.kompressoranlage.H2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H2);
+            kompressoranlageViewModel.kompressoranlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
+            kompressoranlageViewModel.kompressoranlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
+            kompressoranlageViewModel.kompressoranlage.K3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K3);
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.KompressoranlageViewModel vm)
+        public DatenRangieren(ViewModel.KompressoranlageViewModel vm)
         {
-            mainWindow = mw;
             kompressoranlageViewModel = vm;
         }
     }

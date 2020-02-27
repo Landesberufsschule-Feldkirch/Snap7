@@ -20,9 +20,13 @@
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
 
+            ColorF5 = "LawnGreen";
             ColorH1 = "LawnGreen";
             ColorH2 = "LawnGreen";
-
+            ColorK1 = "LawnGreen";
+            ColorK2 = "LawnGreen";
+            ColorK3 = "LawnGreen";
+            ColorS7 = "LawnGreen";
 
             VisibilityS7Ein = "hidden";
             VisibilityS7Aus = "visible";
@@ -44,8 +48,13 @@
             {
                 Druck = kompressoranlage.Druck;
 
+                FarbeF5(kompressoranlage.F5);
                 FarbeH1(kompressoranlage.H1);
                 FarbeH2(kompressoranlage.H2);
+                FarbeK1(kompressoranlage.K1);
+                FarbeK2(kompressoranlage.K2);
+                FarbeK3(kompressoranlage.K3);
+                FarbeS7(kompressoranlage.S7);
 
                 SichtbarkeitS7(kompressoranlage.S7);
                 SichtbarkeitS8(kompressoranlage.S8);
@@ -148,6 +157,25 @@
         #endregion
 
 
+
+        #region Color F5
+        public void FarbeF5(bool val)
+        {
+            if (val) ColorF5 = "LawnGreen"; else ColorF5 = "Red";
+        }
+
+        private string _colorF5;
+        public string ColorF5
+        {
+            get { return _colorF5; }
+            set
+            {
+                _colorF5 = value;
+                OnPropertyChanged(nameof(ColorF5));
+            }
+        }
+        #endregion
+
         #region Color H1
         public void FarbeH1(bool val)
         {
@@ -184,6 +212,77 @@
         }
         #endregion
 
+        #region Color K1
+        public void FarbeK1(bool val)
+        {
+            if (val) ColorK1 = "LawnGreen"; else ColorK1 = "White";
+        }
+
+        private string _colorK1;
+        public string ColorK1
+        {
+            get { return _colorK1; }
+            set
+            {
+                _colorK1 = value;
+                OnPropertyChanged(nameof(ColorK1));
+            }
+        }
+        #endregion
+
+        #region Color K2
+        public void FarbeK2(bool val)
+        {
+            if (val) ColorK2 = "LawnGreen"; else ColorK2 = "White";
+        }
+
+        private string _colorK2;
+        public string ColorK2
+        {
+            get { return _colorK2; }
+            set
+            {
+                _colorK2 = value;
+                OnPropertyChanged(nameof(ColorK2));
+            }
+        }
+        #endregion
+
+        #region Color K3
+        public void FarbeK3(bool val)
+        {
+            if (val) ColorK3 = "LawnGreen"; else ColorK3 = "White";
+        }
+
+        private string _colorK3;
+        public string ColorK3
+        {
+            get { return _colorK3; }
+            set
+            {
+                _colorK3 = value;
+                OnPropertyChanged(nameof(ColorK3));
+            }
+        }
+        #endregion
+
+        #region Color S7
+        public void FarbeS7(bool val)
+        {
+            if (val) ColorS7 = "LawnGreen"; else ColorS7 = "Red";
+        }
+
+        private string _colorS7;
+        public string ColorS7
+        {
+            get { return _colorS7; }
+            set
+            {
+                _colorS7 = value;
+                OnPropertyChanged(nameof(ColorS7));
+            }
+        }
+        #endregion
 
 
         #region Sichtbarkeit S7
