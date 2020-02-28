@@ -1,0 +1,119 @@
+﻿<Window x:Class="LAP_2010_2_Transportwagen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LAP_2010_2_Transportwagen"
+        mc:Ignorable="d"
+        Title="LAP 2010/2 Transportwagen" Height="600" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
+        <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+
+        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
+
+        <Button x:Name="btnS1" Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btnS2" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Not Halt" Background="{Binding ViAnzeige.ColorS2}" Command="{Binding BtnS2}" FontSize="12pt">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"  />
+        <Label Content="S2 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,18,10,18" />
+
+        <Ellipse Grid.Column="13" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorH3}" />
+        <Label Content="H3 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Grid.ColumnSpan="2" Margin="0,19,67,16" />
+        <Label Content="Störung" Grid.Column="13" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" />
+
+
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14" Fill="#eeeeee"/>
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
+
+
+        <Polygon Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5" Fill="DarkOrange">
+            <Polygon.Points>
+                <Point X="20"  Y="10" />
+                <Point X="120" Y="10" />
+                <Point X="120" Y="120" />
+                <Point X="100" Y="160" />
+                <Point X="40"  Y="160" />
+                <Point X="20"  Y="120" />
+            </Polygon.Points>
+        </Polygon>
+
+
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Ein}"/>
+        <Label Content="S7"                                Grid.Column="2" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Aus}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Ein}"/>
+        <Label Content="S8"                                Grid.Column="8" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+
+        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14" >
+            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadLinks}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2"/>
+            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadRechts}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2"/>
+            <Rectangle Canvas.Left="{Binding ViAnzeige.PositionWagenkasten}" Canvas.Top="200" Width="150" Height="80" Fill="Silver" Stroke="Black" StrokeThickness="2"/>
+
+            
+
+            <Rectangle Canvas.Left="30" Canvas.Top="300" Width="550" Height="30" Fill="DarkGray"/>
+
+
+
+        </Canvas>
+
+    </Grid>
+</Window>
