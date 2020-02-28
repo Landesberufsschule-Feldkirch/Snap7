@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,6 +62,9 @@
     </ApplicationDefinition>
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\OfentuerSteuerung.cs" />
+    <Compile Include="SetManual\SetManual.xaml.cs">
+      <DependentUpon>SetManual.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\OfentuersteuerungViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Page Include="MainWindow.xaml">
@@ -75,6 +80,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SetManual\SetManual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -118,7 +127,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Video\Flammen.mp4" />
+    <Resource Include="Bilder\Zahnrad.PNG" />
+    <Resource Include="Bilder\Zahnstange.PNG" />
+    <Content Include="Video\Flammen.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dateien\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

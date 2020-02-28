@@ -5,7 +5,6 @@
 
     public class OfensteuerungViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_3_Ofentuersteuerung.Model.OfentuerSteuerung ofentuerSteuerung;
 
@@ -17,8 +16,35 @@
 
         public Model.OfentuerSteuerung OfentuerSteuerung { get { return ofentuerSteuerung; } }
 
+        #region SetManualK1
+        private ICommand _setManualK1;
+        public ICommand SetManualK1
+        {
+            get
+            {
+                if (_setManualK1 == null)
+                {
+                    _setManualK1 = new RelayCommand(p => ViAnzeige.SetManualK1(), p => true);
+                }
+                return _setManualK1;
+            }
+        }
+        #endregion
 
-
+        #region SetManualK2
+        private ICommand _setManualK2;
+        public ICommand SetManualK2
+        {
+            get
+            {
+                if (_setManualK2 == null)
+                {
+                    _setManualK2 = new RelayCommand(p => ViAnzeige.SetManualK2(), p => true);
+                }
+                return _setManualK2;
+            }
+        }
+        #endregion
 
         #region BtnS1
         private ICommand _btnS1;
@@ -43,13 +69,13 @@
             {
                 if (_btnS2 == null)
                 {
-                    _btnS2 = new RelayCommand(p => ViAnzeige.BtnS2(), p => true);
+                    _btnS2 = new RelayCommand(p => ViAnzeige.SetS2(), p => true);
                 }
                 return _btnS2;
             }
         }
         #endregion
-        
+
         #region BtnS3
         private ICommand _btnS3;
         public ICommand BtnS3
@@ -58,13 +84,13 @@
             {
                 if (_btnS3 == null)
                 {
-                    _btnS3 = new RelayCommand(p => ViAnzeige.BtnS3(), p => true);
+                    _btnS3 = new RelayCommand(p => ViAnzeige.SetS3(), p => true);
                 }
                 return _btnS3;
             }
         }
         #endregion
-        
+
         #region BtnS9
         private ICommand _btnS9;
         public ICommand BtnS9
@@ -73,7 +99,7 @@
             {
                 if (_btnS9 == null)
                 {
-                    _btnS9 = new RelayCommand(p => ViAnzeige.BtnS9(), p => true);
+                    _btnS9 = new RelayCommand(p => ViAnzeige.SetS9(), p => true);
                 }
                 return _btnS9;
             }

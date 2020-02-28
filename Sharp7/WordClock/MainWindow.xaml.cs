@@ -8,9 +8,10 @@ namespace WordClock
 {
     public partial class MainWindow : Window
     {
-        private DatenRangieren datenRangieren;
-        private ViewModel.WordClockViewModel wordClockViewModel;
-        public S7_1200 S7_1200 { get; set; } 
+        public S7_1200 S7_1200 { get; set; }
+
+        private readonly DatenRangieren datenRangieren;
+        private readonly ViewModel.WordClockViewModel wordClockViewModel;
 
         public MainWindow()
         {

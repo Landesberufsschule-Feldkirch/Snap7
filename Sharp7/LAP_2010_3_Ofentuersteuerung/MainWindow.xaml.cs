@@ -5,11 +5,12 @@ namespace LAP_2010_3_Ofentuersteuerung
 {
     public partial class MainWindow : Window
     {
+        public S7_1200 S7_1200 { get; set; }
+        public bool DebugWindowAktiv { get; set; }
+        public SetManual.SetManual SetManualWindow { get; set; }
 
-    public S7_1200 S7_1200 { get; set; }
-
-    private readonly DatenRangieren datenRangieren;
-    private readonly ViewModel.OfensteuerungViewModel ofensteuerungViewModel ;
+        private readonly DatenRangieren datenRangieren;
+        private readonly ViewModel.OfensteuerungViewModel ofensteuerungViewModel;
 
         public MainWindow()
         {
@@ -20,8 +21,13 @@ namespace LAP_2010_3_Ofentuersteuerung
             DataContext = ofensteuerungViewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+        }
 
-           
+        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        {
+            DebugWindowAktiv = true;
+            SetManualWindow = new SetManual.SetManual(ofensteuerungViewModel);
+            SetManualWindow.Show();
         }
     }
 }

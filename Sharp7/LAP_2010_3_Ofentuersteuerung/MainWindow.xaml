@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAP_2010_3_Ofentuersteuerung"
         mc:Ignorable="d"
-        Title="LAP 2010/3 Ofentürsteuerung" Height="830" Width="1200">
+        Title="LAP 2010/3 Ofentürsteuerung" Height="520" Width="1000">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -45,23 +45,15 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
 
         <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
-        <Label Grid.Column="12"                        Grid.Row="14"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
-        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="11" />
+        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
         <Button x:Name="btnS1" Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
             <Button.Resources>
@@ -91,24 +83,56 @@
         <Label Content="S2 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
 
-
-        <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorH1}" />
-
-        <Label Content="H1 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-
+        <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorH3}" />
+        <Label Content="H3 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
 
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="12" Fill="#eeeeee"/>
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Ein}"/>
+        <Label Content="S7"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Ein}"/>
+        <Label Content="S8"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="21" Fill="#eeeeee"/>
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS9Aus}"   />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS9Ein}"  />
+        <Label Content="S9"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
+        <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnS9}" Command="{Binding BtnS9}"/>
 
+        <MediaElement Name="myMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MediaTimeline Source="Video/Flammen.mp4" Storyboard.TargetName="myMediaElement" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>
+        
+        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="19" >
 
+            <Image Height="50" Canvas.Left="{Binding ViAnzeige.ZahnstangePosition}" Canvas.Top="185" Source="Bilder/Zahnstange.PNG" />
+            <Rectangle Height="187" Width="224" Canvas.Left="{Binding ViAnzeige.OfentuerePosition}" Canvas.Top="57"  Fill="Gray"  />
 
-        <MediaElement Grid.Column="12" Grid.ColumnSpan="5"  Grid.Row="13" Grid.RowSpan="6" Source="Video/Flammen.mp4" IsMuted="True" Margin="0,25,0,10" LoadedBehavior="Manual" Name="FlammenPlayer" />
+            <Image Height="100" Width="100" Canvas.Top="225" Canvas.Left="15"   Source="Bilder/Zahnrad.PNG" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform Angle="{Binding ViAnzeige.ZahnradWinkel}"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
 
-
-
+            <Label Height="35" Width="50" Canvas.Left="15" Canvas.Top="330" HorizontalContentAlignment="Center" FontSize="14pt" Content="K1" Background="{Binding ViAnzeige.ColorK1}"/>
+            <Label Height="35" Width="50" Canvas.Left="70" Canvas.Top="330" HorizontalContentAlignment="Center" FontSize="14pt" Content="K2" Background="{Binding ViAnzeige.ColorK2}"/>
+        </Canvas>
     </Grid>
 </Window>

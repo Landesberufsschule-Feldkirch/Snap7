@@ -5,13 +5,12 @@ namespace LAP_2018_Abfuellanlage
 {
     public partial class MainWindow : Window
     {
+        public bool DebugWindowAktiv { get; set; }
+        public SetManual.SetManual SetManualWindow { get; set; }
+        public S7_1200 S7_1200 { get; set; }
 
-        public bool DebugWindowAktiv;
-
-        public SetManual.SetManual setManualWindow;
-        private DatenRangieren datenRangieren;
-        private ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
-        public S7_1200 S7_1200 { get; set; } 
+        private readonly DatenRangieren datenRangieren;
+        private readonly ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
 
         public MainWindow()
         {
@@ -27,8 +26,8 @@ namespace LAP_2018_Abfuellanlage
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            setManualWindow = new SetManual.SetManual(abfuellanlageViewModel);
-            setManualWindow.Show();
+            SetManualWindow = new SetManual.SetManual(abfuellanlageViewModel);
+            SetManualWindow.Show();
         }
     }
 }

@@ -5,9 +5,10 @@ namespace Tiefgarage
 {
     public partial class MainWindow : Window
     {
-        private ViewModel.TiefgarageViewModel tiefgarageViewModel;
-        private DatenRangieren datenRangieren;
-        public S7_1200 S7_1200 { get; set; } 
+        public S7_1200 S7_1200 { get; set; }
+
+        private readonly ViewModel.TiefgarageViewModel tiefgarageViewModel;
+        private readonly DatenRangieren datenRangieren;
 
         public MainWindow()
         {

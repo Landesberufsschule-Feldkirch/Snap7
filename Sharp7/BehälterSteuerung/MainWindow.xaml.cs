@@ -5,9 +5,10 @@ namespace BehaelterSteuerung
 {
     public partial class MainWindow : Window
     {
-        private DatenRangieren datenRangieren;
-        private BehaelterSteuerung.ViewModel.BehaelterViewModel behaelterViewModel;
         public S7_1200 S7_1200 { get; set; }
+
+        private readonly DatenRangieren datenRangieren;
+        private readonly BehaelterSteuerung.ViewModel.BehaelterViewModel behaelterViewModel;
 
         public MainWindow()
         {

@@ -8,42 +8,37 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         private enum BitPosAusgang
         {
-            H1 = 0, // Störung
-            H2,     // Betriebsbereit
-            K1,     // Netzschütz
-            K2,     // Sternschütz
-            K3      // Dreieckschütz
+            K1 = 0, // Motor LL (Öffnen)
+            K2,     // Motor RL (Schliessen)
+            H3      // Meldeleuchte "Schliessen"
         }
 
         private enum BitPosEingang
         {
-            F5 = 0, // Störung Motorschutzschalter
-            S1,     // Taster Aus
-            S2,     // Taster Ein
-            S7,     // Druckschalter
-            S8      // Temperaturfühler Kompressor
+            S1 = 0, // Taster "Halt" 
+            S2,     // Taster "Öffnen" 
+            S3,     // Taster "Schliessen" 
+            S7,     // Endschalter Offen 
+            S8,     // Endschalter Geschlossen 
+            S9      // Lichtschranke
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, kompressoranlageViewModel.kompressoranlage.F5);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, kompressoranlageViewModel.kompressoranlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, kompressoranlageViewModel.kompressoranlage.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S7, kompressoranlageViewModel.kompressoranlage.S7);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S8, kompressoranlageViewModel.kompressoranlage.S8);
-            */
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, ofensteuerungViewModel.ofentuerSteuerung.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, ofensteuerungViewModel.ofentuerSteuerung.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, ofensteuerungViewModel.ofentuerSteuerung.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S7, ofensteuerungViewModel.ofentuerSteuerung.S7);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S8, ofensteuerungViewModel.ofentuerSteuerung.S8);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S9, ofensteuerungViewModel.ofentuerSteuerung.S9);
+            
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            /*
-            kompressoranlageViewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
-            kompressoranlageViewModel.kompressoranlage.H2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H2);
-            kompressoranlageViewModel.kompressoranlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-            kompressoranlageViewModel.kompressoranlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            kompressoranlageViewModel.kompressoranlage.K3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K3);
-            */
+            ofensteuerungViewModel.ofentuerSteuerung.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
+            ofensteuerungViewModel.ofentuerSteuerung.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
+            ofensteuerungViewModel.ofentuerSteuerung.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);            
         }
 
         public DatenRangieren(ViewModel.OfensteuerungViewModel vm)
