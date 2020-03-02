@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_3_Ofentuersteuerun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_2_Transportwagen", "LAP_2010_2_Transportwagen\LAP_2010_2_Transportwagen.csproj", "{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_4_Abfuellanlage", "LAP_2010_4_Abfuellanlage\LAP_2010_4_Abfuellanlage.csproj", "{7CD28C95-9590-4F10-8930-13EF7097A342}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CD28C95-9590-4F10-8930-13EF7097A342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD28C95-9590-4F10-8930-13EF7097A342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD28C95-9590-4F10-8930-13EF7097A342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD28C95-9590-4F10-8930-13EF7097A342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

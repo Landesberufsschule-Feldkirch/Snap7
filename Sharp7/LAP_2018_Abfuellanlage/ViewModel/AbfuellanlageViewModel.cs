@@ -6,16 +6,16 @@
     public class AbfuellanlageViewModel
     {
 
-        public readonly Model.AlleFlaschen alleFlaschen;
+        public readonly Model.Abfuellanlage abfuellAnlage;
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public AbfuellanlageViewModel(MainWindow mainWindow)
         {
-            alleFlaschen = new Model.AlleFlaschen();
-            ViAnzeige = new VisuAnzeigen(mainWindow, alleFlaschen);
+            abfuellAnlage = new Model.Abfuellanlage();
+            ViAnzeige = new VisuAnzeigen(mainWindow, abfuellAnlage);
         }
 
-        public Model.AlleFlaschen AlleFlaschen { get { return alleFlaschen; } }
+        public Model.Abfuellanlage Abfuellanlage { get { return abfuellAnlage; } }
 
 
         #region BtnNachfuellen
@@ -26,7 +26,7 @@
             {
                 if (_btnNachfuellen == null)
                 {
-                    _btnNachfuellen = new RelayCommand(p => alleFlaschen.TasterNachfuellen(), p => true);
+                    _btnNachfuellen = new RelayCommand(p => abfuellAnlage.TasterNachfuellen(), p => true);
                 }
                 return _btnNachfuellen;
             }
@@ -41,7 +41,7 @@
             {
                 if (_btnTasterF5 == null)
                 {
-                    _btnTasterF5 = new RelayCommand(p => alleFlaschen.TasterF5(), p => true);
+                    _btnTasterF5 = new RelayCommand(p => abfuellAnlage.TasterF5(), p => true);
                 }
                 return _btnTasterF5;
             }

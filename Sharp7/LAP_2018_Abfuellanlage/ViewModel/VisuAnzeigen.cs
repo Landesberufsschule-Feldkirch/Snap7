@@ -7,11 +7,11 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.AlleFlaschen alleFlaschen;
+        private readonly Model.Abfuellanlage alleFlaschen;
         private readonly MainWindow mainWindow;
         private readonly double HoeheFuellBalken = 9 * 35;
 
-        public VisuAnzeigen(MainWindow mw, Model.AlleFlaschen af)
+        public VisuAnzeigen(MainWindow mw, Model.Abfuellanlage af)
         {
             mainWindow = mw;
             alleFlaschen = af;
@@ -77,19 +77,19 @@
         {
             while (true)
             {
-                PositionImage_1(alleFlaschen.alleFlaschen[0].AktuellePosition);
-                PositionImage_2(alleFlaschen.alleFlaschen[1].AktuellePosition);
-                PositionImage_3(alleFlaschen.alleFlaschen[2].AktuellePosition);
-                PositionImage_4(alleFlaschen.alleFlaschen[3].AktuellePosition);
-                PositionImage_5(alleFlaschen.alleFlaschen[4].AktuellePosition);
-                PositionImage_6(alleFlaschen.alleFlaschen[5].AktuellePosition);
+                PositionImage_1(alleFlaschen.AlleFlaschen[0].AktuellePosition);
+                PositionImage_2(alleFlaschen.AlleFlaschen[1].AktuellePosition);
+                PositionImage_3(alleFlaschen.AlleFlaschen[2].AktuellePosition);
+                PositionImage_4(alleFlaschen.AlleFlaschen[3].AktuellePosition);
+                PositionImage_5(alleFlaschen.AlleFlaschen[4].AktuellePosition);
+                PositionImage_6(alleFlaschen.AlleFlaschen[5].AktuellePosition);
 
-                VisibilityFlasche1(alleFlaschen.alleFlaschen[0].Sichtbar);
-                VisibilityFlasche2(alleFlaschen.alleFlaschen[1].Sichtbar);
-                VisibilityFlasche3(alleFlaschen.alleFlaschen[2].Sichtbar);
-                VisibilityFlasche4(alleFlaschen.alleFlaschen[3].Sichtbar);
-                VisibilityFlasche5(alleFlaschen.alleFlaschen[4].Sichtbar);
-                VisibilityFlasche6(alleFlaschen.alleFlaschen[5].Sichtbar);
+                VisibilityFlasche1(alleFlaschen.AlleFlaschen[0].Sichtbar);
+                VisibilityFlasche2(alleFlaschen.AlleFlaschen[1].Sichtbar);
+                VisibilityFlasche3(alleFlaschen.AlleFlaschen[2].Sichtbar);
+                VisibilityFlasche4(alleFlaschen.AlleFlaschen[3].Sichtbar);
+                VisibilityFlasche5(alleFlaschen.AlleFlaschen[4].Sichtbar);
+                VisibilityFlasche6(alleFlaschen.AlleFlaschen[5].Sichtbar);
 
                 VisibilitySensorB1(alleFlaschen.B1);
                 VisibilityVentilK1(alleFlaschen.K1);
