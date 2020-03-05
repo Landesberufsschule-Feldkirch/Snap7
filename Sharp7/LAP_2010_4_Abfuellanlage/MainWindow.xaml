@@ -112,7 +112,7 @@
 
         <Rectangle Fill="#fcdada"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
         <Rectangle Fill="Coral"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
-
+        <Button Grid.Column="8" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}"/>
         <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
 
         <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.Visibility_K3_Aus}" />

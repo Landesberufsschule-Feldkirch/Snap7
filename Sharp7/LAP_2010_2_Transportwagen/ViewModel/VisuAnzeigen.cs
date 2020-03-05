@@ -19,6 +19,7 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
+            ColorF3 = "LawnGreen";
             ColorH3 = "LawnGreen";
             ColorS2 = "LawnGreen";
 
@@ -43,7 +44,7 @@
         {
             while (true)
             {
-
+                FarbeF3(transportwagen.F3);
                 FarbeH3(transportwagen.H3);
                 FarbeS2(transportwagen.S2);
 
@@ -98,6 +99,24 @@
         #endregion
 
 
+        #region Color F3
+        public void FarbeF3(bool val)
+        {
+            if (val) ColorF3 = "LawnGreen"; else ColorF3 = "Red";
+        }
+
+        private string _colorF3;
+        public string ColorF3
+        {
+            get { return _colorF3; }
+            set
+            {
+                _colorF3 = value;
+                OnPropertyChanged(nameof(ColorF3));
+            }
+        }
+        #endregion
+        
         #region Color H3
         public void FarbeH3(bool val)
         {

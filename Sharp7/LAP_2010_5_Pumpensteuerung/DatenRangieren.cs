@@ -17,6 +17,7 @@ namespace LAP_2010_5_Pumpensteuerung
         {
             S1 = 0, // Wahlschalter Hand
             S2,     // Wahlschalter Automatik
+            S3,     // Störung quittieren
             F5,     // Thermorelais
             S7,     // Schwimmerschalter oben
             S8      // Schwimmerschalter unten

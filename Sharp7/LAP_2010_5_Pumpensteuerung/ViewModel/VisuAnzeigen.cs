@@ -19,6 +19,8 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
+            ClickModeBtnS3 = "Press";
+
             ColorThermorelais_F5 = "LawnGreen";
 
             ColorAbleitungOben = "LightBlue";
@@ -78,9 +80,9 @@
                 Thread.Sleep(10);
             }
         }
-
-
-
+        
+        internal void SetS3() { pumpensteuerung.S3 = ClickModeButtonS3(); }
+        
 
         #region SPS Status und Farbe
         private string _spsStatus;
@@ -133,6 +135,32 @@
 
         #endregion
 
+        #region ClickModeButtonS3
+        public bool ClickModeButtonS3()
+        {
+            if (ClickModeBtnS3 == "Press")
+            {
+                ClickModeBtnS3 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS3 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnS3;
+        public string ClickModeBtnS3
+        {
+            get { return _clickModeBtnS3; }
+            set
+            {
+                _clickModeBtnS3 = value;
+                OnPropertyChanged(nameof(ClickModeBtnS3));
+            }
+        }
+#endregion
 
         #region Color Thermorelais F5
         public void FarbeTherorelais_F5(bool val)

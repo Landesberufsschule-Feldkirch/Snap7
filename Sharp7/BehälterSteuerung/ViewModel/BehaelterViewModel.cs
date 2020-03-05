@@ -5,16 +5,16 @@
 
     public class BehaelterViewModel
     {
-        public readonly Model.AlleBehaelter alleBehaelter;
+        public readonly Model.BehaelterSteuerung alleBehaelter;
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public BehaelterViewModel(MainWindow mainWindow)
         {
-            alleBehaelter = new Model.AlleBehaelter();
+            alleBehaelter = new Model.BehaelterSteuerung();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);        
         }
 
-        public Model.AlleBehaelter AlleBehaelter { get { return alleBehaelter; } }
+        public Model.BehaelterSteuerung AlleBehaelter { get { return alleBehaelter; } }
 
 
 

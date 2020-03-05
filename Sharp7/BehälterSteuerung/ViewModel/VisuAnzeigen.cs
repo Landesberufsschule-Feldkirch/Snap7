@@ -7,10 +7,10 @@
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly double HoeheFuellBalken = 200.0;
-        private readonly Model.AlleBehaelter alleBehaelter;
+        private readonly Model.BehaelterSteuerung alleBehaelter;
         private readonly MainWindow mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.AlleBehaelter aB)
+        public VisuAnzeigen(MainWindow mw, Model.BehaelterSteuerung aB)
         {
             mainWindow = mw;
             alleBehaelter = aB;
@@ -93,32 +93,32 @@
                 bool AbleitungUnten3;
                 bool AbleitungUnten4;
 
-                VisibilityVentilQ1(alleBehaelter.alleBehaelter[0].VentilOben);
-                VisibilityVentilQ3(alleBehaelter.alleBehaelter[1].VentilOben);
-                VisibilityVentilQ5(alleBehaelter.alleBehaelter[2].VentilOben);
-                VisibilityVentilQ7(alleBehaelter.alleBehaelter[3].VentilOben);
+                VisibilityVentilQ1(alleBehaelter.AlleBehaelter[0].VentilOben);
+                VisibilityVentilQ3(alleBehaelter.AlleBehaelter[1].VentilOben);
+                VisibilityVentilQ5(alleBehaelter.AlleBehaelter[2].VentilOben);
+                VisibilityVentilQ7(alleBehaelter.AlleBehaelter[3].VentilOben);
 
-                FarbeZuleitung1b(alleBehaelter.alleBehaelter[0].VentilOben);
-                FarbeZuleitung2b(alleBehaelter.alleBehaelter[1].VentilOben);
-                FarbeZuleitung3b(alleBehaelter.alleBehaelter[2].VentilOben);
-                FarbeZuleitung4b(alleBehaelter.alleBehaelter[3].VentilOben);
-
-
-                Margin_1(alleBehaelter.alleBehaelter[0].Pegel);
-                Margin_2(alleBehaelter.alleBehaelter[1].Pegel);
-                Margin_3(alleBehaelter.alleBehaelter[2].Pegel);
-                Margin_4(alleBehaelter.alleBehaelter[3].Pegel);
+                FarbeZuleitung1b(alleBehaelter.AlleBehaelter[0].VentilOben);
+                FarbeZuleitung2b(alleBehaelter.AlleBehaelter[1].VentilOben);
+                FarbeZuleitung3b(alleBehaelter.AlleBehaelter[2].VentilOben);
+                FarbeZuleitung4b(alleBehaelter.AlleBehaelter[3].VentilOben);
 
 
-                FarbeAbleitung1a(alleBehaelter.alleBehaelter[0].Pegel > 0.01);
-                FarbeAbleitung2a(alleBehaelter.alleBehaelter[1].Pegel > 0.01);
-                FarbeAbleitung3a(alleBehaelter.alleBehaelter[2].Pegel > 0.01);
-                FarbeAbleitung4a(alleBehaelter.alleBehaelter[3].Pegel > 0.01);
+                Margin_1(alleBehaelter.AlleBehaelter[0].Pegel);
+                Margin_2(alleBehaelter.AlleBehaelter[1].Pegel);
+                Margin_3(alleBehaelter.AlleBehaelter[2].Pegel);
+                Margin_4(alleBehaelter.AlleBehaelter[3].Pegel);
 
-                AbleitungUnten1 = alleBehaelter.alleBehaelter[0].Pegel > 0.01 && alleBehaelter.alleBehaelter[0].VentilUnten;
-                AbleitungUnten2 = alleBehaelter.alleBehaelter[1].Pegel > 0.01 && alleBehaelter.alleBehaelter[1].VentilUnten;
-                AbleitungUnten3 = alleBehaelter.alleBehaelter[2].Pegel > 0.01 && alleBehaelter.alleBehaelter[2].VentilUnten;
-                AbleitungUnten4 = alleBehaelter.alleBehaelter[3].Pegel > 0.01 && alleBehaelter.alleBehaelter[3].VentilUnten;
+
+                FarbeAbleitung1a(alleBehaelter.AlleBehaelter[0].Pegel > 0.01);
+                FarbeAbleitung2a(alleBehaelter.AlleBehaelter[1].Pegel > 0.01);
+                FarbeAbleitung3a(alleBehaelter.AlleBehaelter[2].Pegel > 0.01);
+                FarbeAbleitung4a(alleBehaelter.AlleBehaelter[3].Pegel > 0.01);
+
+                AbleitungUnten1 = alleBehaelter.AlleBehaelter[0].Pegel > 0.01 && alleBehaelter.AlleBehaelter[0].VentilUnten;
+                AbleitungUnten2 = alleBehaelter.AlleBehaelter[1].Pegel > 0.01 && alleBehaelter.AlleBehaelter[1].VentilUnten;
+                AbleitungUnten3 = alleBehaelter.AlleBehaelter[2].Pegel > 0.01 && alleBehaelter.AlleBehaelter[2].VentilUnten;
+                AbleitungUnten4 = alleBehaelter.AlleBehaelter[3].Pegel > 0.01 && alleBehaelter.AlleBehaelter[3].VentilUnten;
                 AbleitungenUnten = AbleitungUnten1 || AbleitungUnten2 || AbleitungUnten3 || AbleitungUnten4;
 
                 VisibilityVentilQ2(AbleitungUnten1);
@@ -133,22 +133,22 @@
                 FarbeAbleitungGesamt(AbleitungenUnten);
 
 
-                FarbeLabelB1(alleBehaelter.alleBehaelter[0].SchwimmerschalterOben);
-                FarbeLabelB2(alleBehaelter.alleBehaelter[0].SchwimmerschalterUnten);
-                FarbeLabelB3(alleBehaelter.alleBehaelter[1].SchwimmerschalterOben);
-                FarbeLabelB4(alleBehaelter.alleBehaelter[1].SchwimmerschalterUnten);
-                FarbeLabelB5(alleBehaelter.alleBehaelter[2].SchwimmerschalterOben);
-                FarbeLabelB6(alleBehaelter.alleBehaelter[2].SchwimmerschalterUnten);
-                FarbeLabelB7(alleBehaelter.alleBehaelter[3].SchwimmerschalterOben);
-                FarbeLabelB8(alleBehaelter.alleBehaelter[3].SchwimmerschalterUnten);
+                FarbeLabelB1(alleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
+                FarbeLabelB2(alleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
+                FarbeLabelB3(alleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
+                FarbeLabelB4(alleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
+                FarbeLabelB5(alleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
+                FarbeLabelB6(alleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
+                FarbeLabelB7(alleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
+                FarbeLabelB8(alleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
 
                 FarbeCircle_P1(alleBehaelter.P1);
 
 
-                EnableAutomatik1234 = alleBehaelter.AlleKnoepfeAktivieren;
-                EnableAutomatik1324 = alleBehaelter.AlleKnoepfeAktivieren;
-                EnableAutomatik1432 = alleBehaelter.AlleKnoepfeAktivieren;
-                EnableAutomatik4321 = alleBehaelter.AlleKnoepfeAktivieren;
+                EnableAutomatik1234 = !alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik1324 = !alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik1432 = !alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik4321 = !alleBehaelter.AutomatikModusAktiv;
 
                 if (mainWindow.S7_1200 != null)
                 {

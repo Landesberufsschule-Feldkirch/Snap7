@@ -72,7 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Model\AlleBehaelter.cs" />
+    <Compile Include="Model\BehaelterSteuerung.cs" />
     <Compile Include="Model\Behaelter.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\BehaelterViewModel.cs" />

@@ -77,6 +77,8 @@
         <Label Content="H3 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Grid.ColumnSpan="2" Margin="0,19,67,16" />
         <Label Content="Störung" Grid.Column="13" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" />
 
+        <Button Content="F3" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF3}" Command="{Binding BtnF3}"  FontSize="14pt" />
+
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14" Fill="#eeeeee"/>
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />

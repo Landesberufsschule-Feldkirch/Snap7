@@ -23,7 +23,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         private readonly Punkt VereinzelnerVentil = new Punkt(105, 385);
         private readonly Punkt FoerderbandLinks = new Punkt(92, 525);
         private readonly Punkt FoerderbandRechts = new Punkt(640, 525);
-        private readonly Punkt SensorB1Links = new Punkt(418, 525);
+        private readonly Punkt SensorB1Links = new Punkt(410, 525);
         private readonly Punkt SensorB1Rechts = new Punkt(450, 525);
         private readonly Punkt Boden = new Punkt(640, 700);
 

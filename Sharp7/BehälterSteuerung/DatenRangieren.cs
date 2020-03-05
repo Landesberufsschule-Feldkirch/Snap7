@@ -34,24 +34,24 @@ namespace BehaelterSteuerung
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.AlleBehaelter.alleBehaelter[0].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.AlleBehaelter.alleBehaelter[0].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.AlleBehaelter.alleBehaelter[1].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.AlleBehaelter.alleBehaelter[1].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B5, viewModel.AlleBehaelter.alleBehaelter[2].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B6, viewModel.AlleBehaelter.alleBehaelter[2].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B7, viewModel.AlleBehaelter.alleBehaelter[3].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B8, viewModel.AlleBehaelter.alleBehaelter[3].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B5, viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B6, viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B7, viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B8, viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             viewModel.AlleBehaelter.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
 
-            viewModel.AlleBehaelter.alleBehaelter[0].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            viewModel.AlleBehaelter.alleBehaelter[1].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
-            viewModel.AlleBehaelter.alleBehaelter[2].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q5);
-            viewModel.AlleBehaelter.alleBehaelter[3].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q7);
+            viewModel.AlleBehaelter.AlleBehaelter[0].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            viewModel.AlleBehaelter.AlleBehaelter[1].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
+            viewModel.AlleBehaelter.AlleBehaelter[2].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q5);
+            viewModel.AlleBehaelter.AlleBehaelter[3].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q7);
         }
     }
 }

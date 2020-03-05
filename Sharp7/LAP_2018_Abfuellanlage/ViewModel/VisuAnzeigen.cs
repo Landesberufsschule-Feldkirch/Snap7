@@ -96,7 +96,7 @@
                 VisibilityVentilK2(alleFlaschen.K2);
                 VisibilityAbleitung(alleFlaschen.K1 && (alleFlaschen.Pegel > 0.01));
 
-                FarbeCircle_F5(!alleFlaschen.F5);
+                FarbeCircle_F5(alleFlaschen.F5);
                 FarbeCircle_M1(alleFlaschen.M1);
                 FarbeCircle_P1(alleFlaschen.P1);
                 FarbeCircle_P2(alleFlaschen.P2);
@@ -778,7 +778,7 @@
         #region Color F5
         public void FarbeCircle_F5(bool val)
         {
-            if (val) ColorCircle_F5 = "red"; else ColorCircle_F5 = "lawngreen";
+            if (val) ColorCircle_F5 = "LawnGreen"; else ColorCircle_F5 = "Red";
         }
 
         private string _colorCircle_F5;

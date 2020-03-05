@@ -96,16 +96,23 @@
         <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press" Command="{Binding BtnTasterS3}" />
 
 
+        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="14pt">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="S3" Grid.Column="14"    Grid.Row="11"  Grid.RowSpan="2" Margin="22,22,5,22" />
+        
+        <Ellipse Grid.Column="15" Grid.Row="15"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_H1}" />
+        <Ellipse Grid.Column="17" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_H2}" />
 
+        <Label Content="H1" Grid.Column="14"    Grid.Row="15"  Grid.RowSpan="2" Margin="22,22,5,22" />
+        <Label Content="H2" Grid.Column="16"    Grid.Row="15" Grid.RowSpan="2" Margin="47,22,0,22" />
 
-        <Ellipse Grid.Column="15" Grid.Row="12"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_H1}" />
-        <Ellipse Grid.Column="15" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_H2}" />
-
-        <Label Content="H1" Grid.Column="14"    Grid.Row="12"  Grid.RowSpan="2" Margin="22,22,5,22" />
-        <Label Content="H2" Grid.Column="14"    Grid.Row="15" Grid.RowSpan="2" Margin="22,22,5,22" />
-
-        <Label Content="Pumpe"    Grid.Column="15"    Grid.Row="12"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label Content="Störung"  Grid.Column="15"    Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Label Content="Pumpe"    Grid.Column="15"    Grid.Row="15"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,22,13,22" />
+        <Label Content="Störung"  Grid.Column="17"    Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,22,8,22" />
 
         <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F5" Background="{Binding ViAnzeige.ColorThermorelais_F5}" Command="{Binding BtnThermorelaisF5}" />
 

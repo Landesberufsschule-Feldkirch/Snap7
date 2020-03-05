@@ -67,6 +67,21 @@
         }
         #endregion
 
+        #region BtnS3
+        private ICommand _btnS3;
+        public ICommand BtnS3
+        {
+            get
+            {
+                if (_btnS3 == null)
+                {
+                    _btnS3 = new RelayCommand(p => ViAnzeige.SetS3(), p => true);
+                }
+                return _btnS3;
+            }
+        }
+        #endregion
+
         #region BtnThermorelaisF5
         private ICommand _btnThermorelaisF5;
         public ICommand BtnThermorelaisF5

@@ -64,6 +64,22 @@
 
 
 
+        #region BtnNachuellen
+        private ICommand _btnNachuellen;
+        public ICommand BtnNachuellen
+        {
+            get
+            {
+                if (_btnNachuellen == null)
+                {
+                    _btnNachuellen = new RelayCommand(p => abfuellAnlage.Nachfuellen(), p => true);
+                }
+                return _btnNachuellen;
+            }
+        }
+        #endregion
+
+
         #region BtnS1
         private ICommand _btnS1;
         public ICommand BtnS1

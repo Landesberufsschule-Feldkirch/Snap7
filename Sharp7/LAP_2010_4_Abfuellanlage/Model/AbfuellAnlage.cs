@@ -60,5 +60,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 Thread.Sleep(10);
             }
         }
+
+        internal void Nachfuellen() { Pegel = 1; }
     }
 }

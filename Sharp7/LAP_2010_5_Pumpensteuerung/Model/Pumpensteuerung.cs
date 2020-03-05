@@ -7,6 +7,7 @@ namespace LAP_2010_5_Pumpensteuerung.Model
     {
         public bool S1 { get; set; } // Wahlschalter Hand
         public bool S2 { get; set; } // Wahlschalter Automatik
+        public bool S3 { get; set; } // Störung quittieren
         public bool F5 { get; set; } // Thermorelais
         public bool S7 { get; set; } // Schwimmerschalter oben
         public bool S8 { get; set; } // Schwimmerschalter unten
