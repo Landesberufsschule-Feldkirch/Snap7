@@ -3,7 +3,7 @@
     using System.ComponentModel;
     using System.Threading;
     using Utilities;
-    using static AmpelsteuerungKieswerk.Model.LKW;
+    using static AmpelsteuerungKieswerk.Model.LastKraftWagen;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -58,11 +58,11 @@
                 FarbeB3(alleLastKraftWagen.B3);
                 FarbeB4(alleLastKraftWagen.B4);
 
-                PositionLkw1(alleLastKraftWagen.AlleLkw[0].AktuellePosition);
-                PositionLkw2(alleLastKraftWagen.AlleLkw[1].AktuellePosition);
-                PositionLkw3(alleLastKraftWagen.AlleLkw[2].AktuellePosition);
-                PositionLkw4(alleLastKraftWagen.AlleLkw[3].AktuellePosition);
-                PositionLkw5(alleLastKraftWagen.AlleLkw[4].AktuellePosition);
+                PositionLkw1(alleLastKraftWagen.AlleLkw[0].Position.Punkt);
+                PositionLkw2(alleLastKraftWagen.AlleLkw[1].Position.Punkt);
+                PositionLkw3(alleLastKraftWagen.AlleLkw[2].Position.Punkt);
+                PositionLkw4(alleLastKraftWagen.AlleLkw[3].Position.Punkt);
+                PositionLkw5(alleLastKraftWagen.AlleLkw[4].Position.Punkt);
 
                 RichtungLkw1(alleLastKraftWagen.AlleLkw[0].LKW_Richtung);
                 RichtungLkw2(alleLastKraftWagen.AlleLkw[1].LKW_Richtung);

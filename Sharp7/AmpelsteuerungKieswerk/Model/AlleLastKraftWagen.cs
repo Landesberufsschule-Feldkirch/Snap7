@@ -1,12 +1,13 @@
 ﻿namespace AmpelsteuerungKieswerk.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
 
     public class AlleLastKraftWagen
     {
-        private readonly MainWindow mainWindow;        
-        public readonly List<LKW> AlleLkw = new List<LKW>();
+        private readonly MainWindow mainWindow;
+        public readonly List<LastKraftWagen> AlleLkw = new List<LastKraftWagen>();
         private readonly int AnzahlLkw;
 
         public bool B1 { get; set; }
@@ -19,27 +20,29 @@
         {
             mainWindow = mw;
 
-      
-            AlleLkw.Add(new LKW(AnzahlLkw++));
-            AlleLkw.Add(new LKW(AnzahlLkw++));
-            AlleLkw.Add(new LKW(AnzahlLkw++));
-            AlleLkw.Add(new LKW(AnzahlLkw++));
-            AlleLkw.Add(new LKW(AnzahlLkw++));
+            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
 
             System.Threading.Tasks.Task.Run(() => AlleLastKraftWagenTask());
         }
 
         private void AlleLastKraftWagenTask()
         {
+
             while (true)
             {
                 B1 = false;
                 B2 = false;
                 B3 = false;
                 B4 = false;
-                foreach (LKW lkw in AlleLkw)
+
+                foreach (LastKraftWagen lkw in AlleLkw)
                 {
-                    var (b1, b2, b3, b4) = lkw.LastwagenFahren();
+                    var (links, rechts) = KollisionErkennen(lkw);
+                    var (b1, b2, b3, b4) = lkw.LastwagenFahren(links, rechts);
                     B1 |= b1;
                     B2 |= b2;
                     B3 |= b3;
@@ -48,14 +51,31 @@
 
                 Thread.Sleep(10);
             }
-        }      
+        }
+
+        private (bool, bool) KollisionErkennen(LastKraftWagen laster)
+        {
+            bool links = false;
+            bool rechts = false;
+
+            foreach (LastKraftWagen lkw in AlleLkw)
+            {
+                if (laster.ID != lkw.ID)
+                {
+                    links |= Utilities.Rechteck.KollisionObenLinksUnten(laster.Position, lkw.Position);
+                    rechts |= Utilities.Rechteck.KollisionObenRechtsUnten(laster.Position, lkw.Position);
+                }
+            }
+
+            return (links, rechts);
+        }
 
         internal void TasterLkw1() { AlleLkw[0].Losfahren(); }
         internal void TasterLkw2() { AlleLkw[1].Losfahren(); }
         internal void TasterLkw3() { AlleLkw[2].Losfahren(); }
         internal void TasterLkw4() { AlleLkw[3].Losfahren(); }
         internal void TasterLkw5() { AlleLkw[4].Losfahren(); }
-        internal void TasterLinksParken() { foreach (LKW lkw in AlleLkw) lkw.LKW_Position = LKW.LkwPositionen.LinksGeparkt;  }
-        internal void TasterRechtsParken() { foreach (LKW lkw in AlleLkw) lkw.LKW_Position = LKW.LkwPositionen.RechtsGeparkt; }      
+        internal void TasterLinksParken() { foreach (LastKraftWagen lkw in AlleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
+        internal void TasterRechtsParken() { foreach (LastKraftWagen lkw in AlleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
     }
 }
