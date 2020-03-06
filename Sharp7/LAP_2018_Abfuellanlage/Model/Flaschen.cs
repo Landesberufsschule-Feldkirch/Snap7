@@ -12,23 +12,26 @@ namespace LAP_2018_Abfuellanlage.Model
             Runtergefallen,
             Fertig
         }
+
+        public Rechteck Position { get; set; }
+        public bool Sichtbar { get; set; }
+        public int ID { get; set; }
+
         private BewegungSchritt bewegungSchritt;
-
-        private readonly int ID;
         private readonly Punkt StartPosition;
-
         private readonly double BewegungIncrement = 0.5;
-        private readonly double HoeheFlasche = 80;
-
+        private readonly double FlascheBreite = 40;
+        private readonly double FlascheHoehe = 80;
         private readonly Punkt VereinzelnerVentil = new Punkt(105, 385);
         private readonly Punkt FoerderbandLinks = new Punkt(105, 525);
         private readonly Punkt FoerderbandRechts = new Punkt(640, 525);
         private readonly Punkt SensorB1Links = new Punkt(418, 525);
         private readonly Punkt SensorB1Rechts = new Punkt(450, 525);
         private readonly Punkt Boden = new Punkt(640, 700);
-               
-        public Punkt AktuellePosition { get; set; }
-        public bool Sichtbar { get; set; }
+        private Utilities.Rechteck.RichtungX richtungX;
+        private Utilities.Rechteck.RichtungY richtungY;
+
+
 
         public Flaschen(int id)
         {
@@ -36,47 +39,60 @@ namespace LAP_2018_Abfuellanlage.Model
             bewegungSchritt = BewegungSchritt.Oberhalb;
             Sichtbar = true;
 
-            AktuellePosition = new Punkt(FoerderbandLinks.X, VereinzelnerVentil.Y - ID * HoeheFlasche);
-            StartPosition = AktuellePosition;
+            StartPosition = new Punkt(FoerderbandLinks.X, VereinzelnerVentil.Y - ID * FlascheHoehe);
+            Position = new Rechteck(StartPosition.Clone(), FlascheBreite, FlascheHoehe);
         }
 
+        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() { return (richtungX, richtungY); }
 
         public void FlascheVereinzeln()
         {
             if (bewegungSchritt == BewegungSchritt.Oberhalb) bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
 
-        public (bool, int) FlascheBewegen(bool M1, int AnzahlFlaschen, int aktuelleFlasche)
+        public (bool, int) FlascheBewegen(bool M1, int AnzahlFlaschen, int aktuelleFlasche, bool stop)
         {
             double y_Neu;
+            richtungX = Utilities.Rechteck.RichtungX.steht;
+            richtungY = Utilities.Rechteck.RichtungY.steht;
 
             switch (bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:
-                    y_Neu = VereinzelnerVentil.Y - HoeheFlasche * (ID - aktuelleFlasche);
-                    if (AktuellePosition.Y < y_Neu) AktuellePosition.Y += BewegungIncrement;
+                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    y_Neu = VereinzelnerVentil.Y - FlascheHoehe * (ID - aktuelleFlasche);
+                    if (!stop && Position.Punkt.Y < y_Neu) Position.Punkt.Y += BewegungIncrement;
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    if (AktuellePosition.Y < FoerderbandLinks.Y) AktuellePosition.Y += BewegungIncrement;
-                    else
+                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    if (!stop)
                     {
-                        bewegungSchritt = BewegungSchritt.Fahren;
-                        if (aktuelleFlasche < AnzahlFlaschen - 1) aktuelleFlasche++;
+                        if (Position.Punkt.Y < FoerderbandLinks.Y) Position.Punkt.Y += BewegungIncrement;
+                        else
+                        {
+                            bewegungSchritt = BewegungSchritt.Fahren;
+                            if (aktuelleFlasche < AnzahlFlaschen - 1) aktuelleFlasche++;
+                        }
                     }
                     break;
 
                 case BewegungSchritt.Fahren:
-                    if (M1)
+                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    if (!stop && M1)
                     {
-                        if (AktuellePosition.X < FoerderbandRechts.X) AktuellePosition.X += BewegungIncrement;
+                        if (Position.Punkt.X < FoerderbandRechts.X) Position.Punkt.X += BewegungIncrement;
                         else bewegungSchritt = BewegungSchritt.Runtergefallen;
                     }
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    if (AktuellePosition.Y < Boden.Y) AktuellePosition.Y += BewegungIncrement;
-                    else bewegungSchritt = BewegungSchritt.Fertig;
+                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    if (!stop)
+                    {
+                        if (Position.Punkt.Y < Boden.Y) Position.Punkt.Y += BewegungIncrement;
+                        else bewegungSchritt = BewegungSchritt.Fertig;
+                    }
                     break;
 
                 case BewegungSchritt.Fertig:
@@ -84,13 +100,22 @@ namespace LAP_2018_Abfuellanlage.Model
                     break;
 
                 default:
-                    bewegungSchritt = BewegungSchritt.Vereinzeln;
-                    AktuellePosition = StartPosition;
+                    bewegungSchritt = BewegungSchritt.Oberhalb;
+                    Position.Punkt.X = StartPosition.X;
+                    Position.Punkt.Y = StartPosition.Y;
                     break;
             }
 
-            if ((AktuellePosition.X > SensorB1Links.X) && (AktuellePosition.X < SensorB1Rechts.X)) return (true, aktuelleFlasche);
+            if ((Position.Punkt.X > SensorB1Links.X) && (Position.Punkt.X < SensorB1Rechts.X)) return (true, aktuelleFlasche);
             return (false, aktuelleFlasche);
+        }
+
+        internal void Reset()
+        {
+            bewegungSchritt = BewegungSchritt.Oberhalb;
+            Sichtbar = true;
+            Position.Punkt.X = StartPosition.X;
+            Position.Punkt.Y = StartPosition.Y;
         }
     }
 }

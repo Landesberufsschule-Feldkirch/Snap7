@@ -18,6 +18,21 @@
         public Model.Abfuellanlage Abfuellanlage { get { return abfuellAnlage; } }
 
 
+        #region BtnReset
+        private ICommand _btnReset;
+        public ICommand BtnReset
+        {
+            get
+            {
+                if (_btnReset == null)
+                {
+                    _btnReset = new RelayCommand(p => abfuellAnlage.AllesReset(), p => true);
+                }
+                return _btnReset;
+            }
+        }
+        #endregion
+
         #region BtnNachfuellen
         private ICommand _btnNachfuellen;
         public ICommand BtnNachfuellen

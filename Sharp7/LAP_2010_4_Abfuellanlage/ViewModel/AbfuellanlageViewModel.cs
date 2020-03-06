@@ -64,6 +64,21 @@
 
 
 
+        #region BtnReset
+        private ICommand _btnReset;
+        public ICommand BtnReset
+        {
+            get
+            {
+                if (_btnReset == null)
+                {
+                    _btnReset = new RelayCommand(p => abfuellAnlage.AllesReset(), p => true);
+                }
+                return _btnReset;
+            }
+        }
+        #endregion
+        
         #region BtnNachuellen
         private ICommand _btnNachuellen;
         public ICommand BtnNachuellen

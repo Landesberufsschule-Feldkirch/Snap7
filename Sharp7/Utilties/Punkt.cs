@@ -4,6 +4,7 @@ namespace Utilities
 {
     public class Punkt
     {
+
         public double X { get; set; }
         public double Y { get; set; }
 
@@ -26,6 +27,10 @@ namespace Utilities
             Y = radius * Math.Sin(Utilities.Winkel.Deg2Rad(winkel));
         }
 
-
+        public Punkt Clone()
+        {
+            Punkt p = new Punkt(X, Y);
+            return p;
+        }
     }
 }

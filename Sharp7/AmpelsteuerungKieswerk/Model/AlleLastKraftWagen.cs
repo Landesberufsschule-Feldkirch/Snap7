@@ -41,8 +41,9 @@
 
                 foreach (LastKraftWagen lkw in AlleLkw)
                 {
-                    var (links, rechts) = KollisionErkennen(lkw);
-                    var (b1, b2, b3, b4) = lkw.LastwagenFahren(links, rechts);
+
+                    var stop = KollisionErkennen(lkw);
+                    var (b1, b2, b3, b4) = lkw.LastwagenFahren(stop);
                     B1 |= b1;
                     B2 |= b2;
                     B3 |= b3;
@@ -53,21 +54,24 @@
             }
         }
 
-        private (bool, bool) KollisionErkennen(LastKraftWagen laster)
+        private bool KollisionErkennen(LastKraftWagen laster)
         {
-            bool links = false;
-            bool rechts = false;
+            bool stop = false;
+            var (lx, ly) = laster.GetRichtung();
 
             foreach (LastKraftWagen lkw in AlleLkw)
             {
                 if (laster.ID != lkw.ID)
                 {
-                    links |= Utilities.Rechteck.KollisionObenLinksUnten(laster.Position, lkw.Position);
-                    rechts |= Utilities.Rechteck.KollisionObenRechtsUnten(laster.Position, lkw.Position);
+                    var (hx, hy) = lkw.GetRichtung();
+                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht)
+                    {
+                        stop |= Utilities.Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
+                    }
                 }
             }
 
-            return (links, rechts);
+            return stop;
         }
 
         internal void TasterLkw1() { AlleLkw[0].Losfahren(); }

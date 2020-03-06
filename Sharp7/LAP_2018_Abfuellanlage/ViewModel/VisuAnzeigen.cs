@@ -77,12 +77,12 @@
         {
             while (true)
             {
-                PositionImage_1(alleFlaschen.AlleFlaschen[0].AktuellePosition);
-                PositionImage_2(alleFlaschen.AlleFlaschen[1].AktuellePosition);
-                PositionImage_3(alleFlaschen.AlleFlaschen[2].AktuellePosition);
-                PositionImage_4(alleFlaschen.AlleFlaschen[3].AktuellePosition);
-                PositionImage_5(alleFlaschen.AlleFlaschen[4].AktuellePosition);
-                PositionImage_6(alleFlaschen.AlleFlaschen[5].AktuellePosition);
+                PositionImage_1(alleFlaschen.AlleFlaschen[0].Position.Punkt);
+                PositionImage_2(alleFlaschen.AlleFlaschen[1].Position.Punkt);
+                PositionImage_3(alleFlaschen.AlleFlaschen[2].Position.Punkt);
+                PositionImage_4(alleFlaschen.AlleFlaschen[3].Position.Punkt);
+                PositionImage_5(alleFlaschen.AlleFlaschen[4].Position.Punkt);
+                PositionImage_6(alleFlaschen.AlleFlaschen[5].Position.Punkt);
 
                 VisibilityFlasche1(alleFlaschen.AlleFlaschen[0].Sichtbar);
                 VisibilityFlasche2(alleFlaschen.AlleFlaschen[1].Sichtbar);

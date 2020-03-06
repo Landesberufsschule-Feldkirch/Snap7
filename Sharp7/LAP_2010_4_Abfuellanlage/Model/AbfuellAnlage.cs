@@ -20,9 +20,12 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         private readonly int anzahlDosen;
         private int aktuelleDose;
+        private readonly double LeerGeschwindigkeit = 0.002;
 
         public AbfuellAnlage()
         {
+            Pegel = 0.9;
+
             AlleDosen = new List<CampbellSoup>
             {
                 new CampbellSoup(anzahlDosen++),
@@ -31,15 +34,11 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 new CampbellSoup(anzahlDosen++)
             };
 
-            Pegel = 0.9;
-
             System.Threading.Tasks.Task.Run(() => AbfuellAnlageTask());
         }
 
         private void AbfuellAnlageTask()
         {
-            double LeerGeschwindigkeit = 0.002;
-
             while (true)
             {
                 if (K3) Pegel -= LeerGeschwindigkeit;
@@ -53,7 +52,8 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 foreach (CampbellSoup dose in AlleDosen)
                 {
                     bool lichtschranke;
-                    (lichtschranke, aktuelleDose) = dose.DosenBewegen(K1, anzahlDosen, aktuelleDose);
+                    var stop = KollisionErkennen(dose);
+                    (lichtschranke, aktuelleDose) = dose.DosenBewegen(K1, anzahlDosen, aktuelleDose, stop);
                     S8 |= lichtschranke;
                 }
 
@@ -61,6 +61,31 @@ namespace LAP_2010_4_Abfuellanlage.Model
             }
         }
 
+        private bool KollisionErkennen(CampbellSoup campbellSoup)
+        {
+            bool stop = false;
+            var (lx, ly) = campbellSoup.GetRichtung();
+
+            foreach (CampbellSoup dose in AlleDosen)
+            {
+                if (campbellSoup.ID != dose.ID)
+                {
+                    var (hx, hy) = dose.GetRichtung();
+                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht)
+                    {
+                        stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly);
+                    }
+                }
+            }
+
+            return stop;
+        }
+
         internal void Nachfuellen() { Pegel = 1; }
+        internal void AllesReset()
+        {
+            aktuelleDose = 0;
+            foreach (CampbellSoup dose in AlleDosen) { dose.Reset(); }
+        }
     }
 }

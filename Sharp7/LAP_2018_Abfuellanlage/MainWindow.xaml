@@ -67,6 +67,15 @@
 
         <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14" Command="{Binding BtnNachfuellen}" />
 
+        <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
         <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
         <Button x:Name="btnS1" Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}" FontSize="14pt">

@@ -89,10 +89,10 @@
 
                 Margin_1(abfuellAnlage.Pegel);
 
-                PositionImage_1(abfuellAnlage.AlleDosen[0].AktuellePosition);
-                PositionImage_2(abfuellAnlage.AlleDosen[1].AktuellePosition);
-                PositionImage_3(abfuellAnlage.AlleDosen[2].AktuellePosition);
-                PositionImage_4(abfuellAnlage.AlleDosen[3].AktuellePosition);
+                PositionImage_1(abfuellAnlage.AlleDosen[0].Position.Punkt);
+                PositionImage_2(abfuellAnlage.AlleDosen[1].Position.Punkt);
+                PositionImage_3(abfuellAnlage.AlleDosen[2].Position.Punkt);
+                PositionImage_4(abfuellAnlage.AlleDosen[3].Position.Punkt);
 
                 VisibilityDose1(abfuellAnlage.AlleDosen[0].Sichtbar);
                 VisibilityDose2(abfuellAnlage.AlleDosen[1].Sichtbar);
