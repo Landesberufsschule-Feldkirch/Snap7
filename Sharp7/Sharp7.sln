@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_4_Abfuellanlage", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_5_Pumpensteuerung", "LAP_2010_5_Pumpensteuerung\LAP_2010_5_Pumpensteuerung.csproj", "{BB49A983-FF89-4DEB-BC33-1E260D6B217A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StiegenhausBeleuchtung", "StiegenhausBeleuchtung\StiegenhausBeleuchtung.csproj", "{6856142F-1FBB-4C9D-980F-4CBC476E175F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{BB49A983-FF89-4DEB-BC33-1E260D6B217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB49A983-FF89-4DEB-BC33-1E260D6B217A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB49A983-FF89-4DEB-BC33-1E260D6B217A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6856142F-1FBB-4C9D-980F-4CBC476E175F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6856142F-1FBB-4C9D-980F-4CBC476E175F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6856142F-1FBB-4C9D-980F-4CBC476E175F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6856142F-1FBB-4C9D-980F-4CBC476E175F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
