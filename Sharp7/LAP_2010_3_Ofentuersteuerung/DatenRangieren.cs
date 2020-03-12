@@ -31,14 +31,14 @@ namespace LAP_2010_3_Ofentuersteuerung
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, ofensteuerungViewModel.ofentuerSteuerung.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, ofensteuerungViewModel.ofentuerSteuerung.S8);
             S7.SetBitAt(digInput, (int)BitPosEingang.S9, ofensteuerungViewModel.ofentuerSteuerung.S9);
-            
+
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             ofensteuerungViewModel.ofentuerSteuerung.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
             ofensteuerungViewModel.ofentuerSteuerung.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            ofensteuerungViewModel.ofentuerSteuerung.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);            
+            ofensteuerungViewModel.ofentuerSteuerung.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);
         }
 
         public DatenRangieren(ViewModel.OfensteuerungViewModel vm)

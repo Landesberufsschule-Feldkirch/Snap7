@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StiegenhausBeleuchtung"
         mc:Ignorable="d"
-        Title="Stiegenhausbeleuchtung" Height="1100" Width="1200">
+        Title="Stiegenhausbeleuchtung" Height="970" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="30" />
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="30" />
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="30" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="30" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="70" />
@@ -36,30 +36,29 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Rectangle Grid.Column="2"  Grid.ColumnSpan="15"    Grid.Row="1"    Grid.RowSpan="21"       Fill="LightGray"/>
@@ -111,7 +110,7 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="4" HorizontalContentAlignment="Right" Content="OG 3" FontSize="25pt"/>
+        <Label Grid.Column="9" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 3" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="3"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
@@ -164,7 +163,7 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="8" HorizontalContentAlignment="Right" Content="OG 2" FontSize="25pt"/>
+        <Label Grid.Column="9" Grid.Row="7" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 2" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="7"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
@@ -220,7 +219,7 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="12" HorizontalContentAlignment="Right" Content="OG 2" FontSize="25pt"/>
+        <Label Grid.Column="9" Grid.Row="11" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 2" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="11"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
@@ -276,7 +275,7 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="16" HorizontalContentAlignment="Right" Content="OG 1" FontSize="25pt"/>
+        <Label Grid.Column="9" Grid.Row="15" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 1" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="15"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
@@ -329,7 +328,7 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="20" HorizontalContentAlignment="Right" Content="EG" FontSize="25pt"/>
+        <Label Grid.Column="9" Grid.Row="19" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="EG" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="19"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />

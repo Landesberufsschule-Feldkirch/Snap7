@@ -1,6 +1,4 @@
-﻿using Sharp7;
-
-namespace Tiefgarage
+﻿namespace Tiefgarage
 {
     public class DatenRangieren
     {

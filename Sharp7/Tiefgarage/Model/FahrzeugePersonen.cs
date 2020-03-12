@@ -32,7 +32,7 @@ namespace Tiefgarage.Model
         private static int AnzahlFahrzeuge = 0;
         private static int AnzahlPersonen = 0;
 
-       
+
 
         public readonly Punkt ParkenOben;
         public readonly Punkt ParkenUnten;

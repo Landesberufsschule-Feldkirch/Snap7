@@ -4,11 +4,7 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateSynchronisieren(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
-
+        public StateSynchronisieren(Kraftwerk kw) { kraftWerk = kw; }
         public void OnEntry()
         {
             kraftWerk.Q1 = true;
@@ -32,15 +28,7 @@
                     break;
             }
         }
-
-        public void Doing()
-        {
-            // nichts zu tun
-        }
-
-        public void OnExit()
-        {
-            // nichts zu tun
-        }
+        public void Doing() {   /* nichts zu tun*/  }
+        public void OnExit() {  /* nichts zu tun*/  }
     }
 }

@@ -33,7 +33,7 @@
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
-        {          
+        {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleLastKraftWagen.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleLastKraftWagen.B2);
             S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.alleLastKraftWagen.B3);
@@ -66,7 +66,7 @@
             mainWindow = mw;
             viewModel = vm;
 
-            AmpelChangedEvent +=  viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
+            AmpelChangedEvent += viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
         }
 
 

@@ -27,6 +27,7 @@ namespace LAP_2010_5_Pumpensteuerung
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.pumpensteuerung.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.pumpensteuerung.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.pumpensteuerung.S3);
             S7.SetBitAt(digInput, (int)BitPosEingang.F5, viewModel.pumpensteuerung.F5);
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, viewModel.pumpensteuerung.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, viewModel.pumpensteuerung.S8);

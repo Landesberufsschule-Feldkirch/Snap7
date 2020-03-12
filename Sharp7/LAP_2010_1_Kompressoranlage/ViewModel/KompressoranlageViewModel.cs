@@ -64,7 +64,7 @@
             }
         }
         #endregion
-        
+
         #region BtnS7
         private ICommand _btnS7;
         public ICommand BtnS7

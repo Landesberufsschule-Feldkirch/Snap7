@@ -137,7 +137,7 @@
             }
         }
         #endregion
-        
+
         #region SetManualK2
         private ICommand _setManualK2;
         public ICommand SetManualK2

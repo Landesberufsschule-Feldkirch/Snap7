@@ -5,7 +5,7 @@
 
     public class KraftwerkViewModel
     {
-        
+
         private readonly Model.Kraftwerk kraftwerk;
         public ViewModel.Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
@@ -20,17 +20,17 @@
         public Model.Kraftwerk Kraftwerk { get { return kraftwerk; } }
 
 
-        #region BtnSchalterReset
-        private ICommand _btnSchalterReset;
-        public ICommand BtnSchalterReset
+        #region BtnReset
+        private ICommand _btnReset;
+        public ICommand BtnReset
         {
             get
             {
-                if (_btnSchalterReset == null)
+                if (_btnReset == null)
                 {
-                    _btnSchalterReset = new RelayCommand(p => kraftwerk.Reset(), p => true);
+                    _btnReset = new RelayCommand(p => kraftwerk.Reset(), p => true);
                 }
-                return _btnSchalterReset;
+                return _btnReset;
             }
         }
         #endregion

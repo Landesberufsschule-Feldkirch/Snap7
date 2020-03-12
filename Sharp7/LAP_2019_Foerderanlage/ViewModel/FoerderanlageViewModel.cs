@@ -1,7 +1,7 @@
 ﻿namespace LAP_2019_Foerderanlage.ViewModel
 {
-    using System.Windows.Input;
     using LAP_2019_Foerderanlage.Commands;
+    using System.Windows.Input;
 
     public class FoerderanlageViewModel
     {
@@ -32,7 +32,7 @@
             }
         }
         #endregion
-        
+
         #region BtnS0
         private ICommand _btnS0;
         public ICommand BtnS0
@@ -227,7 +227,7 @@
             }
         }
         #endregion
-        
+
         #region BtnM1_LL_Y1
         private ICommand _btnM1_LL_Y1;
         public ICommand BtnM1_LL_Y1

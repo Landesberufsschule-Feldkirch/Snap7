@@ -9,7 +9,7 @@
         private readonly Model.AlleFahrzeugePersonen alleFahrzeugePersonen;
         private readonly MainWindow mainWindow;
 
-        public VisuAnzeigen( MainWindow mw, Model.AlleFahrzeugePersonen aFP)
+        public VisuAnzeigen(MainWindow mw, Model.AlleFahrzeugePersonen aFP)
         {
             mainWindow = mw;
             alleFahrzeugePersonen = aFP;
@@ -78,7 +78,7 @@
                 EnablePerson1 = alleFahrzeugePersonen.AllesInParkposition;
                 EnablePerson2 = alleFahrzeugePersonen.AllesInParkposition;
                 EnablePerson3 = alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson4 = alleFahrzeugePersonen.AllesInParkposition;               
+                EnablePerson4 = alleFahrzeugePersonen.AllesInParkposition;
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -492,7 +492,7 @@
         }
         #endregion
 
-        
+
         #region AnzahlAutos
         public void AnzahlAutosInDerTiefgarage(int val)
         {
@@ -510,7 +510,7 @@
             }
         }
         #endregion
-        
+
         #region AnzahlPersonen
         public void AnzahlPersonenInDerTiefgarage(int val)
         {
@@ -528,7 +528,7 @@
             }
         }
         #endregion
-                     
+
 
 
         #region iNotifyPeropertyChanged Members

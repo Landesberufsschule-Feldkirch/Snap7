@@ -6,15 +6,8 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateHochfahren(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
-
-        public void OnEntry()
-        {
-            // nichts zu tun
-        }
+        public StateHochfahren(Kraftwerk kw) { kraftWerk = kw; }
+        public void OnEntry() {   /* nichts zu tun*/  }
 
         public void Doing()
         {
@@ -26,14 +19,11 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             kraftWerk.Generator_CosPhi = 1;
 
             kraftWerk.MessgeraetAnzeigen = (Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
-
+            if (kraftWerk.Q1) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
             if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
             if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
         }
 
-        public void OnExit()
-        {
-            // nichts zu tun
-        }
+        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

@@ -34,14 +34,13 @@
             VisibilityS8Ein = "Visible";
             VisibilityS8Aus = "Hidden";
 
+            VisibilityKurzschluss = "Hidden";
+
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-
-
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -59,6 +58,8 @@
                 SichtbarkeitS7(kompressoranlage.S7);
                 SichtbarkeitS8(kompressoranlage.S8);
 
+                if (kompressoranlage.K2 && kompressoranlage.K3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -68,8 +69,6 @@
                 Thread.Sleep(10);
             }
         }
-
-
 
         internal void SetS1() { kompressoranlage.S1 = ClickModeButtonS1(); }
         internal void BtnS2() { kompressoranlage.S2 = ClickModeButtonS2(); }
@@ -179,7 +178,7 @@
         #region Color H1
         public void FarbeH1(bool val)
         {
-            if (val) ColorH1 = "LawnGreen"; else ColorH1 = "White";
+            if (val) ColorH1 = "Red"; else ColorH1 = "White";
         }
 
         private string _colorH1;
@@ -197,7 +196,7 @@
         #region Color H2
         public void FarbeH2(bool val)
         {
-            if (val) ColorH2 = "Red"; else ColorH2 = "White";
+            if (val) ColorH2 = "LawnGreen"; else ColorH2 = "White";
         }
 
         private string _colorH2;
@@ -284,6 +283,20 @@
         }
         #endregion
 
+
+
+        #region VisibilityKurzschluss 
+        private string _visibilityKurzschluss;
+        public string VisibilityKurzschluss
+        {
+            get { return _visibilityKurzschluss; }
+            set
+            {
+                _visibilityKurzschluss = value;
+                OnPropertyChanged(nameof(VisibilityKurzschluss));
+            }
+        }
+        #endregion
 
         #region Sichtbarkeit S7
         public void SichtbarkeitS7(bool val)
@@ -376,6 +389,7 @@
             }
         }
         #endregion
+
 
         #region iNotifyPeropertyChanged Members
 

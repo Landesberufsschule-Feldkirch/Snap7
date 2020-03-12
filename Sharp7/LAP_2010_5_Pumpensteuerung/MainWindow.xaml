@@ -91,9 +91,9 @@
             </Polygon>
         </Canvas>
 
-        <Button Grid.Column="15" Grid.Row="2" Content="Hand"        ClickMode="Press" Command="{Binding BtnTasterS1}" />
-        <Button Grid.Column="16" Grid.Row="2" Content="Aus"         ClickMode="Press" Command="{Binding BtnTasterS2}" />
-        <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press" Command="{Binding BtnTasterS3}" />
+        <Button Grid.Column="15" Grid.Row="2" Content="Hand"        ClickMode="Press" Command="{Binding BtnTasterHand}" />
+        <Button Grid.Column="16" Grid.Row="2" Content="Aus"         ClickMode="Press" Command="{Binding BtnTasterAus}" />
+        <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press" Command="{Binding BtnTasterAutomatik}" />
 
 
         <Button x:Name="btnS1" Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="14pt">

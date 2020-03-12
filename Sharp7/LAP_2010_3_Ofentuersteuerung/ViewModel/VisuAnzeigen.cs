@@ -42,7 +42,7 @@
             VisibilityS8Aus = "Hidden";
             VisibilityS9Ein = "Visible";
             VisibilityS9Aus = "Hidden";
-
+            VisibilityKurzschluss = "Hidden";
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
@@ -63,6 +63,7 @@
                 FarbeK1(ofentuerSteuerung.K1);
                 FarbeK2(ofentuerSteuerung.K2);
 
+                if (ofentuerSteuerung.K1 && ofentuerSteuerung.K2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -492,6 +493,18 @@
         }
         #endregion
 
+        #region VisibilityKurzschluss 
+        private string _visibilityKurzschluss;
+        public string VisibilityKurzschluss
+        {
+            get { return _visibilityKurzschluss; }
+            set
+            {
+                _visibilityKurzschluss = value;
+                OnPropertyChanged(nameof(VisibilityKurzschluss));
+            }
+        }
+        #endregion
 
 
         #region iNotifyPeropertyChanged Members

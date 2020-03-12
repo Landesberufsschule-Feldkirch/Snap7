@@ -102,6 +102,9 @@
         <Label Grid.Column="6" Grid.Row="18" Background="{Binding ViAnzeige.ColorK2}" Content="K2 ( Y )" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
         <Label Grid.Column="7" Grid.Row="18" Background="{Binding ViAnzeige.ColorK3}" Content="K3 (△)" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
 
+        <Ellipse Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
+        <Label Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+
         <Button Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="20" Background="{Binding ViAnzeige.ColorF5}" FontSize="14" Content="F5" Command="{Binding BtnF5}"/>
 
         <Border Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="12" >

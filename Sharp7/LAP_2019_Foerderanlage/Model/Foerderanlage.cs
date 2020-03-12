@@ -1,6 +1,5 @@
 ﻿namespace LAP_2019_Foerderanlage.Model
 {
-    using System;
     using System.Threading;
     public class Foerderanlage
     {

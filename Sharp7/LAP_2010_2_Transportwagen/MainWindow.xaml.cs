@@ -17,7 +17,7 @@ namespace LAP_2010_2_Transportwagen
         {
             transportwagenViewModel = new ViewModel.TransportwagenViewModel(this);
             datenRangieren = new DatenRangieren(transportwagenViewModel);
-            
+
             InitializeComponent();
             DataContext = transportwagenViewModel;
 

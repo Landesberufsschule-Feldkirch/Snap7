@@ -1,7 +1,6 @@
 ﻿namespace LAP_2010_2_Transportwagen.ViewModel
 {
     using LAP_2010_2_Transportwagen;
-    using System;
     using System.ComponentModel;
     using System.Threading;
 
@@ -21,17 +20,21 @@
 
             ColorF3 = "LawnGreen";
             ColorH3 = "LawnGreen";
+            ColorK1 = "LawnGreen";
+            ColorK2 = "LawnGreen";
             ColorS2 = "LawnGreen";
 
             ClickModeBtnK1 = "Press";
             ClickModeBtnK2 = "Press";
             ClickModeBtnS1 = "Press";
+            ClickModeBtnS3 = "Press";
 
             VisibilityS7Ein = "Visible";
             VisibilityS7Aus = "Hidden";
             VisibilityS8Ein = "Visible";
             VisibilityS8Aus = "Hidden";
 
+            VisibilityKurzschluss = "Hidden";
 
             PositionRadLinks = 0;
             PositionRadRechts = 0;
@@ -46,11 +49,14 @@
             {
                 FarbeF3(transportwagen.F3);
                 FarbeH3(transportwagen.H3);
+                FarbeK1(transportwagen.K1);
+                FarbeK2(transportwagen.K2);
                 FarbeS2(transportwagen.S2);
 
                 SichtbarkeitS7(transportwagen.S7);
                 SichtbarkeitS8(transportwagen.S8);
 
+                if (transportwagen.K1 && transportwagen.K2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
                 PositionRadLinks = transportwagen.Position;
                 PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts;
@@ -69,7 +75,7 @@
         internal void SetManualK1() { transportwagen.K1 = ClickModeButtonK1(); }
         internal void SetManualK2() { transportwagen.K2 = ClickModeButtonK2(); }
         internal void SetS1() { transportwagen.S1 = ClickModeButtonS1(); }
-
+        internal void SetS3() { transportwagen.S3 = ClickModeButtonS3(); }
 
 
 
@@ -116,7 +122,7 @@
             }
         }
         #endregion
-        
+
         #region Color H3
         public void FarbeH3(bool val)
         {
@@ -131,6 +137,42 @@
             {
                 _colorH3 = value;
                 OnPropertyChanged(nameof(ColorH3));
+            }
+        }
+        #endregion
+
+        #region Color K1
+        public void FarbeK1(bool val)
+        {
+            if (val) ColorK1 = "LawnGreen"; else ColorK1 = "White";
+        }
+
+        private string _colorK1;
+        public string ColorK1
+        {
+            get { return _colorK1; }
+            set
+            {
+                _colorK1 = value;
+                OnPropertyChanged(nameof(ColorK1));
+            }
+        }
+        #endregion
+
+        #region Color K2
+        public void FarbeK2(bool val)
+        {
+            if (val) ColorK2 = "LawnGreen"; else ColorK2 = "White";
+        }
+
+        private string _colorK2;
+        public string ColorK2
+        {
+            get { return _colorK2; }
+            set
+            {
+                _colorK2 = value;
+                OnPropertyChanged(nameof(ColorK2));
             }
         }
         #endregion
@@ -237,6 +279,35 @@
         }
         #endregion
 
+        #region ClickModeBtnS3
+        public bool ClickModeButtonS3()
+        {
+            if (ClickModeBtnS3 == "Press")
+            {
+                ClickModeBtnS3 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnS3 = "Press";
+            }
+            return false;
+        }
+
+
+
+        private string _clickModeBtnS3;
+        public string ClickModeBtnS3
+        {
+            get { return _clickModeBtnS3; }
+            set
+            {
+                _clickModeBtnS3 = value;
+                OnPropertyChanged(nameof(ClickModeBtnS3));
+            }
+        }
+        #endregion
+
 
 
         #region Sichtbarkeit S7
@@ -311,6 +382,19 @@
             {
                 _visibilityS8Aus = value;
                 OnPropertyChanged(nameof(VisibilityS8Aus));
+            }
+        }
+        #endregion
+
+        #region VisibilityKurzschluss 
+        private string _visibilityKurzschluss;
+        public string VisibilityKurzschluss
+        {
+            get { return _visibilityKurzschluss; }
+            set
+            {
+                _visibilityKurzschluss = value;
+                OnPropertyChanged(nameof(VisibilityKurzschluss));
             }
         }
         #endregion

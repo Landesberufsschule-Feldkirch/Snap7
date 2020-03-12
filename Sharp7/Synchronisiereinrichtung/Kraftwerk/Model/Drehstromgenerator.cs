@@ -42,39 +42,15 @@
             n *= n_BremsFaktor;
         }
 
-        public double Drehzahl()
-        {
-            return n;
-        }
+        public double Drehzahl() { return n; }
+        public void SynchronisiertFrequenz(double frequenz) { n = 30 * frequenz; }
+        public double Spannung(double strom) { return n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor; }
+        public double Frequenz() { return n * DrehzahlFaktor; }
+        public void SynchronisierungVentil(double Y) { SynchVentil = Y; }
+        public void SynchronisierungErregerstrom(double Ie) { SynchErregerstrom = Ie; }
+        public double Leistung() { return P; }
+        public double CosPhi() { return cosPhi; }
 
-        public void SynchronisiertFrequenz(double frequenz)
-        {
-            n = 30 * frequenz;
-        }
-
-        public double Spannung(double strom)
-        {
-            return n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
-        }
-
-        public double Frequenz()
-        {
-            return n * DrehzahlFaktor;
-        }
-
-        public void SynchronisierungVentil(double Y)
-        {
-            SynchVentil = Y;
-        }
-        public void SynchronisierungErregerstrom(double Ie)
-        {
-            SynchErregerstrom = Ie;
-        }
-
-        public double Leistung()
-        {
-            return P;
-        }
         public void MaschineLeistungFahren(double Y)
         {
             if (Y < SynchVentil)
@@ -86,12 +62,6 @@
                 P += Y_LeistungsFaktor * (Y - SynchVentil);
                 P *= Y_LeistungsBremse;
             }
-
-        }
-
-        public double CosPhi()
-        {
-            return cosPhi;
         }
 
         public void PhasenSchieberbetrieb(double Ie)
@@ -112,9 +82,6 @@
                 {
                     // untererregt ->induktiv
                 }
-
-
-
             }
         }
     }

@@ -17,6 +17,7 @@ namespace LAP_2010_2_Transportwagen
         {
             S1 = 0, // Taster "Start" 
             S2,     // NotHalt 
+            S3,     // Reset
             F3,     // Thermorelais 
             S7,     // Endschalter Links 
             S8      // Endschalter Rechts 
@@ -26,6 +27,7 @@ namespace LAP_2010_2_Transportwagen
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, transportwagenViewModel.transportwagen.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, transportwagenViewModel.transportwagen.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, transportwagenViewModel.transportwagen.S3);
             S7.SetBitAt(digInput, (int)BitPosEingang.F3, transportwagenViewModel.transportwagen.F3);
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, transportwagenViewModel.transportwagen.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, transportwagenViewModel.transportwagen.S8);

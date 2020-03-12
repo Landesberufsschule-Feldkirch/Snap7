@@ -47,8 +47,8 @@
 
             Margin1 = new Thickness(0, 30, 0, 0);
 
-                  
-            
+
+
             VisibilityRectangleAbleitung = "visible";
 
             VisibilityImage1 = "visible";
@@ -56,7 +56,7 @@
             VisibilityImage3 = "visible";
             VisibilityImage4 = "visible";
 
-        
+
             Visibility_K2_Ein = "hidden";
             Visibility_K3_Ein = "hidden";
 
@@ -476,7 +476,7 @@
 
 
 
-     
+
 
         #region Sichtbarkeit K2
         public void SichtbarkeitK2(bool val)

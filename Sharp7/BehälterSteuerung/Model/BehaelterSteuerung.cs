@@ -69,9 +69,9 @@
         internal void Automatik1432() { AutomatikBetriebStarten(AutomatikModus.Modus_1432); }
         internal void Automatik4321() { AutomatikBetriebStarten(AutomatikModus.Modus_4321); }
 
-        
+
         private void AutomatikBetriebStarten(AutomatikModus modus)
-        {            
+        {
             AutomatikModusAktiv = true;
             switch (modus)
             {

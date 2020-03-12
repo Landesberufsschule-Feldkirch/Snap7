@@ -69,6 +69,6 @@ namespace WordClock.Model
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 
-        internal void SetGeschwindigkeit(double geschwindigkeitSlider)        { geschwindigkeitZeit = geschwindigkeitSlider;        }
+        internal void SetGeschwindigkeit(double geschwindigkeitSlider) { geschwindigkeitZeit = geschwindigkeitSlider; }
     }
 }

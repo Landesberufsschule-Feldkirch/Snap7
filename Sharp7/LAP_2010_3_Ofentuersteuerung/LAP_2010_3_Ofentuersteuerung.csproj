@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Bilder\Snap7.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -129,6 +132,7 @@
   <ItemGroup>
     <Resource Include="Bilder\Zahnrad.PNG" />
     <Resource Include="Bilder\Zahnstange.PNG" />
+    <Resource Include="Bilder\Snap7.ico" />
     <Content Include="Video\Flammen.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

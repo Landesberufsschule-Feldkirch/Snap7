@@ -15,7 +15,7 @@ namespace Utilities.Tests
             var r1 = new Utilities.Rechteck(new Utilities.Punkt(r1x, r1y), r1b, r1h);
             var r2 = new Utilities.Rechteck(new Utilities.Punkt(r2x, r2y), r2b, r2h);
 
-            Assert.Equal(exp, Utilities.Rechteck.Kollision(r1, r2) );
+            Assert.Equal(exp, Utilities.Rechteck.Kollision(r1, r2));
         }
 
     }

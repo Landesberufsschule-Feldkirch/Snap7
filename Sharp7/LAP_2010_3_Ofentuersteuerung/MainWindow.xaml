@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAP_2010_3_Ofentuersteuerung"
         mc:Ignorable="d"
-        Title="LAP 2010/3 Ofentürsteuerung" Height="520" Width="1000">
+        Title="LAP 2010/3 Ofentürsteuerung" Height="650" Width="1000">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -32,6 +32,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
@@ -88,7 +91,7 @@
         <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
 
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="12" Fill="#eeeeee"/>
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee"/>
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Aus}" />
@@ -117,7 +120,7 @@
                 </EventTrigger>
             </MediaElement.Triggers>
         </MediaElement>
-        
+
         <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="19" >
 
             <Image Height="50" Canvas.Left="{Binding ViAnzeige.ZahnstangePosition}" Canvas.Top="185" Source="Bilder/Zahnstange.PNG" />
@@ -130,9 +133,14 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-
-            <Label Height="35" Width="50" Canvas.Left="15" Canvas.Top="330" HorizontalContentAlignment="Center" FontSize="14pt" Content="K1" Background="{Binding ViAnzeige.ColorK1}"/>
-            <Label Height="35" Width="50" Canvas.Left="70" Canvas.Top="330" HorizontalContentAlignment="Center" FontSize="14pt" Content="K2" Background="{Binding ViAnzeige.ColorK2}"/>
         </Canvas>
+
+        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorK1}" Content="K1 (LL)" FontSize="14" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
+        <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorK2}" Content="K2 ( RL )" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+
+        <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
+        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"  />
+
+
     </Grid>
 </Window>

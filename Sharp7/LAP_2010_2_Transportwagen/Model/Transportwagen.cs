@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace LAP_2010_2_Transportwagen.Model
 {
@@ -12,6 +11,7 @@ namespace LAP_2010_2_Transportwagen.Model
 
         public bool S1 { get; set; }    // Taster "Start" 
         public bool S2 { get; set; }    // NotHalt 
+        public bool S3 { get; set; }    // Taster Reset 
         public bool F3 { get; set; }    // Thermorelais 
         public bool S7 { get; set; }    // Endschalter Links 
         public bool S8 { get; set; }    // Endschalter Rechts 

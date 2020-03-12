@@ -11,7 +11,7 @@
         public BehaelterViewModel(MainWindow mainWindow)
         {
             alleBehaelter = new Model.BehaelterSteuerung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);        
+            ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);
         }
 
         public Model.BehaelterSteuerung AlleBehaelter { get { return alleBehaelter; } }

@@ -4,11 +4,7 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateBelasten(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
-
+        public StateBelasten(Kraftwerk kw) { kraftWerk = kw; }
         public void OnEntry()
         {
             kraftWerk.generator.SynchronisierungVentil(kraftWerk.Ventil_Y);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor
@@ -21,7 +17,7 @@
             kraftWerk.Generator_n = kraftWerk.generator.Drehzahl();
             kraftWerk.Generator_U = kraftWerk.Netz_U;
             kraftWerk.Generator_f = kraftWerk.Netz_f;
-            kraftWerk.MessgeraetAnzeigen =false;
+            kraftWerk.MessgeraetAnzeigen = false;
 
             kraftWerk.generator.MaschineLeistungFahren(kraftWerk.Ventil_Y);
             kraftWerk.generator.PhasenSchieberbetrieb(kraftWerk.Generator_Ie);
@@ -29,11 +25,9 @@
             kraftWerk.Generator_CosPhi = kraftWerk.generator.CosPhi();
 
             if (kraftWerk.Generator_P > 5000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+            if (!kraftWerk.Q1) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.LeistungsschalterAus);
         }
 
-        public void OnExit()
-        {
-            // nichts zu tun
-        }
+        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

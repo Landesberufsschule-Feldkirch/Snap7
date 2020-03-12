@@ -12,7 +12,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             Runtergefallen,
             Fertig
         }
-        
+
         public Rechteck Position { get; set; }
         public int ID { get; set; }
         public bool Sichtbar { get; set; }

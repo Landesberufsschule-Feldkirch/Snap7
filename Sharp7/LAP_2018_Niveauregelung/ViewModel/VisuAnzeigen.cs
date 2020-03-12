@@ -448,7 +448,7 @@
             set
             {
                 _visibility_B1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_B1_Aus)); 
+                OnPropertyChanged(nameof(Visibility_B1_Aus));
             }
         }
         #endregion

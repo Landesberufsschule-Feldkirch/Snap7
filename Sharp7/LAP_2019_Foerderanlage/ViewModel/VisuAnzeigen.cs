@@ -59,6 +59,7 @@
             VisibilityPfeilLinkslauf = "Hidden";
             VisibilityPfeilRechtslauf = "Hidden";
 
+            VisibilityKurzschluss = "Hidden";
 
             ColorF4 = "LawnGreen";
             ColorP1 = "LawnGreen";
@@ -104,6 +105,9 @@
                 SichtbarkeitMaterialOben(foerderanlage.Silo.GetFuellstand() > 0.01);
                 SichtbarkeitMaterialUnten((foerderanlage.Silo.GetFuellstand() > 0.01) && (foerderanlage.Y1));
 
+                if (foerderanlage.Q3_RL && foerderanlage.Q4_LL) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+
+
                 FarbeF4(foerderanlage.F4);
                 FarbeP1(foerderanlage.P1);
                 FarbeP2(foerderanlage.P2);
@@ -125,7 +129,6 @@
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
-
 
                 Thread.Sleep(10);
             }
@@ -823,7 +826,18 @@
         }
         #endregion
 
-
+        #region VisibilityKurzschluss 
+        private string _visibilityKurzschluss;
+        public string VisibilityKurzschluss
+        {
+            get { return _visibilityKurzschluss; }
+            set
+            {
+                _visibilityKurzschluss = value;
+                OnPropertyChanged(nameof(VisibilityKurzschluss));
+            }
+        }
+        #endregion
 
         #region Color F4
         public void FarbeF4(bool val)

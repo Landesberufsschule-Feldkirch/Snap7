@@ -15,7 +15,8 @@
         private readonly double PositionSchwimmerschalterOben = 0.95;
         private readonly double PositionSchwimmerschalterUnten = 0.05;
 
-        public Behaelter(double pegel) {
+        public Behaelter(double pegel)
+        {
             automatikModus = false;
             Pegel = pegel;
         }

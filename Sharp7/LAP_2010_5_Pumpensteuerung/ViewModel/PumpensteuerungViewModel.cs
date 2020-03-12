@@ -15,54 +15,50 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, pumpensteuerung);
         }
 
-        public Model.Pumpensteuerung Pumpensteuerung{ get { return pumpensteuerung; } }
+        public Model.Pumpensteuerung Pumpensteuerung { get { return pumpensteuerung; } }
 
 
-
-
-
-
-        #region BtnTasterS1
-        private ICommand _btnTasterS1;
-        public ICommand BtnTasterS1
+        #region BtnTasterHand
+        private ICommand _btnTasterHand;
+        public ICommand BtnTasterHand
         {
             get
             {
-                if (_btnTasterS1 == null)
+                if (_btnTasterHand == null)
                 {
-                    _btnTasterS1 = new RelayCommand(p => pumpensteuerung.TasterS1(), p => true);
+                    _btnTasterHand = new RelayCommand(p => pumpensteuerung.TasterHand(), p => true);
                 }
-                return _btnTasterS1;
+                return _btnTasterHand;
             }
         }
         #endregion
 
-        #region BtnTasterS2
-        private ICommand _btnTasterS2;
-        public ICommand BtnTasterS2
+        #region BtnTasterAus
+        private ICommand _btnTasterAus;
+        public ICommand BtnTasterAus
         {
             get
             {
-                if (_btnTasterS2 == null)
+                if (_btnTasterAus == null)
                 {
-                    _btnTasterS2 = new RelayCommand(p => pumpensteuerung.TasterS2(), p => true);
+                    _btnTasterAus = new RelayCommand(p => pumpensteuerung.TasterAus(), p => true);
                 }
-                return _btnTasterS2;
+                return _btnTasterAus;
             }
         }
         #endregion
 
-        #region BtnTasterS3
-        private ICommand _btnTasterS3;
-        public ICommand BtnTasterS3
+        #region BtnTasterAutomatik
+        private ICommand _btnTasterAutomatik;
+        public ICommand BtnTasterAutomatik
         {
             get
             {
-                if (_btnTasterS3 == null)
+                if (_btnTasterAutomatik == null)
                 {
-                    _btnTasterS3 = new RelayCommand(p => pumpensteuerung.TasterS3(), p => true);
+                    _btnTasterAutomatik = new RelayCommand(p => pumpensteuerung.TasterAutomatik(), p => true);
                 }
-                return _btnTasterS3;
+                return _btnTasterAutomatik;
             }
         }
         #endregion

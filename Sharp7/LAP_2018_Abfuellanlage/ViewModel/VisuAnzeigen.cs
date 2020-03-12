@@ -115,7 +115,7 @@
                 Thread.Sleep(10);
             }
         }
-               
+
         internal void TasterS1() { alleFlaschen.S1 = ClickModeButtonS1(); }
         internal void TasterS2() { alleFlaschen.S2 = !ClickModeButtonS2(); }
         internal void TasterS3() { alleFlaschen.S3 = ClickModeButtonS3(); }

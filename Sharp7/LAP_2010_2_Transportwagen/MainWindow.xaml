@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAP_2010_2_Transportwagen"
         mc:Ignorable="d"
-        Title="LAP 2010/2 Transportwagen" Height="600" Width="1000">
+        Title="LAP 2010/2 Transportwagen" Height="700" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -45,6 +45,10 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
@@ -70,17 +74,27 @@
             </Button.Resources>
         </Button>
 
+        <Button x:Name="btnS3" Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="14pt">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
         <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"  />
         <Label Content="S2 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,18,10,18" />
+        <Label Content="S3 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,17,0,18" />
 
-        <Ellipse Grid.Column="13" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorH3}" />
-        <Label Content="H3 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Grid.ColumnSpan="2" Margin="0,19,67,16" />
-        <Label Content="Störung" Grid.Column="13" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" />
+        <Ellipse Grid.Column="13" Grid.Row="9" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorH3}" />
+        <Label Content="H3 " Grid.Column="12" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Grid.ColumnSpan="2" Margin="0,19,67,16" />
+        <Label Content="Störung" Grid.Column="13" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" Grid.ColumnSpan="2" Margin="3,21,67,16" />
 
         <Button Content="F3" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF3}" Command="{Binding BtnF3}"  FontSize="14pt" />
 
 
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14" Fill="#eeeeee"/>
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee"/>
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
 
@@ -109,13 +123,20 @@
             <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadRechts}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2"/>
             <Rectangle Canvas.Left="{Binding ViAnzeige.PositionWagenkasten}" Canvas.Top="200" Width="150" Height="80" Fill="Silver" Stroke="Black" StrokeThickness="2"/>
 
-            
+
 
             <Rectangle Canvas.Left="30" Canvas.Top="300" Width="550" Height="30" Fill="DarkGray"/>
 
 
 
         </Canvas>
+
+        <Label Grid.Column="5" Grid.Row="12" Background="{Binding ViAnzeige.ColorK1}" Content="K1 (LL)" FontSize="14" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
+        <Label Grid.Column="6" Grid.Row="12" Background="{Binding ViAnzeige.ColorK2}" Content="K2 ( RL )" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+
+        <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
+        <Label Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+
 
     </Grid>
 </Window>

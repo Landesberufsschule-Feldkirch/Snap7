@@ -1,7 +1,6 @@
 ﻿namespace LAP_2010_2_Transportwagen.ViewModel
 {
     using LAP_2010_2_Transportwagen.Commands;
-    using LAP_2010_2_Transportwagen.ViewModel;
     using System.Windows.Input;
 
     public class TransportwagenViewModel
@@ -79,6 +78,21 @@
         }
         #endregion
 
+        #region BtnS3
+        private ICommand _btnS3;
+        public ICommand BtnS3
+        {
+            get
+            {
+                if (_btnS3 == null)
+                {
+                    _btnS3 = new RelayCommand(p => ViAnzeige.SetS3(), p => true);
+                }
+                return _btnS3;
+            }
+        }
+        #endregion
+
         #region BtnF3
         private ICommand _btnF3;
         public ICommand BtnF3
@@ -94,6 +108,6 @@
         }
         #endregion
 
-    
+
     }
 }

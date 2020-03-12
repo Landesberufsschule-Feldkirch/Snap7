@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Bilder\Snap7.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -103,8 +106,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\backGround.png" />
-    <Resource Include="images\clock.ico" />
+    <Resource Include="Bilder\backGround.png" />
+    <Resource Include="Bilder\clock.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
@@ -112,6 +115,8 @@
       <Name>Kommunikation</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Bilder\Snap7.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

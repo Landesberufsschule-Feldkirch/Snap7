@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace LAP_2010_5_Pumpensteuerung.Model
 {
@@ -40,8 +39,8 @@ namespace LAP_2010_5_Pumpensteuerung.Model
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;
 
-                S7 = (Pegel > 0.1);
-                S8 = (Pegel > 0.9);
+                S7 = (Pegel > 0.9);
+                S8 = (Pegel > 0.1);
 
                 Thread.Sleep(10);
             }
@@ -51,24 +50,22 @@ namespace LAP_2010_5_Pumpensteuerung.Model
         internal void SetManualK1() { K1 = !K1; }
         internal void VentilY1() { Y1 = !Y1; }
 
-
-        internal void TasterS1()
+        internal void TasterHand()
         {
             S1 = true;
             S2 = false;
         }
 
-        internal void TasterS2()
+        internal void TasterAus()
         {
             S1 = false;
             S2 = false;
         }
 
-        internal void TasterS3()
+        internal void TasterAutomatik()
         {
             S1 = false;
             S2 = true;
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace LAP_2010_3_Ofentuersteuerung.Model
 {
@@ -19,17 +18,19 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
         public double PositionOfentuere { get; set; }
         public double WinkelZahnrad { get; set; }
 
-        private readonly double OfentuereLinks = 120;
         private readonly double ZahnstangeLinks = -177;
+        private readonly double AbstandZahnstangeOfentuere = 297;
         private readonly double ZahnstangeWeg = 220;
         private readonly double ZahnstangeGeschwindigkeit = 0.5;
-        private readonly double ZahnradGeschwindigkeit = 0.75;
+        private readonly double FaktorPositionWinkel = 1.25;
+        private readonly double OffsetWinkel = 6;
+
         public OfentuerSteuerung()
         {
             S9 = true;
 
             PositionZahnstange = ZahnstangeLinks + ZahnstangeWeg;
-            PositionOfentuere = OfentuereLinks + ZahnstangeWeg;
+            PositionOfentuere = ZahnstangeLinks + AbstandZahnstangeOfentuere;
             WinkelZahnrad = 0;
 
             System.Threading.Tasks.Task.Run(() => OfentuerSteuerungTask());
@@ -39,35 +40,20 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
         {
             while (true)
             {
-                if (K1)
-                {
-                    PositionOfentuere -= ZahnstangeGeschwindigkeit;
-                    PositionZahnstange -= ZahnstangeGeschwindigkeit;
-                    WinkelZahnrad -= ZahnradGeschwindigkeit;
-                }
-                if (K2)
-                {
-                    PositionOfentuere += ZahnstangeGeschwindigkeit;
-                    PositionZahnstange += ZahnstangeGeschwindigkeit;
-                    WinkelZahnrad += ZahnradGeschwindigkeit;
-                }
+                if (K1) { PositionZahnstange -= ZahnstangeGeschwindigkeit; }
+                if (K2) { PositionZahnstange += ZahnstangeGeschwindigkeit; }
 
-                S7 = PositionOfentuere < (OfentuereLinks + 5);
-                S8 = PositionOfentuere > (OfentuereLinks + ZahnstangeWeg - 5);
-
-                
-                if (PositionOfentuere < OfentuereLinks) PositionOfentuere = OfentuereLinks;
                 if (PositionZahnstange < ZahnstangeLinks) PositionZahnstange = ZahnstangeLinks;
-
-                if (PositionOfentuere > OfentuereLinks + ZahnstangeWeg) PositionOfentuere = OfentuereLinks + ZahnstangeWeg;
                 if (PositionZahnstange > ZahnstangeLinks + ZahnstangeWeg) PositionZahnstange = ZahnstangeLinks + ZahnstangeWeg;
 
-                if (WinkelZahnrad > 360) WinkelZahnrad = 0;
-                if (WinkelZahnrad < 0) WinkelZahnrad = 360;
+                PositionOfentuere = PositionZahnstange + AbstandZahnstangeOfentuere;
+                WinkelZahnrad = OffsetWinkel + PositionOfentuere * FaktorPositionWinkel;
+
+                S7 = PositionZahnstange < (ZahnstangeLinks + 5);
+                S8 = PositionZahnstange > (ZahnstangeLinks + ZahnstangeWeg - 5);
 
                 Thread.Sleep(10);
             }
-
         }
     }
 }

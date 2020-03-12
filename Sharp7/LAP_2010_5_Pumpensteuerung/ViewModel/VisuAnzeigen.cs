@@ -1,6 +1,5 @@
 ﻿namespace LAP_2010_5_Pumpensteuerung.ViewModel
 {
-    using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;
@@ -80,9 +79,9 @@
                 Thread.Sleep(10);
             }
         }
-        
+
         internal void SetS3() { pumpensteuerung.S3 = ClickModeButtonS3(); }
-        
+
 
         #region SPS Status und Farbe
         private string _spsStatus;
@@ -105,11 +104,6 @@
                 _spsColor = value;
                 OnPropertyChanged(nameof(SpsColor));
             }
-        }
-
-        internal void TasterS3()
-        {
-            throw new NotImplementedException();
         }
         #endregion
 
@@ -160,7 +154,7 @@
                 OnPropertyChanged(nameof(ClickModeBtnS3));
             }
         }
-#endregion
+        #endregion
 
         #region Color Thermorelais F5
         public void FarbeTherorelais_F5(bool val)
@@ -463,7 +457,7 @@
         }
         #endregion
 
-               
+
 
         #region iNotifyPeropertyChanged Members
 

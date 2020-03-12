@@ -11,7 +11,7 @@
 
         public int AnzahlAutos { get; set; }
         public int AnzahlPersonen { get; set; }
-        public  List<FahrzeugPerson> AllePkwPersonen { get; set; }
+        public List<FahrzeugPerson> AllePkwPersonen { get; set; }
 
         public AlleFahrzeugePersonen()
         {
@@ -30,7 +30,7 @@
             };
 
             System.Threading.Tasks.Task.Run(() => AlleFahrzeugePersonenTask());
-        }        
+        }
 
         private void AlleFahrzeugePersonenTask()
         {
@@ -52,7 +52,7 @@
                 Thread.Sleep(10);
             }
         }
-      
+
 
         internal void DrinnenParken() { foreach (FahrzeugPerson fp in AllePkwPersonen) fp.DrinnenParken(); }
         internal void DraussenParken() { foreach (FahrzeugPerson fp in AllePkwPersonen) fp.DraussenParken(); }
