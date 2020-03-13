@@ -29,7 +29,7 @@
             <ColumnDefinition />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="10" />
@@ -68,21 +68,28 @@
         <Rectangle Grid.Column="17"                         Grid.Row="1"    Grid.RowSpan="21"       Fill="Gray" />
 
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="1" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="9"                         Grid.Row="1" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="13"                        Grid.Row="1" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P41}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="9"                         Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P42}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="13"                        Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P43}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="1"                  Fill="Gray"/>
 
 
-        <Button Grid.Column="2" Grid.Row="2"  Command="{Binding Btn_B41}">
+        <Button Grid.Column="2" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B41}" Command="{Binding Btn_B41}" Visibility="{Binding ViAnzeige.Visibility_B41_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="2" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B41}" Command="{Binding Btn_B41}" Visibility="{Binding ViAnzeige.Visibility_B41_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+       
         <Rectangle Grid.Column="3"                          Grid.Row="3"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="5"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="5" Grid.Row="3" Content="Top 4.1" FontSize="14pt"/>
 
-        <Button Grid.Column="8" Grid.Row="2"  Command="{Binding Btn_B42}">
+        <Button Grid.Column="8" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B42}" Command="{Binding Btn_B42}" Visibility="{Binding ViAnzeige.Visibility_B42_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="8" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B42}" Command="{Binding Btn_B42}" Visibility="{Binding ViAnzeige.Visibility_B42_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
         <Polygon  Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -110,34 +117,46 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 3" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Label Grid.Column="9" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 4" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="3"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
+       
         <Label Grid.Column="13" Grid.Row="3" Content="Top 4.2" FontSize="14pt"/>
-        <Button Grid.Column="16" Grid.Row="2"  Command="{Binding Btn_B43}">
+        
+        <Button Grid.Column="16" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B43}" Command="{Binding Btn_B43}" Visibility="{Binding ViAnzeige.Visibility_B43_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="16" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn_B43}" Command="{Binding Btn_B43}" Visibility="{Binding ViAnzeige.Visibility_B43_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
 
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="5" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="9"                         Grid.Row="5" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="13"                        Grid.Row="5" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P31}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="9"                         Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P32}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="13"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P33}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="5"                  Fill="Gray"/>
 
 
-        <Button Grid.Column="2" Grid.Row="6"  Command="{Binding Btn_B31}">
+        <Button Grid.Column="2" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtn_B31}" Command="{Binding Btn_B31}" Visibility="{Binding ViAnzeige.Visibility_B31_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="2" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtn_B31}" Command="{Binding Btn_B31}" Visibility="{Binding ViAnzeige.Visibility_B31_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+        
         <Rectangle Grid.Column="3"                          Grid.Row="7"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="5"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="5" Grid.Row="7" Content="Top 3.1" FontSize="14pt"/>
 
-        <Button Grid.Column="8" Grid.Row="6"  Command="{Binding Btn_B32}">
+        <Button Grid.Column="8" Grid.Row="6"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B32}" Command="{Binding Btn_B32}" Visibility="{Binding ViAnzeige.Visibility_B32_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
-
+        <Button Grid.Column="8" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtn_B32}" Command="{Binding Btn_B32}" Visibility="{Binding ViAnzeige.Visibility_B32_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+        
         <Polygon  Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
             <Polygon.Points>
                 <Point X="2"    Y="182" />
@@ -163,35 +182,44 @@
                 <Point X="182"  Y="182" />
             </Polygon.Points>
         </Polygon>
-        <Label Grid.Column="9" Grid.Row="7" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 2" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Label Grid.Column="9" Grid.Row="7" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 3" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <Rectangle Grid.Column="15"                          Grid.Row="7"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="13"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="13" Grid.Row="7" Content="Top 3.2" FontSize="14pt"/>
 
-        <Button Grid.Column="16" Grid.Row="6"  Command="{Binding Btn_B33}">
+        <Button Grid.Column="16" Grid.Row="6"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B33}" Command="{Binding Btn_B33}" Visibility="{Binding ViAnzeige.Visibility_B33_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="16" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtn_B33}" Command="{Binding Btn_B33}" Visibility="{Binding ViAnzeige.Visibility_B33_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
 
 
 
-
-        <Ellipse    Grid.Column="5"                         Grid.Row="9" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="9"                         Grid.Row="9" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="13"                        Grid.Row="9" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P21}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="9"                         Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P22}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="13"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P23}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="9"                  Fill="Gray"/>
 
 
-        <Button Grid.Column="2" Grid.Row="10"  Command="{Binding Btn_B21}">
+        <Button Grid.Column="2" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B21}" Command="{Binding Btn_B21}" Visibility="{Binding ViAnzeige.Visibility_B21_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="2" Grid.Row="10" ClickMode="{Binding ViAnzeige.ClickModeBtn_B21}" Command="{Binding Btn_B21}" Visibility="{Binding ViAnzeige.Visibility_B21_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+        
         <Rectangle Grid.Column="3"                          Grid.Row="11"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="5"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="5" Grid.Row="11" Content="Top 2.1" FontSize="14pt"/>
 
-        <Button Grid.Column="8" Grid.Row="10"  Command="{Binding Btn_B22}">
+        <Button Grid.Column="8" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B22}" Command="{Binding Btn_B22}" Visibility="{Binding ViAnzeige.Visibility_B22_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="8" Grid.Row="10" ClickMode="{Binding ViAnzeige.ClickModeBtn_B22}" Command="{Binding Btn_B22}" Visibility="{Binding ViAnzeige.Visibility_B22_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
         <Polygon  Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -225,29 +253,39 @@
         <Rectangle Grid.Column="13"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="13" Grid.Row="11" Content="Top 2.2" FontSize="14pt"/>
 
-        <Button Grid.Column="16" Grid.Row="10"  Command="{Binding Btn_B23}">
+        <Button Grid.Column="16" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B23}" Command="{Binding Btn_B23}" Visibility="{Binding ViAnzeige.Visibility_B23_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="16" Grid.Row="10" ClickMode="{Binding ViAnzeige.ClickModeBtn_B23}" Command="{Binding Btn_B23}" Visibility="{Binding ViAnzeige.Visibility_B23_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
 
 
 
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="13" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="9"                         Grid.Row="13" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="13"                        Grid.Row="13" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P11}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="9"                         Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P12}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="13"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P13}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="13"                  Fill="Gray"/>
 
 
-        <Button Grid.Column="2" Grid.Row="14"  Command="{Binding Btn_B11}">
+        <Button Grid.Column="2" Grid.Row="14" ClickMode="{Binding ViAnzeige.ClickModeBtn_B11}"  Command="{Binding Btn_B11}" Visibility="{Binding ViAnzeige.Visibility_B11_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="2" Grid.Row="14" ClickMode="{Binding ViAnzeige.ClickModeBtn_B11}" Command="{Binding Btn_B11}" Visibility="{Binding ViAnzeige.Visibility_B11_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+        
         <Rectangle Grid.Column="3"                          Grid.Row="15"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="5"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="5" Grid.Row="15" Content="Top 1.1" FontSize="14pt"/>
 
-        <Button Grid.Column="8" Grid.Row="14"  Command="{Binding Btn_B12}">
+        <Button Grid.Column="8" Grid.Row="14"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B12}"  Command="{Binding Btn_B12}" Visibility="{Binding ViAnzeige.Visibility_B12_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="8" Grid.Row="14" ClickMode="{Binding ViAnzeige.ClickModeBtn_B12}" Command="{Binding Btn_B12}" Visibility="{Binding ViAnzeige.Visibility_B12_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
         <Polygon  Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -281,26 +319,35 @@
         <Rectangle Grid.Column="13"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="13" Grid.Row="15" Content="Top 1.2" FontSize="14pt"/>
 
-        <Button Grid.Column="16" Grid.Row="14"  Command="{Binding Btn_B13}">
+        <Button Grid.Column="16" Grid.Row="14"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B13}"  Command="{Binding Btn_B13}" Visibility="{Binding ViAnzeige.Visibility_B13_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="16" Grid.Row="14" ClickMode="{Binding ViAnzeige.ClickModeBtn_B13}" Command="{Binding Btn_B13}" Visibility="{Binding ViAnzeige.Visibility_B13_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
 
-
-        <Ellipse    Grid.Column="5"                         Grid.Row="17" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="9"                         Grid.Row="17" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="13"                        Grid.Row="17" Grid.RowSpan="2" Fill="Yellow" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P01}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="9"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P02}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="13"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.Color_P03}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="17"                  Fill="Gray"/>
 
 
-        <Button Grid.Column="2" Grid.Row="18"  Command="{Binding Btn_B01}">
+        <Button Grid.Column="2" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B01}" Command="{Binding Btn_B01}" Visibility="{Binding ViAnzeige.Visibility_B01_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
         </Button>
+        <Button Grid.Column="2" Grid.Row="18" ClickMode="{Binding ViAnzeige.ClickModeBtn_B01}" Command="{Binding Btn_B01}" Visibility="{Binding ViAnzeige.Visibility_B01_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
+        </Button>
+        
         <Rectangle Grid.Column="3"                          Grid.Row="19"                            Fill="WhiteSmoke" />
         <Rectangle Grid.Column="5"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="5" Grid.Row="19" Content="Top 0.1" FontSize="14pt"/>
 
-        <Button Grid.Column="8" Grid.Row="18"  Command="{Binding Btn_B02}">
+        <Button Grid.Column="8" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B02}" Command="{Binding Btn_B02}" Visibility="{Binding ViAnzeige.Visibility_B02_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="8" Grid.Row="18" ClickMode="{Binding ViAnzeige.ClickModeBtn_B02}" Command="{Binding Btn_B02}" Visibility="{Binding ViAnzeige.Visibility_B02_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
         <Polygon  Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="18" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -334,50 +381,62 @@
         <Rectangle Grid.Column="13"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
         <Label Grid.Column="13" Grid.Row="19" Content="Top 0.2" FontSize="14pt"/>
 
-        <Button Grid.Column="16" Grid.Row="18"  Command="{Binding Btn_B03}">
+        <Button Grid.Column="16" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B03}" Command="{Binding Btn_B03}" Visibility="{Binding ViAnzeige.Visibility_B03_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+        </Button>
+        <Button Grid.Column="16" Grid.Row="18" ClickMode="{Binding ViAnzeige.ClickModeBtn_B03}" Command="{Binding Btn_B03}" Visibility="{Binding ViAnzeige.Visibility_B03_Ein}">
+            <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
         </Button>
 
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="15"   Grid.Row="21"                  Fill="Gray"/>
 
         <Rectangle  Grid.Column="19"  Grid.ColumnSpan="5"   Grid.Row="1"  Grid.RowSpan="21"    Fill="LightGray" />
 
-        <Button x:Name="btnS2" Grid.Column="20" Grid.Row="2" Content="4.1 → EG" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="12pt">
+        <Label Grid.Column="20" Grid.Row="3" Content="Start:" FontSize="14pt"/>
+        <ComboBox Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="3"  SelectedValue="{Binding ViAnzeige.ReiseStart, Mode=TwoWay}" FontSize="14pt" Margin="0,0,0,60"   >
+            <ComboBoxItem>EG</ComboBoxItem>
+            <ComboBoxItem>Top 0.1</ComboBoxItem>
+            <ComboBoxItem>Top 0.2</ComboBoxItem>
+            <ComboBoxItem>OG 1</ComboBoxItem>
+            <ComboBoxItem>Top 1.1</ComboBoxItem>
+            <ComboBoxItem>Top 1.2</ComboBoxItem>
+            <ComboBoxItem>OG 2</ComboBoxItem>
+            <ComboBoxItem>Top 2.1</ComboBoxItem>
+            <ComboBoxItem>Top 2.2</ComboBoxItem>
+            <ComboBoxItem>OG 3</ComboBoxItem>
+            <ComboBoxItem>Top 3.1</ComboBoxItem>
+            <ComboBoxItem>Top 3.2</ComboBoxItem>
+            <ComboBoxItem>OG 4</ComboBoxItem>
+            <ComboBoxItem>Top 4.1</ComboBoxItem>
+            <ComboBoxItem>Top 4.2</ComboBoxItem>
+        </ComboBox>
+
+        <Label Grid.Column="20" Grid.Row="4" Content="Ziel:" FontSize="14pt"/>
+        <ComboBox x:Name="Ziel"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="4"  SelectedValue="{Binding ViAnzeige.ReiseZiel, Mode=TwoWay}" FontSize="14pt"   >
+            <ComboBoxItem>EG</ComboBoxItem>
+            <ComboBoxItem>Top 0.1</ComboBoxItem>
+            <ComboBoxItem>Top 0.2</ComboBoxItem>
+            <ComboBoxItem>OG 1</ComboBoxItem>
+            <ComboBoxItem>Top 1.1</ComboBoxItem>
+            <ComboBoxItem>Top 1.2</ComboBoxItem>
+            <ComboBoxItem>OG 2</ComboBoxItem>
+            <ComboBoxItem>Top 2.1</ComboBoxItem>
+            <ComboBoxItem>Top 2.2</ComboBoxItem>
+            <ComboBoxItem>OG 3</ComboBoxItem>
+            <ComboBoxItem>Top 3.1</ComboBoxItem>
+            <ComboBoxItem>Top 3.2</ComboBoxItem>
+            <ComboBoxItem>OG 4</ComboBoxItem>
+            <ComboBoxItem>Top 4.1</ComboBoxItem>
+            <ComboBoxItem>Top 4.2</ComboBoxItem>
+        </ComboBox>
+
+        <Button x:Name="btnS2" Grid.Column="20" Grid.Row="7" Content="Los gehts!" Background="LawnGreen" Command="{Binding BtnStart}" FontSize="14pt" Grid.ColumnSpan="3">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15" />
+                    <Setter Property="CornerRadius" Value="25" />
                 </Style>
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS12" Grid.Column="22" Grid.Row="2" Content="4.1 → 2.2" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="12pt">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-
-
-
-
-
-        <Button x:Name="btnS21" Grid.Column="20" Grid.Row="18" Content="EG → 3.1" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="12pt" >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button x:Name="btnS221" Grid.Column="22" Grid.Row="18" Content="EG → 4.2" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="12pt" >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="15" />
-                </Style>
-            </Button.Resources>
-        </Button>
     </Grid>
 </Window>
