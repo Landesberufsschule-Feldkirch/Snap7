@@ -1,6 +1,5 @@
 ﻿namespace StiegenhausBeleuchtung.ViewModel
 {
-    using System;
     using System.ComponentModel;
     using System.Threading;
 
@@ -8,14 +7,15 @@
     {
         private readonly Model.StiegenhausBeleuchtung stiegenhausBeleuchtung;
         private readonly MainWindow mainWindow;
+
         public VisuAnzeigen(MainWindow mw, Model.StiegenhausBeleuchtung stiegenhaus)
         {
             mainWindow = mw;
             stiegenhausBeleuchtung = stiegenhaus;
 
 
-            ReiseStart = "sadf:EG";
-            ReiseZiel = "sadf:OG 4";
+            ReiseStart = "sadf:-";
+            ReiseZiel = "sadf:-";
 
             Color_P01 = "Yellow";
             Color_P02 = "Yellow";
@@ -50,7 +50,7 @@
             ClickModeBtn_B42 = "Press";
             ClickModeBtn_B43 = "Press";
 
-                       
+
             Visibility_B01_Aus = "Hidden";
             Visibility_B01_Ein = "Visible";
             Visibility_B02_Aus = "Hidden";
@@ -81,22 +81,13 @@
             Visibility_B42_Ein = "Visible";
             Visibility_B43_Aus = "Hidden";
             Visibility_B43_Ein = "Visible";
-
-
-
-
-
-
+            
 
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-
-
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
-
 
         private void VisuAnzeigenTask()
         {
@@ -144,7 +135,6 @@
                 Thread.Sleep(10);
             }
         }
-
 
 
         internal void Btn_B01() { stiegenhausBeleuchtung.B_01 = ClickModeButton_B01(); }
@@ -895,11 +885,7 @@
             }
         }
         #endregion
-
-
-
-
-
+                          
 
 
         #region Visibility Bewegungsmelder B01
@@ -939,7 +925,7 @@
             }
         }
         #endregion
-        
+
         #region Visibility Bewegungsmelder B02
         public void VisibilityBewegungsmelderB02(bool val)
         {
@@ -977,7 +963,7 @@
             }
         }
         #endregion
-        
+
         #region Visibility Bewegungsmelder B03
         public void VisibilityBewegungsmelderB03(bool val)
         {
@@ -1015,7 +1001,7 @@
             }
         }
         #endregion
-                     
+
         #region Visibility Bewegungsmelder B11
         public void VisibilityBewegungsmelderB11(bool val)
         {
@@ -1129,7 +1115,7 @@
             }
         }
         #endregion
-               
+
         #region Visibility Bewegungsmelder B21
         public void VisibilityBewegungsmelderB21(bool val)
         {
@@ -1243,7 +1229,7 @@
             }
         }
         #endregion
-               
+
         #region Visibility Bewegungsmelder B31
         public void VisibilityBewegungsmelderB31(bool val)
         {
@@ -1357,7 +1343,7 @@
             }
         }
         #endregion
-                     
+
         #region Visibility Bewegungsmelder B41
         public void VisibilityBewegungsmelderB41(bool val)
         {
@@ -1473,13 +1459,7 @@
         #endregion
 
 
-
-
-
-
-
-
-
+        
 
 
         #region iNotifyPeropertyChanged Members

@@ -12,6 +12,7 @@
         {
             stiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
             ViAnzeige = new VisuAnzeigen(mainWindow, stiegenhausBeleuchtung);
+            stiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
         }
 
         public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung { get { return stiegenhausBeleuchtung; } }
