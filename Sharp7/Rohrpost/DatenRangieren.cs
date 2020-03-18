@@ -3,20 +3,14 @@
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-
-        private enum BitPosAusgang
-        {
-        }
-
-        private enum BitPosEingang
-        {
-        }
-
+        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             //
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             //

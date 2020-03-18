@@ -56,8 +56,8 @@ namespace LAP_2018_Abfuellanlage.Model
                 B1 = false;
                 foreach (Flaschen flasche in AlleFlaschen)
                 {
-                    var lichtschranke = false;
                     var stop = KollisionErkennen(flasche);
+                    bool lichtschranke;
                     (lichtschranke, aktuelleFlasche) = flasche.FlascheBewegen(M1, anzahlFlaschen, aktuelleFlasche, stop);
                     B1 |= lichtschranke;
                 }

@@ -71,7 +71,7 @@ namespace StiegenhausBeleuchtung.Model
                 { "OG 3", new Tuple<int, int>(0, 3) },
                 { "Top 3.1", new Tuple<int, int>(-1, 3) },
                 { "Top 3.2", new Tuple<int, int>(1, 3) },
-                { "OG 4 ", new Tuple<int, int>(0, 4) },
+                { "OG 4", new Tuple<int, int>(0, 4) },
                 { "Top 4.1", new Tuple<int, int>(-1, 4) },
                 { "Top 4.2", new Tuple<int, int>(1, 4) }
             };

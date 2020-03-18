@@ -23,6 +23,7 @@ namespace LAP_2010_5_Pumpensteuerung
             S8      // Schwimmerschalter unten
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.pumpensteuerung.S1);
@@ -34,6 +35,7 @@ namespace LAP_2010_5_Pumpensteuerung
 
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             if (!mainWindow.DebugWindowAktiv)

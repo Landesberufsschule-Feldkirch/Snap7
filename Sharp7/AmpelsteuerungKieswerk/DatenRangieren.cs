@@ -6,7 +6,6 @@
 
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
         private readonly ViewModel.AmpelsteuerungKieswerkViewModel viewModel;
 
         private AmpelZustand AmpelLinks = AmpelZustand.Rot;
@@ -32,6 +31,7 @@
             B4
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleLastKraftWagen.B1);
@@ -40,6 +40,7 @@
             S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.alleLastKraftWagen.B4);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             var p1_links_rot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
@@ -61,11 +62,9 @@
             }
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.AmpelsteuerungKieswerkViewModel vm)
+        public DatenRangieren(ViewModel.AmpelsteuerungKieswerkViewModel vm)
         {
-            mainWindow = mw;
             viewModel = vm;
-
             AmpelChangedEvent += viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
         }
 

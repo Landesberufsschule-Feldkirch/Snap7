@@ -8,7 +8,6 @@
         public bool B1 { get; set; }
         public bool B2 { get; set; }
         public bool AllesInParkposition { get; set; }
-
         public int AnzahlAutos { get; set; }
         public int AnzahlPersonen { get; set; }
         public List<FahrzeugPerson> AllePkwPersonen { get; set; }

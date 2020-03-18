@@ -13,7 +13,7 @@ namespace Tiefgarage
         public MainWindow()
         {
             tiefgarageViewModel = new ViewModel.TiefgarageViewModel(this);
-            datenRangieren = new DatenRangieren(this, tiefgarageViewModel);
+            datenRangieren = new DatenRangieren(tiefgarageViewModel);
 
             InitializeComponent();
             DataContext = tiefgarageViewModel;

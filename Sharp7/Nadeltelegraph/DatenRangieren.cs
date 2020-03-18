@@ -4,10 +4,7 @@
 
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
         private readonly ViewModel.NadeltelegraphViewModel viewModel;
-
-
 
         private enum BitPosAusgang
         {
@@ -23,15 +20,13 @@
             P5L
         }
 
-        private enum BitPosEingang
-        {
-        }
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetUint8At(digInput, 0, (byte)viewModel.nadeltelegraph.Zeichen);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             viewModel.nadeltelegraph.P1R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1R);
@@ -46,9 +41,8 @@
             viewModel.nadeltelegraph.P5L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5L);
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.NadeltelegraphViewModel vm)
+        public DatenRangieren(ViewModel.NadeltelegraphViewModel vm)
         {
-            mainWindow = mw;
             viewModel = vm;
         }
     }

@@ -13,7 +13,7 @@ namespace Nadeltelegraph
         public MainWindow()
         {
             nadeltelegraphViewModel = new ViewModel.NadeltelegraphViewModel(this);
-            datenRangieren = new DatenRangieren(this, nadeltelegraphViewModel);
+            datenRangieren = new DatenRangieren(nadeltelegraphViewModel);
 
             InitializeComponent();
             DataContext = nadeltelegraphViewModel;

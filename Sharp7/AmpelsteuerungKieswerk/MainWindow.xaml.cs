@@ -13,7 +13,7 @@ namespace AmpelsteuerungKieswerk
         public MainWindow()
         {
             ampelsteuerungKieswerkViewModel = new ViewModel.AmpelsteuerungKieswerkViewModel(this);
-            datenRangieren = new DatenRangieren(this, ampelsteuerungKieswerkViewModel);
+            datenRangieren = new DatenRangieren(ampelsteuerungKieswerkViewModel);
 
             InitializeComponent();
             DataContext = ampelsteuerungKieswerkViewModel;

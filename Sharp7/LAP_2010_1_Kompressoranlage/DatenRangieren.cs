@@ -24,6 +24,7 @@ namespace LAP_2010_1_Kompressoranlage
             S8      // Temperaturfühler Kompressor
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.F5, kompressoranlageViewModel.kompressoranlage.F5);
@@ -33,6 +34,7 @@ namespace LAP_2010_1_Kompressoranlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, kompressoranlageViewModel.kompressoranlage.S8);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             kompressoranlageViewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);

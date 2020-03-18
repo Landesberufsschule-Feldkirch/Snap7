@@ -364,7 +364,8 @@ namespace Sharp7
             catch
             {
                 LastError = S7Consts.errTCPConnectionFailed;
-            };
+            }
+
             PingSocket.Close();
         }
 
@@ -2061,7 +2062,7 @@ namespace Sharp7
                 case Code7NoPasswordToClear: return S7Consts.errCliNoPasswordToSetOrClear;
                 default:
                     return S7Consts.errCliFunctionRefused;
-            };
+            }
         }
 
         #endregion [Internals]
@@ -2446,7 +2447,7 @@ namespace Sharp7
                     default:
                         PDU[32] = TS_ResByte; // byte/word/dword etc.
                         break;
-                };
+                }
                 // Length
                 S7.SetUint_16_At(PDU, 33, (ushort)Length);
 

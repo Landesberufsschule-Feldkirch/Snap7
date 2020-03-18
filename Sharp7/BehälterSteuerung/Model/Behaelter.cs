@@ -24,13 +24,10 @@
 
         public void PegelUeberwachen()
         {
-            if (automatikModus)
+            if (automatikModus && InternerPegel < 0.01)
             {
-                if (InternerPegel < 0.01)
-                {
-                    automatikModus = false;
-                    VentilUnten = false;
-                }
+                automatikModus = false;
+                VentilUnten = false;
             }
 
             if (InternerPegel > 0)

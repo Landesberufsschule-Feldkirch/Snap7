@@ -1,6 +1,5 @@
 ﻿namespace LAP_2010_2_Transportwagen.ViewModel
 {
-    using LAP_2010_2_Transportwagen;
     using System.ComponentModel;
     using System.Threading;
 

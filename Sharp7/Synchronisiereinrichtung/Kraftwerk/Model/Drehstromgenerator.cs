@@ -2,22 +2,23 @@
 {
     public class Drehstromgenerator
     {
+
+  public double SynchVentil { get; set; }
+        public double SynchErregerstrom { get; set; }
+
         private readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
 
         private double n;
         private double P;
         private double cosPhi;
         private readonly double SpannungsFaktor;
-        private readonly double DrehzahlFaktor;
-
-        public double SynchVentil;
-        public double SynchErregerstrom;
+        private readonly double DrehzahlFaktor;     
 
         private const double Y_n_Faktor = 0.28;
         private const double n_BremsFaktor = 0.991;
 
-        private double Y_LeistungsFaktor = 15;
-        private double Y_LeistungsBremse = 0.9;
+        private readonly double Y_LeistungsFaktor = 15;
+        private readonly double Y_LeistungsBremse = 0.9;
 
         private double LeistungsfaktorFaktor = 1;
 

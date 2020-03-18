@@ -130,7 +130,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Ventil
-
         public double Y() { return ManualVentilstellung; }
 
         private double _manualVentilstellung;
@@ -164,7 +163,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzspannung
-
         public double Netz_U() { return NetzSpannungSlider; }
 
         private double _netzSpannungSlider;
@@ -177,11 +175,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(NetzSpannungSlider));
             }
         }
-
         #endregion
 
         #region Netzfrequenz
-
         public double Netz_f() { return NetzFrequenzSlider; }
 
         private double _netzFrequenzSlider;
@@ -198,7 +194,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region NetzLeistungsfaktor
-
         public double Netz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
@@ -255,19 +250,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
 
         #region Leistungsfaktor
-
-        public void Generator_CosPhi(double val)
-        {
-            GeneratorCosPhiString = $"cos φ={val.ToString("N2")}";
-        }
-
-        public void Netz_CosPhi(double val)
-        {
-            NetzCosPhiString = $"cos φ={val.ToString("N2")}";
-        }
+        public void Generator_CosPhi(double val) { GeneratorCosPhiString = $"cos φ={val:N2}"; }
+        public void Netz_CosPhi(double val) { NetzCosPhiString = $"cos φ={val:N2}"; }
 
         private double _generatorCosPhiString;
-
         public string GeneratorCosPhiString
         {
             get { return "cos φ=" + _generatorCosPhiString; }
@@ -281,7 +267,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
 
         private double _netzCosPhiString;
-
         public string NetzCosPhiString
         {
             get { return "cos φ=" + _netzCosPhiString; }
@@ -296,15 +281,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Leistung
 
-        public void Generator_P(double val)
-        {
-            GeneratorLeistungString = $"P={val.ToString("N1")}W";
-        }
-
-        public void Netz_P(double val)
-        {
-            NetzLeistungString = $"P={val}W";
-        }
+        public void Generator_P(double val) { GeneratorLeistungString = $"P={val:N1}W"; }
+        public void Netz_P(double val) { NetzLeistungString = $"P={val}W"; }
 
 
         private double _generatorLeistungString;
@@ -334,18 +312,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Freqenz
-        public void Generator_f(double val)
-        {
-            GeneratorFrequenzString = $"f={val.ToString("N2")}Hz";
-        }
-
-        public void Netz_f(double val)
-        {
-            NetzFrequenzString = $"f={val}Hz";
-        }
+        public void Generator_f(double val) { GeneratorFrequenzString = $"f={val:N2}Hz"; }
+        public void Netz_f(double val) { NetzFrequenzString = $"f={val}Hz"; }
 
         private double _generatorFrequenzString;
-
         public string GeneratorFrequenzString
         {
             get { return "f=" + _generatorFrequenzString + "Hz"; }
@@ -370,19 +340,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Spannung
 
-        public void Generator_U(double val)
-        {
-            GeneratorSpannungString = $"U={val.ToString("N1")}V";
-        }
-
-        public void Netz_U(double val)
-        {
-            NetzSpannungString = $"U={val}V";
-        }
-
+        public void Generator_U(double val) { GeneratorSpannungString = $"U={val:N1}V"; }
+        public void Netz_U(double val) { NetzSpannungString = $"U={val}V"; }
 
         private double _generatorSpannungString;
-
         public string GeneratorSpannungString
         {
             get { return "U=" + _generatorSpannungString + "V"; }
@@ -408,14 +369,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region IE
-
-        public void Ie(double val)
-        {
-            Erregerstrom = $"IE={ val.ToString("N1")}A";
-        }
+        public void Ie(double val) { Erregerstrom = $"IE={ val:N1}A"; }
 
         private double _erregerstrom;
-
         public string Erregerstrom
         {
             get { return "IE=" + _erregerstrom + "A"; }
@@ -425,15 +381,11 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(Erregerstrom));
             }
         }
-
         #endregion
 
         #region n
 
-        public void N(double val)
-        {
-            Drehzahl = $"n={val.ToString("N1")}RPM";
-        }
+        public void N(double val) { Drehzahl = $"n={val:N1}RPM"; }
 
         private double _drehzahl;
         public string Drehzahl
@@ -576,13 +528,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        public void Y(double val)
-        {
-            VentilPosition = $"Y={ val.ToString("N1")}%";
-        }
+        public void Y(double val) { VentilPosition = $"Y={ val:N1}%"; }
 
         private string _visibilityVentilAus;
-
         public string VisibilityVentilAus
         {
             get { return _visibilityVentilAus; }

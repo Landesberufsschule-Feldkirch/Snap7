@@ -45,8 +45,8 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
     {
         public readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
         public readonly Statemachine kraftwerkStatemachine;
-        public double FrequenzDifferenz = 5;
 
+        public double FrequenzDifferenz { get; set; }
         public double OptimalerSpannungswert { get; set; }
         public bool Q1 { get; set; }
         public bool KraftwerkStarten { get; set; }
@@ -74,6 +74,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 
         public Kraftwerk()
         {
+            FrequenzDifferenz = 5;
             kraftwerkStatemachine = new Statemachine(this);
             System.Threading.Tasks.Task.Run(() => KraftwerkTask());
         }

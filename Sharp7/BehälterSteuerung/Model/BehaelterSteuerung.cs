@@ -38,22 +38,14 @@
 
             while (true)
             {
-
                 AutomatikModusNochAktiv = false;
 
                 foreach (Behaelter beh in AlleBehaelter)
                 {
                     beh.PegelUeberwachen();
-                    if (AutomatikModusAktiv)
-                    {
-                        if (beh.AutomatikModus()) AutomatikModusNochAktiv = true;
-                    }
-
+                    if (AutomatikModusAktiv && beh.AutomatikModus()) AutomatikModusNochAktiv = true;
                 }
-                if (AutomatikModusAktiv && !AutomatikModusNochAktiv)
-                {
-                    AutomatikModusAktiv = false;
-                }
+                if (AutomatikModusAktiv && !AutomatikModusNochAktiv) AutomatikModusAktiv = false;
 
                 Thread.Sleep(10);
             }

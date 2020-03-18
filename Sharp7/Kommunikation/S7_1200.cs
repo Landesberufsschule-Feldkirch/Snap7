@@ -27,10 +27,10 @@ namespace Kommunikation
         private readonly Action<byte[], byte[]> CallbackInput;
         private readonly Action<byte[], byte[]> CallbackOutput;
 
-        private byte[] DigInput = new byte[1024];
-        private byte[] DigOutput = new byte[1024];
-        private byte[] AnalogInput = new byte[1024];
-        private byte[] AnalogOutput = new byte[1024];
+        private readonly byte[] DigInput = new byte[1024];
+        private readonly byte[] DigOutput = new byte[1024];
+        private readonly byte[] AnalogInput = new byte[1024];
+        private readonly byte[] AnalogOutput = new byte[1024];
 
         private readonly int AnzahlByteDigInput;
         private readonly int AnzahlByteDigOutput;
@@ -160,8 +160,6 @@ namespace Kommunikation
 
                 Thread.Sleep(50);
             }
-
-            Client.Disconnect();
         }
 
         private string ErrorAnzeigen(int ResultError)
