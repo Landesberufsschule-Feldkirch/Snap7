@@ -5,7 +5,6 @@ namespace WordClock
     public class DatenRangieren
     {
         private readonly ViewModel.WordClockViewModel viewModel;
-
         private enum BytePosition
         {
             Byte_0 = 0,
@@ -19,8 +18,7 @@ namespace WordClock
             Byte_8
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetUint_16_At(digInput, (int)BytePosition.Byte_0, viewModel.Zeiten.DatumJahr);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_2, viewModel.Zeiten.DatumMonat);
@@ -30,13 +28,7 @@ namespace WordClock
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, viewModel.Zeiten.Minute);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, viewModel.Zeiten.Sekunde);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, 0);
-        }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
-        {
-            // es werden keine Werte von der SPS geschrieben
-        }
+        }   
 
         public DatenRangieren(ViewModel.WordClockViewModel vm)
         {

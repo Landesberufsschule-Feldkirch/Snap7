@@ -27,8 +27,7 @@ namespace LAP_2018_Niveauregelung
             S3
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.niveauRegelung.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.niveauRegelung.B2);
@@ -40,8 +39,7 @@ namespace LAP_2018_Niveauregelung
             S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.niveauRegelung.S3);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             if (!mainWindow.DebugWindowAktiv)
             {

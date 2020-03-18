@@ -23,8 +23,7 @@ namespace LAP_2010_4_Abfuellanlage
             S8      // Position Dose
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, abfuellanlageViewModel.abfuellAnlage.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, abfuellanlageViewModel.abfuellAnlage.S2);
@@ -32,8 +31,7 @@ namespace LAP_2010_4_Abfuellanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, abfuellanlageViewModel.abfuellAnlage.S8);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             if (!mainWindow.DebugWindowAktiv)
             {

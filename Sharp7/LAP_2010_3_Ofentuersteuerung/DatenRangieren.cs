@@ -23,8 +23,7 @@ namespace LAP_2010_3_Ofentuersteuerung
             S9      // Lichtschranke
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, ofensteuerungViewModel.ofentuerSteuerung.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, ofensteuerungViewModel.ofentuerSteuerung.S2);
@@ -35,8 +34,7 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             ofensteuerungViewModel.ofentuerSteuerung.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
             ofensteuerungViewModel.ofentuerSteuerung.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);

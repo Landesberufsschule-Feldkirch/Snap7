@@ -12,15 +12,13 @@ namespace Tiefgarage
             B2
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleFahrzeugePersonen.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleFahrzeugePersonen.B2);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             viewModel.alleFahrzeugePersonen.AnzahlAutos = S7.GetUint8At(digOutput, 0);
             viewModel.alleFahrzeugePersonen.AnzahlPersonen = S7.GetUint8At(digOutput, 1);

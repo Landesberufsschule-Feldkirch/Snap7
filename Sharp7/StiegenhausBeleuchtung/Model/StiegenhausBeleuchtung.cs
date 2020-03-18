@@ -42,10 +42,9 @@ namespace StiegenhausBeleuchtung.Model
 
         private bool JobAktiv;
         private VisuAnzeigen visuAnzeigen;
-        private readonly Dictionary<string, Tuple<int, int>> topologie;
-        int stockAktuell;
-        int raumAktuell;
-        private Tuple<int, int> ortZiel;
+        private readonly Dictionary<string, (int raum, int stock)> topologie;
+        private (int raum, int stock) ortZiel;
+        private (int raum, int stock) ortAktuell;
         private const long zeitProBewegungsmelder = 1000;
         private readonly Stopwatch stopwatch;
 
@@ -53,25 +52,25 @@ namespace StiegenhausBeleuchtung.Model
         {
             JobAktiv = false;
             stopwatch = new Stopwatch();
-            ortZiel = new Tuple<int, int>(0, 0);
+            ortZiel = (0, 0);
 
-            topologie = new Dictionary<string, Tuple<int, int>>
+            topologie = new Dictionary<string, (int, int)>
             {
-                { "EG", new Tuple<int, int>(0, 0) },
-                { "Top 0.1", new Tuple<int, int>(-1, 0) },
-                { "Top 0.2", new Tuple<int, int>(1, 0) },
-                { "OG 1", new Tuple<int, int>(0, 1) },
-                { "Top 1.1", new Tuple<int, int>(-1, 1) },
-                { "Top 1.2", new Tuple<int, int>(1, 1) },
-                { "OG 2", new Tuple<int, int>(0, 2) },
-                { "Top 2.1", new Tuple<int, int>(-1, 2) },
-                { "Top 2.2", new Tuple<int, int>(1, 2) },
-                { "OG 3", new Tuple<int, int>(0, 3) },
-                { "Top 3.1", new Tuple<int, int>(-1, 3) },
-                { "Top 3.2", new Tuple<int, int>(1, 3) },
-                { "OG 4", new Tuple<int, int>(0, 4) },
-                { "Top 4.1", new Tuple<int, int>(-1, 4) },
-                { "Top 4.2", new Tuple<int, int>(1, 4) }
+                { "EG",(0, 0) },
+                { "Top 0.1",(-1, 0) },
+                { "Top 0.2", (1, 0) },
+                { "OG 1", (0, 1) },
+                { "Top 1.1", (-1, 1) },
+                { "Top 1.2", (1, 1) },
+                { "OG 2", (0, 2) },
+                { "Top 2.1",(-1, 2) },
+                { "Top 2.2", (1, 2) },
+                { "OG 3", (0, 3) },
+                { "Top 3.1", (-1, 3) },
+                { "Top 3.2",(1, 3) },
+                { "OG 4", (0, 4) },
+                { "Top 4.1", (-1, 4) },
+                { "Top 4.2", (1, 4) }
             };
 
             System.Threading.Tasks.Task.Run(() => StiegenhausBeleuchtungTask());
@@ -91,15 +90,18 @@ namespace StiegenhausBeleuchtung.Model
             }
         }
 
-        internal void BtnStart()
+        internal void BtnStart(object buttonName)
         {
-            if (visuAnzeigen.ReiseStart != "-" && visuAnzeigen.ReiseZiel != "-" && visuAnzeigen.ReiseStart != visuAnzeigen.ReiseZiel)
+            if (buttonName is string name)
             {
-                raumAktuell = topologie[visuAnzeigen.ReiseStart].Item1;
-                stockAktuell = topologie[visuAnzeigen.ReiseStart].Item2;
-                ortZiel = topologie[visuAnzeigen.ReiseZiel];
-                stopwatch.Restart();
-                JobAktiv = true;
+
+                if (visuAnzeigen.ReiseStart != "-" && visuAnzeigen.ReiseZiel != "-" && visuAnzeigen.ReiseStart != visuAnzeigen.ReiseZiel)
+                {
+                    ortAktuell = topologie[visuAnzeigen.ReiseStart];
+                    ortZiel = topologie[visuAnzeigen.ReiseZiel];
+                    stopwatch.Restart();
+                    JobAktiv = true;
+                }
             }
         }
 
@@ -110,36 +112,39 @@ namespace StiegenhausBeleuchtung.Model
             {
                 stopwatch.Restart();
 
-                if (raumAktuell == ortZiel.Item1 && stockAktuell == ortZiel.Item2)
+                if (ortAktuell == ortZiel)
                 {
                     JobAktiv = false;
-                    raumAktuell = -2; // unbekannter Ort --> alles deaktivieren
-                    stockAktuell = -2;
+                    ortAktuell = (-2, -2);// unbekannter Ort --> alles deaktivieren
                 }
                 else
                 {
-                    if (stockAktuell != ortZiel.Item2)// unterschiedlicher Stock?
+                    if (ortAktuell.stock != ortZiel.stock)// unterschiedlicher Stock?
                     {
-                        if (raumAktuell == 0)// im Stiegenhaus
+                        if (ortAktuell.raum == 0)// im Stiegenhaus
                         {
-                            if (stockAktuell < ortZiel.Item2) stockAktuell++; else stockAktuell--;
+                            if (ortAktuell.stock < ortZiel.stock) ortAktuell.stock++; else ortAktuell.stock--;
                         }
                         else
                         {
-                            raumAktuell = 0;//Stiegenhaus
+                            ortAktuell.raum = 0;//Stiegenhaus
                         }
                     }
                     else
                     {
-                        if (raumAktuell < ortZiel.Item1) raumAktuell++; else raumAktuell--;
+                        if (ortAktuell.raum < ortZiel.raum) ortAktuell.raum++; else ortAktuell.raum--;
                     }
                 }
             }
-            BewegungsmelderAktivieren(raumAktuell, stockAktuell);
+            BewegungsmelderAktivieren(ortAktuell);
         }
 
-        internal void BewegungsmelderAktivieren(int raum, int stock)
+        internal void BewegungsmelderAktivieren((int raum, int stock) aktuell)
         {
+
+
+            /*
+            
             B_01 = raum == -1 && stock == 0;
             B_02 = raum == 0 && stock == 0;
             B_03 = raum == 1 && stock == 0;
@@ -155,6 +160,7 @@ namespace StiegenhausBeleuchtung.Model
             B_41 = raum == -1 && stock == 4;
             B_42 = raum == 0 && stock == 4;
             B_43 = raum == 1 && stock == 4;
+            */
         }
     }
 }

@@ -23,7 +23,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = wordClockViewModel;
 
-            S7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput,null);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

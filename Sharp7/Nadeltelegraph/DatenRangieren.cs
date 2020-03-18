@@ -20,14 +20,12 @@
             P5L
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetUint8At(digInput, 0, (byte)viewModel.nadeltelegraph.Zeichen);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             viewModel.nadeltelegraph.P1R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1R);
             viewModel.nadeltelegraph.P1L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1L);
@@ -40,7 +38,6 @@
             viewModel.nadeltelegraph.P5R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5R);
             viewModel.nadeltelegraph.P5L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5L);
         }
-
         public DatenRangieren(ViewModel.NadeltelegraphViewModel vm)
         {
             viewModel = vm;

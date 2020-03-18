@@ -190,6 +190,7 @@
 
         <Button Grid.Column="16" Grid.Row="6"  ClickMode="{Binding ViAnzeige.ClickModeBtn_B33}" Command="{Binding Btn_B33}" Visibility="{Binding ViAnzeige.Visibility_B33_Aus}">
             <Image Source="Bilder/Bewegungsmelder.jpg" Width="30" Height="30"/>
+            
         </Button>
         <Button Grid.Column="16" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtn_B33}" Command="{Binding Btn_B33}" Visibility="{Binding ViAnzeige.Visibility_B33_Ein}">
             <Image Source="Bilder/BewegungsmelderAktiv.jpg" Width="30" Height="30"/>
@@ -430,7 +431,7 @@
             <ComboBoxItem>Top 4.2</ComboBoxItem>
         </ComboBox>
 
-        <Button x:Name="btnS2" Grid.Column="20" Grid.Row="7" Content="Los gehts!" Background="LawnGreen" Command="{Binding BtnStart}" FontSize="14pt" Grid.ColumnSpan="3">
+        <Button x:Name="btnS2" Grid.Column="20" Grid.Row="7" Content="Los gehts!" Background="LawnGreen" Command="{Binding BtnStart}" CommandParameter="start" FontSize="14pt" Grid.ColumnSpan="3">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />

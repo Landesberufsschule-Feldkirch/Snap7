@@ -15,7 +15,6 @@ namespace Rohrpost
 
             InitializeComponent();
 
-            S7_1200 s7_1200 = new S7_1200(10, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

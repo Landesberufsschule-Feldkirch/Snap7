@@ -26,7 +26,7 @@
             {
                 if (_btnStart == null)
                 {
-                    _btnStart = new RelayCommand(p => stiegenhausBeleuchtung.BtnStart(), p => true);
+                    _btnStart = new RelayCommand(stiegenhausBeleuchtung.BtnStart);
                 }
                 return _btnStart;
             }
