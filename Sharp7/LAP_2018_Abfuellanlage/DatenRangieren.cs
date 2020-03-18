@@ -40,6 +40,7 @@ namespace LAP_2018_Abfuellanlage
             S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Int16(viewModel.abfuellAnlage.Pegel, 1));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             if (!mainWindow.DebugWindowAktiv)

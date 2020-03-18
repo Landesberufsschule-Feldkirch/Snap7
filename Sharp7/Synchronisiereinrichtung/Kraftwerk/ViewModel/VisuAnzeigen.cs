@@ -39,15 +39,15 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             {
                 if (mainWindow.DebugWindowAktiv)
                 {
-                    kraftwerk.Ventil_Y = Y();
-                    kraftwerk.Generator_Ie = Ie();
+                    kraftwerk.Ventil_Y = ManualY();
+                    kraftwerk.Generator_Ie = ManualIe();
                 }
 
 
-                kraftwerk.Netz_f = Netz_f();
-                kraftwerk.Netz_U = Netz_U();
-                kraftwerk.Netz_P = Netz_P();
-                kraftwerk.Netz_CosPhi = Netz_CosPhi();
+                kraftwerk.Netz_f = SliderNetz_f();
+                kraftwerk.Netz_U = SliderNetz_U();
+                kraftwerk.Netz_P = SliderNetz_P();
+                kraftwerk.Netz_CosPhi = SliderNetz_CosPhi();
 
 
                 VentilEinschalten(kraftwerk.Ventil_Y > 1);
@@ -130,7 +130,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Ventil
-        public double Y() { return ManualVentilstellung; }
+        public double ManualY() { return ManualVentilstellung; }
 
         private double _manualVentilstellung;
         public double ManualVentilstellung
@@ -146,7 +146,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Erregerstrom
-        public double Ie() { return ManualErregerstrom; }
+        public double ManualIe() { return ManualErregerstrom; }
 
         private double _manualErregerstrom;
 
@@ -163,7 +163,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzspannung
-        public double Netz_U() { return NetzSpannungSlider; }
+        public double SliderNetz_U() { return NetzSpannungSlider; }
 
         private double _netzSpannungSlider;
         public double NetzSpannungSlider
@@ -178,7 +178,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzfrequenz
-        public double Netz_f() { return NetzFrequenzSlider; }
+        public double SliderNetz_f() { return NetzFrequenzSlider; }
 
         private double _netzFrequenzSlider;
         public double NetzFrequenzSlider
@@ -194,7 +194,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region NetzLeistungsfaktor
-        public double Netz_CosPhi()
+        public double SliderNetz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
             if (_netzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
@@ -216,7 +216,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Netzleistung
 
-        public double Netz_P() { return NetzLeistungSlider; }
+        public double SliderNetz_P() { return NetzLeistungSlider; }
 
         private double _netzLeistungSlider;
 

@@ -27,7 +27,5 @@
             if (kraftWerk.Generator_P > 5000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
             if (!kraftWerk.Q1) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.LeistungsschalterAus);
         }
-
-        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

@@ -12,7 +12,5 @@
             kraftWerk.generator.Reset();
             kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Neustart);
         }
-        public void Doing() {   /* nichts zu tun*/  }
-        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

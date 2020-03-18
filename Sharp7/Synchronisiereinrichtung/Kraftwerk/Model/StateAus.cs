@@ -5,8 +5,7 @@
         private readonly Kraftwerk kraftWerk;
 
         public StateAus(Kraftwerk kw) { kraftWerk = kw; }
-        public void OnEntry() {   /* nichts zu tun*/  }
-
+     
         public void Doing()
         {
             kraftWerk.Generator_n = 0;
@@ -19,7 +18,5 @@
 
             if (kraftWerk.Ventil_Y > 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Hochfahren);
         }
-
-        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

@@ -5,7 +5,6 @@
         private readonly Kraftwerk kraftWerk;
 
         public StateLeistungsschalterAus(Kraftwerk kw) { kraftWerk = kw; }
-        public void OnEntry() {   /* nichts zu tun*/  }
         public void Doing()
         {
             kraftWerk.generator.MaschineAntreiben(kraftWerk.Ventil_Y);
@@ -20,7 +19,5 @@
             if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
             if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
         }
-
-        public void OnExit() {   /* nichts zu tun*/  }
     }
 }

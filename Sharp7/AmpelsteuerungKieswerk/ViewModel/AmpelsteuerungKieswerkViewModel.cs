@@ -10,7 +10,7 @@
         public VisuAnzeigen ViAnzeige { get; set; }
         public AmpelsteuerungKieswerkViewModel(MainWindow mainWindow)
         {
-            alleLastKraftWagen = new Model.AlleLastKraftWagen(mainWindow);
+            alleLastKraftWagen = new Model.AlleLastKraftWagen();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleLastKraftWagen);
         }
 

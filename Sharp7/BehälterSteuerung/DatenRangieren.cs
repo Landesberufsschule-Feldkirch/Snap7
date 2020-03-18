@@ -32,6 +32,7 @@ namespace BehaelterSteuerung
             viewModel = behaelterViewModel;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
@@ -44,6 +45,7 @@ namespace BehaelterSteuerung
             S7.SetBitAt(digInput, (int)BitPosEingang.B8, viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Nicht verwendete Parameter entfernen", Justification = "<Ausstehend>")]
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
             viewModel.AlleBehaelter.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);

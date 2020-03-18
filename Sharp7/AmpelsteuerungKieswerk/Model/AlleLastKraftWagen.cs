@@ -5,7 +5,6 @@
 
     public class AlleLastKraftWagen
     {
-        private readonly MainWindow mainWindow;
         public readonly List<LastKraftWagen> AlleLkw = new List<LastKraftWagen>();
         private readonly int AnzahlLkw;
 
@@ -15,10 +14,8 @@
         public bool B4 { get; set; }
 
 
-        public AlleLastKraftWagen(MainWindow mw)
+        public AlleLastKraftWagen()
         {
-            mainWindow = mw;
-
             AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
             AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
             AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
@@ -30,7 +27,6 @@
 
         private void AlleLastKraftWagenTask()
         {
-
             while (true)
             {
                 B1 = false;

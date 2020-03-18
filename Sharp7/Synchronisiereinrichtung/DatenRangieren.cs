@@ -50,7 +50,6 @@ namespace Synchronisiereinrichtung
             if (!mainWindow.DebugWindowAktiv)
             {
                 viewModel.Kraftwerk.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-
                 viewModel.Kraftwerk.Ventil_Y = S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 0), 100);
                 viewModel.Kraftwerk.Generator_Ie = S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 2), 10);
             }

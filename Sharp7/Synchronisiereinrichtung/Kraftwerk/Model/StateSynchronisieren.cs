@@ -28,7 +28,5 @@
                     break;
             }
         }
-        public void Doing() {   /* nichts zu tun*/  }
-        public void OnExit() {  /* nichts zu tun*/  }
     }
 }

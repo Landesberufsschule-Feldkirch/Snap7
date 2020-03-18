@@ -45,7 +45,6 @@ namespace StiegenhausBeleuchtung.Model
         private readonly Dictionary<string, Tuple<int, int>> topologie;
         int stockAktuell;
         int raumAktuell;
-        private Tuple<int, int> ortStart;
         private Tuple<int, int> ortZiel;
         private const long zeitProBewegungsmelder = 1000;
         private readonly Stopwatch stopwatch;
@@ -54,7 +53,6 @@ namespace StiegenhausBeleuchtung.Model
         {
             JobAktiv = false;
             stopwatch = new Stopwatch();
-            ortStart = new Tuple<int, int>(0, 0);
             ortZiel = new Tuple<int, int>(0, 0);
 
             topologie = new Dictionary<string, Tuple<int, int>>
@@ -99,7 +97,6 @@ namespace StiegenhausBeleuchtung.Model
             {
                 raumAktuell = topologie[visuAnzeigen.ReiseStart].Item1;
                 stockAktuell = topologie[visuAnzeigen.ReiseStart].Item2;
-                ortStart = topologie[visuAnzeigen.ReiseStart];
                 ortZiel = topologie[visuAnzeigen.ReiseZiel];
                 stopwatch.Restart();
                 JobAktiv = true;
