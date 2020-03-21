@@ -178,7 +178,7 @@
         </Polygon>
 
 
-        <Button x:Name="btnA" Content="A" Grid.Column="7" Grid.Row="4" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteA}" Command="{Binding BtnBuchstabeA}" >
+        <Button Content="A" Grid.Column="7" Grid.Row="4" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[65]}" Command="{Binding BtnBuchstabe}" CommandParameter="A">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -186,7 +186,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnB" Content="B" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteB}" Command="{Binding BtnBuchstabeB}" >
+        <Button Content="B" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[66]}" Command="{Binding BtnBuchstabe}" CommandParameter="B" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -194,7 +194,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnD" Content="D" Grid.Column="8" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteD}" Command="{Binding BtnBuchstabeD}" >
+        <Button Content="D" Grid.Column="8" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[68]}" Command="{Binding BtnBuchstabe}" CommandParameter="D" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -202,7 +202,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnE" Content="E" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteE}" Command="{Binding BtnBuchstabeE}" >
+        <Button Content="E" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[69]}" Command="{Binding BtnBuchstabe}" CommandParameter="E" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -210,7 +210,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnF" Content="F" Grid.Column="7" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteF}" Command="{Binding BtnBuchstabeF}" >
+        <Button Content="F" Grid.Column="7" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[70]}" Command="{Binding BtnBuchstabe}" CommandParameter="F" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -218,7 +218,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnG" Content="G" Grid.Column="9" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteG}" Command="{Binding BtnBuchstabeG}" >
+        <Button Content="G" Grid.Column="9" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[71]}" Command="{Binding BtnBuchstabe}" CommandParameter="G" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -226,7 +226,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnH" Content="H" Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteH}" Command="{Binding BtnBuchstabeH}" >
+        <Button Content="H" Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[72]}" Command="{Binding BtnBuchstabe}" CommandParameter="H" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -234,7 +234,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnI" Content="I" Grid.Column="6" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteI}" Command="{Binding BtnBuchstabeI}" >
+        <Button Content="I" Grid.Column="6" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[73]}" Command="{Binding BtnBuchstabe}" CommandParameter="I" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -242,7 +242,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnK" Content="K" Grid.Column="8" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteK}" Command="{Binding BtnBuchstabeK}" >
+        <Button Content="K" Grid.Column="8" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[75]}" Command="{Binding BtnBuchstabe}" CommandParameter="K" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -250,7 +250,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnL" Content="L" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteL}" Command="{Binding BtnBuchstabeL}" >
+        <Button Content="L" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[76]}" Command="{Binding BtnBuchstabe}" CommandParameter="L" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -258,7 +258,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnM" Content="M" Grid.Column="4" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteM}" Command="{Binding BtnBuchstabeM}" >
+        <Button Content="M" Grid.Column="4" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[77]}" Command="{Binding BtnBuchstabe}" CommandParameter="M" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -266,7 +266,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnN" Content="N" Grid.Column="6" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteN}" Command="{Binding BtnBuchstabeN}" >
+        <Button Content="N" Grid.Column="6" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[78]}" Command="{Binding BtnBuchstabe}" CommandParameter="N" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -274,7 +274,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnO" Content="O" Grid.Column="8" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteO}" Command="{Binding BtnBuchstabeO}" >
+        <Button Content="O" Grid.Column="8" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[79]}" Command="{Binding BtnBuchstabe}" CommandParameter="O" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -282,7 +282,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnP" Content="P" Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteP}" Command="{Binding BtnBuchstabeP}" >
+        <Button Content="P" Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[80]}" Command="{Binding BtnBuchstabe}" CommandParameter="P" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -290,7 +290,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnR" Content="R" Grid.Column="5" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteR}" Command="{Binding BtnBuchstabeR}" >
+        <Button Content="R" Grid.Column="5" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[82]}" Command="{Binding BtnBuchstabe}" CommandParameter="R" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -298,7 +298,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS" Content="S" Grid.Column="7" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteS}" Command="{Binding BtnBuchstabeS}" >
+        <Button Content="S" Grid.Column="7" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[83]}" Command="{Binding BtnBuchstabe}" CommandParameter="S" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -306,7 +306,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnT" Content="T" Grid.Column="9" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteT}" Command="{Binding BtnBuchstabeT}" >
+        <Button Content="T" Grid.Column="9" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[84]}" Command="{Binding BtnBuchstabe}" CommandParameter="T" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -314,7 +314,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnV" Content="V" Grid.Column="6" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteV}" Command="{Binding BtnBuchstabeV}" >
+        <Button Content="V" Grid.Column="6" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[86]}" Command="{Binding BtnBuchstabe}" CommandParameter="V" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -322,7 +322,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnW" Content="W" Grid.Column="8" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteW}" Command="{Binding BtnBuchstabeW}" >
+        <Button Content="W" Grid.Column="8" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[87]}" Command="{Binding BtnBuchstabe}" CommandParameter="W" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -330,7 +330,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnY" Content="Y" Grid.Column="7" Grid.Row="18" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtnTasteY}" Command="{Binding BtnBuchstabeY}" >
+        <Button Content="Y" Grid.Column="7" Grid.Row="18" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[89]}" Command="{Binding BtnBuchstabe}" CommandParameter="Y" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
