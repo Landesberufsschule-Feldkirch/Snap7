@@ -7,10 +7,6 @@ namespace StiegenhausBeleuchtung.Model
 {
     public class StiegenhausBeleuchtung
     {
-#pragma warning disable CA1819 // Properties should not return arrays
-        public bool[] AlleBewegungsmelder { get; set; }
-        public bool[] AlleLampen { get; set; }
-#pragma warning restore CA1819 // Properties should not return arrays
         public bool JobAktiv { get; set; }
 
         private VisuAnzeigen visuAnzeigen;
@@ -19,11 +15,11 @@ namespace StiegenhausBeleuchtung.Model
         private (int raum, int stock) ortAktuell;
         private const long zeitProBewegungsmelder = 1000;
         private readonly Stopwatch stopwatch;
+        private readonly bool[] alleBewegungsmelder = new bool[100];
+        private readonly bool[] alleLampen = new bool[100];
 
         public StiegenhausBeleuchtung()
         {
-            AlleBewegungsmelder = new bool[100];
-            AlleLampen = new bool[100];
 
             JobAktiv = false;
             stopwatch = new Stopwatch();
@@ -51,10 +47,11 @@ namespace StiegenhausBeleuchtung.Model
             System.Threading.Tasks.Task.Run(() => StiegenhausBeleuchtungTask());
         }
 
-        internal void ProblemLoesen(VisuAnzeigen viAnzeige)
-        {
-            visuAnzeigen = viAnzeige;
-        }
+        internal void ProblemLoesen(VisuAnzeigen viAnzeige) { visuAnzeigen = viAnzeige; }
+        public bool GetBewegungsmelder(int index) => alleBewegungsmelder[index];
+        public void SetBewegungsmelder(int index, bool val) { alleBewegungsmelder[index] = val; }
+        public void SetLampen(int index, bool val) { alleLampen[index] = val; }
+        public bool GetLampen(int index) => alleLampen[index];
 
         private void StiegenhausBeleuchtungTask()
         {
@@ -112,12 +109,12 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void BewegungsmelderAktivieren((int raum, int stock) aktuell)
         {
-            for (int i = 0; i < 100; i++) AlleBewegungsmelder[i] = false;
+            for (int i = 0; i < 100; i++) alleBewegungsmelder[i] = false;
 
             if (aktuell.raum != -2 && aktuell.stock != -2)
             {
                 var Bewegungsmelder = 2 + aktuell.raum + 10 * aktuell.stock;
-                AlleBewegungsmelder[Bewegungsmelder] = true;
+                alleBewegungsmelder[Bewegungsmelder] = true;
             }
         }
     }

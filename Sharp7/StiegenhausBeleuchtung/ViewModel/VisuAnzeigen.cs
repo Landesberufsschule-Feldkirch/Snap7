@@ -30,13 +30,13 @@
         {
             while (true)
             {
-                for (int i = 0; i < 100; i++) FarbeAlleLampen(i, stiegenhausBeleuchtung.AlleLampen[i]);
+                for (int i = 0; i < 100; i++) FarbeAlleLampen(i, stiegenhausBeleuchtung.GetLampen(i));
 
                 if (BewegungAktiv)
                 {
                     for (int i = 0; i < 100; i++)
                     {
-                        if (stiegenhausBeleuchtung.AlleBewegungsmelder[i]) ClickModeBtn[i] = "Release"; else ClickModeBtn[i] = "Press";
+                        if (stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = "Release"; else ClickModeBtn[i] = "Press";
                     }
                 }
                 if (stiegenhausBeleuchtung.JobAktiv) BewegungAktiv = true; else BewegungAktiv = false;
@@ -163,7 +163,7 @@
         {
             if (buttonName is int Bewegungsmelder)
             {
-                stiegenhausBeleuchtung.AlleBewegungsmelder[Bewegungsmelder] = ClickModeButton(Bewegungsmelder);
+                stiegenhausBeleuchtung.SetBewegungsmelder(Bewegungsmelder, ClickModeButton(Bewegungsmelder));
             }
         }
         #endregion
