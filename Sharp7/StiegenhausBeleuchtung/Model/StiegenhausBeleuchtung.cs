@@ -1,5 +1,4 @@
 ﻿using StiegenhausBeleuchtung.ViewModel;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -8,39 +7,12 @@ namespace StiegenhausBeleuchtung.Model
 {
     public class StiegenhausBeleuchtung
     {
-        public bool B_01 { get; set; }
-        public bool B_02 { get; set; }
-        public bool B_03 { get; set; }
-        public bool B_11 { get; set; }
-        public bool B_12 { get; set; }
-        public bool B_13 { get; set; }
-        public bool B_21 { get; set; }
-        public bool B_22 { get; set; }
-        public bool B_23 { get; set; }
-        public bool B_31 { get; set; }
-        public bool B_32 { get; set; }
-        public bool B_33 { get; set; }
-        public bool B_41 { get; set; }
-        public bool B_42 { get; set; }
-        public bool B_43 { get; set; }
-        public bool P_01 { get; set; }
-        public bool P_02 { get; set; }
-        public bool P_03 { get; set; }
-        public bool P_11 { get; set; }
-        public bool P_12 { get; set; }
-        public bool P_13 { get; set; }
-        public bool P_21 { get; set; }
-        public bool P_22 { get; set; }
-        public bool P_23 { get; set; }
-        public bool P_31 { get; set; }
-        public bool P_32 { get; set; }
-        public bool P_33 { get; set; }
-        public bool P_41 { get; set; }
-        public bool P_42 { get; set; }
-        public bool P_43 { get; set; }
+#pragma warning disable CA1819 // Properties should not return arrays
+        public bool[] AlleBewegungsmelder { get; set; }
+        public bool[] AlleLampen { get; set; }
+#pragma warning restore CA1819 // Properties should not return arrays
+        public bool JobAktiv { get; set; }
 
-
-        private bool JobAktiv;
         private VisuAnzeigen visuAnzeigen;
         private readonly Dictionary<string, (int raum, int stock)> topologie;
         private (int raum, int stock) ortZiel;
@@ -50,6 +22,9 @@ namespace StiegenhausBeleuchtung.Model
 
         public StiegenhausBeleuchtung()
         {
+            AlleBewegungsmelder = new bool[100];
+            AlleLampen = new bool[100];
+
             JobAktiv = false;
             stopwatch = new Stopwatch();
             ortZiel = (0, 0);
@@ -90,18 +65,14 @@ namespace StiegenhausBeleuchtung.Model
             }
         }
 
-        internal void BtnStart(object buttonName)
+        internal void BtnStart(object _)
         {
-            if (buttonName is string name)
+            if (visuAnzeigen.ReiseStart != "-" && visuAnzeigen.ReiseZiel != "-" && visuAnzeigen.ReiseStart != visuAnzeigen.ReiseZiel)
             {
-
-                if (visuAnzeigen.ReiseStart != "-" && visuAnzeigen.ReiseZiel != "-" && visuAnzeigen.ReiseStart != visuAnzeigen.ReiseZiel)
-                {
-                    ortAktuell = topologie[visuAnzeigen.ReiseStart];
-                    ortZiel = topologie[visuAnzeigen.ReiseZiel];
-                    stopwatch.Restart();
-                    JobAktiv = true;
-                }
+                ortAktuell = topologie[visuAnzeigen.ReiseStart];
+                ortZiel = topologie[visuAnzeigen.ReiseZiel];
+                stopwatch.Restart();
+                JobAktiv = true;
             }
         }
 
@@ -141,26 +112,13 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void BewegungsmelderAktivieren((int raum, int stock) aktuell)
         {
+            for (int i = 0; i < 100; i++) AlleBewegungsmelder[i] = false;
 
-
-            /*
-            
-            B_01 = raum == -1 && stock == 0;
-            B_02 = raum == 0 && stock == 0;
-            B_03 = raum == 1 && stock == 0;
-            B_11 = raum == -1 && stock == 1;
-            B_12 = raum == 0 && stock == 1;
-            B_13 = raum == 1 && stock == 1;
-            B_21 = raum == -1 && stock == 2;
-            B_22 = raum == 0 && stock == 2;
-            B_23 = raum == 1 && stock == 2;
-            B_31 = raum == -1 && stock == 3;
-            B_32 = raum == 0 && stock == 3;
-            B_33 = raum == 1 && stock == 3;
-            B_41 = raum == -1 && stock == 4;
-            B_42 = raum == 0 && stock == 4;
-            B_43 = raum == 1 && stock == 4;
-            */
+            if (aktuell.raum != -2 && aktuell.stock != -2)
+            {
+                var Bewegungsmelder = 2 + aktuell.raum + 10 * aktuell.stock;
+                AlleBewegungsmelder[Bewegungsmelder] = true;
+            }
         }
     }
 }

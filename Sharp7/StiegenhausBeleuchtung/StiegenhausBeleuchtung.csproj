@@ -62,9 +62,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DatenRangieren.cs" />
+    <Compile Include="ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\StiegenhausBeleuchtung.cs" />
     <Compile Include="ViewModel\StiegenhausBeleuchtungViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
+    <Page Include="ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

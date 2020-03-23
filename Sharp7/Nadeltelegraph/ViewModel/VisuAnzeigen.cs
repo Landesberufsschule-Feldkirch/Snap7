@@ -165,8 +165,6 @@
                 OnPropertyChanged(nameof(ClickModeBtn));
             }
         }
-
-
         #endregion
 
 

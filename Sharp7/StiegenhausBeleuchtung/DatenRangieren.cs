@@ -47,40 +47,40 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_01, viewModel.stiegenhausBeleuchtung.B_01);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_01, viewModel.stiegenhausBeleuchtung.B_01);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_01, viewModel.stiegenhausBeleuchtung.B_01);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_11, viewModel.stiegenhausBeleuchtung.B_11);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_11, viewModel.stiegenhausBeleuchtung.B_11);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_11, viewModel.stiegenhausBeleuchtung.B_11);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_21, viewModel.stiegenhausBeleuchtung.B_21);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_21, viewModel.stiegenhausBeleuchtung.B_21);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_21, viewModel.stiegenhausBeleuchtung.B_21);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_31, viewModel.stiegenhausBeleuchtung.B_31);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_31, viewModel.stiegenhausBeleuchtung.B_31);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_31, viewModel.stiegenhausBeleuchtung.B_31);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_41, viewModel.stiegenhausBeleuchtung.B_41);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_41, viewModel.stiegenhausBeleuchtung.B_41);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B_41, viewModel.stiegenhausBeleuchtung.B_41);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_01, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[1]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_02, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[2]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_03, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[3]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_11, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[11]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_12, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[12]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_13, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[13]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_21, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[21]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_22, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[22]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_23, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[23]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_31, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[31]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_32, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[32]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_33, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[33]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_41, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[41]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_42, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[42]);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B_43, viewModel.stiegenhausBeleuchtung.AlleBewegungsmelder[43]);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            viewModel.stiegenhausBeleuchtung.P_01 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_01);
-            viewModel.stiegenhausBeleuchtung.P_02 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_02);
-            viewModel.stiegenhausBeleuchtung.P_03 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_03);
-            viewModel.stiegenhausBeleuchtung.P_11 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_11);
-            viewModel.stiegenhausBeleuchtung.P_12 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_12);
-            viewModel.stiegenhausBeleuchtung.P_13 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_13);
-            viewModel.stiegenhausBeleuchtung.P_21 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_21);
-            viewModel.stiegenhausBeleuchtung.P_22 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_22);
-            viewModel.stiegenhausBeleuchtung.P_23 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_23);
-            viewModel.stiegenhausBeleuchtung.P_31 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_31);
-            viewModel.stiegenhausBeleuchtung.P_32 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_32);
-            viewModel.stiegenhausBeleuchtung.P_33 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_33);
-            viewModel.stiegenhausBeleuchtung.P_41 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_41);
-            viewModel.stiegenhausBeleuchtung.P_42 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_42);
-            viewModel.stiegenhausBeleuchtung.P_43 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_43);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[1] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_01);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[2] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_02);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[3] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_03);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[11] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_11);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[12] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_12);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[13] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_13);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[21] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_21);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[22] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_22);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[23] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_23);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[31] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_31);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[32] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_32);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[33] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_33);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[41] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_41);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[42] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_42);
+            viewModel.stiegenhausBeleuchtung.AlleLampen[43] = S7.GetBitAt(digOutput, (int)BitPosAusgang.P_43);
         }
 
         public DatenRangieren(ViewModel.StiegenhausBeleuchtungViewModel vm)
