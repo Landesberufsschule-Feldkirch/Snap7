@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordClock"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="600" Width="800">
+        Title="WordClock"  Height="400" Width="700">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -20,9 +20,8 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition />
             <ColumnDefinition Width="10" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -36,34 +35,27 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="10" />
+            <RowDefinition  />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="16" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V0.0 "   />
-        <Label Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle Fill="LightGray"         Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="12" Stroke="Black" />
+        <Label      Grid.Column="11" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V1.0 " Width="42"   />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="11"   Grid.Row="1"  Grid.RowSpan="10" Stroke="Black" Fill="LightGray" />
 
-        <Button Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="4" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}"  />
+        <Button Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}"  />
 
-        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="9" Grid.ColumnSpan="2"     Grid.Row="7" />
-        <Slider                                                     Grid.Column="8" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnzeige.GeschwindigkeitSlider, Mode=TwoWay}" />
+        <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7" />
+        <Slider                                                     Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnzeige.GeschwindigkeitSlider, Mode=TwoWay}" />
 
 
-        <Canvas x:Name="canvasUhr"  Width="420"  Grid.Column="3" Grid.Row="3" >
+        <Canvas x:Name="canvasUhr"  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="9" >
             <Ellipse Fill="White" Canvas.Left="0" Canvas.Top="0" Width="300" Height="300" />
 
             <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" Fill="Black" RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform />
-                        <SkewTransform />
                         <RotateTransform Angle="{Binding  ViAnzeige.WinkelStunden}" />
-                        <TranslateTransform />
                     </TransformGroup>
                 </Polygon.RenderTransform>
                 <Polygon.Points>
@@ -79,8 +71,6 @@
             <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0"  Fill="Black"  RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform />
-                        <SkewTransform />
                         <RotateTransform Angle="{Binding  ViAnzeige.WinkelMinuten}" />
                         <TranslateTransform />
                     </TransformGroup>
@@ -98,9 +88,7 @@
             <Path Fill="Red" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" RenderTransformOrigin="0.5,0.5" >
                 <Path.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="{Binding  ViAnzeige.WinkelSekunden}" />
+                          <RotateTransform Angle="{Binding  ViAnzeige.WinkelSekunden}" />
                         <TranslateTransform/>
                     </TransformGroup>
                 </Path.RenderTransform>
@@ -116,6 +104,5 @@
                 </Path.Data>
             </Path>
         </Canvas>
-
     </Grid>
 </Window>

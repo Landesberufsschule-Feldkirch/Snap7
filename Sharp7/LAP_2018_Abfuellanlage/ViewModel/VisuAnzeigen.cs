@@ -1,4 +1,4 @@
-﻿namespace LAP_2018_Abfuellanlage.ViewModel
+﻿namespace LAP_2018_2_Abfuellanlage.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;

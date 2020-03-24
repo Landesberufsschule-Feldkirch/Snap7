@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace LAP_2018_Niveauregelung.Model
+namespace LAP_2018_4_Niveauregelung.Model
 {
     public class NiveauRegelung
     {

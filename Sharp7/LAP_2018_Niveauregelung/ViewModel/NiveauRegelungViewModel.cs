@@ -1,6 +1,6 @@
-﻿namespace LAP_2018_Niveauregelung.ViewModel
+﻿namespace LAP_2018_4_Niveauregelung.ViewModel
 {
-    using LAP_2018_Niveauregelung.Commands;
+    using LAP_2018_4_Niveauregelung.Commands;
     using System.Windows.Input;
 
     public class NiveauRegelungViewModel

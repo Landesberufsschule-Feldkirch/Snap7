@@ -20,7 +20,7 @@
             automatikModus = false;
             Pegel = pegel;
         }
-        public bool AutomatikModus() { return automatikModus; }
+        public bool AutomatikModus() => automatikModus;
 
         public void PegelUeberwachen()
         {

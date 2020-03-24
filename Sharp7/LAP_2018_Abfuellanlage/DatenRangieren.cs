@@ -1,7 +1,7 @@
 ﻿using Sharp7;
 using Utilities;
 
-namespace LAP_2018_Abfuellanlage
+namespace LAP_2018_2_Abfuellanlage
 {
     public class DatenRangieren
     {

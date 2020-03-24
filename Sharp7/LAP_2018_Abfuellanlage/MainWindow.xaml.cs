@@ -1,7 +1,7 @@
 ﻿using Kommunikation;
 using System.Windows;
 
-namespace LAP_2018_Abfuellanlage
+namespace LAP_2018_2_Abfuellanlage
 {
     public partial class MainWindow : Window
     {

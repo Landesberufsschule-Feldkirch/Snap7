@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>LAP_2018_Abfuellanlage</RootNamespace>
-    <AssemblyName>LAP_2018_Abfuellanlage</AssemblyName>
+    <RootNamespace>LAP_2018_2_Abfuellanlage</RootNamespace>
+    <AssemblyName>LAP_2018_2_Abfuellanlage</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

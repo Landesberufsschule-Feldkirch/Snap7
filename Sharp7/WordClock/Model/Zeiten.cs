@@ -14,8 +14,8 @@ namespace WordClock.Model
         public byte Minute { get; set; }
         public byte Sekunde { get; set; }
 
-        private double geschwindigkeitZeit;
 
+        private double geschwindigkeitZeit;
         private TimeSpan timeSpan;
 
         public Zeiten()
@@ -24,7 +24,6 @@ namespace WordClock.Model
 
             DateTime dateTime = DateTime.Now;
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
-
 
             DatumJahr = (ushort)dateTime.Year;
             DatumMonat = (byte)dateTime.Month;
@@ -36,11 +35,6 @@ namespace WordClock.Model
 
             System.Threading.Tasks.Task.Run(() => ZeitenTask());
         }
-
-
-        internal int GetSekunde() { return Sekunde; }
-        internal int GetMinute() { return Minute; }
-        internal int GetStunde() { return Stunde; }
 
         private void ZeitenTask()
         {
@@ -69,6 +63,9 @@ namespace WordClock.Model
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 
+        internal int GetSekunde() => Sekunde;
+        internal int GetMinute() => Minute;
+        internal int GetStunde() => Stunde;
         internal void SetGeschwindigkeit(double geschwindigkeitSlider) { geschwindigkeitZeit = geschwindigkeitSlider; }
     }
 }

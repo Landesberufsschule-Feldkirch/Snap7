@@ -1,11 +1,11 @@
 ﻿using Sharp7;
 
-namespace LAP_2018_Niveauregelung
+namespace LAP_2018_4_Niveauregelung
 {
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly LAP_2018_Niveauregelung.ViewModel.NiveauRegelungViewModel viewModel;
+        private readonly LAP_2018_4_Niveauregelung.ViewModel.NiveauRegelungViewModel viewModel;
         private enum BitPosAusgang
         {
             M1 = 0,
@@ -51,7 +51,7 @@ namespace LAP_2018_Niveauregelung
             }
         }
 
-        public DatenRangieren(MainWindow mw, LAP_2018_Niveauregelung.ViewModel.NiveauRegelungViewModel vm)
+        public DatenRangieren(MainWindow mw, LAP_2018_4_Niveauregelung.ViewModel.NiveauRegelungViewModel vm)
         {
             mainWindow = mw;
             viewModel = vm;

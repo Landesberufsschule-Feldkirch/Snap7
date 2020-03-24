@@ -1,6 +1,6 @@
-﻿namespace LAP_2018_Abfuellanlage.ViewModel
+﻿namespace LAP_2018_2_Abfuellanlage.ViewModel
 {
-    using LAP_2018_Abfuellanlage.Commands;
+    using LAP_2018_2_Abfuellanlage.Commands;
     using System.Windows.Input;
 
     public class AbfuellanlageViewModel

@@ -11,51 +11,51 @@
             nachRechts
         }
 
-        private bool EndlageRechts;
-        private bool WagenVoll;
+        private bool endlageRechts;
+        private bool wagenVoll;
 
-        private Richtung WagenRichtung;
-        private readonly Punkt AktuellePosition;
-        private double WagenFuellstand;
+        private Richtung wagenRichtung;
+        private readonly Punkt aktuellePosition;
+        private double wagenFuellstand;
 
-        private const double WagenGeschwindigkeit = 0.3;
+        private const double wagenGeschwindigkeit = 0.3;
 
-        private const double WagenFuellstandLeeren = 0.5;
-        private const double WagenFuellstandFuellen = 0.1;
-        private const double WagenFuellstandVoll = 88;
+        private const double wagenFuellstandLeeren = 0.5;
+        private const double wagenFuellstandFuellen = 0.1;
+        private const double wagenFuellstandVoll = 88;
 
-        readonly Punkt LinkerAnschlag = new Punkt(0, 0);
-        readonly Punkt RechterAnschlag = new Punkt(125, 0);
+        private readonly Punkt linkerAnschlag = new Punkt(0, 0);
+        private readonly Punkt rechterAnschlag = new Punkt(125, 0);
 
         public Wagen()
         {
-            WagenVoll = false;
-            EndlageRechts = false;
-            WagenRichtung = Richtung.stehen;
-            WagenFuellstand = 0;
+            wagenVoll = false;
+            endlageRechts = false;
+            wagenRichtung = Richtung.stehen;
+            wagenFuellstand = 0;
 
-            AktuellePosition = new Punkt(0, 0);
+            aktuellePosition = new Punkt(0, 0);
         }
 
         public void WagenTask()
         {
-            switch (WagenRichtung)
+            switch (wagenRichtung)
             {
                 case Richtung.nachLinks:
-                    if (AktuellePosition.X > LinkerAnschlag.X) AktuellePosition.X -= WagenGeschwindigkeit;
-                    if (AktuellePosition.X <= LinkerAnschlag.X)
+                    if (aktuellePosition.X > linkerAnschlag.X) aktuellePosition.X -= wagenGeschwindigkeit;
+                    if (aktuellePosition.X <= linkerAnschlag.X)
                     {
-                        AktuellePosition.X = LinkerAnschlag.X;
-                        WagenRichtung = Richtung.stehen;
+                        aktuellePosition.X = linkerAnschlag.X;
+                        wagenRichtung = Richtung.stehen;
                     }
                     break;
 
                 case Richtung.nachRechts:
-                    if (AktuellePosition.X < RechterAnschlag.X) AktuellePosition.X += WagenGeschwindigkeit;
-                    if (AktuellePosition.X >= RechterAnschlag.X)
+                    if (aktuellePosition.X < rechterAnschlag.X) aktuellePosition.X += wagenGeschwindigkeit;
+                    if (aktuellePosition.X >= rechterAnschlag.X)
                     {
-                        AktuellePosition.X = RechterAnschlag.X;
-                        WagenRichtung = Richtung.stehen;
+                        aktuellePosition.X = rechterAnschlag.X;
+                        wagenRichtung = Richtung.stehen;
                     }
                     break;
 
@@ -65,22 +65,22 @@
             }
 
             // Wagen bewegen
-            if (AktuellePosition.X == RechterAnschlag.X) EndlageRechts = true; else EndlageRechts = false;
-            if (WagenFuellstand == WagenFuellstandVoll) WagenVoll = true; else WagenVoll = false;
-            if ((AktuellePosition.X == LinkerAnschlag.X) && (WagenFuellstand > 0)) WagenFuellstand -= WagenFuellstandLeeren;
+            if (aktuellePosition.X == rechterAnschlag.X) endlageRechts = true; else endlageRechts = false;
+            if (wagenFuellstand == wagenFuellstandVoll) wagenVoll = true; else wagenVoll = false;
+            if ((aktuellePosition.X == linkerAnschlag.X) && (wagenFuellstand > 0)) wagenFuellstand -= wagenFuellstandLeeren;
         }
 
         internal void Fuellen()
         {
-            WagenFuellstand += WagenFuellstandFuellen;
-            if (WagenFuellstand > WagenFuellstandVoll) WagenFuellstand = WagenFuellstandVoll;
+            wagenFuellstand += wagenFuellstandFuellen;
+            if (wagenFuellstand > wagenFuellstandVoll) wagenFuellstand = wagenFuellstandVoll;
         }
 
-        internal void NachRechts() { WagenRichtung = Richtung.nachRechts; }
-        internal void NachLinks() { WagenRichtung = Richtung.nachLinks; }
-        public bool IstWagenVoll() { return WagenVoll; }
-        public bool IstWagenRechts() { return EndlageRechts; }
-        internal Punkt GetPosition() { return AktuellePosition; }
-        internal double GetFuellstand() { return WagenFuellstand; }
+        internal void NachRechts() { wagenRichtung = Richtung.nachRechts; }
+        internal void NachLinks() { wagenRichtung = Richtung.nachLinks; }
+        public bool IstWagenVoll() => wagenVoll;
+        public bool IstWagenRechts() => endlageRechts;
+        internal Punkt GetPosition() => aktuellePosition;
+        internal double GetFuellstand() => wagenFuellstand;
     }
 }

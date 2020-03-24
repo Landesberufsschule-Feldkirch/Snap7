@@ -3,7 +3,7 @@
     public class Drehstromgenerator
     {
 
-  public double SynchVentil { get; set; }
+        public double SynchVentil { get; set; }
         public double SynchErregerstrom { get; set; }
 
         private readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
@@ -12,7 +12,7 @@
         private double P;
         private double cosPhi;
         private readonly double SpannungsFaktor;
-        private readonly double DrehzahlFaktor;     
+        private readonly double DrehzahlFaktor;
 
         private const double Y_n_Faktor = 0.28;
         private const double n_BremsFaktor = 0.991;
@@ -43,14 +43,15 @@
             n *= n_BremsFaktor;
         }
 
-        public double Drehzahl() { return n; }
+        public double Drehzahl() => n;
+        public double Leistung() => P;
+        public double CosPhi() => cosPhi;
+        public double Frequenz() => n * DrehzahlFaktor;
+        public double Spannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
+
         public void SynchronisiertFrequenz(double frequenz) { n = 30 * frequenz; }
-        public double Spannung(double strom) { return n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor; }
-        public double Frequenz() { return n * DrehzahlFaktor; }
         public void SynchronisierungVentil(double Y) { SynchVentil = Y; }
         public void SynchronisierungErregerstrom(double Ie) { SynchErregerstrom = Ie; }
-        public double Leistung() { return P; }
-        public double CosPhi() { return cosPhi; }
 
         public void MaschineLeistungFahren(double Y)
         {

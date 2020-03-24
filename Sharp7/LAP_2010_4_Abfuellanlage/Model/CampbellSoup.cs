@@ -44,7 +44,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         }
 
 
-        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() { return (richtungX, richtungY); }
+        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY);
 
         public void DosenVereinzeln()
         {

@@ -30,23 +30,15 @@ namespace LAP_2010_1_Kompressoranlage.Model
 
         private void KompressoranlageTask()
         {
-
             while (true)
             {
-
                 if (K1 && K3) Druck += DruckAnstieg;
                 Druck *= DruckVerlust;
 
                 if (Druck > 10) Druck = 10;
 
-                if (S8)
-                {
-                    if (Druck > 8) S8 = false;
-                }
-                else
-                {
-                    if (Druck < 7) S8 = true;
-                }
+                if (S8) { if (Druck > 8) S8 = false; }
+                else { if (Druck < 7) S8 = true; }
 
                 Thread.Sleep(10);
             }

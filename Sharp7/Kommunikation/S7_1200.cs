@@ -68,8 +68,8 @@ namespace Kommunikation
         }
 
 
-        public string GetSpsStatus() { return SpsStatus; }
-        public bool GetSpsError() { return SpsError; }
+        public string GetSpsStatus() => SpsStatus;
+        public bool GetSpsError() => SpsError;
 
         private void SPS_Pingen_Task()
         {

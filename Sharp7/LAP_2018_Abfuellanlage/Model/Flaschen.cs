@@ -1,6 +1,6 @@
 ﻿using Utilities;
 
-namespace LAP_2018_Abfuellanlage.Model
+namespace LAP_2018_2_Abfuellanlage.Model
 {
     public partial class Flaschen
     {
@@ -43,7 +43,7 @@ namespace LAP_2018_Abfuellanlage.Model
             Position = new Rechteck(StartPosition.Clone(), FlascheBreite, FlascheHoehe);
         }
 
-        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() { return (richtungX, richtungY); }
+        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY); 
 
         public void FlascheVereinzeln()
         {

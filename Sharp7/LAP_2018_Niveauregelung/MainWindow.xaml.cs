@@ -1,7 +1,7 @@
 ﻿using Kommunikation;
 using System.Windows;
 
-namespace LAP_2018_Niveauregelung
+namespace LAP_2018_4_Niveauregelung
 {
     public partial class MainWindow : Window
     {

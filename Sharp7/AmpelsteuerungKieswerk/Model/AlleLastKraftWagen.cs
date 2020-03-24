@@ -7,7 +7,7 @@
     public class AlleLastKraftWagen
     {
         private readonly List<LastKraftWagen> alleLkw = new List<LastKraftWagen>();
-        private readonly int AnzahlLkw;
+        private readonly int anzahlLkw;
 
         public bool B1 { get; set; }
         public bool B2 { get; set; }
@@ -17,17 +17,17 @@
 
         public AlleLastKraftWagen()
         {
-            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
 
             System.Threading.Tasks.Task.Run(() => AlleLastKraftWagenTask());
         }
 
-        public Punkt GetPositionLKW(int index) { return alleLkw[index].Position.Punkt; }
-        public LastKraftWagen.LkwRichtungen GetRichtungLKW(int index) { return alleLkw[index].LKW_Richtung; }
+        public Punkt GetPositionLKW(int index) => alleLkw[index].Position.Punkt;
+        public LastKraftWagen.LkwRichtungen GetRichtungLKW(int index) => alleLkw[index].LKW_Richtung;
 
         private void AlleLastKraftWagenTask()
         {

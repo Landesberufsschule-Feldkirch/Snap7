@@ -1,4 +1,4 @@
-﻿namespace LAP_2018_Niveauregelung.ViewModel
+﻿namespace LAP_2018_4_Niveauregelung.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -9,8 +9,8 @@
         private readonly double HoeheFuellBalken = 315;
 
         private readonly MainWindow mainWindow;
-        private readonly LAP_2018_Niveauregelung.Model.NiveauRegelung niveauRegelung;
-        public VisuAnzeigen(MainWindow mw, LAP_2018_Niveauregelung.Model.NiveauRegelung nr)
+        private readonly LAP_2018_4_Niveauregelung.Model.NiveauRegelung niveauRegelung;
+        public VisuAnzeigen(MainWindow mw, LAP_2018_4_Niveauregelung.Model.NiveauRegelung nr)
         {
             mainWindow = mw;
             niveauRegelung = nr;

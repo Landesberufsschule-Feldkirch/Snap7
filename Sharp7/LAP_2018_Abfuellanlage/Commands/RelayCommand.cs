@@ -1,4 +1,4 @@
-﻿namespace LAP_2018_Abfuellanlage.Commands
+﻿namespace LAP_2018_2_Abfuellanlage.Commands
 {
     using System;
     using System.Windows.Input;

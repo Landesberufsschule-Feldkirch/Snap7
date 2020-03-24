@@ -130,7 +130,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Ventil
-        public double ManualY() { return ManualVentilstellung; }
+        public double ManualY() => ManualVentilstellung;
 
         private double _manualVentilstellung;
         public double ManualVentilstellung
@@ -146,7 +146,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Erregerstrom
-        public double ManualIe() { return ManualErregerstrom; }
+        public double ManualIe() => ManualErregerstrom;
 
         private double _manualErregerstrom;
 
@@ -163,7 +163,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzspannung
-        public double SliderNetz_U() { return NetzSpannungSlider; }
+        public double SliderNetz_U() => NetzSpannungSlider;
 
         private double _netzSpannungSlider;
         public double NetzSpannungSlider
@@ -178,7 +178,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzfrequenz
-        public double SliderNetz_f() { return NetzFrequenzSlider; }
+        public double SliderNetz_f() => NetzFrequenzSlider;
 
         private double _netzFrequenzSlider;
         public double NetzFrequenzSlider
@@ -215,8 +215,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion
 
         #region Netzleistung
-
-        public double SliderNetz_P() { return NetzLeistungSlider; }
+        public double SliderNetz_P() => NetzLeistungSlider;
 
         private double _netzLeistungSlider;
 
@@ -570,7 +569,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion Ventil
 
         #region Kraftwerk Status
-
         public void Status(string val)
         {
             KraftwerkStatus = "Status Kraftwerk: " + val;

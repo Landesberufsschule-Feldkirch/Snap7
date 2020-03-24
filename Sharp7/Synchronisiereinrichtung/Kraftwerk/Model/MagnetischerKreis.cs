@@ -4,9 +4,9 @@
 
     public class MagnetischerKreis
     {
-        private readonly double Kennlinie;
+        private readonly double kennlinie;
 
-        public MagnetischerKreis(double kennlinie) { Kennlinie = kennlinie; }
-        public double Magnetisierungskennlinie(double strom) { return 1 - Math.Exp(-Kennlinie * strom); }
+        public MagnetischerKreis(double kennlinie) { this.kennlinie = kennlinie; }
+        public double Magnetisierungskennlinie(double strom) => 1 - Math.Exp(-kennlinie * strom);
     }
 }

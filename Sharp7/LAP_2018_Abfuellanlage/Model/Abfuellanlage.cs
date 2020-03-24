@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 
-namespace LAP_2018_Abfuellanlage.Model
+namespace LAP_2018_2_Abfuellanlage.Model
 {
     public class Abfuellanlage
     {
