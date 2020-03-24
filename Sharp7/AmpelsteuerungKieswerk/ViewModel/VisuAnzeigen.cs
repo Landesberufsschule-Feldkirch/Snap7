@@ -58,17 +58,17 @@
                 FarbeB3(alleLastKraftWagen.B3);
                 FarbeB4(alleLastKraftWagen.B4);
 
-                PositionLkw1(alleLastKraftWagen.AlleLkw[0].Position.Punkt);
-                PositionLkw2(alleLastKraftWagen.AlleLkw[1].Position.Punkt);
-                PositionLkw3(alleLastKraftWagen.AlleLkw[2].Position.Punkt);
-                PositionLkw4(alleLastKraftWagen.AlleLkw[3].Position.Punkt);
-                PositionLkw5(alleLastKraftWagen.AlleLkw[4].Position.Punkt);
+                PositionLkw1(alleLastKraftWagen.GetPositionLKW(0));
+                PositionLkw2(alleLastKraftWagen.GetPositionLKW(1));
+                PositionLkw3(alleLastKraftWagen.GetPositionLKW(2));
+                PositionLkw4(alleLastKraftWagen.GetPositionLKW(3));
+                PositionLkw5(alleLastKraftWagen.GetPositionLKW(4));
 
-                RichtungLkw1(alleLastKraftWagen.AlleLkw[0].LKW_Richtung);
-                RichtungLkw2(alleLastKraftWagen.AlleLkw[1].LKW_Richtung);
-                RichtungLkw3(alleLastKraftWagen.AlleLkw[2].LKW_Richtung);
-                RichtungLkw4(alleLastKraftWagen.AlleLkw[3].LKW_Richtung);
-                RichtungLkw5(alleLastKraftWagen.AlleLkw[4].LKW_Richtung);
+                RichtungLkw1(alleLastKraftWagen.GetRichtungLKW(0));
+                RichtungLkw2(alleLastKraftWagen.GetRichtungLKW(1));
+                RichtungLkw3(alleLastKraftWagen.GetRichtungLKW(2));
+                RichtungLkw4(alleLastKraftWagen.GetRichtungLKW(3));
+                RichtungLkw5(alleLastKraftWagen.GetRichtungLKW(4));
 
                 if (mainWindow.S7_1200 != null)
                 {

@@ -17,6 +17,5 @@ namespace Utilities.Tests
 
             Assert.Equal(exp, Utilities.Rechteck.Kollision(r1, r2));
         }
-
     }
 }

@@ -16,7 +16,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,6 +85,10 @@
     <ProjectReference Include="..\Synchronisiereinrichtung\Synchronisiereinrichtung.csproj">
       <Project>{4eea6ad8-5f9d-4ac6-85c4-9dd4d3499b3f}</Project>
       <Name>Synchronisiereinrichtung</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilties\Utilities.csproj">
+      <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
+      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

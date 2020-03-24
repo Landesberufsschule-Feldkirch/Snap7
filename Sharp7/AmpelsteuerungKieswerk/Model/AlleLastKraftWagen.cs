@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Threading;
+    using Utilities;
 
     public class AlleLastKraftWagen
     {
-        public readonly List<LastKraftWagen> AlleLkw = new List<LastKraftWagen>();
+        private readonly List<LastKraftWagen> alleLkw = new List<LastKraftWagen>();
         private readonly int AnzahlLkw;
 
         public bool B1 { get; set; }
@@ -16,14 +17,17 @@
 
         public AlleLastKraftWagen()
         {
-            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
-            AlleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
+            alleLkw.Add(new LastKraftWagen(AnzahlLkw++));
 
             System.Threading.Tasks.Task.Run(() => AlleLastKraftWagenTask());
         }
+
+        public Punkt GetPositionLKW(int index) { return alleLkw[index].Position.Punkt; }
+        public LastKraftWagen.LkwRichtungen GetRichtungLKW(int index) { return alleLkw[index].LKW_Richtung; }
 
         private void AlleLastKraftWagenTask()
         {
@@ -34,7 +38,7 @@
                 B3 = false;
                 B4 = false;
 
-                foreach (LastKraftWagen lkw in AlleLkw)
+                foreach (LastKraftWagen lkw in alleLkw)
                 {
 
                     var stop = KollisionErkennen(lkw);
@@ -54,7 +58,7 @@
             bool stop = false;
             var (lx, ly) = laster.GetRichtung();
 
-            foreach (LastKraftWagen lkw in AlleLkw)
+            foreach (LastKraftWagen lkw in alleLkw)
             {
                 if (laster.ID != lkw.ID)
                 {
@@ -69,12 +73,12 @@
             return stop;
         }
 
-        internal void TasterLkw1() { AlleLkw[0].Losfahren(); }
-        internal void TasterLkw2() { AlleLkw[1].Losfahren(); }
-        internal void TasterLkw3() { AlleLkw[2].Losfahren(); }
-        internal void TasterLkw4() { AlleLkw[3].Losfahren(); }
-        internal void TasterLkw5() { AlleLkw[4].Losfahren(); }
-        internal void TasterLinksParken() { foreach (LastKraftWagen lkw in AlleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
-        internal void TasterRechtsParken() { foreach (LastKraftWagen lkw in AlleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
+        internal void TasterLkw1() { alleLkw[0].Losfahren(); }
+        internal void TasterLkw2() { alleLkw[1].Losfahren(); }
+        internal void TasterLkw3() { alleLkw[2].Losfahren(); }
+        internal void TasterLkw4() { alleLkw[3].Losfahren(); }
+        internal void TasterLkw5() { alleLkw[4].Losfahren(); }
+        internal void TasterLinksParken() { foreach (LastKraftWagen lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
+        internal void TasterRechtsParken() { foreach (LastKraftWagen lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
     }
 }
