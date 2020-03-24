@@ -26,8 +26,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="SetM1" Grid.Column="3" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM1}" Content="M1" />
-        <Button x:Name="SetM2" Grid.Column="5" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM2}" Content="M2" />
+        <Button Grid.Column="3" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM1}" Content="M1" />
+        <Button Grid.Column="5" Grid.Row="3" ClickMode="Press" Command="{Binding BtnSetManualM2}" Content="M2" />
 
     </Grid>
 </Window>

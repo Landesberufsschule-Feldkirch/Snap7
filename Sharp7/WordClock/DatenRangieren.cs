@@ -28,7 +28,12 @@ namespace WordClock
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_6, viewModel.Zeiten.Minute);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_7, viewModel.Zeiten.Sekunde);
             S7.SetUInt_8_At(digInput, (int)BytePosition.Byte_8, 0);
-        }   
+        }
+
+        public void RangierenOutput(byte[] digOutput, byte[] _)
+        {
+            //
+        }
 
         public DatenRangieren(ViewModel.WordClockViewModel vm)
         {

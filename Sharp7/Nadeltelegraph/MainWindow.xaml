@@ -56,7 +56,7 @@
 
         <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding ViAnzeige.ColorP0}" />
 
-        <Polygon x:Name="Hintergrund" Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
+        <Polygon Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
             <Polygon.Points>
                 <Point X="30"   Y="500"  />
                 <Point X="385"  Y="40" />
@@ -92,7 +92,7 @@
 
 
 
-        <Polygon x:Name="Zeiger1"  Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+        <Polygon Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -109,7 +109,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="Zeiger2" Grid.Column="5" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+        <Polygon Grid.Column="5" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -126,7 +126,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="Zeiger3" Grid.Column="7" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+        <Polygon Grid.Column="7" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -143,7 +143,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="Zeiger4" Grid.Column="9" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+        <Polygon Grid.Column="9" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -160,7 +160,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="Zeiger5" Grid.Column="11" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
+        <Polygon Grid.Column="11" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

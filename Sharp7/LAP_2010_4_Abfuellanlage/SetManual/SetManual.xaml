@@ -28,9 +28,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="SetK1" Grid.Column="3" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtnK1}" Command="{Binding BtnK1}" Content="K1" />
-        <Button x:Name="SetK2" Grid.Column="3" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK2}" Command="{Binding BtnK2}" Content="K2" />
-        <Button x:Name="SetK3" Grid.Column="5" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK3}" Command="{Binding BtnK3}" Content="K3" />
+        <Button Grid.Column="3" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtnK1}" Command="{Binding BtnK1}" Content="K1" />
+        <Button Grid.Column="3" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK2}" Command="{Binding BtnK2}" Content="K2" />
+        <Button Grid.Column="5" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK3}" Command="{Binding BtnK3}" Content="K3" />
 
     </Grid>
 </Window>

@@ -95,7 +95,7 @@
         <Label Grid.Column="15" Grid.Row="9" Content="B3" Margin="43,7,0,0" FontSize="12pt" />
         <Label Grid.Column="16" Grid.Row="9" Content="B4" Margin="43,7,0,0" FontSize="12pt" />
 
-        <Canvas x:Name="myCanvas" Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
+        <Canvas Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw1Left}" Canvas.Top="{Binding ViAnzeige.PosLkw1Top}" Command="{Binding BtnLkw1}">
                 <Image Height="60" Source="Bilder/LKW_braun.PNG"  RenderTransformOrigin="0.5,0.5" >

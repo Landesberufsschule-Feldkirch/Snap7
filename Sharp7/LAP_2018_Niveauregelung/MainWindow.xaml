@@ -67,7 +67,7 @@
         
         <Rectangle Fill="LightGray"         Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="17" />
 
-        <Button x:Name="btnS1" Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}"  Margin="0,30,0,5">
+        <Button Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" ClickMode="Press" Command="{Binding BtnTasterS1}"  Margin="0,30,0,5">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -75,7 +75,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS2" Grid.Column="17" Grid.Row="2"  Grid.RowSpan="3" Content="Stop" Background="Red" ClickMode="Press" Command="{Binding BtnTasterS2}"  Margin="0,30,0,5">
+        <Button Grid.Column="17" Grid.Row="2"  Grid.RowSpan="3" Content="Stop" Background="Red" ClickMode="Press" Command="{Binding BtnTasterS2}"  Margin="0,30,0,5">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -83,7 +83,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS3" Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="Press" Command="{Binding BtnTasterS3}" >
+        <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="Press" Command="{Binding BtnTasterS3}" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />

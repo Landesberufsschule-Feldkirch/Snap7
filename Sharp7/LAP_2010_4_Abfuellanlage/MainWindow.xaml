@@ -66,7 +66,7 @@
 
         <Rectangle Fill="LightGray" Grid.Column="15" Grid.ColumnSpan="6"  Grid.RowSpan="9" Grid.Row="2"  />
 
-        <Button x:Name="btnS1" Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+        <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -74,7 +74,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btnS2" Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
+        <Button Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />

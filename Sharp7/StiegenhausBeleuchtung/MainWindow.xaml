@@ -419,7 +419,7 @@
         </ComboBox>
 
         <Label Grid.Column="32" Grid.Row="4" Content="Ziel:" FontSize="14pt"/>
-        <ComboBox x:Name="Ziel"  Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="4"  SelectedValue="{Binding ViAnzeige.ReiseZiel, Mode=TwoWay}" FontSize="14pt"   >
+        <ComboBox Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="4"  SelectedValue="{Binding ViAnzeige.ReiseZiel, Mode=TwoWay}" FontSize="14pt"   >
             <ComboBoxItem>EG</ComboBoxItem>
             <ComboBoxItem>Top 0.1</ComboBoxItem>
             <ComboBoxItem>Top 0.2</ComboBoxItem>

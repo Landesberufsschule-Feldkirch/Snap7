@@ -51,13 +51,13 @@
         <Button Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="4" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}"  />
 
         <Label Name="lblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="9" Grid.ColumnSpan="2"     Grid.Row="7" />
-        <Slider x:Name="sldGeschwindigkeit"                         Grid.Column="8" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnzeige.GeschwindigkeitSlider, Mode=TwoWay}" />
+        <Slider                                                     Grid.Column="8" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnzeige.GeschwindigkeitSlider, Mode=TwoWay}" />
 
 
-        <Canvas x:Name="canvasUhr" Width="420"  Grid.Column="3" Grid.Row="3" >
-            <Ellipse x:Name="circUhr" Fill="White" Canvas.Left="0" Canvas.Top="0" Width="300" Height="300" />
+        <Canvas x:Name="canvasUhr"  Width="420"  Grid.Column="3" Grid.Row="3" >
+            <Ellipse Fill="White" Canvas.Left="0" Canvas.Top="0" Width="300" Height="300" />
 
-            <Polygon x:Name="polyStundenZeiger" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" Fill="Black" RenderTransformOrigin="0.5,0.5">
+            <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" Fill="Black" RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform />
@@ -76,7 +76,7 @@
                 </Polygon.Points>
             </Polygon>
 
-            <Polygon x:Name="polyMinutenZeiger" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0"  Fill="Black"  RenderTransformOrigin="0.5,0.5">
+            <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0"  Fill="Black"  RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform />

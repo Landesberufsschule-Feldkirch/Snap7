@@ -573,7 +573,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public void Status(string val)
         {
-            KraftwerkStatus = "Status: " + val;
+            KraftwerkStatus = "Status Kraftwerk: " + val;
         }
 
         private string _kraftwerkStatus;

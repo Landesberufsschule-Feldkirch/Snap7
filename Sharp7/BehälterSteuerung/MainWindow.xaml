@@ -146,8 +146,8 @@
         <Button Content="1-4-3-2" Grid.Column="18"  Grid.Row="9"  Command="{Binding BtnAutomatik1432}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik1432}" />
         <Button Content="4-3-2-1" Grid.Column="20"  Grid.Row="9"  Command="{Binding BtnAutomatik4321}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik4321}" />
 
-        <Ellipse x:Name="circ_Stoerung" Grid.Column="14" Fill="{Binding ViAnzeige.ColorCircle_P1}" HorizontalAlignment="Left" Height="35" Grid.Row="3" Stroke="Black" Width="35" />
+        <Ellipse Grid.Column="14" Fill="{Binding ViAnzeige.ColorCircle_P1}" HorizontalAlignment="Left" Height="35" Grid.Row="3" Stroke="Black" Width="35" />
 
-        <Label x:Name="lbl_P1" Content="P1" Grid.Column="13" Grid.Row="3" VerticalAlignment="Center" />
+        <Label Content="P1" Grid.Column="13" Grid.Row="3" VerticalAlignment="Center" />
     </Grid>
 </Window>
