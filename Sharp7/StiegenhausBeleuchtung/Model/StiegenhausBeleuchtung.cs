@@ -83,7 +83,7 @@ namespace StiegenhausBeleuchtung.Model
                 if (ortAktuell == ortZiel)
                 {
                     JobAktiv = false;
-                    ortAktuell = (-2, -2);// unbekannter Ort --> alles deaktivieren
+                    ortAktuell = (-10, -10);// unbekannter Ort --> alles deaktivieren
                 }
                 else
                 {
@@ -111,7 +111,7 @@ namespace StiegenhausBeleuchtung.Model
         {
             for (int i = 0; i < 100; i++) alleBewegungsmelder[i] = false;
 
-            if (aktuell.raum != -2 && aktuell.stock != -2)
+            if (aktuell.raum != -10 && aktuell.stock != -10)
             {
                 var Bewegungsmelder = 2 + aktuell.raum + 10 * aktuell.stock;
                 alleBewegungsmelder[Bewegungsmelder] = true;
