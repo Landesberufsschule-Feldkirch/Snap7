@@ -27,21 +27,31 @@ namespace StiegenhausBeleuchtung.Model
 
             topologie = new Dictionary<string, (int, int)>
             {
-                { "EG",(0, 0) },
-                { "Top 0.1",(-1, 0) },
-                { "Top 0.2", (1, 0) },
-                { "OG 1", (0, 1) },
-                { "Top 1.1", (-1, 1) },
-                { "Top 1.2", (1, 1) },
-                { "OG 2", (0, 2) },
-                { "Top 2.1",(-1, 2) },
-                { "Top 2.2", (1, 2) },
-                { "OG 3", (0, 3) },
-                { "Top 3.1", (-1, 3) },
-                { "Top 3.2",(1, 3) },
-                { "OG 4", (0, 4) },
-                { "Top 4.1", (-1, 4) },
-                { "Top 4.2", (1, 4) }
+                { "EG",         (0, 0) },
+                { "Top 0.1",    (-2, 0) },
+                { "Top 0.2",    (-1, 0) },
+                { "Top 0.3",    (1, 0) },
+                { "Top 0.4",    (2, 0) },
+                { "OG 1",       (0, 1) },
+                { "Top 1.1",    (-2, 1) },
+                { "Top 1.2",    (-1, 1) },
+                { "Top 1.3",    (1, 1) },
+                { "Top 1.4",    (2, 1) },
+                { "OG 2",       (0, 2) },
+                { "Top 2.1",    (-2, 2) },
+                { "Top 2.2",    (-1, 2) },
+                { "Top 2.3",    (1, 2) },
+                { "Top 2.4",    (2, 2) },
+                { "OG 3",       (0, 3) },
+                { "Top 3.1",    (-2, 3) },
+                { "Top 3.2",    (-1, 3) },
+                { "Top 3.3",    (1, 3) },
+                { "Top 3.4",    (2, 3) },
+                { "OG 4",       (0, 4) },
+                { "Top 4.1",    (-2, 4) },
+                { "Top 4.2",    (-1, 4) },
+                { "Top 4.3",    (1, 4) },
+                { "Top 4.4",    (2, 4) }
             };
 
             System.Threading.Tasks.Task.Run(() => StiegenhausBeleuchtungTask());
@@ -95,7 +105,7 @@ namespace StiegenhausBeleuchtung.Model
                         }
                         else
                         {
-                            ortAktuell.raum = 0;//Stiegenhaus
+                            if (ortAktuell.raum < 0) ortAktuell.raum++; else ortAktuell.raum--;
                         }
                     }
                     else
@@ -113,7 +123,7 @@ namespace StiegenhausBeleuchtung.Model
 
             if (aktuell.raum != -10 && aktuell.stock != -10)
             {
-                var Bewegungsmelder = 2 + aktuell.raum + 10 * aktuell.stock;
+                var Bewegungsmelder = 3 + aktuell.raum + 10 * aktuell.stock;
                 alleBewegungsmelder[Bewegungsmelder] = true;
             }
         }

@@ -34,7 +34,6 @@
             <ColumnDefinition Width="30" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="30" />
-
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="150" />
@@ -47,7 +46,6 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="20" />
             <ColumnDefinition Width="10" />
-
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
@@ -84,12 +82,11 @@
         <Rectangle Grid.Column="23"                         Grid.Row="1"    Grid.RowSpan="21"       Fill="Gray"/>
         <Rectangle Grid.Column="29"                         Grid.Row="1"    Grid.RowSpan="22"       Fill="Gray"/>
 
-
-        <Ellipse    Grid.Column="5"                         Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[41]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="11"                        Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[42]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="15"                        Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[43]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="19"                        Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[44]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="25"                        Grid.Row="1" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[45]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="5"                         Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[41]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="11"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[42]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="15"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[43]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="19"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[44]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="25"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[45]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
 
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="1"                  Fill="Gray"/>
 
@@ -100,13 +97,13 @@
         <local:ImageButton Grid.Column="22" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[44]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="44"/>
         <local:ImageButton Grid.Column="28" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[45]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="45"/>
 
-        <Rectangle Grid.Column="3"                          Grid.Row="3"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="5"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="5" Grid.Row="3" Content="Top 4.1" FontSize="14pt"/>
+        <Rectangle  Grid.Column="3"     Grid.Row="3"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="5"     Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="5"     Grid.Row="3"    Content="Top 4.1"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="9"                          Grid.Row="3"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="11"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="11" Grid.Row="3" Content="Top 4.2" FontSize="14pt"/>
+        <Rectangle  Grid.Column="9"     Grid.Row="3"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="11"    Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="11"    Grid.Row="3"    Content="Top 4.2"   FontSize="14pt"/>
 
 
         <Polygon  Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -136,16 +133,14 @@
         </Polygon>
         <Label Grid.Column="15" Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 4" FontSize="25pt" Grid.RowSpan="2"  />
 
+        <Rectangle  Grid.Column="21"    Grid.Row="3"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="19"    Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="19"    Grid.Row="3"    Content="Top 4.3"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="21"                          Grid.Row="3"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="19"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="19" Grid.Row="3" Content="Top 4.3" FontSize="14pt"/>
-
-        <Rectangle Grid.Column="27"                          Grid.Row="3"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="25"                          Grid.Row="3"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="25" Grid.Row="3" Content="Top 4.4" FontSize="14pt"/>
-
-       
+        <Rectangle  Grid.Column="27"    Grid.Row="3"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="25"    Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="25"    Grid.Row="3"    Content="Top 4.4"   FontSize="14pt"/>
+        
         
         <Ellipse    Grid.Column="5"                         Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[31]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Ellipse    Grid.Column="11"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[32]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
@@ -163,13 +158,13 @@
         <local:ImageButton Grid.Column="28" Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[35]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="35"/>
         
         
-        <Rectangle Grid.Column="3"                          Grid.Row="7"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="5"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="5" Grid.Row="7" Content="Top 3.1" FontSize="14pt"/>
+        <Rectangle  Grid.Column="3"     Grid.Row="7"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="5"     Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="5"     Grid.Row="7"    Content="Top 3.1"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="9"                          Grid.Row="7"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="11"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="1" Grid.Row="7" Content="Top 3.2" FontSize="14pt"/>
+        <Rectangle  Grid.Column="9"     Grid.Row="7"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="11"    Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="11"    Grid.Row="7"    Content="Top 3.2"   FontSize="14pt"/>
 
 
         <Polygon  Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -199,13 +194,13 @@
         </Polygon>
         <Label Grid.Column="15" Grid.Row="7" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 3" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-        <Rectangle Grid.Column="21"                          Grid.Row="7"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="19"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="19" Grid.Row="7" Content="Top 3.3" FontSize="14pt"/>
+        <Rectangle  Grid.Column="21"    Grid.Row="7"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="19"    Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="19"    Grid.Row="7"    Content="Top 3.3"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="27"                          Grid.Row="7"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="25"                          Grid.Row="7"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="25" Grid.Row="7" Content="Top 3.4" FontSize="14pt"/>
+        <Rectangle  Grid.Column="27"    Grid.Row="7"                        Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="25"    Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="25"    Grid.Row="7"    Content="Top 3.4"   FontSize="14pt"/>
 
       
 
@@ -223,13 +218,13 @@
         <local:ImageButton Grid.Column="28" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[25]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="25"/>
 
 
-        <Rectangle Grid.Column="3"                          Grid.Row="11"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="5"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="5" Grid.Row="11" Content="Top 2.1" FontSize="14pt"/>
+        <Rectangle  Grid.Column="3"     Grid.Row="11"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="5"     Grid.Row="11"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="5"     Grid.Row="11"   Content="Top 2.1"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="9"                          Grid.Row="11"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="11"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="11" Grid.Row="11" Content="Top 2.2" FontSize="14pt"/>
+        <Rectangle  Grid.Column="9"     Grid.Row="11"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="11"    Grid.Row="11"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="11"    Grid.Row="11"   Content="Top 2.2"   FontSize="14pt"/>
         
         
         <Polygon  Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -259,16 +254,13 @@
         </Polygon>
         <Label Grid.Column="15" Grid.Row="11" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 2" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-        <Rectangle Grid.Column="21"                          Grid.Row="11"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="19"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="19" Grid.Row="11" Content="Top 2.3" FontSize="14pt"/>
+        <Rectangle  Grid.Column="21"    Grid.Row="11"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="19"    Grid.Row="11"    Grid.RowSpan="2"   Fill="SaddleBrown" />
+        <Label      Grid.Column="19"    Grid.Row="11"   Content="Top 2.3"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="27"                          Grid.Row="11"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="25"                          Grid.Row="11"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="25" Grid.Row="11" Content="Top 2.4" FontSize="14pt"/>
-
-
-
+        <Rectangle  Grid.Column="27"    Grid.Row="11"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="25"    Grid.Row="11"    Grid.RowSpan="2"   Fill="SaddleBrown" />
+        <Label      Grid.Column="25"    Grid.Row="11"   Content="Top 2.4"   FontSize="14pt"/>
   
         
         
@@ -287,13 +279,13 @@
         <local:ImageButton Grid.Column="28" Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[15]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="15"/>
 
 
-        <Rectangle Grid.Column="3"                          Grid.Row="15"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="5"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="5" Grid.Row="15" Content="Top 1.1" FontSize="14pt"/>
+        <Rectangle  Grid.Column="3"     Grid.Row="15"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="5"     Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="5"     Grid.Row="15"   Content="Top 1.1"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="9"                          Grid.Row="15"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="11"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="11" Grid.Row="15" Content="Top 1.2" FontSize="14pt"/>
+        <Rectangle  Grid.Column="9"     Grid.Row="15"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="11"    Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="11"    Grid.Row="15"   Content="Top 1.2"   FontSize="14pt"/>
         
         
         <Polygon  Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
@@ -323,19 +315,19 @@
         </Polygon>
         <Label Grid.Column="15" Grid.Row="15" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="OG 1" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-        <Rectangle Grid.Column="21"                          Grid.Row="15"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="19"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="19" Grid.Row="15" Content="Top 1.3" FontSize="14pt"/>
+        <Rectangle  Grid.Column="21"    Grid.Row="15"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="19"    Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="19"    Grid.Row="15"   Content="Top 1.3"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="27"                          Grid.Row="15"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="25"                          Grid.Row="15"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="25" Grid.Row="15" Content="Top 1.4" FontSize="14pt"/>
+        <Rectangle  Grid.Column="27"    Grid.Row="15"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="25"    Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="25"    Grid.Row="15"   Content="Top 1.4"   FontSize="14pt"/>
         
         
         <Ellipse    Grid.Column="5"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[1]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="11"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[2]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="11"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[2]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Ellipse    Grid.Column="15"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[3]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
-        <Ellipse    Grid.Column="19"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[4]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
+        <Ellipse    Grid.Column="19"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[4]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Ellipse    Grid.Column="25"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[5]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10"    />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="17"                  Fill="Gray"/>
 
@@ -347,13 +339,13 @@
         <local:ImageButton Grid.Column="28" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[5]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="5"/>
 
 
-        <Rectangle Grid.Column="3"                          Grid.Row="19"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="5"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="5" Grid.Row="19" Content="Top 0.1" FontSize="14pt"/>
+        <Rectangle  Grid.Column="3"     Grid.Row="19"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="5"     Grid.Row="19"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="5"     Grid.Row="19"   Content="Top 0.1"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="9"                          Grid.Row="19"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="11"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="11" Grid.Row="19" Content="Top 0.2" FontSize="14pt"/>
+        <Rectangle  Grid.Column="9"     Grid.Row="19"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="11"    Grid.Row="19"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="11"    Grid.Row="19"   Content="Top 0.2"   FontSize="14pt"/>
 
         <Polygon  Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="18" Grid.RowSpan="3"  Stroke="Gray" StrokeThickness="5"  >
             <Polygon.Points>
@@ -382,13 +374,13 @@
         </Polygon>
         <Label Grid.Column="15" Grid.Row="19" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Content="EG" FontSize="25pt" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
-        <Rectangle Grid.Column="21"                          Grid.Row="19"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="19"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="19" Grid.Row="19" Content="Top 0.3" FontSize="14pt"/>
+        <Rectangle  Grid.Column="21"    Grid.Row="19"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="19"    Grid.Row="19"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="19"    Grid.Row="19"   Content="Top 0.3"   FontSize="14pt"/>
 
-        <Rectangle Grid.Column="27"                          Grid.Row="19"                            Fill="WhiteSmoke" />
-        <Rectangle Grid.Column="25"                          Grid.Row="19"    Grid.RowSpan="2"        Fill="SaddleBrown" />
-        <Label Grid.Column="25" Grid.Row="19" Content="Top 0.4" FontSize="14pt"/>
+        <Rectangle  Grid.Column="27"    Grid.Row="19"                       Fill="WhiteSmoke" />
+        <Rectangle  Grid.Column="25"    Grid.Row="19"   Grid.RowSpan="2"    Fill="SaddleBrown" />
+        <Label      Grid.Column="25"    Grid.Row="19"   Content="Top 0.4"   FontSize="14pt"/>
 
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="21"                  Fill="Gray"/>
 
