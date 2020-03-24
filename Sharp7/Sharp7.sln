@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehälterSteuerung", "Behä
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_4_Niveauregelung", "LAP_2018_Niveauregelung\LAP_2018_4_Niveauregelung.csproj", "{D886D544-5996-4C5F-83A3-A5BEF7B0142F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_4_Niveauregelung", "LAP_2018_4_Niveauregelung\LAP_2018_4_Niveauregelung.csproj", "{D886D544-5996-4C5F-83A3-A5BEF7B0142F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_2_Abfuellanlage", "LAP_2018_Abfuellanlage\LAP_2018_2_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_2_Abfuellanlage", "LAP_2018_2_Abfuellanlage\LAP_2018_2_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmpelsteuerungKieswerk", "AmpelsteuerungKieswerk\AmpelsteuerungKieswerk.csproj", "{9A9A470D-877F-4168-94E5-047C8D83F59A}"
 EndProject
