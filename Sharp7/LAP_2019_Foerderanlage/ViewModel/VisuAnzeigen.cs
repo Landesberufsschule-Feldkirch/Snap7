@@ -7,8 +7,7 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private const int MaterialSiloHoehe = 8 * 35;
-
+        private const int materialSiloHoehe = 8 * 35;
         private readonly MainWindow mainWindow;
         public readonly Model.Foerderanlage foerderanlage;
 
@@ -23,7 +22,7 @@
 
             SelectedIndex = 0; // Automatikbetrieb
 
-            Margin1 = new System.Windows.Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
+            Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * 0.1, 0, 0);
 
 
             ClickModeBtnS0 = "Press";
@@ -510,7 +509,7 @@
         #region FuellstandSilo
         public void FuellstandSilo(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(0, MaterialSiloHoehe * (1 - pegel), 0, 0);
+            Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;
