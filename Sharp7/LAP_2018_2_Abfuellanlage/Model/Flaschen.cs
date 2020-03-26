@@ -18,16 +18,16 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public int ID { get; set; }
 
         private BewegungSchritt bewegungSchritt;
-        private readonly Punkt StartPosition;
-        private readonly double BewegungIncrement = 0.5;
-        private readonly double FlascheBreite = 40;
-        private readonly double FlascheHoehe = 80;
-        private readonly Punkt VereinzelnerVentil = new Punkt(105, 385);
-        private readonly Punkt FoerderbandLinks = new Punkt(105, 525);
-        private readonly Punkt FoerderbandRechts = new Punkt(640, 525);
-        private readonly Punkt SensorB1Links = new Punkt(418, 525);
-        private readonly Punkt SensorB1Rechts = new Punkt(450, 525);
-        private readonly Punkt Boden = new Punkt(640, 700);
+        private readonly Punkt startPosition;
+        private readonly double bewegungIncrement = 0.5;
+        private readonly double flascheBreite = 40;
+        private readonly double flascheHoehe = 80;
+        private readonly Punkt vereinzelnerVentil = new Punkt(105, 385);
+        private readonly Punkt foerderbandLinks = new Punkt(105, 525);
+        private readonly Punkt foerderbandRechts = new Punkt(640, 525);
+        private readonly Punkt sensorB1Links = new Punkt(418, 525);
+        private readonly Punkt sensorB1Rechts = new Punkt(450, 525);
+        private readonly Punkt boden = new Punkt(640, 700);
         private Utilities.Rechteck.RichtungX richtungX;
         private Utilities.Rechteck.RichtungY richtungY;
 
@@ -39,8 +39,8 @@ namespace LAP_2018_2_Abfuellanlage.Model
             bewegungSchritt = BewegungSchritt.Oberhalb;
             Sichtbar = true;
 
-            StartPosition = new Punkt(FoerderbandLinks.X, VereinzelnerVentil.Y - ID * FlascheHoehe);
-            Position = new Rechteck(StartPosition.Clone(), FlascheBreite, FlascheHoehe);
+            startPosition = new Punkt(foerderbandLinks.X, vereinzelnerVentil.Y - ID * flascheHoehe);
+            Position = new Rechteck(startPosition.Clone(), flascheBreite, flascheHoehe);
         }
 
         public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY); 
@@ -60,15 +60,15 @@ namespace LAP_2018_2_Abfuellanlage.Model
             {
                 case BewegungSchritt.Oberhalb:
                     richtungY = Utilities.Rechteck.RichtungY.nachUnten;
-                    y_Neu = VereinzelnerVentil.Y - FlascheHoehe * (ID - aktuelleFlasche);
-                    if (!stop && Position.Punkt.Y < y_Neu) Position.Punkt.Y += BewegungIncrement;
+                    y_Neu = vereinzelnerVentil.Y - flascheHoehe * (ID - aktuelleFlasche);
+                    if (!stop && Position.Punkt.Y < y_Neu) Position.Punkt.Y += bewegungIncrement;
                     break;
 
                 case BewegungSchritt.Vereinzeln:
                     richtungY = Utilities.Rechteck.RichtungY.nachUnten;
                     if (!stop)
                     {
-                        if (Position.Punkt.Y < FoerderbandLinks.Y) Position.Punkt.Y += BewegungIncrement;
+                        if (Position.Punkt.Y < foerderbandLinks.Y) Position.Punkt.Y += bewegungIncrement;
                         else
                         {
                             bewegungSchritt = BewegungSchritt.Fahren;
@@ -81,7 +81,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     richtungX = Utilities.Rechteck.RichtungX.nachRechts;
                     if (!stop && M1)
                     {
-                        if (Position.Punkt.X < FoerderbandRechts.X) Position.Punkt.X += BewegungIncrement;
+                        if (Position.Punkt.X < foerderbandRechts.X) Position.Punkt.X += bewegungIncrement;
                         else bewegungSchritt = BewegungSchritt.Runtergefallen;
                     }
                     break;
@@ -90,7 +90,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     richtungY = Utilities.Rechteck.RichtungY.nachUnten;
                     if (!stop)
                     {
-                        if (Position.Punkt.Y < Boden.Y) Position.Punkt.Y += BewegungIncrement;
+                        if (Position.Punkt.Y < boden.Y) Position.Punkt.Y += bewegungIncrement;
                         else bewegungSchritt = BewegungSchritt.Fertig;
                     }
                     break;
@@ -101,12 +101,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
                 default:
                     bewegungSchritt = BewegungSchritt.Oberhalb;
-                    Position.Punkt.X = StartPosition.X;
-                    Position.Punkt.Y = StartPosition.Y;
+                    Position.Punkt.X = startPosition.X;
+                    Position.Punkt.Y = startPosition.Y;
                     break;
             }
 
-            if ((Position.Punkt.X > SensorB1Links.X) && (Position.Punkt.X < SensorB1Rechts.X)) return (true, aktuelleFlasche);
+            if ((Position.Punkt.X > sensorB1Links.X) && (Position.Punkt.X < sensorB1Rechts.X)) return (true, aktuelleFlasche);
             return (false, aktuelleFlasche);
         }
 
@@ -114,8 +114,8 @@ namespace LAP_2018_2_Abfuellanlage.Model
         {
             bewegungSchritt = BewegungSchritt.Oberhalb;
             Sichtbar = true;
-            Position.Punkt.X = StartPosition.X;
-            Position.Punkt.Y = StartPosition.Y;
+            Position.Punkt.X = startPosition.X;
+            Position.Punkt.Y = startPosition.Y;
         }
     }
 }

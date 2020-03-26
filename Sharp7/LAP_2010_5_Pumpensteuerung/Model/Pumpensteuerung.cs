@@ -10,7 +10,6 @@ namespace LAP_2010_5_Pumpensteuerung.Model
         public bool F5 { get; set; } // Thermorelais
         public bool S7 { get; set; } // Schwimmerschalter oben
         public bool S8 { get; set; } // Schwimmerschalter unten
-
         public bool K1 { get; set; } // Motor Pumpe
         public bool H1 { get; set; } // "Pumpe Ein"
         public bool H2 { get; set; } // "Störung"

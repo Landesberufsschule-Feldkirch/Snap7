@@ -39,7 +39,7 @@
             <RowDefinition  />
         </Grid.RowDefinitions>
 
-        <Label      Grid.Column="11" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V1.0 " Width="42"   />
+        <Label      Grid.Column="11" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V1.0 " />
         <Label      Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
         <Rectangle  Grid.Column="1"  Grid.ColumnSpan="11"   Grid.Row="1"  Grid.RowSpan="10" Stroke="Black" Fill="LightGray" />
 
@@ -88,7 +88,7 @@
             <Path Fill="Red" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" RenderTransformOrigin="0.5,0.5" >
                 <Path.RenderTransform>
                     <TransformGroup>
-                          <RotateTransform Angle="{Binding  ViAnzeige.WinkelSekunden}" />
+                        <RotateTransform Angle="{Binding  ViAnzeige.WinkelSekunden}" />
                         <TranslateTransform/>
                     </TransformGroup>
                 </Path.RenderTransform>

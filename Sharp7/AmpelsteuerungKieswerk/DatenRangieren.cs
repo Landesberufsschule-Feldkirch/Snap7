@@ -6,12 +6,12 @@
 
     public class DatenRangieren
     {
-        private readonly ViewModel.AmpelsteuerungKieswerkViewModel viewModel;
-
-        private AmpelZustand AmpelLinks = AmpelZustand.Rot;
-        private AmpelZustand AmpelRechts = AmpelZustand.Rot;
-
         public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
+
+        private readonly ViewModel.AmpelsteuerungKieswerkViewModel viewModel;
+        private AmpelZustand ampelLinks = AmpelZustand.Rot;
+        private AmpelZustand ampelRechts = AmpelZustand.Rot;
+
 
         private enum BitPosAusgang
         {
@@ -48,15 +48,15 @@
             var p5_rechts_gelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5);
             var p6_rechts_gruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P6);
 
-            var ampelLinks = GetAmpelZustand(p1_links_rot, p2_links_gelb, p3_links_gruen);
-            var ampelRechts = GetAmpelZustand(p4_rechts_rot, p5_rechts_gelb, p6_rechts_gruen);
+            var linkeAmpel = GetAmpelZustand(p1_links_rot, p2_links_gelb, p3_links_gruen);
+            var rechteAmpel = GetAmpelZustand(p4_rechts_rot, p5_rechts_gelb, p6_rechts_gruen);
 
-            if (ampelLinks != AmpelLinks || ampelRechts != AmpelRechts)
+            if (linkeAmpel != this.ampelLinks || rechteAmpel != this.ampelRechts)
             {
-                OnAmpelChanged(new AmpelZustandEventArgs(ampelLinks, ampelRechts));
+                OnAmpelChanged(new AmpelZustandEventArgs(linkeAmpel, rechteAmpel));
 
-                AmpelRechts = ampelRechts;
-                AmpelLinks = ampelLinks;
+                ampelRechts = rechteAmpel;
+                ampelLinks = linkeAmpel;
             }
         }
 

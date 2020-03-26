@@ -6,14 +6,13 @@
 
     public class AlleLastKraftWagen
     {
-        private readonly List<LastKraftWagen> alleLkw = new List<LastKraftWagen>();
-        private readonly int anzahlLkw;
-
         public bool B1 { get; set; }
         public bool B2 { get; set; }
         public bool B3 { get; set; }
         public bool B4 { get; set; }
 
+        private readonly List<LastKraftWagen> alleLkw = new List<LastKraftWagen>();
+        private readonly int anzahlLkw;
 
         public AlleLastKraftWagen()
         {
@@ -40,7 +39,6 @@
 
                 foreach (LastKraftWagen lkw in alleLkw)
                 {
-
                     var stop = KollisionErkennen(lkw);
                     var (b1, b2, b3, b4) = lkw.LastwagenFahren(stop);
                     B1 |= b1;

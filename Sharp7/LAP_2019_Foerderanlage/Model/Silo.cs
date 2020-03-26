@@ -2,24 +2,24 @@
 {
     public class Silo
     {
-        private double Fuellstand;
-        private const double MaterialSiloFuellen = 0.001;
-        private const double MaterialSiloLeeren = 0.0002;
+        private double fuellstand;
+        private const double materialSiloFuellen = 0.001;
+        private const double materialSiloLeeren = 0.0002;
 
 
         public void Fuellen()
         {
-            Fuellstand += MaterialSiloFuellen;
-            if (Fuellstand > 1) Fuellstand = 1;
+            fuellstand += materialSiloFuellen;
+            if (fuellstand > 1) fuellstand = 1;
 
         }
         public void Leeren()
         {
-            Fuellstand -= MaterialSiloLeeren;
-            if (Fuellstand < 0) Fuellstand = 0;
+            fuellstand -= materialSiloLeeren;
+            if (fuellstand < 0) fuellstand = 0;
         }
 
-        public Silo() { Fuellstand = 0.9; }
-        public double GetFuellstand() => Fuellstand;
+        public Silo() { fuellstand = 0.9; }
+        public double GetFuellstand() => fuellstand;
     }
 }

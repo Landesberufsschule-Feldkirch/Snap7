@@ -19,7 +19,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         private readonly int anzahlDosen;
         private int aktuelleDose;
-        private readonly double LeerGeschwindigkeit = 0.002;
+        private readonly double leerGeschwindigkeit = 0.002;
 
         public AbfuellAnlage()
         {
@@ -40,7 +40,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         {
             while (true)
             {
-                if (K3) Pegel -= LeerGeschwindigkeit;
+                if (K3) Pegel -= leerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
                 S7 = Pegel > 0.1;

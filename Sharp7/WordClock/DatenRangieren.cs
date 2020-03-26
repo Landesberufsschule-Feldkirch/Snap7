@@ -1,7 +1,7 @@
-﻿using Sharp7;
-
-namespace WordClock
+﻿namespace WordClock
 {
+    using Sharp7;
+
     public class DatenRangieren
     {
         private readonly ViewModel.WordClockViewModel viewModel;

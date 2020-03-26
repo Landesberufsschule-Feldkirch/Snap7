@@ -63,7 +63,6 @@
     <Compile Include="Model\AmpelZustandArgs.cs" />
     <Compile Include="Model\AlleLastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagen.cs" />
-    <Compile Include="Model\SensorenZustandArgs.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\AmpelsteuerungKieswerkViewModel.cs" />
     <Page Include="MainWindow.xaml">

@@ -5,7 +5,6 @@
     {
         public Wagen Wagen { get; set; }
         public Silo Silo { get; set; }
-
         public bool S0 { get; set; }        // Anlage Aus
         public bool S1 { get; set; }        // Anlage Ein
         public bool S2 { get; set; }        // Not-Halt
@@ -23,12 +22,7 @@
         public bool Q3_RL { get; set; }     // Förderband Rechtslauf
         public bool Q4_LL { get; set; }     // Förderband Linkslauf
         public bool XFU { get; set; }       // Freigabe FU (Schneckenförderer)
-        public bool Y1 { get; set; }        // Materialschieber Silo
-
-
-
-        internal void BtnF4() { if (F4) F4 = false; else F4 = true; }
-        internal void BtnS2() { if (S2) S2 = false; else S2 = true; }
+        public bool Y1 { get; set; }        // Materialschieber Silo            
         public bool Manual_M1_RL { get; set; }
         public bool Manual_M1_LL { get; set; }
         public bool Manual_M2 { get; set; }
@@ -36,6 +30,8 @@
 
 
         private readonly MainWindow mainWindow;
+
+
         public Foerderanlage(MainWindow mw)
         {
             mainWindow = mw;
@@ -49,8 +45,6 @@
             System.Threading.Tasks.Task.Run(() => FoerderanlageTask());
         }
 
-
-
         private void FoerderanlageTask()
         {
             while (true)
@@ -63,7 +57,6 @@
                 if (Y1) Silo.Leeren();
 
                 if (Silo.GetFuellstand() > 0 && Q4_LL && Y1) Wagen.Fuellen();
-
 
                 if (mainWindow.DebugWindowAktiv)
                 {
@@ -80,8 +73,7 @@
 
         internal void WagenNachLinks() { Wagen.NachLinks(); }
         internal void WagenNachRechts() { Wagen.NachRechts(); }
-
-
-
+        internal void BtnF4() { if (F4) F4 = false; else F4 = true; }
+        internal void BtnS2() { if (S2) S2 = false; else S2 = true; }
     }
 }

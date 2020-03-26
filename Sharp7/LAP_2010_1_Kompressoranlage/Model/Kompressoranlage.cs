@@ -14,10 +14,10 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public bool S2 { get; set; }    // Ein
         public bool S7 { get; set; }    // Druckschalter
         public bool S8 { get; set; }    // Temperatursensor Kompressor
-
         public double Druck { get; set; }
-        private const double DruckVerlust = 0.998;
-        private const double DruckAnstieg = 0.04;
+
+        private const double druckVerlust = 0.998;
+        private const double druckAnstieg = 0.04;
 
         public Kompressoranlage()
         {
@@ -32,8 +32,8 @@ namespace LAP_2010_1_Kompressoranlage.Model
         {
             while (true)
             {
-                if (K1 && K3) Druck += DruckAnstieg;
-                Druck *= DruckVerlust;
+                if (K1 && K3) Druck += druckAnstieg;
+                Druck *= druckVerlust;
 
                 if (Druck > 10) Druck = 10;
 

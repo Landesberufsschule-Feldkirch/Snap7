@@ -31,7 +31,6 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         }
 
         private readonly StateMachine<State, Trigger> stateMachine;
-
         private readonly StateAus stateAus;
         private readonly StateHochfahren stateHochfahren;
         private readonly StateSynchronisieren stateSynchronisieren;

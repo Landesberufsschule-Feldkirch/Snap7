@@ -9,11 +9,11 @@
         public bool VentilUnten { get; set; }
 
         private bool automatikModus;
-        private double InternerPegel;
-        private readonly double SinkGeschwindigkeit = 0.005;
-        private readonly double FuellGeschwindigkeit = 0.2 * 0.005;
-        private readonly double PositionSchwimmerschalterOben = 0.95;
-        private readonly double PositionSchwimmerschalterUnten = 0.05;
+        private double internerPegel;
+        private readonly double sinkGeschwindigkeit = 0.005;
+        private readonly double fuellGeschwindigkeit = 0.2 * 0.005;
+        private readonly double positionSchwimmerschalterOben = 0.95;
+        private readonly double positionSchwimmerschalterUnten = 0.05;
 
         public Behaelter(double pegel)
         {
@@ -24,34 +24,34 @@
 
         public void PegelUeberwachen()
         {
-            if (automatikModus && InternerPegel < 0.01)
+            if (automatikModus && internerPegel < 0.01)
             {
                 automatikModus = false;
                 VentilUnten = false;
             }
 
-            if (InternerPegel > 0)
+            if (internerPegel > 0)
             {
-                InternerPegel -= SinkGeschwindigkeit;
-                Pegel = InternerPegel;
+                internerPegel -= sinkGeschwindigkeit;
+                Pegel = internerPegel;
             }
             else
             {
-                if (VentilOben) Pegel += FuellGeschwindigkeit;
-                if (VentilUnten) Pegel -= SinkGeschwindigkeit;
+                if (VentilOben) Pegel += fuellGeschwindigkeit;
+                if (VentilUnten) Pegel -= sinkGeschwindigkeit;
             }
 
             if (Pegel > 1) Pegel = 1;
             if (Pegel < 0) Pegel = 0;
 
-            SchwimmerschalterOben = (Pegel > PositionSchwimmerschalterOben);
-            SchwimmerschalterUnten = (Pegel > PositionSchwimmerschalterUnten);
+            SchwimmerschalterOben = (Pegel > positionSchwimmerschalterOben);
+            SchwimmerschalterUnten = (Pegel > positionSchwimmerschalterUnten);
         }
 
         public void AutomatikmodusStarten(double Startpegel)
         {
             automatikModus = true;
-            this.InternerPegel = Startpegel;
+            this.internerPegel = Startpegel;
             VentilUnten = true;
         }
         internal void VentilUntenUmschalten()
@@ -60,7 +60,6 @@
             {
                 if (VentilUnten) VentilUnten = false; else VentilUnten = true;
             }
-
         }
     }
 }
