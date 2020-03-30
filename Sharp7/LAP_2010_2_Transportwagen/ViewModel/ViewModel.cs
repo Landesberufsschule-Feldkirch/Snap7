@@ -3,13 +3,13 @@
     using LAP_2010_2_Transportwagen.Commands;
     using System.Windows.Input;
 
-    public class TransportwagenViewModel
+    public class ViewModel
     {
 
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_2_Transportwagen.Model.Transportwagen transportwagen;
 
-        public TransportwagenViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             transportwagen = new Model.Transportwagen();
             ViAnzeige = new VisuAnzeigen(mainWindow, transportwagen);

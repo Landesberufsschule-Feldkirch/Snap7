@@ -7,12 +7,12 @@ namespace Tiefgarage
     {
         public S7_1200 S7_1200 { get; set; }
 
-        private readonly ViewModel.TiefgarageViewModel tiefgarageViewModel;
+        private readonly ViewModel.ViewModel tiefgarageViewModel;
         private readonly DatenRangieren datenRangieren;
 
         public MainWindow()
         {
-            tiefgarageViewModel = new ViewModel.TiefgarageViewModel(this);
+            tiefgarageViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(tiefgarageViewModel);
 
             InitializeComponent();

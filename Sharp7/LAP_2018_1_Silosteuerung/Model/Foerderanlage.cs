@@ -35,7 +35,7 @@ namespace LAP_2018_1_Silosteuerung.Model
             Wagen = new Wagen();
             Silo = new Silo();
 
-          
+
 
             System.Threading.Tasks.Task.Run(() => FoerderanlageTask());
         }
@@ -44,7 +44,7 @@ namespace LAP_2018_1_Silosteuerung.Model
         {
             while (true)
             {
-               
+
 
                 Thread.Sleep(10);
             }

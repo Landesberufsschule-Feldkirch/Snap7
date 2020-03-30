@@ -5,7 +5,7 @@ namespace LAP_2010_5_Pumpensteuerung
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly LAP_2010_5_Pumpensteuerung.ViewModel.PumpensteuerungViewModel viewModel;
+        private readonly LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel viewModel;
         private enum BitPosAusgang
         {
             K1 = 0, // Motor Pumpe
@@ -44,7 +44,7 @@ namespace LAP_2010_5_Pumpensteuerung
             }
         }
 
-        public DatenRangieren(MainWindow mw, LAP_2010_5_Pumpensteuerung.ViewModel.PumpensteuerungViewModel vm)
+        public DatenRangieren(MainWindow mw, LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm)
         {
             mainWindow = mw;
             viewModel = vm;

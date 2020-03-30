@@ -1,6 +1,4 @@
-﻿using System;
-using Utilities;
-using Xunit;
+﻿using Xunit;
 
 namespace SynchronisiereinrichtungTests
 {

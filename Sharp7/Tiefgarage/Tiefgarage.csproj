@@ -62,7 +62,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Model\AlleFahrzeugePersonen.cs" />
     <Compile Include="Model\FahrzeugePersonen.cs" />
-    <Compile Include="ViewModel\TiefgarageViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

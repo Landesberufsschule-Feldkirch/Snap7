@@ -64,7 +64,7 @@
     <Compile Include="Model\AlleLastKraftWagen.cs" />
     <Compile Include="Model\LastKraftWagen.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
-    <Compile Include="ViewModel\AmpelsteuerungKieswerkViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

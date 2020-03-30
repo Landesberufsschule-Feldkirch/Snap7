@@ -63,7 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\Kompressoranlage.cs" />
-    <Compile Include="ViewModel\KompressoranlageViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

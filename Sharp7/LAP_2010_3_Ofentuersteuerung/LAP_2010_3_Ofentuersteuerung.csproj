@@ -68,7 +68,7 @@
     <Compile Include="SetManual\SetManual.xaml.cs">
       <DependentUpon>SetManual.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\OfentuersteuerungViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

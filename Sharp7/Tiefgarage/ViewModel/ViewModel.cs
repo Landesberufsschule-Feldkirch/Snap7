@@ -3,13 +3,13 @@ using Tiefgarage.Commands;
 
 namespace Tiefgarage.ViewModel
 {
-    public class TiefgarageViewModel
+    public class ViewModel
     {
 
         public readonly Model.AlleFahrzeugePersonen alleFahrzeugePersonen;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public TiefgarageViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             alleFahrzeugePersonen = new Model.AlleFahrzeugePersonen();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleFahrzeugePersonen);

@@ -3,11 +3,11 @@
     using Nadeltelegraph.Commands;
     using System.Windows.Input;
 
-    public class NadeltelegraphViewModel
+    public class ViewModel
     {
         public readonly Model.Nadeltelegraph nadeltelegraph;
         public VisuAnzeigen ViAnzeige { get; set; }
-        public NadeltelegraphViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             nadeltelegraph = new Model.Nadeltelegraph();
             ViAnzeige = new VisuAnzeigen(mainWindow, nadeltelegraph);

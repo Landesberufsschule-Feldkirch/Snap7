@@ -9,11 +9,11 @@ namespace StiegenhausBeleuchtung
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.StiegenhausBeleuchtungViewModel stiegenhausBeleuchtungViewModel;
+        private readonly ViewModel.ViewModel stiegenhausBeleuchtungViewModel;
 
         public MainWindow()
         {
-            stiegenhausBeleuchtungViewModel = new ViewModel.StiegenhausBeleuchtungViewModel(this);
+            stiegenhausBeleuchtungViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(stiegenhausBeleuchtungViewModel);
 
             InitializeComponent();

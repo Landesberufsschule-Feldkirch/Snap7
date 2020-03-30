@@ -3,12 +3,12 @@
     using StiegenhausBeleuchtung.Commands;
     using System.Windows.Input;
 
-    public class StiegenhausBeleuchtungViewModel
+    public class ViewModel
     {
 
         public readonly Model.StiegenhausBeleuchtung stiegenhausBeleuchtung;
         public VisuAnzeigen ViAnzeige { get; set; }
-        public StiegenhausBeleuchtungViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             stiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
             ViAnzeige = new VisuAnzeigen(mainWindow, stiegenhausBeleuchtung);

@@ -3,13 +3,13 @@
     using LAP_2010_5_Pumpensteuerung.Commands;
     using System.Windows.Input;
 
-    public class PumpensteuerungViewModel
+    public class ViewModel
     {
 
         public readonly Model.Pumpensteuerung pumpensteuerung;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public PumpensteuerungViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             pumpensteuerung = new Model.Pumpensteuerung();
             ViAnzeige = new VisuAnzeigen(mainWindow, pumpensteuerung);

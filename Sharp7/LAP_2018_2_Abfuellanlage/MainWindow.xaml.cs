@@ -10,11 +10,11 @@ namespace LAP_2018_2_Abfuellanlage
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
+        private readonly ViewModel.ViewModel abfuellanlageViewModel;
 
         public MainWindow()
         {
-            abfuellanlageViewModel = new ViewModel.AbfuellanlageViewModel(this);
+            abfuellanlageViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, abfuellanlageViewModel);
 
             InitializeComponent();

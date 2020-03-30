@@ -8,13 +8,13 @@ namespace LAP_2018_4_Niveauregelung
         public S7_1200 S7_1200 { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
-        public ViewModel.NiveauRegelungViewModel NiveauRegelungViewModel { get; set; }
+        public ViewModel.ViewModel NiveauRegelungViewModel { get; set; }
 
         private readonly DatenRangieren datenRangieren;
 
         public MainWindow()
         {
-            NiveauRegelungViewModel = new ViewModel.NiveauRegelungViewModel(this);
+            NiveauRegelungViewModel = new ViewModel.ViewModel(this);
 
             datenRangieren = new DatenRangieren(this, NiveauRegelungViewModel);
 

@@ -64,7 +64,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="Model\Zeiten.cs" />
-    <Compile Include="ViewModel\WordClockViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

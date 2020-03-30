@@ -74,7 +74,7 @@
             Position = new Rechteck(parkpositionLinks, groesseLkw.X, groesseLkw.Y);
         }
 
-        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY); 
+        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY);
         public void Losfahren()
         {
             if (LKW_Position == LkwPositionen.LinksGeparkt) LKW_Position = LkwPositionen.LR_LinkeKurve;

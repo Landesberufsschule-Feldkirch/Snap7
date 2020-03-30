@@ -5,7 +5,7 @@ namespace LAP_2010_4_Abfuellanlage
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly ViewModel.AbfuellanlageViewModel abfuellanlageViewModel;
+        private readonly ViewModel.ViewModel abfuellanlageViewModel;
 
         private enum BitPosAusgang
         {
@@ -42,7 +42,7 @@ namespace LAP_2010_4_Abfuellanlage
             }
         }
 
-        public DatenRangieren(MainWindow mw, LAP_2010_4_Abfuellanlage.ViewModel.AbfuellanlageViewModel vm)
+        public DatenRangieren(MainWindow mw, LAP_2010_4_Abfuellanlage.ViewModel.ViewModel vm)
         {
             mainWindow = mw;
             abfuellanlageViewModel = vm;

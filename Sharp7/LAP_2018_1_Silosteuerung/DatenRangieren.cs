@@ -1,12 +1,9 @@
-﻿using Sharp7;
-using Utilities;
-
-namespace LAP_2018_1_Silosteuerung
+﻿namespace LAP_2018_1_Silosteuerung
 {
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly ViewModel.FoerderanlageViewModel foerderanlageViewModel;
+        private readonly ViewModel.ViewModel foerderanlageViewModel;
 
         private enum BitPosAusgang
         {
@@ -68,7 +65,7 @@ namespace LAP_2018_1_Silosteuerung
             */
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.FoerderanlageViewModel vm)
+        public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
             mainWindow = mw;
             foerderanlageViewModel = vm;

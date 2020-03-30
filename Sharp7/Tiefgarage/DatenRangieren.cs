@@ -4,7 +4,7 @@ namespace Tiefgarage
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.TiefgarageViewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         private enum BitPosEingang
         {
@@ -24,7 +24,7 @@ namespace Tiefgarage
             viewModel.alleFahrzeugePersonen.AnzahlPersonen = S7.GetUint8At(digOutput, 1);
         }
 
-        public DatenRangieren(Tiefgarage.ViewModel.TiefgarageViewModel vm)
+        public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm)
         {
             viewModel = vm;
         }

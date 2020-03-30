@@ -75,7 +75,7 @@
     <Compile Include="Kraftwerk\Model\StateSynchronisieren.cs" />
     <Compile Include="Kraftwerk\ViewModel\Schreiber.cs" />
     <Compile Include="Kraftwerk\ViewModel\VisuAnzeigen.cs" />
-    <Compile Include="Kraftwerk\ViewModel\KraftwerkViewModel.cs" />
+    <Compile Include="Kraftwerk\ViewModel\ViewModel.cs" />
     <Compile Include="Kraftwerk\Model\MagnetischerKreis.cs" />
     <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">
       <DependentUpon>RealTimeGraphWindow.xaml</DependentUpon>

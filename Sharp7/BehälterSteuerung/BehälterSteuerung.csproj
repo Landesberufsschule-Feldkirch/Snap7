@@ -78,7 +78,7 @@
     <Compile Include="Model\BehaelterSteuerung.cs" />
     <Compile Include="Model\Behaelter.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
-    <Compile Include="ViewModel\BehaelterViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -3,12 +3,12 @@
     using AmpelsteuerungKieswerk.Commands;
     using System.Windows.Input;
 
-    public class AmpelsteuerungKieswerkViewModel
+    public class ViewModel
     {
 
         public readonly Model.AlleLastKraftWagen alleLastKraftWagen;
         public VisuAnzeigen ViAnzeige { get; set; }
-        public AmpelsteuerungKieswerkViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             alleLastKraftWagen = new Model.AlleLastKraftWagen();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleLastKraftWagen);

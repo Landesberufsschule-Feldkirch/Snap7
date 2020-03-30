@@ -4,7 +4,7 @@ namespace LAP_2010_1_Kompressoranlage
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.KompressoranlageViewModel kompressoranlageViewModel;
+        private readonly ViewModel.ViewModel kompressoranlageViewModel;
 
         private enum BitPosAusgang
         {
@@ -42,7 +42,7 @@ namespace LAP_2010_1_Kompressoranlage
             kompressoranlageViewModel.kompressoranlage.K3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K3);
         }
 
-        public DatenRangieren(ViewModel.KompressoranlageViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
             kompressoranlageViewModel = vm;
         }

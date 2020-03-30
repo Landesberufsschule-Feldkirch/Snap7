@@ -3,13 +3,13 @@
     using LAP_2018_2_Abfuellanlage.Commands;
     using System.Windows.Input;
 
-    public class AbfuellanlageViewModel
+    public class ViewModel
     {
 
         public readonly Model.Abfuellanlage abfuellAnlage;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public AbfuellanlageViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             abfuellAnlage = new Model.Abfuellanlage();
             ViAnzeige = new VisuAnzeigen(mainWindow, abfuellAnlage);

@@ -43,7 +43,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             Position = new Rechteck(startPosition.Clone(), flascheBreite, flascheHoehe);
         }
 
-        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY); 
+        public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY);
 
         public void FlascheVereinzeln()
         {

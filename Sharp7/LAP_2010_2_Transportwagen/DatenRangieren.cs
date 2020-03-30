@@ -4,7 +4,7 @@ namespace LAP_2010_2_Transportwagen
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.TransportwagenViewModel transportwagenViewModel;
+        private readonly ViewModel.ViewModel transportwagenViewModel;
 
         private enum BitPosAusgang
         {
@@ -40,7 +40,7 @@ namespace LAP_2010_2_Transportwagen
             transportwagenViewModel.transportwagen.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);
         }
 
-        public DatenRangieren(ViewModel.TransportwagenViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
             transportwagenViewModel = vm;
         }

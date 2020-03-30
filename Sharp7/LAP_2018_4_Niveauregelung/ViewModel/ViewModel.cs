@@ -3,13 +3,13 @@
     using LAP_2018_4_Niveauregelung.Commands;
     using System.Windows.Input;
 
-    public class NiveauRegelungViewModel
+    public class ViewModel
     {
 
         public readonly Model.NiveauRegelung niveauRegelung;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public NiveauRegelungViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             niveauRegelung = new Model.NiveauRegelung();
             ViAnzeige = new VisuAnzeigen(mainWindow, niveauRegelung);

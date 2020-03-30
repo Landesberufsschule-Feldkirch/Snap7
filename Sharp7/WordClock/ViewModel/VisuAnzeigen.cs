@@ -71,7 +71,7 @@
         #endregion
 
         #region GeschwindigkeitZeit
-        public int GeschwindigkeitZeit() => (int)GeschwindigkeitSlider; 
+        public int GeschwindigkeitZeit() => (int)GeschwindigkeitSlider;
 
         private double _geschwindigkeitSlider;
 

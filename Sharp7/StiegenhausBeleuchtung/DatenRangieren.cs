@@ -4,7 +4,7 @@
 
     public class DatenRangieren
     {
-        private readonly ViewModel.StiegenhausBeleuchtungViewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         private enum BitPosAusgang
         {
@@ -131,7 +131,7 @@
             viewModel.stiegenhausBeleuchtung.SetLampen(45, S7.GetBitAt(digOutput, (int)BitPosAusgang.P_45));
         }
 
-        public DatenRangieren(ViewModel.StiegenhausBeleuchtungViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
             viewModel = vm;
         }

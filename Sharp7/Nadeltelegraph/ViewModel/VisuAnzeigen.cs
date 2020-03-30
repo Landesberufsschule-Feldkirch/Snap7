@@ -1,6 +1,5 @@
 ﻿namespace Nadeltelegraph.ViewModel
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
@@ -24,7 +23,7 @@
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
-         
+
 
 
 
@@ -64,7 +63,7 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                if (ClickModeButton(asciiCode)) nadeltelegraph.Zeichen = asciiCode; else nadeltelegraph.Zeichen = ' ';              
+                if (ClickModeButton(asciiCode)) nadeltelegraph.Zeichen = asciiCode; else nadeltelegraph.Zeichen = ' ';
             }
         }
 

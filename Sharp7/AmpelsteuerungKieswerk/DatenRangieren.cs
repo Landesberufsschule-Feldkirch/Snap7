@@ -8,7 +8,7 @@
     {
         public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
 
-        private readonly ViewModel.AmpelsteuerungKieswerkViewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
         private AmpelZustand ampelLinks = AmpelZustand.Rot;
         private AmpelZustand ampelRechts = AmpelZustand.Rot;
 
@@ -60,7 +60,7 @@
             }
         }
 
-        public DatenRangieren(ViewModel.AmpelsteuerungKieswerkViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
             viewModel = vm;
             AmpelChangedEvent += viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;

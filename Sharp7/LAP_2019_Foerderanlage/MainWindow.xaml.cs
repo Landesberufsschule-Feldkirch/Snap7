@@ -13,11 +13,11 @@ namespace LAP_2019_Foerderanlage
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.FoerderanlageViewModel foerderanlageViewModel;
+        private readonly ViewModel.ViewModel foerderanlageViewModel;
 
         public MainWindow()
         {
-            foerderanlageViewModel = new ViewModel.FoerderanlageViewModel(this);
+            foerderanlageViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, foerderanlageViewModel);
 
             InitializeComponent();

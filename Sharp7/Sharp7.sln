@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StiegenhausBeleuchtung", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_1_Silosteuerung", "LAP_2018_1_Silosteuerung\LAP_2018_1_Silosteuerung.csproj", "{ED26FB48-6326-4FD4-9CA9-EB861673C62C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_3_Hydraulikaggregat", "LAP_2018_3_Hydraulikaggregat\LAP_2018_3_Hydraulikaggregat.csproj", "{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +157,14 @@ Global
 		{ED26FB48-6326-4FD4-9CA9-EB861673C62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED26FB48-6326-4FD4-9CA9-EB861673C62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED26FB48-6326-4FD4-9CA9-EB861673C62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

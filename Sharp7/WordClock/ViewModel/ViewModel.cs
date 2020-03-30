@@ -3,12 +3,12 @@
     using System.Windows.Input;
     using WordClock.Commands;
 
-    public class WordClockViewModel
+    public class ViewModel
     {
         public readonly Model.Zeiten zeiten;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public WordClockViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             zeiten = new Model.Zeiten();
             ViAnzeige = new VisuAnzeigen(mainWindow, zeiten);

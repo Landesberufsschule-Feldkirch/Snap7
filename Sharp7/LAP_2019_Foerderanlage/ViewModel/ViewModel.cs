@@ -3,13 +3,13 @@
     using LAP_2019_Foerderanlage.Commands;
     using System.Windows.Input;
 
-    public class FoerderanlageViewModel
+    public class ViewModel
     {
 
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly Model.Foerderanlage foerderanlage;
 
-        public FoerderanlageViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             foerderanlage = new Model.Foerderanlage(mainWindow);
             ViAnzeige = new VisuAnzeigen(mainWindow, foerderanlage);

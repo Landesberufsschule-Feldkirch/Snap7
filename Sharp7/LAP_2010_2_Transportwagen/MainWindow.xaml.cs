@@ -11,11 +11,11 @@ namespace LAP_2010_2_Transportwagen
         public SetManual.SetManual SetManualWindow { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.TransportwagenViewModel transportwagenViewModel;
+        private readonly ViewModel.ViewModel transportwagenViewModel;
 
         public MainWindow()
         {
-            transportwagenViewModel = new ViewModel.TransportwagenViewModel(this);
+            transportwagenViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(transportwagenViewModel);
 
             InitializeComponent();

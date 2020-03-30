@@ -8,11 +8,11 @@ namespace LAP_2010_1_Kompressoranlage
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.KompressoranlageViewModel kompressoranlageViewModel;
+        private readonly ViewModel.ViewModel kompressoranlageViewModel;
 
         public MainWindow()
         {
-            kompressoranlageViewModel = new ViewModel.KompressoranlageViewModel(this);
+            kompressoranlageViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(kompressoranlageViewModel);
 
             InitializeComponent();

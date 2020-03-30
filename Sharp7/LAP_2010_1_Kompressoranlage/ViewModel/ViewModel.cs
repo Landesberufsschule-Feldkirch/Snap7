@@ -4,13 +4,13 @@
     using BehaelterSteuerung.ViewModel;
     using System.Windows.Input;
 
-    public class KompressoranlageViewModel
+    public class ViewModel
     {
 
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_1_Kompressoranlage.Model.Kompressoranlage kompressoranlage;
 
-        public KompressoranlageViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             kompressoranlage = new Model.Kompressoranlage();
             ViAnzeige = new VisuAnzeigen(mainWindow, kompressoranlage);

@@ -4,7 +4,7 @@
 
     public class DatenRangieren
     {
-        private readonly ViewModel.WordClockViewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
         private enum BytePosition
         {
             Byte_0 = 0,
@@ -35,7 +35,7 @@
             //
         }
 
-        public DatenRangieren(ViewModel.WordClockViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
             viewModel = vm;
         }

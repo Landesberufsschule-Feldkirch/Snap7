@@ -8,11 +8,11 @@ namespace Nadeltelegraph
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.NadeltelegraphViewModel nadeltelegraphViewModel;
+        private readonly ViewModel.ViewModel nadeltelegraphViewModel;
 
         public MainWindow()
         {
-            nadeltelegraphViewModel = new ViewModel.NadeltelegraphViewModel(this);
+            nadeltelegraphViewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(nadeltelegraphViewModel);
 
             InitializeComponent();
