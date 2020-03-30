@@ -11,17 +11,17 @@ namespace WordClock
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel wordClockViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
 
-            wordClockViewModel = new ViewModel.ViewModel(this);
+            viewModel = new ViewModel.ViewModel(this);
 
-            datenRangieren = new DatenRangieren(wordClockViewModel);
+            datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = wordClockViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 

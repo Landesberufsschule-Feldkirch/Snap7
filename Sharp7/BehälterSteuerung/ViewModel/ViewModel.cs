@@ -3,12 +3,12 @@
     using BehaelterSteuerung.Commands;
     using System.Windows.Input;
 
-    public class BehaelterViewModel
+    public class ViewModel
     {
         public readonly Model.BehaelterSteuerung alleBehaelter;
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public BehaelterViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             alleBehaelter = new Model.BehaelterSteuerung();
             ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);

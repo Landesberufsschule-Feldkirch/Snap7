@@ -8,18 +8,18 @@ namespace LAP_2018_4_Niveauregelung
         public S7_1200 S7_1200 { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
-        public ViewModel.ViewModel NiveauRegelungViewModel { get; set; }
 
+        public readonly ViewModel.ViewModel viewModel;
         private readonly DatenRangieren datenRangieren;
 
         public MainWindow()
         {
-            NiveauRegelungViewModel = new ViewModel.ViewModel(this);
+            viewModel = new ViewModel.ViewModel(this);
 
-            datenRangieren = new DatenRangieren(this, NiveauRegelungViewModel);
+            datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
-            DataContext = NiveauRegelungViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
@@ -27,7 +27,7 @@ namespace LAP_2018_4_Niveauregelung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManualWindow(NiveauRegelungViewModel);
+            SetManualWindow = new SetManual.SetManualWindow(viewModel);
             SetManualWindow.Show();
         }
     }

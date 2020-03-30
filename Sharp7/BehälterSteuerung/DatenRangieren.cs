@@ -4,7 +4,7 @@ namespace BehaelterSteuerung
 {
     public class DatenRangieren
     {
-        private readonly BehaelterSteuerung.ViewModel.BehaelterViewModel viewModel;
+        private readonly BehaelterSteuerung.ViewModel.ViewModel viewModel;
         private enum BitPosEingang
         {
             B1 = 0,
@@ -26,7 +26,7 @@ namespace BehaelterSteuerung
             P1
         }
 
-        public DatenRangieren(ViewModel.BehaelterViewModel behaelterViewModel)
+        public DatenRangieren(ViewModel.ViewModel behaelterViewModel)
         {
             viewModel = behaelterViewModel;
         }

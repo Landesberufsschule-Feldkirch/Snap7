@@ -6,7 +6,7 @@ namespace Synchronisiereinrichtung
 {
     public class DatenRangieren
     {
-        private readonly KraftwerkViewModel viewModel;
+        private readonly ViewModel viewModel;
         private readonly MainWindow mainWindow;
         private enum BitPosAusgang
         {
@@ -19,7 +19,7 @@ namespace Synchronisiereinrichtung
             S2      // Kraftwerk Stoppen
         }
 
-        public DatenRangieren(MainWindow mw, KraftwerkViewModel vm)
+        public DatenRangieren(MainWindow mw, ViewModel vm)
         {
             mainWindow = mw;
             viewModel = vm;

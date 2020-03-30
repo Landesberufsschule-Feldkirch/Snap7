@@ -11,15 +11,15 @@ namespace LAP_2010_2_Transportwagen
         public SetManual.SetManual SetManualWindow { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel transportwagenViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            transportwagenViewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(transportwagenViewModel);
+            viewModel = new ViewModel.ViewModel(this);
+            datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = transportwagenViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
@@ -30,7 +30,7 @@ namespace LAP_2010_2_Transportwagen
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManual(transportwagenViewModel);
+            SetManualWindow = new SetManual.SetManual(viewModel);
             SetManualWindow.Show();
         }
     }

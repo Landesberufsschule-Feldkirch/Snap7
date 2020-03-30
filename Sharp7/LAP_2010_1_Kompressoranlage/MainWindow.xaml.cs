@@ -8,17 +8,17 @@ namespace LAP_2010_1_Kompressoranlage
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel kompressoranlageViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            kompressoranlageViewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(kompressoranlageViewModel);
+            viewModel = new ViewModel.ViewModel(this);
+            datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = kompressoranlageViewModel;
+            DataContext = viewModel;
 
-            GaugeDruck.DataContext = kompressoranlageViewModel;
+            GaugeDruck.DataContext = viewModel;
             GaugeDruck.ApplyTemplate();
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);

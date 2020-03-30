@@ -12,17 +12,17 @@ namespace Synchronisiereinrichtung
         private readonly DatenRangieren datenRangieren;
         private SetManualWindow setManualWindow;
         private RealTimeGraphWindow realTimeGraphWindow;
-        private readonly KraftwerkViewModel kraftwerkViewModel;
+        private readonly ViewModel viewModel;
 
         public MainWindow()
         {
-            kraftwerkViewModel = new KraftwerkViewModel(this);
+            viewModel = new ViewModel(this);
 
             InitializeComponent();
 
-            DataContext = kraftwerkViewModel;
-            GaugeDifferenzSpannung.DataContext = kraftwerkViewModel;
-            datenRangieren = new DatenRangieren(this, kraftwerkViewModel);
+            DataContext = viewModel;
+            GaugeDifferenzSpannung.DataContext = viewModel;
+            datenRangieren = new DatenRangieren(this, viewModel);
             GaugeDifferenzSpannung.ApplyTemplate();
 
             S7_1200 = new S7_1200(1, 1, 20, 4, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
@@ -39,13 +39,13 @@ namespace Synchronisiereinrichtung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            setManualWindow = new SetManualWindow(kraftwerkViewModel);
+            setManualWindow = new SetManualWindow(viewModel);
             setManualWindow.Show();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraphWindow = new RealTimeGraphWindow(kraftwerkViewModel);
+            realTimeGraphWindow = new RealTimeGraphWindow(viewModel);
             realTimeGraphWindow.Show();
         }
     }

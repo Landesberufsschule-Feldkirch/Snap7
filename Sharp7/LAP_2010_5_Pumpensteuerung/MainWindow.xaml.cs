@@ -8,18 +8,18 @@ namespace LAP_2010_5_Pumpensteuerung
         public S7_1200 S7_1200 { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public LAP_2010_5_Pumpensteuerung.SetManual.SetManual SetManualWindow { get; set; }
-        public ViewModel.ViewModel PumpensteuerungViewModel { get; set; }
 
+        public readonly ViewModel.ViewModel viewModel;
         private readonly DatenRangieren datenRangieren;
 
         public MainWindow()
         {
-            PumpensteuerungViewModel = new ViewModel.ViewModel(this);
+            viewModel = new ViewModel.ViewModel(this);
 
-            datenRangieren = new DatenRangieren(this, PumpensteuerungViewModel);
+            datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
-            DataContext = PumpensteuerungViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
@@ -30,7 +30,7 @@ namespace LAP_2010_5_Pumpensteuerung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new LAP_2010_5_Pumpensteuerung.SetManual.SetManual(PumpensteuerungViewModel);
+            SetManualWindow = new LAP_2010_5_Pumpensteuerung.SetManual.SetManual(viewModel);
             SetManualWindow.Show();
         }
     }

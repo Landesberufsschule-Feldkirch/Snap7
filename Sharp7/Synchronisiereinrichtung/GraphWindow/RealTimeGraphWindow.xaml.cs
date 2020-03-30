@@ -4,7 +4,7 @@ namespace Synchronisiereinrichtung
 {
     public partial class RealTimeGraphWindow : Window
     {
-        public RealTimeGraphWindow(Synchronisiereinrichtung.kraftwerk.ViewModel.KraftwerkViewModel kraftwerkViewModel)
+        public RealTimeGraphWindow(Synchronisiereinrichtung.kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
         {
             InitializeComponent();
             DataContext = kraftwerkViewModel.Schreiber;

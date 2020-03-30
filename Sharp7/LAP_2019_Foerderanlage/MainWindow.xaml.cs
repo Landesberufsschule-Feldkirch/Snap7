@@ -13,15 +13,15 @@ namespace LAP_2019_Foerderanlage
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel foerderanlageViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            foerderanlageViewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(this, foerderanlageViewModel);
+            viewModel = new ViewModel.ViewModel(this);
+            datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
-            DataContext = foerderanlageViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
@@ -29,7 +29,7 @@ namespace LAP_2019_Foerderanlage
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManualWindow(foerderanlageViewModel);
+            SetManualWindow = new SetManualWindow(viewModel);
             SetManualWindow.Show();
         }
 

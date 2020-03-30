@@ -3,17 +3,16 @@
     using Synchronisiereinrichtung.kraftwerk.Commands;
     using System.Windows.Input;
 
-    public class KraftwerkViewModel
+    public class ViewModel
     {
-
         private readonly Model.Kraftwerk kraftwerk;
-        public ViewModel.Schreiber Schreiber { get; set; }
+        public kraftwerk.ViewModel.Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public KraftwerkViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             kraftwerk = new Model.Kraftwerk();
-            Schreiber = new ViewModel.Schreiber(kraftwerk);
+            Schreiber = new kraftwerk.ViewModel.Schreiber(kraftwerk);
             ViAnzeige = new VisuAnzeigen(mainWindow, kraftwerk);
         }
 

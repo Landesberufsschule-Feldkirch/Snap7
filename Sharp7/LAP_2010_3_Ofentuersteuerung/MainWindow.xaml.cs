@@ -10,15 +10,15 @@ namespace LAP_2010_3_Ofentuersteuerung
         public SetManual.SetManual SetManualWindow { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.OfensteuerungViewModel ofensteuerungViewModel;
+        private readonly ViewModel.VewModel viewModel;
 
         public MainWindow()
         {
-            ofensteuerungViewModel = new ViewModel.OfensteuerungViewModel(this);
-            datenRangieren = new DatenRangieren(ofensteuerungViewModel);
+            viewModel = new ViewModel.VewModel(this);
+            datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = ofensteuerungViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
@@ -29,7 +29,7 @@ namespace LAP_2010_3_Ofentuersteuerung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManual(ofensteuerungViewModel);
+            SetManualWindow = new SetManual.SetManual(viewModel);
             SetManualWindow.Show();
         }
     }

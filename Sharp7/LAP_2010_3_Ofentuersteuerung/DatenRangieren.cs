@@ -4,7 +4,7 @@ namespace LAP_2010_3_Ofentuersteuerung
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.OfensteuerungViewModel ofensteuerungViewModel;
+        private readonly ViewModel.VewModel ofensteuerungViewModel;
 
         private enum BitPosAusgang
         {
@@ -41,7 +41,7 @@ namespace LAP_2010_3_Ofentuersteuerung
             ofensteuerungViewModel.ofentuerSteuerung.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);
         }
 
-        public DatenRangieren(ViewModel.OfensteuerungViewModel vm)
+        public DatenRangieren(ViewModel.VewModel vm)
         {
             ofensteuerungViewModel = vm;
         }

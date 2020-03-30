@@ -16,15 +16,15 @@ namespace LAP_2018_1_Silosteuerung
         public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel foerderanlageViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            foerderanlageViewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(this, foerderanlageViewModel);
+            viewModel = new ViewModel.ViewModel(this);
+            datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
-            DataContext = foerderanlageViewModel;
+            DataContext = viewModel;
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
@@ -33,7 +33,7 @@ namespace LAP_2018_1_Silosteuerung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManualWindow(foerderanlageViewModel);
+            SetManualWindow = new SetManual.SetManualWindow(viewModel);
             SetManualWindow.Show();
         }
 
