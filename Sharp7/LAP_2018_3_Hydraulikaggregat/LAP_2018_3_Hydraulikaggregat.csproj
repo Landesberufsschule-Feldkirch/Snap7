@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CircularGauge\CircularGauge.csproj">
+      <Project>{6efd5895-177b-4bbb-af52-29f4d53b3fbd}</Project>
+      <Name>CircularGauge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
