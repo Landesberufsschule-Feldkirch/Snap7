@@ -5,7 +5,7 @@ namespace PaternosterLager
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly ViewModel.ViewModel kompressoranlageViewModel;
+        private readonly ViewModel.ViewModel vewModel;
 
         private enum BitPosAusgang
         {
@@ -28,29 +28,21 @@ namespace PaternosterLager
         public void RangierenInput(byte[] digInput, byte[] _)
         {
             /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, kompressoranlageViewModel.kompressoranlage.F5);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, kompressoranlageViewModel.kompressoranlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, kompressoranlageViewModel.kompressoranlage.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S7, kompressoranlageViewModel.kompressoranlage.S7);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S8, kompressoranlageViewModel.kompressoranlage.S8);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F5, vewModel.kompressoranlage.F5);
             */
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             /*
-            kompressoranlageViewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
-            kompressoranlageViewModel.kompressoranlage.H2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H2);
-            kompressoranlageViewModel.kompressoranlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-            kompressoranlageViewModel.kompressoranlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            kompressoranlageViewModel.kompressoranlage.K3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K3);
+            vewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
             */
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
             mainWindow = mw;
-            kompressoranlageViewModel = vm;
+            vewModel = vm;
         }
     }
 }

@@ -89,7 +89,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Grid.Column="19" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="12pt">
+        <Button Grid.Column="19" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="12pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -121,6 +121,7 @@
 
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="13" Grid.Row="2" Grid.RowSpan="24" Fill="#eeeeee"/>
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Border Grid.Column="2" Grid.ColumnSpan="6" Grid.Row="9" Grid.RowSpan="17" HorizontalAlignment="Left" Width="420" >
             <Path Stroke="Black" 
@@ -139,7 +140,8 @@
                 </Path.Data>
             </Path>
         </Border>
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="11" Grid.RowSpan="12" Fill="LightBlue" Margin="42,0,32,0" />
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="11" Grid.RowSpan="12" Fill="LightBlue" Margin="{Binding ViAnzeige.Margin1}" />
+       
 
         <Button   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnNachfuellen}"/>
 
@@ -176,6 +178,8 @@
                 <Point X="180" Y="100" />
             </Polygon.Points>
         </Polygon>
+
+        <Rectangle Grid.Column="6" Grid.Row="22" Grid.RowSpan="3" Fill="LightBlue" Margin="0,26,0,21"/>
 
         <Rectangle Grid.Row="20" Grid.RowSpan="3" Fill="#eeeeee" Margin="0,31,66,16" Grid.Column="2"/>
 

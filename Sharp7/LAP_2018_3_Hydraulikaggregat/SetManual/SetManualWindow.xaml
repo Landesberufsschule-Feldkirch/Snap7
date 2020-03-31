@@ -5,14 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LAP_2018_3_Hydraulikaggregat.SetManual"
         mc:Ignorable="d"
-        Title="SetManualWindow" Height="450" Width="800">
+        Title="SetManualWindow" Height="250" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
@@ -29,20 +26,13 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="5" Grid.Row="3" Content="M1 RL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1_RL}"       Command="{Binding BtnM1_RL}" />
-        <Button Grid.Column="3" Grid.Row="3" Content="M1 LL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1_LL}"       Command="{Binding BtnM1_LL}"/>
-        <Button Grid.Column="3" Grid.Row="5" Content="M2"           ClickMode="{Binding ViAnzeige.ClickModeBtnM2}"          Command="{Binding BtnM2}"/>
-        <Button Grid.Column="3" Grid.Row="7" Content="Y1"           ClickMode="{Binding ViAnzeige.ClickModeBtnY1}"          Command="{Binding BtnY1}"/>
-        <Button Grid.Column="5" Grid.Row="6" Content="M1 LL + Y1"   ClickMode="{Binding ViAnzeige.ClickModeBtnM1_LL_Y1}"    Command="{Binding BtnM1_LL_Y1}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Button Grid.Column="3" Grid.Row="3" Content="Q1"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}"     Command="{Binding BtnQ1}" />
+        <Button Grid.Column="5" Grid.Row="3" Content="Q2"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ2}"     Command="{Binding BtnQ2}"/>
+        <Button Grid.Column="7" Grid.Row="3" Content="Q3"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ3}"     Command="{Binding BtnQ3}"/>
+        <Button Grid.Column="3" Grid.Row="5" Content="Q1 + Q3"   ClickMode="{Binding ViAnzeige.ClickModeBtnQ1_Q3}"  Command="{Binding BtnQ1_Q3}" Grid.ColumnSpan="5"/>
     </Grid>
 </Window>
