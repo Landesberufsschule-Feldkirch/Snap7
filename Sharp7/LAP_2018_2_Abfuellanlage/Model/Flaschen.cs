@@ -50,7 +50,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             if (bewegungSchritt == BewegungSchritt.Oberhalb) bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
 
-        public (bool, int) FlascheBewegen(bool M1, int AnzahlFlaschen, int aktuelleFlasche, bool stop)
+        public (bool, int) FlascheBewegen(bool Q1, int AnzahlFlaschen, int aktuelleFlasche, bool stop)
         {
             double y_Neu;
             richtungX = Utilities.Rechteck.RichtungX.steht;
@@ -79,7 +79,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
                 case BewegungSchritt.Fahren:
                     richtungX = Utilities.Rechteck.RichtungX.nachRechts;
-                    if (!stop && M1)
+                    if (!stop && Q1)
                     {
                         if (Position.Punkt.X < foerderbandRechts.X) Position.Punkt.X += bewegungIncrement;
                         else bewegungSchritt = BewegungSchritt.Runtergefallen;

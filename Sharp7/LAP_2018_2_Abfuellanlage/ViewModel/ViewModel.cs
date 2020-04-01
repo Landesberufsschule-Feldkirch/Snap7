@@ -48,17 +48,17 @@
         }
         #endregion
 
-        #region BtnTasterF5
-        private ICommand _btnTasterF5;
-        public ICommand BtnTasterF5
+        #region BtnTasterF1
+        private ICommand _btnTasterF1;
+        public ICommand BtnTasterF1
         {
             get
             {
-                if (_btnTasterF5 == null)
+                if (_btnTasterF1 == null)
                 {
-                    _btnTasterF5 = new RelayCommand(p => abfuellAnlage.TasterF5(), p => true);
+                    _btnTasterF1 = new RelayCommand(p => abfuellAnlage.TasterF1(), p => true);
                 }
-                return _btnTasterF5;
+                return _btnTasterF1;
             }
         }
         #endregion
@@ -153,17 +153,17 @@
         }
         #endregion
 
-        #region SetManualM1
-        private ICommand _setManualM1;
-        public ICommand SetManualM1
+        #region SetManualQ1
+        private ICommand _setManualQ1;
+        public ICommand SetManualQ1
         {
             get
             {
-                if (_setManualM1 == null)
+                if (_setManualQ1 == null)
                 {
-                    _setManualM1 = new RelayCommand(p => ViAnzeige.SetManualM1(), p => true);
+                    _setManualQ1 = new RelayCommand(p => ViAnzeige.SetManualQ1(), p => true);
                 }
-                return _setManualM1;
+                return _setManualQ1;
             }
         }
         #endregion

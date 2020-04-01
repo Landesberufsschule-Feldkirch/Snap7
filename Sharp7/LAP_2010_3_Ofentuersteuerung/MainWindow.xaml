@@ -135,8 +135,8 @@
             </Image>
         </Canvas>
 
-        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
-        <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
+        <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
         <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
         <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"  />

@@ -41,15 +41,15 @@
             Visibility_B1_Ein = "visible";
             Visibility_B2_Ein = "visible";
             Visibility_B3_Ein = "visible";
-            Visibility_M1_Ein = "visible";
-            Visibility_M2_Ein = "visible";
+            Visibility_Q1_Ein = "visible";
+            Visibility_Q2_Ein = "visible";
             Visibility_Ventil_Ein = "visible";
 
             Visibility_B1_Aus = "hidden";
             Visibility_B2_Aus = "hidden";
             Visibility_B3_Aus = "hidden";
-            Visibility_M1_Aus = "hidden";
-            Visibility_M2_Aus = "hidden";
+            Visibility_Q1_Aus = "hidden";
+            Visibility_Q2_Aus = "hidden";
             Visibility_Ventil_Aus = "hidden";
 
 
@@ -67,18 +67,18 @@
                 FarbeCircle_P2(niveauRegelung.P2);
                 FarbeCircle_P3(niveauRegelung.P3);
 
-                FarbeZuleitungLinksWaagrecht(niveauRegelung.M1);
-                FarbeZuleitungLinksSenkrecht(niveauRegelung.M1);
-                FarbeZuleitungRechtsWaagrecht(niveauRegelung.M2);
-                FarbeZuleitungRechtsSenkrecht(niveauRegelung.M2);
+                FarbeZuleitungLinksWaagrecht(niveauRegelung.Q1);
+                FarbeZuleitungLinksSenkrecht(niveauRegelung.Q1);
+                FarbeZuleitungRechtsWaagrecht(niveauRegelung.Q2);
+                FarbeZuleitungRechtsSenkrecht(niveauRegelung.Q2);
                 FarbeAbleitungOben(niveauRegelung.Pegel > 0.01);
                 FarbeAbleitungUnten(niveauRegelung.Y1 && (niveauRegelung.Pegel > 0.01));
 
                 VisibilitySensorB1(niveauRegelung.B1);
                 VisibilitySensorB2(niveauRegelung.B2);
                 VisibilitySensorB3(niveauRegelung.B3);
-                VisibilityMotorM1(niveauRegelung.M1);
-                VisibilityMotorM2(niveauRegelung.M2);
+                VisibilityMotorQ1(niveauRegelung.Q1);
+                VisibilityMotorQ2(niveauRegelung.Q2);
                 VisibilityVentilY1(niveauRegelung.Y1);
 
                 Margin_1(niveauRegelung.Pegel);
@@ -530,78 +530,78 @@
         #endregion
 
 
-        #region Visibility Motor M1
-        public void VisibilityMotorM1(bool val)
+        #region Visibility Motor Q1
+        public void VisibilityMotorQ1(bool val)
         {
             if (val)
             {
-                Visibility_M1_Ein = "visible";
-                Visibility_M1_Aus = "hidden";
+                Visibility_Q1_Ein = "visible";
+                Visibility_Q1_Aus = "hidden";
             }
             else
             {
-                Visibility_M1_Ein = "hidden";
-                Visibility_M1_Aus = "visible";
+                Visibility_Q1_Ein = "hidden";
+                Visibility_Q1_Aus = "visible";
             }
         }
 
-        private string _visibility_M1_Ein;
-        public string Visibility_M1_Ein
+        private string _visibility_Q1_Ein;
+        public string Visibility_Q1_Ein
         {
-            get { return _visibility_M1_Ein; }
+            get { return _visibility_Q1_Ein; }
             set
             {
-                _visibility_M1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_M1_Ein));
+                _visibility_Q1_Ein = value;
+                OnPropertyChanged(nameof(Visibility_Q1_Ein));
             }
         }
 
-        private string _visibility_M1_Aus;
-        public string Visibility_M1_Aus
+        private string _visibility_Q1_Aus;
+        public string Visibility_Q1_Aus
         {
-            get { return _visibility_M1_Aus; }
+            get { return _visibility_Q1_Aus; }
             set
             {
-                _visibility_M1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_M1_Aus));
+                _visibility_Q1_Aus = value;
+                OnPropertyChanged(nameof(Visibility_Q1_Aus));
             }
         }
         #endregion
 
-        #region Visibility Motor M2
-        public void VisibilityMotorM2(bool val)
+        #region Visibility Motor Q2
+        public void VisibilityMotorQ2(bool val)
         {
             if (val)
             {
-                Visibility_M2_Ein = "visible";
-                Visibility_M2_Aus = "hidden";
+                Visibility_Q2_Ein = "visible";
+                Visibility_Q2_Aus = "hidden";
             }
             else
             {
-                Visibility_M2_Ein = "hidden";
-                Visibility_M2_Aus = "visible";
+                Visibility_Q2_Ein = "hidden";
+                Visibility_Q2_Aus = "visible";
             }
         }
 
-        private string _visibility_M2_Ein;
-        public string Visibility_M2_Ein
+        private string _visibility_Q2_Ein;
+        public string Visibility_Q2_Ein
         {
-            get { return _visibility_M2_Ein; }
+            get { return _visibility_Q2_Ein; }
             set
             {
-                _visibility_M2_Ein = value;
-                OnPropertyChanged(nameof(Visibility_M2_Ein));
+                _visibility_Q2_Ein = value;
+                OnPropertyChanged(nameof(Visibility_Q2_Ein));
             }
         }
 
-        private string _visibility_M2_Aus;
-        public string Visibility_M2_Aus
+        private string _visibility_Q2_Aus;
+        public string Visibility_Q2_Aus
         {
-            get { return _visibility_M2_Aus; }
+            get { return _visibility_Q2_Aus; }
             set
             {
-                _visibility_M2_Aus = value;
-                OnPropertyChanged(nameof(Visibility_M2_Aus));
+                _visibility_Q2_Aus = value;
+                OnPropertyChanged(nameof(Visibility_Q2_Aus));
             }
         }
         #endregion

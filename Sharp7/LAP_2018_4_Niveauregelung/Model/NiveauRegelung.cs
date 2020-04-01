@@ -12,8 +12,8 @@ namespace LAP_2018_4_Niveauregelung.Model
         public bool S1 { get; set; }
         public bool S2 { get; set; }
         public bool S3 { get; set; }
-        public bool M1 { get; set; }
-        public bool M2 { get; set; }
+        public bool Q1 { get; set; }
+        public bool Q2 { get; set; }
         public bool P1 { get; set; }
         public bool P2 { get; set; }
         public bool P3 { get; set; }
@@ -38,8 +38,8 @@ namespace LAP_2018_4_Niveauregelung.Model
 
             while (true)
             {
-                if (M1) Pegel += FuellGeschwindigkeit;
-                if (M2) Pegel += FuellGeschwindigkeit;
+                if (Q1) Pegel += FuellGeschwindigkeit;
+                if (Q2) Pegel += FuellGeschwindigkeit;
                 if (Y1) Pegel -= LeerGeschwindigkeit;
 
                 if (Pegel > 1) Pegel = 1;
@@ -55,8 +55,8 @@ namespace LAP_2018_4_Niveauregelung.Model
 
         internal void ThermorelaisF1() { F1 = !F1; }
         internal void ThermorelaisF2() { F2 = !F2; }
-        internal void SetManualM1() { M1 = !M1; }
-        internal void SetManualM2() { M2 = !M2; }
+        internal void SetManualQ1() { Q1 = !Q1; }
+        internal void SetManualQ2() { Q2 = !Q2; }
         internal void VentilY1() { Y1 = !Y1; }
     }
 }

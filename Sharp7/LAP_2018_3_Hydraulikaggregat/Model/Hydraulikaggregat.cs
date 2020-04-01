@@ -8,7 +8,7 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         public bool B1 { get; set; }    // Sensor Ölstand
         public bool B2 { get; set; }    // Sensor Druck erreicht
         public bool B3 { get; set; }    // Sensor Überdruck
-        public bool F5 { get; set; }    // Motorstörung
+        public bool F1 { get; set; }    // Motorstörung
         public bool P1 { get; set; }    // Meldeleuchte Störung Motor
         public bool P2 { get; set; }    // Meldeleuchte Überdruck
         public bool P3 { get; set; }    // Meldeleuchte Druck erreicht
@@ -35,7 +35,7 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             Druck = 0;
             Pegel = 0.8;
             B3 = true;
-            F5 = true;
+            F1 = true;
 
             Stopwatch = new Stopwatch();
             Stopwatch.Restart();
@@ -73,7 +73,7 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             }
         }
 
-        internal void BtnF5() { if (F5) F5 = false; else F5 = true; }
+        internal void BtnF1() { if (F1) F1 = false; else F1 = true; }
         internal void BtnNachfuellen() { Pegel = 1; }
     }
 }

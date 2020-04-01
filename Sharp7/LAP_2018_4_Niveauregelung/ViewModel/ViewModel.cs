@@ -109,32 +109,32 @@
         }
         #endregion
 
-        #region BtnSetManualM1
-        private ICommand _btnSetManualM1;
-        public ICommand BtnSetManualM1
+        #region BtnSetManualQ1
+        private ICommand _btnSetManualQ1;
+        public ICommand BtnSetManualQ1
         {
             get
             {
-                if (_btnSetManualM1 == null)
+                if (_btnSetManualQ1 == null)
                 {
-                    _btnSetManualM1 = new RelayCommand(p => niveauRegelung.SetManualM1(), p => true);
+                    _btnSetManualQ1 = new RelayCommand(p => niveauRegelung.SetManualQ1(), p => true);
                 }
-                return _btnSetManualM1;
+                return _btnSetManualQ1;
             }
         }
         #endregion
 
-        #region BtnSetManualM2
-        private ICommand _btnSetManualM2;
-        public ICommand BtnSetManualM2
+        #region BtnSetManualQ2
+        private ICommand _btnSetManualQ2;
+        public ICommand BtnSetManualQ2
         {
             get
             {
-                if (_btnSetManualM2 == null)
+                if (_btnSetManualQ2 == null)
                 {
-                    _btnSetManualM2 = new RelayCommand(p => niveauRegelung.SetManualM2(), p => true);
+                    _btnSetManualQ2 = new RelayCommand(p => niveauRegelung.SetManualQ2(), p => true);
                 }
-                return _btnSetManualM2;
+                return _btnSetManualQ2;
             }
         }
         #endregion

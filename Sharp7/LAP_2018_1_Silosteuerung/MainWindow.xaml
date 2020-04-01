@@ -106,10 +106,10 @@
         </Label>
 
         <Ellipse Fill="Gray"   Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" />
-        <Ellipse Fill="Green"  Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityM2Ein}"  Panel.ZIndex="5" />
-        <Label Content="M2"    Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse Fill="Green"  Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityQ2Ein}"  Panel.ZIndex="5" />
+        <Label Content="Q2"    Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
-        <Button Grid.Column="6" Grid.Row="9" Background="{Binding ViAnzeige.ColorF2}" FontSize="14" Content="F2" Command="{Binding BtnF2}"/>
+        <Button Grid.Column="6" Grid.Row="9" Background="{Binding ViAnzeige.ColorF2}" FontSize="14pt" Content="F2" Command="{Binding BtnF2}"/>
         
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
@@ -118,31 +118,31 @@
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="LightGray" Margin="62,0"  />
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialOben}" />
 
-        <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Ein}"/>
-        <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Aus}"/>
-        <Label Content="Y1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Ein}"/>
+        <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Aus}"/>
+        <Label Content="K1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2"  Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialUnten}"/>
 
         <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Fill="Gray"/>
-        <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Fill="Green" Visibility="{Binding ViAnzeige.VisibilityM1Ein}" Panel.ZIndex="5" />
-        <Label     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Content="M1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Fill="Green" Visibility="{Binding ViAnzeige.VisibilityQ1Ein}" Panel.ZIndex="5" />
+        <Label     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Content="Q1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
         <Ellipse   Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Fill="Gray" />
 
-        <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF1}" FontSize="14" Content="F1" Command="{Binding BtnF1}"/>
+        <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}"/>
 
 
         <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Fill="Gray" Margin="40,0,35,27" />
         <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Fill="Gray" Margin="40,27,35,0" />
         <Label     Grid.Column="8" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" Content="Förderband"/>
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS4Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS4Ein}"/>
-        <Label Content="S4"                                Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="30,18,0,18" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}"/>
+        <Label Content="B1"                                Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="30,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS5Aus}"/>
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS5Ein}"/>
-        <Label Content="S5"                                Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}"/>
+        <Label Content="B2"                                Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
         <Button Content="NachLinks" Grid.Column="2" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachLinks}"/>
         <Button Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachRechts}"/>

@@ -20,8 +20,8 @@
             S1,     // Anlage Ein
             S2,     // Not-Halt
             F4,     // Störung Motorschutzschalter
-            S4,
-            S5,
+            B1,
+            B2,
             S6,
             S7,     // Wagen Position rechts
             S8,     // Wagen voll
@@ -38,7 +38,7 @@
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, foerderanlageViewModel.foerderanlage.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, foerderanlageViewModel.foerderanlage.S2);
             S7.SetBitAt(digInput, (int)BitPosEingang.F4, foerderanlageViewModel.foerderanlage.F4);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S5, foerderanlageViewModel.foerderanlage.S5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, foerderanlageViewModel.foerderanlage.B2);
             S7.SetBitAt(digInput, (int)BitPosEingang.S6, foerderanlageViewModel.foerderanlage.S6);
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, foerderanlageViewModel.foerderanlage.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, foerderanlageViewModel.foerderanlage.S8);

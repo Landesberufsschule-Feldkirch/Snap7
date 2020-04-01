@@ -145,14 +145,14 @@
 
         <Button   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnNachfuellen}"/>
 
-        <Label Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="19" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (Netz)" FontSize="14" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
-        <Label Grid.Column="11" Grid.Row="20" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( Y )" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
-        <Label Grid.Column="12" Grid.Row="20" Background="{Binding ViAnzeige.ColorQ3}" Content="Q3 (△)" FontSize="14" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
+        <Label Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="19" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (Netz)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
+        <Label Grid.Column="11" Grid.Row="20" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
+        <Label Grid.Column="12" Grid.Row="20" Background="{Binding ViAnzeige.ColorQ3}" Content="Q3 (△)" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
 
         <Ellipse Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="18" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
         <Label Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" Margin="0,18,0,10" />
 
-        <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="22" Background="{Binding ViAnzeige.ColorF5}" FontSize="14" Content="F5" Command="{Binding BtnF5}"/>
+        <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="22" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}"/>
 
         <Border Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="12" >
             <Path Stroke="Black" 

@@ -7,10 +7,10 @@ namespace LAP_2018_2_Abfuellanlage.Model
     {
         public List<Flaschen> AlleFlaschen { get; set; }
         public bool B1 { get; set; }
-        public bool F5 { get; set; }
+        public bool F1 { get; set; }
         public bool K1 { get; set; }
         public bool K2 { get; set; }
-        public bool M1 { get; set; }
+        public bool Q1 { get; set; }
         public bool P1 { get; set; }
         public bool P2 { get; set; }
         public bool S1 { get; set; }
@@ -35,7 +35,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             };
 
             S2 = false;
-            F5 = true;
+            F1 = true;
             Pegel = 0.4;
 
             System.Threading.Tasks.Task.Run(() => AbfuellanlageTask());
@@ -58,7 +58,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 {
                     var stop = KollisionErkennen(flasche);
                     bool lichtschranke;
-                    (lichtschranke, aktuelleFlasche) = flasche.FlascheBewegen(M1, anzahlFlaschen, aktuelleFlasche, stop);
+                    (lichtschranke, aktuelleFlasche) = flasche.FlascheBewegen(Q1, anzahlFlaschen, aktuelleFlasche, stop);
                     B1 |= lichtschranke;
                 }
 
@@ -87,7 +87,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         }
 
         internal void TasterNachfuellen() { Pegel = 1; }
-        internal void TasterF5() { if (F5) F5 = false; else F5 = true; }
+        internal void TasterF1() { if (F1) F1 = false; else F1 = true; }
         internal void AllesReset()
         {
             Pegel = 0.4;

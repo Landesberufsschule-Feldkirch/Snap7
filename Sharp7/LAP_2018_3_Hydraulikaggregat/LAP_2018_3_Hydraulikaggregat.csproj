@@ -115,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CircularGauge\CircularGauge.csproj">
-      <Project>{6efd5895-177b-4bbb-af52-29f4d53b3fbd}</Project>
+      <Project>{6efd5895-177b-4bbb-aF12-29f4d53b3fbd}</Project>
       <Name>CircularGauge</Name>
     </ProjectReference>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">

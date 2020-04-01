@@ -65,7 +65,7 @@
             {
                 Druck = hydraulikaggregat.Druck;
 
-                FarbeF5(hydraulikaggregat.F5);
+                FarbeF1(hydraulikaggregat.F1);
 
                 FarbeP1(hydraulikaggregat.P1);
                 FarbeP2(hydraulikaggregat.P2);
@@ -356,20 +356,20 @@
 
 
 
-        #region Color F5
-        public void FarbeF5(bool val)
+        #region Color F1
+        public void FarbeF1(bool val)
         {
-            if (val) ColorF5 = "LawnGreen"; else ColorF5 = "Red";
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
         }
 
-        private string _colorF5;
-        public string ColorF5
+        private string _colorF1;
+        public string ColorF1
         {
-            get { return _colorF5; }
+            get { return _colorF1; }
             set
             {
-                _colorF5 = value;
-                OnPropertyChanged(nameof(ColorF5));
+                _colorF1 = value;
+                OnPropertyChanged(nameof(ColorF1));
             }
         }
         #endregion

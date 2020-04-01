@@ -18,17 +18,17 @@
         public Model.Foerderanlage Foerderanlage { get { return foerderanlage; } }
 
 
-        #region BtnF4
-        private ICommand _btnF4;
-        public ICommand BtnF4
+        #region BtnF1
+        private ICommand _btnF1;
+        public ICommand BtnF1
         {
             get
             {
-                if (_btnF4 == null)
+                if (_btnF1 == null)
                 {
-                    _btnF4 = new RelayCommand(p => foerderanlage.BtnF4(), p => true);
+                    _btnF1 = new RelayCommand(p => foerderanlage.BtnF1(), p => true);
                 }
-                return _btnF4;
+                return _btnF1;
             }
         }
         #endregion
@@ -78,62 +78,62 @@
         }
         #endregion
 
-        #region BtnS9
-        private ICommand _btnS9;
-        public ICommand BtnS9
+        #region BtnS5
+        private ICommand _btnS5;
+        public ICommand BtnS5
         {
             get
             {
-                if (_btnS9 == null)
+                if (_btnS5 == null)
                 {
-                    _btnS9 = new RelayCommand(p => ViAnzeige.SetS9(), p => true);
+                    _btnS5 = new RelayCommand(p => ViAnzeige.SetS5(), p => true);
                 }
-                return _btnS9;
+                return _btnS5;
             }
         }
         #endregion
 
-        #region BtnS10
-        private ICommand _btnS10;
-        public ICommand BtnS10
+        #region BtnS6
+        private ICommand _btnS6;
+        public ICommand BtnS6
         {
             get
             {
-                if (_btnS10 == null)
+                if (_btnS6 == null)
                 {
-                    _btnS10 = new RelayCommand(p => ViAnzeige.SetS10(), p => true);
+                    _btnS6 = new RelayCommand(p => ViAnzeige.SetS6(), p => true);
                 }
-                return _btnS10;
+                return _btnS6;
             }
         }
         #endregion
 
-        #region BtnS11
-        private ICommand _btnS11;
-        public ICommand BtnS11
+        #region BtnS7
+        private ICommand _btnS7;
+        public ICommand BtnS7
         {
             get
             {
-                if (_btnS11 == null)
+                if (_btnS7 == null)
                 {
-                    _btnS11 = new RelayCommand(p => ViAnzeige.SetS11(), p => true);
+                    _btnS7 = new RelayCommand(p => ViAnzeige.SetS7(), p => true);
                 }
-                return _btnS11;
+                return _btnS7;
             }
         }
         #endregion
 
-        #region BtnS12
-        private ICommand _btnS12;
-        public ICommand BtnS12
+        #region BtnS8
+        private ICommand _btnS8;
+        public ICommand BtnS8
         {
             get
             {
-                if (_btnS12 == null)
+                if (_btnS8 == null)
                 {
-                    _btnS12 = new RelayCommand(p => ViAnzeige.SetS12(), p => true);
+                    _btnS8 = new RelayCommand(p => ViAnzeige.SetS8(), p => true);
                 }
-                return _btnS12;
+                return _btnS8;
             }
         }
         #endregion
@@ -164,6 +164,22 @@
                     _btnWagenNachRechts = new RelayCommand(p => foerderanlage.WagenNachRechts(), p => true);
                 }
                 return _btnWagenNachRechts;
+            }
+        }
+        #endregion
+
+
+        #region BtnNachuellen
+        private ICommand _btnNachuellen;
+        public ICommand BtnNachuellen
+        {
+            get
+            {
+                if (_btnNachuellen == null)
+                {
+                    _btnNachuellen = new RelayCommand(p => foerderanlage.Nachfuellen(), p => true);
+                }
+                return _btnNachuellen;
             }
         }
         #endregion
@@ -213,32 +229,32 @@
         }
         #endregion
 
-        #region BtnY1
-        private ICommand _btnY1;
-        public ICommand BtnY1
+        #region BtnK1
+        private ICommand _btnK1;
+        public ICommand BtnK1
         {
             get
             {
-                if (_btnY1 == null)
+                if (_btnK1 == null)
                 {
-                    _btnY1 = new RelayCommand(p => ViAnzeige.SetManualY1(), p => true);
+                    _btnK1 = new RelayCommand(p => ViAnzeige.SetManualK1(), p => true);
                 }
-                return _btnY1;
+                return _btnK1;
             }
         }
         #endregion
 
-        #region BtnM1_LL_Y1
-        private ICommand _btnM1_LL_Y1;
-        public ICommand BtnM1_LL_Y1
+        #region BtnM1_LL_K1
+        private ICommand _btnM1_LL_K1;
+        public ICommand BtnM1_LL_K1
         {
             get
             {
-                if (_btnM1_LL_Y1 == null)
+                if (_btnM1_LL_K1 == null)
                 {
-                    _btnM1_LL_Y1 = new RelayCommand(p => ViAnzeige.SetManualM1_LL_Y1(), p => true);
+                    _btnM1_LL_K1 = new RelayCommand(p => ViAnzeige.SetManualM1_LL_K1(), p => true);
                 }
-                return _btnM1_LL_Y1;
+                return _btnM1_LL_K1;
             }
         }
         #endregion

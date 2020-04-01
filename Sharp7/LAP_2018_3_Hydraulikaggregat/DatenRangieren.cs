@@ -23,7 +23,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             B1 = 0, // Sensor Ölstand
             B2,     // Sensor Druck erreicht
             B3,     // Sensor Überdruck
-            F5,     // Motorstörung
+            F1,     // Motorstörung
             S1,     // Taster Start
             S2,     // Taster Stop       
             S3      // Taster Quittieren
@@ -34,7 +34,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.hydraulikaggregat.B1);
             S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.hydraulikaggregat.B2);
             S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.hydraulikaggregat.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, viewModel.hydraulikaggregat.F5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, viewModel.hydraulikaggregat.F1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.hydraulikaggregat.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.hydraulikaggregat.S2);
             S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.hydraulikaggregat.S3);

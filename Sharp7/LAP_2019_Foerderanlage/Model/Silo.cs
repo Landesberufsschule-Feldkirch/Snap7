@@ -6,7 +6,6 @@
         private const double materialSiloFuellen = 0.001;
         private const double materialSiloLeeren = 0.0002;
 
-
         public void Fuellen()
         {
             fuellstand += materialSiloFuellen;
@@ -21,5 +20,6 @@
 
         public Silo() { fuellstand = 0.9; }
         public double GetFuellstand() => fuellstand;
+        internal void Nachfuellen() { fuellstand = 1; }
     }
 }

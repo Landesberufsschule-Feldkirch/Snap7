@@ -71,7 +71,7 @@
 
         <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-        <Button Grid.Column="3"  Grid.Row="3" Background="{Binding ViAnzeige.ColorS2}" FontSize="14" Content="Not-Halt" Command="{Binding BtnS2}" />
+        <Button Grid.Column="2"  Grid.Row="3" Background="{Binding ViAnzeige.ColorS2}" FontSize="14pt" Content="Not-Halt S2" Command="{Binding BtnS2}" Grid.ColumnSpan="2" />
         <Button Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual"/>
 
         <Image  x:Name="imgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
@@ -111,13 +111,14 @@
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
         <Label     Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" Content="Materialsilo"  />
+        <Button Grid.Column="12" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}"/>
 
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="LightGray" Margin="62,0"  />
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialOben}" />
 
-        <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Ein}"/>
-        <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Aus}"/>
-        <Label Content="Y1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Image Source="Bilder/VentilElektrischEin.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Ein}"/>
+        <Image Source="Bilder/VentilElektrischAus.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Aus}"/>
+        <Label Content="K1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2"  Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialUnten}"/>
 
@@ -126,7 +127,7 @@
         <Label     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Content="M1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
         <Ellipse   Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Fill="Gray" />
 
-        <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF4}" FontSize="14" Content="F4" Command="{Binding BtnF4}"/>
+        <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}"/>
 
 
         <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Fill="Gray" Margin="40,0,35,27" />
@@ -161,13 +162,13 @@
             </Polygon.Points>
         </Polygon>
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS7Ein}"/>
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}"/>
         <Label Content="S7"                                Grid.Column="6" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Aus}"/>
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityS8Ein}"/>
-        <Label Content="S8"                                Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}"/>
+        <Label Content="B2"                                Grid.Column="4" Grid.Row="23" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
         <Button Content="NachLinks" Grid.Column="2" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachLinks}"/>
         <Button Content="NachRechs" Grid.Column="7" Grid.Row="26" Background="LawnGreen"  Command="{Binding BtnWagenNachRechts}"/>
@@ -255,17 +256,17 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label  Grid.Column="1"                     Grid.Row="2" HorizontalContentAlignment="Right" Content="S9 "/>
-                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Content="Förderband RL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS9}"  Command="{Binding BtnS9}" />
+                    <Label  Grid.Column="1"                     Grid.Row="2" HorizontalContentAlignment="Right" Content="S5 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" Content="Förderband RL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS5}"  Command="{Binding BtnS5}" />
 
-                    <Label  Grid.Column="1"                     Grid.Row="4" HorizontalContentAlignment="Right" Content="S10 "/>
-                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Content="Förderband LL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS10}"  Command="{Binding BtnS10}" />
+                    <Label  Grid.Column="1"                     Grid.Row="4" HorizontalContentAlignment="Right" Content="S6 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4" Content="Förderband LL"            Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS6}"  Command="{Binding BtnS6}" />
 
-                    <Label  Grid.Column="1"                     Grid.Row="6" HorizontalContentAlignment="Right" Content="S11 "/>
-                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Content="Schneckenförderer"        Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS11}"  Command="{Binding BtnS11}" />
+                    <Label  Grid.Column="1"                     Grid.Row="6" HorizontalContentAlignment="Right" Content="S7 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="6" Content="Schneckenförderer"        Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS7}"  Command="{Binding BtnS7}" />
 
-                    <Label  Grid.Column="1"                     Grid.Row="8" HorizontalContentAlignment="Right" Content="S12 "/>
-                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="8" Content="Materialschieber"         Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS12}"  Command="{Binding BtnS12}" />
+                    <Label  Grid.Column="1"                     Grid.Row="8" HorizontalContentAlignment="Right" Content="S8 "/>
+                    <Button Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="8" Content="Materialschieber"         Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS8}"  Command="{Binding BtnS8}" />
                 </Grid>
             </TabItem>
         </TabControl>

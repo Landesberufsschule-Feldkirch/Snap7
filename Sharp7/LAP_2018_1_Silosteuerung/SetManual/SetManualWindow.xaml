@@ -38,9 +38,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="3" Grid.Row="3" Content="M1"       ClickMode="{Binding ViAnzeige.ClickModeBtnM1}"      Command="{Binding BtnM1_LL}"/>
-        <Button Grid.Column="3" Grid.Row="5" Content="M2"       ClickMode="{Binding ViAnzeige.ClickModeBtnM2}"      Command="{Binding BtnM2}"/>
-        <Button Grid.Column="3" Grid.Row="7" Content="Y1"       ClickMode="{Binding ViAnzeige.ClickModeBtnY1}"      Command="{Binding BtnY1}"/>
-        <Button Grid.Column="5" Grid.Row="6" Content="M1 + Y1"  ClickMode="{Binding ViAnzeige.ClickModeBtnM1_Y1}"   Command="{Binding BtnM1_Y1}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Button Grid.Column="3" Grid.Row="3" Content="Q1"       ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}"      Command="{Binding BtnQ1_LL}"/>
+        <Button Grid.Column="3" Grid.Row="5" Content="Q2"       ClickMode="{Binding ViAnzeige.ClickModeBtnQ2}"      Command="{Binding BtnQ2}"/>
+        <Button Grid.Column="3" Grid.Row="7" Content="K1"       ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"      Command="{Binding BtnK1}"/>
+        <Button Grid.Column="5" Grid.Row="6" Content="Q1 + K1"  ClickMode="{Binding ViAnzeige.ClickModeBtnQ1_K1}"   Command="{Binding BtnQ1_K1}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
     </Grid>
 </Window>

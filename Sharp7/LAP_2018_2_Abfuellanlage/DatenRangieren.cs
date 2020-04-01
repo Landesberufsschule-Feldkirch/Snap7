@@ -10,17 +10,17 @@ namespace LAP_2018_2_Abfuellanlage
 
         private enum BitPosAusgang
         {
-            M1 = 0,
-            K1,
+            K1 = 0,
             K2,
             P1,
-            P2
+            P2,
+            Q1
         }
 
         private enum BitPosEingang
         {
             B1 = 0,
-            F5,
+            F1,
             S1,
             S2,
             S3,
@@ -30,7 +30,7 @@ namespace LAP_2018_2_Abfuellanlage
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.abfuellAnlage.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, viewModel.abfuellAnlage.F5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, viewModel.abfuellAnlage.F1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.abfuellAnlage.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.abfuellAnlage.S2);
             S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.abfuellAnlage.S3);
@@ -44,11 +44,11 @@ namespace LAP_2018_2_Abfuellanlage
         {
             if (!mainWindow.DebugWindowAktiv)
             {
-                viewModel.abfuellAnlage.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
                 viewModel.abfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
                 viewModel.abfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
                 viewModel.abfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
                 viewModel.abfuellAnlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+                viewModel.abfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
             }
         }
 

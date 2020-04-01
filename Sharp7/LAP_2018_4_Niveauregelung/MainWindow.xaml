@@ -110,28 +110,28 @@
         <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnzeige.ColorThermorelais_F1}" Command="{Binding BtnThermorelaisF1}" />
         <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding ViAnzeige.ColorThermorelais_F2}" Command="{Binding BtnThermorelaisF2}" />
 
-        <Label Content="M1" Grid.Column="4" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
-        <Label Content="M2" Grid.Column="8" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
+        <Label Content="Q1" Grid.Column="4" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
+        <Label Content="Q2" Grid.Column="8" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
 
-        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M1_Ein}">
+        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_Q1_Ein}">
             <Image.RenderTransform>
                 <RotateTransform Angle="90" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M1_Aus}">
+        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_Q1_Aus}">
             <Image.RenderTransform>
                 <RotateTransform Angle="90" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M2_Ein}">
+        <Image Source="Bilder/Pumpe_Ein.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_Q2_Ein}">
             <Image.RenderTransform>
                 <RotateTransform Angle="270" />
             </Image.RenderTransform>
         </Image>
 
-        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_M2_Aus}">
+        <Image Source="Bilder/Pumpe_Aus.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnzeige.Visibility_Q2_Aus}">
             <Image.RenderTransform>
                 <RotateTransform Angle="270" />
             </Image.RenderTransform>

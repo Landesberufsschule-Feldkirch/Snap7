@@ -34,17 +34,17 @@
         }
         #endregion
 
-        #region BtnF5
-        private ICommand _btnF5;
-        public ICommand BtnF5
+        #region BtnF1
+        private ICommand _btnF1;
+        public ICommand BtnF1
         {
             get
             {
-                if (_btnF5 == null)
+                if (_btnF1 == null)
                 {
-                    _btnF5 = new RelayCommand(p => hydraulikaggregat.BtnF5(), p => true);
+                    _btnF1 = new RelayCommand(p => hydraulikaggregat.BtnF1(), p => true);
                 }
-                return _btnF5;
+                return _btnF1;
             }
         }
         #endregion

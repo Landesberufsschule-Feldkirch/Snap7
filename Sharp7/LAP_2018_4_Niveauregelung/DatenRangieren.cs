@@ -5,14 +5,14 @@ namespace LAP_2018_4_Niveauregelung
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly LAP_2018_4_Niveauregelung.ViewModel.ViewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
         private enum BitPosAusgang
         {
-            M1 = 0,
-            M2,
-            P1,
+            P1 = 0,
             P2,
-            P3
+            P3,
+            Q1,
+            Q2
         }
 
         private enum BitPosEingang
@@ -43,11 +43,11 @@ namespace LAP_2018_4_Niveauregelung
         {
             if (!mainWindow.DebugWindowAktiv)
             {
-                viewModel.niveauRegelung.M1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M1);
-                viewModel.niveauRegelung.M2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.M2);
                 viewModel.niveauRegelung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
                 viewModel.niveauRegelung.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
                 viewModel.niveauRegelung.P3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
+                viewModel.niveauRegelung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                viewModel.niveauRegelung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
             }
         }
 

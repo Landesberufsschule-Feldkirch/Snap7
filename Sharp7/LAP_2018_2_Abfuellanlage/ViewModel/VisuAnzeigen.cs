@@ -26,7 +26,7 @@
             ClickModeBtnS4 = "Press";
             ClickModeBtnK1 = "Press";
             ClickModeBtnK2 = "Press";
-            ClickModeBtnM1 = "Press";
+            ClickModeBtnQ1 = "Press";
 
 
             ImageTop1 = 10;
@@ -61,8 +61,8 @@
 
             VisibilityRectangleAbleitung = "hidden";
 
-            ColorCircle_F5 = "LawnGreen";
-            ColorCircle_M1 = "LightGray";
+            ColorCircle_F1 = "LawnGreen";
+            ColorCircle_Q1 = "LightGray";
             ColorCircle_P1 = "LightGray";
             ColorCircle_P2 = "LightGray";
 
@@ -96,8 +96,8 @@
                 VisibilityVentilK2(alleFlaschen.K2);
                 VisibilityAbleitung(alleFlaschen.K1 && (alleFlaschen.Pegel > 0.01));
 
-                FarbeCircle_F5(alleFlaschen.F5);
-                FarbeCircle_M1(alleFlaschen.M1);
+                FarbeCircle_F1(alleFlaschen.F1);
+                FarbeCircle_Q1(alleFlaschen.Q1);
                 FarbeCircle_P1(alleFlaschen.P1);
                 FarbeCircle_P2(alleFlaschen.P2);
 
@@ -122,7 +122,7 @@
         internal void TasterS4() { alleFlaschen.S4 = ClickModeButtonS4(); }
         internal void SetManualK1() { alleFlaschen.K1 = ClickModeButtonK1(); }
         internal void SetManualK2() { alleFlaschen.K2 = ClickModeButtonK2(); }
-        internal void SetManualM1() { alleFlaschen.M1 = ClickModeButtonM1(); }
+        internal void SetManualQ1() { alleFlaschen.Q1 = ClickModeButtonQ1(); }
 
 
 
@@ -315,29 +315,29 @@
         }
         #endregion
 
-        #region ClickModeBtnM1
-        public bool ClickModeButtonM1()
+        #region ClickModeBtnQ1
+        public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnM1 == "Press")
+            if (ClickModeBtnQ1 == "Press")
             {
-                ClickModeBtnM1 = "Release";
+                ClickModeBtnQ1 = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtnM1 = "Press";
+                ClickModeBtnQ1 = "Press";
             }
             return false;
         }
 
-        private string _clickModeBtnM1;
-        public string ClickModeBtnM1
+        private string _clickModeBtnQ1;
+        public string ClickModeBtnQ1
         {
-            get { return _clickModeBtnM1; }
+            get { return _clickModeBtnQ1; }
             set
             {
-                _clickModeBtnM1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnM1));
+                _clickModeBtnQ1 = value;
+                OnPropertyChanged(nameof(ClickModeBtnQ1));
             }
         }
         #endregion
@@ -775,38 +775,38 @@
 
 
 
-        #region Color F5
-        public void FarbeCircle_F5(bool val)
+        #region Color F1
+        public void FarbeCircle_F1(bool val)
         {
-            if (val) ColorCircle_F5 = "LawnGreen"; else ColorCircle_F5 = "Red";
+            if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red";
         }
 
-        private string _colorCircle_F5;
-        public string ColorCircle_F5
+        private string _colorCircle_F1;
+        public string ColorCircle_F1
         {
-            get { return _colorCircle_F5; }
+            get { return _colorCircle_F1; }
             set
             {
-                _colorCircle_F5 = value;
-                OnPropertyChanged(nameof(ColorCircle_F5));
+                _colorCircle_F1 = value;
+                OnPropertyChanged(nameof(ColorCircle_F1));
             }
         }
         #endregion
 
-        #region Color M1
-        public void FarbeCircle_M1(bool val)
+        #region Color Q1
+        public void FarbeCircle_Q1(bool val)
         {
-            if (val) ColorCircle_M1 = "lawngreen"; else ColorCircle_M1 = "LightGray";
+            if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray";
         }
 
-        private string _colorCircle_M1;
-        public string ColorCircle_M1
+        private string _colorCircle_Q1;
+        public string ColorCircle_Q1
         {
-            get { return _colorCircle_M1; }
+            get { return _colorCircle_Q1; }
             set
             {
-                _colorCircle_M1 = value;
-                OnPropertyChanged(nameof(ColorCircle_M1));
+                _colorCircle_Q1 = value;
+                OnPropertyChanged(nameof(ColorCircle_Q1));
             }
         }
         #endregion

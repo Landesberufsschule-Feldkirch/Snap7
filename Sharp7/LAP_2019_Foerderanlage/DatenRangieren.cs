@@ -10,44 +10,45 @@ namespace LAP_2019_Foerderanlage
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Anlage Ein
+            K1 = 0, // Materialschieber Silo
+            P1,     // Anlage Ein
             P2,     //Sammelstörung
-            Q3_RL,  //Förderband Rechtslauf
-            Q4_LL,  // Förderband Linkslauf
-            XFU     // Freigabe FU (Schneckenförderer)
+            Q1,  //Förderband Rechtslauf
+            Q2,  // Förderband Linkslauf
+            T1      // Freigabe FU (Schneckenförderer)
         }
 
         private enum BitPosEingang
         {
-            S0 = 0, // Anlage Aus
+            B1 = 0, // Wagen Position rechts
+            B2,     // Wagen voll
+            F1,     // Störung Motorschutzschalter
+            S0,     // Anlage Aus
             S1,     // Anlage Ein
             S2,     // Not-Halt
-            F4,     // Störung Motorschutzschalter
-            S4,
-            S5,
-            S6,
-            S7,     // Wagen Position rechts
-            S8,     // Wagen voll
-            S9,     // Handbetrieb Förderband RL
-            S10,    // Handbetrieb Förderband LL
-            S11,    // Handbetrieb Schneckenförderer
-            S12     // Handbetrieb Materialschieber
+            S3,     // Schalter Automatikbetrieb
+            S4,     // Schalter Handbetrieb    
+            S5,     // Handbetrieb Förderband RL
+            S6,     // Handbetrieb Förderband LL
+            S7,     // Handbetrieb Schneckenförderer
+            S8      // Handbetrieb Materialschieber
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, foerderanlageViewModel.foerderanlage.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, foerderanlageViewModel.foerderanlage.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, foerderanlageViewModel.foerderanlage.F1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S0, foerderanlageViewModel.foerderanlage.S0);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, foerderanlageViewModel.foerderanlage.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, foerderanlageViewModel.foerderanlage.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F4, foerderanlageViewModel.foerderanlage.F4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, foerderanlageViewModel.foerderanlage.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S4, foerderanlageViewModel.foerderanlage.S4);
             S7.SetBitAt(digInput, (int)BitPosEingang.S5, foerderanlageViewModel.foerderanlage.S5);
             S7.SetBitAt(digInput, (int)BitPosEingang.S6, foerderanlageViewModel.foerderanlage.S6);
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, foerderanlageViewModel.foerderanlage.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, foerderanlageViewModel.foerderanlage.S8);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S9, foerderanlageViewModel.foerderanlage.S8);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S10, foerderanlageViewModel.foerderanlage.S10);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S11, foerderanlageViewModel.foerderanlage.S11);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S12, foerderanlageViewModel.foerderanlage.S12);
+
 
             S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(foerderanlageViewModel.foerderanlage.Silo.GetFuellstand(), 1));
         }
@@ -56,11 +57,12 @@ namespace LAP_2019_Foerderanlage
         {
             if (!mainWindow.DebugWindowAktiv)
             {
+                foerderanlageViewModel.foerderanlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
                 foerderanlageViewModel.foerderanlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
                 foerderanlageViewModel.foerderanlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-                foerderanlageViewModel.foerderanlage.Q3_RL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3_RL);
-                foerderanlageViewModel.foerderanlage.Q4_LL = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q4_LL);
-                foerderanlageViewModel.foerderanlage.XFU = S7.GetBitAt(digOutput, (int)BitPosAusgang.XFU);
+                foerderanlageViewModel.foerderanlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                foerderanlageViewModel.foerderanlage.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+                foerderanlageViewModel.foerderanlage.T1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.T1);
             }
         }
 
