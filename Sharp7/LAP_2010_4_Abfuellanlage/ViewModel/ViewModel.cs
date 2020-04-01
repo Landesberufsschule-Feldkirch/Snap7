@@ -17,6 +17,21 @@
 
         public Model.AbfuellAnlage AbfuellAnlage { get { return abfuellAnlage; } }
 
+        #region BtnQ1
+        private ICommand _btnQ1;
+        public ICommand BtnQ1
+        {
+            get
+            {
+                if (_btnQ1 == null)
+                {
+                    _btnQ1 = new RelayCommand(p => ViAnzeige.SetQ1(), p => true);
+                }
+                return _btnQ1;
+            }
+        }
+        #endregion
+
         #region BtnK1
         private ICommand _btnK1;
         public ICommand BtnK1
@@ -43,21 +58,6 @@
                     _btnK2 = new RelayCommand(p => ViAnzeige.SetK2(), p => true);
                 }
                 return _btnK2;
-            }
-        }
-        #endregion
-
-        #region BtnK3
-        private ICommand _btnK3;
-        public ICommand BtnK3
-        {
-            get
-            {
-                if (_btnK3 == null)
-                {
-                    _btnK3 = new RelayCommand(p => ViAnzeige.SetK3(), p => true);
-                }
-                return _btnK3;
             }
         }
         #endregion

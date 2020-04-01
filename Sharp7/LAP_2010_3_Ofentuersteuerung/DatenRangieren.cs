@@ -8,37 +8,36 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         private enum BitPosAusgang
         {
-            K1 = 0, // Motor LL (Öffnen)
-            K2,     // Motor RL (Schliessen)
-            H3      // Meldeleuchte "Schliessen"
+            P1 = 0, // Meldeleuchte "Schliessen"
+            Q1,     // Motor LL (Öffnen)
+            Q2      // Motor RL (Schliessen)
         }
 
         private enum BitPosEingang
         {
-            S1 = 0, // Taster "Halt" 
+            B1 = 0, // Endschalter Offen 
+            B2,     // Endschalter Geschlossen 
+            B3,     // Lichtschranke
+            S1,     // Taster "Halt" 
             S2,     // Taster "Öffnen" 
-            S3,     // Taster "Schliessen" 
-            S7,     // Endschalter Offen 
-            S8,     // Endschalter Geschlossen 
-            S9      // Lichtschranke
+            S3      // Taster "Schliessen" 
         }
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, ofensteuerungViewModel.ofentuerSteuerung.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, ofensteuerungViewModel.ofentuerSteuerung.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, ofensteuerungViewModel.ofentuerSteuerung.B3);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, ofensteuerungViewModel.ofentuerSteuerung.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, ofensteuerungViewModel.ofentuerSteuerung.S2);
             S7.SetBitAt(digInput, (int)BitPosEingang.S3, ofensteuerungViewModel.ofentuerSteuerung.S3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S7, ofensteuerungViewModel.ofentuerSteuerung.S7);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S8, ofensteuerungViewModel.ofentuerSteuerung.S8);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S9, ofensteuerungViewModel.ofentuerSteuerung.S9);
-
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            ofensteuerungViewModel.ofentuerSteuerung.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-            ofensteuerungViewModel.ofentuerSteuerung.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            ofensteuerungViewModel.ofentuerSteuerung.H3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H3);
+            ofensteuerungViewModel.ofentuerSteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            ofensteuerungViewModel.ofentuerSteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            ofensteuerungViewModel.ofentuerSteuerung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
         }
 
         public DatenRangieren(ViewModel.VewModel vm)

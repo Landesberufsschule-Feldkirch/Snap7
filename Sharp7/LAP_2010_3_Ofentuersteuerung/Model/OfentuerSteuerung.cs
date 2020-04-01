@@ -4,15 +4,15 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
 {
     public class OfentuerSteuerung
     {
-        public bool H3 { get; set; }    // "Schliessen"
-        public bool K1 { get; set; }    // Motor LL (Öffnen)
-        public bool K2 { get; set; }    // Motor RL (Schliessen)
+        public bool P1 { get; set; }    // "Schliessen"
+        public bool Q1 { get; set; }    // Motor LL (Öffnen)
+        public bool Q2 { get; set; }    // Motor RL (Schliessen)
         public bool S1 { get; set; }    // Taster "Halt" 
         public bool S2 { get; set; }    // Taster "Öffnen" 
         public bool S3 { get; set; }    // Taster "Schliessen" 
-        public bool S7 { get; set; }    // Endschalter Offen 
-        public bool S8 { get; set; }    // Endschalter Geschlossen 
-        public bool S9 { get; set; }    // Lichtschranke
+        public bool B1 { get; set; }    // Endschalter Offen 
+        public bool B2 { get; set; }    // Endschalter Geschlossen 
+        public bool B3 { get; set; }    // Lichtschranke
         public double PositionZahnstange { get; set; }
         public double PositionOfentuere { get; set; }
         public double WinkelZahnrad { get; set; }
@@ -27,7 +27,7 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
 
         public OfentuerSteuerung()
         {
-            S9 = true;
+            B3 = true;
 
             PositionZahnstange = zahnstangeLinks + zahnstangeWeg;
             PositionOfentuere = zahnstangeLinks + abstandZahnstangeOfentuere;
@@ -40,8 +40,8 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
         {
             while (true)
             {
-                if (K1) { PositionZahnstange -= zahnstangeGeschwindigkeit; }
-                if (K2) { PositionZahnstange += zahnstangeGeschwindigkeit; }
+                if (Q1) { PositionZahnstange -= zahnstangeGeschwindigkeit; }
+                if (Q2) { PositionZahnstange += zahnstangeGeschwindigkeit; }
 
                 if (PositionZahnstange < zahnstangeLinks) PositionZahnstange = zahnstangeLinks;
                 if (PositionZahnstange > zahnstangeLinks + zahnstangeWeg) PositionZahnstange = zahnstangeLinks + zahnstangeWeg;
@@ -49,8 +49,8 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
                 PositionOfentuere = PositionZahnstange + abstandZahnstangeOfentuere;
                 WinkelZahnrad = offsetWinkel + PositionOfentuere * faktorPositionWinkel;
 
-                S7 = PositionZahnstange < (zahnstangeLinks + 5);
-                S8 = PositionZahnstange > (zahnstangeLinks + zahnstangeWeg - 5);
+                B1 = PositionZahnstange < (zahnstangeLinks + 5);
+                B2 = PositionZahnstange > (zahnstangeLinks + zahnstangeWeg - 5);
 
                 Thread.Sleep(10);
             }

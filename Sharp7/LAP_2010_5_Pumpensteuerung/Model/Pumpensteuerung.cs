@@ -7,19 +7,19 @@ namespace LAP_2010_5_Pumpensteuerung.Model
         public bool S1 { get; set; } // Wahlschalter Hand
         public bool S2 { get; set; } // Wahlschalter Automatik
         public bool S3 { get; set; } // Störung quittieren
-        public bool F5 { get; set; } // Thermorelais
-        public bool S7 { get; set; } // Schwimmerschalter oben
-        public bool S8 { get; set; } // Schwimmerschalter unten
-        public bool K1 { get; set; } // Motor Pumpe
-        public bool H1 { get; set; } // "Pumpe Ein"
-        public bool H2 { get; set; } // "Störung"
+        public bool F1 { get; set; } // Thermorelais
+        public bool B1 { get; set; } // Schwimmerschalter oben
+        public bool B2 { get; set; } // Schwimmerschalter unten
+        public bool Q1 { get; set; } // Motor Pumpe
+        public bool P1 { get; set; } // "Pumpe Ein"
+        public bool P2 { get; set; } // "Störung"
         public bool Y1 { get; set; } // Entleerungsventil
         public double Pegel { get; set; }
 
 
         public Pumpensteuerung()
         {
-            F5 = true;
+            F1 = true;
             Pegel = 0.95;
 
             System.Threading.Tasks.Task.Run(() => PumpensteuerungTask());
@@ -32,21 +32,21 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
             while (true)
             {
-                if (K1) Pegel += FuellGeschwindigkeit;
+                if (Q1) Pegel += FuellGeschwindigkeit;
                 if (Y1) Pegel -= LeerGeschwindigkeit;
 
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;
 
-                S7 = (Pegel > 0.9);
-                S8 = (Pegel > 0.1);
+                B1 = (Pegel > 0.9);
+                B2 = (Pegel > 0.1);
 
                 Thread.Sleep(10);
             }
         }
 
-        internal void ThermorelaisF5() { F5 = !F5; }
-        internal void SetManualK1() { K1 = !K1; }
+        internal void ThermorelaisF1() { F1 = !F1; }
+        internal void SetManualQ1() { Q1 = !Q1; }
         internal void VentilY1() { Y1 = !Y1; }
 
         internal void TasterHand()

@@ -20,17 +20,17 @@
 
 
 
-        #region BtnF5
-        private ICommand _btnF5;
-        public ICommand BtnF5
+        #region BtnF1
+        private ICommand _btnF1;
+        public ICommand BtnF1
         {
             get
             {
-                if (_btnF5 == null)
+                if (_btnF1 == null)
                 {
-                    _btnF5 = new RelayCommand(p => kompressoranlage.BtnF5(), p => true);
+                    _btnF1 = new RelayCommand(p => kompressoranlage.BtnF1(), p => true);
                 }
-                return _btnF5;
+                return _btnF1;
             }
         }
         #endregion
@@ -65,20 +65,19 @@
         }
         #endregion
 
-        #region BtnS7
-        private ICommand _btnS7;
-        public ICommand BtnS7
+        #region BtnB1
+        private ICommand _btnB1;
+        public ICommand BtnB1
         {
             get
             {
-                if (_btnS7 == null)
+                if (_btnB1 == null)
                 {
-                    _btnS7 = new RelayCommand(p => kompressoranlage.BtnS7(), p => true);
+                    _btnB1 = new RelayCommand(p => kompressoranlage.BtnB1(), p => true);
                 }
-                return _btnS7;
+                return _btnB1;
             }
         }
         #endregion
-
     }
 }

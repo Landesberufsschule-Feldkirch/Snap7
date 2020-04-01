@@ -20,16 +20,16 @@
             abfuellAnlage = aa;
 
 
-            ColorH4 = "White";
-            ColorK1 = "LawnGreen";
+            ColorP1 = "White";
+            ColorQ1 = "LawnGreen";
             ColorRectangleZuleitung = "Coral";
 
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
 
+            ClickModeBtnQ1 = "Press";
             ClickModeBtnK1 = "Press";
             ClickModeBtnK2 = "Press";
-            ClickModeBtnK3 = "Press";
 
 
 
@@ -57,16 +57,16 @@
             VisibilityImage4 = "visible";
 
 
+            Visibility_K1_Ein = "hidden";
             Visibility_K2_Ein = "hidden";
-            Visibility_K3_Ein = "hidden";
 
+            Visibility_K1_Aus = "visible";
             Visibility_K2_Aus = "visible";
-            Visibility_K3_Aus = "visible";
 
-            VisibilityS7Ein = "Visible";
-            VisibilityS7Aus = "Hidden";
-            VisibilityS8Ein = "Visible";
-            VisibilityS8Aus = "Hidden";
+            VisibilityB1Ein = "Visible";
+            VisibilityB1Aus = "Hidden";
+            VisibilityB2Ein = "Visible";
+            VisibilityB2Aus = "Hidden";
 
 
             SpsStatus = "-";
@@ -82,8 +82,8 @@
         {
             while (true)
             {
-                FarbeH4(abfuellAnlage.H4);
-                FarbeK1(abfuellAnlage.K1);
+                FarbeP1(abfuellAnlage.P1);
+                FarbeQ1(abfuellAnlage.Q1);
 
                 FarbeRectangleZuleitung(abfuellAnlage.Pegel > 0.01);
 
@@ -99,13 +99,13 @@
                 VisibilityDose3(abfuellAnlage.AlleDosen[2].Sichtbar);
                 VisibilityDose4(abfuellAnlage.AlleDosen[3].Sichtbar);
 
-                VisibilityAbleitung(abfuellAnlage.K3 && (abfuellAnlage.Pegel > 0.01));
+                VisibilityAbleitung(abfuellAnlage.K2 && (abfuellAnlage.Pegel > 0.01));
 
+                SichtbarkeitK1(abfuellAnlage.K1);
                 SichtbarkeitK2(abfuellAnlage.K2);
-                SichtbarkeitK3(abfuellAnlage.K3);
 
-                SichtbarkeitS7(abfuellAnlage.S7);
-                SichtbarkeitS8(abfuellAnlage.S8);
+                SichtbarkeitB1(abfuellAnlage.B1);
+                SichtbarkeitB2(abfuellAnlage.B2);
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -118,9 +118,9 @@
         }
 
 
+        internal void SetQ1() { abfuellAnlage.Q1 = ClickModeButtonQ1(); }
         internal void SetK1() { abfuellAnlage.K1 = ClickModeButtonK1(); }
         internal void SetK2() { abfuellAnlage.K2 = ClickModeButtonK2(); }
-        internal void SetK3() { abfuellAnlage.K3 = ClickModeButtonK3(); }
         internal void SetS1() { abfuellAnlage.S1 = ClickModeButtonS1(); }
         internal void BtnS2() { abfuellAnlage.S2 = ClickModeButtonS2(); }
 
@@ -279,38 +279,38 @@
 
 
 
-        #region Color H4
-        public void FarbeH4(bool val)
+        #region Color P1
+        public void FarbeP1(bool val)
         {
-            if (val) ColorH4 = "Red"; else ColorH4 = "White";
+            if (val) ColorP1 = "Red"; else ColorP1 = "White";
         }
 
-        private string _colorH4;
-        public string ColorH4
+        private string _colorP1;
+        public string ColorP1
         {
-            get { return _colorH4; }
+            get { return _colorP1; }
             set
             {
-                _colorH4 = value;
-                OnPropertyChanged(nameof(ColorH4));
+                _colorP1 = value;
+                OnPropertyChanged(nameof(ColorP1));
             }
         }
         #endregion
 
-        #region Color K1
-        public void FarbeK1(bool val)
+        #region Color Q1
+        public void FarbeQ1(bool val)
         {
-            if (val) ColorK1 = "LawnGreen"; else ColorK1 = "LightGray";
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray";
         }
 
-        private string _colorK1;
-        public string ColorK1
+        private string _colorQ1;
+        public string ColorQ1
         {
-            get { return _colorK1; }
+            get { return _colorQ1; }
             set
             {
-                _colorK1 = value;
-                OnPropertyChanged(nameof(ColorK1));
+                _colorQ1 = value;
+                OnPropertyChanged(nameof(ColorQ1));
             }
         }
         #endregion
@@ -391,6 +391,33 @@
 
 
 
+        #region ClickModeBtnQ1
+        public bool ClickModeButtonQ1()
+        {
+            if (ClickModeBtnQ1 == "Press")
+            {
+                ClickModeBtnQ1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnQ1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnQ1;
+        public string ClickModeBtnQ1
+        {
+            get { return _clickModeBtnQ1; }
+            set
+            {
+                _clickModeBtnQ1 = value;
+                OnPropertyChanged(nameof(ClickModeBtnQ1));
+            }
+        }
+        #endregion
+
         #region ClickModeBtnK1
         public bool ClickModeButtonK1()
         {
@@ -445,38 +472,49 @@
         }
         #endregion
 
-        #region ClickModeBtnK3
-        public bool ClickModeButtonK3()
+
+
+
+
+
+
+        #region Sichtbarkeit K1
+        public void SichtbarkeitK1(bool val)
         {
-            if (ClickModeBtnK3 == "Press")
+            if (val)
             {
-                ClickModeBtnK3 = "Release";
-                return true;
+                Visibility_K1_Ein = "visible";
+                Visibility_K1_Aus = "hidden";
             }
             else
             {
-                ClickModeBtnK3 = "Press";
+                Visibility_K1_Ein = "hidden";
+                Visibility_K1_Aus = "visible";
             }
-            return false;
         }
 
-        private string _clickModeBtnK3;
-        public string ClickModeBtnK3
+        private string _visibility_K1_Ein;
+        public string Visibility_K1_Ein
         {
-            get { return _clickModeBtnK3; }
+            get { return _visibility_K1_Ein; }
             set
             {
-                _clickModeBtnK3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnK3));
+                _visibility_K1_Ein = value;
+                OnPropertyChanged(nameof(Visibility_K1_Ein));
+            }
+        }
+
+        private string _visibility_K1_Aus;
+        public string Visibility_K1_Aus
+        {
+            get { return _visibility_K1_Aus; }
+            set
+            {
+                _visibility_K1_Aus = value;
+                OnPropertyChanged(nameof(Visibility_K1_Aus));
             }
         }
         #endregion
-
-
-
-
-
-
 
         #region Sichtbarkeit K2
         public void SichtbarkeitK2(bool val)
@@ -512,44 +550,6 @@
             {
                 _visibility_K2_Aus = value;
                 OnPropertyChanged(nameof(Visibility_K2_Aus));
-            }
-        }
-        #endregion
-
-        #region Sichtbarkeit K3
-        public void SichtbarkeitK3(bool val)
-        {
-            if (val)
-            {
-                Visibility_K3_Ein = "visible";
-                Visibility_K3_Aus = "hidden";
-            }
-            else
-            {
-                Visibility_K3_Ein = "hidden";
-                Visibility_K3_Aus = "visible";
-            }
-        }
-
-        private string _visibility_K3_Ein;
-        public string Visibility_K3_Ein
-        {
-            get { return _visibility_K3_Ein; }
-            set
-            {
-                _visibility_K3_Ein = value;
-                OnPropertyChanged(nameof(Visibility_K3_Ein));
-            }
-        }
-
-        private string _visibility_K3_Aus;
-        public string Visibility_K3_Aus
-        {
-            get { return _visibility_K3_Aus; }
-            set
-            {
-                _visibility_K3_Aus = value;
-                OnPropertyChanged(nameof(Visibility_K3_Aus));
             }
         }
         #endregion
@@ -650,77 +650,77 @@
 
 
         #region Sichtbarkeit S7
-        public void SichtbarkeitS7(bool val)
+        public void SichtbarkeitB1(bool val)
         {
             if (val)
             {
-                VisibilityS7Ein = "Visible";
-                VisibilityS7Aus = "Hidden";
+                VisibilityB1Ein = "Visible";
+                VisibilityB1Aus = "Hidden";
             }
             else
             {
-                VisibilityS7Ein = "Hidden";
-                VisibilityS7Aus = "Visible";
+                VisibilityB1Ein = "Hidden";
+                VisibilityB1Aus = "Visible";
             }
         }
-        private string _visibilityS7Ein;
-        public string VisibilityS7Ein
+        private string _visibilityB1Ein;
+        public string VisibilityB1Ein
         {
-            get { return _visibilityS7Ein; }
+            get { return _visibilityB1Ein; }
             set
             {
-                _visibilityS7Ein = value;
-                OnPropertyChanged(nameof(VisibilityS7Ein));
+                _visibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _visibilityS7Aus;
+        private string _visibilityB1Aus;
 
-        public string VisibilityS7Aus
+        public string VisibilityB1Aus
         {
-            get { return _visibilityS7Aus; }
+            get { return _visibilityB1Aus; }
             set
             {
-                _visibilityS7Aus = value;
-                OnPropertyChanged(nameof(VisibilityS7Aus));
+                _visibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
         #endregion
 
-        #region Sichtbarkeit S8
-        public void SichtbarkeitS8(bool val)
+        #region Sichtbarkeit B2
+        public void SichtbarkeitB2(bool val)
         {
             if (val)
             {
-                VisibilityS8Ein = "Visible";
-                VisibilityS8Aus = "Hidden";
+                VisibilityB2Ein = "Visible";
+                VisibilityB2Aus = "Hidden";
             }
             else
             {
-                VisibilityS8Ein = "Hidden";
-                VisibilityS8Aus = "Visible";
+                VisibilityB2Ein = "Hidden";
+                VisibilityB2Aus = "Visible";
             }
         }
-        private string _visibilityS8Ein;
-        public string VisibilityS8Ein
+        private string _visibilityB2Ein;
+        public string VisibilityB2Ein
         {
-            get { return _visibilityS8Ein; }
+            get { return _visibilityB2Ein; }
             set
             {
-                _visibilityS8Ein = value;
-                OnPropertyChanged(nameof(VisibilityS8Ein));
+                _visibilityB2Ein = value;
+                OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
 
-        private string _visibilityS8Aus;
+        private string _visibilityB2Aus;
 
-        public string VisibilityS8Aus
+        public string VisibilityB2Aus
         {
-            get { return _visibilityS8Aus; }
+            get { return _visibilityB2Aus; }
             set
             {
-                _visibilityS8Aus = value;
-                OnPropertyChanged(nameof(VisibilityS8Aus));
+                _visibilityB2Aus = value;
+                OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
         #endregion

@@ -18,32 +18,32 @@
         public Model.Transportwagen Transportwagen { get { return transportwagen; } }
 
 
-        #region SetManualK1
-        private ICommand _setManualK1;
-        public ICommand SetManualK1
+        #region SetManualQ1
+        private ICommand _setManualQ1;
+        public ICommand SetManualQ1
         {
             get
             {
-                if (_setManualK1 == null)
+                if (_setManualQ1 == null)
                 {
-                    _setManualK1 = new RelayCommand(p => ViAnzeige.SetManualK1(), p => true);
+                    _setManualQ1 = new RelayCommand(p => ViAnzeige.SetManualQ1(), p => true);
                 }
-                return _setManualK1;
+                return _setManualQ1;
             }
         }
         #endregion
 
-        #region SetManualK2
-        private ICommand _setManualK2;
-        public ICommand SetManualK2
+        #region SetManualQ2
+        private ICommand _setManualQ2;
+        public ICommand SetManualQ2
         {
             get
             {
-                if (_setManualK2 == null)
+                if (_setManualQ2 == null)
                 {
-                    _setManualK2 = new RelayCommand(p => ViAnzeige.SetManualK2(), p => true);
+                    _setManualQ2 = new RelayCommand(p => ViAnzeige.SetManualQ2(), p => true);
                 }
-                return _setManualK2;
+                return _setManualQ2;
             }
         }
         #endregion
@@ -93,17 +93,17 @@
         }
         #endregion
 
-        #region BtnF3
-        private ICommand _btnF3;
-        public ICommand BtnF3
+        #region BtnF1
+        private ICommand _btnF1;
+        public ICommand BtnF1
         {
             get
             {
-                if (_btnF3 == null)
+                if (_btnF1 == null)
                 {
-                    _btnF3 = new RelayCommand(p => transportwagen.SetF3(), p => true);
+                    _btnF1 = new RelayCommand(p => transportwagen.SetF1(), p => true);
                 }
-                return _btnF3;
+                return _btnF1;
             }
         }
         #endregion

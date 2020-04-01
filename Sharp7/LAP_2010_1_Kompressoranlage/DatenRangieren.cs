@@ -8,38 +8,38 @@ namespace LAP_2010_1_Kompressoranlage
 
         private enum BitPosAusgang
         {
-            H1 = 0, // Störung
-            H2,     // Betriebsbereit
-            K1,     // Netzschütz
-            K2,     // Sternschütz
-            K3      // Dreieckschütz
+            P1 = 0, // Störung
+            P2,     // Betriebsbereit
+            Q1,     // Netzschütz
+            Q2,     // Sternschütz
+            Q3      // Dreieckschütz
         }
 
         private enum BitPosEingang
         {
-            F5 = 0, // Störung Motorschutzschalter
+            B1 = 0, // Druckschalter
+            B2,     // Temperaturfühler Kompressor
+            F1,     // Störung Motorschutzschalter
             S1,     // Taster Aus
-            S2,     // Taster Ein
-            S7,     // Druckschalter
-            S8      // Temperaturfühler Kompressor
+            S2      // Taster Ein
         }
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, vewModel.kompressoranlage.F5);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, vewModel.kompressoranlage.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, vewModel.kompressoranlage.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, vewModel.kompressoranlage.F1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, vewModel.kompressoranlage.S1);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, vewModel.kompressoranlage.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S7, vewModel.kompressoranlage.S7);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S8, vewModel.kompressoranlage.S8);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            vewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
-            vewModel.kompressoranlage.H2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H2);
-            vewModel.kompressoranlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-            vewModel.kompressoranlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-            vewModel.kompressoranlage.K3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K3);
+            vewModel.kompressoranlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            vewModel.kompressoranlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            vewModel.kompressoranlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            vewModel.kompressoranlage.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            vewModel.kompressoranlage.Q3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)

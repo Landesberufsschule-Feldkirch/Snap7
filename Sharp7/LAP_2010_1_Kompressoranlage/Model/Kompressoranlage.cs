@@ -3,17 +3,18 @@
 namespace LAP_2010_1_Kompressoranlage.Model
 {
     public class Kompressoranlage
-    {
-        public bool F5 { get; set; }    // Thermorelais
-        public bool H1 { get; set; }    // Störung
-        public bool H2 { get; set; }    // Betriebsbereit
-        public bool K1 { get; set; }    // Netzschütz
-        public bool K2 { get; set; }    // Sternschütz
-        public bool K3 { get; set; }    // Dreieckschütz
+    { 
+        public bool B1 { get; set; }    // Druckschalter
+        public bool B2 { get; set; }    // Temperatursensor Kompressor
+        public bool F1 { get; set; }    // Thermorelais
+        public bool P1 { get; set; }    // Störung
+        public bool P2 { get; set; }    // Betriebsbereit
+        public bool Q1 { get; set; }    // Netzschütz
+        public bool Q2 { get; set; }    // Sternschütz
+        public bool Q3 { get; set; }    // Dreieckschütz
         public bool S1 { get; set; }    // Aus
         public bool S2 { get; set; }    // Ein
-        public bool S7 { get; set; }    // Druckschalter
-        public bool S8 { get; set; }    // Temperatursensor Kompressor
+      
         public double Druck { get; set; }
 
         private const double druckVerlust = 0.998;
@@ -22,8 +23,8 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public Kompressoranlage()
         {
             Druck = 0;
-            F5 = true;
-            S7 = true;
+            F1 = true;
+            B1 = true;
 
             System.Threading.Tasks.Task.Run(() => KompressoranlageTask());
         }
@@ -32,19 +33,19 @@ namespace LAP_2010_1_Kompressoranlage.Model
         {
             while (true)
             {
-                if (K1 && K3) Druck += druckAnstieg;
+                if (Q1 && Q3) Druck += druckAnstieg;
                 Druck *= druckVerlust;
 
                 if (Druck > 10) Druck = 10;
 
-                if (S8) { if (Druck > 8) S8 = false; }
-                else { if (Druck < 7) S8 = true; }
+                if (B2) { if (Druck > 8) B2 = false; }
+                else { if (Druck < 7) B2 = true; }
 
                 Thread.Sleep(10);
             }
         }
 
-        internal void BtnF5() { if (F5) F5 = false; else F5 = true; }
-        internal void BtnS7() { if (S7) S7 = false; else S7 = true; }
+        internal void BtnF1() { if (F1) F1 = false; else F1 = true; }
+        internal void BtnB1() { if (B1) B1 = false; else B1 = true; }
     }
 }

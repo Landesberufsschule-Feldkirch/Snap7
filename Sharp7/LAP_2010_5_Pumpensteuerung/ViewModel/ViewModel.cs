@@ -78,17 +78,17 @@
         }
         #endregion
 
-        #region BtnThermorelaisF5
-        private ICommand _btnThermorelaisF5;
-        public ICommand BtnThermorelaisF5
+        #region BtnThermorelaisF1
+        private ICommand _btnThermorelaisF1;
+        public ICommand BtnThermorelaisF1
         {
             get
             {
-                if (_btnThermorelaisF5 == null)
+                if (_btnThermorelaisF1 == null)
                 {
-                    _btnThermorelaisF5 = new RelayCommand(p => pumpensteuerung.ThermorelaisF5(), p => true);
+                    _btnThermorelaisF1 = new RelayCommand(p => pumpensteuerung.ThermorelaisF1(), p => true);
                 }
-                return _btnThermorelaisF5;
+                return _btnThermorelaisF1;
             }
         }
         #endregion
@@ -108,17 +108,17 @@
         }
         #endregion
 
-        #region BtnSetManualK1
-        private ICommand _btnSetManualK1;
-        public ICommand BtnSetManualK1
+        #region BtnSetManualQ1
+        private ICommand _btnSetManualQ1;
+        public ICommand BtnSetManualQ1
         {
             get
             {
-                if (_btnSetManualK1 == null)
+                if (_btnSetManualQ1 == null)
                 {
-                    _btnSetManualK1 = new RelayCommand(p => pumpensteuerung.SetManualK1(), p => true);
+                    _btnSetManualQ1 = new RelayCommand(p => pumpensteuerung.SetManualQ1(), p => true);
                 }
-                return _btnSetManualK1;
+                return _btnSetManualQ1;
             }
         }
         #endregion

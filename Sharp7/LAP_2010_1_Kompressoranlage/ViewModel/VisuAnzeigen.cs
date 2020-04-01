@@ -20,19 +20,19 @@
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
 
-            ColorF5 = "LawnGreen";
-            ColorH1 = "LawnGreen";
-            ColorH2 = "LawnGreen";
-            ColorK1 = "LawnGreen";
-            ColorK2 = "LawnGreen";
-            ColorK3 = "LawnGreen";
-            ColorS7 = "LawnGreen";
+            ColorF1 = "LawnGreen";
+            ColorP1 = "LawnGreen";
+            ColorP2 = "LawnGreen";
+            ColorQ1 = "LawnGreen";
+            ColorQ2 = "LawnGreen";
+            ColorQ3 = "LawnGreen";
+            ColorB1 = "LawnGreen";
 
-            VisibilityS7Ein = "hidden";
-            VisibilityS7Aus = "visible";
+            VisibilityB1Ein = "hidden";
+            VisibilityB1Aus = "visible";
 
-            VisibilityS8Ein = "Visible";
-            VisibilityS8Aus = "Hidden";
+            VisibilityB2Ein = "Visible";
+            VisibilityB2Aus = "Hidden";
 
             VisibilityKurzschluss = "Hidden";
 
@@ -47,18 +47,18 @@
             {
                 Druck = kompressoranlage.Druck;
 
-                FarbeF5(kompressoranlage.F5);
-                FarbeH1(kompressoranlage.H1);
-                FarbeH2(kompressoranlage.H2);
-                FarbeK1(kompressoranlage.K1);
-                FarbeK2(kompressoranlage.K2);
-                FarbeK3(kompressoranlage.K3);
-                FarbeS7(kompressoranlage.S7);
+                FarbeF1(kompressoranlage.F1);
+                FarbeP1(kompressoranlage.P1);
+                FarbeP2(kompressoranlage.P2);
+                FarbeQ1(kompressoranlage.Q1);
+                FarbeQ2(kompressoranlage.Q2);
+                FarbeQ3(kompressoranlage.Q3);
+                FarbeS7(kompressoranlage.B1);
 
-                SichtbarkeitS7(kompressoranlage.S7);
-                SichtbarkeitS8(kompressoranlage.S8);
+                SichtbarkeitS7(kompressoranlage.B1);
+                SichtbarkeitS8(kompressoranlage.B2);
 
-                if (kompressoranlage.K2 && kompressoranlage.K3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (kompressoranlage.Q2 && kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -157,110 +157,110 @@
 
 
 
-        #region Color F5
-        public void FarbeF5(bool val)
+        #region Color F1
+        public void FarbeF1(bool val)
         {
-            if (val) ColorF5 = "LawnGreen"; else ColorF5 = "Red";
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
         }
 
-        private string _colorF5;
-        public string ColorF5
+        private string _colorF1;
+        public string ColorF1
         {
-            get { return _colorF5; }
+            get { return _colorF1; }
             set
             {
-                _colorF5 = value;
-                OnPropertyChanged(nameof(ColorF5));
+                _colorF1 = value;
+                OnPropertyChanged(nameof(ColorF1));
             }
         }
         #endregion
 
-        #region Color H1
-        public void FarbeH1(bool val)
+        #region Color P1
+        public void FarbeP1(bool val)
         {
-            if (val) ColorH1 = "Red"; else ColorH1 = "White";
+            if (val) ColorP1 = "Red"; else ColorP1 = "White";
         }
 
-        private string _colorH1;
-        public string ColorH1
+        private string _colorP1;
+        public string ColorP1
         {
-            get { return _colorH1; }
+            get { return _colorP1; }
             set
             {
-                _colorH1 = value;
-                OnPropertyChanged(nameof(ColorH1));
+                _colorP1 = value;
+                OnPropertyChanged(nameof(ColorP1));
             }
         }
         #endregion
 
-        #region Color H2
-        public void FarbeH2(bool val)
+        #region Color P2
+        public void FarbeP2(bool val)
         {
-            if (val) ColorH2 = "LawnGreen"; else ColorH2 = "White";
+            if (val) ColorP2 = "LawnGreen"; else ColorP2 = "White";
         }
 
-        private string _colorH2;
-        public string ColorH2
+        private string _colorP2;
+        public string ColorP2
         {
-            get { return _colorH2; }
+            get { return _colorP2; }
             set
             {
-                _colorH2 = value;
-                OnPropertyChanged(nameof(ColorH2));
+                _colorP2 = value;
+                OnPropertyChanged(nameof(ColorP2));
             }
         }
         #endregion
 
-        #region Color K1
-        public void FarbeK1(bool val)
+        #region Color Q1
+        public void FarbeQ1(bool val)
         {
-            if (val) ColorK1 = "LawnGreen"; else ColorK1 = "White";
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
         }
 
-        private string _colorK1;
-        public string ColorK1
+        private string _colorQ1;
+        public string ColorQ1
         {
-            get { return _colorK1; }
+            get { return _colorQ1; }
             set
             {
-                _colorK1 = value;
-                OnPropertyChanged(nameof(ColorK1));
+                _colorQ1 = value;
+                OnPropertyChanged(nameof(ColorQ1));
             }
         }
         #endregion
 
-        #region Color K2
-        public void FarbeK2(bool val)
+        #region Color Q2
+        public void FarbeQ2(bool val)
         {
-            if (val) ColorK2 = "LawnGreen"; else ColorK2 = "White";
+            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
         }
 
-        private string _colorK2;
-        public string ColorK2
+        private string _colorQ2;
+        public string ColorQ2
         {
-            get { return _colorK2; }
+            get { return _colorQ2; }
             set
             {
-                _colorK2 = value;
-                OnPropertyChanged(nameof(ColorK2));
+                _colorQ2 = value;
+                OnPropertyChanged(nameof(ColorQ2));
             }
         }
         #endregion
 
-        #region Color K3
-        public void FarbeK3(bool val)
+        #region Color Q3
+        public void FarbeQ3(bool val)
         {
-            if (val) ColorK3 = "LawnGreen"; else ColorK3 = "White";
+            if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White";
         }
 
-        private string _colorK3;
-        public string ColorK3
+        private string _colorQ3;
+        public string ColorQ3
         {
-            get { return _colorK3; }
+            get { return _colorQ3; }
             set
             {
-                _colorK3 = value;
-                OnPropertyChanged(nameof(ColorK3));
+                _colorQ3 = value;
+                OnPropertyChanged(nameof(ColorQ3));
             }
         }
         #endregion
@@ -268,17 +268,17 @@
         #region Color S7
         public void FarbeS7(bool val)
         {
-            if (val) ColorS7 = "LawnGreen"; else ColorS7 = "Red";
+            if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red";
         }
 
-        private string _colorS7;
-        public string ColorS7
+        private string _ColorB1;
+        public string ColorB1
         {
-            get { return _colorS7; }
+            get { return _ColorB1; }
             set
             {
-                _colorS7 = value;
-                OnPropertyChanged(nameof(ColorS7));
+                _ColorB1 = value;
+                OnPropertyChanged(nameof(ColorB1));
             }
         }
         #endregion
@@ -303,35 +303,35 @@
         {
             if (val)
             {
-                VisibilityS7Ein = "visible";
-                VisibilityS7Aus = "hidden";
+                VisibilityB1Ein = "visible";
+                VisibilityB1Aus = "hidden";
             }
             else
             {
-                VisibilityS7Ein = "hidden";
-                VisibilityS7Aus = "visible";
+                VisibilityB1Ein = "hidden";
+                VisibilityB1Aus = "visible";
             }
         }
 
-        private string _visibilityS7Ein;
-        public string VisibilityS7Ein
+        private string _VisibilityB1Ein;
+        public string VisibilityB1Ein
         {
-            get { return _visibilityS7Ein; }
+            get { return _VisibilityB1Ein; }
             set
             {
-                _visibilityS7Ein = value;
-                OnPropertyChanged(nameof(VisibilityS7Ein));
+                _VisibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _visibilityS7Aus;
-        public string VisibilityS7Aus
+        private string _VisibilityB1Aus;
+        public string VisibilityB1Aus
         {
-            get { return _visibilityS7Aus; }
+            get { return _VisibilityB1Aus; }
             set
             {
-                _visibilityS7Aus = value;
-                OnPropertyChanged(nameof(VisibilityS7Aus));
+                _VisibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
         #endregion
@@ -341,36 +341,36 @@
         {
             if (val)
             {
-                VisibilityS8Ein = "Visible";
-                VisibilityS8Aus = "Hidden";
+                VisibilityB2Ein = "Visible";
+                VisibilityB2Aus = "Hidden";
             }
             else
             {
-                VisibilityS8Ein = "Hidden";
-                VisibilityS8Aus = "Visible";
+                VisibilityB2Ein = "Hidden";
+                VisibilityB2Aus = "Visible";
             }
         }
 
-        private string _visibilityS8Ein;
-        public string VisibilityS8Ein
+        private string _VisibilityB2Ein;
+        public string VisibilityB2Ein
         {
-            get { return _visibilityS8Ein; }
+            get { return _VisibilityB2Ein; }
             set
             {
-                _visibilityS8Ein = value;
-                OnPropertyChanged(nameof(VisibilityS8Ein));
+                _VisibilityB2Ein = value;
+                OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
 
-        private string _visibilityS8Aus;
+        private string _VisibilityB2Aus;
 
-        public string VisibilityS8Aus
+        public string VisibilityB2Aus
         {
-            get { return _visibilityS8Aus; }
+            get { return _VisibilityB2Aus; }
             set
             {
-                _visibilityS8Aus = value;
-                OnPropertyChanged(nameof(VisibilityS8Aus));
+                _VisibilityB2Aus = value;
+                OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
         #endregion

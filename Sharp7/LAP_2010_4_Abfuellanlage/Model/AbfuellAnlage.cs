@@ -8,12 +8,12 @@ namespace LAP_2010_4_Abfuellanlage.Model
         public List<CampbellSoup> AlleDosen { get; set; }
         public bool S1 { get; set; } // Taster Reset
         public bool S2 { get; set; } // Taster Start       
-        public bool S7 { get; set; } // Behälter Füllstand
-        public bool S8 { get; set; } // Position Dose Füllen
-        public bool K1 { get; set; } // Motor Förderband
-        public bool K2 { get; set; } // Spule Magazin Förderband
-        public bool K3 { get; set; } // Spule Füllen
-        public bool H4 { get; set; } // Meldeleuchte Behälter Leer
+        public bool B1 { get; set; } // Behälter Füllstand
+        public bool B2 { get; set; } // Position Dose Füllen
+        public bool Q1 { get; set; } // Motor Förderband
+        public bool K1 { get; set; } // Spule Magazin Förderband
+        public bool K2 { get; set; } // Spule Füllen
+        public bool P1 { get; set; } // Meldeleuchte Behälter Leer
         public double Pegel { get; set; }
 
 
@@ -40,20 +40,20 @@ namespace LAP_2010_4_Abfuellanlage.Model
         {
             while (true)
             {
-                if (K3) Pegel -= leerGeschwindigkeit;
+                if (K2) Pegel -= leerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
-                S7 = Pegel > 0.1;
+                B1 = Pegel > 0.1;
 
-                if (K2) AlleDosen[aktuelleDose].DosenVereinzeln();
+                if (K1) AlleDosen[aktuelleDose].DosenVereinzeln();
 
-                S8 = false;
+                B2 = false;
                 foreach (CampbellSoup dose in AlleDosen)
                 {
                     bool lichtschranke;
                     var stop = KollisionErkennen(dose);
-                    (lichtschranke, aktuelleDose) = dose.DosenBewegen(K1, anzahlDosen, aktuelleDose, stop);
-                    S8 |= lichtschranke;
+                    (lichtschranke, aktuelleDose) = dose.DosenBewegen(Q1, anzahlDosen, aktuelleDose, stop);
+                    B2 |= lichtschranke;
                 }
 
                 Thread.Sleep(10);

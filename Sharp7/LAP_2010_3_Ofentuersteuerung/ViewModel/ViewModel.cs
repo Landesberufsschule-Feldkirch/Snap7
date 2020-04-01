@@ -16,32 +16,32 @@
 
         public Model.OfentuerSteuerung OfentuerSteuerung { get { return ofentuerSteuerung; } }
 
-        #region SetManualK1
-        private ICommand _setManualK1;
-        public ICommand SetManualK1
+        #region SetManualQ1
+        private ICommand _setManualQ1;
+        public ICommand SetManualQ1
         {
             get
             {
-                if (_setManualK1 == null)
+                if (_setManualQ1 == null)
                 {
-                    _setManualK1 = new RelayCommand(p => ViAnzeige.SetManualK1(), p => true);
+                    _setManualQ1 = new RelayCommand(p => ViAnzeige.SetManualQ1(), p => true);
                 }
-                return _setManualK1;
+                return _setManualQ1;
             }
         }
         #endregion
 
-        #region SetManualK2
-        private ICommand _setManualK2;
-        public ICommand SetManualK2
+        #region SetManualQ2
+        private ICommand _setManualQ2;
+        public ICommand SetManualQ2
         {
             get
             {
-                if (_setManualK2 == null)
+                if (_setManualQ2 == null)
                 {
-                    _setManualK2 = new RelayCommand(p => ViAnzeige.SetManualK2(), p => true);
+                    _setManualQ2 = new RelayCommand(p => ViAnzeige.SetManualQ2(), p => true);
                 }
-                return _setManualK2;
+                return _setManualQ2;
             }
         }
         #endregion
@@ -91,17 +91,17 @@
         }
         #endregion
 
-        #region BtnS9
-        private ICommand _btnS9;
-        public ICommand BtnS9
+        #region BtnB3
+        private ICommand _btnB3;
+        public ICommand BtnB3
         {
             get
             {
-                if (_btnS9 == null)
+                if (_btnB3 == null)
                 {
-                    _btnS9 = new RelayCommand(p => ViAnzeige.SetS9(), p => true);
+                    _btnB3 = new RelayCommand(p => ViAnzeige.SetB3(), p => true);
                 }
-                return _btnS9;
+                return _btnB3;
             }
         }
         #endregion

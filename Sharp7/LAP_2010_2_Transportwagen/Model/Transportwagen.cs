@@ -4,15 +4,15 @@ namespace LAP_2010_2_Transportwagen.Model
 {
     public class Transportwagen
     {
-        public bool K1 { get; set; }    // Motor LL 
-        public bool K2 { get; set; }    // Motor RL 
-        public bool H3 { get; set; }    // Störung
+        public bool Q1 { get; set; }    // Motor LL 
+        public bool Q2 { get; set; }    // Motor RL 
+        public bool P1 { get; set; }    // Störung
         public bool S1 { get; set; }    // Taster "Start" 
         public bool S2 { get; set; }    // NotHalt 
         public bool S3 { get; set; }    // Taster Reset 
-        public bool F3 { get; set; }    // Thermorelais 
-        public bool S7 { get; set; }    // Endschalter Links 
-        public bool S8 { get; set; }    // Endschalter Rechts 
+        public bool F1 { get; set; }    // Thermorelais 
+        public bool B1 { get; set; }    // Endschalter Links 
+        public bool B2 { get; set; }    // Endschalter Rechts 
         public double Position { get; set; }
         public double AbstandRadRechts { get; set; }
 
@@ -26,7 +26,7 @@ namespace LAP_2010_2_Transportwagen.Model
             Position = 30;
             AbstandRadRechts = 100;
 
-            F3 = true;
+            F1 = true;
             S2 = true;
 
             System.Threading.Tasks.Task.Run(() => TransportwagtenTask());
@@ -36,20 +36,20 @@ namespace LAP_2010_2_Transportwagen.Model
         {
             while (true)
             {
-                if (K1) Position -= geschwindigkeit;
-                if (K2) Position += geschwindigkeit;
+                if (Q1) Position -= geschwindigkeit;
+                if (Q2) Position += geschwindigkeit;
 
                 if (Position < randLinks) Position = randLinks;
                 if (Position > randRechts) Position = randRechts;
 
-                S7 = Position < (randLinks + 2);
-                S8 = Position > (randRechts - 2);
+                B1 = Position < (randLinks + 2);
+                B2 = Position > (randRechts - 2);
 
                 Thread.Sleep(10);
             }
         }
 
-        internal void SetF3() { if (F3) F3 = false; else F3 = true; }
+        internal void SetF1() { if (F1) F1 = false; else F1 = true; }
         internal void SetS2() { if (S2) S2 = false; else S2 = true; }
     }
 }

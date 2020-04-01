@@ -20,24 +20,24 @@
 
             ClickModeBtnS3 = "Press";
 
-            ColorThermorelais_F5 = "LawnGreen";
+            ColorThermorelais_F1 = "LawnGreen";
 
             ColorAbleitungOben = "LightBlue";
             ColorAbleitungUnten = "LightBlue";
             ColorZuleitungLinksWaagrecht = "LightBlue";
             ColorZuleitungLinksSenkrecht = "LightBlue";
 
-            ColorCircle_H1 = "LightGray";
-            ColorCircle_H2 = "LightGray";
+            ColorCircle_P1 = "LightGray";
+            ColorCircle_P2 = "LightGray";
 
-            VisibilityK1Ein = "visible";
-            VisibilityK1Aus = "hidden";
+            VisibilityQ1Ein = "visible";
+            VisibilityQ1Aus = "hidden";
 
-            VisibilityS7Ein = "hidden";
-            VisibilityS7Aus = "visible";
+            VisibilityB1Ein = "hidden";
+            VisibilityB1Aus = "visible";
 
-            VisibilityS8Ein = "Visible";
-            VisibilityS8Aus = "Hidden";
+            VisibilityB2Ein = "Visible";
+            VisibilityB2Aus = "Hidden";
 
             VisibilityY1Ein = "visible";
             VisibilityY1Aus = "hidden";
@@ -53,17 +53,17 @@
         {
             while (true)
             {
-                FarbeTherorelais_F5(pumpensteuerung.F5);
-                FarbeCircle_H1(pumpensteuerung.H1);
-                FarbeCircle_H2(pumpensteuerung.H2);
-                FarbeZuleitungLinksWaagrecht(pumpensteuerung.K1);
-                FarbeZuleitungLinksSenkrecht(pumpensteuerung.K1);
+                FarbeTherorelais_F1(pumpensteuerung.F1);
+                FarbeCircle_P1(pumpensteuerung.P1);
+                FarbeCircle_P2(pumpensteuerung.P2);
+                FarbeZuleitungLinksWaagrecht(pumpensteuerung.Q1);
+                FarbeZuleitungLinksSenkrecht(pumpensteuerung.Q1);
                 FarbeAbleitungOben(pumpensteuerung.Pegel > 0.01);
                 FarbeAbleitungUnten((pumpensteuerung.Pegel > 0.01) && pumpensteuerung.Y1);
 
-                SichtbarkeitK1(pumpensteuerung.K1);
-                SichtbarkeitS7(pumpensteuerung.S7);
-                SichtbarkeitS8(pumpensteuerung.S8);
+                SichtbarkeitQ1(pumpensteuerung.Q1);
+                SichtbarkeitB1(pumpensteuerung.B1);
+                SichtbarkeitB2(pumpensteuerung.B2);
                 SichtbarkeitY1(pumpensteuerung.Y1);
 
                 Margin_1(pumpensteuerung.Pegel);
@@ -156,57 +156,57 @@
         }
         #endregion
 
-        #region Color Thermorelais F5
-        public void FarbeTherorelais_F5(bool val)
+        #region Color Thermorelais F1
+        public void FarbeTherorelais_F1(bool val)
         {
-            if (val) ColorThermorelais_F5 = "LawnGreen"; else ColorThermorelais_F5 = "Red";
+            if (val) ColorThermorelais_F1 = "LawnGreen"; else ColorThermorelais_F1 = "Red";
         }
 
-        private string _colorThermorelais_F5;
-        public string ColorThermorelais_F5
+        private string _colorThermorelais_F1;
+        public string ColorThermorelais_F1
         {
-            get { return _colorThermorelais_F5; }
+            get { return _colorThermorelais_F1; }
             set
             {
-                _colorThermorelais_F5 = value;
-                OnPropertyChanged(nameof(ColorThermorelais_F5));
+                _colorThermorelais_F1 = value;
+                OnPropertyChanged(nameof(ColorThermorelais_F1));
             }
         }
         #endregion
 
 
-        #region Color H1
-        public void FarbeCircle_H1(bool val)
+        #region Color P1
+        public void FarbeCircle_P1(bool val)
         {
-            if (val) ColorCircle_H1 = "lawngreen"; else ColorCircle_H1 = "LightGray";
+            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
         }
 
-        private string _colorCircle_H1;
-        public string ColorCircle_H1
+        private string _colorCircle_P1;
+        public string ColorCircle_P1
         {
-            get { return _colorCircle_H1; }
+            get { return _colorCircle_P1; }
             set
             {
-                _colorCircle_H1 = value;
-                OnPropertyChanged(nameof(ColorCircle_H1));
+                _colorCircle_P1 = value;
+                OnPropertyChanged(nameof(ColorCircle_P1));
             }
         }
         #endregion
 
-        #region Color H2
-        public void FarbeCircle_H2(bool val)
+        #region Color P2
+        public void FarbeCircle_P2(bool val)
         {
-            if (val) ColorCircle_H2 = "red"; else ColorCircle_H2 = "LightGray";
+            if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
         }
 
-        private string _colorCircle_H2;
-        public string ColorCircle_H2
+        private string _colorCircle_P2;
+        public string ColorCircle_P2
         {
-            get { return _colorCircle_H2; }
+            get { return _colorCircle_P2; }
             set
             {
-                _colorCircle_H2 = value;
-                OnPropertyChanged(nameof(ColorCircle_H2));
+                _colorCircle_P2 = value;
+                OnPropertyChanged(nameof(ColorCircle_P2));
             }
         }
         #endregion
@@ -285,117 +285,117 @@
 
 
 
-        #region Sichtbarkeit K1
-        public void SichtbarkeitK1(bool val)
+        #region Sichtbarkeit Q1
+        public void SichtbarkeitQ1(bool val)
         {
             if (val)
             {
-                VisibilityK1Ein = "visible";
-                VisibilityK1Aus = "hidden";
+                VisibilityQ1Ein = "visible";
+                VisibilityQ1Aus = "hidden";
             }
             else
             {
-                VisibilityK1Ein = "hidden";
-                VisibilityK1Aus = "visible";
+                VisibilityQ1Ein = "hidden";
+                VisibilityQ1Aus = "visible";
             }
         }
 
-        private string _visibilityK1Ein;
-        public string VisibilityK1Ein
+        private string _visibilityQ1Ein;
+        public string VisibilityQ1Ein
         {
-            get { return _visibilityK1Ein; }
+            get { return _visibilityQ1Ein; }
             set
             {
-                _visibilityK1Ein = value;
-                OnPropertyChanged(nameof(VisibilityK1Ein));
+                _visibilityQ1Ein = value;
+                OnPropertyChanged(nameof(VisibilityQ1Ein));
             }
         }
 
-        private string _visibilityK1Aus;
-        public string VisibilityK1Aus
+        private string _visibilityQ1Aus;
+        public string VisibilityQ1Aus
         {
-            get { return _visibilityK1Aus; }
+            get { return _visibilityQ1Aus; }
             set
             {
-                _visibilityK1Aus = value;
-                OnPropertyChanged(nameof(VisibilityK1Aus));
+                _visibilityQ1Aus = value;
+                OnPropertyChanged(nameof(VisibilityQ1Aus));
             }
         }
         #endregion
 
         #region Sichtbarkeit S7
-        public void SichtbarkeitS7(bool val)
+        public void SichtbarkeitB1(bool val)
         {
             if (val)
             {
-                VisibilityS7Ein = "visible";
-                VisibilityS7Aus = "hidden";
+                VisibilityB1Ein = "visible";
+                VisibilityB1Aus = "hidden";
             }
             else
             {
-                VisibilityS7Ein = "hidden";
-                VisibilityS7Aus = "visible";
+                VisibilityB1Ein = "hidden";
+                VisibilityB1Aus = "visible";
             }
         }
 
-        private string _visibilityS7Ein;
-        public string VisibilityS7Ein
+        private string _visibilityB1Ein;
+        public string VisibilityB1Ein
         {
-            get { return _visibilityS7Ein; }
+            get { return _visibilityB1Ein; }
             set
             {
-                _visibilityS7Ein = value;
-                OnPropertyChanged(nameof(VisibilityS7Ein));
+                _visibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _visibilityS7Aus;
-        public string VisibilityS7Aus
+        private string _visibilityB1Aus;
+        public string VisibilityB1Aus
         {
-            get { return _visibilityS7Aus; }
+            get { return _visibilityB1Aus; }
             set
             {
-                _visibilityS7Aus = value;
-                OnPropertyChanged(nameof(VisibilityS7Aus));
+                _visibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
         #endregion
 
-        #region Sichtbarkeit S8
-        public void SichtbarkeitS8(bool val)
+        #region Sichtbarkeit B2
+        public void SichtbarkeitB2(bool val)
         {
             if (val)
             {
-                VisibilityS8Ein = "Visible";
-                VisibilityS8Aus = "Hidden";
+                VisibilityB2Ein = "Visible";
+                VisibilityB2Aus = "Hidden";
             }
             else
             {
-                VisibilityS8Ein = "Hidden";
-                VisibilityS8Aus = "Visible";
+                VisibilityB2Ein = "Hidden";
+                VisibilityB2Aus = "Visible";
             }
         }
 
-        private string _visibilityS8Ein;
-        public string VisibilityS8Ein
+        private string _visibilityB2Ein;
+        public string VisibilityB2Ein
         {
-            get { return _visibilityS8Ein; }
+            get { return _visibilityB2Ein; }
             set
             {
-                _visibilityS8Ein = value;
-                OnPropertyChanged(nameof(VisibilityS8Ein));
+                _visibilityB2Ein = value;
+                OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
 
-        private string _visibilityS8Aus;
+        private string _visibilityB2Aus;
 
-        public string VisibilityS8Aus
+        public string VisibilityB2Aus
         {
-            get { return _visibilityS8Aus; }
+            get { return _visibilityB2Aus; }
             set
             {
-                _visibilityS8Aus = value;
-                OnPropertyChanged(nameof(VisibilityS8Aus));
+                _visibilityB2Aus = value;
+                OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
         #endregion
