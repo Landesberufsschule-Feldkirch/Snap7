@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaternosterLager"
         mc:Ignorable="d"
-        Title="Paternosterlager" Height="450" Width="800">
+        Title="Paternosterlager" Height="850" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="12" Background="LightSkyBlue"/>
+
+        <Rectangle Grid.Column="5" Grid.Row="3" Grid.RowSpan="8" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>
+        <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Fill="Beige" />
+        <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Fill="Beige"/>
+
+
     </Grid>
 </Window>
