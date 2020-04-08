@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using PaternosterLager.ViewModel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -43,28 +42,18 @@ namespace PaternosterLager
 
         private void LagerHinzufuegen()
         {
-            Rectangle rect = new Rectangle
+            foreach(var kettengliedRegal in KomplettesKettenRegal.AlleKettengliedRegale)
             {
-                Width = 10,
-                Height = 10,
-                Fill = Brushes.Black
-            };
+                var myPath = new Path
+                {
+                    Fill = Brushes.LemonChiffon,
+                    Stroke = Brushes.Black,
+                    StrokeThickness = 1,
+                    Data = kettengliedRegal.GetKettengliedRegal()
+                };
 
-
-            Canvas.SetLeft(rect, 150 - 20 / 2);
-            Canvas.SetTop(rect, 0);
-
-            ZeichenFlaeche.Children.Add(rect);
-
-            foreach(KettengliedRegal kettengliedRegal in KomplettesKettenRegal.AlleKettengliedRegale)
-            {
-                Path myPath = new Path();
-                myPath.Fill = Brushes.LemonChiffon;
-                myPath.Stroke = Brushes.Black;
-                myPath.StrokeThickness = 1;
-                myPath.Data = kettengliedRegal.GetKettengliedRegal();
-
-                Canvas.SetLeft(myPath, 10);
+                Canvas.SetLeft(myPath, kettengliedRegal.getPosX());
+                Canvas.SetTop(myPath, kettengliedRegal.getPosY());
 
                 ZeichenFlaeche.Children.Add(myPath);
             }

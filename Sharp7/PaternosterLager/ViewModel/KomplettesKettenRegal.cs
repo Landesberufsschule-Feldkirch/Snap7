@@ -8,13 +8,17 @@
 
         public KomplettesKettenRegal()
         {
-            AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>
+            AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+            for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
+        }
+       
+
+         public void SetGeschwindigkeit(double geschwindigkeit)
+        {
+            foreach (var data in AlleKettengliedRegale)
             {
-                new KettengliedRegal(100,0),
-                new KettengliedRegal(100,100),
-                new KettengliedRegal(100,200),
-                new KettengliedRegal(100,300)
-            };
+                data.setGeschwindigkeit(geschwindigkeit);
+            }
         }
     }
 }

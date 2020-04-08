@@ -14,6 +14,8 @@
             mainWindow = mw;
             paternosterlager = pa;
 
+            ClickModeBtnAuf = "Press";
+            ClickModeBtnAb = "Press";
 
             SpsStatus = "-";
             SpsColor = "LightBlue";
@@ -24,7 +26,7 @@
         {
             while (true)
             {
-              
+
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -34,6 +36,12 @@
                 Thread.Sleep(10);
             }
         }
+
+        internal void TasterAuf() { paternosterlager.RichtungAuf = ClickModeButtonAuf(); }
+        internal void TasterAb() { paternosterlager.RichtungAb = ClickModeButtonAb(); }
+
+
+
 
 
 
@@ -62,6 +70,71 @@
             }
         }
         #endregion
+
+
+
+
+
+
+        #region ClickModeBtnAuf
+        public bool ClickModeButtonAuf()
+        {
+            if (ClickModeBtnAuf == "Press")
+            {
+                ClickModeBtnAuf = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnAuf = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnAuf;
+        public string ClickModeBtnAuf
+        {
+            get { return _clickModeBtnAuf; }
+            set
+            {
+                _clickModeBtnAuf = value;
+                OnPropertyChanged(nameof(ClickModeBtnAuf));
+            }
+        }
+        #endregion
+
+
+        #region ClickModeBtnAb
+        public bool ClickModeButtonAb()
+        {
+            if (ClickModeBtnAb == "Press")
+            {
+                ClickModeBtnAb = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnAb = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnAb;
+        public string ClickModeBtnAb
+        {
+            get { return _clickModeBtnAb; }
+            set
+            {
+                _clickModeBtnAb = value;
+                OnPropertyChanged(nameof(ClickModeBtnAb));
+            }
+        }
+        #endregion
+
+
+
+
+
 
 
 

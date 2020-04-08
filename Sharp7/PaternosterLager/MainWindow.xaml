@@ -42,6 +42,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
+        <Button Content="Aufwärts"  Grid.Column="10" Grid.ColumnSpan="3"    Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnAuf}" Command="{Binding BtnAuf}"/>
+        <Button Content="Abwärts"   Grid.Column="10" Grid.ColumnSpan="3"    Grid.Row="5" ClickMode="{Binding ViAnzeige.ClickModeBtnAb}" Command="{Binding BtnAb}"/>
+        
         <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="12" Background="LightSkyBlue"/>
 
         <Rectangle Grid.Column="5" Grid.Row="3" Grid.RowSpan="8" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>

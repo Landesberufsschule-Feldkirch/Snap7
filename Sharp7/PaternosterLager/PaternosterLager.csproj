@@ -61,7 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="KettengliedRegal.cs" />
+    <Compile Include="ViewModel\KettengliedRegal.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
     </Compile>
