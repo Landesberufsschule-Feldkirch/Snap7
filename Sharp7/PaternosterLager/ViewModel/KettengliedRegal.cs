@@ -1,6 +1,5 @@
 ﻿namespace PaternosterLager.ViewModel
 {
-    using System;
     using System.Windows;
     using System.Windows.Media;
 
@@ -8,11 +7,12 @@
     {
         public GeometryGroup KettengliedMitAllem { get; set; }
         private readonly int id;
-        private readonly double posX;
-        private readonly double posY;
-        private readonly double bewegung;
+        private double position;
 
-        private const double abstandY = 75;
+        private double posX;
+        private double posY;
+
+        private const double abstand = 75;
         private const double hoehelagerkiste = 30;
         private const double breitelagerkisted = 50;
         private const double hoeheKettenglied = 25;
@@ -22,8 +22,10 @@
         public KettengliedRegal(int i)
         {
             id = i;
-            posX = 100;
-            posY = id * abstandY;
+
+            position = id * abstand;
+
+            SetGeschwindigkeit(0);
 
             var lagerkiste = new RectangleGeometry(new Rect(-breitelagerkisted / 2, 1 * hoeheKettenglied - radiusZapfen, breitelagerkisted, hoehelagerkiste));
 
@@ -32,8 +34,8 @@
             var kettenglied3 = new RectangleGeometry(new Rect(-breiteKettenglied / 2, 2 * hoeheKettenglied, breiteKettenglied, hoeheKettenglied));
 
             var zapfen1 = new EllipseGeometry(new Point(0, 0 * hoeheKettenglied), radiusZapfen, radiusZapfen);
-            var zapfen2 = new EllipseGeometry(new Point(0,  1 * hoeheKettenglied), radiusZapfen, radiusZapfen);
-            var zapfen3 = new EllipseGeometry(new Point(0,  2 * hoeheKettenglied), radiusZapfen, radiusZapfen);
+            var zapfen2 = new EllipseGeometry(new Point(0, 1 * hoeheKettenglied), radiusZapfen, radiusZapfen);
+            var zapfen3 = new EllipseGeometry(new Point(0, 2 * hoeheKettenglied), radiusZapfen, radiusZapfen);
 
             KettengliedMitAllem = new GeometryGroup();
 
@@ -46,9 +48,13 @@
             KettengliedMitAllem.Children.Add(zapfen3);
         }
 
-        internal void setGeschwindigkeit(double geschwindigkeit)
+        internal void SetGeschwindigkeit(double geschwindigkeit)
         {
-            //throw new NotImplementedException();
+            position += geschwindigkeit;
+
+            var (x, y) = Model.PositionBestimmen.PositionBerechnen(position);
+            posX = x;
+            posY = y;
         }
 
         public Geometry GetKettengliedRegal() => KettengliedMitAllem;

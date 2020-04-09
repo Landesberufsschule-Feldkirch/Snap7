@@ -9,12 +9,13 @@ namespace PaternosterLager.Model
         public bool RichtungAb { get; set; }
         public double Geschwindigkeit { get; set; }
 
-        private const double tempo = 0.01;
+        private const double geschwindigkeit = 0.01;
+        private readonly MainWindow mainWindow;
 
-        private readonly KomplettesKettenRegal komplettesKettenRegal = new KomplettesKettenRegal();
-        public Paternosterlager()
+
+        public Paternosterlager(MainWindow mw)
         {
-
+            mainWindow = mw;
             System.Threading.Tasks.Task.Run(() => PaternosterLagerTask());
         }
 
@@ -22,15 +23,18 @@ namespace PaternosterLager.Model
         {
             while (true)
             {
-                if (RichtungAuf) Geschwindigkeit = tempo;
-                if (RichtungAb) Geschwindigkeit = -tempo;
 
-                komplettesKettenRegal.SetGeschwindigkeit(Geschwindigkeit);
+                if (mainWindow.KomplettesKettenRegal != null)
+                {
+                    if (RichtungAuf) mainWindow.KomplettesKettenRegal.SetGeschwindigkeit(geschwindigkeit);
+                    if (RichtungAb) mainWindow.KomplettesKettenRegal.SetGeschwindigkeit(-geschwindigkeit);
+                }
+
 
                 Thread.Sleep(10);
             }
         }
 
-      
+
     }
 }

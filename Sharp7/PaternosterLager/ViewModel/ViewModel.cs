@@ -11,7 +11,7 @@ namespace PaternosterLager.ViewModel
 
         public ViewModel(MainWindow mainWindow)
         {
-            paternosterlager = new Model.Paternosterlager();
+            paternosterlager = new Model.Paternosterlager(mainWindow);
             ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager);
         }
 

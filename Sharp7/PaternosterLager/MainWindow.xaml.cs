@@ -1,9 +1,6 @@
 ﻿using Kommunikation;
 using PaternosterLager.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace PaternosterLager
 {
@@ -29,8 +26,8 @@ namespace PaternosterLager
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            KomplettesKettenRegal = new KomplettesKettenRegal();
-            LagerHinzufuegen();
+            KomplettesKettenRegal = new KomplettesKettenRegal(this);
+            KomplettesKettenRegal.LagerHinzufuegen();
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
@@ -40,23 +37,6 @@ namespace PaternosterLager
             SetManualWindow.Show();
         }
 
-        private void LagerHinzufuegen()
-        {
-            foreach(var kettengliedRegal in KomplettesKettenRegal.AlleKettengliedRegale)
-            {
-                var myPath = new Path
-                {
-                    Fill = Brushes.LemonChiffon,
-                    Stroke = Brushes.Black,
-                    StrokeThickness = 1,
-                    Data = kettengliedRegal.GetKettengliedRegal()
-                };
-
-                Canvas.SetLeft(myPath, kettengliedRegal.getPosX());
-                Canvas.SetTop(myPath, kettengliedRegal.getPosY());
-
-                ZeichenFlaeche.Children.Add(myPath);
-            }
-        }
+      
     }
 }
