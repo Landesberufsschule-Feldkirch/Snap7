@@ -38,7 +38,7 @@
             {
                 AutomatikModusNochAktiv = false;
 
-                foreach (Behaelter beh in AlleBehaelter)
+                foreach (var beh in AlleBehaelter)
                 {
                     beh.PegelUeberwachen();
                     if (AutomatikModusAktiv && beh.AutomatikModus()) AutomatikModusNochAktiv = true;

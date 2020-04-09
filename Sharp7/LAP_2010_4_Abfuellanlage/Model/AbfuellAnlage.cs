@@ -48,7 +48,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 if (K1) AlleDosen[aktuelleDose].DosenVereinzeln();
 
                 B2 = false;
-                foreach (CampbellSoup dose in AlleDosen)
+                foreach (var dose in AlleDosen)
                 {
                     bool lichtschranke;
                     var stop = KollisionErkennen(dose);
@@ -65,7 +65,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             bool stop = false;
             var (lx, ly) = campbellSoup.GetRichtung();
 
-            foreach (CampbellSoup dose in AlleDosen)
+            foreach (var dose in AlleDosen)
             {
                 if (campbellSoup.ID != dose.ID)
                 {
@@ -84,7 +84,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         internal void AllesReset()
         {
             aktuelleDose = 0;
-            foreach (CampbellSoup dose in AlleDosen) { dose.Reset(); }
+            foreach (var dose in AlleDosen) { dose.Reset(); }
         }
     }
 }

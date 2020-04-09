@@ -58,12 +58,12 @@
             var Y_LKW_Parkposition = parkpositionLinks.Y + id * (10 + groesseLkw.Y);
 
             parkPosLinks = new Punkt(parkpositionLinks.X, Y_LKW_Parkposition);
-            Punkt KontrollPunktLinks1 = new Punkt(parkpositionLinks.X + 100, Y_LKW_Parkposition);
-            Punkt KontrollPunktLinks2 = new Punkt(endeLinkeKurve.X - 100, endeLinkeKurve.Y);
+            var KontrollPunktLinks1 = new Punkt(parkpositionLinks.X + 100, Y_LKW_Parkposition);
+            var KontrollPunktLinks2 = new Punkt(endeLinkeKurve.X - 100, endeLinkeKurve.Y);
 
             parkPosRechts = new Punkt(parkpositionRechts.X, Y_LKW_Parkposition);
-            Punkt KontrollPunktRechts1 = new Punkt(anfangRechteKurve.X + 100, anfangRechteKurve.Y);
-            Punkt KontrollPunktRechts2 = new Punkt(parkpositionRechts.X - 100, Y_LKW_Parkposition);
+            var KontrollPunktRechts1 = new Punkt(anfangRechteKurve.X + 100, anfangRechteKurve.Y);
+            var KontrollPunktRechts2 = new Punkt(parkpositionRechts.X - 100, Y_LKW_Parkposition);
 
             var WegPosLinks = new Punkt(endeLinkeKurve.X, endeLinkeKurve.Y);
             var WegPosRechts = new Punkt(anfangRechteKurve.X, anfangRechteKurve.Y);

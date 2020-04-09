@@ -54,7 +54,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 if (K2) AlleFlaschen[aktuelleFlasche].FlascheVereinzeln();
 
                 B1 = false;
-                foreach (Flaschen flasche in AlleFlaschen)
+                foreach (var flasche in AlleFlaschen)
                 {
                     var stop = KollisionErkennen(flasche);
                     bool lichtschranke;
@@ -71,7 +71,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             bool stop = false;
             var (lx, ly) = bierflasche.GetRichtung();
 
-            foreach (Flaschen flasche in AlleFlaschen)
+            foreach (var flasche in AlleFlaschen)
             {
                 if (bierflasche.ID != flasche.ID)
                 {
@@ -92,7 +92,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         {
             Pegel = 0.4;
             aktuelleFlasche = 0;
-            foreach (Flaschen flasche in AlleFlaschen) { flasche.Reset(); }
+            foreach (var flasche in AlleFlaschen) { flasche.Reset(); }
         }
     }
 }

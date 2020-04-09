@@ -29,7 +29,7 @@ namespace Utilities
 
         public Punkt Clone()
         {
-            Punkt p = new Punkt(X, Y);
+            var p = new Punkt(X, Y);
             return p;
         }
     }

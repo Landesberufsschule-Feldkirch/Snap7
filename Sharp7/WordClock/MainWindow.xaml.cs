@@ -31,14 +31,14 @@ namespace WordClock
 
         private void RotiertesRechteckHinzufuegen(double breite, double hoehe, double winkel)
         {
-            Rectangle rect = new Rectangle
+            var rect = new Rectangle
             {
                 Width = breite,
                 Height = hoehe,
                 Fill = Brushes.Black
             };
 
-            RotateTransform rotateTransform = new RotateTransform(winkel, breite / 2, 150);
+            var rotateTransform = new RotateTransform(winkel, breite / 2, 150);
             rect.RenderTransform = rotateTransform;
 
             Canvas.SetLeft(rect, 150 - breite / 2);

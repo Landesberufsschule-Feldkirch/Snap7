@@ -78,7 +78,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             {
                 while (true)
                 {
-                    List<DoubleDataPoint> yy = new List<DoubleDataPoint>()
+                    var yy = new List<DoubleDataPoint>()
                     {
                         kraftwerk.ManualVentilstellung,
                         kraftwerk.ManualErregerstrom,
@@ -91,7 +91,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
                     var x = watch.Elapsed;
 
-                    List<TimeSpanDataPoint> xx = new List<TimeSpanDataPoint>()
+                    var xx = new List<TimeSpanDataPoint>()
                     {
                         x,
                         x,

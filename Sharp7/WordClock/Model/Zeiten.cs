@@ -45,7 +45,7 @@ namespace WordClock.Model
                 var elapsed = (int)stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
 
-                TimeSpan tSpan = new TimeSpan(0, 0, 0, 0, elapsed * (int)geschwindigkeitZeit);
+                var tSpan = new TimeSpan(0, 0, 0, 0, elapsed * (int)geschwindigkeitZeit);
                 timeSpan = new TimeSpan(timeSpan.Ticks + tSpan.Ticks);
 
                 Stunde = (byte)timeSpan.Hours;
@@ -59,7 +59,7 @@ namespace WordClock.Model
 
         internal void SetCurrentTime()
         {
-            DateTime dateTime = DateTime.Now;
+            var dateTime = DateTime.Now;
             timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 

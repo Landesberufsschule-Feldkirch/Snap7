@@ -37,7 +37,7 @@
                 B3 = false;
                 B4 = false;
 
-                foreach (LastKraftWagen lkw in alleLkw)
+                foreach (var lkw in alleLkw)
                 {
                     var stop = KollisionErkennen(lkw);
                     var (b1, b2, b3, b4) = lkw.LastwagenFahren(stop);
@@ -56,7 +56,7 @@
             bool stop = false;
             var (lx, ly) = laster.GetRichtung();
 
-            foreach (LastKraftWagen lkw in alleLkw)
+            foreach (var lkw in alleLkw)
             {
                 if (laster.ID != lkw.ID)
                 {
@@ -76,7 +76,7 @@
         internal void TasterLkw3() { alleLkw[2].Losfahren(); }
         internal void TasterLkw4() { alleLkw[3].Losfahren(); }
         internal void TasterLkw5() { alleLkw[4].Losfahren(); }
-        internal void TasterLinksParken() { foreach (LastKraftWagen lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
-        internal void TasterRechtsParken() { foreach (LastKraftWagen lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
+        internal void TasterLinksParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
+        internal void TasterRechtsParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
     }
 }
