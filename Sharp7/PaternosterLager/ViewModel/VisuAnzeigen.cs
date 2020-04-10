@@ -9,6 +9,8 @@
         private readonly PaternosterLager.Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
+        private const double geschwindigkeit = 0.01;
+
         public VisuAnzeigen(MainWindow mw, PaternosterLager.Model.Paternosterlager pa)
         {
             mainWindow = mw;
@@ -26,7 +28,6 @@
         {
             while (true)
             {
-
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -37,8 +38,22 @@
             }
         }
 
-        internal void TasterAuf() { paternosterlager.RichtungAuf = ClickModeButtonAuf(); }
-        internal void TasterAb() { paternosterlager.RichtungAb = ClickModeButtonAb(); }
+        public void SetGeschwindigkeit(double geschwindigkeit)
+        {
+            foreach (var kettengliedRegal in paternosterlager.AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit);
+        }
+
+
+        internal void TasterAuf()
+        {
+            paternosterlager.RichtungAuf = ClickModeButtonAuf();
+            SetGeschwindigkeit(geschwindigkeit);
+        }
+        internal void TasterAb()
+        {
+            paternosterlager.RichtungAb = ClickModeButtonAb();
+            SetGeschwindigkeit(-geschwindigkeit);
+        }
 
 
 
@@ -74,8 +89,6 @@
 
 
 
-
-
         #region ClickModeBtnAuf
         public bool ClickModeButtonAuf()
         {
@@ -103,7 +116,6 @@
         }
         #endregion
 
-
         #region ClickModeBtnAb
         public bool ClickModeButtonAb()
         {
@@ -130,10 +142,6 @@
             }
         }
         #endregion
-
-
-
-
 
 
 
