@@ -5,6 +5,8 @@
 
         public double SynchVentil { get; set; }
         public double SynchErregerstrom { get; set; }
+        public Utilities.Rampen VentilRampe { get; set; }
+        public Utilities.Rampen ErregerstromRampe { get; set; }
 
         private readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
 
@@ -26,6 +28,9 @@
         {
             SpannungsFaktor = spannungsFaktor;
             DrehzahlFaktor = drehzahlFaktor;
+
+            VentilRampe = new Utilities.Rampen(0, 100, 0.05);
+            ErregerstromRampe = new Utilities.Rampen(0, 10, 0.01);
         }
 
         internal void Reset()

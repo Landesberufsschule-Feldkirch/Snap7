@@ -39,8 +39,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             {
                 if (mainWindow.DebugWindowAktiv)
                 {
-                    kraftwerk.Ventil_Y = ManualY();
-                    kraftwerk.Generator_Ie = ManualIe();
+                    kraftwerk.Ventil_Y = kraftwerk.generator.VentilRampe.GetWert(ManualY());
+                    kraftwerk.Generator_Ie = kraftwerk.generator.ErregerstromRampe.GetWert(ManualIe());
                 }
 
 

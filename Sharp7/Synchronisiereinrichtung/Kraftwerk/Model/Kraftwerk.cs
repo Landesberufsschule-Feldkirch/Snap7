@@ -65,7 +65,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         public double Netz_CosPhi { get; set; }
         public bool MessgeraetAnzeigen { get; set; }
         public bool MaschineTot { get; set; }
-        public Synchronisiereinrichtung.SynchronisierungAuswahl SynchAuswahl { get; set; }
+        public SynchronisierungAuswahl SynchAuswahl { get; set; }
         public double SpannungsDifferenz { get; set; }
         public double ManualVentilstellung { get; set; }
         public double ManualErregerstrom { get; set; }
@@ -132,15 +132,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             KraftwerkStarten = false;
         }
 
-
-        internal void Synchronisieren()
-        {
-            kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
-        }
-
-        internal void Reset()
-        {
-            kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
-        }
+        internal void Synchronisieren() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
+        internal void Reset() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
     }
 }
