@@ -34,7 +34,7 @@ namespace PaternosterLager.ViewModel
 
         #region BtnAb
         private ICommand _btnAb;
-        public ICommand BtnAbwaerts
+        public ICommand BtnAb
         {
             get
             {

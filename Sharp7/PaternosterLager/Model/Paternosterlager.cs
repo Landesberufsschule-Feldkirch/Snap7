@@ -4,6 +4,7 @@ using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PaternosterLager.Model
 {
@@ -22,9 +23,9 @@ namespace PaternosterLager.Model
         {
             mainWindow = mw;
 
-            AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
-            for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
-           
+            //  AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+            //  for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
+
             System.Threading.Tasks.Task.Run(() => PaternosterLagerTask());
         }
 
@@ -32,28 +33,22 @@ namespace PaternosterLager.Model
         {
             while (true)
             {
+                /*
+                Dispatcher.Invoke(() =>
+                {
+                    mainWindow.ZeichenFlaeche.Children.Clear();
 
+
+                });
+                */
                 Thread.Sleep(10);
             }
         }
 
-        public void LagerHinzufuegen()
-        {
-            foreach (var kettengliedRegal in AlleKettengliedRegale)
-            {
-                var myPath = new Path
-                {
-                    Fill = Brushes.LemonChiffon,
-                    Stroke = Brushes.Black,
-                    StrokeThickness = 1,
-                    Data = kettengliedRegal.GetKettengliedRegal()
-                };
 
-                Canvas.SetLeft(myPath, kettengliedRegal.getPosX());
-                Canvas.SetTop(myPath, kettengliedRegal.getPosY());
+     
 
-                mainWindow.ZeichenFlaeche.Children.Add(myPath);
-            }
-        }
+
+
     }
 }

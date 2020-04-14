@@ -1,12 +1,13 @@
 ﻿namespace PaternosterLager.ViewModel
 {
+    using System.Globalization;
     using System.Windows;
     using System.Windows.Media;
 
     public class KettengliedRegal
     {
         public GeometryGroup KettengliedMitAllem { get; set; }
-        private readonly int id;
+
         private double position;
 
         private double posX;
@@ -19,10 +20,8 @@
         private const double breiteKettenglied = 10;
         private const double radiusZapfen = 5;
 
-        public KettengliedRegal(int i)
+        public KettengliedRegal(int id)
         {
-            id = i;
-
             position = id * abstand;
 
             SetGeschwindigkeit(0);
@@ -37,6 +36,10 @@
             var zapfen2 = new EllipseGeometry(new Point(0, 1 * hoeheKettenglied), radiusZapfen, radiusZapfen);
             var zapfen3 = new EllipseGeometry(new Point(0, 2 * hoeheKettenglied), radiusZapfen, radiusZapfen);
 
+            var text = new FormattedText(id.ToString(), CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 12, Brushes.Black, 2);
+            var textgeometry = text.BuildGeometry(new Point(breitelagerkisted/2+5, hoeheKettenglied));
+
+
             KettengliedMitAllem = new GeometryGroup();
 
             KettengliedMitAllem.Children.Add(lagerkiste);
@@ -46,6 +49,7 @@
             KettengliedMitAllem.Children.Add(zapfen1);
             KettengliedMitAllem.Children.Add(zapfen2);
             KettengliedMitAllem.Children.Add(zapfen3);
+            KettengliedMitAllem.Children.Add(textgeometry);
         }
 
         internal void SetGeschwindigkeit(double geschwindigkeit)
@@ -58,7 +62,7 @@
         }
 
         public Geometry GetKettengliedRegal() => KettengliedMitAllem;
-        public double getPosX() => posX;
-        public double getPosY() => posY;
+        public double GetPosX() => posX;
+        public double GetPosY() => posY;
     }
 }

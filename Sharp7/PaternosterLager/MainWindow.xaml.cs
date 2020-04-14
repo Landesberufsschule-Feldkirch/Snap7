@@ -23,8 +23,9 @@ namespace PaternosterLager
             DataContext = viewModel;
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-
-            viewModel.paternosterlager.LagerHinzufuegen();
+            
+            
+          //  viewModel.paternosterlager.LagerHinzufuegen();
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
