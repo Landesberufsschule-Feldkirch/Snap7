@@ -8,14 +8,16 @@
             double x;
             double y;
 
-            if (pos > 100)
+            const double offset = 800;
+
+            if (pos > offset)
             {
-                x = 200;
-                y = pos - 100;
+                x =350;
+                y = pos - offset;
             }
             else
             {
-                x = 100;
+                x = 150;
                 y = pos;
             }
 

@@ -1,13 +1,8 @@
 ﻿namespace PaternosterLager.ViewModel
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Shapes;
-    using System.Windows.Threading;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -33,18 +28,17 @@
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
 
-            Thread t = new Thread(VisuAnzeigenTask);
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-
-            //System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
         private void VisuAnzeigenTask()
         {
-            bool lagerGezeichnet = false;
 
             while (true)
             {
+                if (paternosterlager.RichtungAuf) SetGeschwindigkeit(geschwindigkeit);
+                if (paternosterlager.RichtungAb) SetGeschwindigkeit(-geschwindigkeit);
+
+
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -52,52 +46,20 @@
                 }
 
 
-                if (mainWindow.ZeichenFlaeche != null && !lagerGezeichnet)
-                {
-                    lagerGezeichnet = true;
-                    LagerHinzufuegen();
-                }
-
                 Thread.Sleep(10);
             }
         }
 
-        public void LagerHinzufuegen()
-        {
 
-            foreach (var kettengliedRegal in AlleKettengliedRegale)
-            {
-                var myPath = new Path
-                {
-                    Fill = Brushes.LemonChiffon,
-                    Stroke = Brushes.Black,
-                    StrokeThickness = 1,
-                    Data = kettengliedRegal.GetKettengliedRegal()
-                };
-
-                Canvas.SetLeft(myPath, kettengliedRegal.GetPosX());
-                Canvas.SetTop(myPath, kettengliedRegal.GetPosY());
-
-                mainWindow.ZeichenFlaeche.Children.Add(myPath);
-            }
-        }
 
         public void SetGeschwindigkeit(double geschwindigkeit)
         {
-            foreach (var kettengliedRegal in paternosterlager.AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit);
+            foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit);
         }
 
 
-        internal void TasterAuf()
-        {
-            paternosterlager.RichtungAuf = ClickModeButtonAuf();
-            SetGeschwindigkeit(geschwindigkeit);
-        }
-        internal void TasterAb()
-        {
-            paternosterlager.RichtungAb = ClickModeButtonAb();
-            SetGeschwindigkeit(-geschwindigkeit);
-        }
+        internal void TasterAuf() { paternosterlager.RichtungAuf = ClickModeButtonAuf(); }
+        internal void TasterAb() { paternosterlager.RichtungAb = ClickModeButtonAb(); }
 
 
 
@@ -134,8 +96,8 @@
 
         #region KettengliederRegale
 
-        private ObservableCollection<KettengliedRegal> _alleKettengliedRegale;
-        public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
+        private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+        public ObservableCollection<KettengliedRegal> AlleKettengliedRegale 
         {
             get { return _alleKettengliedRegale; }
             set
