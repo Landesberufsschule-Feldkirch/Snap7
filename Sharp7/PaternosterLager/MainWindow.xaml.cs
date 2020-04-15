@@ -21,15 +21,11 @@ namespace PaternosterLager
 
             InitializeComponent();
             DataContext = viewModel;
-
-            S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-            
-            
-           viewModel.paternosterlager.LagerHinzufuegen(viewModel);
+            S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);                   
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
-        {
+        {            
             DebugWindowAktiv = true;
             SetManualWindow = new SetManual.SetManualWindow(viewModel);
             SetManualWindow.Show();

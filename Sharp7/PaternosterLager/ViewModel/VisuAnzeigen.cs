@@ -3,20 +3,27 @@
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
+    using System.Windows.Threading;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
 
-        private readonly PaternosterLager.Model.Paternosterlager paternosterlager;
+        private readonly Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
 
-        private const double geschwindigkeit = 0.1;
+        private const double geschwindigkeit = 1;
+        private bool updaten;
 
-        public VisuAnzeigen(MainWindow mw, PaternosterLager.Model.Paternosterlager pa)
+        public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa)
         {
             mainWindow = mw;
             paternosterlager = pa;
+
+            updaten = true;
 
             ClickModeBtnAuf = "Press";
             ClickModeBtnAb = "Press";
@@ -33,10 +40,42 @@
         private void VisuAnzeigenTask()
         {
 
+
+
             while (true)
             {
+
+
                 if (paternosterlager.RichtungAuf) SetGeschwindigkeit(geschwindigkeit);
                 if (paternosterlager.RichtungAb) SetGeschwindigkeit(-geschwindigkeit);
+
+
+                if (updaten)
+                {
+                    updaten = false;
+
+                    mainWindow.Dispatcher.Invoke(() =>
+                               {
+                                   mainWindow.ZeichenFlaeche.Children.Clear();
+
+                                   foreach (var kettengliedRegal in AlleKettengliedRegale)
+                                   {
+                                       var myPath = new Path
+                                       {
+                                           Fill = Brushes.LemonChiffon,
+                                           Stroke = Brushes.Black,
+                                           StrokeThickness = 1,
+                                           Data = kettengliedRegal.GetKettengliedRegal()
+                                       };
+
+                                       Canvas.SetLeft(myPath, kettengliedRegal.GetPosX());
+                                       Canvas.SetTop(myPath, kettengliedRegal.GetPosY());
+
+                                       mainWindow.ZeichenFlaeche.Children.Add(myPath);
+                                   }
+                               });
+                }
+
 
 
                 if (mainWindow.S7_1200 != null)
@@ -46,7 +85,7 @@
                 }
 
 
-                Thread.Sleep(10);
+                Thread.Sleep(100);
             }
         }
 
@@ -55,6 +94,8 @@
         public void SetGeschwindigkeit(double geschwindigkeit)
         {
             foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit);
+            AlleKettengliedRegale = AlleKettengliedRegale;
+            updaten = true;
         }
 
 
@@ -97,7 +138,7 @@
         #region KettengliederRegale
 
         private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
-        public ObservableCollection<KettengliedRegal> AlleKettengliedRegale 
+        public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
             get { return _alleKettengliedRegale; }
             set

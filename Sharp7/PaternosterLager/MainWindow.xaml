@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaternosterLager"
         mc:Ignorable="d"
-        Title="Paternosterlager" Height="850" Width="800">
+        Title="Paternosterlager" Height="850" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -20,7 +20,15 @@
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
 
@@ -30,9 +38,11 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
@@ -42,14 +52,154 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button Content="Aufwärts"  Grid.Column="10" Grid.ColumnSpan="3"    Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnAuf}" Command="{Binding BtnAuf}"/>
-        <Button Content="Abwärts"   Grid.Column="10" Grid.ColumnSpan="3"    Grid.Row="5" ClickMode="{Binding ViAnzeige.ClickModeBtnAb}" Command="{Binding BtnAb}"/>
-        
-        <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="12" Background="LightSkyBlue"/>
+        <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
+        <Label Grid.Column="14"  Grid.ColumnSpan="5" Grid.Row="12"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}"  />
+
+        <Rectangle Grid.Column="13" Grid.ColumnSpan="7" Grid.Row="2" Fill="LightCyan" Margin="35,0"/>
+        <Label Content="Position" Grid.Column="13" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14pt" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="42,8,0,8" Width="83"/>
+        <Label Content="00" Grid.Column="16" Grid.Row="2" FontSize="20pt" VerticalAlignment="Center" HorizontalAlignment="Right" />
+        <Rectangle Grid.Column="17"  Grid.Row="2" Fill="Black" Margin="4,0,4,0" RenderTransformOrigin="2,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="15"/>
+                    <TranslateTransform X="0.5" Y="1"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label Content="00" Grid.Column="18" Grid.Row="2" FontSize="20pt" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+        <Rectangle Grid.Column="13" Grid.ColumnSpan="7" Grid.Row="3" Grid.RowSpan="9" Fill="LightGreen" Margin="35,35,35,35"/>
+
+
+        <Button Content="7" Grid.Column="14" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[7]}" Command="{Binding BtnBuchstabe}" CommandParameter="7" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="8" Grid.Column="16" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[8]}" Command="{Binding BtnBuchstabe}" CommandParameter="8" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="9" Grid.Column="18" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[9]}" Command="{Binding BtnBuchstabe}" CommandParameter="9" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="7" Grid.Column="14" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[7]}" Command="{Binding BtnBuchstabe}" CommandParameter="7" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="8" Grid.Column="16" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[8]}" Command="{Binding BtnBuchstabe}" CommandParameter="8" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="9" Grid.Column="18" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[9]}" Command="{Binding BtnBuchstabe}" CommandParameter="9" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <Button Content="7" Grid.Column="14" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[7]}" Command="{Binding BtnBuchstabe}" CommandParameter="7" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="8" Grid.Column="16" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[8]}" Command="{Binding BtnBuchstabe}" CommandParameter="8" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="9" Grid.Column="18" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[9]}" Command="{Binding BtnBuchstabe}" CommandParameter="9" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <Button Content="0" Grid.Column="14" Grid.Row="10" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[0]}" Command="{Binding BtnBuchstabe}" CommandParameter="0" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Start" Grid.Column="16" Grid.ColumnSpan="3" Grid.Row="10" Width="110" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[10]}" Command="{Binding BtnBuchstabe}" CommandParameter="10" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <Polygon Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="3" Fill="Green" Stroke="Black" StrokeThickness="2">
+            <Polygon.Points>
+                <Point X="40" Y="5" />
+                <Point X="75" Y="70" />
+                <Point X="50" Y="70" />
+                <Point X="50" Y="145" />
+                <Point X="30" Y="145" />
+                <Point X="30" Y="70" />
+                <Point X="5"  Y="70" />
+            </Polygon.Points>
+        </Polygon>
+
+        <Polygon Grid.Column="16" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="3" Fill="Green" Stroke="Black" StrokeThickness="2">
+            <Polygon.Points>
+                <Point X="60"  Y="5" />
+                <Point X="80"  Y="5" />
+                <Point X="80"  Y="80" />
+                <Point X="105"  Y="80" />
+                <Point X="70"  Y="145" />
+                <Point X="35"  Y="80" />
+                <Point X="60"  Y="80" />
+            </Polygon.Points>
+        </Polygon>
+
+
+        <Button Content="Aufwärts"  Grid.Column="12"    Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtnAuf}" Command="{Binding BtnAuf}"/>
+        <Button Content="Abwärts"   Grid.Column="12"    Grid.Row="10" ClickMode="{Binding ViAnzeige.ClickModeBtnAb}" Command="{Binding BtnAb}"/>
+
+        <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="12" Background="LightGray"/>
 
         <Rectangle Grid.Column="5" Grid.Row="3" Grid.RowSpan="8" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>
         <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Fill="Beige" />
         <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Fill="Beige"/>
+
+
+
 
 
     </Grid>
