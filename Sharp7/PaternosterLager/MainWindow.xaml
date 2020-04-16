@@ -69,7 +69,7 @@
         <Rectangle Grid.Column="13" Grid.ColumnSpan="7" Grid.Row="2" Fill="LightCyan" Margin="35,0"/>
         <Label Content="Position" Grid.Column="13" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14pt" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="42,8,0,8" Width="83"/>
         <Label Content="{Binding ViAnzeige.IstPosition}" Grid.Column="16" Grid.Row="2" FontSize="20pt" VerticalAlignment="Center" HorizontalAlignment="Right" />
-        <Rectangle Grid.Column="17"  Grid.Row="2" Fill="Black" Margin="4,0,4,0" RenderTransformOrigin="2,0.5">
+        <Rectangle Grid.Column="17"  Grid.Row="2" Fill="Black" Margin="4,6,4,6" RenderTransformOrigin="2,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

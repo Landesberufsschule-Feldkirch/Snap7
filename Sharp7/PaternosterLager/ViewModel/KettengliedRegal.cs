@@ -13,7 +13,8 @@
 
         private double position;
 
-        private const double abstand = 75;
+
+        private const double abstand = 117.2;
         private const double hoehelagerkiste = 30;
         private const double breitelagerkisted = 50;
         private const double hoeheKettenglied = 25;
@@ -57,8 +58,8 @@
             if (mainWindow.FensterAktiv)
             {
                 mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(0, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(25, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(50, Brushes.Green));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(39, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(78, Brushes.Cyan));
             }
         }
 
@@ -71,7 +72,7 @@
                 Fill = farbe
             };
 
-            var (x, y) = Model.PositionBestimmen.PositionBerechnen(position + offset);
+            var (x, y) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserZapfen);
             Canvas.SetLeft(zapfen, x);
             Canvas.SetTop(zapfen, y);
 
@@ -79,13 +80,9 @@
         }
 
 
-        internal void SetGeschwindigkeit(double geschwindigkeit)
-        {
-            position += geschwindigkeit;
 
 
-        }
-
+        internal void SetGeschwindigkeit(double geschwindigkeit) => position += geschwindigkeit;
         public Geometry GetKettengliedRegal() => KettengliedMitAllem;
     }
 }
