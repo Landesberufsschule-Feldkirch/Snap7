@@ -1,27 +1,25 @@
-﻿namespace PaternosterLager.Model
+﻿using System;
+
+namespace PaternosterLager.Model
 {
     public static class PositionBestimmen
     {
 
         public static (double x, double y) PositionBerechnen(double pos)
         {
-            double x;
+            double x = 350;
             double y;
 
-            const double offset = 800;
+            double obenBahn = 50;
+            double linksBahn = 150;
+            double breiteBahn = 200;
+            double hoeheBahn = 850;
+            double umfangBahn;
 
-            if (pos > offset)
-            {
-                x =350;
-                y = pos - offset;
-            }
-            else
-            {
-                x = 150;
-                y = pos;
-            }
+            umfangBahn = 2 * hoeheBahn + Math.PI * breiteBahn;
 
-
+            y = obenBahn + hoeheBahn / 2;
+  
 
             return (x, y);
         }

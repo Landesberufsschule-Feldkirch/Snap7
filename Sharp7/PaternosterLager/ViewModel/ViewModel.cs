@@ -17,6 +17,21 @@ namespace PaternosterLager.ViewModel
 
         public Model.Paternosterlager Paternosterlager{ get { return paternosterlager; } }
 
+        #region BtnBuchstabe
+        private ICommand _btnBuchstabe;
+        public ICommand BtnBuchstabe
+        {
+            get
+            {
+                if (_btnBuchstabe == null)
+                {
+                    _btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe);
+                }
+                return _btnBuchstabe;
+            }
+        }
+        #endregion
+
         #region BtnAuf
         private ICommand _btnAuf;
         public ICommand BtnAuf

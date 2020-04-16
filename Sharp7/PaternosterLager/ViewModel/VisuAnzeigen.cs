@@ -3,80 +3,51 @@
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Shapes;
-    using System.Windows.Threading;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-
         private readonly Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
-
-        private const double geschwindigkeit = 1;
-        private bool updaten;
+        private const double geschwindigkeit = 2;
 
         public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa)
         {
             mainWindow = mw;
             paternosterlager = pa;
 
-            updaten = true;
+            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
             ClickModeBtnAuf = "Press";
             ClickModeBtnAb = "Press";
 
+            IstPosition = "00";
+            SollPosition = "00";
+
             SpsStatus = "-";
             SpsColor = "LightBlue";
-
 
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
+
         private void VisuAnzeigenTask()
         {
-
-
-
             while (true)
             {
-
-
                 if (paternosterlager.RichtungAuf) SetGeschwindigkeit(geschwindigkeit);
                 if (paternosterlager.RichtungAb) SetGeschwindigkeit(-geschwindigkeit);
 
-
-                if (updaten)
+                if (mainWindow.FensterAktiv)
                 {
-                    updaten = false;
-
                     mainWindow.Dispatcher.Invoke(() =>
                                {
-                                   mainWindow.ZeichenFlaeche.Children.Clear();
-
-                                   foreach (var kettengliedRegal in AlleKettengliedRegale)
-                                   {
-                                       var myPath = new Path
-                                       {
-                                           Fill = Brushes.LemonChiffon,
-                                           Stroke = Brushes.Black,
-                                           StrokeThickness = 1,
-                                           Data = kettengliedRegal.GetKettengliedRegal()
-                                       };
-
-                                       Canvas.SetLeft(myPath, kettengliedRegal.GetPosX());
-                                       Canvas.SetTop(myPath, kettengliedRegal.GetPosY());
-
-                                       mainWindow.ZeichenFlaeche.Children.Add(myPath);
-                                   }
+                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();
+                                   foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow);
                                });
                 }
-
-
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -84,27 +55,22 @@
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 
-
                 Thread.Sleep(100);
             }
         }
 
-
-
-        public void SetGeschwindigkeit(double geschwindigkeit)
+        internal void Buchstabe(object buchstabe)
         {
-            foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit);
-            AlleKettengliedRegale = AlleKettengliedRegale;
-            updaten = true;
+            if (buchstabe is string ascii)
+            {
+                var asciiCode = ascii[0];
+                if (ClickModeButton(asciiCode)) paternosterlager.Zeichen = asciiCode; else paternosterlager.Zeichen = ' ';
+            }
         }
 
-
-        internal void TasterAuf() { paternosterlager.RichtungAuf = ClickModeButtonAuf(); }
-        internal void TasterAb() { paternosterlager.RichtungAb = ClickModeButtonAb(); }
-
-
-
-
+        public void SetGeschwindigkeit(double geschwindigkeit) { foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit); }
+        internal void TasterAuf() => paternosterlager.RichtungAuf = ClickModeButtonAuf();
+        internal void TasterAb() => paternosterlager.RichtungAb = ClickModeButtonAb();
 
 
         #region SPS Status und Farbe
@@ -134,7 +100,6 @@
         #endregion
 
 
-
         #region KettengliederRegale
 
         private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
@@ -151,10 +116,33 @@
         #endregion
 
 
+        #region ClickModeAlleButtons
+        public bool ClickModeButton(int AsciiCode)
+        {
+            if (ClickModeBtn[AsciiCode] == "Press")
+            {
+                ClickModeBtn[AsciiCode] = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtn[AsciiCode] = "Press";
+            }
+            return false;
+        }
 
+        private ObservableCollection<string> _clickModeBtn = new ObservableCollection<string>();
 
-
-
+        public ObservableCollection<string> ClickModeBtn
+        {
+            get { return _clickModeBtn; }
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+        #endregion
 
         #region ClickModeBtnAuf
         public bool ClickModeButtonAuf()
@@ -212,6 +200,31 @@
 
 
 
+        #region IstPosition
+        private string _istPosition;
+        public string IstPosition
+        {
+            get { return _istPosition; }
+            set
+            {
+                _istPosition = value;
+                OnPropertyChanged(nameof(IstPosition));
+            }
+        }
+        #endregion
+
+        #region SollPosition
+        private string _sollPosition;
+        public string SollPosition
+        {
+            get { return _sollPosition; }
+            set
+            {
+                _sollPosition = value;
+                OnPropertyChanged(nameof(SollPosition));
+            }
+        }
+        #endregion
 
         #region iNotifyPeropertyChanged Members
 

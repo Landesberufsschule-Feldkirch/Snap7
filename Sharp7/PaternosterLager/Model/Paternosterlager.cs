@@ -10,7 +10,9 @@ namespace PaternosterLager.Model
         public bool RichtungAb { get; set; }
         public double Geschwindigkeit { get; set; }
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale { get; set; }
-
+        public char Zeichen { get; internal set; }
+        public bool PolygonAuf { get; internal set; }
+        public bool PolygonAb { get; internal set; }
 
         private readonly MainWindow mainWindow;
 
