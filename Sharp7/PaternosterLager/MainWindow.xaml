@@ -204,14 +204,17 @@
 
         <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="22" Background="LightGray">
 
-            <Rectangle Canvas.Left="362" Canvas.Top="92" Width="10" Height="50" Fill="Azure" RenderTransformOrigin="0.5,0.5">
+           
+
+            <Rectangle Canvas.Left="97.5" Canvas.Top="97.5" Width="10" Height="33" Fill="Azure" RenderTransformOrigin="0,0"   Stroke="Black" StrokeThickness="1" >
                 <Rectangle.LayoutTransform>
                     <TransformGroup>
-                        <RotateTransform Angle="25"/>
+                        <RotateTransform Angle="0"/>
                     </TransformGroup>
                 </Rectangle.LayoutTransform>
             </Rectangle>
-
+            
+            <Ellipse Canvas.Left="100" Canvas.Top="100" Width="5" Height="5" Fill="Blue"/>
         </Canvas>
 
         <Rectangle Grid.Column="5" Grid.Row="3" Grid.RowSpan="17" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>

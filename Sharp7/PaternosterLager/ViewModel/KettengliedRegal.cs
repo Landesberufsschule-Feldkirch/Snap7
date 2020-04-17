@@ -14,10 +14,10 @@
         private double position;
 
 
-        private const double abstand = 117.2;
+        private const double abstand = 99.2;
         private const double hoehelagerkiste = 30;
         private const double breitelagerkisted = 50;
-        private const double hoeheKettenglied = 25;
+        private const double hoeheKettenglied = abstand / 3;
         private const double breiteKettenglied = 10;
         private const double durchmesserZapfen = 5;
 
@@ -57,11 +57,15 @@
         {
             if (mainWindow.FensterAktiv)
             {
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(0, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(39, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(78, Brushes.Cyan));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(0 * hoeheKettenglied, Brushes.Black));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(1 * hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(2 * hoeheKettenglied, Brushes.Cyan));
+
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(0 * hoeheKettenglied, hoeheKettenglied, Brushes.Black));
             }
         }
+
+
 
         internal Ellipse ZapfenZeichnen(double offset, SolidColorBrush farbe)
         {
@@ -79,7 +83,28 @@
             return zapfen;
         }
 
+        internal Rectangle KettengliedZeichnen(double offset, double abstand, SolidColorBrush farbe)
+        {
 
+            double posOffset = (breiteKettenglied - durchmesserZapfen) / 2;
+
+            var (x, y, phi) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, position + offset + abstand, posOffset, durchmesserZapfen, breiteKettenglied, hoeheKettenglied);
+
+            var kettenglied = new Rectangle
+            {
+                Width = breiteKettenglied,
+                Height = hoeheKettenglied,
+                Stroke = farbe,
+                StrokeThickness = 1
+            };
+
+            kettenglied.LayoutTransform = new RotateTransform(phi, 0, 0);
+
+            Canvas.SetLeft(kettenglied, x);
+            Canvas.SetTop(kettenglied, y);
+
+            return kettenglied;
+        }
 
 
         internal void SetGeschwindigkeit(double geschwindigkeit) => position += geschwindigkeit;
