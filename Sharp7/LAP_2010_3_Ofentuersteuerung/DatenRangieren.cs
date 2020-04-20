@@ -4,7 +4,7 @@ namespace LAP_2010_3_Ofentuersteuerung
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.VewModel ofensteuerungViewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         private enum BitPosAusgang
         {
@@ -25,24 +25,24 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, ofensteuerungViewModel.ofentuerSteuerung.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, ofensteuerungViewModel.ofentuerSteuerung.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, ofensteuerungViewModel.ofentuerSteuerung.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, ofensteuerungViewModel.ofentuerSteuerung.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, ofensteuerungViewModel.ofentuerSteuerung.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, ofensteuerungViewModel.ofentuerSteuerung.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.ofentuerSteuerung.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.ofentuerSteuerung.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.ofentuerSteuerung.B3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.ofentuerSteuerung.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.ofentuerSteuerung.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, viewModel.ofentuerSteuerung.S3);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            ofensteuerungViewModel.ofentuerSteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            ofensteuerungViewModel.ofentuerSteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            ofensteuerungViewModel.ofentuerSteuerung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            viewModel.ofentuerSteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            viewModel.ofentuerSteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            viewModel.ofentuerSteuerung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
         }
 
-        public DatenRangieren(ViewModel.VewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
-            ofensteuerungViewModel = vm;
+            viewModel = vm;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace LAP_2010_1_Kompressoranlage
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.ViewModel vewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         private enum BitPosAusgang
         {
@@ -26,25 +26,25 @@ namespace LAP_2010_1_Kompressoranlage
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, vewModel.kompressoranlage.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, vewModel.kompressoranlage.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F1, vewModel.kompressoranlage.F1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, vewModel.kompressoranlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, vewModel.kompressoranlage.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.kompressoranlage.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.kompressoranlage.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, viewModel.kompressoranlage.F1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.kompressoranlage.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.kompressoranlage.S2);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            vewModel.kompressoranlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            vewModel.kompressoranlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            vewModel.kompressoranlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            vewModel.kompressoranlage.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
-            vewModel.kompressoranlage.Q3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
+            viewModel.kompressoranlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            viewModel.kompressoranlage.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            viewModel.kompressoranlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            viewModel.kompressoranlage.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            viewModel.kompressoranlage.Q3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)
         {
-            vewModel = vm;
+            viewModel = vm;
         }
     }
 }

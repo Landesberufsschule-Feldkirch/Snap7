@@ -3,12 +3,12 @@
     using LAP_2010_3_Ofentuersteuerung.Commands;
     using System.Windows.Input;
 
-    public class VewModel
+    public class ViewModel
     {
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_3_Ofentuersteuerung.Model.OfentuerSteuerung ofentuerSteuerung;
 
-        public VewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow)
         {
             ofentuerSteuerung = new Model.OfentuerSteuerung();
             ViAnzeige = new VisuAnzeigen(mainWindow, ofentuerSteuerung);

@@ -10,11 +10,11 @@ namespace LAP_2010_3_Ofentuersteuerung
         public SetManual.SetManual SetManualWindow { get; set; }
 
         private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.VewModel viewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            viewModel = new ViewModel.VewModel(this);
+            viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
