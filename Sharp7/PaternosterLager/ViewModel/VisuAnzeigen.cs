@@ -24,12 +24,17 @@
             IstPosition = "00";
             SollPosition = "00";
 
+            VisibilityB1Ein = "hidden";
+            VisibilityB1Aus = "visible";
+
+            VisibilityB2Ein = "Visible";
+            VisibilityB2Aus = "Hidden";
+
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
-            //for (var i = 0; i < 15; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
@@ -41,11 +46,17 @@
                 if (paternosterlager.RichtungAuf) SetGeschwindigkeit(geschwindigkeit);
                 if (paternosterlager.RichtungAb) SetGeschwindigkeit(-geschwindigkeit);
 
+                SichtbarkeitB1(paternosterlager.B1);
+                SichtbarkeitB2(paternosterlager.B2);
+
                 if (mainWindow.FensterAktiv)
                 {
                     mainWindow.Dispatcher.Invoke(() =>
                                {
-                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();
+                                   if (mainWindow.FensterAktiv)
+                                   {
+                                       mainWindow.ZeichenFlaeche.Children.Clear();
+                                   }
                                    foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow);
                                });
                 }
@@ -96,6 +107,84 @@
             {
                 _spsColor = value;
                 OnPropertyChanged(nameof(SpsColor));
+            }
+        }
+        #endregion
+
+
+        #region Sichtbarkeit B1
+        public void SichtbarkeitB1(bool val)
+        {
+            if (val)
+            {
+                VisibilityB1Ein = "visible";
+                VisibilityB1Aus = "hidden";
+            }
+            else
+            {
+                VisibilityB1Ein = "hidden";
+                VisibilityB1Aus = "visible";
+            }
+        }
+
+        private string _VisibilityB1Ein;
+        public string VisibilityB1Ein
+        {
+            get { return _VisibilityB1Ein; }
+            set
+            {
+                _VisibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
+            }
+        }
+
+        private string _VisibilityB1Aus;
+        public string VisibilityB1Aus
+        {
+            get { return _VisibilityB1Aus; }
+            set
+            {
+                _VisibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
+            }
+        }
+        #endregion
+
+        #region Sichtbarkeit B2
+        public void SichtbarkeitB2(bool val)
+        {
+            if (val)
+            {
+                VisibilityB2Ein = "Visible";
+                VisibilityB2Aus = "Hidden";
+            }
+            else
+            {
+                VisibilityB2Ein = "Hidden";
+                VisibilityB2Aus = "Visible";
+            }
+        }
+
+        private string _VisibilityB2Ein;
+        public string VisibilityB2Ein
+        {
+            get { return _VisibilityB2Ein; }
+            set
+            {
+                _VisibilityB2Ein = value;
+                OnPropertyChanged(nameof(VisibilityB2Ein));
+            }
+        }
+
+        private string _VisibilityB2Aus;
+
+        public string VisibilityB2Aus
+        {
+            get { return _VisibilityB2Aus; }
+            set
+            {
+                _VisibilityB2Aus = value;
+                OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
         #endregion

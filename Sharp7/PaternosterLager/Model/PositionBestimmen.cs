@@ -5,7 +5,7 @@ namespace PaternosterLager.Model
     public static class PositionBestimmen
     {
         private const double obenBahn = 50;
-        private const double linksBahn = 150;
+        private const double linksBahn = 100;
         private const double breiteBahn = 200;
         private const double hoeheBahn = 670;// gesamte Höhe: 850
 

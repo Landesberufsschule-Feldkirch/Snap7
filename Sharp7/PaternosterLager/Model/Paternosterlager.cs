@@ -14,6 +14,9 @@ namespace PaternosterLager.Model
         public bool PolygonAuf { get; internal set; }
         public bool PolygonAb { get; internal set; }
 
+        public bool B1 { get; set; }
+        public bool B2 { get; set; }
+
         private readonly MainWindow mainWindow;
 
 
