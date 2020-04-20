@@ -32,10 +32,10 @@ namespace PaternosterLager
             SetManualWindow.Show();
         }
 
-        private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.PolygonAuf = true;
-        private void PolygonAufReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.PolygonAuf = false;
-        private void PolygonAbPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.PolygonAb = true;
-        private void PolygonAbReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.PolygonAb = false;
+        private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S1 = true;
+        private void PolygonAufReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S1 = false;
+        private void PolygonAbPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S2 = true;
+        private void PolygonAbReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S2 = false;
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) => FensterAktiv = false;
     }
 }

@@ -5,7 +5,6 @@ namespace PaternosterLager.ViewModel
 {
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly PaternosterLager.Model.Paternosterlager paternosterlager;
 
@@ -55,7 +54,7 @@ namespace PaternosterLager.ViewModel
             {
                 if (_btnAb == null)
                 {
-                    _btnAb = new RelayCommand(p =>ViAnzeige.TasterAb(), p => true);
+                    _btnAb = new RelayCommand(p => ViAnzeige.TasterAb(), p => true);
                 }
                 return _btnAb;
             }

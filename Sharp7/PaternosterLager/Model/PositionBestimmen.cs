@@ -7,8 +7,10 @@ namespace PaternosterLager.Model
         private const double obenBahn = 50;
         private const double linksBahn = 100;
         private const double breiteBahn = 200;
-        private const double hoeheBahn = 670;// gesamte Höhe: 850
+        private const double hoeheBahn = 670;
 
+        public static double GetGesamtLaenge(double breiteZapfen)=>  2 * hoeheBahn + Math.PI * (breiteBahn + breiteZapfen);
+       
         public static (double x, double y) ZapfenPositionBerechnen(double pos, double breiteZapfen)
         {
             double x;
@@ -23,6 +25,8 @@ namespace PaternosterLager.Model
             double segmentMitBogenOben = segmentRechtsSenkrecht + rundungBogen;
             double segmentMitLinksSenkrecht = segmentMitBogenOben + hoeheBahn;
             double segmentMitBogenUnten = segmentMitLinksSenkrecht + rundungBogen;
+
+            if (pos > GetGesamtLaenge(breiteZapfen)) pos -= GetGesamtLaenge(breiteZapfen);
 
             if (pos < segmentRechtsSenkrecht)
             {
@@ -73,15 +77,13 @@ namespace PaternosterLager.Model
         {
             double x;
             double xAnfang;
-            double xEnde;            
+            double xEnde;
             double y;
             double yAnfang;
-            double yEnde;
             double phi;
 
-
             (xAnfang, yAnfang) = ZapfenPositionBerechnen(posAnfang, breiteZapfen);
-            (xEnde, yEnde) = ZapfenPositionBerechnen(posEnde, breiteZapfen);
+            (xEnde, _) = ZapfenPositionBerechnen(posEnde, breiteZapfen);
 
             if (xAnfang == xEnde)
             {
@@ -96,7 +98,6 @@ namespace PaternosterLager.Model
                 y = yAnfang - posOffset;
                 phi = 45;
             }
-
 
             return (x, y, phi);
         }

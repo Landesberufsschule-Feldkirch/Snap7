@@ -9,7 +9,6 @@
         private readonly Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
-        private const double geschwindigkeit = 2;
 
         public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa)
         {
@@ -41,10 +40,12 @@
 
         private void VisuAnzeigenTask()
         {
+            paternosterlager.GesamtLaenge = AlleKettengliedRegale[0].GetGesamtLaenge();
+
             while (true)
             {
-                if (paternosterlager.RichtungAuf) SetGeschwindigkeit(geschwindigkeit);
-                if (paternosterlager.RichtungAb) SetGeschwindigkeit(-geschwindigkeit);
+                IstPosition = paternosterlager.IstPos.ToString("D2");
+                SollPosition = paternosterlager.SollPos.ToString("D2");
 
                 SichtbarkeitB1(paternosterlager.B1);
                 SichtbarkeitB2(paternosterlager.B2);
@@ -57,7 +58,7 @@
                                    {
                                        mainWindow.ZeichenFlaeche.Children.Clear();
                                    }
-                                   foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow);
+                                   foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow, paternosterlager.Position);
                                });
                 }
 
@@ -80,9 +81,8 @@
             }
         }
 
-        public void SetGeschwindigkeit(double geschwindigkeit) { foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.SetGeschwindigkeit(geschwindigkeit); }
-        internal void TasterAuf() => paternosterlager.RichtungAuf = ClickModeButtonAuf();
-        internal void TasterAb() => paternosterlager.RichtungAb = ClickModeButtonAb();
+        internal void TasterAuf() => paternosterlager.ManualAuf = ClickModeButtonAuf();
+        internal void TasterAb() => paternosterlager.ManualAb = ClickModeButtonAb();
 
 
         #region SPS Status und Farbe

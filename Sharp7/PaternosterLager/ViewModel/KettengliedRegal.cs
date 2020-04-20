@@ -1,6 +1,5 @@
 ﻿namespace PaternosterLager.ViewModel
 {
-    using System.Globalization;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
@@ -8,8 +7,6 @@
 
     public class KettengliedRegal
     {
-        public GeometryGroup KettengliedMitAllem { get; set; }
-
         private double position;
         private readonly int id;
 
@@ -25,29 +22,27 @@
             this.id = id;
             position = id * abstand;
 
-            SetGeschwindigkeit(0);          
-        }
+            SetGeschwindigkeit(0);
+        }        
 
-        internal void Zeichnen(MainWindow mainWindow)
+        internal void Zeichnen(MainWindow mainWindow, double pos)
         {
             if (mainWindow.FensterAktiv)
             {
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(0 * hoeheKettenglied, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(1 * hoeheKettenglied, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(2 * hoeheKettenglied, Brushes.Cyan));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * hoeheKettenglied, Brushes.Black));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * hoeheKettenglied, Brushes.Cyan));
 
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(0 * hoeheKettenglied, hoeheKettenglied, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(1 * hoeheKettenglied, hoeheKettenglied, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(2 * hoeheKettenglied, hoeheKettenglied, Brushes.Cyan));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * hoeheKettenglied, hoeheKettenglied, Brushes.Black));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * hoeheKettenglied, hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * hoeheKettenglied, hoeheKettenglied, Brushes.Cyan));
 
-                mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(1 * hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
 
-                mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(1 * hoeheKettenglied, id));
+                mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * hoeheKettenglied, id));
             }
         }
-
-
-
+               
         internal Ellipse ZapfenZeichnen(double offset, SolidColorBrush farbe)
         {
             var zapfen = new Ellipse
@@ -119,6 +114,6 @@
         }
 
         internal void SetGeschwindigkeit(double geschwindigkeit) => position += geschwindigkeit;
-        public Geometry GetKettengliedRegal() => KettengliedMitAllem;
+        internal double GetGesamtLaenge() =>  Model.PositionBestimmen.GetGesamtLaenge(durchmesserZapfen);      
     }
 }

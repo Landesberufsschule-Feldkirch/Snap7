@@ -5,44 +5,48 @@ namespace PaternosterLager
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
-        private readonly ViewModel.ViewModel vewModel;
+        private readonly ViewModel.ViewModel viewModel;
 
         private enum BitPosAusgang
         {
-            H1 = 0, // Störung
-            H2,     // Betriebsbereit
-            K1,     // Netzschütz
-            K2,     // Sternschütz
-            K3      // Dreieckschütz
+            Q1 = 0, // Aufwärts
+            Q2      // Abwärts
         }
 
         private enum BitPosEingang
         {
-            F5 = 0, // Störung Motorschutzschalter
-            S1,     // Taster Aus
-            S2,     // Taster Ein
-            S7,     // Druckschalter
-            S8      // Temperaturfühler Kompressor
+            B1 = 0, // Initiator Regal 0
+            B2,     // Initiator irgendein Regal
+            S1,     // Auf
+            S2      // Ab
         }
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.F5, vewModel.kompressoranlage.F5);
-            */
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.paternosterlager.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.paternosterlager.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
+
+            S7.SetUint8At(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            /*
-            vewModel.kompressoranlage.H1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.H1);
-            */
+            if (!mainWindow.DebugWindowAktiv)
+            {
+                viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            }
+
+            viewModel.paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
+            viewModel.paternosterlager.SollPos= S7.GetUint8At(digOutput, 2);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
             mainWindow = mw;
-            vewModel = vm;
+            viewModel = vm;
         }
     }
 }

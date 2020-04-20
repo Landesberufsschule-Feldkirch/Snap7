@@ -64,7 +64,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
-        <Label Grid.Column="14"  Grid.ColumnSpan="5" Grid.Row="16"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}"  />
+        <Label Grid.Column="16"  Grid.ColumnSpan="8" Grid.Row="17"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}"  />
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
 
