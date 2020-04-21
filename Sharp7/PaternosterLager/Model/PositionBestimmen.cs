@@ -1,105 +1,126 @@
 ﻿using System;
+using Utilities;
 
 namespace PaternosterLager.Model
 {
+
+
+
     public static class PositionBestimmen
     {
-        private const double obenBahn = 50;
-        private const double linksBahn = 100;
-        private const double breiteBahn = 200;
-        private const double hoeheBahn = 670;
+        private static readonly Punkt zentrumOben = new Punkt(200, 150);
+        private static readonly Punkt zentrumUnten = new Punkt(200, 820);
+        private const double radiusUmlenkung = 100;
 
-        public static double GetGesamtLaenge(double breiteZapfen)=>  2 * hoeheBahn + Math.PI * (breiteBahn + breiteZapfen);
-       
-        public static (double x, double y) ZapfenPositionBerechnen(double pos, double breiteZapfen)
+
+        public static double GetGesamtLaenge(double breiteBolzen) => 2 * 670 + breiteBolzen + Math.PI * (2 * radiusUmlenkung + breiteBolzen);
+
+        public static (double x, double y, bool rechtsOben) ZapfenPositionBerechnen(double pos, double breiteBolzen)
         {
             double x;
             double y;
-            double bogenX;
-            double bogenY;
-            double posAnteil;
+            bool rechtsOben;
+            double senkrechterTeil = zentrumUnten.Y - zentrumOben.Y;
+            double positionRest;
             double bogenwinkel;
-            double bogenRadius = (breiteBahn + breiteZapfen) / 2;
+            double bogenRadius = radiusUmlenkung + breiteBolzen / 2;
             double rundungBogen = Math.PI * bogenRadius;
-            double segmentRechtsSenkrecht = hoeheBahn / 2;
+            double segmentRechtsSenkrecht = senkrechterTeil / 2;
             double segmentMitBogenOben = segmentRechtsSenkrecht + rundungBogen;
-            double segmentMitLinksSenkrecht = segmentMitBogenOben + hoeheBahn;
+            double segmentMitLinksSenkrecht = segmentMitBogenOben + senkrechterTeil;
             double segmentMitBogenUnten = segmentMitLinksSenkrecht + rundungBogen;
 
-            if (pos > GetGesamtLaenge(breiteZapfen)) pos -= GetGesamtLaenge(breiteZapfen);
+            if (pos > GetGesamtLaenge(breiteBolzen)) pos -= GetGesamtLaenge(breiteBolzen);
 
             if (pos < segmentRechtsSenkrecht)
             {
                 // rechts rauf
-                posAnteil = pos;
-                x = linksBahn + breiteBahn;
-                y = obenBahn + bogenRadius + segmentRechtsSenkrecht - posAnteil;
+                rechtsOben = true;
+                positionRest = pos;
+                x = zentrumOben.X + bogenRadius;
+                y = zentrumOben.Y + segmentRechtsSenkrecht - positionRest;
             }
             else if (pos < segmentMitBogenOben)
             {
                 // obere Rundung
-                posAnteil = pos - segmentRechtsSenkrecht;
-                bogenwinkel = posAnteil / bogenRadius; // Winkel in rad
-                bogenX = bogenRadius * Math.Cos(bogenwinkel);
-                bogenY = bogenRadius * Math.Sin(bogenwinkel);
-                x = linksBahn + breiteBahn / 2 - breiteZapfen / 2 + bogenX;
-                y = obenBahn + breiteBahn / 2 - breiteZapfen - bogenY;
+                rechtsOben = true;
+                positionRest = pos - segmentRechtsSenkrecht;
+                bogenwinkel = positionRest / bogenRadius; // Winkel in rad
+                x = zentrumOben.X + bogenRadius * Math.Cos(bogenwinkel);
+                y = zentrumOben.Y - bogenRadius * Math.Sin(bogenwinkel);
             }
             else if (pos < segmentMitLinksSenkrecht)
             {
                 // links runter
-                posAnteil = pos - segmentMitBogenOben;
-                x = linksBahn - breiteZapfen;
-                y = obenBahn + bogenRadius + posAnteil;
+                rechtsOben = false;
+                positionRest = pos - segmentMitBogenOben;
+                x = zentrumOben.X - bogenRadius;
+                y = zentrumOben.Y + positionRest;
             }
             else if (pos < segmentMitBogenUnten)
             {
                 // untere Rundung
-                posAnteil = pos - segmentMitLinksSenkrecht;
-                bogenwinkel = posAnteil / bogenRadius; // Winkel in rad
-                bogenX = bogenRadius * Math.Cos(bogenwinkel);
-                bogenY = bogenRadius * Math.Sin(bogenwinkel);
-                x = linksBahn + breiteBahn / 2 - breiteZapfen / 2 - bogenX;
-                y = obenBahn + hoeheBahn + bogenRadius + breiteZapfen + bogenY;
+                rechtsOben = false;
+                positionRest = pos - segmentMitLinksSenkrecht;
+                bogenwinkel = Math.PI - positionRest / bogenRadius; // Winkel in rad
+                x = zentrumUnten.X + bogenRadius * Math.Cos(bogenwinkel);
+                y = zentrumUnten.Y + bogenRadius * Math.Sin(bogenwinkel) + 1.5 * breiteBolzen;
             }
             else
             {
                 // rechts rauf
-                posAnteil = pos - segmentMitBogenUnten;
-                x = linksBahn + breiteBahn;
-                y = obenBahn + bogenRadius + hoeheBahn - posAnteil;
+                rechtsOben = true;
+                positionRest = pos - segmentMitBogenUnten;
+                x = zentrumUnten.X + radiusUmlenkung + breiteBolzen / 2;
+                y = zentrumUnten.Y - positionRest;
             }
 
-            return (x, y);
+            return (x, y, rechtsOben);
         }
 
-        public static (double x, double y, double phi) KettengliedPositionBerechnen(double posAnfang, double posEnde, double posOffset, double breiteZapfen, double breiteKettenglied, double hoeheKettenglied)
+        public static (double x, double y, double phi, bool rechtsOben) KettengliedPositionBerechnen(double posAnfang, double posEnde, double breiteZapfen, double breiteKettenglied, double hoeheKettenglied)
         {
+
+            bool rechtsOben;
             double x;
             double xAnfang;
             double xEnde;
             double y;
             double yAnfang;
+            double yEnde;
             double phi;
+            bool rechtsObenAnfang;
+            bool rechtsObenEnde;
 
-            (xAnfang, yAnfang) = ZapfenPositionBerechnen(posAnfang, breiteZapfen);
-            (xEnde, _) = ZapfenPositionBerechnen(posEnde, breiteZapfen);
+
+            (xAnfang, yAnfang, rechtsObenAnfang) = ZapfenPositionBerechnen(posAnfang, breiteZapfen);
+            (xEnde, yEnde, rechtsObenEnde) = ZapfenPositionBerechnen(posEnde, breiteZapfen);
+
+            x = xAnfang;
+            y = yAnfang;
 
             if (xAnfang == xEnde)
             {
-                x = xAnfang - posOffset;
-                y = yAnfang - posOffset;
                 phi = 0;
             }
             else
             {
 
-                x = xAnfang - posOffset;
-                y = yAnfang - posOffset;
-                phi = 45;
+                if (rechtsObenAnfang)
+                {
+
+                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((yEnde - yAnfang) / (xEnde - xAnfang)));
+                }
+                else
+                {
+                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((yAnfang - yEnde) / (xAnfang - xEnde)));
+
+                }
+
+
             }
 
-            return (x, y, phi);
+            return (x, y, phi, rechtsObenAnfang);
         }
     }
 }

@@ -68,6 +68,13 @@
 
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
 
+        <Button Grid.Column="11" Grid.Row="1" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <Rectangle Grid.Column="16" Grid.ColumnSpan="7" Grid.Row="2" Fill="LightCyan" Margin="35,0"/>
         <Label Content="Position" Grid.Column="16" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14pt" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="42,8,0,8" Width="83"/>
@@ -202,11 +209,22 @@
             </Polygon.Points>
         </Polygon>
 
-        <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="22" />
-
-        <Rectangle Grid.Column="4" Grid.Row="3" Grid.RowSpan="17" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>
+        <Rectangle Grid.Column="3" Grid.Row="4" Grid.RowSpan="16" Fill="Red" Margin="0,0,48,0"/>
+        <Rectangle Grid.Column="6" Grid.Row="4" Grid.RowSpan="16" Fill="Red" Margin="48,0,0,0"/>
+        
         <Ellipse Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5"  Width="200" Height="200" Fill="Beige" Margin="0,0,0,10" />
         <Ellipse Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="18" Grid.RowSpan="4" Width="200" Height="200" Fill="Beige"/>
+        
+        <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="22" />
+
+
+
+
+
+        <Rectangle Grid.Column="4" Grid.Row="3" Grid.RowSpan="17" Fill="Cyan" Grid.ColumnSpan="2" Margin="25,0"/>
+     
+
+
 
         <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Height="70" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" Margin="0,15,30,15"/>
         <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Width="70"  Visibility="{Binding ViAnzeige.VisibilityB1Ein}" Margin="0,15,30,15"/>

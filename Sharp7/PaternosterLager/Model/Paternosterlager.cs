@@ -21,6 +21,9 @@ namespace PaternosterLager.Model
         public int IstPos { get; set; }
         public int SollPos { get; set; }
         public double Position { get; set; }
+
+
+
         public double GesamtLaenge { get; set; }
 
         private readonly MainWindow mainWindow;
@@ -65,5 +68,8 @@ namespace PaternosterLager.Model
                 Thread.Sleep(10);
             }
         }
+
+        internal void AllesReset() => Position = 0;
+
     }
 }

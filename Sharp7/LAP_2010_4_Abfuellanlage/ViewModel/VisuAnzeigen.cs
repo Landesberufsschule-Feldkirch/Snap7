@@ -649,7 +649,7 @@
 
 
 
-        #region Sichtbarkeit S7
+        #region Sichtbarkeit B1
         public void SichtbarkeitB1(bool val)
         {
             if (val)

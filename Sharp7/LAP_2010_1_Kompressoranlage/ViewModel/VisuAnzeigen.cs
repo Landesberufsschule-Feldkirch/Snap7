@@ -53,10 +53,10 @@
                 FarbeQ1(kompressoranlage.Q1);
                 FarbeQ2(kompressoranlage.Q2);
                 FarbeQ3(kompressoranlage.Q3);
-                FarbeS7(kompressoranlage.B1);
+                FarbeB1(kompressoranlage.B1);
 
-                SichtbarkeitS7(kompressoranlage.B1);
-                SichtbarkeitS8(kompressoranlage.B2);
+                SichtbarkeitB1(kompressoranlage.B1);
+                SichtbarkeitB2(kompressoranlage.B2);
 
                 if (kompressoranlage.Q2 && kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
@@ -266,7 +266,7 @@
         #endregion
 
         #region Color S7
-        public void FarbeS7(bool val)
+        public void FarbeB1(bool val)
         {
             if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red";
         }
@@ -298,8 +298,8 @@
         }
         #endregion
 
-        #region Sichtbarkeit S7
-        public void SichtbarkeitS7(bool val)
+        #region Sichtbarkeit B1
+        public void SichtbarkeitB1(bool val)
         {
             if (val)
             {
@@ -336,8 +336,8 @@
         }
         #endregion
 
-        #region Sichtbarkeit S8
-        public void SichtbarkeitS8(bool val)
+        #region Sichtbarkeit B2
+        public void SichtbarkeitB2(bool val)
         {
             if (val)
             {
