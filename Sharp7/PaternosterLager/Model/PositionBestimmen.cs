@@ -9,11 +9,11 @@ namespace PaternosterLager.Model
     public static class PositionBestimmen
     {
         private static readonly Punkt zentrumOben = new Punkt(200, 150);
-        private static readonly Punkt zentrumUnten = new Punkt(200, 820);
+        private static readonly Punkt zentrumUnten = new Punkt(200, 150 + 680);
         private const double radiusUmlenkung = 100;
 
 
-        public static double GetGesamtLaenge(double breiteBolzen) => 2 * 670 + breiteBolzen + Math.PI * (2 * radiusUmlenkung + breiteBolzen);
+        public static double GetGesamtLaenge(double breiteBolzen) => 2 * 680 + breiteBolzen + Math.PI * (2 * radiusUmlenkung + breiteBolzen);
 
         public static (double x, double y, bool rechtsOben) ZapfenPositionBerechnen(double pos, double breiteBolzen)
         {
@@ -64,7 +64,7 @@ namespace PaternosterLager.Model
                 positionRest = pos - segmentMitLinksSenkrecht;
                 bogenwinkel = Math.PI - positionRest / bogenRadius; // Winkel in rad
                 x = zentrumUnten.X + bogenRadius * Math.Cos(bogenwinkel);
-                y = zentrumUnten.Y + bogenRadius * Math.Sin(bogenwinkel) + 1.5 * breiteBolzen;
+                y = zentrumUnten.Y + bogenRadius * Math.Sin(bogenwinkel);
             }
             else
             {
