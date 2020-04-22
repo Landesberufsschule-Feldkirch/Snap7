@@ -103,13 +103,13 @@ namespace PaternosterLager.Model
             double yNochDanach;
             double phi;
 
-            (xVorher, yVorher, zeichenBereichVorher) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
+            (xVorher, yVorher, zeichenBereichVorher) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied + breiteKettenglied, breiteZapfen);
             (xDavor, yDavor, zeichenBereichDavor) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
             (x, y, zeichenBereich) = ZapfenPositionBerechnen(posZapfen, breiteZapfen);
             (xDanach, yDanach, zeichenBereichDanach) = ZapfenPositionBerechnen(posZapfen + hoeheKettenglied, breiteZapfen);
             (xNochDanach, yNochDanach, zeichenBereichNochDanach) = ZapfenPositionBerechnen(posZapfen + 2 * hoeheKettenglied, breiteZapfen);
 
-
+            phi = 0;
 
             if (x != xDavor)
             {
@@ -120,19 +120,16 @@ namespace PaternosterLager.Model
                 }
                 else
                 {
-                    if (zeichenBereich == Zeichenbereich.links)
-                    {
-                        phi = 0;
-                        return (x, y, phi, zeichenBereich);
-                    }
-                    //phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDanach) / (x - xDanach)));
-                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                    if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
+                    if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
+
+                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
                     return (xVorher, yVorher, phi, zeichenBereich);
                 }
             }
 
-            phi = 0;
-            return (x, y, phi, zeichenBereich);
+
+            return (x, y, 0, zeichenBereich);
         }
     }
 }

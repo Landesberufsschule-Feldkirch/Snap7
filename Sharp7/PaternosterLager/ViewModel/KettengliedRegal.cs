@@ -10,17 +10,22 @@
         private double position;
         private readonly int id;
 
-        private const double abstand = 99.2;
-        private const double hoehelagerkiste = 30;
-        private const double breitelagerkisted = 60;
-        private const double hoeheKettenglied = abstand / 3;
+        private readonly double hoeheKettenglied;
+
+        private const double hoehelagerkiste = 40;
+        private const double breitelagerkisted = 80;
+
         private const double breiteKettenglied = 10;
         private const double durchmesserBolzen = 6;
 
         public KettengliedRegal(int id)
         {
             this.id = id;
-            position = id * abstand;
+
+            var abstandLagerkisten = Model.PositionBestimmen.GetGesamtLaenge(durchmesserBolzen) / 20;
+            hoeheKettenglied = abstandLagerkisten / 3;
+
+            position = id * abstandLagerkisten;
             SetGeschwindigkeit(0);
         }
 
@@ -28,7 +33,7 @@
         {
             if (mainWindow.FensterAktiv)
             {
-                if (id % 2 == 0)
+                if (id % 1 == 0)
                 {
                     mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * hoeheKettenglied, Brushes.Black));
                     mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
@@ -64,6 +69,11 @@
 
         internal Rectangle KettengliedZeichnen(double offset, double staerke, SolidColorBrush farbe)
         {
+
+            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
+
+            if (positionUndRichtung == Model.Zeichenbereich.unten) staerke = 2;
+
             var kettenglied = new Rectangle
             {
                 Width = breiteKettenglied,
@@ -72,7 +82,6 @@
                 StrokeThickness = staerke
             };
 
-            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
 
             switch (positionUndRichtung)
             {
@@ -116,7 +125,7 @@
                 Width = breitelagerkisted,
                 Height = hoehelagerkiste,
                 Stroke = farbe,
-                StrokeThickness = 1
+                StrokeThickness = 3
             };
 
             var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
