@@ -21,7 +21,6 @@
         {
             this.id = id;
             position = id * abstand;
-
             SetGeschwindigkeit(0);
         }
 
@@ -29,18 +28,18 @@
         {
             if (mainWindow.FensterAktiv)
             {
-                if ((id % 2) == 0)
+                if (id % 2 == 0)
                 {
                     mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * hoeheKettenglied, Brushes.Black));
                     mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
                     mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * hoeheKettenglied, Brushes.Cyan));
-                   
-                                      mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * hoeheKettenglied, hoeheKettenglied, 1, Brushes.Black));
-                                      mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * hoeheKettenglied, hoeheKettenglied, 2, Brushes.Red));
-                                      mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * hoeheKettenglied, hoeheKettenglied, 3, Brushes.Cyan));
 
-                                      mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
-                          /*                */
+                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * hoeheKettenglied, 1, Brushes.Black));
+                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * hoeheKettenglied, 1, Brushes.Red));
+                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * hoeheKettenglied, 1, Brushes.Cyan));
+
+                    mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
+
                     mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * hoeheKettenglied, id));
                 }
 
@@ -63,12 +62,8 @@
             return bolzen;
         }
 
-        internal Rectangle KettengliedZeichnen(double offset, double abstand, double staerke, SolidColorBrush farbe)
+        internal Rectangle KettengliedZeichnen(double offset, double staerke, SolidColorBrush farbe)
         {
-            double posOffset = (breiteKettenglied - durchmesserBolzen) / 2;
-
-            var (x, y, phi, rechtsOben) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, position + offset + abstand, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
-
             var kettenglied = new Rectangle
             {
                 Width = breiteKettenglied,
@@ -77,19 +72,36 @@
                 StrokeThickness = staerke
             };
 
-            if (rechtsOben)
+            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
+
+            switch (positionUndRichtung)
             {
-                kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
-                kettenglied.RenderTransform = new RotateTransform(phi);
-                Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
-                Canvas.SetTop(kettenglied, y - breiteKettenglied / 2);
-            }
-            else
-            {
-                kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
-                kettenglied.RenderTransform = new RotateTransform(phi);
-                Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
-                Canvas.SetTop(kettenglied, y - hoeheKettenglied + 4 * posOffset);
+                case Model.Zeichenbereich.rechts:
+                case Model.Zeichenbereich.oben:
+                    kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
+                    kettenglied.RenderTransform = new RotateTransform(phi);
+                    Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
+                    Canvas.SetTop(kettenglied, y - breiteKettenglied / 2);
+                    break;
+
+
+
+                case Model.Zeichenbereich.links:
+                    kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
+                    kettenglied.RenderTransform = new RotateTransform(phi);
+                    Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
+                    Canvas.SetTop(kettenglied, y + breiteKettenglied / 2 - hoeheKettenglied);
+                    break;
+
+                case Model.Zeichenbereich.unten:
+                    kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
+                    kettenglied.RenderTransform = new RotateTransform(phi);
+                    Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
+                    Canvas.SetTop(kettenglied, y - breiteKettenglied / 2);
+                    break;
+
+                default:
+                    break;
             }
 
 
@@ -107,7 +119,7 @@
                 StrokeThickness = 1
             };
 
-            var (x, y, rechtsOben) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
+            var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
             Canvas.SetLeft(lagerKiste, x - breitelagerkisted / 2);
             Canvas.SetTop(lagerKiste, y);
 
@@ -122,7 +134,7 @@
                 FontSize = 14
             };
 
-            var (x, y, rechtsOben) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
+            var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
             Canvas.SetLeft(beschriftung, x + breitelagerkisted / 2);
             Canvas.SetTop(beschriftung, y);
 
