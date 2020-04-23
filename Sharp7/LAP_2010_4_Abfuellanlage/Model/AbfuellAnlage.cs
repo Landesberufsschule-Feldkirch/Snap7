@@ -7,7 +7,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
     {
         public List<CampbellSoup> AlleDosen { get; set; }
         public bool S1 { get; set; } // Taster Reset
-        public bool S2 { get; set; } // Taster Start       
+        public bool S2 { get; set; } // Taster Start
         public bool B1 { get; set; } // Behälter Füllstand
         public bool B2 { get; set; } // Position Dose Füllen
         public bool Q1 { get; set; } // Motor Förderband
@@ -15,7 +15,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
         public bool K2 { get; set; } // Spule Füllen
         public bool P1 { get; set; } // Meldeleuchte Behälter Leer
         public double Pegel { get; set; }
-
 
         private readonly int anzahlDosen;
         private int aktuelleDose;
@@ -80,7 +79,11 @@ namespace LAP_2010_4_Abfuellanlage.Model
             return stop;
         }
 
-        internal void Nachfuellen() { Pegel = 1; }
+        internal void Nachfuellen()
+        {
+            Pegel = 1;
+        }
+
         internal void AllesReset()
         {
             aktuelleDose = 0;

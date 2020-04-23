@@ -64,7 +64,6 @@
             B_45
         }
 
-
         public void RangierenInput(byte[] digInput, byte[] _)
         {
             S7.SetBitAt(digInput, (int)BitPosEingang.B_01, viewModel.stiegenhausBeleuchtung.GetBewegungsmelder(1));

@@ -41,7 +41,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
             System.Threading.Tasks.Task.Run(() => AbfuellanlageTask());
         }
 
-
         private void AbfuellanlageTask()
         {
             double LeerGeschwindigkeit = 0.001;
@@ -86,8 +85,16 @@ namespace LAP_2018_2_Abfuellanlage.Model
             return stop;
         }
 
-        internal void TasterNachfuellen() { Pegel = 1; }
-        internal void TasterF1() { if (F1) F1 = false; else F1 = true; }
+        internal void TasterNachfuellen()
+        {
+            Pegel = 1;
+        }
+
+        internal void TasterF1()
+        {
+            if (F1) F1 = false; else F1 = true;
+        }
+
         internal void AllesReset()
         {
             Pegel = 0.4;

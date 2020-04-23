@@ -25,7 +25,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             B3,     // Sensor Überdruck
             F1,     // Motorstörung
             S1,     // Taster Start
-            S2,     // Taster Stop       
+            S2,     // Taster Stop
             S3      // Taster Quittieren
         }
 

@@ -8,23 +8,17 @@ namespace SynchronisiereinrichtungTests
         [InlineData(0, 0, 10, 0)]
         [InlineData(0, 100, 100, 0)]
         [InlineData(0, 100, 10, 0)]
-
         [InlineData(90, 25, 10, 0)]
         [InlineData(90, 125, 10, 0)]
-
         [InlineData(180, 50, 10, 0)]
         [InlineData(180, 500, 1, 0)]
-
         [InlineData(270, 75, 10, 0)]
-
         public void WinkelBerechnen(int exp, int time, double freq, int winkel)
         {
             var res = Synchronisiereinrichtung.kraftwerk.Model.DrehstromZeiger.WinkelBerechnen(time, freq, winkel);
             res %= 360; // Ergebnis ist z.T. 360
             Assert.Equal(exp, res);
         }
-
-
 
         [Theory]
         [InlineData(230.94, 0, 0, 400)]

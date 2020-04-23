@@ -6,6 +6,7 @@ namespace LAP_2010_5_Pumpensteuerung
     {
         private readonly MainWindow mainWindow;
         private readonly LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel viewModel;
+
         private enum BitPosAusgang
         {
             P1 = 0, // "Pumpe Ein"

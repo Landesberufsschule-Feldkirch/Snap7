@@ -9,6 +9,7 @@
     {
         private readonly Model.AlleLastKraftWagen alleLastKraftWagen;
         private readonly MainWindow mainWindow;
+
         public VisuAnzeigen(MainWindow mw, Model.AlleLastKraftWagen alleLKW)
         {
             mainWindow = mw;
@@ -49,6 +50,7 @@
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
+
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -79,6 +81,7 @@
                 Thread.Sleep(10);
             }
         }
+
         public void DatenRangieren_AmpelChangedEvent(object sender, AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs e)
         {
             FarbeLinksRot(false);
@@ -88,7 +91,6 @@
             FarbeRechtsRot(false);
             FarbeRechtsGelb(false);
             FarbeRechtsGruen(false);
-
 
             switch (e.AmpelZustandLinks)
             {
@@ -139,9 +141,10 @@
             }
         }
 
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -153,6 +156,7 @@
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -162,17 +166,18 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
-
+        #endregion SPS Status und Farbe
 
         #region Color B1
+
         public void FarbeB1(bool val)
         {
             if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
         }
 
         private string _colorB1;
+
         public string ColorB1
         {
             get { return _colorB1; }
@@ -182,15 +187,18 @@
                 OnPropertyChanged(nameof(ColorB1));
             }
         }
-        #endregion
+
+        #endregion Color B1
 
         #region Color B2
+
         public void FarbeB2(bool val)
         {
             if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
         }
 
         private string _colorB2;
+
         public string ColorB2
         {
             get { return _colorB2; }
@@ -200,15 +208,18 @@
                 OnPropertyChanged(nameof(ColorB2));
             }
         }
-        #endregion
+
+        #endregion Color B2
 
         #region Color B3
+
         public void FarbeB3(bool val)
         {
             if (val) ColorB3 = "Red"; else ColorB3 = "LightGray";
         }
 
         private string _colorB3;
+
         public string ColorB3
         {
             get { return _colorB3; }
@@ -218,15 +229,18 @@
                 OnPropertyChanged(nameof(ColorB3));
             }
         }
-        #endregion
+
+        #endregion Color B3
 
         #region Color B4
+
         public void FarbeB4(bool val)
         {
             if (val) ColorB4 = "Red"; else ColorB4 = "LightGray";
         }
 
         private string _colorB4;
+
         public string ColorB4
         {
             get { return _colorB4; }
@@ -236,17 +250,18 @@
                 OnPropertyChanged(nameof(ColorB4));
             }
         }
-        #endregion
 
-
+        #endregion Color B4
 
         #region ColorLinksRot
+
         public void FarbeLinksRot(bool val)
         {
             if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White";
         }
 
         private string _colorLinksRot;
+
         public string ColorLinksRot
         {
             get { return _colorLinksRot; }
@@ -256,15 +271,18 @@
                 OnPropertyChanged(nameof(ColorLinksRot));
             }
         }
-        #endregion
+
+        #endregion ColorLinksRot
 
         #region ColorLinksGelb
+
         public void FarbeLinksGelb(bool val)
         {
             if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White";
         }
 
         private string _colorLinksGelb;
+
         public string ColorLinksGelb
         {
             get { return _colorLinksGelb; }
@@ -274,15 +292,18 @@
                 OnPropertyChanged(nameof(ColorLinksGelb));
             }
         }
-        #endregion
+
+        #endregion ColorLinksGelb
 
         #region ColorLinksGruen
+
         public void FarbeLinksGruen(bool val)
         {
             if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White";
         }
 
         private string _colorLinksGruen;
+
         public string ColorLinksGruen
         {
             get { return _colorLinksGruen; }
@@ -292,15 +313,18 @@
                 OnPropertyChanged(nameof(ColorLinksGruen));
             }
         }
-        #endregion
+
+        #endregion ColorLinksGruen
 
         #region ColorRechtsRot
+
         public void FarbeRechtsRot(bool val)
         {
             if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White";
         }
 
         private string _colorRechtsRot;
+
         public string ColorRechtsRot
         {
             get { return _colorRechtsRot; }
@@ -310,15 +334,18 @@
                 OnPropertyChanged(nameof(ColorRechtsRot));
             }
         }
-        #endregion
+
+        #endregion ColorRechtsRot
 
         #region ColorRechtsGelb
+
         public void FarbeRechtsGelb(bool val)
         {
             if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White";
         }
 
         private string _colorRechtsGelb;
+
         public string ColorRechtsGelb
         {
             get { return _colorRechtsGelb; }
@@ -328,15 +355,18 @@
                 OnPropertyChanged(nameof(ColorRechtsGelb));
             }
         }
-        #endregion
+
+        #endregion ColorRechtsGelb
 
         #region ColorRechtsGruen
+
         public void FarbeRechtsGruen(bool val)
         {
             if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White";
         }
 
         private string _colorRechtsGruen;
+
         public string ColorRechtsGruen
         {
             get { return _colorRechtsGruen; }
@@ -346,17 +376,18 @@
                 OnPropertyChanged(nameof(ColorRechtsGruen));
             }
         }
-        #endregion
 
-
+        #endregion ColorRechtsGruen
 
         #region RichtungLkw1
+
         public void RichtungLkw1(LkwRichtungen val)
         {
             if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1;
         }
 
         private int _directionLkw1;
+
         public int DirectionLkw1
         {
             get { return _directionLkw1; }
@@ -366,15 +397,18 @@
                 OnPropertyChanged(nameof(DirectionLkw1));
             }
         }
-        #endregion
+
+        #endregion RichtungLkw1
 
         #region RichtungLkw2
+
         public void RichtungLkw2(LkwRichtungen val)
         {
             if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1;
         }
 
         private int _directionLkw2;
+
         public int DirectionLkw2
         {
             get { return _directionLkw2; }
@@ -384,15 +418,18 @@
                 OnPropertyChanged(nameof(DirectionLkw2));
             }
         }
-        #endregion
+
+        #endregion RichtungLkw2
 
         #region RichtungLkw3
+
         public void RichtungLkw3(LkwRichtungen val)
         {
             if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1;
         }
 
         private int _directionLkw3;
+
         public int DirectionLkw3
         {
             get { return _directionLkw3; }
@@ -402,15 +439,18 @@
                 OnPropertyChanged(nameof(DirectionLkw3));
             }
         }
-        #endregion
+
+        #endregion RichtungLkw3
 
         #region RichtungLkw4
+
         public void RichtungLkw4(LkwRichtungen val)
         {
             if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1;
         }
 
         private int _directionLkw4;
+
         public int DirectionLkw4
         {
             get { return _directionLkw4; }
@@ -420,15 +460,18 @@
                 OnPropertyChanged(nameof(DirectionLkw4));
             }
         }
-        #endregion
+
+        #endregion RichtungLkw4
 
         #region RichtungLkw5
+
         public void RichtungLkw5(LkwRichtungen val)
         {
             if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1;
         }
 
         private int _directionLkw5;
+
         public int DirectionLkw5
         {
             get { return _directionLkw5; }
@@ -438,11 +481,11 @@
                 OnPropertyChanged(nameof(DirectionLkw5));
             }
         }
-        #endregion
 
-
+        #endregion RichtungLkw5
 
         #region PositionLkw1
+
         public void PositionLkw1(Punkt pos)
         {
             PosLkw1Left = pos.X;
@@ -450,6 +493,7 @@
         }
 
         private double _posLkw1Left;
+
         public double PosLkw1Left
         {
             get { return _posLkw1Left; }
@@ -459,7 +503,9 @@
                 OnPropertyChanged(nameof(PosLkw1Left));
             }
         }
+
         private double _posLkw1Top;
+
         public double PosLkw1Top
         {
             get { return _posLkw1Top; }
@@ -469,9 +515,11 @@
                 OnPropertyChanged(nameof(PosLkw1Top));
             }
         }
-        #endregion
+
+        #endregion PositionLkw1
 
         #region PositionLkw2
+
         public void PositionLkw2(Punkt pos)
         {
             PosLkw2Left = pos.X;
@@ -479,6 +527,7 @@
         }
 
         private double _posLkw2Left;
+
         public double PosLkw2Left
         {
             get { return _posLkw2Left; }
@@ -488,7 +537,9 @@
                 OnPropertyChanged(nameof(PosLkw2Left));
             }
         }
+
         private double _posLkw2Top;
+
         public double PosLkw2Top
         {
             get { return _posLkw2Top; }
@@ -498,9 +549,11 @@
                 OnPropertyChanged(nameof(PosLkw2Top));
             }
         }
-        #endregion
+
+        #endregion PositionLkw2
 
         #region PositionLkw3
+
         public void PositionLkw3(Punkt pos)
         {
             PosLkw3Left = pos.X;
@@ -508,6 +561,7 @@
         }
 
         private double _posLkw3Left;
+
         public double PosLkw3Left
         {
             get { return _posLkw3Left; }
@@ -517,7 +571,9 @@
                 OnPropertyChanged(nameof(PosLkw3Left));
             }
         }
+
         private double _posLkw3Top;
+
         public double PosLkw3Top
         {
             get { return _posLkw3Top; }
@@ -527,9 +583,11 @@
                 OnPropertyChanged(nameof(PosLkw3Top));
             }
         }
-        #endregion
+
+        #endregion PositionLkw3
 
         #region PositionLkw4
+
         public void PositionLkw4(Punkt pos)
         {
             PosLkw4Left = pos.X;
@@ -537,6 +595,7 @@
         }
 
         private double _posLkw4Left;
+
         public double PosLkw4Left
         {
             get { return _posLkw4Left; }
@@ -546,7 +605,9 @@
                 OnPropertyChanged(nameof(PosLkw4Left));
             }
         }
+
         private double _posLkw4Top;
+
         public double PosLkw4Top
         {
             get { return _posLkw4Top; }
@@ -556,9 +617,11 @@
                 OnPropertyChanged(nameof(PosLkw4Top));
             }
         }
-        #endregion
+
+        #endregion PositionLkw4
 
         #region PositionLkw5
+
         public void PositionLkw5(Punkt pos)
         {
             PosLkw5Left = pos.X;
@@ -566,6 +629,7 @@
         }
 
         private double _posLkw5Left;
+
         public double PosLkw5Left
         {
             get { return _posLkw5Left; }
@@ -575,7 +639,9 @@
                 OnPropertyChanged(nameof(PosLkw5Left));
             }
         }
+
         private double _posLkw5Top;
+
         public double PosLkw5Top
         {
             get { return _posLkw5Top; }
@@ -585,8 +651,8 @@
                 OnPropertyChanged(nameof(PosLkw5Top));
             }
         }
-        #endregion
 
+        #endregion PositionLkw5
 
         #region iNotifyPeropertyChanged Members
 

@@ -7,6 +7,7 @@
     {
         public readonly Model.Nadeltelegraph nadeltelegraph;
         public VisuAnzeigen ViAnzeige { get; set; }
+
         public ViewModel(MainWindow mainWindow)
         {
             nadeltelegraph = new Model.Nadeltelegraph();
@@ -15,9 +16,10 @@
 
         public Model.Nadeltelegraph Nadeltelegraph { get { return nadeltelegraph; } }
 
-
         #region BtnBuchstabe
+
         private ICommand _btnBuchstabe;
+
         public ICommand BtnBuchstabe
         {
             get
@@ -29,6 +31,7 @@
                 return _btnBuchstabe;
             }
         }
-        #endregion
+
+        #endregion BtnBuchstabe
     }
 }

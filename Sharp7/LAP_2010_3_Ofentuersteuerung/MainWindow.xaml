@@ -52,7 +52,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-
         <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
         <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
@@ -82,7 +81,7 @@
             </Button.Resources>
         </Button>
 
-        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"  />
+        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="S2 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
 
@@ -90,22 +89,21 @@
         <Label Content="P1 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
-
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee"/>
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
         <Label Content="B1"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
         <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}"   />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}"  />
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
         <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
-        <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}"/>
+        <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}" />
 
         <MediaElement Name="myMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
             <MediaElement.Triggers>
@@ -121,26 +119,24 @@
             </MediaElement.Triggers>
         </MediaElement>
 
-        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="19" >
+        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="19">
 
             <Image Height="50" Canvas.Left="{Binding ViAnzeige.ZahnstangePosition}" Canvas.Top="185" Source="Bilder/Zahnstange.PNG" />
-            <Rectangle Height="187" Width="224" Canvas.Left="{Binding ViAnzeige.OfentuerePosition}" Canvas.Top="57"  Fill="Gray"  />
+            <Rectangle Height="187" Width="224" Canvas.Left="{Binding ViAnzeige.OfentuerePosition}" Canvas.Top="57"  Fill="Gray" />
 
-            <Image Height="100" Width="100" Canvas.Top="225" Canvas.Left="15"   Source="Bilder/Zahnrad.PNG" RenderTransformOrigin="0.5,0.5" >
+            <Image Height="100" Width="100" Canvas.Top="225" Canvas.Left="15"   Source="Bilder/Zahnrad.PNG" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
-                        <RotateTransform Angle="{Binding ViAnzeige.ZahnradWinkel}"/>
+                        <RotateTransform Angle="{Binding ViAnzeige.ZahnradWinkel}" />
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
         </Canvas>
 
-        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
+        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
         <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
-        <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
-        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"  />
-
-
+        <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
     </Grid>
 </Window>

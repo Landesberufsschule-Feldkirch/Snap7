@@ -3,7 +3,9 @@
     public class Rechteck
     {
         public enum RichtungX { nachLinks, steht, nachRechts }
+
         public enum RichtungY { nachOben, steht, nachUnten }
+
         public Punkt Punkt { get; set; }
         private readonly double breite;
         private readonly double hoehe;
@@ -15,8 +17,6 @@
             hoehe = h;
         }
 
-
-
         public static bool Kollision(Rechteck r1, Rechteck r2)
         {
             return r1.Punkt.X < r2.Punkt.X + r2.breite &&
@@ -24,7 +24,6 @@
                    r1.Punkt.Y < r2.Punkt.Y + r2.hoehe &&
                    r2.Punkt.Y < r1.Punkt.Y + r1.hoehe;
         }
-
 
         public static bool Ausgebremst(Rechteck bewegt, Rechteck hinderniss, RichtungX x, RichtungY y)
         {
@@ -49,6 +48,5 @@
             }
             return stop;
         }
-
     }
 }

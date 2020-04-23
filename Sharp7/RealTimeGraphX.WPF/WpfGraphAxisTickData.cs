@@ -16,6 +16,7 @@ namespace RealTimeGraphX.WPF
             get { return (bool)GetValue(IsFirstProperty); }
             set { SetValue(IsFirstProperty, value); }
         }
+
         public static readonly DependencyProperty IsFirstProperty =
             DependencyProperty.Register("IsFirst", typeof(bool), typeof(WpfGraphAxisTickData), new PropertyMetadata(false));
 
@@ -27,6 +28,7 @@ namespace RealTimeGraphX.WPF
             get { return (bool)GetValue(IsLastProperty); }
             set { SetValue(IsLastProperty, value); }
         }
+
         public static readonly DependencyProperty IsLastProperty =
             DependencyProperty.Register("IsLast", typeof(bool), typeof(WpfGraphAxisTickData), new PropertyMetadata(false));
 
@@ -46,6 +48,7 @@ namespace RealTimeGraphX.WPF
             get { return (bool)GetValue(IsEvenProperty); }
             set { SetValue(IsEvenProperty, value); }
         }
+
         public static readonly DependencyProperty IsEvenProperty =
             DependencyProperty.Register("IsEven", typeof(bool), typeof(WpfGraphAxisTickData), new PropertyMetadata(false));
 
@@ -65,6 +68,7 @@ namespace RealTimeGraphX.WPF
             get { return (IGraphDataPoint)GetValue(DataProperty); }
             set { SetValue(DataProperty, value); }
         }
+
         public static readonly DependencyProperty DataProperty =
             DependencyProperty.Register("Data", typeof(IGraphDataPoint), typeof(WpfGraphAxisTickData), new PropertyMetadata(null));
 
@@ -76,6 +80,7 @@ namespace RealTimeGraphX.WPF
             get { return (String)GetValue(DisplayTextProperty); }
             set { SetValue(DisplayTextProperty, value); }
         }
+
         public static readonly DependencyProperty DisplayTextProperty =
             DependencyProperty.Register("DisplayText", typeof(String), typeof(WpfGraphAxisTickData), new PropertyMetadata(null));
 

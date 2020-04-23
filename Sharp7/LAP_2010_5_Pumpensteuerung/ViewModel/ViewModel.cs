@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public readonly Model.Pumpensteuerung pumpensteuerung;
         public VisuAnzeigen ViAnzeige { get; set; }
 
@@ -17,9 +16,10 @@
 
         public Model.Pumpensteuerung Pumpensteuerung { get { return pumpensteuerung; } }
 
-
         #region BtnTasterHand
+
         private ICommand _btnTasterHand;
+
         public ICommand BtnTasterHand
         {
             get
@@ -31,10 +31,13 @@
                 return _btnTasterHand;
             }
         }
-        #endregion
+
+        #endregion BtnTasterHand
 
         #region BtnTasterAus
+
         private ICommand _btnTasterAus;
+
         public ICommand BtnTasterAus
         {
             get
@@ -46,10 +49,13 @@
                 return _btnTasterAus;
             }
         }
-        #endregion
+
+        #endregion BtnTasterAus
 
         #region BtnTasterAutomatik
+
         private ICommand _btnTasterAutomatik;
+
         public ICommand BtnTasterAutomatik
         {
             get
@@ -61,10 +67,13 @@
                 return _btnTasterAutomatik;
             }
         }
-        #endregion
+
+        #endregion BtnTasterAutomatik
 
         #region BtnS3
+
         private ICommand _btnS3;
+
         public ICommand BtnS3
         {
             get
@@ -76,10 +85,13 @@
                 return _btnS3;
             }
         }
-        #endregion
+
+        #endregion BtnS3
 
         #region BtnThermorelaisF1
+
         private ICommand _btnThermorelaisF1;
+
         public ICommand BtnThermorelaisF1
         {
             get
@@ -91,10 +103,13 @@
                 return _btnThermorelaisF1;
             }
         }
-        #endregion
+
+        #endregion BtnThermorelaisF1
 
         #region BtnVentilY1
+
         private ICommand _btnVentilY1;
+
         public ICommand BtnVentilY1
         {
             get
@@ -106,10 +121,13 @@
                 return _btnVentilY1;
             }
         }
-        #endregion
+
+        #endregion BtnVentilY1
 
         #region BtnSetManualQ1
+
         private ICommand _btnSetManualQ1;
+
         public ICommand BtnSetManualQ1
         {
             get
@@ -121,9 +139,7 @@
                 return _btnSetManualQ1;
             }
         }
-        #endregion
 
-
-
+        #endregion BtnSetManualQ1
     }
 }

@@ -12,7 +12,6 @@
         private AmpelZustand ampelLinks = AmpelZustand.Rot;
         private AmpelZustand ampelRechts = AmpelZustand.Rot;
 
-
         private enum BitPosAusgang
         {
             P1 = 0, // Ampel links rot
@@ -65,7 +64,6 @@
             viewModel = vm;
             AmpelChangedEvent += viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
         }
-
 
         private void OnAmpelChanged(AmpelZustandEventArgs e)
         {

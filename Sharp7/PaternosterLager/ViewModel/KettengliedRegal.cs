@@ -83,6 +83,7 @@
                     Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
                     Canvas.SetTop(kettenglied, y + breiteKettenglied / 2 - hoeheKettenglied);
                     return kettenglied;
+
                 default:
                     kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
                     kettenglied.RenderTransform = new RotateTransform(phi);
@@ -125,6 +126,7 @@
         }
 
         internal void SetGeschwindigkeit(double geschwindigkeit) => position += geschwindigkeit;
+
         internal double GetGesamtLaenge() => Model.PositionBestimmen.GetGesamtLaenge(durchmesserBolzen);
     }
 }

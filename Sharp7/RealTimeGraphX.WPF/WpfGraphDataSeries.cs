@@ -30,6 +30,7 @@ namespace RealTimeGraphX.WPF
         #endregion Internal Properties
 
         private String _name;
+
         /// <summary>
         /// Gets or sets the series name.
         /// </summary>
@@ -40,6 +41,7 @@ namespace RealTimeGraphX.WPF
         }
 
         private float _strokeThickness;
+
         /// <summary>
         /// Gets or sets the stroke thickness.
         /// </summary>
@@ -58,6 +60,7 @@ namespace RealTimeGraphX.WPF
         }
 
         private bool _isVisible;
+
         /// <summary>
         /// Gets or sets a value indicating whether this series should be visible.
         /// </summary>
@@ -68,6 +71,7 @@ namespace RealTimeGraphX.WPF
         }
 
         private Color _stroke;
+
         /// <summary>
         /// Gets or sets the series stroke color.
         /// </summary>
@@ -92,6 +96,7 @@ namespace RealTimeGraphX.WPF
         }
 
         private Brush _fill;
+
         /// <summary>
         /// Gets or sets the series fill brush.
         /// </summary>

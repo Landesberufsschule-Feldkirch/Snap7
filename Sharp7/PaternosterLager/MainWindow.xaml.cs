@@ -3,7 +3,6 @@ using System.Windows;
 
 namespace PaternosterLager
 {
-
     public partial class MainWindow : Window
     {
         public SetManual.SetManualWindow SetManualWindow { get; set; }
@@ -33,9 +32,13 @@ namespace PaternosterLager
         }
 
         private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S1 = true;
+
         private void PolygonAufReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S1 = false;
+
         private void PolygonAbPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S2 = true;
+
         private void PolygonAbReleased(object sender, System.Windows.Input.MouseButtonEventArgs e) => viewModel.paternosterlager.S2 = false;
+
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) => FensterAktiv = false;
     }
 }

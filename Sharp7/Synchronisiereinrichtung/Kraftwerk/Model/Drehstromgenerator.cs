@@ -2,7 +2,6 @@
 {
     public class Drehstromgenerator
     {
-
         public double SynchVentil { get; set; }
         public double SynchErregerstrom { get; set; }
         public Utilities.Rampen VentilRampe { get; set; }
@@ -49,14 +48,29 @@
         }
 
         public double Drehzahl() => n;
+
         public double Leistung() => P;
+
         public double CosPhi() => cosPhi;
+
         public double Frequenz() => n * DrehzahlFaktor;
+
         public double Spannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
 
-        public void SynchronisiertFrequenz(double frequenz) { n = 30 * frequenz; }
-        public void SynchronisierungVentil(double Y) { SynchVentil = Y; }
-        public void SynchronisierungErregerstrom(double Ie) { SynchErregerstrom = Ie; }
+        public void SynchronisiertFrequenz(double frequenz)
+        {
+            n = 30 * frequenz;
+        }
+
+        public void SynchronisierungVentil(double Y)
+        {
+            SynchVentil = Y;
+        }
+
+        public void SynchronisierungErregerstrom(double Ie)
+        {
+            SynchErregerstrom = Ie;
+        }
 
         public void MaschineLeistungFahren(double Y)
         {
@@ -83,7 +97,6 @@
                 {
                     // übererregt -> kapazitiv
                     cosPhi = 90 - LeistungsfaktorFaktor * (Ie - SynchErregerstrom);
-
                 }
                 else
                 {

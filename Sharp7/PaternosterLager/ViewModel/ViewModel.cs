@@ -14,10 +14,12 @@ namespace PaternosterLager.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager);
         }
 
-        public Model.Paternosterlager Paternosterlager{ get { return paternosterlager; } }
+        public Model.Paternosterlager Paternosterlager { get { return paternosterlager; } }
 
         #region BtnReset
+
         private ICommand _btnReset;
+
         public ICommand BtnReset
         {
             get
@@ -29,10 +31,13 @@ namespace PaternosterLager.ViewModel
                 return _btnReset;
             }
         }
-        #endregion
+
+        #endregion BtnReset
 
         #region BtnBuchstabe
+
         private ICommand _btnBuchstabe;
+
         public ICommand BtnBuchstabe
         {
             get
@@ -44,10 +49,13 @@ namespace PaternosterLager.ViewModel
                 return _btnBuchstabe;
             }
         }
-        #endregion
+
+        #endregion BtnBuchstabe
 
         #region BtnAuf
+
         private ICommand _btnAuf;
+
         public ICommand BtnAuf
         {
             get
@@ -59,10 +67,13 @@ namespace PaternosterLager.ViewModel
                 return _btnAuf;
             }
         }
-        #endregion
+
+        #endregion BtnAuf
 
         #region BtnAb
+
         private ICommand _btnAb;
+
         public ICommand BtnAb
         {
             get
@@ -74,6 +85,7 @@ namespace PaternosterLager.ViewModel
                 return _btnAb;
             }
         }
-        #endregion
+
+        #endregion BtnAb
     }
 }

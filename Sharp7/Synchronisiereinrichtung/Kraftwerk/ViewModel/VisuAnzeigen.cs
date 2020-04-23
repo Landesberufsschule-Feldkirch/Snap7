@@ -43,12 +43,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                     kraftwerk.Generator_Ie = kraftwerk.generator.ErregerstromRampe.GetWert(ManualIe());
                 }
 
-
                 kraftwerk.Netz_f = SliderNetz_f();
                 kraftwerk.Netz_U = SliderNetz_U();
                 kraftwerk.Netz_P = SliderNetz_P();
                 kraftwerk.Netz_CosPhi = SliderNetz_CosPhi();
-
 
                 VentilEinschalten(kraftwerk.Ventil_Y > 1);
                 LeistungsschalterEinschalten(kraftwerk.Q1);
@@ -94,7 +92,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                         break;
                 }
 
-
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -106,7 +103,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         }
 
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -118,6 +117,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -127,12 +127,15 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
+
+        #endregion SPS Status und Farbe
 
         #region Ventil
+
         public double ManualY() => ManualVentilstellung;
 
         private double _manualVentilstellung;
+
         public double ManualVentilstellung
         {
             get { return _manualVentilstellung; }
@@ -143,9 +146,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Ventil
 
         #region Erregerstrom
+
         public double ManualIe() => ManualErregerstrom;
 
         private double _manualErregerstrom;
@@ -160,12 +164,14 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Erregerstrom
 
         #region Netzspannung
+
         public double SliderNetz_U() => NetzSpannungSlider;
 
         private double _netzSpannungSlider;
+
         public double NetzSpannungSlider
         {
             get { return _netzSpannungSlider; }
@@ -175,12 +181,15 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(NetzSpannungSlider));
             }
         }
-        #endregion
+
+        #endregion Netzspannung
 
         #region Netzfrequenz
+
         public double SliderNetz_f() => NetzFrequenzSlider;
 
         private double _netzFrequenzSlider;
+
         public double NetzFrequenzSlider
         {
             get { return _netzFrequenzSlider; }
@@ -191,9 +200,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Netzfrequenz
 
         #region NetzLeistungsfaktor
+
         public double SliderNetz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
@@ -202,6 +212,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         }
 
         private double _netzPhasenverschiebungSlider;
+
         public double NetzPhasenverschiebungSlider
         {
             get { return _netzPhasenverschiebungSlider; }
@@ -212,9 +223,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion NetzLeistungsfaktor
 
         #region Netzleistung
+
         public double SliderNetz_P() => NetzLeistungSlider;
 
         private double _netzLeistungSlider;
@@ -229,9 +241,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Netzleistung
 
         #region SynchronisierungAuswahl
+
         private SynchronisierungAuswahl _synchAuswahl;
 
         public SynchronisierungAuswahl SynchAuswahl
@@ -243,16 +256,23 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(SynchAuswahl));
             }
         }
-        #endregion
 
-
-
+        #endregion SynchronisierungAuswahl
 
         #region Leistungsfaktor
-        public void Generator_CosPhi(double val) { GeneratorCosPhiString = $"cos φ={val:N2}"; }
-        public void Netz_CosPhi(double val) { NetzCosPhiString = $"cos φ={val:N2}"; }
+
+        public void Generator_CosPhi(double val)
+        {
+            GeneratorCosPhiString = $"cos φ={val:N2}";
+        }
+
+        public void Netz_CosPhi(double val)
+        {
+            NetzCosPhiString = $"cos φ={val:N2}";
+        }
 
         private double _generatorCosPhiString;
+
         public string GeneratorCosPhiString
         {
             get { return "cos φ=" + _generatorCosPhiString; }
@@ -263,9 +283,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-
-
         private double _netzCosPhiString;
+
         public string NetzCosPhiString
         {
             get { return "cos φ=" + _netzCosPhiString; }
@@ -276,13 +295,19 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Leistungsfaktor
 
         #region Leistung
 
-        public void Generator_P(double val) { GeneratorLeistungString = $"P={val:N1}W"; }
-        public void Netz_P(double val) { NetzLeistungString = $"P={val}W"; }
+        public void Generator_P(double val)
+        {
+            GeneratorLeistungString = $"P={val:N1}W";
+        }
 
+        public void Netz_P(double val)
+        {
+            NetzLeistungString = $"P={val}W";
+        }
 
         private double _generatorLeistungString;
 
@@ -308,13 +333,22 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Leistung
 
         #region Freqenz
-        public void Generator_f(double val) { GeneratorFrequenzString = $"f={val:N2}Hz"; }
-        public void Netz_f(double val) { NetzFrequenzString = $"f={val}Hz"; }
+
+        public void Generator_f(double val)
+        {
+            GeneratorFrequenzString = $"f={val:N2}Hz";
+        }
+
+        public void Netz_f(double val)
+        {
+            NetzFrequenzString = $"f={val}Hz";
+        }
 
         private double _generatorFrequenzString;
+
         public string GeneratorFrequenzString
         {
             get { return "f=" + _generatorFrequenzString + "Hz"; }
@@ -324,6 +358,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(GeneratorFrequenzString));
             }
         }
+
         private double _netzFrequenzString;
 
         public string NetzFrequenzString
@@ -335,14 +370,23 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(NetzFrequenzString));
             }
         }
-        #endregion
+
+        #endregion Freqenz
 
         #region Spannung
 
-        public void Generator_U(double val) { GeneratorSpannungString = $"U={val:N1}V"; }
-        public void Netz_U(double val) { NetzSpannungString = $"U={val}V"; }
+        public void Generator_U(double val)
+        {
+            GeneratorSpannungString = $"U={val:N1}V";
+        }
+
+        public void Netz_U(double val)
+        {
+            NetzSpannungString = $"U={val}V";
+        }
 
         private double _generatorSpannungString;
+
         public string GeneratorSpannungString
         {
             get { return "U=" + _generatorSpannungString + "V"; }
@@ -365,12 +409,17 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion Spannung
 
         #region IE
-        public void Ie(double val) { Erregerstrom = $"IE={ val:N1}A"; }
+
+        public void Ie(double val)
+        {
+            Erregerstrom = $"IE={ val:N1}A";
+        }
 
         private double _erregerstrom;
+
         public string Erregerstrom
         {
             get { return "IE=" + _erregerstrom + "A"; }
@@ -380,13 +429,18 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(Erregerstrom));
             }
         }
-        #endregion
+
+        #endregion IE
 
         #region n
 
-        public void N(double val) { Drehzahl = $"n={val:N1}RPM"; }
+        public void N(double val)
+        {
+            Drehzahl = $"n={val:N1}RPM";
+        }
 
         private double _drehzahl;
+
         public string Drehzahl
         {
             get { return "n=" + _drehzahl + "RPM"; }
@@ -397,12 +451,14 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
+        #endregion n
 
         #region Messgerät
+
         //"{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}"
 
         private double _messgeraetOptimalerBereich;
+
         public double MessgeraetOptimalerBereich
         {
             get { return _messgeraetOptimalerBereich; }
@@ -412,6 +468,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 OnPropertyChanged(nameof(MessgeraetOptimalerBereich));
             }
         }
+
         public void MessgeraetAnzeigen(bool val)
         {
             if (val) VisibilityMessgeraetSichtbar = "Visible";
@@ -514,7 +571,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Ventil
 
-
         private double _ventilPosition;
 
         public string VentilPosition
@@ -527,9 +583,13 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        public void Y(double val) { VentilPosition = $"Y={ val:N1}%"; }
+        public void Y(double val)
+        {
+            VentilPosition = $"Y={ val:N1}%";
+        }
 
         private string _visibilityVentilAus;
+
         public string VisibilityVentilAus
         {
             get { return _visibilityVentilAus; }
@@ -569,6 +629,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion Ventil
 
         #region Kraftwerk Status
+
         public void Status(string val)
         {
             KraftwerkStatus = "Status Kraftwerk: " + val;
@@ -586,9 +647,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion
-
-
+        #endregion Kraftwerk Status
 
         #region iNotifyPeropertyChanged Members
 

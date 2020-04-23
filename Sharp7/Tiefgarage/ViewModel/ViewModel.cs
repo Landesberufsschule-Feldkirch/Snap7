@@ -5,7 +5,6 @@ namespace Tiefgarage.ViewModel
 {
     public class ViewModel
     {
-
         public readonly Model.AlleFahrzeugePersonen alleFahrzeugePersonen;
         public VisuAnzeigen ViAnzeige { get; set; }
 
@@ -17,9 +16,10 @@ namespace Tiefgarage.ViewModel
 
         public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen { get { return alleFahrzeugePersonen; } }
 
-
         #region BtnDraussenParken
+
         private ICommand _btnDraussenParken;
+
         public ICommand BtnDraussenParken
         {
             get
@@ -31,10 +31,13 @@ namespace Tiefgarage.ViewModel
                 return _btnDraussenParken;
             }
         }
-        #endregion
+
+        #endregion BtnDraussenParken
 
         #region BtnDrinnenParken
+
         private ICommand _btnDrinnenParken;
+
         public ICommand BtnDrinnenParken
         {
             get
@@ -46,12 +49,13 @@ namespace Tiefgarage.ViewModel
                 return _btnDrinnenParken;
             }
         }
-        #endregion
 
-
+        #endregion BtnDrinnenParken
 
         #region BtnAuto1
+
         private ICommand _btnAuto1;
+
         public ICommand BtnAuto1
         {
             get
@@ -63,10 +67,13 @@ namespace Tiefgarage.ViewModel
                 return _btnAuto1;
             }
         }
-        #endregion
+
+        #endregion BtnAuto1
 
         #region BtnAuto2
+
         private ICommand _btnAuto2;
+
         public ICommand BtnAuto2
         {
             get
@@ -78,10 +85,13 @@ namespace Tiefgarage.ViewModel
                 return _btnAuto2;
             }
         }
-        #endregion
+
+        #endregion BtnAuto2
 
         #region BtnAuto3
+
         private ICommand _btnAuto3;
+
         public ICommand BtnAuto3
         {
             get
@@ -93,10 +103,13 @@ namespace Tiefgarage.ViewModel
                 return _btnAuto3;
             }
         }
-        #endregion
+
+        #endregion BtnAuto3
 
         #region BtnAuto4
+
         private ICommand _btnAuto4;
+
         public ICommand BtnAuto4
         {
             get
@@ -108,10 +121,13 @@ namespace Tiefgarage.ViewModel
                 return _btnAuto4;
             }
         }
-        #endregion
+
+        #endregion BtnAuto4
 
         #region BtnPerson1
+
         private ICommand _btnPerson1;
+
         public ICommand BtnPerson1
         {
             get
@@ -123,10 +139,13 @@ namespace Tiefgarage.ViewModel
                 return _btnPerson1;
             }
         }
-        #endregion
+
+        #endregion BtnPerson1
 
         #region BtnPerson2
+
         private ICommand _btnPerson2;
+
         public ICommand BtnPerson2
         {
             get
@@ -138,10 +157,15 @@ namespace Tiefgarage.ViewModel
                 return _btnPerson2;
             }
         }
-        #endregion      
+
+        #endregion BtnPerson2
+
+
 
         #region BtnPerson3
+
         private ICommand _btnPerson3;
+
         public ICommand BtnPerson3
         {
             get
@@ -153,10 +177,15 @@ namespace Tiefgarage.ViewModel
                 return _btnPerson3;
             }
         }
-        #endregion      
+
+        #endregion BtnPerson3
+
+
 
         #region BtnPerson4
+
         private ICommand _btnPerson4;
+
         public ICommand BtnPerson4
         {
             get
@@ -168,6 +197,7 @@ namespace Tiefgarage.ViewModel
                 return _btnPerson4;
             }
         }
-        #endregion
+
+        #endregion BtnPerson4
     }
 }

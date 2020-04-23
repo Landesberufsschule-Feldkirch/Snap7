@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:LAP_2010_1_Kompressoranlage"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

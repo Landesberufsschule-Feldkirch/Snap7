@@ -17,13 +17,12 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         public bool Q2 { get; set; }    // Sternschütz
         public bool Q3 { get; set; }    // Dreieckschütz
         public bool S1 { get; set; }    // Taster Start
-        public bool S2 { get; set; }    // Taster Stop       
+        public bool S2 { get; set; }    // Taster Stop
         public bool S3 { get; set; }    // Taster Quittieren
 
         public double Druck { get; set; }
         public double Pegel { get; set; }
         public Stopwatch Stopwatch { get; set; }
-
 
         private const double druckVerlust = 0.998;
         private const double druckAnstieg = 0.04;
@@ -57,7 +56,6 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
 
                 Druck *= druckVerlust;
 
-
                 if (Druck > 10) Druck = 10;
 
                 if (B2)
@@ -73,7 +71,14 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             }
         }
 
-        internal void BtnF1() { if (F1) F1 = false; else F1 = true; }
-        internal void BtnNachfuellen() { Pegel = 1; }
+        internal void BtnF1()
+        {
+            if (F1) F1 = false; else F1 = true;
+        }
+
+        internal void BtnNachfuellen()
+        {
+            Pegel = 1;
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace RealTimeGraphX.WPF
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
+
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WpfGraphAxisPanel), new PropertyMetadata(Orientation.Vertical));
 

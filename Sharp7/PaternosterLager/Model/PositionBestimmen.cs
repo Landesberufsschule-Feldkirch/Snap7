@@ -1,8 +1,7 @@
-﻿using System;
-using Utilities;
-
-namespace PaternosterLager.Model
+﻿namespace PaternosterLager.Model
 {
+    using System;
+    using Utilities;
     public enum Zeichenbereich
     {
         rechts = 0,
@@ -100,7 +99,6 @@ namespace PaternosterLager.Model
 
             if (x != xDavor)
             {
-
                 if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
                 if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
 
@@ -109,7 +107,6 @@ namespace PaternosterLager.Model
                     phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
                     return (x, y, phi, zeichenBereichVorher);
                 }
-
 
                 if (zeichenBereichVorher == Zeichenbereich.rechts)
                 {

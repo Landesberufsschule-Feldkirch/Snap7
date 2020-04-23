@@ -52,6 +52,7 @@
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
+
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -90,9 +91,10 @@
             }
         }
 
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -104,6 +106,7 @@
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -113,16 +116,18 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
+        #endregion SPS Status und Farbe
 
         #region Color B1
+
         public void FarbeB1(bool val)
         {
             if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
         }
 
         private string _colorB1;
+
         public string ColorB1
         {
             get { return _colorB1; }
@@ -132,15 +137,18 @@
                 OnPropertyChanged(nameof(ColorB1));
             }
         }
-        #endregion
+
+        #endregion Color B1
 
         #region Color B2
+
         public void FarbeB2(bool val)
         {
             if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
         }
 
         private string _colorB2;
+
         public string ColorB2
         {
             get { return _colorB2; }
@@ -150,11 +158,13 @@
                 OnPropertyChanged(nameof(ColorB2));
             }
         }
-        #endregion
 
+        #endregion Color B2
 
         #region EnableAuto1
+
         private bool _enableAuto1;
+
         public bool EnableAuto1
         {
             get { return _enableAuto1; }
@@ -164,10 +174,13 @@
                 OnPropertyChanged(nameof(EnableAuto1));
             }
         }
-        #endregion
+
+        #endregion EnableAuto1
 
         #region EnableAuto2
+
         private bool _enableAuto2;
+
         public bool EnableAuto2
         {
             get { return _enableAuto2; }
@@ -177,10 +190,13 @@
                 OnPropertyChanged(nameof(EnableAuto2));
             }
         }
-        #endregion
+
+        #endregion EnableAuto2
 
         #region EnableAuto3
+
         private bool _enableAuto3;
+
         public bool EnableAuto3
         {
             get { return _enableAuto3; }
@@ -190,10 +206,13 @@
                 OnPropertyChanged(nameof(EnableAuto3));
             }
         }
-        #endregion
+
+        #endregion EnableAuto3
 
         #region EnableAuto4
+
         private bool _enableAuto4;
+
         public bool EnableAuto4
         {
             get { return _enableAuto4; }
@@ -203,10 +222,13 @@
                 OnPropertyChanged(nameof(EnableAuto4));
             }
         }
-        #endregion
+
+        #endregion EnableAuto4
 
         #region EnablePerson1
+
         private bool _enablePerson1;
+
         public bool EnablePerson1
         {
             get { return _enablePerson1; }
@@ -216,10 +238,13 @@
                 OnPropertyChanged(nameof(EnablePerson1));
             }
         }
-        #endregion
+
+        #endregion EnablePerson1
 
         #region EnablePerson2
+
         private bool _enablePerson2;
+
         public bool EnablePerson2
         {
             get { return _enablePerson2; }
@@ -229,10 +254,13 @@
                 OnPropertyChanged(nameof(EnablePerson2));
             }
         }
-        #endregion
+
+        #endregion EnablePerson2
 
         #region EnablePerson3
+
         private bool _enablePerson3;
+
         public bool EnablePerson3
         {
             get { return _enablePerson3; }
@@ -242,10 +270,13 @@
                 OnPropertyChanged(nameof(EnablePerson3));
             }
         }
-        #endregion
+
+        #endregion EnablePerson3
 
         #region EnablePerson4
+
         private bool _enablePerson4;
+
         public bool EnablePerson4
         {
             get { return _enablePerson4; }
@@ -255,10 +286,11 @@
                 OnPropertyChanged(nameof(EnablePerson4));
             }
         }
-        #endregion
 
+        #endregion EnablePerson4
 
         #region PositionAuto1
+
         public void PositionAuto1(Punkt pos)
         {
             PosAuto1Left = pos.X;
@@ -266,6 +298,7 @@
         }
 
         private double _posAuto1Left;
+
         public double PosAuto1Left
         {
             get { return _posAuto1Left; }
@@ -275,7 +308,9 @@
                 OnPropertyChanged(nameof(PosAuto1Left));
             }
         }
+
         private double _posAuto1Top;
+
         public double PosAuto1Top
         {
             get { return _posAuto1Top; }
@@ -285,9 +320,11 @@
                 OnPropertyChanged(nameof(PosAuto1Top));
             }
         }
-        #endregion
+
+        #endregion PositionAuto1
 
         #region PositionAuto2
+
         public void PositionAuto2(Punkt pos)
         {
             PosAuto2Left = pos.X;
@@ -295,6 +332,7 @@
         }
 
         private double _posAuto2Left;
+
         public double PosAuto2Left
         {
             get { return _posAuto2Left; }
@@ -304,7 +342,9 @@
                 OnPropertyChanged(nameof(PosAuto2Left));
             }
         }
+
         private double _posAuto2Top;
+
         public double PosAuto2Top
         {
             get { return _posAuto2Top; }
@@ -314,9 +354,11 @@
                 OnPropertyChanged(nameof(PosAuto2Top));
             }
         }
-        #endregion
+
+        #endregion PositionAuto2
 
         #region PositionAuto3
+
         public void PositionAuto3(Punkt pos)
         {
             PosAuto3Left = pos.X;
@@ -324,6 +366,7 @@
         }
 
         private double _posAuto3Left;
+
         public double PosAuto3Left
         {
             get { return _posAuto3Left; }
@@ -333,7 +376,9 @@
                 OnPropertyChanged(nameof(PosAuto3Left));
             }
         }
+
         private double _posAuto3Top;
+
         public double PosAuto3Top
         {
             get { return _posAuto3Top; }
@@ -343,9 +388,11 @@
                 OnPropertyChanged(nameof(PosAuto3Top));
             }
         }
-        #endregion
+
+        #endregion PositionAuto3
 
         #region PositionAuto4
+
         public void PositionAuto4(Punkt pos)
         {
             PosAuto4Left = pos.X;
@@ -353,6 +400,7 @@
         }
 
         private double _posAuto4Left;
+
         public double PosAuto4Left
         {
             get { return _posAuto4Left; }
@@ -362,7 +410,9 @@
                 OnPropertyChanged(nameof(PosAuto4Left));
             }
         }
+
         private double _posAuto4Top;
+
         public double PosAuto4Top
         {
             get { return _posAuto4Top; }
@@ -372,11 +422,11 @@
                 OnPropertyChanged(nameof(PosAuto4Top));
             }
         }
-        #endregion
 
-
+        #endregion PositionAuto4
 
         #region PositionPerson1
+
         public void PositionPerson1(Punkt pos)
         {
             PosPerson1Left = pos.X;
@@ -384,6 +434,7 @@
         }
 
         private double _posPerson1Left;
+
         public double PosPerson1Left
         {
             get { return _posPerson1Left; }
@@ -393,7 +444,9 @@
                 OnPropertyChanged(nameof(PosPerson1Left));
             }
         }
+
         private double _posPerson1Top;
+
         public double PosPerson1Top
         {
             get { return _posPerson1Top; }
@@ -403,9 +456,11 @@
                 OnPropertyChanged(nameof(PosPerson1Top));
             }
         }
-        #endregion
+
+        #endregion PositionPerson1
 
         #region PositionPerson2
+
         public void PositionPerson2(Punkt pos)
         {
             PosPerson2Left = pos.X;
@@ -413,6 +468,7 @@
         }
 
         private double _posPerson2Left;
+
         public double PosPerson2Left
         {
             get { return _posPerson2Left; }
@@ -422,7 +478,9 @@
                 OnPropertyChanged(nameof(PosPerson2Left));
             }
         }
+
         private double _posPerson2Top;
+
         public double PosPerson2Top
         {
             get { return _posPerson2Top; }
@@ -432,9 +490,11 @@
                 OnPropertyChanged(nameof(PosPerson2Top));
             }
         }
-        #endregion
+
+        #endregion PositionPerson2
 
         #region PositionPerson3
+
         public void PositionPerson3(Punkt pos)
         {
             PosPerson3Left = pos.X;
@@ -442,6 +502,7 @@
         }
 
         private double _posPerson3Left;
+
         public double PosPerson3Left
         {
             get { return _posPerson3Left; }
@@ -451,7 +512,9 @@
                 OnPropertyChanged(nameof(PosPerson3Left));
             }
         }
+
         private double _posPerson3Top;
+
         public double PosPerson3Top
         {
             get { return _posPerson3Top; }
@@ -461,9 +524,11 @@
                 OnPropertyChanged(nameof(PosPerson3Top));
             }
         }
-        #endregion
+
+        #endregion PositionPerson3
 
         #region PositionPerson4
+
         public void PositionPerson4(Punkt pos)
         {
             PosPerson4Left = pos.X;
@@ -471,6 +536,7 @@
         }
 
         private double _posPerson4Left;
+
         public double PosPerson4Left
         {
             get { return _posPerson4Left; }
@@ -480,7 +546,9 @@
                 OnPropertyChanged(nameof(PosPerson4Left));
             }
         }
+
         private double _posPerson4Top;
+
         public double PosPerson4Top
         {
             get { return _posPerson4Top; }
@@ -490,16 +558,18 @@
                 OnPropertyChanged(nameof(PosPerson4Top));
             }
         }
-        #endregion
 
+        #endregion PositionPerson4
 
         #region AnzahlAutos
+
         public void AnzahlAutosInDerTiefgarage(int val)
         {
             AnzahlAutos = "Autos in der Tiefgarage: " + val.ToString();
         }
 
         private string _anzahlAutos;
+
         public string AnzahlAutos
         {
             get { return _anzahlAutos; }
@@ -509,15 +579,18 @@
                 OnPropertyChanged(nameof(AnzahlAutos));
             }
         }
-        #endregion
+
+        #endregion AnzahlAutos
 
         #region AnzahlPersonen
+
         public void AnzahlPersonenInDerTiefgarage(int val)
         {
             AnzahlPersonen = "Personen in der Tiefgarage: " + val.ToString();
         }
 
         private string _anzahlPersonen;
+
         public string AnzahlPersonen
         {
             get { return _anzahlPersonen; }
@@ -527,9 +600,8 @@
                 OnPropertyChanged(nameof(AnzahlPersonen));
             }
         }
-        #endregion
 
-
+        #endregion AnzahlPersonen
 
         #region iNotifyPeropertyChanged Members
 
@@ -541,6 +613,5 @@
         }
 
         #endregion iNotifyPeropertyChanged Members
-
     }
 }

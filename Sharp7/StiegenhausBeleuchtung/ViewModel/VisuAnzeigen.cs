@@ -9,6 +9,7 @@
         private readonly Model.StiegenhausBeleuchtung stiegenhausBeleuchtung;
         private readonly MainWindow mainWindow;
         private bool BewegungAktiv;
+
         public VisuAnzeigen(MainWindow mw, Model.StiegenhausBeleuchtung stiegenhaus)
         {
             mainWindow = mw;
@@ -51,9 +52,10 @@
             }
         }
 
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -65,6 +67,7 @@
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -74,12 +77,13 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
-
+        #endregion SPS Status und Farbe
 
         #region ReiseStart
+
         private string _reiseStart;
+
         public string ReiseStart
         {
             get { return _reiseStart; }
@@ -90,10 +94,13 @@
                 OnPropertyChanged(nameof(ReiseStart));
             }
         }
-        #endregion
+
+        #endregion ReiseStart
 
         #region ReiseZiel
+
         private string _reiseZiel;
+
         public string ReiseZiel
         {
             get { return _reiseZiel; }
@@ -104,11 +111,11 @@
                 OnPropertyChanged(nameof(ReiseZiel));
             }
         }
-        #endregion
 
-
+        #endregion ReiseZiel
 
         #region FarbeAlleLampen
+
         public void FarbeAlleLampen(int lampe, bool val)
         {
             if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White";
@@ -126,10 +133,10 @@
             }
         }
 
-        #endregion
-
+        #endregion FarbeAlleLampen
 
         #region ClickModeAlleButtons
+
         public bool ClickModeButton(int Bewegungsmelder)
         {
             if (ClickModeBtn[Bewegungsmelder] == "Press")
@@ -155,10 +162,11 @@
                 OnPropertyChanged(nameof(ClickModeBtn));
             }
         }
-        #endregion
 
+        #endregion ClickModeAlleButtons
 
         #region BtnBewegungsmelder
+
         internal void BtnBewegungsmelder(object buttonName)
         {
             if (buttonName is int Bewegungsmelder)
@@ -166,8 +174,8 @@
                 stiegenhausBeleuchtung.SetBewegungsmelder(Bewegungsmelder, ClickModeButton(Bewegungsmelder));
             }
         }
-        #endregion
 
+        #endregion BtnBewegungsmelder
 
         #region iNotifyPeropertyChanged Members
 

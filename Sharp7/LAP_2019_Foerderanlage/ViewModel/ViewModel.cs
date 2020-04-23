@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly Model.Foerderanlage foerderanlage;
 
@@ -17,9 +16,10 @@
 
         public Model.Foerderanlage Foerderanlage { get { return foerderanlage; } }
 
-
         #region BtnF1
+
         private ICommand _btnF1;
+
         public ICommand BtnF1
         {
             get
@@ -31,10 +31,13 @@
                 return _btnF1;
             }
         }
-        #endregion
+
+        #endregion BtnF1
 
         #region BtnS0
+
         private ICommand _btnS0;
+
         public ICommand BtnS0
         {
             get
@@ -46,10 +49,13 @@
                 return _btnS0;
             }
         }
-        #endregion
+
+        #endregion BtnS0
 
         #region BtnS1
+
         private ICommand _btnS1;
+
         public ICommand BtnS1
         {
             get
@@ -61,10 +67,13 @@
                 return _btnS1;
             }
         }
-        #endregion
+
+        #endregion BtnS1
 
         #region BtnS2
+
         private ICommand _btnS2;
+
         public ICommand BtnS2
         {
             get
@@ -76,10 +85,13 @@
                 return _btnS2;
             }
         }
-        #endregion
+
+        #endregion BtnS2
 
         #region BtnS5
+
         private ICommand _btnS5;
+
         public ICommand BtnS5
         {
             get
@@ -91,10 +103,13 @@
                 return _btnS5;
             }
         }
-        #endregion
+
+        #endregion BtnS5
 
         #region BtnS6
+
         private ICommand _btnS6;
+
         public ICommand BtnS6
         {
             get
@@ -106,10 +121,13 @@
                 return _btnS6;
             }
         }
-        #endregion
+
+        #endregion BtnS6
 
         #region BtnS7
+
         private ICommand _btnS7;
+
         public ICommand BtnS7
         {
             get
@@ -121,10 +139,13 @@
                 return _btnS7;
             }
         }
-        #endregion
+
+        #endregion BtnS7
 
         #region BtnS8
+
         private ICommand _btnS8;
+
         public ICommand BtnS8
         {
             get
@@ -136,10 +157,13 @@
                 return _btnS8;
             }
         }
-        #endregion
+
+        #endregion BtnS8
 
         #region BtnWagenNachLinks
+
         private ICommand _btnWagenNachLinks;
+
         public ICommand BtnWagenNachLinks
         {
             get
@@ -151,10 +175,13 @@
                 return _btnWagenNachLinks;
             }
         }
-        #endregion
+
+        #endregion BtnWagenNachLinks
 
         #region BtnWagenNachRechts
+
         private ICommand _btnWagenNachRechts;
+
         public ICommand BtnWagenNachRechts
         {
             get
@@ -166,11 +193,13 @@
                 return _btnWagenNachRechts;
             }
         }
-        #endregion
 
+        #endregion BtnWagenNachRechts
 
         #region BtnNachuellen
+
         private ICommand _btnNachuellen;
+
         public ICommand BtnNachuellen
         {
             get
@@ -182,10 +211,13 @@
                 return _btnNachuellen;
             }
         }
-        #endregion
+
+        #endregion BtnNachuellen
 
         #region BtnM1_RL
+
         private ICommand _btnM1_RL;
+
         public ICommand BtnM1_RL
         {
             get
@@ -197,10 +229,13 @@
                 return _btnM1_RL;
             }
         }
-        #endregion
+
+        #endregion BtnM1_RL
 
         #region BtnM1_LL
+
         private ICommand _btnM1_LL;
+
         public ICommand BtnM1_LL
         {
             get
@@ -212,10 +247,13 @@
                 return _btnM1_LL;
             }
         }
-        #endregion
+
+        #endregion BtnM1_LL
 
         #region BtnM2
+
         private ICommand _btnM2;
+
         public ICommand BtnM2
         {
             get
@@ -227,10 +265,13 @@
                 return _btnM2;
             }
         }
-        #endregion
+
+        #endregion BtnM2
 
         #region BtnK1
+
         private ICommand _btnK1;
+
         public ICommand BtnK1
         {
             get
@@ -242,10 +283,13 @@
                 return _btnK1;
             }
         }
-        #endregion
+
+        #endregion BtnK1
 
         #region BtnM1_LL_K1
+
         private ICommand _btnM1_LL_K1;
+
         public ICommand BtnM1_LL_K1
         {
             get
@@ -257,7 +301,7 @@
                 return _btnM1_LL_K1;
             }
         }
-        #endregion
 
+        #endregion BtnM1_LL_K1
     }
 }

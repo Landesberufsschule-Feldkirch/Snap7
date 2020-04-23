@@ -76,11 +76,22 @@
             if (wagenFuellstand > wagenFuellstandVoll) wagenFuellstand = wagenFuellstandVoll;
         }
 
-        internal void NachRechts() { wagenRichtung = Richtung.nachRechts; }
-        internal void NachLinks() { wagenRichtung = Richtung.nachLinks; }
+        internal void NachRechts()
+        {
+            wagenRichtung = Richtung.nachRechts;
+        }
+
+        internal void NachLinks()
+        {
+            wagenRichtung = Richtung.nachLinks;
+        }
+
         public bool IstWagenVoll() => wagenVoll;
+
         public bool IstWagenRechts() => endlageRechts;
+
         internal Punkt GetPosition() => aktuellePosition;
+
         internal double GetFuellstand() => wagenFuellstand;
     }
 }

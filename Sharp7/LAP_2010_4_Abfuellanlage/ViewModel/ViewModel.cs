@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_4_Abfuellanlage.Model.AbfuellAnlage abfuellAnlage;
 
@@ -18,7 +17,9 @@
         public Model.AbfuellAnlage AbfuellAnlage { get { return abfuellAnlage; } }
 
         #region BtnQ1
+
         private ICommand _btnQ1;
+
         public ICommand BtnQ1
         {
             get
@@ -30,10 +31,13 @@
                 return _btnQ1;
             }
         }
-        #endregion
+
+        #endregion BtnQ1
 
         #region BtnK1
+
         private ICommand _btnK1;
+
         public ICommand BtnK1
         {
             get
@@ -45,10 +49,13 @@
                 return _btnK1;
             }
         }
-        #endregion
+
+        #endregion BtnK1
 
         #region BtnK2
+
         private ICommand _btnK2;
+
         public ICommand BtnK2
         {
             get
@@ -60,12 +67,13 @@
                 return _btnK2;
             }
         }
-        #endregion
 
-
+        #endregion BtnK2
 
         #region BtnReset
+
         private ICommand _btnReset;
+
         public ICommand BtnReset
         {
             get
@@ -77,10 +85,13 @@
                 return _btnReset;
             }
         }
-        #endregion
+
+        #endregion BtnReset
 
         #region BtnNachuellen
+
         private ICommand _btnNachuellen;
+
         public ICommand BtnNachuellen
         {
             get
@@ -92,11 +103,13 @@
                 return _btnNachuellen;
             }
         }
-        #endregion
 
+        #endregion BtnNachuellen
 
         #region BtnS1
+
         private ICommand _btnS1;
+
         public ICommand BtnS1
         {
             get
@@ -108,10 +121,13 @@
                 return _btnS1;
             }
         }
-        #endregion
+
+        #endregion BtnS1
 
         #region BtnS2
+
         private ICommand _btnS2;
+
         public ICommand BtnS2
         {
             get
@@ -123,8 +139,7 @@
                 return _btnS2;
             }
         }
-        #endregion
 
-
+        #endregion BtnS2
     }
 }

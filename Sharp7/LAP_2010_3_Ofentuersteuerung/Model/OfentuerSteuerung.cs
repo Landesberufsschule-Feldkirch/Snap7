@@ -7,16 +7,15 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
         public bool P1 { get; set; }    // "Schliessen"
         public bool Q1 { get; set; }    // Motor LL (Öffnen)
         public bool Q2 { get; set; }    // Motor RL (Schliessen)
-        public bool S1 { get; set; }    // Taster "Halt" 
-        public bool S2 { get; set; }    // Taster "Öffnen" 
-        public bool S3 { get; set; }    // Taster "Schliessen" 
-        public bool B1 { get; set; }    // Endschalter Offen 
-        public bool B2 { get; set; }    // Endschalter Geschlossen 
+        public bool S1 { get; set; }    // Taster "Halt"
+        public bool S2 { get; set; }    // Taster "Öffnen"
+        public bool S3 { get; set; }    // Taster "Schliessen"
+        public bool B1 { get; set; }    // Endschalter Offen
+        public bool B2 { get; set; }    // Endschalter Geschlossen
         public bool B3 { get; set; }    // Lichtschranke
         public double PositionZahnstange { get; set; }
         public double PositionOfentuere { get; set; }
         public double WinkelZahnrad { get; set; }
-
 
         private readonly double zahnstangeLinks = -177;
         private readonly double zahnstangeWeg = 220;

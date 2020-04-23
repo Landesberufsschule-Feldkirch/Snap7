@@ -57,7 +57,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-
         <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
         <Label Grid.Column="12"                        Grid.Row="12"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
@@ -79,9 +78,8 @@
             </Button.Resources>
         </Button>
 
-        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"  />
+        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="S2 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-
 
         <Ellipse Grid.Column="13" Grid.Row="7" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorP1}" />
         <Ellipse Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorP2}" />
@@ -92,23 +90,19 @@
         <Label Content="Störung" Grid.Column="13" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
         <Label Content="Betrieb" Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
 
-
-
-
-
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="21" Fill="#eeeeee"/>
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="21" Fill="#eeeeee" />
 
         <Label Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="17" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (Netz)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
-        <Label Grid.Column="6" Grid.Row="18" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
-        <Label Grid.Column="7" Grid.Row="18" Background="{Binding ViAnzeige.ColorQ3}" Content="Q3 (△)" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black"/>
+        <Label Grid.Column="6" Grid.Row="18" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+        <Label Grid.Column="7" Grid.Row="18" Background="{Binding ViAnzeige.ColorQ3}" Content="Q3 (△)" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
-        <Ellipse Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
+        <Ellipse Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
         <Label Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
 
-        <Button Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="20" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}"/>
+        <Button Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="20" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}" />
 
-        <Border Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="12" >
-            <Path Stroke="Black" 
+        <Border Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="12">
+            <Path Stroke="Black"
                 StrokeThickness="2"
                 Fill="LightBlue">
                 <Path.Data>
@@ -117,11 +111,10 @@
             </Path>
         </Border>
 
-        <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="7" Background="{Binding ViAnzeige.ColorB1}" FontSize="14pt" Content="B1" Command="{Binding BtnB1}" Margin="0,1,0,0"/>
+        <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="7" Background="{Binding ViAnzeige.ColorB1}" FontSize="14pt" Content="B1" Command="{Binding BtnB1}" Margin="0,1,0,0" />
 
-
-        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="LightBlue" Stroke="Black" StrokeThickness="2" Margin="40,0,40,0"/>
-        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Fill="LightBlue" Margin="42,0,42,10"/>
+        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="LightBlue" Stroke="Black" StrokeThickness="2" Margin="40,0,40,0" />
+        <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Fill="LightBlue" Margin="42,0,42,10" />
 
         <Polygon Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="18" Grid.RowSpan="5" Fill="LightBlue" Stroke="Black" StrokeThickness="2">
             <Polygon.Points>
@@ -134,8 +127,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Rectangle Grid.Row="20" Grid.RowSpan="3" Fill="#eeeeee" Margin="0,31,66,16" Grid.Column="2"/>
-
+        <Rectangle Grid.Row="20" Grid.RowSpan="3" Fill="#eeeeee" Margin="0,31,66,16" Grid.Column="2" />
 
         <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="4" Fill="Blue" Stroke="Black" StrokeThickness="2" />
 
@@ -147,14 +139,9 @@
             </Polygon.Points>
         </Polygon>
 
-
-
-
-
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}"/>
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}"/>
-        <Label Content="B2"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17"  />
-
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Label Content="B2"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17" />
 
         <gauge:CircularGaugeControl x:Name="GaugeDruck" Grid.Column="6" Grid.ColumnSpan="5" Grid.Row="4" Grid.RowSpan="9"
                                         Radius="150"
@@ -185,11 +172,10 @@
                                         GaugeBackgroundColor="Black"
                                         PointerThickness ="16"
                                         OptimalRangeStartValue="7"
-                                        OptimalRangeEndValue= "8"  
+                                        OptimalRangeEndValue= "8"
                                         DialTextOffset="40"
                                         DialText="Druck [bar]"
                                         DialTextColor="Black"
                                         Visibility="Visible" />
-
     </Grid>
 </Window>

@@ -7,18 +7,15 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-
         private readonly LAP_2010_4_Abfuellanlage.Model.AbfuellAnlage abfuellAnlage;
         private readonly MainWindow mainWindow;
 
         private readonly double HoeheFuellBalken = 9 * 35;
 
-
         public VisuAnzeigen(MainWindow mw, LAP_2010_4_Abfuellanlage.Model.AbfuellAnlage aa)
         {
             mainWindow = mw;
             abfuellAnlage = aa;
-
 
             ColorP1 = "White";
             ColorQ1 = "LawnGreen";
@@ -31,8 +28,6 @@
             ClickModeBtnK1 = "Press";
             ClickModeBtnK2 = "Press";
 
-
-
             ImageTop1 = 10;
             ImageTop2 = 20;
             ImageTop3 = 30;
@@ -43,11 +38,7 @@
             ImageLeft3 = 30;
             ImageLeft4 = 10;
 
-
-
             Margin1 = new Thickness(0, 30, 0, 0);
-
-
 
             VisibilityRectangleAbleitung = "visible";
 
@@ -55,7 +46,6 @@
             VisibilityImage2 = "visible";
             VisibilityImage3 = "visible";
             VisibilityImage4 = "visible";
-
 
             Visibility_K1_Ein = "hidden";
             Visibility_K2_Ein = "hidden";
@@ -68,15 +58,11 @@
             VisibilityB2Ein = "Visible";
             VisibilityB2Aus = "Hidden";
 
-
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
-
 
         private void VisuAnzeigenTask()
         {
@@ -117,17 +103,35 @@
             }
         }
 
+        internal void SetQ1()
+        {
+            abfuellAnlage.Q1 = ClickModeButtonQ1();
+        }
 
-        internal void SetQ1() { abfuellAnlage.Q1 = ClickModeButtonQ1(); }
-        internal void SetK1() { abfuellAnlage.K1 = ClickModeButtonK1(); }
-        internal void SetK2() { abfuellAnlage.K2 = ClickModeButtonK2(); }
-        internal void SetS1() { abfuellAnlage.S1 = ClickModeButtonS1(); }
-        internal void BtnS2() { abfuellAnlage.S2 = ClickModeButtonS2(); }
+        internal void SetK1()
+        {
+            abfuellAnlage.K1 = ClickModeButtonK1();
+        }
 
+        internal void SetK2()
+        {
+            abfuellAnlage.K2 = ClickModeButtonK2();
+        }
 
+        internal void SetS1()
+        {
+            abfuellAnlage.S1 = ClickModeButtonS1();
+        }
+
+        internal void BtnS2()
+        {
+            abfuellAnlage.S2 = ClickModeButtonS2();
+        }
 
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -138,9 +142,8 @@
             }
         }
 
-
-
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -150,13 +153,11 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
-
-
-
+        #endregion SPS Status und Farbe
 
         #region Image1
+
         public void PositionImage_1(Punkt pos)
         {
             ImageLeft1 = pos.X;
@@ -164,6 +165,7 @@
         }
 
         private double _imageTop1;
+
         public double ImageTop1
         {
             get { return _imageTop1; }
@@ -175,6 +177,7 @@
         }
 
         private double _imageLeft1;
+
         public double ImageLeft1
         {
             get { return _imageLeft1; }
@@ -184,9 +187,11 @@
                 OnPropertyChanged(nameof(ImageLeft1));
             }
         }
-        #endregion
+
+        #endregion Image1
 
         #region Image2
+
         public void PositionImage_2(Punkt pos)
         {
             ImageLeft2 = pos.X;
@@ -194,6 +199,7 @@
         }
 
         private double _imageTop2;
+
         public double ImageTop2
         {
             get { return _imageTop2; }
@@ -205,6 +211,7 @@
         }
 
         private double _imageLeft2;
+
         public double ImageLeft2
         {
             get { return _imageLeft2; }
@@ -214,9 +221,11 @@
                 OnPropertyChanged(nameof(ImageLeft2));
             }
         }
-        #endregion
+
+        #endregion Image2
 
         #region Image3
+
         public void PositionImage_3(Punkt pos)
         {
             ImageLeft3 = pos.X;
@@ -224,6 +233,7 @@
         }
 
         private double _imageTop3;
+
         public double ImageTop3
         {
             get { return _imageTop3; }
@@ -235,6 +245,7 @@
         }
 
         private double _imageLeft3;
+
         public double ImageLeft3
         {
             get { return _imageLeft3; }
@@ -244,9 +255,11 @@
                 OnPropertyChanged(nameof(ImageLeft3));
             }
         }
-        #endregion
+
+        #endregion Image3
 
         #region Image4
+
         public void PositionImage_4(Punkt pos)
         {
             ImageLeft4 = pos.X;
@@ -254,6 +267,7 @@
         }
 
         private double _imageTop4;
+
         public double ImageTop4
         {
             get { return _imageTop4; }
@@ -265,6 +279,7 @@
         }
 
         private double _imageLeft4;
+
         public double ImageLeft4
         {
             get { return _imageLeft4; }
@@ -274,18 +289,18 @@
                 OnPropertyChanged(nameof(ImageLeft4));
             }
         }
-        #endregion
 
-
-
+        #endregion Image4
 
         #region Color P1
+
         public void FarbeP1(bool val)
         {
             if (val) ColorP1 = "Red"; else ColorP1 = "White";
         }
 
         private string _colorP1;
+
         public string ColorP1
         {
             get { return _colorP1; }
@@ -295,15 +310,18 @@
                 OnPropertyChanged(nameof(ColorP1));
             }
         }
-        #endregion
+
+        #endregion Color P1
 
         #region Color Q1
+
         public void FarbeQ1(bool val)
         {
             if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray";
         }
 
         private string _colorQ1;
+
         public string ColorQ1
         {
             get { return _colorQ1; }
@@ -313,15 +331,18 @@
                 OnPropertyChanged(nameof(ColorQ1));
             }
         }
-        #endregion
+
+        #endregion Color Q1
 
         #region Color Zuleitung
+
         public void FarbeRectangleZuleitung(bool val)
         {
             if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral";
         }
 
         private string _colorRectangleZuleitung;
+
         public string ColorRectangleZuleitung
         {
             get { return _colorRectangleZuleitung; }
@@ -331,11 +352,11 @@
                 OnPropertyChanged(nameof(ColorRectangleZuleitung));
             }
         }
-        #endregion
 
-
+        #endregion Color Zuleitung
 
         #region ClickModeBtnS1
+
         public bool ClickModeButtonS1()
         {
             if (ClickModeBtnS1 == "Press")
@@ -351,6 +372,7 @@
         }
 
         private string _clickModeBtnS1;
+
         public string ClickModeBtnS1
         {
             get { return _clickModeBtnS1; }
@@ -360,9 +382,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS1));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS1
 
         #region ClickModeBtnS2
+
         public bool ClickModeButtonS2()
         {
             if (ClickModeBtnS2 == "Press")
@@ -378,6 +402,7 @@
         }
 
         private string _clickModeBtnS2;
+
         public string ClickModeBtnS2
         {
             get { return _clickModeBtnS2; }
@@ -387,11 +412,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS2));
             }
         }
-        #endregion
 
-
+        #endregion ClickModeBtnS2
 
         #region ClickModeBtnQ1
+
         public bool ClickModeButtonQ1()
         {
             if (ClickModeBtnQ1 == "Press")
@@ -407,6 +432,7 @@
         }
 
         private string _clickModeBtnQ1;
+
         public string ClickModeBtnQ1
         {
             get { return _clickModeBtnQ1; }
@@ -416,9 +442,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnQ1));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnQ1
 
         #region ClickModeBtnK1
+
         public bool ClickModeButtonK1()
         {
             if (ClickModeBtnK1 == "Press")
@@ -434,6 +462,7 @@
         }
 
         private string _clickModeBtnK1;
+
         public string ClickModeBtnK1
         {
             get { return _clickModeBtnK1; }
@@ -443,9 +472,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnK1));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnK1
 
         #region ClickModeBtnK2
+
         public bool ClickModeButtonK2()
         {
             if (ClickModeBtnK2 == "Press")
@@ -461,6 +492,7 @@
         }
 
         private string _clickModeBtnK2;
+
         public string ClickModeBtnK2
         {
             get { return _clickModeBtnK2; }
@@ -470,15 +502,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnK2));
             }
         }
-        #endregion
 
-
-
-
-
-
+        #endregion ClickModeBtnK2
 
         #region Sichtbarkeit K1
+
         public void SichtbarkeitK1(bool val)
         {
             if (val)
@@ -494,6 +522,7 @@
         }
 
         private string _visibility_K1_Ein;
+
         public string Visibility_K1_Ein
         {
             get { return _visibility_K1_Ein; }
@@ -505,6 +534,7 @@
         }
 
         private string _visibility_K1_Aus;
+
         public string Visibility_K1_Aus
         {
             get { return _visibility_K1_Aus; }
@@ -514,9 +544,11 @@
                 OnPropertyChanged(nameof(Visibility_K1_Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit K1
 
         #region Sichtbarkeit K2
+
         public void SichtbarkeitK2(bool val)
         {
             if (val)
@@ -532,6 +564,7 @@
         }
 
         private string _visibility_K2_Ein;
+
         public string Visibility_K2_Ein
         {
             get { return _visibility_K2_Ein; }
@@ -543,6 +576,7 @@
         }
 
         private string _visibility_K2_Aus;
+
         public string Visibility_K2_Aus
         {
             get { return _visibility_K2_Aus; }
@@ -552,17 +586,18 @@
                 OnPropertyChanged(nameof(Visibility_K2_Aus));
             }
         }
-        #endregion
 
-
+        #endregion Sichtbarkeit K2
 
         #region Visibility Ableitung
+
         public void VisibilityAbleitung(bool val)
         {
             if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
         }
 
         private string _visibilityRectangleAbleitung;
+
         public string VisibilityRectangleAbleitung
         {
             get { return _visibilityRectangleAbleitung; }
@@ -572,16 +607,18 @@
                 OnPropertyChanged(nameof(VisibilityRectangleAbleitung));
             }
         }
-        #endregion
 
+        #endregion Visibility Ableitung
 
         #region Visibility Dose 1
+
         public void VisibilityDose1(bool val)
         {
             if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
         }
 
         private string _visibilityImage1;
+
         public string VisibilityImage1
         {
             get { return _visibilityImage1; }
@@ -591,15 +628,18 @@
                 OnPropertyChanged(nameof(VisibilityImage1));
             }
         }
-        #endregion
+
+        #endregion Visibility Dose 1
 
         #region Visibility Dose 2
+
         public void VisibilityDose2(bool val)
         {
             if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
         }
 
         private string _visibilityImage2;
+
         public string VisibilityImage2
         {
             get { return _visibilityImage2; }
@@ -609,15 +649,18 @@
                 OnPropertyChanged(nameof(VisibilityImage2));
             }
         }
-        #endregion
+
+        #endregion Visibility Dose 2
 
         #region Visibility Dose 3
+
         public void VisibilityDose3(bool val)
         {
             if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
         }
 
         private string _visibilityImage3;
+
         public string VisibilityImage3
         {
             get { return _visibilityImage3; }
@@ -627,15 +670,18 @@
                 OnPropertyChanged(nameof(VisibilityImage3));
             }
         }
-        #endregion
+
+        #endregion Visibility Dose 3
 
         #region Visibility Dose 4
+
         public void VisibilityDose4(bool val)
         {
             if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
         }
 
         private string _visibilityImage4;
+
         public string VisibilityImage4
         {
             get { return _visibilityImage4; }
@@ -645,11 +691,11 @@
                 OnPropertyChanged(nameof(VisibilityImage4));
             }
         }
-        #endregion
 
-
+        #endregion Visibility Dose 4
 
         #region Sichtbarkeit B1
+
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -663,7 +709,9 @@
                 VisibilityB1Aus = "Visible";
             }
         }
+
         private string _visibilityB1Ein;
+
         public string VisibilityB1Ein
         {
             get { return _visibilityB1Ein; }
@@ -685,9 +733,11 @@
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit B1
 
         #region Sichtbarkeit B2
+
         public void SichtbarkeitB2(bool val)
         {
             if (val)
@@ -701,7 +751,9 @@
                 VisibilityB2Aus = "Visible";
             }
         }
+
         private string _visibilityB2Ein;
+
         public string VisibilityB2Ein
         {
             get { return _visibilityB2Ein; }
@@ -723,22 +775,18 @@
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-        #endregion
 
-
-
-
-
-
-
+        #endregion Sichtbarkeit B2
 
         #region Margin1
+
         public void Margin_1(double pegel)
         {
             Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;
+
         public Thickness Margin1
         {
             get { return _margin1; }
@@ -748,8 +796,8 @@
                 OnPropertyChanged(nameof(Margin1));
             }
         }
-        #endregion
 
+        #endregion Margin1
 
         #region iNotifyPeropertyChanged Members
 
@@ -761,6 +809,5 @@
         }
 
         #endregion iNotifyPeropertyChanged Members
-
     }
 }

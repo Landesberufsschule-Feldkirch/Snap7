@@ -11,7 +11,6 @@
         private readonly MainWindow mainWindow;
         public readonly Model.Foerderanlage foerderanlage;
 
-
         public VisuAnzeigen(MainWindow mw, Model.Foerderanlage fa)
         {
             mainWindow = mw;
@@ -23,7 +22,6 @@
             SelectedIndex = 0; // Automatikbetrieb
 
             Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * 0.1, 0, 0);
-
 
             ClickModeBtnS0 = "Press";
             ClickModeBtnS1 = "Press";
@@ -65,7 +63,6 @@
             ColorP2 = "LawnGreen";
             ColorS2 = "LawnGreen";
 
-
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
 
@@ -79,8 +76,6 @@
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
-
 
         private void VisuAnzeigenTask()
         {
@@ -106,12 +101,10 @@
 
                 if (foerderanlage.Q1 && foerderanlage.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
-
                 FarbeF1(foerderanlage.F1);
                 FarbeP1(foerderanlage.P1);
                 FarbeP2(foerderanlage.P2);
                 FarbeS2(foerderanlage.S2);
-
 
                 PositionWagenBeschriftung(foerderanlage.Wagen.GetPosition());
                 PositionWagen(foerderanlage.Wagen.GetPosition());
@@ -133,29 +126,67 @@
             }
         }
 
-        internal void SetS0() { foerderanlage.S8 = ClickModeButtonS0(); }
-        internal void SetS1() { foerderanlage.S8 = ClickModeButtonS1(); }
-        internal void SetS5() { foerderanlage.S8 = ClickModeButtonS5(); }
-        internal void SetS6() { foerderanlage.S8 = ClickModeButtonS6(); }
-        internal void SetS7() { foerderanlage.S8 = ClickModeButtonS7(); }
-        internal void SetS8() { foerderanlage.S8 = ClickModeButtonS8(); }
+        internal void SetS0()
+        {
+            foerderanlage.S8 = ClickModeButtonS0();
+        }
 
+        internal void SetS1()
+        {
+            foerderanlage.S8 = ClickModeButtonS1();
+        }
 
-        internal void SetManualM1_RL() { foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL(); }
-        internal void SetManualM1_LL() { foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL(); }
+        internal void SetS5()
+        {
+            foerderanlage.S8 = ClickModeButtonS5();
+        }
+
+        internal void SetS6()
+        {
+            foerderanlage.S8 = ClickModeButtonS6();
+        }
+
+        internal void SetS7()
+        {
+            foerderanlage.S8 = ClickModeButtonS7();
+        }
+
+        internal void SetS8()
+        {
+            foerderanlage.S8 = ClickModeButtonS8();
+        }
+
+        internal void SetManualM1_RL()
+        {
+            foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
+        }
+
+        internal void SetManualM1_LL()
+        {
+            foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
+        }
+
         internal void SetManualM1_LL_K1()
         {
             bool M1_LL_K1 = ClickModeButtonM1_LL_K1();
             foerderanlage.Manual_M1_LL = M1_LL_K1;
             foerderanlage.Manual_K1 = M1_LL_K1;
         }
-        internal void SetManualM2() { foerderanlage.Manual_M2 = ClickModeButtonM2(); }
-        internal void SetManualK1() { foerderanlage.Manual_K1 = ClickModeButtonK1(); }
 
+        internal void SetManualM2()
+        {
+            foerderanlage.Manual_M2 = ClickModeButtonM2();
+        }
 
+        internal void SetManualK1()
+        {
+            foerderanlage.Manual_K1 = ClickModeButtonK1();
+        }
 
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -167,6 +198,7 @@
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -176,12 +208,13 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
+        #endregion SPS Status und Farbe
 
         #region SelectedIndex
 
         private int _selectedIndex;
+
         public int SelectedIndex
         {
             get { return _selectedIndex; }
@@ -203,11 +236,10 @@
             }
         }
 
-        #endregion
-
-
+        #endregion SelectedIndex
 
         #region ClickModeBtnS0
+
         public bool ClickModeButtonS0()
         {
             if (ClickModeBtnS0 == "Press")
@@ -223,6 +255,7 @@
         }
 
         private string _clickModeBtnS0;
+
         public string ClickModeBtnS0
         {
             get { return _clickModeBtnS0; }
@@ -232,9 +265,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS0));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS0
 
         #region ClickModeBtnS1
+
         public bool ClickModeButtonS1()
         {
             if (ClickModeBtnS1 == "Press")
@@ -250,6 +285,7 @@
         }
 
         private string _clickModeBtnS1;
+
         public string ClickModeBtnS1
         {
             get { return _clickModeBtnS1; }
@@ -259,9 +295,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS1));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS1
 
         #region ClickModeBtnS5
+
         public bool ClickModeButtonS5()
         {
             if (ClickModeBtnS5 == "Press")
@@ -277,6 +315,7 @@
         }
 
         private string _clickModeBtnS5;
+
         public string ClickModeBtnS5
         {
             get { return _clickModeBtnS5; }
@@ -286,9 +325,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS5));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS5
 
         #region ClickModeBtnS6
+
         public bool ClickModeButtonS6()
         {
             if (ClickModeBtnS6 == "Press")
@@ -304,6 +345,7 @@
         }
 
         private string _clickModeBtnS6;
+
         public string ClickModeBtnS6
         {
             get { return _clickModeBtnS6; }
@@ -313,9 +355,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS6));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS6
 
         #region ClickModeBtnS7
+
         public bool ClickModeButtonS7()
         {
             if (ClickModeBtnS7 == "Press")
@@ -331,6 +375,7 @@
         }
 
         private string _clickModeBtnS7;
+
         public string ClickModeBtnS7
         {
             get { return _clickModeBtnS7; }
@@ -340,9 +385,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS7));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnS7
 
         #region ClickModeBtnS8
+
         public bool ClickModeButtonS8()
         {
             if (ClickModeBtnS8 == "Press")
@@ -358,6 +405,7 @@
         }
 
         private string _clickModeBtnS8;
+
         public string ClickModeBtnS8
         {
             get { return _clickModeBtnS8; }
@@ -367,10 +415,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnS8));
             }
         }
-        #endregion
 
+        #endregion ClickModeBtnS8
 
         #region ClickModeBtnM1_RL
+
         public bool ClickModeButtonM1_RL()
         {
             if (ClickModeBtnM1_RL == "Press")
@@ -386,6 +435,7 @@
         }
 
         private string _clickModeBtnM1_RL;
+
         public string ClickModeBtnM1_RL
         {
             get { return _clickModeBtnM1_RL; }
@@ -395,9 +445,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnM1_RL));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnM1_RL
 
         #region ClickModeBtnM1_LL
+
         public bool ClickModeButtonM1_LL()
         {
             if (ClickModeBtnM1_LL == "Press")
@@ -413,6 +465,7 @@
         }
 
         private string _clickModeBtnM1_LL;
+
         public string ClickModeBtnM1_LL
         {
             get { return _clickModeBtnM1_LL; }
@@ -422,9 +475,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnM1_LL));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnM1_LL
 
         #region ClickModeBtnM2
+
         public bool ClickModeButtonM2()
         {
             if (ClickModeBtnM2 == "Press")
@@ -440,6 +495,7 @@
         }
 
         private string _clickModeBtnM2;
+
         public string ClickModeBtnM2
         {
             get { return _clickModeBtnM2; }
@@ -449,9 +505,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnM2));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnM2
 
         #region ClickModeBtnK1
+
         public bool ClickModeButtonK1()
         {
             if (ClickModeBtnK1 == "Press")
@@ -467,6 +525,7 @@
         }
 
         private string _clickModeBtnK1;
+
         public string ClickModeBtnK1
         {
             get { return _clickModeBtnK1; }
@@ -476,9 +535,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnK1));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnK1
 
         #region ClickModeBtnM1_LL_K1
+
         public bool ClickModeButtonM1_LL_K1()
         {
             if (ClickModeBtnM1_LL_K1 == "Press")
@@ -494,6 +555,7 @@
         }
 
         private string _clickModeBtnM1_LL_K1;
+
         public string ClickModeBtnM1_LL_K1
         {
             get { return _clickModeBtnM1_LL_K1; }
@@ -503,16 +565,18 @@
                 OnPropertyChanged(nameof(ClickModeBtnM1_LL_K1));
             }
         }
-        #endregion
 
+        #endregion ClickModeBtnM1_LL_K1
 
         #region FuellstandSilo
+
         public void FuellstandSilo(double pegel)
         {
             Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;
+
         public Thickness Margin1
         {
             get { return _margin1; }
@@ -522,12 +586,11 @@
                 OnPropertyChanged(nameof(Margin1));
             }
         }
-        #endregion
 
-
-
+        #endregion FuellstandSilo
 
         #region Sichtbarkeit BtnSetManual
+
         public void SichtbarkeitBtnSetManual(bool val)
         {
             if (val)
@@ -541,6 +604,7 @@
         }
 
         private string _visibilityBtnSetManual;
+
         public string VisibilityBtnSetManual
         {
             get { return _visibilityBtnSetManual; }
@@ -550,9 +614,11 @@
                 OnPropertyChanged(nameof(VisibilityBtnSetManual));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit BtnSetManual
 
         #region Sichtbarkeit PfeilLinkslauf
+
         public void SichtbarkeitPfeilLinkslauf(bool val)
         {
             if (val)
@@ -566,6 +632,7 @@
         }
 
         private string _visibilityPfeilLinkslauf;
+
         public string VisibilityPfeilLinkslauf
         {
             get { return _visibilityPfeilLinkslauf; }
@@ -575,9 +642,11 @@
                 OnPropertyChanged(nameof(VisibilityPfeilLinkslauf));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit PfeilLinkslauf
 
         #region Sichtbarkeit PfeilRechtslauf
+
         public void SichtbarkeitPfeilRechtslauf(bool val)
         {
             if (val)
@@ -591,6 +660,7 @@
         }
 
         private string _visibilityPfeilRechtslauf;
+
         public string VisibilityPfeilRechtslauf
         {
             get { return _visibilityPfeilRechtslauf; }
@@ -600,9 +670,11 @@
                 OnPropertyChanged(nameof(VisibilityPfeilRechtslauf));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit PfeilRechtslauf
 
         #region Sichtbarkeit M1
+
         public void SichtbarkeitM1(bool val)
         {
             if (val)
@@ -616,6 +688,7 @@
         }
 
         private string _visibilityM1Ein;
+
         public string VisibilityM1Ein
         {
             get { return _visibilityM1Ein; }
@@ -625,9 +698,11 @@
                 OnPropertyChanged(nameof(VisibilityM1Ein));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit M1
 
         #region Sichtbarkeit M2
+
         public void SichtbarkeitM2(bool val)
         {
             if (val)
@@ -641,6 +716,7 @@
         }
 
         private string _visibilityM2Ein;
+
         public string VisibilityM2Ein
         {
             get { return _visibilityM2Ein; }
@@ -650,9 +726,11 @@
                 OnPropertyChanged(nameof(VisibilityM2Ein));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit M2
 
         #region Sichtbarkeit K1
+
         public void SichtbarkeitK1(bool val)
         {
             if (val)
@@ -668,6 +746,7 @@
         }
 
         private string _visibilityK1Ein;
+
         public string VisibilityK1Ein
         {
             get { return _visibilityK1Ein; }
@@ -689,9 +768,11 @@
                 OnPropertyChanged(nameof(VisibilityK1Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit K1
 
         #region Sichtbarkeit B1
+
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -707,6 +788,7 @@
         }
 
         private string _visibilityB1Ein;
+
         public string VisibilityB1Ein
         {
             get { return _visibilityB1Ein; }
@@ -728,9 +810,11 @@
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit B1
 
         #region Sichtbarkeit B2
+
         public void SichtbarkeitB2(bool val)
         {
             if (val)
@@ -746,6 +830,7 @@
         }
 
         private string _visibilityB2Ein;
+
         public string VisibilityB2Ein
         {
             get { return _visibilityB2Ein; }
@@ -767,9 +852,11 @@
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit B2
 
         #region Sichtbarkeit MaterialOben
+
         public void SichtbarkeitMaterialOben(bool val)
         {
             if (val)
@@ -782,8 +869,6 @@
             }
         }
 
-
-
         private string _visibilityMaterialOben;
 
         public string VisibilityMaterialOben
@@ -795,9 +880,11 @@
                 OnPropertyChanged(nameof(VisibilityMaterialOben));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit MaterialOben
 
         #region Sichtbarkeit MaterialUnten
+
         public void SichtbarkeitMaterialUnten(bool val)
         {
             if (val)
@@ -810,8 +897,6 @@
             }
         }
 
-
-
         private string _visibilityMaterialUnten;
 
         public string VisibilityMaterialUnten
@@ -823,10 +908,13 @@
                 OnPropertyChanged(nameof(VisibilityMaterialUnten));
             }
         }
-        #endregion
 
-        #region VisibilityKurzschluss 
+        #endregion Sichtbarkeit MaterialUnten
+
+        #region VisibilityKurzschluss
+
         private string _visibilityKurzschluss;
+
         public string VisibilityKurzschluss
         {
             get { return _visibilityKurzschluss; }
@@ -836,15 +924,18 @@
                 OnPropertyChanged(nameof(VisibilityKurzschluss));
             }
         }
-        #endregion
+
+        #endregion VisibilityKurzschluss
 
         #region Color F1
+
         public void FarbeF1(bool val)
         {
             if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
         }
 
         private string _colorF1;
+
         public string ColorF1
         {
             get { return _colorF1; }
@@ -854,15 +945,18 @@
                 OnPropertyChanged(nameof(ColorF1));
             }
         }
-        #endregion
+
+        #endregion Color F1
 
         #region Color P1
+
         public void FarbeP1(bool val)
         {
             if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
         }
 
         private string _colorP1;
+
         public string ColorP1
         {
             get { return _colorP1; }
@@ -872,15 +966,18 @@
                 OnPropertyChanged(nameof(ColorP1));
             }
         }
-        #endregion
+
+        #endregion Color P1
 
         #region Color P2
+
         public void FarbeP2(bool val)
         {
             if (val) ColorP2 = "Red"; else ColorP2 = "White";
         }
 
         private string _colorP2;
+
         public string ColorP2
         {
             get { return _colorP2; }
@@ -890,15 +987,18 @@
                 OnPropertyChanged(nameof(ColorP2));
             }
         }
-        #endregion
+
+        #endregion Color P2
 
         #region Color S2
+
         public void FarbeS2(bool val)
         {
             if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
         }
 
         private string _colorS2;
+
         public string ColorS2
         {
             get { return _colorS2; }
@@ -908,12 +1008,11 @@
                 OnPropertyChanged(nameof(ColorS2));
             }
         }
-        #endregion
 
-
-
+        #endregion Color S2
 
         #region PositionWagenBeschriftung
+
         public void PositionWagenBeschriftung(Punkt pos)
         {
             PosWagenBeschriftungLeft = pos.X + 74;
@@ -921,6 +1020,7 @@
         }
 
         private double _posWagenBeschriftungLeft;
+
         public double PosWagenBeschriftungLeft
         {
             get { return _posWagenBeschriftungLeft; }
@@ -930,7 +1030,9 @@
                 OnPropertyChanged(nameof(PosWagenBeschriftungLeft));
             }
         }
+
         private double _posWagenBeschriftungTop;
+
         public double PosWagenBeschriftungTop
         {
             get { return _posWagenBeschriftungTop; }
@@ -940,9 +1042,11 @@
                 OnPropertyChanged(nameof(PosWagenBeschriftungTop));
             }
         }
-        #endregion
+
+        #endregion PositionWagenBeschriftung
 
         #region PositionWagen
+
         public void PositionWagen(Punkt pos)
         {
             PosWagenLeft = pos.X;
@@ -950,6 +1054,7 @@
         }
 
         private double _posWagenLeft;
+
         public double PosWagenLeft
         {
             get { return _posWagenLeft; }
@@ -959,7 +1064,9 @@
                 OnPropertyChanged(nameof(PosWagenLeft));
             }
         }
+
         private double _posWagenTop;
+
         public double PosWagenTop
         {
             get { return _posWagenTop; }
@@ -969,9 +1076,11 @@
                 OnPropertyChanged(nameof(PosWagenTop));
             }
         }
-        #endregion
+
+        #endregion PositionWagen
 
         #region PositionWagenInhalt
+
         public void PositionWagenInhalt(Punkt pos, double fuellstand)
         {
             PosWagenInhaltLeft = pos.X + 12;
@@ -979,6 +1088,7 @@
         }
 
         private double _posWagenInhaltLeft;
+
         public double PosWagenInhaltLeft
         {
             get { return _posWagenInhaltLeft; }
@@ -988,7 +1098,9 @@
                 OnPropertyChanged(nameof(PosWagenInhaltLeft));
             }
         }
+
         private double _posWagenInhaltTop;
+
         public double PosWagenInhaltTop
         {
             get { return _posWagenInhaltTop; }
@@ -998,10 +1110,13 @@
                 OnPropertyChanged(nameof(PosWagenInhaltTop));
             }
         }
-        #endregion
+
+        #endregion PositionWagenInhalt
 
         #region WagenFuellstand
+
         private double _wagenFuellstand;
+
         public double WagenFuellstand
         {
             get { return _wagenFuellstand; }
@@ -1011,9 +1126,8 @@
                 OnPropertyChanged(nameof(WagenFuellstand));
             }
         }
-        #endregion
 
-
+        #endregion WagenFuellstand
 
         #region iNotifyPeropertyChanged Members
 

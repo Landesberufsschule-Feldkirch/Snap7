@@ -71,7 +71,6 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         public double ManualErregerstrom { get; set; }
         public double MessgeraetOptimalerBereich { get; set; }
 
-
         public Kraftwerk()
         {
             FrequenzDifferenz = 5;
@@ -133,6 +132,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         }
 
         internal void Synchronisieren() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
+
         internal void Reset() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
     }
 }

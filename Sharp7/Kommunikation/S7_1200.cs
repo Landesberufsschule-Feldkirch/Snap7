@@ -8,6 +8,7 @@ using System.Threading;
 namespace Kommunikation
 {
 #pragma warning disable S101 // Types should be named in PascalCase
+
     public class S7_1200
 #pragma warning restore S101 // Types should be named in PascalCase
     {
@@ -28,7 +29,6 @@ namespace Kommunikation
         public const int SPS_Rack = 0;
         public const int SPS_Slot = 0;
 
-
         private readonly Action<byte[], byte[]> callbackInput;
         private readonly Action<byte[], byte[]> callbackOutput;
 
@@ -47,8 +47,6 @@ namespace Kommunikation
         private string spsStatus = "Keine Verbindung zur S7-1200!";
         private bool spsError;
         private readonly IpAdressen spsClient;
-
-
 
         public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
@@ -70,8 +68,8 @@ namespace Kommunikation
             System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
         }
 
-
         public string GetSpsStatus() => spsStatus;
+
         public bool GetSpsError() => spsError;
 
         private void SPS_Pingen_Task()
@@ -147,7 +145,6 @@ namespace Kommunikation
                             {
                                 spsError = false;
                             }
-
 
                             Thread.Sleep(10);
                         }

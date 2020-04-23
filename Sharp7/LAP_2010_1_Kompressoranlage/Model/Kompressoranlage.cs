@@ -3,7 +3,7 @@
 namespace LAP_2010_1_Kompressoranlage.Model
 {
     public class Kompressoranlage
-    { 
+    {
         public bool B1 { get; set; }    // Druckschalter
         public bool B2 { get; set; }    // Temperatursensor Kompressor
         public bool F1 { get; set; }    // Thermorelais
@@ -14,7 +14,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public bool Q3 { get; set; }    // Dreieckschütz
         public bool S1 { get; set; }    // Aus
         public bool S2 { get; set; }    // Ein
-      
+
         public double Druck { get; set; }
 
         private const double druckVerlust = 0.998;
@@ -45,7 +45,14 @@ namespace LAP_2010_1_Kompressoranlage.Model
             }
         }
 
-        internal void BtnF1() { if (F1) F1 = false; else F1 = true; }
-        internal void BtnB1() { if (B1) B1 = false; else B1 = true; }
+        internal void BtnF1()
+        {
+            if (F1) F1 = false; else F1 = true;
+        }
+
+        internal void BtnB1()
+        {
+            if (B1) B1 = false; else B1 = true;
+        }
     }
 }

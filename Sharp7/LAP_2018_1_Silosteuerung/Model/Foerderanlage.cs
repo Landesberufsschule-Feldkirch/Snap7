@@ -17,16 +17,14 @@ namespace LAP_2018_1_Silosteuerung.Model
 
         public bool P1 { get; set; }        // Anlage Ein
         public bool P2 { get; set; }        // Sammelstörung
-        public bool Q1 { get; set; }        // Förderband 
+        public bool Q1 { get; set; }        // Förderband
         public bool Q2 { get; set; }        // Schneckenförderer
-        public bool K1 { get; set; }        // Materialschieber Silo            
+        public bool K1 { get; set; }        // Materialschieber Silo
         public bool Manual_Q1 { get; set; }
         public bool Manual_Q2 { get; set; }
         public bool Manual_K1 { get; set; }
 
-
         private readonly MainWindow mainWindow;
-
 
         public Foerderanlage(MainWindow mw)
         {
@@ -35,8 +33,6 @@ namespace LAP_2018_1_Silosteuerung.Model
             Wagen = new Wagen();
             Silo = new Silo();
 
-
-
             System.Threading.Tasks.Task.Run(() => FoerderanlageTask());
         }
 
@@ -44,12 +40,8 @@ namespace LAP_2018_1_Silosteuerung.Model
         {
             while (true)
             {
-
-
                 Thread.Sleep(10);
             }
         }
-
-
     }
 }

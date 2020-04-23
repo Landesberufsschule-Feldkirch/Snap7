@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public readonly Model.Abfuellanlage abfuellAnlage;
         public VisuAnzeigen ViAnzeige { get; set; }
 
@@ -17,9 +16,10 @@
 
         public Model.Abfuellanlage Abfuellanlage { get { return abfuellAnlage; } }
 
-
         #region BtnReset
+
         private ICommand _btnReset;
+
         public ICommand BtnReset
         {
             get
@@ -31,10 +31,13 @@
                 return _btnReset;
             }
         }
-        #endregion
+
+        #endregion BtnReset
 
         #region BtnNachfuellen
+
         private ICommand _btnNachfuellen;
+
         public ICommand BtnNachfuellen
         {
             get
@@ -46,10 +49,13 @@
                 return _btnNachfuellen;
             }
         }
-        #endregion
+
+        #endregion BtnNachfuellen
 
         #region BtnTasterF1
+
         private ICommand _btnTasterF1;
+
         public ICommand BtnTasterF1
         {
             get
@@ -61,10 +67,13 @@
                 return _btnTasterF1;
             }
         }
-        #endregion
+
+        #endregion BtnTasterF1
 
         #region BtnTasterS1
+
         private ICommand _btnTasterS1;
+
         public ICommand BtnTasterS1
         {
             get
@@ -76,10 +85,13 @@
                 return _btnTasterS1;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS1
 
         #region BtnTasterS2
+
         private ICommand _btnTasterS2;
+
         public ICommand BtnTasterS2
         {
             get
@@ -91,10 +103,13 @@
                 return _btnTasterS2;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS2
 
         #region BtnTasterS3
+
         private ICommand _btnTasterS3;
+
         public ICommand BtnTasterS3
         {
             get
@@ -106,10 +121,13 @@
                 return _btnTasterS3;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS3
 
         #region BtnTasterS4
+
         private ICommand _btnTasterS4;
+
         public ICommand BtnTasterS4
         {
             get
@@ -121,10 +139,13 @@
                 return _btnTasterS4;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS4
 
         #region SetManualK1
+
         private ICommand _setManualK1;
+
         public ICommand SetManualK1
         {
             get
@@ -136,10 +157,13 @@
                 return _setManualK1;
             }
         }
-        #endregion
+
+        #endregion SetManualK1
 
         #region SetManualK2
+
         private ICommand _setManualK2;
+
         public ICommand SetManualK2
         {
             get
@@ -151,10 +175,13 @@
                 return _setManualK2;
             }
         }
-        #endregion
+
+        #endregion SetManualK2
 
         #region SetManualQ1
+
         private ICommand _setManualQ1;
+
         public ICommand SetManualQ1
         {
             get
@@ -166,7 +193,7 @@
                 return _setManualQ1;
             }
         }
-        #endregion
 
+        #endregion SetManualQ1
     }
 }

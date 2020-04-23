@@ -1,7 +1,7 @@
 ﻿namespace LAP_2019_Foerderanlage.Model
 {
-    using System;
     using System.Threading;
+
     public class Foerderanlage
     {
         public Wagen Wagen { get; set; }
@@ -12,13 +12,13 @@
         public bool S0 { get; set; }        // Anlage Aus
         public bool S1 { get; set; }        // Anlage Ein
         public bool S2 { get; set; }        // Not-Halt
-        public bool S3 { get; set; }        // Schalter Automatikbetrieb 
-        public bool S4 { get; set; }        // chalter Handbetrieb 
-        public bool S5 { get; set; }        // Handbetrieb Förderband RL 
-        public bool S6 { get; set; }        // Handbetrieb Förderband LL 
-        public bool S7 { get; set; }        // Handbetrieb Schneckenförderer 
+        public bool S3 { get; set; }        // Schalter Automatikbetrieb
+        public bool S4 { get; set; }        // chalter Handbetrieb
+        public bool S5 { get; set; }        // Handbetrieb Förderband RL
+        public bool S6 { get; set; }        // Handbetrieb Förderband LL
+        public bool S7 { get; set; }        // Handbetrieb Schneckenförderer
         public bool S8 { get; set; }        // Handbetrieb Materialschieber
-        public bool K1 { get; set; }        // Materialschieber Silo  
+        public bool K1 { get; set; }        // Materialschieber Silo
         public bool P1 { get; set; }        // Anlage Ein
         public bool P2 { get; set; }        // Sammelstörung
         public bool Q1 { get; set; }        // Förderband Rechtslauf
@@ -30,9 +30,7 @@
         public bool Manual_M2 { get; set; }
         public bool Manual_K1 { get; set; }
 
-
         private readonly MainWindow mainWindow;
-
 
         public Foerderanlage(MainWindow mw)
         {
@@ -72,10 +70,29 @@
             }
         }
 
-        internal void WagenNachLinks() { Wagen.NachLinks(); }
-        internal void WagenNachRechts() { Wagen.NachRechts(); }
-        internal void BtnF1() { if (F1) F1 = false; else F1 = true; }
-        internal void BtnS2() { if (S2) S2 = false; else S2 = true; }
-        internal void Nachfuellen() { Silo.Nachfuellen(); }
+        internal void WagenNachLinks()
+        {
+            Wagen.NachLinks();
+        }
+
+        internal void WagenNachRechts()
+        {
+            Wagen.NachRechts();
+        }
+
+        internal void BtnF1()
+        {
+            if (F1) F1 = false; else F1 = true;
+        }
+
+        internal void BtnS2()
+        {
+            if (S2) S2 = false; else S2 = true;
+        }
+
+        internal void Nachfuellen()
+        {
+            Silo.Nachfuellen();
+        }
     }
 }

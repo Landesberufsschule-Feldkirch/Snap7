@@ -9,17 +9,17 @@ namespace LAP_2010_2_Transportwagen
         private enum BitPosAusgang
         {
             P1 = 0, // Störung
-            Q1,     // Motor LL 
-            Q2      // Motor RL 
+            Q1,     // Motor LL
+            Q2      // Motor RL
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Endschalter Links 
+            B1 = 0, // Endschalter Links
             B2,     // Endschalter Rechts
-            F1,     // Thermorelais 
-            S1,     // Taster "Start" 
-            S2,     // NotHalt 
+            F1,     // Thermorelais
+            S1,     // Taster "Start"
+            S2,     // NotHalt
             S3      // Taster Reset
         }
 

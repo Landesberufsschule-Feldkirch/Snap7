@@ -2,13 +2,10 @@
 using System.Windows;
 using WpfAnimatedGif;
 
-
 namespace LAP_2018_1_Silosteuerung
 {
-
     public partial class MainWindow : Window
     {
-
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
@@ -28,7 +25,6 @@ namespace LAP_2018_1_Silosteuerung
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
-
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {

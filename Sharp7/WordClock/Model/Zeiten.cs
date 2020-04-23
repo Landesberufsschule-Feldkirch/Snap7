@@ -14,7 +14,6 @@ namespace WordClock.Model
         public byte Minute { get; set; }
         public byte Sekunde { get; set; }
 
-
         private double geschwindigkeitZeit;
         private TimeSpan timeSpan;
 
@@ -64,8 +63,14 @@ namespace WordClock.Model
         }
 
         internal int GetSekunde() => Sekunde;
+
         internal int GetMinute() => Minute;
+
         internal int GetStunde() => Stunde;
-        internal void SetGeschwindigkeit(double geschwindigkeitSlider) { geschwindigkeitZeit = geschwindigkeitSlider; }
+
+        internal void SetGeschwindigkeit(double geschwindigkeitSlider)
+        {
+            geschwindigkeitZeit = geschwindigkeitSlider;
+        }
     }
 }

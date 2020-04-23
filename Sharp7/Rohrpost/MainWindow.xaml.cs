@@ -13,7 +13,6 @@ namespace Rohrpost
             datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
-
         }
     }
 }

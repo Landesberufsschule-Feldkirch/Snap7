@@ -31,6 +31,5 @@
         <Button Grid.Column="3" Grid.Row="6" ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}" Command="{Binding BtnQ1}" Content="Q1" />
         <Button Grid.Column="3" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK1}" Command="{Binding BtnK1}" Content="K1" />
         <Button Grid.Column="5" Grid.Row="4" ClickMode="{Binding ViAnzeige.ClickModeBtnK2}" Command="{Binding BtnK2}" Content="K2" />
-
     </Grid>
 </Window>

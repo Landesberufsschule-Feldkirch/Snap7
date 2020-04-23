@@ -20,6 +20,7 @@
             automatikModus = false;
             Pegel = pegel;
         }
+
         public bool AutomatikModus() => automatikModus;
 
         public void PegelUeberwachen()
@@ -54,6 +55,7 @@
             this.internerPegel = Startpegel;
             VentilUnten = true;
         }
+
         internal void VentilUntenUmschalten()
         {
             if (!automatikModus)

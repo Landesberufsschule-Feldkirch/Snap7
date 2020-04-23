@@ -60,12 +60,12 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Right" Content="V2.0 "/>
+        <Label Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Right" Content="V2.0 " />
         <Label Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
         <Rectangle Fill="LightGray"         Grid.Column="23" Grid.ColumnSpan="5"    Grid.Row="2"  Grid.RowSpan="5"  Stroke="Black" />
-        <Button Content="Links parken!"     Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                     Command="{Binding BtnLinksParken}"/>
-        <Button Content="Rechts parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="5"                     Command="{Binding BtnRechtsParken}"/>
+        <Button Content="Links parken!"     Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                     Command="{Binding BtnLinksParken}" />
+        <Button Content="Rechts parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="5"                     Command="{Binding BtnRechtsParken}" />
 
         <Rectangle Grid.Column="6"                         Grid.Row="2" Grid.RowSpan="4"   Fill="DarkGray" Margin="50,0,0,0" />
         <Rectangle Grid.Column="6" Grid.ColumnSpan="10"    Grid.Row="5"                    Fill="DarkGray" Margin="60,20,0,0" />
@@ -98,60 +98,59 @@
         <Canvas Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw1Left}" Canvas.Top="{Binding ViAnzeige.PosLkw1Top}" Command="{Binding BtnLkw1}">
-                <Image Height="60" Source="Bilder/LKW_braun.PNG"  RenderTransformOrigin="0.5,0.5" >
+                <Image Height="60" Source="Bilder/LKW_braun.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw1}"/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw1}" />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw2Left}" Canvas.Top="{Binding ViAnzeige.PosLkw2Top}" Command="{Binding BtnLkw2}">
-                <Image Height="60" Source="Bilder/LKW_gelb.PNG"  RenderTransformOrigin="0.5,0.5" >
+                <Image Height="60" Source="Bilder/LKW_gelb.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw2}"/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw2}" />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw3Left}" Canvas.Top="{Binding ViAnzeige.PosLkw3Top}" Command="{Binding BtnLkw3}">
-                <Image Height="60" Source="Bilder/LKW_gruen.PNG"  RenderTransformOrigin="0.5,0.5" >
+                <Image Height="60" Source="Bilder/LKW_gruen.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw3}"/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw3}" />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw4Left}" Canvas.Top="{Binding ViAnzeige.PosLkw4Top}" Command="{Binding BtnLkw4}">
-                <Image Height="60" Source="Bilder/LKW_pink.PNG"  RenderTransformOrigin="0.5,0.5" >
+                <Image Height="60" Source="Bilder/LKW_pink.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw4}"/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw4}" />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
             <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw5Left}" Canvas.Top="{Binding ViAnzeige.PosLkw5Top}" Command="{Binding BtnLkw5}">
-                <Image Height="60" Source="Bilder/LKW_rot.PNG"  RenderTransformOrigin="0.5,0.5" >
+                <Image Height="60" Source="Bilder/LKW_rot.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw5}"/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw5}" />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
-
         </Canvas>
     </Grid>
 </Window>

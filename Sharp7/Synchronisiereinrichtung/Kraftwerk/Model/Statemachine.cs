@@ -55,7 +55,6 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             stateReset = new StateReset(kraftWerk);
         }
 
-
         public bool Fire(Trigger trigger)
         {
             if (!stateMachine.CanFire(trigger))
@@ -66,6 +65,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         }
 
         public State Status { get { return stateMachine.State; } }
+
         public string StatusAusgeben() => stateMachine.State.ToString();
 
         private StateMachine<State, Trigger> CreateStateMachine()
@@ -111,12 +111,10 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
                 .OnEntry(() => stateReset.OnEntry())
                 .Permit(Trigger.Neustart, State.Aus);
 
-
             _stateMachine.OnUnhandledTrigger((state, trigger) =>
             {
                 Console.WriteLine("Unhandled: '{0}' state, '{1}' trigger!");
             });
-
 
             string graph = UmlDotGraph.Format(_stateMachine.GetInfo());
             Console.Write("\n \n" + graph + "\n \n");

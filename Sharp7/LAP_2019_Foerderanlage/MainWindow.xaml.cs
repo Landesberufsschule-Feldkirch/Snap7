@@ -38,10 +38,10 @@ namespace LAP_2019_Foerderanlage
             AnimationGestartet = true;
             Controller = ImageBehavior.GetAnimationController(imgSchneckenfoerderer);
         }
+
         private void TabItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             //
         }
-
     }
 }

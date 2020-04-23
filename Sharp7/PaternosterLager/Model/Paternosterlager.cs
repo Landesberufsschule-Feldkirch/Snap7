@@ -22,8 +22,6 @@ namespace PaternosterLager.Model
         public int SollPos { get; set; }
         public double Position { get; set; }
 
-
-
         public double GesamtLaenge { get; set; }
 
         private readonly MainWindow mainWindow;
@@ -55,7 +53,6 @@ namespace PaternosterLager.Model
                     if (S2) Position -= geschwindigkeit;
                 }
 
-
                 if (abstandRegale > 0)
                 {
                     if (pos > GesamtLaenge) Position -= GesamtLaenge;
@@ -70,6 +67,5 @@ namespace PaternosterLager.Model
         }
 
         internal void AllesReset() => Position = 0;
-
     }
 }

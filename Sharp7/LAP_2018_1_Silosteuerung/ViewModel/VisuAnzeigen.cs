@@ -5,7 +5,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-
         private const int materialSiloHoehe = 8 * 35;
         private readonly MainWindow mainWindow;
         public readonly Model.Foerderanlage foerderanlage;
@@ -18,29 +17,21 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-
-
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
-
-
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-
-
-
-
-
                 Thread.Sleep(10);
             }
         }
 
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -52,6 +43,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -61,11 +53,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
-
-
-
+        #endregion SPS Status und Farbe
 
         #region iNotifyPeropertyChanged Members
 

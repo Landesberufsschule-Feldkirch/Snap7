@@ -51,14 +51,14 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V0.0 "/>
-        <Label Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}"  />
+        <Label Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V0.0 " />
+        <Label Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
         <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding ViAnzeige.ColorP0}" />
 
         <Polygon Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
             <Polygon.Points>
-                <Point X="30"   Y="500"  />
+                <Point X="30"   Y="500" />
                 <Point X="385"  Y="40" />
                 <Point X="730"  Y="500" />
                 <Point X="385"  Y="960" />
@@ -66,39 +66,36 @@
         </Polygon>
 
         <!--nach rechts oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3UpRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4UpRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1UpRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2UpRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3UpRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4UpRight}" />
 
         <!--nach rechts unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3DownRight}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4DownRight}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1DownRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2DownRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3DownRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4DownRight}" />
 
         <!--nach links oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4UpLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5UpLeft}"  />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2UpLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3UpLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4UpLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5UpLeft}" />
 
         <!--nach links unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4DownLeft}"  />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5DownLeft}"  />
-
-
-
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2DownLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3DownLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4DownLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5DownLeft}" />
 
         <Polygon Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle1}"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle1}" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -112,10 +109,10 @@
         <Polygon Grid.Column="5" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle2}"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle2}" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -129,10 +126,10 @@
         <Polygon Grid.Column="7" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle3}"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle3}" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -146,10 +143,10 @@
         <Polygon Grid.Column="9" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle4}"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle4}" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -163,10 +160,10 @@
         <Polygon Grid.Column="11" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle5}"/>
-                    <TranslateTransform/>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle5}" />
+                    <TranslateTransform />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -177,7 +174,6 @@
             </Polygon.Points>
         </Polygon>
 
-
         <Button Content="A" Grid.Column="7" Grid.Row="4" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[65]}" Command="{Binding BtnBuchstabe}" CommandParameter="A">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -186,7 +182,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="B" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[66]}" Command="{Binding BtnBuchstabe}" CommandParameter="B" >
+        <Button Content="B" Grid.Column="6" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[66]}" Command="{Binding BtnBuchstabe}" CommandParameter="B">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -194,7 +190,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="D" Grid.Column="8" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[68]}" Command="{Binding BtnBuchstabe}" CommandParameter="D" >
+        <Button Content="D" Grid.Column="8" Grid.Row="6" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[68]}" Command="{Binding BtnBuchstabe}" CommandParameter="D">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -202,7 +198,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="E" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[69]}" Command="{Binding BtnBuchstabe}" CommandParameter="E" >
+        <Button Content="E" Grid.Column="5" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[69]}" Command="{Binding BtnBuchstabe}" CommandParameter="E">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -210,7 +206,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="F" Grid.Column="7" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[70]}" Command="{Binding BtnBuchstabe}" CommandParameter="F" >
+        <Button Content="F" Grid.Column="7" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[70]}" Command="{Binding BtnBuchstabe}" CommandParameter="F">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -218,7 +214,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="G" Grid.Column="9" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[71]}" Command="{Binding BtnBuchstabe}" CommandParameter="G" >
+        <Button Content="G" Grid.Column="9" Grid.Row="7" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[71]}" Command="{Binding BtnBuchstabe}" CommandParameter="G">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -226,7 +222,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="H" Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[72]}" Command="{Binding BtnBuchstabe}" CommandParameter="H" >
+        <Button Content="H" Grid.Column="4" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[72]}" Command="{Binding BtnBuchstabe}" CommandParameter="H">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -234,7 +230,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="I" Grid.Column="6" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[73]}" Command="{Binding BtnBuchstabe}" CommandParameter="I" >
+        <Button Content="I" Grid.Column="6" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[73]}" Command="{Binding BtnBuchstabe}" CommandParameter="I">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -242,7 +238,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="K" Grid.Column="8" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[75]}" Command="{Binding BtnBuchstabe}" CommandParameter="K" >
+        <Button Content="K" Grid.Column="8" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[75]}" Command="{Binding BtnBuchstabe}" CommandParameter="K">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -250,7 +246,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="L" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[76]}" Command="{Binding BtnBuchstabe}" CommandParameter="L" >
+        <Button Content="L" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[76]}" Command="{Binding BtnBuchstabe}" CommandParameter="L">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -258,7 +254,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="M" Grid.Column="4" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[77]}" Command="{Binding BtnBuchstabe}" CommandParameter="M" >
+        <Button Content="M" Grid.Column="4" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[77]}" Command="{Binding BtnBuchstabe}" CommandParameter="M">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -266,7 +262,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="N" Grid.Column="6" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[78]}" Command="{Binding BtnBuchstabe}" CommandParameter="N" >
+        <Button Content="N" Grid.Column="6" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[78]}" Command="{Binding BtnBuchstabe}" CommandParameter="N">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -274,7 +270,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="O" Grid.Column="8" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[79]}" Command="{Binding BtnBuchstabe}" CommandParameter="O" >
+        <Button Content="O" Grid.Column="8" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[79]}" Command="{Binding BtnBuchstabe}" CommandParameter="O">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -282,7 +278,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="P" Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[80]}" Command="{Binding BtnBuchstabe}" CommandParameter="P" >
+        <Button Content="P" Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[80]}" Command="{Binding BtnBuchstabe}" CommandParameter="P">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -290,7 +286,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="R" Grid.Column="5" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[82]}" Command="{Binding BtnBuchstabe}" CommandParameter="R" >
+        <Button Content="R" Grid.Column="5" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[82]}" Command="{Binding BtnBuchstabe}" CommandParameter="R">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -298,7 +294,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="S" Grid.Column="7" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[83]}" Command="{Binding BtnBuchstabe}" CommandParameter="S" >
+        <Button Content="S" Grid.Column="7" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[83]}" Command="{Binding BtnBuchstabe}" CommandParameter="S">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -306,7 +302,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="T" Grid.Column="9" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[84]}" Command="{Binding BtnBuchstabe}" CommandParameter="T" >
+        <Button Content="T" Grid.Column="9" Grid.Row="14" Grid.RowSpan="3" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[84]}" Command="{Binding BtnBuchstabe}" CommandParameter="T">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -314,7 +310,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="V" Grid.Column="6" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[86]}" Command="{Binding BtnBuchstabe}" CommandParameter="V" >
+        <Button Content="V" Grid.Column="6" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[86]}" Command="{Binding BtnBuchstabe}" CommandParameter="V">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -322,7 +318,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="W" Grid.Column="8" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[87]}" Command="{Binding BtnBuchstabe}" CommandParameter="W" >
+        <Button Content="W" Grid.Column="8" Grid.Row="16" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[87]}" Command="{Binding BtnBuchstabe}" CommandParameter="W">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -330,14 +326,12 @@
             </Button.Resources>
         </Button>
 
-        <Button Content="Y" Grid.Column="7" Grid.Row="18" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[89]}" Command="{Binding BtnBuchstabe}" CommandParameter="Y" >
+        <Button Content="Y" Grid.Column="7" Grid.Row="18" Grid.RowSpan="2" Height="70" Width="70" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[89]}" Command="{Binding BtnBuchstabe}" CommandParameter="Y">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
                 </Style>
             </Button.Resources>
         </Button>
-
-
     </Grid>
 </Window>

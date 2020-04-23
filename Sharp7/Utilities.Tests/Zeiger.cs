@@ -10,7 +10,6 @@ namespace Utilities.Tests
         [InlineData(1, 0, 1, 0, 0)]
         [InlineData(1, 0, 0, 1, 0)]
         [InlineData(1, 0, 0, 0, 1)]
-
         public void Test(double exp, double x1, double y1, double x2, double y2)
         {
             var p1 = new Punkt(x1, y1);

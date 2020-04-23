@@ -78,7 +78,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="V1.1 " />
-        <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}"  />
+        <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
 
         <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
 
@@ -201,7 +201,7 @@
                                         GaugeBackgroundColor="Black"
                                         PointerThickness ="16"
                                         OptimalRangeStartValue="0"
-                                        OptimalRangeEndValue= "25"  
+                                        OptimalRangeEndValue= "25"
                                         DialTextOffset="40"
                                         DialText="Differenzspannung"
                                         DialTextColor="Black"

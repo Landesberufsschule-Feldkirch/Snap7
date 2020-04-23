@@ -5,22 +5,21 @@
 
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat hydraulikaggregat;
 
         public ViewModel(MainWindow mainWindow)
         {
-            hydraulikaggregat = new LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat ();
+            hydraulikaggregat = new LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat();
             ViAnzeige = new VisuAnzeigen(mainWindow, hydraulikaggregat);
         }
 
-        public LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat Hydraulikaggregat{ get { return hydraulikaggregat; } }
-
-
+        public LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat Hydraulikaggregat { get { return hydraulikaggregat; } }
 
         #region BtnNachfuellen
+
         private ICommand _btnNachfuellen;
+
         public ICommand BtnNachfuellen
         {
             get
@@ -32,10 +31,13 @@
                 return _btnNachfuellen;
             }
         }
-        #endregion
+
+        #endregion BtnNachfuellen
 
         #region BtnF1
+
         private ICommand _btnF1;
+
         public ICommand BtnF1
         {
             get
@@ -47,11 +49,13 @@
                 return _btnF1;
             }
         }
-        #endregion
 
+        #endregion BtnF1
 
         #region BtnQ1
+
         private ICommand _btnQ1;
+
         public ICommand BtnQ1
         {
             get
@@ -63,10 +67,13 @@
                 return _btnQ1;
             }
         }
-        #endregion
+
+        #endregion BtnQ1
 
         #region BtnQ2
+
         private ICommand _btnQ2;
+
         public ICommand BtnQ2
         {
             get
@@ -78,10 +85,13 @@
                 return _btnQ2;
             }
         }
-        #endregion
+
+        #endregion BtnQ2
 
         #region BtnQ3
+
         private ICommand _btnQ3;
+
         public ICommand BtnQ3
         {
             get
@@ -93,10 +103,13 @@
                 return _btnQ3;
             }
         }
-        #endregion
+
+        #endregion BtnQ3
 
         #region BtnQ1_Q3
+
         private ICommand _btnQ1_Q3;
+
         public ICommand BtnQ1_Q3
         {
             get
@@ -108,11 +121,13 @@
                 return _btnQ1_Q3;
             }
         }
-        #endregion
 
+        #endregion BtnQ1_Q3
 
         #region BtnS1
+
         private ICommand _btnS1;
+
         public ICommand BtnS1
         {
             get
@@ -124,10 +139,13 @@
                 return _btnS1;
             }
         }
-        #endregion
+
+        #endregion BtnS1
 
         #region BtnS2
+
         private ICommand _btnS2;
+
         public ICommand BtnS2
         {
             get
@@ -139,10 +157,13 @@
                 return _btnS2;
             }
         }
-        #endregion
+
+        #endregion BtnS2
 
         #region BtnS3
+
         private ICommand _btnS3;
+
         public ICommand BtnS3
         {
             get
@@ -154,7 +175,7 @@
                 return _btnS3;
             }
         }
-        #endregion
 
+        #endregion BtnS3
     }
 }

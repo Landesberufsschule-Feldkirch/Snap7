@@ -18,6 +18,7 @@ namespace RealTimeGraphX.WPF
             get { return (int)GetValue(RowsProperty); }
             set { SetValue(RowsProperty, value); }
         }
+
         public static readonly DependencyProperty RowsProperty =
             DependencyProperty.Register("Rows", typeof(int), typeof(WpfGraphGridLines), new PropertyMetadata(8, (d, e) => (d as WpfGraphGridLines).UpdateGridLines()));
 
@@ -29,6 +30,7 @@ namespace RealTimeGraphX.WPF
             get { return (int)GetValue(ColumnsProperty); }
             set { SetValue(ColumnsProperty, value); }
         }
+
         public static readonly DependencyProperty ColumnsProperty =
             DependencyProperty.Register("Columns", typeof(int), typeof(WpfGraphGridLines), new PropertyMetadata(8, (d, e) => (d as WpfGraphGridLines).UpdateGridLines()));
 
@@ -40,6 +42,7 @@ namespace RealTimeGraphX.WPF
             get { return (IEnumerable<int>)GetValue(VerticalItemsProperty); }
             set { SetValue(VerticalItemsProperty, value); }
         }
+
         internal static readonly DependencyProperty VerticalItemsProperty =
             DependencyProperty.Register("VerticalItems", typeof(IEnumerable<int>), typeof(WpfGraphGridLines), new PropertyMetadata(null));
 
@@ -51,6 +54,7 @@ namespace RealTimeGraphX.WPF
             get { return (IEnumerable<int>)GetValue(HorizontalItemsProperty); }
             set { SetValue(HorizontalItemsProperty, value); }
         }
+
         internal static readonly DependencyProperty HorizontalItemsProperty =
             DependencyProperty.Register("HorizontalItems", typeof(IEnumerable<int>), typeof(WpfGraphGridLines), new PropertyMetadata(null));
 

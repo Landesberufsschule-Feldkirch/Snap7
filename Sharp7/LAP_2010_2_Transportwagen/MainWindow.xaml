@@ -82,8 +82,7 @@
             </Button.Resources>
         </Button>
 
-
-        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"  />
+        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
         <Label Content="S2 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,18,10,18" />
         <Label Content="S3 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,17,0,18" />
 
@@ -93,10 +92,8 @@
 
         <Button Content="F1" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF1}" Command="{Binding BtnF1}"  FontSize="14pt" />
 
-
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee"/>
+        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
-
 
         <Polygon Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5" Fill="DarkOrange">
             <Polygon.Points>
@@ -109,34 +106,26 @@
             </Polygon.Points>
         </Polygon>
 
-
         <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}"/>
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
         <Label Content="B1"                                Grid.Column="2" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}"/>
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}"/>
+        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="8" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14" >
-            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadLinks}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2"/>
-            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadRechts}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2"/>
-            <Rectangle Canvas.Left="{Binding ViAnzeige.PositionWagenkasten}" Canvas.Top="200" Width="150" Height="80" Fill="Silver" Stroke="Black" StrokeThickness="2"/>
+        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14">
+            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadLinks}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2" />
+            <Ellipse Canvas.Left="{Binding ViAnzeige.PositionRadRechts}" Canvas.Top="270" Width="30" Height="30" Fill="Goldenrod" Stroke="Black" StrokeThickness="2" />
+            <Rectangle Canvas.Left="{Binding ViAnzeige.PositionWagenkasten}" Canvas.Top="200" Width="150" Height="80" Fill="Silver" Stroke="Black" StrokeThickness="2" />
 
-
-
-            <Rectangle Canvas.Left="30" Canvas.Top="300" Width="550" Height="30" Fill="DarkGray"/>
-
-
-
+            <Rectangle Canvas.Left="30" Canvas.Top="300" Width="550" Height="30" Fill="DarkGray" />
         </Canvas>
 
-        <Label Grid.Column="5" Grid.Row="12" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black"  />
+        <Label Grid.Column="5" Grid.Row="12" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
         <Label Grid.Column="6" Grid.Row="12" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
-        <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}"/>
+        <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
         <Label Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
-
-
     </Grid>
 </Window>

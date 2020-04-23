@@ -1,10 +1,14 @@
 ﻿namespace Synchronisiereinrichtung.kraftwerk.Model
 {
-    class StateBelasten
+    internal class StateBelasten
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateBelasten(Kraftwerk kw) { kraftWerk = kw; }
+        public StateBelasten(Kraftwerk kw)
+        {
+            kraftWerk = kw;
+        }
+
         public void OnEntry()
         {
             kraftWerk.generator.SynchronisierungVentil(kraftWerk.Ventil_Y);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor

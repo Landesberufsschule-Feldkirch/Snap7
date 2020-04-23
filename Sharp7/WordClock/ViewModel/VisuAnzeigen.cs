@@ -29,7 +29,6 @@
         {
             while (true)
             {
-
                 WinkelSekunden = zeiten.GetSekunde() * 6;
                 WinkelMinuten = zeiten.GetMinute() * 6;
                 WinkelStunden = zeiten.GetStunde() * 30 + zeiten.GetMinute() * 0.5;
@@ -44,10 +43,10 @@
             }
         }
 
-
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -59,6 +58,7 @@
         }
 
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -68,9 +68,11 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
+
+        #endregion SPS Status und Farbe
 
         #region GeschwindigkeitZeit
+
         public int GeschwindigkeitZeit() => (int)GeschwindigkeitSlider;
 
         private double _geschwindigkeitSlider;
@@ -85,11 +87,13 @@
                 zeiten.SetGeschwindigkeit(GeschwindigkeitSlider);
             }
         }
-        #endregion
 
+        #endregion GeschwindigkeitZeit
 
         #region WinkelStunden
+
         private double _winkelStunden;
+
         public double WinkelStunden
         {
             get { return _winkelStunden; }
@@ -99,10 +103,13 @@
                 OnPropertyChanged(nameof(WinkelStunden));
             }
         }
-        #endregion
+
+        #endregion WinkelStunden
 
         #region WinkelMinuten
+
         private double _winkelMinuten;
+
         public double WinkelMinuten
         {
             get { return _winkelMinuten; }
@@ -112,10 +119,13 @@
                 OnPropertyChanged(nameof(WinkelMinuten));
             }
         }
-        #endregion
+
+        #endregion WinkelMinuten
 
         #region WinkelSekunden
+
         private double _winkelSekunden;
+
         public double WinkelSekunden
         {
             get { return _winkelSekunden; }
@@ -125,9 +135,8 @@
                 OnPropertyChanged(nameof(WinkelSekunden));
             }
         }
-        #endregion
 
-
+        #endregion WinkelSekunden
 
         #region iNotifyPeropertyChanged Members
 

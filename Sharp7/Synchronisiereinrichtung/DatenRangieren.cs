@@ -8,6 +8,7 @@ namespace Synchronisiereinrichtung
     {
         private readonly ViewModel viewModel;
         private readonly MainWindow mainWindow;
+
         private enum BitPosAusgang
         {
             Q1 = 0
@@ -27,7 +28,6 @@ namespace Synchronisiereinrichtung
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-
             S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 

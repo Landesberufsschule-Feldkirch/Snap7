@@ -18,9 +18,10 @@
 
         public Model.Kraftwerk Kraftwerk { get { return kraftwerk; } }
 
-
         #region BtnReset
+
         private ICommand _btnReset;
+
         public ICommand BtnReset
         {
             get
@@ -32,10 +33,13 @@
                 return _btnReset;
             }
         }
-        #endregion
+
+        #endregion BtnReset
 
         #region BtnSchalterQ1
+
         private ICommand _btnSchalterQ1;
+
         public ICommand BtnSchalterQ1
         {
             get
@@ -47,10 +51,13 @@
                 return _btnSchalterQ1;
             }
         }
-        #endregion
+
+        #endregion BtnSchalterQ1
 
         #region BtnSchalterStart
+
         private ICommand _btnSchalterStart;
+
         public ICommand BtnSchalterStart
         {
             get
@@ -62,10 +69,13 @@
                 return _btnSchalterStart;
             }
         }
-        #endregion
+
+        #endregion BtnSchalterStart
 
         #region BtnSchalterStop
+
         private ICommand _btnSchalterStop;
+
         public ICommand BtnSchalterStop
         {
             get
@@ -77,7 +87,7 @@
                 return _btnSchalterStop;
             }
         }
-        #endregion
 
+        #endregion BtnSchalterStop
     }
 }

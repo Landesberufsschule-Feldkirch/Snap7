@@ -5,9 +5,9 @@
 
     public class ViewModel
     {
-
         public readonly Model.StiegenhausBeleuchtung stiegenhausBeleuchtung;
         public VisuAnzeigen ViAnzeige { get; set; }
+
         public ViewModel(MainWindow mainWindow)
         {
             stiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
@@ -17,9 +17,10 @@
 
         public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung { get { return stiegenhausBeleuchtung; } }
 
-
         #region BtnStart
+
         private ICommand _btnStart;
+
         public ICommand BtnStart
         {
             get
@@ -31,10 +32,13 @@
                 return _btnStart;
             }
         }
-        #endregion
+
+        #endregion BtnStart
 
         #region BtnBewegungsmelder
+
         private ICommand _btnBewegungsmelder;
+
         public ICommand BtnBewegungsmelder
         {
             get
@@ -46,7 +50,7 @@
                 return _btnBewegungsmelder;
             }
         }
-        #endregion
 
+        #endregion BtnBewegungsmelder
     }
 }

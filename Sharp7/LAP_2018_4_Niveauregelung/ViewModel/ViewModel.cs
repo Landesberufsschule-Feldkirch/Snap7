@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public readonly Model.NiveauRegelung niveauRegelung;
         public VisuAnzeigen ViAnzeige { get; set; }
 
@@ -17,10 +16,10 @@
 
         public Model.NiveauRegelung NiveauRegelung { get { return niveauRegelung; } }
 
-
-
         #region BtnTasterS1
+
         private ICommand _btnTasterS1;
+
         public ICommand BtnTasterS1
         {
             get
@@ -32,10 +31,13 @@
                 return _btnTasterS1;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS1
 
         #region BtnTasterS2
+
         private ICommand _btnTasterS2;
+
         public ICommand BtnTasterS2
         {
             get
@@ -47,10 +49,13 @@
                 return _btnTasterS2;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS2
 
         #region BtnTasterS3
+
         private ICommand _btnTasterS3;
+
         public ICommand BtnTasterS3
         {
             get
@@ -62,10 +67,13 @@
                 return _btnTasterS3;
             }
         }
-        #endregion
+
+        #endregion BtnTasterS3
 
         #region BtnThermorelaisF1
+
         private ICommand _btnThermorelaisF1;
+
         public ICommand BtnThermorelaisF1
         {
             get
@@ -77,10 +85,13 @@
                 return _btnThermorelaisF1;
             }
         }
-        #endregion
+
+        #endregion BtnThermorelaisF1
 
         #region BtnThermorelaisF2
+
         private ICommand _btnThermorelaisF2;
+
         public ICommand BtnThermorelaisF2
         {
             get
@@ -92,10 +103,13 @@
                 return _btnThermorelaisF2;
             }
         }
-        #endregion
+
+        #endregion BtnThermorelaisF2
 
         #region BtnVentilY1
+
         private ICommand _btnVentilY1;
+
         public ICommand BtnVentilY1
         {
             get
@@ -107,10 +121,13 @@
                 return _btnVentilY1;
             }
         }
-        #endregion
+
+        #endregion BtnVentilY1
 
         #region BtnSetManualQ1
+
         private ICommand _btnSetManualQ1;
+
         public ICommand BtnSetManualQ1
         {
             get
@@ -122,10 +139,13 @@
                 return _btnSetManualQ1;
             }
         }
-        #endregion
+
+        #endregion BtnSetManualQ1
 
         #region BtnSetManualQ2
+
         private ICommand _btnSetManualQ2;
+
         public ICommand BtnSetManualQ2
         {
             get
@@ -137,6 +157,7 @@
                 return _btnSetManualQ2;
             }
         }
-        #endregion
+
+        #endregion BtnSetManualQ2
     }
 }

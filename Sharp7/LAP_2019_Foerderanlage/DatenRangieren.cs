@@ -27,7 +27,7 @@ namespace LAP_2019_Foerderanlage
             S1,     // Anlage Ein
             S2,     // Not-Halt
             S3,     // Schalter Automatikbetrieb
-            S4,     // Schalter Handbetrieb    
+            S4,     // Schalter Handbetrieb
             S5,     // Handbetrieb Förderband RL
             S6,     // Handbetrieb Förderband LL
             S7,     // Handbetrieb Schneckenförderer
@@ -48,7 +48,6 @@ namespace LAP_2019_Foerderanlage
             S7.SetBitAt(digInput, (int)BitPosEingang.S6, foerderanlageViewModel.foerderanlage.S6);
             S7.SetBitAt(digInput, (int)BitPosEingang.S7, foerderanlageViewModel.foerderanlage.S7);
             S7.SetBitAt(digInput, (int)BitPosEingang.S8, foerderanlageViewModel.foerderanlage.S8);
-
 
             S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(foerderanlageViewModel.foerderanlage.Silo.GetFuellstand(), 1));
         }

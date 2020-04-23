@@ -31,6 +31,7 @@ namespace RealTimeGraphX.WPF
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
+
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WpfGraphAxisControl), new PropertyMetadata(Orientation.Vertical));
 
@@ -42,6 +43,7 @@ namespace RealTimeGraphX.WPF
             get { return (DataTemplate)GetValue(ItemTemplateProperty); }
             set { SetValue(ItemTemplateProperty, value); }
         }
+
         public static readonly DependencyProperty ItemTemplateProperty =
             DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 
@@ -53,6 +55,7 @@ namespace RealTimeGraphX.WPF
             get { return (ObservableCollection<WpfGraphAxisTickData>)GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
         }
+
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register("Items", typeof(ObservableCollection<WpfGraphAxisTickData>), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 
@@ -64,6 +67,7 @@ namespace RealTimeGraphX.WPF
             get { return (int)GetValue(TicksProperty); }
             set { SetValue(TicksProperty, value); }
         }
+
         public static readonly DependencyProperty TicksProperty =
             DependencyProperty.Register("Ticks", typeof(int), typeof(WpfGraphAxisControl), new PropertyMetadata(9, (d, e) => (d as WpfGraphAxisControl).OnTicksChanged()));
 
@@ -75,6 +79,7 @@ namespace RealTimeGraphX.WPF
             get { return (String)GetValue(StringFormatProperty); }
             set { SetValue(StringFormatProperty, value); }
         }
+
         public static readonly DependencyProperty StringFormatProperty =
             DependencyProperty.Register("StringFormat", typeof(String), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 

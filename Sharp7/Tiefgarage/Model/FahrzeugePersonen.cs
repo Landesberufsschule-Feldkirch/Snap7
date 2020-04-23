@@ -28,7 +28,6 @@ namespace Tiefgarage.Model
         public FahrenRichtung Bewegung { get; set; } = FahrenRichtung.ObenGeparkt;
         public Punkt AktuellePosition { get; set; } = new Punkt(0, 0);
 
-
         private readonly double xy_Bewegung = 1;
         private readonly double kurveGeschwindigkeit = 0.002;
 
@@ -124,8 +123,15 @@ namespace Tiefgarage.Model
             if (Bewegung == FahrenRichtung.UntenGeparkt) Bewegung = FahrenRichtung.AufwaertsKurveUnten;
         }
 
-        public void DraussenParken() { Bewegung = FahrenRichtung.ObenGeparkt; }
-        public void DrinnenParken() { Bewegung = FahrenRichtung.UntenGeparkt; }
+        public void DraussenParken()
+        {
+            Bewegung = FahrenRichtung.ObenGeparkt;
+        }
+
+        public void DrinnenParken()
+        {
+            Bewegung = FahrenRichtung.UntenGeparkt;
+        }
 
         private bool LichtschrankeUnterbrochen(double Pos)
         {

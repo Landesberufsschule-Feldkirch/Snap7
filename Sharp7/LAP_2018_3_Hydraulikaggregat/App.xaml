@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:LAP_2018_3_Hydraulikaggregat"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

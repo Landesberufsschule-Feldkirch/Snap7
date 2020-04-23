@@ -9,7 +9,6 @@
         private readonly Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
-
         public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa)
         {
             mainWindow = mw;
@@ -82,11 +81,13 @@
         }
 
         internal void TasterAuf() => paternosterlager.ManualAuf = ClickModeButtonAuf();
+
         internal void TasterAb() => paternosterlager.ManualAb = ClickModeButtonAb();
 
-
         #region SPS Status und Farbe
+
         private string _spsStatus;
+
         public string SpsStatus
         {
             get { return _spsStatus; }
@@ -97,9 +98,8 @@
             }
         }
 
-
-
         private string _spsColor;
+
         public string SpsColor
         {
             get { return _spsColor; }
@@ -109,10 +109,11 @@
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-        #endregion
 
+        #endregion SPS Status und Farbe
 
         #region Sichtbarkeit B1
+
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -128,6 +129,7 @@
         }
 
         private string _VisibilityB1Ein;
+
         public string VisibilityB1Ein
         {
             get { return _VisibilityB1Ein; }
@@ -139,6 +141,7 @@
         }
 
         private string _VisibilityB1Aus;
+
         public string VisibilityB1Aus
         {
             get { return _VisibilityB1Aus; }
@@ -148,9 +151,11 @@
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-        #endregion
+
+        #endregion Sichtbarkeit B1
 
         #region Sichtbarkeit B2
+
         public void SichtbarkeitB2(bool val)
         {
             if (val)
@@ -166,6 +171,7 @@
         }
 
         private string _VisibilityB2Ein;
+
         public string VisibilityB2Ein
         {
             get { return _VisibilityB2Ein; }
@@ -187,12 +193,13 @@
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-        #endregion
 
+        #endregion Sichtbarkeit B2
 
         #region KettengliederRegale
 
         private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
             get { return _alleKettengliedRegale; }
@@ -203,10 +210,10 @@
             }
         }
 
-        #endregion
-
+        #endregion KettengliederRegale
 
         #region ClickModeAlleButtons
+
         public bool ClickModeButton(int AsciiCode)
         {
             if (ClickModeBtn[AsciiCode] == "Press")
@@ -232,9 +239,11 @@
                 OnPropertyChanged(nameof(ClickModeBtn));
             }
         }
-        #endregion
+
+        #endregion ClickModeAlleButtons
 
         #region ClickModeBtnAuf
+
         public bool ClickModeButtonAuf()
         {
             if (ClickModeBtnAuf == "Press")
@@ -250,6 +259,7 @@
         }
 
         private string _clickModeBtnAuf;
+
         public string ClickModeBtnAuf
         {
             get { return _clickModeBtnAuf; }
@@ -259,9 +269,11 @@
                 OnPropertyChanged(nameof(ClickModeBtnAuf));
             }
         }
-        #endregion
+
+        #endregion ClickModeBtnAuf
 
         #region ClickModeBtnAb
+
         public bool ClickModeButtonAb()
         {
             if (ClickModeBtnAb == "Press")
@@ -277,6 +289,7 @@
         }
 
         private string _clickModeBtnAb;
+
         public string ClickModeBtnAb
         {
             get { return _clickModeBtnAb; }
@@ -286,12 +299,13 @@
                 OnPropertyChanged(nameof(ClickModeBtnAb));
             }
         }
-        #endregion
 
-
+        #endregion ClickModeBtnAb
 
         #region IstPosition
+
         private string _istPosition;
+
         public string IstPosition
         {
             get { return _istPosition; }
@@ -301,10 +315,13 @@
                 OnPropertyChanged(nameof(IstPosition));
             }
         }
-        #endregion
+
+        #endregion IstPosition
 
         #region SollPosition
+
         private string _sollPosition;
+
         public string SollPosition
         {
             get { return _sollPosition; }
@@ -314,7 +331,8 @@
                 OnPropertyChanged(nameof(SollPosition));
             }
         }
-        #endregion
+
+        #endregion SollPosition
 
         #region iNotifyPeropertyChanged Members
 
@@ -326,6 +344,5 @@
         }
 
         #endregion iNotifyPeropertyChanged Members
-
     }
 }

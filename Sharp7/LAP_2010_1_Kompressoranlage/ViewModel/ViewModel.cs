@@ -6,7 +6,6 @@
 
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_1_Kompressoranlage.Model.Kompressoranlage kompressoranlage;
 
@@ -18,10 +17,10 @@
 
         public Model.Kompressoranlage Kompressoranlage { get { return kompressoranlage; } }
 
-
-
         #region BtnF1
+
         private ICommand _btnF1;
+
         public ICommand BtnF1
         {
             get
@@ -33,10 +32,13 @@
                 return _btnF1;
             }
         }
-        #endregion
+
+        #endregion BtnF1
 
         #region BtnS1
+
         private ICommand _btnS1;
+
         public ICommand BtnS1
         {
             get
@@ -48,10 +50,13 @@
                 return _btnS1;
             }
         }
-        #endregion
+
+        #endregion BtnS1
 
         #region BtnS2
+
         private ICommand _btnS2;
+
         public ICommand BtnS2
         {
             get
@@ -63,10 +68,13 @@
                 return _btnS2;
             }
         }
-        #endregion
+
+        #endregion BtnS2
 
         #region BtnB1
+
         private ICommand _btnB1;
+
         public ICommand BtnB1
         {
             get
@@ -78,6 +86,7 @@
                 return _btnB1;
             }
         }
-        #endregion
+
+        #endregion BtnB1
     }
 }

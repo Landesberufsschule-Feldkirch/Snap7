@@ -15,7 +15,6 @@ namespace WordClock
 
         public MainWindow()
         {
-
             viewModel = new ViewModel.ViewModel(this);
 
             datenRangieren = new DatenRangieren(viewModel);

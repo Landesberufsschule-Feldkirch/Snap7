@@ -19,6 +19,7 @@ namespace RealTimeGraphX.WPF
             get { return (IGraphController)GetValue(ControllerProperty); }
             set { SetValue(ControllerProperty, value); }
         }
+
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController), typeof(WpfGraphComponentBase), new PropertyMetadata(null, (d, e) => (d as WpfGraphComponentBase).OnControllerChanged(e.OldValue as IGraphController, e.NewValue as IGraphController)));
 

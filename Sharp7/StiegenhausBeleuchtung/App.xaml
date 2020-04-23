@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:StiegenhausBeleuchtung"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

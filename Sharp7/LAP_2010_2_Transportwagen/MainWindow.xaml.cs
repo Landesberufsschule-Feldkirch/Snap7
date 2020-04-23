@@ -3,7 +3,6 @@ using System.Windows;
 
 namespace LAP_2010_2_Transportwagen
 {
-
     public partial class MainWindow : Window
     {
         public S7_1200 S7_1200 { get; set; }

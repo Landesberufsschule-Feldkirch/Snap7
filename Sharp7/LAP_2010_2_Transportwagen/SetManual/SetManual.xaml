@@ -27,6 +27,5 @@
 
         <Button Grid.Column="3" Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}" Command="{Binding SetManualQ1}" Content="Q1" />
         <Button Grid.Column="5" Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnQ2}" Command="{Binding SetManualQ2}" Content="Q2" />
-
     </Grid>
 </Window>

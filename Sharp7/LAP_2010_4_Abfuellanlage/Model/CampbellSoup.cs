@@ -31,7 +31,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
         private Utilities.Rechteck.RichtungX richtungX;
         private Utilities.Rechteck.RichtungY richtungY;
 
-
         public CampbellSoup(int id)
         {
             ID = id;
@@ -42,7 +41,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
             startPosition = new Punkt(foerderbandLinks.X, vereinzelnerVentil.Y - ID * doseHoehe);
             Position = new Rechteck(startPosition.Clone(), doseBreite, doseHoehe);
         }
-
 
         public (Utilities.Rechteck.RichtungX, Utilities.Rechteck.RichtungY) GetRichtung() => (richtungX, richtungY);
 

@@ -31,8 +31,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
         private Utilities.Rechteck.RichtungX richtungX;
         private Utilities.Rechteck.RichtungY richtungY;
 
-
-
         public Flaschen(int id)
         {
             ID = id;

@@ -20,7 +20,6 @@ namespace StiegenhausBeleuchtung.Model
 
         public StiegenhausBeleuchtung()
         {
-
             JobAktiv = false;
             stopwatch = new Stopwatch();
             ortZiel = (0, 0);
@@ -57,10 +56,23 @@ namespace StiegenhausBeleuchtung.Model
             System.Threading.Tasks.Task.Run(() => StiegenhausBeleuchtungTask());
         }
 
-        internal void ProblemLoesen(VisuAnzeigen viAnzeige) { visuAnzeigen = viAnzeige; }
+        internal void ProblemLoesen(VisuAnzeigen viAnzeige)
+        {
+            visuAnzeigen = viAnzeige;
+        }
+
         public bool GetBewegungsmelder(int index) => alleBewegungsmelder[index];
-        public void SetBewegungsmelder(int index, bool val) { alleBewegungsmelder[index] = val; }
-        public void SetLampen(int index, bool val) { alleLampen[index] = val; }
+
+        public void SetBewegungsmelder(int index, bool val)
+        {
+            alleBewegungsmelder[index] = val;
+        }
+
+        public void SetLampen(int index, bool val)
+        {
+            alleLampen[index] = val;
+        }
+
         public bool GetLampen(int index) => alleLampen[index];
 
         private void StiegenhausBeleuchtungTask()

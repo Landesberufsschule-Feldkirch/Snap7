@@ -5,6 +5,7 @@
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel viewModel;
+
         private enum BytePosition
         {
             Byte_0 = 0,

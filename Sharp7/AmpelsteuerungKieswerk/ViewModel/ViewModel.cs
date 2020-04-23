@@ -5,9 +5,9 @@
 
     public class ViewModel
     {
-
         public readonly Model.AlleLastKraftWagen alleLastKraftWagen;
         public VisuAnzeigen ViAnzeige { get; set; }
+
         public ViewModel(MainWindow mainWindow)
         {
             alleLastKraftWagen = new Model.AlleLastKraftWagen();
@@ -16,9 +16,10 @@
 
         public Model.AlleLastKraftWagen AlleLastKraftWagen { get { return alleLastKraftWagen; } }
 
-
         #region BtnLkw1
+
         private ICommand _btnLkw1;
+
         public ICommand BtnLkw1
         {
             get
@@ -30,10 +31,13 @@
                 return _btnLkw1;
             }
         }
-        #endregion
+
+        #endregion BtnLkw1
 
         #region BtnLkw2
+
         private ICommand _btnLkw2;
+
         public ICommand BtnLkw2
         {
             get
@@ -45,10 +49,13 @@
                 return _btnLkw2;
             }
         }
-        #endregion
+
+        #endregion BtnLkw2
 
         #region BtnLkw3
+
         private ICommand _btnLkw3;
+
         public ICommand BtnLkw3
         {
             get
@@ -60,10 +67,13 @@
                 return _btnLkw3;
             }
         }
-        #endregion
+
+        #endregion BtnLkw3
 
         #region BtnLkw4
+
         private ICommand _btnLkw4;
+
         public ICommand BtnLkw4
         {
             get
@@ -75,10 +85,13 @@
                 return _btnLkw4;
             }
         }
-        #endregion
+
+        #endregion BtnLkw4
 
         #region BtnLkw5
+
         private ICommand _btnLkw5;
+
         public ICommand BtnLkw5
         {
             get
@@ -90,10 +103,13 @@
                 return _btnLkw5;
             }
         }
-        #endregion
+
+        #endregion BtnLkw5
 
         #region BtnLinksParken
+
         private ICommand _btnLinksParken;
+
         public ICommand BtnLinksParken
         {
             get
@@ -105,10 +121,13 @@
                 return _btnLinksParken;
             }
         }
-        #endregion
+
+        #endregion BtnLinksParken
 
         #region BtnRechtsParken
+
         private ICommand _btnRechtsParken;
+
         public ICommand BtnRechtsParken
         {
             get
@@ -120,6 +139,7 @@
                 return _btnRechtsParken;
             }
         }
-        #endregion
+
+        #endregion BtnRechtsParken
     }
 }

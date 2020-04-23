@@ -5,7 +5,6 @@
 
     public class ViewModel
     {
-
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly LAP_2010_2_Transportwagen.Model.Transportwagen transportwagen;
 
@@ -17,9 +16,10 @@
 
         public Model.Transportwagen Transportwagen { get { return transportwagen; } }
 
-
         #region SetManualQ1
+
         private ICommand _setManualQ1;
+
         public ICommand SetManualQ1
         {
             get
@@ -31,10 +31,13 @@
                 return _setManualQ1;
             }
         }
-        #endregion
+
+        #endregion SetManualQ1
 
         #region SetManualQ2
+
         private ICommand _setManualQ2;
+
         public ICommand SetManualQ2
         {
             get
@@ -46,10 +49,13 @@
                 return _setManualQ2;
             }
         }
-        #endregion
+
+        #endregion SetManualQ2
 
         #region BtnS1
+
         private ICommand _btnS1;
+
         public ICommand BtnS1
         {
             get
@@ -61,10 +67,13 @@
                 return _btnS1;
             }
         }
-        #endregion
+
+        #endregion BtnS1
 
         #region BtnS2
+
         private ICommand _btnS2;
+
         public ICommand BtnS2
         {
             get
@@ -76,10 +85,13 @@
                 return _btnS2;
             }
         }
-        #endregion
+
+        #endregion BtnS2
 
         #region BtnS3
+
         private ICommand _btnS3;
+
         public ICommand BtnS3
         {
             get
@@ -91,10 +103,13 @@
                 return _btnS3;
             }
         }
-        #endregion
+
+        #endregion BtnS3
 
         #region BtnF1
+
         private ICommand _btnF1;
+
         public ICommand BtnF1
         {
             get
@@ -106,8 +121,7 @@
                 return _btnF1;
             }
         }
-        #endregion
 
-
+        #endregion BtnF1
     }
 }

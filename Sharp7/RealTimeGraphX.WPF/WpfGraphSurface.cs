@@ -44,6 +44,7 @@ namespace RealTimeGraphX.WPF
             get { return (BitmapSource)GetValue(ImageProperty); }
             private set { SetValue(ImageProperty, value); }
         }
+
         public static readonly DependencyProperty ImageProperty =
             DependencyProperty.Register("Image", typeof(BitmapSource), typeof(WpfGraphSurface), new PropertyMetadata(null));
 
@@ -55,6 +56,7 @@ namespace RealTimeGraphX.WPF
             get { return (IGraphController<WpfGraphDataSeries>)GetValue(ControllerProperty); }
             set { SetValue(ControllerProperty, value); }
         }
+
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController<WpfGraphDataSeries>), typeof(WpfGraphSurface), new PropertyMetadata(null, (d, e) => (d as WpfGraphSurface).OnControllerChanged(e.OldValue as IGraphController<WpfGraphDataSeries>, e.NewValue as IGraphController<WpfGraphDataSeries>)));
 

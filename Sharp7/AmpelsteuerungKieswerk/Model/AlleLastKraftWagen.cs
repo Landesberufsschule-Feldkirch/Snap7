@@ -26,6 +26,7 @@
         }
 
         public Punkt GetPositionLKW(int index) => alleLkw[index].Position.Punkt;
+
         public LastKraftWagen.LkwRichtungen GetRichtungLKW(int index) => alleLkw[index].LKW_Richtung;
 
         private void AlleLastKraftWagenTask()
@@ -71,12 +72,39 @@
             return stop;
         }
 
-        internal void TasterLkw1() { alleLkw[0].Losfahren(); }
-        internal void TasterLkw2() { alleLkw[1].Losfahren(); }
-        internal void TasterLkw3() { alleLkw[2].Losfahren(); }
-        internal void TasterLkw4() { alleLkw[3].Losfahren(); }
-        internal void TasterLkw5() { alleLkw[4].Losfahren(); }
-        internal void TasterLinksParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
-        internal void TasterRechtsParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
+        internal void TasterLkw1()
+        {
+            alleLkw[0].Losfahren();
+        }
+
+        internal void TasterLkw2()
+        {
+            alleLkw[1].Losfahren();
+        }
+
+        internal void TasterLkw3()
+        {
+            alleLkw[2].Losfahren();
+        }
+
+        internal void TasterLkw4()
+        {
+            alleLkw[3].Losfahren();
+        }
+
+        internal void TasterLkw5()
+        {
+            alleLkw[4].Losfahren();
+        }
+
+        internal void TasterLinksParken()
+        {
+            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt;
+        }
+
+        internal void TasterRechtsParken()
+        {
+            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt;
+        }
     }
 }

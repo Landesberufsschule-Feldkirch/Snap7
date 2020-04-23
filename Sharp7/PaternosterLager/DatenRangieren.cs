@@ -1,7 +1,6 @@
-﻿using Sharp7;
-
-namespace PaternosterLager
+﻿namespace PaternosterLager
 {
+    using Sharp7;
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
@@ -40,7 +39,7 @@ namespace PaternosterLager
             }
 
             viewModel.paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
-            viewModel.paternosterlager.SollPos= S7.GetUint8At(digOutput, 2);
+            viewModel.paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)

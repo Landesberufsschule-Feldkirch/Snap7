@@ -6,6 +6,7 @@ namespace LAP_2018_4_Niveauregelung
     {
         private readonly MainWindow mainWindow;
         private readonly ViewModel.ViewModel viewModel;
+
         private enum BitPosAusgang
         {
             P1 = 0,

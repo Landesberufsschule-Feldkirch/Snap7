@@ -16,9 +16,10 @@
 
         public Model.Zeiten Zeiten { get { return zeiten; } }
 
-
         #region BtnSetCurrentTime
+
         private ICommand _btnSetCurrentTime;
+
         public ICommand BtnSetCurrentTime
         {
             get
@@ -30,6 +31,7 @@
                 return _btnSetCurrentTime;
             }
         }
-        #endregion
+
+        #endregion BtnSetCurrentTime
     }
 }

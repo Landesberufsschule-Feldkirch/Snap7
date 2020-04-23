@@ -38,6 +38,7 @@
             viewModel.nadeltelegraph.P5R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5R);
             viewModel.nadeltelegraph.P5L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5L);
         }
+
         public DatenRangieren(ViewModel.ViewModel vm)
         {
             viewModel = vm;

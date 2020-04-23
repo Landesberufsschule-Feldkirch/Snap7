@@ -10,16 +10,24 @@
         {
             fuellstand += materialSiloFuellen;
             if (fuellstand > 1) fuellstand = 1;
-
         }
+
         public void Leeren()
         {
             fuellstand -= materialSiloLeeren;
             if (fuellstand < 0) fuellstand = 0;
         }
 
-        public Silo() { fuellstand = 0.9; }
+        public Silo()
+        {
+            fuellstand = 0.9;
+        }
+
         public double GetFuellstand() => fuellstand;
-        internal void Nachfuellen() { fuellstand = 1; }
+
+        internal void Nachfuellen()
+        {
+            fuellstand = 1;
+        }
     }
 }

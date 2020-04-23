@@ -16,11 +16,10 @@
 
         public Model.BehaelterSteuerung AlleBehaelter { get { return alleBehaelter; } }
 
-
-
-
         #region BtnVentilQ2
+
         private ICommand _btnVentilQ2;
+
         public ICommand BtnVentilQ2
         {
             get
@@ -32,10 +31,13 @@
                 return _btnVentilQ2;
             }
         }
-        #endregion
+
+        #endregion BtnVentilQ2
 
         #region BtnVentilQ4
+
         private ICommand _btnVentilQ4;
+
         public ICommand BtnVentilQ4
         {
             get
@@ -47,10 +49,13 @@
                 return _btnVentilQ4;
             }
         }
-        #endregion
+
+        #endregion BtnVentilQ4
 
         #region BtnVentilQ6
+
         private ICommand _btnVentilQ6;
+
         public ICommand BtnVentilQ6
         {
             get
@@ -62,10 +67,13 @@
                 return _btnVentilQ6;
             }
         }
-        #endregion
+
+        #endregion BtnVentilQ6
 
         #region BtnVentilQ8
+
         private ICommand _btnVentilQ8;
+
         public ICommand BtnVentilQ8
         {
             get
@@ -77,13 +85,13 @@
                 return _btnVentilQ8;
             }
         }
-        #endregion
 
-
-
+        #endregion BtnVentilQ8
 
         #region BtnAutomatik1234
+
         private ICommand _btnAutomatik1234;
+
         public ICommand BtnAutomatik1234
         {
             get
@@ -95,10 +103,13 @@
                 return _btnAutomatik1234;
             }
         }
-        #endregion
+
+        #endregion BtnAutomatik1234
 
         #region BtnAutomatik1324
+
         private ICommand _btnAutomatik1324;
+
         public ICommand BtnAutomatik1324
         {
             get
@@ -110,10 +121,13 @@
                 return _btnAutomatik1324;
             }
         }
-        #endregion
+
+        #endregion BtnAutomatik1324
 
         #region BtnAutomatik1432
+
         private ICommand _btnAutomatik1432;
+
         public ICommand BtnAutomatik1432
         {
             get
@@ -125,10 +139,13 @@
                 return _btnAutomatik1432;
             }
         }
-        #endregion
+
+        #endregion BtnAutomatik1432
 
         #region BtnAutomatik4321
+
         private ICommand _btnAutomatik4321;
+
         public ICommand BtnAutomatik4321
         {
             get
@@ -140,6 +157,7 @@
                 return _btnAutomatik4321;
             }
         }
-        #endregion
+
+        #endregion BtnAutomatik4321
     }
 }

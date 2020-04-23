@@ -21,7 +21,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             MulticontrollerFuellen();
         }
 
-
         private void MulticontrollerFuellen()
         {
             MultiController.Range.MinimumY = 0;
@@ -108,7 +107,5 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 }
             });
         }
-
-
     }
 }

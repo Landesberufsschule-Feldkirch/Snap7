@@ -15,12 +15,12 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         private enum BitPosEingang
         {
-            B1 = 0, // Endschalter Offen 
-            B2,     // Endschalter Geschlossen 
+            B1 = 0, // Endschalter Offen
+            B2,     // Endschalter Geschlossen
             B3,     // Lichtschranke
-            S1,     // Taster "Halt" 
-            S2,     // Taster "Öffnen" 
-            S3      // Taster "Schliessen" 
+            S1,     // Taster "Halt"
+            S2,     // Taster "Öffnen"
+            S3      // Taster "Schliessen"
         }
 
         public void RangierenInput(byte[] digInput, byte[] _)

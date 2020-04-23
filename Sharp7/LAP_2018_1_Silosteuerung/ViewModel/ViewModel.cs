@@ -12,7 +12,5 @@
         }
 
         public Model.Foerderanlage Foerderanlage { get { return foerderanlage; } }
-
-
     }
 }

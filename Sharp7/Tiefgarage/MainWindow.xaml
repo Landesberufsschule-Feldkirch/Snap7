@@ -67,8 +67,8 @@
         <Button Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="4"   Content="Drinnen parken!"       Command="{Binding BtnDrinnenParken}" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="21" Stroke="Black" Panel.ZIndex="-1" />
-        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9"   Content="{Binding ViAnzeige.AnzahlAutos}"/>
-        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11"  Content="{Binding ViAnzeige.AnzahlPersonen}"/>
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9"   Content="{Binding ViAnzeige.AnzahlAutos}" />
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11"  Content="{Binding ViAnzeige.AnzahlPersonen}" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
         <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
@@ -81,13 +81,13 @@
 
         <Ellipse    Grid.Column="5" Grid.Row="10" Fill="Yellow" Stroke="Black" Margin="5,15,45,0" />
         <Ellipse    Grid.Column="5" Grid.Row="12" Fill="Yellow" Stroke="Black" Margin="5,0,45,15" />
-        <Label      Grid.Column="5" Grid.Row="10"                              Margin="25,10,20,0" Content="P1"/>
-        <Label      Grid.Column="5" Grid.Row="12"                              Margin="30,0,15,10" Content="P2"/>
+        <Label      Grid.Column="5" Grid.Row="10"                              Margin="25,10,20,0" Content="P1" />
+        <Label      Grid.Column="5" Grid.Row="12"                              Margin="30,0,15,10" Content="P2" />
 
         <Ellipse    Grid.Column="8" Grid.Row="10"  Fill="{Binding ViAnzeige.ColorB1}" Stroke="Black"    Margin="40,15,10,0" />
         <Ellipse    Grid.Column="8" Grid.Row="12"  Fill="{Binding ViAnzeige.ColorB2}" Stroke="Black"    Margin="40,0,10,15" />
-        <Label      Grid.Column="8" Grid.Row="10"                                                       Margin="18,10,26,0"     Content="B1"/>
-        <Label      Grid.Column="8" Grid.Row="12"                                                       Margin="18,0,26,10"     Content="B2"   />
+        <Label      Grid.Column="8" Grid.Row="10"                                                       Margin="18,10,26,0"     Content="B1" />
+        <Label      Grid.Column="8" Grid.Row="12"                                                       Margin="18,0,26,10"     Content="B2" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
