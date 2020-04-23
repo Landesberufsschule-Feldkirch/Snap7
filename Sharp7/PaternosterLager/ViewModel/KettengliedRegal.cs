@@ -33,21 +33,17 @@
         {
             if (mainWindow.FensterAktiv)
             {
-                if (id % 1 == 0)
-                {
-                    mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * hoeheKettenglied, Brushes.Black));
-                    mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
-                    mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * hoeheKettenglied, Brushes.Cyan));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * hoeheKettenglied, Brushes.Black));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * hoeheKettenglied, Brushes.Cyan));
 
-                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * hoeheKettenglied, 1, Brushes.Black));
-                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * hoeheKettenglied, 1, Brushes.Red));
-                    mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * hoeheKettenglied, 1, Brushes.Cyan));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * hoeheKettenglied, 1, Brushes.Black));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * hoeheKettenglied, 1, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * hoeheKettenglied, 1, Brushes.Cyan));
 
-                    mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
+                mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * hoeheKettenglied, Brushes.Red));
 
-                    mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * hoeheKettenglied, id));
-                }
-
+                mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * hoeheKettenglied, id));
             }
         }
 
@@ -69,11 +65,6 @@
 
         internal Rectangle KettengliedZeichnen(double offset, double staerke, SolidColorBrush farbe)
         {
-
-            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
-
-            if (positionUndRichtung == Model.Zeichenbereich.unten) staerke = 2;
-
             var kettenglied = new Rectangle
             {
                 Width = breiteKettenglied,
@@ -82,40 +73,23 @@
                 StrokeThickness = staerke
             };
 
+            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(position + offset, durchmesserBolzen, breiteKettenglied, hoeheKettenglied);
 
             switch (positionUndRichtung)
             {
-                case Model.Zeichenbereich.rechts:
-                case Model.Zeichenbereich.oben:
-                    kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
-                    kettenglied.RenderTransform = new RotateTransform(phi);
-                    Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
-                    Canvas.SetTop(kettenglied, y - breiteKettenglied / 2);
-                    break;
-
-
-
                 case Model.Zeichenbereich.links:
                     kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
                     kettenglied.RenderTransform = new RotateTransform(phi);
                     Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
                     Canvas.SetTop(kettenglied, y + breiteKettenglied / 2 - hoeheKettenglied);
-                    break;
-
-                case Model.Zeichenbereich.unten:
+                    return kettenglied;
+                default:
                     kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
                     kettenglied.RenderTransform = new RotateTransform(phi);
                     Canvas.SetLeft(kettenglied, x - breiteKettenglied / 2);
                     Canvas.SetTop(kettenglied, y - breiteKettenglied / 2);
-                    break;
-
-                default:
-                    break;
+                    return kettenglied;
             }
-
-
-
-            return kettenglied;
         }
 
         internal Rectangle LagerkisteZeichnen(double offset, SolidColorBrush farbe)
@@ -130,7 +104,7 @@
 
             var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(position + offset, durchmesserBolzen);
             Canvas.SetLeft(lagerKiste, x - breitelagerkisted / 2);
-            Canvas.SetTop(lagerKiste, y);
+            Canvas.SetTop(lagerKiste, y - durchmesserBolzen / 2);
 
             return lagerKiste;
         }

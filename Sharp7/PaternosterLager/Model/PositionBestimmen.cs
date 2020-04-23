@@ -17,7 +17,6 @@ namespace PaternosterLager.Model
         private static readonly Punkt zentrumUnten = new Punkt(200, 150 + 680);
         private const double radiusUmlenkung = 100;
 
-
         public static double GetGesamtLaenge(double breiteBolzen) => 2 * 680 + breiteBolzen + Math.PI * (2 * radiusUmlenkung + breiteBolzen);
 
         public static (double x, double y, Zeichenbereich zeichenBereich) ZapfenPositionBerechnen(double pos, double breiteBolzen)
@@ -85,49 +84,42 @@ namespace PaternosterLager.Model
 
         public static (double x, double y, double phi, Zeichenbereich zeichenBereich) KettengliedPositionBerechnen(double posZapfen, double breiteZapfen, double breiteKettenglied, double hoeheKettenglied)
         {
-
             Zeichenbereich zeichenBereichVorher;
-            Zeichenbereich zeichenBereichDavor;
             Zeichenbereich zeichenBereich;
-            Zeichenbereich zeichenBereichDanach;
-            Zeichenbereich zeichenBereichNochDanach;
             double x;
             double xVorher;
             double xDavor;
-            double xDanach;
-            double xNochDanach;
             double y;
             double yVorher;
             double yDavor;
-            double yDanach;
-            double yNochDanach;
             double phi;
 
             (xVorher, yVorher, zeichenBereichVorher) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied + breiteKettenglied, breiteZapfen);
-            (xDavor, yDavor, zeichenBereichDavor) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
+            (xDavor, yDavor, _) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
             (x, y, zeichenBereich) = ZapfenPositionBerechnen(posZapfen, breiteZapfen);
-            (xDanach, yDanach, zeichenBereichDanach) = ZapfenPositionBerechnen(posZapfen + hoeheKettenglied, breiteZapfen);
-            (xNochDanach, yNochDanach, zeichenBereichNochDanach) = ZapfenPositionBerechnen(posZapfen + 2 * hoeheKettenglied, breiteZapfen);
-
-            phi = 0;
 
             if (x != xDavor)
             {
-                if (zeichenBereich == Zeichenbereich.rechts || zeichenBereich == Zeichenbereich.oben)
+
+                if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
+                if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
+
+                if (zeichenBereich == Zeichenbereich.oben)
                 {
                     phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
-                    return (x, y, phi, zeichenBereich);
+                    return (x, y, phi, zeichenBereichVorher);
                 }
-                else
+
+
+                if (zeichenBereichVorher == Zeichenbereich.rechts)
                 {
-                    if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
-                    if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
-
-                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
-                    return (xVorher, yVorher, phi, zeichenBereich);
+                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                    return (x, y, phi, zeichenBereichVorher);
                 }
-            }
 
+                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
+                return (xVorher, yVorher, phi, zeichenBereich);
+            }
 
             return (x, y, 0, zeichenBereich);
         }
