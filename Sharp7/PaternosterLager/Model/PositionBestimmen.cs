@@ -97,28 +97,24 @@
             (xDavor, yDavor, _) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
             (x, y, zeichenBereich) = ZapfenPositionBerechnen(posZapfen, breiteZapfen);
 
-            if (x != xDavor)
+            if (x == xDavor) return (x, y, 0, zeichenBereich);
+            if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
+            if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
+
+            if (zeichenBereich == Zeichenbereich.oben)
             {
-                if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
-                if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
-
-                if (zeichenBereich == Zeichenbereich.oben)
-                {
-                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
-                    return (x, y, phi, zeichenBereichVorher);
-                }
-
-                if (zeichenBereichVorher == Zeichenbereich.rechts)
-                {
-                    phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
-                    return (x, y, phi, zeichenBereichVorher);
-                }
-
-                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
-                return (xVorher, yVorher, phi, zeichenBereich);
+                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                return (x, y, phi, zeichenBereichVorher);
             }
 
-            return (x, y, 0, zeichenBereich);
+            if (zeichenBereichVorher == Zeichenbereich.rechts)
+            {
+                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                return (x, y, phi, zeichenBereichVorher);
+            }
+
+            phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
+            return (xVorher, yVorher, phi, zeichenBereich);
         }
     }
 }
