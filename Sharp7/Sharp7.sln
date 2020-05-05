@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_3_Hydraulikaggrega
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatischesLagersystem", "AutomatischesLagersystem\AutomatischesLagersystem.csproj", "{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

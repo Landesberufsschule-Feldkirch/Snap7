@@ -1,0 +1,187 @@
+﻿<Window x:Class="AutomatischesLagersystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutomatischesLagersystem"
+        mc:Ignorable="d"
+        Title="Automatisches Lagersystem" Height="1050" Width="1400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="V0.0 " />
+        <Label Grid.Column="16"  Grid.ColumnSpan="8" Grid.Row="17"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+
+        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
+
+        <Button Grid.Column="11" Grid.Row="1" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <Rectangle Grid.Column="16" Grid.ColumnSpan="7" Grid.Row="2" Fill="LightCyan" Margin="35,0" />
+        <Label Content="Position" Grid.Column="16" Grid.ColumnSpan="4" Grid.Row="2" FontSize="14pt" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="42,8,0,8" Width="83" />
+        <Label Content="{Binding ViAnzeige.IstPosition}" Grid.Column="19" Grid.Row="2" FontSize="20pt" VerticalAlignment="Center" HorizontalAlignment="Right" />
+        <Rectangle Grid.Column="20"  Grid.Row="2" Fill="Black" Margin="4,6,4,6" RenderTransformOrigin="2,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="15" />
+                    <TranslateTransform X="0.5" Y="1" />
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label Content="{Binding ViAnzeige.SollPosition}" Grid.Column="21" Grid.Row="2" FontSize="20pt" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+        <Rectangle Grid.Column="16" Grid.ColumnSpan="7" Grid.Row="3" Grid.RowSpan="9" Fill="LightGreen" Margin="35,35,35,35" />
+
+        <Button Content="7" Grid.Column="17" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[55]}" Command="{Binding BtnBuchstabe}" CommandParameter="5">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="8" Grid.Column="19" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[56]}" Command="{Binding BtnBuchstabe}" CommandParameter="56">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="9" Grid.Column="21" Grid.Row="4" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[57]}" Command="{Binding BtnBuchstabe}" CommandParameter="57">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="4" Grid.Column="17" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[52]}" Command="{Binding BtnBuchstabe}" CommandParameter="52">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="5" Grid.Column="19" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[53]}" Command="{Binding BtnBuchstabe}" CommandParameter="53">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="6" Grid.Column="21" Grid.Row="6" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[54]}" Command="{Binding BtnBuchstabe}" CommandParameter="54">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="1" Grid.Column="17" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[49]}" Command="{Binding BtnBuchstabe}" CommandParameter="49">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="2" Grid.Column="19" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[50]}" Command="{Binding BtnBuchstabe}" CommandParameter="50">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="3" Grid.Column="21" Grid.Row="8" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[51]}" Command="{Binding BtnBuchstabe}" CommandParameter="51">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="0" Grid.Column="17" Grid.Row="10" Width="50" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[48]}" Command="{Binding BtnBuchstabe}" CommandParameter="48">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Start" Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="10" Width="110" Height="50" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"  ClickMode="{Binding ViAnzeige.ClickModeBtn[13]}" Command="{Binding BtnBuchstabe}" CommandParameter="13">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+
+    </Grid>
+</Window>
