@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_3_Hydraulikaggrega
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatischesLagersystem", "AutomatischesLagersystem\AutomatischesLagersystem.csproj", "{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAutomatischesLagersystem", "3dAutomatischesLagersystem\3dAutomatischesLagersystem.csproj", "{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

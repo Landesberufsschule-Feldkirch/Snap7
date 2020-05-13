@@ -1,10 +1,13 @@
-﻿using Kommunikation;
+﻿using AutomatischesLagersystem._3D;
+using HelixToolkit.Wpf;
+using Kommunikation;
+using System;
 using System.Windows;
-
+using System.Windows.Input;
+using System.Windows.Media.Media3D;
 
 namespace AutomatischesLagersystem
 {
-
     public partial class MainWindow : Window
     {
 
@@ -15,6 +18,8 @@ namespace AutomatischesLagersystem
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
+        private DreiD dreiD;
+     
         public MainWindow()
         {
             viewModel = new ViewModel.ViewModel(this);
@@ -25,6 +30,11 @@ namespace AutomatischesLagersystem
             DataContext = viewModel;
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
+            dreiD = new DreiD(viewPort3d);
+
+         
+
+
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
@@ -33,5 +43,8 @@ namespace AutomatischesLagersystem
             SetManualWindow = new SetManual.SetManualWindow(viewModel);
             SetManualWindow.Show();
         }
+
+       
+      
     }
 }
