@@ -91,7 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="3D\DreiD.cs" />
+    <Compile Include="3D\DreiDerstellen.cs" />
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\AutomatischesLagersystem.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">

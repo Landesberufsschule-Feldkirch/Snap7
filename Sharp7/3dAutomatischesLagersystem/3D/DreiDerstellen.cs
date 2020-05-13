@@ -7,14 +7,12 @@ using System.Windows.Media.Media3D;
 
 namespace AutomatischesLagersystem._3D
 {
-    public class DreiD
+    public class DreiDerstellen
     {
 
-        public DreiD(HelixToolkit.Wpf.HelixViewport3D viewPort3d)
+        public DreiDerstellen(HelixToolkit.Wpf.HelixViewport3D viewPort3d)
         {
-
             viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
-
 
             var bodenplatte3d = new ModelVisual3D
             {
@@ -24,14 +22,13 @@ namespace AutomatischesLagersystem._3D
 
             var bonsai3d = new ModelVisual3D
             {
-                Content = Display3d("SolidWorks/Bonsai_Pot.STL", Colors.Red, 1000, 1000, 1000)
+                Content = Display3d("SolidWorks/Bonsai_Pot.STL", Colors.Red, 0, 0, 0)
             };
 
+           
 
-            viewPort3d.Children.Add(bodenplatte3d);  // Add to view port
-            viewPort3d.Children.Add(bonsai3d);  // Add to view port
-
-
+            viewPort3d.Children.Add(bodenplatte3d);  
+            viewPort3d.Children.Add(bonsai3d); 
         }
 
 
@@ -54,6 +51,5 @@ namespace AutomatischesLagersystem._3D
             }
             return device;
         }
-
     }
 }

@@ -3,6 +3,7 @@
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
+    using System.Windows.Media.Media3D;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -16,6 +17,12 @@
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
+            IstPosition = "00";
+            SollPosition = "00";
+
+            XPosSlider = 0;
+            YPosSlider = 0;
+            ZPosSlider = 0;
 
             VisibilityB1Ein = "hidden";
             VisibilityB1Aus = "visible";
@@ -26,18 +33,31 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-          
-
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
 
         private void VisuAnzeigenTask()
         {
-           
+            int i = -1000;
 
             while (true)
             {
-              
+                if (mainWindow.viewPort3d != null)
+                {
+                    if (i < 1000) i++; else i = -1000;
+                    mainWindow.Dispatcher.Invoke(() =>
+                   {
+                       mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
+
+                       foreach (var model in mainWindow.viewPort3d.Children)
+                       {
+                          i ++;                          
+                       }
+
+                   });
+                }
+
+
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -170,7 +190,7 @@
 
         #endregion Sichtbarkeit B2
 
-     
+
         #region ClickModeAlleButtons
 
         public bool ClickModeButton(int AsciiCode)
@@ -201,7 +221,93 @@
 
         #endregion ClickModeAlleButtons
 
-     
+
+        #region IstPosition
+
+        private string _istPosition;
+
+        public string IstPosition
+        {
+            get { return _istPosition; }
+            set
+            {
+                _istPosition = value;
+                OnPropertyChanged(nameof(IstPosition));
+            }
+        }
+
+        #endregion IstPosition
+
+        #region SollPosition
+
+        private string _sollPosition;
+
+        public string SollPosition
+        {
+            get { return _sollPosition; }
+            set
+            {
+                _sollPosition = value;
+                OnPropertyChanged(nameof(SollPosition));
+            }
+        }
+
+        #endregion SollPosition
+
+
+        #region xPosSlider
+
+        public double XSliderPosition() => XPosSlider;
+
+        private double _xSliderPosition;
+
+        public double XPosSlider
+        {
+            get { return _xSliderPosition; }
+            set
+            {
+                _xSliderPosition = value;
+                OnPropertyChanged(nameof(XPosSlider));
+            }
+        }
+
+        #endregion xPosSlider
+
+        #region yPosSlider
+
+        public double YSliderPosition() => YPosSlider;
+
+        private double _ySliderPosition;
+
+        public double YPosSlider
+        {
+            get { return _ySliderPosition; }
+            set
+            {
+                _ySliderPosition = value;
+                OnPropertyChanged(nameof(YPosSlider));
+            }
+        }
+
+        #endregion yPosSlider
+
+        #region zPosSlider
+
+        public double ZSliderPosition() => ZPosSlider;
+
+        private double _zSliderPosition;
+
+        public double ZPosSlider
+        {
+            get { return _zSliderPosition; }
+            set
+            {
+                _zSliderPosition = value;
+                OnPropertyChanged(nameof(ZPosSlider));
+            }
+        }
+
+        #endregion zPosSlider
 
 
 

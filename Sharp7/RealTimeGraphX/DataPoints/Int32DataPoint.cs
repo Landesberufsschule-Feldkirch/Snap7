@@ -147,7 +147,7 @@ namespace RealTimeGraphX.DataPoints
             int maximum = (int)max.GetValue();
 
             return Enumerable.Range(0, count).
-                Select(i => minimum + (maximum - minimum) * ((int)i / (count - 1))).
+                Select(i => minimum + (maximum - minimum) * (i / (count - 1))).
                 Select(x => new Int32DataPoint(x));
         }
 

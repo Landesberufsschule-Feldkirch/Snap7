@@ -87,8 +87,6 @@
         <Rectangle Grid.Column="24"  Grid.Row="2" Fill="Black" Margin="4,6,4,6" RenderTransformOrigin="2,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
                     <RotateTransform Angle="15" />
                     <TranslateTransform X="0.5" Y="1" />
                 </TransformGroup>
@@ -190,12 +188,9 @@
                                Grid.Column="1" Grid.ColumnSpan="18" Grid.Row="1" Grid.RowSpan="22" 
                                Background="LightGray" 
                                ZoomExtentsWhenLoaded="True"
-                               IsHeadLightEnabled="True"  >
-            <!--<helix:DefaultLightsVisual3D/>-->
-            <helix:DefaultLights/>
-
+                               IsHeadLightEnabled="True" >
+            <helix:DefaultLights x:Name="lichtquelle" />
         </helix:HelixViewport3D>
-
 
     </Grid>
 </Window>
