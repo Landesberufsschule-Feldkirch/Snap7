@@ -15,24 +15,17 @@ namespace AutomatischesLagersystem._3D
 
             viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
 
-            var bodenplatte3d = new ModelVisual3D
-            {
-                Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige)
-            };
-
+            var bodenplatte3d = new ModelVisual3D { Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige) };
+            bodenplatte3d.Transform = new TranslateTransform3D(-1000, 0, 0);
             viewPort3d.Children.Add(bodenplatte3d);
 
             for (var x = 0; x < 11; x++)
             {
                 for (var y = 0; y < 4; y++)
                 {
-                    var profilSteher = new ModelVisual3D
-                    {
-                        Content = Display3d("SolidWorks/ProfilSteher.STL", Colors.Green)
-                    };
-
+                    var profilSteher = new ModelVisual3D { Content = Display3d("SolidWorks/ProfilSteher.STL", Colors.Green) };
                     var verschiebenUndDrehen = new Transform3DGroup();
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1000 * x, 100, abstaendeSteher[y]));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1000 * x, 200, abstaendeSteher[y]));
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                     profilSteher.Transform = verschiebenUndDrehen;
 
@@ -44,13 +37,9 @@ namespace AutomatischesLagersystem._3D
             {
                 for (var y = 0; y < 2; y++)
                 {
-                    var querVerstrebung = new ModelVisual3D
-                    {
-                        Content = Display3d("SolidWorks/Querverstrebung.STL", Colors.YellowGreen)
-                    };
-
+                    var querVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/Querverstrebung.STL", Colors.YellowGreen) };
                     var verschiebenUndDrehen = new Transform3DGroup();
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 1000 * x, 250, -50 - y * 4000));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 1000 * x, 350, -50 - y * 4000));
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                     querVerstrebung.Transform = verschiebenUndDrehen;
 
@@ -62,13 +51,9 @@ namespace AutomatischesLagersystem._3D
             {
                 for (var y = 0; y < 2; y++)
                 {
-                    var laengsVerstrebung = new ModelVisual3D
-                    {
-                        Content = Display3d("SolidWorks/Laengsverstrebung.STL", Colors.Yellow)
-                    };
-
+                    var laengsVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/Laengsverstrebung.STL", Colors.Yellow) };
                     var verschiebenUndDrehen = new Transform3DGroup();
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(-2600, 0 + y * 4000,  50+x *1000));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(-2700, 0 + y * 4000, 50 + x * 1000));
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 90)));
                     laengsVerstrebung.Transform = verschiebenUndDrehen;
 
@@ -82,13 +67,9 @@ namespace AutomatischesLagersystem._3D
                 {
                     for (var z = 0; z < 11; z++)
                     {
-                        var profilQuerstrebe = new ModelVisual3D
-                        {
-                            Content = Display3d("SolidWorks/ProfilQuerstrebe.STL", Colors.Orange)
-                        };
-
+                        var profilQuerstrebe = new ModelVisual3D { Content = Display3d("SolidWorks/ProfilQuerstrebe.STL", Colors.Orange) };
                         var verschiebenUndDrehen = new Transform3DGroup();
-                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 3000 * x, 250 + 500 * y, -50+1000 * z));
+                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 3000 * x, 350 + 500 * y, -150 + 1000 * z));
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 90)));
                         profilQuerstrebe.Transform = verschiebenUndDrehen;

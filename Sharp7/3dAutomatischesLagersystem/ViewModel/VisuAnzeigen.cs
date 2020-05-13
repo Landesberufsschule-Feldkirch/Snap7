@@ -49,7 +49,7 @@
                    {
                        if (mainWindow.FensterAktiv)
                        {
-                           mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
+                           //mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
 
                            foreach (var model in mainWindow.viewPort3d.Children)
                            {
