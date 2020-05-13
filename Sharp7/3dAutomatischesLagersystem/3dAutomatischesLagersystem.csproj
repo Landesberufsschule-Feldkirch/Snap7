@@ -140,11 +140,19 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SolidWorks\Bodenplatte.SLDPRT" />
     <None Include="SolidWorks\Bodenplatte.STL">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SolidWorks\Bonsai_Pot.stl">
+    <None Include="SolidWorks\Laengsverstrebung.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SolidWorks\ProfilQuerstrebe.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SolidWorks\ProfilSteher.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SolidWorks\Querverstrebung.STL">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

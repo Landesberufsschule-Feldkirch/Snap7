@@ -47,13 +47,15 @@
                     if (i < 1000) i++; else i = -1000;
                     mainWindow.Dispatcher.Invoke(() =>
                    {
-                       mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
-
-                       foreach (var model in mainWindow.viewPort3d.Children)
+                       if (mainWindow.FensterAktiv)
                        {
-                          i ++;                          
-                       }
+                           mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
 
+                           foreach (var model in mainWindow.viewPort3d.Children)
+                           {
+                               i++;
+                           }
+                       }
                    });
                 }
 

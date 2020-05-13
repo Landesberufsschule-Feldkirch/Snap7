@@ -11,6 +11,8 @@ namespace AutomatischesLagersystem
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
 
+        public bool FensterAktiv { get; set; }
+
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
@@ -18,6 +20,8 @@ namespace AutomatischesLagersystem
      
         public MainWindow()
         {
+            FensterAktiv = true;
+
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, viewModel);
 
@@ -36,7 +40,7 @@ namespace AutomatischesLagersystem
             SetManualWindow.Show();
         }
 
-       
-      
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) => FensterAktiv = false;
+
     }
 }

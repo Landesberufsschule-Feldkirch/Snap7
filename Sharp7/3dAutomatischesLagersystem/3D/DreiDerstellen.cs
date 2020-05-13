@@ -9,30 +9,97 @@ namespace AutomatischesLagersystem._3D
 {
     public class DreiDerstellen
     {
-
         public DreiDerstellen(HelixToolkit.Wpf.HelixViewport3D viewPort3d)
         {
+            var abstaendeSteher = new int[] { -50, -1050, -3050, -4050 };
+
             viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
 
             var bodenplatte3d = new ModelVisual3D
             {
-                Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige, 0, 0, 0)
+                Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige)
             };
 
+            viewPort3d.Children.Add(bodenplatte3d);
 
-            var bonsai3d = new ModelVisual3D
+            for (var x = 0; x < 11; x++)
             {
-                Content = Display3d("SolidWorks/Bonsai_Pot.STL", Colors.Red, 0, 0, 0)
-            };
+                for (var y = 0; y < 4; y++)
+                {
+                    var profilSteher = new ModelVisual3D
+                    {
+                        Content = Display3d("SolidWorks/ProfilSteher.STL", Colors.Green)
+                    };
 
-           
+                    var verschiebenUndDrehen = new Transform3DGroup();
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1000 * x, 100, abstaendeSteher[y]));
+                    verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                    profilSteher.Transform = verschiebenUndDrehen;
 
-            viewPort3d.Children.Add(bodenplatte3d);  
-            viewPort3d.Children.Add(bonsai3d); 
+                    viewPort3d.Children.Add(profilSteher);
+                }
+            }
+
+            for (var x = 0; x < 10; x++)
+            {
+                for (var y = 0; y < 2; y++)
+                {
+                    var querVerstrebung = new ModelVisual3D
+                    {
+                        Content = Display3d("SolidWorks/Querverstrebung.STL", Colors.YellowGreen)
+                    };
+
+                    var verschiebenUndDrehen = new Transform3DGroup();
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 1000 * x, 250, -50 - y * 4000));
+                    verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                    querVerstrebung.Transform = verschiebenUndDrehen;
+
+                    viewPort3d.Children.Add(querVerstrebung);
+                }
+            }
+
+            for (var x = 0; x < 10; x++)
+            {
+                for (var y = 0; y < 2; y++)
+                {
+                    var laengsVerstrebung = new ModelVisual3D
+                    {
+                        Content = Display3d("SolidWorks/Laengsverstrebung.STL", Colors.Yellow)
+                    };
+
+                    var verschiebenUndDrehen = new Transform3DGroup();
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(-2600, 0 + y * 4000,  50+x *1000));
+                    verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 90)));
+                    laengsVerstrebung.Transform = verschiebenUndDrehen;
+
+                    viewPort3d.Children.Add(laengsVerstrebung);
+                }
+            }
+
+            for (var x = 0; x < 2; x++)
+            {
+                for (var y = 0; y < 5; y++)
+                {
+                    for (var z = 0; z < 11; z++)
+                    {
+                        var profilQuerstrebe = new ModelVisual3D
+                        {
+                            Content = Display3d("SolidWorks/ProfilQuerstrebe.STL", Colors.Orange)
+                        };
+
+                        var verschiebenUndDrehen = new Transform3DGroup();
+                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 3000 * x, 250 + 500 * y, -50+1000 * z));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 90)));
+                        profilQuerstrebe.Transform = verschiebenUndDrehen;
+
+                        viewPort3d.Children.Add(profilQuerstrebe);
+                    }
+                }
+            }
         }
 
-
-        private Model3D Display3d(string model, Color farbe, double x, double y, double z)
+        private Model3D Display3d(string model, Color farbe)
         {
             Model3D device = null;
             try
@@ -43,7 +110,6 @@ namespace AutomatischesLagersystem._3D
                 };
 
                 device = import.Load(model);
-                device.Transform = new TranslateTransform3D(x, y, z);
             }
             catch (Exception e)
             {
