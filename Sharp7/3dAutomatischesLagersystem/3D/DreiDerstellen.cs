@@ -15,10 +15,13 @@ namespace AutomatischesLagersystem._3D
 
             viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
 
+            #region Bodenplatte
             var bodenplatte3d = new ModelVisual3D { Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige) };
             bodenplatte3d.Transform = new TranslateTransform3D(-1000, 0, 0);
             viewPort3d.Children.Add(bodenplatte3d);
+            #endregion
 
+            #region Streben, ...
             for (var x = 0; x < 11; x++)
             {
                 for (var y = 0; y < 4; y++)
@@ -78,6 +81,43 @@ namespace AutomatischesLagersystem._3D
                     }
                 }
             }
+            #endregion
+
+            #region Kisten
+            var kistenFarben = new Color[] { Colors.Blue, Colors.Red, Colors.Azure, Colors.BlueViolet, Colors.Chartreuse }; 
+
+            for (var x = 0; x < 2; x++)
+            {
+                for (var y = 0; y < 5; y++)
+                {
+                    for (var z = 0; z < 10; z++)
+                    {
+                        var kiste_Type_1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", kistenFarben[y]) };
+                        var verschiebenUndDrehen = new Transform3DGroup();
+                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 3000 * x, 400 + 500 * y, 125 + 1000 * z));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 90)));
+                        kiste_Type_1.Transform = verschiebenUndDrehen;
+
+                        viewPort3d.Children.Add(kiste_Type_1);
+                    }
+                }
+            }
+
+            #endregion
+
+
+            #region Regalbediengeraet
+            var regalBediengeraet = new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) };
+            var transformRegalBediengeraet = new Transform3DGroup();
+            transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-2550, 50, -200));
+            transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+            transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
+            regalBediengeraet.Transform = transformRegalBediengeraet;
+            viewPort3d.Children.Add(regalBediengeraet);
+            #endregion
+
+
         }
 
         private Model3D Display3d(string model, Color farbe)
