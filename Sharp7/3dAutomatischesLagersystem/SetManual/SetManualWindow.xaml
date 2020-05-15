@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutomatischesLagersystem.SetManual"
         mc:Ignorable="d"
-        Title="SetManualWindow" Height="450" Width="800">
+        Title="SetManualWindow" Height="300" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -32,20 +32,17 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-     
-        <Label Grid.Column="2" Grid.Row="6"  Content="X:  " HorizontalContentAlignment="Right" />
-        <Label Grid.Column="2" Grid.Row="8"  Content="Y:  " HorizontalContentAlignment="Right" />
-        <Label Grid.Column="2" Grid.Row="10" Content="Z:  " HorizontalContentAlignment="Right" />
-        
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"     Minimum="-1000"   Maximum="1000" TickFrequency="10"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="8"     Minimum="-1000"   Maximum="1000" TickFrequency="10"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="10"    Minimum="-1000"   Maximum="1000" TickFrequency="10"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" />
+
+        <Label Grid.Column="2" Grid.Row="2"  Content="X:  " HorizontalContentAlignment="Right" />
+        <Label Grid.Column="2" Grid.Row="4"  Content="Y:  " HorizontalContentAlignment="Right" />
+        <Label Grid.Column="2" Grid.Row="6" Content="Z:  " HorizontalContentAlignment="Right" />
+
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="2"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" />
 
     </Grid>
 </Window>

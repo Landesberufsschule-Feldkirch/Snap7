@@ -161,6 +161,12 @@
     <None Include="SolidWorks\RegalBediengeraet.STL">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SolidWorks\SchlittenSenkrecht.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SolidWorks\SchlittenWaagrecht.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

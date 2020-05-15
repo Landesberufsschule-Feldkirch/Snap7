@@ -3,12 +3,27 @@
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
+    using System.Windows;
     using System.Windows.Media.Media3D;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
+
+        public static class IdEintraege
+        {
+            public const int System = 0;
+            public const int Bodenplatte = 1;
+            public const int Streben = 2;
+            public const int Kisten = 3;
+            public const int Regalbediengeraet = 4;
+            public const int AnzahlEintraege = 5;
+
+        };
+
         private readonly Model.AutomatischesLagersystem automatischesLagersystem;
         private readonly MainWindow mainWindow;
+
+        private bool xPosGeaendert = false;
 
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
@@ -49,7 +64,25 @@
                    {
                        if (mainWindow.FensterAktiv)
                        {
-                           //mainWindow.viewPort3d.Children[3].Transform = new TranslateTransform3D(XSliderPosition(), YSliderPosition(), ZSliderPosition());
+                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 300)
+                           {
+
+                               if (xPosGeaendert)
+                               {
+                                   xPosGeaendert = false;
+                                   //Bediengerät
+                                   var transformRegalBediengeraet = new Transform3DGroup();
+                                   transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-2550, 50, -200 - 11000 * XSliderPosition()));
+                                   transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                                   transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
+                                   mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
+                               }
+                           }
+                           else
+                           {
+                               MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                           }
+
 
                            foreach (var model in mainWindow.viewPort3d.Children)
                            {
@@ -268,6 +301,7 @@
             get { return _xSliderPosition; }
             set
             {
+                xPosGeaendert = true;
                 _xSliderPosition = value;
                 OnPropertyChanged(nameof(XPosSlider));
             }
