@@ -24,6 +24,8 @@
         private readonly MainWindow mainWindow;
 
         private bool xPosGeaendert = false;
+        private bool yPosGeaendert = false;
+        private bool zPosGeaendert = false;
 
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
@@ -53,40 +55,48 @@
 
         private void VisuAnzeigenTask()
         {
-            int i = -1000;
-
             while (true)
             {
                 if (mainWindow.viewPort3d != null)
                 {
-                    if (i < 1000) i++; else i = -1000;
                     mainWindow.Dispatcher.Invoke(() =>
                    {
                        if (mainWindow.FensterAktiv)
                        {
                            if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 300)
                            {
-
-                               if (xPosGeaendert)
+                               if (xPosGeaendert || yPosGeaendert || zPosGeaendert)
                                {
                                    xPosGeaendert = false;
+                                   yPosGeaendert = false;
+                                   zPosGeaendert = false;
+                                   
                                    //Bediengerät
                                    var transformRegalBediengeraet = new Transform3DGroup();
-                                   transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-2550, 50, -200 - 11000 * XSliderPosition()));
                                    transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                                    transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
-                                   mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
+                                   transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-200 + 11000 * XSliderPosition(), 2550, 50));
+                                                                      mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
+
+
+                                   // Schlitten senkrecht
+                                   var transformSchlittenSenkrecht = new Transform3DGroup();
+                                   transformSchlittenSenkrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
+                                   transformSchlittenSenkrecht.Children.Add(new TranslateTransform3D(-1650 + 11000 * XSliderPosition(), 2900, 400 + 2200 * ZSliderPosition()));
+                                   mainWindow.viewPort3d.Children[298].Transform = transformSchlittenSenkrecht;
+
+
+                                   // Schlitten waagrecht
+                                   var transformSchlittenWaagrecht = new Transform3DGroup();
+                                   transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
+                                   transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
+                                   transformSchlittenWaagrecht.Children.Add(new TranslateTransform3D(-800 + 11000 * XSliderPosition(), 2500 + 1300 * YSliderPosition(), 450 + 2200 * ZSliderPosition()));
+                                   mainWindow.viewPort3d.Children[299].Transform = transformSchlittenWaagrecht;
                                }
                            }
                            else
                            {
                                MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
-                           }
-
-
-                           foreach (var model in mainWindow.viewPort3d.Children)
-                           {
-                               i++;
                            }
                        }
                    });
@@ -320,6 +330,7 @@
             get { return _ySliderPosition; }
             set
             {
+                yPosGeaendert = true;
                 _ySliderPosition = value;
                 OnPropertyChanged(nameof(YPosSlider));
             }
@@ -338,6 +349,7 @@
             get { return _zSliderPosition; }
             set
             {
+                zPosGeaendert = true;
                 _zSliderPosition = value;
                 OnPropertyChanged(nameof(ZPosSlider));
             }
