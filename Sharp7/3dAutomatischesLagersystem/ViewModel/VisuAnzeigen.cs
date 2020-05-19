@@ -1,5 +1,6 @@
 ﻿namespace AutomatischesLagersystem.ViewModel
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
@@ -27,6 +28,8 @@
         private bool yPosGeaendert = false;
         private bool zPosGeaendert = false;
 
+        private bool kistenGeaendert = false;
+
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
             mainWindow = mw;
@@ -53,6 +56,17 @@
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
 
+        internal void AllesReset()
+        {
+            kistenGeaendert = true;
+            foreach (var kiste in mainWindow.KistenAktuellePositionen) kiste.Reset();
+        }
+
+        internal void AllesAufraeumen()
+        {
+            throw new NotImplementedException();
+        }
+
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -72,26 +86,30 @@
                                    zPosGeaendert = false;
 
                                    //Bediengerät
-                                   var transformRegalBediengeraet = new Transform3DGroup();
-                                   transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                                   transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
-                                   transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-200 + 11000 * XSliderPosition(), 2550, 50));
-                                   mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
-
+                                   mainWindow.viewPort3d.Children[297].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(11000 * XSliderPosition(), 0, 0);
 
                                    // Schlitten senkrecht
-                                   var transformSchlittenSenkrecht = new Transform3DGroup();
-                                   transformSchlittenSenkrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
-                                   transformSchlittenSenkrecht.Children.Add(new TranslateTransform3D(-1650 + 11000 * XSliderPosition(), 2900, 400 + 2200 * ZSliderPosition()));
-                                   mainWindow.viewPort3d.Children[298].Transform = transformSchlittenSenkrecht;
-
+                                   mainWindow.viewPort3d.Children[298].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(11000 * XSliderPosition(), 0, 2200 * ZSliderPosition());
 
                                    // Schlitten waagrecht
-                                   var transformSchlittenWaagrecht = new Transform3DGroup();
-                                   transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                                   transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
-                                   transformSchlittenWaagrecht.Children.Add(new TranslateTransform3D(-800 + 11000 * XSliderPosition(), 2500 - 1300 * YSliderPosition(), 450 + 2200 * ZSliderPosition()));
-                                   mainWindow.viewPort3d.Children[299].Transform = transformSchlittenWaagrecht;
+                                   mainWindow.viewPort3d.Children[299].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * XSliderPosition(), -1300 * YSliderPosition(), 2200 * ZSliderPosition());
+                               }
+
+
+                               if (kistenGeaendert)
+                               {
+                                   kistenGeaendert = false;
+                                   if (mainWindow.DreiDModelleIds[IdEintraege.Kisten] != 297) MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                                
+                                   for (var i = 0; i < 100; i++)
+                                   {
+                                       if (mainWindow.KistenAktuellePositionen[198 + i].GetSichtbar())
+                                       {
+                                          // mainWindow.viewPort3d.Children[i + 196]
+                                       }
+                                   }
+
+
                                }
                            }
                            else

@@ -13,9 +13,6 @@ namespace AutomatischesLagersystem.Model
 
         public char Zeichen { get; internal set; }
 
-        internal void AllesReset()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

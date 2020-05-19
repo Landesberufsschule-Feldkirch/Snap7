@@ -1,4 +1,4 @@
-﻿using AutomatischesLagersystem._3D;
+﻿using AutomatischesLagersystem.DreiD;
 using Kommunikation;
 using System.Windows;
 
@@ -6,8 +6,11 @@ namespace AutomatischesLagersystem
 {
     public partial class MainWindow : Window
     {
-
+        public DreiDElemente[] BediengeraetStartpositionen { get; set; }
+        public DreiDElemente[] KistenStartPositionen { get; set; }
+        public DreiDKisten[] KistenAktuellePositionen { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
+
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
 
@@ -16,7 +19,7 @@ namespace AutomatischesLagersystem
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
-        public DreiDerstellen DreiD { get; set; }
+        public DreiDErstellen DreiD { get; set; }
 
         public int[] DreiDModelleIds { get; set; }
 
@@ -24,6 +27,9 @@ namespace AutomatischesLagersystem
         public MainWindow()
         {
             FensterAktiv = true;
+            BediengeraetStartpositionen = new DreiDElemente[3];
+            KistenStartPositionen = new DreiDElemente[100];
+            KistenAktuellePositionen = new DreiDKisten[100];
             DreiDModelleIds = new int[ViewModel.VisuAnzeigen.IdEintraege.AnzahlEintraege];
 
             viewModel = new ViewModel.ViewModel(this);
@@ -34,7 +40,7 @@ namespace AutomatischesLagersystem
             DataContext = viewModel;
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            DreiD = new DreiDerstellen(viewPort3d, DreiDModelleIds);
+            DreiD = new DreiDErstellen(this, viewPort3d, DreiDModelleIds);
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

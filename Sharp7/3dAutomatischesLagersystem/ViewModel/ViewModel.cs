@@ -16,23 +16,40 @@ namespace AutomatischesLagersystem.ViewModel
 
         public Model.AutomatischesLagersystem AutomatischesLagersystem { get { return automatischesLagersystem; } }
 
+        #region BtnAufraeumen
+        private ICommand _BtnAufraeumen;
+        public ICommand BtnAufraeumen
+        {
+            get
+            {
+                if (_BtnAufraeumen == null)
+                {
+                    _BtnAufraeumen = new RelayCommand(p => ViAnzeige.AllesAufraeumen(), p => true);
+                }
+                return _BtnAufraeumen;
+            }
+        }
+        #endregion BtnAufraeumen
+
         #region BtnReset
-
         private ICommand _btnReset;
-
         public ICommand BtnReset
         {
             get
             {
                 if (_btnReset == null)
                 {
-                    _btnReset = new RelayCommand(p => automatischesLagersystem.AllesReset(), p => true);
+                    _btnReset = new RelayCommand(p => ViAnzeige.AllesReset(), p => true);
                 }
                 return _btnReset;
             }
         }
-
         #endregion BtnReset
+
+        
+
+
+
 
         #region BtnBuchstabe
 
@@ -52,7 +69,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         #endregion BtnBuchstabe
 
-     
+
 
 
     }

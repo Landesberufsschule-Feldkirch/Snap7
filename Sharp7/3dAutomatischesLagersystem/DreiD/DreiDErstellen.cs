@@ -5,11 +5,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
-namespace AutomatischesLagersystem._3D
+namespace AutomatischesLagersystem.DreiD
 {
-    public class DreiDerstellen
+    public class DreiDErstellen
     {
-        public DreiDerstellen(HelixToolkit.Wpf.HelixViewport3D viewPort3d, int[] dreiDModelleIds)
+        public DreiDErstellen(MainWindow mainWindow, HelixToolkit.Wpf.HelixViewport3D viewPort3d, int[] dreiDModelleIds)
         {
             var abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
 
@@ -92,26 +92,26 @@ namespace AutomatischesLagersystem._3D
 
             #region Kisten
             var kistenFarben = new Color[] { Colors.Blue, Colors.Red, Colors.Azure, Colors.BlueViolet, Colors.Chartreuse };
-
+            var i = 0;
             for (var x = 0; x < 10; x++)
             {
                 for (var y = 0; y < 2; y++)
                 {
                     for (var z = 0; z < 5; z++)
                     {
+                        mainWindow.KistenAktuellePositionen[i] = new DreiDKisten();
+                        mainWindow.KistenStartPositionen[i] = new DreiDElemente(125 + 1000 * x, 200 + 2850 * y, 600 + 500 * z, 90, 0, 90);
+
                         var kiste_Type_1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", kistenFarben[z]) };
-                        var verschiebenUndDrehen = new Transform3DGroup();
-                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 90)));
-                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(125 + 1000 * x, 200 + 2850 * y, 600 + 500 * z));
-                        kiste_Type_1.Transform = verschiebenUndDrehen;
+                        kiste_Type_1.Transform = mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
 
                         BillboardTextVisual3D label = new BillboardTextVisual3D();
-                        label.Text = "Das iste ien Mustertext";
+                        label.Text = "Das ist ein Mustertext";
                         label.Position = new Point3D(100, 200, 300);
                         kiste_Type_1.Children.Add(label);
 
                         viewPort3d.Children.Add(kiste_Type_1);
+                        i++;
                     }
                 }
             }
@@ -120,16 +120,16 @@ namespace AutomatischesLagersystem._3D
             #endregion
 
             #region Regalbediengeraet
+            mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);//RegalBediengerät
+            mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);//Schlitten senkrecht
+            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-800, 2500, 450, 90, 0, 270);//Schlitten waagrecht
+
             viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) });
             viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenSenkrecht.STL", Colors.Violet) });
             viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrecht.STL", Colors.MistyRose) });
 
             dreiDModelleIds[ViewModel.VisuAnzeigen.IdEintraege.Regalbediengeraet] = viewPort3d.Children.Count;
             #endregion
-
-
-           
-
         }
 
         private Model3D Display3d(string model, Color farbe)

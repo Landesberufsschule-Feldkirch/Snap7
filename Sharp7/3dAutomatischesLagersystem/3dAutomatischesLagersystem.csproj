@@ -91,8 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="3D\DreiDerstellen.cs" />
+    <Compile Include="DreiD\DreiDElemente.cs" />
+    <Compile Include="DreiD\DreiDErstellen.cs" />
     <Compile Include="DatenRangieren.cs" />
+    <Compile Include="DreiD\DreiDKisten.cs" />
     <Compile Include="Model\AutomatischesLagersystem.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
