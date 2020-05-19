@@ -77,8 +77,9 @@ namespace AutomatischesLagersystem._3D
                         var profilQuerstrebe = new ModelVisual3D { Content = Display3d("SolidWorks/ProfilQuerstrebe.STL", Colors.Orange) };
                         var verschiebenUndDrehen = new Transform3DGroup();
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 90)));
-                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(-150 + 1000 * x, 50 + 3000 * y, 550 + 500 * z));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 180)));
+                        verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), -90)));
+                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(200 + 1000 * x, 50 + 3000 * y, 600 + 500 * z));
                         profilQuerstrebe.Transform = verschiebenUndDrehen;
 
                         viewPort3d.Children.Add(profilQuerstrebe);
@@ -105,6 +106,11 @@ namespace AutomatischesLagersystem._3D
                         verschiebenUndDrehen.Children.Add(new TranslateTransform3D(125 + 1000 * x, 200 + 2850 * y, 600 + 500 * z));
                         kiste_Type_1.Transform = verschiebenUndDrehen;
 
+                        BillboardTextVisual3D label = new BillboardTextVisual3D();
+                        label.Text = "Das iste ien Mustertext";
+                        label.Position = new Point3D(100, 200, 300);
+                        kiste_Type_1.Children.Add(label);
+
                         viewPort3d.Children.Add(kiste_Type_1);
                     }
                 }
@@ -120,6 +126,10 @@ namespace AutomatischesLagersystem._3D
 
             dreiDModelleIds[ViewModel.VisuAnzeigen.IdEintraege.Regalbediengeraet] = viewPort3d.Children.Count;
             #endregion
+
+
+           
+
         }
 
         private Model3D Display3d(string model, Color farbe)

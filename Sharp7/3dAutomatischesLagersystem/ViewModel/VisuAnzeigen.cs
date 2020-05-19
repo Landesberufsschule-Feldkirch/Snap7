@@ -70,13 +70,13 @@
                                    xPosGeaendert = false;
                                    yPosGeaendert = false;
                                    zPosGeaendert = false;
-                                   
+
                                    //Bediengerät
                                    var transformRegalBediengeraet = new Transform3DGroup();
                                    transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                                    transformRegalBediengeraet.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
                                    transformRegalBediengeraet.Children.Add(new TranslateTransform3D(-200 + 11000 * XSliderPosition(), 2550, 50));
-                                                                      mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
+                                   mainWindow.viewPort3d.Children[297].Transform = transformRegalBediengeraet;
 
 
                                    // Schlitten senkrecht
@@ -90,7 +90,7 @@
                                    var transformSchlittenWaagrecht = new Transform3DGroup();
                                    transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                                    transformSchlittenWaagrecht.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), 270)));
-                                   transformSchlittenWaagrecht.Children.Add(new TranslateTransform3D(-800 + 11000 * XSliderPosition(), 2500 + 1300 * YSliderPosition(), 450 + 2200 * ZSliderPosition()));
+                                   transformSchlittenWaagrecht.Children.Add(new TranslateTransform3D(-800 + 11000 * XSliderPosition(), 2500 - 1300 * YSliderPosition(), 450 + 2200 * ZSliderPosition()));
                                    mainWindow.viewPort3d.Children[299].Transform = transformSchlittenWaagrecht;
                                }
                            }
