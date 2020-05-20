@@ -1,11 +1,9 @@
 ﻿namespace AutomatischesLagersystem.ViewModel
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;
-    using System.Windows.Media.Media3D;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -15,8 +13,8 @@
             public const int System = 0;
             public const int Bodenplatte = 1;
             public const int Streben = 2;
-            public const int Kisten = 3;
-            public const int Regalbediengeraet = 4;
+            public const int Regalbediengeraet = 3;
+            public const int Kisten = 4;
             public const int AnzahlEintraege = 5;
 
         };
@@ -24,11 +22,6 @@
         private readonly Model.AutomatischesLagersystem automatischesLagersystem;
         private readonly MainWindow mainWindow;
 
-        private bool xPosGeaendert = false;
-        private bool yPosGeaendert = false;
-        private bool zPosGeaendert = false;
-
-        private bool kistenGeaendert = false;
 
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
@@ -56,61 +49,52 @@
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
 
+
+
         internal void AllesReset()
         {
-            kistenGeaendert = true;
-            foreach (var kiste in mainWindow.KistenAktuellePositionen) kiste.Reset();
+            XPosSlider = 0;
+            YPosSlider = 0;
+            ZPosSlider = 0;
+            mainWindow.DreiD.EineEinzigeKisteAufDemRegalbediengeraet();
+            mainWindow.viewPort3d.Children[200].Transform = mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
         }
 
-        internal void AllesAufraeumen()
-        {
-            throw new NotImplementedException();
-        }
+        internal void AllesAusraeumen() { mainWindow.DreiD.AlleKistenEntfernen(); }
+
+        internal void AllesEinraeumen() { mainWindow.DreiD.AlleKistenHinzufeugen(); }
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
+
+                if (mainWindow.DebugWindowAktiv)
+                {
+                    mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
+                    mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich 0 .. 1
+                    mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich -1 .. 1
+                }
+
+
                 if (mainWindow.viewPort3d != null)
                 {
                     mainWindow.Dispatcher.Invoke(() =>
                    {
                        if (mainWindow.FensterAktiv)
                        {
-                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 300)
+                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 200)
                            {
-                               if (xPosGeaendert || yPosGeaendert || zPosGeaendert)
-                               {
-                                   xPosGeaendert = false;
-                                   yPosGeaendert = false;
-                                   zPosGeaendert = false;
 
-                                   //Bediengerät
-                                   mainWindow.viewPort3d.Children[297].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(11000 * XSliderPosition(), 0, 0);
+                               //Bediengerät
+                               mainWindow.viewPort3d.Children[197].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), 0, 0);
 
-                                   // Schlitten senkrecht
-                                   mainWindow.viewPort3d.Children[298].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(11000 * XSliderPosition(), 0, 2200 * ZSliderPosition());
+                               // Schlitten senkrecht
+                               mainWindow.viewPort3d.Children[198].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), 0, 2200 * mainWindow.RegalBedienGeraet.GetZ());
 
-                                   // Schlitten waagrecht
-                                   mainWindow.viewPort3d.Children[299].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * XSliderPosition(), -1300 * YSliderPosition(), 2200 * ZSliderPosition());
-                               }
+                               // Schlitten waagrecht
+                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -1300 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
 
-
-                               if (kistenGeaendert)
-                               {
-                                   kistenGeaendert = false;
-                                   if (mainWindow.DreiDModelleIds[IdEintraege.Kisten] != 297) MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
-                                
-                                   for (var i = 0; i < 100; i++)
-                                   {
-                                       if (mainWindow.KistenAktuellePositionen[198 + i].GetSichtbar())
-                                       {
-                                          // mainWindow.viewPort3d.Children[i + 196]
-                                       }
-                                   }
-
-
-                               }
                            }
                            else
                            {
@@ -329,7 +313,6 @@
             get { return _xSliderPosition; }
             set
             {
-                xPosGeaendert = true;
                 _xSliderPosition = value;
                 OnPropertyChanged(nameof(XPosSlider));
             }
@@ -348,7 +331,6 @@
             get { return _ySliderPosition; }
             set
             {
-                yPosGeaendert = true;
                 _ySliderPosition = value;
                 OnPropertyChanged(nameof(YPosSlider));
             }
@@ -367,7 +349,6 @@
             get { return _zSliderPosition; }
             set
             {
-                zPosGeaendert = true;
                 _zSliderPosition = value;
                 OnPropertyChanged(nameof(ZPosSlider));
             }

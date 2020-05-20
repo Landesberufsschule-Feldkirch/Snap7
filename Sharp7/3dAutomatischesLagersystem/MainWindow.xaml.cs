@@ -10,6 +10,10 @@ namespace AutomatischesLagersystem
         public DreiDElemente[] KistenStartPositionen { get; set; }
         public DreiDKisten[] KistenAktuellePositionen { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
+        public bool KisteLiegtAufDemRegalbediengeraet { get; set; }
+
+        public AutomatischesLagersystem.Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
+
 
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
@@ -27,10 +31,13 @@ namespace AutomatischesLagersystem
         public MainWindow()
         {
             FensterAktiv = true;
+            KisteLiegtAufDemRegalbediengeraet = false;
             BediengeraetStartpositionen = new DreiDElemente[3];
             KistenStartPositionen = new DreiDElemente[100];
             KistenAktuellePositionen = new DreiDKisten[100];
             DreiDModelleIds = new int[ViewModel.VisuAnzeigen.IdEintraege.AnzahlEintraege];
+
+            RegalBedienGeraet = new AutomatischesLagersystem.Model.RegalBedienGeraet();
 
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, viewModel);
@@ -40,7 +47,7 @@ namespace AutomatischesLagersystem
             DataContext = viewModel;
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            DreiD = new DreiDErstellen(this, viewPort3d, DreiDModelleIds);
+            DreiD = new DreiDErstellen(this);
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

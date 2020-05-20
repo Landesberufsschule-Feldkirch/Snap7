@@ -1,14 +1,15 @@
-﻿using System;
-
-namespace AutomatischesLagersystem.Model
+﻿namespace AutomatischesLagersystem.Model
 {
     public class AutomatischesLagersystem
     {
-        MainWindow mainWindow;
+        readonly MainWindow mainWindow;
 
+      
         public AutomatischesLagersystem(MainWindow mw)
         {
             mainWindow = mw;
+
+       
         }
 
         public char Zeichen { get; internal set; }

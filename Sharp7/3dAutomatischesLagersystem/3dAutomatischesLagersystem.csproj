@@ -96,6 +96,7 @@
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="DreiD\DreiDKisten.cs" />
     <Compile Include="Model\AutomatischesLagersystem.cs" />
+    <Compile Include="Model\RegalBedienGeraet.cs" />
     <Compile Include="SetManual\SetManualWindow.xaml.cs">
       <DependentUpon>SetManualWindow.xaml</DependentUpon>
     </Compile>

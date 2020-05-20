@@ -16,20 +16,35 @@ namespace AutomatischesLagersystem.ViewModel
 
         public Model.AutomatischesLagersystem AutomatischesLagersystem { get { return automatischesLagersystem; } }
 
-        #region BtnAufraeumen
-        private ICommand _BtnAufraeumen;
-        public ICommand BtnAufraeumen
+        #region BtnAusraeumen
+        private ICommand _BtnAusraeumen;
+        public ICommand BtnAusraeumen
         {
             get
             {
-                if (_BtnAufraeumen == null)
+                if (_BtnAusraeumen == null)
                 {
-                    _BtnAufraeumen = new RelayCommand(p => ViAnzeige.AllesAufraeumen(), p => true);
+                    _BtnAusraeumen = new RelayCommand(p => ViAnzeige.AllesAusraeumen(), p => true);
                 }
-                return _BtnAufraeumen;
+                return _BtnAusraeumen;
             }
         }
         #endregion BtnAufraeumen
+
+        #region BtnEinraeumen
+        private ICommand _BtnEinraeumen;
+        public ICommand BtnEinraeumen
+        {
+            get
+            {
+                if (_BtnEinraeumen == null)
+                {
+                    _BtnEinraeumen = new RelayCommand(p => ViAnzeige.AllesEinraeumen(), p => true);
+                }
+                return _BtnEinraeumen;
+            }
+        }
+        #endregion BtnEinraeumen
 
         #region BtnReset
         private ICommand _btnReset;

@@ -29,18 +29,21 @@
             S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
 
             S7.SetUint8At(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
-    */   
-    }
+    */
+        }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            /*
+
             if (!mainWindow.DebugWindowAktiv)
             {
+                              /*
                 viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
                 viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+                */
             }
 
+            /*
             viewModel.paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
             viewModel.paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
             */
