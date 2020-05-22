@@ -1,5 +1,6 @@
 ﻿namespace AutomatischesLagersystem.ViewModel
 {
+    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
@@ -29,6 +30,17 @@
             automatischesLagersystem = al;
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+
+
+            ClickModeBtnK1 = "Press";       // für SetManual
+            ClickModeBtnK2 = "Press";
+            ClickModeBtnK3 = "Press";
+            ClickModeBtnK4 = "Press";
+            ClickModeBtnK5 = "Press";
+            ClickModeBtnK6 = "Press";
+
+
+
 
             IstPosition = "00";
             SollPosition = "00";
@@ -61,14 +73,18 @@
         }
 
         internal void AllesAusraeumen() { mainWindow.DreiD.AlleKistenEntfernen(); }
-
         internal void AllesEinraeumen() { mainWindow.DreiD.AlleKistenHinzufeugen(); }
+        internal void SetK1() { automatischesLagersystem.K1 = ClickModeButtonK1(); }
+        internal void SetK2() { automatischesLagersystem.K2 = ClickModeButtonK2(); }
+        internal void SetK3() { automatischesLagersystem.K3 = ClickModeButtonK3(); }
+        internal void SetK4() { automatischesLagersystem.K4 = ClickModeButtonK4(); }
+        internal void SetK5() { automatischesLagersystem.K5 = ClickModeButtonK5(); }
+        internal void SetK6() { automatischesLagersystem.K6 = ClickModeButtonK6(); }
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-
                 if (mainWindow.DebugWindowAktiv)
                 {
                     mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
@@ -83,7 +99,7 @@
                    {
                        if (mainWindow.FensterAktiv)
                        {
-                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 200)
+                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
                            {
 
                                //Bediengerät
@@ -92,8 +108,11 @@
                                // Schlitten senkrecht
                                mainWindow.viewPort3d.Children[198].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), 0, 2200 * mainWindow.RegalBedienGeraet.GetZ());
 
+                               // Schlitten waagrecht Zwischenteil
+                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -800 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
+
                                // Schlitten waagrecht
-                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -1300 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
+                               mainWindow.viewPort3d.Children[200].Transform = mainWindow.BediengeraetStartpositionen[3].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -1300 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
 
                            }
                            else
@@ -236,6 +255,197 @@
         }
 
         #endregion Sichtbarkeit B2
+
+
+
+
+        #region ClickModeBtnK1
+
+        public bool ClickModeButtonK1()
+        {
+            if (ClickModeBtnK1 == "Press")
+            {
+                ClickModeBtnK1 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK1 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK1;
+
+        public string ClickModeBtnK1
+        {
+            get { return _clickModeBtnK1; }
+            set
+            {
+                _clickModeBtnK1 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK1));
+            }
+        }
+
+        #endregion ClickModeBtnK1
+
+        #region ClickModeBtnK2
+
+        public bool ClickModeButtonK2()
+        {
+            if (ClickModeBtnK2 == "Press")
+            {
+                ClickModeBtnK2 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK2 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK2;
+
+        public string ClickModeBtnK2
+        {
+            get { return _clickModeBtnK2; }
+            set
+            {
+                _clickModeBtnK2 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK2));
+            }
+        }
+
+        #endregion ClickModeBtnK2
+
+        #region ClickModeBtnK3
+
+        public bool ClickModeButtonK3()
+        {
+            if (ClickModeBtnK3 == "Press")
+            {
+                ClickModeBtnK3 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK3 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK3;
+
+        public string ClickModeBtnK3
+        {
+            get { return _clickModeBtnK3; }
+            set
+            {
+                _clickModeBtnK3 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK3));
+            }
+        }
+
+        #endregion ClickModeBtnK3
+
+        #region ClickModeBtnK4
+
+        public bool ClickModeButtonK4()
+        {
+            if (ClickModeBtnK4 == "Press")
+            {
+                ClickModeBtnK4 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK4 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK4;
+
+        public string ClickModeBtnK4
+        {
+            get { return _clickModeBtnK4; }
+            set
+            {
+                _clickModeBtnK4 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK4));
+            }
+        }
+
+        #endregion ClickModeBtnK4
+
+        #region ClickModeBtnK5
+
+        public bool ClickModeButtonK5()
+        {
+            if (ClickModeBtnK5 == "Press")
+            {
+                ClickModeBtnK5 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK5 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK5;
+
+        public string ClickModeBtnK5
+        {
+            get { return _clickModeBtnK5; }
+            set
+            {
+                _clickModeBtnK5 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK5));
+            }
+        }
+
+        #endregion ClickModeBtnK5
+
+        #region ClickModeBtnK6
+
+        public bool ClickModeButtonK6()
+        {
+            if (ClickModeBtnK6 == "Press")
+            {
+                ClickModeBtnK6 = "Release";
+                return true;
+            }
+            else
+            {
+                ClickModeBtnK6 = "Press";
+            }
+            return false;
+        }
+
+        private string _clickModeBtnK6;
+
+        public string ClickModeBtnK6
+        {
+            get { return _clickModeBtnK6; }
+            set
+            {
+                _clickModeBtnK6 = value;
+                OnPropertyChanged(nameof(ClickModeBtnK6));
+            }
+        }
+
+        #endregion ClickModeBtnK6
+
+
+
+
+
+
+
+
 
 
         #region ClickModeAlleButtons

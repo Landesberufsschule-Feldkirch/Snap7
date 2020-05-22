@@ -32,7 +32,7 @@ namespace AutomatischesLagersystem
         {
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;
-            BediengeraetStartpositionen = new DreiDElemente[3];
+            BediengeraetStartpositionen = new DreiDElemente[4];
             KistenStartPositionen = new DreiDElemente[100];
             KistenAktuellePositionen = new DreiDKisten[100];
             DreiDModelleIds = new int[ViewModel.VisuAnzeigen.IdEintraege.AnzahlEintraege];

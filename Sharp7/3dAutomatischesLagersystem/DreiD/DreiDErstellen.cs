@@ -97,10 +97,12 @@ namespace AutomatischesLagersystem.DreiD
             #region Regalbediengeraet
             mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);//RegalBediengerät
             mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);//Schlitten senkrecht
-            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-800, 2500, 450, 90, 0, 270);//Schlitten waagrecht
+            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-820, 1500, 490, 0, 180, 0);//Schlitten waagrecht Zwischenteil
+            mainWindow.BediengeraetStartpositionen[3] = new DreiDElemente(-810, 2500, 450, 90, 0, 270);//Schlitten waagrecht
 
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) });
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenSenkrecht.STL", Colors.Violet) });
+            mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrechtZwischenteil.STL", Colors.Green) });
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrecht.STL", Colors.MistyRose) });
 
             mainWindow.DreiDModelleIds[ViewModel.VisuAnzeigen.IdEintraege.Regalbediengeraet] = mainWindow.viewPort3d.Children.Count;
@@ -150,9 +152,11 @@ namespace AutomatischesLagersystem.DreiD
             var kiste_Type_1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe) };
             kiste_Type_1.Transform = mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
 
-            BillboardTextVisual3D label = new BillboardTextVisual3D();
-            label.Text = "Das ist ein Mustertext";
-            label.Position = new Point3D(100, 200, 300);
+            BillboardTextVisual3D label = new BillboardTextVisual3D
+            {
+                Text = "Das ist ein Mustertext",
+                Position = new Point3D(100, 200, 300)
+            };
             kiste_Type_1.Children.Add(label);
 
             mainWindow.viewPort3d.Children.Add(kiste_Type_1);

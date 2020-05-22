@@ -170,6 +170,9 @@
     <None Include="SolidWorks\SchlittenWaagrecht.STL">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SolidWorks\SchlittenWaagrechtZwischenteil.STL">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

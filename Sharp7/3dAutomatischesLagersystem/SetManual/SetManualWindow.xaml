@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutomatischesLagersystem.SetManual"
         mc:Ignorable="d"
-        Title="SetManualWindow" Height="300" Width="800">
+        Title="SetManualWindow" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -32,6 +32,14 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
@@ -44,5 +52,12 @@
         <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="-1"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" />
         <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" />
 
+
+        <Button Grid.Column="5" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK1}"      Content="Vorwärts" />
+        <Button Grid.Column="5" Grid.Row="8"    ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK2}"    Content="Rückwärts" />
+        <Button Grid.Column="4" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK3}"    Content="Links" />
+        <Button Grid.Column="6" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK4}"   Content="Rechts" />
+        <Button Grid.Column="8" Grid.Row="9"    ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK5}"      Content="Aufwärts" />
+        <Button Grid.Column="8" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK6}"       Content="Abwärts" />
     </Grid>
 </Window>
