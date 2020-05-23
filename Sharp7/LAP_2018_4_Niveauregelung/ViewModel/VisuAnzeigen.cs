@@ -91,20 +91,10 @@
             }
         }
 
-        internal void TasterS1()
-        {
-            niveauRegelung.S1 = ClickModeButtonS1();
-        }
+        internal void TasterS1() => niveauRegelung.S1 = ClickModeButtonS1();
+        internal void TasterS2() => niveauRegelung.S2 = !ClickModeButtonS2();
+        internal void TasterS3() => niveauRegelung.S3 = ClickModeButtonS3();
 
-        internal void TasterS2()
-        {
-            niveauRegelung.S2 = !ClickModeButtonS2();
-        }
-
-        internal void TasterS3()
-        {
-            niveauRegelung.S3 = ClickModeButtonS3();
-        }
 
         #region SPS Status und Farbe
 

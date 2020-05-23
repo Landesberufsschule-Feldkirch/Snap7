@@ -81,7 +81,6 @@
         }
 
         internal void TasterAuf() => paternosterlager.ManualAuf = ClickModeButtonAuf();
-
         internal void TasterAb() => paternosterlager.ManualAb = ClickModeButtonAb();
 
         #region SPS Status und Farbe

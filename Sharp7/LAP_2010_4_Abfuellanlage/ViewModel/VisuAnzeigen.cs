@@ -103,30 +103,11 @@
             }
         }
 
-        internal void SetQ1()
-        {
-            abfuellAnlage.Q1 = ClickModeButtonQ1();
-        }
-
-        internal void SetK1()
-        {
-            abfuellAnlage.K1 = ClickModeButtonK1();
-        }
-
-        internal void SetK2()
-        {
-            abfuellAnlage.K2 = ClickModeButtonK2();
-        }
-
-        internal void SetS1()
-        {
-            abfuellAnlage.S1 = ClickModeButtonS1();
-        }
-
-        internal void BtnS2()
-        {
-            abfuellAnlage.S2 = ClickModeButtonS2();
-        }
+        internal void SetQ1() => abfuellAnlage.Q1 = ClickModeButtonQ1();
+        internal void SetK1() => abfuellAnlage.K1 = ClickModeButtonK1();
+        internal void SetK2() => abfuellAnlage.K2 = ClickModeButtonK2();
+        internal void SetS1() => abfuellAnlage.S1 = ClickModeButtonS1();
+        internal void BtnS2() => abfuellAnlage.S2 = ClickModeButtonS2();
 
         #region SPS Status und Farbe
 

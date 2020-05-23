@@ -48,16 +48,17 @@
         <Label Grid.Column="2" Grid.Row="4"  Content="Y:  " HorizontalContentAlignment="Right" />
         <Label Grid.Column="2" Grid.Row="6" Content="Z:  " HorizontalContentAlignment="Right" />
 
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="2"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="-1"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="2"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"  />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="-1"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"/>
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"/>
 
+        <Button Grid.Column="2" Grid.Row="8" Command="{Binding BtnAktiv}" Content="Button Aktiv" Grid.RowSpan="5" Grid.ColumnSpan="2"/>
 
-        <Button Grid.Column="5" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK1}"      Content="Vorwärts" />
-        <Button Grid.Column="5" Grid.Row="8"    ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK2}"    Content="Rückwärts" />
-        <Button Grid.Column="4" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK3}"    Content="Links" />
-        <Button Grid.Column="6" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK4}"   Content="Rechts" />
-        <Button Grid.Column="8" Grid.Row="9"    ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK5}"      Content="Aufwärts" />
-        <Button Grid.Column="8" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK6}"       Content="Abwärts" />
+        <Button Grid.Column="6" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK1}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Hinein" />
+        <Button Grid.Column="6" Grid.Row="8"    ClickMode="{Binding ViAnzeige.ClickModeBtnK2}"  Command="{Binding BtnK2}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Heraus" />
+        <Button Grid.Column="5" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK3}"  Command="{Binding BtnK3}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Links" />
+        <Button Grid.Column="7" Grid.Row="10"   ClickMode="{Binding ViAnzeige.ClickModeBtnK4}"  Command="{Binding BtnK4}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Rechts" />
+        <Button Grid.Column="10" Grid.Row="9"   ClickMode="{Binding ViAnzeige.ClickModeBtnK5}"  Command="{Binding BtnK5}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Aufwärts" Margin="0,10,0,25" Grid.RowSpan="2" />
+        <Button Grid.Column="10" Grid.Row="12"  ClickMode="{Binding ViAnzeige.ClickModeBtnK6}"  Command="{Binding BtnK6}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Abwärts" />
     </Grid>
 </Window>

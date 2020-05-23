@@ -126,45 +126,14 @@
             }
         }
 
-        internal void SetS0()
-        {
-            foerderanlage.S8 = ClickModeButtonS0();
-        }
-
-        internal void SetS1()
-        {
-            foerderanlage.S8 = ClickModeButtonS1();
-        }
-
-        internal void SetS5()
-        {
-            foerderanlage.S8 = ClickModeButtonS5();
-        }
-
-        internal void SetS6()
-        {
-            foerderanlage.S8 = ClickModeButtonS6();
-        }
-
-        internal void SetS7()
-        {
-            foerderanlage.S8 = ClickModeButtonS7();
-        }
-
-        internal void SetS8()
-        {
-            foerderanlage.S8 = ClickModeButtonS8();
-        }
-
-        internal void SetManualM1_RL()
-        {
-            foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
-        }
-
-        internal void SetManualM1_LL()
-        {
-            foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
-        }
+        internal void SetS0() => foerderanlage.S8 = ClickModeButtonS0();
+        internal void SetS1() => foerderanlage.S8 = ClickModeButtonS1();
+        internal void SetS5() => foerderanlage.S8 = ClickModeButtonS5();
+        internal void SetS6() => foerderanlage.S8 = ClickModeButtonS6();
+        internal void SetS7() => foerderanlage.S8 = ClickModeButtonS7();
+        internal void SetS8() => foerderanlage.S8 = ClickModeButtonS8();
+        internal void SetManualM1_RL() => foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
+        internal void SetManualM1_LL() => foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
 
         internal void SetManualM1_LL_K1()
         {
@@ -173,15 +142,8 @@
             foerderanlage.Manual_K1 = M1_LL_K1;
         }
 
-        internal void SetManualM2()
-        {
-            foerderanlage.Manual_M2 = ClickModeButtonM2();
-        }
-
-        internal void SetManualK1()
-        {
-            foerderanlage.Manual_K1 = ClickModeButtonK1();
-        }
+        internal void SetManualM2() => foerderanlage.Manual_M2 = ClickModeButtonM2();
+        internal void SetManualK1() => foerderanlage.Manual_K1 = ClickModeButtonK1();
 
         #region SPS Status und Farbe
 

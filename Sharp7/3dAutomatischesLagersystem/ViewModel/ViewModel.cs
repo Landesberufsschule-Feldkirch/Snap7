@@ -61,6 +61,23 @@ namespace AutomatischesLagersystem.ViewModel
         }
         #endregion BtnReset
 
+        #region BtnAktiv
+
+        private ICommand _btnAktiv;
+
+        public ICommand BtnAktiv
+        {
+            get
+            {
+                if (_btnAktiv == null)
+                {
+                    _btnAktiv = new RelayCommand(p => ViAnzeige.SetButtonsAktiv(), p => true);
+                }
+                return _btnAktiv;
+            }
+        }
+
+        #endregion BtnK1
 
 
         #region BtnK1
@@ -134,8 +151,6 @@ namespace AutomatischesLagersystem.ViewModel
         }
 
         #endregion BtnK4
-
-
 
         #region BtnK5
 

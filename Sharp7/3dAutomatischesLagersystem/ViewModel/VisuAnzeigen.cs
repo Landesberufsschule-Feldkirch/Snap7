@@ -20,6 +20,7 @@
 
         };
 
+
         private readonly Model.AutomatischesLagersystem automatischesLagersystem;
         private readonly MainWindow mainWindow;
 
@@ -31,7 +32,6 @@
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
-
             ClickModeBtnK1 = "Press";       // für SetManual
             ClickModeBtnK2 = "Press";
             ClickModeBtnK3 = "Press";
@@ -39,8 +39,8 @@
             ClickModeBtnK5 = "Press";
             ClickModeBtnK6 = "Press";
 
-
-
+            VisibilityButtonsAktiv = "hidden";
+            VisibilitySlidersAktiv = "visible";
 
             IstPosition = "00";
             SollPosition = "00";
@@ -52,8 +52,8 @@
             VisibilityB1Ein = "hidden";
             VisibilityB1Aus = "visible";
 
-            VisibilityB2Ein = "Visible";
-            VisibilityB2Aus = "Hidden";
+            VisibilityB2Ein = "visible";
+            VisibilityB2Aus = "hidden";
 
             SpsStatus = "-";
             SpsColor = "LightBlue";
@@ -72,24 +72,38 @@
             mainWindow.viewPort3d.Children[200].Transform = mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
         }
 
-        internal void AllesAusraeumen() { mainWindow.DreiD.AlleKistenEntfernen(); }
-        internal void AllesEinraeumen() { mainWindow.DreiD.AlleKistenHinzufeugen(); }
-        internal void SetK1() { automatischesLagersystem.K1 = ClickModeButtonK1(); }
-        internal void SetK2() { automatischesLagersystem.K2 = ClickModeButtonK2(); }
-        internal void SetK3() { automatischesLagersystem.K3 = ClickModeButtonK3(); }
-        internal void SetK4() { automatischesLagersystem.K4 = ClickModeButtonK4(); }
-        internal void SetK5() { automatischesLagersystem.K5 = ClickModeButtonK5(); }
-        internal void SetK6() { automatischesLagersystem.K6 = ClickModeButtonK6(); }
+        internal void SetButtonsAktiv()
+        {
+            if (VisibilityButtonsAktiv == "hidden")
+            {
+                VisibilityButtonsAktiv = "visible";
+                VisibilitySlidersAktiv = "hidden";
+            }
+            else
+            {
+                VisibilityButtonsAktiv = "hidden";
+                VisibilitySlidersAktiv = "visible";
+            }
+        }
+
+        internal void AllesAusraeumen() => mainWindow.DreiD.AlleKistenEntfernen();
+        internal void AllesEinraeumen() => mainWindow.DreiD.AlleKistenHinzufeugen();
+        internal void SetK1() => automatischesLagersystem.K1 = ClickModeButtonK1();
+        internal void SetK2() => automatischesLagersystem.K2 = ClickModeButtonK2();
+        internal void SetK3() => automatischesLagersystem.K3 = ClickModeButtonK3();
+        internal void SetK4() => automatischesLagersystem.K4 = ClickModeButtonK4();
+        internal void SetK5() => automatischesLagersystem.K5 = ClickModeButtonK5();
+        internal void SetK6() => automatischesLagersystem.K6 = ClickModeButtonK6();
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-                if (mainWindow.DebugWindowAktiv)
+                if (mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == "visible"))
                 {
                     mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
-                    mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich 0 .. 1
-                    mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich -1 .. 1
+                    mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich -1 .. 1
+                    mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich 0 .. 1
                 }
 
 
@@ -256,6 +270,38 @@
 
         #endregion Sichtbarkeit B2
 
+
+        #region VisibilityButtonsAktiv
+
+        private string _visibilityButtonsAktiv;
+
+        public string VisibilityButtonsAktiv
+        {
+            get { return _visibilityButtonsAktiv; }
+            set
+            {
+                _visibilityButtonsAktiv = value;
+                OnPropertyChanged(nameof(VisibilityButtonsAktiv));
+            }
+        }
+
+        #endregion VisibilitySlidersAktiv
+
+        #region VisibilitySlidersAktiv
+
+        private string _visibilitySlidersAktiv;
+
+        public string VisibilitySlidersAktiv
+        {
+            get { return _visibilitySlidersAktiv; }
+            set
+            {
+                _visibilitySlidersAktiv = value;
+                OnPropertyChanged(nameof(VisibilitySlidersAktiv));
+            }
+        }
+
+        #endregion VisibilitySlidersAktiv
 
 
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace AutomatischesLagersystem.Model
 {
@@ -7,9 +6,9 @@ namespace AutomatischesLagersystem.Model
     {
         readonly MainWindow mainWindow;
 
-
-        public bool K1 { get; set; } // Regalbediengerät vorwärts
-        public bool K2 { get; set; } // Regalbediengerät rückwärts
+        
+        public bool K1 { get; set; } // Regalbediengerät hinein
+        public bool K2 { get; set; } // Regalbediengerät heraus
         public bool K3 { get; set; } // Regalbediengerät links
         public bool K4 { get; set; } // Regalbediengerät rechts
         public bool K5 { get; set; } // Regalbediengerät aufwärts
@@ -31,8 +30,8 @@ namespace AutomatischesLagersystem.Model
             {
                 if (K1) mainWindow.RegalBedienGeraet.FahreX(Geschwindigkeit);
                 if (K2) mainWindow.RegalBedienGeraet.FahreX(-Geschwindigkeit);     
-                if (K3) mainWindow.RegalBedienGeraet.FahreY(Geschwindigkeit);
-                if (K4) mainWindow.RegalBedienGeraet.FahreY(-Geschwindigkeit);    
+                if (K3) mainWindow.RegalBedienGeraet.FahreY(-Geschwindigkeit);
+                if (K4) mainWindow.RegalBedienGeraet.FahreY(Geschwindigkeit);    
                 if (K5) mainWindow.RegalBedienGeraet.FahreZ(Geschwindigkeit);
                 if (K6) mainWindow.RegalBedienGeraet.FahreZ(-Geschwindigkeit);
 

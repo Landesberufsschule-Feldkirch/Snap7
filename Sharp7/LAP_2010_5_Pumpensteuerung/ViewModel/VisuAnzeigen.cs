@@ -81,10 +81,8 @@
             }
         }
 
-        internal void SetS3()
-        {
-            pumpensteuerung.S3 = ClickModeButtonS3();
-        }
+        internal void SetS3() => pumpensteuerung.S3 = ClickModeButtonS3();
+
 
         #region SPS Status und Farbe
 

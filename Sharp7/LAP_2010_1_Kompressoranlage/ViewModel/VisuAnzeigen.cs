@@ -70,15 +70,8 @@
             }
         }
 
-        internal void SetS1()
-        {
-            kompressoranlage.S1 = ClickModeButtonS1();
-        }
-
-        internal void BtnS2()
-        {
-            kompressoranlage.S2 = ClickModeButtonS2();
-        }
+        internal void SetS1() => kompressoranlage.S1 = ClickModeButtonS1();
+        internal void BtnS2() => kompressoranlage.S2 = ClickModeButtonS2();
 
         #region SPS Status und Farbe
 

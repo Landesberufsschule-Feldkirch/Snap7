@@ -14,7 +14,7 @@ namespace AutomatischesLagersystem
 
         public AutomatischesLagersystem.Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
 
-
+      
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
 

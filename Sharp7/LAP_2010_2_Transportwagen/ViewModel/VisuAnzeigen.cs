@@ -70,25 +70,10 @@
             }
         }
 
-        internal void SetManualQ1()
-        {
-            transportwagen.Q1 = ClickModeButtonQ1();
-        }
-
-        internal void SetManualQ2()
-        {
-            transportwagen.Q2 = ClickModeButtonQ2();
-        }
-
-        internal void SetS1()
-        {
-            transportwagen.S1 = ClickModeButtonS1();
-        }
-
-        internal void SetS3()
-        {
-            transportwagen.S3 = ClickModeButtonS3();
-        }
+        internal void SetManualQ1() => transportwagen.Q1 = ClickModeButtonQ1();
+        internal void SetManualQ2() => transportwagen.Q2 = ClickModeButtonQ2();
+        internal void SetS1() => transportwagen.S1 = ClickModeButtonS1();
+        internal void SetS3() => transportwagen.S3 = ClickModeButtonS3();
 
         #region SPS Status und Farbe
 

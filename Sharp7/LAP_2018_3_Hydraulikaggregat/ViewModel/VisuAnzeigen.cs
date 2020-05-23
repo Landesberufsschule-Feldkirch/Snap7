@@ -91,20 +91,9 @@
             }
         }
 
-        internal void BtnQ1()
-        {
-            hydraulikaggregat.Q1 = ClickModeButtonQ1();
-        }
-
-        internal void BtnQ2()
-        {
-            hydraulikaggregat.Q2 = ClickModeButtonQ2();
-        }
-
-        internal void BtnQ3()
-        {
-            hydraulikaggregat.Q3 = ClickModeButtonQ3();
-        }
+        internal void BtnQ1() => hydraulikaggregat.Q1 = ClickModeButtonQ1();
+        internal void BtnQ2() => hydraulikaggregat.Q2 = ClickModeButtonQ2();
+        internal void BtnQ3() => hydraulikaggregat.Q3 = ClickModeButtonQ3();
 
         internal void BtnQ1_Q3()
         {
@@ -120,15 +109,8 @@
             }
         }
 
-        internal void BtnS1()
-        {
-            hydraulikaggregat.S1 = ClickModeButtonS1();
-        }
-
-        internal void BtnS2()
-        {
-            hydraulikaggregat.S2 = ClickModeButtonS2();
-        }
+        internal void BtnS1() => hydraulikaggregat.S1 = ClickModeButtonS1();
+        internal void BtnS2() => hydraulikaggregat.S2 = ClickModeButtonS2();
 
         internal void BtnS3()
         {

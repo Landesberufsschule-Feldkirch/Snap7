@@ -71,36 +71,12 @@
                 Thread.Sleep(10);
             }
         }
-
-        internal void SetManualQ1()
-        {
-            ofentuerSteuerung.Q1 = ClickModeButtonQ1();
-        }
-
-        internal void SetManualQ2()
-        {
-            ofentuerSteuerung.Q2 = ClickModeButtonQ2();
-        }
-
-        internal void SetS1()
-        {
-            ofentuerSteuerung.S1 = ClickModeButtonS1();
-        }
-
-        internal void SetS2()
-        {
-            ofentuerSteuerung.S2 = ClickModeButtonS2();
-        }
-
-        internal void SetS3()
-        {
-            ofentuerSteuerung.S3 = ClickModeButtonS3();
-        }
-
-        internal void SetB3()
-        {
-            ofentuerSteuerung.B3 = !ClickModeButtonB3();
-        }
+        internal void SetManualQ1() => ofentuerSteuerung.Q1 = ClickModeButtonQ1();
+        internal void SetManualQ2() => ofentuerSteuerung.Q2 = ClickModeButtonQ2();
+        internal void SetS1() => ofentuerSteuerung.S1 = ClickModeButtonS1();
+        internal void SetS2() => ofentuerSteuerung.S2 = ClickModeButtonS2();
+        internal void SetS3() => ofentuerSteuerung.S3 = ClickModeButtonS3();
+        internal void SetB3() => ofentuerSteuerung.B3 = !ClickModeButtonB3();
 
         #region SPS Status und Farbe
 

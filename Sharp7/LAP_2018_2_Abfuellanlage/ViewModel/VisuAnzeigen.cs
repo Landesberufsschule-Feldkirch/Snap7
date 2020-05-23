@@ -112,40 +112,13 @@
             }
         }
 
-        internal void TasterS1()
-        {
-            alleFlaschen.S1 = ClickModeButtonS1();
-        }
-
-        internal void TasterS2()
-        {
-            alleFlaschen.S2 = !ClickModeButtonS2();
-        }
-
-        internal void TasterS3()
-        {
-            alleFlaschen.S3 = ClickModeButtonS3();
-        }
-
-        internal void TasterS4()
-        {
-            alleFlaschen.S4 = ClickModeButtonS4();
-        }
-
-        internal void SetManualK1()
-        {
-            alleFlaschen.K1 = ClickModeButtonK1();
-        }
-
-        internal void SetManualK2()
-        {
-            alleFlaschen.K2 = ClickModeButtonK2();
-        }
-
-        internal void SetManualQ1()
-        {
-            alleFlaschen.Q1 = ClickModeButtonQ1();
-        }
+        internal void TasterS1() => alleFlaschen.S1 = ClickModeButtonS1();
+        internal void TasterS2() => alleFlaschen.S2 = !ClickModeButtonS2();
+        internal void TasterS3() => alleFlaschen.S3 = ClickModeButtonS3();
+        internal void TasterS4() => alleFlaschen.S4 = ClickModeButtonS4();
+        internal void SetManualK1() => alleFlaschen.K1 = ClickModeButtonK1();
+        internal void SetManualK2() => alleFlaschen.K2 = ClickModeButtonK2();
+        internal void SetManualQ1() => alleFlaschen.Q1 = ClickModeButtonQ1();
 
         #region SPS Status und Farbe
 
