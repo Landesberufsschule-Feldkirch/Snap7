@@ -11,21 +11,16 @@ namespace AutomatischesLagersystem
         public DreiDKisten[] KistenAktuellePositionen { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public bool KisteLiegtAufDemRegalbediengeraet { get; set; }
-
-        public AutomatischesLagersystem.Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
-
-      
+        public Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
-
         public bool FensterAktiv { get; set; }
+        public DreiDErstellen DreiD { get; set; }
+        public int[] DreiDModelleIds { get; set; }
+
 
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-
-        public DreiDErstellen DreiD { get; set; }
-
-        public int[] DreiDModelleIds { get; set; }
 
 
         public MainWindow()
@@ -58,6 +53,5 @@ namespace AutomatischesLagersystem
         }
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e) => FensterAktiv = false;
-
     }
 }

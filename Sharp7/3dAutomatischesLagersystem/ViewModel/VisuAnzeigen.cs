@@ -1,6 +1,5 @@
 ﻿namespace AutomatischesLagersystem.ViewModel
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Threading;
@@ -8,7 +7,6 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-
         public static class IdEintraege
         {
             public const int System = 0;
@@ -17,13 +15,11 @@
             public const int Regalbediengeraet = 3;
             public const int Kisten = 4;
             public const int AnzahlEintraege = 5;
-
         };
 
 
         private readonly Model.AutomatischesLagersystem automatischesLagersystem;
         private readonly MainWindow mainWindow;
-
 
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
@@ -61,15 +57,13 @@
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }
 
-
-
         internal void AllesReset()
         {
             XPosSlider = 0;
             YPosSlider = 0;
             ZPosSlider = 0;
             mainWindow.DreiD.EineEinzigeKisteAufDemRegalbediengeraet();
-            mainWindow.viewPort3d.Children[200].Transform = mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
+            mainWindow.viewPort3d.Children[mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet]].Transform = mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
         }
 
         internal void SetButtonsAktiv()
@@ -127,17 +121,11 @@
 
                                // Schlitten waagrecht
                                mainWindow.viewPort3d.Children[200].Transform = mainWindow.BediengeraetStartpositionen[3].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -1300 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
-
                            }
-                           else
-                           {
-                               MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
-                           }
+                           else MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
                        }
                    });
                 }
-
-
 
                 if (mainWindow.S7_1200 != null)
                 {
@@ -484,12 +472,6 @@
         }
 
         #endregion ClickModeBtnK6
-
-
-
-
-
-
 
 
 

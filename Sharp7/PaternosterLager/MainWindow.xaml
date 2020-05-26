@@ -205,7 +205,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Rectangle  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="16"                             Fill="LightGray" />
+        <Rectangle  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4"  Grid.RowSpan="16"                             Fill="Gray" />
         <Ellipse    Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="2"  Grid.RowSpan="5"  Width="200" Height="200"    Fill="LightGray" Margin="0,0,0,10" />
         <Ellipse    Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="18" Grid.RowSpan="4"  Width="200" Height="200"    Fill="LightGray" />
 

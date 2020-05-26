@@ -202,7 +202,7 @@
 
         <helix:HelixViewport3D x:Name="viewPort3d" 
                                Grid.Column="1" Grid.ColumnSpan="18" Grid.Row="1" Grid.RowSpan="22" 
-                               Background="LightGray" 
+                               Background="White" 
                                ZoomExtentsWhenLoaded="True"
                                IsHeadLightEnabled="True" >
             <helix:DefaultLights x:Name="lichtquelle" />

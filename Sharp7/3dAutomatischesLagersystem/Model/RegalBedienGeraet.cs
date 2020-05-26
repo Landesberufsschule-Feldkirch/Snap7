@@ -1,17 +1,11 @@
 ﻿namespace AutomatischesLagersystem.Model
 {
-
-
     public class RegalBedienGeraet
     {
-
-
-
 
         private double x;
         private double y;
         private double z;
-
 
         public RegalBedienGeraet()
         {
