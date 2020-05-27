@@ -44,6 +44,17 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
+        <Label Content="x: " Grid.Column="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Right"/>
+        <Label Content="{Binding ViAnzeige.XPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Left"  />
+
+        <Label Content="y: " Grid.Column="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Right"/>
+        <Label Content="{Binding ViAnzeige.YPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Left"  />
+
+        <Label Content="z: " Grid.Column="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Right"/>
+        <Label Content="{Binding ViAnzeige.ZPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Left"  />
+
+
+
         <Label Grid.Column="2" Grid.Row="2"  Content="X:  " HorizontalContentAlignment="Right" />
         <Label Grid.Column="2" Grid.Row="4"  Content="Y:  " HorizontalContentAlignment="Right" />
         <Label Grid.Column="2" Grid.Row="6" Content="Z:  " HorizontalContentAlignment="Right" />

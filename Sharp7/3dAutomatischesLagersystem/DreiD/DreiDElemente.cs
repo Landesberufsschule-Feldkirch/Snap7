@@ -1,4 +1,5 @@
-﻿using System.Windows.Media.Media3D;
+﻿using System;
+using System.Windows.Media.Media3D;
 
 namespace AutomatischesLagersystem.DreiD
 {
@@ -21,7 +22,6 @@ namespace AutomatischesLagersystem.DreiD
             dritterWinkel = w3;
         }
 
-
         public Transform3DGroup Transform(double x, double y, double z)
         {
             var transform = new Transform3DGroup();
@@ -31,5 +31,9 @@ namespace AutomatischesLagersystem.DreiD
             transform.Children.Add(new TranslateTransform3D(posX + x, posY + y, posZ + z));
             return transform;
         }
+
+        internal double GetX() => posX;
+        internal double GetY() => posY;
+        internal double GetZ() => posZ;
     }
 }

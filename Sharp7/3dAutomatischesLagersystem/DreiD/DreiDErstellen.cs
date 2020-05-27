@@ -93,10 +93,10 @@ namespace AutomatischesLagersystem.DreiD
             #endregion
 
             #region Regalbediengeraet
-            mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);  //RegalBediengerät
-            mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270); //Schlitten senkrecht
-            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-820, 1500, 490, 0, 180, 0);  //Schlitten waagrecht Zwischenteil
-            mainWindow.BediengeraetStartpositionen[3] = new DreiDElemente(-810, 2500, 450, 90, 0, 270); //Schlitten waagrecht
+            mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);      //RegalBediengerät
+            mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);     //Schlitten senkrecht
+            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-1120, 1500, 490, 0, 180, 0);     //Schlitten waagrecht Zwischenteil
+            mainWindow.BediengeraetStartpositionen[3] = new DreiDElemente(-1110, 2500, 450, 90, 0, 270);    //Schlitten waagrecht
 
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) });
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenSenkrecht.STL", Colors.Violet) });

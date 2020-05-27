@@ -200,6 +200,13 @@
             </Button.Resources>
         </Button>
 
+
+        <Rectangle Grid.Column="21" Grid.Row="20"   Fill="{Binding ViAnzeige.ColorKollisionRegal}" Grid.ColumnSpan="6"/>
+        <Label Grid.Column="21" Grid.ColumnSpan="6" Grid.Row="20" Content="Kollision Regal" HorizontalAlignment="Center" FontSize="20pt" />
+
+        
+        
+        
         <helix:HelixViewport3D x:Name="viewPort3d" 
                                Grid.Column="1" Grid.ColumnSpan="18" Grid.Row="1" Grid.RowSpan="22" 
                                Background="White" 

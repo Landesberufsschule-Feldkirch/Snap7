@@ -35,11 +35,18 @@
             ClickModeBtnK5 = "Press";
             ClickModeBtnK6 = "Press";
 
+            ColorKollisionRegal = "Lawngreen";
+
             VisibilityButtonsAktiv = "hidden";
             VisibilitySlidersAktiv = "visible";
 
             IstPosition = "00";
             SollPosition = "00";
+
+            XPosition = "0";
+            YPosition = "0";
+            ZPosition = "0";
+
 
             XPosSlider = 0;
             YPosSlider = 0;
@@ -101,6 +108,8 @@
                 }
 
 
+                FarbeKollisionRegal(automatischesLagersystem.kollisionRegal.GetKollisionRegal());
+
                 if (mainWindow.viewPort3d != null)
                 {
                     mainWindow.Dispatcher.Invoke(() =>
@@ -111,16 +120,23 @@
                            {
 
                                //Bediengerät
-                               mainWindow.viewPort3d.Children[197].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), 0, 0);
+                               mainWindow.viewPort3d.Children[197].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
 
                                // Schlitten senkrecht
-                               mainWindow.viewPort3d.Children[198].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), 0, 2200 * mainWindow.RegalBedienGeraet.GetZ());
+                               mainWindow.viewPort3d.Children[198].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), 0, mainWindow.RegalBedienGeraet.GetZPosition());
 
                                // Schlitten waagrecht Zwischenteil
-                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -800 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
+                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * mainWindow.RegalBedienGeraet.GetYPosition() / 2, mainWindow.RegalBedienGeraet.GetZPosition());
 
                                // Schlitten waagrecht
-                               mainWindow.viewPort3d.Children[200].Transform = mainWindow.BediengeraetStartpositionen[3].Transform(11000 * mainWindow.RegalBedienGeraet.GetX(), -1300 * mainWindow.RegalBedienGeraet.GetY(), 2200 * mainWindow.RegalBedienGeraet.GetZ());
+                               mainWindow.viewPort3d.Children[200].Transform = mainWindow.BediengeraetStartpositionen[3].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * mainWindow.RegalBedienGeraet.GetYPosition(), mainWindow.RegalBedienGeraet.GetZPosition());
+
+                               XPosition = (mainWindow.BediengeraetStartpositionen[3].GetX() + mainWindow.RegalBedienGeraet.GetXPosition()).ToString();
+                               YPosition = (mainWindow.BediengeraetStartpositionen[3].GetY() + mainWindow.RegalBedienGeraet.GetYPosition()).ToString();
+                               ZPosition = (mainWindow.BediengeraetStartpositionen[3].GetZ() + mainWindow.RegalBedienGeraet.GetZPosition()).ToString();
+
+
+
                            }
                            else MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
                        }
@@ -257,6 +273,30 @@
         }
 
         #endregion Sichtbarkeit B2
+
+
+
+        #region ColorKollisionRegal
+
+        public void FarbeKollisionRegal(bool val)
+        {
+            if (val) ColorKollisionRegal = "Red"; else ColorKollisionRegal = "Lawngreen";
+        }
+
+        private string _colorKollisionRegal;
+
+        public string ColorKollisionRegal
+        {
+            get { return _colorKollisionRegal; }
+            set
+            {
+                _colorKollisionRegal = value;
+                OnPropertyChanged(nameof(ColorKollisionRegal));
+            }
+        }
+
+        #endregion ColorKollisionRegal
+
 
 
         #region VisibilityButtonsAktiv
@@ -505,6 +545,55 @@
         }
 
         #endregion ClickModeAlleButtons
+
+
+        #region XPosition
+
+        private string _xPosition;
+
+        public string XPosition
+        {
+            get { return _xPosition; }
+            set
+            {
+                _xPosition = value;
+                OnPropertyChanged(nameof(XPosition));
+            }
+        }
+
+        #endregion XPosition
+
+        #region YPosition
+
+        private string _yPosition;
+
+        public string YPosition
+        {
+            get { return _yPosition; }
+            set
+            {
+                _yPosition = value;
+                OnPropertyChanged(nameof(YPosition));
+            }
+        }
+
+        #endregion YPosition
+
+        #region ZPosition
+
+        private string _zPosition;
+
+        public string ZPosition
+        {
+            get { return _zPosition; }
+            set
+            {
+                _zPosition = value;
+                OnPropertyChanged(nameof(ZPosition));
+            }
+        }
+
+        #endregion YPosition
 
 
         #region IstPosition
