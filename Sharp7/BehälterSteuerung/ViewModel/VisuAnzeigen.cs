@@ -202,7 +202,7 @@
 
         public string VisibilityVentilQ1Ein
         {
-            get { return _visibilityVentilQ1Ein; }
+            get => _visibilityVentilQ1Ein; 
             set
             {
                 _visibilityVentilQ1Ein = value;
@@ -214,7 +214,7 @@
 
         public string VisibilityVentilQ1Aus
         {
-            get { return _visibilityVentilQ1Aus; }
+            get => _visibilityVentilQ1Aus; 
             set
             {
                 _visibilityVentilQ1Aus = value;
@@ -244,7 +244,7 @@
 
         public string VisibilityVentilQ2Ein
         {
-            get { return _visibilityVentilQ2Ein; }
+            get => _visibilityVentilQ2Ein; 
             set
             {
                 _visibilityVentilQ2Ein = value;
@@ -256,7 +256,7 @@
 
         public string VisibilityVentilQ2Aus
         {
-            get { return _visibilityVentilQ2Aus; }
+            get => _visibilityVentilQ2Aus; 
             set
             {
                 _visibilityVentilQ2Aus = value;
@@ -286,7 +286,7 @@
 
         public string VisibilityVentilQ3Ein
         {
-            get { return _visibilityVentilQ3Ein; }
+            get => _visibilityVentilQ3Ein; 
             set
             {
                 _visibilityVentilQ3Ein = value;
@@ -298,7 +298,7 @@
 
         public string VisibilityVentilQ3Aus
         {
-            get { return _visibilityVentilQ3Aus; }
+            get => _visibilityVentilQ3Aus; 
             set
             {
                 _visibilityVentilQ3Aus = value;
@@ -328,7 +328,7 @@
 
         public string VisibilityVentilQ4Ein
         {
-            get { return _visibilityVentilQ4Ein; }
+            get => _visibilityVentilQ4Ein; 
             set
             {
                 _visibilityVentilQ4Ein = value;
@@ -340,7 +340,7 @@
 
         public string VisibilityVentilQ4Aus
         {
-            get { return _visibilityVentilQ4Aus; }
+            get => _visibilityVentilQ4Aus; 
             set
             {
                 _visibilityVentilQ4Aus = value;
@@ -370,7 +370,7 @@
 
         public string VisibilityVentilQ5Ein
         {
-            get { return _visibilityVentilQ5Ein; }
+            get => _visibilityVentilQ5Ein;
             set
             {
                 _visibilityVentilQ5Ein = value;
@@ -382,7 +382,7 @@
 
         public string VisibilityVentilQ5Aus
         {
-            get { return _visibilityVentilQ5Aus; }
+            get => _visibilityVentilQ5Aus; 
             set
             {
                 _visibilityVentilQ5Aus = value;
@@ -412,7 +412,7 @@
 
         public string VisibilityVentilQ6Ein
         {
-            get { return _visibilityVentilQ6Ein; }
+            get => _visibilityVentilQ6Ein; 
             set
             {
                 _visibilityVentilQ6Ein = value;
@@ -424,7 +424,7 @@
 
         public string VisibilityVentilQ6Aus
         {
-            get { return _visibilityVentilQ6Aus; }
+            get => _visibilityVentilQ6Aus; 
             set
             {
                 _visibilityVentilQ6Aus = value;
@@ -454,7 +454,7 @@
 
         public string VisibilityVentilQ7Ein
         {
-            get { return _visibilityVentilQ7Ein; }
+            get => _visibilityVentilQ7Ein; 
             set
             {
                 _visibilityVentilQ7Ein = value;
@@ -466,7 +466,7 @@
 
         public string VisibilityVentilQ7Aus
         {
-            get { return _visibilityVentilQ7Aus; }
+            get => _visibilityVentilQ7Aus; 
             set
             {
                 _visibilityVentilQ7Aus = value;
@@ -496,7 +496,7 @@
 
         public string VisibilityVentilQ8Ein
         {
-            get { return _visibilityVentilQ8Ein; }
+            get => _visibilityVentilQ8Ein; 
             set
             {
                 _visibilityVentilQ8Ein = value;
@@ -508,7 +508,7 @@
 
         public string VisibilityVentilQ8Aus
         {
-            get { return _visibilityVentilQ8Aus; }
+            get => _visibilityVentilQ8Aus; 
             set
             {
                 _visibilityVentilQ8Aus = value;
@@ -529,7 +529,7 @@
 
         public string ColorZuleitung_1b
         {
-            get { return _colorZuleitung_1b; }
+            get => _colorZuleitung_1b; 
             set
             {
                 _colorZuleitung_1b = value;
@@ -550,7 +550,7 @@
 
         public string ColorZuleitung_2b
         {
-            get { return _colorZuleitung_2b; }
+            get => _colorZuleitung_2b; 
             set
             {
                 _colorZuleitung_2b = value;
@@ -571,7 +571,7 @@
 
         public string ColorZuleitung_3b
         {
-            get { return _colorZuleitung_3b; }
+            get => _colorZuleitung_3b; 
             set
             {
                 _colorZuleitung_3b = value;
@@ -592,7 +592,7 @@
 
         public string ColorZuleitung_4b
         {
-            get { return _colorZuleitung_4b; }
+            get => _colorZuleitung_4b; 
             set
             {
                 _colorZuleitung_4b = value;
@@ -613,7 +613,7 @@
 
         public string ColorAbleitung_1a
         {
-            get { return _colorAbleitung_1a; }
+            get => _colorAbleitung_1a; 
             set
             {
                 _colorAbleitung_1a = value;
@@ -634,7 +634,7 @@
 
         public string ColorAbleitung_2a
         {
-            get { return _colorAbleitung_2a; }
+            get => _colorAbleitung_2a; 
             set
             {
                 _colorAbleitung_2a = value;
@@ -655,7 +655,7 @@
 
         public string ColorAbleitung_3a
         {
-            get { return _colorAbleitung_3a; }
+            get => _colorAbleitung_3a; 
             set
             {
                 _colorAbleitung_3a = value;
@@ -676,7 +676,7 @@
 
         public string ColorAbleitung_4a
         {
-            get { return _colorAbleitung_4a; }
+            get => _colorAbleitung_4a; 
             set
             {
                 _colorAbleitung_4a = value;
@@ -697,7 +697,7 @@
 
         public string ColorAbleitung_1b
         {
-            get { return _colorAbleitung_1b; }
+            get => _colorAbleitung_1b; 
             set
             {
                 _colorAbleitung_1b = value;
@@ -718,7 +718,7 @@
 
         public string ColorAbleitung_2b
         {
-            get { return _colorAbleitung_2b; }
+            get => _colorAbleitung_2b; 
             set
             {
                 _colorAbleitung_2b = value;
@@ -739,7 +739,7 @@
 
         public string ColorAbleitung_3b
         {
-            get { return _colorAbleitung_3b; }
+            get => _colorAbleitung_3b; 
             set
             {
                 _colorAbleitung_3b = value;
@@ -760,7 +760,7 @@
 
         public string ColorAbleitung_4b
         {
-            get { return _colorAbleitung_4b; }
+            get => _colorAbleitung_4b; 
             set
             {
                 _colorAbleitung_4b = value;
@@ -781,7 +781,7 @@
 
         public string ColorAbleitung_Gesamt
         {
-            get { return _colorAbleitung_Gesamt; }
+            get => _colorAbleitung_Gesamt; 
             set
             {
                 _colorAbleitung_Gesamt = value;
@@ -802,7 +802,7 @@
 
         public string ColorLabelB1
         {
-            get { return _colorLabelB1; }
+            get => _colorLabelB1; 
             set
             {
                 _colorLabelB1 = value;
@@ -823,7 +823,7 @@
 
         public string ColorLabelB2
         {
-            get { return _colorLabelB2; }
+            get => _colorLabelB2; 
             set
             {
                 _colorLabelB2 = value;
@@ -844,7 +844,7 @@
 
         public string ColorLabelB3
         {
-            get { return _colorLabelB3; }
+            get => _colorLabelB3; 
             set
             {
                 _colorLabelB3 = value;
@@ -865,7 +865,7 @@
 
         public string ColorLabelB4
         {
-            get { return _colorLabelB4; }
+            get => _colorLabelB4; 
             set
             {
                 _colorLabelB4 = value;
@@ -886,7 +886,7 @@
 
         public string ColorLabelB5
         {
-            get { return _colorLabelB5; }
+            get => _colorLabelB5; 
             set
             {
                 _colorLabelB5 = value;
@@ -907,7 +907,7 @@
 
         public string ColorLabelB6
         {
-            get { return _colorLabelB6; }
+            get => _colorLabelB6; 
             set
             {
                 _colorLabelB6 = value;
@@ -928,7 +928,7 @@
 
         public string ColorLabelB7
         {
-            get { return _colorLabelB7; }
+            get => _colorLabelB7; 
             set
             {
                 _colorLabelB7 = value;
@@ -949,7 +949,7 @@
 
         public string ColorLabelB8
         {
-            get { return _colorLabelB8; }
+            get => _colorLabelB8; 
             set
             {
                 _colorLabelB8 = value;
@@ -970,7 +970,7 @@
 
         public string ColorCircle_P1
         {
-            get { return _colorCircle_P1; }
+            get => _colorCircle_P1; 
             set
             {
                 _colorCircle_P1 = value;
@@ -986,7 +986,7 @@
 
         public bool EnableAutomatik1234
         {
-            get { return _enableAutomatik1234; }
+            get => _enableAutomatik1234; 
             set
             {
                 _enableAutomatik1234 = value;
@@ -1002,7 +1002,7 @@
 
         public bool EnableAutomatik1324
         {
-            get { return _enableAutomatik1324; }
+            get => _enableAutomatik1324; 
             set
             {
                 _enableAutomatik1324 = value;
@@ -1018,7 +1018,7 @@
 
         public bool EnableAutomatik1432
         {
-            get { return _enableAutomatik1432; }
+            get => _enableAutomatik1432; 
             set
             {
                 _enableAutomatik1432 = value;
@@ -1034,7 +1034,7 @@
 
         public bool EnableAutomatik4321
         {
-            get { return _enableAutomatik4321; }
+            get => _enableAutomatik4321; 
             set
             {
                 _enableAutomatik4321 = value;
@@ -1055,7 +1055,7 @@
 
         public Thickness Margin1
         {
-            get { return _margin1; }
+            get => _margin1; 
             set
             {
                 _margin1 = value;
@@ -1076,7 +1076,7 @@
 
         public Thickness Margin2
         {
-            get { return _margin2; }
+            get => _margin2; 
             set
             {
                 _margin2 = value;
@@ -1097,7 +1097,7 @@
 
         public Thickness Margin3
         {
-            get { return _margin3; }
+            get => _margin3; 
             set
             {
                 _margin3 = value;
@@ -1118,7 +1118,7 @@
 
         public Thickness Margin4
         {
-            get { return _margin4; }
+            get => _margin4; 
             set
             {
                 _margin4 = value;

@@ -41,7 +41,7 @@
         /// </summary>
         public XDataPoint MaximumX
         {
-            get { return _maximumX; }
+            get => _maximumX; 
             set { _maximumX = value; RaisePropertyChangedAuto(); }
         }
 
@@ -52,7 +52,7 @@
         /// </summary>
         public YDataPoint MinimumY
         {
-            get { return _minimumY; }
+            get => _minimumY; 
             set { _minimumY = value; RaisePropertyChangedAuto(); }
         }
 
@@ -63,7 +63,7 @@
         /// </summary>
         public YDataPoint MaximumY
         {
-            get { return _maximumY; }
+            get => _maximumY; 
             set { _maximumY = value; RaisePropertyChangedAuto(); }
         }
 
@@ -74,7 +74,7 @@
         /// </summary>
         public bool AutoY
         {
-            get { return _autoY; }
+            get => _autoY; 
             set { _autoY = value; RaisePropertyChangedAuto(); }
         }
 

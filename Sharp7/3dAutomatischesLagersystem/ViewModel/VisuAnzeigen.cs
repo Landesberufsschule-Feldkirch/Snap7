@@ -210,7 +210,7 @@
 
         public string VisibilityB1Ein
         {
-            get { return _VisibilityB1Ein; }
+            get => _VisibilityB1Ein; 
             set
             {
                 _VisibilityB1Ein = value;
@@ -222,7 +222,7 @@
 
         public string VisibilityB1Aus
         {
-            get { return _VisibilityB1Aus; }
+            get => _VisibilityB1Aus; 
             set
             {
                 _VisibilityB1Aus = value;
@@ -252,7 +252,7 @@
 
         public string VisibilityB2Ein
         {
-            get { return _VisibilityB2Ein; }
+            get => _VisibilityB2Ein; 
             set
             {
                 _VisibilityB2Ein = value;
@@ -264,7 +264,7 @@
 
         public string VisibilityB2Aus
         {
-            get { return _VisibilityB2Aus; }
+            get => _VisibilityB2Aus; 
             set
             {
                 _VisibilityB2Aus = value;
@@ -287,7 +287,7 @@
 
         public string ColorKollisionRegalMitSchlitten
         {
-            get { return _colorKollisionRegalMitSchlitten; }
+            get => _colorKollisionRegalMitSchlitten; 
             set
             {
                 _colorKollisionRegalMitSchlitten = value;
@@ -305,7 +305,7 @@
 
         public string VisibilityButtonsAktiv
         {
-            get { return _visibilityButtonsAktiv; }
+            get => _visibilityButtonsAktiv; 
             set
             {
                 _visibilityButtonsAktiv = value;
@@ -321,7 +321,7 @@
 
         public string VisibilitySlidersAktiv
         {
-            get { return _visibilitySlidersAktiv; }
+            get => _visibilitySlidersAktiv; 
             set
             {
                 _visibilitySlidersAktiv = value;
@@ -353,7 +353,7 @@
 
         public string ClickModeBtnK1
         {
-            get { return _clickModeBtnK1; }
+            get => _clickModeBtnK1; 
             set
             {
                 _clickModeBtnK1 = value;
@@ -383,7 +383,7 @@
 
         public string ClickModeBtnK2
         {
-            get { return _clickModeBtnK2; }
+            get => _clickModeBtnK2; 
             set
             {
                 _clickModeBtnK2 = value;
@@ -413,7 +413,7 @@
 
         public string ClickModeBtnK3
         {
-            get { return _clickModeBtnK3; }
+            get => _clickModeBtnK3; 
             set
             {
                 _clickModeBtnK3 = value;
@@ -443,7 +443,7 @@
 
         public string ClickModeBtnK4
         {
-            get { return _clickModeBtnK4; }
+            get => _clickModeBtnK4; 
             set
             {
                 _clickModeBtnK4 = value;
@@ -473,7 +473,7 @@
 
         public string ClickModeBtnK5
         {
-            get { return _clickModeBtnK5; }
+            get => _clickModeBtnK5; 
             set
             {
                 _clickModeBtnK5 = value;
@@ -503,7 +503,7 @@
 
         public string ClickModeBtnK6
         {
-            get { return _clickModeBtnK6; }
+            get => _clickModeBtnK6; 
             set
             {
                 _clickModeBtnK6 = value;
@@ -536,7 +536,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get { return _clickModeBtn; }
+            get => _clickModeBtn; 
             set
             {
                 _clickModeBtn = value;
@@ -553,7 +553,7 @@
 
         public string XPosition
         {
-            get { return _xPosition; }
+            get => _xPosition; 
             set
             {
                 _xPosition = value;
@@ -569,7 +569,7 @@
 
         public string YPosition
         {
-            get { return _yPosition; }
+            get => _yPosition; 
             set
             {
                 _yPosition = value;
@@ -585,7 +585,7 @@
 
         public string ZPosition
         {
-            get { return _zPosition; }
+            get => _zPosition; 
             set
             {
                 _zPosition = value;
@@ -602,7 +602,7 @@
 
         public string IstPosition
         {
-            get { return _istPosition; }
+            get => _istPosition; 
             set
             {
                 _istPosition = value;
@@ -618,7 +618,7 @@
 
         public string SollPosition
         {
-            get { return _sollPosition; }
+            get => _sollPosition; 
             set
             {
                 _sollPosition = value;
@@ -637,7 +637,7 @@
 
         public double XPosSlider
         {
-            get { return _xSliderPosition; }
+            get => _xSliderPosition; 
             set
             {
                 _xSliderPosition = value;
@@ -655,7 +655,7 @@
 
         public double YPosSlider
         {
-            get { return _ySliderPosition; }
+            get => _ySliderPosition; 
             set
             {
                 _ySliderPosition = value;
@@ -673,7 +673,7 @@
 
         public double ZPosSlider
         {
-            get { return _zSliderPosition; }
+            get => _zSliderPosition; 
             set
             {
                 _zSliderPosition = value;

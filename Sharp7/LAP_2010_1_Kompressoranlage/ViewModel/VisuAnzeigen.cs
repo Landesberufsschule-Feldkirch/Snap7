@@ -121,7 +121,7 @@
 
         public string ClickModeBtnS1
         {
-            get { return _clickModeBtnS1; }
+            get => _clickModeBtnS1; 
             set
             {
                 _clickModeBtnS1 = value;
@@ -151,7 +151,7 @@
 
         public string ClickModeBtnS2
         {
-            get { return _clickModeBtnS2; }
+            get => _clickModeBtnS2; 
             set
             {
                 _clickModeBtnS2 = value;
@@ -172,7 +172,7 @@
 
         public string ColorF1
         {
-            get { return _colorF1; }
+            get => _colorF1; 
             set
             {
                 _colorF1 = value;
@@ -193,7 +193,7 @@
 
         public string ColorP1
         {
-            get { return _colorP1; }
+            get => _colorP1; 
             set
             {
                 _colorP1 = value;
@@ -214,7 +214,7 @@
 
         public string ColorP2
         {
-            get { return _colorP2; }
+            get => _colorP2; 
             set
             {
                 _colorP2 = value;
@@ -235,7 +235,7 @@
 
         public string ColorQ1
         {
-            get { return _colorQ1; }
+            get => _colorQ1; 
             set
             {
                 _colorQ1 = value;
@@ -256,7 +256,7 @@
 
         public string ColorQ2
         {
-            get { return _colorQ2; }
+            get => _colorQ2; 
             set
             {
                 _colorQ2 = value;
@@ -277,7 +277,7 @@
 
         public string ColorQ3
         {
-            get { return _colorQ3; }
+            get => _colorQ3; 
             set
             {
                 _colorQ3 = value;
@@ -314,7 +314,7 @@
 
         public string VisibilityKurzschluss
         {
-            get { return _visibilityKurzschluss; }
+            get => _visibilityKurzschluss; 
             set
             {
                 _visibilityKurzschluss = value;
@@ -344,7 +344,7 @@
 
         public string VisibilityB1Ein
         {
-            get { return _VisibilityB1Ein; }
+            get => _VisibilityB1Ein; 
             set
             {
                 _VisibilityB1Ein = value;
@@ -356,7 +356,7 @@
 
         public string VisibilityB1Aus
         {
-            get { return _VisibilityB1Aus; }
+            get => _VisibilityB1Aus; 
             set
             {
                 _VisibilityB1Aus = value;
@@ -386,7 +386,7 @@
 
         public string VisibilityB2Ein
         {
-            get { return _VisibilityB2Ein; }
+            get => _VisibilityB2Ein; 
             set
             {
                 _VisibilityB2Ein = value;
@@ -398,7 +398,7 @@
 
         public string VisibilityB2Aus
         {
-            get { return _VisibilityB2Aus; }
+            get => _VisibilityB2Aus; 
             set
             {
                 _VisibilityB2Aus = value;
@@ -414,7 +414,7 @@
 
         public double Druck
         {
-            get { return _druck; }
+            get => _druck; 
             set
             {
                 _druck = value;

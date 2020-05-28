@@ -167,7 +167,7 @@
 
         public bool EnableAuto1
         {
-            get { return _enableAuto1; }
+            get => _enableAuto1; 
             set
             {
                 _enableAuto1 = value;
@@ -183,7 +183,7 @@
 
         public bool EnableAuto2
         {
-            get { return _enableAuto2; }
+            get => _enableAuto2; 
             set
             {
                 _enableAuto2 = value;
@@ -199,7 +199,7 @@
 
         public bool EnableAuto3
         {
-            get { return _enableAuto3; }
+            get => _enableAuto3; 
             set
             {
                 _enableAuto3 = value;
@@ -215,7 +215,7 @@
 
         public bool EnableAuto4
         {
-            get { return _enableAuto4; }
+            get => _enableAuto4; 
             set
             {
                 _enableAuto4 = value;
@@ -231,7 +231,7 @@
 
         public bool EnablePerson1
         {
-            get { return _enablePerson1; }
+            get => _enablePerson1; 
             set
             {
                 _enablePerson1 = value;
@@ -247,7 +247,7 @@
 
         public bool EnablePerson2
         {
-            get { return _enablePerson2; }
+            get => _enablePerson2; 
             set
             {
                 _enablePerson2 = value;
@@ -263,7 +263,7 @@
 
         public bool EnablePerson3
         {
-            get { return _enablePerson3; }
+            get => _enablePerson3; 
             set
             {
                 _enablePerson3 = value;
@@ -279,7 +279,7 @@
 
         public bool EnablePerson4
         {
-            get { return _enablePerson4; }
+            get => _enablePerson4; 
             set
             {
                 _enablePerson4 = value;
@@ -301,7 +301,7 @@
 
         public double PosAuto1Left
         {
-            get { return _posAuto1Left; }
+            get => _posAuto1Left; 
             set
             {
                 _posAuto1Left = value;
@@ -313,7 +313,7 @@
 
         public double PosAuto1Top
         {
-            get { return _posAuto1Top; }
+            get => _posAuto1Top; 
             set
             {
                 _posAuto1Top = value;
@@ -335,7 +335,7 @@
 
         public double PosAuto2Left
         {
-            get { return _posAuto2Left; }
+            get => _posAuto2Left; 
             set
             {
                 _posAuto2Left = value;
@@ -347,7 +347,7 @@
 
         public double PosAuto2Top
         {
-            get { return _posAuto2Top; }
+            get => _posAuto2Top; 
             set
             {
                 _posAuto2Top = value;
@@ -369,7 +369,7 @@
 
         public double PosAuto3Left
         {
-            get { return _posAuto3Left; }
+            get => _posAuto3Left; 
             set
             {
                 _posAuto3Left = value;
@@ -381,7 +381,7 @@
 
         public double PosAuto3Top
         {
-            get { return _posAuto3Top; }
+            get => _posAuto3Top; 
             set
             {
                 _posAuto3Top = value;
@@ -403,7 +403,7 @@
 
         public double PosAuto4Left
         {
-            get { return _posAuto4Left; }
+            get => _posAuto4Left; 
             set
             {
                 _posAuto4Left = value;
@@ -415,7 +415,7 @@
 
         public double PosAuto4Top
         {
-            get { return _posAuto4Top; }
+            get => _posAuto4Top; 
             set
             {
                 _posAuto4Top = value;
@@ -437,7 +437,7 @@
 
         public double PosPerson1Left
         {
-            get { return _posPerson1Left; }
+            get => _posPerson1Left; 
             set
             {
                 _posPerson1Left = value;
@@ -449,7 +449,7 @@
 
         public double PosPerson1Top
         {
-            get { return _posPerson1Top; }
+            get => _posPerson1Top; 
             set
             {
                 _posPerson1Top = value;
@@ -471,7 +471,7 @@
 
         public double PosPerson2Left
         {
-            get { return _posPerson2Left; }
+            get => _posPerson2Left; 
             set
             {
                 _posPerson2Left = value;
@@ -483,7 +483,7 @@
 
         public double PosPerson2Top
         {
-            get { return _posPerson2Top; }
+            get => _posPerson2Top; 
             set
             {
                 _posPerson2Top = value;
@@ -505,7 +505,7 @@
 
         public double PosPerson3Left
         {
-            get { return _posPerson3Left; }
+            get => _posPerson3Left; 
             set
             {
                 _posPerson3Left = value;
@@ -517,7 +517,7 @@
 
         public double PosPerson3Top
         {
-            get { return _posPerson3Top; }
+            get => _posPerson3Top; 
             set
             {
                 _posPerson3Top = value;
@@ -539,7 +539,7 @@
 
         public double PosPerson4Left
         {
-            get { return _posPerson4Left; }
+            get => _posPerson4Left; 
             set
             {
                 _posPerson4Left = value;
@@ -551,7 +551,7 @@
 
         public double PosPerson4Top
         {
-            get { return _posPerson4Top; }
+            get => _posPerson4Top; 
             set
             {
                 _posPerson4Top = value;
@@ -572,7 +572,7 @@
 
         public string AnzahlAutos
         {
-            get { return _anzahlAutos; }
+            get => _anzahlAutos; 
             set
             {
                 _anzahlAutos = value;
@@ -593,7 +593,7 @@
 
         public string AnzahlPersonen
         {
-            get { return _anzahlPersonen; }
+            get => _anzahlPersonen; 
             set
             {
                 _anzahlPersonen = value;

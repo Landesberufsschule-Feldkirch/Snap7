@@ -144,7 +144,7 @@
 
         public string ClickModeBtnS1
         {
-            get { return _clickModeBtnS1; }
+            get => _clickModeBtnS1; 
             set
             {
                 _clickModeBtnS1 = value;
@@ -174,7 +174,7 @@
 
         public string ClickModeBtnS2
         {
-            get { return _clickModeBtnS2; }
+            get => _clickModeBtnS2; 
             set
             {
                 _clickModeBtnS2 = value;
@@ -204,7 +204,7 @@
 
         public string ClickModeBtnS3
         {
-            get { return _clickModeBtnS3; }
+            get => _clickModeBtnS3; 
             set
             {
                 _clickModeBtnS3 = value;
@@ -225,7 +225,7 @@
 
         public string ColorThermorelais_F1
         {
-            get { return _colorThermorelais_F1; }
+            get => _colorThermorelais_F1; 
             set
             {
                 _colorThermorelais_F1 = value;
@@ -246,7 +246,7 @@
 
         public string ColorThermorelais_F2
         {
-            get { return _colorThermorelais_F2; }
+            get => _colorThermorelais_F2; 
             set
             {
                 _colorThermorelais_F2 = value;
@@ -267,7 +267,7 @@
 
         public string ColorCircle_P1
         {
-            get { return _colorCircle_P1; }
+            get => _colorCircle_P1; 
             set
             {
                 _colorCircle_P1 = value;
@@ -288,7 +288,7 @@
 
         public string ColorCircle_P2
         {
-            get { return _colorCircle_P2; }
+            get => _colorCircle_P2; 
             set
             {
                 _colorCircle_P2 = value;
@@ -309,7 +309,7 @@
 
         public string ColorCircle_P3
         {
-            get { return _colorCircle_P3; }
+            get => _colorCircle_P3; 
             set
             {
                 _colorCircle_P3 = value;
@@ -330,7 +330,7 @@
 
         public string ColorAbleitungOben
         {
-            get { return _colorAbleitungOben; }
+            get => _colorAbleitungOben; 
             set
             {
                 _colorAbleitungOben = value;
@@ -351,7 +351,7 @@
 
         public string ColorAbleitungUnten
         {
-            get { return _colorAbleitungUnten; }
+            get => _colorAbleitungUnten; 
             set
             {
                 _colorAbleitungUnten = value;
@@ -372,7 +372,7 @@
 
         public string ColorZuleitungLinksWaagrecht
         {
-            get { return _colorZuleitungLinksWaagrecht; }
+            get => _colorZuleitungLinksWaagrecht; 
             set
             {
                 _colorZuleitungLinksWaagrecht = value;
@@ -393,7 +393,7 @@
 
         public string ColorZuleitungLinksSenkrecht
         {
-            get { return _colorZuleitungLinksSenkrecht; }
+            get => _colorZuleitungLinksSenkrecht; 
             set
             {
                 _colorZuleitungLinksSenkrecht = value;
@@ -414,7 +414,7 @@
 
         public string ColorZuleitungRechtsWaagrecht
         {
-            get { return _colorZuleitungRechtsWaagrecht; }
+            get => _colorZuleitungRechtsWaagrecht; 
             set
             {
                 _colorZuleitungRechtsWaagrecht = value;
@@ -435,7 +435,7 @@
 
         public string ColorZuleitungRechtsSenkrecht
         {
-            get { return _colorZuleitungRechtsSenkrecht; }
+            get => _colorZuleitungRechtsSenkrecht; 
             set
             {
                 _colorZuleitungRechtsSenkrecht = value;
@@ -465,7 +465,7 @@
 
         public string Visibility_B1_Ein
         {
-            get { return _visibility_B1_Ein; }
+            get => _visibility_B1_Ein; 
             set
             {
                 _visibility_B1_Ein = value;
@@ -477,7 +477,7 @@
 
         public string Visibility_B1_Aus
         {
-            get { return _visibility_B1_Aus; }
+            get => _visibility_B1_Aus; 
             set
             {
                 _visibility_B1_Aus = value;
@@ -507,7 +507,7 @@
 
         public string Visibility_B2_Ein
         {
-            get { return _visibility_B2_Ein; }
+            get => _visibility_B2_Ein; 
             set
             {
                 _visibility_B2_Ein = value;
@@ -519,7 +519,7 @@
 
         public string Visibility_B2_Aus
         {
-            get { return _visibility_B2_Aus; }
+            get => _visibility_B2_Aus; 
             set
             {
                 _visibility_B2_Aus = value;
@@ -549,7 +549,7 @@
 
         public string Visibility_B3_Ein
         {
-            get { return _visibility_B3_Ein; }
+            get => _visibility_B3_Ein;
             set
             {
                 _visibility_B3_Ein = value;
@@ -561,7 +561,7 @@
 
         public string Visibility_B3_Aus
         {
-            get { return _visibility_B3_Aus; }
+            get => _visibility_B3_Aus; 
             set
             {
                 _visibility_B3_Aus = value;
@@ -591,7 +591,7 @@
 
         public string Visibility_Q1_Ein
         {
-            get { return _visibility_Q1_Ein; }
+            get => _visibility_Q1_Ein; 
             set
             {
                 _visibility_Q1_Ein = value;
@@ -603,7 +603,7 @@
 
         public string Visibility_Q1_Aus
         {
-            get { return _visibility_Q1_Aus; }
+            get => _visibility_Q1_Aus; 
             set
             {
                 _visibility_Q1_Aus = value;
@@ -633,7 +633,7 @@
 
         public string Visibility_Q2_Ein
         {
-            get { return _visibility_Q2_Ein; }
+            get => _visibility_Q2_Ein; 
             set
             {
                 _visibility_Q2_Ein = value;
@@ -645,7 +645,7 @@
 
         public string Visibility_Q2_Aus
         {
-            get { return _visibility_Q2_Aus; }
+            get => _visibility_Q2_Aus; 
             set
             {
                 _visibility_Q2_Aus = value;
@@ -675,7 +675,7 @@
 
         public string Visibility_Ventil_Ein
         {
-            get { return _visibility_Ventil_Ein; }
+            get => _visibility_Ventil_Ein; 
             set
             {
                 _visibility_Ventil_Ein = value;
@@ -687,7 +687,7 @@
 
         public string Visibility_Ventil_Aus
         {
-            get { return _visibility_Ventil_Aus; }
+            get => _visibility_Ventil_Aus; 
             set
             {
                 _visibility_Ventil_Aus = value;
@@ -708,7 +708,7 @@
 
         public Thickness Margin1
         {
-            get { return _margin1; }
+            get => _margin1; 
             set
             {
                 _margin1 = value;

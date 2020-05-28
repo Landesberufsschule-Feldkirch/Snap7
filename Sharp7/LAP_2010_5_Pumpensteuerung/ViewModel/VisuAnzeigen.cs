@@ -125,7 +125,7 @@
 
         public int WinkelSchalter
         {
-            get { return _winkelSchalter; }
+            get => _winkelSchalter; 
             set
             {
                 _winkelSchalter = value;
@@ -155,7 +155,7 @@
 
         public string ClickModeBtnS3
         {
-            get { return _clickModeBtnS3; }
+            get => _clickModeBtnS3; 
             set
             {
                 _clickModeBtnS3 = value;
@@ -176,7 +176,7 @@
 
         public string ColorThermorelais_F1
         {
-            get { return _colorThermorelais_F1; }
+            get => _colorThermorelais_F1; 
             set
             {
                 _colorThermorelais_F1 = value;
@@ -197,7 +197,7 @@
 
         public string ColorCircle_P1
         {
-            get { return _colorCircle_P1; }
+            get => _colorCircle_P1; 
             set
             {
                 _colorCircle_P1 = value;
@@ -218,7 +218,7 @@
 
         public string ColorCircle_P2
         {
-            get { return _colorCircle_P2; }
+            get => _colorCircle_P2; 
             set
             {
                 _colorCircle_P2 = value;
@@ -239,7 +239,7 @@
 
         public string ColorAbleitungOben
         {
-            get { return _colorAbleitungOben; }
+            get => _colorAbleitungOben; 
             set
             {
                 _colorAbleitungOben = value;
@@ -260,7 +260,7 @@
 
         public string ColorAbleitungUnten
         {
-            get { return _colorAbleitungUnten; }
+            get => _colorAbleitungUnten; 
             set
             {
                 _colorAbleitungUnten = value;
@@ -281,7 +281,7 @@
 
         public string ColorZuleitungLinksWaagrecht
         {
-            get { return _colorZuleitungLinksWaagrecht; }
+            get => _colorZuleitungLinksWaagrecht; 
             set
             {
                 _colorZuleitungLinksWaagrecht = value;
@@ -302,7 +302,7 @@
 
         public string ColorZuleitungLinksSenkrecht
         {
-            get { return _colorZuleitungLinksSenkrecht; }
+            get => _colorZuleitungLinksSenkrecht; 
             set
             {
                 _colorZuleitungLinksSenkrecht = value;
@@ -332,7 +332,7 @@
 
         public string VisibilityQ1Ein
         {
-            get { return _visibilityQ1Ein; }
+            get => _visibilityQ1Ein; 
             set
             {
                 _visibilityQ1Ein = value;
@@ -344,7 +344,7 @@
 
         public string VisibilityQ1Aus
         {
-            get { return _visibilityQ1Aus; }
+            get => _visibilityQ1Aus; 
             set
             {
                 _visibilityQ1Aus = value;
@@ -374,7 +374,7 @@
 
         public string VisibilityB1Ein
         {
-            get { return _visibilityB1Ein; }
+            get => _visibilityB1Ein; 
             set
             {
                 _visibilityB1Ein = value;
@@ -386,7 +386,7 @@
 
         public string VisibilityB1Aus
         {
-            get { return _visibilityB1Aus; }
+            get => _visibilityB1Aus; 
             set
             {
                 _visibilityB1Aus = value;
@@ -416,7 +416,7 @@
 
         public string VisibilityB2Ein
         {
-            get { return _visibilityB2Ein; }
+            get => _visibilityB2Ein; 
             set
             {
                 _visibilityB2Ein = value;
@@ -428,7 +428,7 @@
 
         public string VisibilityB2Aus
         {
-            get { return _visibilityB2Aus; }
+            get => _visibilityB2Aus; 
             set
             {
                 _visibilityB2Aus = value;
@@ -458,7 +458,7 @@
 
         public string VisibilityY1Ein
         {
-            get { return _visibilityY1Ein; }
+            get => _visibilityY1Ein; 
             set
             {
                 _visibilityY1Ein = value;
@@ -470,7 +470,7 @@
 
         public string VisibilityY1Aus
         {
-            get { return _visibilityY1Aus; }
+            get => _visibilityY1Aus; 
             set
             {
                 _visibilityY1Aus = value;
@@ -491,7 +491,7 @@
 
         public Thickness Margin1
         {
-            get { return _margin1; }
+            get => _margin1; 
             set
             {
                 _margin1 = value;

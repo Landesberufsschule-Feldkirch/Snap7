@@ -222,7 +222,7 @@
 
         public string ColorB3
         {
-            get { return _colorB3; }
+            get => _colorB3; 
             set
             {
                 _colorB3 = value;
@@ -243,7 +243,7 @@
 
         public string ColorB4
         {
-            get { return _colorB4; }
+            get => _colorB4; 
             set
             {
                 _colorB4 = value;
@@ -264,7 +264,7 @@
 
         public string ColorLinksRot
         {
-            get { return _colorLinksRot; }
+            get => _colorLinksRot; 
             set
             {
                 _colorLinksRot = value;
@@ -285,7 +285,7 @@
 
         public string ColorLinksGelb
         {
-            get { return _colorLinksGelb; }
+            get => _colorLinksGelb; 
             set
             {
                 _colorLinksGelb = value;
@@ -306,7 +306,7 @@
 
         public string ColorLinksGruen
         {
-            get { return _colorLinksGruen; }
+            get => _colorLinksGruen; 
             set
             {
                 _colorLinksGruen = value;
@@ -327,7 +327,7 @@
 
         public string ColorRechtsRot
         {
-            get { return _colorRechtsRot; }
+            get => _colorRechtsRot; 
             set
             {
                 _colorRechtsRot = value;
@@ -348,7 +348,7 @@
 
         public string ColorRechtsGelb
         {
-            get { return _colorRechtsGelb; }
+            get => _colorRechtsGelb; 
             set
             {
                 _colorRechtsGelb = value;
@@ -369,7 +369,7 @@
 
         public string ColorRechtsGruen
         {
-            get { return _colorRechtsGruen; }
+            get => _colorRechtsGruen; 
             set
             {
                 _colorRechtsGruen = value;
@@ -390,7 +390,7 @@
 
         public int DirectionLkw1
         {
-            get { return _directionLkw1; }
+            get => _directionLkw1; 
             set
             {
                 _directionLkw1 = value;
@@ -411,7 +411,7 @@
 
         public int DirectionLkw2
         {
-            get { return _directionLkw2; }
+            get => _directionLkw2; 
             set
             {
                 _directionLkw2 = value;
@@ -432,7 +432,7 @@
 
         public int DirectionLkw3
         {
-            get { return _directionLkw3; }
+            get => _directionLkw3; 
             set
             {
                 _directionLkw3 = value;
@@ -453,7 +453,7 @@
 
         public int DirectionLkw4
         {
-            get { return _directionLkw4; }
+            get => _directionLkw4; 
             set
             {
                 _directionLkw4 = value;
@@ -474,7 +474,7 @@
 
         public int DirectionLkw5
         {
-            get { return _directionLkw5; }
+            get => _directionLkw5; 
             set
             {
                 _directionLkw5 = value;
@@ -496,7 +496,7 @@
 
         public double PosLkw1Left
         {
-            get { return _posLkw1Left; }
+            get => _posLkw1Left; 
             set
             {
                 _posLkw1Left = value;
@@ -508,7 +508,7 @@
 
         public double PosLkw1Top
         {
-            get { return _posLkw1Top; }
+            get => _posLkw1Top; 
             set
             {
                 _posLkw1Top = value;
@@ -530,7 +530,7 @@
 
         public double PosLkw2Left
         {
-            get { return _posLkw2Left; }
+            get => _posLkw2Left; 
             set
             {
                 _posLkw2Left = value;
@@ -542,7 +542,7 @@
 
         public double PosLkw2Top
         {
-            get { return _posLkw2Top; }
+            get => _posLkw2Top; 
             set
             {
                 _posLkw2Top = value;
@@ -564,7 +564,7 @@
 
         public double PosLkw3Left
         {
-            get { return _posLkw3Left; }
+            get => _posLkw3Left; 
             set
             {
                 _posLkw3Left = value;
@@ -576,7 +576,7 @@
 
         public double PosLkw3Top
         {
-            get { return _posLkw3Top; }
+            get => _posLkw3Top; 
             set
             {
                 _posLkw3Top = value;
@@ -598,7 +598,7 @@
 
         public double PosLkw4Left
         {
-            get { return _posLkw4Left; }
+            get => _posLkw4Left; 
             set
             {
                 _posLkw4Left = value;
@@ -610,7 +610,7 @@
 
         public double PosLkw4Top
         {
-            get { return _posLkw4Top; }
+            get => _posLkw4Top; 
             set
             {
                 _posLkw4Top = value;
@@ -632,7 +632,7 @@
 
         public double PosLkw5Left
         {
-            get { return _posLkw5Left; }
+            get => _posLkw5Left; 
             set
             {
                 _posLkw5Left = value;
@@ -644,7 +644,7 @@
 
         public double PosLkw5Top
         {
-            get { return _posLkw5Top; }
+            get => _posLkw5Top; 
             set
             {
                 _posLkw5Top = value;

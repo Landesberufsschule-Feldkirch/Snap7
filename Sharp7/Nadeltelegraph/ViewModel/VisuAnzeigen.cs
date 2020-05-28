@@ -152,7 +152,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get { return _clickModeBtn; }
+            get => _clickModeBtn; 
             set
             {
                 _clickModeBtn = value;
@@ -173,7 +173,7 @@
 
         public string ColorP0
         {
-            get { return _colorP0; }
+            get => _colorP0; 
             set
             {
                 _colorP0 = value;
@@ -196,7 +196,7 @@
 
         public int AngleNeedle1
         {
-            get { return _angleNeedle1; }
+            get => _angleNeedle1; 
             set
             {
                 _angleNeedle1 = value;
@@ -219,7 +219,7 @@
 
         public int AngleNeedle2
         {
-            get { return _angleNeedle2; }
+            get => _angleNeedle2; 
             set
             {
                 _angleNeedle2 = value;
@@ -242,7 +242,7 @@
 
         public int AngleNeedle3
         {
-            get { return _angleNeedle3; }
+            get => _angleNeedle3; 
             set
             {
                 _angleNeedle3 = value;
@@ -265,7 +265,7 @@
 
         public int AngleNeedle4
         {
-            get { return _angleNeedle4; }
+            get => _angleNeedle4; 
             set
             {
                 _angleNeedle4 = value;
@@ -288,7 +288,7 @@
 
         public int AngleNeedle5
         {
-            get { return _angleNeedle5; }
+            get => _angleNeedle5; 
             set
             {
                 _angleNeedle5 = value;
@@ -309,7 +309,7 @@
 
         public int Width1UpRight
         {
-            get { return _width1UpRight; }
+            get => _width1UpRight;
             set
             {
                 _width1UpRight = value;
@@ -330,7 +330,7 @@
 
         public int Width2UpRight
         {
-            get { return _width2UpRight; }
+            get => _width2UpRight; 
             set
             {
                 _width2UpRight = value;
@@ -351,7 +351,7 @@
 
         public int Width3UpRight
         {
-            get { return _width3UpRight; }
+            get => _width3UpRight; 
             set
             {
                 _width3UpRight = value;
@@ -372,7 +372,7 @@
 
         public int Width4UpRight
         {
-            get { return _width4UpRight; }
+            get => _width4UpRight; 
             set
             {
                 _width4UpRight = value;
@@ -393,7 +393,7 @@
 
         public int Width2UpLeft
         {
-            get { return _width2UpLeft; }
+            get => _width2UpLeft; 
             set
             {
                 _width2UpLeft = value;
@@ -414,7 +414,7 @@
 
         public int Width3UpLeft
         {
-            get { return _width3UpLeft; }
+            get => _width3UpLeft; 
             set
             {
                 _width3UpLeft = value;
@@ -435,7 +435,7 @@
 
         public int Width4UpLeft
         {
-            get { return _width4UpLeft; }
+            get => _width4UpLeft; 
             set
             {
                 _width4UpLeft = value;
@@ -456,7 +456,7 @@
 
         public int Width5UpLeft
         {
-            get { return _width5UpLeft; }
+            get => _width5UpLeft; 
             set
             {
                 _width5UpLeft = value;
@@ -477,7 +477,7 @@
 
         public int Width1DownRight
         {
-            get { return _width1DownRight; }
+            get => _width1DownRight; 
             set
             {
                 _width1DownRight = value;
@@ -498,7 +498,7 @@
 
         public int Width2DownRight
         {
-            get { return _width2DownRight; }
+            get => _width2DownRight; 
             set
             {
                 _width2DownRight = value;
@@ -519,7 +519,7 @@
 
         public int Width3DownRight
         {
-            get { return _width3DownRight; }
+            get => _width3DownRight; 
             set
             {
                 _width3DownRight = value;
@@ -540,7 +540,7 @@
 
         public int Width4DownRight
         {
-            get { return _width4DownRight; }
+            get => _width4DownRight; 
             set
             {
                 _width4DownRight = value;
@@ -561,7 +561,7 @@
 
         public int Width2DownLeft
         {
-            get { return _width2DownLeft; }
+            get => _width2DownLeft; 
             set
             {
                 _width2DownLeft = value;
@@ -582,7 +582,7 @@
 
         public int Width3DownLeft
         {
-            get { return _width3DownLeft; }
+            get => _width3DownLeft;
             set
             {
                 _width3DownLeft = value;
@@ -603,7 +603,7 @@
 
         public int Width4DownLeft
         {
-            get { return _width4DownLeft; }
+            get => _width4DownLeft; 
             set
             {
                 _width4DownLeft = value;
@@ -624,7 +624,7 @@
 
         public int Width5DownLeft
         {
-            get { return _width5DownLeft; }
+            get => _width5DownLeft; 
             set
             {
                 _width5DownLeft = value;

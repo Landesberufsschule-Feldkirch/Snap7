@@ -212,7 +212,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         private double _MessgeraetOptimalerBereich;
         public double MessgeraetOptimalerBereich
         {
-            get { return _MessgeraetOptimalerBereich; }
+            get => _MessgeraetOptimalerBereich;
             set
             {
                 _MessgeraetOptimalerBereich = value;
@@ -229,7 +229,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string VisibilityMessgeraetSichtbar
         {
-            get { return _visibilityMessgeraetSichtbar; }
+            get => _visibilityMessgeraetSichtbar; 
             set
             {
                 _visibilityMessgeraetSichtbar = value;
@@ -241,7 +241,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public double SpannungsDifferenz
         {
-            get { return _SpannungsDifferenz; }
+            get => _SpannungsDifferenz; 
             set
             {
                 _SpannungsDifferenz = value;
@@ -267,7 +267,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string VisibilityMaschineTot
         {
-            get { return _visibilityMaschineTotAnzeigen; }
+            get => _visibilityMaschineTotAnzeigen; 
             set
             {
                 _visibilityMaschineTotAnzeigen = value;
@@ -297,7 +297,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string LeistungsschalterEin
         {
-            get { return _LeistungsschalterEin; }
+            get => _LeistungsschalterEin; 
             set
             {
                 _LeistungsschalterEin = value;
@@ -309,7 +309,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string LeistungsschalterAus
         {
-            get { return _LeistungsschalterAus; }
+            get => _LeistungsschalterAus; 
             set
             {
                 _LeistungsschalterAus = value;
@@ -343,7 +343,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string VisibilityVentilAus
         {
-            get { return _visibilityVentilAus; }
+            get => _visibilityVentilAus; 
             set
             {
                 _visibilityVentilAus = value;
@@ -355,7 +355,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string VisibilityVentilEin
         {
-            get { return _visibilityVentilEin; }
+            get => _visibilityVentilEin; 
             set
             {
                 _visibilityVentilEin = value;
@@ -390,7 +390,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
         public string KraftwerkStatus
         {
-            get { return _KraftwerkStatus; }
+            get => _KraftwerkStatus; 
             set
             {
                 _KraftwerkStatus = value;

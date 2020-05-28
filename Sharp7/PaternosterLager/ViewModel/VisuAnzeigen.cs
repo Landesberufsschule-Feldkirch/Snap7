@@ -131,7 +131,7 @@
 
         public string VisibilityB1Ein
         {
-            get { return _VisibilityB1Ein; }
+            get => _VisibilityB1Ein; 
             set
             {
                 _VisibilityB1Ein = value;
@@ -143,7 +143,7 @@
 
         public string VisibilityB1Aus
         {
-            get { return _VisibilityB1Aus; }
+            get => _VisibilityB1Aus; 
             set
             {
                 _VisibilityB1Aus = value;
@@ -173,7 +173,7 @@
 
         public string VisibilityB2Ein
         {
-            get { return _VisibilityB2Ein; }
+            get => _VisibilityB2Ein; 
             set
             {
                 _VisibilityB2Ein = value;
@@ -185,7 +185,7 @@
 
         public string VisibilityB2Aus
         {
-            get { return _VisibilityB2Aus; }
+            get => _VisibilityB2Aus; 
             set
             {
                 _VisibilityB2Aus = value;
@@ -201,7 +201,7 @@
 
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
-            get { return _alleKettengliedRegale; }
+            get => _alleKettengliedRegale; 
             set
             {
                 _alleKettengliedRegale = value;
@@ -231,7 +231,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get { return _clickModeBtn; }
+            get => _clickModeBtn; 
             set
             {
                 _clickModeBtn = value;
@@ -261,7 +261,7 @@
 
         public string ClickModeBtnAuf
         {
-            get { return _clickModeBtnAuf; }
+            get => _clickModeBtnAuf; 
             set
             {
                 _clickModeBtnAuf = value;
@@ -291,7 +291,7 @@
 
         public string ClickModeBtnAb
         {
-            get { return _clickModeBtnAb; }
+            get => _clickModeBtnAb; 
             set
             {
                 _clickModeBtnAb = value;
@@ -307,7 +307,7 @@
 
         public string IstPosition
         {
-            get { return _istPosition; }
+            get => _istPosition; 
             set
             {
                 _istPosition = value;
@@ -323,7 +323,7 @@
 
         public string SollPosition
         {
-            get { return _sollPosition; }
+            get => _sollPosition; 
             set
             {
                 _sollPosition = value;

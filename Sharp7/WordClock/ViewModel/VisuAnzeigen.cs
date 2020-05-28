@@ -79,7 +79,7 @@
 
         public double GeschwindigkeitSlider
         {
-            get { return _geschwindigkeitSlider; }
+            get => _geschwindigkeitSlider; 
             set
             {
                 _geschwindigkeitSlider = value;
@@ -96,7 +96,7 @@
 
         public double WinkelStunden
         {
-            get { return _winkelStunden; }
+            get => _winkelStunden;
             set
             {
                 _winkelStunden = value;
@@ -112,7 +112,7 @@
 
         public double WinkelMinuten
         {
-            get { return _winkelMinuten; }
+            get => _winkelMinuten; 
             set
             {
                 _winkelMinuten = value;
@@ -128,7 +128,7 @@
 
         public double WinkelSekunden
         {
-            get { return _winkelSekunden; }
+            get => _winkelSekunden; 
             set
             {
                 _winkelSekunden = value;

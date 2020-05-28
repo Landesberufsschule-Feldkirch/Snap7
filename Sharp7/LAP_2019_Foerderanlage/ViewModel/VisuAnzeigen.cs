@@ -179,7 +179,7 @@
 
         public int SelectedIndex
         {
-            get { return _selectedIndex; }
+            get => _selectedIndex; 
             set
             {
                 _selectedIndex = value;
@@ -220,7 +220,7 @@
 
         public string ClickModeBtnS0
         {
-            get { return _clickModeBtnS0; }
+            get => _clickModeBtnS0; 
             set
             {
                 _clickModeBtnS0 = value;
@@ -250,7 +250,7 @@
 
         public string ClickModeBtnS1
         {
-            get { return _clickModeBtnS1; }
+            get => _clickModeBtnS1; 
             set
             {
                 _clickModeBtnS1 = value;
@@ -280,7 +280,7 @@
 
         public string ClickModeBtnS5
         {
-            get { return _clickModeBtnS5; }
+            get => _clickModeBtnS5; 
             set
             {
                 _clickModeBtnS5 = value;
@@ -310,7 +310,7 @@
 
         public string ClickModeBtnS6
         {
-            get { return _clickModeBtnS6; }
+            get => _clickModeBtnS6; 
             set
             {
                 _clickModeBtnS6 = value;
@@ -340,7 +340,7 @@
 
         public string ClickModeBtnS7
         {
-            get { return _clickModeBtnS7; }
+            get => _clickModeBtnS7; 
             set
             {
                 _clickModeBtnS7 = value;
@@ -370,7 +370,7 @@
 
         public string ClickModeBtnS8
         {
-            get { return _clickModeBtnS8; }
+            get => _clickModeBtnS8; 
             set
             {
                 _clickModeBtnS8 = value;
@@ -400,7 +400,7 @@
 
         public string ClickModeBtnM1_RL
         {
-            get { return _clickModeBtnM1_RL; }
+            get => _clickModeBtnM1_RL; 
             set
             {
                 _clickModeBtnM1_RL = value;
@@ -430,7 +430,7 @@
 
         public string ClickModeBtnM1_LL
         {
-            get { return _clickModeBtnM1_LL; }
+            get => _clickModeBtnM1_LL; 
             set
             {
                 _clickModeBtnM1_LL = value;
@@ -460,7 +460,7 @@
 
         public string ClickModeBtnM2
         {
-            get { return _clickModeBtnM2; }
+            get => _clickModeBtnM2; 
             set
             {
                 _clickModeBtnM2 = value;
@@ -490,7 +490,7 @@
 
         public string ClickModeBtnK1
         {
-            get { return _clickModeBtnK1; }
+            get => _clickModeBtnK1; 
             set
             {
                 _clickModeBtnK1 = value;
@@ -520,7 +520,7 @@
 
         public string ClickModeBtnM1_LL_K1
         {
-            get { return _clickModeBtnM1_LL_K1; }
+            get => _clickModeBtnM1_LL_K1; 
             set
             {
                 _clickModeBtnM1_LL_K1 = value;
@@ -541,7 +541,7 @@
 
         public Thickness Margin1
         {
-            get { return _margin1; }
+            get => _margin1; 
             set
             {
                 _margin1 = value;
@@ -569,7 +569,7 @@
 
         public string VisibilityBtnSetManual
         {
-            get { return _visibilityBtnSetManual; }
+            get => _visibilityBtnSetManual; 
             set
             {
                 _visibilityBtnSetManual = value;
@@ -597,7 +597,7 @@
 
         public string VisibilityPfeilLinkslauf
         {
-            get { return _visibilityPfeilLinkslauf; }
+            get => _visibilityPfeilLinkslauf; 
             set
             {
                 _visibilityPfeilLinkslauf = value;
@@ -625,7 +625,7 @@
 
         public string VisibilityPfeilRechtslauf
         {
-            get { return _visibilityPfeilRechtslauf; }
+            get => _visibilityPfeilRechtslauf; 
             set
             {
                 _visibilityPfeilRechtslauf = value;
@@ -653,7 +653,7 @@
 
         public string VisibilityM1Ein
         {
-            get { return _visibilityM1Ein; }
+            get => _visibilityM1Ein; 
             set
             {
                 _visibilityM1Ein = value;
@@ -681,7 +681,7 @@
 
         public string VisibilityM2Ein
         {
-            get { return _visibilityM2Ein; }
+            get => _visibilityM2Ein; 
             set
             {
                 _visibilityM2Ein = value;
@@ -711,7 +711,7 @@
 
         public string VisibilityK1Ein
         {
-            get { return _visibilityK1Ein; }
+            get => _visibilityK1Ein; 
             set
             {
                 _visibilityK1Ein = value;
@@ -723,7 +723,7 @@
 
         public string VisibilityK1Aus
         {
-            get { return _visibilityK1Aus; }
+            get => _visibilityK1Aus; 
             set
             {
                 _visibilityK1Aus = value;
@@ -753,7 +753,7 @@
 
         public string VisibilityB1Ein
         {
-            get { return _visibilityB1Ein; }
+            get => _visibilityB1Ein; 
             set
             {
                 _visibilityB1Ein = value;
@@ -765,7 +765,7 @@
 
         public string VisibilityB1Aus
         {
-            get { return _visibilityB1Aus; }
+            get => _visibilityB1Aus; 
             set
             {
                 _visibilityB1Aus = value;
@@ -795,7 +795,7 @@
 
         public string VisibilityB2Ein
         {
-            get { return _visibilityB2Ein; }
+            get => _visibilityB2Ein; 
             set
             {
                 _visibilityB2Ein = value;
@@ -807,7 +807,7 @@
 
         public string VisibilityB2Aus
         {
-            get { return _visibilityB2Aus; }
+            get => _visibilityB2Aus; 
             set
             {
                 _visibilityB2Aus = value;
@@ -835,7 +835,7 @@
 
         public string VisibilityMaterialOben
         {
-            get { return _visibilityMaterialOben; }
+            get => _visibilityMaterialOben; 
             set
             {
                 _visibilityMaterialOben = value;
@@ -863,7 +863,7 @@
 
         public string VisibilityMaterialUnten
         {
-            get { return _visibilityMaterialUnten; }
+            get => _visibilityMaterialUnten; 
             set
             {
                 _visibilityMaterialUnten = value;
@@ -879,7 +879,7 @@
 
         public string VisibilityKurzschluss
         {
-            get { return _visibilityKurzschluss; }
+            get => _visibilityKurzschluss; 
             set
             {
                 _visibilityKurzschluss = value;
@@ -900,7 +900,7 @@
 
         public string ColorF1
         {
-            get { return _colorF1; }
+            get => _colorF1; 
             set
             {
                 _colorF1 = value;
@@ -921,7 +921,7 @@
 
         public string ColorP1
         {
-            get { return _colorP1; }
+            get => _colorP1; 
             set
             {
                 _colorP1 = value;
@@ -942,7 +942,7 @@
 
         public string ColorP2
         {
-            get { return _colorP2; }
+            get => _colorP2; 
             set
             {
                 _colorP2 = value;
@@ -963,7 +963,7 @@
 
         public string ColorS2
         {
-            get { return _colorS2; }
+            get => _colorS2; 
             set
             {
                 _colorS2 = value;
@@ -985,7 +985,7 @@
 
         public double PosWagenBeschriftungLeft
         {
-            get { return _posWagenBeschriftungLeft; }
+            get => _posWagenBeschriftungLeft; 
             set
             {
                 _posWagenBeschriftungLeft = value;
@@ -997,7 +997,7 @@
 
         public double PosWagenBeschriftungTop
         {
-            get { return _posWagenBeschriftungTop; }
+            get => _posWagenBeschriftungTop; 
             set
             {
                 _posWagenBeschriftungTop = value;
@@ -1019,7 +1019,7 @@
 
         public double PosWagenLeft
         {
-            get { return _posWagenLeft; }
+            get => _posWagenLeft; 
             set
             {
                 _posWagenLeft = value;
@@ -1031,7 +1031,7 @@
 
         public double PosWagenTop
         {
-            get { return _posWagenTop; }
+            get => _posWagenTop; 
             set
             {
                 _posWagenTop = value;
@@ -1053,7 +1053,7 @@
 
         public double PosWagenInhaltLeft
         {
-            get { return _posWagenInhaltLeft; }
+            get => _posWagenInhaltLeft; 
             set
             {
                 _posWagenInhaltLeft = value;
@@ -1065,7 +1065,7 @@
 
         public double PosWagenInhaltTop
         {
-            get { return _posWagenInhaltTop; }
+            get => _posWagenInhaltTop; 
             set
             {
                 _posWagenInhaltTop = value;
@@ -1081,7 +1081,7 @@
 
         public double WagenFuellstand
         {
-            get { return _wagenFuellstand; }
+            get => _wagenFuellstand; 
             set
             {
                 _wagenFuellstand = value;

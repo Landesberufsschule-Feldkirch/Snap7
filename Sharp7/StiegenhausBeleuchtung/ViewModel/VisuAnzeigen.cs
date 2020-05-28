@@ -86,7 +86,7 @@
 
         public string ReiseStart
         {
-            get { return _reiseStart; }
+            get => _reiseStart; 
             set
             {
                 var v = value.Split(':');
@@ -103,7 +103,7 @@
 
         public string ReiseZiel
         {
-            get { return _reiseZiel; }
+            get => _reiseZiel; 
             set
             {
                 var v = value.Split(':');
@@ -125,7 +125,7 @@
 
         public ObservableCollection<string> ColorLampe
         {
-            get { return _colorLampe; }
+            get => _colorLampe; 
             set
             {
                 _colorLampe = value;
@@ -155,7 +155,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get { return _clickModeBtn; }
+            get => _clickModeBtn; 
             set
             {
                 _clickModeBtn = value;

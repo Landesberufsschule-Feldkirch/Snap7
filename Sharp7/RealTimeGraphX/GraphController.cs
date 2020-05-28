@@ -105,7 +105,7 @@ namespace RealTimeGraphX
         /// </summary>
         public IGraphSurface<TDataSeries> Surface
         {
-            get { return _surface; }
+            get => _surface; 
             set
             {
                 _surface = value;

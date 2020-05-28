@@ -138,7 +138,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double ManualVentilstellung
         {
-            get { return _manualVentilstellung; }
+            get => _manualVentilstellung; 
             set
             {
                 _manualVentilstellung = value;
@@ -156,7 +156,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double ManualErregerstrom
         {
-            get { return _manualErregerstrom; }
+            get => _manualErregerstrom; 
             set
             {
                 _manualErregerstrom = value;
@@ -174,7 +174,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzSpannungSlider
         {
-            get { return _netzSpannungSlider; }
+            get => _netzSpannungSlider; 
             set
             {
                 _netzSpannungSlider = value;
@@ -192,7 +192,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzFrequenzSlider
         {
-            get { return _netzFrequenzSlider; }
+            get => _netzFrequenzSlider; 
             set
             {
                 _netzFrequenzSlider = value;
@@ -215,7 +215,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzPhasenverschiebungSlider
         {
-            get { return _netzPhasenverschiebungSlider; }
+            get => _netzPhasenverschiebungSlider;
             set
             {
                 _netzPhasenverschiebungSlider = value;
@@ -233,7 +233,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzLeistungSlider
         {
-            get { return _netzLeistungSlider; }
+            get => _netzLeistungSlider; 
             set
             {
                 _netzLeistungSlider = value;
@@ -249,7 +249,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public SynchronisierungAuswahl SynchAuswahl
         {
-            get { return _synchAuswahl; }
+            get => _synchAuswahl; 
             set
             {
                 _synchAuswahl = value;
@@ -461,7 +461,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double MessgeraetOptimalerBereich
         {
-            get { return _messgeraetOptimalerBereich; }
+            get => _messgeraetOptimalerBereich; 
             set
             {
                 _messgeraetOptimalerBereich = value;
@@ -479,7 +479,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VisibilityMessgeraetSichtbar
         {
-            get { return _visibilityMessgeraetSichtbar; }
+            get => _visibilityMessgeraetSichtbar; 
             set
             {
                 _visibilityMessgeraetSichtbar = value;
@@ -491,7 +491,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double SpannungsDifferenz
         {
-            get { return _spannungsDifferenz; }
+            get => _spannungsDifferenz; 
             set
             {
                 _spannungsDifferenz = value;
@@ -517,7 +517,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VisibilityMaschineTot
         {
-            get { return _visibilityMaschineTotAnzeigen; }
+            get => _visibilityMaschineTotAnzeigen; 
             set
             {
                 _visibilityMaschineTotAnzeigen = value;
@@ -547,7 +547,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string LeistungsschalterEin
         {
-            get { return _leistungsschalterEin; }
+            get => _leistungsschalterEin; 
             set
             {
                 _leistungsschalterEin = value;
@@ -559,7 +559,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string LeistungsschalterAus
         {
-            get { return _leistungsschalterAus; }
+            get => _leistungsschalterAus; 
             set
             {
                 _leistungsschalterAus = value;
@@ -592,7 +592,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VisibilityVentilAus
         {
-            get { return _visibilityVentilAus; }
+            get => _visibilityVentilAus; 
             set
             {
                 _visibilityVentilAus = value;
@@ -604,7 +604,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VisibilityVentilEin
         {
-            get { return _visibilityVentilEin; }
+            get => _visibilityVentilEin; 
             set
             {
                 _visibilityVentilEin = value;
@@ -639,7 +639,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string KraftwerkStatus
         {
-            get { return _kraftwerkStatus; }
+            get => _kraftwerkStatus; 
             set
             {
                 _kraftwerkStatus = value;
