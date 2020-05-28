@@ -35,7 +35,7 @@
             ClickModeBtnK5 = "Press";
             ClickModeBtnK6 = "Press";
 
-            ColorKollisionRegal = "Lawngreen";
+            ColorKollisionRegalMitSchlitten = "Lawngreen";
 
             VisibilityButtonsAktiv = "hidden";
             VisibilitySlidersAktiv = "visible";
@@ -108,7 +108,7 @@
                 }
 
 
-                FarbeKollisionRegal(automatischesLagersystem.kollisionRegal.GetKollisionRegal());
+                FarbeKollisionRegalMitSchlitten(automatischesLagersystem.kollisionRegal.GetKollisionRegalMitSchlitten());
 
                 if (mainWindow.viewPort3d != null)
                 {
@@ -168,7 +168,7 @@
 
         public string SpsStatus
         {
-            get { return _spsStatus; }
+            get => _spsStatus;
             set
             {
                 _spsStatus = value;
@@ -180,7 +180,7 @@
 
         public string SpsColor
         {
-            get { return _spsColor; }
+            get => _spsColor;
             set
             {
                 _spsColor = value;
@@ -276,26 +276,26 @@
 
 
 
-        #region ColorKollisionRegal
+        #region ColorKollisionRegalMitSchlitten
 
-        public void FarbeKollisionRegal(bool val)
+        public void FarbeKollisionRegalMitSchlitten(bool val)
         {
-            if (val) ColorKollisionRegal = "Red"; else ColorKollisionRegal = "Lawngreen";
+            if (val) ColorKollisionRegalMitSchlitten = "Red"; else ColorKollisionRegalMitSchlitten = "Lawngreen";
         }
 
-        private string _colorKollisionRegal;
+        private string _colorKollisionRegalMitSchlitten;
 
-        public string ColorKollisionRegal
+        public string ColorKollisionRegalMitSchlitten
         {
-            get { return _colorKollisionRegal; }
+            get { return _colorKollisionRegalMitSchlitten; }
             set
             {
-                _colorKollisionRegal = value;
-                OnPropertyChanged(nameof(ColorKollisionRegal));
+                _colorKollisionRegalMitSchlitten = value;
+                OnPropertyChanged(nameof(ColorKollisionRegalMitSchlitten));
             }
         }
 
-        #endregion ColorKollisionRegal
+        #endregion ColorKollisionRegalMitSchlitten
 
 
 

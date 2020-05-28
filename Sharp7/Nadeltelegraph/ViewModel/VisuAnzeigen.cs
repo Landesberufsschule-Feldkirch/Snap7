@@ -110,7 +110,7 @@
 
         public string SpsStatus
         {
-            get { return _spsStatus; }
+            get => _spsStatus;
             set
             {
                 _spsStatus = value;
@@ -122,7 +122,7 @@
 
         public string SpsColor
         {
-            get { return _spsColor; }
+            get => _spsColor;
             set
             {
                 _spsColor = value;

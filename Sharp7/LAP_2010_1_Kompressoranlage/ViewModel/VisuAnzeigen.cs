@@ -79,7 +79,7 @@
 
         public string SpsStatus
         {
-            get { return _spsStatus; }
+            get => _spsStatus;
             set
             {
                 _spsStatus = value;
@@ -91,7 +91,7 @@
 
         public string SpsColor
         {
-            get { return _spsColor; }
+            get => _spsColor;
             set
             {
                 _spsColor = value;
@@ -294,14 +294,14 @@
             if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red";
         }
 
-        private string _ColorB1;
+        private string _colorB1;
 
         public string ColorB1
         {
-            get { return _ColorB1; }
+            get => _colorB1;
             set
             {
-                _ColorB1 = value;
+                _colorB1 = value;
                 OnPropertyChanged(nameof(ColorB1));
             }
         }

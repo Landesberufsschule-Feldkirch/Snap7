@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AutomatischesLagersystem.Model
+﻿namespace AutomatischesLagersystem.Model
 {
     public class RegalBedienGeraet
     {
@@ -24,14 +22,12 @@ namespace AutomatischesLagersystem.Model
         internal double GetZPosition() => 2200 * z;
 
 
+        public void SetX(double pos) => x = pos;
+        public void SetY(double pos) => y = pos;
+        public void SetZ(double pos) => z = pos;
 
-        public void SetX(double pos) { x = pos; }
-        public void SetY(double pos) { y = pos; }
-        public void SetZ(double pos) { z = pos; }
-        internal void FahreX(double geschwindigkeit) { x = Utilities.S7Analog.Clamp((x + geschwindigkeit), -1, 1); }
-        internal void FahreY(double geschwindigkeit) { y = Utilities.S7Analog.Clamp((y + geschwindigkeit), -1, 1); }
-        internal void FahreZ(double geschwindigkeit) { z = Utilities.S7Analog.Clamp((z + geschwindigkeit), -1, 1); }
-
-
+        internal void FahreX(double geschwindigkeit) => x = Utilities.S7Analog.Clamp((x + geschwindigkeit), -1, 1);
+        internal void FahreY(double geschwindigkeit) => y = Utilities.S7Analog.Clamp((y + geschwindigkeit), -1, 1);
+        internal void FahreZ(double geschwindigkeit) => z = Utilities.S7Analog.Clamp((z + geschwindigkeit), -1, 1);
     }
 }
