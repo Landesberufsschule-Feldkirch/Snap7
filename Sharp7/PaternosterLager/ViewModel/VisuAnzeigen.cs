@@ -127,26 +127,26 @@
             }
         }
 
-        private string _VisibilityB1Ein;
+        private string _visibilityB1Ein;
 
         public string VisibilityB1Ein
         {
-            get => _VisibilityB1Ein; 
+            get => _visibilityB1Ein; 
             set
             {
-                _VisibilityB1Ein = value;
+                _visibilityB1Ein = value;
                 OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _VisibilityB1Aus;
+        private string _visibilityB1Aus;
 
         public string VisibilityB1Aus
         {
-            get => _VisibilityB1Aus; 
+            get => _visibilityB1Aus; 
             set
             {
-                _VisibilityB1Aus = value;
+                _visibilityB1Aus = value;
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
@@ -169,26 +169,26 @@
             }
         }
 
-        private string _VisibilityB2Ein;
+        private string _visibilityB2Ein;
 
         public string VisibilityB2Ein
         {
-            get => _VisibilityB2Ein; 
+            get => _visibilityB2Ein; 
             set
             {
-                _VisibilityB2Ein = value;
+                _visibilityB2Ein = value;
                 OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
 
-        private string _VisibilityB2Aus;
+        private string _visibilityB2Aus;
 
         public string VisibilityB2Aus
         {
-            get => _VisibilityB2Aus; 
+            get => _visibilityB2Aus; 
             set
             {
-                _VisibilityB2Aus = value;
+                _visibilityB2Aus = value;
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
