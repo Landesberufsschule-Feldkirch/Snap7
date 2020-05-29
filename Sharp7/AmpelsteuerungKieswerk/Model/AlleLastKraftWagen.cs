@@ -72,30 +72,11 @@
             return stop;
         }
 
-        internal void TasterLkw1()
-        {
-            alleLkw[0].Losfahren();
-        }
-
-        internal void TasterLkw2()
-        {
-            alleLkw[1].Losfahren();
-        }
-
-        internal void TasterLkw3()
-        {
-            alleLkw[2].Losfahren();
-        }
-
-        internal void TasterLkw4()
-        {
-            alleLkw[3].Losfahren();
-        }
-
-        internal void TasterLkw5()
-        {
-            alleLkw[4].Losfahren();
-        }
+        internal void TasterLkw1() => alleLkw[0].Losfahren();
+        internal void TasterLkw2() => alleLkw[1].Losfahren();
+        internal void TasterLkw3() => alleLkw[2].Losfahren();
+        internal void TasterLkw4() => alleLkw[3].Losfahren();
+        internal void TasterLkw5() => alleLkw[4].Losfahren();
 
         internal void TasterLinksParken()
         {

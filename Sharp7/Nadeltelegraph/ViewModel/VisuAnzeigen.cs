@@ -152,7 +152,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get => _clickModeBtn; 
+            get => _clickModeBtn;
             set
             {
                 _clickModeBtn = value;
@@ -164,16 +164,13 @@
 
         #region Color P0
 
-        public void FarbeP0(bool val)
-        {
-            if (val) ColorP0 = "Red"; else ColorP0 = "LightGray";
-        }
+        public void FarbeP0(bool val) { if (val) ColorP0 = "Red"; else ColorP0 = "LightGray"; }
 
         private string _colorP0;
 
         public string ColorP0
         {
-            get => _colorP0; 
+            get => _colorP0;
             set
             {
                 _colorP0 = value;
@@ -196,7 +193,7 @@
 
         public int AngleNeedle1
         {
-            get => _angleNeedle1; 
+            get => _angleNeedle1;
             set
             {
                 _angleNeedle1 = value;
@@ -219,7 +216,7 @@
 
         public int AngleNeedle2
         {
-            get => _angleNeedle2; 
+            get => _angleNeedle2;
             set
             {
                 _angleNeedle2 = value;
@@ -242,7 +239,7 @@
 
         public int AngleNeedle3
         {
-            get => _angleNeedle3; 
+            get => _angleNeedle3;
             set
             {
                 _angleNeedle3 = value;
@@ -265,7 +262,7 @@
 
         public int AngleNeedle4
         {
-            get => _angleNeedle4; 
+            get => _angleNeedle4;
             set
             {
                 _angleNeedle4 = value;
@@ -288,7 +285,7 @@
 
         public int AngleNeedle5
         {
-            get => _angleNeedle5; 
+            get => _angleNeedle5;
             set
             {
                 _angleNeedle5 = value;
@@ -300,10 +297,7 @@
 
         #region Breite 1 UpRight
 
-        public void Breite1UpRight(bool val)
-        {
-            if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal;
-        }
+        public void Breite1UpRight(bool val) { if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal; }
 
         private int _width1UpRight;
 
@@ -321,16 +315,13 @@
 
         #region Breite 2 UpRight
 
-        public void Breite2UpRight(bool val)
-        {
-            if (val) Width2UpRight = BreiteBreit; else Width2UpRight = BreiteSchmal;
-        }
+        public void Breite2UpRight(bool val) { if (val) Width2UpRight = BreiteBreit; else Width2UpRight = BreiteSchmal; }
 
         private int _width2UpRight;
 
         public int Width2UpRight
         {
-            get => _width2UpRight; 
+            get => _width2UpRight;
             set
             {
                 _width2UpRight = value;
@@ -342,16 +333,13 @@
 
         #region Breite 3 UpRight
 
-        public void Breite3UpRight(bool val)
-        {
-            if (val) Width3UpRight = BreiteBreit; else Width3UpRight = BreiteSchmal;
-        }
+        public void Breite3UpRight(bool val) { if (val) Width3UpRight = BreiteBreit; else Width3UpRight = BreiteSchmal; }
 
         private int _width3UpRight;
 
         public int Width3UpRight
         {
-            get => _width3UpRight; 
+            get => _width3UpRight;
             set
             {
                 _width3UpRight = value;
@@ -363,16 +351,13 @@
 
         #region Breite 4 UpRight
 
-        public void Breite4UpRight(bool val)
-        {
-            if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal;
-        }
+        public void Breite4UpRight(bool val) { if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal; }
 
         private int _width4UpRight;
 
         public int Width4UpRight
         {
-            get => _width4UpRight; 
+            get => _width4UpRight;
             set
             {
                 _width4UpRight = value;
@@ -384,16 +369,13 @@
 
         #region Breite 2 UpLeft
 
-        public void Breite2UpLeft(bool val)
-        {
-            if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal;
-        }
+        public void Breite2UpLeft(bool val) { if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal; }
 
         private int _width2UpLeft;
 
         public int Width2UpLeft
         {
-            get => _width2UpLeft; 
+            get => _width2UpLeft;
             set
             {
                 _width2UpLeft = value;
@@ -405,16 +387,13 @@
 
         #region Breite 3 UpLeft
 
-        public void Breite3UpLeft(bool val)
-        {
-            if (val) Width3UpLeft = BreiteBreit; else Width3UpLeft = BreiteSchmal;
-        }
+        public void Breite3UpLeft(bool val) { if (val) Width3UpLeft = BreiteBreit; else Width3UpLeft = BreiteSchmal; }
 
         private int _width3UpLeft;
 
         public int Width3UpLeft
         {
-            get => _width3UpLeft; 
+            get => _width3UpLeft;
             set
             {
                 _width3UpLeft = value;
@@ -426,16 +405,13 @@
 
         #region Breite 4 UpLeft
 
-        public void Breite4UpLeft(bool val)
-        {
-            if (val) Width4UpLeft = BreiteBreit; else Width4UpLeft = BreiteSchmal;
-        }
+        public void Breite4UpLeft(bool val) { if (val) Width4UpLeft = BreiteBreit; else Width4UpLeft = BreiteSchmal; }
 
         private int _width4UpLeft;
 
         public int Width4UpLeft
         {
-            get => _width4UpLeft; 
+            get => _width4UpLeft;
             set
             {
                 _width4UpLeft = value;
@@ -447,16 +423,13 @@
 
         #region Breite 5 UpLeft
 
-        public void Breite5UpLeft(bool val)
-        {
-            if (val) Width5UpLeft = BreiteBreit; else Width5UpLeft = BreiteSchmal;
-        }
+        public void Breite5UpLeft(bool val) { if (val) Width5UpLeft = BreiteBreit; else Width5UpLeft = BreiteSchmal; }
 
         private int _width5UpLeft;
 
         public int Width5UpLeft
         {
-            get => _width5UpLeft; 
+            get => _width5UpLeft;
             set
             {
                 _width5UpLeft = value;
@@ -468,16 +441,13 @@
 
         #region Breite 1 DownRight
 
-        public void Breite1DownRight(bool val)
-        {
-            if (val) Width1DownRight = BreiteBreit; else Width1DownRight = BreiteSchmal;
-        }
+        public void Breite1DownRight(bool val) { if (val) Width1DownRight = BreiteBreit; else Width1DownRight = BreiteSchmal; }
 
         private int _width1DownRight;
 
         public int Width1DownRight
         {
-            get => _width1DownRight; 
+            get => _width1DownRight;
             set
             {
                 _width1DownRight = value;
@@ -489,16 +459,13 @@
 
         #region Breite 2 DownRight
 
-        public void Breite2DownRight(bool val)
-        {
-            if (val) Width2DownRight = BreiteBreit; else Width2DownRight = BreiteSchmal;
-        }
+        public void Breite2DownRight(bool val) { if (val) Width2DownRight = BreiteBreit; else Width2DownRight = BreiteSchmal; }
 
         private int _width2DownRight;
 
         public int Width2DownRight
         {
-            get => _width2DownRight; 
+            get => _width2DownRight;
             set
             {
                 _width2DownRight = value;
@@ -510,16 +477,13 @@
 
         #region Breite 3 DownRight
 
-        public void Breite3DownRight(bool val)
-        {
-            if (val) Width3DownRight = BreiteBreit; else Width3DownRight = BreiteSchmal;
-        }
+        public void Breite3DownRight(bool val) { if (val) Width3DownRight = BreiteBreit; else Width3DownRight = BreiteSchmal; }
 
         private int _width3DownRight;
 
         public int Width3DownRight
         {
-            get => _width3DownRight; 
+            get => _width3DownRight;
             set
             {
                 _width3DownRight = value;
@@ -531,16 +495,13 @@
 
         #region Breite 4 DownRight
 
-        public void Breite4DownRight(bool val)
-        {
-            if (val) Width4DownRight = BreiteBreit; else Width4DownRight = BreiteSchmal;
-        }
+        public void Breite4DownRight(bool val) { if (val) Width4DownRight = BreiteBreit; else Width4DownRight = BreiteSchmal; }
 
         private int _width4DownRight;
 
         public int Width4DownRight
         {
-            get => _width4DownRight; 
+            get => _width4DownRight;
             set
             {
                 _width4DownRight = value;
@@ -552,16 +513,13 @@
 
         #region Breite 2 DownLeft
 
-        public void Breite2DownLeft(bool val)
-        {
-            if (val) Width2DownLeft = BreiteBreit; else Width2DownLeft = BreiteSchmal;
-        }
+        public void Breite2DownLeft(bool val) { if (val) Width2DownLeft = BreiteBreit; else Width2DownLeft = BreiteSchmal; }
 
         private int _width2DownLeft;
 
         public int Width2DownLeft
         {
-            get => _width2DownLeft; 
+            get => _width2DownLeft;
             set
             {
                 _width2DownLeft = value;
@@ -573,10 +531,7 @@
 
         #region Breite 3 DownLeft
 
-        public void Breite3DownLeft(bool val)
-        {
-            if (val) Width3DownLeft = BreiteBreit; else Width3DownLeft = BreiteSchmal;
-        }
+        public void Breite3DownLeft(bool val) { if (val) Width3DownLeft = BreiteBreit; else Width3DownLeft = BreiteSchmal; }
 
         private int _width3DownLeft;
 
@@ -594,16 +549,13 @@
 
         #region Breite 4 DownLeft
 
-        public void Breite4DownLeft(bool val)
-        {
-            if (val) Width4DownLeft = BreiteBreit; else Width4DownLeft = BreiteSchmal;
-        }
+        public void Breite4DownLeft(bool val) { if (val) Width4DownLeft = BreiteBreit; else Width4DownLeft = BreiteSchmal; }
 
         private int _width4DownLeft;
 
         public int Width4DownLeft
         {
-            get => _width4DownLeft; 
+            get => _width4DownLeft;
             set
             {
                 _width4DownLeft = value;
@@ -615,16 +567,13 @@
 
         #region Breite 5 DownLeft
 
-        public void Breite5DownLeft(bool val)
-        {
-            if (val) Width5DownLeft = BreiteBreit; else Width5DownLeft = BreiteSchmal;
-        }
+        public void Breite5DownLeft(bool val) { if (val) Width5DownLeft = BreiteBreit; else Width5DownLeft = BreiteSchmal; }
 
         private int _width5DownLeft;
 
         public int Width5DownLeft
         {
-            get => _width5DownLeft; 
+            get => _width5DownLeft;
             set
             {
                 _width5DownLeft = value;
@@ -634,14 +583,11 @@
 
         #endregion Breite 5 DownLeft
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

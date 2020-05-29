@@ -4,17 +4,14 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateLeistungsschalterAus(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
-
+        public StateLeistungsschalterAus(Kraftwerk kw) =>            kraftWerk = kw;
+        
         public void Doing()
         {
             kraftWerk.generator.MaschineAntreiben(kraftWerk.Ventil_Y);
-            kraftWerk.Generator_n = kraftWerk.generator.Drehzahl();
-            kraftWerk.Generator_U = kraftWerk.generator.Spannung(kraftWerk.Generator_Ie);
-            kraftWerk.Generator_f = kraftWerk.generator.Frequenz();
+            kraftWerk.Generator_n = kraftWerk.generator.GetDrehzahl();
+            kraftWerk.Generator_U = kraftWerk.generator.GetSpannung(kraftWerk.Generator_Ie);
+            kraftWerk.Generator_f = kraftWerk.generator.GetFrequenz();
             kraftWerk.Generator_P = 0;
             kraftWerk.Generator_CosPhi = 1;
 

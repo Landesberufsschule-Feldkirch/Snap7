@@ -52,29 +52,10 @@ namespace LAP_2018_4_Niveauregelung.Model
             }
         }
 
-        internal void ThermorelaisF1()
-        {
-            F1 = !F1;
-        }
-
-        internal void ThermorelaisF2()
-        {
-            F2 = !F2;
-        }
-
-        internal void SetManualQ1()
-        {
-            Q1 = !Q1;
-        }
-
-        internal void SetManualQ2()
-        {
-            Q2 = !Q2;
-        }
-
-        internal void VentilY1()
-        {
-            Y1 = !Y1;
-        }
+        internal void ThermorelaisF1() => F1 = !F1;
+        internal void ThermorelaisF2() => F2 = !F2;
+        internal void SetManualQ1() => Q1 = !Q1;
+        internal void SetManualQ2() => Q2 = !Q2;
+        internal void VentilY1() => Y1 = !Y1;
     }
 }

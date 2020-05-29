@@ -132,7 +132,6 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         }
 
         internal void Synchronisieren() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
-
         internal void Reset() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
     }
 }

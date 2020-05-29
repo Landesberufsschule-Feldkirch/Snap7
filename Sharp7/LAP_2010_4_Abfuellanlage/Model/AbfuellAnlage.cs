@@ -79,11 +79,8 @@ namespace LAP_2010_4_Abfuellanlage.Model
             return stop;
         }
 
-        internal void Nachfuellen()
-        {
-            Pegel = 1;
-        }
-
+        internal void Nachfuellen()=> Pegel = 1;
+        
         internal void AllesReset()
         {
             aktuelleDose = 0;

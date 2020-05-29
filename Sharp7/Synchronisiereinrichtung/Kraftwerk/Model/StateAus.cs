@@ -4,11 +4,8 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateAus(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
-
+        public StateAus(Kraftwerk kw) =>            kraftWerk = kw;
+        
         public void Doing()
         {
             kraftWerk.Generator_n = 0;

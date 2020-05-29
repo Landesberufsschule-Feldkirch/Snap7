@@ -4,10 +4,7 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateSynchronisieren(Kraftwerk kw)
-        {
-            kraftWerk = kw;
-        }
+        public StateSynchronisieren(Kraftwerk kw) => kraftWerk = kw;
 
         public void OnEntry()
         {

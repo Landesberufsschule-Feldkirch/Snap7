@@ -202,7 +202,7 @@
 
         public string VisibilityVentilQ1Ein
         {
-            get => _visibilityVentilQ1Ein; 
+            get => _visibilityVentilQ1Ein;
             set
             {
                 _visibilityVentilQ1Ein = value;
@@ -214,7 +214,7 @@
 
         public string VisibilityVentilQ1Aus
         {
-            get => _visibilityVentilQ1Aus; 
+            get => _visibilityVentilQ1Aus;
             set
             {
                 _visibilityVentilQ1Aus = value;
@@ -244,7 +244,7 @@
 
         public string VisibilityVentilQ2Ein
         {
-            get => _visibilityVentilQ2Ein; 
+            get => _visibilityVentilQ2Ein;
             set
             {
                 _visibilityVentilQ2Ein = value;
@@ -256,7 +256,7 @@
 
         public string VisibilityVentilQ2Aus
         {
-            get => _visibilityVentilQ2Aus; 
+            get => _visibilityVentilQ2Aus;
             set
             {
                 _visibilityVentilQ2Aus = value;
@@ -286,7 +286,7 @@
 
         public string VisibilityVentilQ3Ein
         {
-            get => _visibilityVentilQ3Ein; 
+            get => _visibilityVentilQ3Ein;
             set
             {
                 _visibilityVentilQ3Ein = value;
@@ -298,7 +298,7 @@
 
         public string VisibilityVentilQ3Aus
         {
-            get => _visibilityVentilQ3Aus; 
+            get => _visibilityVentilQ3Aus;
             set
             {
                 _visibilityVentilQ3Aus = value;
@@ -328,7 +328,7 @@
 
         public string VisibilityVentilQ4Ein
         {
-            get => _visibilityVentilQ4Ein; 
+            get => _visibilityVentilQ4Ein;
             set
             {
                 _visibilityVentilQ4Ein = value;
@@ -340,7 +340,7 @@
 
         public string VisibilityVentilQ4Aus
         {
-            get => _visibilityVentilQ4Aus; 
+            get => _visibilityVentilQ4Aus;
             set
             {
                 _visibilityVentilQ4Aus = value;
@@ -382,7 +382,7 @@
 
         public string VisibilityVentilQ5Aus
         {
-            get => _visibilityVentilQ5Aus; 
+            get => _visibilityVentilQ5Aus;
             set
             {
                 _visibilityVentilQ5Aus = value;
@@ -412,7 +412,7 @@
 
         public string VisibilityVentilQ6Ein
         {
-            get => _visibilityVentilQ6Ein; 
+            get => _visibilityVentilQ6Ein;
             set
             {
                 _visibilityVentilQ6Ein = value;
@@ -424,7 +424,7 @@
 
         public string VisibilityVentilQ6Aus
         {
-            get => _visibilityVentilQ6Aus; 
+            get => _visibilityVentilQ6Aus;
             set
             {
                 _visibilityVentilQ6Aus = value;
@@ -454,7 +454,7 @@
 
         public string VisibilityVentilQ7Ein
         {
-            get => _visibilityVentilQ7Ein; 
+            get => _visibilityVentilQ7Ein;
             set
             {
                 _visibilityVentilQ7Ein = value;
@@ -466,7 +466,7 @@
 
         public string VisibilityVentilQ7Aus
         {
-            get => _visibilityVentilQ7Aus; 
+            get => _visibilityVentilQ7Aus;
             set
             {
                 _visibilityVentilQ7Aus = value;
@@ -496,7 +496,7 @@
 
         public string VisibilityVentilQ8Ein
         {
-            get => _visibilityVentilQ8Ein; 
+            get => _visibilityVentilQ8Ein;
             set
             {
                 _visibilityVentilQ8Ein = value;
@@ -508,7 +508,7 @@
 
         public string VisibilityVentilQ8Aus
         {
-            get => _visibilityVentilQ8Aus; 
+            get => _visibilityVentilQ8Aus;
             set
             {
                 _visibilityVentilQ8Aus = value;
@@ -520,16 +520,13 @@
 
         #region Color Zuleitung_1b
 
-        public void FarbeZuleitung1b(bool val)
-        {
-            if (val) ColorZuleitung_1b = "blue"; else ColorZuleitung_1b = "lightblue";
-        }
+        public void FarbeZuleitung1b(bool val) { if (val) ColorZuleitung_1b = "blue"; else ColorZuleitung_1b = "lightblue"; }
 
         private string _colorZuleitung_1b;
 
         public string ColorZuleitung_1b
         {
-            get => _colorZuleitung_1b; 
+            get => _colorZuleitung_1b;
             set
             {
                 _colorZuleitung_1b = value;
@@ -541,16 +538,13 @@
 
         #region Color Zuleitung_2b
 
-        public void FarbeZuleitung2b(bool val)
-        {
-            if (val) ColorZuleitung_2b = "blue"; else ColorZuleitung_2b = "lightblue";
-        }
+        public void FarbeZuleitung2b(bool val) { if (val) ColorZuleitung_2b = "blue"; else ColorZuleitung_2b = "lightblue"; }
 
         private string _colorZuleitung_2b;
 
         public string ColorZuleitung_2b
         {
-            get => _colorZuleitung_2b; 
+            get => _colorZuleitung_2b;
             set
             {
                 _colorZuleitung_2b = value;
@@ -562,16 +556,13 @@
 
         #region Color Zuleitung_3b
 
-        public void FarbeZuleitung3b(bool val)
-        {
-            if (val) ColorZuleitung_3b = "blue"; else ColorZuleitung_3b = "lightblue";
-        }
+        public void FarbeZuleitung3b(bool val) { if (val) ColorZuleitung_3b = "blue"; else ColorZuleitung_3b = "lightblue"; }
 
         private string _colorZuleitung_3b;
 
         public string ColorZuleitung_3b
         {
-            get => _colorZuleitung_3b; 
+            get => _colorZuleitung_3b;
             set
             {
                 _colorZuleitung_3b = value;
@@ -583,16 +574,13 @@
 
         #region Color Zuleitung_4b
 
-        public void FarbeZuleitung4b(bool val)
-        {
-            if (val) ColorZuleitung_4b = "blue"; else ColorZuleitung_4b = "lightblue";
-        }
+        public void FarbeZuleitung4b(bool val) { if (val) ColorZuleitung_4b = "blue"; else ColorZuleitung_4b = "lightblue"; }
 
         private string _colorZuleitung_4b;
 
         public string ColorZuleitung_4b
         {
-            get => _colorZuleitung_4b; 
+            get => _colorZuleitung_4b;
             set
             {
                 _colorZuleitung_4b = value;
@@ -604,16 +592,13 @@
 
         #region Color Ableitung_1a
 
-        public void FarbeAbleitung1a(bool val)
-        {
-            if (val) ColorAbleitung_1a = "blue"; else ColorAbleitung_1a = "lightblue";
-        }
+        public void FarbeAbleitung1a(bool val) { if (val) ColorAbleitung_1a = "blue"; else ColorAbleitung_1a = "lightblue"; }
 
         private string _colorAbleitung_1a;
 
         public string ColorAbleitung_1a
         {
-            get => _colorAbleitung_1a; 
+            get => _colorAbleitung_1a;
             set
             {
                 _colorAbleitung_1a = value;
@@ -625,16 +610,13 @@
 
         #region Color Ableitung_2a
 
-        public void FarbeAbleitung2a(bool val)
-        {
-            if (val) ColorAbleitung_2a = "blue"; else ColorAbleitung_2a = "lightblue";
-        }
+        public void FarbeAbleitung2a(bool val) { if (val) ColorAbleitung_2a = "blue"; else ColorAbleitung_2a = "lightblue"; }
 
         private string _colorAbleitung_2a;
 
         public string ColorAbleitung_2a
         {
-            get => _colorAbleitung_2a; 
+            get => _colorAbleitung_2a;
             set
             {
                 _colorAbleitung_2a = value;
@@ -646,16 +628,13 @@
 
         #region Color Ableitung_3a
 
-        public void FarbeAbleitung3a(bool val)
-        {
-            if (val) ColorAbleitung_3a = "blue"; else ColorAbleitung_3a = "lightblue";
-        }
+        public void FarbeAbleitung3a(bool val) { if (val) ColorAbleitung_3a = "blue"; else ColorAbleitung_3a = "lightblue"; }
 
         private string _colorAbleitung_3a;
 
         public string ColorAbleitung_3a
         {
-            get => _colorAbleitung_3a; 
+            get => _colorAbleitung_3a;
             set
             {
                 _colorAbleitung_3a = value;
@@ -667,16 +646,13 @@
 
         #region Color Ableitung_4a
 
-        public void FarbeAbleitung4a(bool val)
-        {
-            if (val) ColorAbleitung_4a = "blue"; else ColorAbleitung_4a = "lightblue";
-        }
+        public void FarbeAbleitung4a(bool val) { if (val) ColorAbleitung_4a = "blue"; else ColorAbleitung_4a = "lightblue"; }
 
         private string _colorAbleitung_4a;
 
         public string ColorAbleitung_4a
         {
-            get => _colorAbleitung_4a; 
+            get => _colorAbleitung_4a;
             set
             {
                 _colorAbleitung_4a = value;
@@ -688,16 +664,13 @@
 
         #region Color Ableitung_1b
 
-        public void FarbeAbleitung1b(bool val)
-        {
-            if (val) ColorAbleitung_1b = "blue"; else ColorAbleitung_1b = "lightblue";
-        }
+        public void FarbeAbleitung1b(bool val) { if (val) ColorAbleitung_1b = "blue"; else ColorAbleitung_1b = "lightblue"; }
 
         private string _colorAbleitung_1b;
 
         public string ColorAbleitung_1b
         {
-            get => _colorAbleitung_1b; 
+            get => _colorAbleitung_1b;
             set
             {
                 _colorAbleitung_1b = value;
@@ -709,16 +682,13 @@
 
         #region Color Ableitung_2b
 
-        public void FarbeAbleitung2b(bool val)
-        {
-            if (val) ColorAbleitung_2b = "blue"; else ColorAbleitung_2b = "lightblue";
-        }
+        public void FarbeAbleitung2b(bool val) { if (val) ColorAbleitung_2b = "blue"; else ColorAbleitung_2b = "lightblue"; }
 
         private string _colorAbleitung_2b;
 
         public string ColorAbleitung_2b
         {
-            get => _colorAbleitung_2b; 
+            get => _colorAbleitung_2b;
             set
             {
                 _colorAbleitung_2b = value;
@@ -730,16 +700,13 @@
 
         #region Color Ableitung_3b
 
-        public void FarbeAbleitung3b(bool val)
-        {
-            if (val) ColorAbleitung_3b = "blue"; else ColorAbleitung_3b = "lightblue";
-        }
+        public void FarbeAbleitung3b(bool val) { if (val) ColorAbleitung_3b = "blue"; else ColorAbleitung_3b = "lightblue"; }
 
         private string _colorAbleitung_3b;
 
         public string ColorAbleitung_3b
         {
-            get => _colorAbleitung_3b; 
+            get => _colorAbleitung_3b;
             set
             {
                 _colorAbleitung_3b = value;
@@ -751,16 +718,13 @@
 
         #region Color Ableitung_4b
 
-        public void FarbeAbleitung4b(bool val)
-        {
-            if (val) ColorAbleitung_4b = "blue"; else ColorAbleitung_4b = "lightblue";
-        }
+        public void FarbeAbleitung4b(bool val) { if (val) ColorAbleitung_4b = "blue"; else ColorAbleitung_4b = "lightblue"; }
 
         private string _colorAbleitung_4b;
 
         public string ColorAbleitung_4b
         {
-            get => _colorAbleitung_4b; 
+            get => _colorAbleitung_4b;
             set
             {
                 _colorAbleitung_4b = value;
@@ -772,16 +736,13 @@
 
         #region Color Ableitung_Gesamt
 
-        public void FarbeAbleitungGesamt(bool val)
-        {
-            if (val) ColorAbleitung_Gesamt = "blue"; else ColorAbleitung_Gesamt = "lightblue";
-        }
+        public void FarbeAbleitungGesamt(bool val) { if (val) ColorAbleitung_Gesamt = "blue"; else ColorAbleitung_Gesamt = "lightblue"; }
 
         private string _colorAbleitung_Gesamt;
 
         public string ColorAbleitung_Gesamt
         {
-            get => _colorAbleitung_Gesamt; 
+            get => _colorAbleitung_Gesamt;
             set
             {
                 _colorAbleitung_Gesamt = value;
@@ -793,16 +754,13 @@
 
         #region Color LabelB1
 
-        public void FarbeLabelB1(bool val)
-        {
-            if (val) ColorLabelB1 = "red"; else ColorLabelB1 = "lawngreen";
-        }
+        public void FarbeLabelB1(bool val) { if (val) ColorLabelB1 = "red"; else ColorLabelB1 = "lawngreen"; }
 
         private string _colorLabelB1;
 
         public string ColorLabelB1
         {
-            get => _colorLabelB1; 
+            get => _colorLabelB1;
             set
             {
                 _colorLabelB1 = value;
@@ -814,16 +772,13 @@
 
         #region Color LabelB2
 
-        public void FarbeLabelB2(bool val)
-        {
-            if (val) ColorLabelB2 = "red"; else ColorLabelB2 = "lawngreen";
-        }
+        public void FarbeLabelB2(bool val) { if (val) ColorLabelB2 = "red"; else ColorLabelB2 = "lawngreen"; }
 
         private string _colorLabelB2;
 
         public string ColorLabelB2
         {
-            get => _colorLabelB2; 
+            get => _colorLabelB2;
             set
             {
                 _colorLabelB2 = value;
@@ -835,16 +790,13 @@
 
         #region Color LabelB3
 
-        public void FarbeLabelB3(bool val)
-        {
-            if (val) ColorLabelB3 = "red"; else ColorLabelB3 = "lawngreen";
-        }
+        public void FarbeLabelB3(bool val) { if (val) ColorLabelB3 = "red"; else ColorLabelB3 = "lawngreen"; }
 
         private string _colorLabelB3;
 
         public string ColorLabelB3
         {
-            get => _colorLabelB3; 
+            get => _colorLabelB3;
             set
             {
                 _colorLabelB3 = value;
@@ -856,16 +808,13 @@
 
         #region Color LabelB4
 
-        public void FarbeLabelB4(bool val)
-        {
-            if (val) ColorLabelB4 = "red"; else ColorLabelB4 = "lawngreen";
-        }
+        public void FarbeLabelB4(bool val) { if (val) ColorLabelB4 = "red"; else ColorLabelB4 = "lawngreen"; }
 
         private string _colorLabelB4;
 
         public string ColorLabelB4
         {
-            get => _colorLabelB4; 
+            get => _colorLabelB4;
             set
             {
                 _colorLabelB4 = value;
@@ -877,16 +826,13 @@
 
         #region Color LabelB5
 
-        public void FarbeLabelB5(bool val)
-        {
-            if (val) ColorLabelB5 = "red"; else ColorLabelB5 = "lawngreen";
-        }
+        public void FarbeLabelB5(bool val) { if (val) ColorLabelB5 = "red"; else ColorLabelB5 = "lawngreen"; }
 
         private string _colorLabelB5;
 
         public string ColorLabelB5
         {
-            get => _colorLabelB5; 
+            get => _colorLabelB5;
             set
             {
                 _colorLabelB5 = value;
@@ -898,16 +844,13 @@
 
         #region Color LabelB6
 
-        public void FarbeLabelB6(bool val)
-        {
-            if (val) ColorLabelB6 = "red"; else ColorLabelB6 = "lawngreen";
-        }
+        public void FarbeLabelB6(bool val) { if (val) ColorLabelB6 = "red"; else ColorLabelB6 = "lawngreen"; }
 
         private string _colorLabelB6;
 
         public string ColorLabelB6
         {
-            get => _colorLabelB6; 
+            get => _colorLabelB6;
             set
             {
                 _colorLabelB6 = value;
@@ -919,16 +862,13 @@
 
         #region Color LabelB7
 
-        public void FarbeLabelB7(bool val)
-        {
-            if (val) ColorLabelB7 = "red"; else ColorLabelB7 = "lawngreen";
-        }
+        public void FarbeLabelB7(bool val) { if (val) ColorLabelB7 = "red"; else ColorLabelB7 = "lawngreen"; }
 
         private string _colorLabelB7;
 
         public string ColorLabelB7
         {
-            get => _colorLabelB7; 
+            get => _colorLabelB7;
             set
             {
                 _colorLabelB7 = value;
@@ -940,16 +880,13 @@
 
         #region Color LabelB8
 
-        public void FarbeLabelB8(bool val)
-        {
-            if (val) ColorLabelB8 = "red"; else ColorLabelB8 = "lawngreen";
-        }
+        public void FarbeLabelB8(bool val) { if (val) ColorLabelB8 = "red"; else ColorLabelB8 = "lawngreen"; }
 
         private string _colorLabelB8;
 
         public string ColorLabelB8
         {
-            get => _colorLabelB8; 
+            get => _colorLabelB8;
             set
             {
                 _colorLabelB8 = value;
@@ -961,16 +898,13 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray";
-        }
+        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray"; }
 
         private string _colorCircle_P1;
 
         public string ColorCircle_P1
         {
-            get => _colorCircle_P1; 
+            get => _colorCircle_P1;
             set
             {
                 _colorCircle_P1 = value;
@@ -986,7 +920,7 @@
 
         public bool EnableAutomatik1234
         {
-            get => _enableAutomatik1234; 
+            get => _enableAutomatik1234;
             set
             {
                 _enableAutomatik1234 = value;
@@ -1002,7 +936,7 @@
 
         public bool EnableAutomatik1324
         {
-            get => _enableAutomatik1324; 
+            get => _enableAutomatik1324;
             set
             {
                 _enableAutomatik1324 = value;
@@ -1018,7 +952,7 @@
 
         public bool EnableAutomatik1432
         {
-            get => _enableAutomatik1432; 
+            get => _enableAutomatik1432;
             set
             {
                 _enableAutomatik1432 = value;
@@ -1034,7 +968,7 @@
 
         public bool EnableAutomatik4321
         {
-            get => _enableAutomatik4321; 
+            get => _enableAutomatik4321;
             set
             {
                 _enableAutomatik4321 = value;
@@ -1055,7 +989,7 @@
 
         public Thickness Margin1
         {
-            get => _margin1; 
+            get => _margin1;
             set
             {
                 _margin1 = value;
@@ -1076,7 +1010,7 @@
 
         public Thickness Margin2
         {
-            get => _margin2; 
+            get => _margin2;
             set
             {
                 _margin2 = value;
@@ -1097,7 +1031,7 @@
 
         public Thickness Margin3
         {
-            get => _margin3; 
+            get => _margin3;
             set
             {
                 _margin3 = value;
@@ -1118,7 +1052,7 @@
 
         public Thickness Margin4
         {
-            get => _margin4; 
+            get => _margin4;
             set
             {
                 _margin4 = value;
@@ -1128,14 +1062,11 @@
 
         #endregion Margin4
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

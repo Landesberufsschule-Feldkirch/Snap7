@@ -126,7 +126,6 @@
         }
 
         internal void SetGeschwindigkeit(double geschwindigkeit) => position += geschwindigkeit;
-
         internal double GetGesamtLaenge() => Model.PositionBestimmen.GetGesamtLaenge(durchmesserBolzen);
     }
 }

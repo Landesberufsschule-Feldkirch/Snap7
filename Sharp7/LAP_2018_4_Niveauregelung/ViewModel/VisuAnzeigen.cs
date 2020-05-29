@@ -144,7 +144,7 @@
 
         public string ClickModeBtnS1
         {
-            get => _clickModeBtnS1; 
+            get => _clickModeBtnS1;
             set
             {
                 _clickModeBtnS1 = value;
@@ -174,7 +174,7 @@
 
         public string ClickModeBtnS2
         {
-            get => _clickModeBtnS2; 
+            get => _clickModeBtnS2;
             set
             {
                 _clickModeBtnS2 = value;
@@ -204,7 +204,7 @@
 
         public string ClickModeBtnS3
         {
-            get => _clickModeBtnS3; 
+            get => _clickModeBtnS3;
             set
             {
                 _clickModeBtnS3 = value;
@@ -216,16 +216,13 @@
 
         #region Color Thermorelais F1
 
-        public void FarbeTherorelais_F1(bool val)
-        {
-            if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen";
-        }
+        public void FarbeTherorelais_F1(bool val) { if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen"; }
 
         private string _colorThermorelais_F1;
 
         public string ColorThermorelais_F1
         {
-            get => _colorThermorelais_F1; 
+            get => _colorThermorelais_F1;
             set
             {
                 _colorThermorelais_F1 = value;
@@ -237,16 +234,13 @@
 
         #region Color Thermorelais F2
 
-        public void FarbeTherorelais_F2(bool val)
-        {
-            if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen";
-        }
+        public void FarbeTherorelais_F2(bool val) { if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen"; }
 
         private string _colorThermorelais_F2;
 
         public string ColorThermorelais_F2
         {
-            get => _colorThermorelais_F2; 
+            get => _colorThermorelais_F2;
             set
             {
                 _colorThermorelais_F2 = value;
@@ -258,16 +252,13 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White";
-        }
+        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White"; }
 
         private string _colorCircle_P1;
 
         public string ColorCircle_P1
         {
-            get => _colorCircle_P1; 
+            get => _colorCircle_P1;
             set
             {
                 _colorCircle_P1 = value;
@@ -279,16 +270,13 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val)
-        {
-            if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White";
-        }
+        public void FarbeCircle_P2(bool val) { if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White"; }
 
         private string _colorCircle_P2;
 
         public string ColorCircle_P2
         {
-            get => _colorCircle_P2; 
+            get => _colorCircle_P2;
             set
             {
                 _colorCircle_P2 = value;
@@ -300,16 +288,13 @@
 
         #region Color P3
 
-        public void FarbeCircle_P3(bool val)
-        {
-            if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White";
-        }
+        public void FarbeCircle_P3(bool val) { if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White"; }
 
         private string _colorCircle_P3;
 
         public string ColorCircle_P3
         {
-            get => _colorCircle_P3; 
+            get => _colorCircle_P3;
             set
             {
                 _colorCircle_P3 = value;
@@ -321,16 +306,13 @@
 
         #region Color AbleitungOben
 
-        public void FarbeAbleitungOben(bool val)
-        {
-            if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue";
-        }
+        public void FarbeAbleitungOben(bool val) { if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue"; }
 
         private string _colorAbleitungOben;
 
         public string ColorAbleitungOben
         {
-            get => _colorAbleitungOben; 
+            get => _colorAbleitungOben;
             set
             {
                 _colorAbleitungOben = value;
@@ -342,16 +324,13 @@
 
         #region Color AbleitungUnten
 
-        public void FarbeAbleitungUnten(bool val)
-        {
-            if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue";
-        }
+        public void FarbeAbleitungUnten(bool val) { if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue"; }
 
         private string _colorAbleitungUnten;
 
         public string ColorAbleitungUnten
         {
-            get => _colorAbleitungUnten; 
+            get => _colorAbleitungUnten;
             set
             {
                 _colorAbleitungUnten = value;
@@ -363,16 +342,13 @@
 
         #region Color ZuleitungLinksWaagrecht
 
-        public void FarbeZuleitungLinksWaagrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksWaagrecht(bool val) { if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue"; }
 
         private string _colorZuleitungLinksWaagrecht;
 
         public string ColorZuleitungLinksWaagrecht
         {
-            get => _colorZuleitungLinksWaagrecht; 
+            get => _colorZuleitungLinksWaagrecht;
             set
             {
                 _colorZuleitungLinksWaagrecht = value;
@@ -384,16 +360,13 @@
 
         #region Color ZuleitungLinksSenkrecht
 
-        public void FarbeZuleitungLinksSenkrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksSenkrecht(bool val) { if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue"; }
 
         private string _colorZuleitungLinksSenkrecht;
 
         public string ColorZuleitungLinksSenkrecht
         {
-            get => _colorZuleitungLinksSenkrecht; 
+            get => _colorZuleitungLinksSenkrecht;
             set
             {
                 _colorZuleitungLinksSenkrecht = value;
@@ -405,16 +378,13 @@
 
         #region Color ZuleitungRechtsWaagrecht
 
-        public void FarbeZuleitungRechtsWaagrecht(bool val)
-        {
-            if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue";
-        }
+        public void FarbeZuleitungRechtsWaagrecht(bool val) { if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue"; }
 
         private string _colorZuleitungRechtsWaagrecht;
 
         public string ColorZuleitungRechtsWaagrecht
         {
-            get => _colorZuleitungRechtsWaagrecht; 
+            get => _colorZuleitungRechtsWaagrecht;
             set
             {
                 _colorZuleitungRechtsWaagrecht = value;
@@ -426,16 +396,13 @@
 
         #region Color ZuleitungRechtsSenkrecht
 
-        public void FarbeZuleitungRechtsSenkrecht(bool val)
-        {
-            if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue";
-        }
+        public void FarbeZuleitungRechtsSenkrecht(bool val) { if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue"; }
 
         private string _colorZuleitungRechtsSenkrecht;
 
         public string ColorZuleitungRechtsSenkrecht
         {
-            get => _colorZuleitungRechtsSenkrecht; 
+            get => _colorZuleitungRechtsSenkrecht;
             set
             {
                 _colorZuleitungRechtsSenkrecht = value;
@@ -465,7 +432,7 @@
 
         public string Visibility_B1_Ein
         {
-            get => _visibility_B1_Ein; 
+            get => _visibility_B1_Ein;
             set
             {
                 _visibility_B1_Ein = value;
@@ -477,7 +444,7 @@
 
         public string Visibility_B1_Aus
         {
-            get => _visibility_B1_Aus; 
+            get => _visibility_B1_Aus;
             set
             {
                 _visibility_B1_Aus = value;
@@ -507,7 +474,7 @@
 
         public string Visibility_B2_Ein
         {
-            get => _visibility_B2_Ein; 
+            get => _visibility_B2_Ein;
             set
             {
                 _visibility_B2_Ein = value;
@@ -519,7 +486,7 @@
 
         public string Visibility_B2_Aus
         {
-            get => _visibility_B2_Aus; 
+            get => _visibility_B2_Aus;
             set
             {
                 _visibility_B2_Aus = value;
@@ -561,7 +528,7 @@
 
         public string Visibility_B3_Aus
         {
-            get => _visibility_B3_Aus; 
+            get => _visibility_B3_Aus;
             set
             {
                 _visibility_B3_Aus = value;
@@ -591,7 +558,7 @@
 
         public string Visibility_Q1_Ein
         {
-            get => _visibility_Q1_Ein; 
+            get => _visibility_Q1_Ein;
             set
             {
                 _visibility_Q1_Ein = value;
@@ -603,7 +570,7 @@
 
         public string Visibility_Q1_Aus
         {
-            get => _visibility_Q1_Aus; 
+            get => _visibility_Q1_Aus;
             set
             {
                 _visibility_Q1_Aus = value;
@@ -633,7 +600,7 @@
 
         public string Visibility_Q2_Ein
         {
-            get => _visibility_Q2_Ein; 
+            get => _visibility_Q2_Ein;
             set
             {
                 _visibility_Q2_Ein = value;
@@ -645,7 +612,7 @@
 
         public string Visibility_Q2_Aus
         {
-            get => _visibility_Q2_Aus; 
+            get => _visibility_Q2_Aus;
             set
             {
                 _visibility_Q2_Aus = value;
@@ -675,7 +642,7 @@
 
         public string Visibility_Ventil_Ein
         {
-            get => _visibility_Ventil_Ein; 
+            get => _visibility_Ventil_Ein;
             set
             {
                 _visibility_Ventil_Ein = value;
@@ -687,7 +654,7 @@
 
         public string Visibility_Ventil_Aus
         {
-            get => _visibility_Ventil_Aus; 
+            get => _visibility_Ventil_Aus;
             set
             {
                 _visibility_Ventil_Aus = value;
@@ -699,16 +666,13 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel)
-        {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_1(double pegel) { Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0); }
 
         private Thickness _margin1;
 
         public Thickness Margin1
         {
-            get => _margin1; 
+            get => _margin1;
             set
             {
                 _margin1 = value;
@@ -718,14 +682,11 @@
 
         #endregion Margin1
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

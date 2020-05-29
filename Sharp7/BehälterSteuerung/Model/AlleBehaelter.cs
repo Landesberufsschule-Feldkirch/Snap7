@@ -60,15 +60,15 @@
             }
         }
 
-        internal void VentilQ2() { alleBehaelter[0].VentilUntenUmschalten(); }
-        internal void VentilQ4() { alleBehaelter[1].VentilUntenUmschalten(); }
-        internal void VentilQ6() { alleBehaelter[2].VentilUntenUmschalten(); }
-        internal void VentilQ8() { alleBehaelter[3].VentilUntenUmschalten(); }
+        internal void VentilQ2() => alleBehaelter[0].VentilUntenUmschalten(); 
+        internal void VentilQ4() => alleBehaelter[1].VentilUntenUmschalten(); 
+        internal void VentilQ6() => alleBehaelter[2].VentilUntenUmschalten(); 
+        internal void VentilQ8() => alleBehaelter[3].VentilUntenUmschalten(); 
 
-        internal void Automatik1234() { AutomatikBetriebStarten(AutomatikModus.Modus_1234); }
-        internal void Automatik1324() { AutomatikBetriebStarten(AutomatikModus.Modus_1324); }
-        internal void Automatik1432() { AutomatikBetriebStarten(AutomatikModus.Modus_1432); }
-        internal void Automatik4321() { AutomatikBetriebStarten(AutomatikModus.Modus_4321); }
+        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus_1234); 
+        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus_1324); 
+        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus_1432); 
+        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus_4321); 
 
 
         private void AlleAutomatikKnoepfeDeaktivieren()

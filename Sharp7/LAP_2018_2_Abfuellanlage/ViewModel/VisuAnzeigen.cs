@@ -168,7 +168,7 @@
 
         public string ClickModeBtnS1
         {
-            get => _clickModeBtnS1; 
+            get => _clickModeBtnS1;
             set
             {
                 _clickModeBtnS1 = value;
@@ -198,7 +198,7 @@
 
         public string ClickModeBtnS2
         {
-            get => _clickModeBtnS2; 
+            get => _clickModeBtnS2;
             set
             {
                 _clickModeBtnS2 = value;
@@ -228,7 +228,7 @@
 
         public string ClickModeBtnS3
         {
-            get => _clickModeBtnS3; 
+            get => _clickModeBtnS3;
             set
             {
                 _clickModeBtnS3 = value;
@@ -258,7 +258,7 @@
 
         public string ClickModeBtnS4
         {
-            get => _clickModeBtnS4; 
+            get => _clickModeBtnS4;
             set
             {
                 _clickModeBtnS4 = value;
@@ -288,7 +288,7 @@
 
         public string ClickModeBtnK1
         {
-            get => _clickModeBtnK1; 
+            get => _clickModeBtnK1;
             set
             {
                 _clickModeBtnK1 = value;
@@ -318,7 +318,7 @@
 
         public string ClickModeBtnK2
         {
-            get => _clickModeBtnK2; 
+            get => _clickModeBtnK2;
             set
             {
                 _clickModeBtnK2 = value;
@@ -348,7 +348,7 @@
 
         public string ClickModeBtnQ1
         {
-            get => _clickModeBtnQ1; 
+            get => _clickModeBtnQ1;
             set
             {
                 _clickModeBtnQ1 = value;
@@ -370,7 +370,7 @@
 
         public double ImageTop1
         {
-            get => _imageTop1; 
+            get => _imageTop1;
             set
             {
                 _imageTop1 = value;
@@ -382,7 +382,7 @@
 
         public double ImageLeft1
         {
-            get => _imageLeft1; 
+            get => _imageLeft1;
             set
             {
                 _imageLeft1 = value;
@@ -404,7 +404,7 @@
 
         public double ImageTop2
         {
-            get => _imageTop2; 
+            get => _imageTop2;
             set
             {
                 _imageTop2 = value;
@@ -416,7 +416,7 @@
 
         public double ImageLeft2
         {
-            get => _imageLeft2; 
+            get => _imageLeft2;
             set
             {
                 _imageLeft2 = value;
@@ -438,7 +438,7 @@
 
         public double ImageTop3
         {
-            get => _imageTop3; 
+            get => _imageTop3;
             set
             {
                 _imageTop3 = value;
@@ -450,7 +450,7 @@
 
         public double ImageLeft3
         {
-            get => _imageLeft3; 
+            get => _imageLeft3;
             set
             {
                 _imageLeft3 = value;
@@ -472,7 +472,7 @@
 
         public double ImageTop4
         {
-            get => _imageTop4; 
+            get => _imageTop4;
             set
             {
                 _imageTop4 = value;
@@ -484,7 +484,7 @@
 
         public double ImageLeft4
         {
-            get => _imageLeft4; 
+            get => _imageLeft4;
             set
             {
                 _imageLeft4 = value;
@@ -506,7 +506,7 @@
 
         public double ImageTop5
         {
-            get => _imageTop5; 
+            get => _imageTop5;
             set
             {
                 _imageTop5 = value;
@@ -518,7 +518,7 @@
 
         public double ImageLeft5
         {
-            get => _imageLeft5; 
+            get => _imageLeft5;
             set
             {
                 _imageLeft5 = value;
@@ -540,7 +540,7 @@
 
         public double ImageTop6
         {
-            get => _imageTop6; 
+            get => _imageTop6;
             set
             {
                 _imageTop6 = value;
@@ -552,7 +552,7 @@
 
         public double ImageLeft6
         {
-            get => _imageLeft6; 
+            get => _imageLeft6;
             set
             {
                 _imageLeft6 = value;
@@ -564,16 +564,13 @@
 
         #region Visibility Flasche 1
 
-        public void VisibilityFlasche1(bool val)
-        {
-            if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
-        }
+        public void VisibilityFlasche1(bool val) { if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden"; }
 
         private string _visibilityImage1;
 
         public string VisibilityImage1
         {
-            get => _visibilityImage1; 
+            get => _visibilityImage1;
             set
             {
                 _visibilityImage1 = value;
@@ -585,16 +582,13 @@
 
         #region Visibility Flasche 2
 
-        public void VisibilityFlasche2(bool val)
-        {
-            if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
-        }
+        public void VisibilityFlasche2(bool val) { if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden"; }
 
         private string _visibilityImage2;
 
         public string VisibilityImage2
         {
-            get => _visibilityImage2; 
+            get => _visibilityImage2;
             set
             {
                 _visibilityImage2 = value;
@@ -606,16 +600,13 @@
 
         #region Visibility Flasche 3
 
-        public void VisibilityFlasche3(bool val)
-        {
-            if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
-        }
+        public void VisibilityFlasche3(bool val) { if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden"; }
 
         private string _visibilityImage3;
 
         public string VisibilityImage3
         {
-            get => _visibilityImage3; 
+            get => _visibilityImage3;
             set
             {
                 _visibilityImage3 = value;
@@ -627,16 +618,13 @@
 
         #region Visibility Flasche 4
 
-        public void VisibilityFlasche4(bool val)
-        {
-            if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
-        }
+        public void VisibilityFlasche4(bool val) { if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden"; }
 
         private string _visibilityImage4;
 
         public string VisibilityImage4
         {
-            get => _visibilityImage4; 
+            get => _visibilityImage4;
             set
             {
                 _visibilityImage4 = value;
@@ -648,16 +636,13 @@
 
         #region Visibility Flasche 5
 
-        public void VisibilityFlasche5(bool val)
-        {
-            if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden";
-        }
+        public void VisibilityFlasche5(bool val) { if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden"; }
 
         private string _visibilityImage5;
 
         public string VisibilityImage5
         {
-            get => _visibilityImage5; 
+            get => _visibilityImage5;
             set
             {
                 _visibilityImage5 = value;
@@ -669,16 +654,13 @@
 
         #region Visibility Flasche 6
 
-        public void VisibilityFlasche6(bool val)
-        {
-            if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden";
-        }
+        public void VisibilityFlasche6(bool val) { if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden"; }
 
         private string _visibilityImage6;
 
         public string VisibilityImage6
         {
-            get => _visibilityImage6; 
+            get => _visibilityImage6;
             set
             {
                 _visibilityImage6 = value;
@@ -708,7 +690,7 @@
 
         public string Visibility_B1_Ein
         {
-            get => _visibility_B1_Ein; 
+            get => _visibility_B1_Ein;
             set
             {
                 _visibility_B1_Ein = value;
@@ -720,7 +702,7 @@
 
         public string Visibility_B1_Aus
         {
-            get => _visibility_B1_Aus; 
+            get => _visibility_B1_Aus;
             set
             {
                 _visibility_B1_Aus = value;
@@ -750,7 +732,7 @@
 
         public string Visibility_K1_Ein
         {
-            get => _visibility_K1_Ein; 
+            get => _visibility_K1_Ein;
             set
             {
                 _visibility_K1_Ein = value;
@@ -762,7 +744,7 @@
 
         public string Visibility_K1_Aus
         {
-            get => _visibility_K1_Aus; 
+            get => _visibility_K1_Aus;
             set
             {
                 _visibility_K1_Aus = value;
@@ -792,7 +774,7 @@
 
         public string Visibility_K2_Ein
         {
-            get => _visibility_K2_Ein; 
+            get => _visibility_K2_Ein;
             set
             {
                 _visibility_K2_Ein = value;
@@ -804,7 +786,7 @@
 
         public string Visibility_K2_Aus
         {
-            get => _visibility_K2_Aus; 
+            get => _visibility_K2_Aus;
             set
             {
                 _visibility_K2_Aus = value;
@@ -816,16 +798,13 @@
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val)
-        {
-            if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
-        }
+        public void VisibilityAbleitung(bool val) { if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden"; }
 
         private string _visibilityRectangleAbleitung;
 
         public string VisibilityRectangleAbleitung
         {
-            get => _visibilityRectangleAbleitung; 
+            get => _visibilityRectangleAbleitung;
             set
             {
                 _visibilityRectangleAbleitung = value;
@@ -837,16 +816,13 @@
 
         #region Color F1
 
-        public void FarbeCircle_F1(bool val)
-        {
-            if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red";
-        }
+        public void FarbeCircle_F1(bool val) { if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red"; }
 
         private string _colorCircle_F1;
 
         public string ColorCircle_F1
         {
-            get => _colorCircle_F1; 
+            get => _colorCircle_F1;
             set
             {
                 _colorCircle_F1 = value;
@@ -858,16 +834,13 @@
 
         #region Color Q1
 
-        public void FarbeCircle_Q1(bool val)
-        {
-            if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray";
-        }
+        public void FarbeCircle_Q1(bool val) { if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray"; }
 
         private string _colorCircle_Q1;
 
         public string ColorCircle_Q1
         {
-            get => _colorCircle_Q1; 
+            get => _colorCircle_Q1;
             set
             {
                 _colorCircle_Q1 = value;
@@ -879,16 +852,13 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
-        }
+        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray"; }
 
         private string _colorCircle_P1;
 
         public string ColorCircle_P1
         {
-            get => _colorCircle_P1; 
+            get => _colorCircle_P1;
             set
             {
                 _colorCircle_P1 = value;
@@ -900,16 +870,13 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val)
-        {
-            if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
-        }
+        public void FarbeCircle_P2(bool val) { if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray"; }
 
         private string _colorCircle_P2;
 
         public string ColorCircle_P2
         {
-            get => _colorCircle_P2; 
+            get => _colorCircle_P2;
             set
             {
                 _colorCircle_P2 = value;
@@ -921,16 +888,13 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val)
-        {
-            if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue";
-        }
+        public void FarbeRectangleZuleitung(bool val) { if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue"; }
 
         private string _colorRectangleZuleitung;
 
         public string ColorRectangleZuleitung
         {
-            get => _colorRectangleZuleitung; 
+            get => _colorRectangleZuleitung;
             set
             {
                 _colorRectangleZuleitung = value;
@@ -942,16 +906,13 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel)
-        {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_1(double pegel) { Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0); }
 
         private Thickness _margin1;
 
         public Thickness Margin1
         {
-            get => _margin1; 
+            get => _margin1;
             set
             {
                 _margin1 = value;
@@ -961,14 +922,11 @@
 
         #endregion Margin1
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

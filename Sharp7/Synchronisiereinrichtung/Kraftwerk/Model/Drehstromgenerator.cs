@@ -47,30 +47,15 @@
             n *= n_BremsFaktor;
         }
 
-        public double Drehzahl() => n;
+        public double GetDrehzahl() => n;
+        public double GetLeistung() => P;
+        public double GetCosPhi() => cosPhi;
+        public double GetFrequenz() => n * DrehzahlFaktor;
+        public double GetSpannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
+        public void SetSynchronisiertFrequenz(double frequenz) => n = 30 * frequenz;
+        public void SetSynchronisierungVentil(double Y) => SynchVentil = Y;
+        public void SetSynchronisierungErregerstrom(double Ie) => SynchErregerstrom = Ie;
 
-        public double Leistung() => P;
-
-        public double CosPhi() => cosPhi;
-
-        public double Frequenz() => n * DrehzahlFaktor;
-
-        public double Spannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
-
-        public void SynchronisiertFrequenz(double frequenz)
-        {
-            n = 30 * frequenz;
-        }
-
-        public void SynchronisierungVentil(double Y)
-        {
-            SynchVentil = Y;
-        }
-
-        public void SynchronisierungErregerstrom(double Ie)
-        {
-            SynchErregerstrom = Ie;
-        }
 
         public void MaschineLeistungFahren(double Y)
         {

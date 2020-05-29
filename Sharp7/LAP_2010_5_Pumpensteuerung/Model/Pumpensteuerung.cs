@@ -44,20 +44,9 @@ namespace LAP_2010_5_Pumpensteuerung.Model
             }
         }
 
-        internal void ThermorelaisF1()
-        {
-            F1 = !F1;
-        }
-
-        internal void SetManualQ1()
-        {
-            Q1 = !Q1;
-        }
-
-        internal void VentilY1()
-        {
-            Y1 = !Y1;
-        }
+        internal void ThermorelaisF1() => F1 = !F1;
+        internal void SetManualQ1() => Q1 = !Q1;
+        internal void VentilY1() => Y1 = !Y1;
 
         internal void TasterHand()
         {

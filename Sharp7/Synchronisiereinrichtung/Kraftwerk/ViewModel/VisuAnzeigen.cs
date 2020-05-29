@@ -138,7 +138,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double ManualVentilstellung
         {
-            get => _manualVentilstellung; 
+            get => _manualVentilstellung;
             set
             {
                 _manualVentilstellung = value;
@@ -156,7 +156,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double ManualErregerstrom
         {
-            get => _manualErregerstrom; 
+            get => _manualErregerstrom;
             set
             {
                 _manualErregerstrom = value;
@@ -174,7 +174,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzSpannungSlider
         {
-            get => _netzSpannungSlider; 
+            get => _netzSpannungSlider;
             set
             {
                 _netzSpannungSlider = value;
@@ -192,7 +192,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzFrequenzSlider
         {
-            get => _netzFrequenzSlider; 
+            get => _netzFrequenzSlider;
             set
             {
                 _netzFrequenzSlider = value;
@@ -233,7 +233,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double NetzLeistungSlider
         {
-            get => _netzLeistungSlider; 
+            get => _netzLeistungSlider;
             set
             {
                 _netzLeistungSlider = value;
@@ -249,7 +249,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public SynchronisierungAuswahl SynchAuswahl
         {
-            get => _synchAuswahl; 
+            get => _synchAuswahl;
             set
             {
                 _synchAuswahl = value;
@@ -261,15 +261,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Leistungsfaktor
 
-        public void Generator_CosPhi(double val)
-        {
-            GeneratorCosPhiString = $"cos φ={val:N2}";
-        }
+        public void Generator_CosPhi(double val) => GeneratorCosPhiString = $"cos φ={val:N2}";
+        public void Netz_CosPhi(double val) => NetzCosPhiString = $"cos φ={val:N2}";
 
-        public void Netz_CosPhi(double val)
-        {
-            NetzCosPhiString = $"cos φ={val:N2}";
-        }
 
         private double _generatorCosPhiString;
 
@@ -299,15 +293,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Leistung
 
-        public void Generator_P(double val)
-        {
-            GeneratorLeistungString = $"P={val:N1}W";
-        }
+        public void Generator_P(double val) => GeneratorLeistungString = $"P={val:N1}W";
+        public void Netz_P(double val) => NetzLeistungString = $"P={val}W";
 
-        public void Netz_P(double val)
-        {
-            NetzLeistungString = $"P={val}W";
-        }
 
         private double _generatorLeistungString;
 
@@ -337,15 +325,9 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Freqenz
 
-        public void Generator_f(double val)
-        {
-            GeneratorFrequenzString = $"f={val:N2}Hz";
-        }
+        public void Generator_f(double val) => GeneratorFrequenzString = $"f={val:N2}Hz";
+        public void Netz_f(double val) => NetzFrequenzString = $"f={val}Hz";
 
-        public void Netz_f(double val)
-        {
-            NetzFrequenzString = $"f={val}Hz";
-        }
 
         private double _generatorFrequenzString;
 
@@ -375,15 +357,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Spannung
 
-        public void Generator_U(double val)
-        {
-            GeneratorSpannungString = $"U={val:N1}V";
-        }
-
-        public void Netz_U(double val)
-        {
-            NetzSpannungString = $"U={val}V";
-        }
+        public void Generator_U(double val) => GeneratorSpannungString = $"U={val:N1}V";
+        public void Netz_U(double val) => NetzSpannungString = $"U={val}V";
 
         private double _generatorSpannungString;
 
@@ -413,10 +388,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region IE
 
-        public void Ie(double val)
-        {
-            Erregerstrom = $"IE={ val:N1}A";
-        }
+        public void Ie(double val) => Erregerstrom = $"IE={ val:N1}A";
 
         private double _erregerstrom;
 
@@ -434,10 +406,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region n
 
-        public void N(double val)
-        {
-            Drehzahl = $"n={val:N1}RPM";
-        }
+        public void N(double val) => Drehzahl = $"n={val:N1}RPM";
 
         private double _drehzahl;
 
@@ -461,7 +430,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double MessgeraetOptimalerBereich
         {
-            get => _messgeraetOptimalerBereich; 
+            get => _messgeraetOptimalerBereich;
             set
             {
                 _messgeraetOptimalerBereich = value;
@@ -469,17 +438,13 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        public void MessgeraetAnzeigen(bool val)
-        {
-            if (val) VisibilityMessgeraetSichtbar = "Visible";
-            else VisibilityMessgeraetSichtbar = "Hidden";
-        }
+        public void MessgeraetAnzeigen(bool val) { if (val) VisibilityMessgeraetSichtbar = "Visible"; else VisibilityMessgeraetSichtbar = "Hidden"; }
 
         private string _visibilityMessgeraetSichtbar;
 
         public string VisibilityMessgeraetSichtbar
         {
-            get => _visibilityMessgeraetSichtbar; 
+            get => _visibilityMessgeraetSichtbar;
             set
             {
                 _visibilityMessgeraetSichtbar = value;
@@ -491,7 +456,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public double SpannungsDifferenz
         {
-            get => _spannungsDifferenz; 
+            get => _spannungsDifferenz;
             set
             {
                 _spannungsDifferenz = value;
@@ -503,21 +468,14 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Maschine tot
 
-        public void MaschineTot(bool val)
-        {
-            if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden";
-        }
-
-        public bool IstMaschineTot()
-        {
-            if (VisibilityMaschineTot == "Visible") return true; else return false;
-        }
+        public void MaschineTot(bool val) { if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden"; }
+        public bool IstMaschineTot() { if (VisibilityMaschineTot == "Visible") return true; else return false; }
 
         private string _visibilityMaschineTotAnzeigen;
 
         public string VisibilityMaschineTot
         {
-            get => _visibilityMaschineTotAnzeigen; 
+            get => _visibilityMaschineTotAnzeigen;
             set
             {
                 _visibilityMaschineTotAnzeigen = value;
@@ -547,7 +505,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string LeistungsschalterEin
         {
-            get => _leistungsschalterEin; 
+            get => _leistungsschalterEin;
             set
             {
                 _leistungsschalterEin = value;
@@ -559,7 +517,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string LeistungsschalterAus
         {
-            get => _leistungsschalterAus; 
+            get => _leistungsschalterAus;
             set
             {
                 _leistungsschalterAus = value;
@@ -583,16 +541,13 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        public void Y(double val)
-        {
-            VentilPosition = $"Y={ val:N1}%";
-        }
+        public void Y(double val) => VentilPosition = $"Y={ val:N1}%";
 
         private string _visibilityVentilAus;
 
         public string VisibilityVentilAus
         {
-            get => _visibilityVentilAus; 
+            get => _visibilityVentilAus;
             set
             {
                 _visibilityVentilAus = value;
@@ -604,7 +559,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VisibilityVentilEin
         {
-            get => _visibilityVentilEin; 
+            get => _visibilityVentilEin;
             set
             {
                 _visibilityVentilEin = value;
@@ -630,16 +585,13 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Kraftwerk Status
 
-        public void Status(string val)
-        {
-            KraftwerkStatus = "Status Kraftwerk: " + val;
-        }
+        public void Status(string val) => KraftwerkStatus = "Status Kraftwerk: " + val;
 
         private string _kraftwerkStatus;
 
         public string KraftwerkStatus
         {
-            get => _kraftwerkStatus; 
+            get => _kraftwerkStatus;
             set
             {
                 _kraftwerkStatus = value;
@@ -649,14 +601,11 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #endregion Kraftwerk Status
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

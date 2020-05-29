@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AutomatischesLagersystem.Model
+﻿namespace AutomatischesLagersystem.Model
 {
     public class KollisionRegalBestimmen
     {

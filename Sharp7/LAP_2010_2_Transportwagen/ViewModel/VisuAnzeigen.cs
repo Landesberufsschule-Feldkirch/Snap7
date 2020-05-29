@@ -105,16 +105,13 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val)
-        {
-            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
-        }
+        public void FarbeF1(bool val) { if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red"; }
 
         private string _colorF1;
 
         public string ColorF1
         {
-            get => _colorF1; 
+            get => _colorF1;
             set
             {
                 _colorF1 = value;
@@ -126,16 +123,13 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) { if (val) ColorP1 = "Red"; else ColorP1 = "White"; }
 
         private string _colorP1;
 
         public string ColorP1
         {
-            get => _colorP1; 
+            get => _colorP1;
             set
             {
                 _colorP1 = value;
@@ -147,16 +141,13 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
-        }
+        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White"; }
 
         private string _colorQ1;
 
         public string ColorQ1
         {
-            get => _colorQ1; 
+            get => _colorQ1;
             set
             {
                 _colorQ1 = value;
@@ -168,16 +159,13 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val)
-        {
-            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
-        }
+        public void FarbeQ2(bool val) { if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White"; }
 
         private string _colorQ2;
 
         public string ColorQ2
         {
-            get => _colorQ2; 
+            get => _colorQ2;
             set
             {
                 _colorQ2 = value;
@@ -189,16 +177,13 @@
 
         #region Color S2
 
-        public void FarbeS2(bool val)
-        {
-            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
-        }
+        public void FarbeS2(bool val) { if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red"; }
 
         private string _colorS2;
 
         public string ColorS2
         {
-            get => _colorS2; 
+            get => _colorS2;
             set
             {
                 _colorS2 = value;
@@ -228,7 +213,7 @@
 
         public string ClickModeBtnQ1
         {
-            get => _clickModeBtnQ1; 
+            get => _clickModeBtnQ1;
             set
             {
                 _clickModeBtnQ1 = value;
@@ -258,7 +243,7 @@
 
         public string ClickModeBtnQ2
         {
-            get => _clickModeBtnQ2; 
+            get => _clickModeBtnQ2;
             set
             {
                 _clickModeBtnQ2 = value;
@@ -288,7 +273,7 @@
 
         public string ClickModeBtnS1
         {
-            get => _clickModeBtnS1; 
+            get => _clickModeBtnS1;
             set
             {
                 _clickModeBtnS1 = value;
@@ -318,7 +303,7 @@
 
         public string ClickModeBtnS3
         {
-            get => _clickModeBtnS3; 
+            get => _clickModeBtnS3;
             set
             {
                 _clickModeBtnS3 = value;
@@ -348,7 +333,7 @@
 
         public string VisibilityB1Ein
         {
-            get => _visibilityB1Ein; 
+            get => _visibilityB1Ein;
             set
             {
                 _visibilityB1Ein = value;
@@ -360,7 +345,7 @@
 
         public string VisibilityB1Aus
         {
-            get => _visibilityB1Aus; 
+            get => _visibilityB1Aus;
             set
             {
                 _visibilityB1Aus = value;
@@ -390,7 +375,7 @@
 
         public string VisibilityB2Ein
         {
-            get => _visibilityB2Ein; 
+            get => _visibilityB2Ein;
             set
             {
                 _visibilityB2Ein = value;
@@ -402,7 +387,7 @@
 
         public string VisibilityB2Aus
         {
-            get => _visibilityB2Aus; 
+            get => _visibilityB2Aus;
             set
             {
                 _visibilityB2Aus = value;
@@ -418,7 +403,7 @@
 
         public string VisibilityKurzschluss
         {
-            get => _visibilityKurzschluss; 
+            get => _visibilityKurzschluss;
             set
             {
                 _visibilityKurzschluss = value;
@@ -434,7 +419,7 @@
 
         public double PositionRadLinks
         {
-            get => _positionRadLinks; 
+            get => _positionRadLinks;
             set
             {
                 _positionRadLinks = value;
@@ -450,7 +435,7 @@
 
         public double PositionRadRechts
         {
-            get => _positionRadRechts; 
+            get => _positionRadRechts;
             set
             {
                 _positionRadRechts = value;
@@ -466,7 +451,7 @@
 
         public double PositionWagenkasten
         {
-            get => _positionWagenkasten; 
+            get => _positionWagenkasten;
             set
             {
                 _positionWagenkasten = value;
@@ -476,14 +461,11 @@
 
         #endregion PositionWagenkasten
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

@@ -171,10 +171,7 @@
 
         #region Color B1
 
-        public void FarbeB1(bool val)
-        {
-            if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
-        }
+        public void FarbeB1(bool val) { if (val) ColorB1 = "Red"; else ColorB1 = "LightGray"; }
 
         private string _colorB1;
 
@@ -192,10 +189,7 @@
 
         #region Color B2
 
-        public void FarbeB2(bool val)
-        {
-            if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
-        }
+        public void FarbeB2(bool val) { if (val) ColorB2 = "Red"; else ColorB2 = "LightGray"; }
 
         private string _colorB2;
 
@@ -213,16 +207,13 @@
 
         #region Color B3
 
-        public void FarbeB3(bool val)
-        {
-            if (val) ColorB3 = "Red"; else ColorB3 = "LightGray";
-        }
+        public void FarbeB3(bool val) { if (val) ColorB3 = "Red"; else ColorB3 = "LightGray"; }
 
         private string _colorB3;
 
         public string ColorB3
         {
-            get => _colorB3; 
+            get => _colorB3;
             set
             {
                 _colorB3 = value;
@@ -234,16 +225,13 @@
 
         #region Color B4
 
-        public void FarbeB4(bool val)
-        {
-            if (val) ColorB4 = "Red"; else ColorB4 = "LightGray";
-        }
+        public void FarbeB4(bool val) { if (val) ColorB4 = "Red"; else ColorB4 = "LightGray"; }
 
         private string _colorB4;
 
         public string ColorB4
         {
-            get => _colorB4; 
+            get => _colorB4;
             set
             {
                 _colorB4 = value;
@@ -255,16 +243,13 @@
 
         #region ColorLinksRot
 
-        public void FarbeLinksRot(bool val)
-        {
-            if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White";
-        }
+        public void FarbeLinksRot(bool val) { if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White"; }
 
         private string _colorLinksRot;
 
         public string ColorLinksRot
         {
-            get => _colorLinksRot; 
+            get => _colorLinksRot;
             set
             {
                 _colorLinksRot = value;
@@ -276,16 +261,13 @@
 
         #region ColorLinksGelb
 
-        public void FarbeLinksGelb(bool val)
-        {
-            if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White";
-        }
+        public void FarbeLinksGelb(bool val) { if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White"; }
 
         private string _colorLinksGelb;
 
         public string ColorLinksGelb
         {
-            get => _colorLinksGelb; 
+            get => _colorLinksGelb;
             set
             {
                 _colorLinksGelb = value;
@@ -297,16 +279,13 @@
 
         #region ColorLinksGruen
 
-        public void FarbeLinksGruen(bool val)
-        {
-            if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White";
-        }
+        public void FarbeLinksGruen(bool val) { if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White"; }
 
         private string _colorLinksGruen;
 
         public string ColorLinksGruen
         {
-            get => _colorLinksGruen; 
+            get => _colorLinksGruen;
             set
             {
                 _colorLinksGruen = value;
@@ -318,16 +297,13 @@
 
         #region ColorRechtsRot
 
-        public void FarbeRechtsRot(bool val)
-        {
-            if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White";
-        }
+        public void FarbeRechtsRot(bool val) { if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White"; }
 
         private string _colorRechtsRot;
 
         public string ColorRechtsRot
         {
-            get => _colorRechtsRot; 
+            get => _colorRechtsRot;
             set
             {
                 _colorRechtsRot = value;
@@ -339,16 +315,13 @@
 
         #region ColorRechtsGelb
 
-        public void FarbeRechtsGelb(bool val)
-        {
-            if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White";
-        }
+        public void FarbeRechtsGelb(bool val) { if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White"; }
 
         private string _colorRechtsGelb;
 
         public string ColorRechtsGelb
         {
-            get => _colorRechtsGelb; 
+            get => _colorRechtsGelb;
             set
             {
                 _colorRechtsGelb = value;
@@ -360,16 +333,13 @@
 
         #region ColorRechtsGruen
 
-        public void FarbeRechtsGruen(bool val)
-        {
-            if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White";
-        }
+        public void FarbeRechtsGruen(bool val) { if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White"; }
 
         private string _colorRechtsGruen;
 
         public string ColorRechtsGruen
         {
-            get => _colorRechtsGruen; 
+            get => _colorRechtsGruen;
             set
             {
                 _colorRechtsGruen = value;
@@ -381,16 +351,13 @@
 
         #region RichtungLkw1
 
-        public void RichtungLkw1(LkwRichtungen val)
-        {
-            if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1;
-        }
+        public void RichtungLkw1(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1; }
 
         private int _directionLkw1;
 
         public int DirectionLkw1
         {
-            get => _directionLkw1; 
+            get => _directionLkw1;
             set
             {
                 _directionLkw1 = value;
@@ -402,16 +369,13 @@
 
         #region RichtungLkw2
 
-        public void RichtungLkw2(LkwRichtungen val)
-        {
-            if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1;
-        }
+        public void RichtungLkw2(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1; }
 
         private int _directionLkw2;
 
         public int DirectionLkw2
         {
-            get => _directionLkw2; 
+            get => _directionLkw2;
             set
             {
                 _directionLkw2 = value;
@@ -423,16 +387,13 @@
 
         #region RichtungLkw3
 
-        public void RichtungLkw3(LkwRichtungen val)
-        {
-            if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1;
-        }
+        public void RichtungLkw3(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1; }
 
         private int _directionLkw3;
 
         public int DirectionLkw3
         {
-            get => _directionLkw3; 
+            get => _directionLkw3;
             set
             {
                 _directionLkw3 = value;
@@ -444,16 +405,13 @@
 
         #region RichtungLkw4
 
-        public void RichtungLkw4(LkwRichtungen val)
-        {
-            if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1;
-        }
+        public void RichtungLkw4(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1; }
 
         private int _directionLkw4;
 
         public int DirectionLkw4
         {
-            get => _directionLkw4; 
+            get => _directionLkw4;
             set
             {
                 _directionLkw4 = value;
@@ -465,16 +423,13 @@
 
         #region RichtungLkw5
 
-        public void RichtungLkw5(LkwRichtungen val)
-        {
-            if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1;
-        }
+        public void RichtungLkw5(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1; }
 
         private int _directionLkw5;
 
         public int DirectionLkw5
         {
-            get => _directionLkw5; 
+            get => _directionLkw5;
             set
             {
                 _directionLkw5 = value;
@@ -496,7 +451,7 @@
 
         public double PosLkw1Left
         {
-            get => _posLkw1Left; 
+            get => _posLkw1Left;
             set
             {
                 _posLkw1Left = value;
@@ -508,7 +463,7 @@
 
         public double PosLkw1Top
         {
-            get => _posLkw1Top; 
+            get => _posLkw1Top;
             set
             {
                 _posLkw1Top = value;
@@ -530,7 +485,7 @@
 
         public double PosLkw2Left
         {
-            get => _posLkw2Left; 
+            get => _posLkw2Left;
             set
             {
                 _posLkw2Left = value;
@@ -542,7 +497,7 @@
 
         public double PosLkw2Top
         {
-            get => _posLkw2Top; 
+            get => _posLkw2Top;
             set
             {
                 _posLkw2Top = value;
@@ -564,7 +519,7 @@
 
         public double PosLkw3Left
         {
-            get => _posLkw3Left; 
+            get => _posLkw3Left;
             set
             {
                 _posLkw3Left = value;
@@ -576,7 +531,7 @@
 
         public double PosLkw3Top
         {
-            get => _posLkw3Top; 
+            get => _posLkw3Top;
             set
             {
                 _posLkw3Top = value;
@@ -598,7 +553,7 @@
 
         public double PosLkw4Left
         {
-            get => _posLkw4Left; 
+            get => _posLkw4Left;
             set
             {
                 _posLkw4Left = value;
@@ -610,7 +565,7 @@
 
         public double PosLkw4Top
         {
-            get => _posLkw4Top; 
+            get => _posLkw4Top;
             set
             {
                 _posLkw4Top = value;
@@ -632,7 +587,7 @@
 
         public double PosLkw5Left
         {
-            get => _posLkw5Left; 
+            get => _posLkw5Left;
             set
             {
                 _posLkw5Left = value;
@@ -644,7 +599,7 @@
 
         public double PosLkw5Top
         {
-            get => _posLkw5Top; 
+            get => _posLkw5Top;
             set
             {
                 _posLkw5Top = value;
@@ -654,14 +609,11 @@
 
         #endregion PositionLkw5
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

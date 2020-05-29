@@ -149,7 +149,7 @@
 
         public double ImageTop1
         {
-            get => _imageTop1; 
+            get => _imageTop1;
             set
             {
                 _imageTop1 = value;
@@ -161,7 +161,7 @@
 
         public double ImageLeft1
         {
-            get => _imageLeft1; 
+            get => _imageLeft1;
             set
             {
                 _imageLeft1 = value;
@@ -183,7 +183,7 @@
 
         public double ImageTop2
         {
-            get => _imageTop2; 
+            get => _imageTop2;
             set
             {
                 _imageTop2 = value;
@@ -195,7 +195,7 @@
 
         public double ImageLeft2
         {
-            get => _imageLeft2; 
+            get => _imageLeft2;
             set
             {
                 _imageLeft2 = value;
@@ -217,7 +217,7 @@
 
         public double ImageTop3
         {
-            get => _imageTop3; 
+            get => _imageTop3;
             set
             {
                 _imageTop3 = value;
@@ -229,7 +229,7 @@
 
         public double ImageLeft3
         {
-            get => _imageLeft3; 
+            get => _imageLeft3;
             set
             {
                 _imageLeft3 = value;
@@ -251,7 +251,7 @@
 
         public double ImageTop4
         {
-            get => _imageTop4; 
+            get => _imageTop4;
             set
             {
                 _imageTop4 = value;
@@ -263,7 +263,7 @@
 
         public double ImageLeft4
         {
-            get => _imageLeft4; 
+            get => _imageLeft4;
             set
             {
                 _imageLeft4 = value;
@@ -275,16 +275,13 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) { if (val) ColorP1 = "Red"; else ColorP1 = "White"; }
 
         private string _colorP1;
 
         public string ColorP1
         {
-            get => _colorP1; 
+            get => _colorP1;
             set
             {
                 _colorP1 = value;
@@ -296,16 +293,13 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray";
-        }
+        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray"; }
 
         private string _colorQ1;
 
         public string ColorQ1
         {
-            get => _colorQ1; 
+            get => _colorQ1;
             set
             {
                 _colorQ1 = value;
@@ -317,16 +311,13 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val)
-        {
-            if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral";
-        }
+        public void FarbeRectangleZuleitung(bool val) { if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral"; }
 
         private string _colorRectangleZuleitung;
 
         public string ColorRectangleZuleitung
         {
-            get => _colorRectangleZuleitung; 
+            get => _colorRectangleZuleitung;
             set
             {
                 _colorRectangleZuleitung = value;
@@ -356,7 +347,7 @@
 
         public string ClickModeBtnS1
         {
-            get => _clickModeBtnS1; 
+            get => _clickModeBtnS1;
             set
             {
                 _clickModeBtnS1 = value;
@@ -386,7 +377,7 @@
 
         public string ClickModeBtnS2
         {
-            get => _clickModeBtnS2; 
+            get => _clickModeBtnS2;
             set
             {
                 _clickModeBtnS2 = value;
@@ -416,7 +407,7 @@
 
         public string ClickModeBtnQ1
         {
-            get => _clickModeBtnQ1; 
+            get => _clickModeBtnQ1;
             set
             {
                 _clickModeBtnQ1 = value;
@@ -476,7 +467,7 @@
 
         public string ClickModeBtnK2
         {
-            get => _clickModeBtnK2; 
+            get => _clickModeBtnK2;
             set
             {
                 _clickModeBtnK2 = value;
@@ -506,7 +497,7 @@
 
         public string Visibility_K1_Ein
         {
-            get => _visibility_K1_Ein; 
+            get => _visibility_K1_Ein;
             set
             {
                 _visibility_K1_Ein = value;
@@ -518,7 +509,7 @@
 
         public string Visibility_K1_Aus
         {
-            get => _visibility_K1_Aus; 
+            get => _visibility_K1_Aus;
             set
             {
                 _visibility_K1_Aus = value;
@@ -548,7 +539,7 @@
 
         public string Visibility_K2_Ein
         {
-            get => _visibility_K2_Ein; 
+            get => _visibility_K2_Ein;
             set
             {
                 _visibility_K2_Ein = value;
@@ -560,7 +551,7 @@
 
         public string Visibility_K2_Aus
         {
-            get => _visibility_K2_Aus; 
+            get => _visibility_K2_Aus;
             set
             {
                 _visibility_K2_Aus = value;
@@ -581,7 +572,7 @@
 
         public string VisibilityRectangleAbleitung
         {
-            get => _visibilityRectangleAbleitung; 
+            get => _visibilityRectangleAbleitung;
             set
             {
                 _visibilityRectangleAbleitung = value;
@@ -602,7 +593,7 @@
 
         public string VisibilityImage1
         {
-            get => _visibilityImage1; 
+            get => _visibilityImage1;
             set
             {
                 _visibilityImage1 = value;
@@ -623,7 +614,7 @@
 
         public string VisibilityImage2
         {
-            get => _visibilityImage2; 
+            get => _visibilityImage2;
             set
             {
                 _visibilityImage2 = value;
@@ -644,7 +635,7 @@
 
         public string VisibilityImage3
         {
-            get => _visibilityImage3; 
+            get => _visibilityImage3;
             set
             {
                 _visibilityImage3 = value;
@@ -665,7 +656,7 @@
 
         public string VisibilityImage4
         {
-            get => _visibilityImage4; 
+            get => _visibilityImage4;
             set
             {
                 _visibilityImage4 = value;
@@ -695,7 +686,7 @@
 
         public string VisibilityB1Ein
         {
-            get => _visibilityB1Ein; 
+            get => _visibilityB1Ein;
             set
             {
                 _visibilityB1Ein = value;
@@ -707,7 +698,7 @@
 
         public string VisibilityB1Aus
         {
-            get => _visibilityB1Aus; 
+            get => _visibilityB1Aus;
             set
             {
                 _visibilityB1Aus = value;
@@ -737,7 +728,7 @@
 
         public string VisibilityB2Ein
         {
-            get => _visibilityB2Ein; 
+            get => _visibilityB2Ein;
             set
             {
                 _visibilityB2Ein = value;
@@ -749,7 +740,7 @@
 
         public string VisibilityB2Aus
         {
-            get => _visibilityB2Aus; 
+            get => _visibilityB2Aus;
             set
             {
                 _visibilityB2Aus = value;
@@ -770,7 +761,7 @@
 
         public Thickness Margin1
         {
-            get => _margin1; 
+            get => _margin1;
             set
             {
                 _margin1 = value;
@@ -780,14 +771,11 @@
 
         #endregion Margin1
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }

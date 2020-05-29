@@ -86,7 +86,7 @@
 
         public string ReiseStart
         {
-            get => _reiseStart; 
+            get => _reiseStart;
             set
             {
                 var v = value.Split(':');
@@ -103,7 +103,7 @@
 
         public string ReiseZiel
         {
-            get => _reiseZiel; 
+            get => _reiseZiel;
             set
             {
                 var v = value.Split(':');
@@ -116,16 +116,13 @@
 
         #region FarbeAlleLampen
 
-        public void FarbeAlleLampen(int lampe, bool val)
-        {
-            if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White";
-        }
+        public void FarbeAlleLampen(int lampe, bool val) { if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White"; }
 
         private ObservableCollection<string> _colorLampe = new ObservableCollection<string>();
 
         public ObservableCollection<string> ColorLampe
         {
-            get => _colorLampe; 
+            get => _colorLampe;
             set
             {
                 _colorLampe = value;
@@ -155,7 +152,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get => _clickModeBtn; 
+            get => _clickModeBtn;
             set
             {
                 _clickModeBtn = value;
@@ -177,14 +174,11 @@
 
         #endregion BtnBewegungsmelder
 
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
     }
