@@ -9,7 +9,7 @@
         private readonly Model.Paternosterlager paternosterlager;
         private readonly MainWindow mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa)
+        public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa, double anzahlKisten)
         {
             mainWindow = mw;
             paternosterlager = pa;
@@ -32,7 +32,7 @@
             SpsColor = "LightBlue";
 
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
-            for (var i = 0; i < 20; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i));
+            for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
 
             System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
         }

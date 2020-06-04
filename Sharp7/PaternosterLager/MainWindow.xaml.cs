@@ -10,13 +10,15 @@ namespace PaternosterLager
         public S7_1200 S7_1200 { get; set; }
         public bool FensterAktiv { get; set; }
 
+        public const double AnzahlKisten = 16;
+
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
             FensterAktiv = true;
-            viewModel = new ViewModel.ViewModel(this);
+            viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
             datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();

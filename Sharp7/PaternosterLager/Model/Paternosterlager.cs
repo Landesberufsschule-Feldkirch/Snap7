@@ -21,25 +21,26 @@ namespace PaternosterLager.Model
         public int IstPos { get; set; }
         public int SollPos { get; set; }
         public double Position { get; set; }
-
         public double GesamtLaenge { get; set; }
 
         private readonly MainWindow mainWindow;
 
-        public Paternosterlager(MainWindow mw)
+       
+
+        public Paternosterlager(MainWindow mw, double anzahlKisten)
         {
             mainWindow = mw;
-            System.Threading.Tasks.Task.Run(() => PaternosterLagerTask());
+            System.Threading.Tasks.Task.Run(() => PaternosterLagerTask(anzahlKisten));
         }
 
-        private void PaternosterLagerTask()
+        private void PaternosterLagerTask(double anzahlKisten)
         {
             const int bereichInitiator = 10;
             const double geschwindigkeit = 1;
 
             while (true)
             {
-                int abstandRegale = Convert.ToInt32(GesamtLaenge / 20);
+                int abstandRegale = Convert.ToInt32(GesamtLaenge / anzahlKisten);
                 int pos = Convert.ToInt32(Position);
 
                 if (mainWindow.DebugWindowAktiv)

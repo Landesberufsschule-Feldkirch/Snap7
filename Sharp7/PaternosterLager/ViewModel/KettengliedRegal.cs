@@ -15,14 +15,14 @@
         private const double hoehelagerkiste = 40;
         private const double breitelagerkisted = 80;
 
-        private const double breiteKettenglied = 10;
-        private const double durchmesserBolzen = 6;
+        private const double breiteKettenglied = 14;
+        private const double durchmesserBolzen = 8;
 
-        public KettengliedRegal(int id)
+        public KettengliedRegal(int id, double anzahlKisten)
         {
             this.id = id;
 
-            var abstandLagerkisten = Model.PositionBestimmen.GetGesamtLaenge(durchmesserBolzen) / 20;
+            var abstandLagerkisten = Model.PositionBestimmen.GetGesamtLaenge(durchmesserBolzen) / anzahlKisten;
             hoeheKettenglied = abstandLagerkisten / 3;
 
             position = id * abstandLagerkisten;

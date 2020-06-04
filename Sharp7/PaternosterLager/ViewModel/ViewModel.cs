@@ -8,10 +8,10 @@ namespace PaternosterLager.ViewModel
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly PaternosterLager.Model.Paternosterlager paternosterlager;
 
-        public ViewModel(MainWindow mainWindow)
+        public ViewModel(MainWindow mainWindow, double anzahlKisten)
         {
-            paternosterlager = new Model.Paternosterlager(mainWindow);
-            ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager);
+            paternosterlager = new Model.Paternosterlager(mainWindow, anzahlKisten);
+            ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager, anzahlKisten);
         }
 
         public Model.Paternosterlager Paternosterlager { get { return paternosterlager; } }
