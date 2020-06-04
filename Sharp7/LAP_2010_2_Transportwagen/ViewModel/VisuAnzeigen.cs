@@ -32,6 +32,7 @@
             VisibilityB2Ein = "Visible";
             VisibilityB2Aus = "Hidden";
 
+            VisibilityFuellen = "Hidden";
             VisibilityKurzschluss = "Hidden";
 
             PositionRadLinks = 0;
@@ -43,6 +44,8 @@
 
         private void VisuAnzeigenTask()
         {
+            const double AbstandRadWagen = 10;
+
             while (true)
             {
                 FarbeF1(transportwagen.F1);
@@ -55,9 +58,11 @@
                 SichtbarkeitB2(transportwagen.B2);
 
                 if (transportwagen.Q1 && transportwagen.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (transportwagen.Fuellen) VisibilityFuellen = "Visible"; else VisibilityFuellen = "Hidden";
 
-                PositionRadLinks = transportwagen.Position;
-                PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts;
+
+                PositionRadLinks = transportwagen.Position + AbstandRadWagen;
+                PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts + AbstandRadWagen;
                 PositionWagenkasten = transportwagen.Position;
 
                 if (mainWindow.S7_1200 != null)
@@ -412,6 +417,24 @@
         }
 
         #endregion VisibilityKurzschluss
+
+        #region VisibilityFuellen
+
+        private string _visibilityFuellen;
+
+        public string VisibilityFuellen
+        {
+            get => _visibilityFuellen;
+            set
+            {
+                _visibilityFuellen = value;
+                OnPropertyChanged(nameof(VisibilityFuellen));
+            }
+        }
+
+        #endregion VisibilityFuellen
+
+
 
         #region PositionRadLinks
 

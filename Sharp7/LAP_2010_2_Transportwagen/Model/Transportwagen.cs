@@ -15,10 +15,13 @@ namespace LAP_2010_2_Transportwagen.Model
         public bool B2 { get; set; }    // Endschalter Rechts
         public double Position { get; set; }
         public double AbstandRadRechts { get; set; }
+        public bool Fuellen { get; internal set; }
 
         private const double geschwindigkeit = 1;
         private const double randLinks = 30;
         private const double randRechts = 430;
+        private const double maximaleFuellzeit = 700; // Zykluszeit ist 10ms --> 7"
+        private double laufzeitFuellen = 0;
 
         public Transportwagen()
         {
@@ -35,6 +38,10 @@ namespace LAP_2010_2_Transportwagen.Model
         {
             while (true)
             {
+                if (B1) laufzeitFuellen = 0;
+                if (B2 && laufzeitFuellen <= maximaleFuellzeit) laufzeitFuellen++;
+                if (laufzeitFuellen > 1 && laufzeitFuellen < maximaleFuellzeit) Fuellen = true; else Fuellen = false;
+
                 if (Q1) Position -= geschwindigkeit;
                 if (Q2) Position += geschwindigkeit;
 
