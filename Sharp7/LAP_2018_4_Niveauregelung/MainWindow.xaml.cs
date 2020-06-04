@@ -22,6 +22,9 @@ namespace LAP_2018_4_Niveauregelung
             DataContext = viewModel;
 
             S7_1200 = new S7_1200(1, 1, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+
+            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
+            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

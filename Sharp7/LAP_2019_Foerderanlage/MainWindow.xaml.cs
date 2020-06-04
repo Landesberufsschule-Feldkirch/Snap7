@@ -24,6 +24,9 @@ namespace LAP_2019_Foerderanlage
             DataContext = viewModel;
 
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+
+            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
+            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

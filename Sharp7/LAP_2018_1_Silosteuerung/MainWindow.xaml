@@ -71,7 +71,7 @@
 
         <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-        <Button Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual" />
+        <Button x:Name="btnDebugWindow" Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual" />
 
         <Image  x:Name="imgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
                 gif:ImageBehavior.RepeatBehavior="Forever"
