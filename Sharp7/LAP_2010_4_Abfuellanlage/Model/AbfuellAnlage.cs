@@ -69,18 +69,15 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 if (campbellSoup.ID != dose.ID)
                 {
                     var (hx, hy) = dose.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht)
-                    {
-                        stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly);
-                    }
+                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
                 }
             }
 
             return stop;
         }
 
-        internal void Nachfuellen()=> Pegel = 1;
-        
+        internal void Nachfuellen() => Pegel = 1;
+
         internal void AllesReset()
         {
             aktuelleDose = 0;

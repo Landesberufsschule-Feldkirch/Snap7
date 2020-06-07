@@ -78,14 +78,7 @@
         internal void TasterLkw4() => alleLkw[3].Losfahren();
         internal void TasterLkw5() => alleLkw[4].Losfahren();
 
-        internal void TasterLinksParken()
-        {
-            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt;
-        }
-
-        internal void TasterRechtsParken()
-        {
-            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt;
-        }
+        internal void TasterLinksParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt; }
+        internal void TasterRechtsParken() { foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt; }
     }
 }

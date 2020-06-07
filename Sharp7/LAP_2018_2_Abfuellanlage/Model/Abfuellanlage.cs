@@ -75,25 +75,15 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 if (bierflasche.ID != flasche.ID)
                 {
                     var (hx, hy) = flasche.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht)
-                    {
-                        stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly);
-                    }
+                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
                 }
             }
 
             return stop;
         }
 
-        internal void TasterNachfuellen()
-        {
-            Pegel = 1;
-        }
-
-        internal void TasterF1()
-        {
-            if (F1) F1 = false; else F1 = true;
-        }
+        internal void TasterNachfuellen() => Pegel = 1;
+        internal void TasterF1() { if (F1) F1 = false; else F1 = true; }
 
         internal void AllesReset()
         {

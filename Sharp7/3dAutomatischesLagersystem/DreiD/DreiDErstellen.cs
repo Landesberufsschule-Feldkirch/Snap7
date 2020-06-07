@@ -46,10 +46,12 @@ namespace AutomatischesLagersystem.DreiD
             {
                 for (var y = 0; y < 2; y++)
                 {
-                    var querVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/Querverstrebung.STL", (Color)ColorConverter.ConvertFromString("#FF808080")) };
+                    //var querVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/Querverstrebung.STL", (Color)ColorConverter.ConvertFromString("#FF808080")) };
+                    var querVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/QuerverstrebungRohre.STL", (Color)ColorConverter.ConvertFromString("#FF808080")) };
                     var verschiebenUndDrehen = new Transform3DGroup();
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + 1000 * x, 50 + y * 4000, 550));
+                    verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 270)));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1040 + 1000 * x, 50 + y * 4000, 590));
                     querVerstrebung.Transform = verschiebenUndDrehen;
 
                     mainWindow.viewPort3d.Children.Add(querVerstrebung);

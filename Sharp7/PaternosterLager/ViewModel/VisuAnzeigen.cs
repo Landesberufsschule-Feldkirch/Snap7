@@ -53,10 +53,7 @@
                 {
                     mainWindow.Dispatcher.Invoke(() =>
                                {
-                                   if (mainWindow.FensterAktiv)
-                                   {
-                                       mainWindow.ZeichenFlaeche.Children.Clear();
-                                   }
+                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();                                   
                                    foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow, paternosterlager.Position);
                                });
                 }

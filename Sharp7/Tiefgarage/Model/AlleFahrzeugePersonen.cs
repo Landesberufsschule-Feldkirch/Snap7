@@ -52,16 +52,8 @@
             }
         }
 
-        internal void DrinnenParken()
-        {
-            foreach (var fp in AllePkwPersonen) fp.DrinnenParken();
-        }
-
-        internal void DraussenParken()
-        {
-            foreach (var fp in AllePkwPersonen) fp.DraussenParken();
-        }
-
+        internal void DrinnenParken() { foreach (var fp in AllePkwPersonen) fp.DrinnenParken(); }
+        internal void DraussenParken() { foreach (var fp in AllePkwPersonen) fp.DraussenParken(); }
         internal void Auto1() => AllePkwPersonen[0].Losfahren();
         internal void Auto2() => AllePkwPersonen[1].Losfahren();
         internal void Auto3() => AllePkwPersonen[2].Losfahren();
