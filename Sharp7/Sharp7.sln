@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehälterSteuerung", "BehälterSteuerung\BehälterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehaelterSteuerung", "BehaelterSteuerung\BehaelterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
 EndProject
