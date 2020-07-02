@@ -1,4 +1,4 @@
-﻿using PaternosterLager.Commands;
+﻿using ElektronischesZahlenschloss.Commands;
 using System.Windows.Input;
 
 namespace ElektronischesZahlenschloss.ViewModel
@@ -6,33 +6,15 @@ namespace ElektronischesZahlenschloss.ViewModel
     public class ViewModel
     {
         public VisuAnzeigen ViAnzeige { get; set; }
-        public readonly PaternosterLager.Model.Paternosterlager paternosterlager;
+        public readonly ElektronischesZahlenschloss.Model.Zahlenschloss zahlenschloss;
 
-        public ViewModel(MainWindow mainWindow, double anzahlKisten)
+        public ViewModel(MainWindow mainWindow)
         {
-            paternosterlager = new Model.Paternosterlager(mainWindow, anzahlKisten);
-            ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager, anzahlKisten);
+            zahlenschloss = new Model.Zahlenschloss(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, zahlenschloss);
         }
 
-        public Model.Paternosterlager Paternosterlager { get { return paternosterlager; } }
-
-        #region BtnReset
-
-        private ICommand _btnReset;
-
-        public ICommand BtnReset
-        {
-            get
-            {
-                if (_btnReset == null)
-                {
-                    _btnReset = new RelayCommand(p => paternosterlager.AllesReset(), p => true);
-                }
-                return _btnReset;
-            }
-        }
-
-        #endregion BtnReset
+        public Model.Zahlenschloss Zahlenschloss{ get { return zahlenschloss; } }
 
         #region BtnBuchstabe
 
@@ -51,41 +33,6 @@ namespace ElektronischesZahlenschloss.ViewModel
         }
 
         #endregion BtnBuchstabe
-
-        #region BtnAuf
-
-        private ICommand _btnAuf;
-
-        public ICommand BtnAuf
-        {
-            get
-            {
-                if (_btnAuf == null)
-                {
-                    _btnAuf = new RelayCommand(p => ViAnzeige.TasterAuf(), p => true);
-                }
-                return _btnAuf;
-            }
-        }
-
-        #endregion BtnAuf
-
-        #region BtnAb
-
-        private ICommand _btnAb;
-
-        public ICommand BtnAb
-        {
-            get
-            {
-                if (_btnAb == null)
-                {
-                    _btnAb = new RelayCommand(p => ViAnzeige.TasterAb(), p => true);
-                }
-                return _btnAb;
-            }
-        }
-
-        #endregion BtnAb
+              
     }
 }

@@ -1,13 +1,11 @@
-﻿using System.Windows;
+﻿using Kommunikation;
+using System.Windows;
 
 namespace ElektronischesZahlenschloss
 {
-
-
     public partial class MainWindow : Window
     {
-
-        public bool FensterAktiv { get; set; }
+        public S7_1200 S7_1200 { get; set; }
 
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
@@ -15,16 +13,12 @@ namespace ElektronischesZahlenschloss
 
         public MainWindow()
         {
-            FensterAktiv = true;
-            viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
-            datenRangieren = new DatenRangieren(this, viewModel);
+            viewModel = new ViewModel.ViewModel(this);
+            datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
             S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
-
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }
