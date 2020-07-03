@@ -6,7 +6,7 @@ namespace Heizungsregler
 {
     public class DatenRangieren
     {
-        private readonly ViewModel viewModel;
+        private readonly Heizungsregler.ViewModel.ViewModel viewModel;
         private readonly MainWindow mainWindow;
 
         private enum BitPosAusgang
@@ -20,7 +20,7 @@ namespace Heizungsregler
             S2      // Kraftwerk Stoppen
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel vm)
+        public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
         {
             mainWindow = mw;
             viewModel = vm;

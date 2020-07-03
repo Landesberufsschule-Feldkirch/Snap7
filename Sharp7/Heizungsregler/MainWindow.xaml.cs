@@ -11,11 +11,11 @@ namespace Heizungsregler
 
         private readonly DatenRangieren datenRangieren;
         private RealTimeGraphWindow realTimeGraphWindow;
-        private readonly ViewModel viewModel;
+        private readonly Heizungsregler.ViewModel.ViewModel viewModel;
 
         public MainWindow()
         {
-            viewModel = new ViewModel(this);
+            viewModel = new Heizungsregler.ViewModel.ViewModel(this);
 
             InitializeComponent();
 
