@@ -1,0 +1,121 @@
+﻿<Window x:Class="Heizungsregler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Heizungsregler"
+        mc:Ignorable="d"
+        Title="Heizungsregler" Height="1000" Width="1700" Closing="Window_Closing">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="V1.1 " />
+        <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+
+        <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
+
+        <Button Grid.Column="18" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        
+        <Button x:Name="GraphWindow"  Grid.Column="2" Grid.Row="24" Click="GraphWindow_Click">
+            <Image Source="Bilder/icon_graph.png" />
+        </Button>
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding ViAnzeige.GeneratorFrequenzString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding ViAnzeige.GeneratorLeistungString}" />
+        <TextBlock Grid.Column="11" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding ViAnzeige.GeneratorCosPhiString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="17" FontSize="16pt" Text="{Binding ViAnzeige.NetzFrequenzString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="18" FontSize="16pt" Text="{Binding ViAnzeige.NetzLeistungString}" />
+        <TextBlock  Grid.Column="16" Grid.ColumnSpan="3"    Grid.Row="19" FontSize="16pt" Text="{Binding ViAnzeige.NetzCosPhiString}" />
+
+        <Rectangle      Grid.Column="20" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
+        <TextBlock      Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
+    
+
+        <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=BtnSchalterStart}" />
+        <Button Content="Stoppen"  Grid.Column="24" Grid.ColumnSpan="2" Grid.Row="8" Background="Red"       Command="{Binding Path=BtnSchalterStop}" />
+
+        <Label Content="Netz"       Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="10" VerticalAlignment="Center" FontSize="16pt" />
+        <Label Content="Spannung"   Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="Frequenz"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="Leistung"   Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="cos φ"      Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="induktiv"   Grid.Column="25" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="kapazitiv"  Grid.Column="21" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzSpannungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzFrequenzSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzLeistungSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="0"   Maximum="180"    TickFrequency="1"   IsSnapToTickEnabled="True" Value="{Binding  ViAnzeige.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
+
+
+
+    </Grid>
+</Window>

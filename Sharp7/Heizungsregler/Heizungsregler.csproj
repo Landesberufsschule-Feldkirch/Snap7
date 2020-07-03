@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FC259A79-C919-464D-81A1-CF2071FE8FC5}</ProjectGuid>
+    <ProjectGuid>{1B015D84-5FCF-4170-943D-7E777BA416B0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ElektronischesZahlenschloss</RootNamespace>
-    <AssemblyName>ElektronischesZahlenschloss</AssemblyName>
+    <RootNamespace>Heizungsregler</RootNamespace>
+    <AssemblyName>Heizungsregler</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -61,9 +61,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Zahlenschloss.cs" />
+    <Compile Include="DatenRangieren.cs" />
+    <Compile Include="Model\Heizungsregler.cs" />
+    <Compile Include="ViewModel\Schreiber.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
+    <Page Include="GraphWindow\RealTimeGraphWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,11 +79,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="DatenRangieren.cs" />
+    <Compile Include="GraphWindow\RealTimeGraphWindow.xaml.cs">
+      <DependentUpon>RealTimeGraphWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GraphWindow\WpfGraphControl.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -97,6 +110,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Doku\RVP31_7.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -107,12 +121,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Snap7.ico" />
+    <Resource Include="Bilder\Snap7.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj">
+      <Project>{6b9774f7-960d-438e-ad81-c6b9be328d50}</Project>
+      <Name>RealTimeGraphX.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealTimeGraphX\RealTimeGraphX.csproj">
+      <Project>{6eb2b4c7-2489-433d-af1b-a7f80d22a2f8}</Project>
+      <Name>RealTimeGraphX</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
@@ -120,7 +142,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Snap7.ico" />
+    <Resource Include="Snap7.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\icon_graph.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
