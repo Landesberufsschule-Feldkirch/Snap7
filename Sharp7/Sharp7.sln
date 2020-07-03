@@ -61,6 +61,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektronischesZahlenschloss
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heizungsregler", "Heizungsregler\Heizungsregler.csproj", "{1B015D84-5FCF-4170-943D-7E777BA416B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydraulik", "Hydraulik\Hydraulik.csproj", "{68DF93C3-0963-42E2-A01D-F87FD2681348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydraulik.Tests", "Hydraulik.Tests\Hydraulik.Tests.csproj", "{56D7349D-6C7B-461F-82D7-E1AF8A822232}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +187,14 @@ Global
 		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D7349D-6C7B-461F-82D7-E1AF8A822232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D7349D-6C7B-461F-82D7-E1AF8A822232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D7349D-6C7B-461F-82D7-E1AF8A822232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D7349D-6C7B-461F-82D7-E1AF8A822232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
