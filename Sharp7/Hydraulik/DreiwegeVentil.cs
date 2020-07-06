@@ -12,17 +12,18 @@ namespace Hydraulik
         }
 
         private Richtung richtung;
-        private double position;
-        private readonly double posMin;
-        private readonly double posMax;
-        private readonly double geschwindigkeit;
+        private double positionProzent;
+        private readonly double posMinProzent;
+        private readonly double posMaxProzent;
+        private readonly double deltaMillisekunden;
+        private const int schrittweite = 10;
 
-        public DreiwegeVentil(double min, double max, double delta)
+        public DreiwegeVentil(double minPosProzent, double maxPosProzent, double laufzeitSekunden)
         {
-            position = 0;
-            posMin = min;
-            posMax = max;
-            geschwindigkeit = delta;
+            positionProzent = minPosProzent;
+            posMinProzent = minPosProzent;
+            posMaxProzent = maxPosProzent;
+            deltaMillisekunden = (posMaxProzent - posMinProzent) * laufzeitSekunden / 1000 * schrittweite;
 
             System.Threading.Tasks.Task.Run(() => DreiwegeVentilTask());
         }
@@ -31,17 +32,46 @@ namespace Hydraulik
         {
             while (true)
             {
-                if (richtung == Richtung.Oeffnen) position += geschwindigkeit;
-                if (richtung == Richtung.Schliessen) position -= geschwindigkeit;
+                switch (richtung)
+                {
+                    case Richtung.Oeffnen:
+                        positionProzent += deltaMillisekunden;
+                        break;
 
-                if (position > posMax) position = posMax;
-                if (position < posMin) position = posMin;
+                    case Richtung.Schliessen:
+                        positionProzent -= deltaMillisekunden;
+                        break;
+                }
 
-                Thread.Sleep(10);
+                LimitsTesten();
+
+                Thread.Sleep(schrittweite);
             }
         }
 
+        public void SetNeuePosition(Richtung ri, double dauer)
+        {
+            switch (ri)
+            {
+                case Richtung.Oeffnen:
+                    positionProzent += deltaMillisekunden * dauer;
+                    break;
+
+                case Richtung.Schliessen:
+                    positionProzent -= deltaMillisekunden * dauer;
+                    break;
+            }
+
+            LimitsTesten();
+        }
         public void SetRichtung(Richtung ri) => richtung = ri;
-        public double GetPosition() => position;
+
+        public double GetPosition() => positionProzent;
+
+        private void LimitsTesten()
+        {
+            if (positionProzent > posMaxProzent) positionProzent = posMaxProzent;
+            if (positionProzent < posMinProzent) positionProzent = posMinProzent;
+        }
     }
 }
