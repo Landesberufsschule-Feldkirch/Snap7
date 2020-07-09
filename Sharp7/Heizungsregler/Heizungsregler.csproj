@@ -63,6 +63,9 @@
     </ApplicationDefinition>
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\Heizungsregler.cs" />
+    <Compile Include="SetManual\SetManualWindow.xaml.cs">
+      <DependentUpon>SetManualWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Schreiber.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
@@ -87,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SetManual\SetManualWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
