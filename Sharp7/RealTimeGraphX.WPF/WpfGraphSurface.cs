@@ -286,8 +286,8 @@ namespace RealTimeGraphX.WPF
         /// <param name="transform">The transform.</param>
         public void SetTransform(GraphTransform transform)
         {
-            _g.TranslateTransform((float)transform.TranslateX, (float)transform.TranslateY);
-            _g.ScaleTransform((float)transform.ScaleX, (float)transform.ScaleY);
+            _g.TranslateTransform(transform.TranslateX, transform.TranslateY);
+            _g.ScaleTransform(transform.ScaleX, transform.ScaleY);
         }
 
         /// <summary>

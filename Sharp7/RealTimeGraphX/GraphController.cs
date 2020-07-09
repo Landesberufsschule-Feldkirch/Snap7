@@ -105,7 +105,7 @@ namespace RealTimeGraphX
         /// </summary>
         public IGraphSurface<TDataSeries> Surface
         {
-            get => _surface; 
+            get => _surface;
             set
             {
                 _surface = value;
@@ -298,10 +298,10 @@ namespace RealTimeGraphX
                                     VirtualMaximumX = GraphDataPointHelper.ComputeAbsolutePosition(EffectiveMinimumX, EffectiveMaximumX, zoom_rect_right_percentage);
 
                                     GraphTransform transform = new GraphTransform();
-                                    var scale_x = (float)(surface_size.Width / zoom_rect.Width);
-                                    var scale_y = (float)(surface_size.Height / zoom_rect.Height);
-                                    var translate_x = (float)-zoom_rect.Left * scale_x;
-                                    var translate_y = (float)-zoom_rect.Top * scale_y;
+                                    var scale_x = surface_size.Width / zoom_rect.Width;
+                                    var scale_y = surface_size.Height / zoom_rect.Height;
+                                    var translate_x = -zoom_rect.Left * scale_x;
+                                    var translate_y = -zoom_rect.Top * scale_y;
 
                                     transform = new GraphTransform();
                                     transform.TranslateX = translate_x;
@@ -324,12 +324,9 @@ namespace RealTimeGraphX
 
                                 for (int i = 0; i < to_draw.Count; i++)
                                 {
-                                    if (to_draw[i].Item2.Count() > 2)
+                                    if (to_draw[i].Item2.Count() > 2 && to_draw[i].Item1.IsVisible)
                                     {
-                                        if (to_draw[i].Item1.IsVisible)
-                                        {
-                                            Renderer.Draw(Surface, to_draw[i].Item1, to_draw[i].Item2, i, to_draw.Count);
-                                        }
+                                        Renderer.Draw(Surface, to_draw[i].Item1, to_draw[i].Item2, i, to_draw.Count);
                                     }
                                 }
 

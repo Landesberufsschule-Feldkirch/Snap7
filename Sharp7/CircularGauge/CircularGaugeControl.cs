@@ -956,35 +956,35 @@ namespace CircularGauge
 
             if (pointer != null)
             {
-                double db1 = 0;
-                Double oldcurr_realworldunit = 0;
-                Double newcurr_realworldunit = 0;
-                Double realworldunit = (ScaleSweepAngle / (MaxValue - MinValue));
+                double realworldunit = (ScaleSweepAngle / (MaxValue - MinValue));
                 //Resetting the old value to min value the very first time.
                 if (oldValue == 0 && !isInitialValueSet)
                 {
                     oldValue = MinValue;
                     isInitialValueSet = true;
                 }
+                double db1;
+                double oldcurr_realworldunit;
                 if (oldValue < 0)
                 {
                     db1 = MinValue + Math.Abs(oldValue);
-                    oldcurr_realworldunit = ((double)(Math.Abs(db1 * realworldunit)));
+                    oldcurr_realworldunit = Math.Abs(db1 * realworldunit);
                 }
                 else
                 {
                     db1 = Math.Abs(MinValue) + oldValue;
-                    oldcurr_realworldunit = ((double)(db1 * realworldunit));
+                    oldcurr_realworldunit = db1 * realworldunit;
                 }
+                double newcurr_realworldunit;
                 if (newValue < 0)
                 {
                     db1 = MinValue + Math.Abs(newValue);
-                    newcurr_realworldunit = ((double)(Math.Abs(db1 * realworldunit)));
+                    newcurr_realworldunit = Math.Abs(db1 * realworldunit);
                 }
                 else
                 {
                     db1 = Math.Abs(MinValue) + newValue;
-                    newcurr_realworldunit = ((double)(db1 * realworldunit));
+                    newcurr_realworldunit = db1 * realworldunit;
                 }
 
                 Double oldcurrentvalueAngle = (ScaleStartAngle + oldcurr_realworldunit);
@@ -1239,8 +1239,8 @@ namespace CircularGauge
         {
             Double angle_radian = (angle * Math.PI) / 180;
             //Radius-- is the Radius of the gauge
-            Double X = (Double)((Radius) + (radius) * Math.Cos(angle_radian));
-            Double Y = (Double)((Radius) + (radius) * Math.Sin(angle_radian));
+            double X = Radius + radius * Math.Cos(angle_radian);
+            double Y = Radius + radius * Math.Sin(angle_radian);
             Point p = new Point(X, Y);
             return p;
         }
@@ -1250,41 +1250,41 @@ namespace CircularGauge
         /// </summary>
         private void DrawRangeIndicator()
         {
-            Double realworldunit = (ScaleSweepAngle / (MaxValue - MinValue));
-            Double optimalStartAngle;
-            Double optimalEndAngle;
+            double realworldunit = (ScaleSweepAngle / (MaxValue - MinValue));
+            double optimalStartAngle;
+            double optimalEndAngle;
             double db;
 
             //Checking whether the  OptimalRangeStartvalue is -ve
             if (OptimalRangeStartValue < 0)
             {
                 db = MinValue + Math.Abs(OptimalRangeStartValue);
-                optimalStartAngle = ((double)(Math.Abs(db * realworldunit)));
+                optimalStartAngle = Math.Abs(db * realworldunit);
             }
             else
             {
                 db = Math.Abs(MinValue) + OptimalRangeStartValue;
-                optimalStartAngle = ((double)(db * realworldunit));
+                optimalStartAngle = db * realworldunit;
             }
 
             //Checking whether the  OptimalRangeEndvalue is -ve
             if (OptimalRangeEndValue < 0)
             {
                 db = MinValue + Math.Abs(OptimalRangeEndValue);
-                optimalEndAngle = ((double)(Math.Abs(db * realworldunit)));
+                optimalEndAngle = Math.Abs(db * realworldunit);
             }
             else
             {
                 db = Math.Abs(MinValue) + OptimalRangeEndValue;
-                optimalEndAngle = ((double)(db * realworldunit));
+                optimalEndAngle = db * realworldunit;
             }
             // calculating the angle for optimal Start value
 
-            Double optimalStartAngleFromStart = (ScaleStartAngle + optimalStartAngle);
+            double optimalStartAngleFromStart = (ScaleStartAngle + optimalStartAngle);
 
             // calculating the angle for optimal Start value
 
-            Double optimalEndAngleFromStart = (ScaleStartAngle + optimalEndAngle);
+            double optimalEndAngleFromStart = (ScaleStartAngle + optimalEndAngle);
 
             //Calculating the Radius of the two arc for segment
             arcradius1 = (RangeIndicatorRadius + RangeIndicatorThickness);

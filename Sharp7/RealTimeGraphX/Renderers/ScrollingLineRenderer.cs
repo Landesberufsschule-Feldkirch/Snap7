@@ -54,7 +54,7 @@ namespace RealTimeGraphX.Renderers
             for (int i = 0; i < dxList.Count; i++)
             {
                 float image_x = ConvertXValueToRendererValue(surface, dxList[i]);
-                float image_y = (float)Math.Min(ConvertYValueToRendererValue(surface, dyList[i]), surface.GetSize().Height - 2);
+                float image_y = Math.Min(ConvertYValueToRendererValue(surface, dyList[i]), surface.GetSize().Height - 2);
 
                 PointF point = new PointF(image_x, image_y);
                 points.Add(point);
