@@ -32,7 +32,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 new CampbellSoup(anzahlDosen++)
             };
 
-            System.Threading.Tasks.Task.Run(() => AbfuellAnlageTask());
+            System.Threading.Tasks.Task.Run(AbfuellAnlageTask);
         }
 
         private void AbfuellAnlageTask()

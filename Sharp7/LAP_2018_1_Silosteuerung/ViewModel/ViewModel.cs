@@ -5,10 +5,10 @@
         public VisuAnzeigen ViAnzeige { get; set; }
         public readonly Model.Foerderanlage foerderanlage;
 
-        public ViewModel(MainWindow mainWindow)
+        public ViewModel()
         {
-            foerderanlage = new Model.Foerderanlage(mainWindow);
-            ViAnzeige = new VisuAnzeigen(mainWindow, foerderanlage);
+            foerderanlage = new Model.Foerderanlage();
+            ViAnzeige = new VisuAnzeigen(foerderanlage);
         }
 
         public Model.Foerderanlage Foerderanlage { get { return foerderanlage; } }

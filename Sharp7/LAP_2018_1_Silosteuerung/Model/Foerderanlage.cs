@@ -23,17 +23,13 @@ namespace LAP_2018_1_Silosteuerung.Model
         public bool Manual_Q1 { get; set; }
         public bool Manual_Q2 { get; set; }
         public bool Manual_K1 { get; set; }
-
-        private readonly MainWindow mainWindow;
-
-        public Foerderanlage(MainWindow mw)
+ 
+        public Foerderanlage()
         {
-            mainWindow = mw;
-
             Wagen = new Wagen();
             Silo = new Silo();
 
-            System.Threading.Tasks.Task.Run(() => FoerderanlageTask());
+            System.Threading.Tasks.Task.Run(FoerderanlageTask);
         }
 
         private void FoerderanlageTask()

@@ -26,7 +26,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
             F1 = true;
             B1 = true;
 
-            System.Threading.Tasks.Task.Run(() => KompressoranlageTask());
+            System.Threading.Tasks.Task.Run(KompressoranlageTask);
         }
 
         private void KompressoranlageTask()
@@ -47,12 +47,12 @@ namespace LAP_2010_1_Kompressoranlage.Model
 
         internal void BtnF1()
         {
-            if (F1) F1 = false; else F1 = true;
+            F1 = !F1;
         }
 
         internal void BtnB1()
         {
-            if (B1) B1 = false; else B1 = true;
+            B1 = !B1;
         }
     }
 }

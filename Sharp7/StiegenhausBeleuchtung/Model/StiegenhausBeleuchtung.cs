@@ -53,7 +53,7 @@ namespace StiegenhausBeleuchtung.Model
                 { "Top 4.4",    (2, 4) }
             };
 
-            System.Threading.Tasks.Task.Run(() => StiegenhausBeleuchtungTask());
+            System.Threading.Tasks.Task.Run(StiegenhausBeleuchtungTask);
         }
 
         internal void ProblemLoesen(VisuAnzeigen viAnzeige)

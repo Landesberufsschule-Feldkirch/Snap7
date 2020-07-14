@@ -3,10 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Heizungsregler"
         mc:Ignorable="d"
+        xmlns:src="clr-namespace:Heizungsregler.Model"
         Title="Heizungsregler" Height="1000" Width="1700" Closing="Window_Closing">
     <Grid>
+        <Grid.Resources>
+            <src:EnumBooleanConverter  x:Key="enumBooleanConverter" />
+        </Grid.Resources>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="35" />
@@ -242,12 +246,18 @@
             </Rectangle.Fill>
         </Rectangle>
 
-
         <Rectangle      Grid.Column="40" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
-        <TextBlock      Grid.Column="41"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
+  
+        <TextBlock      Grid.Column="41"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Betriebsart</TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Tag}">Tag</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Nacht}">Nacht</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
+        </StackPanel>
 
-
-        <Button Content="Starten"  Grid.Column="41" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=BtnSchalterStart}" />
+       
+      
         <Button Content="Stoppen"  Grid.Column="44" Grid.ColumnSpan="2" Grid.Row="8" Background="Red"       Command="{Binding Path=BtnSchalterStop}" />
 
         <Label Content="Netz"       Grid.Column="41" Grid.ColumnSpan="4"    Grid.Row="10" VerticalAlignment="Center" FontSize="16pt" />

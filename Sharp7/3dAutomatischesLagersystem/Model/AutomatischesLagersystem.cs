@@ -6,7 +6,6 @@ namespace AutomatischesLagersystem.Model
     {
         readonly MainWindow mainWindow;
 
-
         public bool K1 { get; set; } // Regalbediengerät hinein
         public bool K2 { get; set; } // Regalbediengerät heraus
         public bool K3 { get; set; } // Regalbediengerät links
@@ -16,16 +15,15 @@ namespace AutomatischesLagersystem.Model
 
         private readonly double Geschwindigkeit = 0.0001; //0.001;
 
-        public KollisionRegalBestimmen kollisionRegal { get; set; }
-
+        public KollisionRegalBestimmen KollisionRegal { get; set; }
 
         public AutomatischesLagersystem(MainWindow mw)
         {
             mainWindow = mw;
 
-            kollisionRegal = new KollisionRegalBestimmen();
+            KollisionRegal = new KollisionRegalBestimmen();
 
-            System.Threading.Tasks.Task.Run(() => AutomatischesLagersystemTask());
+            System.Threading.Tasks.Task.Run(AutomatischesLagersystemTask);
         }
 
         private void AutomatischesLagersystemTask()
@@ -39,10 +37,13 @@ namespace AutomatischesLagersystem.Model
                 if (K5) mainWindow.RegalBedienGeraet.FahreZ(Geschwindigkeit);
                 if (K6) mainWindow.RegalBedienGeraet.FahreZ(-Geschwindigkeit);
 
-                if (mainWindow.BediengeraetStartpositionen[3] != null) kollisionRegal.SetNeuePositionSchlitten(
-     mainWindow.BediengeraetStartpositionen[3].GetX() + mainWindow.RegalBedienGeraet.GetXPosition(),
-     mainWindow.BediengeraetStartpositionen[3].GetY() + mainWindow.RegalBedienGeraet.GetYPosition(),
-     mainWindow.BediengeraetStartpositionen[3].GetZ() + mainWindow.RegalBedienGeraet.GetZPosition());
+                if (mainWindow.BediengeraetStartpositionen[3] != null)
+                {
+                    KollisionRegal.SetNeuePositionSchlitten(
+                         mainWindow.BediengeraetStartpositionen[3].GetX() + mainWindow.RegalBedienGeraet.GetXPosition(),
+                         mainWindow.BediengeraetStartpositionen[3].GetY() + mainWindow.RegalBedienGeraet.GetYPosition(),
+                         mainWindow.BediengeraetStartpositionen[3].GetZ() + mainWindow.RegalBedienGeraet.GetZPosition());
+                }
 
                 Thread.Sleep(10);
             }

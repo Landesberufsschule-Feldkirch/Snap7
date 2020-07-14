@@ -17,7 +17,7 @@ namespace LAP_2018_1_Silosteuerung
 
         public MainWindow()
         {
-            viewModel = new ViewModel.ViewModel(this);
+            viewModel = new ViewModel.ViewModel();
             datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();

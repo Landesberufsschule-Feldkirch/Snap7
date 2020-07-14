@@ -5,19 +5,18 @@
     using System.Threading;
     using System.Windows;
 
+    public static class IdEintraege
+    {
+        public const int System = 0;
+        public const int Bodenplatte = 1;
+        public const int Streben = 2;
+        public const int Regalbediengeraet = 3;
+        public const int Kisten = 4;
+        public const int AnzahlEintraege = 5;
+    };
+
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        public static class IdEintraege
-        {
-            public const int System = 0;
-            public const int Bodenplatte = 1;
-            public const int Streben = 2;
-            public const int Regalbediengeraet = 3;
-            public const int Kisten = 4;
-            public const int AnzahlEintraege = 5;
-        };
-
-
         private readonly Model.AutomatischesLagersystem automatischesLagersystem;
         private readonly MainWindow mainWindow;
 
@@ -61,7 +60,7 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         internal void AllesReset()
@@ -108,7 +107,7 @@
                 }
 
 
-                FarbeKollisionRegalMitSchlitten(automatischesLagersystem.kollisionRegal.GetKollisionRegalMitSchlitten());
+                FarbeKollisionRegalMitSchlitten(automatischesLagersystem.KollisionRegal.GetKollisionRegalMitSchlitten());
 
                 if (mainWindow.viewPort3d != null)
                 {
@@ -134,11 +133,11 @@
                                XPosition = (mainWindow.BediengeraetStartpositionen[3].GetX() + mainWindow.RegalBedienGeraet.GetXPosition()).ToString();
                                YPosition = (mainWindow.BediengeraetStartpositionen[3].GetY() + mainWindow.RegalBedienGeraet.GetYPosition()).ToString();
                                ZPosition = (mainWindow.BediengeraetStartpositionen[3].GetZ() + mainWindow.RegalBedienGeraet.GetZPosition()).ToString();
-
-
-
                            }
-                           else MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                           else
+                           {
+                               MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                           }
                        }
                    });
                 }
@@ -210,7 +209,7 @@
 
         public string VisibilityB1Ein
         {
-            get => _visibilityB1Ein; 
+            get => _visibilityB1Ein;
             set
             {
                 _visibilityB1Ein = value;
@@ -222,7 +221,7 @@
 
         public string VisibilityB1Aus
         {
-            get => _visibilityB1Aus; 
+            get => _visibilityB1Aus;
             set
             {
                 _visibilityB1Aus = value;
@@ -252,7 +251,7 @@
 
         public string VisibilityB2Ein
         {
-            get => _visibilityB2Ein; 
+            get => _visibilityB2Ein;
             set
             {
                 _visibilityB2Ein = value;
@@ -264,7 +263,7 @@
 
         public string VisibilityB2Aus
         {
-            get => _visibilityB2Aus; 
+            get => _visibilityB2Aus;
             set
             {
                 _visibilityB2Aus = value;
@@ -287,7 +286,7 @@
 
         public string ColorKollisionRegalMitSchlitten
         {
-            get => _colorKollisionRegalMitSchlitten; 
+            get => _colorKollisionRegalMitSchlitten;
             set
             {
                 _colorKollisionRegalMitSchlitten = value;
@@ -305,7 +304,7 @@
 
         public string VisibilityButtonsAktiv
         {
-            get => _visibilityButtonsAktiv; 
+            get => _visibilityButtonsAktiv;
             set
             {
                 _visibilityButtonsAktiv = value;
@@ -321,7 +320,7 @@
 
         public string VisibilitySlidersAktiv
         {
-            get => _visibilitySlidersAktiv; 
+            get => _visibilitySlidersAktiv;
             set
             {
                 _visibilitySlidersAktiv = value;
@@ -353,7 +352,7 @@
 
         public string ClickModeBtnK1
         {
-            get => _clickModeBtnK1; 
+            get => _clickModeBtnK1;
             set
             {
                 _clickModeBtnK1 = value;
@@ -383,7 +382,7 @@
 
         public string ClickModeBtnK2
         {
-            get => _clickModeBtnK2; 
+            get => _clickModeBtnK2;
             set
             {
                 _clickModeBtnK2 = value;
@@ -413,7 +412,7 @@
 
         public string ClickModeBtnK3
         {
-            get => _clickModeBtnK3; 
+            get => _clickModeBtnK3;
             set
             {
                 _clickModeBtnK3 = value;
@@ -443,7 +442,7 @@
 
         public string ClickModeBtnK4
         {
-            get => _clickModeBtnK4; 
+            get => _clickModeBtnK4;
             set
             {
                 _clickModeBtnK4 = value;
@@ -473,7 +472,7 @@
 
         public string ClickModeBtnK5
         {
-            get => _clickModeBtnK5; 
+            get => _clickModeBtnK5;
             set
             {
                 _clickModeBtnK5 = value;
@@ -503,7 +502,7 @@
 
         public string ClickModeBtnK6
         {
-            get => _clickModeBtnK6; 
+            get => _clickModeBtnK6;
             set
             {
                 _clickModeBtnK6 = value;
@@ -536,7 +535,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get => _clickModeBtn; 
+            get => _clickModeBtn;
             set
             {
                 _clickModeBtn = value;
@@ -553,7 +552,7 @@
 
         public string XPosition
         {
-            get => _xPosition; 
+            get => _xPosition;
             set
             {
                 _xPosition = value;
@@ -569,7 +568,7 @@
 
         public string YPosition
         {
-            get => _yPosition; 
+            get => _yPosition;
             set
             {
                 _yPosition = value;
@@ -585,7 +584,7 @@
 
         public string ZPosition
         {
-            get => _zPosition; 
+            get => _zPosition;
             set
             {
                 _zPosition = value;
@@ -602,7 +601,7 @@
 
         public string IstPosition
         {
-            get => _istPosition; 
+            get => _istPosition;
             set
             {
                 _istPosition = value;
@@ -618,7 +617,7 @@
 
         public string SollPosition
         {
-            get => _sollPosition; 
+            get => _sollPosition;
             set
             {
                 _sollPosition = value;
@@ -637,7 +636,7 @@
 
         public double XPosSlider
         {
-            get => _xSliderPosition; 
+            get => _xSliderPosition;
             set
             {
                 _xSliderPosition = value;
@@ -655,7 +654,7 @@
 
         public double YPosSlider
         {
-            get => _ySliderPosition; 
+            get => _ySliderPosition;
             set
             {
                 _ySliderPosition = value;
@@ -673,7 +672,7 @@
 
         public double ZPosSlider
         {
-            get => _zSliderPosition; 
+            get => _zSliderPosition;
             set
             {
                 _zSliderPosition = value;

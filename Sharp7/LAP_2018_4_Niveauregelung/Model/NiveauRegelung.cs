@@ -27,7 +27,7 @@ namespace LAP_2018_4_Niveauregelung.Model
             F2 = true;
             Pegel = 0.95;
 
-            System.Threading.Tasks.Task.Run(() => NiveauRegelungTask());
+            System.Threading.Tasks.Task.Run(NiveauRegelungTask);
         }
 
         private void NiveauRegelungTask()

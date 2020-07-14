@@ -50,7 +50,7 @@ namespace Kommunikation
 
         public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
         {
-            spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText(@"IpAdressen.json"));
+            spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
             this.anzahlByteDigInput = anzahlByteDigInput;
             this.anzahlByteDigOutput = anzahlByteDigOutput;
@@ -65,7 +65,7 @@ namespace Kommunikation
             Array.Clear(analogInput, 0, analogInput.Length);
             Array.Clear(analogOutput, 0, analogOutput.Length);
 
-            System.Threading.Tasks.Task.Run(() => SPS_Pingen_Task());
+            System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
 
         public string GetSpsStatus() => spsStatus;
@@ -149,7 +149,10 @@ namespace Kommunikation
                             Thread.Sleep(10);
                         }
                     }
-                    else ErrorAnzeigen(res.GetValueOrDefault());
+                    else
+                    {
+                        ErrorAnzeigen(res.GetValueOrDefault());
+                    }
                 }
                 else
                 {
@@ -165,7 +168,7 @@ namespace Kommunikation
         private string ErrorAnzeigen(int ResultError)
         {
             var ErrorText = client?.ErrorText(ResultError);
-            return ("Nr: " + ResultError + " Text: " + ErrorText);
+            return "Nr: " + ResultError + " Text: " + ErrorText;
         }
     }
 }

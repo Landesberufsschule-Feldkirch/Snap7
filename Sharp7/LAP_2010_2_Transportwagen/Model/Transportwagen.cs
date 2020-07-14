@@ -31,7 +31,7 @@ namespace LAP_2010_2_Transportwagen.Model
             F1 = true;
             S2 = true;
 
-            System.Threading.Tasks.Task.Run(() => TransportwagtenTask());
+            System.Threading.Tasks.Task.Run(TransportwagtenTask);
         }
 
         private void TransportwagtenTask()
@@ -40,7 +40,7 @@ namespace LAP_2010_2_Transportwagen.Model
             {
                 if (B1) laufzeitFuellen = 0;
                 if (B2 && laufzeitFuellen <= maximaleFuellzeit) laufzeitFuellen++;
-                if (laufzeitFuellen > 1 && laufzeitFuellen < maximaleFuellzeit) Fuellen = true; else Fuellen = false;
+                Fuellen = laufzeitFuellen > 1 && laufzeitFuellen < maximaleFuellzeit;
 
                 if (Q1) Position -= geschwindigkeit;
                 if (Q2) Position += geschwindigkeit;
@@ -55,14 +55,9 @@ namespace LAP_2010_2_Transportwagen.Model
             }
         }
 
-        internal void SetF1()
-        {
-            if (F1) F1 = false; else F1 = true;
-        }
+        internal void SetF1() => F1 = !F1;
 
-        internal void SetS2()
-        {
-            if (S2) S2 = false; else S2 = true;
-        }
+        internal void SetS2() => S2 = !S2;
+
     }
 }

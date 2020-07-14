@@ -48,7 +48,7 @@
             DirectionLkw4 = 1;
             DirectionLkw5 = 1;
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

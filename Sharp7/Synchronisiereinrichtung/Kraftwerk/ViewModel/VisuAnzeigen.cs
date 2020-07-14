@@ -30,7 +30,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             VisibilityVentilAus = "Visible";
             VisibilityVentilEin = "Hidden";
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

@@ -38,7 +38,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             F1 = true;
             Pegel = 0.4;
 
-            System.Threading.Tasks.Task.Run(() => AbfuellanlageTask());
+            System.Threading.Tasks.Task.Run(AbfuellanlageTask);
         }
 
         private void AbfuellanlageTask()

@@ -52,7 +52,7 @@
             Visibility_Ventil_Aus = "hidden";
 
             Margin1 = new Thickness(0, 30, 0, 0);
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

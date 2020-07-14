@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Heizungsregler.Model;
+using System;
 using System.ComponentModel;
 using System.Threading;
 
@@ -9,7 +10,7 @@ namespace Heizungsregler.ViewModel
         private readonly Heizungsregler.Model.Heizungsregler heizungsregler;
         private readonly MainWindow mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Heizungsregler.Model.Heizungsregler hr)
+        public VisuAnzeigen(MainWindow mw, Model.Heizungsregler hr)
         {
             mainWindow = mw;
             heizungsregler = hr;
@@ -17,17 +18,15 @@ namespace Heizungsregler.ViewModel
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-         
+            BetriebsartAuswahl = Betriebsarten.Aus;
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()
         {
             while (true)
-            {             
-
-
+            {
                 if (mainWindow.S7_1200 != null)
                 {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
@@ -65,6 +64,27 @@ namespace Heizungsregler.ViewModel
         }
 
         #endregion SPS Status und Farbe
+
+
+
+
+
+
+        #region BetriebsartAuswahl
+        private Betriebsarten _betriebsartAuswahl;
+        public Betriebsarten BetriebsartAuswahl
+        {
+            get => _betriebsartAuswahl;
+            set
+            {
+                _betriebsartAuswahl = value;
+                OnPropertyChanged(nameof(BetriebsartAuswahl));
+            }
+
+        }
+
+
+        #endregion
 
 
         #region iNotifyPeropertyChanged Members

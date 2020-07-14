@@ -25,7 +25,7 @@ namespace Hydraulik
             posMaxProzent = maxPosProzent;
             deltaMillisekunden = (posMaxProzent - posMinProzent) * laufzeitSekunden / 1000 * schrittweite;
 
-            System.Threading.Tasks.Task.Run(() => DreiwegeVentilTask());
+            System.Threading.Tasks.Task.Run(DreiwegeVentilTask);
         }
 
         private void DreiwegeVentilTask()

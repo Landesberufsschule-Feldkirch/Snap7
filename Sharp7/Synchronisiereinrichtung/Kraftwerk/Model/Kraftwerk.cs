@@ -75,7 +75,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         {
             FrequenzDifferenz = 5;
             kraftwerkStatemachine = new Statemachine(this);
-            System.Threading.Tasks.Task.Run(() => KraftwerkTask());
+            System.Threading.Tasks.Task.Run(KraftwerkTask);
         }
 
         public void KraftwerkTask()

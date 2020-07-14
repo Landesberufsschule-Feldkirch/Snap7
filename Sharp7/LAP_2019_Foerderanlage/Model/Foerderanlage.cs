@@ -42,7 +42,7 @@
             F1 = true;
             S2 = true;
 
-            System.Threading.Tasks.Task.Run(() => FoerderanlageTask());
+            System.Threading.Tasks.Task.Run(FoerderanlageTask);
         }
 
         private void FoerderanlageTask()

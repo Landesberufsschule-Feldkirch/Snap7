@@ -51,7 +51,7 @@
             Width4DownLeft = 1;
             Width5DownLeft = 1;
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         internal void Buchstabe(object buchstabe)

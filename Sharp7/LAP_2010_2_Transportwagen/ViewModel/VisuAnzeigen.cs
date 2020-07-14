@@ -39,7 +39,7 @@
             PositionRadRechts = 0;
             PositionWagenkasten = 0;
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

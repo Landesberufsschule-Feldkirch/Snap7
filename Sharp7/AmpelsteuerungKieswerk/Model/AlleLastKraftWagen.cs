@@ -22,7 +22,7 @@
             alleLkw.Add(new LastKraftWagen(anzahlLkw++));
             alleLkw.Add(new LastKraftWagen(anzahlLkw++));
 
-            System.Threading.Tasks.Task.Run(() => AlleLastKraftWagenTask());
+            System.Threading.Tasks.Task.Run(AlleLastKraftWagenTask);
         }
 
         public Punkt GetPositionLKW(int index) => alleLkw[index].Position.Punkt;

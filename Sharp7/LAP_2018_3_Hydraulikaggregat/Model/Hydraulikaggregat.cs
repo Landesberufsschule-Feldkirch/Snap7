@@ -39,7 +39,7 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             Stopwatch = new Stopwatch();
             Stopwatch.Restart();
 
-            System.Threading.Tasks.Task.Run(() => HydraulikaggregatTask());
+            System.Threading.Tasks.Task.Run(HydraulikaggregatTask);
         }
 
         private void HydraulikaggregatTask()

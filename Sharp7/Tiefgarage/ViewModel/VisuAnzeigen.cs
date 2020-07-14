@@ -50,7 +50,7 @@
             AnzahlAutos = "Autos in der Tiefgarage: 123";
             AnzahlPersonen = "Personen in der Tiefgarage: 123";
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

@@ -28,7 +28,7 @@
                 new FahrzeugPerson(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++)
             };
 
-            System.Threading.Tasks.Task.Run(() => AlleFahrzeugePersonenTask());
+            System.Threading.Tasks.Task.Run(AlleFahrzeugePersonenTask);
         }
 
         private void AlleFahrzeugePersonenTask()

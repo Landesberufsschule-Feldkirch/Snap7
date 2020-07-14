@@ -32,7 +32,7 @@ namespace WordClock.Model
             Minute = (byte)dateTime.Minute;
             Sekunde = (byte)dateTime.Second;
 
-            System.Threading.Tasks.Task.Run(() => ZeitenTask());
+            System.Threading.Tasks.Task.Run(ZeitenTask);
         }
 
         private void ZeitenTask()

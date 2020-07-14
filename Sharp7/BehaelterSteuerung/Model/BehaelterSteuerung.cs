@@ -27,7 +27,7 @@
                 new Behaelter(0.8)
             };
 
-            System.Threading.Tasks.Task.Run(() => AlleBehaelterTask());
+            System.Threading.Tasks.Task.Run(AlleBehaelterTask);
         }
 
         private void AlleBehaelterTask()

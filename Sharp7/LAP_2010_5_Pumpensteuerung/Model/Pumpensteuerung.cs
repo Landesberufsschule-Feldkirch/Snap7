@@ -21,13 +21,13 @@ namespace LAP_2010_5_Pumpensteuerung.Model
             F1 = true;
             Pegel = 0.95;
 
-            System.Threading.Tasks.Task.Run(() => PumpensteuerungTask());
+            System.Threading.Tasks.Task.Run(PumpensteuerungTask);
         }
 
         private void PumpensteuerungTask()
         {
-            double FuellGeschwindigkeit = 0.002;
-            double LeerGeschwindigkeit = 0.001;
+            const double FuellGeschwindigkeit = 0.002;
+            const double LeerGeschwindigkeit = 0.001;
 
             while (true)
             {

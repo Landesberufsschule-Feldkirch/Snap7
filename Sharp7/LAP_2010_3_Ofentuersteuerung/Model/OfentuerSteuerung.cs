@@ -32,7 +32,7 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
             PositionOfentuere = zahnstangeLinks + abstandZahnstangeOfentuere;
             WinkelZahnrad = 0;
 
-            System.Threading.Tasks.Task.Run(() => OfentuerSteuerungTask());
+            System.Threading.Tasks.Task.Run(OfentuerSteuerungTask);
         }
 
         private void OfentuerSteuerungTask()

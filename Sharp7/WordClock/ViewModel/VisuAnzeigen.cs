@@ -22,7 +22,7 @@
             WinkelMinuten = 0;
             WinkelSekunden = 0;
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

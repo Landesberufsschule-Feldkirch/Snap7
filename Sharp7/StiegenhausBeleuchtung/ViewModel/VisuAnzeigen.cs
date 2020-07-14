@@ -24,7 +24,7 @@
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

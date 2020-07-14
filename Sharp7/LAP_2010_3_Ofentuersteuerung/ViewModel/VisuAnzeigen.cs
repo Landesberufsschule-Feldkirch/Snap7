@@ -41,7 +41,7 @@
             VisibilityB3Aus = "Hidden";
             VisibilityKurzschluss = "Hidden";
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

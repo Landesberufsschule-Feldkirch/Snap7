@@ -78,7 +78,7 @@
             Margin3 = new Thickness(0, 70, 0, 0);
             Margin4 = new Thickness(0, 90, 0, 0);
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()

@@ -34,7 +34,7 @@
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
 
-            System.Threading.Tasks.Task.Run(() => VisuAnzeigenTask());
+            System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
         private void VisuAnzeigenTask()
