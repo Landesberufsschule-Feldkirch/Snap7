@@ -38,6 +38,9 @@
     <ApplicationIcon>Bilder\Snap7.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CircularGauge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularGauge.1.0.0\lib\Net40-Client\CircularGauge.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -111,10 +114,6 @@
     <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CircularGauge\CircularGauge.csproj">
-      <Project>{6efd5895-177b-4bbb-aF12-29f4d53b3fbd}</Project>
-      <Name>CircularGauge</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
