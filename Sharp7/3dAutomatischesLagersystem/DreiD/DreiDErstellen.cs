@@ -10,7 +10,7 @@ namespace AutomatischesLagersystem.DreiD
     public class DreiDErstellen
     {
         private readonly MainWindow mainWindow;
-        readonly int[] abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
+        private readonly int[] abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
         public DreiDErstellen(MainWindow mw)
         {
             mainWindow = mw;
@@ -51,7 +51,7 @@ namespace AutomatischesLagersystem.DreiD
                     var verschiebenUndDrehen = new Transform3DGroup();
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 270)));
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1040 + 1000 * x, 50 + y * 4000, 590));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1040 + (1000 * x), 50 + (y * 4000), 590));
                     querVerstrebung.Transform = verschiebenUndDrehen;
 
                     mainWindow.viewPort3d.Children.Add(querVerstrebung);
@@ -65,7 +65,7 @@ namespace AutomatischesLagersystem.DreiD
                     var laengsVerstrebung = new ModelVisual3D { Content = Display3d("SolidWorks/Laengsverstrebung.STL", (Color)ColorConverter.ConvertFromString("#FF949494")) };
                     var verschiebenUndDrehen = new Transform3DGroup();
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 90)));
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + x * 1000, 0 + y * 4000, 2900));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + (1000 * x), 0 + (4000 * y), 2900));
                     laengsVerstrebung.Transform = verschiebenUndDrehen;
 
                     mainWindow.viewPort3d.Children.Add(laengsVerstrebung);
@@ -83,7 +83,7 @@ namespace AutomatischesLagersystem.DreiD
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), 180)));
                         verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), -90)));
-                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(200 + 1000 * x, 50 + 3000 * y, 600 + 500 * z));
+                        verschiebenUndDrehen.Children.Add(new TranslateTransform3D(200 + (1000 * x), 50 + (3000 * y), 600 + (500 * z)));
                         profilQuerstrebe.Transform = verschiebenUndDrehen;
 
                         mainWindow.viewPort3d.Children.Add(profilQuerstrebe);
@@ -129,7 +129,7 @@ namespace AutomatischesLagersystem.DreiD
                     for (var z = 0; z < 5; z++)
                     {
                         mainWindow.KistenAktuellePositionen[i] = new DreiDKisten();
-                        mainWindow.KistenStartPositionen[i] = new DreiDElemente(125 + 1000 * x, 200 + 2850 * y, 600 + 500 * z, 90, 0, 90);
+                        mainWindow.KistenStartPositionen[i] = new DreiDElemente(125 + (1000 * x), 200 + (2850 * y), 600 + (500 * z), 90, 0, 90);
                         i++;
                     }
                 }

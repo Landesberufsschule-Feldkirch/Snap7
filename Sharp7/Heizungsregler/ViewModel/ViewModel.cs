@@ -11,7 +11,7 @@
 
         public ViewModel(MainWindow mainWindow)
         {
-            heizungsregler = new Model.Heizungsregler();
+            heizungsregler = new Model.Heizungsregler(mainWindow);
             Schreiber = new Heizungsregler.ViewModel.Schreiber(heizungsregler);
             ViAnzeige = new VisuAnzeigen(mainWindow, heizungsregler);
         }

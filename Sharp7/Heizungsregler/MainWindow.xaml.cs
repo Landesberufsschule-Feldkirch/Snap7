@@ -31,7 +31,6 @@ namespace Heizungsregler
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
         }
 
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();

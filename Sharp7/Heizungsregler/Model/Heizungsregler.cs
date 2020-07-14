@@ -4,7 +4,6 @@ using System.Windows.Data;
 
 namespace Heizungsregler.Model
 {
-
     public class EnumBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -36,25 +35,23 @@ namespace Heizungsregler.Model
         Hand
     }
 
-
     public class Heizungsregler
     {
+        public bool HeizungsPumpe { get; set; }
 
+        public Betriebsarten Betriebsart { get; set; }
 
+        private readonly MainWindow mainWindow;
 
-
-
-
-        public Betriebsarten Betriebsar { get; set; }
-
-        public Heizungsregler()
+        public Heizungsregler(MainWindow mw)
         {
+            mainWindow = mw;
 
         }
 
         internal void Reset()
         {
-            throw new NotImplementedException();
+            HeizungsPumpe = !HeizungsPumpe;
         }
     }
 }

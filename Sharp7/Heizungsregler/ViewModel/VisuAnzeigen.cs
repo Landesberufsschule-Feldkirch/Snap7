@@ -1,5 +1,4 @@
 ﻿using Heizungsregler.Model;
-using System;
 using System.ComponentModel;
 using System.Threading;
 
@@ -18,6 +17,11 @@ namespace Heizungsregler.ViewModel
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
+            ColorPumpe = "White";
+
+            WitterungsTempMitEinheit = "0°C";
+            WitterungsTemperaturSlider = 20;
+
             BetriebsartAuswahl = Betriebsarten.Aus;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -33,6 +37,11 @@ namespace Heizungsregler.ViewModel
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 
+                WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString() + "°C";
+
+                Pumpenfarbe(heizungsregler.HeizungsPumpe);
+
+                
                 Thread.Sleep(10);
             }
         }
@@ -66,8 +75,53 @@ namespace Heizungsregler.ViewModel
         #endregion SPS Status und Farbe
 
 
+        #region ColorPumpe
+        public void Pumpenfarbe(bool status)
+        {
+            if (status) ColorPumpe = "LawnGreen"; else ColorPumpe = "White";
+        }
+        private string _colorPumpe;
+        public string ColorPumpe
+        {
+            get => _colorPumpe;
+            set
+            {
+                _colorPumpe = value;
+                OnPropertyChanged(nameof(ColorPumpe));
+            }
+        }
+        #endregion
 
 
+        #region WitterungsTemperaturSlider
+        public double SliderWitterungstemperatur() => WitterungsTemperaturSlider;
+
+        private double _witterungsTemperaturSlider;
+        public double WitterungsTemperaturSlider
+        {
+            get => _witterungsTemperaturSlider;
+            set
+            {
+                _witterungsTemperaturSlider = value;
+                OnPropertyChanged(nameof(WitterungsTemperaturSlider));
+            }
+        }
+
+        #endregion
+
+        #region WitterungsTempMitEinheit
+        private string _witterungsTempMitEinheit;
+        public string WitterungsTempMitEinheit
+        {
+            get => SliderWitterungstemperatur().ToString() + "°C";
+            set
+            {
+                _witterungsTempMitEinheit = value;
+                OnPropertyChanged(nameof(WitterungsTempMitEinheit));
+            }
+        }
+
+        #endregion
 
 
         #region BetriebsartAuswahl

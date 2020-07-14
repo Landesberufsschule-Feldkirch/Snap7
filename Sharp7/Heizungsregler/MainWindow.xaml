@@ -10,7 +10,7 @@
         <Grid.Resources>
             <src:EnumBooleanConverter  x:Key="enumBooleanConverter" />
         </Grid.Resources>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="35" />
@@ -130,6 +130,10 @@
         <Rectangle Grid.Column="3"  Grid.Row="7" Grid.RowSpan="20"     Fill="Gray" Margin="0,0,10,0"/>
         <Rectangle Grid.Column="34" Grid.Row="7" Grid.RowSpan="20"     Fill="Gray" Margin="10,0,0,0"/>
 
+        <Rectangle Grid.Column="36" Grid.Row="10" Fill="AliceBlue" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Label Grid.Column="36" Grid.Row="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="ϑ" FontSize="20pt" HorizontalAlignment="Center" />
+        <Label Grid.Column="36" Grid.Row="11" Grid.ColumnSpan="2" Content="{Binding ViAnzeige.WitterungsTempMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
+
         <Rectangle Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="20" Grid.RowSpan="5" Stroke="Black" StrokeThickness="2" >
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -168,7 +172,7 @@
 
         <Ellipse Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="White" Stroke="Black" StrokeThickness="2" Margin="0,28,0,7"/>
 
-        <Polygon Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="White" Stroke="Black" StrokeThickness="2">
+        <Polygon Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="{Binding ViAnzeige.ColorPumpe}" Stroke="Black" StrokeThickness="2">
             <Polygon.Points>
                 <Point X="15" Y="38" />
                 <Point X="68" Y="62" />
@@ -247,7 +251,7 @@
         </Rectangle>
 
         <Rectangle      Grid.Column="40" Grid.ColumnSpan="7"    Grid.Row="2" Grid.RowSpan="18" Fill="LightGray" />
-  
+
         <TextBlock      Grid.Column="41"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Betriebsart</TextBlock>
         <StackPanel Orientation="Vertical" Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
@@ -256,23 +260,10 @@
             <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
         </StackPanel>
 
-       
-      
-        <Button Content="Stoppen"  Grid.Column="44" Grid.ColumnSpan="2" Grid.Row="8" Background="Red"       Command="{Binding Path=BtnSchalterStop}" />
 
-        <Label Content="Netz"       Grid.Column="41" Grid.ColumnSpan="4"    Grid.Row="10" VerticalAlignment="Center" FontSize="16pt" />
-        <Label Content="Spannung"   Grid.Column="41" Grid.ColumnSpan="4"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="Frequenz"   Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="13" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="Leistung"   Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="15" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="cos φ"      Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="17" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="induktiv"   Grid.Column="45" Grid.ColumnSpan="7"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
-        <Label Content="kapazitiv"  Grid.Column="41" Grid.ColumnSpan="4"    Grid.Row="18" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="14pt" />
+        <Label Content="Witterungstemperatur"   Grid.Column="41" Grid.ColumnSpan="6"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt" />
 
-        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzSpannungSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="14" Minimum="0"   Maximum="100"  TickFrequency="1"    IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzFrequenzSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzLeistungSlider, Mode=TwoWay}" />
-        <Slider Grid.Column="40" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="0"   Maximum="180"    TickFrequency="1"   IsSnapToTickEnabled="True" Value="{Binding  ViAnzeige.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
-
+        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="-20"   Maximum="40" TickFrequency="1"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.WitterungsTemperaturSlider, Mode=TwoWay}" />
 
 
     </Grid>
