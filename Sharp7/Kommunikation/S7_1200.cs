@@ -3,6 +3,7 @@ using Sharp7;
 using System;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Text;
 using System.Threading;
 
 namespace Kommunikation
@@ -14,7 +15,8 @@ namespace Kommunikation
     {
         private enum Datenbausteine
         {
-            DigIn = 1,
+            VersionIn = 1,
+            DigIn,
             DigOut,
             AnIn,
             AnOut
@@ -32,11 +34,13 @@ namespace Kommunikation
         private readonly Action<byte[], byte[]> callbackInput;
         private readonly Action<byte[], byte[]> callbackOutput;
 
+        private readonly byte[] versionInput = new byte[1024];
         private readonly byte[] digInput = new byte[1024];
         private readonly byte[] digOutput = new byte[1024];
         private readonly byte[] analogInput = new byte[1024];
         private readonly byte[] analogOutput = new byte[1024];
 
+        private readonly int anzahlByteVersionInput;
         private readonly int anzahlByteDigInput;
         private readonly int anzahlByteDigOutput;
         private readonly int anzahlByteAnalogInput;
@@ -48,23 +52,26 @@ namespace Kommunikation
         private bool spsError;
         private readonly IpAdressen spsClient;
 
-        public S7_1200(int anzahlByteDigInput, int anzahlByteDigOutput, int anzahlByteAnalogInput, int anzahlByteAnalogOutput, Action<byte[], byte[]> callbackInput, Action<byte[], byte[]> callbackOutput)
+        public S7_1200(int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
             spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
-            this.anzahlByteDigInput = anzahlByteDigInput;
-            this.anzahlByteDigOutput = anzahlByteDigOutput;
-            this.anzahlByteAnalogInput = anzahlByteAnalogInput;
-            this.anzahlByteAnalogOutput = anzahlByteAnalogOutput;
+            anzahlByteVersionInput = anzByteVersionInput;
+            anzahlByteDigInput = anzByteDigInput;
+            anzahlByteDigOutput = anzByteDigOutput;
+            anzahlByteAnalogInput = anzByteAnalogInput;
+            anzahlByteAnalogOutput = anzByteAnalogOutput;
 
-            this.callbackInput = callbackInput;
-            this.callbackOutput = callbackOutput;
+            callbackInput = cbInput;
+            callbackOutput = cbOutput;
 
+            Array.Clear(versionInput, 0, versionInput.Length);
             Array.Clear(digInput, 0, digInput.Length);
             Array.Clear(digOutput, 0, digOutput.Length);
             Array.Clear(analogInput, 0, analogInput.Length);
             Array.Clear(analogOutput, 0, analogOutput.Length);
 
+            versionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
 
@@ -97,6 +104,15 @@ namespace Kommunikation
 
                             callbackInput(digInput, analogInput);
 
+                            if (anzahlByteVersionInput > 0)
+                            {
+                                ResultError = client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte_0, anzahlByteVersionInput, versionInput);
+                                if (ResultError != 0)
+                                {
+                                    FehlerAktiv = true;
+                                    spsStatus = ErrorAnzeigen(ResultError.GetValueOrDefault());
+                                }
+                            }
                             if (anzahlByteDigInput > 0)
                             {
                                 ResultError = client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte_0, anzahlByteDigInput, digInput);
@@ -170,5 +186,7 @@ namespace Kommunikation
             var ErrorText = client?.ErrorText(ResultError);
             return "Nr: " + ResultError + " Text: " + ErrorText;
         }
+        public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, anzahlByteVersionInput);
+
     }
 }

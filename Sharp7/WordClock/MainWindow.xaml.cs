@@ -13,8 +13,17 @@ namespace WordClock
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
+        public string Versionsinfo { get; set; }
+        private readonly int anzByteVersion;
+        private const int anzByteDigInput = 9;
+        private const int anzByteDigOutput = 0;
+        private const int anzByteAnalogInput = 0;
+        private const int anzByteAnalogOutput = 0;
         public MainWindow()
         {
+            Versionsinfo = "WorkClock V1.00";
+            anzByteVersion = Versionsinfo.Length;
+
             viewModel = new ViewModel.ViewModel(this);
 
             datenRangieren = new DatenRangieren(viewModel);
@@ -22,7 +31,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(9, 0, 0, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

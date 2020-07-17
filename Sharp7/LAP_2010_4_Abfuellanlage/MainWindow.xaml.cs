@@ -11,7 +11,11 @@ namespace LAP_2010_4_Abfuellanlage
 
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-
+        private const int anzByteVersion = 10;
+        private const int anzByteDigInput = 1;
+        private const int anzByteDigOutput = 1;
+        private const int anzByteAnalogInput = 4;
+        private const int anzByteAnalogOutput = 0;
         public MainWindow()
         {
             viewModel = new ViewModel.ViewModel(this);
@@ -20,7 +24,7 @@ namespace LAP_2010_4_Abfuellanlage
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(1, 1, 4, 0, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;

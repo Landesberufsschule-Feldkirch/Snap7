@@ -13,6 +13,7 @@
             mainWindow = mw;
             zeiten = zt;
 
+            SpsVersionsInfo = true;
             SpsStatus = "-";
             SpsColor = "LightBlue";
 
@@ -35,6 +36,14 @@
 
                 if (mainWindow.S7_1200 != null)
                 {
+                    string vInfo = mainWindow.S7_1200.GetVersion();
+                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                }
+
+
+
+                if (mainWindow.S7_1200 != null)
+                {
                     if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
@@ -43,7 +52,18 @@
             }
         }
 
-        #region SPS Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
+
+        private bool _spsVersionsInfo;
+        public bool SpsVersionsInfo
+        {
+            get => _spsVersionsInfo;
+            set
+            {
+                _spsVersionsInfo = value;
+                OnPropertyChanged(nameof(SpsVersionsInfo));
+            }
+        }
 
         private string _spsStatus;
 
@@ -79,7 +99,7 @@
 
         public double GeschwindigkeitSlider
         {
-            get => _geschwindigkeitSlider; 
+            get => _geschwindigkeitSlider;
             set
             {
                 _geschwindigkeitSlider = value;
@@ -112,7 +132,7 @@
 
         public double WinkelMinuten
         {
-            get => _winkelMinuten; 
+            get => _winkelMinuten;
             set
             {
                 _winkelMinuten = value;
@@ -128,7 +148,7 @@
 
         public double WinkelSekunden
         {
-            get => _winkelSekunden; 
+            get => _winkelSekunden;
             set
             {
                 _winkelSekunden = value;

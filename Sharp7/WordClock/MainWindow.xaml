@@ -39,9 +39,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label      Grid.Column="11" Grid.ColumnSpan="2"    Grid.Row="0"  HorizontalAlignment="Right" Content="V1.0 " />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="10"   Grid.Row="14" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="11"   Grid.Row="1"  Grid.RowSpan="10" Stroke="Black" Fill="LightGray" />
+
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="11"   Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Fill="LightGray" Margin="0,0,0,1" />
 
         <Button Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}" />
 
@@ -103,5 +102,11 @@
                 </Path.Data>
             </Path>
         </Canvas>
+
+        <Label      Grid.Column="11" Grid.ColumnSpan="2"   Grid.Row="0"  HorizontalAlignment="Right" Content="V1.0 " />
+        <Label      Grid.Column="7"  Grid.ColumnSpan="4"  Grid.Row="10" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
+
     </Grid>
 </Window>

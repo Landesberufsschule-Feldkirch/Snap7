@@ -22,9 +22,15 @@ namespace AutomatischesLagersystem
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
+        private const int anzByteVersion = 10;
+        private const int anzByteDigInput = 2;
+        private const int anzByteDigOutput = 2;
+        private const int anzByteAnalogInput = 2;
+        private const int anzByteAnalogOutput = 2;
 
         public MainWindow()
         {
+            
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;
             BediengeraetStartpositionen = new DreiDElemente[4];
@@ -40,7 +46,7 @@ namespace AutomatischesLagersystem
             InitializeComponent();
 
             DataContext = viewModel;
-            S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             DreiD = new DreiDErstellen(this);
 

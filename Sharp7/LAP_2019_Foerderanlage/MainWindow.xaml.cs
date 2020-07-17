@@ -14,7 +14,11 @@ namespace LAP_2019_Foerderanlage
 
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-
+        private const int anzByteVersion = 10;
+        private const int anzByteDigInput = 2;
+        private const int anzByteDigOutput = 2;
+        private const int anzByteAnalogInput = 2;
+        private const int anzByteAnalogOutput = 2;
         public MainWindow()
         {
             viewModel = new ViewModel.ViewModel(this);
@@ -23,7 +27,7 @@ namespace LAP_2019_Foerderanlage
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(2, 2, 2, 2, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
