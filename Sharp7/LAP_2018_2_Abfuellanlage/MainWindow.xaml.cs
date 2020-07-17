@@ -11,13 +11,17 @@ namespace LAP_2018_2_Abfuellanlage
 
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-        private const int anzByteVersion = 10;
+        public string Versionsinfo { get; set; }
+        private readonly int anzByteVersion;
         private const int anzByteDigInput = 1;
         private const int anzByteDigOutput = 1;
         private const int anzByteAnalogInput = 4;
         private const int anzByteAnalogOutput = 0;
         public MainWindow()
         {
+            Versionsinfo = "LAP 2018/2 Abfuellanlage V1.00";
+            anzByteVersion = Versionsinfo.Length;
+            
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, viewModel);
 

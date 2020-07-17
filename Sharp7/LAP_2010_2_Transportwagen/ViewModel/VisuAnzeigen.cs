@@ -13,7 +13,8 @@
             mainWindow = mw;
             transportwagen = tw;
 
-            SpsStatus = "-";
+            SpsVersionsInfo = true;
+            SpsStatus = "x";
             SpsColor = "LightBlue";
 
             ColorF1 = "LawnGreen";
@@ -65,9 +66,12 @@
                 PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts + AbstandRadWagen;
                 PositionWagenkasten = transportwagen.Position;
 
-                if (mainWindow.S7_1200 != null)
+              if (mainWindow.S7_1200 != null)
                 {
-                    if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
+                    string vInfo = mainWindow.S7_1200.GetVersion();
+                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+
+                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 
@@ -80,7 +84,19 @@
         internal void SetS1() => transportwagen.S1 = ClickModeButtonS1();
         internal void SetS3() => transportwagen.S3 = ClickModeButtonS3();
 
-        #region SPS Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
+
+        private bool _spsVersionsInfo;
+        public bool SpsVersionsInfo
+        {
+            get => _spsVersionsInfo;
+            set
+            {
+                _spsVersionsInfo = value;
+                OnPropertyChanged(nameof(SpsVersionsInfo));
+            }
+        }
+
 
         private string _spsStatus;
 

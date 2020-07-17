@@ -94,9 +94,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="45" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="V0.1 " />
-        <Label Grid.Column="40" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-
+      
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="34" Grid.Row="2" Click="DebugWindowOeffnen" />
 
 
@@ -265,6 +263,10 @@
 
         <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="-20"   Maximum="40" TickFrequency="1"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.WitterungsTemperaturSlider, Mode=TwoWay}" />
 
+        <Label Grid.Column="45" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="V0.1 " />
+        <Label Grid.Column="40" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
 
     </Grid>
 </Window>

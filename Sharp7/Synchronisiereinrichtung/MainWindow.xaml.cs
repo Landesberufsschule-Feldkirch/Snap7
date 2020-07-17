@@ -13,13 +13,17 @@ namespace Synchronisiereinrichtung
         private SetManualWindow setManualWindow;
         private RealTimeGraphWindow realTimeGraphWindow;
         private readonly ViewModel viewModel;
-        private const int anzByteVersion = 10;
+        public string Versionsinfo { get; set; }
+        private readonly int anzByteVersion;
         private const int anzByteDigInput = 1;
         private const int anzByteDigOutput = 1;
         private const int anzByteAnalogInput = 20;
         private const int anzByteAnalogOutput = 4;
         public MainWindow()
         {
+            Versionsinfo = "Synchronisiereinrichtung V1.00";
+            anzByteVersion = Versionsinfo.Length;
+            
             viewModel = new ViewModel(this);
 
             InitializeComponent();

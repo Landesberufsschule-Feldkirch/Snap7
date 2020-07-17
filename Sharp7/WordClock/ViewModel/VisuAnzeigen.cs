@@ -14,7 +14,7 @@
             zeiten = zt;
 
             SpsVersionsInfo = true;
-            SpsStatus = "-";
+            SpsStatus = "x";
             SpsColor = "LightBlue";
 
             GeschwindigkeitSlider = 1;
@@ -41,10 +41,12 @@
                 }
 
 
-
                 if (mainWindow.S7_1200 != null)
                 {
-                    if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
+                    string vInfo = mainWindow.S7_1200.GetVersion();
+                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+
+                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 

@@ -11,7 +11,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             foerderanlage = fa;
 
-            SpsStatus = "-";
+            SpsVersionsInfo = true;
+            SpsStatus = "x";
             SpsColor = "LightBlue";
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -25,7 +26,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        #region SPS Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
+
+        private bool _spsVersionsInfo;
+        public bool SpsVersionsInfo
+        {
+            get => _spsVersionsInfo;
+            set
+            {
+                _spsVersionsInfo = value;
+                OnPropertyChanged(nameof(SpsVersionsInfo));
+            }
+        }
+
 
         private string _spsStatus;
 

@@ -12,13 +12,17 @@ namespace LAP_2018_3_Hydraulikaggregat
 
         private readonly DatenRangieren datenRangieren;
         private readonly LAP_2018_3_Hydraulikaggregat.ViewModel.ViewModel viewModel;
-        private const int anzByteVersion = 10;
+        public string Versionsinfo { get; set; }
+        private readonly int anzByteVersion;
         private const int anzByteDigInput = 2;
         private const int anzByteDigOutput = 2;
         private const int anzByteAnalogInput = 2;
         private const int anzByteAnalogOutput = 2;
         public MainWindow()
         {
+            Versionsinfo = "LAP 2018/3 Hydraulikaggregat V1.00";
+            anzByteVersion = Versionsinfo.Length;
+            
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, viewModel);
 

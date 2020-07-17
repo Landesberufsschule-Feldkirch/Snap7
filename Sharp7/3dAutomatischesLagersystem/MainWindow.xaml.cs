@@ -22,7 +22,8 @@ namespace AutomatischesLagersystem
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
 
-        private const int anzByteVersion = 10;
+        public string Versionsinfo { get; set; }
+        private readonly int anzByteVersion;
         private const int anzByteDigInput = 2;
         private const int anzByteDigOutput = 2;
         private const int anzByteAnalogInput = 2;
@@ -30,6 +31,9 @@ namespace AutomatischesLagersystem
 
         public MainWindow()
         {
+            
+            Versionsinfo = "3D Automatisches Lagersystem V1.00";
+            anzByteVersion = Versionsinfo.Length;
             
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;

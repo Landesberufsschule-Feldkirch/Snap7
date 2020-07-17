@@ -59,10 +59,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-
-        <Label Grid.Column="19"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " Margin="0,0,34,0" />
-        <Label Grid.Column="15"                        Grid.Row="12"  Grid.ColumnSpan="6" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-
+  
         <Rectangle Fill="LightGray" Grid.Column="15" Grid.ColumnSpan="6"  Grid.RowSpan="9" Grid.Row="2" />
 
         <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
@@ -140,5 +137,11 @@
             <Image Source="Bilder/Campbell_Mushroom_Soup.jpg"   Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft3}" Canvas.Top="{Binding ViAnzeige.ImageTop3}"  Visibility="{Binding ViAnzeige.VisibilityImage3}" />
             <Image Source="Bilder/Campbell_Tomato_Soup.jpg"     Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft4}" Canvas.Top="{Binding ViAnzeige.ImageTop4}"  Visibility="{Binding ViAnzeige.VisibilityImage4}" />
         </Canvas>
+
+        <Label Grid.Column="19"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " Margin="0,0,34,0" />
+        <Label Grid.Column="15"                        Grid.Row="12"  Grid.ColumnSpan="6" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
+
     </Grid>
 </Window>

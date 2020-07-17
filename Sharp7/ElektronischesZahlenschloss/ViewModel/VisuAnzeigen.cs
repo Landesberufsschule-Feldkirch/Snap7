@@ -21,7 +21,8 @@
             ColorP1 = "White";
             ColorP2 = "White";
 
-            SpsStatus = "-";
+            SpsVersionsInfo = true;
+            SpsStatus = "x";
             SpsColor = "LightBlue";
 
 
@@ -39,7 +40,10 @@
 
                 if (mainWindow.S7_1200 != null)
                 {
-                    if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
+                    string vInfo = mainWindow.S7_1200.GetVersion();
+                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+
+                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 
@@ -57,7 +61,19 @@
         }
 
 
-        #region SPS Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
+
+        private bool _spsVersionsInfo;
+        public bool SpsVersionsInfo
+        {
+            get => _spsVersionsInfo;
+            set
+            {
+                _spsVersionsInfo = value;
+                OnPropertyChanged(nameof(SpsVersionsInfo));
+            }
+        }
+
 
         private string _spsStatus;
 

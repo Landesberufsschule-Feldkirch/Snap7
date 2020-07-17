@@ -60,9 +60,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Right" Content="V2.0 " />
-        <Label Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-
         <Rectangle Fill="LightGray"         Grid.Column="23" Grid.ColumnSpan="5"    Grid.Row="2"  Grid.RowSpan="5"  Stroke="Black" />
         <Button Content="Links parken!"     Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="3"                     Command="{Binding BtnLinksParken}" />
         <Button Content="Rechts parken!"    Grid.Column="24" Grid.ColumnSpan="3"    Grid.Row="5"                     Command="{Binding BtnRechtsParken}" />
@@ -152,5 +149,11 @@
                 </Image>
             </Button>
         </Canvas>
+
+        <Label Grid.Column="26"    Grid.ColumnSpan="2" Grid.Row="0"  HorizontalAlignment="Right" Content="V2.0 " />
+        <Label Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
+
     </Grid>
 </Window>

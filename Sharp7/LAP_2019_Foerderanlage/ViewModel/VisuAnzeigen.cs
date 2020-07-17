@@ -16,7 +16,8 @@
             mainWindow = mw;
             foerderanlage = fa;
 
-            SpsStatus = "-";
+            SpsVersionsInfo = true;
+            SpsStatus = "x";
             SpsColor = "LightBlue";
 
             SelectedIndex = 0; // Automatikbetrieb
@@ -116,9 +117,12 @@
                     if (foerderanlage.T1) mainWindow.Controller.Play(); else mainWindow.Controller.Pause();
                 }
 
-                if (mainWindow.S7_1200 != null)
+               if (mainWindow.S7_1200 != null)
                 {
-                    if (mainWindow.S7_1200.GetSpsError()) SpsColor = "Red"; else SpsColor = "LightGray";
+                    string vInfo = mainWindow.S7_1200.GetVersion();
+                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+
+                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
 
@@ -145,7 +149,19 @@
         internal void SetManualM2() => foerderanlage.Manual_M2 = ClickModeButtonM2();
         internal void SetManualK1() => foerderanlage.Manual_K1 = ClickModeButtonK1();
 
-        #region SPS Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
+
+        private bool _spsVersionsInfo;
+        public bool SpsVersionsInfo
+        {
+            get => _spsVersionsInfo;
+            set
+            {
+                _spsVersionsInfo = value;
+                OnPropertyChanged(nameof(SpsVersionsInfo));
+            }
+        }
+
 
         private string _spsStatus;
 
