@@ -110,8 +110,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
-    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">

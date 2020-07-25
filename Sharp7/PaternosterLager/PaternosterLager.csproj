@@ -116,8 +116,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
-    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
     <Resource Include="Bilder\Snap7.ico" />
   </ItemGroup>
   <ItemGroup />

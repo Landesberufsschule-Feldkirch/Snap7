@@ -136,8 +136,8 @@
             </Polygon.Points>
         </Polygon>
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17" />
 
         <gauge:CircularGaugeControl x:Name="GaugeDruck" Grid.Column="6" Grid.ColumnSpan="5" Grid.Row="4" Grid.RowSpan="9"

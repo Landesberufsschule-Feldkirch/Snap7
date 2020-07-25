@@ -187,6 +187,5 @@ namespace Kommunikation
             return "Nr: " + ResultError + " Text: " + ErrorText;
         }
         public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, anzahlByteVersionInput);
-
     }
 }

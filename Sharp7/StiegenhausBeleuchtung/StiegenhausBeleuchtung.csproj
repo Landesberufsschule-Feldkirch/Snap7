@@ -115,7 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Bewegungsmelder.jpg" />
+    <Resource Include="Bilder\BewegungsmelderWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">
@@ -131,7 +131,7 @@
     <Resource Include="Bilder\Snap7.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\BewegungsmelderAktiv.jpg" />
+    <Resource Include="Bilder\BewegungsmelderAktivWeiss.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -209,12 +209,12 @@
 
         <Canvas x:Name="ZeichenFlaeche" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="22" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Height="70" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" Margin="0,15,30,15" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Width="70"  Visibility="{Binding ViAnzeige.VisibilityB1Ein}" Margin="0,15,30,15" />
+        <Image Source="Bilder\Initiatoren_SchliesserWeiss.jpg"  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Height="70" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" Margin="0,15,30,15" />
+        <Image Source="Bilder\Initiatoren_BetaetigtWeiss.jpg"   Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Width="70"  Visibility="{Binding ViAnzeige.VisibilityB1Ein}" Margin="0,15,30,15" />
         <Label Content="B1"                                Grid.Column="8" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="20,32,0,32" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" Margin="0,15,30,15" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2"  Visibility="{Binding ViAnzeige.VisibilityB2Ein}" Margin="0,15,30,15" />
+        <Image Source="Bilder\Initiatoren_SchliesserWeiss.jpg"  Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" Margin="0,15,30,15" />
+        <Image Source="Bilder\Initiatoren_BetaetigtWeiss.jpg"   Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2"  Visibility="{Binding ViAnzeige.VisibilityB2Ein}" Margin="0,15,30,15" />
         <Label Content="B2"                                Grid.Column="11" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="20,32,0,32" />
 
         <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="V0.0 " />

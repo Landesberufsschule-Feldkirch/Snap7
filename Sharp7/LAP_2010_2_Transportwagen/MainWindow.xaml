@@ -106,12 +106,12 @@
         </Polygon>
 
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
         <Label Content="B1"                                Grid.Column="2" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="9" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="8" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
         <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="14">

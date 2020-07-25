@@ -184,16 +184,16 @@
             </Polygon.Points>
         </Polygon>
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
         <Label Content="B1"                                Grid.Column="6" Grid.Row="15" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="9" Grid.Row="13" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
         <Label Content="B3"                                Grid.Column="9" Grid.Row="16" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
         <gauge:CircularGaugeControl x:Name="GaugeDruck" Grid.Column="10" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="10"

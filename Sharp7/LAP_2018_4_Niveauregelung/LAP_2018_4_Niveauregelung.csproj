@@ -111,14 +111,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Pumpe_Aus.jpg" />
-    <Resource Include="Bilder\Pumpe_Ein.jpg" />
-    <Resource Include="Bilder\Schwimmerschalter.jpg" />
-    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
+    <Resource Include="Bilder\Pumpe_AusWeiss.jpg" />
+    <Resource Include="Bilder\Pumpe_EinWeiss.jpg" />
+    <Resource Include="Bilder\SchwimmerschalterWeiss.jpg" />
+    <Resource Include="Bilder\Schwimmerschalter_BetaetigtWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\VentilElektrischAus.jpg" />
-    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">

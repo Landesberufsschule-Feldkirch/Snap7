@@ -4,9 +4,9 @@
     <Button.Template>
         <ControlTemplate TargetType="{x:Type Button}">
             <Grid>
-                <Image Name="Normal" Source="Bilder/Bewegungsmelder.jpg" />
-                <Image Name="Pressed" Source="Bilder/BewegungsmelderAktiv.jpg" Visibility="Hidden" />
-                <Image Name="Disabled" Source="Bilder/Bewegungsmelder.jpg" Visibility="Hidden" />
+                <Image Name="Normal" Source="Bilder/BewegungsmelderWeiss.jpg" />
+                <Image Name="Pressed" Source="Bilder/BewegungsmelderAktivWeiss.jpg" Visibility="Hidden" />
+                <Image Name="Disabled" Source="Bilder/BewegungsmelderWeiss.jpg" Visibility="Hidden" />
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="ClickMode" Value="Release">

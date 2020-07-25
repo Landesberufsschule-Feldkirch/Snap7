@@ -89,16 +89,16 @@
         <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
         <Label Content="B1"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
         <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
         <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}" />
 

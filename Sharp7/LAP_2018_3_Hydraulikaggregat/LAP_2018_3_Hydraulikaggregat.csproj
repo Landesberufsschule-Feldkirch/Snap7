@@ -127,8 +127,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
-    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
     <Resource Include="Bilder\Snap7.ico" />
   </ItemGroup>
   <ItemGroup>

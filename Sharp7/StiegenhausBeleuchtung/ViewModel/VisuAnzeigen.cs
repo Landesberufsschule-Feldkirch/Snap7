@@ -41,9 +41,10 @@
                         if (stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = "Release"; else ClickModeBtn[i] = "Press";
                     }
                 }
-                if (stiegenhausBeleuchtung.JobAktiv) BewegungAktiv = true; else BewegungAktiv = false;
 
-               if (mainWindow.S7_1200 != null)
+                BewegungAktiv = stiegenhausBeleuchtung.JobAktiv;
+
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
                     SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
@@ -68,7 +69,6 @@
                 OnPropertyChanged(nameof(SpsVersionsInfo));
             }
         }
-
 
         private string _spsStatus;
 
@@ -189,7 +189,6 @@
         }
 
         #endregion BtnBewegungsmelder
-
 
         #region iNotifyPeropertyChanged Members
 
