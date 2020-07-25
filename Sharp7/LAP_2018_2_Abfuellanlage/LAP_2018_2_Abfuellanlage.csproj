@@ -112,8 +112,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\VentilElektrischAus.jpg" />
-    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\Kellerbier.jpg" />
@@ -123,8 +123,8 @@
     <Resource Include="Bilder\Fransziskaner.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
-    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">

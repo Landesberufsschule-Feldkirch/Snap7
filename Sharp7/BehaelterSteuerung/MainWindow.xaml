@@ -57,40 +57,40 @@
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
 
         <Label Content="Q1" Grid.Column="2" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="3" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ1Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="3" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ1Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="3" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ1Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="3" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ1Ein}" />
 
         <Label Content="Q3" Grid.Column="5" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="6" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ3Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="6" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ3Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="6" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ3Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="6" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ3Ein}" />
 
         <Label Content="Q5" Grid.Column="8" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="9" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ5Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="9" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ5Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="9" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ5Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="9" Grid.Row="4"    Visibility="{Binding ViAnzeige.VisibilityVentilQ5Ein}" />
 
         <Label Content="Q7" Grid.Column="11" Grid.Row="4" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="12" Grid.Row="4"   Visibility="{Binding ViAnzeige.VisibilityVentilQ7Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="12" Grid.Row="4"   Visibility="{Binding ViAnzeige.VisibilityVentilQ7Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="12" Grid.Row="4"   Visibility="{Binding ViAnzeige.VisibilityVentilQ7Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="12" Grid.Row="4"   Visibility="{Binding ViAnzeige.VisibilityVentilQ7Ein}" />
 
         <Label Content="Q2" Grid.Column="2" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <Button Grid.Column="3" Grid.Row="7"  Command="{Binding BtnVentilQ2}" Grid.ColumnSpan="2" Margin="0,25,0,25" Grid.RowSpan="3" Background="White" />
-        <Image  Source="Bilder/VentilElektrischAus.jpg"     Grid.Column="3" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ2Aus}" />
-        <Image  Source="Bilder/VentilElektrischEin.jpg"     Grid.Column="3" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ2Ein}" />
+        <Image  Source="Bilder/VentilElektrischAusWeiss.jpg"     Grid.Column="3" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ2Aus}" />
+        <Image  Source="Bilder/VentilElektrischEinWeiss.jpg"     Grid.Column="3" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ2Ein}" />
 
         <Label Content="Q4" Grid.Column="5" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <Button Grid.Column="6" Grid.Row="7" Command="{Binding BtnVentilQ4}" Grid.ColumnSpan="2" Margin="0,25,0,25" Grid.RowSpan="3" Background="White" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="6" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ4Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="6" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ4Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="6" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ4Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="6" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ4Ein}" />
 
         <Label Content="Q6" Grid.Column="8" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <Button Grid.Column="9" Grid.Row="7" Command="{Binding BtnVentilQ6}" Grid.ColumnSpan="2" Margin="0,25,0,25" Grid.RowSpan="3" Background="White" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="9" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ6Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="9" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ6Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="9" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ6Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="9" Grid.Row="8"    Visibility="{Binding ViAnzeige.VisibilityVentilQ6Ein}" />
 
         <Label Content="Q8" Grid.Column="11" Grid.Row="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
         <Button Grid.Column="12" Grid.Row="7" Command="{Binding BtnVentilQ8}" Grid.ColumnSpan="2" Margin="0,25,0,25" Grid.RowSpan="3" Background="White" />
-        <Image Source="Bilder/VentilElektrischAus.jpg"  Grid.Column="12" Grid.Row="8"  Visibility="{Binding ViAnzeige.VisibilityVentilQ8Aus}" />
-        <Image Source="Bilder/VentilElektrischEin.jpg"  Grid.Column="12" Grid.Row="8"  Visibility="{Binding ViAnzeige.VisibilityVentilQ8Ein}" />
+        <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="12" Grid.Row="8"  Visibility="{Binding ViAnzeige.VisibilityVentilQ8Aus}" />
+        <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="12" Grid.Row="8"  Visibility="{Binding ViAnzeige.VisibilityVentilQ8Ein}" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="11"    Grid.Row="2"                    Fill="Blue"      Margin="0,0,20,0" />
         <Rectangle Grid.Column="3"                         Grid.Row="3"                    Fill="Blue"      Margin="40,0,20,0" />

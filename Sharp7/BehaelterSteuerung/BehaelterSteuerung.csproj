@@ -120,8 +120,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\VentilElektrischAus.jpg" />
-    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

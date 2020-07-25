@@ -129,12 +129,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_Betaetigt.jpg" />
-    <Resource Include="Bilder\Initiatoren_Schliesser.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
     <Resource Include="Bilder\Schneckenfoerderer.gif" />
     <Resource Include="Bilder\Snap7.ico" />
-    <Resource Include="Bilder\VentilElektrischAus.jpg" />
-    <Resource Include="Bilder\VentilElektrischEin.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinHellgrau.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Snap7.ico" />
