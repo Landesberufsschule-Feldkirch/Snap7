@@ -60,7 +60,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-     
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
@@ -170,10 +169,9 @@
             <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft6}" Canvas.Top="{Binding ViAnzeige.ImageTop6}"  Visibility="{Binding ViAnzeige.VisibilityImage6}" />
         </Canvas>
 
-        <Label Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V2.0 " />
+        <Label Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="21"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
-
     </Grid>
 </Window>

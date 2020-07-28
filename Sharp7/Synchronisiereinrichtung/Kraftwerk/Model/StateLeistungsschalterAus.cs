@@ -4,8 +4,8 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateLeistungsschalterAus(Kraftwerk kw) =>            kraftWerk = kw;
-        
+        public StateLeistungsschalterAus(Kraftwerk kw) => kraftWerk = kw;
+
         public void Doing()
         {
             kraftWerk.generator.MaschineAntreiben(kraftWerk.Ventil_Y);

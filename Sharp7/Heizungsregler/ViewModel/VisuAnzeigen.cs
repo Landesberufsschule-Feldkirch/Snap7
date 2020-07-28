@@ -14,7 +14,8 @@ namespace Heizungsregler.ViewModel
             mainWindow = mw;
             heizungsregler = hr;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -35,7 +36,7 @@ namespace Heizungsregler.ViewModel
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -45,24 +46,33 @@ namespace Heizungsregler.ViewModel
 
                 Pumpenfarbe(heizungsregler.HeizungsPumpe);
 
-                
                 Thread.Sleep(10);
             }
         }
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+        private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -88,15 +98,17 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        #endregion SPS Status und Farbe
-
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ColorPumpe
+
         public void Pumpenfarbe(bool status)
         {
             if (status) ColorPumpe = "LawnGreen"; else ColorPumpe = "White";
         }
+
         private string _colorPumpe;
+
         public string ColorPumpe
         {
             get => _colorPumpe;
@@ -106,13 +118,15 @@ namespace Heizungsregler.ViewModel
                 OnPropertyChanged(nameof(ColorPumpe));
             }
         }
-        #endregion
 
+        #endregion ColorPumpe
 
         #region WitterungsTemperaturSlider
+
         public double SliderWitterungstemperatur() => WitterungsTemperaturSlider;
 
         private double _witterungsTemperaturSlider;
+
         public double WitterungsTemperaturSlider
         {
             get => _witterungsTemperaturSlider;
@@ -123,10 +137,12 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        #endregion
+        #endregion WitterungsTemperaturSlider
 
         #region WitterungsTempMitEinheit
+
         private string _witterungsTempMitEinheit;
+
         public string WitterungsTempMitEinheit
         {
             get => SliderWitterungstemperatur().ToString() + "°C";
@@ -137,11 +153,12 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        #endregion
-
+        #endregion WitterungsTempMitEinheit
 
         #region BetriebsartAuswahl
+
         private Betriebsarten _betriebsartAuswahl;
+
         public Betriebsarten BetriebsartAuswahl
         {
             get => _betriebsartAuswahl;
@@ -150,16 +167,14 @@ namespace Heizungsregler.ViewModel
                 _betriebsartAuswahl = value;
                 OnPropertyChanged(nameof(BetriebsartAuswahl));
             }
-
         }
 
-
-        #endregion
-
+        #endregion BetriebsartAuswahl
 
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

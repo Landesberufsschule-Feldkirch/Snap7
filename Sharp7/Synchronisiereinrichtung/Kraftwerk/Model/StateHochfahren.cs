@@ -6,8 +6,8 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateHochfahren(Kraftwerk kw) =>            kraftWerk = kw;
-        
+        public StateHochfahren(Kraftwerk kw) => kraftWerk = kw;
+
         public void Doing()
         {
             kraftWerk.generator.MaschineAntreiben(kraftWerk.Ventil_Y);

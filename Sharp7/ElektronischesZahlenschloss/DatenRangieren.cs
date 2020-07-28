@@ -1,6 +1,7 @@
 ﻿namespace ElektronischesZahlenschloss
 {
     using Sharp7;
+
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel viewModel;
@@ -12,8 +13,8 @@
         }
 
         public void RangierenInput(byte[] digInput, byte[] _)
-        {          
-            S7.SetUint8At(digInput, 1, (byte)viewModel.zahlenschloss.Zeichen);           
+        {
+            S7.SetUint8At(digInput, 1, (byte)viewModel.zahlenschloss.Zeichen);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)

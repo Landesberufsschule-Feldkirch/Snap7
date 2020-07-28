@@ -52,7 +52,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-  
+
         <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
         <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
@@ -92,7 +92,7 @@
         <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
-        <Rectangle Grid.Column="8" Grid.Row="6" Fill="Firebrick" Grid.ColumnSpan="2" Margin="58,0" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFuellen}"  />
+        <Rectangle Grid.Column="8" Grid.Row="6" Fill="Firebrick" Grid.ColumnSpan="2" Margin="58,0" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFuellen}" />
 
         <Polygon Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5" Fill="DarkOrange">
             <Polygon.Points>
@@ -104,7 +104,6 @@
                 <Point X="20"  Y="120" />
             </Polygon.Points>
         </Polygon>
-
 
         <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
         <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="3" Grid.Row="12" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
@@ -128,10 +127,9 @@
         <Ellipse Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
         <Label Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
 
-        <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="V0.1 " />
+        <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
-
     </Grid>
 </Window>

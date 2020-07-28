@@ -15,7 +15,8 @@
             mainWindow = mw;
             alleBehaelter = aB;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -145,10 +146,10 @@
                 EnableAutomatik1432 = !alleBehaelter.AutomatikModusAktiv;
                 EnableAutomatik4321 = !alleBehaelter.AutomatikModusAktiv;
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -160,17 +161,27 @@
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+        private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -196,7 +207,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Visibility Ventil Q1
 
@@ -536,7 +547,10 @@
 
         #region Color Zuleitung_1b
 
-        public void FarbeZuleitung1b(bool val) { if (val) ColorZuleitung_1b = "blue"; else ColorZuleitung_1b = "lightblue"; }
+        public void FarbeZuleitung1b(bool val)
+        {
+            if (val) ColorZuleitung_1b = "blue"; else ColorZuleitung_1b = "lightblue";
+        }
 
         private string _colorZuleitung_1b;
 
@@ -554,7 +568,10 @@
 
         #region Color Zuleitung_2b
 
-        public void FarbeZuleitung2b(bool val) { if (val) ColorZuleitung_2b = "blue"; else ColorZuleitung_2b = "lightblue"; }
+        public void FarbeZuleitung2b(bool val)
+        {
+            if (val) ColorZuleitung_2b = "blue"; else ColorZuleitung_2b = "lightblue";
+        }
 
         private string _colorZuleitung_2b;
 
@@ -572,7 +589,10 @@
 
         #region Color Zuleitung_3b
 
-        public void FarbeZuleitung3b(bool val) { if (val) ColorZuleitung_3b = "blue"; else ColorZuleitung_3b = "lightblue"; }
+        public void FarbeZuleitung3b(bool val)
+        {
+            if (val) ColorZuleitung_3b = "blue"; else ColorZuleitung_3b = "lightblue";
+        }
 
         private string _colorZuleitung_3b;
 
@@ -590,7 +610,10 @@
 
         #region Color Zuleitung_4b
 
-        public void FarbeZuleitung4b(bool val) { if (val) ColorZuleitung_4b = "blue"; else ColorZuleitung_4b = "lightblue"; }
+        public void FarbeZuleitung4b(bool val)
+        {
+            if (val) ColorZuleitung_4b = "blue"; else ColorZuleitung_4b = "lightblue";
+        }
 
         private string _colorZuleitung_4b;
 
@@ -608,7 +631,10 @@
 
         #region Color Ableitung_1a
 
-        public void FarbeAbleitung1a(bool val) { if (val) ColorAbleitung_1a = "blue"; else ColorAbleitung_1a = "lightblue"; }
+        public void FarbeAbleitung1a(bool val)
+        {
+            if (val) ColorAbleitung_1a = "blue"; else ColorAbleitung_1a = "lightblue";
+        }
 
         private string _colorAbleitung_1a;
 
@@ -626,7 +652,10 @@
 
         #region Color Ableitung_2a
 
-        public void FarbeAbleitung2a(bool val) { if (val) ColorAbleitung_2a = "blue"; else ColorAbleitung_2a = "lightblue"; }
+        public void FarbeAbleitung2a(bool val)
+        {
+            if (val) ColorAbleitung_2a = "blue"; else ColorAbleitung_2a = "lightblue";
+        }
 
         private string _colorAbleitung_2a;
 
@@ -644,7 +673,10 @@
 
         #region Color Ableitung_3a
 
-        public void FarbeAbleitung3a(bool val) { if (val) ColorAbleitung_3a = "blue"; else ColorAbleitung_3a = "lightblue"; }
+        public void FarbeAbleitung3a(bool val)
+        {
+            if (val) ColorAbleitung_3a = "blue"; else ColorAbleitung_3a = "lightblue";
+        }
 
         private string _colorAbleitung_3a;
 
@@ -662,7 +694,10 @@
 
         #region Color Ableitung_4a
 
-        public void FarbeAbleitung4a(bool val) { if (val) ColorAbleitung_4a = "blue"; else ColorAbleitung_4a = "lightblue"; }
+        public void FarbeAbleitung4a(bool val)
+        {
+            if (val) ColorAbleitung_4a = "blue"; else ColorAbleitung_4a = "lightblue";
+        }
 
         private string _colorAbleitung_4a;
 
@@ -680,7 +715,10 @@
 
         #region Color Ableitung_1b
 
-        public void FarbeAbleitung1b(bool val) { if (val) ColorAbleitung_1b = "blue"; else ColorAbleitung_1b = "lightblue"; }
+        public void FarbeAbleitung1b(bool val)
+        {
+            if (val) ColorAbleitung_1b = "blue"; else ColorAbleitung_1b = "lightblue";
+        }
 
         private string _colorAbleitung_1b;
 
@@ -698,7 +736,10 @@
 
         #region Color Ableitung_2b
 
-        public void FarbeAbleitung2b(bool val) { if (val) ColorAbleitung_2b = "blue"; else ColorAbleitung_2b = "lightblue"; }
+        public void FarbeAbleitung2b(bool val)
+        {
+            if (val) ColorAbleitung_2b = "blue"; else ColorAbleitung_2b = "lightblue";
+        }
 
         private string _colorAbleitung_2b;
 
@@ -716,7 +757,10 @@
 
         #region Color Ableitung_3b
 
-        public void FarbeAbleitung3b(bool val) { if (val) ColorAbleitung_3b = "blue"; else ColorAbleitung_3b = "lightblue"; }
+        public void FarbeAbleitung3b(bool val)
+        {
+            if (val) ColorAbleitung_3b = "blue"; else ColorAbleitung_3b = "lightblue";
+        }
 
         private string _colorAbleitung_3b;
 
@@ -734,7 +778,10 @@
 
         #region Color Ableitung_4b
 
-        public void FarbeAbleitung4b(bool val) { if (val) ColorAbleitung_4b = "blue"; else ColorAbleitung_4b = "lightblue"; }
+        public void FarbeAbleitung4b(bool val)
+        {
+            if (val) ColorAbleitung_4b = "blue"; else ColorAbleitung_4b = "lightblue";
+        }
 
         private string _colorAbleitung_4b;
 
@@ -752,7 +799,10 @@
 
         #region Color Ableitung_Gesamt
 
-        public void FarbeAbleitungGesamt(bool val) { if (val) ColorAbleitung_Gesamt = "blue"; else ColorAbleitung_Gesamt = "lightblue"; }
+        public void FarbeAbleitungGesamt(bool val)
+        {
+            if (val) ColorAbleitung_Gesamt = "blue"; else ColorAbleitung_Gesamt = "lightblue";
+        }
 
         private string _colorAbleitung_Gesamt;
 
@@ -770,7 +820,10 @@
 
         #region Color LabelB1
 
-        public void FarbeLabelB1(bool val) { if (val) ColorLabelB1 = "red"; else ColorLabelB1 = "lawngreen"; }
+        public void FarbeLabelB1(bool val)
+        {
+            if (val) ColorLabelB1 = "red"; else ColorLabelB1 = "lawngreen";
+        }
 
         private string _colorLabelB1;
 
@@ -788,7 +841,10 @@
 
         #region Color LabelB2
 
-        public void FarbeLabelB2(bool val) { if (val) ColorLabelB2 = "red"; else ColorLabelB2 = "lawngreen"; }
+        public void FarbeLabelB2(bool val)
+        {
+            if (val) ColorLabelB2 = "red"; else ColorLabelB2 = "lawngreen";
+        }
 
         private string _colorLabelB2;
 
@@ -806,7 +862,10 @@
 
         #region Color LabelB3
 
-        public void FarbeLabelB3(bool val) { if (val) ColorLabelB3 = "red"; else ColorLabelB3 = "lawngreen"; }
+        public void FarbeLabelB3(bool val)
+        {
+            if (val) ColorLabelB3 = "red"; else ColorLabelB3 = "lawngreen";
+        }
 
         private string _colorLabelB3;
 
@@ -824,7 +883,10 @@
 
         #region Color LabelB4
 
-        public void FarbeLabelB4(bool val) { if (val) ColorLabelB4 = "red"; else ColorLabelB4 = "lawngreen"; }
+        public void FarbeLabelB4(bool val)
+        {
+            if (val) ColorLabelB4 = "red"; else ColorLabelB4 = "lawngreen";
+        }
 
         private string _colorLabelB4;
 
@@ -842,7 +904,10 @@
 
         #region Color LabelB5
 
-        public void FarbeLabelB5(bool val) { if (val) ColorLabelB5 = "red"; else ColorLabelB5 = "lawngreen"; }
+        public void FarbeLabelB5(bool val)
+        {
+            if (val) ColorLabelB5 = "red"; else ColorLabelB5 = "lawngreen";
+        }
 
         private string _colorLabelB5;
 
@@ -860,7 +925,10 @@
 
         #region Color LabelB6
 
-        public void FarbeLabelB6(bool val) { if (val) ColorLabelB6 = "red"; else ColorLabelB6 = "lawngreen"; }
+        public void FarbeLabelB6(bool val)
+        {
+            if (val) ColorLabelB6 = "red"; else ColorLabelB6 = "lawngreen";
+        }
 
         private string _colorLabelB6;
 
@@ -878,7 +946,10 @@
 
         #region Color LabelB7
 
-        public void FarbeLabelB7(bool val) { if (val) ColorLabelB7 = "red"; else ColorLabelB7 = "lawngreen"; }
+        public void FarbeLabelB7(bool val)
+        {
+            if (val) ColorLabelB7 = "red"; else ColorLabelB7 = "lawngreen";
+        }
 
         private string _colorLabelB7;
 
@@ -896,7 +967,10 @@
 
         #region Color LabelB8
 
-        public void FarbeLabelB8(bool val) { if (val) ColorLabelB8 = "red"; else ColorLabelB8 = "lawngreen"; }
+        public void FarbeLabelB8(bool val)
+        {
+            if (val) ColorLabelB8 = "red"; else ColorLabelB8 = "lawngreen";
+        }
 
         private string _colorLabelB8;
 
@@ -914,7 +988,10 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray"; }
+        public void FarbeCircle_P1(bool val)
+        {
+            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray";
+        }
 
         private string _colorCircle_P1;
 
@@ -1078,10 +1155,10 @@
 
         #endregion Margin4
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

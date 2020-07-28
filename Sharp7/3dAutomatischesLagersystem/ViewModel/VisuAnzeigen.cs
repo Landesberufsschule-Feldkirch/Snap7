@@ -46,7 +46,6 @@
             YPosition = "0";
             ZPosition = "0";
 
-
             XPosSlider = 0;
             YPosSlider = 0;
             ZPosSlider = 0;
@@ -57,7 +56,8 @@
             VisibilityB2Ein = "visible";
             VisibilityB2Aus = "hidden";
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -88,12 +88,19 @@
         }
 
         internal void AllesAusraeumen() => mainWindow.DreiD.AlleKistenEntfernen();
+
         internal void AllesEinraeumen() => mainWindow.DreiD.AlleKistenHinzufeugen();
+
         internal void SetK1() => automatischesLagersystem.K1 = ClickModeButtonK1();
+
         internal void SetK2() => automatischesLagersystem.K2 = ClickModeButtonK2();
+
         internal void SetK3() => automatischesLagersystem.K3 = ClickModeButtonK3();
+
         internal void SetK4() => automatischesLagersystem.K4 = ClickModeButtonK4();
+
         internal void SetK5() => automatischesLagersystem.K5 = ClickModeButtonK5();
+
         internal void SetK6() => automatischesLagersystem.K6 = ClickModeButtonK6();
 
         private void VisuAnzeigenTask()
@@ -107,7 +114,6 @@
                     mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich 0 .. 1
                 }
 
-
                 FarbeKollisionRegalMitSchlitten(automatischesLagersystem.KollisionRegal.GetKollisionRegalMitSchlitten());
 
                 if (mainWindow.viewPort3d != null)
@@ -118,7 +124,6 @@
                        {
                            if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
                            {
-
                                //Bediengerät
                                mainWindow.viewPort3d.Children[197].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
 
@@ -146,7 +151,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -165,16 +170,27 @@
             }
         }
 
-  #region SPS Versionsinfo, Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+        private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
+            }
+        }
+
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
             }
         }
 
@@ -202,7 +218,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Sichtbarkeit B1
 
@@ -288,8 +304,6 @@
 
         #endregion Sichtbarkeit B2
 
-
-
         #region ColorKollisionRegalMitSchlitten
 
         public void FarbeKollisionRegalMitSchlitten(bool val)
@@ -311,8 +325,6 @@
 
         #endregion ColorKollisionRegalMitSchlitten
 
-
-
         #region VisibilityButtonsAktiv
 
         private string _visibilityButtonsAktiv;
@@ -327,7 +339,7 @@
             }
         }
 
-        #endregion VisibilitySlidersAktiv
+        #endregion VisibilityButtonsAktiv
 
         #region VisibilitySlidersAktiv
 
@@ -344,8 +356,6 @@
         }
 
         #endregion VisibilitySlidersAktiv
-
-
 
         #region ClickModeBtnK1
 
@@ -527,9 +537,6 @@
 
         #endregion ClickModeBtnK6
 
-
-
-
         #region ClickModeAlleButtons
 
         public bool ClickModeButton(int AsciiCode)
@@ -559,7 +566,6 @@
         }
 
         #endregion ClickModeAlleButtons
-
 
         #region XPosition
 
@@ -607,8 +613,7 @@
             }
         }
 
-        #endregion YPosition
-
+        #endregion ZPosition
 
         #region IstPosition
 
@@ -641,7 +646,6 @@
         }
 
         #endregion SollPosition
-
 
         #region xPosSlider
 
@@ -697,12 +701,10 @@
 
         #endregion zPosSlider
 
-
-
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

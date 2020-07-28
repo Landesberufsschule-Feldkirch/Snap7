@@ -63,8 +63,11 @@ namespace WordClock.Model
         }
 
         internal int GetSekunde() => Sekunde;
+
         internal int GetMinute() => Minute;
+
         internal int GetStunde() => Stunde;
+
         internal void SetGeschwindigkeit(double geschwindigkeitSlider) => geschwindigkeitZeit = geschwindigkeitSlider;
     }
 }

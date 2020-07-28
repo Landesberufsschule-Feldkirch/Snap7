@@ -76,6 +76,6 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             if (F1) F1 = false; else F1 = true;
         }
 
-        internal void BtnNachfuellen() => Pegel = 1;        
+        internal void BtnNachfuellen() => Pegel = 1;
     }
 }

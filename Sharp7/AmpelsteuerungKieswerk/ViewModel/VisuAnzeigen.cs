@@ -16,7 +16,8 @@
             alleLastKraftWagen = alleLKW;
             DatenRangieren_AmpelChangedEvent(null, new AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs(AmpelsteuerungKieswerk.Model.AmpelZustand.Aus, AmpelsteuerungKieswerk.Model.AmpelZustand.Aus));
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -73,10 +74,12 @@
                 RichtungLkw4(alleLastKraftWagen.GetRichtungLKW(3));
                 RichtungLkw5(alleLastKraftWagen.GetRichtungLKW(4));
 
+                VersionNr = mainWindow.VersionNummer;
+
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -147,20 +150,29 @@
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+        private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -183,11 +195,14 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Color B1
 
-        public void FarbeB1(bool val) { if (val) ColorB1 = "Red"; else ColorB1 = "LightGray"; }
+        public void FarbeB1(bool val)
+        {
+            if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
+        }
 
         private string _colorB1;
 
@@ -205,7 +220,10 @@
 
         #region Color B2
 
-        public void FarbeB2(bool val) { if (val) ColorB2 = "Red"; else ColorB2 = "LightGray"; }
+        public void FarbeB2(bool val)
+        {
+            if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
+        }
 
         private string _colorB2;
 
@@ -223,7 +241,10 @@
 
         #region Color B3
 
-        public void FarbeB3(bool val) { if (val) ColorB3 = "Red"; else ColorB3 = "LightGray"; }
+        public void FarbeB3(bool val)
+        {
+            if (val) ColorB3 = "Red"; else ColorB3 = "LightGray";
+        }
 
         private string _colorB3;
 
@@ -241,7 +262,10 @@
 
         #region Color B4
 
-        public void FarbeB4(bool val) { if (val) ColorB4 = "Red"; else ColorB4 = "LightGray"; }
+        public void FarbeB4(bool val)
+        {
+            if (val) ColorB4 = "Red"; else ColorB4 = "LightGray";
+        }
 
         private string _colorB4;
 
@@ -259,7 +283,10 @@
 
         #region ColorLinksRot
 
-        public void FarbeLinksRot(bool val) { if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White"; }
+        public void FarbeLinksRot(bool val)
+        {
+            if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White";
+        }
 
         private string _colorLinksRot;
 
@@ -277,7 +304,10 @@
 
         #region ColorLinksGelb
 
-        public void FarbeLinksGelb(bool val) { if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White"; }
+        public void FarbeLinksGelb(bool val)
+        {
+            if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White";
+        }
 
         private string _colorLinksGelb;
 
@@ -295,7 +325,10 @@
 
         #region ColorLinksGruen
 
-        public void FarbeLinksGruen(bool val) { if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White"; }
+        public void FarbeLinksGruen(bool val)
+        {
+            if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White";
+        }
 
         private string _colorLinksGruen;
 
@@ -313,7 +346,10 @@
 
         #region ColorRechtsRot
 
-        public void FarbeRechtsRot(bool val) { if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White"; }
+        public void FarbeRechtsRot(bool val)
+        {
+            if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White";
+        }
 
         private string _colorRechtsRot;
 
@@ -331,7 +367,10 @@
 
         #region ColorRechtsGelb
 
-        public void FarbeRechtsGelb(bool val) { if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White"; }
+        public void FarbeRechtsGelb(bool val)
+        {
+            if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White";
+        }
 
         private string _colorRechtsGelb;
 
@@ -349,7 +388,10 @@
 
         #region ColorRechtsGruen
 
-        public void FarbeRechtsGruen(bool val) { if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White"; }
+        public void FarbeRechtsGruen(bool val)
+        {
+            if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White";
+        }
 
         private string _colorRechtsGruen;
 
@@ -367,7 +409,10 @@
 
         #region RichtungLkw1
 
-        public void RichtungLkw1(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1; }
+        public void RichtungLkw1(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw1 = 1; else DirectionLkw1 = -1;
+        }
 
         private int _directionLkw1;
 
@@ -385,7 +430,10 @@
 
         #region RichtungLkw2
 
-        public void RichtungLkw2(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1; }
+        public void RichtungLkw2(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw2 = 1; else DirectionLkw2 = -1;
+        }
 
         private int _directionLkw2;
 
@@ -403,7 +451,10 @@
 
         #region RichtungLkw3
 
-        public void RichtungLkw3(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1; }
+        public void RichtungLkw3(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw3 = 1; else DirectionLkw3 = -1;
+        }
 
         private int _directionLkw3;
 
@@ -421,7 +472,10 @@
 
         #region RichtungLkw4
 
-        public void RichtungLkw4(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1; }
+        public void RichtungLkw4(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw4 = 1; else DirectionLkw4 = -1;
+        }
 
         private int _directionLkw4;
 
@@ -439,7 +493,10 @@
 
         #region RichtungLkw5
 
-        public void RichtungLkw5(LkwRichtungen val) { if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1; }
+        public void RichtungLkw5(LkwRichtungen val)
+        {
+            if (val == LkwRichtungen.NachRechts) DirectionLkw5 = 1; else DirectionLkw5 = -1;
+        }
 
         private int _directionLkw5;
 
@@ -625,10 +682,10 @@
 
         #endregion PositionLkw5
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

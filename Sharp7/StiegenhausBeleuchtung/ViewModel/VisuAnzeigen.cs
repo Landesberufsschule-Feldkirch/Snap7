@@ -21,7 +21,8 @@
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
             for (int i = 0; i < 100; i++) ColorLampe.Add("Yellow");
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -47,7 +48,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -57,16 +58,27 @@
             }
         }
 
-         #region SPS Versionsinfo, Status und Farbe
+        #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
+            }
+        }
+
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
             }
         }
 
@@ -94,7 +106,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ReiseStart
 
@@ -132,7 +144,10 @@
 
         #region FarbeAlleLampen
 
-        public void FarbeAlleLampen(int lampe, bool val) { if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White"; }
+        public void FarbeAlleLampen(int lampe, bool val)
+        {
+            if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White";
+        }
 
         private ObservableCollection<string> _colorLampe = new ObservableCollection<string>();
 
@@ -193,6 +208,7 @@
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

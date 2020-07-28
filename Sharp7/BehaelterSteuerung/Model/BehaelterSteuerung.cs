@@ -50,14 +50,20 @@
         }
 
         internal void VentilQ2() => AlleBehaelter[0].VentilUntenUmschalten();
-        internal void VentilQ4() => AlleBehaelter[1].VentilUntenUmschalten();
-        internal void VentilQ6() => AlleBehaelter[2].VentilUntenUmschalten();
-        internal void VentilQ8() => AlleBehaelter[3].VentilUntenUmschalten();
-        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus_1234);
-        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus_1324);
-        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus_1432);
-        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus_4321);
 
+        internal void VentilQ4() => AlleBehaelter[1].VentilUntenUmschalten();
+
+        internal void VentilQ6() => AlleBehaelter[2].VentilUntenUmschalten();
+
+        internal void VentilQ8() => AlleBehaelter[3].VentilUntenUmschalten();
+
+        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus_1234);
+
+        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus_1324);
+
+        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus_1432);
+
+        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus_4321);
 
         private void AutomatikBetriebStarten(AutomatikModus modus)
         {

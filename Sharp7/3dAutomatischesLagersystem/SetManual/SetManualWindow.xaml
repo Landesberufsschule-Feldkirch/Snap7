@@ -44,26 +44,24 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Label Content="x: " Grid.Column="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Right"/>
-        <Label Content="{Binding ViAnzeige.XPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Left"  />
+        <Label Content="x: " Grid.Column="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Right" />
+        <Label Content="{Binding ViAnzeige.XPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="14" FontSize="14pt" HorizontalAlignment="Left" />
 
-        <Label Content="y: " Grid.Column="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Right"/>
-        <Label Content="{Binding ViAnzeige.YPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Left"  />
+        <Label Content="y: " Grid.Column="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Right" />
+        <Label Content="{Binding ViAnzeige.YPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="15" FontSize="14pt" HorizontalAlignment="Left" />
 
-        <Label Content="z: " Grid.Column="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Right"/>
-        <Label Content="{Binding ViAnzeige.ZPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Left"  />
-
-
+        <Label Content="z: " Grid.Column="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Right" />
+        <Label Content="{Binding ViAnzeige.ZPosition}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="16" FontSize="14pt" HorizontalAlignment="Left" />
 
         <Label Grid.Column="2" Grid.Row="2"  Content="X:  " HorizontalContentAlignment="Right" />
         <Label Grid.Column="2" Grid.Row="4"  Content="Y:  " HorizontalContentAlignment="Right" />
         <Label Grid.Column="2" Grid.Row="6" Content="Z:  " HorizontalContentAlignment="Right" />
 
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="2"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"  />
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="-1"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"/>
-        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}"/>
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="2"     Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.XPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}" />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="4"     Minimum="-1"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.YPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}" />
+        <Slider Grid.Column="3" Grid.ColumnSpan="9"    Grid.Row="6"    Minimum="0"   Maximum="1" TickFrequency="0.01"  IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.ZPosSlider, Mode=TwoWay}" Visibility="{Binding ViAnzeige.VisibilitySlidersAktiv}" />
 
-        <Button Grid.Column="2" Grid.Row="8" Command="{Binding BtnAktiv}" Content="Button Aktiv" Grid.RowSpan="5" Grid.ColumnSpan="2"/>
+        <Button Grid.Column="2" Grid.Row="8" Command="{Binding BtnAktiv}" Content="Button Aktiv" Grid.RowSpan="5" Grid.ColumnSpan="2" />
 
         <Button Grid.Column="6" Grid.Row="12"   ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"  Command="{Binding BtnK1}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Hinein" />
         <Button Grid.Column="6" Grid.Row="8"    ClickMode="{Binding ViAnzeige.ClickModeBtnK2}"  Command="{Binding BtnK2}"  Visibility="{Binding ViAnzeige.VisibilityButtonsAktiv}" Content="Heraus" />

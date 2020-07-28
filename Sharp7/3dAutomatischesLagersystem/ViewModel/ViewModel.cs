@@ -17,7 +17,9 @@ namespace AutomatischesLagersystem.ViewModel
         public Model.AutomatischesLagersystem AutomatischesLagersystem { get { return automatischesLagersystem; } }
 
         #region BtnAusraeumen
+
         private ICommand _btnAusraeumen;
+
         public ICommand BtnAusraeumen
         {
             get
@@ -29,10 +31,13 @@ namespace AutomatischesLagersystem.ViewModel
                 return _btnAusraeumen;
             }
         }
-        #endregion BtnAufraeumen
+
+        #endregion BtnAusraeumen
 
         #region BtnEinraeumen
+
         private ICommand _btnEinraeumen;
+
         public ICommand BtnEinraeumen
         {
             get
@@ -44,10 +49,13 @@ namespace AutomatischesLagersystem.ViewModel
                 return _btnEinraeumen;
             }
         }
+
         #endregion BtnEinraeumen
 
         #region BtnReset
+
         private ICommand _btnReset;
+
         public ICommand BtnReset
         {
             get
@@ -59,6 +67,7 @@ namespace AutomatischesLagersystem.ViewModel
                 return _btnReset;
             }
         }
+
         #endregion BtnReset
 
         #region BtnAktiv
@@ -77,8 +86,7 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-        #endregion BtnK1
-
+        #endregion BtnAktiv
 
         #region BtnK1
 
@@ -188,7 +196,6 @@ namespace AutomatischesLagersystem.ViewModel
 
         #endregion BtnK6
 
-
         #region BtnBuchstabe
 
         private ICommand _btnBuchstabe;
@@ -206,9 +213,5 @@ namespace AutomatischesLagersystem.ViewModel
         }
 
         #endregion BtnBuchstabe
-
-
-
-
     }
 }

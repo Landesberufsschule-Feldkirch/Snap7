@@ -11,27 +11,30 @@ namespace LAP_2019_Foerderanlage
         public bool AnimationGestartet { get; set; }
         public WpfAnimatedGif.ImageAnimationController Controller { get; set; }
         public S7_1200 S7_1200 { get; set; }
+        public string VersionInfo { get; set; }
+        public string VersionNummer { get; set; }
 
+        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-        public string Versionsinfo { get; set; }
-        private readonly int anzByteVersion;
         private const int anzByteDigInput = 2;
         private const int anzByteDigOutput = 2;
         private const int anzByteAnalogInput = 2;
         private const int anzByteAnalogOutput = 2;
+
         public MainWindow()
         {
-            Versionsinfo = "LAP 2019 Foerderanlage V1.00";
-            anzByteVersion = Versionsinfo.Length;
-            
+            VersionText = "LAP 2019 Foerderanlage";
+            VersionNummer = "V2.0";
+            VersionInfo = VersionText + " - " + VersionNummer;
+
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;

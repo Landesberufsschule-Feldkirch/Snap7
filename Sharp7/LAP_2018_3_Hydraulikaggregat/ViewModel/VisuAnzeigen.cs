@@ -50,7 +50,8 @@
 
             VisibilityKurzschluss = "Hidden";
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -85,7 +86,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -96,7 +97,9 @@
         }
 
         internal void BtnQ1() => hydraulikaggregat.Q1 = ClickModeButtonQ1();
+
         internal void BtnQ2() => hydraulikaggregat.Q2 = ClickModeButtonQ2();
+
         internal void BtnQ3() => hydraulikaggregat.Q3 = ClickModeButtonQ3();
 
         internal void BtnQ1_Q3()
@@ -114,6 +117,7 @@
         }
 
         internal void BtnS1() => hydraulikaggregat.S1 = ClickModeButtonS1();
+
         internal void BtnS2() => hydraulikaggregat.S2 = ClickModeButtonS2();
 
         internal void BtnS3()
@@ -124,17 +128,27 @@
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -160,7 +174,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ClickModeBtnQ1
 
@@ -374,7 +388,10 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val) { if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red"; }
+        public void FarbeF1(bool val)
+        {
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
+        }
 
         private string _colorF1;
 
@@ -392,7 +409,10 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) { if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White"; }
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
+        }
 
         private string _colorP1;
 
@@ -410,7 +430,10 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val) { if (val) ColorP2 = "Red"; else ColorP2 = "White"; }
+        public void FarbeP2(bool val)
+        {
+            if (val) ColorP2 = "Red"; else ColorP2 = "White";
+        }
 
         private string _colorP2;
 
@@ -428,7 +451,10 @@
 
         #region Color P3
 
-        public void FarbeP3(bool val) { if (val) ColorP3 = "LawnGreen"; else ColorP3 = "White"; }
+        public void FarbeP3(bool val)
+        {
+            if (val) ColorP3 = "LawnGreen"; else ColorP3 = "White";
+        }
 
         private string _colorP3;
 
@@ -446,7 +472,10 @@
 
         #region Color P4
 
-        public void FarbeP4(bool val) { if (val) ColorP4 = "Red"; else ColorP4 = "White"; }
+        public void FarbeP4(bool val)
+        {
+            if (val) ColorP4 = "Red"; else ColorP4 = "White";
+        }
 
         private string _colorP4;
 
@@ -464,7 +493,10 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White"; }
+        public void FarbeQ1(bool val)
+        {
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
+        }
 
         private string _colorQ1;
 
@@ -482,7 +514,10 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) { if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White"; }
+        public void FarbeQ2(bool val)
+        {
+            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
+        }
 
         private string _colorQ2;
 
@@ -500,7 +535,10 @@
 
         #region Color Q3
 
-        public void FarbeQ3(bool val) { if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White"; }
+        public void FarbeQ3(bool val)
+        {
+            if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White";
+        }
 
         private string _colorQ3;
 
@@ -534,7 +572,10 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel) { Margin1 = new System.Windows.Thickness(41, fuellBalkenOben + fuellBalkenHoehe * (1 - pegel), 31, 0); }
+        public void Margin_1(double pegel)
+        {
+            Margin1 = new System.Windows.Thickness(41, fuellBalkenOben + fuellBalkenHoehe * (1 - pegel), 31, 0);
+        }
 
         private Thickness _margin1;
 
@@ -692,10 +733,10 @@
 
         #endregion VisibilityKurzschluss
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

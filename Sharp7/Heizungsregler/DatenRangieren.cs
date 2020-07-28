@@ -1,8 +1,4 @@
-﻿using Sharp7;
-using Heizungsregler.ViewModel;
-using Utilities;
-
-namespace Heizungsregler
+﻿namespace Heizungsregler
 {
     public class DatenRangieren
     {

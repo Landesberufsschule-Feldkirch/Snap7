@@ -4,8 +4,8 @@
     {
         private readonly Kraftwerk kraftWerk;
 
-        public StateBelasten(Kraftwerk kw) =>            kraftWerk = kw;
-        
+        public StateBelasten(Kraftwerk kw) => kraftWerk = kw;
+
         public void OnEntry()
         {
             kraftWerk.generator.SetSynchronisierungVentil(kraftWerk.Ventil_Y);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor

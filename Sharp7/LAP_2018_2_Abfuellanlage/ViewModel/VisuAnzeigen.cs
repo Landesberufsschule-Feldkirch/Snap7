@@ -16,7 +16,8 @@
             mainWindow = mw;
             alleFlaschen = af;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -103,10 +104,10 @@
 
                 Margin_1(alleFlaschen.Pegel);
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -117,26 +118,42 @@
         }
 
         internal void TasterS1() => alleFlaschen.S1 = ClickModeButtonS1();
+
         internal void TasterS2() => alleFlaschen.S2 = !ClickModeButtonS2();
+
         internal void TasterS3() => alleFlaschen.S3 = ClickModeButtonS3();
+
         internal void TasterS4() => alleFlaschen.S4 = ClickModeButtonS4();
+
         internal void SetManualK1() => alleFlaschen.K1 = ClickModeButtonK1();
+
         internal void SetManualK2() => alleFlaschen.K2 = ClickModeButtonK2();
+
         internal void SetManualQ1() => alleFlaschen.Q1 = ClickModeButtonQ1();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -162,7 +179,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ClickModeBtnS1
 
@@ -580,7 +597,10 @@
 
         #region Visibility Flasche 1
 
-        public void VisibilityFlasche1(bool val) { if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden"; }
+        public void VisibilityFlasche1(bool val)
+        {
+            if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
+        }
 
         private string _visibilityImage1;
 
@@ -598,7 +618,10 @@
 
         #region Visibility Flasche 2
 
-        public void VisibilityFlasche2(bool val) { if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden"; }
+        public void VisibilityFlasche2(bool val)
+        {
+            if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
+        }
 
         private string _visibilityImage2;
 
@@ -616,7 +639,10 @@
 
         #region Visibility Flasche 3
 
-        public void VisibilityFlasche3(bool val) { if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden"; }
+        public void VisibilityFlasche3(bool val)
+        {
+            if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
+        }
 
         private string _visibilityImage3;
 
@@ -634,7 +660,10 @@
 
         #region Visibility Flasche 4
 
-        public void VisibilityFlasche4(bool val) { if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden"; }
+        public void VisibilityFlasche4(bool val)
+        {
+            if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
+        }
 
         private string _visibilityImage4;
 
@@ -652,7 +681,10 @@
 
         #region Visibility Flasche 5
 
-        public void VisibilityFlasche5(bool val) { if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden"; }
+        public void VisibilityFlasche5(bool val)
+        {
+            if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden";
+        }
 
         private string _visibilityImage5;
 
@@ -670,7 +702,10 @@
 
         #region Visibility Flasche 6
 
-        public void VisibilityFlasche6(bool val) { if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden"; }
+        public void VisibilityFlasche6(bool val)
+        {
+            if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden";
+        }
 
         private string _visibilityImage6;
 
@@ -814,7 +849,10 @@
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val) { if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden"; }
+        public void VisibilityAbleitung(bool val)
+        {
+            if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
+        }
 
         private string _visibilityRectangleAbleitung;
 
@@ -832,7 +870,10 @@
 
         #region Color F1
 
-        public void FarbeCircle_F1(bool val) { if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red"; }
+        public void FarbeCircle_F1(bool val)
+        {
+            if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red";
+        }
 
         private string _colorCircle_F1;
 
@@ -850,7 +891,10 @@
 
         #region Color Q1
 
-        public void FarbeCircle_Q1(bool val) { if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray"; }
+        public void FarbeCircle_Q1(bool val)
+        {
+            if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray";
+        }
 
         private string _colorCircle_Q1;
 
@@ -868,7 +912,10 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray"; }
+        public void FarbeCircle_P1(bool val)
+        {
+            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
+        }
 
         private string _colorCircle_P1;
 
@@ -886,7 +933,10 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val) { if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray"; }
+        public void FarbeCircle_P2(bool val)
+        {
+            if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
+        }
 
         private string _colorCircle_P2;
 
@@ -904,7 +954,10 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val) { if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue"; }
+        public void FarbeRectangleZuleitung(bool val)
+        {
+            if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue";
+        }
 
         private string _colorRectangleZuleitung;
 
@@ -922,7 +975,10 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel) { Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0); }
+        public void Margin_1(double pegel)
+        {
+            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
+        }
 
         private Thickness _margin1;
 
@@ -938,10 +994,10 @@
 
         #endregion Margin1
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

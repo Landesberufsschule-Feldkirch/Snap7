@@ -17,13 +17,12 @@ namespace AutomatischesLagersystem
         public bool FensterAktiv { get; set; }
         public DreiDErstellen DreiD { get; set; }
         public int[] DreiDModelleIds { get; set; }
+        public string VersionInfo { get; set; }
+        public string VersionNummer { get; set; }
 
-
+        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-
-        public string Versionsinfo { get; set; }
-        private readonly int anzByteVersion;
         private const int anzByteDigInput = 2;
         private const int anzByteDigOutput = 2;
         private const int anzByteAnalogInput = 2;
@@ -31,10 +30,10 @@ namespace AutomatischesLagersystem
 
         public MainWindow()
         {
-            
-            Versionsinfo = "3D Automatisches Lagersystem V1.00";
-            anzByteVersion = Versionsinfo.Length;
-            
+            VersionText = "3D Automatisches Lagersystem";
+            VersionNummer = "V2.0";
+            VersionInfo = VersionText + " - " + VersionNummer;
+
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;
             BediengeraetStartpositionen = new DreiDElemente[4];
@@ -50,7 +49,7 @@ namespace AutomatischesLagersystem
             InitializeComponent();
 
             DataContext = viewModel;
-            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             DreiD = new DreiDErstellen(this);
 

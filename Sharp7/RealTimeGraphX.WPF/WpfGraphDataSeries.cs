@@ -36,7 +36,7 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         public String Name
         {
-            get => _name; 
+            get => _name;
             set { _name = value; RaisePropertyChangedAuto(); }
         }
 
@@ -66,7 +66,7 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         public bool IsVisible
         {
-            get => _isVisible; 
+            get => _isVisible;
             set { _isVisible = value; RaisePropertyChangedAuto(); }
         }
 
@@ -77,7 +77,7 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         public Color Stroke
         {
-            get => _stroke; 
+            get => _stroke;
             set
             {
                 _stroke = value;
@@ -102,7 +102,7 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         public Brush Fill
         {
-            get => _fill; 
+            get => _fill;
             set
             {
                 _fill = value;

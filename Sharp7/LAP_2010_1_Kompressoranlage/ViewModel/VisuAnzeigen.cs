@@ -35,7 +35,8 @@
 
             VisibilityKurzschluss = "Hidden";
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -64,7 +65,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -75,21 +76,32 @@
         }
 
         internal void SetS1() => kompressoranlage.S1 = ClickModeButtonS1();
+
         internal void BtnS2() => kompressoranlage.S2 = ClickModeButtonS2();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -115,7 +127,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ClickModeBtnS1
 
@@ -179,7 +191,10 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val) { if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red"; }
+        public void FarbeF1(bool val)
+        {
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
+        }
 
         private string _colorF1;
 
@@ -197,7 +212,10 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) { if (val) ColorP1 = "Red"; else ColorP1 = "White"; }
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "Red"; else ColorP1 = "White";
+        }
 
         private string _colorP1;
 
@@ -215,7 +233,10 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val) { if (val) ColorP2 = "LawnGreen"; else ColorP2 = "White"; }
+        public void FarbeP2(bool val)
+        {
+            if (val) ColorP2 = "LawnGreen"; else ColorP2 = "White";
+        }
 
         private string _colorP2;
 
@@ -233,7 +254,10 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White"; }
+        public void FarbeQ1(bool val)
+        {
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
+        }
 
         private string _colorQ1;
 
@@ -251,7 +275,10 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) { if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White"; }
+        public void FarbeQ2(bool val)
+        {
+            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
+        }
 
         private string _colorQ2;
 
@@ -269,7 +296,10 @@
 
         #region Color Q3
 
-        public void FarbeQ3(bool val) { if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White"; }
+        public void FarbeQ3(bool val)
+        {
+            if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White";
+        }
 
         private string _colorQ3;
 
@@ -287,7 +317,10 @@
 
         #region Color S7
 
-        public void FarbeB1(bool val) { if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red"; }
+        public void FarbeB1(bool val)
+        {
+            if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red";
+        }
 
         private string _colorB1;
 
@@ -419,10 +452,10 @@
 
         #endregion Druck
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

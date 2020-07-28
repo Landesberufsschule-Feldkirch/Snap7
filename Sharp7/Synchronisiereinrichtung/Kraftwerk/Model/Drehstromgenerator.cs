@@ -48,14 +48,20 @@
         }
 
         public double GetDrehzahl() => n;
-        public double GetLeistung() => P;
-        public double GetCosPhi() => cosPhi;
-        public double GetFrequenz() => n * DrehzahlFaktor;
-        public double GetSpannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
-        public void SetSynchronisiertFrequenz(double frequenz) => n = 30 * frequenz;
-        public void SetSynchronisierungVentil(double Y) => SynchVentil = Y;
-        public void SetSynchronisierungErregerstrom(double Ie) => SynchErregerstrom = Ie;
 
+        public double GetLeistung() => P;
+
+        public double GetCosPhi() => cosPhi;
+
+        public double GetFrequenz() => n * DrehzahlFaktor;
+
+        public double GetSpannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
+
+        public void SetSynchronisiertFrequenz(double frequenz) => n = 30 * frequenz;
+
+        public void SetSynchronisierungVentil(double Y) => SynchVentil = Y;
+
+        public void SetSynchronisierungErregerstrom(double Ie) => SynchErregerstrom = Ie;
 
         public void MaschineLeistungFahren(double Y)
         {

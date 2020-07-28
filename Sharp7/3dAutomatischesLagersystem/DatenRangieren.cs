@@ -1,6 +1,5 @@
 ﻿namespace AutomatischesLagersystem
 {
-    using Sharp7;
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;
@@ -34,13 +33,12 @@
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-
             if (!mainWindow.DebugWindowAktiv)
             {
-                              /*
-                viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
-                */
+                /*
+  viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+  viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+  */
             }
 
             /*

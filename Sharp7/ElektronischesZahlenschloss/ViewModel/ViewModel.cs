@@ -14,7 +14,7 @@ namespace ElektronischesZahlenschloss.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, zahlenschloss);
         }
 
-        public Model.Zahlenschloss Zahlenschloss{ get { return zahlenschloss; } }
+        public Model.Zahlenschloss Zahlenschloss { get { return zahlenschloss; } }
 
         #region BtnBuchstabe
 
@@ -33,6 +33,5 @@ namespace ElektronischesZahlenschloss.ViewModel
         }
 
         #endregion BtnBuchstabe
-              
     }
 }

@@ -8,22 +8,25 @@ namespace Synchronisiereinrichtung
     {
         public bool DebugWindowAktiv { get; set; }
         public S7_1200 S7_1200 { get; set; }
+        public string VersionInfo { get; set; }
+        public string VersionNummer { get; set; }
 
+        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private SetManualWindow setManualWindow;
         private RealTimeGraphWindow realTimeGraphWindow;
         private readonly ViewModel viewModel;
-        public string Versionsinfo { get; set; }
-        private readonly int anzByteVersion;
         private const int anzByteDigInput = 1;
         private const int anzByteDigOutput = 1;
         private const int anzByteAnalogInput = 20;
         private const int anzByteAnalogOutput = 4;
+
         public MainWindow()
         {
-            Versionsinfo = "Synchronisiereinrichtung V1.00";
-            anzByteVersion = Versionsinfo.Length;
-            
+            VersionText = "Synchronisiereinrichtung";
+            VersionNummer = "V2.0";
+            VersionInfo = VersionText + " - " + VersionNummer;
+
             viewModel = new ViewModel(this);
 
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace Synchronisiereinrichtung
             datenRangieren = new DatenRangieren(this, viewModel);
             GaugeDifferenzSpannung.ApplyTemplate();
 
-            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput,datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;

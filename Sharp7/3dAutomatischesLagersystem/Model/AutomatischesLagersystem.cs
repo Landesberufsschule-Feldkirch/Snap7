@@ -4,7 +4,7 @@ namespace AutomatischesLagersystem.Model
 {
     public class AutomatischesLagersystem
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow mainWindow;
 
         public bool K1 { get; set; } // Regalbediengerät hinein
         public bool K2 { get; set; } // Regalbediengerät heraus
@@ -50,7 +50,5 @@ namespace AutomatischesLagersystem.Model
         }
 
         public char Zeichen { get; internal set; }
-
-
     }
 }

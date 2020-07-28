@@ -90,6 +90,6 @@
             if (S2) S2 = false; else S2 = true;
         }
 
-        internal void Nachfuellen() => Silo.Nachfuellen();        
+        internal void Nachfuellen() => Silo.Nachfuellen();
     }
 }

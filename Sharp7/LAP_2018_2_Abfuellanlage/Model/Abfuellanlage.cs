@@ -83,7 +83,11 @@ namespace LAP_2018_2_Abfuellanlage.Model
         }
 
         internal void TasterNachfuellen() => Pegel = 1;
-        internal void TasterF1() { if (F1) F1 = false; else F1 = true; }
+
+        internal void TasterF1()
+        {
+            if (F1) F1 = false; else F1 = true;
+        }
 
         internal void AllesReset()
         {

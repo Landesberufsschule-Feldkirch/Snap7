@@ -14,7 +14,8 @@
             mainWindow = mw;
             ofentuerSteuerung = oSt;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -66,7 +67,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -75,26 +76,42 @@
                 Thread.Sleep(10);
             }
         }
+
         internal void SetManualQ1() => ofentuerSteuerung.Q1 = ClickModeButtonQ1();
+
         internal void SetManualQ2() => ofentuerSteuerung.Q2 = ClickModeButtonQ2();
+
         internal void SetS1() => ofentuerSteuerung.S1 = ClickModeButtonS1();
+
         internal void SetS2() => ofentuerSteuerung.S2 = ClickModeButtonS2();
+
         internal void SetS3() => ofentuerSteuerung.S3 = ClickModeButtonS3();
+
         internal void SetB3() => ofentuerSteuerung.B3 = !ClickModeButtonB3();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -125,7 +142,7 @@
             throw new NotImplementedException();
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ZahnradWinkel
 
@@ -133,7 +150,7 @@
 
         public double ZahnradWinkel
         {
-            get => _zahnradWinkel; 
+            get => _zahnradWinkel;
             set
             {
                 _zahnradWinkel = value;
@@ -149,7 +166,7 @@
 
         public double ZahnstangePosition
         {
-            get => _zahnstangePosition; 
+            get => _zahnstangePosition;
             set
             {
                 _zahnstangePosition = value;
@@ -165,7 +182,7 @@
 
         public double OfentuerePosition
         {
-            get => _ofentuerePosition; 
+            get => _ofentuerePosition;
             set
             {
                 _ofentuerePosition = value;
@@ -186,7 +203,7 @@
 
         public string ColorP1
         {
-            get => _colorP1; 
+            get => _colorP1;
             set
             {
                 _colorP1 = value;
@@ -207,7 +224,7 @@
 
         public string ColorQ1
         {
-            get => _colorQ1; 
+            get => _colorQ1;
             set
             {
                 _colorQ1 = value;
@@ -228,7 +245,7 @@
 
         public string ColorQ2
         {
-            get => _colorQ2; 
+            get => _colorQ2;
             set
             {
                 _colorQ2 = value;
@@ -258,7 +275,7 @@
 
         public string ClickModeBtnQ1
         {
-            get => _clickModeBtnQ1; 
+            get => _clickModeBtnQ1;
             set
             {
                 _clickModeBtnQ1 = value;
@@ -318,7 +335,7 @@
 
         public string ClickModeBtnS1
         {
-            get => _clickModeBtnS1; 
+            get => _clickModeBtnS1;
             set
             {
                 _clickModeBtnS1 = value;
@@ -348,7 +365,7 @@
 
         public string ClickModeBtnS2
         {
-            get => _clickModeBtnS2; 
+            get => _clickModeBtnS2;
             set
             {
                 _clickModeBtnS2 = value;
@@ -378,7 +395,7 @@
 
         public string ClickModeBtnS3
         {
-            get => _clickModeBtnS3; 
+            get => _clickModeBtnS3;
             set
             {
                 _clickModeBtnS3 = value;
@@ -387,8 +404,6 @@
         }
 
         #endregion ClickModeBtnS3
-
-
 
         #region ClickModeBtnB3
 
@@ -410,7 +425,7 @@
 
         public string ClickModeBtnB3
         {
-            get => _clickModeBtnB3; 
+            get => _clickModeBtnB3;
             set
             {
                 _clickModeBtnB3 = value;
@@ -440,7 +455,7 @@
 
         public string VisibilityB1Ein
         {
-            get => _visibilityB1Ein; 
+            get => _visibilityB1Ein;
             set
             {
                 _visibilityB1Ein = value;
@@ -452,7 +467,7 @@
 
         public string VisibilityB1Aus
         {
-            get => _visibilityB1Aus; 
+            get => _visibilityB1Aus;
             set
             {
                 _visibilityB1Aus = value;
@@ -482,7 +497,7 @@
 
         public string VisibilityB2Ein
         {
-            get => _visibilityB2Ein; 
+            get => _visibilityB2Ein;
             set
             {
                 _visibilityB2Ein = value;
@@ -494,7 +509,7 @@
 
         public string VisibilityB2Aus
         {
-            get => _visibilityB2Aus; 
+            get => _visibilityB2Aus;
             set
             {
                 _visibilityB2Aus = value;
@@ -524,7 +539,7 @@
 
         public string VisibilityB3Ein
         {
-            get => _visibilityB3Ein; 
+            get => _visibilityB3Ein;
             set
             {
                 _visibilityB3Ein = value;
@@ -536,7 +551,7 @@
 
         public string VisibilityB3Aus
         {
-            get => _visibilityB3Aus; 
+            get => _visibilityB3Aus;
             set
             {
                 _visibilityB3Aus = value;
@@ -552,7 +567,7 @@
 
         public string VisibilityKurzschluss
         {
-            get => _visibilityKurzschluss; 
+            get => _visibilityKurzschluss;
             set
             {
                 _visibilityKurzschluss = value;
@@ -562,10 +577,10 @@
 
         #endregion VisibilityKurzschluss
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

@@ -8,20 +8,23 @@ namespace LAP_2018_4_Niveauregelung
         public S7_1200 S7_1200 { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
+        public string VersionInfo { get; set; }
+        public string VersionNummer { get; set; }
 
+        private readonly string VersionText;
         public readonly ViewModel.ViewModel viewModel;
         private readonly DatenRangieren datenRangieren;
-        public string Versionsinfo { get; set; }
-        private readonly int anzByteVersion;
         private const int anzByteDigInput = 1;
         private const int anzByteDigOutput = 1;
         private const int anzByteAnalogInput = 0;
         private const int anzByteAnalogOutput = 0;
+
         public MainWindow()
         {
-            Versionsinfo = "LAP 2018/4 Niveauregelung V1.00";
-            anzByteVersion = Versionsinfo.Length;
-            
+            VersionText = "LAP 2018/4 Niveauregelung";
+            VersionNummer = "V2.0";
+            VersionInfo = VersionText + " - " + VersionNummer;
+
             viewModel = new ViewModel.ViewModel(this);
 
             datenRangieren = new DatenRangieren(this, viewModel);
@@ -29,7 +32,7 @@ namespace LAP_2018_4_Niveauregelung
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
             else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;

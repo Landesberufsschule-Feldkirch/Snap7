@@ -23,7 +23,7 @@ namespace LAP_2018_1_Silosteuerung.Model
         public bool Manual_Q1 { get; set; }
         public bool Manual_Q2 { get; set; }
         public bool Manual_K1 { get; set; }
- 
+
         public Foerderanlage()
         {
             Wagen = new Wagen();

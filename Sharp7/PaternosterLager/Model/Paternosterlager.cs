@@ -25,8 +25,6 @@ namespace PaternosterLager.Model
 
         private readonly MainWindow mainWindow;
 
-       
-
         public Paternosterlager(MainWindow mw, double anzahlKisten)
         {
             mainWindow = mw;

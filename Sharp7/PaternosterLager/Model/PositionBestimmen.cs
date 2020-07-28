@@ -2,6 +2,7 @@
 {
     using System;
     using Utilities;
+
     public enum Zeichenbereich
     {
         rechts = 0,

@@ -51,7 +51,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-
         <Rectangle Fill="LightGray"                      Grid.Column="16" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="10" Stroke="Black" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="1"  Grid.RowSpan="11" Stroke="Black" Panel.ZIndex="-1" />
@@ -144,11 +143,9 @@
 
         <Label Content="P1" Grid.Column="13" Grid.Row="3" VerticalAlignment="Center" />
 
-
-        <Label  Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="V1.1 " />
+        <Label  Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="2" Grid.Row="13"  Grid.ColumnSpan="5"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
-
     </Grid>
 </Window>

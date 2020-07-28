@@ -28,7 +28,8 @@
             VisibilityB2Ein = "Visible";
             VisibilityB2Aus = "Hidden";
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -54,7 +55,7 @@
                 {
                     mainWindow.Dispatcher.Invoke(() =>
                                {
-                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();                                   
+                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();
                                    foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow, paternosterlager.Position);
                                });
                 }
@@ -62,7 +63,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -82,21 +83,32 @@
         }
 
         internal void TasterAuf() => paternosterlager.ManualAuf = ClickModeButtonAuf();
+
         internal void TasterAb() => paternosterlager.ManualAb = ClickModeButtonAb();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -122,7 +134,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Sichtbarkeit B1
 
@@ -144,7 +156,7 @@
 
         public string VisibilityB1Ein
         {
-            get => _visibilityB1Ein; 
+            get => _visibilityB1Ein;
             set
             {
                 _visibilityB1Ein = value;
@@ -156,7 +168,7 @@
 
         public string VisibilityB1Aus
         {
-            get => _visibilityB1Aus; 
+            get => _visibilityB1Aus;
             set
             {
                 _visibilityB1Aus = value;
@@ -186,7 +198,7 @@
 
         public string VisibilityB2Ein
         {
-            get => _visibilityB2Ein; 
+            get => _visibilityB2Ein;
             set
             {
                 _visibilityB2Ein = value;
@@ -198,7 +210,7 @@
 
         public string VisibilityB2Aus
         {
-            get => _visibilityB2Aus; 
+            get => _visibilityB2Aus;
             set
             {
                 _visibilityB2Aus = value;
@@ -214,7 +226,7 @@
 
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
-            get => _alleKettengliedRegale; 
+            get => _alleKettengliedRegale;
             set
             {
                 _alleKettengliedRegale = value;
@@ -244,7 +256,7 @@
 
         public ObservableCollection<string> ClickModeBtn
         {
-            get => _clickModeBtn; 
+            get => _clickModeBtn;
             set
             {
                 _clickModeBtn = value;
@@ -274,7 +286,7 @@
 
         public string ClickModeBtnAuf
         {
-            get => _clickModeBtnAuf; 
+            get => _clickModeBtnAuf;
             set
             {
                 _clickModeBtnAuf = value;
@@ -304,7 +316,7 @@
 
         public string ClickModeBtnAb
         {
-            get => _clickModeBtnAb; 
+            get => _clickModeBtnAb;
             set
             {
                 _clickModeBtnAb = value;
@@ -320,7 +332,7 @@
 
         public string IstPosition
         {
-            get => _istPosition; 
+            get => _istPosition;
             set
             {
                 _istPosition = value;
@@ -336,7 +348,7 @@
 
         public string SollPosition
         {
-            get => _sollPosition; 
+            get => _sollPosition;
             set
             {
                 _sollPosition = value;
@@ -346,10 +358,10 @@
 
         #endregion SollPosition
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

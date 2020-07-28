@@ -14,7 +14,8 @@
             mainWindow = mw;
             alleFahrzeugePersonen = aFP;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -82,10 +83,10 @@
                 EnablePerson3 = alleFahrzeugePersonen.AllesInParkposition;
                 EnablePerson4 = alleFahrzeugePersonen.AllesInParkposition;
 
-              if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -97,17 +98,27 @@
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -133,11 +144,14 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Color B1
 
-        public void FarbeB1(bool val) { if (val) ColorB1 = "Red"; else ColorB1 = "LightGray"; }
+        public void FarbeB1(bool val)
+        {
+            if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
+        }
 
         private string _colorB1;
 
@@ -155,7 +169,10 @@
 
         #region Color B2
 
-        public void FarbeB2(bool val) { if (val) ColorB2 = "Red"; else ColorB2 = "LightGray"; }
+        public void FarbeB2(bool val)
+        {
+            if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
+        }
 
         private string _colorB2;
 
@@ -613,10 +630,10 @@
 
         #endregion AnzahlPersonen
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

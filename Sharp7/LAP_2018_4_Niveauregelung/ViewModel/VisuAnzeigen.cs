@@ -16,7 +16,8 @@
             mainWindow = mw;
             niveauRegelung = nr;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -82,10 +83,10 @@
 
                 Margin_1(niveauRegelung.Pegel);
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -96,23 +97,34 @@
         }
 
         internal void TasterS1() => niveauRegelung.S1 = ClickModeButtonS1();
-        internal void TasterS2() => niveauRegelung.S2 = !ClickModeButtonS2();
-        internal void TasterS3() => niveauRegelung.S3 = ClickModeButtonS3();
 
+        internal void TasterS2() => niveauRegelung.S2 = !ClickModeButtonS2();
+
+        internal void TasterS3() => niveauRegelung.S3 = ClickModeButtonS3();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -138,7 +150,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ClickModeBtnS1
 
@@ -232,7 +244,10 @@
 
         #region Color Thermorelais F1
 
-        public void FarbeTherorelais_F1(bool val) { if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen"; }
+        public void FarbeTherorelais_F1(bool val)
+        {
+            if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen";
+        }
 
         private string _colorThermorelais_F1;
 
@@ -250,7 +265,10 @@
 
         #region Color Thermorelais F2
 
-        public void FarbeTherorelais_F2(bool val) { if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen"; }
+        public void FarbeTherorelais_F2(bool val)
+        {
+            if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen";
+        }
 
         private string _colorThermorelais_F2;
 
@@ -268,7 +286,10 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) { if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White"; }
+        public void FarbeCircle_P1(bool val)
+        {
+            if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White";
+        }
 
         private string _colorCircle_P1;
 
@@ -286,7 +307,10 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val) { if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White"; }
+        public void FarbeCircle_P2(bool val)
+        {
+            if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White";
+        }
 
         private string _colorCircle_P2;
 
@@ -304,7 +328,10 @@
 
         #region Color P3
 
-        public void FarbeCircle_P3(bool val) { if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White"; }
+        public void FarbeCircle_P3(bool val)
+        {
+            if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White";
+        }
 
         private string _colorCircle_P3;
 
@@ -322,7 +349,10 @@
 
         #region Color AbleitungOben
 
-        public void FarbeAbleitungOben(bool val) { if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue"; }
+        public void FarbeAbleitungOben(bool val)
+        {
+            if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue";
+        }
 
         private string _colorAbleitungOben;
 
@@ -340,7 +370,10 @@
 
         #region Color AbleitungUnten
 
-        public void FarbeAbleitungUnten(bool val) { if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue"; }
+        public void FarbeAbleitungUnten(bool val)
+        {
+            if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue";
+        }
 
         private string _colorAbleitungUnten;
 
@@ -358,7 +391,10 @@
 
         #region Color ZuleitungLinksWaagrecht
 
-        public void FarbeZuleitungLinksWaagrecht(bool val) { if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue"; }
+        public void FarbeZuleitungLinksWaagrecht(bool val)
+        {
+            if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue";
+        }
 
         private string _colorZuleitungLinksWaagrecht;
 
@@ -376,7 +412,10 @@
 
         #region Color ZuleitungLinksSenkrecht
 
-        public void FarbeZuleitungLinksSenkrecht(bool val) { if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue"; }
+        public void FarbeZuleitungLinksSenkrecht(bool val)
+        {
+            if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue";
+        }
 
         private string _colorZuleitungLinksSenkrecht;
 
@@ -394,7 +433,10 @@
 
         #region Color ZuleitungRechtsWaagrecht
 
-        public void FarbeZuleitungRechtsWaagrecht(bool val) { if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue"; }
+        public void FarbeZuleitungRechtsWaagrecht(bool val)
+        {
+            if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue";
+        }
 
         private string _colorZuleitungRechtsWaagrecht;
 
@@ -412,7 +454,10 @@
 
         #region Color ZuleitungRechtsSenkrecht
 
-        public void FarbeZuleitungRechtsSenkrecht(bool val) { if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue"; }
+        public void FarbeZuleitungRechtsSenkrecht(bool val)
+        {
+            if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue";
+        }
 
         private string _colorZuleitungRechtsSenkrecht;
 
@@ -682,7 +727,10 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel) { Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0); }
+        public void Margin_1(double pegel)
+        {
+            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
+        }
 
         private Thickness _margin1;
 
@@ -698,10 +746,10 @@
 
         #endregion Margin1
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

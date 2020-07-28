@@ -16,8 +16,11 @@
         }
 
         public bool GetSichtbar() => sichtbar;
+
         public double GetX() => posX;
+
         public double GetY() => posY;
+
         public double GetZ() => posZ;
 
         internal void Reset()

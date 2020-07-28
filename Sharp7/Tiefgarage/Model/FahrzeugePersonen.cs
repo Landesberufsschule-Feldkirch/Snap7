@@ -124,6 +124,7 @@ namespace Tiefgarage.Model
         }
 
         public void DraussenParken() => Bewegung = FahrenRichtung.ObenGeparkt;
+
         public void DrinnenParken() => Bewegung = FahrenRichtung.UntenGeparkt;
 
         private bool LichtschrankeUnterbrochen(double Pos)

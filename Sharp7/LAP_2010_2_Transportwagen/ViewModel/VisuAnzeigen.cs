@@ -13,7 +13,8 @@
             mainWindow = mw;
             transportwagen = tw;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -61,15 +62,14 @@
                 if (transportwagen.Q1 && transportwagen.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
                 if (transportwagen.Fuellen) VisibilityFuellen = "Visible"; else VisibilityFuellen = "Hidden";
 
-
                 PositionRadLinks = transportwagen.Position + AbstandRadWagen;
                 PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts + AbstandRadWagen;
                 PositionWagenkasten = transportwagen.Position;
 
-              if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -80,23 +80,36 @@
         }
 
         internal void SetManualQ1() => transportwagen.Q1 = ClickModeButtonQ1();
+
         internal void SetManualQ2() => transportwagen.Q2 = ClickModeButtonQ2();
+
         internal void SetS1() => transportwagen.S1 = ClickModeButtonS1();
+
         internal void SetS3() => transportwagen.S3 = ClickModeButtonS3();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -122,11 +135,14 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Color F1
 
-        public void FarbeF1(bool val) { if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red"; }
+        public void FarbeF1(bool val)
+        {
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
+        }
 
         private string _colorF1;
 
@@ -144,7 +160,10 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) { if (val) ColorP1 = "Red"; else ColorP1 = "White"; }
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "Red"; else ColorP1 = "White";
+        }
 
         private string _colorP1;
 
@@ -162,7 +181,10 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White"; }
+        public void FarbeQ1(bool val)
+        {
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
+        }
 
         private string _colorQ1;
 
@@ -180,7 +202,10 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) { if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White"; }
+        public void FarbeQ2(bool val)
+        {
+            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
+        }
 
         private string _colorQ2;
 
@@ -198,7 +223,10 @@
 
         #region Color S2
 
-        public void FarbeS2(bool val) { if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red"; }
+        public void FarbeS2(bool val)
+        {
+            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
+        }
 
         private string _colorS2;
 
@@ -450,8 +478,6 @@
 
         #endregion VisibilityFuellen
 
-
-
         #region PositionRadLinks
 
         private double _positionRadLinks;
@@ -500,10 +526,10 @@
 
         #endregion PositionWagenkasten
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

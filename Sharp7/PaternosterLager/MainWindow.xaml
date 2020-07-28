@@ -63,7 +63,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-   
         <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
 
         <Button Grid.Column="11" Grid.Row="1" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
@@ -217,10 +216,9 @@
         <Image Source="Bilder\Initiatoren_BetaetigtWeiss.jpg"   Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2"  Visibility="{Binding ViAnzeige.VisibilityB2Ein}" Margin="0,15,30,15" />
         <Label Content="B2"                                Grid.Column="11" Grid.Row="12" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="20,32,0,32" />
 
-        <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="V0.0 " />
+        <Label Grid.Column="18" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="16"  Grid.ColumnSpan="8" Grid.Row="17"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
-
     </Grid>
 </Window>

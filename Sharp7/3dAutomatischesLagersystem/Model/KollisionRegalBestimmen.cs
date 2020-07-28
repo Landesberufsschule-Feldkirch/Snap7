@@ -6,7 +6,6 @@
 
         public KollisionRegalBestimmen()
         {
-
         }
 
         internal void SetNeuePositionSchlitten(double x, double y, double z)
@@ -25,7 +24,6 @@
                     return;
                 }
             }
-
 
             if (y < 1950 || y > 3000)           // Regalbretter
             {
@@ -51,7 +49,6 @@
                 }
             }
         }
-
 
         internal bool GetKollisionRegalMitSchlitten() => kollisionRegalMitSchlitten;
     }

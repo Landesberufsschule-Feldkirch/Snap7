@@ -16,7 +16,8 @@
             mainWindow = mw;
             foerderanlage = fa;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -117,10 +118,10 @@
                     if (foerderanlage.T1) mainWindow.Controller.Play(); else mainWindow.Controller.Pause();
                 }
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -131,12 +132,19 @@
         }
 
         internal void SetS0() => foerderanlage.S8 = ClickModeButtonS0();
+
         internal void SetS1() => foerderanlage.S8 = ClickModeButtonS1();
+
         internal void SetS5() => foerderanlage.S8 = ClickModeButtonS5();
+
         internal void SetS6() => foerderanlage.S8 = ClickModeButtonS6();
+
         internal void SetS7() => foerderanlage.S8 = ClickModeButtonS7();
+
         internal void SetS8() => foerderanlage.S8 = ClickModeButtonS8();
+
         internal void SetManualM1_RL() => foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
+
         internal void SetManualM1_LL() => foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
 
         internal void SetManualM1_LL_K1()
@@ -147,21 +155,32 @@
         }
 
         internal void SetManualM2() => foerderanlage.Manual_M2 = ClickModeButtonM2();
+
         internal void SetManualK1() => foerderanlage.Manual_K1 = ClickModeButtonK1();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -187,7 +206,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region SelectedIndex
 
@@ -569,7 +588,10 @@
 
         #region Sichtbarkeit BtnSetManual
 
-        public void SichtbarkeitBtnSetManual(bool val) { if (val) VisibilityBtnSetManual = "Visible"; else VisibilityBtnSetManual = "Hidden"; }
+        public void SichtbarkeitBtnSetManual(bool val)
+        {
+            if (val) VisibilityBtnSetManual = "Visible"; else VisibilityBtnSetManual = "Hidden";
+        }
 
         private string _visibilityBtnSetManual;
 
@@ -587,7 +609,10 @@
 
         #region Sichtbarkeit PfeilLinkslauf
 
-        public void SichtbarkeitPfeilLinkslauf(bool val) { if (val) VisibilityPfeilLinkslauf = "Visible"; else VisibilityPfeilLinkslauf = "Hidden"; }
+        public void SichtbarkeitPfeilLinkslauf(bool val)
+        {
+            if (val) VisibilityPfeilLinkslauf = "Visible"; else VisibilityPfeilLinkslauf = "Hidden";
+        }
 
         private string _visibilityPfeilLinkslauf;
 
@@ -605,7 +630,10 @@
 
         #region Sichtbarkeit PfeilRechtslauf
 
-        public void SichtbarkeitPfeilRechtslauf(bool val) { if (val) VisibilityPfeilRechtslauf = "Visible"; else VisibilityPfeilRechtslauf = "Hidden"; }
+        public void SichtbarkeitPfeilRechtslauf(bool val)
+        {
+            if (val) VisibilityPfeilRechtslauf = "Visible"; else VisibilityPfeilRechtslauf = "Hidden";
+        }
 
         private string _visibilityPfeilRechtslauf;
 
@@ -623,7 +651,10 @@
 
         #region Sichtbarkeit M1
 
-        public void SichtbarkeitM1(bool val) { if (val) VisibilityM1Ein = "Visible"; else VisibilityM1Ein = "Hidden"; }
+        public void SichtbarkeitM1(bool val)
+        {
+            if (val) VisibilityM1Ein = "Visible"; else VisibilityM1Ein = "Hidden";
+        }
 
         private string _visibilityM1Ein;
 
@@ -641,7 +672,10 @@
 
         #region Sichtbarkeit M2
 
-        public void SichtbarkeitM2(bool val) { if (val) VisibilityM2Ein = "Visible"; else VisibilityM2Ein = "Hidden"; }
+        public void SichtbarkeitM2(bool val)
+        {
+            if (val) VisibilityM2Ein = "Visible"; else VisibilityM2Ein = "Hidden";
+        }
 
         private string _visibilityM2Ein;
 
@@ -785,7 +819,10 @@
 
         #region Sichtbarkeit MaterialOben
 
-        public void SichtbarkeitMaterialOben(bool val) { if (val) VisibilityMaterialOben = "Visible"; else VisibilityMaterialOben = "Hidden"; }
+        public void SichtbarkeitMaterialOben(bool val)
+        {
+            if (val) VisibilityMaterialOben = "Visible"; else VisibilityMaterialOben = "Hidden";
+        }
 
         private string _visibilityMaterialOben;
 
@@ -803,7 +840,10 @@
 
         #region Sichtbarkeit MaterialUnten
 
-        public void SichtbarkeitMaterialUnten(bool val) { if (val) VisibilityMaterialUnten = "Visible"; else VisibilityMaterialUnten = "Hidden"; }
+        public void SichtbarkeitMaterialUnten(bool val)
+        {
+            if (val) VisibilityMaterialUnten = "Visible"; else VisibilityMaterialUnten = "Hidden";
+        }
 
         private string _visibilityMaterialUnten;
 
@@ -837,7 +877,10 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val) { if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red"; }
+        public void FarbeF1(bool val)
+        {
+            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
+        }
 
         private string _colorF1;
 
@@ -855,7 +898,10 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) { if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White"; }
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
+        }
 
         private string _colorP1;
 
@@ -873,7 +919,10 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val) { if (val) ColorP2 = "Red"; else ColorP2 = "White"; }
+        public void FarbeP2(bool val)
+        {
+            if (val) ColorP2 = "Red"; else ColorP2 = "White";
+        }
 
         private string _colorP2;
 
@@ -891,7 +940,10 @@
 
         #region Color S2
 
-        public void FarbeS2(bool val) { if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red"; }
+        public void FarbeS2(bool val)
+        {
+            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
+        }
 
         private string _colorS2;
 
@@ -1025,10 +1077,10 @@
 
         #endregion WagenFuellstand
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

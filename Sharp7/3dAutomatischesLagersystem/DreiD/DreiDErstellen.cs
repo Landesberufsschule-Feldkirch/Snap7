@@ -11,6 +11,7 @@ namespace AutomatischesLagersystem.DreiD
     {
         private readonly MainWindow mainWindow;
         private readonly int[] abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
+
         public DreiDErstellen(MainWindow mw)
         {
             mainWindow = mw;
@@ -20,14 +21,17 @@ namespace AutomatischesLagersystem.DreiD
             mainWindow.DreiDModelleIds[ViewModel.IdEintraege.System] = mainWindow.viewPort3d.Children.Count;
 
             #region Bodenplatte
+
             var bodenplatte3d = new ModelVisual3D { Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige) };
             bodenplatte3d.Transform = new TranslateTransform3D(-1000, 0, 0);
             mainWindow.viewPort3d.Children.Add(bodenplatte3d);
 
             mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Bodenplatte] = mainWindow.viewPort3d.Children.Count;
-            #endregion
+
+            #endregion Bodenplatte
 
             #region Streben, ...
+
             for (var x = 0; x < 11; x++)
             {
                 for (var y = 0; y < 4; y++)
@@ -92,9 +96,11 @@ namespace AutomatischesLagersystem.DreiD
             }
 
             mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Streben] = mainWindow.viewPort3d.Children.Count;
-            #endregion
+
+            #endregion Streben, ...
 
             #region Regalbediengeraet
+
             mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);      //RegalBediengerät
             mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);     //Schlitten senkrecht
             mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-1120, 1500, 490, 0, 180, 0);     //Schlitten waagrecht Zwischenteil
@@ -106,7 +112,8 @@ namespace AutomatischesLagersystem.DreiD
             mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrecht.STL", Colors.MistyRose) });
 
             mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Regalbediengeraet] = mainWindow.viewPort3d.Children.Count;
-            #endregion
+
+            #endregion Regalbediengeraet
 
             AlleKistenPositionenBerechnen();
             AlleKistenHinzufeugen();

@@ -46,7 +46,6 @@ namespace Heizungsregler.Model
         public Heizungsregler(MainWindow mw)
         {
             mainWindow = mw;
-
         }
 
         internal void Reset()

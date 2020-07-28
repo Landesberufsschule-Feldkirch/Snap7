@@ -18,7 +18,8 @@
             mainWindow = mw;
             nadeltelegraph = nt;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -96,32 +97,42 @@
                 WinkelNadel4(nadeltelegraph.P4R, nadeltelegraph.P4L);
                 WinkelNadel5(nadeltelegraph.P5R, nadeltelegraph.P5L);
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
                 }
-                
+
                 Thread.Sleep(10);
             }
         }
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -147,7 +158,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region ClickModeAlleButtons
 
@@ -181,7 +192,10 @@
 
         #region Color P0
 
-        public void FarbeP0(bool val) { if (val) ColorP0 = "Red"; else ColorP0 = "LightGray"; }
+        public void FarbeP0(bool val)
+        {
+            if (val) ColorP0 = "Red"; else ColorP0 = "LightGray";
+        }
 
         private string _colorP0;
 
@@ -314,7 +328,10 @@
 
         #region Breite 1 UpRight
 
-        public void Breite1UpRight(bool val) { if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal; }
+        public void Breite1UpRight(bool val)
+        {
+            if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal;
+        }
 
         private int _width1UpRight;
 
@@ -332,7 +349,10 @@
 
         #region Breite 2 UpRight
 
-        public void Breite2UpRight(bool val) { if (val) Width2UpRight = BreiteBreit; else Width2UpRight = BreiteSchmal; }
+        public void Breite2UpRight(bool val)
+        {
+            if (val) Width2UpRight = BreiteBreit; else Width2UpRight = BreiteSchmal;
+        }
 
         private int _width2UpRight;
 
@@ -350,7 +370,10 @@
 
         #region Breite 3 UpRight
 
-        public void Breite3UpRight(bool val) { if (val) Width3UpRight = BreiteBreit; else Width3UpRight = BreiteSchmal; }
+        public void Breite3UpRight(bool val)
+        {
+            if (val) Width3UpRight = BreiteBreit; else Width3UpRight = BreiteSchmal;
+        }
 
         private int _width3UpRight;
 
@@ -368,7 +391,10 @@
 
         #region Breite 4 UpRight
 
-        public void Breite4UpRight(bool val) { if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal; }
+        public void Breite4UpRight(bool val)
+        {
+            if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal;
+        }
 
         private int _width4UpRight;
 
@@ -386,7 +412,10 @@
 
         #region Breite 2 UpLeft
 
-        public void Breite2UpLeft(bool val) { if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal; }
+        public void Breite2UpLeft(bool val)
+        {
+            if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal;
+        }
 
         private int _width2UpLeft;
 
@@ -404,7 +433,10 @@
 
         #region Breite 3 UpLeft
 
-        public void Breite3UpLeft(bool val) { if (val) Width3UpLeft = BreiteBreit; else Width3UpLeft = BreiteSchmal; }
+        public void Breite3UpLeft(bool val)
+        {
+            if (val) Width3UpLeft = BreiteBreit; else Width3UpLeft = BreiteSchmal;
+        }
 
         private int _width3UpLeft;
 
@@ -422,7 +454,10 @@
 
         #region Breite 4 UpLeft
 
-        public void Breite4UpLeft(bool val) { if (val) Width4UpLeft = BreiteBreit; else Width4UpLeft = BreiteSchmal; }
+        public void Breite4UpLeft(bool val)
+        {
+            if (val) Width4UpLeft = BreiteBreit; else Width4UpLeft = BreiteSchmal;
+        }
 
         private int _width4UpLeft;
 
@@ -440,7 +475,10 @@
 
         #region Breite 5 UpLeft
 
-        public void Breite5UpLeft(bool val) { if (val) Width5UpLeft = BreiteBreit; else Width5UpLeft = BreiteSchmal; }
+        public void Breite5UpLeft(bool val)
+        {
+            if (val) Width5UpLeft = BreiteBreit; else Width5UpLeft = BreiteSchmal;
+        }
 
         private int _width5UpLeft;
 
@@ -458,7 +496,10 @@
 
         #region Breite 1 DownRight
 
-        public void Breite1DownRight(bool val) { if (val) Width1DownRight = BreiteBreit; else Width1DownRight = BreiteSchmal; }
+        public void Breite1DownRight(bool val)
+        {
+            if (val) Width1DownRight = BreiteBreit; else Width1DownRight = BreiteSchmal;
+        }
 
         private int _width1DownRight;
 
@@ -476,7 +517,10 @@
 
         #region Breite 2 DownRight
 
-        public void Breite2DownRight(bool val) { if (val) Width2DownRight = BreiteBreit; else Width2DownRight = BreiteSchmal; }
+        public void Breite2DownRight(bool val)
+        {
+            if (val) Width2DownRight = BreiteBreit; else Width2DownRight = BreiteSchmal;
+        }
 
         private int _width2DownRight;
 
@@ -494,7 +538,10 @@
 
         #region Breite 3 DownRight
 
-        public void Breite3DownRight(bool val) { if (val) Width3DownRight = BreiteBreit; else Width3DownRight = BreiteSchmal; }
+        public void Breite3DownRight(bool val)
+        {
+            if (val) Width3DownRight = BreiteBreit; else Width3DownRight = BreiteSchmal;
+        }
 
         private int _width3DownRight;
 
@@ -512,7 +559,10 @@
 
         #region Breite 4 DownRight
 
-        public void Breite4DownRight(bool val) { if (val) Width4DownRight = BreiteBreit; else Width4DownRight = BreiteSchmal; }
+        public void Breite4DownRight(bool val)
+        {
+            if (val) Width4DownRight = BreiteBreit; else Width4DownRight = BreiteSchmal;
+        }
 
         private int _width4DownRight;
 
@@ -530,7 +580,10 @@
 
         #region Breite 2 DownLeft
 
-        public void Breite2DownLeft(bool val) { if (val) Width2DownLeft = BreiteBreit; else Width2DownLeft = BreiteSchmal; }
+        public void Breite2DownLeft(bool val)
+        {
+            if (val) Width2DownLeft = BreiteBreit; else Width2DownLeft = BreiteSchmal;
+        }
 
         private int _width2DownLeft;
 
@@ -548,7 +601,10 @@
 
         #region Breite 3 DownLeft
 
-        public void Breite3DownLeft(bool val) { if (val) Width3DownLeft = BreiteBreit; else Width3DownLeft = BreiteSchmal; }
+        public void Breite3DownLeft(bool val)
+        {
+            if (val) Width3DownLeft = BreiteBreit; else Width3DownLeft = BreiteSchmal;
+        }
 
         private int _width3DownLeft;
 
@@ -566,7 +622,10 @@
 
         #region Breite 4 DownLeft
 
-        public void Breite4DownLeft(bool val) { if (val) Width4DownLeft = BreiteBreit; else Width4DownLeft = BreiteSchmal; }
+        public void Breite4DownLeft(bool val)
+        {
+            if (val) Width4DownLeft = BreiteBreit; else Width4DownLeft = BreiteSchmal;
+        }
 
         private int _width4DownLeft;
 
@@ -584,7 +643,10 @@
 
         #region Breite 5 DownLeft
 
-        public void Breite5DownLeft(bool val) { if (val) Width5DownLeft = BreiteBreit; else Width5DownLeft = BreiteSchmal; }
+        public void Breite5DownLeft(bool val)
+        {
+            if (val) Width5DownLeft = BreiteBreit; else Width5DownLeft = BreiteSchmal;
+        }
 
         private int _width5DownLeft;
 
@@ -600,10 +662,10 @@
 
         #endregion Breite 5 DownLeft
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

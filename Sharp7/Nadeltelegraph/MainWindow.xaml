@@ -51,7 +51,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-    
         <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding ViAnzeige.ColorP0}" />
 
         <Polygon Grid.Column="2" Grid.ColumnSpan="20" Grid.Row="2" Grid.RowSpan="35"   Stroke="Black" StrokeThickness="2" Fill="Silver">
@@ -332,10 +331,9 @@
             </Button.Resources>
         </Button>
 
-        <Label Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="V0.0 " />
+        <Label Grid.Column="12" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="9"  Grid.ColumnSpan="5" Grid.Row="20"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="3" Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfo}" Content="Falsche Software/Version auf der SPS" FontSize="14pt" />
-
     </Grid>
 </Window>

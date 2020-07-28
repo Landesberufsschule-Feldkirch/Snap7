@@ -186,6 +186,7 @@ namespace Kommunikation
             var ErrorText = client?.ErrorText(ResultError);
             return "Nr: " + ResultError + " Text: " + ErrorText;
         }
-        public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, anzahlByteVersionInput);
+
+        public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, versionInput.Length);
     }
 }

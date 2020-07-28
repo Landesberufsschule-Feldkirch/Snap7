@@ -16,7 +16,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, heizungsregler);
         }
 
-        public Model.Heizungsregler Heizungsregler{ get { return heizungsregler; } }
+        public Model.Heizungsregler Heizungsregler { get { return heizungsregler; } }
 
         #region BtnReset
 
@@ -34,8 +34,6 @@
             }
         }
 
-        #endregion
-
-
+        #endregion BtnReset
     }
 }

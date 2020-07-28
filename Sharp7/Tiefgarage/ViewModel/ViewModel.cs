@@ -160,8 +160,6 @@ namespace Tiefgarage.ViewModel
 
         #endregion BtnPerson2
 
-
-
         #region BtnPerson3
 
         private ICommand _btnPerson3;
@@ -179,8 +177,6 @@ namespace Tiefgarage.ViewModel
         }
 
         #endregion BtnPerson3
-
-
 
         #region BtnPerson4
 

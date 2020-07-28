@@ -14,7 +14,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             mainWindow = mw;
             kraftwerk = kw;
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -93,10 +94,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                         break;
                 }
 
-               if (mainWindow.S7_1200 != null)
+                if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -108,17 +109,27 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -144,7 +155,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Ventil
 
@@ -278,8 +289,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #region Leistungsfaktor
 
         public void Generator_CosPhi(double val) => GeneratorCosPhiString = $"cos φ={val:N2}";
-        public void Netz_CosPhi(double val) => NetzCosPhiString = $"cos φ={val:N2}";
 
+        public void Netz_CosPhi(double val) => NetzCosPhiString = $"cos φ={val:N2}";
 
         private double _generatorCosPhiString;
 
@@ -310,8 +321,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #region Leistung
 
         public void Generator_P(double val) => GeneratorLeistungString = $"P={val:N1}W";
-        public void Netz_P(double val) => NetzLeistungString = $"P={val}W";
 
+        public void Netz_P(double val) => NetzLeistungString = $"P={val}W";
 
         private double _generatorLeistungString;
 
@@ -342,8 +353,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #region Freqenz
 
         public void Generator_f(double val) => GeneratorFrequenzString = $"f={val:N2}Hz";
-        public void Netz_f(double val) => NetzFrequenzString = $"f={val}Hz";
 
+        public void Netz_f(double val) => NetzFrequenzString = $"f={val}Hz";
 
         private double _generatorFrequenzString;
 
@@ -374,6 +385,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #region Spannung
 
         public void Generator_U(double val) => GeneratorSpannungString = $"U={val:N1}V";
+
         public void Netz_U(double val) => NetzSpannungString = $"U={val}V";
 
         private double _generatorSpannungString;
@@ -454,7 +466,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        public void MessgeraetAnzeigen(bool val) { if (val) VisibilityMessgeraetSichtbar = "Visible"; else VisibilityMessgeraetSichtbar = "Hidden"; }
+        public void MessgeraetAnzeigen(bool val)
+        {
+            if (val) VisibilityMessgeraetSichtbar = "Visible"; else VisibilityMessgeraetSichtbar = "Hidden";
+        }
 
         private string _visibilityMessgeraetSichtbar;
 
@@ -484,8 +499,15 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #region Maschine tot
 
-        public void MaschineTot(bool val) { if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden"; }
-        public bool IstMaschineTot() { if (VisibilityMaschineTot == "Visible") return true; else return false; }
+        public void MaschineTot(bool val)
+        {
+            if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden";
+        }
+
+        public bool IstMaschineTot()
+        {
+            if (VisibilityMaschineTot == "Visible") return true; else return false;
+        }
 
         private string _visibilityMaschineTotAnzeigen;
 
@@ -617,10 +639,10 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         #endregion Kraftwerk Status
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

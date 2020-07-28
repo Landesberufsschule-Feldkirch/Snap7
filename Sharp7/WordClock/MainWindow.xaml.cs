@@ -9,20 +9,22 @@ namespace WordClock
     public partial class MainWindow : Window
     {
         public S7_1200 S7_1200 { get; set; }
+        public string VersionInfo { get; set; }
+        public string VersionNummer { get; set; }
 
+        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
-
-        public string Versionsinfo { get; set; }
-        private readonly int anzByteVersion;
         private const int anzByteDigInput = 9;
         private const int anzByteDigOutput = 0;
         private const int anzByteAnalogInput = 0;
         private const int anzByteAnalogOutput = 0;
+
         public MainWindow()
         {
-            Versionsinfo = "WorkClock V1.00";
-            anzByteVersion = Versionsinfo.Length;
+            VersionText = "WorkClock";
+            VersionNummer = "V2.0";
+            VersionInfo = VersionText + " - " + VersionNummer;
 
             viewModel = new ViewModel.ViewModel(this);
 
@@ -31,7 +33,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(anzByteVersion, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

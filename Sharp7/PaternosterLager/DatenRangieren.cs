@@ -1,6 +1,7 @@
 ﻿namespace PaternosterLager
 {
     using Sharp7;
+
     public class DatenRangieren
     {
         private readonly MainWindow mainWindow;

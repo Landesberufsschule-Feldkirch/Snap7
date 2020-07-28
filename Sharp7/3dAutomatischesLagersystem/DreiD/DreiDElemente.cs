@@ -32,7 +32,9 @@ namespace AutomatischesLagersystem.DreiD
         }
 
         internal double GetX() => posX;
+
         internal double GetY() => posY;
+
         internal double GetZ() => posZ;
     }
 }

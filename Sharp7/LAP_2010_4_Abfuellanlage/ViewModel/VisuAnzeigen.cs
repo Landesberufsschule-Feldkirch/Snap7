@@ -58,7 +58,8 @@
             VisibilityB2Ein = "Visible";
             VisibilityB2Aus = "Hidden";
 
-            SpsVersionsInfo = true;
+            VersionNr = "fehlt";
+            SpsVersionsInfoSichtbar = "hidden";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -97,7 +98,7 @@
                 if (mainWindow.S7_1200 != null)
                 {
                     string vInfo = mainWindow.S7_1200.GetVersion();
-                    SpsVersionsInfo = mainWindow.Versionsinfo == vInfo;
+                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -108,24 +109,38 @@
         }
 
         internal void SetQ1() => abfuellAnlage.Q1 = ClickModeButtonQ1();
+
         internal void SetK1() => abfuellAnlage.K1 = ClickModeButtonK1();
+
         internal void SetK2() => abfuellAnlage.K2 = ClickModeButtonK2();
+
         internal void SetS1() => abfuellAnlage.S1 = ClickModeButtonS1();
+
         internal void BtnS2() => abfuellAnlage.S2 = ClickModeButtonS2();
 
         #region SPS Versionsinfo, Status und Farbe
 
-        private bool _spsVersionsInfo;
-        public bool SpsVersionsInfo
+private string _versionNr;
+        public string VersionNr
         {
-            get => _spsVersionsInfo;
+            get => _versionNr;
             set
             {
-                _spsVersionsInfo = value;
-                OnPropertyChanged(nameof(SpsVersionsInfo));
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
             }
         }
 
+        private string _spsVersionsInfoSichtbar;
+        public string SpsVersionsInfoSichtbar
+        {
+            get => _spsVersionsInfoSichtbar;
+            set
+            {
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+            }
+        }
 
         private string _spsStatus;
 
@@ -151,7 +166,7 @@
             }
         }
 
-        #endregion SPS Status und Farbe
+        #endregion SPS Versionsinfo, Status und Farbe
 
         #region Image1
 
@@ -291,7 +306,10 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) { if (val) ColorP1 = "Red"; else ColorP1 = "White"; }
+        public void FarbeP1(bool val)
+        {
+            if (val) ColorP1 = "Red"; else ColorP1 = "White";
+        }
 
         private string _colorP1;
 
@@ -309,7 +327,10 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) { if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray"; }
+        public void FarbeQ1(bool val)
+        {
+            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray";
+        }
 
         private string _colorQ1;
 
@@ -327,7 +348,10 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val) { if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral"; }
+        public void FarbeRectangleZuleitung(bool val)
+        {
+            if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral";
+        }
 
         private string _colorRectangleZuleitung;
 
@@ -787,10 +811,10 @@
 
         #endregion Margin1
 
-
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

@@ -64,6 +64,7 @@ namespace Hydraulik
 
             LimitsTesten();
         }
+
         public void SetRichtung(Richtung ri) => richtung = ri;
 
         public double GetPosition() => positionProzent;
