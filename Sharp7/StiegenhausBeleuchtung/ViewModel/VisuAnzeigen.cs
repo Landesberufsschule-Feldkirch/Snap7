@@ -21,8 +21,10 @@
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
             for (int i = 0; i < 100; i++) ColorLampe.Add("Yellow");
 
-            VersionNr = "fehlt";
+            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
+            SPSVersionLokal = "fehlt";
+            SPSVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -47,8 +49,9 @@
 
                 if (mainWindow.S7_1200 != null)
                 {
-                    string vInfo = mainWindow.S7_1200.GetVersion();
-                    if (mainWindow.VersionInfo == vInfo) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SPSVersionLokal = mainWindow.VersionInfo;
+                    SPSVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
+                    if (SPSVersionLokal == SPSVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
                     SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
@@ -58,9 +61,9 @@
             }
         }
 
-        #region SPS Versionsinfo, Status und Farbe
+        #region SPS Version, Status und Farbe
 
-private string _versionNr;
+        private string _versionNr;
         public string VersionNr
         {
             get => _versionNr;
@@ -68,6 +71,28 @@ private string _versionNr;
             {
                 _versionNr = value;
                 OnPropertyChanged(nameof(VersionNr));
+            }
+        }
+
+        private string _sPSVersionLokal;
+        public string SPSVersionLokal
+        {
+            get => _sPSVersionLokal;
+            set
+            {
+                _sPSVersionLokal = value;
+                OnPropertyChanged(nameof(SPSVersionLokal));
+            }
+        }
+
+        private string _sPSVersionEntfernt;
+        public string SPSVersionEntfernt
+        {
+            get => _sPSVersionEntfernt;
+            set
+            {
+                _sPSVersionEntfernt = value;
+                OnPropertyChanged(nameof(SPSVersionEntfernt));
             }
         }
 
