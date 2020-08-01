@@ -63,8 +63,10 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DatenRangieren.cs" />
+    <Compile Include="ViewModel\VisuAnzeigenNadeln.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel\VisuAnzeigenLinienbreiten.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
