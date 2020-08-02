@@ -89,10 +89,7 @@
         <Polygon Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle1}" />
-                    <TranslateTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AlleWinkel[1]}" />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -106,10 +103,7 @@
         <Polygon Grid.Column="5" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle2}" />
-                    <TranslateTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AlleWinkel[2]}" />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -123,10 +117,7 @@
         <Polygon Grid.Column="7" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle3}" />
-                    <TranslateTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AlleWinkel[3]}" />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -140,10 +131,7 @@
         <Polygon Grid.Column="9" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle4}" />
-                    <TranslateTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AlleWinkel[4]}" />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>
@@ -157,10 +145,7 @@
         <Polygon Grid.Column="11" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow" Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform />
-                    <SkewTransform />
-                    <RotateTransform Angle="{Binding ViAnzeige.AngleNeedle5}" />
-                    <TranslateTransform />
+                    <RotateTransform Angle="{Binding ViAnzeige.AlleWinkel[5]}" />
                 </TransformGroup>
             </Polygon.RenderTransform>
             <Polygon.Points>

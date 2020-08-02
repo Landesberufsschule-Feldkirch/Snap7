@@ -71,7 +71,7 @@
 
         public void Breite4UpRight(bool val)
         {
-            if (val) Width4UpRight = BreiteBreit; else Width4UpRight = BreiteSchmal;
+            Width4UpRight = val ? BreiteBreit : BreiteSchmal;
         }
 
         private int _width4UpRight;
@@ -92,7 +92,7 @@
 
         public void Breite2UpLeft(bool val)
         {
-            if (val) Width2UpLeft = BreiteBreit; else Width2UpLeft = BreiteSchmal;
+            Width2UpLeft = val ? BreiteBreit : BreiteSchmal;
         }
 
         private int _width2UpLeft;

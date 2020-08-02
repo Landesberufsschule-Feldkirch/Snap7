@@ -25,14 +25,9 @@
             SpsColor = "LightBlue";
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (int i = 0; i < 10; i++) AlleWinkel.Add(0); 
 
             ColorP0 = "LightGray";
-
-            AngleNeedle1 = 0;
-            AngleNeedle2 = 0;
-            AngleNeedle3 = 0;
-            AngleNeedle4 = 0;
-            AngleNeedle5 = 0;
 
             Width1UpRight = 1;
             Width2UpRight = 1;
@@ -92,11 +87,11 @@
                 Breite4DownLeft(nadeltelegraph.P4R);
                 Breite5DownLeft(nadeltelegraph.P5R);
 
-                WinkelNadel1(nadeltelegraph.P1R, nadeltelegraph.P1L);
-                WinkelNadel2(nadeltelegraph.P2R, nadeltelegraph.P2L);
-                WinkelNadel3(nadeltelegraph.P3R, nadeltelegraph.P3L);
-                WinkelNadel4(nadeltelegraph.P4R, nadeltelegraph.P4L);
-                WinkelNadel5(nadeltelegraph.P5R, nadeltelegraph.P5L);
+                WinkelEinstellen(nadeltelegraph.P1R, nadeltelegraph.P1L, 1);
+                WinkelEinstellen(nadeltelegraph.P2R, nadeltelegraph.P2L,2);
+                WinkelEinstellen(nadeltelegraph.P3R, nadeltelegraph.P3L,3);
+                WinkelEinstellen(nadeltelegraph.P4R, nadeltelegraph.P4L,4);
+                WinkelEinstellen(nadeltelegraph.P5R, nadeltelegraph.P5L,5);
 
                 if (mainWindow.S7_1200 != null)
                 {
