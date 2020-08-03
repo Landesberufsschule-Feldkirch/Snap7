@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, ofentuerSteuerung);
         }
 
-        public Model.OfentuerSteuerung OfentuerSteuerung { get { return ofentuerSteuerung; } }
+        public Model.OfentuerSteuerung OfentuerSteuerung => ofentuerSteuerung;
 
         #region SetManualQ1
 

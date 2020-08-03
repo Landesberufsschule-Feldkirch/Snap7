@@ -16,7 +16,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, kraftwerk);
         }
 
-        public Model.Kraftwerk Kraftwerk { get { return kraftwerk; } }
+        public Model.Kraftwerk Kraftwerk => kraftwerk;
 
         #region BtnReset
 

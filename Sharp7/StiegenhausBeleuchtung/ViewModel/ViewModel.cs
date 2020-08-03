@@ -15,7 +15,7 @@
             stiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
         }
 
-        public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung { get { return stiegenhausBeleuchtung; } }
+        public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung => stiegenhausBeleuchtung;
 
         #region BtnStart
 

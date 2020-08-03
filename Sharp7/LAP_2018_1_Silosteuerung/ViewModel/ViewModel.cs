@@ -11,6 +11,6 @@
             ViAnzeige = new VisuAnzeigen(foerderanlage);
         }
 
-        public Model.Foerderanlage Foerderanlage { get { return foerderanlage; } }
+        public Model.Foerderanlage Foerderanlage => foerderanlage;
     }
 }

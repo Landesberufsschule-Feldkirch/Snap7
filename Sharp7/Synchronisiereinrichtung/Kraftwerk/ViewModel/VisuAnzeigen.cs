@@ -321,7 +321,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string GeneratorCosPhiString
         {
-            get { return "cos φ=" + _generatorCosPhiString; }
+            get => "cos φ=" + _generatorCosPhiString;
             set
             {
                 _generatorCosPhiString = System.Convert.ToDouble(value.Substring(6));
@@ -333,7 +333,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string NetzCosPhiString
         {
-            get { return "cos φ=" + _netzCosPhiString; }
+            get => "cos φ=" + _netzCosPhiString;
             set
             {
                 _netzCosPhiString = System.Convert.ToDouble(value.Substring(6));
@@ -353,7 +353,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string GeneratorLeistungString
         {
-            get { return "P=" + _generatorLeistungString + "W"; }
+            get => "P=" + _generatorLeistungString + "W";
             set
             {
                 _generatorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
@@ -365,7 +365,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string NetzLeistungString
         {
-            get { return "P=" + _netzLeistungString + "W"; }
+            get => "P=" + _netzLeistungString + "W";
             set
             {
                 _netzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
@@ -385,7 +385,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string GeneratorFrequenzString
         {
-            get { return "f=" + _generatorFrequenzString + "Hz"; }
+            get => "f=" + _generatorFrequenzString + "Hz";
             set
             {
                 _generatorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
@@ -397,7 +397,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string NetzFrequenzString
         {
-            get { return "f=" + _netzFrequenzString + "Hz"; }
+            get => "f=" + _netzFrequenzString + "Hz";
             set
             {
                 _netzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
@@ -417,7 +417,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string GeneratorSpannungString
         {
-            get { return "U=" + _generatorSpannungString + "V"; }
+            get => "U=" + _generatorSpannungString + "V";
             set
             {
                 _generatorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
@@ -429,7 +429,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string NetzSpannungString
         {
-            get { return "U=" + _netzSpannungString + "V"; }
+            get => "U=" + _netzSpannungString + "V";
             set
             {
                 _netzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
@@ -447,7 +447,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string Erregerstrom
         {
-            get { return "IE=" + _erregerstrom + "A"; }
+            get => "IE=" + _erregerstrom + "A";
             set
             {
                 _erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
@@ -465,7 +465,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string Drehzahl
         {
-            get { return "n=" + _drehzahl + "RPM"; }
+            get => "n=" + _drehzahl + "RPM";
             set
             {
                 _drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
@@ -596,7 +596,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public string VentilPosition
         {
-            get { return "Y=" + _ventilPosition + "%"; }
+            get => "Y=" + _ventilPosition + "%";
             set
             {
                 _ventilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));

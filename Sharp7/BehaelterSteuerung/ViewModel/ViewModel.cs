@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, alleBehaelter);
         }
 
-        public Model.BehaelterSteuerung AlleBehaelter { get { return alleBehaelter; } }
+        public Model.BehaelterSteuerung AlleBehaelter => alleBehaelter;
 
         #region BtnVentilQ2
 

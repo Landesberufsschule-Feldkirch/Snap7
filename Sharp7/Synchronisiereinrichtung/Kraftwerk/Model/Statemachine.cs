@@ -64,7 +64,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             return true;
         }
 
-        public State Status { get { return stateMachine.State; } }
+        public State Status => stateMachine.State;
 
         public string StatusAusgeben() => stateMachine.State.ToString();
 

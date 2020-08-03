@@ -16,7 +16,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, heizungsregler);
         }
 
-        public Model.Heizungsregler Heizungsregler { get { return heizungsregler; } }
+        public Model.Heizungsregler Heizungsregler => heizungsregler;
 
         #region BtnReset
 

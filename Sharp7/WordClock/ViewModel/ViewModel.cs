@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, zeiten);
         }
 
-        public Model.Zeiten Zeiten { get { return zeiten; } }
+        public Model.Zeiten Zeiten => zeiten;
 
         #region BtnSetCurrentTime
 

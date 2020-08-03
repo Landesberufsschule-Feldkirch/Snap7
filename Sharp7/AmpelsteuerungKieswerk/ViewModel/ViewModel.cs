@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, alleLastKraftWagen);
         }
 
-        public Model.AlleLastKraftWagen AlleLastKraftWagen { get { return alleLastKraftWagen; } }
+        public Model.AlleLastKraftWagen AlleLastKraftWagen => alleLastKraftWagen;
 
         #region BtnLkw1
 

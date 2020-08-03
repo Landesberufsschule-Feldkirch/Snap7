@@ -6,26 +6,26 @@
 
     public partial class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly int WinkelNadel = 35;
-        private readonly int BreiteBreit = 10;
-        private readonly int BreiteSchmal = 1;
-        private readonly Model.Nadeltelegraph nadeltelegraph;
-        private readonly MainWindow mainWindow;
+        private const int WinkelNadel = 35;
+        private const int BreiteBreit = 10;
+        private const int BreiteSchmal = 1;
+        private readonly Model.Nadeltelegraph _nadeltelegraph;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.Nadeltelegraph nt)
         {
-            mainWindow = mw;
-            nadeltelegraph = nt;
+            _mainWindow = mw;
+            _nadeltelegraph = nt;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
-            SPSVersionLokal = "fehlt";
-            SPSVersionEntfernt = "fehlt";
+            SpsVersionLokal = "fehlt";
+            SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
-            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
-            for (int i = 0; i < 10; i++) AlleWinkel.Add(0); 
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 10; i++) AlleWinkel.Add(0); 
 
             ColorP0 = "LightGray";
 
@@ -57,7 +57,7 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                if (ClickModeButton(asciiCode)) nadeltelegraph.Zeichen = asciiCode; else nadeltelegraph.Zeichen = ' ';
+                _nadeltelegraph.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
             }
         }
 
@@ -65,42 +65,42 @@
         {
             while (true)
             {
-                FarbeP0(nadeltelegraph.P0);
+                FarbeP0(_nadeltelegraph.P0);
 
-                Breite1UpRight(nadeltelegraph.P1R);
-                Breite2UpRight(nadeltelegraph.P2R);
-                Breite3UpRight(nadeltelegraph.P3R);
-                Breite4UpRight(nadeltelegraph.P4R);
+                Breite1UpRight(_nadeltelegraph.P1R);
+                Breite2UpRight(_nadeltelegraph.P2R);
+                Breite3UpRight(_nadeltelegraph.P3R);
+                Breite4UpRight(_nadeltelegraph.P4R);
 
-                Breite1DownRight(nadeltelegraph.P1L);
-                Breite2DownRight(nadeltelegraph.P2L);
-                Breite3DownRight(nadeltelegraph.P3L);
-                Breite4DownRight(nadeltelegraph.P4L);
+                Breite1DownRight(_nadeltelegraph.P1L);
+                Breite2DownRight(_nadeltelegraph.P2L);
+                Breite3DownRight(_nadeltelegraph.P3L);
+                Breite4DownRight(_nadeltelegraph.P4L);
 
-                Breite2UpLeft(nadeltelegraph.P2L);
-                Breite3UpLeft(nadeltelegraph.P3L);
-                Breite4UpLeft(nadeltelegraph.P4L);
-                Breite5UpLeft(nadeltelegraph.P5L);
+                Breite2UpLeft(_nadeltelegraph.P2L);
+                Breite3UpLeft(_nadeltelegraph.P3L);
+                Breite4UpLeft(_nadeltelegraph.P4L);
+                Breite5UpLeft(_nadeltelegraph.P5L);
 
-                Breite2DownLeft(nadeltelegraph.P2R);
-                Breite3DownLeft(nadeltelegraph.P3R);
-                Breite4DownLeft(nadeltelegraph.P4R);
-                Breite5DownLeft(nadeltelegraph.P5R);
+                Breite2DownLeft(_nadeltelegraph.P2R);
+                Breite3DownLeft(_nadeltelegraph.P3R);
+                Breite4DownLeft(_nadeltelegraph.P4R);
+                Breite5DownLeft(_nadeltelegraph.P5R);
 
-                WinkelEinstellen(nadeltelegraph.P1R, nadeltelegraph.P1L, 1);
-                WinkelEinstellen(nadeltelegraph.P2R, nadeltelegraph.P2L,2);
-                WinkelEinstellen(nadeltelegraph.P3R, nadeltelegraph.P3L,3);
-                WinkelEinstellen(nadeltelegraph.P4R, nadeltelegraph.P4L,4);
-                WinkelEinstellen(nadeltelegraph.P5R, nadeltelegraph.P5L,5);
+                WinkelEinstellen(_nadeltelegraph.P1R, _nadeltelegraph.P1L, 1);
+                WinkelEinstellen(_nadeltelegraph.P2R, _nadeltelegraph.P2L,2);
+                WinkelEinstellen(_nadeltelegraph.P3R, _nadeltelegraph.P3L,3);
+                WinkelEinstellen(_nadeltelegraph.P4R, _nadeltelegraph.P4L,4);
+                WinkelEinstellen(_nadeltelegraph.P5R, _nadeltelegraph.P5L,5);
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SPSVersionLokal = mainWindow.VersionInfo;
-                    SPSVersionEntfernt = mainWindow.S7_1200.GetVersion();
-                    if (SPSVersionLokal == SPSVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -120,25 +120,25 @@
             }
         }
 
-        private string _sPSVersionLokal;
-        public string SPSVersionLokal
+        private string _sPsVersionLokal;
+        public string SpsVersionLokal
         {
-            get => _sPSVersionLokal;
+            get => _sPsVersionLokal;
             set
             {
-                _sPSVersionLokal = value;
-                OnPropertyChanged(nameof(SPSVersionLokal));
+                _sPsVersionLokal = value;
+                OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPSVersionEntfernt;
-        public string SPSVersionEntfernt
+        private string _sPsVersionEntfernt;
+        public string SpsVersionEntfernt
         {
-            get => _sPSVersionEntfernt;
+            get => _sPsVersionEntfernt;
             set
             {
-                _sPSVersionEntfernt = value;
-                OnPropertyChanged(nameof(SPSVersionEntfernt));
+                _sPsVersionEntfernt = value;
+                OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
 
@@ -181,16 +181,16 @@
 
         #region ClickModeAlleButtons
 
-        public bool ClickModeButton(int AsciiCode)
+        public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[AsciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] == "Press")
             {
-                ClickModeBtn[AsciiCode] = "Release";
+                ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtn[AsciiCode] = "Press";
+                ClickModeBtn[asciiCode] = "Press";
             }
             return false;
         }
@@ -213,7 +213,7 @@
 
         public void FarbeP0(bool val)
         {
-            if (val) ColorP0 = "Red"; else ColorP0 = "LightGray";
+            ColorP0 = val ? "Red" : "LightGray";
         }
 
         private string _colorP0;

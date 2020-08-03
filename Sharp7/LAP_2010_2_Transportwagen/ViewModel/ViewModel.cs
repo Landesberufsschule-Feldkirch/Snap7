@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, transportwagen);
         }
 
-        public Model.Transportwagen Transportwagen { get { return transportwagen; } }
+        public Model.Transportwagen Transportwagen => transportwagen;
 
         #region SetManualQ1
 

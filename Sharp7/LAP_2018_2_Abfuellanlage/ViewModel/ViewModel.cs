@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, abfuellAnlage);
         }
 
-        public Model.Abfuellanlage Abfuellanlage { get { return abfuellAnlage; } }
+        public Model.Abfuellanlage Abfuellanlage => abfuellAnlage;
 
         #region BtnReset
 

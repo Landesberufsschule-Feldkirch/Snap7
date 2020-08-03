@@ -15,7 +15,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, kompressoranlage);
         }
 
-        public Model.Kompressoranlage Kompressoranlage { get { return kompressoranlage; } }
+        public Model.Kompressoranlage Kompressoranlage => kompressoranlage;
 
         #region BtnF1
 

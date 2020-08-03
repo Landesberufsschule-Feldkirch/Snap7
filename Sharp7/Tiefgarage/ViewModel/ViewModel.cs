@@ -14,7 +14,7 @@ namespace Tiefgarage.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, alleFahrzeugePersonen);
         }
 
-        public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen { get { return alleFahrzeugePersonen; } }
+        public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen => alleFahrzeugePersonen;
 
         #region BtnDraussenParken
 

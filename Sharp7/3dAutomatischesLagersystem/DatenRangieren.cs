@@ -2,8 +2,8 @@
 {
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
-        private readonly ViewModel.ViewModel viewModel;
+        private readonly MainWindow _mainWindow;
+        private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
         {
@@ -33,7 +33,7 @@
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            if (!mainWindow.DebugWindowAktiv)
+            if (!_mainWindow.DebugWindowAktiv)
             {
                 /*
   viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
@@ -49,8 +49,8 @@
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
-            mainWindow = mw;
-            viewModel = vm;
+            _mainWindow = mw;
+            _viewModel = vm;
         }
     }
 }

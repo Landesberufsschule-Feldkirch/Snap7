@@ -1,6 +1,6 @@
 ﻿namespace Nadeltelegraph.ViewModel
 {
-    using Nadeltelegraph.Commands;
+    using Commands;
     using System.Windows.Input;
 
     public class ViewModel
@@ -14,23 +14,13 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, nadeltelegraph);
         }
 
-        public Model.Nadeltelegraph Nadeltelegraph { get { return nadeltelegraph; } }
+        public Model.Nadeltelegraph Nadeltelegraph => nadeltelegraph;
 
         #region BtnBuchstabe
 
         private ICommand _btnBuchstabe;
 
-        public ICommand BtnBuchstabe
-        {
-            get
-            {
-                if (_btnBuchstabe == null)
-                {
-                    _btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe);
-                }
-                return _btnBuchstabe;
-            }
-        }
+        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
 
         #endregion BtnBuchstabe
     }

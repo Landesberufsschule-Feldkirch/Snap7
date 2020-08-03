@@ -8,8 +8,8 @@ namespace Heizungsregler
     {
         public IGraphController Controller
         {
-            get { return (IGraphController)GetValue(ControllerProperty); }
-            set { SetValue(ControllerProperty, value); }
+            get => (IGraphController)GetValue(ControllerProperty);
+            set => SetValue(ControllerProperty, value);
         }
 
         public static readonly DependencyProperty ControllerProperty = DependencyProperty.Register("Controller", typeof(IGraphController), typeof(WpfGraphControl), new PropertyMetadata(null));

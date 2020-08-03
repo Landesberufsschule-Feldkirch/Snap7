@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, pumpensteuerung);
         }
 
-        public Model.Pumpensteuerung Pumpensteuerung { get { return pumpensteuerung; } }
+        public Model.Pumpensteuerung Pumpensteuerung => pumpensteuerung;
 
         #region BtnTasterHand
 

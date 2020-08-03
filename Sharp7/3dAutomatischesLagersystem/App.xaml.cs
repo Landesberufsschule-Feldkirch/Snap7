@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace AutomatischesLagersystem
+﻿namespace AutomatischesLagersystem
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, niveauRegelung);
         }
 
-        public Model.NiveauRegelung NiveauRegelung { get { return niveauRegelung; } }
+        public Model.NiveauRegelung NiveauRegelung => niveauRegelung;
 
         #region BtnTasterS1
 

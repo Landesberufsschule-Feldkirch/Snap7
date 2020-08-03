@@ -14,7 +14,7 @@ namespace PaternosterLager.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager, anzahlKisten);
         }
 
-        public Model.Paternosterlager Paternosterlager { get { return paternosterlager; } }
+        public Model.Paternosterlager Paternosterlager => paternosterlager;
 
         #region BtnReset
 

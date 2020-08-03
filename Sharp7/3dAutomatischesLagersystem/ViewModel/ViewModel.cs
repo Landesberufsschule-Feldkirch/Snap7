@@ -14,7 +14,7 @@ namespace AutomatischesLagersystem.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, automatischesLagersystem);
         }
 
-        public Model.AutomatischesLagersystem AutomatischesLagersystem { get { return automatischesLagersystem; } }
+        public Model.AutomatischesLagersystem AutomatischesLagersystem => automatischesLagersystem;
 
         #region BtnAusraeumen
 

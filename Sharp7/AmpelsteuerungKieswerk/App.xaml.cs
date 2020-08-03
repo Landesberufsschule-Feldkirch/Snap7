@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace AmpelsteuerungKieswerk
+﻿namespace AmpelsteuerungKieswerk
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

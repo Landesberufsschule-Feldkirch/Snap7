@@ -14,7 +14,7 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, hydraulikaggregat);
         }
 
-        public LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat Hydraulikaggregat { get { return hydraulikaggregat; } }
+        public LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat Hydraulikaggregat => hydraulikaggregat;
 
         #region BtnNachfuellen
 

@@ -1,8 +1,6 @@
 ﻿namespace Nadeltelegraph.ViewModel
 {
-    using System.ComponentModel;
-
-    public partial class VisuAnzeigen : INotifyPropertyChanged
+    public partial class VisuAnzeigen
     {
         #region Breite 1 UpRight
 
