@@ -51,19 +51,19 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public (bool, int) FlascheBewegen(bool Q1, int AnzahlFlaschen, int aktuelleFlasche, bool stop)
         {
             double y_Neu;
-            richtungX = Utilities.Rechteck.RichtungX.steht;
-            richtungY = Utilities.Rechteck.RichtungY.steht;
+            richtungX = Utilities.Rechteck.RichtungX.Steht;
+            richtungY = Utilities.Rechteck.RichtungY.Steht;
 
             switch (bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     y_Neu = vereinzelnerVentil.Y - flascheHoehe * (ID - aktuelleFlasche);
                     if (!stop && Position.Punkt.Y < y_Neu) Position.Punkt.Y += bewegungIncrement;
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     if (!stop)
                     {
                         if (Position.Punkt.Y < foerderbandLinks.Y) Position.Punkt.Y += bewegungIncrement;
@@ -76,7 +76,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Fahren:
-                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    richtungX = Utilities.Rechteck.RichtungX.NachRechts;
                     if (!stop && Q1)
                     {
                         if (Position.Punkt.X < foerderbandRechts.X) Position.Punkt.X += bewegungIncrement;
@@ -85,7 +85,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     if (!stop)
                     {
                         if (Position.Punkt.Y < boden.Y) Position.Punkt.Y += bewegungIncrement;

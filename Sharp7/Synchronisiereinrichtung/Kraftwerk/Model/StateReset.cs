@@ -2,16 +2,16 @@
 {
     internal class StateReset
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateReset(Kraftwerk kw) => kraftWerk = kw;
+        public StateReset(Kraftwerk kw) => _kraftWerk = kw;
 
         public void OnEntry()
         {
-            kraftWerk.Q1 = false;
-            kraftWerk.MaschineTot = false;
-            kraftWerk.generator.Reset();
-            kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Neustart);
+            _kraftWerk.Q1 = false;
+            _kraftWerk.MaschineTot = false;
+            _kraftWerk.Generator.Reset();
+            _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.Neustart);
         }
     }
 }

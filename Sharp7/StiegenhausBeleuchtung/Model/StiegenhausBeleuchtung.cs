@@ -9,22 +9,22 @@ namespace StiegenhausBeleuchtung.Model
     {
         public bool JobAktiv { get; set; }
 
-        private VisuAnzeigen visuAnzeigen;
-        private readonly Dictionary<string, (int raum, int stock)> topologie;
-        private (int raum, int stock) ortZiel;
-        private (int raum, int stock) ortAktuell;
-        private const long zeitProBewegungsmelder = 1000;
-        private readonly Stopwatch stopwatch;
-        private readonly bool[] alleBewegungsmelder = new bool[100];
-        private readonly bool[] alleLampen = new bool[100];
+        private VisuAnzeigen _visuAnzeigen;
+        private readonly Dictionary<string, (int raum, int stock)> _topologie;
+        private (int raum, int stock) _ortZiel;
+        private (int raum, int stock) _ortAktuell;
+        private const long ZeitProBewegungsmelder = 1000;
+        private readonly Stopwatch _stopwatch;
+        private readonly bool[] _alleBewegungsmelder = new bool[100];
+        private readonly bool[] _alleLampen = new bool[100];
 
         public StiegenhausBeleuchtung()
         {
             JobAktiv = false;
-            stopwatch = new Stopwatch();
-            ortZiel = (0, 0);
+            _stopwatch = new Stopwatch();
+            _ortZiel = (0, 0);
 
-            topologie = new Dictionary<string, (int, int)>
+            _topologie = new Dictionary<string, (int, int)>
             {
                 { "EG",         (0, 0) },
                 { "Top 0.1",    (-2, 0) },
@@ -58,22 +58,22 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void ProblemLoesen(VisuAnzeigen viAnzeige)
         {
-            visuAnzeigen = viAnzeige;
+            _visuAnzeigen = viAnzeige;
         }
 
-        public bool GetBewegungsmelder(int index) => alleBewegungsmelder[index];
+        public bool GetBewegungsmelder(int index) => _alleBewegungsmelder[index];
 
         public void SetBewegungsmelder(int index, bool val)
         {
-            alleBewegungsmelder[index] = val;
+            _alleBewegungsmelder[index] = val;
         }
 
         public void SetLampen(int index, bool val)
         {
-            alleLampen[index] = val;
+            _alleLampen[index] = val;
         }
 
-        public bool GetLampen(int index) => alleLampen[index];
+        public bool GetLampen(int index) => _alleLampen[index];
 
         private void StiegenhausBeleuchtungTask()
         {
@@ -86,57 +86,57 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void BtnStart(object _)
         {
-            if (visuAnzeigen.ReiseStart != "-" && visuAnzeigen.ReiseZiel != "-" && visuAnzeigen.ReiseStart != visuAnzeigen.ReiseZiel)
+            if (_visuAnzeigen.ReiseStart != "-" && _visuAnzeigen.ReiseZiel != "-" && _visuAnzeigen.ReiseStart != _visuAnzeigen.ReiseZiel)
             {
-                ortAktuell = topologie[visuAnzeigen.ReiseStart];
-                ortZiel = topologie[visuAnzeigen.ReiseZiel];
-                stopwatch.Restart();
+                _ortAktuell = _topologie[_visuAnzeigen.ReiseStart];
+                _ortZiel = _topologie[_visuAnzeigen.ReiseZiel];
+                _stopwatch.Restart();
                 JobAktiv = true;
             }
         }
 
         private void JobAusfuehren()
         {
-            var elapsed = stopwatch.ElapsedMilliseconds;
-            if (elapsed > zeitProBewegungsmelder)
+            var elapsed = _stopwatch.ElapsedMilliseconds;
+            if (elapsed > ZeitProBewegungsmelder)
             {
-                stopwatch.Restart();
+                _stopwatch.Restart();
 
-                if (ortAktuell == ortZiel)
+                if (_ortAktuell == _ortZiel)
                 {
                     JobAktiv = false;
-                    ortAktuell = (-10, -10);// unbekannter Ort --> alles deaktivieren
+                    _ortAktuell = (-10, -10);// unbekannter Ort --> alles deaktivieren
                 }
                 else
                 {
-                    if (ortAktuell.stock != ortZiel.stock)// unterschiedlicher Stock?
+                    if (_ortAktuell.stock != _ortZiel.stock)// unterschiedlicher Stock?
                     {
-                        if (ortAktuell.raum == 0)// im Stiegenhaus
+                        if (_ortAktuell.raum == 0)// im Stiegenhaus
                         {
-                            if (ortAktuell.stock < ortZiel.stock) ortAktuell.stock++; else ortAktuell.stock--;
+                            if (_ortAktuell.stock < _ortZiel.stock) _ortAktuell.stock++; else _ortAktuell.stock--;
                         }
                         else
                         {
-                            if (ortAktuell.raum < 0) ortAktuell.raum++; else ortAktuell.raum--;
+                            if (_ortAktuell.raum < 0) _ortAktuell.raum++; else _ortAktuell.raum--;
                         }
                     }
                     else
                     {
-                        if (ortAktuell.raum < ortZiel.raum) ortAktuell.raum++; else ortAktuell.raum--;
+                        if (_ortAktuell.raum < _ortZiel.raum) _ortAktuell.raum++; else _ortAktuell.raum--;
                     }
                 }
             }
-            BewegungsmelderAktivieren(ortAktuell);
+            BewegungsmelderAktivieren(_ortAktuell);
         }
 
         internal void BewegungsmelderAktivieren((int raum, int stock) aktuell)
         {
-            for (int i = 0; i < 100; i++) alleBewegungsmelder[i] = false;
+            for (int i = 0; i < 100; i++) _alleBewegungsmelder[i] = false;
 
             if (aktuell.raum != -10 && aktuell.stock != -10)
             {
-                var Bewegungsmelder = 3 + aktuell.raum + 10 * aktuell.stock;
-                alleBewegungsmelder[Bewegungsmelder] = true;
+                var bewegungsmelder = 3 + aktuell.raum + 10 * aktuell.stock;
+                _alleBewegungsmelder[bewegungsmelder] = true;
             }
         }
     }

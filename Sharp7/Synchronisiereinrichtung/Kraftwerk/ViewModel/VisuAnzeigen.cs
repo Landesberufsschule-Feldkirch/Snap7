@@ -6,18 +6,18 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Synchronisiereinrichtung.kraftwerk.Model.Kraftwerk kraftwerk;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Kraftwerk _kraftwerk;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Synchronisiereinrichtung.kraftwerk.Model.Kraftwerk kw)
+        public VisuAnzeigen(MainWindow mw, Model.Kraftwerk kw)
         {
-            mainWindow = mw;
-            kraftwerk = kw;
+            _mainWindow = mw;
+            _kraftwerk = kw;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
-            SPSVersionLokal = "fehlt";
-            SPSVersionEntfernt = "fehlt";
+            SpsVersionLokal = "fehlt";
+            SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -28,7 +28,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             NetzFrequenzSlider = 50;
             NetzPhasenverschiebungSlider = 90; // der Einstellbereich geht von 0 ..180
             NetzLeistungSlider = 600;
-            SynchAuswahl = SynchronisierungAuswahl.U_f;
+            SynchAuswahl = SynchronisierungAuswahl.Uf;
 
             VisibilityMaschineTot = "Hidden";
             VisibilityVentilAus = "Visible";
@@ -41,69 +41,69 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         {
             while (true)
             {
-                if (mainWindow.DebugWindowAktiv)
+                if (_mainWindow.DebugWindowAktiv)
                 {
-                    kraftwerk.Ventil_Y = kraftwerk.generator.VentilRampe.GetWert(ManualY());
-                    kraftwerk.Generator_Ie = kraftwerk.generator.ErregerstromRampe.GetWert(ManualIe());
+                    _kraftwerk.VentilY = _kraftwerk.Generator.VentilRampe.GetWert(ManualY());
+                    _kraftwerk.GeneratorIe = _kraftwerk.Generator.ErregerstromRampe.GetWert(ManualIe());
                 }
 
-                kraftwerk.Netz_f = SliderNetz_f();
-                kraftwerk.Netz_U = SliderNetz_U();
-                kraftwerk.Netz_P = SliderNetz_P();
-                kraftwerk.Netz_CosPhi = SliderNetz_CosPhi();
+                _kraftwerk.NetzF = SliderNetz_f();
+                _kraftwerk.NetzU = SliderNetz_U();
+                _kraftwerk.NetzP = SliderNetz_P();
+                _kraftwerk.NetzCosPhi = SliderNetz_CosPhi();
 
-                VentilEinschalten(kraftwerk.Ventil_Y > 1);
-                LeistungsschalterEinschalten(kraftwerk.Q1);
+                VentilEinschalten(_kraftwerk.VentilY > 1);
+                LeistungsschalterEinschalten(_kraftwerk.Q1);
 
-                Y(kraftwerk.Ventil_Y);
-                Ie(kraftwerk.Generator_Ie);
+                Y(_kraftwerk.VentilY);
+                Ie(_kraftwerk.GeneratorIe);
 
-                N(kraftwerk.Generator_n);
-                Generator_U(kraftwerk.Generator_U);
-                Generator_f(kraftwerk.Generator_f);
-                Generator_P(kraftwerk.Generator_P);
-                Generator_CosPhi(kraftwerk.Generator_CosPhi);
+                N(_kraftwerk.GeneratorN);
+                Generator_U(_kraftwerk.GeneratorU);
+                Generator_f(_kraftwerk.GeneratorF);
+                Generator_P(_kraftwerk.GeneratorP);
+                Generator_CosPhi(_kraftwerk.GeneratorCosPhi);
 
-                Netz_U(kraftwerk.Netz_U);
-                Netz_f(kraftwerk.Netz_f);
-                Netz_P(kraftwerk.Netz_P);
-                Netz_CosPhi(kraftwerk.Netz_CosPhi);
+                Netz_U(_kraftwerk.NetzU);
+                Netz_f(_kraftwerk.NetzF);
+                Netz_P(_kraftwerk.NetzP);
+                Netz_CosPhi(_kraftwerk.NetzCosPhi);
 
-                SpannungsDifferenz = kraftwerk.SpannungsDifferenz;
+                SpannungsDifferenz = _kraftwerk.SpannungsDifferenz;
 
-                Status(kraftwerk.kraftwerkStatemachine.StatusAusgeben());
+                Status(_kraftwerk.KraftwerkStatemachine.StatusAusgeben());
 
-                MessgeraetAnzeigen(kraftwerk.MessgeraetAnzeigen);
+                MessgeraetAnzeigen(_kraftwerk.MessgeraetAnzeigen);
 
-                kraftwerk.SynchAuswahl = SynchAuswahl;
+                _kraftwerk.SynchAuswahl = SynchAuswahl;
 
                 switch (SynchAuswahl)
                 {
-                    case SynchronisierungAuswahl.U_f:
-                        if (kraftwerk.OptimalerSpannungswert != 10)
+                    case SynchronisierungAuswahl.Uf:
+                        if (Math.Abs(_kraftwerk.OptimalerSpannungswert - 10) > 0.001)
                         {
-                            kraftwerk.OptimalerSpannungswert = 10;
-                            kraftwerk.MessgeraetOptimalerBereich = kraftwerk.OptimalerSpannungswert;
+                            _kraftwerk.OptimalerSpannungswert = 10;
+                            _kraftwerk.MessgeraetOptimalerBereich = _kraftwerk.OptimalerSpannungswert;
                         }
                         break;
 
                     default:
-                        if (kraftwerk.OptimalerSpannungswert != 100)
+                        if (Math.Abs(_kraftwerk.OptimalerSpannungswert - 100) > 0.001)
                         {
-                            kraftwerk.OptimalerSpannungswert = 100;
-                            kraftwerk.MessgeraetOptimalerBereich = kraftwerk.OptimalerSpannungswert;
+                            _kraftwerk.OptimalerSpannungswert = 100;
+                            _kraftwerk.MessgeraetOptimalerBereich = _kraftwerk.OptimalerSpannungswert;
                         }
                         break;
                 }
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SPSVersionLokal = mainWindow.VersionInfo;
-                    SPSVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SPSVersionLokal == SPSVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -123,25 +123,25 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             }
         }
 
-        private string _sPSVersionLokal;
-        public string SPSVersionLokal
+        private string _spsVersionLokal;
+        public string SpsVersionLokal
         {
-            get => _sPSVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _sPSVersionLokal = value;
-                OnPropertyChanged(nameof(SPSVersionLokal));
+                _spsVersionLokal = value;
+                OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPSVersionEntfernt;
-        public string SPSVersionEntfernt
+        private string _spsVersionEntfernt;
+        public string SpsVersionEntfernt
         {
-            get => _sPSVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _sPSVersionEntfernt = value;
-                OnPropertyChanged(nameof(SPSVersionEntfernt));
+                _spsVersionEntfernt = value;
+                OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
 
@@ -324,7 +324,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "cos φ=" + _generatorCosPhiString;
             set
             {
-                _generatorCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                _generatorCosPhiString = Convert.ToDouble(value.Substring(6));
                 OnPropertyChanged(nameof(GeneratorCosPhiString));
             }
         }
@@ -336,7 +336,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "cos φ=" + _netzCosPhiString;
             set
             {
-                _netzCosPhiString = System.Convert.ToDouble(value.Substring(6));
+                _netzCosPhiString = Convert.ToDouble(value.Substring(6));
                 OnPropertyChanged(nameof(NetzCosPhiString));
             }
         }
@@ -356,7 +356,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "P=" + _generatorLeistungString + "W";
             set
             {
-                _generatorLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorLeistungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged(nameof(GeneratorLeistungString));
             }
         }
@@ -368,7 +368,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "P=" + _netzLeistungString + "W";
             set
             {
-                _netzLeistungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzLeistungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged(nameof(NetzLeistungString));
             }
         }
@@ -388,7 +388,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "f=" + _generatorFrequenzString + "Hz";
             set
             {
-                _generatorFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _generatorFrequenzString = Convert.ToDouble(value.Substring(2, value.Length - 4));
                 OnPropertyChanged(nameof(GeneratorFrequenzString));
             }
         }
@@ -400,7 +400,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "f=" + _netzFrequenzString + "Hz";
             set
             {
-                _netzFrequenzString = System.Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _netzFrequenzString = Convert.ToDouble(value.Substring(2, value.Length - 4));
                 OnPropertyChanged(nameof(NetzFrequenzString));
             }
         }
@@ -420,7 +420,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "U=" + _generatorSpannungString + "V";
             set
             {
-                _generatorSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorSpannungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged(nameof(GeneratorSpannungString));
             }
         }
@@ -432,7 +432,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "U=" + _netzSpannungString + "V";
             set
             {
-                _netzSpannungString = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzSpannungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged(nameof(NetzSpannungString));
             }
         }
@@ -450,7 +450,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "IE=" + _erregerstrom + "A";
             set
             {
-                _erregerstrom = System.Convert.ToDouble(value.Substring(3, value.Length - 4));
+                _erregerstrom = Convert.ToDouble(value.Substring(3, value.Length - 4));
                 OnPropertyChanged(nameof(Erregerstrom));
             }
         }
@@ -468,7 +468,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "n=" + _drehzahl + "RPM";
             set
             {
-                _drehzahl = System.Convert.ToDouble(value.Substring(2, value.Length - 5));
+                _drehzahl = Convert.ToDouble(value.Substring(2, value.Length - 5));
                 OnPropertyChanged(nameof(Drehzahl));
             }
         }
@@ -493,7 +493,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
         public void MessgeraetAnzeigen(bool val)
         {
-            if (val) VisibilityMessgeraetSichtbar = "Visible"; else VisibilityMessgeraetSichtbar = "Hidden";
+            VisibilityMessgeraetSichtbar = val ? "Visible" : "Hidden";
         }
 
         private string _visibilityMessgeraetSichtbar;
@@ -523,16 +523,6 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         #endregion Messgerät
 
         #region Maschine tot
-
-        public void MaschineTot(bool val)
-        {
-            if (val) VisibilityMaschineTot = "Visible"; else VisibilityMaschineTot = "Hidden";
-        }
-
-        public bool IstMaschineTot()
-        {
-            if (VisibilityMaschineTot == "Visible") return true; else return false;
-        }
 
         private string _visibilityMaschineTotAnzeigen;
 
@@ -599,7 +589,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
             get => "Y=" + _ventilPosition + "%";
             set
             {
-                _ventilPosition = System.Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _ventilPosition = Convert.ToDouble(value.Substring(2, value.Length - 3));
                 OnPropertyChanged(nameof(VentilPosition));
             }
         }

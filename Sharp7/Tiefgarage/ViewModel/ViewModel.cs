@@ -24,11 +24,8 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnDraussenParken == null)
-                {
-                    _btnDraussenParken = new RelayCommand(p => alleFahrzeugePersonen.DraussenParken(), p => true);
-                }
-                return _btnDraussenParken;
+                return _btnDraussenParken ?? (_btnDraussenParken =
+                    new RelayCommand(p => alleFahrzeugePersonen.DraussenParken(), p => true));
             }
         }
 
@@ -42,11 +39,8 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnDrinnenParken == null)
-                {
-                    _btnDrinnenParken = new RelayCommand(p => alleFahrzeugePersonen.DrinnenParken(), p => true);
-                }
-                return _btnDrinnenParken;
+                return _btnDrinnenParken ?? (_btnDrinnenParken =
+                    new RelayCommand(p => alleFahrzeugePersonen.DrinnenParken(), p => true));
             }
         }
 
@@ -58,14 +52,7 @@ namespace Tiefgarage.ViewModel
 
         public ICommand BtnAuto1
         {
-            get
-            {
-                if (_btnAuto1 == null)
-                {
-                    _btnAuto1 = new RelayCommand(p => alleFahrzeugePersonen.Auto1(), p => true);
-                }
-                return _btnAuto1;
-            }
+            get { return _btnAuto1 ?? (_btnAuto1 = new RelayCommand(p => alleFahrzeugePersonen.Auto1(), p => true)); }
         }
 
         #endregion BtnAuto1
@@ -76,14 +63,7 @@ namespace Tiefgarage.ViewModel
 
         public ICommand BtnAuto2
         {
-            get
-            {
-                if (_btnAuto2 == null)
-                {
-                    _btnAuto2 = new RelayCommand(p => alleFahrzeugePersonen.Auto2(), p => true);
-                }
-                return _btnAuto2;
-            }
+            get { return _btnAuto2 ?? (_btnAuto2 = new RelayCommand(p => alleFahrzeugePersonen.Auto2(), p => true)); }
         }
 
         #endregion BtnAuto2
@@ -94,14 +74,7 @@ namespace Tiefgarage.ViewModel
 
         public ICommand BtnAuto3
         {
-            get
-            {
-                if (_btnAuto3 == null)
-                {
-                    _btnAuto3 = new RelayCommand(p => alleFahrzeugePersonen.Auto3(), p => true);
-                }
-                return _btnAuto3;
-            }
+            get { return _btnAuto3 ?? (_btnAuto3 = new RelayCommand(p => alleFahrzeugePersonen.Auto3(), p => true)); }
         }
 
         #endregion BtnAuto3
@@ -112,14 +85,7 @@ namespace Tiefgarage.ViewModel
 
         public ICommand BtnAuto4
         {
-            get
-            {
-                if (_btnAuto4 == null)
-                {
-                    _btnAuto4 = new RelayCommand(p => alleFahrzeugePersonen.Auto4(), p => true);
-                }
-                return _btnAuto4;
-            }
+            get { return _btnAuto4 ?? (_btnAuto4 = new RelayCommand(p => alleFahrzeugePersonen.Auto4(), p => true)); }
         }
 
         #endregion BtnAuto4
@@ -132,11 +98,7 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnPerson1 == null)
-                {
-                    _btnPerson1 = new RelayCommand(p => alleFahrzeugePersonen.Person1(), p => true);
-                }
-                return _btnPerson1;
+                return _btnPerson1 ?? (_btnPerson1 = new RelayCommand(p => alleFahrzeugePersonen.Person1(), p => true));
             }
         }
 
@@ -150,11 +112,7 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnPerson2 == null)
-                {
-                    _btnPerson2 = new RelayCommand(p => alleFahrzeugePersonen.Person2(), p => true);
-                }
-                return _btnPerson2;
+                return _btnPerson2 ?? (_btnPerson2 = new RelayCommand(p => alleFahrzeugePersonen.Person2(), p => true));
             }
         }
 
@@ -168,11 +126,7 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnPerson3 == null)
-                {
-                    _btnPerson3 = new RelayCommand(p => alleFahrzeugePersonen.Person3(), p => true);
-                }
-                return _btnPerson3;
+                return _btnPerson3 ?? (_btnPerson3 = new RelayCommand(p => alleFahrzeugePersonen.Person3(), p => true));
             }
         }
 
@@ -186,11 +140,7 @@ namespace Tiefgarage.ViewModel
         {
             get
             {
-                if (_btnPerson4 == null)
-                {
-                    _btnPerson4 = new RelayCommand(p => alleFahrzeugePersonen.Person4(), p => true);
-                }
-                return _btnPerson4;
+                return _btnPerson4 ?? (_btnPerson4 = new RelayCommand(p => alleFahrzeugePersonen.Person4(), p => true));
             }
         }
 

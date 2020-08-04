@@ -62,7 +62,7 @@
                 if (laster.ID != lkw.ID)
                 {
                     var (hx, hy) = lkw.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht)
+                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht)
                     {
                         stop |= Utilities.Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
                     }

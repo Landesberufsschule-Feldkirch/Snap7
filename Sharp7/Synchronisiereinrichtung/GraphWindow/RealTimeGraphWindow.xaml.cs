@@ -1,10 +1,8 @@
-﻿using System.Windows;
-
-namespace Synchronisiereinrichtung
+﻿namespace Synchronisiereinrichtung
 {
-    public partial class RealTimeGraphWindow : Window
+    public partial class RealTimeGraphWindow
     {
-        public RealTimeGraphWindow(Synchronisiereinrichtung.kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
+        public RealTimeGraphWindow(kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
         {
             InitializeComponent();
             DataContext = kraftwerkViewModel.Schreiber;

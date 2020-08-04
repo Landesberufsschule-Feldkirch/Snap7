@@ -4,20 +4,20 @@ namespace Utilities
 {
     public class Zeiger
     {
-        private readonly Punkt Anfang;
-        private readonly Punkt Ende;
+        private readonly Punkt _anfang;
+        private readonly Punkt _ende;
 
         public Zeiger(Punkt anfang, Punkt ende)
         {
-            Anfang = anfang;
-            Ende = ende;
+            _anfang = anfang;
+            _ende = ende;
         }
 
         public double Laenge()
         {
             double x, y;
-            x = Anfang.X - Ende.X;
-            y = Anfang.Y - Ende.Y;
+            x = _anfang.X - _ende.X;
+            y = _anfang.Y - _ende.Y;
 
             return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
         }

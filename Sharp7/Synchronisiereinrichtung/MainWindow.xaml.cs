@@ -1,45 +1,43 @@
 ﻿using Kommunikation;
 using Synchronisiereinrichtung.kraftwerk.ViewModel;
 using System.Windows;
+using Synchronisiereinrichtung.SetManual;
 
 namespace Synchronisiereinrichtung
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public bool DebugWindowAktiv { get; set; }
-        public S7_1200 S7_1200 { get; set; }
+        public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
-        private readonly DatenRangieren datenRangieren;
-        private SetManualWindow setManualWindow;
-        private RealTimeGraphWindow realTimeGraphWindow;
-        private readonly ViewModel viewModel;
-        private const int anzByteDigInput = 1;
-        private const int anzByteDigOutput = 1;
-        private const int anzByteAnalogInput = 20;
-        private const int anzByteAnalogOutput = 4;
+        private SetManualWindow _setManualWindow;
+        private RealTimeGraphWindow _realTimeGraphWindow;
+        private readonly ViewModel _viewModel;
+        private const int AnzByteDigInput = 1;
+        private const int AnzByteDigOutput = 1;
+        private const int AnzByteAnalogInput = 20;
+        private const int AnzByteAnalogOutput = 4;
 
         public MainWindow()
         {
-            VersionText = "Synchronisiereinrichtung";
+            const string versionText = "Synchronisiereinrichtung";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
-            viewModel = new ViewModel(this);
+            _viewModel = new ViewModel(this);
 
             InitializeComponent();
 
-            DataContext = viewModel;
-            GaugeDifferenzSpannung.DataContext = viewModel;
-            datenRangieren = new DatenRangieren(this, viewModel);
+            DataContext = _viewModel;
+            GaugeDifferenzSpannung.DataContext = _viewModel;
+            var datenRangieren = new DatenRangieren(this, _viewModel);
             GaugeDifferenzSpannung.ApplyTemplate();
 
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -50,14 +48,14 @@ namespace Synchronisiereinrichtung
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            setManualWindow = new SetManualWindow(viewModel);
-            setManualWindow.Show();
+            _setManualWindow = new SetManualWindow(_viewModel);
+            _setManualWindow.Show();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraphWindow = new RealTimeGraphWindow(viewModel);
-            realTimeGraphWindow.Show();
+            _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
+            _realTimeGraphWindow.Show();
         }
     }
 }

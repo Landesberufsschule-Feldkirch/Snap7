@@ -2,21 +2,21 @@
 {
     public class StateAus
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateAus(Kraftwerk kw) => kraftWerk = kw;
+        public StateAus(Kraftwerk kw) => _kraftWerk = kw;
 
         public void Doing()
         {
-            kraftWerk.Generator_n = 0;
-            kraftWerk.Generator_U = 0;
-            kraftWerk.Generator_f = 0;
-            kraftWerk.Generator_P = 0;
-            kraftWerk.Generator_CosPhi = 1;
+            _kraftWerk.GeneratorN = 0;
+            _kraftWerk.GeneratorU = 0;
+            _kraftWerk.GeneratorF = 0;
+            _kraftWerk.GeneratorP = 0;
+            _kraftWerk.GeneratorCosPhi = 1;
 
-            kraftWerk.MessgeraetAnzeigen = false;
+            _kraftWerk.MessgeraetAnzeigen = false;
 
-            if (kraftWerk.Ventil_Y > 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Hochfahren);
+            if (_kraftWerk.VentilY > 0) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.Hochfahren);
         }
     }
 }

@@ -25,7 +25,7 @@
             SpsColor = "LightBlue";
 
             for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
-            for (var i = 0; i < 10; i++) AlleWinkel.Add(0); 
+            for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
 
             ColorP0 = "LightGray";
 
@@ -120,24 +120,24 @@
             }
         }
 
-        private string _sPsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _sPsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _sPsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _sPsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _sPsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }

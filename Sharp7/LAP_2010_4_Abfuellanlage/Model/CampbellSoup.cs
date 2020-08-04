@@ -36,8 +36,8 @@ namespace LAP_2010_4_Abfuellanlage.Model
             ID = id;
             Sichtbar = true;
             bewegungSchritt = BewegungSchritt.Oberhalb;
-            richtungX = Utilities.Rechteck.RichtungX.steht;
-            richtungY = Utilities.Rechteck.RichtungY.steht;
+            richtungX = Utilities.Rechteck.RichtungX.Steht;
+            richtungY = Utilities.Rechteck.RichtungY.Steht;
             startPosition = new Punkt(foerderbandLinks.X, vereinzelnerVentil.Y - ID * doseHoehe);
             Position = new Rechteck(startPosition.Clone(), doseBreite, doseHoehe);
         }
@@ -52,19 +52,19 @@ namespace LAP_2010_4_Abfuellanlage.Model
         public (bool, int) DosenBewegen(bool M1, int AnzahlDosen, int aktuelleDose, bool stop)
         {
             double y_Neu;
-            richtungX = Utilities.Rechteck.RichtungX.steht;
-            richtungY = Utilities.Rechteck.RichtungY.steht;
+            richtungX = Utilities.Rechteck.RichtungX.Steht;
+            richtungY = Utilities.Rechteck.RichtungY.Steht;
 
             switch (bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     y_Neu = vereinzelnerVentil.Y - doseHoehe * (ID - aktuelleDose);
                     if (!stop && Position.Punkt.Y < y_Neu) Position.Punkt.Y += bewegungIncrement;
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     if (!stop)
                     {
                         if (Position.Punkt.Y < foerderbandLinks.Y) Position.Punkt.Y += bewegungIncrement;
@@ -77,7 +77,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Fahren:
-                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    richtungX = Utilities.Rechteck.RichtungX.NachRechts;
                     if (M1 && !stop)
                     {
                         if (Position.Punkt.X < foerderbandRechts.X) Position.Punkt.X += bewegungIncrement;
@@ -86,7 +86,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    richtungY = Utilities.Rechteck.RichtungY.nachUnten;
+                    richtungY = Utilities.Rechteck.RichtungY.NachUnten;
                     if (!stop)
                     {
                         if (Position.Punkt.Y < boden.Y) Position.Punkt.Y += bewegungIncrement;

@@ -6,8 +6,8 @@ namespace Synchronisiereinrichtung
 {
     public class DatenRangieren
     {
-        private readonly ViewModel viewModel;
-        private readonly MainWindow mainWindow;
+        private readonly ViewModel _viewModel;
+        private readonly MainWindow _mainWindow;
 
         private enum BitPosAusgang
         {
@@ -22,36 +22,36 @@ namespace Synchronisiereinrichtung
 
         public DatenRangieren(MainWindow mw, ViewModel vm)
         {
-            mainWindow = mw;
-            viewModel = vm;
+            _mainWindow = mw;
+            _viewModel = vm;
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.Kraftwerk.KraftwerkStarten);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.Kraftwerk.KraftwerkStoppen);
 
-            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
-            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
-            S7.SetSint_16_At(anInput, 4, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
-            S7.SetSint_16_At(anInput, 6, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
-            S7.SetSint_16_At(anInput, 8, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
+            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.GeneratorN, 10000));
+            S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.GeneratorU, 1000));
+            S7.SetSint_16_At(anInput, 4, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.GeneratorF, 100));
+            S7.SetSint_16_At(anInput, 6, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.GeneratorP, 10000));
+            S7.SetSint_16_At(anInput, 8, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.GeneratorCosPhi, 1));
 
-            S7.SetSint_16_At(anInput, 10, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
-            S7.SetSint_16_At(anInput, 12, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
-            S7.SetSint_16_At(anInput, 14, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
-            S7.SetSint_16_At(anInput, 16, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
+            S7.SetSint_16_At(anInput, 10, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.NetzU, 1000));
+            S7.SetSint_16_At(anInput, 12, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.NetzF, 100));
+            S7.SetSint_16_At(anInput, 14, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.NetzP, 10000));
+            S7.SetSint_16_At(anInput, 16, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.NetzCosPhi, 1));
 
-            S7.SetSint_16_At(anInput, 18, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
+            S7.SetSint_16_At(anInput, 18, S7Analog.S7_Analog_2_Int16(_viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] anOutput)
         {
-            if (!mainWindow.DebugWindowAktiv)
+            if (!_mainWindow.DebugWindowAktiv)
             {
-                viewModel.Kraftwerk.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                viewModel.Kraftwerk.Ventil_Y = viewModel.Kraftwerk.generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 0), 100));
-                viewModel.Kraftwerk.Generator_Ie = viewModel.Kraftwerk.generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 2), 10));
+                _viewModel.Kraftwerk.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _viewModel.Kraftwerk.VentilY = _viewModel.Kraftwerk.Generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 0), 100));
+                _viewModel.Kraftwerk.GeneratorIe = _viewModel.Kraftwerk.Generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 2), 10));
             }
         }
     }

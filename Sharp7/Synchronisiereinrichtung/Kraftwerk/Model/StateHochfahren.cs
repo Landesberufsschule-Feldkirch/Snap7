@@ -4,23 +4,23 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     internal class StateHochfahren
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateHochfahren(Kraftwerk kw) => kraftWerk = kw;
+        public StateHochfahren(Kraftwerk kw) => _kraftWerk = kw;
 
         public void Doing()
         {
-            kraftWerk.generator.MaschineAntreiben(kraftWerk.Ventil_Y);
-            kraftWerk.Generator_n = kraftWerk.generator.GetDrehzahl();
-            kraftWerk.Generator_U = kraftWerk.generator.GetSpannung(kraftWerk.Generator_Ie);
-            kraftWerk.Generator_f = kraftWerk.generator.GetFrequenz();
-            kraftWerk.Generator_P = 0;
-            kraftWerk.Generator_CosPhi = 1;
+            _kraftWerk.Generator.MaschineAntreiben(_kraftWerk.VentilY);
+            _kraftWerk.GeneratorN = _kraftWerk.Generator.GetDrehzahl();
+            _kraftWerk.GeneratorU = _kraftWerk.Generator.GetSpannung(_kraftWerk.GeneratorIe);
+            _kraftWerk.GeneratorF = _kraftWerk.Generator.GetFrequenz();
+            _kraftWerk.GeneratorP = 0;
+            _kraftWerk.GeneratorCosPhi = 1;
 
-            kraftWerk.MessgeraetAnzeigen = (Math.Abs(kraftWerk.FrequenzDifferenz) < 2);
-            if (kraftWerk.Q1) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
-            if (kraftWerk.Generator_n > 3000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
-            if (kraftWerk.Ventil_Y == 0) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
+            _kraftWerk.MessgeraetAnzeigen = (Math.Abs(_kraftWerk.FrequenzDifferenz) < 2);
+            if (_kraftWerk.Q1) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
+            if (_kraftWerk.GeneratorN > 3000) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+            if (Math.Abs(_kraftWerk.VentilY) < 0.001) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.VentilGeschlossen);
         }
     }
 }

@@ -24,95 +24,93 @@ namespace Tiefgarage.Model
             Person
         }
 
-        public Rolle FP_Rolle { get; set; }
+        public Rolle FpRolle { get; set; }
         public FahrenRichtung Bewegung { get; set; } = FahrenRichtung.ObenGeparkt;
         public Punkt AktuellePosition { get; set; } = new Punkt(0, 0);
 
         private readonly double xy_Bewegung = 1;
         private readonly double kurveGeschwindigkeit = 0.002;
 
-        private double kurvePosition;
+        private double _kurvePosition;
 
-        private readonly BezierCurve kurveOben;
-        private readonly BezierCurve kurveUnten;
+        private readonly BezierCurve _kurveOben;
+        private readonly BezierCurve _kurveUnten;
 
-        private readonly Punkt fahrzeug = new Punkt(100, 50);
-        private readonly Punkt fahrzeugOben = new Punkt(10, 10);
-        private readonly Punkt fahrzeugUntenLinks = new Punkt(110, 500);
-        private readonly Punkt fahrzeugUntenRechts = new Punkt(810, 500);
+        private readonly Punkt _fahrzeug = new Punkt(100, 50);
+        private readonly Punkt _fahrzeugOben = new Punkt(10, 10);
+        private readonly Punkt _fahrzeugUntenLinks = new Punkt(110, 500);
+        private readonly Punkt _fahrzeugUntenRechts = new Punkt(810, 500);
 
-        private readonly Punkt person = new Punkt(25, 15);
-        private readonly Punkt personOben = new Punkt(500, 10);
-        private readonly Punkt personUnten = new Punkt(250, 650);
+        private readonly Punkt _person = new Punkt(25, 15);
+        private readonly Punkt _personOben = new Punkt(500, 10);
+        private readonly Punkt _personUnten = new Punkt(250, 650);
 
-        private readonly Punkt fahrspurOben = new Punkt(350, 250);
-        private readonly Punkt fahrspurUnten = new Punkt(350, 400);
+        private readonly Punkt _fahrspurOben = new Punkt(350, 250);
+        private readonly Punkt _fahrspurUnten = new Punkt(350, 400);
 
         private readonly double yPosition_B1 = 300;
         private readonly double yPosition_B2 = 330;
 
-        public readonly Punkt parkenOben;
-        public readonly Punkt parkenUnten;
-        public readonly Punkt eingangOben;
-        public readonly Punkt eingangUnten;
+        public readonly Punkt ParkenOben;
+        public readonly Punkt ParkenUnten;
+        public readonly Punkt EingangOben;
+        public readonly Punkt EingangUnten;
 
         public FahrzeugPerson(Rolle rolle, int wievieltesFahrzeugPerson)
         {
-            double X_oben;
-            double Y_oben;
-            double X_unten;
-            double Y_unten;
+            double xOben;
+            double yOben;
+            double xUnten;
+            double yUnten;
 
-            Punkt KontrollPunktOben1;
-            Punkt KontrollPunktOben2;
-            Punkt KontrollPunktUnten1;
-            Punkt KontrollPunktUnten2;
+            Punkt kontrollPunktUnten1;
+            Punkt kontrollPunktUnten2;
 
-            FP_Rolle = rolle;
+            FpRolle = rolle;
 
-            if (FP_Rolle == Rolle.Fahrzeug)
+            if (FpRolle == Rolle.Fahrzeug)
             {
-                Y_oben = fahrzeugOben.Y;
-                X_oben = fahrzeugOben.X + wievieltesFahrzeugPerson * fahrzeug.X;
+                yOben = _fahrzeugOben.Y;
+                xOben = _fahrzeugOben.X + wievieltesFahrzeugPerson * _fahrzeug.X;
                 if (wievieltesFahrzeugPerson < 4)
                 {
-                    X_unten = fahrzeugUntenLinks.X;
-                    Y_unten = fahrzeugUntenLinks.Y + wievieltesFahrzeugPerson * fahrzeug.Y;
+                    xUnten = _fahrzeugUntenLinks.X;
+                    yUnten = _fahrzeugUntenLinks.Y + wievieltesFahrzeugPerson * _fahrzeug.Y;
 
-                    KontrollPunktUnten1 = new Punkt(fahrspurUnten.X, fahrspurUnten.Y + 100);
-                    KontrollPunktUnten2 = new Punkt(X_unten + 100, Y_unten);
+                    kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);
+                    kontrollPunktUnten2 = new Punkt(xUnten + 100, yUnten);
                 }
                 else
                 {
-                    X_unten = fahrzeugUntenRechts.X;
-                    Y_unten = fahrzeugUntenRechts.Y + (wievieltesFahrzeugPerson - 4) * fahrzeug.Y;
+                    xUnten = _fahrzeugUntenRechts.X;
+                    yUnten = _fahrzeugUntenRechts.Y + (wievieltesFahrzeugPerson - 4) * _fahrzeug.Y;
 
-                    KontrollPunktUnten1 = new Punkt(fahrspurUnten.X, fahrspurUnten.Y + 100);
-                    KontrollPunktUnten2 = new Punkt(X_unten - 100, Y_unten);
+                    kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);
+                    kontrollPunktUnten2 = new Punkt(xUnten - 100, yUnten);
                 }
             }
             else
             {
-                Y_oben = personOben.Y;
-                X_oben = personOben.X + wievieltesFahrzeugPerson * person.X;
-                X_unten = personUnten.X + wievieltesFahrzeugPerson * person.X;
-                Y_unten = personUnten.Y;
+                yOben = _personOben.Y;
+                xOben = _personOben.X + wievieltesFahrzeugPerson * _person.X;
+                xUnten = _personUnten.X + wievieltesFahrzeugPerson * _person.X;
+                yUnten = _personUnten.Y;
 
-                KontrollPunktUnten1 = new Punkt(fahrspurUnten.X, fahrspurUnten.Y + 100);
-                KontrollPunktUnten2 = new Punkt(X_unten, Y_unten - 100);
+                kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);
+                kontrollPunktUnten2 = new Punkt(xUnten, yUnten - 100);
             }
 
-            KontrollPunktOben1 = new Punkt(X_oben, Y_oben + 100);
-            KontrollPunktOben2 = new Punkt(fahrspurOben.X, fahrspurOben.Y - 100);
+            var kontrollPunktOben1 = new Punkt(xOben, yOben + 100);
+            var kontrollPunktOben2 = new Punkt(_fahrspurOben.X, _fahrspurOben.Y - 100);
 
-            parkenOben = new Punkt(X_oben, Y_oben);
-            parkenUnten = new Punkt(X_unten, Y_unten);
+            ParkenOben = new Punkt(xOben, yOben);
+            ParkenUnten = new Punkt(xUnten, yUnten);
 
-            eingangOben = new Punkt(fahrspurOben.X, fahrspurOben.Y);
-            eingangUnten = new Punkt(fahrspurUnten.X, fahrspurUnten.Y);
+            EingangOben = new Punkt(_fahrspurOben.X, _fahrspurOben.Y);
+            EingangUnten = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y);
 
-            kurveOben = new BezierCurve(parkenOben, KontrollPunktOben1, KontrollPunktOben2, eingangOben);
-            kurveUnten = new BezierCurve(eingangUnten, KontrollPunktUnten1, KontrollPunktUnten2, parkenUnten);
+            _kurveOben = new BezierCurve(ParkenOben, kontrollPunktOben1, kontrollPunktOben2, EingangOben);
+            _kurveUnten = new BezierCurve(EingangUnten, kontrollPunktUnten1, kontrollPunktUnten2, ParkenUnten);
 
             DraussenParken();
         }
@@ -127,73 +125,70 @@ namespace Tiefgarage.Model
 
         public void DrinnenParken() => Bewegung = FahrenRichtung.UntenGeparkt;
 
-        private bool LichtschrankeUnterbrochen(double Pos)
+        private bool LichtschrankeUnterbrochen(double pos)
         {
-            if (AktuellePosition.Y < Pos) return false;
-            if (FP_Rolle == Rolle.Fahrzeug && AktuellePosition.Y > Pos + fahrzeug.Y) return false;
-            if (FP_Rolle == Rolle.Person && AktuellePosition.Y > Pos + person.Y) return false;
+            if (AktuellePosition.Y < pos) return false;
+            if (FpRolle == Rolle.Fahrzeug && AktuellePosition.Y > pos + _fahrzeug.Y) return false;
+            if (FpRolle == Rolle.Person && AktuellePosition.Y > pos + _person.Y) return false;
             return true;
         }
 
         public (bool b1, bool b2, bool park) Bewegen()
         {
-            bool AllesInParkPosition = false;
+            var allesInParkPosition = false;
 
             switch (Bewegung)
             {
                 case FahrenRichtung.ObenGeparkt:
-                    AllesInParkPosition = true;
-                    AktuellePosition = parkenOben;
-                    kurvePosition = 0;
+                    allesInParkPosition = true;
+                    AktuellePosition = ParkenOben;
+                    _kurvePosition = 0;
                     break;
 
                 case FahrenRichtung.AbwaertsKurveOben:
-                    AktuellePosition = kurveOben.PunktBestimmen(kurvePosition);
-                    kurvePosition += kurveGeschwindigkeit;
-                    if (kurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
+                    AktuellePosition = _kurveOben.PunktBestimmen(_kurvePosition);
+                    _kurvePosition += kurveGeschwindigkeit;
+                    if (_kurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AbwaertsSenkrecht:
-                    if (AktuellePosition.Y < fahrspurUnten.Y) AktuellePosition.Y += xy_Bewegung;
+                    if (AktuellePosition.Y < _fahrspurUnten.Y) AktuellePosition.Y += xy_Bewegung;
                     else Bewegung = FahrenRichtung.AbwaertsKurveUnten;
-                    kurvePosition = 0;
+                    _kurvePosition = 0;
                     break;
 
                 case FahrenRichtung.AbwaertsKurveUnten:
-                    AktuellePosition = kurveUnten.PunktBestimmen(kurvePosition);
-                    kurvePosition += kurveGeschwindigkeit;
-                    if (kurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
+                    AktuellePosition = _kurveUnten.PunktBestimmen(_kurvePosition);
+                    _kurvePosition += kurveGeschwindigkeit;
+                    if (_kurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
                     break;
 
                 case FahrenRichtung.UntenGeparkt:
-                    AllesInParkPosition = true;
-                    AktuellePosition = parkenUnten;
-                    kurvePosition = 1;
+                    allesInParkPosition = true;
+                    AktuellePosition = ParkenUnten;
+                    _kurvePosition = 1;
                     break;
 
                 case FahrenRichtung.AufwaertsKurveUnten:
-                    AktuellePosition = kurveUnten.PunktBestimmen(kurvePosition);
-                    kurvePosition -= kurveGeschwindigkeit;
-                    if (kurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
+                    AktuellePosition = _kurveUnten.PunktBestimmen(_kurvePosition);
+                    _kurvePosition -= kurveGeschwindigkeit;
+                    if (_kurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AufwaertsSenkrecht:
-                    if (AktuellePosition.Y > fahrspurOben.Y) AktuellePosition.Y -= xy_Bewegung;
+                    if (AktuellePosition.Y > _fahrspurOben.Y) AktuellePosition.Y -= xy_Bewegung;
                     else Bewegung = FahrenRichtung.AufwaertsKurveOben;
-                    kurvePosition = 1;
+                    _kurvePosition = 1;
                     break;
 
                 case FahrenRichtung.AufwaertsKurveOben:
-                    AktuellePosition = kurveOben.PunktBestimmen(kurvePosition);
-                    kurvePosition -= kurveGeschwindigkeit;
-                    if (kurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
-                    break;
-
-                default:
+                    AktuellePosition = _kurveOben.PunktBestimmen(_kurvePosition);
+                    _kurvePosition -= kurveGeschwindigkeit;
+                    if (_kurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
                     break;
             }
 
-            return (LichtschrankeUnterbrochen(yPosition_B1), LichtschrankeUnterbrochen(yPosition_B2), AllesInParkPosition);
+            return (LichtschrankeUnterbrochen(yPosition_B1), LichtschrankeUnterbrochen(yPosition_B2), allesInParkPosition);
         }
     }
 }

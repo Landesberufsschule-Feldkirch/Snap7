@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Tiefgarage
+﻿namespace Tiefgarage
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

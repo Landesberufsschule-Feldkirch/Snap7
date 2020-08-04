@@ -22,8 +22,8 @@ namespace Utilities
         public Punkt(double radius, double winkel, int nix)
         {
             // Winkel in Grad --> für Synchronisiereinrichtung
-            X = radius * Math.Cos(Utilities.Winkel.Deg2Rad(winkel));
-            Y = radius * Math.Sin(Utilities.Winkel.Deg2Rad(winkel));
+            X = radius * Math.Cos(Winkel.Deg2Rad(winkel));
+            Y = radius * Math.Sin(Winkel.Deg2Rad(winkel));
         }
 
         public Punkt Clone()

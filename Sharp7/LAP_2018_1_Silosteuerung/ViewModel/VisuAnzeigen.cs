@@ -13,8 +13,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
-            SPSVersionLokal = "fehlt";
-            SPSVersionEntfernt = "fehlt";
+            SpsVersionLokal = "fehlt";
+            SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -42,25 +42,25 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _sPSVersionLokal;
-        public string SPSVersionLokal
+        private string _SpsVersionLokal;
+        public string SpsVersionLokal
         {
-            get => _sPSVersionLokal;
+            get => _SpsVersionLokal;
             set
             {
-                _sPSVersionLokal = value;
-                OnPropertyChanged(nameof(SPSVersionLokal));
+                _SpsVersionLokal = value;
+                OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPSVersionEntfernt;
-        public string SPSVersionEntfernt
+        private string _SpsVersionEntfernt;
+        public string SpsVersionEntfernt
         {
-            get => _sPSVersionEntfernt;
+            get => _SpsVersionEntfernt;
             set
             {
-                _sPSVersionEntfernt = value;
-                OnPropertyChanged(nameof(SPSVersionEntfernt));
+                _SpsVersionEntfernt = value;
+                OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
 

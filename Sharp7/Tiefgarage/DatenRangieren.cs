@@ -4,7 +4,7 @@ namespace Tiefgarage
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.ViewModel viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosEingang
         {
@@ -14,19 +14,19 @@ namespace Tiefgarage
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleFahrzeugePersonen.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleFahrzeugePersonen.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.alleFahrzeugePersonen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.alleFahrzeugePersonen.B2);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            viewModel.alleFahrzeugePersonen.AnzahlAutos = S7.GetUint8At(digOutput, 0);
-            viewModel.alleFahrzeugePersonen.AnzahlPersonen = S7.GetUint8At(digOutput, 1);
+            _viewModel.alleFahrzeugePersonen.AnzahlAutos = S7.GetUint8At(digOutput, 0);
+            _viewModel.alleFahrzeugePersonen.AnzahlPersonen = S7.GetUint8At(digOutput, 1);
         }
 
         public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm)
         {
-            viewModel = vm;
+            _viewModel = vm;
         }
     }
 }

@@ -31,11 +31,10 @@ namespace Synchronisiereinrichtung
 
     public enum SynchronisierungAuswahl
     {
-        U_f = 0,
-        U_f_Phase,
-        U_f_Phase_Leistung,
-        U_f_Phase_Leistungsfaktor,
-        Unbekannt
+        Uf = 0,
+        UfPhase,
+        UfPhaseLeistung,
+        UfPhaseLeistungsfaktor
     }
 }
 
@@ -43,26 +42,26 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     public class Kraftwerk
     {
-        public readonly Drehstromgenerator generator = new Drehstromgenerator(0.35, (1 / 30.0));
-        public readonly Statemachine kraftwerkStatemachine;
+        public readonly Drehstromgenerator Generator = new Drehstromgenerator(0.35, (1 / 30.0));
+        public readonly Statemachine KraftwerkStatemachine;
 
         public double FrequenzDifferenz { get; set; }
         public double OptimalerSpannungswert { get; set; }
         public bool Q1 { get; set; }
         public bool KraftwerkStarten { get; set; }
         public bool KraftwerkStoppen { get; set; }
-        public double Ventil_Y { get; set; }
-        public double Generator_Ie { get; set; }
-        public double Generator_n { get; set; }
-        public double Generator_f { get; set; }
-        public double Generator_U { get; set; }
-        public double Generator_P { get; set; }
-        public double Generator_CosPhi { get; set; }
+        public double VentilY { get; set; }
+        public double GeneratorIe { get; set; }
+        public double GeneratorN { get; set; }
+        public double GeneratorF { get; set; }
+        public double GeneratorU { get; set; }
+        public double GeneratorP { get; set; }
+        public double GeneratorCosPhi { get; set; }
         public double SpannungsdifferenzGeneratorNetz { get; set; }
-        public double Netz_U { get; set; }
-        public double Netz_f { get; set; }
-        public double Netz_P { get; set; }
-        public double Netz_CosPhi { get; set; }
+        public double NetzU { get; set; }
+        public double NetzF { get; set; }
+        public double NetzP { get; set; }
+        public double NetzCosPhi { get; set; }
         public bool MessgeraetAnzeigen { get; set; }
         public bool MaschineTot { get; set; }
         public SynchronisierungAuswahl SynchAuswahl { get; set; }
@@ -74,48 +73,46 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         public Kraftwerk()
         {
             FrequenzDifferenz = 5;
-            kraftwerkStatemachine = new Statemachine(this);
+            KraftwerkStatemachine = new Statemachine(this);
             System.Threading.Tasks.Task.Run(KraftwerkTask);
         }
 
         public void KraftwerkTask()
         {
-            const double Zeitdauer = 10;//ms
+            const double zeitdauer = 10;//ms
 
-            double Generator_Winkel = 0;
-            double Netz_Winkel = 0;
-            Punkt Generator_Momentanspannung;
-            Punkt Netz_Momentanspannung;
+            double generatorWinkel = 0;
+            double netzWinkel = 0;
 
             while (true)
             {
-                kraftwerkStatemachine.Fire(Statemachine.Trigger.Aktualisieren);
+                KraftwerkStatemachine.Fire(Statemachine.Trigger.Aktualisieren);
 
-                Netz_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Netz_f, Netz_Winkel);
-                Generator_Winkel = DrehstromZeiger.WinkelBerechnen(Zeitdauer, Generator_f, Generator_Winkel);
+                netzWinkel = DrehstromZeiger.WinkelBerechnen(zeitdauer, NetzF, netzWinkel);
+                generatorWinkel = DrehstromZeiger.WinkelBerechnen(zeitdauer, GeneratorF, generatorWinkel);
 
-                Netz_Momentanspannung = DrehstromZeiger.GetSpannung(Netz_Winkel, Netz_U);
-                Generator_Momentanspannung = DrehstromZeiger.GetSpannung(Generator_Winkel, Generator_U);
+                var netzMomentanspannung = DrehstromZeiger.GetSpannung(netzWinkel, NetzU);
+                var generatorMomentanspannung = DrehstromZeiger.GetSpannung(generatorWinkel, GeneratorU);
 
-                FrequenzDifferenz = Math.Abs(Netz_f - Generator_f);
-                Zeiger SpannungsDiff = new Zeiger(Generator_Momentanspannung, Netz_Momentanspannung);
+                FrequenzDifferenz = Math.Abs(NetzF - GeneratorF);
+                var spannungsDiff = new Zeiger(generatorMomentanspannung, netzMomentanspannung);
 
                 switch (SynchAuswahl)
                 {
-                    case SynchronisierungAuswahl.U_f_Phase:
-                    case SynchronisierungAuswahl.U_f_Phase_Leistung:
-                    case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
-                        SpannungsdifferenzGeneratorNetz = SpannungsDiff.Laenge();
+                    case SynchronisierungAuswahl.UfPhase:
+                    case SynchronisierungAuswahl.UfPhaseLeistung:
+                    case SynchronisierungAuswahl.UfPhaseLeistungsfaktor:
+                        SpannungsdifferenzGeneratorNetz = spannungsDiff.Laenge();
                         break;
 
                     default:
-                        SpannungsdifferenzGeneratorNetz = Math.Abs(Netz_U - Generator_U);
+                        SpannungsdifferenzGeneratorNetz = Math.Abs(NetzU - GeneratorU);
                         break;
                 }
 
                 SpannungsDifferenz = SpannungsdifferenzGeneratorNetz;
 
-                Thread.Sleep((int)Zeitdauer);
+                Thread.Sleep((int)zeitdauer);
             }
         }
 
@@ -131,8 +128,8 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             KraftwerkStarten = false;
         }
 
-        internal void Synchronisieren() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
+        internal void Synchronisieren() => KraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
 
-        internal void Reset() => kraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
+        internal void Reset() => KraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
     }
 }

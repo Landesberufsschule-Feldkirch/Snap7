@@ -1,8 +1,8 @@
-﻿using RealTimeGraphX;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using RealTimeGraphX;
 
-namespace Synchronisiereinrichtung
+namespace Synchronisiereinrichtung.GraphWindow
 {
     public class WpfGraphControl : Control
     {

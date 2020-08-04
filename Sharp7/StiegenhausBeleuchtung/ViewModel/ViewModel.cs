@@ -1,6 +1,6 @@
 ﻿namespace StiegenhausBeleuchtung.ViewModel
 {
-    using StiegenhausBeleuchtung.Commands;
+    using Commands;
     using System.Windows.Input;
 
     public class ViewModel
@@ -21,17 +21,7 @@
 
         private ICommand _btnStart;
 
-        public ICommand BtnStart
-        {
-            get
-            {
-                if (_btnStart == null)
-                {
-                    _btnStart = new RelayCommand(stiegenhausBeleuchtung.BtnStart);
-                }
-                return _btnStart;
-            }
-        }
+        public ICommand BtnStart => _btnStart ?? (_btnStart = new RelayCommand(stiegenhausBeleuchtung.BtnStart));
 
         #endregion BtnStart
 
@@ -39,17 +29,7 @@
 
         private ICommand _btnBewegungsmelder;
 
-        public ICommand BtnBewegungsmelder
-        {
-            get
-            {
-                if (_btnBewegungsmelder == null)
-                {
-                    _btnBewegungsmelder = new RelayCommand(ViAnzeige.BtnBewegungsmelder);
-                }
-                return _btnBewegungsmelder;
-            }
-        }
+        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ?? (_btnBewegungsmelder = new RelayCommand(ViAnzeige.BtnBewegungsmelder));
 
         #endregion BtnBewegungsmelder
     }

@@ -1,22 +1,22 @@
 ﻿namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 {
-    using Synchronisiereinrichtung.kraftwerk.Commands;
+    using Commands;
     using System.Windows.Input;
 
     public class ViewModel
     {
-        private readonly Model.Kraftwerk kraftwerk;
-        public kraftwerk.ViewModel.Schreiber Schreiber { get; set; }
+        private readonly Model.Kraftwerk _kraftwerk;
+        public Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
-            kraftwerk = new Model.Kraftwerk();
-            Schreiber = new kraftwerk.ViewModel.Schreiber(kraftwerk);
-            ViAnzeige = new VisuAnzeigen(mainWindow, kraftwerk);
+            _kraftwerk = new Model.Kraftwerk();
+            Schreiber = new Schreiber(_kraftwerk);
+            ViAnzeige = new VisuAnzeigen(mainWindow, _kraftwerk);
         }
 
-        public Model.Kraftwerk Kraftwerk => kraftwerk;
+        public Model.Kraftwerk Kraftwerk => _kraftwerk;
 
         #region BtnReset
 
@@ -24,14 +24,7 @@
 
         public ICommand BtnReset
         {
-            get
-            {
-                if (_btnReset == null)
-                {
-                    _btnReset = new RelayCommand(p => kraftwerk.Reset(), p => true);
-                }
-                return _btnReset;
-            }
+            get { return _btnReset ?? (_btnReset = new RelayCommand(p => _kraftwerk.Reset(), p => true)); }
         }
 
         #endregion BtnReset
@@ -44,11 +37,8 @@
         {
             get
             {
-                if (_btnSchalterQ1 == null)
-                {
-                    _btnSchalterQ1 = new RelayCommand(p => kraftwerk.Synchronisieren(), p => true);
-                }
-                return _btnSchalterQ1;
+                return _btnSchalterQ1 ??
+                       (_btnSchalterQ1 = new RelayCommand(p => _kraftwerk.Synchronisieren(), p => true));
             }
         }
 
@@ -62,11 +52,8 @@
         {
             get
             {
-                if (_btnSchalterStart == null)
-                {
-                    _btnSchalterStart = new RelayCommand(p => kraftwerk.Starten(), p => true);
-                }
-                return _btnSchalterStart;
+                return _btnSchalterStart ??
+                       (_btnSchalterStart = new RelayCommand(p => _kraftwerk.Starten(), p => true));
             }
         }
 
@@ -80,11 +67,7 @@
         {
             get
             {
-                if (_btnSchalterStop == null)
-                {
-                    _btnSchalterStop = new RelayCommand(p => kraftwerk.Stoppen(), p => true);
-                }
-                return _btnSchalterStop;
+                return _btnSchalterStop ?? (_btnSchalterStop = new RelayCommand(p => _kraftwerk.Stoppen(), p => true));
             }
         }
 

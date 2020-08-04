@@ -2,31 +2,31 @@
 {
     internal class StateBelasten
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateBelasten(Kraftwerk kw) => kraftWerk = kw;
+        public StateBelasten(Kraftwerk kw) => _kraftWerk = kw;
 
         public void OnEntry()
         {
-            kraftWerk.generator.SetSynchronisierungVentil(kraftWerk.Ventil_Y);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor
-            kraftWerk.generator.SetSynchronisierungErregerstrom(kraftWerk.Generator_Ie); // gibt ab jetzt den Leistungsfaktor und nicht mehr die Spannung vor
+            _kraftWerk.Generator.SetSynchronisierungVentil(_kraftWerk.VentilY);// gibt ab jetzt die Leistung und nicht mehr die Drehzahl vor
+            _kraftWerk.Generator.SetSynchronisierungErregerstrom(_kraftWerk.GeneratorIe); // gibt ab jetzt den Leistungsfaktor und nicht mehr die Spannung vor
         }
 
         public void Doing()
         {
-            kraftWerk.generator.SetSynchronisiertFrequenz(kraftWerk.Netz_f); // Die Drehzahl wird durch die Netzfrequenz vorgegeben
-            kraftWerk.Generator_n = kraftWerk.generator.GetDrehzahl();
-            kraftWerk.Generator_U = kraftWerk.Netz_U;
-            kraftWerk.Generator_f = kraftWerk.Netz_f;
-            kraftWerk.MessgeraetAnzeigen = false;
+            _kraftWerk.Generator.SetSynchronisiertFrequenz(_kraftWerk.NetzF); // Die Drehzahl wird durch die Netzfrequenz vorgegeben
+            _kraftWerk.GeneratorN = _kraftWerk.Generator.GetDrehzahl();
+            _kraftWerk.GeneratorU = _kraftWerk.NetzU;
+            _kraftWerk.GeneratorF = _kraftWerk.NetzF;
+            _kraftWerk.MessgeraetAnzeigen = false;
 
-            kraftWerk.generator.MaschineLeistungFahren(kraftWerk.Ventil_Y);
-            kraftWerk.generator.PhasenSchieberbetrieb(kraftWerk.Generator_Ie);
-            kraftWerk.Generator_P = kraftWerk.generator.GetLeistung();
-            kraftWerk.Generator_CosPhi = kraftWerk.generator.GetCosPhi();
+            _kraftWerk.Generator.MaschineLeistungFahren(_kraftWerk.VentilY);
+            _kraftWerk.Generator.PhasenSchieberbetrieb(_kraftWerk.GeneratorIe);
+            _kraftWerk.GeneratorP = _kraftWerk.Generator.GetLeistung();
+            _kraftWerk.GeneratorCosPhi = _kraftWerk.Generator.GetCosPhi();
 
-            if (kraftWerk.Generator_P > 5000) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
-            if (!kraftWerk.Q1) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.LeistungsschalterAus);
+            if (_kraftWerk.GeneratorP > 5000) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+            if (!_kraftWerk.Q1) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.LeistungsschalterAus);
         }
     }
 }

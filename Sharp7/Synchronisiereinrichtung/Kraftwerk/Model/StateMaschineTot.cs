@@ -2,10 +2,10 @@
 {
     internal class StateMaschineTot
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateMaschineTot(Kraftwerk kw) => kraftWerk = kw;
+        public StateMaschineTot(Kraftwerk kw) => _kraftWerk = kw;
 
-        public void OnEntry() => kraftWerk.MaschineTot = true;
+        public void OnEntry() => _kraftWerk.MaschineTot = true;
     }
 }

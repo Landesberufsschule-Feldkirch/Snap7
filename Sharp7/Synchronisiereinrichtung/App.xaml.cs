@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Synchronisiereinrichtung
+﻿namespace Synchronisiereinrichtung
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

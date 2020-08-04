@@ -5,18 +5,18 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Zeiten zeiten;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Zeiten _zeiten;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.Zeiten zt)
         {
-            mainWindow = mw;
-            zeiten = zt;
+            _mainWindow = mw;
+            _zeiten = zt;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
-            SPSVersionLokal = "fehlt";
-            SPSVersionEntfernt = "fehlt";
+            SpsVersionLokal = "fehlt";
+            SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -33,19 +33,19 @@
         {
             while (true)
             {
-                WinkelSekunden = zeiten.GetSekunde() * 6;
-                WinkelMinuten = zeiten.GetMinute() * 6;
-                WinkelStunden = zeiten.GetStunde() * 30 + zeiten.GetMinute() * 0.5;
+                WinkelSekunden = _zeiten.GetSekunde() * 6;
+                WinkelMinuten = _zeiten.GetMinute() * 6;
+                WinkelStunden = _zeiten.GetStunde() * 30 + _zeiten.GetMinute() * 0.5;
    
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
 
-                    SPSVersionLokal = mainWindow.VersionInfo;
-                    SPSVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SPSVersionLokal == SPSVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -65,25 +65,25 @@
             }
         }
 
-        private string _sPSVersionLokal;
-        public string SPSVersionLokal
+        private string _spsVersionLokal;
+        public string SpsVersionLokal
         {
-            get => _sPSVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _sPSVersionLokal = value;
-                OnPropertyChanged(nameof(SPSVersionLokal));
+                _spsVersionLokal = value;
+                OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPSVersionEntfernt;
-        public string SPSVersionEntfernt
+        private string _spsVersionEntfernt;
+        public string SpsVersionEntfernt
         {
-            get => _sPSVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _sPSVersionEntfernt = value;
-                OnPropertyChanged(nameof(SPSVersionEntfernt));
+                _spsVersionEntfernt = value;
+                OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
         private string _spsVersionsInfoSichtbar;
@@ -136,7 +136,7 @@
             {
                 _geschwindigkeitSlider = value;
                 OnPropertyChanged(nameof(GeschwindigkeitSlider));
-                zeiten.SetGeschwindigkeit(GeschwindigkeitSlider);
+                _zeiten.SetGeschwindigkeit(GeschwindigkeitSlider);
             }
         }
 

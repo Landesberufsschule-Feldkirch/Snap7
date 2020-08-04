@@ -1,7 +1,7 @@
 ﻿namespace WordClock.ViewModel
 {
     using System.Windows.Input;
-    using WordClock.Commands;
+    using Commands;
 
     public class ViewModel
     {
@@ -24,11 +24,8 @@
         {
             get
             {
-                if (_btnSetCurrentTime == null)
-                {
-                    _btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true);
-                }
-                return _btnSetCurrentTime;
+                return _btnSetCurrentTime ??
+                       (_btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true));
             }
         }
 

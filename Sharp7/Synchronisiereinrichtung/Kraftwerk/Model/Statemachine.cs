@@ -30,96 +30,93 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             Neustart
         }
 
-        private readonly StateMachine<State, Trigger> stateMachine;
-        private readonly StateAus stateAus;
-        private readonly StateHochfahren stateHochfahren;
-        private readonly StateSynchronisieren stateSynchronisieren;
-        private readonly StateMaschineTot stateMaschineTot;
-        private readonly StateBelasten stateBelasten;
-        private readonly StateLeistungsschalterAus stateLeistungsschalterAus;
-        private readonly StateReset stateReset;
+        private readonly StateMachine<State, Trigger> _stateMachine;
+        private readonly StateAus _stateAus;
+        private readonly StateHochfahren _stateHochfahren;
+        private readonly StateSynchronisieren _stateSynchronisieren;
+        private readonly StateMaschineTot _stateMaschineTot;
+        private readonly StateBelasten _stateBelasten;
+        private readonly StateLeistungsschalterAus _stateLeistungsschalterAus;
+        private readonly StateReset _stateReset;
 
         public Statemachine(Kraftwerk kw)
         {
-            Kraftwerk kraftWerk;
-            kraftWerk = kw;
+            var kraftWerk = kw;
 
-            stateMachine = CreateStateMachine();
+            _stateMachine = CreateStateMachine();
 
-            stateAus = new StateAus(kraftWerk);
-            stateHochfahren = new StateHochfahren(kraftWerk);
-            stateSynchronisieren = new StateSynchronisieren(kraftWerk);
-            stateMaschineTot = new StateMaschineTot(kraftWerk);
-            stateBelasten = new StateBelasten(kraftWerk);
-            stateLeistungsschalterAus = new StateLeistungsschalterAus(kraftWerk);
-            stateReset = new StateReset(kraftWerk);
+            _stateAus = new StateAus(kraftWerk);
+            _stateHochfahren = new StateHochfahren(kraftWerk);
+            _stateSynchronisieren = new StateSynchronisieren(kraftWerk);
+            _stateMaschineTot = new StateMaschineTot(kraftWerk);
+            _stateBelasten = new StateBelasten(kraftWerk);
+            _stateLeistungsschalterAus = new StateLeistungsschalterAus(kraftWerk);
+            _stateReset = new StateReset(kraftWerk);
         }
 
         public bool Fire(Trigger trigger)
         {
-            if (!stateMachine.CanFire(trigger))
+            if (!_stateMachine.CanFire(trigger))
                 return false;
 
-            stateMachine.Fire(trigger);
+            _stateMachine.Fire(trigger);
             return true;
         }
 
-        public State Status => stateMachine.State;
-
-        public string StatusAusgeben() => stateMachine.State.ToString();
+        public string StatusAusgeben() => _stateMachine.State.ToString();
 
         private StateMachine<State, Trigger> CreateStateMachine()
         {
-            StateMachine<State, Trigger> _stateMachine = new StateMachine<State, Trigger>(State.Aus);
+            StateMachine<State, Trigger> stateMachine = new StateMachine<State, Trigger>(State.Aus);
 
-            _stateMachine.Configure(State.Aus)
-                .InternalTransition(Trigger.Aktualisieren, t => stateAus.Doing())
+            stateMachine.Configure(State.Aus)
+                .InternalTransition(Trigger.Aktualisieren, t => _stateAus.Doing())
                 .Permit(Trigger.Hochfahren, State.Hochfahren)
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.Hochfahren)
-                .InternalTransition(Trigger.Aktualisieren, t => stateHochfahren.Doing())
+            stateMachine.Configure(State.Hochfahren)
+                .InternalTransition(Trigger.Aktualisieren, t => _stateHochfahren.Doing())
                 .Permit(Trigger.Synchronisieren, State.Synchronisieren)
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.VentilGeschlossen, State.Aus)
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.Synchronisieren)
-                .OnEntry(() => stateSynchronisieren.OnEntry())
+            stateMachine.Configure(State.Synchronisieren)
+                .OnEntry(() => _stateSynchronisieren.OnEntry())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.Belasten, State.Belasten)
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.MaschineTot)
-                .OnEntry(() => stateMaschineTot.OnEntry())
+            stateMachine.Configure(State.MaschineTot)
+                .OnEntry(() => _stateMaschineTot.OnEntry())
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.Belasten)
-                .OnEntry(() => stateBelasten.OnEntry())
-                .InternalTransition(Trigger.Aktualisieren, t => stateBelasten.Doing())
+            stateMachine.Configure(State.Belasten)
+                .OnEntry(() => _stateBelasten.OnEntry())
+                .InternalTransition(Trigger.Aktualisieren, t => _stateBelasten.Doing())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.LeistungsschalterAus, State.LeistungsschalterAus)
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.LeistungsschalterAus)
-                .InternalTransition(Trigger.Aktualisieren, t => stateLeistungsschalterAus.Doing())
+            stateMachine.Configure(State.LeistungsschalterAus)
+                .InternalTransition(Trigger.Aktualisieren, t => _stateLeistungsschalterAus.Doing())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.VentilGeschlossen, State.Aus)
                 .Permit(Trigger.Reset, State.Reset);
 
-            _stateMachine.Configure(State.Reset)
-                .OnEntry(() => stateReset.OnEntry())
+            stateMachine.Configure(State.Reset)
+                .OnEntry(() => _stateReset.OnEntry())
                 .Permit(Trigger.Neustart, State.Aus);
 
-            _stateMachine.OnUnhandledTrigger((state, trigger) =>
+            stateMachine.OnUnhandledTrigger((state, trigger) =>
             {
                 Console.WriteLine("Unhandled: '{0}' state, '{1}' trigger!");
             });
 
-            string graph = UmlDotGraph.Format(_stateMachine.GetInfo());
+            string graph = UmlDotGraph.Format(stateMachine.GetInfo());
             Console.Write("\n \n" + graph + "\n \n");
 
-            return _stateMachine;
+            return stateMachine;
         }
     }
 }

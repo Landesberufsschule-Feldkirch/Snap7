@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace StiegenhausBeleuchtung
+﻿namespace StiegenhausBeleuchtung
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

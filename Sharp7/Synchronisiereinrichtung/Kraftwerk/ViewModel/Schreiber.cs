@@ -12,11 +12,11 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
     public class Schreiber
     {
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
-        private readonly Synchronisiereinrichtung.kraftwerk.Model.Kraftwerk kraftwerk;
+        private readonly Model.Kraftwerk _kraftwerk;
 
-        public Schreiber(Synchronisiereinrichtung.kraftwerk.Model.Kraftwerk kw)
+        public Schreiber(Model.Kraftwerk kw)
         {
-            kraftwerk = kw;
+            _kraftwerk = kw;
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
         }
@@ -79,13 +79,13 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                 {
                     var yy = new List<DoubleDataPoint>()
                     {
-                        kraftwerk.ManualVentilstellung,
-                        kraftwerk.ManualErregerstrom,
-                        kraftwerk.Generator_n,
-                        kraftwerk.Generator_f,
-                        kraftwerk.Generator_U,
-                        kraftwerk.SpannungsdifferenzGeneratorNetz,
-                        kraftwerk.Generator_P
+                        _kraftwerk.ManualVentilstellung,
+                        _kraftwerk.ManualErregerstrom,
+                        _kraftwerk.GeneratorN,
+                        _kraftwerk.GeneratorF,
+                        _kraftwerk.GeneratorU,
+                        _kraftwerk.SpannungsdifferenzGeneratorNetz,
+                        _kraftwerk.GeneratorP
                     };
 
                     var x = watch.Elapsed;

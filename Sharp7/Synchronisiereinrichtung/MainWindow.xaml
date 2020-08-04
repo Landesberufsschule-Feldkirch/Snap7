@@ -5,13 +5,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         xmlns:src="clr-namespace:Synchronisiereinrichtung"
         Title="Synchronisiereinrichtung" Height="1000" Width="1700" Closing="Window_Closing">
 
     <Grid>
         <Grid.Resources>
-            <src:EnumBooleanConverter  x:Key="enumBooleanConverter" />
+            <src:EnumBooleanConverter  x:Key="EnumBooleanConverter" />
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
@@ -79,7 +78,7 @@
 
         <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
 
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="16" Grid.Row="2" Click="DebugWindowOeffnen" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="16" Grid.Row="2" Click="DebugWindowOeffnen" />
 
         <Button Grid.Column="18" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
             <Button.Resources>
@@ -143,10 +142,10 @@
         <TextBlock      Grid.Column="21"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Auswahl</TextBlock>
 
         <StackPanel Orientation="Vertical" Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f}">Spannung / Frequenz</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase}">U / f / Phasenlage</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistung}">U / f / Phasenlage / Leistung</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=U_f_Phase_Leistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Uf}">Spannung / Frequenz</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=UfPhase}">U / f / Phasenlage</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=UfPhaseLeistung}">U / f / Phasenlage / Leistung</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.SynchAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=UfPhaseLeistungsfaktor}">U / f / Phasenlage / Leistung / cos φ</RadioButton>
         </StackPanel>
 
         <Button Content="Starten"  Grid.Column="21" Grid.ColumnSpan="2" Grid.Row="8" Background="LawnGreen" Command="{Binding Path=BtnSchalterStart}" />
@@ -208,7 +207,7 @@
         <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
         <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SPSVersionLokal}" FontSize="14pt" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SPSVersionEntfernt}" FontSize="14pt" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt" />
     </Grid>
 </Window>

@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace WordClock
+﻿namespace WordClock
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

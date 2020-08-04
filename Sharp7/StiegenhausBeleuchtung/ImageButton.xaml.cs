@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
-
-namespace StiegenhausBeleuchtung
+﻿namespace StiegenhausBeleuchtung
 {
-    public partial class ImageButton : Button
+    public partial class ImageButton
     {
         public ImageButton()
         {

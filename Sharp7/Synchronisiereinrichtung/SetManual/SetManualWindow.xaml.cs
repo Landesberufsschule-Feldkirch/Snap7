@@ -1,10 +1,8 @@
-﻿using System.Windows;
-
-namespace Synchronisiereinrichtung
+﻿namespace Synchronisiereinrichtung.SetManual
 {
-    public partial class SetManualWindow : Window
+    public partial class SetManualWindow
     {
-        public SetManualWindow(Synchronisiereinrichtung.kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
+        public SetManualWindow(kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
         {
             InitializeComponent();
             DataContext = kraftwerkViewModel;

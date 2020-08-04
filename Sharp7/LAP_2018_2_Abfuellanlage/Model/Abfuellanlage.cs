@@ -75,7 +75,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 if (bierflasche.ID != flasche.ID)
                 {
                     var (hx, hy) = flasche.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
+                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
                 }
             }
 

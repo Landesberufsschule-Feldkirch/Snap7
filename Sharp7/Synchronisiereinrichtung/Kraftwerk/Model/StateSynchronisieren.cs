@@ -2,30 +2,27 @@
 {
     internal class StateSynchronisieren
     {
-        private readonly Kraftwerk kraftWerk;
+        private readonly Kraftwerk _kraftWerk;
 
-        public StateSynchronisieren(Kraftwerk kw) => kraftWerk = kw;
+        public StateSynchronisieren(Kraftwerk kw) => _kraftWerk = kw;
 
         public void OnEntry()
         {
-            kraftWerk.Q1 = true;
-            kraftWerk.MessgeraetAnzeigen = false;
+            _kraftWerk.Q1 = true;
+            _kraftWerk.MessgeraetAnzeigen = false;
 
-            switch (kraftWerk.SynchAuswahl)
+            switch (_kraftWerk.SynchAuswahl)
             {
-                case SynchronisierungAuswahl.U_f:
-                    if ((kraftWerk.FrequenzDifferenz > 0.5) || (kraftWerk.SpannungsdifferenzGeneratorNetz > 5)) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
-                    else kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Belasten);
+                case SynchronisierungAuswahl.Uf:
+                    if ((_kraftWerk.FrequenzDifferenz > 0.5) || (_kraftWerk.SpannungsdifferenzGeneratorNetz > 5)) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+                    else _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.Belasten);
                     break;
 
-                case SynchronisierungAuswahl.U_f_Phase:
-                case SynchronisierungAuswahl.U_f_Phase_Leistung:
-                case SynchronisierungAuswahl.U_f_Phase_Leistungsfaktor:
-                    if ((kraftWerk.FrequenzDifferenz > 0.5) || (kraftWerk.SpannungsdifferenzGeneratorNetz > 100)) kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
-                    else kraftWerk.kraftwerkStatemachine.Fire(Statemachine.Trigger.Belasten);
-                    break;
-
-                default:
+                case SynchronisierungAuswahl.UfPhase:
+                case SynchronisierungAuswahl.UfPhaseLeistung:
+                case SynchronisierungAuswahl.UfPhaseLeistungsfaktor:
+                    if ((_kraftWerk.FrequenzDifferenz > 0.5) || (_kraftWerk.SpannungsdifferenzGeneratorNetz > 100)) _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.MaschineTot);
+                    else _kraftWerk.KraftwerkStatemachine.Fire(Statemachine.Trigger.Belasten);
                     break;
             }
         }

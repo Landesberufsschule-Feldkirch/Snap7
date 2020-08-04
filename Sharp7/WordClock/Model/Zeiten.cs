@@ -14,15 +14,15 @@ namespace WordClock.Model
         public byte Minute { get; set; }
         public byte Sekunde { get; set; }
 
-        private double geschwindigkeitZeit;
-        private TimeSpan timeSpan;
+        private double _geschwindigkeitZeit;
+        private TimeSpan _timeSpan;
 
         public Zeiten()
         {
-            geschwindigkeitZeit = 1;
+            _geschwindigkeitZeit = 1;
 
             DateTime dateTime = DateTime.Now;
-            timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
+            _timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
 
             DatumJahr = (ushort)dateTime.Year;
             DatumMonat = (byte)dateTime.Month;
@@ -44,12 +44,12 @@ namespace WordClock.Model
                 var elapsed = (int)stopwatch.ElapsedMilliseconds;
                 stopwatch.Restart();
 
-                var tSpan = new TimeSpan(0, 0, 0, 0, elapsed * (int)geschwindigkeitZeit);
-                timeSpan = new TimeSpan(timeSpan.Ticks + tSpan.Ticks);
+                var tSpan = new TimeSpan(0, 0, 0, 0, elapsed * (int)_geschwindigkeitZeit);
+                _timeSpan = new TimeSpan(_timeSpan.Ticks + tSpan.Ticks);
 
-                Stunde = (byte)timeSpan.Hours;
-                Minute = (byte)timeSpan.Minutes;
-                Sekunde = (byte)timeSpan.Seconds;
+                Stunde = (byte)_timeSpan.Hours;
+                Minute = (byte)_timeSpan.Minutes;
+                Sekunde = (byte)_timeSpan.Seconds;
 
                 Thread.Sleep(10);
                 stopwatch.Stop();
@@ -59,7 +59,7 @@ namespace WordClock.Model
         internal void SetCurrentTime()
         {
             var dateTime = DateTime.Now;
-            timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
+            _timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 
         internal int GetSekunde() => Sekunde;
@@ -68,6 +68,6 @@ namespace WordClock.Model
 
         internal int GetStunde() => Stunde;
 
-        internal void SetGeschwindigkeit(double geschwindigkeitSlider) => geschwindigkeitZeit = geschwindigkeitSlider;
+        internal void SetGeschwindigkeit(double geschwindigkeitSlider) => _geschwindigkeitZeit = geschwindigkeitSlider;
     }
 }

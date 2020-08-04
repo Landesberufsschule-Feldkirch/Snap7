@@ -53,8 +53,8 @@
             ID = id;
             LKW_Richtung = LkwRichtungen.NachRechts;
             LKW_Position = LkwPositionen.LinksGeparkt;
-            richtungX = Utilities.Rechteck.RichtungX.steht;
-            richtungY = Utilities.Rechteck.RichtungY.steht;
+            richtungX = Utilities.Rechteck.RichtungX.Steht;
+            richtungY = Utilities.Rechteck.RichtungY.Steht;
 
             var Y_LKW_Parkposition = parkpositionLinks.Y + id * (10 + groesseLkw.Y);
 
@@ -92,8 +92,8 @@
 
         public (bool b1, bool b2, bool b3, bool b4) LastwagenFahren(bool stop)
         {
-            richtungX = Utilities.Rechteck.RichtungX.steht;
-            richtungY = Utilities.Rechteck.RichtungY.steht;
+            richtungX = Utilities.Rechteck.RichtungX.Steht;
+            richtungY = Utilities.Rechteck.RichtungY.Steht;
 
             switch (LKW_Position)
             {
@@ -104,14 +104,14 @@
                     break;
 
                 case LkwPositionen.LR_LinkeKurve:
-                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    richtungX = Utilities.Rechteck.RichtungX.NachRechts;
                     Position.Punkt = linkeKurve.PunktBestimmen(kurvePosition);
                     if (!stop) kurvePosition += kurveGeschwindigkeit;
                     if (kurvePosition >= 1) LKW_Position = LkwPositionen.LR_Waagrecht;
                     break;
 
                 case LkwPositionen.LR_Waagrecht:
-                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    richtungX = Utilities.Rechteck.RichtungX.NachRechts;
                     kurvePosition = 0;
                     if (!stop)
                     {
@@ -121,7 +121,7 @@
                     break;
 
                 case LkwPositionen.LR_RechtKurve:
-                    richtungX = Utilities.Rechteck.RichtungX.nachRechts;
+                    richtungX = Utilities.Rechteck.RichtungX.NachRechts;
                     Position.Punkt = rechteKurve.PunktBestimmen(kurvePosition);
                     if (!stop) kurvePosition += kurveGeschwindigkeit;
                     if (kurvePosition >= 1) LKW_Position = LkwPositionen.RechtsGeparkt;
@@ -134,14 +134,14 @@
                     break;
 
                 case LkwPositionen.RL_RechteKurve:
-                    richtungX = Utilities.Rechteck.RichtungX.nachLinks;
+                    richtungX = Utilities.Rechteck.RichtungX.NachLinks;
                     Position.Punkt = rechteKurve.PunktBestimmen(kurvePosition);
                     if (!stop) kurvePosition -= kurveGeschwindigkeit;
                     if (kurvePosition <= 0) LKW_Position = LkwPositionen.RL_Waagrecht;
                     break;
 
                 case LkwPositionen.RL_Waagrecht:
-                    richtungX = Utilities.Rechteck.RichtungX.nachLinks;
+                    richtungX = Utilities.Rechteck.RichtungX.NachLinks;
                     kurvePosition = 1;
                     if (!stop)
                     {
@@ -151,7 +151,7 @@
                     break;
 
                 case LkwPositionen.RL_LinkeKurve:
-                    richtungX = Utilities.Rechteck.RichtungX.nachLinks;
+                    richtungX = Utilities.Rechteck.RichtungX.NachLinks;
                     Position.Punkt = linkeKurve.PunktBestimmen(kurvePosition);
                     if (!stop) kurvePosition -= kurveGeschwindigkeit;
                     if (kurvePosition <= 0) LKW_Position = LkwPositionen.LinksGeparkt;

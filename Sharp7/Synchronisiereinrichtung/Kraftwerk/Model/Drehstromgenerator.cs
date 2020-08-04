@@ -1,4 +1,6 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.Model
+﻿using System;
+
+namespace Synchronisiereinrichtung.kraftwerk.Model
 {
     public class Drehstromgenerator
     {
@@ -7,26 +9,26 @@
         public Utilities.Rampen VentilRampe { get; set; }
         public Utilities.Rampen ErregerstromRampe { get; set; }
 
-        private readonly MagnetischerKreis Magnetisierung = new MagnetischerKreis(0.5);
+        private readonly MagnetischerKreis _magnetisierung = new MagnetischerKreis(0.5);
 
-        private double n;
-        private double P;
-        private double cosPhi;
-        private readonly double SpannungsFaktor;
-        private readonly double DrehzahlFaktor;
+        private double _n;
+        private double _p;
+        private double _cosPhi;
+        private readonly double _spannungsFaktor;
+        private readonly double _drehzahlFaktor;
 
-        private const double Y_n_Faktor = 0.28;
-        private const double n_BremsFaktor = 0.991;
+        private const double YnFaktor = 0.28;
+        private const double NBremsFaktor = 0.991;
 
-        private readonly double Y_LeistungsFaktor = 15;
-        private readonly double Y_LeistungsBremse = 0.9;
+        private const double YLeistungsFaktor = 15;
+        private readonly double _yLeistungsBremse = 0.9;
 
-        private double LeistungsfaktorFaktor = 1;
+        private double _leistungsfaktorFaktor = 1;
 
         public Drehstromgenerator(double spannungsFaktor, double drehzahlFaktor)
         {
-            SpannungsFaktor = spannungsFaktor;
-            DrehzahlFaktor = drehzahlFaktor;
+            _spannungsFaktor = spannungsFaktor;
+            _drehzahlFaktor = drehzahlFaktor;
 
             VentilRampe = new Utilities.Rampen(0, 100, 0.05);
             ErregerstromRampe = new Utilities.Rampen(0, 10, 0.01);
@@ -34,60 +36,60 @@
 
         internal void Reset()
         {
-            n = 0;
-            P = 0;
-            LeistungsfaktorFaktor = 1;
+            _n = 0;
+            _p = 0;
+            _leistungsfaktorFaktor = 1;
             SynchErregerstrom = 0;
             SynchVentil = 0;
         }
 
-        public void MaschineAntreiben(double Y)
+        public void MaschineAntreiben(double y)
         {
-            n += Y * Y_n_Faktor;
-            n *= n_BremsFaktor;
+            _n += y * YnFaktor;
+            _n *= NBremsFaktor;
         }
 
-        public double GetDrehzahl() => n;
+        public double GetDrehzahl() => _n;
 
-        public double GetLeistung() => P;
+        public double GetLeistung() => _p;
 
-        public double GetCosPhi() => cosPhi;
+        public double GetCosPhi() => _cosPhi;
 
-        public double GetFrequenz() => n * DrehzahlFaktor;
+        public double GetFrequenz() => _n * _drehzahlFaktor;
 
-        public double GetSpannung(double strom) => n * Magnetisierung.Magnetisierungskennlinie(strom) * SpannungsFaktor;
+        public double GetSpannung(double strom) => _n * _magnetisierung.Magnetisierungskennlinie(strom) * _spannungsFaktor;
 
-        public void SetSynchronisiertFrequenz(double frequenz) => n = 30 * frequenz;
+        public void SetSynchronisiertFrequenz(double frequenz) => _n = 30 * frequenz;
 
-        public void SetSynchronisierungVentil(double Y) => SynchVentil = Y;
+        public void SetSynchronisierungVentil(double y) => SynchVentil = y;
 
-        public void SetSynchronisierungErregerstrom(double Ie) => SynchErregerstrom = Ie;
+        public void SetSynchronisierungErregerstrom(double ie) => SynchErregerstrom = ie;
 
-        public void MaschineLeistungFahren(double Y)
+        public void MaschineLeistungFahren(double y)
         {
-            if (Y < SynchVentil)
+            if (y < SynchVentil)
             {
-                P = 0;
+                _p = 0;
             }
             else
             {
-                P += Y_LeistungsFaktor * (Y - SynchVentil);
-                P *= Y_LeistungsBremse;
+                _p += YLeistungsFaktor * (y - SynchVentil);
+                _p *= _yLeistungsBremse;
             }
         }
 
-        public void PhasenSchieberbetrieb(double Ie)
+        public void PhasenSchieberbetrieb(double ie)
         {
-            if (Ie == SynchErregerstrom)
+            if (Math.Abs(ie - SynchErregerstrom) < 0.001)
             {
-                cosPhi = 1;
+                _cosPhi = 1;
             }
             else
             {
-                if (Ie > SynchErregerstrom)
+                if (ie > SynchErregerstrom)
                 {
                     // übererregt -> kapazitiv
-                    cosPhi = 90 - LeistungsfaktorFaktor * (Ie - SynchErregerstrom);
+                    _cosPhi = 90 - _leistungsfaktorFaktor * (ie - SynchErregerstrom);
                 }
                 else
                 {

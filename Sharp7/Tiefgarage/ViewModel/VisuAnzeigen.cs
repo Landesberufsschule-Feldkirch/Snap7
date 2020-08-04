@@ -6,18 +6,18 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.AlleFahrzeugePersonen alleFahrzeugePersonen;
-        private readonly MainWindow mainWindow;
+        private readonly Model.AlleFahrzeugePersonen _alleFahrzeugePersonen;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.AlleFahrzeugePersonen aFP)
+        public VisuAnzeigen(MainWindow mw, Model.AlleFahrzeugePersonen aFp)
         {
-            mainWindow = mw;
-            alleFahrzeugePersonen = aFP;
+            _mainWindow = mw;
+            _alleFahrzeugePersonen = aFp;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
-            SPSVersionLokal = "fehlt";
-            SPSVersionEntfernt = "fehlt";
+            SpsVersionLokal = "fehlt";
+            SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
@@ -61,38 +61,38 @@
         {
             while (true)
             {
-                FarbeB1(alleFahrzeugePersonen.B1);
-                FarbeB2(alleFahrzeugePersonen.B2);
+                FarbeB1(_alleFahrzeugePersonen.B1);
+                FarbeB2(_alleFahrzeugePersonen.B2);
 
-                AnzahlAutosInDerTiefgarage(alleFahrzeugePersonen.AnzahlAutos);
-                AnzahlPersonenInDerTiefgarage(alleFahrzeugePersonen.AnzahlPersonen);
+                AnzahlAutosInDerTiefgarage(_alleFahrzeugePersonen.AnzahlAutos);
+                AnzahlPersonenInDerTiefgarage(_alleFahrzeugePersonen.AnzahlPersonen);
 
-                PositionAuto1(alleFahrzeugePersonen.AllePkwPersonen[0].AktuellePosition);
-                PositionAuto2(alleFahrzeugePersonen.AllePkwPersonen[1].AktuellePosition);
-                PositionAuto3(alleFahrzeugePersonen.AllePkwPersonen[2].AktuellePosition);
-                PositionAuto4(alleFahrzeugePersonen.AllePkwPersonen[3].AktuellePosition);
-                PositionPerson1(alleFahrzeugePersonen.AllePkwPersonen[4].AktuellePosition);
-                PositionPerson2(alleFahrzeugePersonen.AllePkwPersonen[5].AktuellePosition);
-                PositionPerson3(alleFahrzeugePersonen.AllePkwPersonen[6].AktuellePosition);
-                PositionPerson4(alleFahrzeugePersonen.AllePkwPersonen[7].AktuellePosition);
+                PositionAuto1(_alleFahrzeugePersonen.AllePkwPersonen[0].AktuellePosition);
+                PositionAuto2(_alleFahrzeugePersonen.AllePkwPersonen[1].AktuellePosition);
+                PositionAuto3(_alleFahrzeugePersonen.AllePkwPersonen[2].AktuellePosition);
+                PositionAuto4(_alleFahrzeugePersonen.AllePkwPersonen[3].AktuellePosition);
+                PositionPerson1(_alleFahrzeugePersonen.AllePkwPersonen[4].AktuellePosition);
+                PositionPerson2(_alleFahrzeugePersonen.AllePkwPersonen[5].AktuellePosition);
+                PositionPerson3(_alleFahrzeugePersonen.AllePkwPersonen[6].AktuellePosition);
+                PositionPerson4(_alleFahrzeugePersonen.AllePkwPersonen[7].AktuellePosition);
 
-                EnableAuto1 = alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto2 = alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto3 = alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto4 = alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson1 = alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson2 = alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson3 = alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson4 = alleFahrzeugePersonen.AllesInParkposition;
+                EnableAuto1 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnableAuto2 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnableAuto3 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnableAuto4 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnablePerson1 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnablePerson2 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnablePerson3 = _alleFahrzeugePersonen.AllesInParkposition;
+                EnablePerson4 = _alleFahrzeugePersonen.AllesInParkposition;
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SPSVersionLokal = mainWindow.VersionInfo;
-                    SPSVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SPSVersionLokal == SPSVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -112,25 +112,25 @@
             }
         }
 
-        private string _sPSVersionLokal;
-        public string SPSVersionLokal
+        private string _spsVersionLokal;
+        public string SpsVersionLokal
         {
-            get => _sPSVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _sPSVersionLokal = value;
-                OnPropertyChanged(nameof(SPSVersionLokal));
+                _spsVersionLokal = value;
+                OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _sPSVersionEntfernt;
-        public string SPSVersionEntfernt
+        private string _spsVersionEntfernt;
+        public string SpsVersionEntfernt
         {
-            get => _sPSVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _sPSVersionEntfernt = value;
-                OnPropertyChanged(nameof(SPSVersionEntfernt));
+                _spsVersionEntfernt = value;
+                OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
 
@@ -175,7 +175,7 @@
 
         public void FarbeB1(bool val)
         {
-            if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
+            ColorB1 = val ? "Red" : "LightGray";
         }
 
         private string _colorB1;
@@ -196,7 +196,7 @@
 
         public void FarbeB2(bool val)
         {
-            if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
+            ColorB2 = val ? "Red" : "LightGray";
         }
 
         private string _colorB2;

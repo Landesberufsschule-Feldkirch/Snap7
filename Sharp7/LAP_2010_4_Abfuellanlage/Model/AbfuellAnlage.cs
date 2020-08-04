@@ -69,7 +69,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 if (campbellSoup.ID != dose.ID)
                 {
                     var (hx, hy) = dose.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.steht || hy != Utilities.Rechteck.RichtungY.steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
+                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
                 }
             }
 
