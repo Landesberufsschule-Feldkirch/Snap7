@@ -14,12 +14,11 @@ namespace Tiefgarage.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, alleFahrzeugePersonen);
         }
 
-        public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen => alleFahrzeugePersonen;
-
         #region BtnDraussenParken
 
         private ICommand _btnDraussenParken;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnDraussenParken
         {
             get
@@ -35,6 +34,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnDrinnenParken;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnDrinnenParken
         {
             get
@@ -50,6 +50,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnAuto1;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnAuto1
         {
             get { return _btnAuto1 ?? (_btnAuto1 = new RelayCommand(p => alleFahrzeugePersonen.Auto1(), p => true)); }
@@ -61,6 +62,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnAuto2;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnAuto2
         {
             get { return _btnAuto2 ?? (_btnAuto2 = new RelayCommand(p => alleFahrzeugePersonen.Auto2(), p => true)); }
@@ -72,6 +74,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnAuto3;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnAuto3
         {
             get { return _btnAuto3 ?? (_btnAuto3 = new RelayCommand(p => alleFahrzeugePersonen.Auto3(), p => true)); }
@@ -83,6 +86,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnAuto4;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnAuto4
         {
             get { return _btnAuto4 ?? (_btnAuto4 = new RelayCommand(p => alleFahrzeugePersonen.Auto4(), p => true)); }
@@ -90,10 +94,12 @@ namespace Tiefgarage.ViewModel
 
         #endregion BtnAuto4
 
+
         #region BtnPerson1
 
         private ICommand _btnPerson1;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnPerson1
         {
             get
@@ -102,12 +108,14 @@ namespace Tiefgarage.ViewModel
             }
         }
 
+        // ReSharper disable once UnusedMember.Global
         #endregion BtnPerson1
 
         #region BtnPerson2
 
         private ICommand _btnPerson2;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnPerson2
         {
             get
@@ -122,6 +130,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnPerson3;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnPerson3
         {
             get
@@ -136,6 +145,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnPerson4;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnPerson4
         {
             get

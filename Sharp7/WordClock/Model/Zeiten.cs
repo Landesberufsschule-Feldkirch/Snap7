@@ -54,6 +54,7 @@ namespace WordClock.Model
                 Thread.Sleep(10);
                 stopwatch.Stop();
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void SetCurrentTime()

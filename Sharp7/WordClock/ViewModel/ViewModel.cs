@@ -1,4 +1,5 @@
-﻿namespace WordClock.ViewModel
+﻿// ReSharper disable UnusedMember.Global
+namespace WordClock.ViewModel
 {
     using System.Windows.Input;
     using Commands;

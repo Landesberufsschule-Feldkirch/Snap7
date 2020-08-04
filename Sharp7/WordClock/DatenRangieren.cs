@@ -9,8 +9,7 @@
         private enum BytePosition
         {
             Byte0 = 0,
-            Byte1,
-            Byte2,
+            Byte2 = 2,
             Byte3,
             Byte4,
             Byte5,

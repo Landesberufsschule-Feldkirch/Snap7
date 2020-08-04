@@ -35,13 +35,11 @@
                 {
                     case RichtungX.NachRechts: stop |= hinderniss.Punkt.X > bewegt.Punkt.X; break;
                     case RichtungX.NachLinks: stop |= hinderniss.Punkt.X < bewegt.Punkt.X; break;
-                    default: break;
                 }
                 switch (y)
                 {
                     case RichtungY.NachOben: stop |= hinderniss.Punkt.Y < bewegt._hoehe; break;
                     case RichtungY.NachUnten: stop |= hinderniss.Punkt.Y > bewegt.Punkt.Y; break;
-                    default: break;
                 }
             }
             return stop;

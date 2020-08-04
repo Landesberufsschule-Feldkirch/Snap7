@@ -2,24 +2,24 @@
 {
     public class Rampen
     {
-        private double aktuell;
-        private readonly double minimum;
-        private readonly double maximum;
-        private readonly double steigung;
+        private double _aktuell;
+        private readonly double _minimum;
+        private readonly double _maximum;
+        private readonly double _steigung;
 
         public Rampen(double min, double max, double aenderung)
         {
-            minimum = min;
-            maximum = max;
-            steigung = aenderung;
+            _minimum = min;
+            _maximum = max;
+            _steigung = aenderung;
         }
 
         public double GetWert(double neuerWert)
         {
-            if (neuerWert > aktuell) aktuell += steigung;
-            if (neuerWert < aktuell) aktuell -= steigung;
-            aktuell = Clamp(aktuell, minimum, maximum);
-            return aktuell;
+            if (neuerWert > _aktuell) _aktuell += _steigung;
+            if (neuerWert < _aktuell) _aktuell -= _steigung;
+            _aktuell = Clamp(_aktuell, _minimum, _maximum);
+            return _aktuell;
         }
 
         private double Clamp(double val, double min, double max)

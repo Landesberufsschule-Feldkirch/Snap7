@@ -50,6 +50,7 @@
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
@@ -124,8 +125,6 @@
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region GeschwindigkeitZeit
-
-        public int GeschwindigkeitZeit() => (int)GeschwindigkeitSlider;
 
         private double _geschwindigkeitSlider;
 

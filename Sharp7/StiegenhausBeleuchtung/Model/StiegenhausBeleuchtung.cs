@@ -82,6 +82,7 @@ namespace StiegenhausBeleuchtung.Model
                 if (JobAktiv) JobAusfuehren();
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void BtnStart(object _)

@@ -1,18 +1,17 @@
-﻿namespace BehaelterSteuerung.ViewModel
-{
-    using LAP_2010_1_Kompressoranlage;
-    using System.ComponentModel;
-    using System.Threading;
+﻿using System.ComponentModel;
+using System.Threading;
 
+namespace LAP_2010_1_Kompressoranlage.ViewModel
+{
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2010_1_Kompressoranlage.Model.Kompressoranlage kompressoranlage;
-        private readonly MainWindow mainWindow;
+        private readonly LAP_2010_1_Kompressoranlage.Model.Kompressoranlage _kompressoranlage;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, LAP_2010_1_Kompressoranlage.Model.Kompressoranlage ka)
         {
-            mainWindow = mw;
-            kompressoranlage = ka;
+            _mainWindow = mw;
+            _kompressoranlage = ka;
 
             Druck = 1.1;
 
@@ -49,38 +48,39 @@
         {
             while (true)
             {
-                Druck = kompressoranlage.Druck;
+                Druck = _kompressoranlage.Druck;
 
-                FarbeF1(kompressoranlage.F1);
-                FarbeP1(kompressoranlage.P1);
-                FarbeP2(kompressoranlage.P2);
-                FarbeQ1(kompressoranlage.Q1);
-                FarbeQ2(kompressoranlage.Q2);
-                FarbeQ3(kompressoranlage.Q3);
-                FarbeB1(kompressoranlage.B1);
+                FarbeF1(_kompressoranlage.F1);
+                FarbeP1(_kompressoranlage.P1);
+                FarbeP2(_kompressoranlage.P2);
+                FarbeQ1(_kompressoranlage.Q1);
+                FarbeQ2(_kompressoranlage.Q2);
+                FarbeQ3(_kompressoranlage.Q3);
+                FarbeB1(_kompressoranlage.B1);
 
-                SichtbarkeitB1(kompressoranlage.B1);
-                SichtbarkeitB2(kompressoranlage.B2);
+                SichtbarkeitB1(_kompressoranlage.B1);
+                SichtbarkeitB2(_kompressoranlage.B2);
 
-                if (kompressoranlage.Q2 && kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS1() => kompressoranlage.S1 = ClickModeButtonS1();
+        internal void SetS1() => _kompressoranlage.S1 = ClickModeButtonS1();
 
-        internal void BtnS2() => kompressoranlage.S2 = ClickModeButtonS2();
+        internal void BtnS2() => _kompressoranlage.S2 = ClickModeButtonS2();
 
         #region SPS Version, Status und Farbe
 
@@ -95,24 +95,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -218,7 +218,7 @@
 
         public void FarbeF1(bool val)
         {
-            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
+            ColorF1 = val ? "LawnGreen" : "Red";
         }
 
         private string _colorF1;
@@ -239,7 +239,7 @@
 
         public void FarbeP1(bool val)
         {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
+            ColorP1 = val ? "Red" : "White";
         }
 
         private string _colorP1;
@@ -260,7 +260,7 @@
 
         public void FarbeP2(bool val)
         {
-            if (val) ColorP2 = "LawnGreen"; else ColorP2 = "White";
+            ColorP2 = val ? "LawnGreen" : "White";
         }
 
         private string _colorP2;
@@ -281,7 +281,7 @@
 
         public void FarbeQ1(bool val)
         {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
+            ColorQ1 = val ? "LawnGreen" : "White";
         }
 
         private string _colorQ1;
@@ -302,7 +302,7 @@
 
         public void FarbeQ2(bool val)
         {
-            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
+            ColorQ2 = val ? "LawnGreen" : "White";
         }
 
         private string _colorQ2;
@@ -323,7 +323,7 @@
 
         public void FarbeQ3(bool val)
         {
-            if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White";
+            ColorQ3 = val ? "LawnGreen" : "White";
         }
 
         private string _colorQ3;
@@ -344,7 +344,7 @@
 
         public void FarbeB1(bool val)
         {
-            if (val) ColorB1 = "LawnGreen"; else ColorB1 = "Red";
+            ColorB1 = val ? "LawnGreen" : "Red";
         }
 
         private string _colorB1;

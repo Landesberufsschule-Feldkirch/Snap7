@@ -43,6 +43,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void BtnF1()

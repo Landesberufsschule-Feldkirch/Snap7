@@ -97,6 +97,7 @@
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
