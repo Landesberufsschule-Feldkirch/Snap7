@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Rohrpost
+﻿namespace Rohrpost
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

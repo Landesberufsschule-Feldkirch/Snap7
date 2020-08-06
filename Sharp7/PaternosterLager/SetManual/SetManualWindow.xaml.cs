@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace PaternosterLager.SetManual
+﻿namespace PaternosterLager.SetManual
 {
-    public partial class SetManualWindow : Window
+    public partial class SetManualWindow
     {
         public SetManualWindow(ViewModel.ViewModel viewModel)
         {

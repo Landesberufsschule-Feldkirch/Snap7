@@ -20,17 +20,9 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnAusraeumen;
 
-        public ICommand BtnAusraeumen
-        {
-            get
-            {
-                if (_btnAusraeumen == null)
-                {
-                    _btnAusraeumen = new RelayCommand(p => ViAnzeige.AllesAusraeumen(), p => true);
-                }
-                return _btnAusraeumen;
-            }
-        }
+        public ICommand BtnAusraeumen =>
+            _btnAusraeumen ??
+            (_btnAusraeumen = new RelayCommand(p => ViAnzeige.AllesAusraeumen(), p => true));
 
         #endregion BtnAusraeumen
 
@@ -38,17 +30,9 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnEinraeumen;
 
-        public ICommand BtnEinraeumen
-        {
-            get
-            {
-                if (_btnEinraeumen == null)
-                {
-                    _btnEinraeumen = new RelayCommand(p => ViAnzeige.AllesEinraeumen(), p => true);
-                }
-                return _btnEinraeumen;
-            }
-        }
+        public ICommand BtnEinraeumen =>
+            _btnEinraeumen ??
+            (_btnEinraeumen = new RelayCommand(p => ViAnzeige.AllesEinraeumen(), p => true));
 
         #endregion BtnEinraeumen
 
@@ -56,17 +40,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnReset;
 
-        public ICommand BtnReset
-        {
-            get
-            {
-                if (_btnReset == null)
-                {
-                    _btnReset = new RelayCommand(p => ViAnzeige.AllesReset(), p => true);
-                }
-                return _btnReset;
-            }
-        }
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => ViAnzeige.AllesReset(), p => true));
 
         #endregion BtnReset
 
@@ -74,17 +48,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnAktiv;
 
-        public ICommand BtnAktiv
-        {
-            get
-            {
-                if (_btnAktiv == null)
-                {
-                    _btnAktiv = new RelayCommand(p => ViAnzeige.SetButtonsAktiv(), p => true);
-                }
-                return _btnAktiv;
-            }
-        }
+        public ICommand BtnAktiv => _btnAktiv ?? (_btnAktiv = new RelayCommand(p => ViAnzeige.SetButtonsAktiv(), p => true));
 
         #endregion BtnAktiv
 
@@ -92,17 +56,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK1;
 
-        public ICommand BtnK1
-        {
-            get
-            {
-                if (_btnK1 == null)
-                {
-                    _btnK1 = new RelayCommand(p => ViAnzeige.SetK1(), p => true);
-                }
-                return _btnK1;
-            }
-        }
+        public ICommand BtnK1 => _btnK1 ?? (_btnK1 = new RelayCommand(p => ViAnzeige.SetK1(), p => true));
 
         #endregion BtnK1
 
@@ -110,17 +64,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK2;
 
-        public ICommand BtnK2
-        {
-            get
-            {
-                if (_btnK2 == null)
-                {
-                    _btnK2 = new RelayCommand(p => ViAnzeige.SetK2(), p => true);
-                }
-                return _btnK2;
-            }
-        }
+        public ICommand BtnK2 => _btnK2 ?? (_btnK2 = new RelayCommand(p => ViAnzeige.SetK2(), p => true));
 
         #endregion BtnK2
 
@@ -128,17 +72,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK3;
 
-        public ICommand BtnK3
-        {
-            get
-            {
-                if (_btnK3 == null)
-                {
-                    _btnK3 = new RelayCommand(p => ViAnzeige.SetK3(), p => true);
-                }
-                return _btnK3;
-            }
-        }
+        public ICommand BtnK3 => _btnK3 ?? (_btnK3 = new RelayCommand(p => ViAnzeige.SetK3(), p => true));
 
         #endregion BtnK3
 
@@ -146,17 +80,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK4;
 
-        public ICommand BtnK4
-        {
-            get
-            {
-                if (_btnK4 == null)
-                {
-                    _btnK4 = new RelayCommand(p => ViAnzeige.SetK4(), p => true);
-                }
-                return _btnK4;
-            }
-        }
+        public ICommand BtnK4 => _btnK4 ?? (_btnK4 = new RelayCommand(p => ViAnzeige.SetK4(), p => true));
 
         #endregion BtnK4
 
@@ -164,17 +88,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK5;
 
-        public ICommand BtnK5
-        {
-            get
-            {
-                if (_btnK5 == null)
-                {
-                    _btnK5 = new RelayCommand(p => ViAnzeige.SetK5(), p => true);
-                }
-                return _btnK5;
-            }
-        }
+        public ICommand BtnK5 => _btnK5 ?? (_btnK5 = new RelayCommand(p => ViAnzeige.SetK5(), p => true));
 
         #endregion BtnK5
 
@@ -182,17 +96,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnK6;
 
-        public ICommand BtnK6
-        {
-            get
-            {
-                if (_btnK6 == null)
-                {
-                    _btnK6 = new RelayCommand(p => ViAnzeige.SetK6(), p => true);
-                }
-                return _btnK6;
-            }
-        }
+        public ICommand BtnK6 => _btnK6 ?? (_btnK6 = new RelayCommand(p => ViAnzeige.SetK6(), p => true));
 
         #endregion BtnK6
 
@@ -200,17 +104,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         private ICommand _btnBuchstabe;
 
-        public ICommand BtnBuchstabe
-        {
-            get
-            {
-                if (_btnBuchstabe == null)
-                {
-                    _btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe);
-                }
-                return _btnBuchstabe;
-            }
-        }
+        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
 
         #endregion BtnBuchstabe
     }

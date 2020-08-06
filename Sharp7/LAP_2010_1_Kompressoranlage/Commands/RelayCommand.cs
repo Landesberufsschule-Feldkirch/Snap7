@@ -1,8 +1,8 @@
-﻿namespace BehaelterSteuerung.Commands
-{
-    using System;
-    using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
+namespace LAP_2010_1_Kompressoranlage.Commands
+{
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;

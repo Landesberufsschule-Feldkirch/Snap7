@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace LAP_2019_Foerderanlage
+﻿namespace LAP_2019_Foerderanlage
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

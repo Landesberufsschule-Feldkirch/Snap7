@@ -1,6 +1,4 @@
-﻿using PaternosterLager.ViewModel;
-using System;
-using System.Collections.ObjectModel;
+﻿using System;
 using System.Threading;
 
 namespace PaternosterLager.Model
@@ -9,8 +7,6 @@ namespace PaternosterLager.Model
     {
         public bool ManualAuf { get; set; }
         public bool ManualAb { get; set; }
-        public double Geschwindigkeit { get; set; }
-        public ObservableCollection<KettengliedRegal> AlleKettengliedRegale { get; set; }
         public char Zeichen { get; internal set; }
         public bool S1 { get; internal set; }
         public bool S2 { get; internal set; }
@@ -23,11 +19,11 @@ namespace PaternosterLager.Model
         public double Position { get; set; }
         public double GesamtLaenge { get; set; }
 
-        private readonly MainWindow mainWindow;
+        private readonly MainWindow _mainWindow;
 
         public Paternosterlager(MainWindow mw, double anzahlKisten)
         {
-            mainWindow = mw;
+            _mainWindow = mw;
             System.Threading.Tasks.Task.Run(() => PaternosterLagerTask(anzahlKisten));
         }
 
@@ -41,7 +37,7 @@ namespace PaternosterLager.Model
                 int abstandRegale = Convert.ToInt32(GesamtLaenge / anzahlKisten);
                 int pos = Convert.ToInt32(Position);
 
-                if (mainWindow.DebugWindowAktiv)
+                if (_mainWindow.DebugWindowAktiv)
                 {
                     if (ManualAuf) Position += geschwindigkeit;
                     if (ManualAb) Position -= geschwindigkeit;
@@ -63,6 +59,7 @@ namespace PaternosterLager.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void AllesReset() => Position = 0;

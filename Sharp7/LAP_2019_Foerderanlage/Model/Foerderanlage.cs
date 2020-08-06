@@ -68,27 +68,16 @@
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void WagenNachLinks()
-        {
-            Wagen.NachLinks();
-        }
+        internal void WagenNachLinks() => Wagen.NachLinks();
 
-        internal void WagenNachRechts()
-        {
-            Wagen.NachRechts();
-        }
+        internal void WagenNachRechts() => Wagen.NachRechts();
 
-        internal void BtnF1()
-        {
-            if (F1) F1 = false; else F1 = true;
-        }
+        internal void BtnF1() => F1 = !F1;
 
-        internal void BtnS2()
-        {
-            if (S2) S2 = false; else S2 = true;
-        }
+        internal void BtnS2() => S2 = !S2;
 
         internal void Nachfuellen() => Silo.Nachfuellen();
     }

@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace PaternosterLager
+﻿namespace PaternosterLager
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

@@ -7,14 +7,14 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private const int materialSiloHoehe = 8 * 35;
-        private readonly MainWindow mainWindow;
-        public readonly Model.Foerderanlage foerderanlage;
+        private const int MaterialSiloHoehe = 8 * 35;
+        private readonly MainWindow _mainWindow;
+        public readonly Model.Foerderanlage Foerderanlage;
 
         public VisuAnzeigen(MainWindow mw, Model.Foerderanlage fa)
         {
-            mainWindow = mw;
-            foerderanlage = fa;
+            _mainWindow = mw;
+            Foerderanlage = fa;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -25,7 +25,7 @@
 
             SelectedIndex = 0; // Automatikbetrieb
 
-            Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * 0.1, 0, 0);
+            Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
             ClickModeBtnS0 = "Press";
             ClickModeBtnS1 = "Press";
@@ -35,10 +35,10 @@
             ClickModeBtnS8 = "Press";
 
             ClickModeBtnM1_RL = "Press";
-            ClickModeBtnM1_LL = "Press";
+            ClickModeBtnM1Ll = "Press";
             ClickModeBtnM2 = "Press";
             ClickModeBtnK1 = "Press";
-            ClickModeBtnM1_LL_K1 = "Press";
+            ClickModeBtnM1LlK1 = "Press";
 
             VisibilityBtnSetManual = "Visible";
 
@@ -85,81 +85,82 @@
         {
             while (true)
             {
-                FuellstandSilo(foerderanlage.Silo.GetFuellstand());
+                FuellstandSilo(Foerderanlage.Silo.GetFuellstand());
 
                 SichtbarkeitBtnSetManual(System.Diagnostics.Debugger.IsAttached);
 
-                SichtbarkeitPfeilLinkslauf(foerderanlage.Q2);
-                SichtbarkeitPfeilRechtslauf(foerderanlage.Q1);
+                SichtbarkeitPfeilLinkslauf(Foerderanlage.Q2);
+                SichtbarkeitPfeilRechtslauf(Foerderanlage.Q1);
 
-                SichtbarkeitM1(foerderanlage.Q1 || foerderanlage.Q2);
-                SichtbarkeitM2(foerderanlage.T1);
+                SichtbarkeitM1(Foerderanlage.Q1 || Foerderanlage.Q2);
+                SichtbarkeitM2(Foerderanlage.T1);
 
-                SichtbarkeitK1(foerderanlage.K1);
+                SichtbarkeitK1(Foerderanlage.K1);
 
-                SichtbarkeitB1(foerderanlage.Wagen.IstWagenRechts());
-                SichtbarkeitB2(foerderanlage.Wagen.IstWagenVoll());
+                SichtbarkeitB1(Foerderanlage.Wagen.IstWagenRechts());
+                SichtbarkeitB2(Foerderanlage.Wagen.IstWagenVoll());
 
-                SichtbarkeitMaterialOben(foerderanlage.Silo.GetFuellstand() > 0.01);
-                SichtbarkeitMaterialUnten((foerderanlage.Silo.GetFuellstand() > 0.01) && (foerderanlage.K1));
+                SichtbarkeitMaterialOben(Foerderanlage.Silo.GetFuellstand() > 0.01);
+                SichtbarkeitMaterialUnten((Foerderanlage.Silo.GetFuellstand() > 0.01) && (Foerderanlage.K1));
 
-                if (foerderanlage.Q1 && foerderanlage.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
-                FarbeF1(foerderanlage.F1);
-                FarbeP1(foerderanlage.P1);
-                FarbeP2(foerderanlage.P2);
-                FarbeS2(foerderanlage.S2);
+                FarbeF1(Foerderanlage.F1);
+                FarbeP1(Foerderanlage.P1);
+                FarbeP2(Foerderanlage.P2);
+                FarbeS2(Foerderanlage.S2);
 
-                PositionWagenBeschriftung(foerderanlage.Wagen.GetPosition());
-                PositionWagen(foerderanlage.Wagen.GetPosition());
-                PositionWagenInhalt(foerderanlage.Wagen.GetPosition(), foerderanlage.Wagen.GetFuellstand());
-                WagenFuellstand = foerderanlage.Wagen.GetFuellstand();
+                PositionWagenBeschriftung(Foerderanlage.Wagen.GetPosition());
+                PositionWagen(Foerderanlage.Wagen.GetPosition());
+                PositionWagenInhalt(Foerderanlage.Wagen.GetPosition(), Foerderanlage.Wagen.GetFuellstand());
+                WagenFuellstand = Foerderanlage.Wagen.GetFuellstand();
 
-                if (mainWindow.AnimationGestartet)
+                if (_mainWindow.AnimationGestartet)
                 {
-                    if (foerderanlage.T1) mainWindow.Controller.Play(); else mainWindow.Controller.Pause();
+                    if (Foerderanlage.T1) _mainWindow.Controller.Play(); else _mainWindow.Controller.Pause();
                 }
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS0() => foerderanlage.S8 = ClickModeButtonS0();
+        internal void SetS0() => Foerderanlage.S8 = ClickModeButtonS0();
 
-        internal void SetS1() => foerderanlage.S8 = ClickModeButtonS1();
+        internal void SetS1() => Foerderanlage.S8 = ClickModeButtonS1();
 
-        internal void SetS5() => foerderanlage.S8 = ClickModeButtonS5();
+        internal void SetS5() => Foerderanlage.S8 = ClickModeButtonS5();
 
-        internal void SetS6() => foerderanlage.S8 = ClickModeButtonS6();
+        internal void SetS6() => Foerderanlage.S8 = ClickModeButtonS6();
 
-        internal void SetS7() => foerderanlage.S8 = ClickModeButtonS7();
+        internal void SetS7() => Foerderanlage.S8 = ClickModeButtonS7();
 
-        internal void SetS8() => foerderanlage.S8 = ClickModeButtonS8();
+        internal void SetS8() => Foerderanlage.S8 = ClickModeButtonS8();
 
-        internal void SetManualM1_RL() => foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
+        internal void SetManualM1_RL() => Foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
 
-        internal void SetManualM1_LL() => foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
+        internal void SetManualM1_LL() => Foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
 
         internal void SetManualM1_LL_K1()
         {
-            bool M1_LL_K1 = ClickModeButtonM1_LL_K1();
-            foerderanlage.Manual_M1_LL = M1_LL_K1;
-            foerderanlage.Manual_K1 = M1_LL_K1;
+            bool m1LlK1 = ClickModeButtonM1_LL_K1();
+            Foerderanlage.Manual_M1_LL = m1LlK1;
+            Foerderanlage.Manual_K1 = m1LlK1;
         }
 
-        internal void SetManualM2() => foerderanlage.Manual_M2 = ClickModeButtonM2();
+        internal void SetManualM2() => Foerderanlage.Manual_M2 = ClickModeButtonM2();
 
-        internal void SetManualK1() => foerderanlage.Manual_K1 = ClickModeButtonK1();
+        internal void SetManualK1() => Foerderanlage.Manual_K1 = ClickModeButtonK1();
 
         #region SPS Version, Status und Farbe
 
@@ -174,24 +175,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -247,13 +248,13 @@
 
                 if (value == 0)
                 {
-                    foerderanlage.S5 = true;    // Automatikbetrieb
-                    foerderanlage.S6 = false;    // Handbetrieb
+                    Foerderanlage.S5 = true;    // Automatikbetrieb
+                    Foerderanlage.S6 = false;    // Handbetrieb
                 }
                 else
                 {
-                    foerderanlage.S5 = false;    // Automatikbetrieb
-                    foerderanlage.S6 = true;    // Handbetrieb
+                    Foerderanlage.S5 = false;    // Automatikbetrieb
+                    Foerderanlage.S6 = true;    // Handbetrieb
                 }
             }
         }
@@ -474,27 +475,27 @@
 
         public bool ClickModeButtonM1_LL()
         {
-            if (ClickModeBtnM1_LL == "Press")
+            if (ClickModeBtnM1Ll == "Press")
             {
-                ClickModeBtnM1_LL = "Release";
+                ClickModeBtnM1Ll = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtnM1_LL = "Press";
+                ClickModeBtnM1Ll = "Press";
             }
             return false;
         }
 
-        private string _clickModeBtnM1_LL;
+        private string _clickModeBtnM1Ll;
 
-        public string ClickModeBtnM1_LL
+        public string ClickModeBtnM1Ll
         {
-            get => _clickModeBtnM1_LL;
+            get => _clickModeBtnM1Ll;
             set
             {
-                _clickModeBtnM1_LL = value;
-                OnPropertyChanged(nameof(ClickModeBtnM1_LL));
+                _clickModeBtnM1Ll = value;
+                OnPropertyChanged(nameof(ClickModeBtnM1Ll));
             }
         }
 
@@ -564,27 +565,27 @@
 
         public bool ClickModeButtonM1_LL_K1()
         {
-            if (ClickModeBtnM1_LL_K1 == "Press")
+            if (ClickModeBtnM1LlK1 == "Press")
             {
-                ClickModeBtnM1_LL_K1 = "Release";
+                ClickModeBtnM1LlK1 = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtnM1_LL_K1 = "Press";
+                ClickModeBtnM1LlK1 = "Press";
             }
             return false;
         }
 
-        private string _clickModeBtnM1_LL_K1;
+        private string _clickModeBtnM1LlK1;
 
-        public string ClickModeBtnM1_LL_K1
+        public string ClickModeBtnM1LlK1
         {
-            get => _clickModeBtnM1_LL_K1;
+            get => _clickModeBtnM1LlK1;
             set
             {
-                _clickModeBtnM1_LL_K1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnM1_LL_K1));
+                _clickModeBtnM1LlK1 = value;
+                OnPropertyChanged(nameof(ClickModeBtnM1LlK1));
             }
         }
 
@@ -594,7 +595,7 @@
 
         public void FuellstandSilo(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(0, materialSiloHoehe * (1 - pegel), 0, 0);
+            Margin1 = new Thickness(0, MaterialSiloHoehe * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;
@@ -613,10 +614,7 @@
 
         #region Sichtbarkeit BtnSetManual
 
-        public void SichtbarkeitBtnSetManual(bool val)
-        {
-            if (val) VisibilityBtnSetManual = "Visible"; else VisibilityBtnSetManual = "Hidden";
-        }
+        public void SichtbarkeitBtnSetManual(bool val) => VisibilityBtnSetManual = val ? "Visible" : "Hidden";
 
         private string _visibilityBtnSetManual;
 
@@ -634,10 +632,7 @@
 
         #region Sichtbarkeit PfeilLinkslauf
 
-        public void SichtbarkeitPfeilLinkslauf(bool val)
-        {
-            if (val) VisibilityPfeilLinkslauf = "Visible"; else VisibilityPfeilLinkslauf = "Hidden";
-        }
+        public void SichtbarkeitPfeilLinkslauf(bool val) => VisibilityPfeilLinkslauf = val ? "Visible" : "Hidden";
 
         private string _visibilityPfeilLinkslauf;
 
@@ -655,10 +650,7 @@
 
         #region Sichtbarkeit PfeilRechtslauf
 
-        public void SichtbarkeitPfeilRechtslauf(bool val)
-        {
-            if (val) VisibilityPfeilRechtslauf = "Visible"; else VisibilityPfeilRechtslauf = "Hidden";
-        }
+        public void SichtbarkeitPfeilRechtslauf(bool val) => VisibilityPfeilRechtslauf = val ? "Visible" : "Hidden";
 
         private string _visibilityPfeilRechtslauf;
 
@@ -676,10 +668,7 @@
 
         #region Sichtbarkeit M1
 
-        public void SichtbarkeitM1(bool val)
-        {
-            if (val) VisibilityM1Ein = "Visible"; else VisibilityM1Ein = "Hidden";
-        }
+        public void SichtbarkeitM1(bool val) => VisibilityM1Ein = val ? "Visible" : "Hidden";
 
         private string _visibilityM1Ein;
 
@@ -697,10 +686,7 @@
 
         #region Sichtbarkeit M2
 
-        public void SichtbarkeitM2(bool val)
-        {
-            if (val) VisibilityM2Ein = "Visible"; else VisibilityM2Ein = "Hidden";
-        }
+        public void SichtbarkeitM2(bool val) => VisibilityM2Ein = val ? "Visible" : "Hidden";
 
         private string _visibilityM2Ein;
 
@@ -844,10 +830,7 @@
 
         #region Sichtbarkeit MaterialOben
 
-        public void SichtbarkeitMaterialOben(bool val)
-        {
-            if (val) VisibilityMaterialOben = "Visible"; else VisibilityMaterialOben = "Hidden";
-        }
+        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? "Visible" : "Hidden";
 
         private string _visibilityMaterialOben;
 
@@ -865,10 +848,7 @@
 
         #region Sichtbarkeit MaterialUnten
 
-        public void SichtbarkeitMaterialUnten(bool val)
-        {
-            if (val) VisibilityMaterialUnten = "Visible"; else VisibilityMaterialUnten = "Hidden";
-        }
+        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? "Visible" : "Hidden";
 
         private string _visibilityMaterialUnten;
 
@@ -902,10 +882,7 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val)
-        {
-            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
-        }
+        public void FarbeF1(bool val) => ColorF1 = val ? "LawnGreen" : "Red";
 
         private string _colorF1;
 
@@ -923,10 +900,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "LawnGreen" : "White";
 
         private string _colorP1;
 
@@ -944,10 +918,7 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val)
-        {
-            if (val) ColorP2 = "Red"; else ColorP2 = "White";
-        }
+        public void FarbeP2(bool val) => ColorP2 = val ? "Red" : "White";
 
         private string _colorP2;
 
@@ -965,10 +936,7 @@
 
         #region Color S2
 
-        public void FarbeS2(bool val)
-        {
-            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
-        }
+        public void FarbeS2(bool val) => ColorS2 = val ? "LawnGreen" : "Red";
 
         private string _colorS2;
 

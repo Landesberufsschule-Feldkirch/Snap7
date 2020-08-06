@@ -22,17 +22,7 @@
 
         private ICommand _btnReset;
 
-        public ICommand BtnReset
-        {
-            get
-            {
-                if (_btnReset == null)
-                {
-                    _btnReset = new RelayCommand(p => heizungsregler.Reset(), p => true);
-                }
-                return _btnReset;
-            }
-        }
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => heizungsregler.Reset(), p => true));
 
         #endregion BtnReset
     }

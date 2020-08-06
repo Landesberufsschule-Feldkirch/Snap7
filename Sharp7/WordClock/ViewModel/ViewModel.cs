@@ -21,14 +21,9 @@ namespace WordClock.ViewModel
 
         private ICommand _btnSetCurrentTime;
 
-        public ICommand BtnSetCurrentTime
-        {
-            get
-            {
-                return _btnSetCurrentTime ??
-                       (_btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true));
-            }
-        }
+        public ICommand BtnSetCurrentTime =>
+            _btnSetCurrentTime ??
+            (_btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true));
 
         #endregion BtnSetCurrentTime
     }

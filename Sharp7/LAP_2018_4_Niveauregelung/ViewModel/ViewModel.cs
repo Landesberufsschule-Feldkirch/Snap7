@@ -20,17 +20,7 @@
 
         private ICommand _btnTasterS1;
 
-        public ICommand BtnTasterS1
-        {
-            get
-            {
-                if (_btnTasterS1 == null)
-                {
-                    _btnTasterS1 = new RelayCommand(p => ViAnzeige.TasterS1(), p => true);
-                }
-                return _btnTasterS1;
-            }
-        }
+        public ICommand BtnTasterS1 => _btnTasterS1 ?? (_btnTasterS1 = new RelayCommand(p => ViAnzeige.TasterS1(), p => true));
 
         #endregion BtnTasterS1
 
@@ -38,17 +28,7 @@
 
         private ICommand _btnTasterS2;
 
-        public ICommand BtnTasterS2
-        {
-            get
-            {
-                if (_btnTasterS2 == null)
-                {
-                    _btnTasterS2 = new RelayCommand(p => ViAnzeige.TasterS2(), p => true);
-                }
-                return _btnTasterS2;
-            }
-        }
+        public ICommand BtnTasterS2 => _btnTasterS2 ?? (_btnTasterS2 = new RelayCommand(p => ViAnzeige.TasterS2(), p => true));
 
         #endregion BtnTasterS2
 
@@ -56,17 +36,7 @@
 
         private ICommand _btnTasterS3;
 
-        public ICommand BtnTasterS3
-        {
-            get
-            {
-                if (_btnTasterS3 == null)
-                {
-                    _btnTasterS3 = new RelayCommand(p => ViAnzeige.TasterS3(), p => true);
-                }
-                return _btnTasterS3;
-            }
-        }
+        public ICommand BtnTasterS3 => _btnTasterS3 ?? (_btnTasterS3 = new RelayCommand(p => ViAnzeige.TasterS3(), p => true));
 
         #endregion BtnTasterS3
 
@@ -74,17 +44,9 @@
 
         private ICommand _btnThermorelaisF1;
 
-        public ICommand BtnThermorelaisF1
-        {
-            get
-            {
-                if (_btnThermorelaisF1 == null)
-                {
-                    _btnThermorelaisF1 = new RelayCommand(p => niveauRegelung.ThermorelaisF1(), p => true);
-                }
-                return _btnThermorelaisF1;
-            }
-        }
+        public ICommand BtnThermorelaisF1 =>
+            _btnThermorelaisF1 ??
+            (_btnThermorelaisF1 = new RelayCommand(p => niveauRegelung.ThermorelaisF1(), p => true));
 
         #endregion BtnThermorelaisF1
 
@@ -92,17 +54,9 @@
 
         private ICommand _btnThermorelaisF2;
 
-        public ICommand BtnThermorelaisF2
-        {
-            get
-            {
-                if (_btnThermorelaisF2 == null)
-                {
-                    _btnThermorelaisF2 = new RelayCommand(p => niveauRegelung.ThermorelaisF2(), p => true);
-                }
-                return _btnThermorelaisF2;
-            }
-        }
+        public ICommand BtnThermorelaisF2 =>
+            _btnThermorelaisF2 ??
+            (_btnThermorelaisF2 = new RelayCommand(p => niveauRegelung.ThermorelaisF2(), p => true));
 
         #endregion BtnThermorelaisF2
 
@@ -110,17 +64,7 @@
 
         private ICommand _btnVentilY1;
 
-        public ICommand BtnVentilY1
-        {
-            get
-            {
-                if (_btnVentilY1 == null)
-                {
-                    _btnVentilY1 = new RelayCommand(p => niveauRegelung.VentilY1(), p => true);
-                }
-                return _btnVentilY1;
-            }
-        }
+        public ICommand BtnVentilY1 => _btnVentilY1 ?? (_btnVentilY1 = new RelayCommand(p => niveauRegelung.VentilY1(), p => true));
 
         #endregion BtnVentilY1
 
@@ -128,17 +72,9 @@
 
         private ICommand _btnSetManualQ1;
 
-        public ICommand BtnSetManualQ1
-        {
-            get
-            {
-                if (_btnSetManualQ1 == null)
-                {
-                    _btnSetManualQ1 = new RelayCommand(p => niveauRegelung.SetManualQ1(), p => true);
-                }
-                return _btnSetManualQ1;
-            }
-        }
+        public ICommand BtnSetManualQ1 =>
+            _btnSetManualQ1 ??
+            (_btnSetManualQ1 = new RelayCommand(p => niveauRegelung.SetManualQ1(), p => true));
 
         #endregion BtnSetManualQ1
 
@@ -146,17 +82,9 @@
 
         private ICommand _btnSetManualQ2;
 
-        public ICommand BtnSetManualQ2
-        {
-            get
-            {
-                if (_btnSetManualQ2 == null)
-                {
-                    _btnSetManualQ2 = new RelayCommand(p => niveauRegelung.SetManualQ2(), p => true);
-                }
-                return _btnSetManualQ2;
-            }
-        }
+        public ICommand BtnSetManualQ2 =>
+            _btnSetManualQ2 ??
+            (_btnSetManualQ2 = new RelayCommand(p => niveauRegelung.SetManualQ2(), p => true));
 
         #endregion BtnSetManualQ2
     }

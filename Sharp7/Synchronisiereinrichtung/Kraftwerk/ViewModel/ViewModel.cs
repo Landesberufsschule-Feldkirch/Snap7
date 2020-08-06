@@ -22,10 +22,7 @@
 
         private ICommand _btnReset;
 
-        public ICommand BtnReset
-        {
-            get { return _btnReset ?? (_btnReset = new RelayCommand(p => _kraftwerk.Reset(), p => true)); }
-        }
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => _kraftwerk.Reset(), p => true));
 
         #endregion BtnReset
 
@@ -33,14 +30,9 @@
 
         private ICommand _btnSchalterQ1;
 
-        public ICommand BtnSchalterQ1
-        {
-            get
-            {
-                return _btnSchalterQ1 ??
-                       (_btnSchalterQ1 = new RelayCommand(p => _kraftwerk.Synchronisieren(), p => true));
-            }
-        }
+        public ICommand BtnSchalterQ1 =>
+            _btnSchalterQ1 ??
+            (_btnSchalterQ1 = new RelayCommand(p => _kraftwerk.Synchronisieren(), p => true));
 
         #endregion BtnSchalterQ1
 
@@ -48,14 +40,9 @@
 
         private ICommand _btnSchalterStart;
 
-        public ICommand BtnSchalterStart
-        {
-            get
-            {
-                return _btnSchalterStart ??
-                       (_btnSchalterStart = new RelayCommand(p => _kraftwerk.Starten(), p => true));
-            }
-        }
+        public ICommand BtnSchalterStart =>
+            _btnSchalterStart ??
+            (_btnSchalterStart = new RelayCommand(p => _kraftwerk.Starten(), p => true));
 
         #endregion BtnSchalterStart
 
@@ -63,13 +50,7 @@
 
         private ICommand _btnSchalterStop;
 
-        public ICommand BtnSchalterStop
-        {
-            get
-            {
-                return _btnSchalterStop ?? (_btnSchalterStop = new RelayCommand(p => _kraftwerk.Stoppen(), p => true));
-            }
-        }
+        public ICommand BtnSchalterStop => _btnSchalterStop ?? (_btnSchalterStop = new RelayCommand(p => _kraftwerk.Stoppen(), p => true));
 
         #endregion BtnSchalterStop
     }

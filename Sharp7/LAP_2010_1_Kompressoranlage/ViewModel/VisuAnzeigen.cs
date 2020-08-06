@@ -5,10 +5,10 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2010_1_Kompressoranlage.Model.Kompressoranlage _kompressoranlage;
+        private readonly Model.Kompressoranlage _kompressoranlage;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2010_1_Kompressoranlage.Model.Kompressoranlage ka)
+        public VisuAnzeigen(MainWindow mw, Model.Kompressoranlage ka)
         {
             _mainWindow = mw;
             _kompressoranlage = ka;

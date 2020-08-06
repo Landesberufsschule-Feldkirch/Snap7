@@ -6,7 +6,7 @@ namespace PaternosterLager.ViewModel
     public class ViewModel
     {
         public VisuAnzeigen ViAnzeige { get; set; }
-        public readonly PaternosterLager.Model.Paternosterlager paternosterlager;
+        public readonly Model.Paternosterlager paternosterlager;
 
         public ViewModel(MainWindow mainWindow, double anzahlKisten)
         {
@@ -14,23 +14,15 @@ namespace PaternosterLager.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, paternosterlager, anzahlKisten);
         }
 
+        // ReSharper disable once UnusedMember.Global
         public Model.Paternosterlager Paternosterlager => paternosterlager;
 
         #region BtnReset
 
         private ICommand _btnReset;
 
-        public ICommand BtnReset
-        {
-            get
-            {
-                if (_btnReset == null)
-                {
-                    _btnReset = new RelayCommand(p => paternosterlager.AllesReset(), p => true);
-                }
-                return _btnReset;
-            }
-        }
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => paternosterlager.AllesReset(), p => true));
 
         #endregion BtnReset
 
@@ -38,17 +30,8 @@ namespace PaternosterLager.ViewModel
 
         private ICommand _btnBuchstabe;
 
-        public ICommand BtnBuchstabe
-        {
-            get
-            {
-                if (_btnBuchstabe == null)
-                {
-                    _btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe);
-                }
-                return _btnBuchstabe;
-            }
-        }
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
 
         #endregion BtnBuchstabe
 
@@ -56,17 +39,8 @@ namespace PaternosterLager.ViewModel
 
         private ICommand _btnAuf;
 
-        public ICommand BtnAuf
-        {
-            get
-            {
-                if (_btnAuf == null)
-                {
-                    _btnAuf = new RelayCommand(p => ViAnzeige.TasterAuf(), p => true);
-                }
-                return _btnAuf;
-            }
-        }
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnAuf => _btnAuf ?? (_btnAuf = new RelayCommand(p => ViAnzeige.TasterAuf(), p => true));
 
         #endregion BtnAuf
 
@@ -74,17 +48,8 @@ namespace PaternosterLager.ViewModel
 
         private ICommand _btnAb;
 
-        public ICommand BtnAb
-        {
-            get
-            {
-                if (_btnAb == null)
-                {
-                    _btnAb = new RelayCommand(p => ViAnzeige.TasterAb(), p => true);
-                }
-                return _btnAb;
-            }
-        }
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnAb => _btnAb ?? (_btnAb = new RelayCommand(p => ViAnzeige.TasterAb(), p => true));
 
         #endregion BtnAb
     }

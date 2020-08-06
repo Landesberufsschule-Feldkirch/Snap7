@@ -20,17 +20,7 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         private ICommand _btnBuchstabe;
 
-        public ICommand BtnBuchstabe
-        {
-            get
-            {
-                if (_btnBuchstabe == null)
-                {
-                    _btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe);
-                }
-                return _btnBuchstabe;
-            }
-        }
+        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
 
         #endregion BtnBuchstabe
     }

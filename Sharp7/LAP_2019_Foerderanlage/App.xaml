@@ -1,7 +1,6 @@
 ﻿<Application x:Class="LAP_2019_Foerderanlage.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LAP_2019_Foerderanlage"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
     </Application.Resources>

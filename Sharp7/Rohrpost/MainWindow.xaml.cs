@@ -1,16 +1,14 @@
-﻿using System.Windows;
-
-namespace Rohrpost
+﻿namespace Rohrpost
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private Logikfunktionen logikfunktionen;
-        private DatenRangieren datenRangieren;
+        private Logikfunktionen _logikfunktionen;
+        private DatenRangieren _datenRangieren;
 
         public MainWindow()
         {
-            logikfunktionen = new Logikfunktionen(this);
-            datenRangieren = new DatenRangieren(this);
+            _logikfunktionen = new Logikfunktionen(this);
+            _datenRangieren = new DatenRangieren(this);
 
             InitializeComponent();
         }

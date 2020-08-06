@@ -15,12 +15,14 @@
             stiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
         }
 
+        // ReSharper disable once UnusedMember.Global
         public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung => stiegenhausBeleuchtung;
 
         #region BtnStart
 
         private ICommand _btnStart;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnStart => _btnStart ?? (_btnStart = new RelayCommand(stiegenhausBeleuchtung.BtnStart));
 
         #endregion BtnStart
@@ -29,6 +31,7 @@
 
         private ICommand _btnBewegungsmelder;
 
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnBewegungsmelder => _btnBewegungsmelder ?? (_btnBewegungsmelder = new RelayCommand(ViAnzeige.BtnBewegungsmelder));
 
         #endregion BtnBewegungsmelder

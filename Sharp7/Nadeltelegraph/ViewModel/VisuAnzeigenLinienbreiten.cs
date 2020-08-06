@@ -6,7 +6,7 @@
 
         public void Breite1UpRight(bool val)
         {
-            if (val) Width1UpRight = BreiteBreit; else Width1UpRight = BreiteSchmal;
+            Width1UpRight = val ? BreiteBreit : BreiteSchmal;
         }
 
         private int _width1UpRight;

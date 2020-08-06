@@ -6,13 +6,13 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Paternosterlager paternosterlager;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Paternosterlager _paternosterlager;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.Paternosterlager pa, double anzahlKisten)
         {
-            mainWindow = mw;
-            paternosterlager = pa;
+            _mainWindow = mw;
+            _paternosterlager = pa;
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
@@ -43,37 +43,38 @@
 
         private void VisuAnzeigenTask()
         {
-            paternosterlager.GesamtLaenge = AlleKettengliedRegale[0].GetGesamtLaenge();
+            _paternosterlager.GesamtLaenge = AlleKettengliedRegale[0].GetGesamtLaenge();
 
             while (true)
             {
-                IstPosition = paternosterlager.IstPos.ToString("D2");
-                SollPosition = paternosterlager.SollPos.ToString("D2");
+                IstPosition = _paternosterlager.IstPos.ToString("D2");
+                SollPosition = _paternosterlager.SollPos.ToString("D2");
 
-                SichtbarkeitB1(paternosterlager.B1);
-                SichtbarkeitB2(paternosterlager.B2);
+                SichtbarkeitB1(_paternosterlager.B1);
+                SichtbarkeitB2(_paternosterlager.B2);
 
-                if (mainWindow.FensterAktiv)
+                if (_mainWindow.FensterAktiv)
                 {
-                    mainWindow.Dispatcher.Invoke(() =>
+                    _mainWindow.Dispatcher.Invoke(() =>
                                {
-                                   if (mainWindow.FensterAktiv) mainWindow.ZeichenFlaeche.Children.Clear();
-                                   foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(mainWindow, paternosterlager.Position);
+                                   if (_mainWindow.FensterAktiv) _mainWindow.ZeichenFlaeche.Children.Clear();
+                                   foreach (var kettengliedRegal in AlleKettengliedRegale) kettengliedRegal.Zeichnen(_mainWindow, _paternosterlager.Position);
                                });
                 }
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(100);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void Buchstabe(object buchstabe)
@@ -81,13 +82,13 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                if (ClickModeButton(asciiCode)) paternosterlager.Zeichen = asciiCode; else paternosterlager.Zeichen = ' ';
+                _paternosterlager.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
             }
         }
 
-        internal void TasterAuf() => paternosterlager.ManualAuf = ClickModeButtonAuf();
+        internal void TasterAuf() => _paternosterlager.ManualAuf = ClickModeButtonAuf();
 
-        internal void TasterAb() => paternosterlager.ManualAb = ClickModeButtonAb();
+        internal void TasterAb() => _paternosterlager.ManualAb = ClickModeButtonAb();
 
         #region SPS Version, Status und Farbe
 
@@ -102,24 +103,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -263,16 +264,16 @@
 
         #region ClickModeAlleButtons
 
-        public bool ClickModeButton(int AsciiCode)
+        public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[AsciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] == "Press")
             {
-                ClickModeBtn[AsciiCode] = "Release";
+                ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtn[AsciiCode] = "Press";
+                ClickModeBtn[asciiCode] = "Press";
             }
             return false;
         }

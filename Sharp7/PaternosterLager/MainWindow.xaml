@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PaternosterLager"
         mc:Ignorable="d"
         Title="Paternosterlager" Height="1050" Width="1200" Closing="WindowClosing">
     <Grid>
@@ -63,7 +62,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="15" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
 
         <Button Grid.Column="11" Grid.Row="1" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
             <Button.Resources>

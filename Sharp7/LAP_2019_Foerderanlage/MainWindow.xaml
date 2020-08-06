@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        xmlns:local="clr-namespace:LAP_2019_Foerderanlage"
         mc:Ignorable="d"
         Title="LAP 2019 Förderanlage" Height="980" Width="1400">
     <Grid>
@@ -199,9 +198,6 @@
 
         <TabControl Grid.Column="16"  Grid.ColumnSpan="6"  Grid.Row="6" Grid.RowSpan="15" SelectedIndex="{Binding ViAnzeige.SelectedIndex, Mode=TwoWay}">
             <TabItem Header="Automatik" FontSize="14pt">
-                <TabItem.CommandBindings>
-                    <!--  <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" /> -->
-                </TabItem.CommandBindings>
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />

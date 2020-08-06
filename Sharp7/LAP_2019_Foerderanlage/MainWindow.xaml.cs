@@ -4,18 +4,16 @@ using WpfAnimatedGif;
 
 namespace LAP_2019_Foerderanlage
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
-        public WpfAnimatedGif.ImageAnimationController Controller { get; set; }
-        public S7_1200 S7_1200 { get; set; }
+        public ImageAnimationController Controller { get; set; }
+        public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
-        private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
         private const int anzByteDigInput = 2;
         private const int anzByteDigOutput = 2;
@@ -24,20 +22,19 @@ namespace LAP_2019_Foerderanlage
 
         public MainWindow()
         {
-            VersionText = "LAP 2019 Foerderanlage";
+            var versionText = "LAP 2019 Foerderanlage";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             viewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(this, viewModel);
+            var datenRangieren = new DatenRangieren(this, viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            btnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
@@ -53,6 +50,7 @@ namespace LAP_2019_Foerderanlage
             Controller = ImageBehavior.GetAnimationController(imgSchneckenfoerderer);
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void TabItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             //

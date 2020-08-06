@@ -1,4 +1,6 @@
-﻿namespace LAP_2019_Foerderanlage.Model
+﻿using System;
+
+namespace LAP_2019_Foerderanlage.Model
 {
     using Utilities;
 
@@ -58,16 +60,12 @@
                         wagenRichtung = Richtung.stehen;
                     }
                     break;
-
-                case Richtung.stehen:
-                default:
-                    break;
             }
 
             // Wagen bewegen
-            if (aktuellePosition.X == rechterAnschlag.X) endlageRechts = true; else endlageRechts = false;
-            if (wagenFuellstand == wagenFuellstandVoll) wagenVoll = true; else wagenVoll = false;
-            if ((aktuellePosition.X == linkerAnschlag.X) && (wagenFuellstand > 0)) wagenFuellstand -= wagenFuellstandLeeren;
+            endlageRechts = Math.Abs(aktuellePosition.X - rechterAnschlag.X) < 0.01;
+            wagenVoll = Math.Abs(wagenFuellstand - wagenFuellstandVoll) < 0.01;
+            if ((Math.Abs(aktuellePosition.X - linkerAnschlag.X) < 0.01) && (wagenFuellstand > 0)) wagenFuellstand -= wagenFuellstandLeeren;
         }
 
         internal void Fuellen()

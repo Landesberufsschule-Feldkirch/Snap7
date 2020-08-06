@@ -5,29 +5,29 @@
 
     public enum Zeichenbereich
     {
-        rechts = 0,
-        oben,
-        links,
-        unten
+        Rechts = 0,
+        Oben,
+        Links,
+        Unten
     }
 
     public static class PositionBestimmen
     {
-        private static readonly Punkt zentrumOben = new Punkt(200, 150);
-        private static readonly Punkt zentrumUnten = new Punkt(200, 150 + 680);
-        private const double radiusUmlenkung = 100;
+        private static readonly Punkt ZentrumOben = new Punkt(200, 150);
+        private static readonly Punkt ZentrumUnten = new Punkt(200, 150 + 680);
+        private const double RadiusUmlenkung = 100;
 
-        public static double GetGesamtLaenge(double breiteBolzen) => 2 * 680 + breiteBolzen + Math.PI * (2 * radiusUmlenkung + breiteBolzen);
+        public static double GetGesamtLaenge(double breiteBolzen) => 2 * 680 + breiteBolzen + Math.PI * (2 * RadiusUmlenkung + breiteBolzen);
 
         public static (double x, double y, Zeichenbereich zeichenBereich) ZapfenPositionBerechnen(double pos, double breiteBolzen)
         {
             double x;
             double y;
             Zeichenbereich zeichenBereich;
-            double senkrechterTeil = zentrumUnten.Y - zentrumOben.Y;
+            double senkrechterTeil = ZentrumUnten.Y - ZentrumOben.Y;
             double positionRest;
             double bogenwinkel;
-            double bogenRadius = radiusUmlenkung + breiteBolzen / 2;
+            double bogenRadius = RadiusUmlenkung + breiteBolzen / 2;
             double rundungBogen = Math.PI * bogenRadius;
             double segmentRechtsSenkrecht = senkrechterTeil / 2;
             double segmentMitBogenOben = segmentRechtsSenkrecht + rundungBogen;
@@ -39,44 +39,44 @@
             if (pos < segmentRechtsSenkrecht)
             {
                 // rechts rauf
-                zeichenBereich = Zeichenbereich.rechts;
+                zeichenBereich = Zeichenbereich.Rechts;
                 positionRest = pos;
-                x = zentrumOben.X + bogenRadius;
-                y = zentrumOben.Y + segmentRechtsSenkrecht - positionRest;
+                x = ZentrumOben.X + bogenRadius;
+                y = ZentrumOben.Y + segmentRechtsSenkrecht - positionRest;
             }
             else if (pos < segmentMitBogenOben)
             {
                 // obere Rundung
-                zeichenBereich = Zeichenbereich.oben;
+                zeichenBereich = Zeichenbereich.Oben;
                 positionRest = pos - segmentRechtsSenkrecht;
                 bogenwinkel = positionRest / bogenRadius; // Winkel in rad
-                x = zentrumOben.X + bogenRadius * Math.Cos(bogenwinkel);
-                y = zentrumOben.Y - bogenRadius * Math.Sin(bogenwinkel);
+                x = ZentrumOben.X + bogenRadius * Math.Cos(bogenwinkel);
+                y = ZentrumOben.Y - bogenRadius * Math.Sin(bogenwinkel);
             }
             else if (pos < segmentMitLinksSenkrecht)
             {
                 // links runter
-                zeichenBereich = Zeichenbereich.links;
+                zeichenBereich = Zeichenbereich.Links;
                 positionRest = pos - segmentMitBogenOben;
-                x = zentrumOben.X - bogenRadius;
-                y = zentrumOben.Y + positionRest;
+                x = ZentrumOben.X - bogenRadius;
+                y = ZentrumOben.Y + positionRest;
             }
             else if (pos < segmentMitBogenUnten)
             {
                 // untere Rundung
-                zeichenBereich = Zeichenbereich.unten;
+                zeichenBereich = Zeichenbereich.Unten;
                 positionRest = pos - segmentMitLinksSenkrecht;
                 bogenwinkel = Math.PI - positionRest / bogenRadius; // Winkel in rad
-                x = zentrumUnten.X + bogenRadius * Math.Cos(bogenwinkel);
-                y = zentrumUnten.Y + bogenRadius * Math.Sin(bogenwinkel);
+                x = ZentrumUnten.X + bogenRadius * Math.Cos(bogenwinkel);
+                y = ZentrumUnten.Y + bogenRadius * Math.Sin(bogenwinkel);
             }
             else
             {
                 // rechts rauf
-                zeichenBereich = Zeichenbereich.rechts;
+                zeichenBereich = Zeichenbereich.Rechts;
                 positionRest = pos - segmentMitBogenUnten;
-                x = zentrumUnten.X + radiusUmlenkung + breiteBolzen / 2;
-                y = zentrumUnten.Y - positionRest;
+                x = ZentrumUnten.X + RadiusUmlenkung + breiteBolzen / 2;
+                y = ZentrumUnten.Y - positionRest;
             }
 
             return (x, y, zeichenBereich);
@@ -98,23 +98,23 @@
             (xDavor, yDavor, _) = ZapfenPositionBerechnen(posZapfen - hoeheKettenglied, breiteZapfen);
             (x, y, zeichenBereich) = ZapfenPositionBerechnen(posZapfen, breiteZapfen);
 
-            if (x == xDavor) return (x, y, 0, zeichenBereich);
-            if (zeichenBereichVorher == Zeichenbereich.rechts) { return (x, y, 0, zeichenBereich); }
-            if (zeichenBereich == Zeichenbereich.links) { return (x, y, 0, zeichenBereich); }
+            if (Math.Abs(x - xDavor) < 0.1) return (x, y, 0, zeichenBereich);
+            if (zeichenBereichVorher == Zeichenbereich.Rechts) { return (x, y, 0, zeichenBereich); }
+            if (zeichenBereich == Zeichenbereich.Links) { return (x, y, 0, zeichenBereich); }
 
-            if (zeichenBereich == Zeichenbereich.oben)
+            if (zeichenBereich == Zeichenbereich.Oben)
             {
-                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
                 return (x, y, phi, zeichenBereichVorher);
             }
 
-            if (zeichenBereichVorher == Zeichenbereich.rechts)
+            if (zeichenBereichVorher == Zeichenbereich.Rechts)
             {
-                phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
                 return (x, y, phi, zeichenBereichVorher);
             }
 
-            phi = 270 + Utilities.Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
+            phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));
             return (xVorher, yVorher, phi, zeichenBereich);
         }
     }
