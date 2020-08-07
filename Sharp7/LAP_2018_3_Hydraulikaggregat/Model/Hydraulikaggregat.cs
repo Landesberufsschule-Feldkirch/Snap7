@@ -24,9 +24,9 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         public double Pegel { get; set; }
         public Stopwatch Stopwatch { get; set; }
 
-        private const double druckVerlust = 0.998;
-        private const double druckAnstieg = 0.04;
-        private const double pegelVerlust = 0.999;
+        private const double DruckVerlust = 0.998;
+        private const double DruckAnstieg = 0.04;
+        private const double PegelVerlust = 0.999;
         private const int ZeitBisStoerung = 10000;
 
         public Hydraulikaggregat()
@@ -48,13 +48,13 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             {
                 if (Q1 && Q3)
                 {
-                    Pegel *= pegelVerlust;
-                    Druck += druckAnstieg;
+                    Pegel *= PegelVerlust;
+                    Druck += DruckAnstieg;
                     Stopwatch.Start();
                 }
                 else Stopwatch.Stop();
 
-                Druck *= druckVerlust;
+                Druck *= DruckVerlust;
 
                 if (Druck > 10) Druck = 10;
 
@@ -63,18 +63,16 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
                 else
                 { if (Druck < 7) B2 = true; }
 
-                if (Pegel > 0.45) B1 = true; else B1 = false;
+                B1 = Pegel > 0.45;
 
-                if (Stopwatch.ElapsedMilliseconds > ZeitBisStoerung) B3 = false; else B3 = true;
+                B3 = Stopwatch.ElapsedMilliseconds <= ZeitBisStoerung;
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void BtnF1()
-        {
-            if (F1) F1 = false; else F1 = true;
-        }
+        internal void BtnF1() => F1 = !F1;
 
         internal void BtnNachfuellen() => Pegel = 1;
     }

@@ -7,14 +7,14 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Abfuellanlage alleFlaschen;
-        private readonly MainWindow mainWindow;
-        private readonly double HoeheFuellBalken = 9 * 35;
+        private readonly Model.Abfuellanlage _alleFlaschen;
+        private readonly MainWindow _mainWindow;
+        private readonly double _hoeheFuellBalken = 9 * 35;
 
         public VisuAnzeigen(MainWindow mw, Model.Abfuellanlage af)
         {
-            mainWindow = mw;
-            alleFlaschen = af;
+            _mainWindow = mw;
+            _alleFlaschen = af;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -52,20 +52,20 @@
             VisibilityImage5 = "visible";
             VisibilityImage6 = "visible";
 
-            Visibility_B1_Ein = "hidden";
-            Visibility_K1_Ein = "hidden";
-            Visibility_K2_Ein = "hidden";
+            VisibilityB1Ein = "hidden";
+            VisibilityK1Ein = "hidden";
+            VisibilityK2Ein = "hidden";
 
-            Visibility_B1_Aus = "visible";
-            Visibility_K1_Aus = "visible";
-            Visibility_K2_Aus = "visible";
+            VisibilityB1Aus = "visible";
+            VisibilityK1Aus = "visible";
+            VisibilityK2Aus = "visible";
 
             VisibilityRectangleAbleitung = "hidden";
 
-            ColorCircle_F1 = "LawnGreen";
-            ColorCircle_Q1 = "LightGray";
-            ColorCircle_P1 = "LightGray";
-            ColorCircle_P2 = "LightGray";
+            ColorCircleF1 = "LawnGreen";
+            ColorCircleQ1 = "LightGray";
+            ColorCircleP1 = "LightGray";
+            ColorCircleP2 = "LightGray";
 
             ColorRectangleZuleitung = "LightBlue";
 
@@ -78,61 +78,62 @@
         {
             while (true)
             {
-                PositionImage_1(alleFlaschen.AlleFlaschen[0].Position.Punkt);
-                PositionImage_2(alleFlaschen.AlleFlaschen[1].Position.Punkt);
-                PositionImage_3(alleFlaschen.AlleFlaschen[2].Position.Punkt);
-                PositionImage_4(alleFlaschen.AlleFlaschen[3].Position.Punkt);
-                PositionImage_5(alleFlaschen.AlleFlaschen[4].Position.Punkt);
-                PositionImage_6(alleFlaschen.AlleFlaschen[5].Position.Punkt);
+                PositionImage_1(_alleFlaschen.AlleFlaschen[0].Position.Punkt);
+                PositionImage_2(_alleFlaschen.AlleFlaschen[1].Position.Punkt);
+                PositionImage_3(_alleFlaschen.AlleFlaschen[2].Position.Punkt);
+                PositionImage_4(_alleFlaschen.AlleFlaschen[3].Position.Punkt);
+                PositionImage_5(_alleFlaschen.AlleFlaschen[4].Position.Punkt);
+                PositionImage_6(_alleFlaschen.AlleFlaschen[5].Position.Punkt);
 
-                VisibilityFlasche1(alleFlaschen.AlleFlaschen[0].Sichtbar);
-                VisibilityFlasche2(alleFlaschen.AlleFlaschen[1].Sichtbar);
-                VisibilityFlasche3(alleFlaschen.AlleFlaschen[2].Sichtbar);
-                VisibilityFlasche4(alleFlaschen.AlleFlaschen[3].Sichtbar);
-                VisibilityFlasche5(alleFlaschen.AlleFlaschen[4].Sichtbar);
-                VisibilityFlasche6(alleFlaschen.AlleFlaschen[5].Sichtbar);
+                VisibilityFlasche1(_alleFlaschen.AlleFlaschen[0].Sichtbar);
+                VisibilityFlasche2(_alleFlaschen.AlleFlaschen[1].Sichtbar);
+                VisibilityFlasche3(_alleFlaschen.AlleFlaschen[2].Sichtbar);
+                VisibilityFlasche4(_alleFlaschen.AlleFlaschen[3].Sichtbar);
+                VisibilityFlasche5(_alleFlaschen.AlleFlaschen[4].Sichtbar);
+                VisibilityFlasche6(_alleFlaschen.AlleFlaschen[5].Sichtbar);
 
-                VisibilitySensorB1(alleFlaschen.B1);
-                VisibilityVentilK1(alleFlaschen.K1);
-                VisibilityVentilK2(alleFlaschen.K2);
-                VisibilityAbleitung(alleFlaschen.K1 && (alleFlaschen.Pegel > 0.01));
+                VisibilitySensorB1(_alleFlaschen.B1);
+                VisibilityVentilK1(_alleFlaschen.K1);
+                VisibilityVentilK2(_alleFlaschen.K2);
+                VisibilityAbleitung(_alleFlaschen.K1 && (_alleFlaschen.Pegel > 0.01));
 
-                FarbeCircle_F1(alleFlaschen.F1);
-                FarbeCircle_Q1(alleFlaschen.Q1);
-                FarbeCircle_P1(alleFlaschen.P1);
-                FarbeCircle_P2(alleFlaschen.P2);
+                FarbeCircle_F1(_alleFlaschen.F1);
+                FarbeCircle_Q1(_alleFlaschen.Q1);
+                FarbeCircle_P1(_alleFlaschen.P1);
+                FarbeCircle_P2(_alleFlaschen.P2);
 
-                FarbeRectangleZuleitung(alleFlaschen.Pegel > 0.01);
+                FarbeRectangleZuleitung(_alleFlaschen.Pegel > 0.01);
 
-                Margin_1(alleFlaschen.Pegel);
+                Margin_1(_alleFlaschen.Pegel);
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void TasterS1() => alleFlaschen.S1 = ClickModeButtonS1();
+        internal void TasterS1() => _alleFlaschen.S1 = ClickModeButtonS1();
 
-        internal void TasterS2() => alleFlaschen.S2 = !ClickModeButtonS2();
+        internal void TasterS2() => _alleFlaschen.S2 = !ClickModeButtonS2();
 
-        internal void TasterS3() => alleFlaschen.S3 = ClickModeButtonS3();
+        internal void TasterS3() => _alleFlaschen.S3 = ClickModeButtonS3();
 
-        internal void TasterS4() => alleFlaschen.S4 = ClickModeButtonS4();
+        internal void TasterS4() => _alleFlaschen.S4 = ClickModeButtonS4();
 
-        internal void SetManualK1() => alleFlaschen.K1 = ClickModeButtonK1();
+        internal void SetManualK1() => _alleFlaschen.K1 = ClickModeButtonK1();
 
-        internal void SetManualK2() => alleFlaschen.K2 = ClickModeButtonK2();
+        internal void SetManualK2() => _alleFlaschen.K2 = ClickModeButtonK2();
 
-        internal void SetManualQ1() => alleFlaschen.Q1 = ClickModeButtonQ1();
+        internal void SetManualQ1() => _alleFlaschen.Q1 = ClickModeButtonQ1();
 
         #region SPS Version, Status und Farbe
 
@@ -147,24 +148,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -622,10 +623,7 @@
 
         #region Visibility Flasche 1
 
-        public void VisibilityFlasche1(bool val)
-        {
-            if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
-        }
+        public void VisibilityFlasche1(bool val) => VisibilityImage1 = val ? "visible" : "hidden";
 
         private string _visibilityImage1;
 
@@ -643,10 +641,7 @@
 
         #region Visibility Flasche 2
 
-        public void VisibilityFlasche2(bool val)
-        {
-            if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
-        }
+        public void VisibilityFlasche2(bool val) => VisibilityImage2 = val ? "visible" : "hidden";
 
         private string _visibilityImage2;
 
@@ -664,10 +659,7 @@
 
         #region Visibility Flasche 3
 
-        public void VisibilityFlasche3(bool val)
-        {
-            if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
-        }
+        public void VisibilityFlasche3(bool val) => VisibilityImage3 = val ? "visible" : "hidden";
 
         private string _visibilityImage3;
 
@@ -685,10 +677,7 @@
 
         #region Visibility Flasche 4
 
-        public void VisibilityFlasche4(bool val)
-        {
-            if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
-        }
+        public void VisibilityFlasche4(bool val) => VisibilityImage4 = val ? "visible" : "hidden";
 
         private string _visibilityImage4;
 
@@ -706,10 +695,7 @@
 
         #region Visibility Flasche 5
 
-        public void VisibilityFlasche5(bool val)
-        {
-            if (val) VisibilityImage5 = "visible"; else VisibilityImage5 = "hidden";
-        }
+        public void VisibilityFlasche5(bool val) => VisibilityImage5 = val ? "visible" : "hidden";
 
         private string _visibilityImage5;
 
@@ -727,10 +713,7 @@
 
         #region Visibility Flasche 6
 
-        public void VisibilityFlasche6(bool val)
-        {
-            if (val) VisibilityImage6 = "visible"; else VisibilityImage6 = "hidden";
-        }
+        public void VisibilityFlasche6(bool val) => VisibilityImage6 = val ? "visible" : "hidden";
 
         private string _visibilityImage6;
 
@@ -752,37 +735,37 @@
         {
             if (val)
             {
-                Visibility_B1_Ein = "visible";
-                Visibility_B1_Aus = "hidden";
+                VisibilityB1Ein = "visible";
+                VisibilityB1Aus = "hidden";
             }
             else
             {
-                Visibility_B1_Ein = "hidden";
-                Visibility_B1_Aus = "visible";
+                VisibilityB1Ein = "hidden";
+                VisibilityB1Aus = "visible";
             }
         }
 
-        private string _visibility_B1_Ein;
+        private string _visibilityB1Ein;
 
-        public string Visibility_B1_Ein
+        public string VisibilityB1Ein
         {
-            get => _visibility_B1_Ein;
+            get => _visibilityB1Ein;
             set
             {
-                _visibility_B1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_B1_Ein));
+                _visibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _visibility_B1_Aus;
+        private string _visibilityB1Aus;
 
-        public string Visibility_B1_Aus
+        public string VisibilityB1Aus
         {
-            get => _visibility_B1_Aus;
+            get => _visibilityB1Aus;
             set
             {
-                _visibility_B1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_B1_Aus));
+                _visibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
 
@@ -794,37 +777,37 @@
         {
             if (val)
             {
-                Visibility_K1_Ein = "visible";
-                Visibility_K1_Aus = "hidden";
+                VisibilityK1Ein = "visible";
+                VisibilityK1Aus = "hidden";
             }
             else
             {
-                Visibility_K1_Ein = "hidden";
-                Visibility_K1_Aus = "visible";
+                VisibilityK1Ein = "hidden";
+                VisibilityK1Aus = "visible";
             }
         }
 
-        private string _visibility_K1_Ein;
+        private string _visibilityK1Ein;
 
-        public string Visibility_K1_Ein
+        public string VisibilityK1Ein
         {
-            get => _visibility_K1_Ein;
+            get => _visibilityK1Ein;
             set
             {
-                _visibility_K1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_K1_Ein));
+                _visibilityK1Ein = value;
+                OnPropertyChanged(nameof(VisibilityK1Ein));
             }
         }
 
-        private string _visibility_K1_Aus;
+        private string _visibilityK1Aus;
 
-        public string Visibility_K1_Aus
+        public string VisibilityK1Aus
         {
-            get => _visibility_K1_Aus;
+            get => _visibilityK1Aus;
             set
             {
-                _visibility_K1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_K1_Aus));
+                _visibilityK1Aus = value;
+                OnPropertyChanged(nameof(VisibilityK1Aus));
             }
         }
 
@@ -836,37 +819,37 @@
         {
             if (val)
             {
-                Visibility_K2_Ein = "visible";
-                Visibility_K2_Aus = "hidden";
+                VisibilityK2Ein = "visible";
+                VisibilityK2Aus = "hidden";
             }
             else
             {
-                Visibility_K2_Ein = "hidden";
-                Visibility_K2_Aus = "visible";
+                VisibilityK2Ein = "hidden";
+                VisibilityK2Aus = "visible";
             }
         }
 
-        private string _visibility_K2_Ein;
+        private string _visibilityK2Ein;
 
-        public string Visibility_K2_Ein
+        public string VisibilityK2Ein
         {
-            get => _visibility_K2_Ein;
+            get => _visibilityK2Ein;
             set
             {
-                _visibility_K2_Ein = value;
-                OnPropertyChanged(nameof(Visibility_K2_Ein));
+                _visibilityK2Ein = value;
+                OnPropertyChanged(nameof(VisibilityK2Ein));
             }
         }
 
-        private string _visibility_K2_Aus;
+        private string _visibilityK2Aus;
 
-        public string Visibility_K2_Aus
+        public string VisibilityK2Aus
         {
-            get => _visibility_K2_Aus;
+            get => _visibilityK2Aus;
             set
             {
-                _visibility_K2_Aus = value;
-                OnPropertyChanged(nameof(Visibility_K2_Aus));
+                _visibilityK2Aus = value;
+                OnPropertyChanged(nameof(VisibilityK2Aus));
             }
         }
 
@@ -874,10 +857,7 @@
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val)
-        {
-            if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
-        }
+        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? "visible" : "hidden";
 
         private string _visibilityRectangleAbleitung;
 
@@ -895,20 +875,17 @@
 
         #region Color F1
 
-        public void FarbeCircle_F1(bool val)
-        {
-            if (val) ColorCircle_F1 = "LawnGreen"; else ColorCircle_F1 = "Red";
-        }
+        public void FarbeCircle_F1(bool val) => ColorCircleF1 = val ? "LawnGreen" : "Red";
 
-        private string _colorCircle_F1;
+        private string _colorCircleF1;
 
-        public string ColorCircle_F1
+        public string ColorCircleF1
         {
-            get => _colorCircle_F1;
+            get => _colorCircleF1;
             set
             {
-                _colorCircle_F1 = value;
-                OnPropertyChanged(nameof(ColorCircle_F1));
+                _colorCircleF1 = value;
+                OnPropertyChanged(nameof(ColorCircleF1));
             }
         }
 
@@ -916,20 +893,17 @@
 
         #region Color Q1
 
-        public void FarbeCircle_Q1(bool val)
-        {
-            if (val) ColorCircle_Q1 = "lawngreen"; else ColorCircle_Q1 = "LightGray";
-        }
+        public void FarbeCircle_Q1(bool val) => ColorCircleQ1 = val ? "lawngreen" : "LightGray";
 
-        private string _colorCircle_Q1;
+        private string _colorCircleQ1;
 
-        public string ColorCircle_Q1
+        public string ColorCircleQ1
         {
-            get => _colorCircle_Q1;
+            get => _colorCircleQ1;
             set
             {
-                _colorCircle_Q1 = value;
-                OnPropertyChanged(nameof(ColorCircle_Q1));
+                _colorCircleQ1 = value;
+                OnPropertyChanged(nameof(ColorCircleQ1));
             }
         }
 
@@ -937,20 +911,17 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
-        }
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "lawngreen" : "LightGray";
 
-        private string _colorCircle_P1;
+        private string _colorCircleP1;
 
-        public string ColorCircle_P1
+        public string ColorCircleP1
         {
-            get => _colorCircle_P1;
+            get => _colorCircleP1;
             set
             {
-                _colorCircle_P1 = value;
-                OnPropertyChanged(nameof(ColorCircle_P1));
+                _colorCircleP1 = value;
+                OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
 
@@ -958,20 +929,17 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val)
-        {
-            if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
-        }
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? "red" : "LightGray";
 
-        private string _colorCircle_P2;
+        private string _colorCircleP2;
 
-        public string ColorCircle_P2
+        public string ColorCircleP2
         {
-            get => _colorCircle_P2;
+            get => _colorCircleP2;
             set
             {
-                _colorCircle_P2 = value;
-                OnPropertyChanged(nameof(ColorCircle_P2));
+                _colorCircleP2 = value;
+                OnPropertyChanged(nameof(ColorCircleP2));
             }
         }
 
@@ -979,10 +947,7 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val)
-        {
-            if (val) ColorRectangleZuleitung = "blue"; else ColorRectangleZuleitung = "lightblue";
-        }
+        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? "blue" : "lightblue";
 
         private string _colorRectangleZuleitung;
 
@@ -1002,7 +967,7 @@
 
         public void Margin_1(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
+            Margin1 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;

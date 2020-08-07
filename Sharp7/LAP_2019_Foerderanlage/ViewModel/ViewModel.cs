@@ -124,19 +124,19 @@
 
         #region BtnM1_RL
 
-        private ICommand _btnM1_RL;
+        private ICommand _btnM1Rl;
 
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnM1_RL => _btnM1_RL ?? (_btnM1_RL = new RelayCommand(p => ViAnzeige.SetManualM1_RL(), p => true));
+        public ICommand BtnM1Rl => _btnM1Rl ?? (_btnM1Rl = new RelayCommand(p => ViAnzeige.SetManualM1_RL(), p => true));
 
         #endregion BtnM1_RL
 
         #region BtnM1_LL
 
-        private ICommand _btnM1_LL;
+        private ICommand _btnM1Ll;
 
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnM1_LL => _btnM1_LL ?? (_btnM1_LL = new RelayCommand(p => ViAnzeige.SetManualM1_LL(), p => true));
+        public ICommand BtnM1Ll => _btnM1Ll ?? (_btnM1Ll = new RelayCommand(p => ViAnzeige.SetManualM1_LL(), p => true));
 
         #endregion BtnM1_LL
 
@@ -160,10 +160,10 @@
 
         #region BtnM1_LL_K1
 
-        private ICommand _btnM1_LL_K1;
+        private ICommand _btnM1LlK1;
 
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnM1_LL_K1 => _btnM1_LL_K1 ?? (_btnM1_LL_K1 = new RelayCommand(p => ViAnzeige.SetManualM1_LL_K1(), p => true));
+        public ICommand BtnM1LlK1 => _btnM1LlK1 ?? (_btnM1LlK1 = new RelayCommand(p => ViAnzeige.SetManualM1_LL_K1(), p => true));
 
         #endregion BtnM1_LL_K1
     }

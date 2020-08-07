@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        xmlns:local="clr-namespace:LAP_2018_1_Silosteuerung"
         mc:Ignorable="d"
         Title="LAP 2018/1 Silosteuerung mit Förderband und Wiegeeinrichtung" Height="980" Width="1400">
     <Grid>
@@ -68,9 +67,9 @@
 
         <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-        <Button x:Name="btnDebugWindow" Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual" />
+        <Button x:Name="BtnDebugWindow" Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual" />
 
-        <Image  x:Name="imgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
+        <Image  x:Name="ImgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
                 gif:ImageBehavior.RepeatBehavior="Forever"
                 gif:ImageBehavior.AnimationLoaded="AnimatedLoaded"
                 gif:ImageBehavior.AutoStart="False"

@@ -1,4 +1,4 @@
-﻿namespace LAP_2019_Foerderanlage
+﻿namespace LAP_2019_Foerderanlage.SetManual
 {
     public partial class SetManualWindow
     {

@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace LAP_2018_1_Silosteuerung.SetManual
+﻿namespace LAP_2018_1_Silosteuerung.SetManual
 {
-    public partial class SetManualWindow : Window
+    public partial class SetManualWindow
     {
         public SetManualWindow(LAP_2018_1_Silosteuerung.ViewModel.ViewModel foerderanlageViewModel)
         {

@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace LAP_2018_2_Abfuellanlage.SetManual
+﻿namespace LAP_2018_2_Abfuellanlage.SetManual
 {
-    public partial class SetManual : Window
+    public partial class SetManual
     {
         public SetManual(LAP_2018_2_Abfuellanlage.ViewModel.ViewModel viewModel)
         {

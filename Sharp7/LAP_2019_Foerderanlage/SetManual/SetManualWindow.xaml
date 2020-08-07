@@ -1,4 +1,4 @@
-﻿<Window x:Class="LAP_2019_Foerderanlage.SetManualWindow"
+﻿<Window x:Class="LAP_2019_Foerderanlage.SetManual.SetManualWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -38,10 +38,10 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="5" Grid.Row="3" Content="M1 RL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1_RL}"       Command="{Binding BtnM1_RL}" />
-        <Button Grid.Column="3" Grid.Row="3" Content="M1 LL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1_LL}"       Command="{Binding BtnM1_LL}" />
+        <Button Grid.Column="5" Grid.Row="3" Content="M1 RL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1RL}"        Command="{Binding BtnM1RL}" />
+        <Button Grid.Column="3" Grid.Row="3" Content="M1 LL"        ClickMode="{Binding ViAnzeige.ClickModeBtnM1LL}"        Command="{Binding BtnM1LL}" />
         <Button Grid.Column="3" Grid.Row="5" Content="M2"           ClickMode="{Binding ViAnzeige.ClickModeBtnM2}"          Command="{Binding BtnM2}" />
         <Button Grid.Column="3" Grid.Row="7" Content="K1"           ClickMode="{Binding ViAnzeige.ClickModeBtnK1}"          Command="{Binding BtnK1}" />
-        <Button Grid.Column="5" Grid.Row="6" Content="M1 LL + K1"   ClickMode="{Binding ViAnzeige.ClickModeBtnM1_LL_K1}"    Command="{Binding BtnM1_LL_K1}" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Button Grid.Column="5" Grid.Row="6" Content="M1 LL + K1"   ClickMode="{Binding ViAnzeige.ClickModeBtnM1LLK1}"      Command="{Binding BtnM1LLK1}" Grid.ColumnSpan="2" Grid.RowSpan="2" />
     </Grid>
 </Window>

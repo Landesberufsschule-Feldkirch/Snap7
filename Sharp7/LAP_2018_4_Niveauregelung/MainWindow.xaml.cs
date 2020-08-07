@@ -3,45 +3,42 @@ using System.Windows;
 
 namespace LAP_2018_4_Niveauregelung
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        public S7_1200 S7_1200 { get; set; }
+        public S7_1200 S71200 { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
-        public readonly ViewModel.ViewModel viewModel;
-        private readonly DatenRangieren datenRangieren;
-        private const int anzByteDigInput = 1;
-        private const int anzByteDigOutput = 1;
-        private const int anzByteAnalogInput = 0;
-        private const int anzByteAnalogOutput = 0;
+        public readonly ViewModel.ViewModel ViewModel;
+        private const int AnzByteDigInput = 1;
+        private const int AnzByteDigOutput = 1;
+        private const int AnzByteAnalogInput = 0;
+        private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()
         {
-            VersionText = "LAP 2018/4 Niveauregelung";
+            var versionText = "LAP 2018/4 Niveauregelung";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
-            viewModel = new ViewModel.ViewModel(this);
+            ViewModel = new ViewModel.ViewModel(this);
 
-            datenRangieren = new DatenRangieren(this, viewModel);
+            var datenRangieren = new DatenRangieren(this, ViewModel);
 
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = ViewModel;
 
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManualWindow(viewModel);
+            SetManualWindow = new SetManual.SetManualWindow(ViewModel);
             SetManualWindow.Show();
         }
     }

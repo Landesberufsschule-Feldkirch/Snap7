@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2018_3_Hydraulikaggregat.SetManual"
         mc:Ignorable="d"
         Title="SetManualWindow" Height="250" Width="600">
     <Grid>
@@ -33,6 +32,6 @@
         <Button Grid.Column="3" Grid.Row="3" Content="Q1"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}"     Command="{Binding BtnQ1}" />
         <Button Grid.Column="5" Grid.Row="3" Content="Q2"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ2}"     Command="{Binding BtnQ2}" />
         <Button Grid.Column="7" Grid.Row="3" Content="Q3"        ClickMode="{Binding ViAnzeige.ClickModeBtnQ3}"     Command="{Binding BtnQ3}" />
-        <Button Grid.Column="3" Grid.Row="5" Content="Q1 + Q3"   ClickMode="{Binding ViAnzeige.ClickModeBtnQ1_Q3}"  Command="{Binding BtnQ1_Q3}" Grid.ColumnSpan="5" />
+        <Button Grid.Column="3" Grid.Row="5" Content="Q1 + Q3"   ClickMode="{Binding ViAnzeige.ClickModeBtnQ1Q3}"   Command="{Binding BtnQ1Q3}" Grid.ColumnSpan="5" />
     </Grid>
 </Window>

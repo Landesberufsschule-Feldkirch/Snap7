@@ -34,7 +34,7 @@
             ClickModeBtnS7 = "Press";
             ClickModeBtnS8 = "Press";
 
-            ClickModeBtnM1_RL = "Press";
+            ClickModeBtnM1Rl = "Press";
             ClickModeBtnM1Ll = "Press";
             ClickModeBtnM2 = "Press";
             ClickModeBtnK1 = "Press";
@@ -147,20 +147,20 @@
 
         internal void SetS8() => Foerderanlage.S8 = ClickModeButtonS8();
 
-        internal void SetManualM1_RL() => Foerderanlage.Manual_M1_RL = ClickModeButtonM1_RL();
+        internal void SetManualM1_RL() => Foerderanlage.ManualM1Rl = ClickModeButtonM1_RL();
 
-        internal void SetManualM1_LL() => Foerderanlage.Manual_M1_LL = ClickModeButtonM1_LL();
+        internal void SetManualM1_LL() => Foerderanlage.ManualM1Ll = ClickModeButtonM1_LL();
 
         internal void SetManualM1_LL_K1()
         {
             bool m1LlK1 = ClickModeButtonM1_LL_K1();
-            Foerderanlage.Manual_M1_LL = m1LlK1;
-            Foerderanlage.Manual_K1 = m1LlK1;
+            Foerderanlage.ManualM1Ll = m1LlK1;
+            Foerderanlage.ManualK1 = m1LlK1;
         }
 
-        internal void SetManualM2() => Foerderanlage.Manual_M2 = ClickModeButtonM2();
+        internal void SetManualM2() => Foerderanlage.ManualM2 = ClickModeButtonM2();
 
-        internal void SetManualK1() => Foerderanlage.Manual_K1 = ClickModeButtonK1();
+        internal void SetManualK1() => Foerderanlage.ManualK1 = ClickModeButtonK1();
 
         #region SPS Version, Status und Farbe
 
@@ -445,27 +445,27 @@
 
         public bool ClickModeButtonM1_RL()
         {
-            if (ClickModeBtnM1_RL == "Press")
+            if (ClickModeBtnM1Rl == "Press")
             {
-                ClickModeBtnM1_RL = "Release";
+                ClickModeBtnM1Rl = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtnM1_RL = "Press";
+                ClickModeBtnM1Rl = "Press";
             }
             return false;
         }
 
-        private string _clickModeBtnM1_RL;
+        private string _clickModeBtnM1Rl;
 
-        public string ClickModeBtnM1_RL
+        public string ClickModeBtnM1Rl
         {
-            get => _clickModeBtnM1_RL;
+            get => _clickModeBtnM1Rl;
             set
             {
-                _clickModeBtnM1_RL = value;
-                OnPropertyChanged(nameof(ClickModeBtnM1_RL));
+                _clickModeBtnM1Rl = value;
+                OnPropertyChanged(nameof(ClickModeBtnM1Rl));
             }
         }
 

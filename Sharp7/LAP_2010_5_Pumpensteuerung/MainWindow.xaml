@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2010_5_Pumpensteuerung"
         mc:Ignorable="d"
         Title="LAP 2010/5 Pumpensteuerung" Height="950" Width="1200">
     <Grid>
@@ -98,8 +97,8 @@
         </Button>
         <Label Content="S3" Grid.Column="14"    Grid.Row="11"  Grid.RowSpan="2" FontSize="14pt"  Margin="10,16,0,16" />
 
-        <Ellipse Grid.Column="15" Grid.Row="15"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P1}" />
-        <Ellipse Grid.Column="17" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircle_P2}" />
+        <Ellipse Grid.Column="15" Grid.Row="15"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP1}" />
+        <Ellipse Grid.Column="17" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP2}" />
 
         <Label Content="P1" Grid.Column="14"    Grid.Row="15"  Grid.RowSpan="2" FontSize="14pt"  Margin="10,16,0,16" />
         <Label Content="P2" Grid.Column="16"    Grid.Row="15" Grid.RowSpan="2" FontSize="14pt" Margin="36,16,0,16" />
@@ -107,7 +106,7 @@
         <Label Content="Pumpe"    Grid.Column="15"    Grid.Row="15"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" Margin="0,16" Height="38" Width="70" />
         <Label Content="Störung"  Grid.Column="17"    Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" Margin="0,16" Width="70" Height="38" />
 
-        <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnzeige.ColorThermorelais_F1}" Command="{Binding BtnThermorelaisF1}" />
+        <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnzeige.ColorThermorelaisF1}" Command="{Binding BtnThermorelaisF1}" />
 
         <Label Content="Q1" Grid.Column="4" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
 

@@ -8,13 +8,13 @@
     {
         private readonly double HoeheFuellBalken = 9 * 35;
 
-        private readonly MainWindow mainWindow;
-        private readonly LAP_2010_5_Pumpensteuerung.Model.Pumpensteuerung pumpensteuerung;
+        private readonly MainWindow _mainWindow;
+        private readonly Model.Pumpensteuerung _pumpensteuerung;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2010_5_Pumpensteuerung.Model.Pumpensteuerung nr)
+        public VisuAnzeigen(MainWindow mw, Model.Pumpensteuerung nr)
         {
-            mainWindow = mw;
-            pumpensteuerung = nr;
+            _mainWindow = mw;
+            _pumpensteuerung = nr;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -25,15 +25,15 @@
 
             ClickModeBtnS3 = "Press";
 
-            ColorThermorelais_F1 = "LawnGreen";
+            ColorThermorelaisF1 = "LawnGreen";
 
             ColorAbleitungOben = "LightBlue";
             ColorAbleitungUnten = "LightBlue";
             ColorZuleitungLinksWaagrecht = "LightBlue";
             ColorZuleitungLinksSenkrecht = "LightBlue";
 
-            ColorCircle_P1 = "LightGray";
-            ColorCircle_P2 = "LightGray";
+            ColorCircleP1 = "LightGray";
+            ColorCircleP2 = "LightGray";
 
             VisibilityQ1Ein = "visible";
             VisibilityQ1Aus = "hidden";
@@ -58,38 +58,39 @@
         {
             while (true)
             {
-                FarbeTherorelais_F1(pumpensteuerung.F1);
-                FarbeCircle_P1(pumpensteuerung.P1);
-                FarbeCircle_P2(pumpensteuerung.P2);
-                FarbeZuleitungLinksWaagrecht(pumpensteuerung.Q1);
-                FarbeZuleitungLinksSenkrecht(pumpensteuerung.Q1);
-                FarbeAbleitungOben(pumpensteuerung.Pegel > 0.01);
-                FarbeAbleitungUnten((pumpensteuerung.Pegel > 0.01) && pumpensteuerung.Y1);
+                FarbeTherorelais_F1(_pumpensteuerung.F1);
+                FarbeCircle_P1(_pumpensteuerung.P1);
+                FarbeCircle_P2(_pumpensteuerung.P2);
+                FarbeZuleitungLinksWaagrecht(_pumpensteuerung.Q1);
+                FarbeZuleitungLinksSenkrecht(_pumpensteuerung.Q1);
+                FarbeAbleitungOben(_pumpensteuerung.Pegel > 0.01);
+                FarbeAbleitungUnten((_pumpensteuerung.Pegel > 0.01) && _pumpensteuerung.Y1);
 
-                SichtbarkeitQ1(pumpensteuerung.Q1);
-                SichtbarkeitB1(pumpensteuerung.B1);
-                SichtbarkeitB2(pumpensteuerung.B2);
-                SichtbarkeitY1(pumpensteuerung.Y1);
+                SichtbarkeitQ1(_pumpensteuerung.Q1);
+                SichtbarkeitB1(_pumpensteuerung.B1);
+                SichtbarkeitB2(_pumpensteuerung.B2);
+                SichtbarkeitY1(_pumpensteuerung.Y1);
 
-                Margin_1(pumpensteuerung.Pegel);
+                Margin_1(_pumpensteuerung.Pegel);
 
-                SchalterWinkel(pumpensteuerung.S1, pumpensteuerung.S2);
+                SchalterWinkel(_pumpensteuerung.S1, _pumpensteuerung.S2);
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
                     if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS3() => pumpensteuerung.S3 = ClickModeButtonS3();
+        internal void SetS3() => _pumpensteuerung.S3 = ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
 
@@ -104,24 +105,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -218,20 +219,17 @@
 
         #region Color Thermorelais F1
 
-        public void FarbeTherorelais_F1(bool val)
-        {
-            if (val) ColorThermorelais_F1 = "LawnGreen"; else ColorThermorelais_F1 = "Red";
-        }
+        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? "LawnGreen" : "Red";
 
-        private string _colorThermorelais_F1;
+        private string _colorThermorelaisF1;
 
-        public string ColorThermorelais_F1
+        public string ColorThermorelaisF1
         {
-            get => _colorThermorelais_F1;
+            get => _colorThermorelaisF1;
             set
             {
-                _colorThermorelais_F1 = value;
-                OnPropertyChanged(nameof(ColorThermorelais_F1));
+                _colorThermorelaisF1 = value;
+                OnPropertyChanged(nameof(ColorThermorelaisF1));
             }
         }
 
@@ -239,20 +237,17 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "LightGray";
-        }
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "lawngreen" : "LightGray";
 
-        private string _colorCircle_P1;
+        private string _colorCircleP1;
 
-        public string ColorCircle_P1
+        public string ColorCircleP1
         {
-            get => _colorCircle_P1;
+            get => _colorCircleP1;
             set
             {
-                _colorCircle_P1 = value;
-                OnPropertyChanged(nameof(ColorCircle_P1));
+                _colorCircleP1 = value;
+                OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
 
@@ -260,20 +255,17 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val)
-        {
-            if (val) ColorCircle_P2 = "red"; else ColorCircle_P2 = "LightGray";
-        }
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? "red" : "LightGray";
 
-        private string _colorCircle_P2;
+        private string _colorCircleP2;
 
-        public string ColorCircle_P2
+        public string ColorCircleP2
         {
-            get => _colorCircle_P2;
+            get => _colorCircleP2;
             set
             {
-                _colorCircle_P2 = value;
-                OnPropertyChanged(nameof(ColorCircle_P2));
+                _colorCircleP2 = value;
+                OnPropertyChanged(nameof(ColorCircleP2));
             }
         }
 
@@ -281,10 +273,7 @@
 
         #region Color AbleitungOben
 
-        public void FarbeAbleitungOben(bool val)
-        {
-            if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue";
-        }
+        public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? "Blue" : "LightBlue";
 
         private string _colorAbleitungOben;
 
@@ -302,10 +291,7 @@
 
         #region Color AbleitungUnten
 
-        public void FarbeAbleitungUnten(bool val)
-        {
-            if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue";
-        }
+        public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? "Blue" : "LightBlue";
 
         private string _colorAbleitungUnten;
 
@@ -323,10 +309,7 @@
 
         #region Color ZuleitungLinksWaagrecht
 
-        public void FarbeZuleitungLinksWaagrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungLinksWaagrecht;
 
@@ -344,10 +327,7 @@
 
         #region Color ZuleitungLinksSenkrecht
 
-        public void FarbeZuleitungLinksSenkrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungLinksSenkrecht;
 
@@ -535,7 +515,7 @@
 
         public void Margin_1(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
+            Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;

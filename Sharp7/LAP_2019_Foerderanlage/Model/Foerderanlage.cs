@@ -25,16 +25,16 @@
         public bool Q2 { get; set; }        // Förderband Linkslauf
         public bool T1 { get; set; }        // Freigabe FU (Schneckenförderer)
 
-        public bool Manual_M1_RL { get; set; }
-        public bool Manual_M1_LL { get; set; }
-        public bool Manual_M2 { get; set; }
-        public bool Manual_K1 { get; set; }
+        public bool ManualM1Rl { get; set; }
+        public bool ManualM1Ll { get; set; }
+        public bool ManualM2 { get; set; }
+        public bool ManualK1 { get; set; }
 
-        private readonly MainWindow mainWindow;
+        private readonly MainWindow _mainWindow;
 
         public Foerderanlage(MainWindow mw)
         {
-            mainWindow = mw;
+            _mainWindow = mw;
 
             Wagen = new Wagen();
             Silo = new Silo();
@@ -58,12 +58,12 @@
 
                 if (Silo.GetFuellstand() > 0 && Q2 && K1) Wagen.Fuellen();
 
-                if (mainWindow.DebugWindowAktiv)
+                if (_mainWindow.DebugWindowAktiv)
                 {
-                    Q1 = Manual_M1_RL;
-                    Q2 = Manual_M1_LL;
-                    T1 = Manual_M2;
-                    K1 = Manual_K1;
+                    Q1 = ManualM1Rl;
+                    Q2 = ManualM1Ll;
+                    T1 = ManualM2;
+                    K1 = ManualK1;
                 }
 
                 Thread.Sleep(10);

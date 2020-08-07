@@ -19,19 +19,19 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public bool S4 { get; set; }
         public double Pegel { get; set; }
 
-        private readonly int anzahlFlaschen;
-        private int aktuelleFlasche;
+        private readonly int _anzahlFlaschen;
+        private int _aktuelleFlasche;
 
         public Abfuellanlage()
         {
             AlleFlaschen = new List<Flaschen>
             {
-                new Flaschen(anzahlFlaschen++),
-                new Flaschen(anzahlFlaschen++),
-                new Flaschen(anzahlFlaschen++),
-                new Flaschen(anzahlFlaschen++),
-                new Flaschen(anzahlFlaschen++),
-                new Flaschen(anzahlFlaschen++)
+                new Flaschen(_anzahlFlaschen++),
+                new Flaschen(_anzahlFlaschen++),
+                new Flaschen(_anzahlFlaschen++),
+                new Flaschen(_anzahlFlaschen++),
+                new Flaschen(_anzahlFlaschen++),
+                new Flaschen(_anzahlFlaschen++)
             };
 
             S2 = false;
@@ -50,19 +50,20 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 if (K1) Pegel -= LeerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
-                if (K2) AlleFlaschen[aktuelleFlasche].FlascheVereinzeln();
+                if (K2) AlleFlaschen[_aktuelleFlasche].FlascheVereinzeln();
 
                 B1 = false;
                 foreach (var flasche in AlleFlaschen)
                 {
                     var stop = KollisionErkennen(flasche);
                     bool lichtschranke;
-                    (lichtschranke, aktuelleFlasche) = flasche.FlascheBewegen(Q1, anzahlFlaschen, aktuelleFlasche, stop);
+                    (lichtschranke, _aktuelleFlasche) = flasche.FlascheBewegen(Q1, _anzahlFlaschen, _aktuelleFlasche, stop);
                     B1 |= lichtschranke;
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private bool KollisionErkennen(Flaschen bierflasche)
@@ -72,7 +73,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
             foreach (var flasche in AlleFlaschen)
             {
-                if (bierflasche.ID != flasche.ID)
+                if (bierflasche.Id != flasche.Id)
                 {
                     var (hx, hy) = flasche.GetRichtung();
                     if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
@@ -84,15 +85,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
         internal void TasterNachfuellen() => Pegel = 1;
 
-        internal void TasterF1()
-        {
-            if (F1) F1 = false; else F1 = true;
-        }
+        internal void TasterF1() => F1 = !F1;
 
         internal void AllesReset()
         {
             Pegel = 0.4;
-            aktuelleFlasche = 0;
+            _aktuelleFlasche = 0;
             foreach (var flasche in AlleFlaschen) { flasche.Reset(); }
         }
     }

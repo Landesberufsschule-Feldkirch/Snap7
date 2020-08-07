@@ -6,15 +6,15 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly double HoeheFuellBalken = 315;
+        private const double HoeheFuellBalken = 315;
 
-        private readonly MainWindow mainWindow;
-        private readonly LAP_2018_4_Niveauregelung.Model.NiveauRegelung niveauRegelung;
+        private readonly MainWindow _mainWindow;
+        private readonly Model.NiveauRegelung _niveauRegelung;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2018_4_Niveauregelung.Model.NiveauRegelung nr)
+        public VisuAnzeigen(MainWindow mw, Model.NiveauRegelung nr)
         {
-            mainWindow = mw;
-            niveauRegelung = nr;
+            _mainWindow = mw;
+            _niveauRegelung = nr;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -27,12 +27,12 @@
             ClickModeBtnS2 = "Press";
             ClickModeBtnS3 = "Press";
 
-            ColorThermorelais_F1 = "LawnGreen";
-            ColorThermorelais_F2 = "LawnGreen";
+            ColorThermorelaisF1 = "LawnGreen";
+            ColorThermorelaisF2 = "LawnGreen";
 
-            ColorCircle_P1 = "White";
-            ColorCircle_P2 = "White";
-            ColorCircle_P2 = "White";
+            ColorCircleP1 = "White";
+            ColorCircleP2 = "White";
+            ColorCircleP2 = "White";
 
             ColorAbleitungOben = "LightBlue";
             ColorAbleitungUnten = "LightBlue";
@@ -41,19 +41,19 @@
             ColorZuleitungRechtsWaagrecht = "LightBlue";
             ColorZuleitungRechtsSenkrecht = "LightBlue";
 
-            Visibility_B1_Ein = "visible";
-            Visibility_B2_Ein = "visible";
-            Visibility_B3_Ein = "visible";
-            Visibility_Q1_Ein = "visible";
-            Visibility_Q2_Ein = "visible";
-            Visibility_Ventil_Ein = "visible";
+            VisibilityB1Ein = "visible";
+            VisibilityB2Ein = "visible";
+            VisibilityB3Ein = "visible";
+            VisibilityQ1Ein = "visible";
+            VisibilityQ2Ein = "visible";
+            VisibilityVentilEin = "visible";
 
-            Visibility_B1_Aus = "hidden";
-            Visibility_B2_Aus = "hidden";
-            Visibility_B3_Aus = "hidden";
-            Visibility_Q1_Aus = "hidden";
-            Visibility_Q2_Aus = "hidden";
-            Visibility_Ventil_Aus = "hidden";
+            VisibilityB1Aus = "hidden";
+            VisibilityB2Aus = "hidden";
+            VisibilityB3Aus = "hidden";
+            VisibilityQ1Aus = "hidden";
+            VisibilityQ2Aus = "hidden";
+            VisibilityVentilAus = "hidden";
 
             Margin1 = new Thickness(0, 30, 0, 0);
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -63,47 +63,48 @@
         {
             while (true)
             {
-                FarbeTherorelais_F1(!niveauRegelung.F1);
-                FarbeTherorelais_F2(!niveauRegelung.F2);
-                FarbeCircle_P1(niveauRegelung.P1);
-                FarbeCircle_P2(niveauRegelung.P2);
-                FarbeCircle_P3(niveauRegelung.P3);
+                FarbeTherorelais_F1(!_niveauRegelung.F1);
+                FarbeTherorelais_F2(!_niveauRegelung.F2);
+                FarbeCircle_P1(_niveauRegelung.P1);
+                FarbeCircle_P2(_niveauRegelung.P2);
+                FarbeCircle_P3(_niveauRegelung.P3);
 
-                FarbeZuleitungLinksWaagrecht(niveauRegelung.Q1);
-                FarbeZuleitungLinksSenkrecht(niveauRegelung.Q1);
-                FarbeZuleitungRechtsWaagrecht(niveauRegelung.Q2);
-                FarbeZuleitungRechtsSenkrecht(niveauRegelung.Q2);
-                FarbeAbleitungOben(niveauRegelung.Pegel > 0.01);
-                FarbeAbleitungUnten(niveauRegelung.Y1 && (niveauRegelung.Pegel > 0.01));
+                FarbeZuleitungLinksWaagrecht(_niveauRegelung.Q1);
+                FarbeZuleitungLinksSenkrecht(_niveauRegelung.Q1);
+                FarbeZuleitungRechtsWaagrecht(_niveauRegelung.Q2);
+                FarbeZuleitungRechtsSenkrecht(_niveauRegelung.Q2);
+                FarbeAbleitungOben(_niveauRegelung.Pegel > 0.01);
+                FarbeAbleitungUnten(_niveauRegelung.Y1 && (_niveauRegelung.Pegel > 0.01));
 
-                VisibilitySensorB1(niveauRegelung.B1);
-                VisibilitySensorB2(niveauRegelung.B2);
-                VisibilitySensorB3(niveauRegelung.B3);
-                VisibilityMotorQ1(niveauRegelung.Q1);
-                VisibilityMotorQ2(niveauRegelung.Q2);
-                VisibilityVentilY1(niveauRegelung.Y1);
+                VisibilitySensorB1(_niveauRegelung.B1);
+                VisibilitySensorB2(_niveauRegelung.B2);
+                VisibilitySensorB3(_niveauRegelung.B3);
+                VisibilityMotorQ1(_niveauRegelung.Q1);
+                VisibilityMotorQ2(_niveauRegelung.Q2);
+                VisibilityVentilY1(_niveauRegelung.Y1);
 
-                Margin_1(niveauRegelung.Pegel);
+                Margin_1(_niveauRegelung.Pegel);
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void TasterS1() => niveauRegelung.S1 = ClickModeButtonS1();
+        internal void TasterS1() => _niveauRegelung.S1 = ClickModeButtonS1();
 
-        internal void TasterS2() => niveauRegelung.S2 = !ClickModeButtonS2();
+        internal void TasterS2() => _niveauRegelung.S2 = !ClickModeButtonS2();
 
-        internal void TasterS3() => niveauRegelung.S3 = ClickModeButtonS3();
+        internal void TasterS3() => _niveauRegelung.S3 = ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
 
@@ -118,24 +119,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -269,20 +270,17 @@
 
         #region Color Thermorelais F1
 
-        public void FarbeTherorelais_F1(bool val)
-        {
-            if (val) ColorThermorelais_F1 = "Red"; else ColorThermorelais_F1 = "LawnGreen";
-        }
+        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? "Red" : "LawnGreen";
 
-        private string _colorThermorelais_F1;
+        private string _colorThermorelaisF1;
 
-        public string ColorThermorelais_F1
+        public string ColorThermorelaisF1
         {
-            get => _colorThermorelais_F1;
+            get => _colorThermorelaisF1;
             set
             {
-                _colorThermorelais_F1 = value;
-                OnPropertyChanged(nameof(ColorThermorelais_F1));
+                _colorThermorelaisF1 = value;
+                OnPropertyChanged(nameof(ColorThermorelaisF1));
             }
         }
 
@@ -290,20 +288,17 @@
 
         #region Color Thermorelais F2
 
-        public void FarbeTherorelais_F2(bool val)
-        {
-            if (val) ColorThermorelais_F2 = "Red"; else ColorThermorelais_F2 = "LawnGreen";
-        }
+        public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? "Red" : "LawnGreen";
 
-        private string _colorThermorelais_F2;
+        private string _colorThermorelaisF2;
 
-        public string ColorThermorelais_F2
+        public string ColorThermorelaisF2
         {
-            get => _colorThermorelais_F2;
+            get => _colorThermorelaisF2;
             set
             {
-                _colorThermorelais_F2 = value;
-                OnPropertyChanged(nameof(ColorThermorelais_F2));
+                _colorThermorelaisF2 = value;
+                OnPropertyChanged(nameof(ColorThermorelaisF2));
             }
         }
 
@@ -311,20 +306,17 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "Green"; else ColorCircle_P1 = "White";
-        }
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "Green" : "White";
 
-        private string _colorCircle_P1;
+        private string _colorCircleP1;
 
-        public string ColorCircle_P1
+        public string ColorCircleP1
         {
-            get => _colorCircle_P1;
+            get => _colorCircleP1;
             set
             {
-                _colorCircle_P1 = value;
-                OnPropertyChanged(nameof(ColorCircle_P1));
+                _colorCircleP1 = value;
+                OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
 
@@ -332,20 +324,17 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val)
-        {
-            if (val) ColorCircle_P2 = "Red"; else ColorCircle_P2 = "White";
-        }
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? "Red" : "White";
 
-        private string _colorCircle_P2;
+        private string _colorCircleP2;
 
-        public string ColorCircle_P2
+        public string ColorCircleP2
         {
-            get => _colorCircle_P2;
+            get => _colorCircleP2;
             set
             {
-                _colorCircle_P2 = value;
-                OnPropertyChanged(nameof(ColorCircle_P2));
+                _colorCircleP2 = value;
+                OnPropertyChanged(nameof(ColorCircleP2));
             }
         }
 
@@ -353,20 +342,17 @@
 
         #region Color P3
 
-        public void FarbeCircle_P3(bool val)
-        {
-            if (val) ColorCircle_P3 = "OrangeRed"; else ColorCircle_P3 = "White";
-        }
+        public void FarbeCircle_P3(bool val) => ColorCircleP3 = val ? "OrangeRed" : "White";
 
-        private string _colorCircle_P3;
+        private string _colorCircleP3;
 
-        public string ColorCircle_P3
+        public string ColorCircleP3
         {
-            get => _colorCircle_P3;
+            get => _colorCircleP3;
             set
             {
-                _colorCircle_P3 = value;
-                OnPropertyChanged(nameof(ColorCircle_P3));
+                _colorCircleP3 = value;
+                OnPropertyChanged(nameof(ColorCircleP3));
             }
         }
 
@@ -374,10 +360,7 @@
 
         #region Color AbleitungOben
 
-        public void FarbeAbleitungOben(bool val)
-        {
-            if (val) ColorAbleitungOben = "Blue"; else ColorAbleitungOben = "LightBlue";
-        }
+        public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? "Blue" : "LightBlue";
 
         private string _colorAbleitungOben;
 
@@ -395,10 +378,7 @@
 
         #region Color AbleitungUnten
 
-        public void FarbeAbleitungUnten(bool val)
-        {
-            if (val) ColorAbleitungUnten = "Blue"; else ColorAbleitungUnten = "LightBlue";
-        }
+        public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? "Blue" : "LightBlue";
 
         private string _colorAbleitungUnten;
 
@@ -416,10 +396,7 @@
 
         #region Color ZuleitungLinksWaagrecht
 
-        public void FarbeZuleitungLinksWaagrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksWaagrecht = "Blue"; else ColorZuleitungLinksWaagrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungLinksWaagrecht;
 
@@ -437,10 +414,7 @@
 
         #region Color ZuleitungLinksSenkrecht
 
-        public void FarbeZuleitungLinksSenkrecht(bool val)
-        {
-            if (val) ColorZuleitungLinksSenkrecht = "Blue"; else ColorZuleitungLinksSenkrecht = "LightBlue";
-        }
+        public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungLinksSenkrecht;
 
@@ -458,10 +432,7 @@
 
         #region Color ZuleitungRechtsWaagrecht
 
-        public void FarbeZuleitungRechtsWaagrecht(bool val)
-        {
-            if (val) ColorZuleitungRechtsWaagrecht = "Blue"; else ColorZuleitungRechtsWaagrecht = "LightBlue";
-        }
+        public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungRechtsWaagrecht;
 
@@ -479,10 +450,7 @@
 
         #region Color ZuleitungRechtsSenkrecht
 
-        public void FarbeZuleitungRechtsSenkrecht(bool val)
-        {
-            if (val) ColorZuleitungRechtsSenkrecht = "Blue"; else ColorZuleitungRechtsSenkrecht = "LightBlue";
-        }
+        public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? "Blue" : "LightBlue";
 
         private string _colorZuleitungRechtsSenkrecht;
 
@@ -504,37 +472,37 @@
         {
             if (val)
             {
-                Visibility_B1_Ein = "visible";
-                Visibility_B1_Aus = "hidden";
+                VisibilityB1Ein = "visible";
+                VisibilityB1Aus = "hidden";
             }
             else
             {
-                Visibility_B1_Ein = "hidden";
-                Visibility_B1_Aus = "visible";
+                VisibilityB1Ein = "hidden";
+                VisibilityB1Aus = "visible";
             }
         }
 
-        private string _visibility_B1_Ein;
+        private string _visibilityB1Ein;
 
-        public string Visibility_B1_Ein
+        public string VisibilityB1Ein
         {
-            get => _visibility_B1_Ein;
+            get => _visibilityB1Ein;
             set
             {
-                _visibility_B1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_B1_Ein));
+                _visibilityB1Ein = value;
+                OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
 
-        private string _visibility_B1_Aus;
+        private string _visibilityB1Aus;
 
-        public string Visibility_B1_Aus
+        public string VisibilityB1Aus
         {
-            get => _visibility_B1_Aus;
+            get => _visibilityB1Aus;
             set
             {
-                _visibility_B1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_B1_Aus));
+                _visibilityB1Aus = value;
+                OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
 
@@ -546,37 +514,37 @@
         {
             if (val)
             {
-                Visibility_B2_Ein = "visible";
-                Visibility_B2_Aus = "hidden";
+                VisibilityB2Ein = "visible";
+                VisibilityB2Aus = "hidden";
             }
             else
             {
-                Visibility_B2_Ein = "hidden";
-                Visibility_B2_Aus = "visible";
+                VisibilityB2Ein = "hidden";
+                VisibilityB2Aus = "visible";
             }
         }
 
-        private string _visibility_B2_Ein;
+        private string _visibilityB2Ein;
 
-        public string Visibility_B2_Ein
+        public string VisibilityB2Ein
         {
-            get => _visibility_B2_Ein;
+            get => _visibilityB2Ein;
             set
             {
-                _visibility_B2_Ein = value;
-                OnPropertyChanged(nameof(Visibility_B2_Ein));
+                _visibilityB2Ein = value;
+                OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
 
-        private string _visibility_B2_Aus;
+        private string _visibilityB2Aus;
 
-        public string Visibility_B2_Aus
+        public string VisibilityB2Aus
         {
-            get => _visibility_B2_Aus;
+            get => _visibilityB2Aus;
             set
             {
-                _visibility_B2_Aus = value;
-                OnPropertyChanged(nameof(Visibility_B2_Aus));
+                _visibilityB2Aus = value;
+                OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
 
@@ -588,37 +556,37 @@
         {
             if (val)
             {
-                Visibility_B3_Ein = "visible";
-                Visibility_B3_Aus = "hidden";
+                VisibilityB3Ein = "visible";
+                VisibilityB3Aus = "hidden";
             }
             else
             {
-                Visibility_B3_Ein = "hidden";
-                Visibility_B3_Aus = "visible";
+                VisibilityB3Ein = "hidden";
+                VisibilityB3Aus = "visible";
             }
         }
 
-        private string _visibility_B3_Ein;
+        private string _visibilityB3Ein;
 
-        public string Visibility_B3_Ein
+        public string VisibilityB3Ein
         {
-            get => _visibility_B3_Ein;
+            get => _visibilityB3Ein;
             set
             {
-                _visibility_B3_Ein = value;
-                OnPropertyChanged(nameof(Visibility_B3_Ein));
+                _visibilityB3Ein = value;
+                OnPropertyChanged(nameof(VisibilityB3Ein));
             }
         }
 
-        private string _visibility_B3_Aus;
+        private string _visibilityB3Aus;
 
-        public string Visibility_B3_Aus
+        public string VisibilityB3Aus
         {
-            get => _visibility_B3_Aus;
+            get => _visibilityB3Aus;
             set
             {
-                _visibility_B3_Aus = value;
-                OnPropertyChanged(nameof(Visibility_B3_Aus));
+                _visibilityB3Aus = value;
+                OnPropertyChanged(nameof(VisibilityB3Aus));
             }
         }
 
@@ -630,37 +598,37 @@
         {
             if (val)
             {
-                Visibility_Q1_Ein = "visible";
-                Visibility_Q1_Aus = "hidden";
+                VisibilityQ1Ein = "visible";
+                VisibilityQ1Aus = "hidden";
             }
             else
             {
-                Visibility_Q1_Ein = "hidden";
-                Visibility_Q1_Aus = "visible";
+                VisibilityQ1Ein = "hidden";
+                VisibilityQ1Aus = "visible";
             }
         }
 
-        private string _visibility_Q1_Ein;
+        private string _visibilityQ1Ein;
 
-        public string Visibility_Q1_Ein
+        public string VisibilityQ1Ein
         {
-            get => _visibility_Q1_Ein;
+            get => _visibilityQ1Ein;
             set
             {
-                _visibility_Q1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_Q1_Ein));
+                _visibilityQ1Ein = value;
+                OnPropertyChanged(nameof(VisibilityQ1Ein));
             }
         }
 
-        private string _visibility_Q1_Aus;
+        private string _visibilityQ1Aus;
 
-        public string Visibility_Q1_Aus
+        public string VisibilityQ1Aus
         {
-            get => _visibility_Q1_Aus;
+            get => _visibilityQ1Aus;
             set
             {
-                _visibility_Q1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_Q1_Aus));
+                _visibilityQ1Aus = value;
+                OnPropertyChanged(nameof(VisibilityQ1Aus));
             }
         }
 
@@ -672,37 +640,37 @@
         {
             if (val)
             {
-                Visibility_Q2_Ein = "visible";
-                Visibility_Q2_Aus = "hidden";
+                VisibilityQ2Ein = "visible";
+                VisibilityQ2Aus = "hidden";
             }
             else
             {
-                Visibility_Q2_Ein = "hidden";
-                Visibility_Q2_Aus = "visible";
+                VisibilityQ2Ein = "hidden";
+                VisibilityQ2Aus = "visible";
             }
         }
 
-        private string _visibility_Q2_Ein;
+        private string _visibilityQ2Ein;
 
-        public string Visibility_Q2_Ein
+        public string VisibilityQ2Ein
         {
-            get => _visibility_Q2_Ein;
+            get => _visibilityQ2Ein;
             set
             {
-                _visibility_Q2_Ein = value;
-                OnPropertyChanged(nameof(Visibility_Q2_Ein));
+                _visibilityQ2Ein = value;
+                OnPropertyChanged(nameof(VisibilityQ2Ein));
             }
         }
 
-        private string _visibility_Q2_Aus;
+        private string _visibilityQ2Aus;
 
-        public string Visibility_Q2_Aus
+        public string VisibilityQ2Aus
         {
-            get => _visibility_Q2_Aus;
+            get => _visibilityQ2Aus;
             set
             {
-                _visibility_Q2_Aus = value;
-                OnPropertyChanged(nameof(Visibility_Q2_Aus));
+                _visibilityQ2Aus = value;
+                OnPropertyChanged(nameof(VisibilityQ2Aus));
             }
         }
 
@@ -714,37 +682,37 @@
         {
             if (val)
             {
-                Visibility_Ventil_Ein = "visible";
-                Visibility_Ventil_Aus = "hidden";
+                VisibilityVentilEin = "visible";
+                VisibilityVentilAus = "hidden";
             }
             else
             {
-                Visibility_Ventil_Ein = "hidden";
-                Visibility_Ventil_Aus = "visible";
+                VisibilityVentilEin = "hidden";
+                VisibilityVentilAus = "visible";
             }
         }
 
-        private string _visibility_Ventil_Ein;
+        private string _visibilityVentilEin;
 
-        public string Visibility_Ventil_Ein
+        public string VisibilityVentilEin
         {
-            get => _visibility_Ventil_Ein;
+            get => _visibilityVentilEin;
             set
             {
-                _visibility_Ventil_Ein = value;
-                OnPropertyChanged(nameof(Visibility_Ventil_Ein));
+                _visibilityVentilEin = value;
+                OnPropertyChanged(nameof(VisibilityVentilEin));
             }
         }
 
-        private string _visibility_Ventil_Aus;
+        private string _visibilityVentilAus;
 
-        public string Visibility_Ventil_Aus
+        public string VisibilityVentilAus
         {
-            get => _visibility_Ventil_Aus;
+            get => _visibilityVentilAus;
             set
             {
-                _visibility_Ventil_Aus = value;
-                OnPropertyChanged(nameof(Visibility_Ventil_Aus));
+                _visibilityVentilAus = value;
+                OnPropertyChanged(nameof(VisibilityVentilAus));
             }
         }
 
@@ -752,10 +720,7 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel)
-        {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_1(double pegel) => Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin1;
 

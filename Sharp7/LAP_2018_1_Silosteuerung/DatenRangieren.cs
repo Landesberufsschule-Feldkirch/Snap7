@@ -2,16 +2,16 @@
 {
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
-        private readonly ViewModel.ViewModel foerderanlageViewModel;
+        private readonly MainWindow _mainWindow;
+        private readonly ViewModel.ViewModel _foerderanlageViewModel;
 
         private enum BitPosAusgang
         {
             P1 = 0, // Anlage Ein
             P2,     //Sammelstörung
-            Q3_RL,  //Förderband Rechtslauf
-            Q4_LL,  // Förderband Linkslauf
-            XFU     // Freigabe FU (Schneckenförderer)
+            Q3Rl,  //Förderband Rechtslauf
+            Q4Ll,  // Förderband Linkslauf
+            Xfu     // Freigabe FU (Schneckenförderer)
         }
 
         private enum BitPosEingang
@@ -67,8 +67,8 @@
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
-            mainWindow = mw;
-            foerderanlageViewModel = vm;
+            _mainWindow = mw;
+            _foerderanlageViewModel = vm;
         }
     }
 }

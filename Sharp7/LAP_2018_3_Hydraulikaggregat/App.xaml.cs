@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace LAP_2018_3_Hydraulikaggregat
+﻿namespace LAP_2018_3_Hydraulikaggregat
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

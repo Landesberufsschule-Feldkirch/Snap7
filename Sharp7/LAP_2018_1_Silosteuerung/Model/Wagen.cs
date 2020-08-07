@@ -6,86 +6,85 @@ namespace LAP_2018_1_Silosteuerung.Model
     {
         public enum Richtung
         {
-            stehen = 0,
-            nachLinks,
-            nachRechts
+            Stehen = 0,
+            NachLinks,
+            NachRechts
         }
 
-        private bool endlageRechts;
-        private bool wagenVoll;
+        private bool _endlageRechts;
+        private bool _wagenVoll;
 
-        private Richtung wagenRichtung;
-        private readonly Punkt aktuellePosition;
-        private double wagenFuellstand;
+        private Richtung _wagenRichtung;
+        private readonly Punkt _aktuellePosition;
+        private double _wagenFuellstand;
 
-        private const double wagenGeschwindigkeit = 0.3;
+        private const double WagenGeschwindigkeit = 0.3;
 
-        private const double wagenFuellstandLeeren = 0.5;
-        private const double wagenFuellstandFuellen = 0.1;
-        private const double wagenFuellstandVoll = 88;
+        private const double WagenFuellstandLeeren = 0.5;
+        private const double WagenFuellstandFuellen = 0.1;
+        private const double WagenFuellstandVoll = 88;
 
-        private readonly Punkt linkerAnschlag = new Punkt(0, 0);
-        private readonly Punkt rechterAnschlag = new Punkt(125, 0);
+        private readonly Punkt _linkerAnschlag = new Punkt(0, 0);
+        private readonly Punkt _rechterAnschlag = new Punkt(125, 0);
 
         public Wagen()
         {
-            wagenVoll = false;
-            endlageRechts = false;
-            wagenRichtung = Richtung.stehen;
-            wagenFuellstand = 0;
+            _wagenVoll = false;
+            _endlageRechts = false;
+            _wagenRichtung = Richtung.Stehen;
+            _wagenFuellstand = 0;
 
-            aktuellePosition = new Punkt(0, 0);
+            _aktuellePosition = new Punkt(0, 0);
         }
 
         public void WagenTask()
         {
-            switch (wagenRichtung)
+            switch (_wagenRichtung)
             {
-                case Richtung.nachLinks:
-                    if (aktuellePosition.X > linkerAnschlag.X) aktuellePosition.X -= wagenGeschwindigkeit;
-                    if (aktuellePosition.X <= linkerAnschlag.X)
+                case Richtung.NachLinks:
+                    if (_aktuellePosition.X > _linkerAnschlag.X) _aktuellePosition.X -= WagenGeschwindigkeit;
+                    if (_aktuellePosition.X <= _linkerAnschlag.X)
                     {
-                        aktuellePosition.X = linkerAnschlag.X;
-                        wagenRichtung = Richtung.stehen;
+                        _aktuellePosition.X = _linkerAnschlag.X;
+                        _wagenRichtung = Richtung.Stehen;
                     }
                     break;
 
-                case Richtung.nachRechts:
-                    if (aktuellePosition.X < rechterAnschlag.X) aktuellePosition.X += wagenGeschwindigkeit;
-                    if (aktuellePosition.X >= rechterAnschlag.X)
+                case Richtung.NachRechts:
+                    if (_aktuellePosition.X < _rechterAnschlag.X) _aktuellePosition.X += WagenGeschwindigkeit;
+                    if (_aktuellePosition.X >= _rechterAnschlag.X)
                     {
-                        aktuellePosition.X = rechterAnschlag.X;
-                        wagenRichtung = Richtung.stehen;
+                        _aktuellePosition.X = _rechterAnschlag.X;
+                        _wagenRichtung = Richtung.Stehen;
                     }
                     break;
 
-                case Richtung.stehen:
                 default:
                     break;
             }
 
             // Wagen bewegen
-            if (aktuellePosition.X == rechterAnschlag.X) endlageRechts = true; else endlageRechts = false;
-            if (wagenFuellstand == wagenFuellstandVoll) wagenVoll = true; else wagenVoll = false;
-            if ((aktuellePosition.X == linkerAnschlag.X) && (wagenFuellstand > 0)) wagenFuellstand -= wagenFuellstandLeeren;
+            _endlageRechts = _aktuellePosition.X == _rechterAnschlag.X;
+            _wagenVoll = _wagenFuellstand == WagenFuellstandVoll;
+            if ((_aktuellePosition.X == _linkerAnschlag.X) && (_wagenFuellstand > 0)) _wagenFuellstand -= WagenFuellstandLeeren;
         }
 
         internal void Fuellen()
         {
-            wagenFuellstand += wagenFuellstandFuellen;
-            if (wagenFuellstand > wagenFuellstandVoll) wagenFuellstand = wagenFuellstandVoll;
+            _wagenFuellstand += WagenFuellstandFuellen;
+            if (_wagenFuellstand > WagenFuellstandVoll) _wagenFuellstand = WagenFuellstandVoll;
         }
 
-        internal void NachRechts() => wagenRichtung = Richtung.nachRechts;
+        internal void NachRechts() => _wagenRichtung = Richtung.NachRechts;
 
-        internal void NachLinks() => wagenRichtung = Richtung.nachLinks;
+        internal void NachLinks() => _wagenRichtung = Richtung.NachLinks;
 
-        public bool IstWagenVoll() => wagenVoll;
+        public bool IstWagenVoll() => _wagenVoll;
 
-        public bool IstWagenRechts() => endlageRechts;
+        public bool IstWagenRechts() => _endlageRechts;
 
-        internal Punkt GetPosition() => aktuellePosition;
+        internal Punkt GetPosition() => _aktuellePosition;
 
-        internal double GetFuellstand() => wagenFuellstand;
+        internal double GetFuellstand() => _wagenFuellstand;
     }
 }

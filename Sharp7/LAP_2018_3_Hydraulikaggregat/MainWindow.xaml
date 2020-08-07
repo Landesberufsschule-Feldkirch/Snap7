@@ -4,7 +4,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2018_3_Hydraulikaggregat"
         mc:Ignorable="d"
         Title="LAP 2018/3 Hydraulikaggregat" Height="1050" Width="1400">
     <Grid>
@@ -113,7 +112,7 @@
         <Label Content="Ölstand" Grid.Column="19" Grid.Row="13" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="13" Grid.Row="2" Grid.RowSpan="24" Fill="#eeeeee" />
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Border Grid.Column="2" Grid.ColumnSpan="6" Grid.Row="9" Grid.RowSpan="17" HorizontalAlignment="Left" Width="420">
             <Path Stroke="Black"

@@ -5,11 +5,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        public readonly Model.Foerderanlage foerderanlage;
+        public readonly Model.Foerderanlage Foerderanlage;
 
         public VisuAnzeigen(Model.Foerderanlage fa)
         {
-            foerderanlage = fa;
+            Foerderanlage = fa;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -27,6 +27,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             {
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
@@ -42,24 +43,24 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }

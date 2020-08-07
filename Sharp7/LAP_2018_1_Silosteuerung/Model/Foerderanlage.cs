@@ -20,9 +20,9 @@ namespace LAP_2018_1_Silosteuerung.Model
         public bool Q1 { get; set; }        // Förderband
         public bool Q2 { get; set; }        // Schneckenförderer
         public bool K1 { get; set; }        // Materialschieber Silo
-        public bool Manual_Q1 { get; set; }
-        public bool Manual_Q2 { get; set; }
-        public bool Manual_K1 { get; set; }
+        public bool ManualQ1 { get; set; }
+        public bool ManualQ2 { get; set; }
+        public bool ManualK1 { get; set; }
 
         public Foerderanlage()
         {
@@ -38,6 +38,7 @@ namespace LAP_2018_1_Silosteuerung.Model
             {
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
     }
 }

@@ -50,6 +50,7 @@ namespace LAP_2018_4_Niveauregelung.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void ThermorelaisF1() => F1 = !F1;

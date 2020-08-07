@@ -42,6 +42,7 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void ThermorelaisF1() => F1 = !F1;

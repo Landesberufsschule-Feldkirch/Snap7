@@ -6,23 +6,23 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat hydraulikaggregat;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Hydraulikaggregat _hydraulikaggregat;
+        private readonly MainWindow _mainWindow;
 
-        private const double fuellBalkenHoehe = 390;
-        private const double fuellBalkenOben = -40;
+        private const double FuellBalkenHoehe = 390;
+        private const double FuellBalkenOben = -40;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2018_3_Hydraulikaggregat.Model.Hydraulikaggregat ha)
+        public VisuAnzeigen(MainWindow mw, Model.Hydraulikaggregat ha)
         {
-            mainWindow = mw;
-            hydraulikaggregat = ha;
+            _mainWindow = mw;
+            _hydraulikaggregat = ha;
 
             Druck = 1.1;
 
             ClickModeBtnQ1 = "Press";
             ClickModeBtnQ2 = "Press";
             ClickModeBtnQ3 = "Press";
-            ClickModeBtnQ1_Q3 = "Press";
+            ClickModeBtnQ1Q3 = "Press";
 
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
@@ -64,69 +64,70 @@
         {
             while (true)
             {
-                Druck = hydraulikaggregat.Druck;
+                Druck = _hydraulikaggregat.Druck;
 
-                FarbeF1(hydraulikaggregat.F1);
+                FarbeF1(_hydraulikaggregat.F1);
 
-                FarbeP1(hydraulikaggregat.P1);
-                FarbeP2(hydraulikaggregat.P2);
-                FarbeP3(hydraulikaggregat.P3);
-                FarbeP4(hydraulikaggregat.P4);
+                FarbeP1(_hydraulikaggregat.P1);
+                FarbeP2(_hydraulikaggregat.P2);
+                FarbeP3(_hydraulikaggregat.P3);
+                FarbeP4(_hydraulikaggregat.P4);
 
-                FarbeQ1(hydraulikaggregat.Q1);
-                FarbeQ2(hydraulikaggregat.Q2);
-                FarbeQ3(hydraulikaggregat.Q3);
+                FarbeQ1(_hydraulikaggregat.Q1);
+                FarbeQ2(_hydraulikaggregat.Q2);
+                FarbeQ3(_hydraulikaggregat.Q3);
 
-                Margin_1(hydraulikaggregat.Pegel);
+                Margin_1(_hydraulikaggregat.Pegel);
 
-                SichtbarkeitB1(hydraulikaggregat.B1);
-                SichtbarkeitB2(hydraulikaggregat.B2);
-                SichtbarkeitB3(hydraulikaggregat.B3);
+                SichtbarkeitB1(_hydraulikaggregat.B1);
+                SichtbarkeitB2(_hydraulikaggregat.B2);
+                SichtbarkeitB3(_hydraulikaggregat.B3);
 
-                if (hydraulikaggregat.Q2 && hydraulikaggregat.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void BtnQ1() => hydraulikaggregat.Q1 = ClickModeButtonQ1();
+        internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();
 
-        internal void BtnQ2() => hydraulikaggregat.Q2 = ClickModeButtonQ2();
+        internal void BtnQ2() => _hydraulikaggregat.Q2 = ClickModeButtonQ2();
 
-        internal void BtnQ3() => hydraulikaggregat.Q3 = ClickModeButtonQ3();
+        internal void BtnQ3() => _hydraulikaggregat.Q3 = ClickModeButtonQ3();
 
-        internal void BtnQ1_Q3()
+        internal void BtnQ1Q3()
         {
-            if (ClickModeButtonQ1_Q3())
+            if (ClickModeButtonQ1Q3())
             {
-                hydraulikaggregat.Q1 = true;
-                hydraulikaggregat.Q3 = true;
+                _hydraulikaggregat.Q1 = true;
+                _hydraulikaggregat.Q3 = true;
             }
             else
             {
-                hydraulikaggregat.Q1 = false;
-                hydraulikaggregat.Q3 = false;
+                _hydraulikaggregat.Q1 = false;
+                _hydraulikaggregat.Q3 = false;
             }
         }
 
-        internal void BtnS1() => hydraulikaggregat.S1 = ClickModeButtonS1();
+        internal void BtnS1() => _hydraulikaggregat.S1 = ClickModeButtonS1();
 
-        internal void BtnS2() => hydraulikaggregat.S2 = ClickModeButtonS2();
+        internal void BtnS2() => _hydraulikaggregat.S2 = ClickModeButtonS2();
 
         internal void BtnS3()
         {
-            hydraulikaggregat.Stopwatch.Restart();
-            hydraulikaggregat.S3 = ClickModeButtonS3();
+            _hydraulikaggregat.Stopwatch.Restart();
+            _hydraulikaggregat.S3 = ClickModeButtonS3();
         }
 
         #region SPS Version, Status und Farbe
@@ -142,24 +143,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -293,33 +294,33 @@
 
         #region ClickModeBtnQ1_Q3
 
-        public bool ClickModeButtonQ1_Q3()
+        public bool ClickModeButtonQ1Q3()
         {
-            if (ClickModeBtnQ1_Q3 == "Press")
+            if (ClickModeBtnQ1Q3 == "Press")
             {
-                ClickModeBtnQ1_Q3 = "Release";
+                ClickModeBtnQ1Q3 = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtnQ1_Q3 = "Press";
+                ClickModeBtnQ1Q3 = "Press";
             }
             return false;
         }
 
-        private string _clickModeBtnQ1_Q3;
+        private string _clickModeBtnQ1Q3;
 
-        public string ClickModeBtnQ1_Q3
+        public string ClickModeBtnQ1Q3
         {
-            get => _clickModeBtnQ1_Q3;
+            get => _clickModeBtnQ1Q3;
             set
             {
-                _clickModeBtnQ1_Q3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1_Q3));
+                _clickModeBtnQ1Q3 = value;
+                OnPropertyChanged(nameof(ClickModeBtnQ1Q3));
             }
         }
 
-        #endregion ClickModeBtnQ1_Q3
+        #endregion ClickModeBtnQ1Q3
 
         #region ClickModeBtnS1
 
@@ -413,10 +414,7 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val)
-        {
-            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
-        }
+        public void FarbeF1(bool val) => ColorF1 = val ? "LawnGreen" : "Red";
 
         private string _colorF1;
 
@@ -434,10 +432,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "LawnGreen" : "White";
 
         private string _colorP1;
 
@@ -455,10 +450,7 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val)
-        {
-            if (val) ColorP2 = "Red"; else ColorP2 = "White";
-        }
+        public void FarbeP2(bool val) => ColorP2 = val ? "Red" : "White";
 
         private string _colorP2;
 
@@ -476,10 +468,7 @@
 
         #region Color P3
 
-        public void FarbeP3(bool val)
-        {
-            if (val) ColorP3 = "LawnGreen"; else ColorP3 = "White";
-        }
+        public void FarbeP3(bool val) => ColorP3 = val ? "LawnGreen" : "White";
 
         private string _colorP3;
 
@@ -497,10 +486,7 @@
 
         #region Color P4
 
-        public void FarbeP4(bool val)
-        {
-            if (val) ColorP4 = "Red"; else ColorP4 = "White";
-        }
+        public void FarbeP4(bool val) => ColorP4 = val ? "Red" : "White";
 
         private string _colorP4;
 
@@ -518,10 +504,7 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "White";
 
         private string _colorQ1;
 
@@ -539,10 +522,7 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val)
-        {
-            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
-        }
+        public void FarbeQ2(bool val) => ColorQ2 = val ? "LawnGreen" : "White";
 
         private string _colorQ2;
 
@@ -560,10 +540,7 @@
 
         #region Color Q3
 
-        public void FarbeQ3(bool val)
-        {
-            if (val) ColorQ3 = "LawnGreen"; else ColorQ3 = "White";
-        }
+        public void FarbeQ3(bool val) => ColorQ3 = val ? "LawnGreen" : "White";
 
         private string _colorQ3;
 
@@ -599,7 +576,7 @@
 
         public void Margin_1(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(41, fuellBalkenOben + fuellBalkenHoehe * (1 - pegel), 31, 0);
+            Margin1 = new Thickness(41, FuellBalkenOben + FuellBalkenHoehe * (1 - pegel), 31, 0);
         }
 
         private Thickness _margin1;
