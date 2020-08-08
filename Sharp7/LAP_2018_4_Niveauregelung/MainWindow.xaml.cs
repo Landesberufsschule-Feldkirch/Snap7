@@ -19,7 +19,7 @@ namespace LAP_2018_4_Niveauregelung
 
         public MainWindow()
         {
-            var versionText = "LAP 2018/4 Niveauregelung";
+            const string versionText = "LAP 2018/4 Niveauregelung";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

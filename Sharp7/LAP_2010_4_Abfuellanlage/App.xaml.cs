@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace LAP_2010_4_Abfuellanlage
+﻿namespace LAP_2010_4_Abfuellanlage
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

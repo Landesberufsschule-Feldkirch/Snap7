@@ -23,7 +23,7 @@ namespace LAP_2019_Foerderanlage
 
         public MainWindow()
         {
-            var versionText = "LAP 2019 Foerderanlage";
+            const string versionText = "LAP 2019 Foerderanlage";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

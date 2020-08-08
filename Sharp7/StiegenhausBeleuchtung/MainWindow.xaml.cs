@@ -15,7 +15,7 @@ namespace StiegenhausBeleuchtung
 
         public MainWindow()
         {
-            var versionText = "Stiegenhausbeleuchtung";
+            const string versionText = "Stiegenhausbeleuchtung";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

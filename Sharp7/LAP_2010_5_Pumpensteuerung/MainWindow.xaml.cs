@@ -19,7 +19,7 @@ namespace LAP_2010_5_Pumpensteuerung
 
         public MainWindow()
         {
-            var versionText = "LAP 2010/5 Pumpensteuerung";
+            const string versionText = "LAP 2010/5 Pumpensteuerung";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

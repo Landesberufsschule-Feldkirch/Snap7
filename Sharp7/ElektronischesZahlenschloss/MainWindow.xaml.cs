@@ -9,7 +9,6 @@ namespace ElektronischesZahlenschloss
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
         private const int anzByteDigInput = 2;
@@ -19,9 +18,9 @@ namespace ElektronischesZahlenschloss
 
         public MainWindow()
         {
-            VersionText = "Elektronisches Zahlenschloss";
+            const string versionText = "Elektronisches Zahlenschloss";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(viewModel);

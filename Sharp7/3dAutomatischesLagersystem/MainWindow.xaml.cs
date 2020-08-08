@@ -20,7 +20,6 @@ namespace AutomatischesLagersystem
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
         private const int anzByteDigInput = 2;
@@ -30,9 +29,9 @@ namespace AutomatischesLagersystem
 
         public MainWindow()
         {
-            VersionText = "3D Automatisches Lagersystem";
+            const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;

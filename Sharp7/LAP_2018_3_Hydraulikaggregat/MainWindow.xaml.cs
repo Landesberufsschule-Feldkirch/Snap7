@@ -19,7 +19,7 @@ namespace LAP_2018_3_Hydraulikaggregat
 
         public MainWindow()
         {
-            var versionText = "LAP 2018/3 Hydraulikaggregat";
+            const string versionText = "LAP 2018/3 Hydraulikaggregat";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

@@ -7,15 +7,15 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2010_4_Abfuellanlage.Model.AbfuellAnlage abfuellAnlage;
-        private readonly MainWindow mainWindow;
+        private readonly Model.AbfuellAnlage _abfuellAnlage;
+        private readonly MainWindow _mainWindow;
 
         private readonly double HoeheFuellBalken = 9 * 35;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2010_4_Abfuellanlage.Model.AbfuellAnlage aa)
+        public VisuAnzeigen(MainWindow mw, Model.AbfuellAnlage aa)
         {
-            mainWindow = mw;
-            abfuellAnlage = aa;
+            _mainWindow = mw;
+            _abfuellAnlage = aa;
 
             ColorP1 = "White";
             ColorQ1 = "LawnGreen";
@@ -47,11 +47,11 @@
             VisibilityImage3 = "visible";
             VisibilityImage4 = "visible";
 
-            Visibility_K1_Ein = "hidden";
-            Visibility_K2_Ein = "hidden";
+            VisibilityK1Ein = "hidden";
+            VisibilityK2Ein = "hidden";
 
-            Visibility_K1_Aus = "visible";
-            Visibility_K2_Aus = "visible";
+            VisibilityK1Aus = "visible";
+            VisibilityK2Aus = "visible";
 
             VisibilityB1Ein = "Visible";
             VisibilityB1Aus = "Hidden";
@@ -72,54 +72,55 @@
         {
             while (true)
             {
-                FarbeP1(abfuellAnlage.P1);
-                FarbeQ1(abfuellAnlage.Q1);
+                FarbeP1(_abfuellAnlage.P1);
+                FarbeQ1(_abfuellAnlage.Q1);
 
-                FarbeRectangleZuleitung(abfuellAnlage.Pegel > 0.01);
+                FarbeRectangleZuleitung(_abfuellAnlage.Pegel > 0.01);
 
-                Margin_1(abfuellAnlage.Pegel);
+                Margin_1(_abfuellAnlage.Pegel);
 
-                PositionImage_1(abfuellAnlage.AlleDosen[0].Position.Punkt);
-                PositionImage_2(abfuellAnlage.AlleDosen[1].Position.Punkt);
-                PositionImage_3(abfuellAnlage.AlleDosen[2].Position.Punkt);
-                PositionImage_4(abfuellAnlage.AlleDosen[3].Position.Punkt);
+                PositionImage_1(_abfuellAnlage.AlleDosen[0].Position.Punkt);
+                PositionImage_2(_abfuellAnlage.AlleDosen[1].Position.Punkt);
+                PositionImage_3(_abfuellAnlage.AlleDosen[2].Position.Punkt);
+                PositionImage_4(_abfuellAnlage.AlleDosen[3].Position.Punkt);
 
-                VisibilityDose1(abfuellAnlage.AlleDosen[0].Sichtbar);
-                VisibilityDose2(abfuellAnlage.AlleDosen[1].Sichtbar);
-                VisibilityDose3(abfuellAnlage.AlleDosen[2].Sichtbar);
-                VisibilityDose4(abfuellAnlage.AlleDosen[3].Sichtbar);
+                VisibilityDose1(_abfuellAnlage.AlleDosen[0].Sichtbar);
+                VisibilityDose2(_abfuellAnlage.AlleDosen[1].Sichtbar);
+                VisibilityDose3(_abfuellAnlage.AlleDosen[2].Sichtbar);
+                VisibilityDose4(_abfuellAnlage.AlleDosen[3].Sichtbar);
 
-                VisibilityAbleitung(abfuellAnlage.K2 && (abfuellAnlage.Pegel > 0.01));
+                VisibilityAbleitung(_abfuellAnlage.K2 && (_abfuellAnlage.Pegel > 0.01));
 
-                SichtbarkeitK1(abfuellAnlage.K1);
-                SichtbarkeitK2(abfuellAnlage.K2);
+                SichtbarkeitK1(_abfuellAnlage.K1);
+                SichtbarkeitK2(_abfuellAnlage.K2);
 
-                SichtbarkeitB1(abfuellAnlage.B1);
-                SichtbarkeitB2(abfuellAnlage.B2);
+                SichtbarkeitB1(_abfuellAnlage.B1);
+                SichtbarkeitB2(_abfuellAnlage.B2);
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetQ1() => abfuellAnlage.Q1 = ClickModeButtonQ1();
+        internal void SetQ1() => _abfuellAnlage.Q1 = ClickModeButtonQ1();
 
-        internal void SetK1() => abfuellAnlage.K1 = ClickModeButtonK1();
+        internal void SetK1() => _abfuellAnlage.K1 = ClickModeButtonK1();
 
-        internal void SetK2() => abfuellAnlage.K2 = ClickModeButtonK2();
+        internal void SetK2() => _abfuellAnlage.K2 = ClickModeButtonK2();
 
-        internal void SetS1() => abfuellAnlage.S1 = ClickModeButtonS1();
+        internal void SetS1() => _abfuellAnlage.S1 = ClickModeButtonS1();
 
-        internal void BtnS2() => abfuellAnlage.S2 = ClickModeButtonS2();
+        internal void BtnS2() => _abfuellAnlage.S2 = ClickModeButtonS2();
 
         #region SPS Version, Status und Farbe
 
@@ -134,24 +135,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -331,10 +332,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
 
         private string _colorP1;
 
@@ -352,10 +350,7 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "LightGray";
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "LightGray";
 
         private string _colorQ1;
 
@@ -373,10 +368,7 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val)
-        {
-            if (val) ColorRectangleZuleitung = "Coral"; else ColorRectangleZuleitung = "LightCoral";
-        }
+        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? "Coral" : "LightCoral";
 
         private string _colorRectangleZuleitung;
 
@@ -548,37 +540,37 @@
         {
             if (val)
             {
-                Visibility_K1_Ein = "visible";
-                Visibility_K1_Aus = "hidden";
+                VisibilityK1Ein = "visible";
+                VisibilityK1Aus = "hidden";
             }
             else
             {
-                Visibility_K1_Ein = "hidden";
-                Visibility_K1_Aus = "visible";
+                VisibilityK1Ein = "hidden";
+                VisibilityK1Aus = "visible";
             }
         }
 
-        private string _visibility_K1_Ein;
+        private string _visibilityK1Ein;
 
-        public string Visibility_K1_Ein
+        public string VisibilityK1Ein
         {
-            get => _visibility_K1_Ein;
+            get => _visibilityK1Ein;
             set
             {
-                _visibility_K1_Ein = value;
-                OnPropertyChanged(nameof(Visibility_K1_Ein));
+                _visibilityK1Ein = value;
+                OnPropertyChanged(nameof(VisibilityK1Ein));
             }
         }
 
-        private string _visibility_K1_Aus;
+        private string _visibilityK1Aus;
 
-        public string Visibility_K1_Aus
+        public string VisibilityK1Aus
         {
-            get => _visibility_K1_Aus;
+            get => _visibilityK1Aus;
             set
             {
-                _visibility_K1_Aus = value;
-                OnPropertyChanged(nameof(Visibility_K1_Aus));
+                _visibilityK1Aus = value;
+                OnPropertyChanged(nameof(VisibilityK1Aus));
             }
         }
 
@@ -590,37 +582,37 @@
         {
             if (val)
             {
-                Visibility_K2_Ein = "visible";
-                Visibility_K2_Aus = "hidden";
+                VisibilityK2Ein = "visible";
+                VisibilityK2Aus = "hidden";
             }
             else
             {
-                Visibility_K2_Ein = "hidden";
-                Visibility_K2_Aus = "visible";
+                VisibilityK2Ein = "hidden";
+                VisibilityK2Aus = "visible";
             }
         }
 
-        private string _visibility_K2_Ein;
+        private string _visibilityK2Ein;
 
-        public string Visibility_K2_Ein
+        public string VisibilityK2Ein
         {
-            get => _visibility_K2_Ein;
+            get => _visibilityK2Ein;
             set
             {
-                _visibility_K2_Ein = value;
-                OnPropertyChanged(nameof(Visibility_K2_Ein));
+                _visibilityK2Ein = value;
+                OnPropertyChanged(nameof(VisibilityK2Ein));
             }
         }
 
-        private string _visibility_K2_Aus;
+        private string _visibilityK2Aus;
 
-        public string Visibility_K2_Aus
+        public string VisibilityK2Aus
         {
-            get => _visibility_K2_Aus;
+            get => _visibilityK2Aus;
             set
             {
-                _visibility_K2_Aus = value;
-                OnPropertyChanged(nameof(Visibility_K2_Aus));
+                _visibilityK2Aus = value;
+                OnPropertyChanged(nameof(VisibilityK2Aus));
             }
         }
 
@@ -628,10 +620,7 @@
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val)
-        {
-            if (val) VisibilityRectangleAbleitung = "visible"; else VisibilityRectangleAbleitung = "hidden";
-        }
+        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? "visible" : "hidden";
 
         private string _visibilityRectangleAbleitung;
 
@@ -649,10 +638,7 @@
 
         #region Visibility Dose 1
 
-        public void VisibilityDose1(bool val)
-        {
-            if (val) VisibilityImage1 = "visible"; else VisibilityImage1 = "hidden";
-        }
+        public void VisibilityDose1(bool val) => VisibilityImage1 = val ? "visible" : "hidden";
 
         private string _visibilityImage1;
 
@@ -670,10 +656,7 @@
 
         #region Visibility Dose 2
 
-        public void VisibilityDose2(bool val)
-        {
-            if (val) VisibilityImage2 = "visible"; else VisibilityImage2 = "hidden";
-        }
+        public void VisibilityDose2(bool val) => VisibilityImage2 = val ? "visible" : "hidden";
 
         private string _visibilityImage2;
 
@@ -691,10 +674,7 @@
 
         #region Visibility Dose 3
 
-        public void VisibilityDose3(bool val)
-        {
-            if (val) VisibilityImage3 = "visible"; else VisibilityImage3 = "hidden";
-        }
+        public void VisibilityDose3(bool val) => VisibilityImage3 = val ? "visible" : "hidden";
 
         private string _visibilityImage3;
 
@@ -712,10 +692,7 @@
 
         #region Visibility Dose 4
 
-        public void VisibilityDose4(bool val)
-        {
-            if (val) VisibilityImage4 = "visible"; else VisibilityImage4 = "hidden";
-        }
+        public void VisibilityDose4(bool val) => VisibilityImage4 = val ? "visible" : "hidden";
 
         private string _visibilityImage4;
 
@@ -819,7 +796,7 @@
 
         public void Margin_1(double pegel)
         {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
+            Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;

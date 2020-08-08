@@ -15,7 +15,7 @@ namespace LAP_2010_1_Kompressoranlage
 
         public MainWindow()
         {
-            var versionText = "LAP 2010/1 Kompressoranlage";
+            const string versionText = "LAP 2010/1 Kompressoranlage";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

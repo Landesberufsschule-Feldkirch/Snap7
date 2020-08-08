@@ -16,8 +16,8 @@ namespace LAP_2010_4_Abfuellanlage.Model
         public bool P1 { get; set; } // Meldeleuchte Behälter Leer
         public double Pegel { get; set; }
 
-        private readonly int anzahlDosen;
-        private int aktuelleDose;
+        private readonly int _anzahlDosen;
+        private int _aktuelleDose;
         private readonly double leerGeschwindigkeit = 0.002;
 
         public AbfuellAnlage()
@@ -26,10 +26,10 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
             AlleDosen = new List<CampbellSoup>
             {
-                new CampbellSoup(anzahlDosen++),
-                new CampbellSoup(anzahlDosen++),
-                new CampbellSoup(anzahlDosen++),
-                new CampbellSoup(anzahlDosen++)
+                new CampbellSoup(_anzahlDosen++),
+                new CampbellSoup(_anzahlDosen++),
+                new CampbellSoup(_anzahlDosen++),
+                new CampbellSoup(_anzahlDosen++)
             };
 
             System.Threading.Tasks.Task.Run(AbfuellAnlageTask);
@@ -44,19 +44,20 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
                 B1 = Pegel > 0.1;
 
-                if (K1) AlleDosen[aktuelleDose].DosenVereinzeln();
+                if (K1) AlleDosen[_aktuelleDose].DosenVereinzeln();
 
                 B2 = false;
                 foreach (var dose in AlleDosen)
                 {
                     bool lichtschranke;
                     var stop = KollisionErkennen(dose);
-                    (lichtschranke, aktuelleDose) = dose.DosenBewegen(Q1, anzahlDosen, aktuelleDose, stop);
+                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose, stop);
                     B2 |= lichtschranke;
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private bool KollisionErkennen(CampbellSoup campbellSoup)
@@ -66,7 +67,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
             foreach (var dose in AlleDosen)
             {
-                if (campbellSoup.ID != dose.ID)
+                if (campbellSoup.Id != dose.Id)
                 {
                     var (hx, hy) = dose.GetRichtung();
                     if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
@@ -80,7 +81,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         internal void AllesReset()
         {
-            aktuelleDose = 0;
+            _aktuelleDose = 0;
             foreach (var dose in AlleDosen) { dose.Reset(); }
         }
     }

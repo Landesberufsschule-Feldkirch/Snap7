@@ -11,7 +11,6 @@ namespace Heizungsregler
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private RealTimeGraphWindow realTimeGraphWindow;
         private readonly Heizungsregler.ViewModel.ViewModel viewModel;
@@ -23,9 +22,9 @@ namespace Heizungsregler
 
         public MainWindow()
         {
-            VersionText = "Heizungsregler";
+            const string versionText = "Heizungsregler";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             viewModel = new Heizungsregler.ViewModel.ViewModel(this);
 

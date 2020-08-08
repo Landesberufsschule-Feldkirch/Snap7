@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2010_4_Abfuellanlage"
         mc:Ignorable="d"
          Title="LAP 2010/4 Abfüllanlage" Height="900" Width="1200">
     <Grid>
@@ -86,7 +85,7 @@
         <Label Content="Füllstand" Grid.Column="16" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22" Fill="#eeeeee" />
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="12" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="12" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
             <Button.Resources>
@@ -99,8 +98,8 @@
         <Rectangle Fill="DarkGray" Grid.Column="2" Grid.Row="5" Grid.RowSpan="10" Margin="61,0,59,0" Grid.ColumnSpan="2" />
         <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="5" Grid.RowSpan="10" Margin="60,0" Grid.ColumnSpan="2" />
 
-        <Image Source="Bilder\VentilElektrischAusHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_K1_Aus}" />
-        <Image Source="Bilder\VentilElektrischEinHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.Visibility_K1_Ein}" />
+        <Image Source="Bilder\VentilElektrischAusHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Aus}" />
+        <Image Source="Bilder\VentilElektrischEinHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Ein}" />
         <Label Content="K1" Grid.Column="4" Grid.Row="14" Margin="32,5,4,0" FontSize="14pt" />
 
         <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
@@ -112,8 +111,8 @@
         <Button Grid.Column="8" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}" />
         <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
 
-        <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.Visibility_K2_Aus}" />
-        <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.Visibility_K2_Ein}" />
+        <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Aus}" />
+        <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Ein}" />
         <Label Content="K2" Grid.Column="7" Grid.Row="14" Margin="10,5,24,0" FontSize="14pt" />
 
         <Rectangle Fill="Coral" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0" Visibility="{Binding ViAnzeige.VisibilityRectangleAbleitung}" />
@@ -127,8 +126,8 @@
         <Rectangle Fill="LightGray" Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="19" Margin="35,0,35,27" />
         <Rectangle Fill="LightGray" Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="20" Margin="35,27,35,0" />
 
-        <Image Source="Bilder\Initiatoren_Schliesser.jpg"   Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_Betaetigt.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="24">

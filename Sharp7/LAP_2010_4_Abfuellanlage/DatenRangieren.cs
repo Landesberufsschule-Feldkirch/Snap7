@@ -4,8 +4,8 @@ namespace LAP_2010_4_Abfuellanlage
 {
     public class DatenRangieren
     {
-        private readonly MainWindow mainWindow;
-        private readonly ViewModel.ViewModel abfuellanlageViewModel;
+        private readonly MainWindow _mainWindow;
+        private readonly ViewModel.ViewModel _abfuellanlageViewModel;
 
         private enum BitPosAusgang
         {
@@ -25,27 +25,27 @@ namespace LAP_2010_4_Abfuellanlage
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, abfuellanlageViewModel.abfuellAnlage.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, abfuellanlageViewModel.abfuellAnlage.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, abfuellanlageViewModel.abfuellAnlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, abfuellanlageViewModel.abfuellAnlage.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _abfuellanlageViewModel.abfuellAnlage.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _abfuellanlageViewModel.abfuellAnlage.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _abfuellanlageViewModel.abfuellAnlage.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _abfuellanlageViewModel.abfuellAnlage.S2);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            if (!mainWindow.DebugWindowAktiv)
+            if (!_mainWindow.DebugWindowAktiv)
             {
-                abfuellanlageViewModel.abfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-                abfuellanlageViewModel.abfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-                abfuellanlageViewModel.abfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                abfuellanlageViewModel.abfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _abfuellanlageViewModel.abfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
+                _abfuellanlageViewModel.abfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
+                _abfuellanlageViewModel.abfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+                _abfuellanlageViewModel.abfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
             }
         }
 
         public DatenRangieren(MainWindow mw, LAP_2010_4_Abfuellanlage.ViewModel.ViewModel vm)
         {
-            mainWindow = mw;
-            abfuellanlageViewModel = vm;
+            _mainWindow = mw;
+            _abfuellanlageViewModel = vm;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace LAP_2018_1_Silosteuerung
 
         public MainWindow()
         {
-            var versionText = "2018/1 Silosteuerung";
+            const string versionText = "2018/1 Silosteuerung";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

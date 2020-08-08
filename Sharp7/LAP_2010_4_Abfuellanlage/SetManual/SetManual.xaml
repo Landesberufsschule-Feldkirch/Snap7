@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2010_4_Abfuellanlage.SetManual"
         mc:Ignorable="d"
                Title="SetManual" Height="300" Width="400">
     <Grid>

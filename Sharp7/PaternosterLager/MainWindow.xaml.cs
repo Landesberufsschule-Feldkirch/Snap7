@@ -21,7 +21,7 @@ namespace PaternosterLager
 
         public MainWindow()
         {
-            var versionText = "Paternosterlager";
+            const string versionText = "Paternosterlager";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

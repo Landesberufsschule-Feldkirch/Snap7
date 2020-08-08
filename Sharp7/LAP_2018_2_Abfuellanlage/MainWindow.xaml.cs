@@ -19,7 +19,7 @@ namespace LAP_2018_2_Abfuellanlage
 
         public MainWindow()
         {
-            var versionText = "LAP 2018/2 Abfuellanlage";
+            const string versionText = "LAP 2018/2 Abfuellanlage";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

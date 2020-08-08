@@ -6,13 +6,13 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2010_3_Ofentuersteuerung.Model.OfentuerSteuerung ofentuerSteuerung;
-        private readonly MainWindow mainWindow;
+        private readonly Model.OfentuerSteuerung _ofentuerSteuerung;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2010_3_Ofentuersteuerung.Model.OfentuerSteuerung oSt)
+        public VisuAnzeigen(MainWindow mw, Model.OfentuerSteuerung oSt)
         {
-            mainWindow = mw;
-            ofentuerSteuerung = oSt;
+            _mainWindow = mw;
+            _ofentuerSteuerung = oSt;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -22,8 +22,8 @@
             SpsColor = "LightBlue";
 
             ZahnradWinkel = 0;
-            ZahnstangePosition = ofentuerSteuerung.PositionZahnstange;
-            OfentuerePosition = ofentuerSteuerung.PositionOfentuere;
+            ZahnstangePosition = _ofentuerSteuerung.PositionZahnstange;
+            OfentuerePosition = _ofentuerSteuerung.PositionOfentuere;
 
             ColorP1 = "LawnGreen";
             ColorQ1 = "LawnGreen";
@@ -52,45 +52,46 @@
         {
             while (true)
             {
-                OfentuerePosition = ofentuerSteuerung.PositionOfentuere;
-                ZahnstangePosition = ofentuerSteuerung.PositionZahnstange;
-                ZahnradWinkel = ofentuerSteuerung.WinkelZahnrad;
+                OfentuerePosition = _ofentuerSteuerung.PositionOfentuere;
+                ZahnstangePosition = _ofentuerSteuerung.PositionZahnstange;
+                ZahnradWinkel = _ofentuerSteuerung.WinkelZahnrad;
 
-                SichtbarkeitB1(ofentuerSteuerung.B1);
-                SichtbarkeitB2(ofentuerSteuerung.B2);
-                SichtbarkeitB3(ofentuerSteuerung.B3);
+                SichtbarkeitB1(_ofentuerSteuerung.B1);
+                SichtbarkeitB2(_ofentuerSteuerung.B2);
+                SichtbarkeitB3(_ofentuerSteuerung.B3);
 
-                FarbeP1(ofentuerSteuerung.P1);
-                FarbeQ1(ofentuerSteuerung.Q1);
-                FarbeQ2(ofentuerSteuerung.Q2);
+                FarbeP1(_ofentuerSteuerung.P1);
+                FarbeQ1(_ofentuerSteuerung.Q1);
+                FarbeQ2(_ofentuerSteuerung.Q2);
 
-                if (ofentuerSteuerung.Q1 && ofentuerSteuerung.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (_ofentuerSteuerung.Q1 && _ofentuerSteuerung.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetManualQ1() => ofentuerSteuerung.Q1 = ClickModeButtonQ1();
+        internal void SetManualQ1() => _ofentuerSteuerung.Q1 = ClickModeButtonQ1();
 
-        internal void SetManualQ2() => ofentuerSteuerung.Q2 = ClickModeButtonQ2();
+        internal void SetManualQ2() => _ofentuerSteuerung.Q2 = ClickModeButtonQ2();
 
-        internal void SetS1() => ofentuerSteuerung.S1 = ClickModeButtonS1();
+        internal void SetS1() => _ofentuerSteuerung.S1 = ClickModeButtonS1();
 
-        internal void SetS2() => ofentuerSteuerung.S2 = ClickModeButtonS2();
+        internal void SetS2() => _ofentuerSteuerung.S2 = ClickModeButtonS2();
 
-        internal void SetS3() => ofentuerSteuerung.S3 = ClickModeButtonS3();
+        internal void SetS3() => _ofentuerSteuerung.S3 = ClickModeButtonS3();
 
-        internal void SetB3() => ofentuerSteuerung.B3 = !ClickModeButtonB3();
+        internal void SetB3() => _ofentuerSteuerung.B3 = !ClickModeButtonB3();
 
         #region SPS Version, Status und Farbe
 
@@ -105,24 +106,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -162,6 +163,7 @@
             }
         }
 
+        // ReSharper disable once UnusedMember.Global
         internal void BtnS3()
         {
             throw new NotImplementedException();
@@ -219,10 +221,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "LawnGreen"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "LawnGreen" : "White";
 
         private string _colorP1;
 
@@ -240,10 +239,7 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "White";
 
         private string _colorQ1;
 
@@ -261,10 +257,7 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val)
-        {
-            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
-        }
+        public void FarbeQ2(bool val) => ColorQ2 = val ? "LawnGreen" : "White";
 
         private string _colorQ2;
 

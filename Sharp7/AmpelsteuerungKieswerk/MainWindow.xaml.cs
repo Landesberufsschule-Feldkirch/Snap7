@@ -9,7 +9,6 @@ namespace AmpelsteuerungKieswerk
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
         private readonly ViewModel.ViewModel viewModel;
         private readonly DatenRangieren datenRangieren;
 
@@ -20,9 +19,9 @@ namespace AmpelsteuerungKieswerk
 
         public MainWindow()
         {
-            VersionText = "Ampelsteuerung Kieswerk";
+            const string versionText = "Ampelsteuerung Kieswerk";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(viewModel);

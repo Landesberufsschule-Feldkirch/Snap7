@@ -53,6 +53,7 @@ namespace LAP_2010_3_Ofentuersteuerung.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
     }
 }

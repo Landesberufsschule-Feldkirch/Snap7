@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LAP_2010_3_Ofentuersteuerung"
         mc:Ignorable="d"
         Title="LAP 2010/3 Ofentürsteuerung" Height="650" Width="1000">
     <Grid>
@@ -87,7 +86,7 @@
         <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
 
         <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
         <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
@@ -102,13 +101,13 @@
         <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
         <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}" />
 
-        <MediaElement Name="myMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
+        <MediaElement Name="MyMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
             <MediaElement.Triggers>
                 <EventTrigger RoutedEvent="MediaElement.Loaded">
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <MediaTimeline Source="Video/Flammen.mp4" Storyboard.TargetName="myMediaElement" RepeatBehavior="Forever" />
+                                <MediaTimeline Source="Video/Flammen.mp4" Storyboard.TargetName="MyMediaElement" RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>

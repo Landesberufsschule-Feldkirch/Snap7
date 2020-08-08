@@ -15,7 +15,7 @@ namespace Tiefgarage
 
         public MainWindow()
         {
-            var versionText = "Tiefgarage";
+            const string versionText = "Tiefgarage";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 

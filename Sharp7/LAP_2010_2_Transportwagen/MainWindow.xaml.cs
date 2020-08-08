@@ -11,7 +11,6 @@ namespace LAP_2010_2_Transportwagen
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly string VersionText;
         private readonly DatenRangieren datenRangieren;
         private readonly ViewModel.ViewModel viewModel;
         private const int anzByteDigInput = 1;
@@ -21,9 +20,9 @@ namespace LAP_2010_2_Transportwagen
 
         public MainWindow()
         {
-            VersionText = "LAP 2010/2 Transportwagen";
+            const string versionText = "LAP 2010/2 Transportwagen";
             VersionNummer = "V2.0";
-            VersionInfo = VersionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             viewModel = new ViewModel.ViewModel(this);
             datenRangieren = new DatenRangieren(viewModel);

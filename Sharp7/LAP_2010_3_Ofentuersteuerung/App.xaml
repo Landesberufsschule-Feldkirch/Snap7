@@ -1,7 +1,6 @@
 ﻿<Application x:Class="LAP_2010_3_Ofentuersteuerung.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:LAP_2010_3_Ofentuersteuerung"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
     </Application.Resources>

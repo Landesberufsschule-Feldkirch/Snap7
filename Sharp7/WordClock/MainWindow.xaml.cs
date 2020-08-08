@@ -18,7 +18,7 @@ namespace WordClock
 
         public MainWindow()
         {
-            var versionText = "WorkClock";
+            const string versionText = "WorkClock";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
