@@ -4,7 +4,7 @@
 
     public class DatenRangieren
     {
-        private readonly ViewModel.ViewModel viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
         {
@@ -14,20 +14,20 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetUint8At(digInput, 1, (byte)viewModel.zahlenschloss.Zeichen);
+            S7.SetUint8At(digInput, 1, (byte)_viewModel.zahlenschloss.Zeichen);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            viewModel.zahlenschloss.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            viewModel.zahlenschloss.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            _viewModel.zahlenschloss.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            _viewModel.zahlenschloss.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
 
-            viewModel.zahlenschloss.CodeAnzeige = S7.GetUint16At(digOutput, 1);
+            _viewModel.zahlenschloss.CodeAnzeige = S7.GetUint16At(digOutput, 1);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)
         {
-            viewModel = vm;
+            _viewModel = vm;
         }
     }
 }

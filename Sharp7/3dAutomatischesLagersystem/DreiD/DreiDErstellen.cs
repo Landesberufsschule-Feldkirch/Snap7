@@ -153,7 +153,7 @@ namespace AutomatischesLagersystem.DreiD
             mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Kisten] = mainWindow.viewPort3d.Children.Count;
         }
 
-        internal void EineEinzigeKisteHinzufuegen(int i, System.Windows.Media.Color farbe)
+        internal void EineEinzigeKisteHinzufuegen(int i, Color farbe)
         {
             var kiste_Type_1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe) };
             kiste_Type_1.Transform = mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
@@ -184,7 +184,7 @@ namespace AutomatischesLagersystem.DreiD
             {
                 ModelImporter import = new ModelImporter
                 {
-                    DefaultMaterial = new DiffuseMaterial(new System.Windows.Media.SolidColorBrush(farbe))
+                    DefaultMaterial = new DiffuseMaterial(new SolidColorBrush(farbe))
                 };
 
                 device = import.Load(model);

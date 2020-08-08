@@ -108,6 +108,7 @@ namespace Heizungsregler.ViewModel
 
                     Thread.Sleep(50);
                 }
+                // ReSharper disable once FunctionNeverReturns
             });
         }
     }

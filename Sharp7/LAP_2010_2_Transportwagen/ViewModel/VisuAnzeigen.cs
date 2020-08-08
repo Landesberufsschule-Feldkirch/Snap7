@@ -5,13 +5,13 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly LAP_2010_2_Transportwagen.Model.Transportwagen transportwagen;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Transportwagen _transportwagen;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, LAP_2010_2_Transportwagen.Model.Transportwagen tw)
+        public VisuAnzeigen(MainWindow mw, Model.Transportwagen tw)
         {
-            mainWindow = mw;
-            transportwagen = tw;
+            _mainWindow = mw;
+            _transportwagen = tw;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -48,47 +48,48 @@
 
         private void VisuAnzeigenTask()
         {
-            const double AbstandRadWagen = 10;
+            const double abstandRadWagen = 10;
 
             while (true)
             {
-                FarbeF1(transportwagen.F1);
-                FarbeP1(transportwagen.P1);
-                FarbeQ1(transportwagen.Q1);
-                FarbeQ2(transportwagen.Q2);
-                FarbeS2(transportwagen.S2);
+                FarbeF1(_transportwagen.F1);
+                FarbeP1(_transportwagen.P1);
+                FarbeQ1(_transportwagen.Q1);
+                FarbeQ2(_transportwagen.Q2);
+                FarbeS2(_transportwagen.S2);
 
-                SichtbarkeitB1(transportwagen.B1);
-                SichtbarkeitB2(transportwagen.B2);
+                SichtbarkeitB1(_transportwagen.B1);
+                SichtbarkeitB2(_transportwagen.B2);
 
-                if (transportwagen.Q1 && transportwagen.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
-                if (transportwagen.Fuellen) VisibilityFuellen = "Visible"; else VisibilityFuellen = "Hidden";
+                if (_transportwagen.Q1 && _transportwagen.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                VisibilityFuellen = _transportwagen.Fuellen ? "Visible" : "Hidden";
 
-                PositionRadLinks = transportwagen.Position + AbstandRadWagen;
-                PositionRadRechts = transportwagen.Position + transportwagen.AbstandRadRechts + AbstandRadWagen;
-                PositionWagenkasten = transportwagen.Position;
+                PositionRadLinks = _transportwagen.Position + abstandRadWagen;
+                PositionRadRechts = _transportwagen.Position + _transportwagen.AbstandRadRechts + abstandRadWagen;
+                PositionWagenkasten = _transportwagen.Position;
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetManualQ1() => transportwagen.Q1 = ClickModeButtonQ1();
+        internal void SetManualQ1() => _transportwagen.Q1 = ClickModeButtonQ1();
 
-        internal void SetManualQ2() => transportwagen.Q2 = ClickModeButtonQ2();
+        internal void SetManualQ2() => _transportwagen.Q2 = ClickModeButtonQ2();
 
-        internal void SetS1() => transportwagen.S1 = ClickModeButtonS1();
+        internal void SetS1() => _transportwagen.S1 = ClickModeButtonS1();
 
-        internal void SetS3() => transportwagen.S3 = ClickModeButtonS3();
+        internal void SetS3() => _transportwagen.S3 = ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
 
@@ -103,24 +104,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -164,10 +165,7 @@
 
         #region Color F1
 
-        public void FarbeF1(bool val)
-        {
-            if (val) ColorF1 = "LawnGreen"; else ColorF1 = "Red";
-        }
+        public void FarbeF1(bool val) => ColorF1 = val ? "LawnGreen" : "Red";
 
         private string _colorF1;
 
@@ -185,10 +183,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
 
         private string _colorP1;
 
@@ -206,10 +201,7 @@
 
         #region Color Q1
 
-        public void FarbeQ1(bool val)
-        {
-            if (val) ColorQ1 = "LawnGreen"; else ColorQ1 = "White";
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "White";
 
         private string _colorQ1;
 
@@ -227,10 +219,7 @@
 
         #region Color Q2
 
-        public void FarbeQ2(bool val)
-        {
-            if (val) ColorQ2 = "LawnGreen"; else ColorQ2 = "White";
-        }
+        public void FarbeQ2(bool val) => ColorQ2 = val ? "LawnGreen" : "White";
 
         private string _colorQ2;
 
@@ -248,10 +237,7 @@
 
         #region Color S2
 
-        public void FarbeS2(bool val)
-        {
-            if (val) ColorS2 = "LawnGreen"; else ColorS2 = "Red";
-        }
+        public void FarbeS2(bool val) => ColorS2 = val ? "LawnGreen" : "Red";
 
         private string _colorS2;
 

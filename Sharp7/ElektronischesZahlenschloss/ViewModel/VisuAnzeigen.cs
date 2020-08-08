@@ -6,13 +6,13 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Zahlenschloss zahlenschloss;
-        private readonly MainWindow mainWindow;
+        private readonly Model.Zahlenschloss _zahlenschloss;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.Zahlenschloss zs)
         {
-            mainWindow = mw;
-            zahlenschloss = zs;
+            _mainWindow = mw;
+            _zahlenschloss = zs;
 
             for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
@@ -35,23 +35,24 @@
         {
             while (true)
             {
-                FarbeP1(zahlenschloss.P1);
-                FarbeP2(zahlenschloss.P2);
+                FarbeP1(_zahlenschloss.P1);
+                FarbeP2(_zahlenschloss.P2);
 
-                CodeAnzeige = zahlenschloss.CodeAnzeige.ToString("D5");
+                CodeAnzeige = _zahlenschloss.CodeAnzeige.ToString("D5");
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(100);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void Buchstabe(object buchstabe)
@@ -59,7 +60,7 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                if (ClickModeButton(asciiCode)) zahlenschloss.Zeichen = asciiCode; else zahlenschloss.Zeichen = ' ';
+                _zahlenschloss.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
             }
         }
 
@@ -76,24 +77,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -137,10 +138,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val)
-        {
-            if (val) ColorP1 = "Red"; else ColorP1 = "White";
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
 
         private string _colorP1;
 
@@ -158,10 +156,7 @@
 
         #region Color P2
 
-        public void FarbeP2(bool val)
-        {
-            if (val) ColorP2 = "LawnGreen"; else ColorP2 = "White";
-        }
+        public void FarbeP2(bool val) => ColorP2 = val ? "LawnGreen" : "White";
 
         private string _colorP2;
 
@@ -179,16 +174,16 @@
 
         #region ClickModeAlleButtons
 
-        public bool ClickModeButton(int AsciiCode)
+        public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[AsciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] == "Press")
             {
-                ClickModeBtn[AsciiCode] = "Release";
+                ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtn[AsciiCode] = "Press";
+                ClickModeBtn[asciiCode] = "Press";
             }
             return false;
         }

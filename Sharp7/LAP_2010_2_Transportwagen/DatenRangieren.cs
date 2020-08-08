@@ -4,7 +4,7 @@ namespace LAP_2010_2_Transportwagen
 {
     public class DatenRangieren
     {
-        private readonly ViewModel.ViewModel transportwagenViewModel;
+        private readonly ViewModel.ViewModel _transportwagenViewModel;
 
         private enum BitPosAusgang
         {
@@ -25,24 +25,24 @@ namespace LAP_2010_2_Transportwagen
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, transportwagenViewModel.transportwagen.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, transportwagenViewModel.transportwagen.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F1, transportwagenViewModel.transportwagen.F1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, transportwagenViewModel.transportwagen.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, transportwagenViewModel.transportwagen.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, transportwagenViewModel.transportwagen.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _transportwagenViewModel.transportwagen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _transportwagenViewModel.transportwagen.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.F1, _transportwagenViewModel.transportwagen.F1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _transportwagenViewModel.transportwagen.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _transportwagenViewModel.transportwagen.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _transportwagenViewModel.transportwagen.S3);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            transportwagenViewModel.transportwagen.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            transportwagenViewModel.transportwagen.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            transportwagenViewModel.transportwagen.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            _transportwagenViewModel.transportwagen.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            _transportwagenViewModel.transportwagen.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            _transportwagenViewModel.transportwagen.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)
         {
-            transportwagenViewModel = vm;
+            _transportwagenViewModel = vm;
         }
     }
 }

@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Heizungsregler"
         xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
-        xmlns:realTimeGraphX="clr-namespace:RealTimeGraphX.WPF;assembly=RealTimeGraphX.WPF"
         mc:Ignorable="d"
         Title="RealTimeGraph" Height="557" Width="1168.5" Closing="Window_Closing" d:DataContext="{d:DesignData Type=local:MainWindowVM, IsDesignTimeCreatable=False}">
     <Window.Resources>

@@ -1,6 +1,6 @@
 ﻿namespace AmpelsteuerungKieswerk
 {
-    using AmpelsteuerungKieswerk.Model;
+    using Model;
     using Sharp7;
     using System;
 
@@ -8,9 +8,9 @@
     {
         public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
 
-        private readonly ViewModel.ViewModel viewModel;
-        private AmpelZustand ampelLinks = AmpelZustand.Rot;
-        private AmpelZustand ampelRechts = AmpelZustand.Rot;
+        private readonly ViewModel.ViewModel _viewModel;
+        private AmpelZustand _ampelLinks = AmpelZustand.Rot;
+        private AmpelZustand _ampelRechts = AmpelZustand.Rot;
 
         private enum BitPosAusgang
         {
@@ -32,37 +32,37 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.alleLastKraftWagen.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.alleLastKraftWagen.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, viewModel.alleLastKraftWagen.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, viewModel.alleLastKraftWagen.B4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.alleLastKraftWagen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.alleLastKraftWagen.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.alleLastKraftWagen.B3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B4, _viewModel.alleLastKraftWagen.B4);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            var p1_links_rot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            var p2_links_gelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            var p3_links_gruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
-            var p4_rechts_rot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4);
-            var p5_rechts_gelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5);
-            var p6_rechts_gruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P6);
+            var p1LinksRot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            var p2LinksGelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            var p3LinksGruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
+            var p4RechtsRot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4);
+            var p5RechtsGelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5);
+            var p6RechtsGruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P6);
 
-            var linkeAmpel = GetAmpelZustand(p1_links_rot, p2_links_gelb, p3_links_gruen);
-            var rechteAmpel = GetAmpelZustand(p4_rechts_rot, p5_rechts_gelb, p6_rechts_gruen);
+            var linkeAmpel = GetAmpelZustand(p1LinksRot, p2LinksGelb, p3LinksGruen);
+            var rechteAmpel = GetAmpelZustand(p4RechtsRot, p5RechtsGelb, p6RechtsGruen);
 
-            if (linkeAmpel != this.ampelLinks || rechteAmpel != this.ampelRechts)
+            if (linkeAmpel != this._ampelLinks || rechteAmpel != this._ampelRechts)
             {
                 OnAmpelChanged(new AmpelZustandEventArgs(linkeAmpel, rechteAmpel));
 
-                ampelRechts = rechteAmpel;
-                ampelLinks = linkeAmpel;
+                _ampelRechts = rechteAmpel;
+                _ampelLinks = linkeAmpel;
             }
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)
         {
-            viewModel = vm;
-            AmpelChangedEvent += viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
+            _viewModel = vm;
+            AmpelChangedEvent += _viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
         }
 
         private void OnAmpelChanged(AmpelZustandEventArgs e)

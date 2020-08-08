@@ -150,14 +150,14 @@
                    });
                 }
 
-                if (mainWindow.S7_1200 != null)
+                if (mainWindow.S71200 != null)
                 {
                     SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionEntfernt = mainWindow.S71200.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(100);
@@ -169,7 +169,7 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                if (ClickModeButton(asciiCode)) automatischesLagersystem.Zeichen = asciiCode; else automatischesLagersystem.Zeichen = ' ';
+                automatischesLagersystem.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
             }
         }
 
@@ -247,6 +247,7 @@
 
         #region Sichtbarkeit B1
 
+        // ReSharper disable once UnusedMember.Global
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -289,6 +290,7 @@
 
         #region Sichtbarkeit B2
 
+        // ReSharper disable once UnusedMember.Global
         public void SichtbarkeitB2(bool val)
         {
             if (val)
@@ -674,6 +676,7 @@
 
         #region xPosSlider
 
+        // ReSharper disable once UnusedMember.Global
         public double XSliderPosition() => XPosSlider;
 
         private double _xSliderPosition;
@@ -692,6 +695,7 @@
 
         #region yPosSlider
 
+        // ReSharper disable once UnusedMember.Global
         public double YSliderPosition() => YPosSlider;
 
         private double _ySliderPosition;
@@ -710,6 +714,7 @@
 
         #region zPosSlider
 
+        // ReSharper disable once UnusedMember.Global
         public double ZSliderPosition() => ZPosSlider;
 
         private double _zSliderPosition;

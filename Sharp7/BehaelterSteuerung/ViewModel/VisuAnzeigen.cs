@@ -1,19 +1,19 @@
-﻿namespace BehaelterSteuerung.ViewModel
-{
-    using System.ComponentModel;
-    using System.Threading;
-    using System.Windows;
+﻿using System.ComponentModel;
+using System.Threading;
+using System.Windows;
 
+namespace BehälterSteuerung.ViewModel
+{
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly double HoeheFuellBalken = 200.0;
-        private readonly Model.BehaelterSteuerung alleBehaelter;
-        private readonly MainWindow mainWindow;
+        private readonly BehälterSteuerung.Model.BehaelterSteuerung _alleBehaelter;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.BehaelterSteuerung aB)
+        public VisuAnzeigen(MainWindow mw, BehälterSteuerung.Model.BehaelterSteuerung aB)
         {
-            mainWindow = mw;
-            alleBehaelter = aB;
+            _mainWindow = mw;
+            _alleBehaelter = aB;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -40,26 +40,26 @@
             VisibilityVentilQ7Aus = "visible";
             VisibilityVentilQ8Aus = "visible";
 
-            ColorZuleitung_1b = "blue";
-            ColorZuleitung_2b = "blue";
-            ColorZuleitung_3b = "blue";
-            ColorZuleitung_4b = "blue";
+            ColorZuleitung1B = "blue";
+            ColorZuleitung2B = "blue";
+            ColorZuleitung3B = "blue";
+            ColorZuleitung4B = "blue";
 
-            ColorAbleitung_1a = "blue";
-            ColorAbleitung_2a = "blue";
-            ColorAbleitung_3a = "blue";
-            ColorAbleitung_4a = "blue";
+            ColorAbleitung1A = "blue";
+            ColorAbleitung2A = "blue";
+            ColorAbleitung3A = "blue";
+            ColorAbleitung4A = "blue";
 
-            ColorAbleitung_1a = "blue";
-            ColorAbleitung_1b = "blue";
-            ColorAbleitung_2a = "blue";
-            ColorAbleitung_2b = "blue";
-            ColorAbleitung_3a = "blue";
-            ColorAbleitung_3b = "blue";
-            ColorAbleitung_4a = "blue";
-            ColorAbleitung_4b = "blue";
+            ColorAbleitung1A = "blue";
+            ColorAbleitung1B = "blue";
+            ColorAbleitung2A = "blue";
+            ColorAbleitung2B = "blue";
+            ColorAbleitung3A = "blue";
+            ColorAbleitung3B = "blue";
+            ColorAbleitung4A = "blue";
+            ColorAbleitung4B = "blue";
 
-            ColorAbleitung_Gesamt = "blue";
+            ColorAbleitungGesamt = "blue";
 
             ColorLabelB1 = "red";
             ColorLabelB2 = "red";
@@ -70,7 +70,7 @@
             ColorLabelB7 = "red";
             ColorLabelB8 = "red";
 
-            ColorCircle_P1 = "lightgray";
+            ColorCircleP1 = "lightgray";
 
             EnableAutomatik1234 = true;
             EnableAutomatik1324 = true;
@@ -89,77 +89,72 @@
         {
             while (true)
             {
-                bool AbleitungenUnten;
-                bool AbleitungUnten1;
-                bool AbleitungUnten2;
-                bool AbleitungUnten3;
-                bool AbleitungUnten4;
+                VisibilityVentilQ1(_alleBehaelter.AlleBehaelter[0].VentilOben);
+                VisibilityVentilQ3(_alleBehaelter.AlleBehaelter[1].VentilOben);
+                VisibilityVentilQ5(_alleBehaelter.AlleBehaelter[2].VentilOben);
+                VisibilityVentilQ7(_alleBehaelter.AlleBehaelter[3].VentilOben);
 
-                VisibilityVentilQ1(alleBehaelter.AlleBehaelter[0].VentilOben);
-                VisibilityVentilQ3(alleBehaelter.AlleBehaelter[1].VentilOben);
-                VisibilityVentilQ5(alleBehaelter.AlleBehaelter[2].VentilOben);
-                VisibilityVentilQ7(alleBehaelter.AlleBehaelter[3].VentilOben);
+                FarbeZuleitung1B(_alleBehaelter.AlleBehaelter[0].VentilOben);
+                FarbeZuleitung2B(_alleBehaelter.AlleBehaelter[1].VentilOben);
+                FarbeZuleitung3B(_alleBehaelter.AlleBehaelter[2].VentilOben);
+                FarbeZuleitung4B(_alleBehaelter.AlleBehaelter[3].VentilOben);
 
-                FarbeZuleitung1b(alleBehaelter.AlleBehaelter[0].VentilOben);
-                FarbeZuleitung2b(alleBehaelter.AlleBehaelter[1].VentilOben);
-                FarbeZuleitung3b(alleBehaelter.AlleBehaelter[2].VentilOben);
-                FarbeZuleitung4b(alleBehaelter.AlleBehaelter[3].VentilOben);
+                Margin_1(_alleBehaelter.AlleBehaelter[0].Pegel);
+                Margin_2(_alleBehaelter.AlleBehaelter[1].Pegel);
+                Margin_3(_alleBehaelter.AlleBehaelter[2].Pegel);
+                Margin_4(_alleBehaelter.AlleBehaelter[3].Pegel);
 
-                Margin_1(alleBehaelter.AlleBehaelter[0].Pegel);
-                Margin_2(alleBehaelter.AlleBehaelter[1].Pegel);
-                Margin_3(alleBehaelter.AlleBehaelter[2].Pegel);
-                Margin_4(alleBehaelter.AlleBehaelter[3].Pegel);
+                FarbeAbleitung1A(_alleBehaelter.AlleBehaelter[0].Pegel > 0.01);
+                FarbeAbleitung2A(_alleBehaelter.AlleBehaelter[1].Pegel > 0.01);
+                FarbeAbleitung3A(_alleBehaelter.AlleBehaelter[2].Pegel > 0.01);
+                FarbeAbleitung4A(_alleBehaelter.AlleBehaelter[3].Pegel > 0.01);
 
-                FarbeAbleitung1a(alleBehaelter.AlleBehaelter[0].Pegel > 0.01);
-                FarbeAbleitung2a(alleBehaelter.AlleBehaelter[1].Pegel > 0.01);
-                FarbeAbleitung3a(alleBehaelter.AlleBehaelter[2].Pegel > 0.01);
-                FarbeAbleitung4a(alleBehaelter.AlleBehaelter[3].Pegel > 0.01);
+                var ableitungUnten1 = _alleBehaelter.AlleBehaelter[0].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[0].VentilUnten;
+                var ableitungUnten2 = _alleBehaelter.AlleBehaelter[1].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[1].VentilUnten;
+                var ableitungUnten3 = _alleBehaelter.AlleBehaelter[2].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[2].VentilUnten;
+                var ableitungUnten4 = _alleBehaelter.AlleBehaelter[3].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[3].VentilUnten;
+                var ableitungenUnten = ableitungUnten1 || ableitungUnten2 || ableitungUnten3 || ableitungUnten4;
 
-                AbleitungUnten1 = alleBehaelter.AlleBehaelter[0].Pegel > 0.01 && alleBehaelter.AlleBehaelter[0].VentilUnten;
-                AbleitungUnten2 = alleBehaelter.AlleBehaelter[1].Pegel > 0.01 && alleBehaelter.AlleBehaelter[1].VentilUnten;
-                AbleitungUnten3 = alleBehaelter.AlleBehaelter[2].Pegel > 0.01 && alleBehaelter.AlleBehaelter[2].VentilUnten;
-                AbleitungUnten4 = alleBehaelter.AlleBehaelter[3].Pegel > 0.01 && alleBehaelter.AlleBehaelter[3].VentilUnten;
-                AbleitungenUnten = AbleitungUnten1 || AbleitungUnten2 || AbleitungUnten3 || AbleitungUnten4;
+                VisibilityVentilQ2(ableitungUnten1);
+                VisibilityVentilQ4(ableitungUnten2);
+                VisibilityVentilQ6(ableitungUnten3);
+                VisibilityVentilQ8(ableitungUnten4);
 
-                VisibilityVentilQ2(AbleitungUnten1);
-                VisibilityVentilQ4(AbleitungUnten2);
-                VisibilityVentilQ6(AbleitungUnten3);
-                VisibilityVentilQ8(AbleitungUnten4);
+                FarbeAbleitung1B(ableitungenUnten);
+                FarbeAbleitung2B(ableitungenUnten);
+                FarbeAbleitung3B(ableitungenUnten);
+                FarbeAbleitung4B(ableitungenUnten);
+                FarbeAbleitungGesamt(ableitungenUnten);
 
-                FarbeAbleitung1b(AbleitungenUnten);
-                FarbeAbleitung2b(AbleitungenUnten);
-                FarbeAbleitung3b(AbleitungenUnten);
-                FarbeAbleitung4b(AbleitungenUnten);
-                FarbeAbleitungGesamt(AbleitungenUnten);
+                FarbeLabelB1(_alleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
+                FarbeLabelB2(_alleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
+                FarbeLabelB3(_alleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
+                FarbeLabelB4(_alleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
+                FarbeLabelB5(_alleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
+                FarbeLabelB6(_alleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
+                FarbeLabelB7(_alleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
+                FarbeLabelB8(_alleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
 
-                FarbeLabelB1(alleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
-                FarbeLabelB2(alleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
-                FarbeLabelB3(alleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
-                FarbeLabelB4(alleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
-                FarbeLabelB5(alleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
-                FarbeLabelB6(alleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
-                FarbeLabelB7(alleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
-                FarbeLabelB8(alleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
+                FarbeCircle_P1(_alleBehaelter.P1);
 
-                FarbeCircle_P1(alleBehaelter.P1);
+                EnableAutomatik1234 = !_alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik1324 = !_alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik1432 = !_alleBehaelter.AutomatikModusAktiv;
+                EnableAutomatik4321 = !_alleBehaelter.AutomatikModusAktiv;
 
-                EnableAutomatik1234 = !alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik1324 = !alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik1432 = !alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik4321 = !alleBehaelter.AutomatikModusAktiv;
-
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
@@ -175,24 +170,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -572,20 +567,17 @@
 
         #region Color Zuleitung_1b
 
-        public void FarbeZuleitung1b(bool val)
-        {
-            if (val) ColorZuleitung_1b = "blue"; else ColorZuleitung_1b = "lightblue";
-        }
+        public void FarbeZuleitung1B(bool val) => ColorZuleitung1B = val ? "blue" : "lightblue";
 
-        private string _colorZuleitung_1b;
+        private string _colorZuleitung1B;
 
-        public string ColorZuleitung_1b
+        public string ColorZuleitung1B
         {
-            get => _colorZuleitung_1b;
+            get => _colorZuleitung1B;
             set
             {
-                _colorZuleitung_1b = value;
-                OnPropertyChanged(nameof(ColorZuleitung_1b));
+                _colorZuleitung1B = value;
+                OnPropertyChanged(nameof(ColorZuleitung1B));
             }
         }
 
@@ -593,20 +585,17 @@
 
         #region Color Zuleitung_2b
 
-        public void FarbeZuleitung2b(bool val)
-        {
-            if (val) ColorZuleitung_2b = "blue"; else ColorZuleitung_2b = "lightblue";
-        }
+        public void FarbeZuleitung2B(bool val) => ColorZuleitung2B = val ? "blue" : "lightblue";
 
-        private string _colorZuleitung_2b;
+        private string _colorZuleitung2B;
 
-        public string ColorZuleitung_2b
+        public string ColorZuleitung2B
         {
-            get => _colorZuleitung_2b;
+            get => _colorZuleitung2B;
             set
             {
-                _colorZuleitung_2b = value;
-                OnPropertyChanged(nameof(ColorZuleitung_2b));
+                _colorZuleitung2B = value;
+                OnPropertyChanged(nameof(ColorZuleitung2B));
             }
         }
 
@@ -614,20 +603,17 @@
 
         #region Color Zuleitung_3b
 
-        public void FarbeZuleitung3b(bool val)
-        {
-            if (val) ColorZuleitung_3b = "blue"; else ColorZuleitung_3b = "lightblue";
-        }
+        public void FarbeZuleitung3B(bool val) => ColorZuleitung3B = val ? "blue" : "lightblue";
 
-        private string _colorZuleitung_3b;
+        private string _colorZuleitung3B;
 
-        public string ColorZuleitung_3b
+        public string ColorZuleitung3B
         {
-            get => _colorZuleitung_3b;
+            get => _colorZuleitung3B;
             set
             {
-                _colorZuleitung_3b = value;
-                OnPropertyChanged(nameof(ColorZuleitung_3b));
+                _colorZuleitung3B = value;
+                OnPropertyChanged(nameof(ColorZuleitung3B));
             }
         }
 
@@ -635,20 +621,17 @@
 
         #region Color Zuleitung_4b
 
-        public void FarbeZuleitung4b(bool val)
-        {
-            if (val) ColorZuleitung_4b = "blue"; else ColorZuleitung_4b = "lightblue";
-        }
+        public void FarbeZuleitung4B(bool val) => ColorZuleitung4B = val ? "blue" : "lightblue";
 
-        private string _colorZuleitung_4b;
+        private string _colorZuleitung4B;
 
-        public string ColorZuleitung_4b
+        public string ColorZuleitung4B
         {
-            get => _colorZuleitung_4b;
+            get => _colorZuleitung4B;
             set
             {
-                _colorZuleitung_4b = value;
-                OnPropertyChanged(nameof(ColorZuleitung_4b));
+                _colorZuleitung4B = value;
+                OnPropertyChanged(nameof(ColorZuleitung4B));
             }
         }
 
@@ -656,20 +639,17 @@
 
         #region Color Ableitung_1a
 
-        public void FarbeAbleitung1a(bool val)
-        {
-            if (val) ColorAbleitung_1a = "blue"; else ColorAbleitung_1a = "lightblue";
-        }
+        public void FarbeAbleitung1A(bool val) => ColorAbleitung1A = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_1a;
+        private string _colorAbleitung1A;
 
-        public string ColorAbleitung_1a
+        public string ColorAbleitung1A
         {
-            get => _colorAbleitung_1a;
+            get => _colorAbleitung1A;
             set
             {
-                _colorAbleitung_1a = value;
-                OnPropertyChanged(nameof(ColorAbleitung_1a));
+                _colorAbleitung1A = value;
+                OnPropertyChanged(nameof(ColorAbleitung1A));
             }
         }
 
@@ -677,20 +657,17 @@
 
         #region Color Ableitung_2a
 
-        public void FarbeAbleitung2a(bool val)
-        {
-            if (val) ColorAbleitung_2a = "blue"; else ColorAbleitung_2a = "lightblue";
-        }
+        public void FarbeAbleitung2A(bool val) => ColorAbleitung2A = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_2a;
+        private string _colorAbleitung2A;
 
-        public string ColorAbleitung_2a
+        public string ColorAbleitung2A
         {
-            get => _colorAbleitung_2a;
+            get => _colorAbleitung2A;
             set
             {
-                _colorAbleitung_2a = value;
-                OnPropertyChanged(nameof(ColorAbleitung_2a));
+                _colorAbleitung2A = value;
+                OnPropertyChanged(nameof(ColorAbleitung2A));
             }
         }
 
@@ -698,20 +675,17 @@
 
         #region Color Ableitung_3a
 
-        public void FarbeAbleitung3a(bool val)
-        {
-            if (val) ColorAbleitung_3a = "blue"; else ColorAbleitung_3a = "lightblue";
-        }
+        public void FarbeAbleitung3A(bool val) => ColorAbleitung3A = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_3a;
+        private string _colorAbleitung3A;
 
-        public string ColorAbleitung_3a
+        public string ColorAbleitung3A
         {
-            get => _colorAbleitung_3a;
+            get => _colorAbleitung3A;
             set
             {
-                _colorAbleitung_3a = value;
-                OnPropertyChanged(nameof(ColorAbleitung_3a));
+                _colorAbleitung3A = value;
+                OnPropertyChanged(nameof(ColorAbleitung3A));
             }
         }
 
@@ -719,20 +693,17 @@
 
         #region Color Ableitung_4a
 
-        public void FarbeAbleitung4a(bool val)
-        {
-            if (val) ColorAbleitung_4a = "blue"; else ColorAbleitung_4a = "lightblue";
-        }
+        public void FarbeAbleitung4A(bool val) => ColorAbleitung4A = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_4a;
+        private string _colorAbleitung4A;
 
-        public string ColorAbleitung_4a
+        public string ColorAbleitung4A
         {
-            get => _colorAbleitung_4a;
+            get => _colorAbleitung4A;
             set
             {
-                _colorAbleitung_4a = value;
-                OnPropertyChanged(nameof(ColorAbleitung_4a));
+                _colorAbleitung4A = value;
+                OnPropertyChanged(nameof(ColorAbleitung4A));
             }
         }
 
@@ -740,20 +711,17 @@
 
         #region Color Ableitung_1b
 
-        public void FarbeAbleitung1b(bool val)
-        {
-            if (val) ColorAbleitung_1b = "blue"; else ColorAbleitung_1b = "lightblue";
-        }
+        public void FarbeAbleitung1B(bool val) => ColorAbleitung1B = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_1b;
+        private string _colorAbleitung1B;
 
-        public string ColorAbleitung_1b
+        public string ColorAbleitung1B
         {
-            get => _colorAbleitung_1b;
+            get => _colorAbleitung1B;
             set
             {
-                _colorAbleitung_1b = value;
-                OnPropertyChanged(nameof(ColorAbleitung_1b));
+                _colorAbleitung1B = value;
+                OnPropertyChanged(nameof(ColorAbleitung1B));
             }
         }
 
@@ -761,20 +729,17 @@
 
         #region Color Ableitung_2b
 
-        public void FarbeAbleitung2b(bool val)
-        {
-            if (val) ColorAbleitung_2b = "blue"; else ColorAbleitung_2b = "lightblue";
-        }
+        public void FarbeAbleitung2B(bool val) => ColorAbleitung2B = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_2b;
+        private string _colorAbleitung2B;
 
-        public string ColorAbleitung_2b
+        public string ColorAbleitung2B
         {
-            get => _colorAbleitung_2b;
+            get => _colorAbleitung2B;
             set
             {
-                _colorAbleitung_2b = value;
-                OnPropertyChanged(nameof(ColorAbleitung_2b));
+                _colorAbleitung2B = value;
+                OnPropertyChanged(nameof(ColorAbleitung2B));
             }
         }
 
@@ -782,20 +747,17 @@
 
         #region Color Ableitung_3b
 
-        public void FarbeAbleitung3b(bool val)
-        {
-            if (val) ColorAbleitung_3b = "blue"; else ColorAbleitung_3b = "lightblue";
-        }
+        public void FarbeAbleitung3B(bool val) => ColorAbleitung3B = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_3b;
+        private string _colorAbleitung3B;
 
-        public string ColorAbleitung_3b
+        public string ColorAbleitung3B
         {
-            get => _colorAbleitung_3b;
+            get => _colorAbleitung3B;
             set
             {
-                _colorAbleitung_3b = value;
-                OnPropertyChanged(nameof(ColorAbleitung_3b));
+                _colorAbleitung3B = value;
+                OnPropertyChanged(nameof(ColorAbleitung3B));
             }
         }
 
@@ -803,20 +765,17 @@
 
         #region Color Ableitung_4b
 
-        public void FarbeAbleitung4b(bool val)
-        {
-            if (val) ColorAbleitung_4b = "blue"; else ColorAbleitung_4b = "lightblue";
-        }
+        public void FarbeAbleitung4B(bool val) => ColorAbleitung4B = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_4b;
+        private string _colorAbleitung4B;
 
-        public string ColorAbleitung_4b
+        public string ColorAbleitung4B
         {
-            get => _colorAbleitung_4b;
+            get => _colorAbleitung4B;
             set
             {
-                _colorAbleitung_4b = value;
-                OnPropertyChanged(nameof(ColorAbleitung_4b));
+                _colorAbleitung4B = value;
+                OnPropertyChanged(nameof(ColorAbleitung4B));
             }
         }
 
@@ -824,20 +783,17 @@
 
         #region Color Ableitung_Gesamt
 
-        public void FarbeAbleitungGesamt(bool val)
-        {
-            if (val) ColorAbleitung_Gesamt = "blue"; else ColorAbleitung_Gesamt = "lightblue";
-        }
+        public void FarbeAbleitungGesamt(bool val) => ColorAbleitungGesamt = val ? "blue" : "lightblue";
 
-        private string _colorAbleitung_Gesamt;
+        private string _colorAbleitungGesamt;
 
-        public string ColorAbleitung_Gesamt
+        public string ColorAbleitungGesamt
         {
-            get => _colorAbleitung_Gesamt;
+            get => _colorAbleitungGesamt;
             set
             {
-                _colorAbleitung_Gesamt = value;
-                OnPropertyChanged(nameof(ColorAbleitung_Gesamt));
+                _colorAbleitungGesamt = value;
+                OnPropertyChanged(nameof(ColorAbleitungGesamt));
             }
         }
 
@@ -845,10 +801,7 @@
 
         #region Color LabelB1
 
-        public void FarbeLabelB1(bool val)
-        {
-            if (val) ColorLabelB1 = "red"; else ColorLabelB1 = "lawngreen";
-        }
+        public void FarbeLabelB1(bool val) => ColorLabelB1 = val ? "red" : "lawngreen";
 
         private string _colorLabelB1;
 
@@ -866,10 +819,7 @@
 
         #region Color LabelB2
 
-        public void FarbeLabelB2(bool val)
-        {
-            if (val) ColorLabelB2 = "red"; else ColorLabelB2 = "lawngreen";
-        }
+        public void FarbeLabelB2(bool val) => ColorLabelB2 = val ? "red" : "lawngreen";
 
         private string _colorLabelB2;
 
@@ -887,10 +837,7 @@
 
         #region Color LabelB3
 
-        public void FarbeLabelB3(bool val)
-        {
-            if (val) ColorLabelB3 = "red"; else ColorLabelB3 = "lawngreen";
-        }
+        public void FarbeLabelB3(bool val) => ColorLabelB3 = val ? "red" : "lawngreen";
 
         private string _colorLabelB3;
 
@@ -908,10 +855,7 @@
 
         #region Color LabelB4
 
-        public void FarbeLabelB4(bool val)
-        {
-            if (val) ColorLabelB4 = "red"; else ColorLabelB4 = "lawngreen";
-        }
+        public void FarbeLabelB4(bool val) => ColorLabelB4 = val ? "red" : "lawngreen";
 
         private string _colorLabelB4;
 
@@ -929,10 +873,7 @@
 
         #region Color LabelB5
 
-        public void FarbeLabelB5(bool val)
-        {
-            if (val) ColorLabelB5 = "red"; else ColorLabelB5 = "lawngreen";
-        }
+        public void FarbeLabelB5(bool val) => ColorLabelB5 = val ? "red" : "lawngreen";
 
         private string _colorLabelB5;
 
@@ -950,10 +891,7 @@
 
         #region Color LabelB6
 
-        public void FarbeLabelB6(bool val)
-        {
-            if (val) ColorLabelB6 = "red"; else ColorLabelB6 = "lawngreen";
-        }
+        public void FarbeLabelB6(bool val) => ColorLabelB6 = val ? "red" : "lawngreen";
 
         private string _colorLabelB6;
 
@@ -971,10 +909,7 @@
 
         #region Color LabelB7
 
-        public void FarbeLabelB7(bool val)
-        {
-            if (val) ColorLabelB7 = "red"; else ColorLabelB7 = "lawngreen";
-        }
+        public void FarbeLabelB7(bool val) => ColorLabelB7 = val ? "red" : "lawngreen";
 
         private string _colorLabelB7;
 
@@ -992,10 +927,7 @@
 
         #region Color LabelB8
 
-        public void FarbeLabelB8(bool val)
-        {
-            if (val) ColorLabelB8 = "red"; else ColorLabelB8 = "lawngreen";
-        }
+        public void FarbeLabelB8(bool val) => ColorLabelB8 = val ? "red" : "lawngreen";
 
         private string _colorLabelB8;
 
@@ -1013,20 +945,17 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val)
-        {
-            if (val) ColorCircle_P1 = "lawngreen"; else ColorCircle_P1 = "lightgray";
-        }
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "lawngreen" : "lightgray";
 
-        private string _colorCircle_P1;
+        private string _colorCircleP1;
 
-        public string ColorCircle_P1
+        public string ColorCircleP1
         {
-            get => _colorCircle_P1;
+            get => _colorCircleP1;
             set
             {
-                _colorCircle_P1 = value;
-                OnPropertyChanged(nameof(ColorCircle_P1));
+                _colorCircleP1 = value;
+                OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
 
@@ -1098,10 +1027,7 @@
 
         #region Margin1
 
-        public void Margin_1(double pegel)
-        {
-            Margin1 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_1(double pegel) => Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin1;
 
@@ -1119,10 +1045,7 @@
 
         #region Margin2
 
-        public void Margin_2(double pegel)
-        {
-            Margin2 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_2(double pegel) => Margin2 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin2;
 
@@ -1140,10 +1063,7 @@
 
         #region Margin3
 
-        public void Margin_3(double pegel)
-        {
-            Margin3 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_3(double pegel) => Margin3 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin3;
 
@@ -1161,10 +1081,7 @@
 
         #region Margin4
 
-        public void Margin_4(double pegel)
-        {
-            Margin4 = new System.Windows.Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
-        }
+        public void Margin_4(double pegel) => Margin4 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin4;
 

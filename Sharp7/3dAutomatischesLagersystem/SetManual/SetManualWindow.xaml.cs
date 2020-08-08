@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace AutomatischesLagersystem.SetManual
+﻿namespace AutomatischesLagersystem.SetManual
 {
-    public partial class SetManualWindow : Window
+    public partial class SetManualWindow
     {
         public SetManualWindow(ViewModel.ViewModel viewModel)
         {

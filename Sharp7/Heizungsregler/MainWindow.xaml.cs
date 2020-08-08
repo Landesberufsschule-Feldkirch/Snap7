@@ -3,22 +3,21 @@ using System.Windows;
 
 namespace Heizungsregler
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public bool DebugWindowAktiv { get; set; }
 
-        public S7_1200 S7_1200 { get; set; }
+        public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly DatenRangieren datenRangieren;
-        private RealTimeGraphWindow realTimeGraphWindow;
-        private readonly Heizungsregler.ViewModel.ViewModel viewModel;
-        private SetManualWindow setManualWindow;
-        private const int anzByteDigInput = 1;
-        private const int anzByteDigOutput = 1;
-        private const int anzByteAnalogInput = 20;
-        private const int anzByteAnalogOutput = 4;
+        private RealTimeGraphWindow _realTimeGraphWindow;
+        private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
+        private SetManualWindow _setManualWindow;
+        private const int AnzByteDigInput = 1;
+        private const int AnzByteDigOutput = 1;
+        private const int AnzByteAnalogInput = 20;
+        private const int AnzByteAnalogOutput = 4;
 
         public MainWindow()
         {
@@ -26,18 +25,17 @@ namespace Heizungsregler
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
-            viewModel = new Heizungsregler.ViewModel.ViewModel(this);
+            _viewModel = new Heizungsregler.ViewModel.ViewModel(this);
 
             InitializeComponent();
 
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
-            datenRangieren = new DatenRangieren(this, viewModel);
+            var datenRangieren = new DatenRangieren(this, _viewModel);
 
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            btnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -48,14 +46,14 @@ namespace Heizungsregler
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            setManualWindow = new SetManualWindow(viewModel);
-            setManualWindow.Show();
+            _setManualWindow = new SetManualWindow(_viewModel);
+            _setManualWindow.Show();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            realTimeGraphWindow = new RealTimeGraphWindow(viewModel);
-            realTimeGraphWindow.Show();
+            _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
+            _realTimeGraphWindow.Show();
         }
     }
 }

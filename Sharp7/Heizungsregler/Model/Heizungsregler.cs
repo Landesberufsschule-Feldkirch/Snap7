@@ -41,11 +41,11 @@ namespace Heizungsregler.Model
 
         public Betriebsarten Betriebsart { get; set; }
 
-        private readonly MainWindow mainWindow;
+        private readonly MainWindow _mainWindow;
 
         public Heizungsregler(MainWindow mw)
         {
-            mainWindow = mw;
+            _mainWindow = mw;
         }
 
         internal void Reset()

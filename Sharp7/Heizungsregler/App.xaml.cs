@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Heizungsregler
+﻿namespace Heizungsregler
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

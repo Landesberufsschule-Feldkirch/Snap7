@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Heizungsregler
+﻿namespace Heizungsregler
 {
-    public partial class RealTimeGraphWindow : Window
+    public partial class RealTimeGraphWindow
     {
         public RealTimeGraphWindow(Heizungsregler.ViewModel.ViewModel viewModel)
         {

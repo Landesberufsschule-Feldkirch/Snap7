@@ -1,8 +1,8 @@
-﻿namespace BehaelterSteuerung.Commands
-{
-    using System;
-    using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
+namespace BehälterSteuerung.Commands
+{
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;

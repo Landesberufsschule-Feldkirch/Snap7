@@ -2,23 +2,23 @@
 {
     public class Thermostat
     {
-        private bool TemperaturErreicht;
-        private readonly double TemperaturMin;
-        private readonly double TemperaturMax;
+        private bool _temperaturErreicht;
+        private readonly double _temperaturMin;
+        private readonly double _temperaturMax;
 
         public Thermostat(double min, double max)
         {
-            TemperaturErreicht = false;
-            TemperaturMin = min;
-            TemperaturMax = max;
+            _temperaturErreicht = false;
+            _temperaturMin = min;
+            _temperaturMax = max;
         }
 
         public void SetTemperatur(double temp)
         {
-            if (temp < TemperaturMin) TemperaturErreicht = false;
-            if (temp > TemperaturMax) TemperaturErreicht = true;
+            if (temp < _temperaturMin) _temperaturErreicht = false;
+            if (temp > _temperaturMax) _temperaturErreicht = true;
         }
 
-        public bool GetTemperaturErreicht() => TemperaturErreicht;
+        public bool GetTemperaturErreicht() => _temperaturErreicht;
     }
 }

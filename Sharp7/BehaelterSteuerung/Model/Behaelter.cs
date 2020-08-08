@@ -1,4 +1,4 @@
-﻿namespace BehaelterSteuerung.Model
+﻿namespace BehälterSteuerung.Model
 {
     public class Behaelter
     {
@@ -8,8 +8,8 @@
         public bool VentilOben { get; set; }
         public bool VentilUnten { get; set; }
 
-        private bool automatikModus;
-        private double internerPegel;
+        private bool _automatikModus;
+        private double _internerPegel;
         private readonly double sinkGeschwindigkeit = 0.005;
         private readonly double fuellGeschwindigkeit = 0.2 * 0.005;
         private readonly double positionSchwimmerschalterOben = 0.95;
@@ -17,24 +17,24 @@
 
         public Behaelter(double pegel)
         {
-            automatikModus = false;
+            _automatikModus = false;
             Pegel = pegel;
         }
 
-        public bool AutomatikModus() => automatikModus;
+        public bool AutomatikModus() => _automatikModus;
 
         public void PegelUeberwachen()
         {
-            if (automatikModus && internerPegel < 0.01)
+            if (_automatikModus && _internerPegel < 0.01)
             {
-                automatikModus = false;
+                _automatikModus = false;
                 VentilUnten = false;
             }
 
-            if (internerPegel > 0)
+            if (_internerPegel > 0)
             {
-                internerPegel -= sinkGeschwindigkeit;
-                Pegel = internerPegel;
+                _internerPegel -= sinkGeschwindigkeit;
+                Pegel = _internerPegel;
             }
             else
             {
@@ -49,18 +49,18 @@
             SchwimmerschalterUnten = (Pegel > positionSchwimmerschalterUnten);
         }
 
-        public void AutomatikmodusStarten(double Startpegel)
+        public void AutomatikmodusStarten(double startpegel)
         {
-            automatikModus = true;
-            this.internerPegel = Startpegel;
+            _automatikModus = true;
+            this._internerPegel = startpegel;
             VentilUnten = true;
         }
 
         internal void VentilUntenUmschalten()
         {
-            if (!automatikModus)
+            if (!_automatikModus)
             {
-                if (VentilUnten) VentilUnten = false; else VentilUnten = true;
+                VentilUnten = !VentilUnten;
             }
         }
     }

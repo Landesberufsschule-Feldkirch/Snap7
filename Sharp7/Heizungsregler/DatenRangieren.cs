@@ -2,8 +2,8 @@
 {
     public class DatenRangieren
     {
-        private readonly Heizungsregler.ViewModel.ViewModel viewModel;
-        private readonly MainWindow mainWindow;
+        private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
+        private readonly MainWindow _mainWindow;
 
         private enum BitPosAusgang
         {
@@ -18,8 +18,8 @@
 
         public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
         {
-            mainWindow = mw;
-            viewModel = vm;
+            _mainWindow = mw;
+            _viewModel = vm;
         }
 
         public void RangierenInput(byte[] digInput, byte[] anInput)

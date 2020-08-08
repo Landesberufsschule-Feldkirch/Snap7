@@ -17,11 +17,11 @@ namespace LAP_2010_2_Transportwagen.Model
         public double AbstandRadRechts { get; set; }
         public bool Fuellen { get; internal set; }
 
-        private const double geschwindigkeit = 1;
-        private const double randLinks = 30;
-        private const double randRechts = 430;
-        private const double maximaleFuellzeit = 700; // Zykluszeit ist 10ms --> 7"
-        private double laufzeitFuellen = 0;
+        private const double Geschwindigkeit = 1;
+        private const double RandLinks = 30;
+        private const double RandRechts = 430;
+        private const double MaximaleFuellzeit = 700; // Zykluszeit ist 10ms --> 7"
+        private double _laufzeitFuellen;
 
         public Transportwagen()
         {
@@ -38,21 +38,22 @@ namespace LAP_2010_2_Transportwagen.Model
         {
             while (true)
             {
-                if (B1) laufzeitFuellen = 0;
-                if (B2 && laufzeitFuellen <= maximaleFuellzeit) laufzeitFuellen++;
-                Fuellen = laufzeitFuellen > 1 && laufzeitFuellen < maximaleFuellzeit;
+                if (B1) _laufzeitFuellen = 0;
+                if (B2 && _laufzeitFuellen <= MaximaleFuellzeit) _laufzeitFuellen++;
+                Fuellen = _laufzeitFuellen > 1 && _laufzeitFuellen < MaximaleFuellzeit;
 
-                if (Q1) Position -= geschwindigkeit;
-                if (Q2) Position += geschwindigkeit;
+                if (Q1) Position -= Geschwindigkeit;
+                if (Q2) Position += Geschwindigkeit;
 
-                if (Position < randLinks) Position = randLinks;
-                if (Position > randRechts) Position = randRechts;
+                if (Position < RandLinks) Position = RandLinks;
+                if (Position > RandRechts) Position = RandRechts;
 
-                B1 = Position < (randLinks + 2);
-                B2 = Position > (randRechts - 2);
+                B1 = Position < (RandLinks + 2);
+                B2 = Position > (RandRechts - 2);
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void SetF1() => F1 = !F1;

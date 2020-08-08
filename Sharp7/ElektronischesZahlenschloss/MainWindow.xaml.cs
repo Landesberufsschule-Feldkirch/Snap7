@@ -1,20 +1,17 @@
 ﻿using Kommunikation;
-using System.Windows;
 
 namespace ElektronischesZahlenschloss
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        public S7_1200 S7_1200 { get; set; }
+        public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel viewModel;
-        private const int anzByteDigInput = 2;
-        private const int anzByteDigOutput = 2;
-        private const int anzByteAnalogInput = 2;
-        private const int anzByteAnalogOutput = 2;
+        private const int AnzByteDigInput = 2;
+        private const int AnzByteDigOutput = 2;
+        private const int AnzByteAnalogInput = 2;
+        private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
         {
@@ -22,12 +19,12 @@ namespace ElektronischesZahlenschloss
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
-            viewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(viewModel);
+            var viewModel = new ViewModel.ViewModel(this);
+            var datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

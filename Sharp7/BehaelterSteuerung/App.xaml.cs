@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace BehaelterSteuerung
+﻿namespace BehälterSteuerung
 {
-    public partial class App : Application
+    public partial class App
     {
     }
 }

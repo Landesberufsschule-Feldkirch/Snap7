@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace Heizungsregler
+﻿namespace Heizungsregler
 {
-    public partial class SetManualWindow : Window
+    public partial class SetManualWindow
     {
         public SetManualWindow(Heizungsregler.ViewModel.ViewModel heizungsreglerViewModel)
         {

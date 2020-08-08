@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace AutomatischesLagersystem
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public DreiDElemente[] BediengeraetStartpositionen { get; set; }
         public DreiDElemente[] KistenStartPositionen { get; set; }
@@ -13,19 +13,18 @@ namespace AutomatischesLagersystem
         public bool KisteLiegtAufDemRegalbediengeraet { get; set; }
         public Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
         public bool DebugWindowAktiv { get; set; }
-        public S7_1200 S7_1200 { get; set; }
+        public S7_1200 S71200 { get; set; }
         public bool FensterAktiv { get; set; }
         public DreiDErstellen DreiD { get; set; }
         public int[] DreiDModelleIds { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        private readonly DatenRangieren datenRangieren;
-        private readonly ViewModel.ViewModel viewModel;
-        private const int anzByteDigInput = 2;
-        private const int anzByteDigOutput = 2;
-        private const int anzByteAnalogInput = 2;
-        private const int anzByteAnalogOutput = 2;
+        private readonly ViewModel.ViewModel _viewModel;
+        private const int AnzByteDigInput = 2;
+        private const int AnzByteDigOutput = 2;
+        private const int AnzByteAnalogInput = 2;
+        private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
         {
@@ -40,26 +39,25 @@ namespace AutomatischesLagersystem
             KistenAktuellePositionen = new DreiDKisten[100];
             DreiDModelleIds = new int[ViewModel.IdEintraege.AnzahlEintraege];
 
-            RegalBedienGeraet = new AutomatischesLagersystem.Model.RegalBedienGeraet();
+            RegalBedienGeraet = new Model.RegalBedienGeraet();
 
-            viewModel = new ViewModel.ViewModel(this);
-            datenRangieren = new DatenRangieren(this, viewModel);
+            _viewModel = new ViewModel.ViewModel(this);
+            var datenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
 
-            DataContext = viewModel;
-            S7_1200 = new S7_1200(VersionInfo.Length, anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            DataContext = _viewModel;
+            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             DreiD = new DreiDErstellen(this);
 
-            if (System.Diagnostics.Debugger.IsAttached) btnDebugWindow.Visibility = System.Windows.Visibility.Visible;
-            else btnDebugWindow.Visibility = System.Windows.Visibility.Hidden;
+            btnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManualWindow(viewModel);
+            SetManualWindow = new SetManual.SetManualWindow(_viewModel);
             SetManualWindow.Show();
         }
 

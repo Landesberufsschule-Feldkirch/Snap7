@@ -11,19 +11,19 @@ namespace Hydraulik
             Schliessen
         }
 
-        private Richtung richtung;
-        private double positionProzent;
-        private readonly double posMinProzent;
-        private readonly double posMaxProzent;
-        private readonly double deltaMillisekunden;
-        private const int schrittweite = 10;
+        private Richtung _richtung;
+        private double _positionProzent;
+        private readonly double _posMinProzent;
+        private readonly double _posMaxProzent;
+        private readonly double _deltaMillisekunden;
+        private const int Schrittweite = 10;
 
         public DreiwegeVentil(double minPosProzent, double maxPosProzent, double laufzeitSekunden)
         {
-            positionProzent = minPosProzent;
-            posMinProzent = minPosProzent;
-            posMaxProzent = maxPosProzent;
-            deltaMillisekunden = (posMaxProzent - posMinProzent) * laufzeitSekunden / 1000 * schrittweite;
+            _positionProzent = minPosProzent;
+            _posMinProzent = minPosProzent;
+            _posMaxProzent = maxPosProzent;
+            _deltaMillisekunden = (_posMaxProzent - _posMinProzent) * laufzeitSekunden / 1000 * Schrittweite;
 
             System.Threading.Tasks.Task.Run(DreiwegeVentilTask);
         }
@@ -32,21 +32,22 @@ namespace Hydraulik
         {
             while (true)
             {
-                switch (richtung)
+                switch (_richtung)
                 {
                     case Richtung.Oeffnen:
-                        positionProzent += deltaMillisekunden;
+                        _positionProzent += _deltaMillisekunden;
                         break;
 
                     case Richtung.Schliessen:
-                        positionProzent -= deltaMillisekunden;
+                        _positionProzent -= _deltaMillisekunden;
                         break;
                 }
 
                 LimitsTesten();
 
-                Thread.Sleep(schrittweite);
+                Thread.Sleep(Schrittweite);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         public void SetNeuePosition(Richtung ri, double dauer)
@@ -54,25 +55,25 @@ namespace Hydraulik
             switch (ri)
             {
                 case Richtung.Oeffnen:
-                    positionProzent += deltaMillisekunden * dauer;
+                    _positionProzent += _deltaMillisekunden * dauer;
                     break;
 
                 case Richtung.Schliessen:
-                    positionProzent -= deltaMillisekunden * dauer;
+                    _positionProzent -= _deltaMillisekunden * dauer;
                     break;
             }
 
             LimitsTesten();
         }
 
-        public void SetRichtung(Richtung ri) => richtung = ri;
+        public void SetRichtung(Richtung ri) => _richtung = ri;
 
-        public double GetPosition() => positionProzent;
+        public double GetPosition() => _positionProzent;
 
         private void LimitsTesten()
         {
-            if (positionProzent > posMaxProzent) positionProzent = posMaxProzent;
-            if (positionProzent < posMinProzent) positionProzent = posMinProzent;
+            if (_positionProzent > _posMaxProzent) _positionProzent = _posMaxProzent;
+            if (_positionProzent < _posMinProzent) _positionProzent = _posMinProzent;
         }
     }
 }

@@ -3,18 +3,18 @@
     using System.ComponentModel;
     using System.Threading;
     using Utilities;
-    using static AmpelsteuerungKieswerk.Model.LastKraftWagen;
+    using static Model.LastKraftWagen;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.AlleLastKraftWagen alleLastKraftWagen;
-        private readonly MainWindow mainWindow;
+        private readonly Model.AlleLastKraftWagen _alleLastKraftWagen;
+        private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.AlleLastKraftWagen alleLKW)
+        public VisuAnzeigen(MainWindow mw, Model.AlleLastKraftWagen alleLkw)
         {
-            mainWindow = mw;
-            alleLastKraftWagen = alleLKW;
-            DatenRangieren_AmpelChangedEvent(null, new AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs(AmpelsteuerungKieswerk.Model.AmpelZustand.Aus, AmpelsteuerungKieswerk.Model.AmpelZustand.Aus));
+            _mainWindow = mw;
+            _alleLastKraftWagen = alleLkw;
+            DatenRangieren_AmpelChangedEvent(null, new Model.AmpelZustandEventArgs(Model.AmpelZustand.Aus, Model.AmpelZustand.Aus));
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -59,40 +59,41 @@
         {
             while (true)
             {
-                FarbeB1(alleLastKraftWagen.B1);
-                FarbeB2(alleLastKraftWagen.B2);
-                FarbeB3(alleLastKraftWagen.B3);
-                FarbeB4(alleLastKraftWagen.B4);
+                FarbeB1(_alleLastKraftWagen.B1);
+                FarbeB2(_alleLastKraftWagen.B2);
+                FarbeB3(_alleLastKraftWagen.B3);
+                FarbeB4(_alleLastKraftWagen.B4);
 
-                PositionLkw1(alleLastKraftWagen.GetPositionLKW(0));
-                PositionLkw2(alleLastKraftWagen.GetPositionLKW(1));
-                PositionLkw3(alleLastKraftWagen.GetPositionLKW(2));
-                PositionLkw4(alleLastKraftWagen.GetPositionLKW(3));
-                PositionLkw5(alleLastKraftWagen.GetPositionLKW(4));
+                PositionLkw1(_alleLastKraftWagen.GetPositionLkw(0));
+                PositionLkw2(_alleLastKraftWagen.GetPositionLkw(1));
+                PositionLkw3(_alleLastKraftWagen.GetPositionLkw(2));
+                PositionLkw4(_alleLastKraftWagen.GetPositionLkw(3));
+                PositionLkw5(_alleLastKraftWagen.GetPositionLkw(4));
 
-                RichtungLkw1(alleLastKraftWagen.GetRichtungLKW(0));
-                RichtungLkw2(alleLastKraftWagen.GetRichtungLKW(1));
-                RichtungLkw3(alleLastKraftWagen.GetRichtungLKW(2));
-                RichtungLkw4(alleLastKraftWagen.GetRichtungLKW(3));
-                RichtungLkw5(alleLastKraftWagen.GetRichtungLKW(4));
+                RichtungLkw1(_alleLastKraftWagen.GetRichtungLkw(0));
+                RichtungLkw2(_alleLastKraftWagen.GetRichtungLkw(1));
+                RichtungLkw3(_alleLastKraftWagen.GetRichtungLkw(2));
+                RichtungLkw4(_alleLastKraftWagen.GetRichtungLkw(3));
+                RichtungLkw5(_alleLastKraftWagen.GetRichtungLkw(4));
 
-                VersionNr = mainWindow.VersionNummer;
+                VersionNr = _mainWindow.VersionNummer;
 
-                if (mainWindow.S7_1200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        public void DatenRangieren_AmpelChangedEvent(object sender, AmpelsteuerungKieswerk.Model.AmpelZustandEventArgs e)
+        public void DatenRangieren_AmpelChangedEvent(object sender, Model.AmpelZustandEventArgs e)
         {
             FarbeLinksRot(false);
             FarbeLinksGelb(false);
@@ -104,49 +105,41 @@
 
             switch (e.AmpelZustandLinks)
             {
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Rot:
+                case Model.AmpelZustand.Rot:
                     FarbeLinksRot(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.RotUndGelb:
+                case Model.AmpelZustand.RotUndGelb:
                     FarbeLinksRot(true);
                     FarbeLinksGelb(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Gelb:
+                case Model.AmpelZustand.Gelb:
                     FarbeLinksGelb(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Gruen:
+                case Model.AmpelZustand.Gruen:
                     FarbeLinksGruen(true);
-                    break;
-
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Aus:
-                default:
                     break;
             }
 
             switch (e.AmpelZustandRechts)
             {
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Rot:
+                case Model.AmpelZustand.Rot:
                     FarbeRechtsRot(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.RotUndGelb:
+                case Model.AmpelZustand.RotUndGelb:
                     FarbeRechtsRot(true);
                     FarbeRechtsGelb(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Gelb:
+                case Model.AmpelZustand.Gelb:
                     FarbeRechtsGelb(true);
                     break;
 
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Gruen:
+                case Model.AmpelZustand.Gruen:
                     FarbeRechtsGruen(true);
-                    break;
-
-                case AmpelsteuerungKieswerk.Model.AmpelZustand.Aus:
-                default:
                     break;
             }
         }
@@ -164,24 +157,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -224,10 +217,7 @@
 
         #region Color B1
 
-        public void FarbeB1(bool val)
-        {
-            if (val) ColorB1 = "Red"; else ColorB1 = "LightGray";
-        }
+        public void FarbeB1(bool val) => ColorB1 = val ? "Red" : "LightGray";
 
         private string _colorB1;
 
@@ -245,10 +235,7 @@
 
         #region Color B2
 
-        public void FarbeB2(bool val)
-        {
-            if (val) ColorB2 = "Red"; else ColorB2 = "LightGray";
-        }
+        public void FarbeB2(bool val) => ColorB2 = val ? "Red" : "LightGray";
 
         private string _colorB2;
 
@@ -266,10 +253,7 @@
 
         #region Color B3
 
-        public void FarbeB3(bool val)
-        {
-            if (val) ColorB3 = "Red"; else ColorB3 = "LightGray";
-        }
+        public void FarbeB3(bool val) => ColorB3 = val ? "Red" : "LightGray";
 
         private string _colorB3;
 
@@ -287,10 +271,7 @@
 
         #region Color B4
 
-        public void FarbeB4(bool val)
-        {
-            if (val) ColorB4 = "Red"; else ColorB4 = "LightGray";
-        }
+        public void FarbeB4(bool val) => ColorB4 = val ? "Red" : "LightGray";
 
         private string _colorB4;
 
@@ -308,10 +289,7 @@
 
         #region ColorLinksRot
 
-        public void FarbeLinksRot(bool val)
-        {
-            if (val) ColorLinksRot = "Red"; else ColorLinksRot = "White";
-        }
+        public void FarbeLinksRot(bool val) => ColorLinksRot = val ? "Red" : "White";
 
         private string _colorLinksRot;
 
@@ -329,10 +307,7 @@
 
         #region ColorLinksGelb
 
-        public void FarbeLinksGelb(bool val)
-        {
-            if (val) ColorLinksGelb = "Yellow"; else ColorLinksGelb = "White";
-        }
+        public void FarbeLinksGelb(bool val) => ColorLinksGelb = val ? "Yellow" : "White";
 
         private string _colorLinksGelb;
 
@@ -350,10 +325,7 @@
 
         #region ColorLinksGruen
 
-        public void FarbeLinksGruen(bool val)
-        {
-            if (val) ColorLinksGruen = "Green"; else ColorLinksGruen = "White";
-        }
+        public void FarbeLinksGruen(bool val) => ColorLinksGruen = val ? "Green" : "White";
 
         private string _colorLinksGruen;
 
@@ -371,10 +343,7 @@
 
         #region ColorRechtsRot
 
-        public void FarbeRechtsRot(bool val)
-        {
-            if (val) ColorRechtsRot = "Red"; else ColorRechtsRot = "White";
-        }
+        public void FarbeRechtsRot(bool val) => ColorRechtsRot = val ? "Red" : "White";
 
         private string _colorRechtsRot;
 
@@ -392,10 +361,7 @@
 
         #region ColorRechtsGelb
 
-        public void FarbeRechtsGelb(bool val)
-        {
-            if (val) ColorRechtsGelb = "Yellow"; else ColorRechtsGelb = "White";
-        }
+        public void FarbeRechtsGelb(bool val) => ColorRechtsGelb = val ? "Yellow" : "White";
 
         private string _colorRechtsGelb;
 
@@ -413,10 +379,7 @@
 
         #region ColorRechtsGruen
 
-        public void FarbeRechtsGruen(bool val)
-        {
-            if (val) ColorRechtsGruen = "Green"; else ColorRechtsGruen = "White";
-        }
+        public void FarbeRechtsGruen(bool val) => ColorRechtsGruen = val ? "Green" : "White";
 
         private string _colorRechtsGruen;
 

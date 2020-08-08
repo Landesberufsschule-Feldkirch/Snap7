@@ -35,14 +35,14 @@ namespace Heizungsregler.ViewModel
         {
             while (true)
             {
-                if (mainWindow.S7_1200 != null)
+                if (mainWindow.S71200 != null)
                 {
                     SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S7_1200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionEntfernt = mainWindow.S71200.GetVersion();                  
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S7_1200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S7_1200?.GetSpsStatus();
+                    SpsColor = mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = mainWindow.S71200?.GetSpsStatus();
                 }
 
                 WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString() + "°C";
@@ -51,6 +51,7 @@ namespace Heizungsregler.ViewModel
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
@@ -66,24 +67,24 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -127,10 +128,7 @@ namespace Heizungsregler.ViewModel
 
         #region ColorPumpe
 
-        public void Pumpenfarbe(bool status)
-        {
-            if (status) ColorPumpe = "LawnGreen"; else ColorPumpe = "White";
-        }
+        public void Pumpenfarbe(bool status) => ColorPumpe = status ? "LawnGreen" : "White";
 
         private string _colorPumpe;
 

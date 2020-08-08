@@ -11,23 +11,23 @@
         public bool B3 { get; set; }
         public bool B4 { get; set; }
 
-        private readonly List<LastKraftWagen> alleLkw = new List<LastKraftWagen>();
-        private readonly int anzahlLkw;
+        private readonly List<LastKraftWagen> _alleLkw = new List<LastKraftWagen>();
+        private readonly int _anzahlLkw;
 
         public AlleLastKraftWagen()
         {
-            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
-            alleLkw.Add(new LastKraftWagen(anzahlLkw++));
+            _alleLkw.Add(new LastKraftWagen(_anzahlLkw++));
+            _alleLkw.Add(new LastKraftWagen(_anzahlLkw++));
+            _alleLkw.Add(new LastKraftWagen(_anzahlLkw++));
+            _alleLkw.Add(new LastKraftWagen(_anzahlLkw++));
+            _alleLkw.Add(new LastKraftWagen(_anzahlLkw++));
 
             System.Threading.Tasks.Task.Run(AlleLastKraftWagenTask);
         }
 
-        public Punkt GetPositionLKW(int index) => alleLkw[index].Position.Punkt;
+        public Punkt GetPositionLkw(int index) => _alleLkw[index].Position.Punkt;
 
-        public LastKraftWagen.LkwRichtungen GetRichtungLKW(int index) => alleLkw[index].LKW_Richtung;
+        public LastKraftWagen.LkwRichtungen GetRichtungLkw(int index) => _alleLkw[index].LkwRichtung;
 
         private void AlleLastKraftWagenTask()
         {
@@ -38,7 +38,7 @@
                 B3 = false;
                 B4 = false;
 
-                foreach (var lkw in alleLkw)
+                foreach (var lkw in _alleLkw)
                 {
                     var stop = KollisionErkennen(lkw);
                     var (b1, b2, b3, b4) = lkw.LastwagenFahren(stop);
@@ -50,6 +50,7 @@
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         private bool KollisionErkennen(LastKraftWagen laster)
@@ -57,14 +58,14 @@
             bool stop = false;
             var (lx, ly) = laster.GetRichtung();
 
-            foreach (var lkw in alleLkw)
+            foreach (var lkw in _alleLkw)
             {
-                if (laster.ID != lkw.ID)
+                if (laster.Id != lkw.Id)
                 {
                     var (hx, hy) = lkw.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht)
+                    if (hx != Rechteck.RichtungX.Steht || hy != Rechteck.RichtungY.Steht)
                     {
-                        stop |= Utilities.Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
+                        stop |= Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
                     }
                 }
             }
@@ -72,24 +73,24 @@
             return stop;
         }
 
-        internal void TasterLkw1() => alleLkw[0].Losfahren();
+        internal void TasterLkw1() => _alleLkw[0].Losfahren();
 
-        internal void TasterLkw2() => alleLkw[1].Losfahren();
+        internal void TasterLkw2() => _alleLkw[1].Losfahren();
 
-        internal void TasterLkw3() => alleLkw[2].Losfahren();
+        internal void TasterLkw3() => _alleLkw[2].Losfahren();
 
-        internal void TasterLkw4() => alleLkw[3].Losfahren();
+        internal void TasterLkw4() => _alleLkw[3].Losfahren();
 
-        internal void TasterLkw5() => alleLkw[4].Losfahren();
+        internal void TasterLkw5() => _alleLkw[4].Losfahren();
 
         internal void TasterLinksParken()
         {
-            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.LinksGeparkt;
+            foreach (var lkw in _alleLkw) lkw.LkwPosition = LastKraftWagen.LkwPositionen.LinksGeparkt;
         }
 
         internal void TasterRechtsParken()
         {
-            foreach (var lkw in alleLkw) lkw.LKW_Position = LastKraftWagen.LkwPositionen.RechtsGeparkt;
+            foreach (var lkw in _alleLkw) lkw.LkwPosition = LastKraftWagen.LkwPositionen.RechtsGeparkt;
         }
     }
 }
