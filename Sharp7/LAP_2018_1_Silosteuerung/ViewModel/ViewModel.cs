@@ -2,15 +2,16 @@
 {
     public class ViewModel
     {
+        private readonly Model.Foerderanlage _foerderanlage;
+        public Model.Foerderanlage Foerderanlage => _foerderanlage;
         public VisuAnzeigen ViAnzeige { get; set; }
-        public readonly Model.Foerderanlage foerderanlage;
 
         public ViewModel()
         {
-            foerderanlage = new Model.Foerderanlage();
-            ViAnzeige = new VisuAnzeigen(foerderanlage);
+            _foerderanlage = new Model.Foerderanlage();
+            ViAnzeige = new VisuAnzeigen(_foerderanlage);
         }
 
-        public Model.Foerderanlage Foerderanlage => foerderanlage;
+
     }
 }

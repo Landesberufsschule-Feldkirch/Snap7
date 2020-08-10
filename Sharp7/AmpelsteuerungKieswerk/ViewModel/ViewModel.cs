@@ -5,83 +5,48 @@
 
     public class ViewModel
     {
-        public readonly Model.AlleLastKraftWagen alleLastKraftWagen;
+        private readonly Model.AlleLastKraftWagen _alleLastKraftWagen;
+        public Model.AlleLastKraftWagen AlleLastKraftWagen => _alleLastKraftWagen;
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
-            alleLastKraftWagen = new Model.AlleLastKraftWagen();
-            ViAnzeige = new VisuAnzeigen(mainWindow, alleLastKraftWagen);
+            _alleLastKraftWagen = new Model.AlleLastKraftWagen();
+            ViAnzeige = new VisuAnzeigen(mainWindow, _alleLastKraftWagen);
         }
 
-        // ReSharper disable once UnusedMember.Global
-        public Model.AlleLastKraftWagen AlleLastKraftWagen => alleLastKraftWagen;
 
-        #region BtnLkw1
 
         private ICommand _btnLkw1;
-
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnLkw1 => _btnLkw1 ?? (_btnLkw1 = new RelayCommand(p => alleLastKraftWagen.TasterLkw1(), p => true));
-
-        #endregion BtnLkw1
-
-        #region BtnLkw2
+        public ICommand BtnLkw1 => _btnLkw1 ?? (_btnLkw1 = new RelayCommand(p => _alleLastKraftWagen.TasterLkw1(), p => true));
 
         private ICommand _btnLkw2;
-
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnLkw2 => _btnLkw2 ?? (_btnLkw2 = new RelayCommand(p => alleLastKraftWagen.TasterLkw2(), p => true));
-
-        #endregion BtnLkw2
-
-        #region BtnLkw3
+        public ICommand BtnLkw2 => _btnLkw2 ?? (_btnLkw2 = new RelayCommand(p => _alleLastKraftWagen.TasterLkw2(), p => true));
 
         private ICommand _btnLkw3;
-
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnLkw3 => _btnLkw3 ?? (_btnLkw3 = new RelayCommand(p => alleLastKraftWagen.TasterLkw3(), p => true));
-
-        #endregion BtnLkw3
-
-        #region BtnLkw4
+        public ICommand BtnLkw3 => _btnLkw3 ?? (_btnLkw3 = new RelayCommand(p => _alleLastKraftWagen.TasterLkw3(), p => true));
 
         private ICommand _btnLkw4;
-
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnLkw4 => _btnLkw4 ?? (_btnLkw4 = new RelayCommand(p => alleLastKraftWagen.TasterLkw4(), p => true));
-
-        #endregion BtnLkw4
-
-        #region BtnLkw5
+        public ICommand BtnLkw4 => _btnLkw4 ?? (_btnLkw4 = new RelayCommand(p => _alleLastKraftWagen.TasterLkw4(), p => true));
 
         private ICommand _btnLkw5;
-
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnLkw5 => _btnLkw5 ?? (_btnLkw5 = new RelayCommand(p => alleLastKraftWagen.TasterLkw5(), p => true));
-
-        #endregion BtnLkw5
-
-        #region BtnLinksParken
+        public ICommand BtnLkw5 => _btnLkw5 ?? (_btnLkw5 = new RelayCommand(p => _alleLastKraftWagen.TasterLkw5(), p => true));
 
         private ICommand _btnLinksParken;
-
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnLinksParken =>
             _btnLinksParken ?? (_btnLinksParken =
-                new RelayCommand(p => alleLastKraftWagen.TasterLinksParken(), p => true));
-
-        #endregion BtnLinksParken
-
-        #region BtnRechtsParken
+                new RelayCommand(p => _alleLastKraftWagen.TasterLinksParken(), p => true));
 
         private ICommand _btnRechtsParken;
-
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnRechtsParken =>
             _btnRechtsParken ?? (_btnRechtsParken =
-                new RelayCommand(p => alleLastKraftWagen.TasterRechtsParken(), p => true));
-
-        #endregion BtnRechtsParken
+                new RelayCommand(p => _alleLastKraftWagen.TasterRechtsParken(), p => true));
     }
 }

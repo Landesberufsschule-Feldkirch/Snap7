@@ -1,4 +1,6 @@
-﻿namespace Nadeltelegraph.Model
+﻿using System.Collections.ObjectModel;
+
+namespace Nadeltelegraph.Model
 {
     public class Nadeltelegraph
     {
@@ -14,10 +16,12 @@
         public bool P4R { get; set; }
         public bool P5L { get; set; }
         public bool P5R { get; set; }
+        public  ObservableCollection<Zeiger> AlleZeiger = new ObservableCollection<Zeiger>();
 
         public Nadeltelegraph()
         {
             Zeichen = ' ';
+            for (var i = 0; i < 10; i++) AlleZeiger.Add(new Zeiger());
         }
     }
 }

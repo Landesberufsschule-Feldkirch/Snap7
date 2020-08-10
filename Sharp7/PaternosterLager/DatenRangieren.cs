@@ -23,24 +23,24 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.paternosterlager.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.paternosterlager.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.paternosterlager.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.paternosterlager.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.Paternosterlager.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.Paternosterlager.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
 
-            S7.SetUint8At(digInput, 1, (byte)_viewModel.paternosterlager.Zeichen);
+            S7.SetUint8At(digInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                _viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+                _viewModel.Paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _viewModel.Paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
             }
 
-            _viewModel.paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
-            _viewModel.paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
+            _viewModel.Paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
+            _viewModel.Paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)

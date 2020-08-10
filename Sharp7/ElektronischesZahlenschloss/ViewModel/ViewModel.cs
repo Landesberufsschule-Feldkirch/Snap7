@@ -5,25 +5,18 @@ namespace ElektronischesZahlenschloss.ViewModel
 {
     public class ViewModel
     {
+        private readonly Model.Zahlenschloss _zahlenschloss;
+        public Model.Zahlenschloss Zahlenschloss => _zahlenschloss;
         public VisuAnzeigen ViAnzeige { get; set; }
-        public readonly Model.Zahlenschloss zahlenschloss;
-
         public ViewModel(MainWindow mainWindow)
         {
-            zahlenschloss = new Model.Zahlenschloss(mainWindow);
-            ViAnzeige = new VisuAnzeigen(mainWindow, zahlenschloss);
+            _zahlenschloss = new Model.Zahlenschloss(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, _zahlenschloss);
         }
 
-        // ReSharper disable once UnusedMember.Global
-        public Model.Zahlenschloss Zahlenschloss => zahlenschloss;
-
-        #region BtnBuchstabe
 
         private ICommand _btnBuchstabe;
-
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
-
-        #endregion BtnBuchstabe
     }
 }

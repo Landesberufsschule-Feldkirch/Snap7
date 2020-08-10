@@ -32,10 +32,10 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.alleLastKraftWagen.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.alleLastKraftWagen.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.alleLastKraftWagen.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, _viewModel.alleLastKraftWagen.B4);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.AlleLastKraftWagen.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.AlleLastKraftWagen.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.AlleLastKraftWagen.B3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B4, _viewModel.AlleLastKraftWagen.B4);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)

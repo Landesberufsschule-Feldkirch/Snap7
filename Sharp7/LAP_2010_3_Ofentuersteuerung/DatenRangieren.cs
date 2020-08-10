@@ -25,24 +25,21 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.ofentuerSteuerung.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.ofentuerSteuerung.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.ofentuerSteuerung.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.ofentuerSteuerung.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.ofentuerSteuerung.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _viewModel.ofentuerSteuerung.S3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.OfentuerSteuerung.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.OfentuerSteuerung.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.OfentuerSteuerung.B3);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.OfentuerSteuerung.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.OfentuerSteuerung.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _viewModel.OfentuerSteuerung.S3);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            _viewModel.ofentuerSteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            _viewModel.ofentuerSteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            _viewModel.ofentuerSteuerung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+            _viewModel.OfentuerSteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            _viewModel.OfentuerSteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+            _viewModel.OfentuerSteuerung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

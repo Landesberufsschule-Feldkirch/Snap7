@@ -6,25 +6,20 @@ namespace WordClock.ViewModel
 
     public class ViewModel
     {
-        public readonly Model.Zeiten zeiten;
-        public VisuAnzeigen ViAnzeige { get; set; }
-
+        private readonly Model.Zeiten _zeiten;
+        public Model.Zeiten Zeiten => _zeiten;
+        public VisuAnzeigen ViAnzeige { get; set; }        
         public ViewModel(MainWindow mainWindow)
         {
-            zeiten = new Model.Zeiten();
-            ViAnzeige = new VisuAnzeigen(mainWindow, zeiten);
+            _zeiten = new Model.Zeiten();
+            ViAnzeige = new VisuAnzeigen(mainWindow, _zeiten);
         }
 
-        public Model.Zeiten Zeiten => zeiten;
-
-        #region BtnSetCurrentTime
 
         private ICommand _btnSetCurrentTime;
-
+        // ReSharper disable once UnusedMember.Global
         public ICommand BtnSetCurrentTime =>
             _btnSetCurrentTime ??
-            (_btnSetCurrentTime = new RelayCommand(p => zeiten.SetCurrentTime(), p => true));
-
-        #endregion BtnSetCurrentTime
+            (_btnSetCurrentTime = new RelayCommand(p => _zeiten.SetCurrentTime(), p => true));
     }
 }

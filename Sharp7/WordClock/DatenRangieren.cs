@@ -35,9 +35,6 @@
             //
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

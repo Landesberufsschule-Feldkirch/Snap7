@@ -14,20 +14,17 @@
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetUint8At(digInput, 1, (byte)_viewModel.zahlenschloss.Zeichen);
+            S7.SetUint8At(digInput, 1, (byte)_viewModel.Zahlenschloss.Zeichen);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
-            _viewModel.zahlenschloss.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            _viewModel.zahlenschloss.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
+            _viewModel.Zahlenschloss.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            _viewModel.Zahlenschloss.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
 
-            _viewModel.zahlenschloss.CodeAnzeige = S7.GetUint16At(digOutput, 1);
+            _viewModel.Zahlenschloss.CodeAnzeige = S7.GetUint16At(digOutput, 1);
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

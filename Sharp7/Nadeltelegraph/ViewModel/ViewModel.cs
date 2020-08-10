@@ -5,25 +5,18 @@
 
     public class ViewModel
     {
-        public readonly Model.Nadeltelegraph nadeltelegraph;
+        private readonly Model.Nadeltelegraph _nadeltelegraph;
+        public Model.Nadeltelegraph Nadeltelegraph => _nadeltelegraph;
         public VisuAnzeigen ViAnzeige { get; set; }
-
         public ViewModel(MainWindow mainWindow)
         {
-            nadeltelegraph = new Model.Nadeltelegraph();
-            ViAnzeige = new VisuAnzeigen(mainWindow, nadeltelegraph);
+            _nadeltelegraph = new Model.Nadeltelegraph();
+            ViAnzeige = new VisuAnzeigen(mainWindow, _nadeltelegraph);
         }
 
-        // ReSharper disable once UnusedMember.Global
-        public Model.Nadeltelegraph Nadeltelegraph => nadeltelegraph;
-
-        #region BtnBuchstabe
 
         private ICommand _btnBuchstabe;
-
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
-
-        #endregion BtnBuchstabe
     }
 }

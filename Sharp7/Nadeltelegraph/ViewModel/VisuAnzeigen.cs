@@ -4,11 +4,8 @@
     using System.ComponentModel;
     using System.Threading;
 
-    public partial class VisuAnzeigen : INotifyPropertyChanged
+    public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private const int WinkelNadel = 35;
-        private const int BreiteBreit = 10;
-        private const int BreiteSchmal = 1;
         private readonly Model.Nadeltelegraph _nadeltelegraph;
         private readonly MainWindow _mainWindow;
 
@@ -26,28 +23,9 @@
 
             for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
             for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
+            for (var i = 0; i < 100; i++) AlleBreiten.Add(0);
 
             ColorP0 = "LightGray";
-
-            Width1UpRight = 1;
-            Width2UpRight = 1;
-            Width3UpRight = 1;
-            Width4UpRight = 1;
-
-            Width2UpLeft = 1;
-            Width3UpLeft = 1;
-            Width4UpLeft = 1;
-            Width5UpLeft = 1;
-
-            Width1DownRight = 1;
-            Width2DownRight = 1;
-            Width3DownRight = 1;
-            Width4DownRight = 1;
-
-            Width2DownLeft = 1;
-            Width3DownLeft = 1;
-            Width4DownLeft = 1;
-            Width5DownLeft = 1;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -67,32 +45,21 @@
             {
                 FarbeP0(_nadeltelegraph.P0);
 
-                Breite1UpRight(_nadeltelegraph.P1R);
-                Breite2UpRight(_nadeltelegraph.P2R);
-                Breite3UpRight(_nadeltelegraph.P3R);
-                Breite4UpRight(_nadeltelegraph.P4R);
+                _nadeltelegraph.AlleZeiger[1].SetPosition(_nadeltelegraph.P1R, _nadeltelegraph.P1L);
+                _nadeltelegraph.AlleZeiger[2].SetPosition(_nadeltelegraph.P2R, _nadeltelegraph.P2L);
+                _nadeltelegraph.AlleZeiger[3].SetPosition(_nadeltelegraph.P3R, _nadeltelegraph.P3L);
+                _nadeltelegraph.AlleZeiger[4].SetPosition(_nadeltelegraph.P4R, _nadeltelegraph.P4L);
+                _nadeltelegraph.AlleZeiger[5].SetPosition(_nadeltelegraph.P5R, _nadeltelegraph.P5L);
 
-                Breite1DownRight(_nadeltelegraph.P1L);
-                Breite2DownRight(_nadeltelegraph.P2L);
-                Breite3DownRight(_nadeltelegraph.P3L);
-                Breite4DownRight(_nadeltelegraph.P4L);
-
-                Breite2UpLeft(_nadeltelegraph.P2L);
-                Breite3UpLeft(_nadeltelegraph.P3L);
-                Breite4UpLeft(_nadeltelegraph.P4L);
-                Breite5UpLeft(_nadeltelegraph.P5L);
-
-                Breite2DownLeft(_nadeltelegraph.P2R);
-                Breite3DownLeft(_nadeltelegraph.P3R);
-                Breite4DownLeft(_nadeltelegraph.P4R);
-                Breite5DownLeft(_nadeltelegraph.P5R);
-
-                WinkelEinstellen(_nadeltelegraph.P1R, _nadeltelegraph.P1L, 1);
-                WinkelEinstellen(_nadeltelegraph.P2R, _nadeltelegraph.P2L,2);
-                WinkelEinstellen(_nadeltelegraph.P3R, _nadeltelegraph.P3L,3);
-                WinkelEinstellen(_nadeltelegraph.P4R, _nadeltelegraph.P4L,4);
-                WinkelEinstellen(_nadeltelegraph.P5R, _nadeltelegraph.P5L,5);
-
+                for (var i = 1; i < 6; i++)
+                {
+                    AlleWinkel[i] = _nadeltelegraph.AlleZeiger[i].GetWinkel();
+                    AlleBreiten[10 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteUpLeft();
+                    AlleBreiten[20 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteUpRight();
+                    AlleBreiten[30 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteDownLeft();
+                    AlleBreiten[40 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteDownRight();
+                }
+            
                 if (_mainWindow.S71200 != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfo;
@@ -180,6 +147,36 @@
 
         #endregion SPS Versionsinfo, Status und Farbe
 
+
+        private ObservableCollection<int> _alleWinkel = new ObservableCollection<int>();
+        public ObservableCollection<int> AlleWinkel
+        {
+            get => _alleWinkel;
+            set
+            {
+                _alleWinkel = value;
+                OnPropertyChanged(nameof(AlleWinkel));
+            }
+        }
+
+
+
+        private ObservableCollection<int> _alleBreiten = new ObservableCollection<int>();
+        public ObservableCollection<int> AlleBreiten
+        {
+            get => _alleBreiten;
+            set
+            {
+                _alleBreiten = value;
+                OnPropertyChanged(nameof(AlleBreiten));
+            }
+        }
+
+
+
+
+
+
         #region ClickModeAlleButtons
 
         public bool ClickModeButton(int asciiCode)
@@ -197,7 +194,6 @@
         }
 
         private ObservableCollection<string> _clickModeBtn = new ObservableCollection<string>();
-
         public ObservableCollection<string> ClickModeBtn
         {
             get => _clickModeBtn;
@@ -212,13 +208,9 @@
 
         #region Color P0
 
-        public void FarbeP0(bool val)
-        {
-            ColorP0 = val ? "Red" : "LightGray";
-        }
+        public void FarbeP0(bool val) => ColorP0 = val ? "Red" : "LightGray";
 
         private string _colorP0;
-
         public string ColorP0
         {
             get => _colorP0;

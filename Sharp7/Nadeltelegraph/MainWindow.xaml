@@ -62,28 +62,28 @@
         </Polygon>
 
         <!--nach rechts oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1UpRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2UpRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3UpRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4UpRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="-350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.AlleBreiten[21]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="-250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.AlleBreiten[22]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="-175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.AlleBreiten[23]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="-100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.AlleBreiten[24]}" />
 
         <!--nach rechts unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.Width1DownRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width2DownRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.Width3DownRight}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.Width4DownRight}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="105" Y1="0" X2="385"  Y2="350"  Stroke="Orange"     StrokeThickness="{Binding ViAnzeige.AlleBreiten[41]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="455"  Y2="250"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.AlleBreiten[42]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="525"  Y2="175"  Stroke="Red"        StrokeThickness="{Binding ViAnzeige.AlleBreiten[43]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="595"  Y2="100"  Stroke="OrangeRed"  StrokeThickness="{Binding ViAnzeige.AlleBreiten[44]}" />
 
         <!--nach links oben -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2UpLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3UpLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4UpLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5UpLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="-100" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.AlleBreiten[12]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="-175" Stroke="Red"       StrokeThickness="{Binding ViAnzeige.AlleBreiten[13]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="-250" Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.AlleBreiten[14]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="-350" Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.AlleBreiten[15]}" />
 
         <!--nach links unten -->
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width2DownLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding ViAnzeige.Width3DownLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.Width4DownLeft}" />
-        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.Width5DownLeft}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="245" Y1="0" X2="175"  Y2="100"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.AlleBreiten[32]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="385" Y1="0" X2="245"  Y2="175"  Stroke="Red"       StrokeThickness="{Binding ViAnzeige.AlleBreiten[33]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="525" Y1="0" X2="315"  Y2="250"  Stroke="OrangeRed" StrokeThickness="{Binding ViAnzeige.AlleBreiten[34]}" />
+        <Line Grid.Column="2" Grid.ColumnSpan="16" Grid.Row="12" Grid.RowSpan="10" X1="665" Y1="0" X2="385"  Y2="350"  Stroke="Orange"    StrokeThickness="{Binding ViAnzeige.AlleBreiten[35]}" />
 
         <Polygon Grid.Column="3" Grid.Row="10" Grid.RowSpan="4" Stroke="Black" StrokeThickness="2" Fill="Yellow"  Width="20" Height="100" RenderTransformOrigin="0.5,0.5">
             <Polygon.RenderTransform>

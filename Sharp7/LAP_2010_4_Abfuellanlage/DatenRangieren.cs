@@ -25,20 +25,20 @@ namespace LAP_2010_4_Abfuellanlage
 
         public void RangierenInput(byte[] digInput, byte[] _)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _abfuellanlageViewModel.abfuellAnlage.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _abfuellanlageViewModel.abfuellAnlage.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _abfuellanlageViewModel.abfuellAnlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _abfuellanlageViewModel.abfuellAnlage.S2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _abfuellanlageViewModel.AbfuellAnlage.B1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _abfuellanlageViewModel.AbfuellAnlage.B2);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _abfuellanlageViewModel.AbfuellAnlage.S1);
+            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _abfuellanlageViewModel.AbfuellAnlage.S2);
         }
 
         public void RangierenOutput(byte[] digOutput, byte[] _)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _abfuellanlageViewModel.abfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-                _abfuellanlageViewModel.abfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-                _abfuellanlageViewModel.abfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                _abfuellanlageViewModel.abfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _abfuellanlageViewModel.AbfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
+                _abfuellanlageViewModel.AbfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
+                _abfuellanlageViewModel.AbfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+                _abfuellanlageViewModel.AbfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
             }
         }
 
