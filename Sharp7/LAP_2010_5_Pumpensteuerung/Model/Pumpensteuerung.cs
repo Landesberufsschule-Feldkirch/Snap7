@@ -26,13 +26,13 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
         private void PumpensteuerungTask()
         {
-            const double FuellGeschwindigkeit = 0.002;
-            const double LeerGeschwindigkeit = 0.001;
+            const double fuellGeschwindigkeit = 0.002;
+            const double leerGeschwindigkeit = 0.001;
 
             while (true)
             {
-                if (Q1) Pegel += FuellGeschwindigkeit;
-                if (Y1) Pegel -= LeerGeschwindigkeit;
+                if (Q1) Pegel += fuellGeschwindigkeit;
+                if (Y1) Pegel -= leerGeschwindigkeit;
 
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;

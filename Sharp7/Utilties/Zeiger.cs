@@ -15,9 +15,8 @@ namespace Utilities
 
         public double Laenge()
         {
-            double x, y;
-            x = _anfang.X - _ende.X;
-            y = _anfang.Y - _ende.Y;
+            var x = _anfang.X - _ende.X;
+            var y = _anfang.Y - _ende.Y;
 
             return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
         }

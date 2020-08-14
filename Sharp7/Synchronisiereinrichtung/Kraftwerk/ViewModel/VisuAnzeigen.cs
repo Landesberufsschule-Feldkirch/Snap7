@@ -98,6 +98,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
                 if (_mainWindow.S71200 != null)
                 {
+                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
                     SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";

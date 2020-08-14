@@ -65,6 +65,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
                 if (_mainWindow.S71200 != null)
                 {
+                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
                     SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";

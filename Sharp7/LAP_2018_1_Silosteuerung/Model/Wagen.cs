@@ -58,9 +58,6 @@ namespace LAP_2018_1_Silosteuerung.Model
                         _wagenRichtung = Richtung.Stehen;
                     }
                     break;
-
-                default:
-                    break;
             }
 
             // Wagen bewegen

@@ -9,7 +9,7 @@ namespace LAP_2018_1_Silosteuerung
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
-        public WpfAnimatedGif.ImageAnimationController Controller { get; set; }
+        public ImageAnimationController Controller { get; set; }
         public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }

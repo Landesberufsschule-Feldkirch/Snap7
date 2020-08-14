@@ -6,13 +6,13 @@ namespace Heizungsregler.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Heizungsregler.Model.Heizungsregler heizungsregler;
-        private readonly MainWindow mainWindow;
+        private readonly Heizungsregler.Model.Heizungsregler _heizungsregler;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.Heizungsregler hr)
         {
-            mainWindow = mw;
-            heizungsregler = hr;
+            _mainWindow = mw;
+            _heizungsregler = hr;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -35,19 +35,19 @@ namespace Heizungsregler.ViewModel
         {
             while (true)
             {
-                if (mainWindow.S71200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S71200.GetVersion();                  
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString() + "°C";
 
-                Pumpenfarbe(heizungsregler.HeizungsPumpe);
+                Pumpenfarbe(_heizungsregler.HeizungsPumpe);
 
                 Thread.Sleep(10);
             }

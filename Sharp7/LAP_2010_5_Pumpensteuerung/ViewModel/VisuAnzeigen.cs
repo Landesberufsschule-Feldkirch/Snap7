@@ -77,9 +77,10 @@
 
                 if (_mainWindow.S71200 != null)
                 {
+                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
                     SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
-                    if (SpsVersionLokal == SpsVersionEntfernt) SpsVersionsInfoSichtbar = "hidden"; else SpsVersionsInfoSichtbar = "visible";
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.S71200?.GetSpsStatus();
