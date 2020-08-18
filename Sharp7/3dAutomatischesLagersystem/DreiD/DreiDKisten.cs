@@ -2,33 +2,33 @@
 {
     public class DreiDKisten
     {
-        private bool sichtbar;
-        private double posX;
-        private double posY;
-        private double posZ;
+        private bool _sichtbar;
+        private double _posX;
+        private double _posY;
+        private double _posZ;
 
         public DreiDKisten()
         {
-            sichtbar = false;
-            posX = 0;
-            posY = 0;
-            posZ = 0;
+            _sichtbar = false;
+            _posX = 0;
+            _posY = 0;
+            _posZ = 0;
         }
 
-        public bool GetSichtbar() => sichtbar;
+        public bool GetSichtbar() => _sichtbar;
 
-        public double GetX() => posX;
+        public double GetX() => _posX;
 
-        public double GetY() => posY;
+        public double GetY() => _posY;
 
-        public double GetZ() => posZ;
+        public double GetZ() => _posZ;
 
         internal void Reset()
         {
-            sichtbar = false;
-            posX = 0;
-            posY = 0;
-            posZ = 0;
+            _sichtbar = false;
+            _posX = 0;
+            _posY = 0;
+            _posZ = 0;
         }
     }
 }

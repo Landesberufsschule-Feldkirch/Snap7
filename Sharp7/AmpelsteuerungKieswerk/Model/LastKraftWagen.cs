@@ -45,7 +45,7 @@
         private readonly Punkt _positionB2 = new Punkt(350, 0);
         private readonly Punkt _positionB3 = new Punkt(1000, 0);
         private readonly Punkt _positionB4 = new Punkt(1075, 0);
-        private readonly double xy_Bewegung = 1;
+        private readonly double _xyBewegung = 1;
         private const double KurveGeschwindigkeit = 0.002;
 
         public LastKraftWagen(int id)
@@ -115,7 +115,7 @@
                     _kurvePosition = 0;
                     if (!stop)
                     {
-                        if (Position.Punkt.X < _anfangRechteKurve.X) Position.Punkt.X += xy_Bewegung;
+                        if (Position.Punkt.X < _anfangRechteKurve.X) Position.Punkt.X += _xyBewegung;
                         else LkwPosition = LkwPositionen.LrRechtKurve;
                     }
                     break;
@@ -145,7 +145,7 @@
                     _kurvePosition = 1;
                     if (!stop)
                     {
-                        if (Position.Punkt.X > _endeLinkeKurve.X) Position.Punkt.X -= xy_Bewegung;
+                        if (Position.Punkt.X > _endeLinkeKurve.X) Position.Punkt.X -= _xyBewegung;
                         else LkwPosition = LkwPositionen.RlLinkeKurve;
                     }
                     break;

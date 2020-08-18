@@ -17,15 +17,15 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.AutomatischesLagersystem automatischesLagersystem;
-        private readonly MainWindow mainWindow;
+        private readonly Model.AutomatischesLagersystem _automatischesLagersystem;
+        private readonly MainWindow _mainWindow;
 
         public VisuAnzeigen(MainWindow mw, Model.AutomatischesLagersystem al)
         {
-            mainWindow = mw;
-            automatischesLagersystem = al;
+            _mainWindow = mw;
+            _automatischesLagersystem = al;
 
-            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
             ClickModeBtnK1 = "Press";       // für SetManual
             ClickModeBtnK2 = "Press";
@@ -71,8 +71,8 @@
             XPosSlider = 0;
             YPosSlider = 0;
             ZPosSlider = 0;
-            mainWindow.DreiD.EineEinzigeKisteAufDemRegalbediengeraet();
-            mainWindow.viewPort3d.Children[mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet]].Transform = mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
+            _mainWindow.DreiD.EineEinzigeKisteAufDemRegalbediengeraet();
+            _mainWindow.viewPort3d.Children[_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet]].Transform = _mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
         }
 
         internal void SetButtonsAktiv()
@@ -89,58 +89,58 @@
             }
         }
 
-        internal void AllesAusraeumen() => mainWindow.DreiD.AlleKistenEntfernen();
+        internal void AllesAusraeumen() => _mainWindow.DreiD.AlleKistenEntfernen();
 
-        internal void AllesEinraeumen() => mainWindow.DreiD.AlleKistenHinzufeugen();
+        internal void AllesEinraeumen() => _mainWindow.DreiD.AlleKistenHinzufeugen();
 
-        internal void SetK1() => automatischesLagersystem.K1 = ClickModeButtonK1();
+        internal void SetK1() => _automatischesLagersystem.K1 = ClickModeButtonK1();
 
-        internal void SetK2() => automatischesLagersystem.K2 = ClickModeButtonK2();
+        internal void SetK2() => _automatischesLagersystem.K2 = ClickModeButtonK2();
 
-        internal void SetK3() => automatischesLagersystem.K3 = ClickModeButtonK3();
+        internal void SetK3() => _automatischesLagersystem.K3 = ClickModeButtonK3();
 
-        internal void SetK4() => automatischesLagersystem.K4 = ClickModeButtonK4();
+        internal void SetK4() => _automatischesLagersystem.K4 = ClickModeButtonK4();
 
-        internal void SetK5() => automatischesLagersystem.K5 = ClickModeButtonK5();
+        internal void SetK5() => _automatischesLagersystem.K5 = ClickModeButtonK5();
 
-        internal void SetK6() => automatischesLagersystem.K6 = ClickModeButtonK6();
+        internal void SetK6() => _automatischesLagersystem.K6 = ClickModeButtonK6();
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-                if (mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == "visible"))
+                if (_mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == "visible"))
                 {
-                    mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
-                    mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich -1 .. 1
-                    mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich 0 .. 1
+                    _mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
+                    _mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich -1 .. 1
+                    _mainWindow.RegalBedienGeraet.SetZ(ZPosSlider);  // Zahlenbereich 0 .. 1
                 }
 
-                FarbeKollisionRegalMitSchlitten(automatischesLagersystem.KollisionRegal.GetKollisionRegalMitSchlitten());
+                FarbeKollisionRegalMitSchlitten(_automatischesLagersystem.KollisionRegal.GetKollisionRegalMitSchlitten());
 
-                if (mainWindow.viewPort3d != null)
+                if (_mainWindow.viewPort3d != null)
                 {
-                    mainWindow.Dispatcher.Invoke(() =>
+                    _mainWindow.Dispatcher.Invoke(() =>
                    {
-                       if (mainWindow.FensterAktiv)
+                       if (_mainWindow.FensterAktiv)
                        {
-                           if (mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
+                           if (_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
                            {
                                //Bediengerät
-                               mainWindow.viewPort3d.Children[197].Transform = mainWindow.BediengeraetStartpositionen[0].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
+                               _mainWindow.viewPort3d.Children[197].Transform = _mainWindow.BediengeraetStartpositionen[0].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
 
                                // Schlitten senkrecht
-                               mainWindow.viewPort3d.Children[198].Transform = mainWindow.BediengeraetStartpositionen[1].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), 0, mainWindow.RegalBedienGeraet.GetZPosition());
+                               _mainWindow.viewPort3d.Children[198].Transform = _mainWindow.BediengeraetStartpositionen[1].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, _mainWindow.RegalBedienGeraet.GetZPosition());
 
                                // Schlitten waagrecht Zwischenteil
-                               mainWindow.viewPort3d.Children[199].Transform = mainWindow.BediengeraetStartpositionen[2].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * mainWindow.RegalBedienGeraet.GetYPosition() / 2, mainWindow.RegalBedienGeraet.GetZPosition());
+                               _mainWindow.viewPort3d.Children[199].Transform = _mainWindow.BediengeraetStartpositionen[2].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * _mainWindow.RegalBedienGeraet.GetYPosition() / 2, _mainWindow.RegalBedienGeraet.GetZPosition());
 
                                // Schlitten waagrecht
-                               mainWindow.viewPort3d.Children[200].Transform = mainWindow.BediengeraetStartpositionen[3].Transform(mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * mainWindow.RegalBedienGeraet.GetYPosition(), mainWindow.RegalBedienGeraet.GetZPosition());
+                               _mainWindow.viewPort3d.Children[200].Transform = _mainWindow.BediengeraetStartpositionen[3].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * _mainWindow.RegalBedienGeraet.GetYPosition(), _mainWindow.RegalBedienGeraet.GetZPosition());
 
-                               XPosition = (mainWindow.BediengeraetStartpositionen[3].GetX() + mainWindow.RegalBedienGeraet.GetXPosition()).ToString();
-                               YPosition = (mainWindow.BediengeraetStartpositionen[3].GetY() + mainWindow.RegalBedienGeraet.GetYPosition()).ToString();
-                               ZPosition = (mainWindow.BediengeraetStartpositionen[3].GetZ() + mainWindow.RegalBedienGeraet.GetZPosition()).ToString();
+                               XPosition = (_mainWindow.BediengeraetStartpositionen[3].GetX() + _mainWindow.RegalBedienGeraet.GetXPosition()).ToString();
+                               YPosition = (_mainWindow.BediengeraetStartpositionen[3].GetY() + _mainWindow.RegalBedienGeraet.GetYPosition()).ToString();
+                               ZPosition = (_mainWindow.BediengeraetStartpositionen[3].GetZ() + _mainWindow.RegalBedienGeraet.GetZPosition()).ToString();
                            }
                            else
                            {
@@ -150,14 +150,14 @@
                    });
                 }
 
-                if (mainWindow.S71200 != null)
+                if (_mainWindow.S71200 != null)
                 {
-                    SpsVersionLokal = mainWindow.VersionInfo;
-                    SpsVersionEntfernt = mainWindow.S71200.GetVersion();
+                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
                 Thread.Sleep(100);
@@ -169,7 +169,7 @@
             if (buchstabe is string ascii)
             {
                 var asciiCode = ascii[0];
-                automatischesLagersystem.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
+                _automatischesLagersystem.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
             }
         }
 
@@ -186,24 +186,24 @@
             }
         }
 
-        private string _SpsVersionLokal;
+        private string _spsVersionLokal;
         public string SpsVersionLokal
         {
-            get => _SpsVersionLokal;
+            get => _spsVersionLokal;
             set
             {
-                _SpsVersionLokal = value;
+                _spsVersionLokal = value;
                 OnPropertyChanged(nameof(SpsVersionLokal));
             }
         }
 
-        private string _SpsVersionEntfernt;
+        private string _spsVersionEntfernt;
         public string SpsVersionEntfernt
         {
-            get => _SpsVersionEntfernt;
+            get => _spsVersionEntfernt;
             set
             {
-                _SpsVersionEntfernt = value;
+                _spsVersionEntfernt = value;
                 OnPropertyChanged(nameof(SpsVersionEntfernt));
             }
         }
@@ -566,16 +566,16 @@
 
         #region ClickModeAlleButtons
 
-        public bool ClickModeButton(int AsciiCode)
+        public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[AsciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] == "Press")
             {
-                ClickModeBtn[AsciiCode] = "Release";
+                ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
             else
             {
-                ClickModeBtn[AsciiCode] = "Press";
+                ClickModeBtn[asciiCode] = "Press";
             }
             return false;
         }

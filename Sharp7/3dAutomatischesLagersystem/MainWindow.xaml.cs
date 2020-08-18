@@ -13,7 +13,7 @@ namespace AutomatischesLagersystem
         public bool KisteLiegtAufDemRegalbediengeraet { get; set; }
         public Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
         public bool DebugWindowAktiv { get; set; }
-        public S7_1200 S71200 { get; set; }
+        public PlcWrapper S71200 { get; set; }
         public bool FensterAktiv { get; set; }
         public DreiDErstellen DreiD { get; set; }
         public int[] DreiDModelleIds { get; set; }
@@ -47,7 +47,7 @@ namespace AutomatischesLagersystem
             InitializeComponent();
 
             DataContext = _viewModel;
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            S71200 = new PlcWrapper(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             DreiD = new DreiDErstellen(this);
 

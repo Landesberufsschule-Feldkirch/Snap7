@@ -2,7 +2,7 @@
 {
     public class KollisionRegalBestimmen
     {
-        private bool kollisionRegalMitSchlitten;
+        private bool _kollisionRegalMitSchlitten;
 
         public KollisionRegalBestimmen()
         {
@@ -10,7 +10,7 @@
 
         internal void SetNeuePositionSchlitten(double x, double y, double z)
         {
-            kollisionRegalMitSchlitten = false;
+            _kollisionRegalMitSchlitten = false;
             if (x < -150 || x > 10700) return;  // Raum vor bzw. hinter dem Regal
             if (y > 2000 && y < 2950) return;   // im freien Raum der durch die Pfosten begrenzt wird
 
@@ -20,7 +20,7 @@
                 int pfostenRechts = 550 + pfostenNummer * 1000;
                 if (x > pfostenLinks && x < pfostenRechts)
                 {
-                    kollisionRegalMitSchlitten = true;
+                    _kollisionRegalMitSchlitten = true;
                     return;
                 }
             }
@@ -41,7 +41,7 @@
 
                             if (x > regalBrettLinks && x < regalBrettRechts)
                             {
-                                kollisionRegalMitSchlitten = true;
+                                _kollisionRegalMitSchlitten = true;
                                 return;
                             }
                         }
@@ -50,6 +50,6 @@
             }
         }
 
-        internal bool GetKollisionRegalMitSchlitten() => kollisionRegalMitSchlitten;
+        internal bool GetKollisionRegalMitSchlitten() => _kollisionRegalMitSchlitten;
     }
 }

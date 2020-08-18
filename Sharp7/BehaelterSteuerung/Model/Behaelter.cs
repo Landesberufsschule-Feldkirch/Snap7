@@ -10,10 +10,10 @@
 
         private bool _automatikModus;
         private double _internerPegel;
-        private readonly double sinkGeschwindigkeit = 0.005;
-        private readonly double fuellGeschwindigkeit = 0.2 * 0.005;
-        private readonly double positionSchwimmerschalterOben = 0.95;
-        private readonly double positionSchwimmerschalterUnten = 0.05;
+        private readonly double _sinkGeschwindigkeit = 0.005;
+        private readonly double _fuellGeschwindigkeit = 0.2 * 0.005;
+        private readonly double _positionSchwimmerschalterOben = 0.95;
+        private readonly double _positionSchwimmerschalterUnten = 0.05;
 
         public Behaelter(double pegel)
         {
@@ -33,20 +33,20 @@
 
             if (_internerPegel > 0)
             {
-                _internerPegel -= sinkGeschwindigkeit;
+                _internerPegel -= _sinkGeschwindigkeit;
                 Pegel = _internerPegel;
             }
             else
             {
-                if (VentilOben) Pegel += fuellGeschwindigkeit;
-                if (VentilUnten) Pegel -= sinkGeschwindigkeit;
+                if (VentilOben) Pegel += _fuellGeschwindigkeit;
+                if (VentilUnten) Pegel -= _sinkGeschwindigkeit;
             }
 
             if (Pegel > 1) Pegel = 1;
             if (Pegel < 0) Pegel = 0;
 
-            SchwimmerschalterOben = (Pegel > positionSchwimmerschalterOben);
-            SchwimmerschalterUnten = (Pegel > positionSchwimmerschalterUnten);
+            SchwimmerschalterOben = (Pegel > _positionSchwimmerschalterOben);
+            SchwimmerschalterUnten = (Pegel > _positionSchwimmerschalterUnten);
         }
 
         public void AutomatikmodusStarten(double startpegel)

@@ -12,11 +12,11 @@ namespace Heizungsregler.ViewModel
     public class Schreiber
     {
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
-        private readonly Heizungsregler.Model.Heizungsregler heizungsregler;
+        private readonly Heizungsregler.Model.Heizungsregler _heizungsregler;
 
         public Schreiber(Heizungsregler.Model.Heizungsregler hr)
         {
-            heizungsregler = hr;
+            _heizungsregler = hr;
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
         }

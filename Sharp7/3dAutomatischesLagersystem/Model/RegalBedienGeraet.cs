@@ -2,39 +2,39 @@
 {
     public class RegalBedienGeraet
     {
-        private double x;
-        private double y;
-        private double z;
+        private double _x;
+        private double _y;
+        private double _z;
 
         public RegalBedienGeraet()
         {
-            x = 0;
-            y = 0;
-            z = 0;
+            _x = 0;
+            _y = 0;
+            _z = 0;
         }
 
-        public double GetX() => x;
+        public double GetX() => _x;
 
-        public double GetY() => y;
+        public double GetY() => _y;
 
-        public double GetZ() => z;
+        public double GetZ() => _z;
 
-        internal double GetXPosition() => x * 12000;
+        internal double GetXPosition() => _x * 12000;
 
-        internal double GetYPosition() => -1400 * y;
+        internal double GetYPosition() => -1400 * _y;
 
-        internal double GetZPosition() => 2200 * z;
+        internal double GetZPosition() => 2200 * _z;
 
-        public void SetX(double pos) => x = pos;
+        public void SetX(double pos) => _x = pos;
 
-        public void SetY(double pos) => y = pos;
+        public void SetY(double pos) => _y = pos;
 
-        public void SetZ(double pos) => z = pos;
+        public void SetZ(double pos) => _z = pos;
 
-        internal void FahreX(double geschwindigkeit) => x = Utilities.S7Analog.Clamp((x + geschwindigkeit), -1, 1);
+        internal void FahreX(double geschwindigkeit) => _x = Utilities.S7Analog.Clamp((_x + geschwindigkeit), -1, 1);
 
-        internal void FahreY(double geschwindigkeit) => y = Utilities.S7Analog.Clamp((y + geschwindigkeit), -1, 1);
+        internal void FahreY(double geschwindigkeit) => _y = Utilities.S7Analog.Clamp((_y + geschwindigkeit), -1, 1);
 
-        internal void FahreZ(double geschwindigkeit) => z = Utilities.S7Analog.Clamp((z + geschwindigkeit), -1, 1);
+        internal void FahreZ(double geschwindigkeit) => _z = Utilities.S7Analog.Clamp((_z + geschwindigkeit), -1, 1);
     }
 }

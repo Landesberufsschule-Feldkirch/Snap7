@@ -9,24 +9,24 @@ namespace AutomatischesLagersystem.DreiD
 {
     public class DreiDErstellen
     {
-        private readonly MainWindow mainWindow;
-        private readonly int[] abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
+        private readonly MainWindow _mainWindow;
+        private readonly int[] _abstaendeSteher = new int[] { 50, 1050, 3050, 4050 };
 
         public DreiDErstellen(MainWindow mw)
         {
-            mainWindow = mw;
+            _mainWindow = mw;
 
-            mainWindow.viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
+            _mainWindow.viewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
 
-            mainWindow.DreiDModelleIds[ViewModel.IdEintraege.System] = mainWindow.viewPort3d.Children.Count;
+            _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.System] = _mainWindow.viewPort3d.Children.Count;
 
             #region Bodenplatte
 
             var bodenplatte3d = new ModelVisual3D { Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige) };
             bodenplatte3d.Transform = new TranslateTransform3D(-1000, 0, 0);
-            mainWindow.viewPort3d.Children.Add(bodenplatte3d);
+            _mainWindow.viewPort3d.Children.Add(bodenplatte3d);
 
-            mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Bodenplatte] = mainWindow.viewPort3d.Children.Count;
+            _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Bodenplatte] = _mainWindow.viewPort3d.Children.Count;
 
             #endregion Bodenplatte
 
@@ -39,10 +39,10 @@ namespace AutomatischesLagersystem.DreiD
                     var profilSteher = new ModelVisual3D { Content = Display3d("SolidWorks/ProfilSteher.STL", (Color)ColorConverter.ConvertFromString("#FFD3D3D3")) };
                     var verschiebenUndDrehen = new Transform3DGroup();
                     verschiebenUndDrehen.Children.Add(new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), 90)));
-                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1000 * x, abstaendeSteher[y], 200));
+                    verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1000 * x, _abstaendeSteher[y], 200));
                     profilSteher.Transform = verschiebenUndDrehen;
 
-                    mainWindow.viewPort3d.Children.Add(profilSteher);
+                    _mainWindow.viewPort3d.Children.Add(profilSteher);
                 }
             }
 
@@ -58,7 +58,7 @@ namespace AutomatischesLagersystem.DreiD
                     verschiebenUndDrehen.Children.Add(new TranslateTransform3D(1040 + (1000 * x), 50 + (y * 4000), 590));
                     querVerstrebung.Transform = verschiebenUndDrehen;
 
-                    mainWindow.viewPort3d.Children.Add(querVerstrebung);
+                    _mainWindow.viewPort3d.Children.Add(querVerstrebung);
                 }
             }
 
@@ -72,7 +72,7 @@ namespace AutomatischesLagersystem.DreiD
                     verschiebenUndDrehen.Children.Add(new TranslateTransform3D(50 + (1000 * x), 0 + (4000 * y), 2900));
                     laengsVerstrebung.Transform = verschiebenUndDrehen;
 
-                    mainWindow.viewPort3d.Children.Add(laengsVerstrebung);
+                    _mainWindow.viewPort3d.Children.Add(laengsVerstrebung);
                 }
             }
 
@@ -90,28 +90,28 @@ namespace AutomatischesLagersystem.DreiD
                         verschiebenUndDrehen.Children.Add(new TranslateTransform3D(200 + (1000 * x), 50 + (3000 * y), 600 + (500 * z)));
                         profilQuerstrebe.Transform = verschiebenUndDrehen;
 
-                        mainWindow.viewPort3d.Children.Add(profilQuerstrebe);
+                        _mainWindow.viewPort3d.Children.Add(profilQuerstrebe);
                     }
                 }
             }
 
-            mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Streben] = mainWindow.viewPort3d.Children.Count;
+            _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Streben] = _mainWindow.viewPort3d.Children.Count;
 
             #endregion Streben, ...
 
             #region Regalbediengeraet
 
-            mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);      //RegalBediengerät
-            mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);     //Schlitten senkrecht
-            mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-1120, 1500, 490, 0, 180, 0);     //Schlitten waagrecht Zwischenteil
-            mainWindow.BediengeraetStartpositionen[3] = new DreiDElemente(-1110, 2500, 450, 90, 0, 270);    //Schlitten waagrecht
+            _mainWindow.BediengeraetStartpositionen[0] = new DreiDElemente(-200, 2550, 50, 90, 0, 270);      //RegalBediengerät
+            _mainWindow.BediengeraetStartpositionen[1] = new DreiDElemente(-1650, 2900, 400, 0, 0, 270);     //Schlitten senkrecht
+            _mainWindow.BediengeraetStartpositionen[2] = new DreiDElemente(-1120, 1500, 490, 0, 180, 0);     //Schlitten waagrecht Zwischenteil
+            _mainWindow.BediengeraetStartpositionen[3] = new DreiDElemente(-1110, 2500, 450, 90, 0, 270);    //Schlitten waagrecht
 
-            mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) });
-            mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenSenkrecht.STL", Colors.Violet) });
-            mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrechtZwischenteil.STL", Colors.Green) });
-            mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrecht.STL", Colors.MistyRose) });
+            _mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/RegalBediengeraet.STL", Colors.CadetBlue) });
+            _mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenSenkrecht.STL", Colors.Violet) });
+            _mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrechtZwischenteil.STL", Colors.Green) });
+            _mainWindow.viewPort3d.Children.Add(new ModelVisual3D { Content = Display3d("SolidWorks/SchlittenWaagrecht.STL", Colors.MistyRose) });
 
-            mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Regalbediengeraet] = mainWindow.viewPort3d.Children.Count;
+            _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Regalbediengeraet] = _mainWindow.viewPort3d.Children.Count;
 
             #endregion Regalbediengeraet
 
@@ -123,7 +123,7 @@ namespace AutomatischesLagersystem.DreiD
         {
             AlleKistenEntfernen();
             EineEinzigeKisteHinzufuegen(0, Colors.MediumVioletRed);
-            mainWindow.KisteLiegtAufDemRegalbediengeraet = true;
+            _mainWindow.KisteLiegtAufDemRegalbediengeraet = true;
         }
 
         private void AlleKistenPositionenBerechnen()
@@ -135,8 +135,8 @@ namespace AutomatischesLagersystem.DreiD
                 {
                     for (var z = 0; z < 5; z++)
                     {
-                        mainWindow.KistenAktuellePositionen[i] = new DreiDKisten();
-                        mainWindow.KistenStartPositionen[i] = new DreiDElemente(125 + (1000 * x), 200 + (2850 * y), 600 + (500 * z), 90, 0, 90);
+                        _mainWindow.KistenAktuellePositionen[i] = new DreiDKisten();
+                        _mainWindow.KistenStartPositionen[i] = new DreiDElemente(125 + (1000 * x), 200 + (2850 * y), 600 + (500 * z), 90, 0, 90);
                         i++;
                     }
                 }
@@ -149,32 +149,32 @@ namespace AutomatischesLagersystem.DreiD
 
             for (var i = 0; i < 100; i++) { EineEinzigeKisteHinzufuegen(i, kistenFarben[i % 5]); }
 
-            mainWindow.KisteLiegtAufDemRegalbediengeraet = false;
-            mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Kisten] = mainWindow.viewPort3d.Children.Count;
+            _mainWindow.KisteLiegtAufDemRegalbediengeraet = false;
+            _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Kisten] = _mainWindow.viewPort3d.Children.Count;
         }
 
         internal void EineEinzigeKisteHinzufuegen(int i, Color farbe)
         {
-            var kiste_Type_1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe) };
-            kiste_Type_1.Transform = mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
+            var kisteType1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe) };
+            kisteType1.Transform = _mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
 
             BillboardTextVisual3D label = new BillboardTextVisual3D
             {
                 Text = "Kiste " + i.ToString("D2"),
                 Position = new Point3D(100, 200, 300)
             };
-            kiste_Type_1.Children.Add(label);
+            kisteType1.Children.Add(label);
 
-            mainWindow.viewPort3d.Children.Add(kiste_Type_1);
+            _mainWindow.viewPort3d.Children.Add(kisteType1);
         }
 
         public void AlleKistenEntfernen()
         {
             do
             {
-                mainWindow.viewPort3d.Children.RemoveAt(mainWindow.viewPort3d.Children.Count - 1);
+                _mainWindow.viewPort3d.Children.RemoveAt(_mainWindow.viewPort3d.Children.Count - 1);
             }
-            while (mainWindow.viewPort3d.Children.Count > mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Regalbediengeraet]);
+            while (_mainWindow.viewPort3d.Children.Count > _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Regalbediengeraet]);
         }
 
         private Model3D Display3d(string model, Color farbe)
