@@ -4,9 +4,15 @@ namespace Nadeltelegraph
 {
     public partial class MainWindow
     {
-        public S7_1200 S71200 { get; set; }
+        public bool DebugWindowAktiv { get; set; }
+        public SetManual.SetManual SetManualWindow { get; set; }
+        public Kommunikation.IPlc Plc { get; set; }
+        //public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+
+        private readonly ViewModel.ViewModel _viewModel;
+        private DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
@@ -19,13 +25,34 @@ namespace Nadeltelegraph
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
-            var viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(viewModel);
+            _viewModel = new ViewModel.ViewModel(this);
+            _datenRangieren = new DatenRangieren(_viewModel);
 
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+
+        }
+
+        private void DebugWindowOeffnen(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (Plc.GetModel() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+
+                Plc = new Kommunikation.Manual(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            DebugWindowAktiv = true;
+            SetManualWindow = new SetManual.SetManual(_viewModel);
+            SetManualWindow.Show();
+            SetManualWindow.Closing += SetManualWindow_Closing;
+        }
+
+        private void SetManualWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
         }
     }
 }

@@ -64,6 +64,9 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\Zeiger.cs" />
+    <Compile Include="SetManual\SetManual.xaml.cs">
+      <DependentUpon>SetManual.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -78,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SetManual\SetManual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Nadeltelegraph.cs" />
@@ -120,5 +127,6 @@
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

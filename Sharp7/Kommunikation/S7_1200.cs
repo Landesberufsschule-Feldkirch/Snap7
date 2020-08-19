@@ -8,10 +8,8 @@ using System.Threading;
 
 namespace Kommunikation
 {
-#pragma warning disable S101 // Types should be named in PascalCase
 
-    public class S7_1200
-#pragma warning restore S101 // Types should be named in PascalCase
+    public class S7_1200 : IPlc
     {
         private enum Datenbausteine
         {
@@ -51,6 +49,7 @@ namespace Kommunikation
         private string spsStatus = "Keine Verbindung zur S7-1200!";
         private bool spsError;
         private readonly IpAdressen spsClient;
+        private bool _taskRunning = true;
 
         public S7_1200(int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
@@ -74,16 +73,12 @@ namespace Kommunikation
             versionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
-
-        public string GetSpsStatus() => spsStatus;
-
-        public bool GetSpsError() => spsError;
-
-        private void SPS_Pingen_Task()
+        
+        public void SPS_Pingen_Task()
         {
             bool FehlerAktiv;
 
-            while (true)
+            while (_taskRunning)
             {
                 int? ResultError;
 
@@ -181,12 +176,16 @@ namespace Kommunikation
             }
         }
 
-        private string ErrorAnzeigen(int ResultError)
+        public string ErrorAnzeigen(int resultError)
         {
-            var ErrorText = client?.ErrorText(ResultError);
-            return "Nr: " + ResultError + " Text: " + ErrorText;
+            var ErrorText = client?.ErrorText(resultError);
+            return "Nr: " + resultError + " Text: " + ErrorText;
         }
 
+        public string GetSpsStatus() => spsStatus;
+        public bool GetSpsError() => spsError;
         public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, versionInput.Length);
+        public string GetModel() => "S7-1200";
+        public void SetTaskRunning(bool active) => _taskRunning = active;
     }
 }

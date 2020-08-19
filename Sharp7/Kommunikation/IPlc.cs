@@ -7,5 +7,7 @@
         void SPS_Pingen_Task();
         string ErrorAnzeigen(int resultError);
         string GetVersion();
+        string GetModel();
+        void SetTaskRunning(bool active);
     }
 }

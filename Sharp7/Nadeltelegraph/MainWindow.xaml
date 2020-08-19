@@ -48,6 +48,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="11" Grid.Row="2" Click="DebugWindowOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
+
+
         <Ellipse Grid.Column="11" Grid.Row="3" Width="50" Height="50"  Fill="{Binding ViAnzeige.ColorP0}" />
 
         <Polygon Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="20"   Stroke="Black" StrokeThickness="2" Fill="Silver">
