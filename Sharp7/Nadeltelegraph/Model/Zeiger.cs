@@ -24,6 +24,7 @@
 
         internal void SetPosition(bool rechts, bool links)
         {
+            _winkel = 0;
             if (rechts)
             {
                 _winkel = WinkelNadel;

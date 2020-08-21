@@ -8,23 +8,29 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="50" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="50" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
+            <RowDefinition Height="28" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
+            <RowDefinition Height="28" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="1" Grid.Row="3" ClickMode="{Binding Visu.ClickModeBtnP1L}" Command="{Binding BtnP1L}" Content="P1L" />
-        <Button Grid.Column="3" Grid.Row="3" ClickMode="{Binding Visu.ClickModeBtnP1R}" Command="{Binding BtnP1L}" Content="P1R" />
-       
+        <Button Grid.Column="5" Grid.Row="1" ClickMode="{Binding Visu.ClickModeBtnP1L}" Command="{Binding BtnP1L}" Content="P1L" Margin="10,0,172,10" Grid.RowSpan="2" />
+
+        <Label  Grid.Column="1" Grid.Row="1" Content="Tasten" HorizontalAlignment="Center"  />
+        <Label  Grid.Column="3" Grid.Row="1" Content="Toggle" HorizontalAlignment="Center"  />
+
+        <Rectangle Grid.Column="1" Grid.Row="3" Fill="Aqua" />
+        <Rectangle Grid.Column="3" Grid.Row="3" Fill="Aqua" />
+        <Label  Grid.Column="5" Grid.Row="3" Content="0.0 Pfeil 1 Links" />
+
     </Grid>
 </Window>

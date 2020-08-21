@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Threading;
 using Kommunikation;
 
@@ -14,6 +15,11 @@ namespace Nadeltelegraph.SetManual.View
 
             ClickModeBtnP1L = "Press";
 
+            for (var i = 0; i < 64; i++) AlleBit.Add(false);
+
+
+
+
 
             System.Threading.Tasks.Task.Run(VisuTask);
         }
@@ -22,6 +28,14 @@ namespace Nadeltelegraph.SetManual.View
         {
             while (true)
             {
+                if (_mainWindow != null && _mainWindow.Plc.GetModel() == "Manual")
+                {
+                    for (var i = 1; i < 64; i++)
+                    {
+                        _mainWindow.Plc.SetBitAt(Datenbausteine.DigOut, i, AlleBit[i]);
+                    }
+                }
+
 
                 Thread.Sleep(10);
             }
@@ -38,10 +52,8 @@ namespace Nadeltelegraph.SetManual.View
                 ClickModeBtnP1L = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnP1L = "Press";
-            }
+
+            ClickModeBtnP1L = "Press";
             return false;
         }
 
@@ -56,6 +68,22 @@ namespace Nadeltelegraph.SetManual.View
                 OnPropertyChanged(nameof(ClickModeBtnP1L));
             }
         }
+
+
+
+
+        private ObservableCollection<bool> _alleBit = new ObservableCollection<bool>();
+        public ObservableCollection<bool> AlleBit
+        {
+            get => _alleBit;
+            set
+            {
+                _alleBit = value;
+                OnPropertyChanged(nameof(AlleBit));
+            }
+        }
+
+
 
 
         #region iNotifyPeropertyChanged Members
