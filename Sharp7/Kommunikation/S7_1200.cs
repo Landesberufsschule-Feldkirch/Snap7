@@ -11,15 +11,6 @@ namespace Kommunikation
 
     public class S7_1200 : IPlc
     {
-        private enum Datenbausteine
-        {
-            VersionIn = 1,
-            DigIn,
-            DigOut,
-            AnIn,
-            AnOut
-        }
-
         private enum BytePosition
         {
             Byte_0 = 0
@@ -187,5 +178,10 @@ namespace Kommunikation
         public string GetVersion() => Encoding.ASCII.GetString(versionInput, 0, versionInput.Length);
         public string GetModel() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
+
+        public void SetBitAt(Datenbausteine db, int bitPos, bool value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

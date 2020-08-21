@@ -64,9 +64,12 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="DatenRangieren.cs" />
     <Compile Include="Model\Zeiger.cs" />
+    <Compile Include="SetManual\Command\Command.cs" />
     <Compile Include="SetManual\SetManual.xaml.cs">
       <DependentUpon>SetManual.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SetManual\View\View.cs" />
+    <Compile Include="SetManual\View\Visu.cs" />
     <Compile Include="ViewModel\VisuAnzeigen.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">

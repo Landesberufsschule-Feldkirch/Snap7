@@ -7,14 +7,7 @@ namespace Kommunikation
     public class Manual : IPlc
     {
 
-        private enum Datenbausteine
-        {
-            VersionIn = 1,
-            DigIn,
-            DigOut,
-            AnIn,
-            AnOut
-        }
+      
 
         private enum BytePosition
         {
@@ -89,5 +82,29 @@ namespace Kommunikation
         public string GetVersion() => "42";
         public string GetModel() => "Manual";
         public void SetTaskRunning(bool active) => _taskRunning = active;
+
+        public void SetBitAt(Datenbausteine db, int bitPos, bool value)
+        {
+            byte[] Mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
+
+            var Bit = bitPos % 8;
+            var Pos = bitPos / 8;
+
+            if (Bit < 0) Bit = 0;
+            if (Bit > 7) Bit = 7;
+
+            switch (db)
+            {
+                case Datenbausteine.DigOut:
+                    if (value)
+                        digOutput[Pos] = (byte)(digOutput[Pos] | Mask[Bit]);
+                    else
+                        digOutput[Pos] = (byte)(digOutput[Pos] & ~Mask[Bit]);
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+        }
     }
 }

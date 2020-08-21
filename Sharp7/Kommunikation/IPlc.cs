@@ -2,6 +2,7 @@
 {
     public interface IPlc
     {
+
         string GetSpsStatus();
         bool GetSpsError();
         void SPS_Pingen_Task();
@@ -9,5 +10,7 @@
         string GetVersion();
         string GetModel();
         void SetTaskRunning(bool active);
+
+         void SetBitAt(Datenbausteine db, int bitPos, bool value);
     }
 }

@@ -2,10 +2,16 @@
 {
     public partial class SetManual
     {
-        public SetManual(Nadeltelegraph.ViewModel.ViewModel viewModel)
+        private readonly View.View _vm;
+
+
+        public SetManual(View.View viewManual)
         {
+            _vm = viewManual;
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _vm;
+
+
         }
     }
 }

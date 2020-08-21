@@ -8,10 +8,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="40" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="40" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -24,7 +23,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="3" Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnQ1}" Command="{Binding SetManualQ1}" Content="Q1" />
-        <Button Grid.Column="5" Grid.Row="3" ClickMode="{Binding ViAnzeige.ClickModeBtnQ2}" Command="{Binding SetManualQ2}" Content="Q2" />
+        <Button Grid.Column="1" Grid.Row="3" ClickMode="{Binding Visu.ClickModeBtnP1L}" Command="{Binding BtnP1L}" Content="P1L" />
+        <Button Grid.Column="3" Grid.Row="3" ClickMode="{Binding Visu.ClickModeBtnP1R}" Command="{Binding BtnP1L}" Content="P1R" />
+       
     </Grid>
 </Window>

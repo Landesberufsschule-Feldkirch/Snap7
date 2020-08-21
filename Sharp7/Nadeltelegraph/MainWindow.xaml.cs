@@ -1,4 +1,5 @@
 ﻿using Kommunikation;
+using Nadeltelegraph.SetManual.View;
 
 namespace Nadeltelegraph
 {
@@ -7,12 +8,12 @@ namespace Nadeltelegraph
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManual SetManualWindow { get; set; }
         public Kommunikation.IPlc Plc { get; set; }
-        //public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
         private readonly ViewModel.ViewModel _viewModel;
-        private DatenRangieren _datenRangieren;
+        private readonly SetManual.View.View _viewManual;
+        private readonly DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
@@ -26,13 +27,13 @@ namespace Nadeltelegraph
             VersionInfo = versionText + " - " + VersionNummer;
 
             _viewModel = new ViewModel.ViewModel(this);
+            _viewManual = new View( this);
             _datenRangieren = new DatenRangieren(_viewModel);
 
             InitializeComponent();
             DataContext = _viewModel;
 
             Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
-
         }
 
         private void DebugWindowOeffnen(object sender, System.Windows.RoutedEventArgs e)
@@ -40,19 +41,14 @@ namespace Nadeltelegraph
             if (Plc.GetModel() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-
                 Plc = new Kommunikation.Manual(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
             }
 
             DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManual(_viewModel);
+            SetManualWindow = new SetManual.SetManual(_viewManual);
             SetManualWindow.Show();
-            SetManualWindow.Closing += SetManualWindow_Closing;
-        }
-
-        private void SetManualWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
             
+
         }
     }
 }
