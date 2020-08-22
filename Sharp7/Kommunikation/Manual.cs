@@ -7,7 +7,7 @@ namespace Kommunikation
     public class Manual : IPlc
     {
 
-      
+
 
         private enum BytePosition
         {
@@ -102,6 +102,19 @@ namespace Kommunikation
                         digOutput[Pos] = (byte)(digOutput[Pos] & ~Mask[Bit]);
                     break;
 
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+        public ushort GetUint16At(Datenbausteine db, int bytePos)
+        {
+            switch (db)
+            {
+                case Datenbausteine.AnIn:
+                    return (ushort)((analogInput[bytePos] << 8) | analogInput[bytePos + 1]);
+                case Datenbausteine.DigIn:
+                    return (ushort)((digInput[bytePos] << 8) | digInput[bytePos + 1]);
                 default:
                     throw new NotImplementedException();
             }

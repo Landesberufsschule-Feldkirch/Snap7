@@ -25,21 +25,22 @@
         internal void SetPosition(bool rechts, bool links)
         {
             _winkel = 0;
+            _breiteUpLeft = BreiteSchmal;
+            _breiteUpRight = BreiteSchmal;
+            _breiteDownLeft = BreiteSchmal;
+            _breiteDownRight = BreiteSchmal;
+
             if (rechts)
             {
                 _winkel = WinkelNadel;
-                _breiteUpLeft = BreiteSchmal;
                 _breiteUpRight = BreiteBreit;
                 _breiteDownLeft = BreiteBreit;
-                _breiteDownRight = BreiteSchmal;
             }
 
             if (links)
             {
                 _winkel = -WinkelNadel;
                 _breiteUpLeft = BreiteBreit;
-                _breiteUpRight = BreiteSchmal;
-                _breiteDownLeft = BreiteSchmal;
                 _breiteDownRight = BreiteBreit;
             }
         }

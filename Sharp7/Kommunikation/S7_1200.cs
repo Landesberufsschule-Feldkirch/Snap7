@@ -179,9 +179,7 @@ namespace Kommunikation
         public string GetModel() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
 
-        public void SetBitAt(Datenbausteine db, int bitPos, bool value)
-        {
-            throw new NotImplementedException();
-        }
+        public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
+        public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
     }
 }

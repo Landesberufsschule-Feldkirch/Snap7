@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using Kommunikation;
@@ -9,16 +10,18 @@ namespace Nadeltelegraph.SetManual.View
     {
         private readonly MainWindow _mainWindow;
 
-        public Visu(MainWindow mw, Model.Nadeltelegraph nt)
+        public Visu(MainWindow mw)
         {
             _mainWindow = mw;
 
-            ClickModeBtnP1L = "Press";
+            AsciiHex = "0x----";
 
-            for (var i = 0; i < 64; i++) AlleBit.Add(false);
+            for (var i = 0; i < 64; i++) AlleBitTasten.Add(false);
+            for (var i = 0; i < 64; i++) ClickModeTasten.Add("Press");
+            for (var i = 0; i < 64; i++) ColorTasten.Add("LightGray");
 
-
-
+            for (var i = 0; i < 64; i++) AlleBitToggeln.Add(false);
+            for (var i = 0; i < 64; i++) ColorToggeln.Add("LightGray");
 
 
             System.Threading.Tasks.Task.Run(VisuTask);
@@ -28,60 +31,132 @@ namespace Nadeltelegraph.SetManual.View
         {
             while (true)
             {
-                if (_mainWindow != null && _mainWindow.Plc.GetModel() == "Manual")
+                if (_mainWindow.Plc != null && _mainWindow.Plc.GetModel() == "Manual")
                 {
-                    for (var i = 1; i < 64; i++)
+                    for (var i = 0; i < 64; i++)
                     {
-                        _mainWindow.Plc.SetBitAt(Datenbausteine.DigOut, i, AlleBit[i]);
-                    }
-                }
+                        _mainWindow.Plc.SetBitAt(Datenbausteine.DigOut, i, BitGesetztTesten(i));
+                        ColorTasten[i] = AlleBitTasten[i] ? "LawnGreen" : "LightGray";
+                        ColorToggeln[i] = AlleBitToggeln[i] ? "LawnGreen" : "LightGray";
 
+                    }
+
+                    AsciiHex = _mainWindow.Plc.GetUint16At(Datenbausteine.DigIn, 0).ToString("X");
+                }
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
 
-
-        internal void SetP1L() => _mainWindow.Plc.SetBitAt(Datenbausteine.DigOut, (int)DatenRangieren.BitPosAusgang.P1L, ClickModeButtonP1L());
-
-        public bool ClickModeButtonP1L()
+        internal void KnopfTasten(object knopf)
         {
-            if (ClickModeBtnP1L == "Press")
+            if (knopf is string nummer)
             {
-                ClickModeBtnP1L = "Release";
+                var bitnummer = Int32.Parse(nummer);
+                AlleBitTasten[bitnummer] = ClickModeButton(bitnummer);
+            }
+        }
+
+        internal void KnopfToggeln(object knopf)
+        {
+            if (knopf is string nummer)
+            {
+                var bitnummer = Int32.Parse(nummer);
+                AlleBitToggeln[bitnummer] = !AlleBitToggeln[bitnummer];
+            }
+        }
+
+        public bool ClickModeButton(int bitnummer)
+        {
+            if (ClickModeTasten[bitnummer] == "Press")
+            {
+                ClickModeTasten[bitnummer] = "Release";
                 return true;
             }
-
-            ClickModeBtnP1L = "Press";
+            else
+            {
+                ClickModeTasten[bitnummer] = "Press";
+            }
             return false;
         }
 
-        private string _clickModeBtnP1L;
+        internal bool BitGesetztTesten(int i) => AlleBitTasten[i] | AlleBitToggeln[i];
 
-        public string ClickModeBtnP1L
+
+        private string _asciiHex;
+        public string AsciiHex
         {
-            get => _clickModeBtnP1L;
+            get => _asciiHex;
             set
             {
-                _clickModeBtnP1L = value;
-                OnPropertyChanged(nameof(ClickModeBtnP1L));
+                _asciiHex = value;
+                OnPropertyChanged(nameof(AsciiHex));
             }
+
         }
 
 
-
-
-        private ObservableCollection<bool> _alleBit = new ObservableCollection<bool>();
-        public ObservableCollection<bool> AlleBit
+        #region Tasten
+        private ObservableCollection<bool> _alleBitTasten = new ObservableCollection<bool>();
+        public ObservableCollection<bool> AlleBitTasten
         {
-            get => _alleBit;
+            get => _alleBitTasten;
             set
             {
-                _alleBit = value;
-                OnPropertyChanged(nameof(AlleBit));
+                _alleBitTasten = value;
+                OnPropertyChanged(nameof(AlleBitTasten));
             }
         }
+
+        private ObservableCollection<string> _clickModeTasten = new ObservableCollection<string>();
+        public ObservableCollection<string> ClickModeTasten
+        {
+            get => _clickModeTasten;
+            set
+            {
+                _clickModeTasten = value;
+                OnPropertyChanged(nameof(ClickModeTasten));
+            }
+        }
+
+        private ObservableCollection<string> _colorTasten = new ObservableCollection<string>();
+        public ObservableCollection<string> ColorTasten
+        {
+            get => _colorTasten;
+            set
+            {
+                _colorTasten = value;
+                OnPropertyChanged(nameof(AlleBitToggeln));
+            }
+        }
+        #endregion
+
+        #region Toggeln
+        private ObservableCollection<bool> _alleBitToggeln = new ObservableCollection<bool>();
+        public ObservableCollection<bool> AlleBitToggeln
+        {
+            get => _alleBitToggeln;
+            set
+            {
+                _alleBitToggeln = value;
+                OnPropertyChanged(nameof(AlleBitToggeln));
+            }
+        }
+
+        private ObservableCollection<string> _colorToggeln = new ObservableCollection<string>();
+        public ObservableCollection<string> ColorToggeln
+        {
+            get => _colorToggeln;
+            set
+            {
+                _colorToggeln = value;
+                OnPropertyChanged(nameof(ColorToggeln));
+            }
+        }
+        #endregion
+
+
 
 
 

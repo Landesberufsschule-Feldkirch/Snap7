@@ -4,17 +4,17 @@ namespace Nadeltelegraph.SetManual.View
 {
     public class View
     {
-        private readonly Model.Nadeltelegraph _nadeltelegraph;
-        public Model.Nadeltelegraph Nadeltelegraph => _nadeltelegraph;
         public Visu Visu { get; set; }
-        public View(MainWindow mainWindow)
-        {
-            _nadeltelegraph = new Model.Nadeltelegraph();
-            Visu = new Visu(mainWindow, _nadeltelegraph);
-        }
+        public View(MainWindow mainWindow) => Visu = new Visu(mainWindow);
 
-        private ICommand _btnP1L;
+
+        private ICommand _btnTasten;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnP1L => _btnP1L ?? (_btnP1L = new Command.Command(p => Visu.SetP1L(), p => true));
+        public ICommand BtnTasten => _btnTasten ?? (_btnTasten = new Command.Command(Visu.KnopfTasten));
+
+
+        private ICommand _btnToggeln;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnToggeln => _btnToggeln ?? (_btnToggeln = new Command.Command(Visu.KnopfToggeln));
     }
 }
