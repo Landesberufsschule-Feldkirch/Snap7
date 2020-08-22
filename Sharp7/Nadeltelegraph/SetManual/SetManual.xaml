@@ -92,8 +92,12 @@
         <Button Grid.Column="3" Grid.Row="21" Content="1.1" Background="{Binding Visu.ColorToggeln[8]}"                                                Command="{Binding BtnToggeln}" CommandParameter="8"/>
         <Label  Grid.Column="5" Grid.Row="21" Content="Pfeil 5 rechts" />
 
-        <Label Grid.Column="1" Grid.Row="23" Content="{Binding Visu.AsciiHex}"  />
-      
+
+        <Label Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="23" Content="{Binding Visu.AsciiBin}"  />
+        <Label Grid.Column="5"                     Grid.Row="23" Content="ASCII Code (bin)"  />
+
+        <Label Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="25" Content="{Binding Visu.AsciiHex}"  />
+        <Label Grid.Column="5"                     Grid.Row="25" Content="ASCII Code (hex)"  />
 
 
 

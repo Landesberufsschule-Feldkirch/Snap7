@@ -15,6 +15,7 @@ namespace Nadeltelegraph.SetManual.View
             _mainWindow = mw;
 
             AsciiHex = "0x----";
+            AsciiBin = "--";
 
             for (var i = 0; i < 64; i++) AlleBitTasten.Add(false);
             for (var i = 0; i < 64; i++) ClickModeTasten.Add("Press");
@@ -41,7 +42,8 @@ namespace Nadeltelegraph.SetManual.View
 
                     }
 
-                    AsciiHex = _mainWindow.Plc.GetUint16At(Datenbausteine.DigIn, 0).ToString("X");
+                    AsciiBin = Convert.ToString(_mainWindow.Plc.GetUint16At(Datenbausteine.DigIn, 0), 2).PadLeft(16, '0');
+                    AsciiHex = "0x" + _mainWindow.Plc.GetUint16At(Datenbausteine.DigIn, 0).ToString("X");
                 }
 
                 Thread.Sleep(10);
@@ -84,6 +86,17 @@ namespace Nadeltelegraph.SetManual.View
         internal bool BitGesetztTesten(int i) => AlleBitTasten[i] | AlleBitToggeln[i];
 
 
+        private string _asciiBin;
+        public string AsciiBin
+        {
+            get => _asciiBin;
+            set
+            {
+                _asciiBin = value;
+                OnPropertyChanged(nameof(AsciiBin));
+            }
+        }
+
         private string _asciiHex;
         public string AsciiHex
         {
@@ -93,7 +106,6 @@ namespace Nadeltelegraph.SetManual.View
                 _asciiHex = value;
                 OnPropertyChanged(nameof(AsciiHex));
             }
-
         }
 
 
