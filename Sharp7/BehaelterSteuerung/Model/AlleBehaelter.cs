@@ -1,4 +1,6 @@
-﻿namespace BehaelterSteuerung.Model
+﻿using BehälterSteuerung.Model;
+
+namespace BehaelterSteuerung.Model
 {
     using System.Collections.Generic;
     using System.Threading;
