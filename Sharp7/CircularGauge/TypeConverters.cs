@@ -1,4 +1,4 @@
-﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com)
+﻿/*Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 
 All rights reserved.
 
@@ -6,29 +6,32 @@ Redistribution and use in source and binary forms, with or without modification,
 
 1.Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-2.Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in
- the documentation and/or other materials provided with the distribution.
+2.Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in  the documentation and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
-
-BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
-
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
-
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE 
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
 DAMAGE.*/
 
+
 using System;
-using System.Globalization;
+using System.Net;
 using System.Windows;
-using System.Windows.Data;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Ink;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Windows.Data;
+using System.Globalization;
 
 namespace CircularGauge
 {
+
     /// <summary>
     /// Converts the given color to a SolidColorBrush
     /// </summary>
@@ -55,9 +58,10 @@ namespace CircularGauge
         }
     }
 
-    /// <summary>
-    /// A type converter for converting image offset into render transform
-    /// </summary>
+
+    /// <summary>   
+    /// A type converter for converting image offset into render transform  
+    /// </summary>   
     public class ImageOffsetConverter : IValueConverter
     {
         public object Convert(
@@ -82,6 +86,7 @@ namespace CircularGauge
         }
     }
 
+
     /// <summary>
     /// Converts radius to diameter
     /// </summary>
@@ -95,7 +100,7 @@ namespace CircularGauge
         {
             double dblVal = (double)value;
 
-            return (dblVal * 2);
+            return (dblVal *2);
         }
 
         public object ConvertBack(
@@ -107,7 +112,7 @@ namespace CircularGauge
             throw new NotImplementedException();
         }
     }
-
+    
     /// <summary>
     /// Calculates the pointer position
     /// </summary>
@@ -157,7 +162,7 @@ namespace CircularGauge
             RotateTransform rt = new RotateTransform();
             TranslateTransform tt = new TranslateTransform();
 
-            tt.Y = dblVal;
+            tt.Y = dblVal ;
             tg.Children.Add(rt);
             tg.Children.Add(tt);
 
@@ -197,6 +202,7 @@ namespace CircularGauge
             }
 
             return i;
+            
         }
 
         public object ConvertBack(
@@ -221,7 +227,8 @@ namespace CircularGauge
             CultureInfo culture)
         {
             double dbl = (double)value;
-            return (dbl * 2) * 0.94;
+            return (dbl*2) * 0.94;
+
         }
 
         public object ConvertBack(
@@ -255,6 +262,7 @@ namespace CircularGauge
             radBrush.GradientStops.Add(g1);
             radBrush.GradientStops.Add(g2);
             return radBrush;
+
         }
 
         public object ConvertBack(

@@ -1,0 +1,348 @@
+﻿<Window x:Class="Parkhaus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Parkhaus" Height="850" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="70" />
+
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--#region Erste Autoreihe -->
+
+        <Rectangle Grid.Column="1"  Grid.ColumnSpan="17" Grid.Row="1" Fill="LightGray" Margin="3,0,3,5"/>
+
+        <Rectangle Grid.Column="1"  Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="3"  Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="5"  Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="7"  Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="9"  Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="11" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="13" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="15" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="17" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+
+        <Ellipse Grid.Column="2"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="4 " Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="6"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="8"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="10" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="12" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="14" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="16" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+
+        <Label Grid.Column="2" Grid.Row="2" Content="B00" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="4" Grid.Row="2" Content="B01" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="6" Grid.Row="2" Content="B02" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="8" Grid.Row="2" Content="B03" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="10" Grid.Row="2" Content="B04" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="12" Grid.Row="2" Content="B05" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="14" Grid.Row="2" Content="B06" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="16" Grid.Row="2" Content="B07" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+
+        <Image Grid.Column="2"   Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="4"   Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="6"   Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="8"   Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="10"  Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="12"  Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="14"  Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="16"  Grid.Row="3" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <!--#endregion-->
+
+
+        <!--#region Zweite Autoreihe -->
+        <Rectangle Grid.Column="1"  Grid.ColumnSpan="17" Grid.Row="12" Fill="LightGray" Margin="3,7,3,0"/>
+
+        <Rectangle Grid.Column="1"  Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="3"  Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="5"  Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="7"  Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="9"  Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="11" Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="13" Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="15" Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="17" Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+
+
+        <Ellipse Grid.Column="2"  Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="4 " Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="6"  Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="8"  Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="10" Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="12" Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="14" Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="16" Grid.Row="11" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+
+        <Label Grid.Column="2" Grid.Row="11" Grid.RowSpan="2" Content="B10" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" />
+        <Label Grid.Column="4" Grid.Row="11" Grid.RowSpan="2" Content="B11" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="6" Grid.Row="11" Grid.RowSpan="2" Content="B12" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Content="B13" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="10" Grid.Row="11" Grid.RowSpan="2" Content="B14" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="12" Grid.Row="11" Grid.RowSpan="2" Content="B15" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="14" Grid.Row="11" Grid.RowSpan="2" Content="B16" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="16" Grid.Row="11" Grid.RowSpan="2" Content="B17" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+
+        <Image Grid.Column="2"   Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image Grid.Column="4"   Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="6"   Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="8"   Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="10"  Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="12"  Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="14"  Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="16"  Grid.Row="8" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <!--#endregion-->
+
+
+        <!--#region Dritte Autoreihe -->
+        <Rectangle  Grid.ColumnSpan="17" Grid.Row="13" Fill="LightGray" Margin="3,0,3,7" Grid.Column="1"/>
+
+        <Rectangle Grid.Column="1"  Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="3"  Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="5"  Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="7"  Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="9"  Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="11" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="13" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="15" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="17" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+
+        <Ellipse Grid.Column="2"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="4 " Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="6"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="8"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="12" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="14" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="16" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+
+        <Label Grid.Column="2" Grid.Row="14" Content="B20" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="4" Grid.Row="14" Content="B21" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="6" Grid.Row="14" Content="B22" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="8" Grid.Row="14" Content="B23" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="10" Grid.Row="14" Content="B24" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="12" Grid.Row="14" Content="B25" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="14" Grid.Row="14" Content="B26" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="16" Grid.Row="14" Content="B27" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+
+        <Image Grid.Column="2"   Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="4"   Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="6"   Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="8"   Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="10"  Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="12"  Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <Image Grid.Column="14"  Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarGreen.png" />
+        <Image Grid.Column="16"  Grid.Row="15" Grid.RowSpan="3" Source="Bilder/CarYellow.png" />
+        <!--#endregion-->
+
+
+        <!--#region Vierte Autoreihe -->
+        <Rectangle Grid.Column="1"  Grid.ColumnSpan="17" Grid.Row="24" Fill="LightGray" Margin="3,7,3,0"/>
+
+        <Rectangle Grid.Column="1"  Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="3"  Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="5"  Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="7"  Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="9"  Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="11" Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="13" Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="15" Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+        <Rectangle Grid.Column="17" Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
+
+
+        <Ellipse Grid.Column="2"  Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="4 " Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="6"  Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="8"  Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="12" Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+        <Ellipse Grid.Column="14" Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="LawnGreen"/>
+        <Ellipse Grid.Column="16" Grid.Row="23" Grid.RowSpan="2" Margin="25,5,25,20" Fill="Red"/>
+
+        <Label Grid.Column="2" Grid.Row="23" Grid.RowSpan="2" Content="B30" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" />
+        <Label Grid.Column="4" Grid.Row="23" Grid.RowSpan="2" Content="B31" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="6" Grid.Row="23" Grid.RowSpan="2" Content="B32" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="8" Grid.Row="23" Grid.RowSpan="2" Content="B33" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Content="B34" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="12" Grid.Row="23" Grid.RowSpan="2" Content="B35" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="14" Grid.Row="23" Grid.RowSpan="2" Content="B36" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="16" Grid.Row="23" Grid.RowSpan="2" Content="B37" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+
+
+        <Image Grid.Column="2"   Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image Grid.Column="4"   Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="6"   Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="8"   Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="10"  Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="12"  Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="14"  Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarGreen.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.Column="16"  Grid.Row="20" Grid.RowSpan="3" Source="Bilder/CarYellow.png" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <!--#endregion-->
+
+
+
+
+
+
+        <!--
+        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36"      Content="{Binding ViAnzeige.VersionNr}" />
+        <Label Grid.Column="16" Grid.ColumnSpan="6"  Grid.Row="26"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt" />
+    -->
+    </Grid>
+</Window>
