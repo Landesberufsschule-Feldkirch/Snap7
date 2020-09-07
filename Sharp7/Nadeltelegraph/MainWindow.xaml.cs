@@ -34,8 +34,13 @@ namespace Nadeltelegraph
             Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
         }
 
+        private ManualMode.MainWindow _mainWindowNeu = new ManualMode.MainWindow();
         private void DebugWindowOeffnen(object sender, System.Windows.RoutedEventArgs e)
         {
+
+            _mainWindowNeu.Show();
+
+
             if (Plc.GetModel() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);

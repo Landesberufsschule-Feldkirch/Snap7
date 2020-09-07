@@ -11,7 +11,5 @@
             _foerderanlage = new Model.Foerderanlage();
             ViAnzeige = new VisuAnzeigen(_foerderanlage);
         }
-
-
     }
 }

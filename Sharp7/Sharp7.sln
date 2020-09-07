@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehaelterSteuerung", "BehaelterSteuerung\BehaelterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehaelterSteuerung", "BehaelterSteuerung\BehaelterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tiefgarage", "Tiefgarage\Tiefgarage.csproj", "{06DC1CDA-D9FD-401C-8F12-A832BCF36DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_4_Niveauregelung", "LAP_2018_4_Niveauregelung\LAP_2018_4_Niveauregelung.csproj", "{D886D544-5996-4C5F-83A3-A5BEF7B0142F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2018_4_Niveauregelung", "LAP_2018_4_Niveauregelung\LAP_2018_4_Niveauregelung.csproj", "{D886D544-5996-4C5F-83A3-A5BEF7B0142F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_2_Abfuellanlage", "LAP_2018_2_Abfuellanlage\LAP_2018_2_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2018_2_Abfuellanlage", "LAP_2018_2_Abfuellanlage\LAP_2018_2_Abfuellanlage.csproj", "{A0649FFA-E9C3-4CE1-8A6E-2595595EE37E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmpelsteuerungKieswerk", "AmpelsteuerungKieswerk\AmpelsteuerungKieswerk.csproj", "{9A9A470D-877F-4168-94E5-047C8D83F59A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmpelsteuerungKieswerk", "AmpelsteuerungKieswerk\AmpelsteuerungKieswerk.csproj", "{9A9A470D-877F-4168-94E5-047C8D83F59A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordClock", "WordClock\WordClock.csproj", "{17127AA4-1663-4341-AE8A-2F453638E139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordClock", "WordClock\WordClock.csproj", "{17127AA4-1663-4341-AE8A-2F453638E139}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synchronisiereinrichtung", "Synchronisiereinrichtung\Synchronisiereinrichtung.csproj", "{4EEA6AD8-5F9D-4AC6-85C4-9DD4D3499B3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rohrpost", "Rohrpost\Rohrpost.csproj", "{F053E1F3-5474-4FEC-AAC6-116337968F1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rohrpost", "Rohrpost\Rohrpost.csproj", "{F053E1F3-5474-4FEC-AAC6-116337968F1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilties\Utilities.csproj", "{F6BF4F68-53BD-460B-8235-DBA4188EEE6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synchronisiereinrichtung.Tests", "Synchronisiereinrichtung.Tests\Synchronisiereinrichtung.Tests.csproj", "{28D43B59-ADA6-4D15-8EE9-2CC47FB2C4DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.Tests", "Utilities.Tests\Utilities.Tests.csproj", "{FF3DEF8A-80DC-4D03-BA01-27EA7C22B86E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.Tests", "Utilities.Tests\Utilities.Tests.csproj", "{FF3DEF8A-80DC-4D03-BA01-27EA7C22B86E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2019_Foerderanlage", "LAP_2019_Foerderanlage\LAP_2019_Foerderanlage.csproj", "{E1551DB1-1778-4129-9949-5A08AFFECBFC}"
 EndProject
@@ -33,37 +33,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealTimeGraphX", "RealTimeG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeGraphX.WPF", "RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj", "{6B9774F7-960D-438E-AD81-C6B9BE328D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nadeltelegraph", "Nadeltelegraph\Nadeltelegraph.csproj", "{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nadeltelegraph", "Nadeltelegraph\Nadeltelegraph.csproj", "{CE2693DC-2C3F-4F2B-9FF0-02A3E0B3A192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_1_Kompressoranlage", "LAP_2010_1_Kompressoranlage\LAP_2010_1_Kompressoranlage.csproj", "{12F753E0-6CB8-4E29-99A8-1928D6A34DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2010_1_Kompressoranlage", "LAP_2010_1_Kompressoranlage\LAP_2010_1_Kompressoranlage.csproj", "{12F753E0-6CB8-4E29-99A8-1928D6A34DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_3_Ofentuersteuerung", "LAP_2010_3_Ofentuersteuerung\LAP_2010_3_Ofentuersteuerung.csproj", "{61ACC9C0-648B-45B6-93BC-D8D54F52301D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2010_3_Ofentuersteuerung", "LAP_2010_3_Ofentuersteuerung\LAP_2010_3_Ofentuersteuerung.csproj", "{61ACC9C0-648B-45B6-93BC-D8D54F52301D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_2_Transportwagen", "LAP_2010_2_Transportwagen\LAP_2010_2_Transportwagen.csproj", "{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2010_2_Transportwagen", "LAP_2010_2_Transportwagen\LAP_2010_2_Transportwagen.csproj", "{9DD3D43C-4B6E-4791-91D3-C548C3DE8573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_4_Abfuellanlage", "LAP_2010_4_Abfuellanlage\LAP_2010_4_Abfuellanlage.csproj", "{7CD28C95-9590-4F10-8930-13EF7097A342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2010_4_Abfuellanlage", "LAP_2010_4_Abfuellanlage\LAP_2010_4_Abfuellanlage.csproj", "{7CD28C95-9590-4F10-8930-13EF7097A342}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_5_Pumpensteuerung", "LAP_2010_5_Pumpensteuerung\LAP_2010_5_Pumpensteuerung.csproj", "{BB49A983-FF89-4DEB-BC33-1E260D6B217A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2010_5_Pumpensteuerung", "LAP_2010_5_Pumpensteuerung\LAP_2010_5_Pumpensteuerung.csproj", "{BB49A983-FF89-4DEB-BC33-1E260D6B217A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StiegenhausBeleuchtung", "StiegenhausBeleuchtung\StiegenhausBeleuchtung.csproj", "{6856142F-1FBB-4C9D-980F-4CBC476E175F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StiegenhausBeleuchtung", "StiegenhausBeleuchtung\StiegenhausBeleuchtung.csproj", "{6856142F-1FBB-4C9D-980F-4CBC476E175F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_1_Silosteuerung", "LAP_2018_1_Silosteuerung\LAP_2018_1_Silosteuerung.csproj", "{ED26FB48-6326-4FD4-9CA9-EB861673C62C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_3_Hydraulikaggregat", "LAP_2018_3_Hydraulikaggregat\LAP_2018_3_Hydraulikaggregat.csproj", "{5FE16741-D22E-4FAF-AEDF-6FB9F62274D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAutomatischesLagersystem", "3dAutomatischesLagersystem\3dAutomatischesLagersystem.csproj", "{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElektronischesZahlenschloss", "ElektronischesZahlenschloss\ElektronischesZahlenschloss.csproj", "{FC259A79-C919-464D-81A1-CF2071FE8FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronischesZahlenschloss", "ElektronischesZahlenschloss\ElektronischesZahlenschloss.csproj", "{FC259A79-C919-464D-81A1-CF2071FE8FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heizungsregler", "Heizungsregler\Heizungsregler.csproj", "{1B015D84-5FCF-4170-943D-7E777BA416B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heizungsregler", "Heizungsregler\Heizungsregler.csproj", "{1B015D84-5FCF-4170-943D-7E777BA416B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hydraulik", "Hydraulik\Hydraulik.csproj", "{68DF93C3-0963-42E2-A01D-F87FD2681348}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hydraulik.Tests", "Hydraulik.Tests\Hydraulik.Tests.csproj", "{56D7349D-6C7B-461F-82D7-E1AF8A822232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManualMode", "ManualMode\ManualMode.csproj", "{B8F727B0-34BB-4161-9449-E29BE3E717F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManualMode", "ManualMode\ManualMode.csproj", "{B8F727B0-34BB-4161-9449-E29BE3E717F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularGauge", "CircularGauge\CircularGauge.csproj", "{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +197,10 @@ Global
 		{B8F727B0-34BB-4161-9449-E29BE3E717F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8F727B0-34BB-4161-9449-E29BE3E717F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8F727B0-34BB-4161-9449-E29BE3E717F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFD5895-177B-4BBB-AF52-29F4D53B3FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

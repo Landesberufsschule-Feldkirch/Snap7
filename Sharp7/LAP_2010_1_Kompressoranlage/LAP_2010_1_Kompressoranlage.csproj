@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CircularGauge" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\CircularGauge\CircularGauge.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
   </ItemGroup>
 
