@@ -1,4 +1,6 @@
-﻿namespace Parkhaus.ViewModel
+﻿using System;
+
+namespace Parkhaus.ViewModel
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel;
@@ -21,29 +23,34 @@
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
-            for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
-            for (var i = 0; i < 100; i++) AlleBreiten.Add(0);
+            for (var i = 0; i < 100; i++) FarbeSensor.Add("LightGray");
+            for (var i = 0; i < 100; i++) AutoSichtbar.Add("Visible");
 
             ColorP0 = "LightGray";
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
-        internal void Buchstabe(object buchstabe)
+        internal void ClickAuto(object auto)
         {
-            if (buchstabe is string ascii)
+            if (auto is string nrAuto)
             {
-              
+                var autoNummer = Convert.ToInt32(nrAuto);
+                AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == "Visible" ? "Hidden" : "Visible";
             }
         }
+
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-             
-            
+
+                for (var i = 0; i < 50; i++)
+                {
+                    FarbeSensor[i] = AutoSichtbar[i] == "Visible" ? "Red" : "LawnGreen";
+                }
+
 
                 Thread.Sleep(10);
             }
@@ -123,27 +130,27 @@
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        private ObservableCollection<int> _alleWinkel = new ObservableCollection<int>();
-        public ObservableCollection<int> AlleWinkel
+        private ObservableCollection<string> _autoSichtbar = new ObservableCollection<string>();
+        public ObservableCollection<string> AutoSichtbar
         {
-            get => _alleWinkel;
+            get => _autoSichtbar;
             set
             {
-                _alleWinkel = value;
-                OnPropertyChanged(nameof(AlleWinkel));
+                _autoSichtbar = value;
+                OnPropertyChanged(nameof(AutoSichtbar));
             }
         }
 
 
 
-        private ObservableCollection<int> _alleBreiten = new ObservableCollection<int>();
-        public ObservableCollection<int> AlleBreiten
+        private ObservableCollection<string> _farbeSensor = new ObservableCollection<string>();
+        public ObservableCollection<string> FarbeSensor
         {
-            get => _alleBreiten;
+            get => _farbeSensor;
             set
             {
-                _alleBreiten = value;
-                OnPropertyChanged(nameof(AlleBreiten));
+                _farbeSensor = value;
+                OnPropertyChanged(nameof(FarbeSensor));
             }
         }
 
@@ -208,7 +215,7 @@
 
         public void Auto(object obj)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

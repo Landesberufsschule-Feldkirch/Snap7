@@ -8,17 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\Utilties\Utilities.csproj" />
+    <None Remove="Bilder\CarGreen.jpg" />
+    <None Remove="Bilder\CarYellow.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Bilder\CarGreen.png">
+    <Content Include="Bilder\CarGreen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\CarYellow.png">
+    </Content>
+    <Content Include="Bilder\CarYellow.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
 </Project>
