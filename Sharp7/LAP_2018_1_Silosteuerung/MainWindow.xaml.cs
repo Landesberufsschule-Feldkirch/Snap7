@@ -4,7 +4,7 @@ using WpfAnimatedGif;
 
 namespace LAP_2018_1_Silosteuerung
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }

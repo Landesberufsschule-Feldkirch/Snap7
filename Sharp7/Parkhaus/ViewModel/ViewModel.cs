@@ -17,6 +17,6 @@
 
         private ICommand _btnAuto;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnAuto => _btnAuto ?? (_btnAuto = new RelayCommand(ViAnzeige.ClickAuto));
+        public ICommand BtnAuto => _btnAuto ??= new RelayCommand(ViAnzeige.ClickAuto);
     }
 }

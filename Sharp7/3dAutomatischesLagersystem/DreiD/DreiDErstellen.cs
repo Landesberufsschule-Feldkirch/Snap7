@@ -22,8 +22,11 @@ namespace AutomatischesLagersystem.DreiD
 
             #region Bodenplatte
 
-            var bodenplatte3d = new ModelVisual3D { Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige) };
-            bodenplatte3d.Transform = new TranslateTransform3D(-1000, 0, 0);
+            var bodenplatte3d = new ModelVisual3D
+            {
+                Content = Display3d("SolidWorks/Bodenplatte.STL", Colors.Beige),
+                Transform = new TranslateTransform3D(-1000, 0, 0)
+            };
             _mainWindow.viewPort3d.Children.Add(bodenplatte3d);
 
             _mainWindow.DreiDModelleIds[ViewModel.IdEintraege.Bodenplatte] = _mainWindow.viewPort3d.Children.Count;
@@ -155,8 +158,11 @@ namespace AutomatischesLagersystem.DreiD
 
         internal void EineEinzigeKisteHinzufuegen(int i, Color farbe)
         {
-            var kisteType1 = new ModelVisual3D { Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe) };
-            kisteType1.Transform = _mainWindow.KistenStartPositionen[i].Transform(0, 0, 0);
+            var kisteType1 = new ModelVisual3D
+            {
+                Content = Display3d("SolidWorks/Kiste_Type_1.STL", farbe),
+                Transform = _mainWindow.KistenStartPositionen[i].Transform(0, 0, 0)
+            };
 
             BillboardTextVisual3D label = new BillboardTextVisual3D
             {

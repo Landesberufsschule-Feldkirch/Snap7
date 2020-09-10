@@ -23,24 +23,21 @@ namespace BehaelterSteuerung.Model
 
         public AlleBehaelter()
         {
-            alleBehaelter = new List<Behaelter>();
+            alleBehaelter = new List<Behaelter>
+            {
+                new Behaelter(0.2), new Behaelter(0.4), new Behaelter(0.6), new Behaelter(0.8)
+            };
 
-            alleBehaelter.Add(new Behaelter(0.2));
-            alleBehaelter.Add(new Behaelter(0.4));
-            alleBehaelter.Add(new Behaelter(0.6));
-            alleBehaelter.Add(new Behaelter(0.8));
 
-            System.Threading.Tasks.Task.Run(() => AlleBehaelterTask());
+            System.Threading.Tasks.Task.Run(AlleBehaelterTask);
         }
 
         private void AlleBehaelterTask()
         {
-            bool AutomatikModusNochAktiv;
-
             while (true)
             {
 
-                AutomatikModusNochAktiv = false;
+                var automatikModusNochAktiv = false;
 
                 foreach (var beh in alleBehaelter)
                 {
@@ -48,11 +45,11 @@ namespace BehaelterSteuerung.Model
                     if (AutomatikModusAktiv)
                     {
                         if (beh.Pegel < 0.99 && beh.Pegel > 0.01) beh.VentilUnten = true; else beh.VentilUnten = false;
-                        if ((beh.Pegel > 0.01)) AutomatikModusNochAktiv = true;
+                        if ((beh.Pegel > 0.01)) automatikModusNochAktiv = true;
                     }
 
                 }
-                if (AutomatikModusAktiv && !AutomatikModusNochAktiv)
+                if (AutomatikModusAktiv && !automatikModusNochAktiv)
                 {
                     AlleAutomatikKnoepfeAktivieren();
                     AutomatikModusAktiv = false;

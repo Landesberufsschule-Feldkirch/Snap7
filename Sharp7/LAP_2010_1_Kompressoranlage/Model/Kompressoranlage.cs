@@ -46,14 +46,8 @@ namespace LAP_2010_1_Kompressoranlage.Model
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void BtnF1()
-        {
-            F1 = !F1;
-        }
+        internal void BtnF1() => F1 = !F1;
 
-        internal void BtnB1()
-        {
-            B1 = !B1;
-        }
+        internal void BtnB1() => B1 = !B1;
     }
 }

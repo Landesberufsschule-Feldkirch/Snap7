@@ -165,10 +165,7 @@
         }
 
         // ReSharper disable once UnusedMember.Global
-        internal void BtnS3()
-        {
-            throw new NotImplementedException();
-        }
+        internal void BtnS3() => throw new NotImplementedException();
 
         #endregion SPS Versionsinfo, Status und Farbe
 

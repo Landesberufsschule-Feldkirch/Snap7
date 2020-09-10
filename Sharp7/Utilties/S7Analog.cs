@@ -13,8 +13,7 @@ namespace Utilities
         public static double Clamp(double val, double min, double max)
         {
             if (val > max) return max;
-            if (val < min) return min;
-            return val;
+            return val < min ? min : val;
         }
     }
 }

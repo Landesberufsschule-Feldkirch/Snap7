@@ -17,6 +17,6 @@
 
         private ICommand _btnBuchstabe;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ViAnzeige.Buchstabe));
+        public ICommand BtnBuchstabe => _btnBuchstabe ??= new RelayCommand(ViAnzeige.Buchstabe);
     }
 }

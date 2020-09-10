@@ -19,7 +19,6 @@ namespace WordClock.ViewModel
         private ICommand _btnSetCurrentTime;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSetCurrentTime =>
-            _btnSetCurrentTime ??
-            (_btnSetCurrentTime = new RelayCommand(p => _zeiten.SetCurrentTime(), p => true));
+            _btnSetCurrentTime ??= new RelayCommand(p => _zeiten.SetCurrentTime(), p => true);
     }
 }

@@ -333,10 +333,7 @@
 
         #region ColorKollisionRegalMitSchlitten
 
-        public void FarbeKollisionRegalMitSchlitten(bool val)
-        {
-            if (val) ColorKollisionRegalMitSchlitten = "Red"; else ColorKollisionRegalMitSchlitten = "Lawngreen";
-        }
+        public void FarbeKollisionRegalMitSchlitten(bool val) => ColorKollisionRegalMitSchlitten = val ? "Red" : "Lawngreen";
 
         private string _colorKollisionRegalMitSchlitten;
 

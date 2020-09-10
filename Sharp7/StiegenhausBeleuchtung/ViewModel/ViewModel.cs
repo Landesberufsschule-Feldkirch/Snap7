@@ -20,10 +20,10 @@
 
         private ICommand _btnStart;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnStart => _btnStart ?? (_btnStart = new RelayCommand(_stiegenhausBeleuchtung.BtnStart));
+        public ICommand BtnStart => _btnStart ??= new RelayCommand(_stiegenhausBeleuchtung.BtnStart);
 
         private ICommand _btnBewegungsmelder;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ?? (_btnBewegungsmelder = new RelayCommand(ViAnzeige.BtnBewegungsmelder));
+        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ??= new RelayCommand(ViAnzeige.BtnBewegungsmelder);
     }
 }

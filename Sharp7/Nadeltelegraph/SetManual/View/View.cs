@@ -10,11 +10,11 @@ namespace Nadeltelegraph.SetManual.View
 
         private ICommand _btnTasten;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasten => _btnTasten ?? (_btnTasten = new Command.Command(Visu.KnopfTasten));
+        public ICommand BtnTasten => _btnTasten ??= new Command.Command(Visu.KnopfTasten);
 
 
         private ICommand _btnToggeln;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnToggeln => _btnToggeln ?? (_btnToggeln = new Command.Command(Visu.KnopfToggeln));
+        public ICommand BtnToggeln => _btnToggeln ??= new Command.Command(Visu.KnopfToggeln);
     }
 }

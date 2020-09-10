@@ -7,6 +7,76 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\auto_1.jpg" />
+    <None Remove="Bilder\auto_2.jpg" />
+    <None Remove="Bilder\auto_3.jpg" />
+    <None Remove="Bilder\auto_4.jpg" />
+    <None Remove="Bilder\auto_5.jpg" />
+    <None Remove="Bilder\auto_6.jpg" />
+    <None Remove="Bilder\auto_7.jpg" />
+    <None Remove="Bilder\auto_8.jpg" />
+    <None Remove="Bilder\mensch_1.jpg" />
+    <None Remove="Bilder\mensch_2.jpg" />
+    <None Remove="Bilder\mensch_3.jpg" />
+    <None Remove="Bilder\mensch_4.jpg" />
+    <None Remove="Bilder\mensch_5.jpg" />
+    <None Remove="Bilder\mensch_6.jpg" />
+    <None Remove="Bilder\mensch_7.jpg" />
+    <None Remove="Bilder\mensch_8.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Bilder\auto_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\auto_8.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bilder\mensch_8.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
