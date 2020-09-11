@@ -109,7 +109,7 @@ namespace Kommunikation
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
-
+                                //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 resultError = _client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _anzahlByteVersionInput, _versionInput);
                                 if (resultError != 0)
                                 {
