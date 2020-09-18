@@ -4,11 +4,14 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Bilder\Snap7.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hydraulik\Hydraulik.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj" />
+    <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
 </Project>

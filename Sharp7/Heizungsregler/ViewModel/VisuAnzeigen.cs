@@ -1,5 +1,6 @@
 ﻿using Heizungsregler.Model;
 using System.ComponentModel;
+using System.Reflection.PortableExecutable;
 using System.Threading;
 
 namespace Heizungsregler.ViewModel
@@ -26,6 +27,8 @@ namespace Heizungsregler.ViewModel
             WitterungsTempMitEinheit = "0°C";
             WitterungsTemperaturSlider = 20;
 
+
+
             BetriebsartAuswahl = Betriebsarten.Aus;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -38,16 +41,37 @@ namespace Heizungsregler.ViewModel
                 if (_mainWindow.S71200 != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
-                WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString() + "°C";
+                if (_mainWindow.Heizungsregler != null)
+                {
+                    WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1") + "°C";
+                    _mainWindow.Heizungsregler.WitterungsTemperatur = WitterungsTemperaturSlider;
+
+
+                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.Heizungsregler.KesselTemperatur.ToString("F1") + "°C";
+
+                    VentilStellungMitEinheit = "Y: 10%";
+
+                    VorlaufIstMitAllem = "Ist: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufSollMitAllem = "Soll: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
+
+                }
+
+
+
 
                 Pumpenfarbe(_heizungsregler.HeizungsPumpe);
+
+
+
+
+
 
                 Thread.Sleep(10);
             }
@@ -162,7 +186,54 @@ namespace Heizungsregler.ViewModel
 
         #endregion WitterungsTemperaturSlider
 
-        #region WitterungsTempMitEinheit
+        private string _kesselTemperaturMitEinheit;
+
+        public string KesselTemperaturMitEinheit
+        {
+            get => _kesselTemperaturMitEinheit;
+            set
+            {
+                _kesselTemperaturMitEinheit = value;
+                OnPropertyChanged(nameof(KesselTemperaturMitEinheit));
+            }
+        }
+
+
+        private string _ventilStellungMitEinheit;
+        public string VentilStellungMitEinheit
+        {
+            get => _ventilStellungMitEinheit;
+            set
+            {
+                _ventilStellungMitEinheit = value;
+                OnPropertyChanged(nameof(VentilStellungMitEinheit));
+            }
+        }
+
+        private string _vorlaufIstMitAllem;
+        public string VorlaufIstMitAllem
+        {
+            get => _vorlaufIstMitAllem;
+            set
+            {
+                _vorlaufIstMitAllem = value;
+                OnPropertyChanged(nameof(VorlaufIstMitAllem));
+            }
+        }
+
+        private string _vorlaufSollMitAllem;
+        public string VorlaufSollMitAllem
+        {
+            get => _vorlaufSollMitAllem;
+            set
+            {
+                _vorlaufSollMitAllem = value;
+                OnPropertyChanged(nameof(VorlaufSollMitAllem));
+            }
+        }
+
+
+
 
         private string _witterungsTempMitEinheit;
 
@@ -176,7 +247,6 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        #endregion WitterungsTempMitEinheit
 
         #region BetriebsartAuswahl
 

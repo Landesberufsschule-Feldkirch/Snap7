@@ -146,6 +146,14 @@
 
         <Rectangle Grid.Column="16"  Grid.ColumnSpan="9" Grid.Row="20" Fill="Red" Margin="0,20,0,0" />
 
+        <Label Grid.Column="5"  Grid.ColumnSpan="9" Grid.Row="19" Content="{Binding ViAnzeige.KesselTemperaturMitEinheit}" FontSize="14pt" />
+
+        <Label Grid.Column="14"  Grid.ColumnSpan="3" Grid.Row="19" Content="{Binding ViAnzeige.VentilStellungMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
+
+        <Label Grid.Column="21"  Grid.ColumnSpan="5" Grid.Row="21" Content="Vorlauftemperatur" FontSize="14pt"/>
+        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="21" Content="{Binding ViAnzeige.VorlaufSollMitAllem}" FontSize="14pt"/>
+        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="22" Content="{Binding ViAnzeige.VorlaufIstMitAllem}" FontSize="14pt"/>
+
         <Polygon Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Fill="White" Stroke="Black" StrokeThickness="2">
             <Polygon.Points>
                 <Point X="10" Y="2" />
