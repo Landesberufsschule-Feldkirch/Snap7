@@ -11,7 +11,7 @@ namespace Heizungsregler
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
-        public  Model.Heizungsregler Heizungsregler { get; set; }
+        public  Model.WohnHaus Heizungsregler { get; set; }
         
 
 
@@ -35,7 +35,7 @@ namespace Heizungsregler
             InitializeComponent();
             DataContext = _viewModel;
 
-            Heizungsregler = new Model.Heizungsregler(this);
+            Heizungsregler = new Model.WohnHaus(this);
 
 
             var datenRangieren = new DatenRangieren(this, _viewModel);

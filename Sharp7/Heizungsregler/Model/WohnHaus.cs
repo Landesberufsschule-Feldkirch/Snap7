@@ -41,7 +41,7 @@ namespace Heizungsregler.Model
 
 
 
-    public class Heizungsregler
+    public class WohnHaus
     {
         public bool BrennerEin { get; set; }
         public bool HeizungsPumpe { get; set; }
@@ -58,7 +58,7 @@ namespace Heizungsregler.Model
         private const double BrennerleistungMax = 100.0;
         private const double BrennerleistungMin = 0.0;
 
-        public Heizungsregler(MainWindow mw)
+        public WohnHaus(MainWindow mw)
         {
             _mainWindow = mw;
             _heizkessel = new Heizkessel();

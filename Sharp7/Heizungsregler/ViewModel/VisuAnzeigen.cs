@@ -7,13 +7,11 @@ namespace Heizungsregler.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Heizungsregler.Model.Heizungsregler _heizungsregler;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.Heizungsregler hr)
+        public VisuAnzeigen(MainWindow mw)
         {
             _mainWindow = mw;
-            _heizungsregler = hr;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -61,17 +59,8 @@ namespace Heizungsregler.ViewModel
                     VorlaufIstMitAllem = "Ist: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
                     VorlaufSollMitAllem = "Soll: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
 
+                    Pumpenfarbe(_mainWindow.Heizungsregler.HeizungsPumpe);
                 }
-
-
-
-
-                Pumpenfarbe(_heizungsregler.HeizungsPumpe);
-
-
-
-
-
 
                 Thread.Sleep(10);
             }

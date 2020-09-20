@@ -22,11 +22,10 @@
             return _aktuell;
         }
 
-        private double Clamp(double val, double min, double max)
+        private static double Clamp(double val, double min, double max)
         {
             if (val < min) return min;
-            if (val > max) return max;
-            return val;
+            return val > max ? max : val;
         }
     }
 }
