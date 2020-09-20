@@ -1,20 +1,17 @@
 ﻿using Kommunikation;
 using System.Windows;
+using Heizungsregler.GraphWindow;
 
 namespace Heizungsregler
 {
     public partial class MainWindow
     {
         public bool DebugWindowAktiv { get; set; }
-
         public S7_1200 S71200 { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
-
-        public  Model.WohnHaus Heizungsregler { get; set; }
+        public  Model.WohnHaus WohnHaus { get; set; }
         
-
-
 
         private RealTimeGraphWindow _realTimeGraphWindow;
         private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
@@ -35,21 +32,16 @@ namespace Heizungsregler
             InitializeComponent();
             DataContext = _viewModel;
 
-            Heizungsregler = new Model.WohnHaus(this);
+            WohnHaus = new Model.WohnHaus(this);
 
 
             var datenRangieren = new DatenRangieren(this, _viewModel);
 
             S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            btnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
+        
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
         {
             DebugWindowAktiv = true;
@@ -61,6 +53,9 @@ namespace Heizungsregler
         {
             _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
             _realTimeGraphWindow.Show();
-        }
+        } 
+        
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Application.Current.Shutdown();
+
     }
 }

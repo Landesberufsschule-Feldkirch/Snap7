@@ -8,10 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\icon_graph.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hydraulik\Hydraulik.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj" />
+    <ProjectReference Include="..\RealTimeGraphX\RealTimeGraphX.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\icon_graph.png" />
   </ItemGroup>
 
 </Project>

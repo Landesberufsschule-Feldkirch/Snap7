@@ -46,20 +46,21 @@ namespace Heizungsregler.ViewModel
                     SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
-                if (_mainWindow.Heizungsregler != null)
+                if (_mainWindow.WohnHaus != null)
                 {
                     WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1") + "°C";
-                    _mainWindow.Heizungsregler.WitterungsTemperatur = WitterungsTemperaturSlider;
+                    _mainWindow.WohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
+                    _mainWindow.WohnHaus.Betriebsart = BetriebsartAuswahl;
 
-
-                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.Heizungsregler.KesselTemperatur.ToString("F1") + "°C";
+                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.WohnHaus.KesselTemperatur.ToString("F1") + "°C";
 
                     VentilStellungMitEinheit = "Y: 10%";
 
-                    VorlaufIstMitAllem = "Ist: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
-                    VorlaufSollMitAllem = "Soll: " + _mainWindow.Heizungsregler.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufIstMitAllem = "Ist: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufSollMitAllem = "Soll: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
 
-                    Pumpenfarbe(_mainWindow.Heizungsregler.HeizungsPumpe);
+                    Pumpenfarbe(_mainWindow.WohnHaus.HeizungsPumpe);
+
                 }
 
                 Thread.Sleep(10);

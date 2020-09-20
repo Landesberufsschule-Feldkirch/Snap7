@@ -94,7 +94,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="btnDebugWindow" Content="set manual" Grid.Column="34" Grid.Row="2" Click="DebugWindowOeffnen" />
+        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="34" Grid.Row="2" Click="DebugWindowOeffnen" />
 
         <Button Grid.Column="35" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="3" Margin="25,0,10,0">
             <Button.Resources>

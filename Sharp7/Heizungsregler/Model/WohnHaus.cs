@@ -75,8 +75,9 @@ namespace Heizungsregler.Model
                 _heizkessel.SetBrenner(BrennerEin ? BrennerleistungMax : BrennerleistungMin);
                 KesselTemperatur = _heizkessel.GetKesselTemperatur();
 
-
-                _raumheizung.RaumheizungAktualisieren(WitterungsTemperatur);
+                _raumheizung.SetBetriebsart(Betriebsart);
+                _raumheizung.SetWitterungsTemperatur(WitterungsTemperatur);
+                _raumheizung.RaumheizungAktualisieren();
                 VorlaufSolltemperatur = _raumheizung.GetVorlaufSolltemperatur();
 
 
