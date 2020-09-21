@@ -9,8 +9,8 @@ namespace Heizungsregler.Model
         private double _vorlaufSolltemperatur;
         private Betriebsarten _betriebsart = Betriebsarten.Aus;
         private double _witterungsTemperatur;
-        private const double _raumTemperatur = 20;
-        private const double _nachtAbsenkung = 10;
+        private const double RaumTemperatur = 20;
+        private const double NachtAbsenkung = 10;
         private const double Neigung = 1.6;
         private const double Niveau = 10;
 
@@ -27,10 +27,10 @@ namespace Heizungsregler.Model
                     _vorlaufSolltemperatur = 0;
                     break;
                 case Betriebsarten.Tag: 
-                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(_raumTemperatur, _witterungsTemperatur);
+                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur, _witterungsTemperatur);
                     break;
                 case Betriebsarten.Nacht:
-                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(_raumTemperatur - _nachtAbsenkung, _witterungsTemperatur);
+                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur - NachtAbsenkung, _witterungsTemperatur);
                     break;
                 case Betriebsarten.Hand:
                     _vorlaufSolltemperatur = 0;

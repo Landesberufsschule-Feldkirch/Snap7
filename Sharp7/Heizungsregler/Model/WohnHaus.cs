@@ -1,27 +1,27 @@
 ﻿using System;
-using System.Dynamic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
+using Heizungsregler.Model;
 
-namespace Heizungsregler.Model
+namespace Heizungsregler
 {
     public class EnumBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string parameterString = parameter.ToString();
+            var parameterString = parameter.ToString();
             if (parameterString == null) return DependencyProperty.UnsetValue;
             if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
 
-            object parameterValue = Enum.Parse(value.GetType(), parameterString);
+            var parameterValue = Enum.Parse(value.GetType(), parameterString);
 
             return parameterValue.Equals(value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string parameterString = parameter.ToString();
+            var parameterString = parameter.ToString();
             if (parameterString == null)
                 return DependencyProperty.UnsetValue;
 
@@ -51,16 +51,15 @@ namespace Heizungsregler.Model
 
         public Betriebsarten Betriebsart { get; set; }
 
-        private readonly MainWindow _mainWindow;
+
         private readonly Heizkessel _heizkessel;
         private readonly Raumheizung _raumheizung;
 
         private const double BrennerleistungMax = 100.0;
         private const double BrennerleistungMin = 0.0;
 
-        public WohnHaus(MainWindow mw)
+        public WohnHaus()
         {
-            _mainWindow = mw;
             _heizkessel = new Heizkessel();
             _raumheizung = new Raumheizung();
 

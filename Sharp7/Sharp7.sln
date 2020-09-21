@@ -53,8 +53,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAutomatischesLagersystem"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronischesZahlenschloss", "ElektronischesZahlenschloss\ElektronischesZahlenschloss.csproj", "{FC259A79-C919-464D-81A1-CF2071FE8FC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heizungsregler", "Heizungsregler\Heizungsregler.csproj", "{1B015D84-5FCF-4170-943D-7E777BA416B0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hydraulik", "Hydraulik\Hydraulik.csproj", "{68DF93C3-0963-42E2-A01D-F87FD2681348}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hydraulik.Tests", "Hydraulik.Tests\Hydraulik.Tests.csproj", "{56D7349D-6C7B-461F-82D7-E1AF8A822232}"
@@ -66,6 +64,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2010_1_Kompressoranlage", "LAP_2010_1_Kompressoranlage\LAP_2010_1_Kompressoranlage.csproj", "{CE0A31A6-488D-4A8B-BD90-7946A861CA23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAP_2018_3_Hydraulikaggregat", "LAP_2018_3_Hydraulikaggregat\LAP_2018_3_Hydraulikaggregat.csproj", "{E9DE5CC4-DC13-42D4-97B8-7DA89B67ECC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heizungsregler", "Heizungsregler\Heizungsregler.csproj", "{D25E49DF-FDAA-4063-A32B-E6137A330868}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,10 +173,6 @@ Global
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B015D84-5FCF-4170-943D-7E777BA416B0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68DF93C3-0963-42E2-A01D-F87FD2681348}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -201,6 +197,10 @@ Global
 		{E9DE5CC4-DC13-42D4-97B8-7DA89B67ECC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9DE5CC4-DC13-42D4-97B8-7DA89B67ECC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9DE5CC4-DC13-42D4-97B8-7DA89B67ECC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D25E49DF-FDAA-4063-A32B-E6137A330868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D25E49DF-FDAA-4063-A32B-E6137A330868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D25E49DF-FDAA-4063-A32B-E6137A330868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D25E49DF-FDAA-4063-A32B-E6137A330868}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace Heizungsregler
+﻿namespace Heizungsregler.SetManual
 {
     public partial class SetManualWindow
     {

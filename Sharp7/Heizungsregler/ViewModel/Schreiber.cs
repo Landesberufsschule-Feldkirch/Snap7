@@ -6,17 +6,19 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using Heizungsregler.Model;
 
 namespace Heizungsregler.ViewModel
 {
     public class Schreiber
     {
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
-        private readonly MainWindow _mainWindow;
+        private readonly WohnHaus _wohnHaus;
 
-        public Schreiber(MainWindow mw)
+        public Schreiber(WohnHaus wohnHaus)
         {
-            _mainWindow = mw;
+            _wohnHaus = wohnHaus;
+
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
         }
@@ -28,58 +30,61 @@ namespace Heizungsregler.ViewModel
             MultiController.Range.MaximumX = TimeSpan.FromSeconds(30);
             MultiController.Range.AutoY = true;
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
-                Name = "Ventilöffnung Y",
-                Stroke = Colors.Red,
+                Name = "Witterungstemperatur",
+                Stroke = Colors.Red
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Erregerstrom IE",
-                Stroke = Colors.Green,
+                Stroke = Colors.Green
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Drehzahl n",
-                Stroke = Colors.Blue,
+                Stroke = Colors.Blue
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Frequenz f",
-                Stroke = Colors.Yellow,
+                Stroke = Colors.Yellow
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Generatorspannung UG",
-                Stroke = Colors.Gray,
+                Stroke = Colors.Gray
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Spannungsdifferenz Ud",
-                Stroke = Colors.YellowGreen,
+                Stroke = Colors.YellowGreen
             });
 
-            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries()
+            MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
                 Name = "Leistung P",
-                Stroke = Colors.AliceBlue,
+                Stroke = Colors.AliceBlue
             });
 
-            Stopwatch watch = new Stopwatch();
+            var watch = new Stopwatch();
             watch.Start();
 
             Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
-                    var yy = new List<DoubleDataPoint>()
+                    var yy = new List<DoubleDataPoint>
                     {
-                        1,2,3,4,5,6,7
+                        _wohnHaus?.WitterungsTemperatur ?? 0,
+
+
+                        2,3,4,5,6,7
                         /*
                         kraftwerk.ManualVentilstellung,
                         kraftwerk.ManualErregerstrom,
@@ -93,7 +98,7 @@ namespace Heizungsregler.ViewModel
 
                     var x = watch.Elapsed;
 
-                    var xx = new List<TimeSpanDataPoint>()
+                    var xx = new List<TimeSpanDataPoint>
                     {
                         x,
                         x,

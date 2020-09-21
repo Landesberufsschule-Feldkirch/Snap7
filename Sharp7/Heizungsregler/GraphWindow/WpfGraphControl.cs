@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Heizungsregler
+namespace Heizungsregler.GraphWindow
 {
     public class WpfGraphControl : Control
     {

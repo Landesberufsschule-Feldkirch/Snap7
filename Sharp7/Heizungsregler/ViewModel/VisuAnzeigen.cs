@@ -1,6 +1,5 @@
 ﻿using Heizungsregler.Model;
 using System.ComponentModel;
-using System.Reflection.PortableExecutable;
 using System.Threading;
 
 namespace Heizungsregler.ViewModel
@@ -8,10 +7,12 @@ namespace Heizungsregler.ViewModel
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly MainWindow _mainWindow;
+        private readonly WohnHaus _wohnHaus;
 
-        public VisuAnzeigen(MainWindow mw)
+        public VisuAnzeigen(MainWindow mw, WohnHaus wohnHaus)
         {
             _mainWindow = mw;
+            _wohnHaus = wohnHaus;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -46,20 +47,20 @@ namespace Heizungsregler.ViewModel
                     SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
-                if (_mainWindow.WohnHaus != null)
+                if (_wohnHaus != null)
                 {
                     WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1") + "°C";
-                    _mainWindow.WohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
-                    _mainWindow.WohnHaus.Betriebsart = BetriebsartAuswahl;
+                    _wohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
+                    _wohnHaus.Betriebsart = BetriebsartAuswahl;
 
-                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.WohnHaus.KesselTemperatur.ToString("F1") + "°C";
+                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _wohnHaus.KesselTemperatur.ToString("F1") + "°C";
 
                     VentilStellungMitEinheit = "Y: 10%";
 
-                    VorlaufIstMitAllem = "Ist: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
-                    VorlaufSollMitAllem = "Soll: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufIstMitAllem = "Ist: " + _wohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufSollMitAllem = "Soll: " + _wohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
 
-                    Pumpenfarbe(_mainWindow.WohnHaus.HeizungsPumpe);
+                    Pumpenfarbe(_wohnHaus.HeizungsPumpe);
 
                 }
 
@@ -158,9 +159,11 @@ namespace Heizungsregler.ViewModel
 
         #endregion ColorPumpe
 
+
         #region WitterungsTemperaturSlider
 
         public double SliderWitterungstemperatur() => WitterungsTemperaturSlider;
+
 
         private double _witterungsTemperaturSlider;
 
@@ -175,6 +178,11 @@ namespace Heizungsregler.ViewModel
         }
 
         #endregion WitterungsTemperaturSlider
+
+
+
+
+
 
         private string _kesselTemperaturMitEinheit;
 
@@ -229,7 +237,7 @@ namespace Heizungsregler.ViewModel
 
         public string WitterungsTempMitEinheit
         {
-            get => SliderWitterungstemperatur().ToString() + "°C";
+            get => SliderWitterungstemperatur() + "°C";
             set
             {
                 _witterungsTempMitEinheit = value;

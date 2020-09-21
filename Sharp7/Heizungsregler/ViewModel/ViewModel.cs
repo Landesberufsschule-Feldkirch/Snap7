@@ -7,18 +7,20 @@
     {
         public Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
-        private MainWindow _mainWindow;
-        public ViewModel(MainWindow mainWindow)
-        {
-            _mainWindow = mainWindow;
 
-               Schreiber = new Schreiber(_mainWindow);
-            ViAnzeige = new VisuAnzeigen(_mainWindow);
+        private readonly WohnHaus _wohnHaus;
+        
+        public ViewModel(MainWindow mw)
+        {
+            _wohnHaus = mw.WohnHaus;
+
+            Schreiber = new Schreiber(_wohnHaus);
+            ViAnzeige = new VisuAnzeigen(mw, _wohnHaus);
         }
 
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => _mainWindow.Heizungsregler.Reset(), p => true);
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => _wohnHaus.Reset(), p => true));
     }
 }
