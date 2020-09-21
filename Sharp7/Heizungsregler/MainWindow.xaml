@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:src="clr-namespace:Heizungsregler"
+        xmlns:model="clr-namespace:Heizungsregler.Model"
         Title="Heizungsregler" Height="1000" Width="1700" Closing="Window_Closing">
     <Grid>
         <Grid.Resources>
-            <src:EnumBooleanConverter  x:Key="enumBooleanConverter" />
+            <model:EnumBooleanConverter  x:Key="enumBooleanConverter" />
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>

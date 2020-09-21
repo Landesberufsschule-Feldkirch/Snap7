@@ -7,12 +7,10 @@ namespace Heizungsregler.ViewModel
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly MainWindow _mainWindow;
-        private readonly WohnHaus _wohnHaus;
 
-        public VisuAnzeigen(MainWindow mw, WohnHaus wohnHaus)
+        public VisuAnzeigen(MainWindow mw)
         {
             _mainWindow = mw;
-            _wohnHaus = wohnHaus;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -47,20 +45,20 @@ namespace Heizungsregler.ViewModel
                     SpsStatus = _mainWindow.S71200?.GetSpsStatus();
                 }
 
-                if (_wohnHaus != null)
+                if (_mainWindow.WohnHaus != null)
                 {
                     WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1") + "°C";
-                    _wohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
-                    _wohnHaus.Betriebsart = BetriebsartAuswahl;
+                    _mainWindow.WohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
+                    _mainWindow.WohnHaus.Betriebsart = BetriebsartAuswahl;
 
-                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _wohnHaus.KesselTemperatur.ToString("F1") + "°C";
+                    KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.WohnHaus.KesselTemperatur.ToString("F1") + "°C";
 
                     VentilStellungMitEinheit = "Y: 10%";
 
-                    VorlaufIstMitAllem = "Ist: " + _wohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
-                    VorlaufSollMitAllem = "Soll: " + _wohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufIstMitAllem = "Ist: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
+                    VorlaufSollMitAllem = "Soll: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
 
-                    Pumpenfarbe(_wohnHaus.HeizungsPumpe);
+                    Pumpenfarbe(_mainWindow.WohnHaus.HeizungsPumpe);
 
                 }
 

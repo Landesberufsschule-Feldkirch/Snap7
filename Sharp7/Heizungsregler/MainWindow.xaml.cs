@@ -1,5 +1,6 @@
 ﻿using Kommunikation;
 using System.Windows;
+using Heizungsregler.Model;
 using Heizungsregler.SetManual;
 
 namespace Heizungsregler

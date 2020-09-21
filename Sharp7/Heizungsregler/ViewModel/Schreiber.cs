@@ -6,18 +6,17 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using Heizungsregler.Model;
 
 namespace Heizungsregler.ViewModel
 {
     public class Schreiber
     {
         public WpfGraphController<TimeSpanDataPoint, DoubleDataPoint> MultiController { get; set; }
-        private readonly WohnHaus _wohnHaus;
+        private readonly MainWindow _mainWindow;
 
-        public Schreiber(WohnHaus wohnHaus)
+        public Schreiber(MainWindow mw)
         {
-            _wohnHaus = wohnHaus;
+            _mainWindow = mw;
 
             MultiController = new WpfGraphController<TimeSpanDataPoint, DoubleDataPoint>();
             MulticontrollerFuellen();
@@ -38,13 +37,13 @@ namespace Heizungsregler.ViewModel
 
             MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
-                Name = "Erregerstrom IE",
+                Name = "Kesseltemperatur",
                 Stroke = Colors.Green
             });
 
             MultiController.DataSeriesCollection.Add(new WpfGraphDataSeries
             {
-                Name = "Drehzahl n",
+                Name = "Vorlauftemperatur Soll",
                 Stroke = Colors.Blue
             });
 
@@ -81,10 +80,11 @@ namespace Heizungsregler.ViewModel
                 {
                     var yy = new List<DoubleDataPoint>
                     {
-                        _wohnHaus?.WitterungsTemperatur ?? 0,
+                       _mainWindow.WohnHaus?.WitterungsTemperatur ?? 0,
+                       _mainWindow.WohnHaus?.KesselTemperatur?? 0,
+                       _mainWindow.WohnHaus?.VorlaufSolltemperatur??0,
 
-
-                        2,3,4,5,6,7
+                        4,5,6,7
                         /*
                         kraftwerk.ManualVentilstellung,
                         kraftwerk.ManualErregerstrom,

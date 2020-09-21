@@ -2,9 +2,8 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
-using Heizungsregler.Model;
 
-namespace Heizungsregler
+namespace Heizungsregler.Model
 {
     public class EnumBooleanConverter : IValueConverter
     {
