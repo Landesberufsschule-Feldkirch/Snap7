@@ -36,9 +36,6 @@ namespace Kommunikation
         }
 
 
-
-
-
         public void SPS_Pingen_Task()
         {
             while (_taskRunning)
@@ -77,9 +74,8 @@ namespace Kommunikation
                     else
                         _digOutput[pos] = (byte)(_digOutput[pos] & ~mask[bit]);
                     break;
-
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException(nameof(Datenbausteine));
             }
         }
 
@@ -92,7 +88,7 @@ namespace Kommunikation
                 case Datenbausteine.DigIn:
                     return (ushort)((_digInput[bytePos] << 8) | _digInput[bytePos + 1]);
                 default:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException(nameof(Datenbausteine));
             }
         }
     }

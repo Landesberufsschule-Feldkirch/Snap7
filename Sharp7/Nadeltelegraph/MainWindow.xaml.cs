@@ -18,6 +18,8 @@ namespace Nadeltelegraph
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
 
+        private readonly ManualMode.MainWindow _mainWindowManualMode = new ManualMode.MainWindow();
+
         public MainWindow()
         {
             const string versionText = "Nadeltelegraph";
@@ -34,11 +36,12 @@ namespace Nadeltelegraph
             Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
         }
 
-        private ManualMode.MainWindow _mainWindowNeu = new ManualMode.MainWindow();
-        private void DebugWindowOeffnen(object sender, System.Windows.RoutedEventArgs e)
+       
+
+        private void ManualModeOeffnen(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            _mainWindowNeu.Show();
+          //  _mainWindowManualMode.Show();
 
 
             if (Plc.GetModel() == "S7-1200")
