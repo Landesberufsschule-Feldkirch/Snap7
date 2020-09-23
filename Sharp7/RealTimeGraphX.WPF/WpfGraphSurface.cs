@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RealTimeGraphX.EventArguments;
 
 namespace RealTimeGraphX.WPF
 {
@@ -34,6 +41,20 @@ namespace RealTimeGraphX.WPF
         private Point _last_mouse_position;
         private Grid _grid;
 
+        #region Events
+
+        /// <summary>
+        /// Occurs when the surface size has changed.
+        /// </summary>
+        public event EventHandler SurfaceSizeChanged;
+
+        /// <summary>
+        /// Occurs when the surface zoom rectangle has changed.
+        /// </summary>
+        public event EventHandler ZoomRectChanged;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
@@ -44,7 +65,6 @@ namespace RealTimeGraphX.WPF
             get { return (BitmapSource)GetValue(ImageProperty); }
             private set { SetValue(ImageProperty, value); }
         }
-
         public static readonly DependencyProperty ImageProperty =
             DependencyProperty.Register("Image", typeof(BitmapSource), typeof(WpfGraphSurface), new PropertyMetadata(null));
 
@@ -56,11 +76,10 @@ namespace RealTimeGraphX.WPF
             get { return (IGraphController<WpfGraphDataSeries>)GetValue(ControllerProperty); }
             set { SetValue(ControllerProperty, value); }
         }
-
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController<WpfGraphDataSeries>), typeof(WpfGraphSurface), new PropertyMetadata(null, (d, e) => (d as WpfGraphSurface).OnControllerChanged(e.OldValue as IGraphController<WpfGraphDataSeries>, e.NewValue as IGraphController<WpfGraphDataSeries>)));
 
-        #endregion Properties
+        #endregion
 
         #region Constructors
 
@@ -80,7 +99,7 @@ namespace RealTimeGraphX.WPF
             SizeChanged += WpfGraphSurface_SizeChanged;
         }
 
-        #endregion Constructors
+        #endregion
 
         #region Apply Template
 
@@ -100,7 +119,7 @@ namespace RealTimeGraphX.WPF
             _selection_canvas.MouseMove += OnSelectionCanvasMouseMove;
         }
 
-        #endregion Apply Template
+        #endregion
 
         #region Protected Methods
 
@@ -173,6 +192,8 @@ namespace RealTimeGraphX.WPF
                 }
 
                 _zoom_rect = new System.Drawing.RectangleF((float)x, (float)y, _zoom_rect.Width, _zoom_rect.Height);
+
+                ZoomRectChanged?.Invoke(this, new EventArgs());
             }
 
             _last_mouse_position = _current_mouse_position;
@@ -198,6 +219,7 @@ namespace RealTimeGraphX.WPF
                 _zoom_rect = new System.Drawing.RectangleF((float)Canvas.GetLeft(_selection_rectangle), (float)Canvas.GetTop(_selection_rectangle), (float)_selection_rectangle.Width, (float)_selection_rectangle.Height);
                 _selection_rectangle.Visibility = Visibility.Hidden;
                 _is_scaled = true;
+                ZoomRectChanged?.Invoke(this, new EventArgs());
             }
         }
 
@@ -218,6 +240,7 @@ namespace RealTimeGraphX.WPF
             {
                 _zoom_rect = new System.Drawing.RectangleF();
                 _is_scaled = false;
+                ZoomRectChanged?.Invoke(this, new EventArgs());
             }
             else if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
@@ -251,7 +274,7 @@ namespace RealTimeGraphX.WPF
             }
         }
 
-        #endregion Protected Methods
+        #endregion
 
         #region IGraphSurface
 
@@ -286,8 +309,8 @@ namespace RealTimeGraphX.WPF
         /// <param name="transform">The transform.</param>
         public void SetTransform(GraphTransform transform)
         {
-            _g.TranslateTransform(transform.TranslateX, transform.TranslateY);
-            _g.ScaleTransform(transform.ScaleX, transform.ScaleY);
+            _g.TranslateTransform((float)transform.TranslateX, (float)transform.TranslateY);
+            _g.ScaleTransform((float)transform.ScaleX, (float)transform.ScaleY);
         }
 
         /// <summary>
@@ -297,7 +320,10 @@ namespace RealTimeGraphX.WPF
         /// <param name="points">The points.</param>
         public void DrawSeries(WpfGraphDataSeries dataSeries, IEnumerable<System.Drawing.PointF> points)
         {
-            _g.DrawCurve(dataSeries.GdiPen, points.ToArray());
+            GraphicsPath path = new GraphicsPath();
+            path.AddLines(points.ToArray());
+            _g.DrawPath(dataSeries.GdiPen, path);
+            path.Dispose();
         }
 
         /// <summary>
@@ -356,7 +382,7 @@ namespace RealTimeGraphX.WPF
             return _zoom_rect;
         }
 
-        #endregion IGraphSurface
+        #endregion
 
         #region Event Handlers
 
@@ -369,8 +395,9 @@ namespace RealTimeGraphX.WPF
         {
             _size = new System.Drawing.SizeF((float)e.NewSize.Width, (float)e.NewSize.Height);
             _size_changed = true;
+            SurfaceSizeChanged?.Invoke(this, new EventArgs());
         }
 
-        #endregion Event Handlers
+        #endregion
     }
 }
