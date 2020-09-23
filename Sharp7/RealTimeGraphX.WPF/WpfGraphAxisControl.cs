@@ -1,9 +1,20 @@
 ﻿using RealTimeGraphX.EventArguments;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace RealTimeGraphX.WPF
 {
@@ -14,6 +25,7 @@ namespace RealTimeGraphX.WPF
     public class WpfGraphAxisControl : WpfGraphComponentBase
     {
         private ItemsControl _items_control;
+        private WpfGraphAxisPanel _axisPanel;
 
         /// <summary>
         /// Initializes the <see cref="WpfGraphAxisControl"/> class.
@@ -31,7 +43,6 @@ namespace RealTimeGraphX.WPF
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
-
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WpfGraphAxisControl), new PropertyMetadata(Orientation.Vertical));
 
@@ -43,7 +54,6 @@ namespace RealTimeGraphX.WPF
             get { return (DataTemplate)GetValue(ItemTemplateProperty); }
             set { SetValue(ItemTemplateProperty, value); }
         }
-
         public static readonly DependencyProperty ItemTemplateProperty =
             DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 
@@ -55,7 +65,6 @@ namespace RealTimeGraphX.WPF
             get { return (ObservableCollection<WpfGraphAxisTickData>)GetValue(ItemsProperty); }
             set { SetValue(ItemsProperty, value); }
         }
-
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register("Items", typeof(ObservableCollection<WpfGraphAxisTickData>), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 
@@ -67,7 +76,6 @@ namespace RealTimeGraphX.WPF
             get { return (int)GetValue(TicksProperty); }
             set { SetValue(TicksProperty, value); }
         }
-
         public static readonly DependencyProperty TicksProperty =
             DependencyProperty.Register("Ticks", typeof(int), typeof(WpfGraphAxisControl), new PropertyMetadata(9, (d, e) => (d as WpfGraphAxisControl).OnTicksChanged()));
 
@@ -79,7 +87,6 @@ namespace RealTimeGraphX.WPF
             get { return (String)GetValue(StringFormatProperty); }
             set { SetValue(StringFormatProperty, value); }
         }
-
         public static readonly DependencyProperty StringFormatProperty =
             DependencyProperty.Register("StringFormat", typeof(String), typeof(WpfGraphAxisControl), new PropertyMetadata(null));
 
@@ -91,7 +98,35 @@ namespace RealTimeGraphX.WPF
             base.OnApplyTemplate();
 
             _items_control = GetTemplateChild("PART_ItemsControl") as ItemsControl;
+
+            _items_control.Loaded += (x, e) => 
+            {
+                ItemsPresenter itemsPresenter = GetVisualChild<ItemsPresenter>(_items_control);
+                _axisPanel = VisualTreeHelper.GetChild(itemsPresenter, 0) as WpfGraphAxisPanel;
+            };
+
             OnTicksChanged();
+        }
+
+        private static T GetVisualChild<T>(DependencyObject parent) where T : Visual
+        {
+            T child = default(T);
+
+            int numVisuals = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < numVisuals; i++)
+            {
+                Visual v = (Visual)VisualTreeHelper.GetChild(parent, i);
+                child = v as T;
+                if (child == null)
+                {
+                    child = GetVisualChild<T>(v);
+                }
+                if (child != null)
+                {
+                    break;
+                }
+            }
+            return child;
         }
 
         /// <summary>
@@ -101,17 +136,11 @@ namespace RealTimeGraphX.WPF
         {
             Items = new ObservableCollection<WpfGraphAxisTickData>(Enumerable.Range(0, Ticks).Select(x => new WpfGraphAxisTickData()));
 
-            if (Controller != null)
-            {
-                Controller.RequestVirtualRangeChange();
-            }
+            Controller?.RequestVirtualRangeChange();
+
+            _axisPanel?.UpdatePanel();
         }
 
-        /// <summary>
-        /// Called when the controller has changed.
-        /// </summary>
-        /// <param name="oldController">The old controller.</param>
-        /// <param name="newController">The new controller.</param>
         protected override void OnControllerChanged(IGraphController oldController, IGraphController newController)
         {
             base.OnControllerChanged(oldController, newController);

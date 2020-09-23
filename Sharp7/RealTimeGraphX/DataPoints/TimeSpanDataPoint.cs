@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
@@ -15,6 +19,7 @@ namespace RealTimeGraphX.DataPoints
         /// </summary>
         public TimeSpanDataPoint() : base()
         {
+
         }
 
         /// <summary>
@@ -23,6 +28,7 @@ namespace RealTimeGraphX.DataPoints
         /// <param name="value">The value.</param>
         public TimeSpanDataPoint(TimeSpan value) : base(value)
         {
+
         }
 
         /// <summary>
@@ -169,6 +175,16 @@ namespace RealTimeGraphX.DataPoints
         public override IGraphDataPoint Parse(string value)
         {
             return new TimeSpanDataPoint(TimeSpan.Parse(value));
+        }
+
+        /// <summary>
+        /// Return the default margins for this data point type.
+        /// <see cref="IGraphRange.AutoYFallbackMode" /> and <see cref="GraphRangeAutoYFallBackMode.Margins" />.
+        /// </summary>
+        /// <returns></returns>
+        protected override TimeSpanDataPoint OnGetDefaultMargins()
+        {
+            return new TimeSpanDataPoint(TimeSpan.FromSeconds(1));
         }
     }
 }

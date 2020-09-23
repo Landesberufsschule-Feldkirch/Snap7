@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
@@ -14,6 +17,7 @@ namespace RealTimeGraphX.DataPoints
         /// </summary>
         public FloatDataPoint() : base()
         {
+
         }
 
         /// <summary>
@@ -22,6 +26,7 @@ namespace RealTimeGraphX.DataPoints
         /// <param name="value">The value.</param>
         public FloatDataPoint(float value) : base(value)
         {
+
         }
 
         /// <summary>
@@ -168,6 +173,16 @@ namespace RealTimeGraphX.DataPoints
         public override IGraphDataPoint Parse(string value)
         {
             return new FloatDataPoint(float.Parse(value));
+        }
+
+        /// <summary>
+        /// Return the default margins for this data point type.
+        /// <see cref="IGraphRange.AutoYFallbackMode" /> and <see cref="GraphRangeAutoYFallBackMode.Margins" />.
+        /// </summary>
+        /// <returns></returns>
+        protected override FloatDataPoint OnGetDefaultMargins()
+        {
+            return new FloatDataPoint(0.5f);
         }
     }
 }

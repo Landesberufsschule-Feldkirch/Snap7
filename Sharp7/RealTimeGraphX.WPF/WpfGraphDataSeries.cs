@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace RealTimeGraphX.WPF
@@ -27,21 +31,19 @@ namespace RealTimeGraphX.WPF
         /// </summary>
         internal System.Drawing.Pen GdiPen { get; set; }
 
-        #endregion Internal Properties
+        #endregion
 
         private String _name;
-
         /// <summary>
         /// Gets or sets the series name.
         /// </summary>
         public String Name
         {
-            get => _name;
+            get { return _name; }
             set { _name = value; RaisePropertyChangedAuto(); }
         }
 
         private float _strokeThickness;
-
         /// <summary>
         /// Gets or sets the stroke thickness.
         /// </summary>
@@ -60,24 +62,22 @@ namespace RealTimeGraphX.WPF
         }
 
         private bool _isVisible;
-
         /// <summary>
         /// Gets or sets a value indicating whether this series should be visible.
         /// </summary>
         public bool IsVisible
         {
-            get => _isVisible;
+            get { return _isVisible; }
             set { _isVisible = value; RaisePropertyChangedAuto(); }
         }
 
         private Color _stroke;
-
         /// <summary>
         /// Gets or sets the series stroke color.
         /// </summary>
         public Color Stroke
         {
-            get => _stroke;
+            get { return _stroke; }
             set
             {
                 _stroke = value;
@@ -96,13 +96,12 @@ namespace RealTimeGraphX.WPF
         }
 
         private Brush _fill;
-
         /// <summary>
         /// Gets or sets the series fill brush.
         /// </summary>
         public Brush Fill
         {
-            get => _fill;
+            get { return _fill; }
             set
             {
                 _fill = value;
@@ -135,6 +134,16 @@ namespace RealTimeGraphX.WPF
         public bool UseFill
         {
             get { return Fill != null; }
+        }
+
+        private object _currentValue;
+        /// <summary>
+        /// Gets the current value.
+        /// </summary>
+        public object CurrentValue
+        {
+            get { return _currentValue; }
+            set { _currentValue = value; RaisePropertyChangedAuto(); }
         }
     }
 }

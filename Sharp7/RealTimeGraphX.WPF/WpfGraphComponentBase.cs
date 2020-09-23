@@ -1,5 +1,9 @@
 ﻿using RealTimeGraphX.EventArguments;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +23,6 @@ namespace RealTimeGraphX.WPF
             get { return (IGraphController)GetValue(ControllerProperty); }
             set { SetValue(ControllerProperty, value); }
         }
-
         public static readonly DependencyProperty ControllerProperty =
             DependencyProperty.Register("Controller", typeof(IGraphController), typeof(WpfGraphComponentBase), new PropertyMetadata(null, (d, e) => (d as WpfGraphComponentBase).OnControllerChanged(e.OldValue as IGraphController, e.NewValue as IGraphController)));
 

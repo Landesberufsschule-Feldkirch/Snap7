@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using RealTimeGraphX.EventArguments;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 
 namespace RealTimeGraphX
 {
@@ -8,6 +11,16 @@ namespace RealTimeGraphX
     /// </summary>
     public interface IGraphSurface : IGraphComponent
     {
+        /// <summary>
+        /// Occurs when the surface size has changed.
+        /// </summary>
+        event EventHandler SurfaceSizeChanged;
+
+        /// <summary>
+        /// Occurs when the surface zoom rectangle has changed.
+        /// </summary>
+        event EventHandler ZoomRectChanged;
+
         /// <summary>
         /// Returns the actual size of the surface.
         /// </summary>

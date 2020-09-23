@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
@@ -15,6 +17,7 @@ namespace RealTimeGraphX.DataPoints
         /// </summary>
         public Int32DataPoint() : base()
         {
+
         }
 
         /// <summary>
@@ -23,6 +26,7 @@ namespace RealTimeGraphX.DataPoints
         /// <param name="value">The value.</param>
         public Int32DataPoint(int value) : base(value)
         {
+
         }
 
         /// <summary>
@@ -114,6 +118,11 @@ namespace RealTimeGraphX.DataPoints
             Int32DataPoint dMin = min as Int32DataPoint;
             Int32DataPoint dMax = max as Int32DataPoint;
 
+            if (dMax - dMin == 0) //Prevent divide by zero
+            {
+                return dMin;
+            }
+
             var result = ((Value - dMin) * 100) / (dMax - dMin);
 
             return result;
@@ -143,12 +152,12 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IEnumerable<IGraphDataPoint> CreateRange(IGraphDataPoint min, IGraphDataPoint max, int count)
         {
-            int minimum = (int)min.GetValue();
-            int maximum = (int)max.GetValue();
+            double minimum = (int)min.GetValue();
+            double maximum = (int)max.GetValue();
 
             return Enumerable.Range(0, count).
-                Select(i => minimum + (maximum - minimum) * (i / (count - 1))).
-                Select(x => new Int32DataPoint(x));
+                Select(i => minimum + (maximum - minimum) * ((double)i / (count - 1))).
+                Select(x => new Int32DataPoint((int)x));
         }
 
         /// <summary>
@@ -169,6 +178,16 @@ namespace RealTimeGraphX.DataPoints
         public override IGraphDataPoint Parse(string value)
         {
             return new Int32DataPoint(int.Parse(value));
+        }
+
+        /// <summary>
+        /// Return the default margins for this data point type.
+        /// <see cref="P:RealTimeGraphX.IGraphRange.AutoYFallbackMode" /> and <see cref="F:RealTimeGraphX.GraphRangeAutoYFallBackMode.Margins" />.
+        /// </summary>
+        /// <returns></returns>
+        protected override Int32DataPoint OnGetDefaultMargins()
+        {
+            return new Int32DataPoint(1);
         }
     }
 }

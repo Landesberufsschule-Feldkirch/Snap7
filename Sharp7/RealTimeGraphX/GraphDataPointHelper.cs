@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealTimeGraphX
 {
@@ -40,6 +43,16 @@ namespace RealTimeGraphX
         public static T Init<T>() where T : class, IGraphDataPoint
         {
             return Activator.CreateInstance(typeof(T)) as T;
+        }
+
+        /// <summary>
+        /// Gets the default margins for the specified IGraphDataPoint.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T GetDefaultMargins<T>() where T : class, IGraphDataPoint
+        {
+            return Init<T>().GetDefaultMargins() as T;
         }
     }
 }

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace RealTimeGraphX
 {
@@ -36,14 +40,14 @@ namespace RealTimeGraphX
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
-        #endregion IComparable
+        #endregion
 
         #region Logical Operators
 
@@ -97,7 +101,7 @@ namespace RealTimeGraphX
             return a.CompareTo(b) != 0;
         }
 
-        #endregion Logical Operators
+        #endregion
 
         #region Arithmetic Operators
 
@@ -145,7 +149,7 @@ namespace RealTimeGraphX
             return (GraphDataPoint)a.Multiply(b);
         }
 
-        #endregion Arithmetic Operators
+        #endregion
 
         #region IGraphDataPoint
 
@@ -229,7 +233,7 @@ namespace RealTimeGraphX
         /// <returns></returns>
         public abstract IGraphDataPoint Parse(string value);
 
-        #endregion IGraphDataPoint
+        #endregion
 
         #region Properties
 
@@ -241,7 +245,18 @@ namespace RealTimeGraphX
             get { return GetType(); }
         }
 
-        #endregion Properties
+        #endregion
+
+        #region Margins
+
+        /// <summary>
+        /// Gets the default margins for this data point type.
+        /// <see cref="IGraphRange.AutoYFallbackMode"/> and <see cref="GraphRangeAutoYFallBackMode.Margins"/>.
+        /// </summary>
+        /// <returns></returns>
+        public abstract IGraphDataPoint GetDefaultMargins();
+
+        #endregion
     }
 
     /// <summary>
@@ -259,7 +274,7 @@ namespace RealTimeGraphX
         /// </summary>
         public T Value { get; set; }
 
-        #endregion Properties
+        #endregion
 
         #region Constructors
 
@@ -268,6 +283,7 @@ namespace RealTimeGraphX
         /// </summary>
         public GraphDataPoint()
         {
+
         }
 
         /// <summary>
@@ -279,7 +295,7 @@ namespace RealTimeGraphX
             Value = value;
         }
 
-        #endregion Constructors
+        #endregion
 
         #region IComparable
 
@@ -316,14 +332,14 @@ namespace RealTimeGraphX
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
         public override int GetHashCode()
         {
             return -1937169414 + EqualityComparer<T>.Default.GetHashCode(Value);
         }
 
-        #endregion IComparable
+        #endregion
 
         #region ToString
 
@@ -338,7 +354,7 @@ namespace RealTimeGraphX
             return Value.ToString();
         }
 
-        #endregion ToString
+        #endregion
 
         #region IGraphDataPoint
 
@@ -360,7 +376,7 @@ namespace RealTimeGraphX
             Value = (T)value;
         }
 
-        #endregion IGraphDataPoint
+        #endregion
 
         #region Parsing
 
@@ -374,7 +390,7 @@ namespace RealTimeGraphX
             return Activator.CreateInstance<TDataType>().Parse(value) as TDataType;
         }
 
-        #endregion Parsing
+        #endregion
 
         #region Implicit Operators
 
@@ -402,6 +418,27 @@ namespace RealTimeGraphX
             return instance.Value;
         }
 
-        #endregion Implicit Operators
+        #endregion
+
+        #region Margins
+
+        /// <summary>
+        /// Gets the default margins for this data point type.
+        /// <see cref="IGraphRange.AutoYFallbackMode" /> and <see cref="GraphRangeAutoYFallBackMode.Margins" />.
+        /// </summary>
+        /// <returns></returns>
+        public override IGraphDataPoint GetDefaultMargins()
+        {
+            return OnGetDefaultMargins();
+        }
+
+        /// <summary>
+        /// Return the default margins for this data point type.
+        /// <see cref="IGraphRange.AutoYFallbackMode" /> and <see cref="GraphRangeAutoYFallBackMode.Margins" />.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract TDataType OnGetDefaultMargins();
+
+        #endregion
     }
 }

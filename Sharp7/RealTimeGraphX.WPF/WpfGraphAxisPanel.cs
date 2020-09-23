@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RealTimeGraphX.WPF
@@ -17,7 +22,6 @@ namespace RealTimeGraphX.WPF
             get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
-
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register("Orientation", typeof(Orientation), typeof(WpfGraphAxisPanel), new PropertyMetadata(Orientation.Vertical));
 
@@ -42,10 +46,11 @@ namespace RealTimeGraphX.WPF
         /// <summary>
         /// Updates the panel.
         /// </summary>
-        private void UpdatePanel()
+        public void UpdatePanel()
         {
             RowDefinitions.Clear();
             ColumnDefinitions.Clear();
+
 
             if (Orientation == Orientation.Vertical)
             {

@@ -23,7 +23,7 @@ namespace RealTimeGraphX
         /// </summary>
         event EventHandler<RangeChangedEventArgs> VirtualRangeChanged;
 
-        #endregion Events
+        #endregion
 
         #region Properties
 
@@ -37,6 +37,11 @@ namespace RealTimeGraphX
         /// Gets or sets a value indicating whether to pause the rendering.
         /// </summary>
         bool IsPaused { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to disable the rendering of data.
+        /// </summary>
+        bool DisableRendering { get; set; }
 
         /// <summary>
         /// Gets the current effective x-axis minimum.
@@ -83,7 +88,7 @@ namespace RealTimeGraphX
         /// </summary>
         void Clear();
 
-        #endregion Properties
+        #endregion
 
         #region Commands
 
@@ -92,7 +97,7 @@ namespace RealTimeGraphX
         /// </summary>
         GraphCommand ClearCommand { get; }
 
-        #endregion Commands
+        #endregion
 
         #region Methods
 
@@ -101,7 +106,7 @@ namespace RealTimeGraphX
         /// </summary>
         void RequestVirtualRangeChange();
 
-        #endregion Methods
+        #endregion
     }
 
     /// <summary>
@@ -129,8 +134,9 @@ namespace RealTimeGraphX
         /// </summary>
         IGraphSurface<TDataSeries> Surface { get; set; }
 
-        #endregion Properties
+        #endregion
     }
+
 
     /// <summary>
     /// Represents a graph controller capable of pushing data points to it's associated <see cref="IGraphRenderer{TDataSeries}">Graph Renderer</see>
@@ -152,7 +158,7 @@ namespace RealTimeGraphX
         /// </summary>
         GraphRange<TXDataPoint, TYDataPoint> Range { get; set; }
 
-        #endregion Properties
+        #endregion
 
         #region Methods
 
@@ -166,7 +172,7 @@ namespace RealTimeGraphX
 
         /// <summary>
         /// Submits the specified collections of x and y data points.
-        /// If the controller has more than one data series the data points will be distributed evenly.
+        /// If the controller has more than one data series the data points will be distributed evenly. 
         /// </summary>
         /// <param name="xx">X data point collection.</param>
         /// <param name="yy">Y data point collection.</param>
@@ -179,6 +185,6 @@ namespace RealTimeGraphX
         /// <param name="yyyy">Y matrix.</param>
         void PushData(IEnumerable<IEnumerable<TXDataPoint>> xxxx, IEnumerable<IEnumerable<TYDataPoint>> yyyy);
 
-        #endregion Methods
+        #endregion
     }
 }

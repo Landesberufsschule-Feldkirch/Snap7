@@ -2,43 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RealTimeGraphX.DataPoints
 {
-    /// <summary>
-    /// Represents a graph <see cref="Double"/> value data point.
-    /// </summary>
-    /// <seealso cref="RealTimeGraphX.GraphDataPoint{System.Double, RealTimeGraphX.DataPoints.DoubleDataPoint}" />
-    public class DoubleDataPoint : GraphDataPoint<Double, DoubleDataPoint>
+    public class DateTimeDataPoint : GraphDataPoint<DateTime, DateTimeDataPoint>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DoubleDataPoint"/> class.
+        /// Initializes a new instance of the <see cref="DateTimeDataPoint"/> class.
         /// </summary>
-        public DoubleDataPoint() : base()
+        public DateTimeDataPoint() : base()
         {
 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DoubleDataPoint"/> class.
+        /// Initializes a new instance of the <see cref="DateTimeDataPoint"/> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public DoubleDataPoint(double value) : base(value)
+        public DateTimeDataPoint(DateTime value) : base(value)
         {
 
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Double"/> to <see cref="DoubleDataPoint"/>.
+        /// Performs an implicit conversion from <see cref="System.TimeSpan"/> to <see cref="DateTimeDataPoint"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-        public static implicit operator DoubleDataPoint(double value)
+        public static implicit operator DateTimeDataPoint(DateTime value)
         {
-            return new DoubleDataPoint(value);
+            return new DateTimeDataPoint(value);
         }
 
         /// <summary>
@@ -49,9 +44,9 @@ namespace RealTimeGraphX.DataPoints
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        public static DoubleDataPoint operator -(DoubleDataPoint a, DoubleDataPoint b)
+        public static DateTimeDataPoint operator -(DateTimeDataPoint a, DateTimeDataPoint b)
         {
-            return new DoubleDataPoint(a.Value - b.Value);
+            return new DateTimeDataPoint(new DateTime(a.Value.Ticks - b.Value.Ticks));
         }
 
         /// <summary>
@@ -62,9 +57,9 @@ namespace RealTimeGraphX.DataPoints
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        public static DoubleDataPoint operator +(DoubleDataPoint a, DoubleDataPoint b)
+        public static DateTimeDataPoint operator +(DateTimeDataPoint a, DateTimeDataPoint b)
         {
-            return new DoubleDataPoint(a.Value + b.Value);
+            return new DateTimeDataPoint(new DateTime(a.Value.Ticks + b.Value.Ticks));
         }
 
         /// <summary>
@@ -74,7 +69,7 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint Add(IGraphDataPoint other)
         {
-            return new DoubleDataPoint(this.Value + (other as DoubleDataPoint).Value);
+            return new DateTimeDataPoint(new DateTime(this.Value.Ticks + (other as DateTimeDataPoint).Value.Ticks));
         }
 
         /// <summary>
@@ -84,7 +79,7 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint Subtract(IGraphDataPoint other)
         {
-            return new DoubleDataPoint(this.Value - (other as DoubleDataPoint).Value);
+            return new DateTimeDataPoint(new DateTime(this.Value.Ticks - (other as DateTimeDataPoint).Value.Ticks));
         }
 
         /// <summary>
@@ -94,7 +89,7 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint Multiply(IGraphDataPoint other)
         {
-            return new DoubleDataPoint(this.Value * (other as DoubleDataPoint).Value);
+            return new DateTimeDataPoint(new DateTime(this.Value.Ticks * (other as DateTimeDataPoint).Value.Ticks));
         }
 
         /// <summary>
@@ -104,7 +99,7 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint Divide(IGraphDataPoint other)
         {
-            return new DoubleDataPoint(this.Value / (other as DoubleDataPoint).Value);
+            return new DateTimeDataPoint(new DateTime(this.Value.Ticks / (other as DateTimeDataPoint).Value.Ticks));
         }
 
         /// <summary>
@@ -115,12 +110,17 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override double ComputeRelativePosition(IGraphDataPoint min, IGraphDataPoint max)
         {
-            DoubleDataPoint dMin = min as DoubleDataPoint;
-            DoubleDataPoint dMax = max as DoubleDataPoint;
+            DateTime dMin = min as DateTimeDataPoint;
+            DateTime dMax = max as DateTimeDataPoint;
 
-            var result = ((Value - dMin) * 100) / (dMax - dMin);
+            if (dMax.Ticks - dMin.Ticks == 0) //Prevent divide by zero
+            {
+                return dMin.Ticks;
+            }
 
-            return double.IsNaN(result) || double.IsInfinity(result) ? dMin.Value : result;
+            var result = ((Value.Ticks - dMin.Ticks) * 100) / (dMax.Ticks - dMin.Ticks);
+
+            return double.IsNaN(result) ? dMin.Ticks : result;
         }
 
         /// <summary>
@@ -132,10 +132,10 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint ComputeAbsolutePosition(IGraphDataPoint min, IGraphDataPoint max, double percentage)
         {
-            double minimum = (double)min.GetValue();
-            double maximum = (double)max.GetValue();
+            double minimum = ((DateTime)min.GetValue()).Ticks;
+            double maximum = ((DateTime)max.GetValue()).Ticks;
 
-            return new DoubleDataPoint(minimum + (maximum - minimum) * percentage);
+            return new DateTimeDataPoint(new DateTime((long)(minimum + (maximum - minimum) * percentage)));
         }
 
         /// <summary>
@@ -147,12 +147,12 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IEnumerable<IGraphDataPoint> CreateRange(IGraphDataPoint min, IGraphDataPoint max, int count)
         {
-            double minimum = (double)min.GetValue();
-            double maximum = (double)max.GetValue();
+            double minimum = ((DateTime)min.GetValue()).Ticks;
+            double maximum = ((DateTime)max.GetValue()).Ticks;
 
             return Enumerable.Range(0, count).
                 Select(i => minimum + (maximum - minimum) * ((double)i / (count - 1))).
-                Select(x => new DoubleDataPoint(x));
+                Select(x => new DateTimeDataPoint(new DateTime((long)x)));
         }
 
         /// <summary>
@@ -172,17 +172,17 @@ namespace RealTimeGraphX.DataPoints
         /// <returns></returns>
         public override IGraphDataPoint Parse(string value)
         {
-            return new DoubleDataPoint(double.Parse(value));
+            return new DateTimeDataPoint(DateTime.Parse(value));
         }
 
         /// <summary>
         /// Return the default margins for this data point type.
-        /// <see cref="IGraphRange.AutoYFallbackMode" /> and <see cref="GraphRangeAutoYFallBackMode.Margins" />.
+        /// <see cref="P:RealTimeGraphX.IGraphRange.AutoYFallbackMode" /> and <see cref="F:RealTimeGraphX.GraphRangeAutoYFallBackMode.Margins" />.
         /// </summary>
         /// <returns></returns>
-        protected override DoubleDataPoint OnGetDefaultMargins()
+        protected override DateTimeDataPoint OnGetDefaultMargins()
         {
-            return new DoubleDataPoint(0.5);
+            return new DateTimeDataPoint(new DateTime(1, 1, 1, 1, 1, 1));
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using RealTimeGraphX.DataPoints;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Text;
 
 namespace RealTimeGraphX
 {
@@ -42,7 +44,7 @@ namespace RealTimeGraphX
                 {
                     return _instance.Parse(value.ToString());
                 }
-                catch { }
+                catch {}
             }
 
             return _instance;
