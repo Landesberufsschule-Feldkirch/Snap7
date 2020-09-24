@@ -1,0 +1,74 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1, 
+      "Bezeichnung": "P1R",
+      "Kommentar": "Zeiger 1 rechts"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P1L",
+      "Kommentar": "Zeiger 1 links"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P12",
+      "Kommentar": "Zeiger 2 rechts"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P2L",
+      "Kommentar": "Zeiger 2 links"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P3R",
+      "Kommentar": "Zeiger 3 rechts"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P3L",
+      "Kommentar": "Zeiger 3 links"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P4R",
+      "Kommentar": "Zeiger 4 rechts"
+    },
+    {
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P4L",
+      "Kommentar": "Zeiger 4 links"
+    },
+    {
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P5R",
+      "Kommentar": "Zeiger 5 rechts"
+    },
+    {
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Bezeichnung": "P5L",
+      "Kommentar": "Zeiger 5 links"
+    }
+  ]
+}

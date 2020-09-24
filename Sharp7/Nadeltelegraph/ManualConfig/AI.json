@@ -1,0 +1,11 @@
+﻿{
+  "AnalogeEingaenge": [
+    {
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Bezeichnung": "AI0",
+      "Kommentar": "Dummy analog Eingang 0"
+    }
+  ]
+}

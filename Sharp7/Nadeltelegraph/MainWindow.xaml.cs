@@ -1,5 +1,7 @@
 ﻿using Kommunikation;
 
+using ManualMode;
+
 namespace Nadeltelegraph
 {
     public partial class MainWindow
@@ -9,6 +11,8 @@ namespace Nadeltelegraph
         public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+
+public ManualMode.MainWindow ManualMode { get; set; }
 
         private readonly SetManual.View.View _viewManual;
         private readonly DatenRangieren _datenRangieren;
@@ -34,6 +38,15 @@ namespace Nadeltelegraph
             DataContext = viewModel;
 
             Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+
+
+            ManualMode=new ManualMode.MainWindow();
+            ManualMode.SetManualConfig(global::ManualMode.MainWindow.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.MainWindow.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.MainWindow.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.MainWindow.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+
         }
 
        
