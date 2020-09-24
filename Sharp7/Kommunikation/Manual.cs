@@ -7,6 +7,14 @@ namespace Kommunikation
     public class Manual : IPlc
     {
 
+        public byte[] BefehleSps { get; set; } = new byte[1024];
+        public byte[] VersionInput { get; set; } = new byte[1024];
+        public byte[] DigInput { get; set; } = new byte[1024];
+        public byte[] DigOutput { get; set; } = new byte[1024];
+        public byte[] AnalogInput { get; set; } = new byte[1024];
+        public byte[] AnalogOutput { get; set; } = new byte[1024];
+
+
         private readonly Action<byte[], byte[]> _callbackInput;
         private readonly Action<byte[], byte[]> _callbackOutput;
 
@@ -49,6 +57,7 @@ namespace Kommunikation
                 Thread.Sleep(10);
             }
         }
+
 
         public string GetSpsStatus() => "";
         public bool GetSpsError() => false;
