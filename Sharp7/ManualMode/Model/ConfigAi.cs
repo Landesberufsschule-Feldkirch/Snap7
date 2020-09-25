@@ -11,6 +11,7 @@ namespace ManualMode.Model
     {
         public AiEinstellungen()
         {
+            LaufendeNr = 0;
             StartByte = 0;
             StartBit = 0;
             AnzahlBit = 0;
@@ -18,6 +19,7 @@ namespace ManualMode.Model
             Kommentar = "";
         }
 
+        public int LaufendeNr { get; set; }
         public int StartByte { get; set; }
         public int StartBit { get; set; }
         public int AnzahlBit { get; set; }

@@ -1,13 +1,15 @@
 ﻿using ManualMode.Model;
 using System;
+using ManualMode.ViewModel;
 
 namespace ManualMode
 {
     public partial class MainWindow
     {
+        private readonly ManualViewModel _manualViewModel;
 
         private readonly int _anzByteDigitalInput;
-        private readonly int _anzByteDigOutput;
+        private readonly int _anzByteDigitalOutput;
         private readonly int _anzByteAnalogInput;
         private readonly int _anzByteAnalogOutput;
 
@@ -15,8 +17,6 @@ namespace ManualMode
         private readonly byte[] _byteDigitalOutput;
         private readonly byte[] _byteAnalogInput;
         private readonly byte[] _byteAnalogOutput;
-
-
 
         public enum ManualModeConfig
         {
@@ -30,6 +30,7 @@ namespace ManualMode
 
         public MainWindow(byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
         {
+            _manualViewModel = new ManualViewModel(this);
 
             _byteDigitalInput = byteDigInput;
             _byteDigitalOutput = byteDigitalOutput;
@@ -37,19 +38,14 @@ namespace ManualMode
             _byteAnalogOutput = byteAnalogOutput;
 
             _anzByteDigitalInput = anzByteDigInput;
-            _anzByteDigOutput = anzByteDigOutput;
+            _anzByteDigitalOutput = anzByteDigOutput;
             _anzByteAnalogInput = anzByteAnalogInput;
             _anzByteAnalogOutput = anzByteAnalogOutput;
-
-
+            
             GetConfig = new GetConfig();
 
             InitializeComponent();
-           
-
-           
-
-            
+            DataContext = _manualViewModel;
         }
 
 
@@ -77,32 +73,32 @@ namespace ManualMode
         public void FensterAnzeigen()
         {
 
-
             if (_anzByteDigitalInput > 0)
             {
-                var fensterDi = new FensterDi(GetConfig.ConfigDi);
+                var fensterDi = new FensterDi(GetConfig.ConfigDi, _manualViewModel);
                 fensterDi.Show();
             }
 
-
-            if (_anzByteDigitalInput > 0)
+            if (_anzByteDigitalOutput > 0)
             {
-                var fensterDa = new FensterDa(GetConfig.ConfigDa);
+                var fensterDa = new FensterDa(GetConfig.ConfigDa, _manualViewModel);
                 fensterDa.Show();
             }
 
             if (_anzByteAnalogInput > 0)
             {
-                var fensterAi = new FensterAi(GetConfig.ConfigAi);
+                var fensterAi = new FensterAi(GetConfig.ConfigAi, _manualViewModel);
                 fensterAi.Show();
             }
 
             if (_anzByteAnalogOutput > 0)
             {
-                var fensterAa = new FensterAa(GetConfig.ConfigAa);
+                var fensterAa = new FensterAa(GetConfig.ConfigAa, _manualViewModel);
                 fensterAa.Show();
             }
-
         }
+
+      
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿{
   "DigitaleAusgaenge": [
     {
+      "LaufendeNr": 0,
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 1,
