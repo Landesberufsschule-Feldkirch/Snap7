@@ -30,8 +30,8 @@ namespace ManualMode
                 FontSize = 12
             };
             Canvas.SetLeft(labelTasten, posTastenX);
-            Canvas.SetTop(labelTasten,  posUeberschriftY);
-            Canvas.Children.Add( labelTasten);
+            Canvas.SetTop(labelTasten, posUeberschriftY);
+            Canvas.Children.Add(labelTasten);
 
             var labelTogeln = new Label
             {
@@ -39,9 +39,9 @@ namespace ManualMode
                 FontFamily = new FontFamily("Arial"),
                 FontSize = 12
             };
-            Canvas.SetLeft( labelTogeln,  posToggelnX);
-            Canvas.SetTop( labelTogeln,  posUeberschriftY);
-            Canvas.Children.Add( labelTogeln);
+            Canvas.SetLeft(labelTogeln, posToggelnX);
+            Canvas.SetTop(labelTogeln, posUeberschriftY);
+            Canvas.Children.Add(labelTogeln);
 
             var LaufenderZaehler = 0;
 
@@ -61,15 +61,16 @@ namespace ManualMode
                     CommandParameter = config,
                     Command = new RelayCommand(manualViewModel.ManualVisuAnzeigen.TastenDi),
                     ClickMode = manualViewModel.ManualVisuAnzeigen.ClickModeTasten[config.LaufendeNr],
+                    Background = manualViewModel.ManualVisuAnzeigen.FarbeTastenToggelnDi[config.LaufendeNr],
                     Width = 50,
                     Height = 20,
                     FontFamily = new FontFamily("Arial"),
                     FontSize = 12
                 };
 
-                Canvas.SetLeft( buttonTasten,  posTastenX);
-                Canvas.SetTop( buttonTasten,  posY);
-                Canvas.Children.Add( buttonTasten);
+                Canvas.SetLeft(buttonTasten, posTastenX);
+                Canvas.SetTop(buttonTasten, posY);
+                Canvas.Children.Add(buttonTasten);
 
                 //  < Button Grid.Column = "3" Grid.Row = "3" Content = "0.0" Background = "{Binding Visu.ColorToggeln[1]}"                                                Command = "{Binding BtnToggeln}" CommandParameter = "1" />
 
@@ -79,40 +80,41 @@ namespace ManualMode
                     Content = bezeichnung,
                     CommandParameter = config,
                     Command = new RelayCommand(manualViewModel.ManualVisuAnzeigen.ToggelnDi),
+                    Background = manualViewModel.ManualVisuAnzeigen.FarbeTastenToggelnDi[config.LaufendeNr],
                     Width = 50,
                     Height = 20,
                     FontFamily = new FontFamily("Arial"),
                     FontSize = 12
                 };
 
-                Canvas.SetLeft( buttonToggeln,  posToggelnX);
-                Canvas.SetTop( buttonToggeln,  posY);
-                Canvas.Children.Add( buttonToggeln);
+                Canvas.SetLeft(buttonToggeln, posToggelnX);
+                Canvas.SetTop(buttonToggeln, posY);
+                Canvas.Children.Add(buttonToggeln);
 
 
                 var label = new Label
                 {
                     Content = config.Bezeichnung,
-                    FontFamily = new FontFamily( "Arial"),
+                    FontFamily = new FontFamily("Arial"),
                     FontSize = 12
                 };
 
-                Canvas.SetLeft( label,  posLabelX);
-                Canvas.SetTop( label,  posY);
-                Canvas.Children.Add( label);
+                Canvas.SetLeft(label, posLabelX);
+                Canvas.SetTop(label, posY);
+                Canvas.Children.Add(label);
 
 
 
                 var kommentar = new Label
                 {
                     Content = config.Kommentar,
-                    FontFamily = new FontFamily( "Arial"),
+                    FontFamily = new FontFamily("Arial"),
                     FontSize = 12
                 };
 
-                Canvas.SetLeft( kommentar,  posKommentarX);
-                Canvas.SetTop( kommentar,  posY);
-                Canvas.Children.Add( kommentar);
+                Canvas.SetLeft(kommentar, posKommentarX);
+                Canvas.SetTop(kommentar, posY);
+                Canvas.Children.Add(kommentar);
 
 
                 posY += abstand;
