@@ -5,80 +5,9 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 1,
-      "Bezeichnung": "P1R",
-      "Kommentar": "Zeiger 1 rechts"
-    },
-    {
-      "LaufendeNr": 1,
-      "StartByte": 0,
-      "StartBit": 1,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P1L",
-      "Kommentar": "Zeiger 1 links"
-    },
-    {
-      "LaufendeNr": 2,
-      "StartByte": 0,
-      "StartBit": 2,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P12",
-      "Kommentar": "Zeiger 2 rechts"
-    },
-    {
-      "LaufendeNr": 3,
-      "StartByte": 0,
-      "StartBit": 3,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P2L",
-      "Kommentar": "Zeiger 2 links"
-    },
-    {
-      "LaufendeNr": 4,
-      "StartByte": 0,
-      "StartBit": 4,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P3R",
-      "Kommentar": "Zeiger 3 rechts"
-    },
-    {
-      "LaufendeNr": 5,
-      "StartByte": 0,
-      "StartBit": 5,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P3L",
-      "Kommentar": "Zeiger 3 links"
-    },
-    {
-      "LaufendeNr": 6,
-      "StartByte": 0,
-      "StartBit": 6,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P4R",
-      "Kommentar": "Zeiger 4 rechts"
-    },
-    {
-      "LaufendeNr": 7,
-      "StartByte": 0,
-      "StartBit": 7,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P4L",
-      "Kommentar": "Zeiger 4 links"
-    },
-    {
-      "LaufendeNr": 8,
-      "StartByte": 1,
-      "StartBit": 0,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P5R",
-      "Kommentar": "Zeiger 5 rechts"
-    },
-    {
-      "LaufendeNr": 9,
-      "StartByte": 1,
-      "StartBit": 1,
-      "AnzahlBit": 1,
-      "Bezeichnung": "P5L",
-      "Kommentar": "Zeiger 5 links"
+      "Type": "-",
+      "Bezeichnung": "DI0",
+      "Kommentar": "Dummy Eingang 0"
     }
   ]
 }

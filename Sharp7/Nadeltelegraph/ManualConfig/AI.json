@@ -5,6 +5,7 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 16,
+      "Type": "-",
       "Bezeichnung": "AI0",
       "Kommentar": "Dummy analog Eingang 0"
     }

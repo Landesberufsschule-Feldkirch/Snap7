@@ -2,13 +2,13 @@
 {
     public class ManualViewModel
     {
-        private readonly Model.ManualMode _manualMode;
-        public Model.ManualMode ManualMode => _manualMode;
+        private readonly ManualMode _manualMode;
+        public ManualMode ManualMode => _manualMode;
         public ManualVisuAnzeigen ManualVisuAnzeigen { get; set; }
-        public ManualViewModel(MainWindow mainWindow)
+        public ManualViewModel()
         {
-            _manualMode = new Model.ManualMode();
-            ManualVisuAnzeigen = new ManualVisuAnzeigen(mainWindow, _manualMode);
+            _manualMode = new ManualMode();
+            ManualVisuAnzeigen = new ManualVisuAnzeigen(_manualMode);
         }
     }
 }

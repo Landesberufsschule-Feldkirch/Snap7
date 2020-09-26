@@ -1,51 +1,60 @@
-﻿using System;
+﻿using ManualMode.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
-using System.Windows.Media;
-using ManualMode.Model;
 
 namespace ManualMode.ViewModel
 {
     public class ManualVisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.ManualMode _manualMode;
-        private readonly MainWindow _mainWindow;
+        private readonly ManualMode _manualMode;
 
-        public ManualVisuAnzeigen(MainWindow mw, Model.ManualMode mm)
+        public ManualVisuAnzeigen(ManualMode mm)
         {
-            _mainWindow = mw;
             _manualMode = mm;
 
             for (var i = 0; i < 100; i++) ClickModeTasten.Add(System.Windows.Controls.ClickMode.Press);
-            for (var i = 0; i < 100; i++) FarbeTastenToggelnDi.Add(System.Windows.Media.Brushes.LawnGreen);
+            for (var i = 0; i < 100; i++) FarbeTastenToggelnDa.Add(System.Windows.Media.Brushes.LawnGreen);
 
-            
+
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
-        internal void TastenDi(object taste)
+        internal void TastenDa(object taste)
         {
-            if (taste is DiEinstellungen diEinstellungen)
+            if (taste is DaEinstellungen daEinstellungen)
             {
-                var status = ClickModeButtonSchalten(diEinstellungen.LaufendeNr);
-                _manualMode.BitTastenDi(status, diEinstellungen);
+                var status = ClickModeButtonSchalten(daEinstellungen.LaufendeNr);
+                _manualMode.BitTastenDa(status, daEinstellungen);
             }
         }
 
-        public void ToggelnDi(object taste)
+        public void ToggelnDa(object taste)
         {
-            if (taste is DiEinstellungen diEinstellungen)
+            if (taste is DaEinstellungen daEinstellungen)
             {
-                _manualMode.BitToggelnDi(diEinstellungen);
+                _manualMode.BitToggelnDa(daEinstellungen);
             }
         }
 
 
         private void VisuAnzeigenTask()
         {
+            int BitPosition;
             while (true)
             {
+                if (_manualMode.ByteAnalogOutput != null)
+                {
+                    BitPosition = 0;
+                    for (int posByte = 0; posByte < 10; posByte++)
+                    {
+                        for (int posBit = 0; posBit < 8; posBit++)
+                        {
+                            var bitMuster = 1 << posBit;
+                            if ((_manualMode.ByteAnalogOutput[posByte] & bitMuster) == bitMuster) SetFarbeTastenToggelnDa(true, BitPosition); else SetFarbeTastenToggelnDa(false, BitPosition);
+                        }
+                    }
+                }
 
                 Thread.Sleep(10);
             }
@@ -85,17 +94,17 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-        public void SetFarbeTastenToggelnDi(bool val, int id) => FarbeTastenToggelnDi[id] = val ? System.Windows.Media.Brushes.LawnGreen : System.Windows.Media.Brushes.Red;
+        public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? System.Windows.Media.Brushes.LawnGreen : System.Windows.Media.Brushes.Red;
 
-        private ObservableCollection<System.Windows.Media.Brush> _farbeTastenToggelnDi = new ObservableCollection<System.Windows.Media.Brush>();
+        private ObservableCollection<System.Windows.Media.Brush> _farbeTastenToggelnDa = new ObservableCollection<System.Windows.Media.Brush>();
 
-        public ObservableCollection<System.Windows.Media.Brush> FarbeTastenToggelnDi
+        public ObservableCollection<System.Windows.Media.Brush> FarbeTastenToggelnDa
         {
-            get => _farbeTastenToggelnDi;
+            get => _farbeTastenToggelnDa;
             set
             {
-                _farbeTastenToggelnDi = value;
-                OnPropertyChanged(nameof(FarbeTastenToggelnDi));
+                _farbeTastenToggelnDa = value;
+                OnPropertyChanged(nameof(FarbeTastenToggelnDa));
             }
         }
 

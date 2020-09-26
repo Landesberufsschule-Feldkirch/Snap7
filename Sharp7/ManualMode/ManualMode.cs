@@ -1,23 +1,11 @@
-﻿using ManualMode.Model;
+﻿using ManualMode.ViewModel;
+using ManualMode.Model;
 using System;
-using ManualMode.ViewModel;
 
 namespace ManualMode
 {
-    public partial class MainWindow
+    public class ManualMode
     {
-        private readonly ManualViewModel _manualViewModel;
-
-        private readonly int _anzByteDigitalInput;
-        private readonly int _anzByteDigitalOutput;
-        private readonly int _anzByteAnalogInput;
-        private readonly int _anzByteAnalogOutput;
-
-        private readonly byte[] _byteDigitalInput;
-        private readonly byte[] _byteDigitalOutput;
-        private readonly byte[] _byteAnalogInput;
-        private readonly byte[] _byteAnalogOutput;
-
         public enum ManualModeConfig
         {
             Di,
@@ -25,28 +13,39 @@ namespace ManualMode
             Ai,
             Aa
         }
+        
+        private readonly ManualViewModel _manualViewModel;
+
+        private readonly int _anzByteDigitalInput;
+        private readonly int _anzByteDigitalOutput;
+        private readonly int _anzByteAnalogInput;
+        private readonly int _anzByteAnalogOutput;
+
+        public byte[] ByteDigitalInput { get; set; }
+        public byte[] ByteDigitalOutput { get; set; }
+        public byte[] ByteAnalogInput { get; set; }
+        public byte[] ByteAnalogOutput { get; set; }
 
         public GetConfig GetConfig { get; set; }
 
-        public MainWindow(byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
+        public ManualMode() { }
+        public ManualMode(byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
         {
-            _manualViewModel = new ManualViewModel(this);
+            _manualViewModel = new ManualViewModel();
 
-            _byteDigitalInput = byteDigInput;
-            _byteDigitalOutput = byteDigitalOutput;
-            _byteAnalogInput = byteAnalogInput;
-            _byteAnalogOutput = byteAnalogOutput;
+            ByteDigitalInput = byteDigInput;
+            ByteDigitalOutput = byteDigitalOutput;
+            ByteAnalogInput = byteAnalogInput;
+            ByteAnalogOutput = byteAnalogOutput;
 
             _anzByteDigitalInput = anzByteDigInput;
             _anzByteDigitalOutput = anzByteDigOutput;
             _anzByteAnalogInput = anzByteAnalogInput;
             _anzByteAnalogOutput = anzByteAnalogOutput;
-            
-            GetConfig = new GetConfig();
 
-            InitializeComponent();
-            DataContext = _manualViewModel;
+            GetConfig = new GetConfig();
         }
+
 
 
         public void SetManualConfig(ManualModeConfig config, string pfad)
@@ -72,7 +71,6 @@ namespace ManualMode
 
         public void FensterAnzeigen()
         {
-
             if (_anzByteDigitalInput > 0)
             {
                 var fensterDi = new FensterDi(GetConfig.ConfigDi, _manualViewModel);
@@ -98,7 +96,23 @@ namespace ManualMode
             }
         }
 
-      
 
+        public void BitToggelnDa(DaEinstellungen einstellungen)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BitTastenDa(bool status,  DaEinstellungen einstellungen)
+        {
+            var bitMuster = (byte)(1 << einstellungen.StartBit);
+            if (status)
+            {
+                ByteDigitalOutput[einstellungen.StartByte] |= bitMuster;
+            }
+            else
+            {
+                ByteDigitalOutput[einstellungen.StartByte] &= (byte)~bitMuster;
+            }
+        }
     }
 }
