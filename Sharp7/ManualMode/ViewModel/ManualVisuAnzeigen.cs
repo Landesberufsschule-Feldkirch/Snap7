@@ -22,11 +22,9 @@ namespace ManualMode.ViewModel
 
         internal void TastenDa(object taste)
         {
-            if (taste is DaEinstellungen daEinstellungen)
-            {
-                var status = ClickModeButtonSchalten(daEinstellungen.LaufendeNr);
-                _manualMode.BitTastenDa(status, daEinstellungen);
-            }
+            if (!(taste is DaEinstellungen daEinstellungen)) return;
+            var status = ClickModeButtonSchalten(daEinstellungen.LaufendeNr);
+            _manualMode.BitTastenDa(status, daEinstellungen);
         }
 
         public void ToggelnDa(object taste)
@@ -40,18 +38,17 @@ namespace ManualMode.ViewModel
 
         private void VisuAnzeigenTask()
         {
-            int BitPosition;
             while (true)
             {
-                if (_manualMode.ByteAnalogOutput != null)
+                if (_manualMode.ByteDigitalOutput != null)
                 {
-                    BitPosition = 0;
-                    for (int posByte = 0; posByte < 10; posByte++)
+                    for (var posByte = 0; posByte < 10; posByte++)
                     {
-                        for (int posBit = 0; posBit < 8; posBit++)
+                        for (var posBit = 0; posBit < 8; posBit++)
                         {
                             var bitMuster = 1 << posBit;
-                            if ((_manualMode.ByteAnalogOutput[posByte] & bitMuster) == bitMuster) SetFarbeTastenToggelnDa(true, BitPosition); else SetFarbeTastenToggelnDa(false, BitPosition);
+                            SetFarbeTastenToggelnDa((_manualMode.ByteDigitalOutput[posByte] & bitMuster) == bitMuster,
+                                posBit + 8 * posByte);
                         }
                     }
                 }
@@ -68,16 +65,12 @@ namespace ManualMode.ViewModel
 
         public bool ClickModeButtonSchalten(int i)
         {
-
             if (ClickModeTasten[i] == System.Windows.Controls.ClickMode.Press)
             {
                 ClickModeTasten[i] = System.Windows.Controls.ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeTasten[i] = System.Windows.Controls.ClickMode.Press;
-            }
+            ClickModeTasten[i] = System.Windows.Controls.ClickMode.Press;
             return false;
         }
 
@@ -94,7 +87,7 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-        public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? System.Windows.Media.Brushes.LawnGreen : System.Windows.Media.Brushes.Red;
+        public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? System.Windows.Media.Brushes.LawnGreen : System.Windows.Media.Brushes.LightGray;
 
         private ObservableCollection<System.Windows.Media.Brush> _farbeTastenToggelnDa = new ObservableCollection<System.Windows.Media.Brush>();
 

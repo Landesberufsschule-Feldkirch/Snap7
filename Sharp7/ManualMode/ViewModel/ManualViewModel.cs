@@ -4,11 +4,11 @@
     {
         private readonly ManualMode _manualMode;
         public ManualMode ManualMode => _manualMode;
-        public ManualVisuAnzeigen ManualVisuAnzeigen { get; set; }
-        public ManualViewModel()
+        public ManualVisuAnzeigen ManVisuAnzeigen { get; set; }
+        public ManualViewModel(ManualMode manualMode)
         {
-            _manualMode = new ManualMode();
-            ManualVisuAnzeigen = new ManualVisuAnzeigen(_manualMode);
+            _manualMode = manualMode;
+            ManVisuAnzeigen = new ManualVisuAnzeigen(_manualMode);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ManualMode
             Ai,
             Aa
         }
-        
+
         private readonly ManualViewModel _manualViewModel;
 
         private readonly int _anzByteDigitalInput;
@@ -28,10 +28,9 @@ namespace ManualMode
 
         public GetConfig GetConfig { get; set; }
 
-        public ManualMode() { }
         public ManualMode(byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
         {
-            _manualViewModel = new ManualViewModel();
+            _manualViewModel = new ManualViewModel(this);
 
             ByteDigitalInput = byteDigInput;
             ByteDigitalOutput = byteDigitalOutput;
@@ -99,10 +98,18 @@ namespace ManualMode
 
         public void BitToggelnDa(DaEinstellungen einstellungen)
         {
-            throw new NotImplementedException();
+            var bitMuster = (byte)(1 << einstellungen.StartBit);
+            if ((ByteDigitalOutput[einstellungen.StartByte] & bitMuster) == bitMuster)
+            {
+                ByteDigitalOutput[einstellungen.StartByte] &= (byte)~bitMuster;
+            }
+            else
+            {
+                ByteDigitalOutput[einstellungen.StartByte] |= bitMuster;
+            }
         }
 
-        public void BitTastenDa(bool status,  DaEinstellungen einstellungen)
+        public void BitTastenDa(bool status, DaEinstellungen einstellungen)
         {
             var bitMuster = (byte)(1 << einstellungen.StartBit);
             if (status)
