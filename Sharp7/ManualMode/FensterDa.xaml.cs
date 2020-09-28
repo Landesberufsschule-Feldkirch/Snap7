@@ -48,14 +48,14 @@ namespace ManualMode
 
             foreach (var config in configDa.DigitaleAusgaenge)
             {
-                var bezeichnung = config.StartByte + "." + config.StartBit;
+                var buttonBeschriftung = config.StartByte + "." + config.StartBit;
 
                 if (config.LaufendeNr == laufenderZaehler)
                 {
                     //   < Button Grid.Column = "1" Grid.Row = "3" Content = "0.0" Background = "{Binding Visu.ColorTasten[1]}"  ClickMode = "{Binding Visu.ClickModeTasten[1]}"  Command = "{Binding BtnTasten}"  CommandParameter = "1" />
                     var buttonTasten = new Button
                     {
-                        Content = bezeichnung,
+                        Content = buttonBeschriftung,
                         CommandParameter = config,
                         Command = new RelayCommand(manViewModel.ManVisuAnzeigen.TastenDa),
                         ClickMode = manViewModel.ManVisuAnzeigen.ClickModeTasten[laufenderZaehler],
@@ -73,7 +73,7 @@ namespace ManualMode
                     //  < Button Grid.Column = "3" Grid.Row = "3" Content = "0.0" Background = "{Binding Visu.ColorToggeln[1]}"  
                     var buttonToggeln = new Button
                     {
-                        Content = bezeichnung,
+                        Content = buttonBeschriftung,
                         CommandParameter = config,
                         Command = new RelayCommand(manViewModel.ManVisuAnzeigen.ToggelnDa),
                         Background = manViewModel.ManVisuAnzeigen.FarbeTastenToggelnDa[laufenderZaehler],
@@ -88,28 +88,28 @@ namespace ManualMode
                     Canvas.Children.Add(buttonToggeln);
 
 
-                    var label = new Label
+                    var labelBezeichnung = new Label
                     {
                         Content = config.Bezeichnung,
                         FontFamily = new FontFamily("Arial"),
                         FontSize = 12
                     };
 
-                    Canvas.SetLeft(label, posLabelX);
-                    Canvas.SetTop(label, posY);
-                    Canvas.Children.Add(label);
+                    Canvas.SetLeft(labelBezeichnung, posLabelX);
+                    Canvas.SetTop(labelBezeichnung, posY);
+                    Canvas.Children.Add(labelBezeichnung);
 
 
-                    var kommentar = new Label
+                    var labelKommentar = new Label
                     {
                         Content = config.Kommentar,
                         FontFamily = new FontFamily("Arial"),
                         FontSize = 12
                     };
 
-                    Canvas.SetLeft(kommentar, posKommentarX);
-                    Canvas.SetTop(kommentar, posY);
-                    Canvas.Children.Add(kommentar);
+                    Canvas.SetLeft(labelKommentar, posKommentarX);
+                    Canvas.SetTop(labelKommentar, posY);
+                    Canvas.Children.Add(labelKommentar);
 
 
                     posY += abstand;

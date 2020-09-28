@@ -9,6 +9,17 @@ namespace Nadeltelegraph
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
 
+
+
+        public byte[] BefehleSps { get; set; } = new byte[1024];
+        public byte[] VersionInput { get; set; } = new byte[1024];
+        public byte[] DigInput { get; set; } = new byte[1024];
+        public byte[] DigOutput { get; set; } = new byte[1024];
+        public byte[] AnalogInput { get; set; } = new byte[1024];
+        public byte[] AnalogOutput { get; set; } = new byte[1024];
+
+
+
         private readonly DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 1;
@@ -28,9 +39,9 @@ namespace Nadeltelegraph
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Plc.DigInput, Plc.DigOutput, Plc.AnalogInput, Plc.AnalogOutput, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
+            ManualMode = new ManualMode.ManualMode(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -43,7 +54,7 @@ namespace Nadeltelegraph
             if (Plc.GetModel() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

@@ -21,6 +21,9 @@ namespace ManualMode
         private readonly int _anzByteAnalogInput;
         private readonly int _anzByteAnalogOutput;
 
+
+        public byte[] ByteBefehleSps { get; set; }
+        public byte[] ByteVersionInput { get; set; }
         public byte[] ByteDigitalInput { get; set; }
         public byte[] ByteDigitalOutput { get; set; }
         public byte[] ByteAnalogInput { get; set; }
@@ -28,10 +31,12 @@ namespace ManualMode
 
         public GetConfig GetConfig { get; set; }
 
-        public ManualMode(byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
+        public ManualMode(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
         {
             _manualViewModel = new ManualViewModel(this);
 
+            ByteBefehleSps = bytebefehleSps;
+            ByteVersionInput = byteversionInput;
             ByteDigitalInput = byteDigInput;
             ByteDigitalOutput = byteDigitalOutput;
             ByteAnalogInput = byteAnalogInput;

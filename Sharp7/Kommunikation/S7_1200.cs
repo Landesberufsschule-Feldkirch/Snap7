@@ -14,26 +14,14 @@ namespace Kommunikation
         private enum BytePosition
         {
             Byte0 = 0,
-            Byte1,
-            Byte2,
-            Byte3,
-            Byte4
+            Byte4 = 3
         }
 
         private enum AnzahlByte
         {
-            KeinByte = 0,
-            EinByte,
-            ZweiByte
+            EinByte = 1
         }
 
-
-        public byte[] BefehleSps { get; set; } = new byte[1024];
-        public byte[] VersionInput { get; set; } = new byte[1024];
-        public byte[] DigInput { get; set; } = new byte[1024];
-        public byte[] DigOutput { get; set; } = new byte[1024];
-        public byte[] AnalogInput { get; set; } = new byte[1024];
-        public byte[] AnalogOutput { get; set; } = new byte[1024];
 
         public const int SpsTimeout = 1000;
         public const int SpsRack = 0;
@@ -42,13 +30,20 @@ namespace Kommunikation
         private readonly Action<byte[], byte[]> _callbackInput;
         private readonly Action<byte[], byte[]> _callbackOutput;
 
-
+        private readonly byte[] _befehleSps;
+        private readonly byte[] _versionInput;
+        private readonly byte[] _digInput;
+        private readonly byte[] _digOutput;
+        private readonly byte[] _analogInput;
+        private readonly byte[] _analogOutput;
 
         private readonly int _anzahlByteVersionInput;
         private readonly int _anzahlByteDigInput;
         private readonly int _anzahlByteDigOutput;
         private readonly int _anzahlByteAnalogInput;
         private readonly int _anzahlByteAnalogOutput;
+
+
 
         private readonly S7Client _client = new S7Client();
 
@@ -57,9 +52,17 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
         private bool _taskRunning = true;
 
-        public S7_1200(int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public S7_1200(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
+
+
+            _befehleSps = bytebefehleSps;
+            _versionInput = byteversionInput;
+            _digInput = byteDigInput;
+            _digOutput = byteDigitalOutput;
+            _analogInput = byteAnalogInput;
+            _analogOutput = byteAnalogOutput;
 
             _anzahlByteVersionInput = anzByteVersionInput;
             _anzahlByteDigInput = anzByteDigInput;
@@ -74,12 +77,12 @@ namespace Kommunikation
 
 
 
-            Array.Clear(BefehleSps, 0, BefehleSps.Length);
-            Array.Clear(VersionInput, 0, VersionInput.Length);
-            Array.Clear(DigInput, 0, DigInput.Length);
-            Array.Clear(DigOutput, 0, DigOutput.Length);
-            Array.Clear(AnalogInput, 0, AnalogInput.Length);
-            Array.Clear(AnalogOutput, 0, AnalogOutput.Length);
+            Array.Clear(_befehleSps, 0, _befehleSps.Length);
+            Array.Clear(_versionInput, 0, _versionInput.Length);
+            Array.Clear(_digInput, 0, _digInput.Length);
+            Array.Clear(_digOutput, 0, _digOutput.Length);
+            Array.Clear(_analogInput, 0, _analogInput.Length);
+            Array.Clear(_analogOutput, 0, _analogOutput.Length);
 
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
@@ -91,7 +94,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                _callbackInput(DigInput, AnalogInput); // zum Testen ohne SPS
+                _callbackInput(_digInput, _analogInput); // zum Testen ohne SPS
 
                 if (reply != null && reply.Status == IPStatus.Success)
                 {
@@ -103,20 +106,20 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            _callbackInput(DigInput, AnalogInput);
+                            _callbackInput(_digInput, _analogInput);
 
                             int? resultError;
                             if (_anzahlByteVersionInput > 0)
                             {
-                                BefehleSps[0]++;
-                                resultError = _client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, BefehleSps);
+                                _befehleSps[0]++;
+                                resultError = _client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _befehleSps);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                resultError = _client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _anzahlByteVersionInput, VersionInput);
+                                resultError = _client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _anzahlByteVersionInput, _versionInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -125,7 +128,7 @@ namespace Kommunikation
                             }
                             if (_anzahlByteDigInput > 0)
                             {
-                                resultError = _client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _anzahlByteDigInput, DigInput);
+                                resultError = _client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _anzahlByteDigInput, _digInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -134,7 +137,7 @@ namespace Kommunikation
                             }
                             if (_anzahlByteDigOutput > 0)
                             {
-                                resultError = _client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _anzahlByteDigOutput, DigOutput);
+                                resultError = _client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _anzahlByteDigOutput, _digOutput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -143,7 +146,7 @@ namespace Kommunikation
                             }
                             if (_anzahlByteAnalogInput > 0)
                             {
-                                resultError = _client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _anzahlByteAnalogInput, AnalogInput);
+                                resultError = _client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _anzahlByteAnalogInput, _analogInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -152,7 +155,7 @@ namespace Kommunikation
                             }
                             if (_anzahlByteAnalogOutput > 0)
                             {
-                                resultError = _client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _anzahlByteAnalogOutput, AnalogOutput);
+                                resultError = _client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _anzahlByteAnalogOutput, _analogOutput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -160,7 +163,7 @@ namespace Kommunikation
                                 }
                             }
 
-                            _callbackOutput(DigOutput, AnalogOutput);
+                            _callbackOutput(_digOutput, _analogOutput);
 
                             if (fehlerAktiv)
                             {
@@ -183,7 +186,7 @@ namespace Kommunikation
                     _spsStatus = "Keine Verbindung zur S7-1200!";
                 }
 
-                _callbackOutput(DigOutput, AnalogOutput);// zum Testen ohne SPS
+                _callbackOutput(_digOutput, _analogOutput);// zum Testen ohne SPS
 
                 Thread.Sleep(50);
             }
@@ -199,10 +202,9 @@ namespace Kommunikation
 
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
-        public string GetVersion() => Encoding.ASCII.GetString(VersionInput, 0, VersionInput.Length);
+        public string GetVersion() => Encoding.ASCII.GetString(_versionInput, 0, _versionInput.Length);
         public string GetModel() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetAutomatischerSoftwareTestAktiv(bool aktiv) => VersionInput[0] = aktiv ? (byte)1 : (byte)0;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
     }

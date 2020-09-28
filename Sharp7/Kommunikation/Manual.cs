@@ -6,40 +6,39 @@ namespace Kommunikation
 {
     public class Manual : IPlc
     {
-
-        public byte[] BefehleSps { get; set; } = new byte[1024];
-        public byte[] VersionInput { get; set; } = new byte[1024];
-        public byte[] DigInput { get; set; } = new byte[1024];
-        public byte[] DigOutput { get; set; } = new byte[1024];
-        public byte[] AnalogInput { get; set; } = new byte[1024];
-        public byte[] AnalogOutput { get; set; } = new byte[1024];
-
-
         private readonly Action<byte[], byte[]> _callbackInput;
         private readonly Action<byte[], byte[]> _callbackOutput;
 
-        private readonly byte[] _versionInput = new byte[1024];
-        private readonly byte[] _digInput = new byte[1024];
-        private readonly byte[] _digOutput = new byte[1024];
-        private readonly byte[] _analogInput = new byte[1024];
-        private readonly byte[] _analogOutput = new byte[1024];
+        private readonly byte[] _digInput;
+        private readonly byte[] _digOutput;
+        private readonly byte[] _analogInput;
+        private readonly byte[] _analogOutput;
+
 
         private string _spsStatus;
         private bool _spsError;
         private bool _taskRunning = true;
 
-        public Manual(int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public Manual(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput,Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
+            var befehleSps = bytebefehleSps;
+            var versionInput = byteversionInput;
+            _digInput = byteDigInput;
+            _digOutput = byteDigitalOutput;
+            _analogInput = byteAnalogInput;
+            _analogOutput = byteAnalogOutput;
+
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
 
-            Array.Clear(_versionInput, 0, _versionInput.Length);
+            Array.Clear(befehleSps, 0, befehleSps.Length);
+            Array.Clear(versionInput, 0, versionInput.Length);
             Array.Clear(_digInput, 0, _digInput.Length);
             Array.Clear(_digOutput, 0, _digOutput.Length);
             Array.Clear(_analogInput, 0, _analogInput.Length);
             Array.Clear(_analogOutput, 0, _analogOutput.Length);
 
-            _versionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
+            versionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
 
@@ -59,8 +58,8 @@ namespace Kommunikation
         }
 
 
-        public string GetSpsStatus() => "";
-        public bool GetSpsError() => false;
+        public string GetSpsStatus() => _spsStatus;
+        public bool GetSpsError() => _spsError;
         public string GetVersion() => "42";
         public string GetModel() => "Manual";
         public void SetTaskRunning(bool active) => _taskRunning = active;
