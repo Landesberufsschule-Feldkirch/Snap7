@@ -9,36 +9,20 @@ namespace Kommunikation
         private readonly Action<byte[], byte[]> _callbackInput;
         private readonly Action<byte[], byte[]> _callbackOutput;
 
-        private readonly byte[] _digInput;
-        private readonly byte[] _digOutput;
-        private readonly byte[] _analogInput;
-        private readonly byte[] _analogOutput;
-
+        private readonly Datenstruktur _datenstruktur;
 
         private string _spsStatus;
         private bool _spsError;
         private bool _taskRunning = true;
 
-        public Manual(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput,Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public Manual(Datenstruktur datenstruktur, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
-            var befehleSps = bytebefehleSps;
-            var versionInput = byteversionInput;
-            _digInput = byteDigInput;
-            _digOutput = byteDigitalOutput;
-            _analogInput = byteAnalogInput;
-            _analogOutput = byteAnalogOutput;
+            _datenstruktur = datenstruktur;
 
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
 
-            Array.Clear(befehleSps, 0, befehleSps.Length);
-            Array.Clear(versionInput, 0, versionInput.Length);
-            Array.Clear(_digInput, 0, _digInput.Length);
-            Array.Clear(_digOutput, 0, _digOutput.Length);
-            Array.Clear(_analogInput, 0, _analogInput.Length);
-            Array.Clear(_analogOutput, 0, _analogOutput.Length);
-
-            versionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
+            _datenstruktur.VersionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
 

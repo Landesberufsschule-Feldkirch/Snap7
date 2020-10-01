@@ -6,6 +6,10 @@
         mc:Ignorable="d"
         Title="Digitale Ausgänge" Height="450" Width="800">
     <Grid Name="Grid">
-        <Canvas Name="Canvas" />
+
+
+        <Button  Content = "0.0" Width="50" Height="50" Background = "{Binding  ManVisuAnzeigen.FarbeTastenToggelnDa[0]}"  Command = "{Binding BtnBuchstabe}"  CommandParameter = "0" />
+<Canvas Name="Canvas" />
+
     </Grid>
 </Window>

@@ -1,14 +1,16 @@
-﻿using ManualMode.Model;
+﻿using System;
+using ManualMode.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Media;
 
 namespace ManualMode.ViewModel
 {
     public class ManualVisuAnzeigen : INotifyPropertyChanged
     {
         private readonly ManualMode _manualMode;
-
+        public Brush BackgroundButton = new SolidColorBrush(Colors.Green);
         public ManualVisuAnzeigen(ManualMode mm)
         {
             _manualMode = mm;
@@ -16,8 +18,25 @@ namespace ManualMode.ViewModel
             for (var i = 0; i < 100; i++) ClickModeTasten.Add(System.Windows.Controls.ClickMode.Press);
             for (var i = 0; i < 100; i++) FarbeTastenToggelnDa.Add(System.Windows.Media.Brushes.LawnGreen);
 
-
+            FarbeTastenToggelnDa.CollectionChanged += FarbeTastenToggelnDa_CollectionChanged;
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
+        }
+
+
+        internal void ToggelnDa(object taste)
+        {
+            if (taste is DaEinstellungen daEinstellungen)
+            {
+                _manualMode.BitToggelnDa(daEinstellungen);
+            }
+        }
+
+        private void FarbeTastenToggelnDa_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            //  _farbeTastenToggelnDa = value;
+            OnPropertyChanged(nameof(FarbeTastenToggelnDa));
+            _manualMode._manualViewModel.ManVisuAnzeigen.BackgroundButton = new SolidColorBrush(Colors.Red);
+            OnPropertyChanged("BackgroundButton");
         }
 
         internal void TastenDa(object taste)
@@ -27,13 +46,7 @@ namespace ManualMode.ViewModel
             _manualMode.BitTastenDa(status, daEinstellungen);
         }
 
-        public void ToggelnDa(object taste)
-        {
-            if (taste is DaEinstellungen daEinstellungen)
-            {
-                _manualMode.BitToggelnDa(daEinstellungen);
-            }
-        }
+
 
 
         private void VisuAnzeigenTask()
@@ -87,17 +100,28 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-        public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? System.Windows.Media.Brushes.LawnGreen : System.Windows.Media.Brushes.LightGray;
+        public void SetFarbeTastenToggelnDa(bool val, int id)
+        {
+            if (val)
+            {
+                FarbeTastenToggelnDa[id] = Brushes.LawnGreen;
+            }
+            else
+            {
+                FarbeTastenToggelnDa[id] = Brushes.LightGray;
+            }
+            OnPropertyChanged(nameof(FarbeTastenToggelnDa_CollectionChanged));
+        }
 
-        private ObservableCollection<System.Windows.Media.Brush> _farbeTastenToggelnDa = new ObservableCollection<System.Windows.Media.Brush>();
+        private ObservableCollection<Brush> _farbeTastenToggelnDa = new ObservableCollection<Brush>();
 
-        public ObservableCollection<System.Windows.Media.Brush> FarbeTastenToggelnDa
+        public ObservableCollection<Brush> FarbeTastenToggelnDa
         {
             get => _farbeTastenToggelnDa;
             set
             {
                 _farbeTastenToggelnDa = value;
-                OnPropertyChanged(nameof(FarbeTastenToggelnDa));
+                OnPropertyChanged("BackgroundButton");
             }
         }
 
@@ -108,10 +132,26 @@ namespace ManualMode.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
 
 
+        public void Buchstabe(object taste)
+        {
+            if (taste is string ascii)
+            {
+                var bittle = Int32.Parse(ascii);
+                var bitMuster = (byte)(1 << bittle);
+                if ((_manualMode.ByteDigitalOutput[0] & bitMuster) == bitMuster)
+                {
+                    _manualMode.ByteDigitalOutput[0] &= (byte)~bitMuster;
+                }
+                else
+                {
+                    _manualMode.ByteDigitalOutput[0] |= bitMuster;
+                }
+            }
+        }
     }
 }

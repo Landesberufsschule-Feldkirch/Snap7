@@ -30,18 +30,7 @@ namespace Kommunikation
         private readonly Action<byte[], byte[]> _callbackInput;
         private readonly Action<byte[], byte[]> _callbackOutput;
 
-        private readonly byte[] _befehleSps;
-        private readonly byte[] _versionInput;
-        private readonly byte[] _digInput;
-        private readonly byte[] _digOutput;
-        private readonly byte[] _analogInput;
-        private readonly byte[] _analogOutput;
-
-        private readonly int _anzahlByteVersionInput;
-        private readonly int _anzahlByteDigInput;
-        private readonly int _anzahlByteDigOutput;
-        private readonly int _anzahlByteAnalogInput;
-        private readonly int _anzahlByteAnalogOutput;
+        private readonly Datenstruktur _datenstruktur;
 
 
 
@@ -52,37 +41,14 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
         private bool _taskRunning = true;
 
-        public S7_1200(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteVersionInput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public S7_1200(Datenstruktur datenstruktur , Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
-
-            _befehleSps = bytebefehleSps;
-            _versionInput = byteversionInput;
-            _digInput = byteDigInput;
-            _digOutput = byteDigitalOutput;
-            _analogInput = byteAnalogInput;
-            _analogOutput = byteAnalogOutput;
-
-            _anzahlByteVersionInput = anzByteVersionInput;
-            _anzahlByteDigInput = anzByteDigInput;
-            _anzahlByteDigOutput = anzByteDigOutput;
-            _anzahlByteAnalogInput = anzByteAnalogInput;
-            _anzahlByteAnalogOutput = anzByteAnalogOutput;
+            _datenstruktur = datenstruktur;
 
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
-
-
-
-
-
-            Array.Clear(_befehleSps, 0, _befehleSps.Length);
-            Array.Clear(_versionInput, 0, _versionInput.Length);
-            Array.Clear(_digInput, 0, _digInput.Length);
-            Array.Clear(_digOutput, 0, _digOutput.Length);
-            Array.Clear(_analogInput, 0, _analogInput.Length);
-            Array.Clear(_analogOutput, 0, _analogOutput.Length);
 
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }

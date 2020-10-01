@@ -14,7 +14,7 @@ namespace ManualMode
             Aa
         }
 
-        private readonly ManualViewModel _manualViewModel;
+        public readonly ManualViewModel _manualViewModel;
 
         private readonly int _anzByteDigitalInput;
         private readonly int _anzByteDigitalOutput;
@@ -103,6 +103,7 @@ namespace ManualMode
 
         public void BitToggelnDa(DaEinstellungen einstellungen)
         {
+            
             var bitMuster = (byte)(1 << einstellungen.StartBit);
             if ((ByteDigitalOutput[einstellungen.StartByte] & bitMuster) == bitMuster)
             {
@@ -112,6 +113,7 @@ namespace ManualMode
             {
                 ByteDigitalOutput[einstellungen.StartByte] |= bitMuster;
             }
+
         }
 
         public void BitTastenDa(bool status, DaEinstellungen einstellungen)

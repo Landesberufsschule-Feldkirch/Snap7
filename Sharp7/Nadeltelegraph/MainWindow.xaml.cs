@@ -8,15 +8,8 @@ namespace Nadeltelegraph
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
+        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
 
-
-
-        public byte[] BefehleSps { get; set; } = new byte[1024];
-        public byte[] VersionInput { get; set; } = new byte[1024];
-        public byte[] DigInput { get; set; } = new byte[1024];
-        public byte[] DigOutput { get; set; } = new byte[1024];
-        public byte[] AnalogInput { get; set; } = new byte[1024];
-        public byte[] AnalogOutput { get; set; } = new byte[1024];
 
 
 
@@ -33,13 +26,17 @@ namespace Nadeltelegraph
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
+           Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput,AnzByteAnalogInput,AnzByteAnalogOutput);
+
+
+
             var viewModel = new ViewModel.ViewModel(this);
             _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur,  _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
