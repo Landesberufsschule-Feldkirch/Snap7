@@ -1,6 +1,5 @@
-﻿using System.Windows.Input;
-using System.Windows.Media;
-using ManualMode.Commands;
+﻿using ManualMode.Commands;
+using System.Windows.Input;
 
 namespace ManualMode.ViewModel
 {
@@ -20,7 +19,7 @@ namespace ManualMode.ViewModel
 
         private ICommand _btnBuchstabe;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBuchstabe => _btnBuchstabe ?? (_btnBuchstabe = new RelayCommand(ManVisuAnzeigen.Buchstabe));
+        public ICommand BtnBuchstabe => _btnBuchstabe ??= new RelayCommand(ManVisuAnzeigen.Buchstabe);
 
     }
 }

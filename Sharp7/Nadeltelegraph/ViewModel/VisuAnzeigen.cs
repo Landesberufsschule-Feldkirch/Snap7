@@ -32,11 +32,9 @@
 
         internal void Buchstabe(object buchstabe)
         {
-            if (buchstabe is string ascii)
-            {
-                var asciiCode = ascii[0];
-                _nadeltelegraph.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
-            }
+            if (!(buchstabe is string ascii)) return;
+            var asciiCode = ascii[0];
+            _nadeltelegraph.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
         }
 
         private void VisuAnzeigenTask()
@@ -187,10 +185,8 @@
                 ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtn[asciiCode] = "Press";
-            }
+
+            ClickModeBtn[asciiCode] = "Press";
             return false;
         }
 

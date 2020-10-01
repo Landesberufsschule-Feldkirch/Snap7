@@ -1,17 +1,18 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 using System.Windows;
 
 namespace LAP_2010_2_Transportwagen
 {
     public partial class MainWindow
     {
-        public S7_1200 S71200 { get; set; }
-        public bool DebugWindowAktiv { get; set; }
-        public SetManual.SetManual SetManualWindow { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+        public ManualMode.ManualMode ManualMode { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly ViewModel.ViewModel _viewModel;
+        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -21,24 +22,41 @@ namespace LAP_2010_2_Transportwagen
         {
             const string versionText = "LAP 2010/2 Transportwagen";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
 
-            _viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(_viewModel);
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(versionText + " - " + VersionNummer)
+            };
+
+
+            var viewModel = new ViewModel.ViewModel(this);
+            _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
         }
 
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManual(_viewModel);
-            SetManualWindow.Show();
+            if (Plc.GetModel() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media;
-using ManualMode.Commands;
+﻿using ManualMode.Commands;
 using ManualMode.ViewModel;
+using System.IO;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ManualMode
 {
@@ -48,8 +46,6 @@ namespace ManualMode
             Canvas.Children.Add(labelTogeln);
 
             var laufenderZaehler = 0;
-
-            var used = false;
 
             foreach (var config in configDa.DigitaleAusgaenge)
             {

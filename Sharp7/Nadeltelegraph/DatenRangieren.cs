@@ -20,23 +20,23 @@
             P5L
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetUint8At(digInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
+            S7.SetUint8At(datenstruktur.DigInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            _viewModel.Nadeltelegraph.P1R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1R);
-            _viewModel.Nadeltelegraph.P1L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1L);
-            _viewModel.Nadeltelegraph.P2R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2R);
-            _viewModel.Nadeltelegraph.P2L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2L);
-            _viewModel.Nadeltelegraph.P3R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3R);
-            _viewModel.Nadeltelegraph.P3L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3L);
-            _viewModel.Nadeltelegraph.P4R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4R);
-            _viewModel.Nadeltelegraph.P4L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4L);
-            _viewModel.Nadeltelegraph.P5R = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5R);
-            _viewModel.Nadeltelegraph.P5L = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5L);
+            _viewModel.Nadeltelegraph.P1R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1R);
+            _viewModel.Nadeltelegraph.P1L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1L);
+            _viewModel.Nadeltelegraph.P2R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2R);
+            _viewModel.Nadeltelegraph.P2L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2L);
+            _viewModel.Nadeltelegraph.P3R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3R);
+            _viewModel.Nadeltelegraph.P3L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3L);
+            _viewModel.Nadeltelegraph.P4R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4R);
+            _viewModel.Nadeltelegraph.P4L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4L);
+            _viewModel.Nadeltelegraph.P5R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5R);
+            _viewModel.Nadeltelegraph.P5L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5L);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

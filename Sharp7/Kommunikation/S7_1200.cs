@@ -27,8 +27,8 @@ namespace Kommunikation
         public const int SpsRack = 0;
         public const int SpsSlot = 0;
 
-        private readonly Action<byte[], byte[]> _callbackInput;
-        private readonly Action<byte[], byte[]> _callbackOutput;
+        private readonly Action<Kommunikation.Datenstruktur> _callbackInput;
+        private readonly Action<Kommunikation.Datenstruktur> _callbackOutput;
 
         private readonly Datenstruktur _datenstruktur;
 
@@ -41,7 +41,7 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
         private bool _taskRunning = true;
 
-        public S7_1200(Datenstruktur datenstruktur , Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public S7_1200(Datenstruktur datenstruktur , Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
@@ -60,7 +60,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                _callbackInput(_digInput, _analogInput); // zum Testen ohne SPS
+                _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
                 if (reply != null && reply.Status == IPStatus.Success)
                 {
@@ -72,56 +72,56 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            _callbackInput(_digInput, _analogInput);
+                            _callbackInput(_datenstruktur);
 
                             int? resultError;
-                            if (_anzahlByteVersionInput > 0)
+                            if (_datenstruktur.VersionInput.Length > 0)
                             {
-                                _befehleSps[0]++;
-                                resultError = _client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _befehleSps);
+                                _datenstruktur.BefehleSps[0]++;
+                                resultError = _client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _datenstruktur.BefehleSps);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                resultError = _client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _anzahlByteVersionInput, _versionInput);
+                                resultError = _client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _datenstruktur.VersionInput.Length, _datenstruktur.VersionInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                             }
-                            if (_anzahlByteDigInput > 0)
+                            if (_datenstruktur.AnzahlByteDigitalInput > 0)
                             {
-                                resultError = _client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _anzahlByteDigInput, _digInput);
+                                resultError = _client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                             }
-                            if (_anzahlByteDigOutput > 0)
+                            if (_datenstruktur.AnzahlByteDigitalOutput > 0)
                             {
-                                resultError = _client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _anzahlByteDigOutput, _digOutput);
+                                resultError = _client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                             }
-                            if (_anzahlByteAnalogInput > 0)
+                            if (_datenstruktur.AnzahlByteAnalogInput > 0)
                             {
-                                resultError = _client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _anzahlByteAnalogInput, _analogInput);
+                                resultError = _client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
                                     _spsStatus = ErrorAnzeigen(resultError.GetValueOrDefault());
                                 }
                             }
-                            if (_anzahlByteAnalogOutput > 0)
+                            if (_datenstruktur.AnzahlByteAnalogOutput > 0)
                             {
-                                resultError = _client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _anzahlByteAnalogOutput, _analogOutput);
+                                resultError = _client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput);
                                 if (resultError != 0)
                                 {
                                     fehlerAktiv = true;
@@ -129,7 +129,7 @@ namespace Kommunikation
                                 }
                             }
 
-                            _callbackOutput(_digOutput, _analogOutput);
+                            _callbackOutput(_datenstruktur);
 
                             if (fehlerAktiv)
                             {
@@ -152,7 +152,7 @@ namespace Kommunikation
                     _spsStatus = "Keine Verbindung zur S7-1200!";
                 }
 
-                _callbackOutput(_digOutput, _analogOutput);// zum Testen ohne SPS
+                _callbackOutput(_datenstruktur);// zum Testen ohne SPS
 
                 Thread.Sleep(50);
             }
@@ -168,7 +168,7 @@ namespace Kommunikation
 
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
-        public string GetVersion() => Encoding.ASCII.GetString(_versionInput, 0, _versionInput.Length);
+        public string GetVersion() => Encoding.ASCII.GetString(_datenstruktur.VersionInput, 0, _datenstruktur.VersionInput.Length);
         public string GetModel() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();

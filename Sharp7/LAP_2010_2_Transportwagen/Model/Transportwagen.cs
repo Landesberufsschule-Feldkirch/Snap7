@@ -48,8 +48,8 @@ namespace LAP_2010_2_Transportwagen.Model
                 if (Position < RandLinks) Position = RandLinks;
                 if (Position > RandRechts) Position = RandRechts;
 
-                B1 = Position < (RandLinks + 2);
-                B2 = Position > (RandRechts - 2);
+                B1 = Position < RandLinks + 2;
+                B2 = Position > RandRechts - 2;
 
                 Thread.Sleep(10);
             }

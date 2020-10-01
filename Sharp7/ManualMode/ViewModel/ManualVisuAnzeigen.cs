@@ -1,5 +1,4 @@
-﻿using System;
-using ManualMode.Model;
+﻿using ManualMode.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
@@ -16,7 +15,7 @@ namespace ManualMode.ViewModel
             _manualMode = mm;
 
             for (var i = 0; i < 100; i++) ClickModeTasten.Add(System.Windows.Controls.ClickMode.Press);
-            for (var i = 0; i < 100; i++) FarbeTastenToggelnDa.Add(System.Windows.Media.Brushes.LawnGreen);
+            for (var i = 0; i < 100; i++) FarbeTastenToggelnDa.Add(Brushes.LawnGreen);
 
             FarbeTastenToggelnDa.CollectionChanged += FarbeTastenToggelnDa_CollectionChanged;
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -35,7 +34,7 @@ namespace ManualMode.ViewModel
         {
             //  _farbeTastenToggelnDa = value;
             OnPropertyChanged(nameof(FarbeTastenToggelnDa));
-            _manualMode._manualViewModel.ManVisuAnzeigen.BackgroundButton = new SolidColorBrush(Colors.Red);
+            _manualMode.ManualViewModel.ManVisuAnzeigen.BackgroundButton = new SolidColorBrush(Colors.Red);
             OnPropertyChanged("BackgroundButton");
         }
 
@@ -53,14 +52,14 @@ namespace ManualMode.ViewModel
         {
             while (true)
             {
-                if (_manualMode.ByteDigitalOutput != null)
+                if (_manualMode.Datenstruktur.DigOutput!= null)
                 {
                     for (var posByte = 0; posByte < 10; posByte++)
                     {
                         for (var posBit = 0; posBit < 8; posBit++)
                         {
                             var bitMuster = 1 << posBit;
-                            SetFarbeTastenToggelnDa((_manualMode.ByteDigitalOutput[posByte] & bitMuster) == bitMuster,
+                            SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[posByte] & bitMuster) == bitMuster,
                                 posBit + 8 * posByte);
                         }
                     }
@@ -139,18 +138,16 @@ namespace ManualMode.ViewModel
 
         public void Buchstabe(object taste)
         {
-            if (taste is string ascii)
+            if (!(taste is string ascii)) return;
+            var bittle = int.Parse(ascii);
+            var bitMuster = (byte)(1 << bittle);
+            if ((_manualMode.Datenstruktur.DigOutput[0] & bitMuster) == bitMuster)
             {
-                var bittle = Int32.Parse(ascii);
-                var bitMuster = (byte)(1 << bittle);
-                if ((_manualMode.ByteDigitalOutput[0] & bitMuster) == bitMuster)
-                {
-                    _manualMode.ByteDigitalOutput[0] &= (byte)~bitMuster;
-                }
-                else
-                {
-                    _manualMode.ByteDigitalOutput[0] |= bitMuster;
-                }
+                _manualMode.Datenstruktur.DigOutput[0] &= (byte)~bitMuster;
+            }
+            else
+            {
+                _manualMode.Datenstruktur.DigOutput[0] |= bitMuster;
             }
         }
     }

@@ -14,10 +14,8 @@ namespace Kommunikation
 
         public int AnzahlByteDigitalInput { get; set; }
         public int AnzahlByteDigitalOutput { get; set; }
-        public int AnzahlByteAnalogInput { get; set; }
+        public int AnzahlByteAnalogInput { get; set; } 
         public int AnzahlByteAnalogOutput { get; set; }
-
-
 
         public Datenstruktur(int byteDigitalInput, int byteDigitalOutput, int byteAnalogInput, int byteAnalogOutput)
         {

@@ -68,15 +68,15 @@
                 PositionRadRechts = _transportwagen.Position + _transportwagen.AbstandRadRechts + abstandRadWagen;
                 PositionWagenkasten = _transportwagen.Position;
 
-                if (_mainWindow.S71200 != null)
+                if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -263,10 +263,8 @@
                 ClickModeBtnQ1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1 = "Press";
-            }
+
+            ClickModeBtnQ1 = "Press";
             return false;
         }
 
@@ -293,10 +291,8 @@
                 ClickModeBtnQ2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ2 = "Press";
-            }
+
+            ClickModeBtnQ2 = "Press";
             return false;
         }
 
@@ -323,10 +319,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -353,10 +347,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 

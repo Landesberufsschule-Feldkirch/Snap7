@@ -5,13 +5,13 @@
 
     public class ViewModel
     {
-        private readonly Model.Nadeltelegraph _nadeltelegraph;
-        public Model.Nadeltelegraph Nadeltelegraph => _nadeltelegraph;
+        public Model.Nadeltelegraph Nadeltelegraph { get; }
+
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _nadeltelegraph = new Model.Nadeltelegraph();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _nadeltelegraph);
+            Nadeltelegraph = new Model.Nadeltelegraph();
+            ViAnzeige = new VisuAnzeigen(mainWindow, Nadeltelegraph);
         }
 
 

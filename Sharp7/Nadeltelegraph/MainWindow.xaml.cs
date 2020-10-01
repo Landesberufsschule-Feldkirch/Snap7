@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 
 namespace Nadeltelegraph
 {
@@ -8,12 +9,12 @@ namespace Nadeltelegraph
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
-        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
 
 
 
-        private readonly DatenRangieren _datenRangieren;
+
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
@@ -24,21 +25,21 @@ namespace Nadeltelegraph
         {
             const string versionText = "Nadeltelegraph";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
 
-           Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput,AnzByteAnalogInput,AnzByteAnalogOutput);
-
-
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(versionText + " - " + VersionNummer)
+            };
 
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            DatenRangieren datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur,  _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -51,7 +52,7 @@ namespace Nadeltelegraph
             if (Plc.GetModel() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(BefehleSps, VersionInput, DigInput, DigOutput, AnalogInput, AnalogOutput, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

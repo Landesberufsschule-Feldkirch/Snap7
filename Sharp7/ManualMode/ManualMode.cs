@@ -14,38 +14,16 @@ namespace ManualMode
             Aa
         }
 
-        public readonly ManualViewModel _manualViewModel;
+        public ManualViewModel ManualViewModel { get; set; }
 
-        private readonly int _anzByteDigitalInput;
-        private readonly int _anzByteDigitalOutput;
-        private readonly int _anzByteAnalogInput;
-        private readonly int _anzByteAnalogOutput;
-
-
-        public byte[] ByteBefehleSps { get; set; }
-        public byte[] ByteVersionInput { get; set; }
-        public byte[] ByteDigitalInput { get; set; }
-        public byte[] ByteDigitalOutput { get; set; }
-        public byte[] ByteAnalogInput { get; set; }
-        public byte[] ByteAnalogOutput { get; set; }
+        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
 
         public GetConfig GetConfig { get; set; }
 
-        public ManualMode(byte[] bytebefehleSps, byte[] byteversionInput, byte[] byteDigInput, byte[] byteDigitalOutput, byte[] byteAnalogInput, byte[] byteAnalogOutput, int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
+        public ManualMode(Kommunikation.Datenstruktur datenstruktur)
         {
-            _manualViewModel = new ManualViewModel(this);
-
-            ByteBefehleSps = bytebefehleSps;
-            ByteVersionInput = byteversionInput;
-            ByteDigitalInput = byteDigInput;
-            ByteDigitalOutput = byteDigitalOutput;
-            ByteAnalogInput = byteAnalogInput;
-            ByteAnalogOutput = byteAnalogOutput;
-
-            _anzByteDigitalInput = anzByteDigInput;
-            _anzByteDigitalOutput = anzByteDigOutput;
-            _anzByteAnalogInput = anzByteAnalogInput;
-            _anzByteAnalogOutput = anzByteAnalogOutput;
+            ManualViewModel = new ManualViewModel(this);
+            Datenstruktur = datenstruktur;
 
             GetConfig = new GetConfig();
         }
@@ -75,27 +53,27 @@ namespace ManualMode
 
         public void FensterAnzeigen()
         {
-            if (_anzByteDigitalInput > 0)
+            if (Datenstruktur.AnzahlByteDigitalOutput > 0)
             {
-                var fensterDi = new FensterDi(GetConfig.ConfigDi, _manualViewModel);
+                var fensterDi = new FensterDi(GetConfig.ConfigDi, ManualViewModel);
                 fensterDi.Show();
             }
 
-            if (_anzByteDigitalOutput > 0)
+            if (Datenstruktur.AnzahlByteDigitalOutput > 0)
             {
-                var fensterDa = new FensterDa(GetConfig.ConfigDa, _manualViewModel);
+                var fensterDa = new FensterDa(GetConfig.ConfigDa, ManualViewModel);
                 fensterDa.Show();
             }
 
-            if (_anzByteAnalogInput > 0)
+            if (Datenstruktur.AnzahlByteAnalogInput > 0)
             {
-                var fensterAi = new FensterAi(GetConfig.ConfigAi, _manualViewModel);
+                var fensterAi = new FensterAi(GetConfig.ConfigAi, ManualViewModel);
                 fensterAi.Show();
             }
 
-            if (_anzByteAnalogOutput > 0)
+            if (Datenstruktur.AnzahlByteAnalogOutput > 0)
             {
-                var fensterAa = new FensterAa(GetConfig.ConfigAa, _manualViewModel);
+                var fensterAa = new FensterAa(GetConfig.ConfigAa, ManualViewModel);
                 fensterAa.Show();
             }
         }
@@ -103,15 +81,15 @@ namespace ManualMode
 
         public void BitToggelnDa(DaEinstellungen einstellungen)
         {
-            
+
             var bitMuster = (byte)(1 << einstellungen.StartBit);
-            if ((ByteDigitalOutput[einstellungen.StartByte] & bitMuster) == bitMuster)
+            if ((Datenstruktur.DigOutput[einstellungen.StartByte] & bitMuster) == bitMuster)
             {
-                ByteDigitalOutput[einstellungen.StartByte] &= (byte)~bitMuster;
+                Datenstruktur.DigOutput[einstellungen.StartByte] &= (byte)~bitMuster;
             }
             else
             {
-                ByteDigitalOutput[einstellungen.StartByte] |= bitMuster;
+                Datenstruktur.DigOutput[einstellungen.StartByte] |= bitMuster;
             }
 
         }
@@ -121,11 +99,11 @@ namespace ManualMode
             var bitMuster = (byte)(1 << einstellungen.StartBit);
             if (status)
             {
-                ByteDigitalOutput[einstellungen.StartByte] |= bitMuster;
+                Datenstruktur.DigOutput[einstellungen.StartByte] |= bitMuster;
             }
             else
             {
-                ByteDigitalOutput[einstellungen.StartByte] &= (byte)~bitMuster;
+                Datenstruktur.DigOutput[einstellungen.StartByte] &= (byte)~bitMuster;
             }
         }
     }

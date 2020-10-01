@@ -37,12 +37,10 @@
                 _breiteDownLeft = BreiteBreit;
             }
 
-            if (links)
-            {
-                _winkel = -WinkelNadel;
-                _breiteUpLeft = BreiteBreit;
-                _breiteDownRight = BreiteBreit;
-            }
+            if (!links) return;
+            _winkel = -WinkelNadel;
+            _breiteUpLeft = BreiteBreit;
+            _breiteDownRight = BreiteBreit;
         }
 
         internal int GetWinkel() => _winkel;

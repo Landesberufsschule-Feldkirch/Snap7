@@ -6,8 +6,8 @@ namespace Kommunikation
 {
     public class Manual : IPlc
     {
-        private readonly Action<byte[], byte[]> _callbackInput;
-        private readonly Action<byte[], byte[]> _callbackOutput;
+        private readonly Action<Kommunikation.Datenstruktur> _callbackInput;
+        private readonly Action<Kommunikation.Datenstruktur> _callbackOutput;
 
         private readonly Datenstruktur _datenstruktur;
 
@@ -15,7 +15,7 @@ namespace Kommunikation
         private bool _spsError;
         private bool _taskRunning = true;
 
-        public Manual(Datenstruktur datenstruktur, Action<byte[], byte[]> cbInput, Action<byte[], byte[]> cbOutput)
+        public Manual(Datenstruktur datenstruktur, Action<Kommunikation.Datenstruktur> cbInput, Action<Kommunikation.Datenstruktur> cbOutput)
         {
             _datenstruktur = datenstruktur;
 
@@ -34,8 +34,8 @@ namespace Kommunikation
                 _spsStatus = "Manueller Modus aktiv";
                 _spsError = false;
 
-                _callbackInput(_digInput, _analogInput);
-                _callbackOutput(_digOutput, _analogOutput);
+                _callbackInput(_datenstruktur);
+                _callbackOutput(_datenstruktur);
 
                 Thread.Sleep(10);
             }
@@ -62,9 +62,9 @@ namespace Kommunikation
             {
                 case Datenbausteine.DigOut:
                     if (value)
-                        _digOutput[pos] = (byte)(_digOutput[pos] | mask[bit]);
+                        _datenstruktur.DigOutput[pos] = (byte)(_datenstruktur.DigOutput[pos] | mask[bit]);
                     else
-                        _digOutput[pos] = (byte)(_digOutput[pos] & ~mask[bit]);
+                        _datenstruktur.DigOutput[pos] = (byte)(_datenstruktur.DigOutput[pos] & ~mask[bit]);
                     break;
                 default:
                     throw new NotImplementedException(nameof(Datenbausteine));
@@ -76,9 +76,9 @@ namespace Kommunikation
             switch (db)
             {
                 case Datenbausteine.AnIn:
-                    return (ushort)((_analogInput[bytePos] << 8) | _analogInput[bytePos + 1]);
+                    return (ushort)((_datenstruktur.AnalogInput[bytePos] << 8) | _datenstruktur.AnalogInput[bytePos + 1]);
                 case Datenbausteine.DigIn:
-                    return (ushort)((_digInput[bytePos] << 8) | _digInput[bytePos + 1]);
+                    return (ushort)((_datenstruktur.DigInput[bytePos] << 8) | _datenstruktur.DigInput[bytePos + 1]);
                 default:
                     throw new NotImplementedException(nameof(Datenbausteine));
             }
