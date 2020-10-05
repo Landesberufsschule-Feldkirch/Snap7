@@ -71,40 +71,9 @@ namespace ManualMode
                 fensterAi.Show();
             }
 
-            if (Datenstruktur.AnzahlByteAnalogOutput > 0)
-            {
-                var fensterAa = new FensterAa(GetConfig.ConfigAa, ManualViewModel);
-                fensterAa.Show();
-            }
-        }
-
-
-        public void BitToggelnDa(DaEinstellungen einstellungen)
-        {
-
-            var bitMuster = (byte)(1 << einstellungen.StartBit);
-            if ((Datenstruktur.DigOutput[einstellungen.StartByte] & bitMuster) == bitMuster)
-            {
-                Datenstruktur.DigOutput[einstellungen.StartByte] &= (byte)~bitMuster;
-            }
-            else
-            {
-                Datenstruktur.DigOutput[einstellungen.StartByte] |= bitMuster;
-            }
-
-        }
-
-        public void BitTastenDa(bool status, DaEinstellungen einstellungen)
-        {
-            var bitMuster = (byte)(1 << einstellungen.StartBit);
-            if (status)
-            {
-                Datenstruktur.DigOutput[einstellungen.StartByte] |= bitMuster;
-            }
-            else
-            {
-                Datenstruktur.DigOutput[einstellungen.StartByte] &= (byte)~bitMuster;
-            }
+            if (Datenstruktur.AnzahlByteAnalogOutput <= 0) return;
+            var fensterAa = new FensterAa(GetConfig.ConfigAa, ManualViewModel);
+            fensterAa.Show();
         }
     }
 }

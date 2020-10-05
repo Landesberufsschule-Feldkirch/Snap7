@@ -4,8 +4,138 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Digitale Eingänge" Height="650" Width="600">
+        Title="Digitale Eingänge" Height="850" Width="600">
     <Grid Name="Grid">
-        <Canvas Name="Canvas" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+
+        <Label Grid.Column="1" Grid.Row="1" Content="Wert"          FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="1" Content="Bezeichnung"   FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="1" Content="Kommentar"     FontSize="14pt" />
+
+        <Label   Grid.Column="1" Grid.Row="3"    Content = "    0.0    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt" HorizontalAlignment="Center" />
+        <Label   Grid.Column="1" Grid.Row="5"    Content = "    0.1    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt" HorizontalAlignment="Center" />
+        <Label   Grid.Column="1" Grid.Row="7"    Content = "    0.2    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[2]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[2]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="9"    Content = "    0.3    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[3]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[3]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="11"   Content = "    0.4    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[4]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[4]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="13"   Content = "    0.5    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[5]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[5]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="15"   Content = "    0.6    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[6]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[6]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="17"   Content = "    0.7    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[7]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[7]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="19"   Content = "    1.0    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[8]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[8]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="21"   Content = "    1.1    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[9]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[9]}"  FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="23"   Content = "    1.2    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[10]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[10]}" FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="25"   Content = "    1.3    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[11]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[11]}" FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="27"   Content = "    1.4    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[12]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[12]}" FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="29"   Content = "    1.5    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[13]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[13]}" FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="31"   Content = "    1.6    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[14]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[14]}" FontSize="14pt" HorizontalAlignment="Center"/>
+        <Label   Grid.Column="1" Grid.Row="33"   Content = "    1.7    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[15]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[15]}" FontSize="14pt" HorizontalAlignment="Center"/>
+
+
+        <Label Grid.Column="3" Grid.Row="3"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="5"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="7"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[2]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[2]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="9"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[3]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[3]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="11" Content="{Binding ManVisuAnzeigen.BezeichnungDi[4]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[4]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="13" Content="{Binding ManVisuAnzeigen.BezeichnungDi[5]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[5]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="15" Content="{Binding ManVisuAnzeigen.BezeichnungDi[6]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[6]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="17" Content="{Binding ManVisuAnzeigen.BezeichnungDi[7]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[7]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="19" Content="{Binding ManVisuAnzeigen.BezeichnungDi[8]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[8]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="21" Content="{Binding ManVisuAnzeigen.BezeichnungDi[9]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[9]}"  FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="23" Content="{Binding ManVisuAnzeigen.BezeichnungDi[10]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[10]}" FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="25" Content="{Binding ManVisuAnzeigen.BezeichnungDi[11]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[11]}" FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="27" Content="{Binding ManVisuAnzeigen.BezeichnungDi[12]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[12]}" FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="29" Content="{Binding ManVisuAnzeigen.BezeichnungDi[13]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[13]}" FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="31" Content="{Binding ManVisuAnzeigen.BezeichnungDi[14]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[14]}" FontSize="14pt" />
+        <Label Grid.Column="3" Grid.Row="33" Content="{Binding ManVisuAnzeigen.BezeichnungDi[15]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[15]}" FontSize="14pt" />
+
+
+        <Label Grid.Column="5" Grid.Row="3"  Content="{Binding ManVisuAnzeigen.KommentarDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="5"  Content="{Binding ManVisuAnzeigen.KommentarDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="7"  Content="{Binding ManVisuAnzeigen.KommentarDi[2]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[2]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="9"  Content="{Binding ManVisuAnzeigen.KommentarDi[3]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[3]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="11" Content="{Binding ManVisuAnzeigen.KommentarDi[4]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[4]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="13" Content="{Binding ManVisuAnzeigen.KommentarDi[5]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[5]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="15" Content="{Binding ManVisuAnzeigen.KommentarDi[6]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[6]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="17" Content="{Binding ManVisuAnzeigen.KommentarDi[7]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[7]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="19" Content="{Binding ManVisuAnzeigen.KommentarDi[8]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[8]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="21" Content="{Binding ManVisuAnzeigen.KommentarDi[9]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[9]}"  FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="23" Content="{Binding ManVisuAnzeigen.KommentarDi[10]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[10]}" FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="25" Content="{Binding ManVisuAnzeigen.KommentarDi[11]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[11]}" FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="27" Content="{Binding ManVisuAnzeigen.KommentarDi[12]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[12]}" FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="29" Content="{Binding ManVisuAnzeigen.KommentarDi[13]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[13]}" FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="31" Content="{Binding ManVisuAnzeigen.KommentarDi[14]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[14]}" FontSize="14pt" />
+        <Label Grid.Column="5" Grid.Row="33" Content="{Binding ManVisuAnzeigen.KommentarDi[15]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[15]}" FontSize="14pt" />
+
+
     </Grid>
 </Window>

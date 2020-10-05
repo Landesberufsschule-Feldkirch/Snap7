@@ -11,7 +11,7 @@ namespace Nadeltelegraph
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-
+        private readonly DatenRangieren _datenRangieren;
 
 
 
@@ -32,12 +32,12 @@ namespace Nadeltelegraph
             };
 
             var viewModel = new ViewModel.ViewModel(this);
-            DatenRangieren datenRangieren = new DatenRangieren(viewModel);
+             _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 
