@@ -22,11 +22,11 @@
             _viewModel = vm;
         }
 
-        public void RangierenInput(byte[] digInput, byte[] anInput)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
             /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 
             S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
             S7.SetSint_16_At(anInput, 2, S7Analog.S7_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
@@ -43,12 +43,12 @@
             */
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] anOutput)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             /*
             if (!mainWindow.DebugWindowAktiv)
             {
-                viewModel.Kraftwerk.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                viewModel.Kraftwerk.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
                 viewModel.Kraftwerk.Ventil_Y = viewModel.Kraftwerk.generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 0), 100));
                 viewModel.Kraftwerk.Generator_Ie = viewModel.Kraftwerk.generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 2), 10));
             }

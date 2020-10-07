@@ -28,27 +28,27 @@ namespace LAP_2018_4_Niveauregelung
             S3
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.NiveauRegelung.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.NiveauRegelung.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.NiveauRegelung.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F1, _viewModel.NiveauRegelung.F1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F2, _viewModel.NiveauRegelung.F2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.NiveauRegelung.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.NiveauRegelung.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _viewModel.NiveauRegelung.S3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.NiveauRegelung.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.NiveauRegelung.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.NiveauRegelung.B3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.NiveauRegelung.F1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F2, _viewModel.NiveauRegelung.F2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.NiveauRegelung.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.NiveauRegelung.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.NiveauRegelung.S3);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _viewModel.NiveauRegelung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                _viewModel.NiveauRegelung.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-                _viewModel.NiveauRegelung.P3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
-                _viewModel.NiveauRegelung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                _viewModel.NiveauRegelung.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+                _viewModel.NiveauRegelung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+                _viewModel.NiveauRegelung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+                _viewModel.NiveauRegelung.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+                _viewModel.NiveauRegelung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+                _viewModel.NiveauRegelung.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 using System.Windows;
 using LAP_2019_Foerderanlage.SetManual;
 using WpfAnimatedGif;
@@ -11,10 +12,12 @@ namespace LAP_2019_Foerderanlage
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
         public ImageAnimationController Controller { get; set; }
-        public S7_1200 S71200 { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
+        private readonly DatenRangieren _datenRangieren;
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
@@ -27,13 +30,18 @@ namespace LAP_2019_Foerderanlage
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+            };
+
             _viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(this, _viewModel);
+            _datenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
             DataContext = _viewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }

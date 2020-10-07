@@ -30,33 +30,31 @@
             B4
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.AlleLastKraftWagen.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.AlleLastKraftWagen.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.AlleLastKraftWagen.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, _viewModel.AlleLastKraftWagen.B4);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.AlleLastKraftWagen.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.AlleLastKraftWagen.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.AlleLastKraftWagen.B3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B4, _viewModel.AlleLastKraftWagen.B4);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            var p1LinksRot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            var p2LinksGelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            var p3LinksGruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
-            var p4RechtsRot = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4);
-            var p5RechtsGelb = S7.GetBitAt(digOutput, (int)BitPosAusgang.P5);
-            var p6RechtsGruen = S7.GetBitAt(digOutput, (int)BitPosAusgang.P6);
+            var p1LinksRot = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            var p2LinksGelb = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            var p3LinksGruen = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+            var p4RechtsRot = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
+            var p5RechtsGelb = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5);
+            var p6RechtsGruen = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P6);
 
             var linkeAmpel = GetAmpelZustand(p1LinksRot, p2LinksGelb, p3LinksGruen);
             var rechteAmpel = GetAmpelZustand(p4RechtsRot, p5RechtsGelb, p6RechtsGruen);
 
-            if (linkeAmpel != this._ampelLinks || rechteAmpel != this._ampelRechts)
-            {
-                OnAmpelChanged(new AmpelZustandEventArgs(linkeAmpel, rechteAmpel));
+            if (linkeAmpel == _ampelLinks && rechteAmpel == _ampelRechts) return;
+            OnAmpelChanged(new AmpelZustandEventArgs(linkeAmpel, rechteAmpel));
 
-                _ampelRechts = rechteAmpel;
-                _ampelLinks = linkeAmpel;
-            }
+            _ampelRechts = rechteAmpel;
+            _ampelLinks = linkeAmpel;
         }
 
         public DatenRangieren(ViewModel.ViewModel vm)
@@ -70,13 +68,12 @@
             AmpelChangedEvent?.Invoke(this, e);
         }
 
-        private AmpelZustand GetAmpelZustand(bool rot, bool gelb, bool gruen)
+        private static AmpelZustand GetAmpelZustand(bool rot, bool gelb, bool gruen)
         {
             if (rot && gelb) return AmpelZustand.RotUndGelb;
             if (rot) return AmpelZustand.Rot;
             if (gelb) return AmpelZustand.Gelb;
-            if (gruen) return AmpelZustand.Gruen;
-            return AmpelZustand.Aus;
+            return gruen ? AmpelZustand.Gruen : AmpelZustand.Aus;
         }
     }
 }

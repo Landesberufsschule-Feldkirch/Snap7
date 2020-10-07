@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace BehälterSteuerung.Commands
+namespace BehaelterSteuerung.Commands
 {
     public class RelayCommand : ICommand
     {

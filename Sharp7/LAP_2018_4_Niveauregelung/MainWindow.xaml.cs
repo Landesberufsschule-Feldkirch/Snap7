@@ -1,16 +1,19 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 using System.Windows;
 
 namespace LAP_2018_4_Niveauregelung
 {
     public partial class MainWindow
     {
-        public S7_1200 S71200 { get; set; }
+        public IPlc Plc { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public SetManual.SetManualWindow SetManualWindow { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
+        private readonly DatenRangieren _datenRangieren;
         public readonly ViewModel.ViewModel ViewModel;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -23,14 +26,19 @@ namespace LAP_2018_4_Niveauregelung
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+            };
+
             ViewModel = new ViewModel.ViewModel(this);
 
-            var datenRangieren = new DatenRangieren(this, ViewModel);
+            _datenRangieren = new DatenRangieren(this, ViewModel);
 
             InitializeComponent();
             DataContext = ViewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }

@@ -1,29 +1,28 @@
-﻿using BehälterSteuerung.Model;
-
-namespace BehaelterSteuerung.Model
+﻿namespace BehaelterSteuerung.Model
 {
     using System.Collections.Generic;
     using System.Threading;
 
+    // ReSharper disable once UnusedMember.Global
     public class AlleBehaelter
     {
         public enum AutomatikModus
         {
-            Modus_1234 = 0,
-            Modus_1324,
-            Modus_1432,
-            Modus_4321
+            Modus1234 = 0,
+            Modus1324,
+            Modus1432,
+            Modus4321
         }
 
         public bool AlleKnoepfeAktivieren { get; set; }
         public bool P1 { get; set; }
-        public  List<Behaelter> alleBehaelter { get; set; }
+        public  List<Behaelter> AlleMeineBehaelter { get; set; }
 
-        private bool AutomatikModusAktiv;
+        private bool _automatikModusAktiv;
 
         public AlleBehaelter()
         {
-            alleBehaelter = new List<Behaelter>
+            AlleMeineBehaelter = new List<Behaelter>
             {
                 new Behaelter(0.2), new Behaelter(0.4), new Behaelter(0.6), new Behaelter(0.8)
             };
@@ -39,35 +38,43 @@ namespace BehaelterSteuerung.Model
 
                 var automatikModusNochAktiv = false;
 
-                foreach (var beh in alleBehaelter)
+                foreach (var beh in AlleMeineBehaelter)
                 {
                     beh.PegelUeberwachen();
-                    if (AutomatikModusAktiv)
-                    {
-                        if (beh.Pegel < 0.99 && beh.Pegel > 0.01) beh.VentilUnten = true; else beh.VentilUnten = false;
-                        if ((beh.Pegel > 0.01)) automatikModusNochAktiv = true;
-                    }
+                    if (!_automatikModusAktiv) continue;
+                    beh.VentilUnten = beh.Pegel < 0.99 && beh.Pegel > 0.01;
+                    if (beh.Pegel > 0.01) automatikModusNochAktiv = true;
 
                 }
-                if (AutomatikModusAktiv && !automatikModusNochAktiv)
+                if (_automatikModusAktiv && !automatikModusNochAktiv)
                 {
                     AlleAutomatikKnoepfeAktivieren();
-                    AutomatikModusAktiv = false;
+                    _automatikModusAktiv = false;
                 }
                 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void VentilQ2() => alleBehaelter[0].VentilUntenUmschalten(); 
-        internal void VentilQ4() => alleBehaelter[1].VentilUntenUmschalten(); 
-        internal void VentilQ6() => alleBehaelter[2].VentilUntenUmschalten(); 
-        internal void VentilQ8() => alleBehaelter[3].VentilUntenUmschalten(); 
+        // ReSharper disable once UnusedMember.Global
+        internal void VentilQ2() => AlleMeineBehaelter[0].VentilUntenUmschalten();
+        // ReSharper disable once UnusedMember.Global
+        internal void VentilQ4() => AlleMeineBehaelter[1].VentilUntenUmschalten();
+        // ReSharper disable once UnusedMember.Global
+        internal void VentilQ6() => AlleMeineBehaelter[2].VentilUntenUmschalten();
+        // ReSharper disable once UnusedMember.Global
+        internal void VentilQ8() => AlleMeineBehaelter[3].VentilUntenUmschalten();
 
-        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus_1234); 
-        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus_1324); 
-        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus_1432); 
-        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus_4321); 
+        // ReSharper disable once UnusedMember.Global
+        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus1234);
+        // ReSharper disable once UnusedMember.Global
+        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus1324);
+
+        // ReSharper disable once UnusedMember.Global
+        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus1432); 
+        // ReSharper disable once UnusedMember.Global
+        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus4321); 
 
 
         private void AlleAutomatikKnoepfeDeaktivieren()
@@ -81,42 +88,42 @@ namespace BehaelterSteuerung.Model
         private void AutomatikBetriebStarten(AutomatikModus modus)
         {
             AlleAutomatikKnoepfeDeaktivieren();
-            AutomatikModusAktiv = true;
+            _automatikModusAktiv = true;
             switch (modus)
             {
-                case AutomatikModus.Modus_1234:
-                    alleBehaelter[0].AutomatikmodusStarten(1.2);
-                    alleBehaelter[1].AutomatikmodusStarten(2.4);
-                    alleBehaelter[2].AutomatikmodusStarten(3.6);
-                    alleBehaelter[3].AutomatikmodusStarten(4.8);
+                case AutomatikModus.Modus1234:
+                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
+                    AlleMeineBehaelter[1].AutomatikmodusStarten(2.4);
+                    AlleMeineBehaelter[2].AutomatikmodusStarten(3.6);
+                    AlleMeineBehaelter[3].AutomatikmodusStarten(4.8);
                     break;
 
-                case AutomatikModus.Modus_1324:
-                    alleBehaelter[0].AutomatikmodusStarten(1.2);
-                    alleBehaelter[2].AutomatikmodusStarten(2.4);
-                    alleBehaelter[1].AutomatikmodusStarten(3.6);
-                    alleBehaelter[3].AutomatikmodusStarten(4.8);
+                case AutomatikModus.Modus1324:
+                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
+                    AlleMeineBehaelter[2].AutomatikmodusStarten(2.4);
+                    AlleMeineBehaelter[1].AutomatikmodusStarten(3.6);
+                    AlleMeineBehaelter[3].AutomatikmodusStarten(4.8);
                     break;
 
-                case AutomatikModus.Modus_1432:
-                    alleBehaelter[0].AutomatikmodusStarten(1.2);
-                    alleBehaelter[3].AutomatikmodusStarten(2.4);
-                    alleBehaelter[2].AutomatikmodusStarten(3.6);
-                    alleBehaelter[1].AutomatikmodusStarten(4.8);
+                case AutomatikModus.Modus1432:
+                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
+                    AlleMeineBehaelter[3].AutomatikmodusStarten(2.4);
+                    AlleMeineBehaelter[2].AutomatikmodusStarten(3.6);
+                    AlleMeineBehaelter[1].AutomatikmodusStarten(4.8);
                     break;
 
-                case AutomatikModus.Modus_4321:
-                    alleBehaelter[3].AutomatikmodusStarten(1.2);
-                    alleBehaelter[2].AutomatikmodusStarten(2.4);
-                    alleBehaelter[1].AutomatikmodusStarten(3.6);
-                    alleBehaelter[0].AutomatikmodusStarten(4.8);
+                case AutomatikModus.Modus4321:
+                    AlleMeineBehaelter[3].AutomatikmodusStarten(1.2);
+                    AlleMeineBehaelter[2].AutomatikmodusStarten(2.4);
+                    AlleMeineBehaelter[1].AutomatikmodusStarten(3.6);
+                    AlleMeineBehaelter[0].AutomatikmodusStarten(4.8);
                     break;
 
                 default:
-                    alleBehaelter[0].AutomatikmodusStarten(0);
-                    alleBehaelter[1].AutomatikmodusStarten(0);
-                    alleBehaelter[2].AutomatikmodusStarten(0);
-                    alleBehaelter[3].AutomatikmodusStarten(0);
+                    AlleMeineBehaelter[0].AutomatikmodusStarten(0);
+                    AlleMeineBehaelter[1].AutomatikmodusStarten(0);
+                    AlleMeineBehaelter[2].AutomatikmodusStarten(0);
+                    AlleMeineBehaelter[3].AutomatikmodusStarten(0);
                     break;
 
             }

@@ -75,15 +75,15 @@
 
                 SchalterWinkel(_pumpensteuerung.S1, _pumpensteuerung.S2);
 
-                if (_mainWindow.S71200 != null)
+                if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);

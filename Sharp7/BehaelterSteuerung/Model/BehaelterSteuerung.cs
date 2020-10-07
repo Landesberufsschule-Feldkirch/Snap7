@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 
-namespace BehälterSteuerung.Model
+namespace BehaelterSteuerung.Model
 {
     public class BehaelterSteuerung
     {

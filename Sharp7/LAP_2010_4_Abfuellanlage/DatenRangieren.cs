@@ -23,22 +23,22 @@ namespace LAP_2010_4_Abfuellanlage
             S2      // Taster Start
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _abfuellanlageViewModel.AbfuellAnlage.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _abfuellanlageViewModel.AbfuellAnlage.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _abfuellanlageViewModel.AbfuellAnlage.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _abfuellanlageViewModel.AbfuellAnlage.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _abfuellanlageViewModel.AbfuellAnlage.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _abfuellanlageViewModel.AbfuellAnlage.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _abfuellanlageViewModel.AbfuellAnlage.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _abfuellanlageViewModel.AbfuellAnlage.S2);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _abfuellanlageViewModel.AbfuellAnlage.K1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K1);
-                _abfuellanlageViewModel.AbfuellAnlage.K2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.K2);
-                _abfuellanlageViewModel.AbfuellAnlage.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                _abfuellanlageViewModel.AbfuellAnlage.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _abfuellanlageViewModel.AbfuellAnlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
+                _abfuellanlageViewModel.AbfuellAnlage.K2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
+                _abfuellanlageViewModel.AbfuellAnlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+                _abfuellanlageViewModel.AbfuellAnlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             }
         }
 

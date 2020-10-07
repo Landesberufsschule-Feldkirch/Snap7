@@ -7,8 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\Campbell_Asparagus_Soup.jpg" />
+    <None Remove="Bilder\Campbell_Chicken_Soup.jpg" />
+    <None Remove="Bilder\Campbell_Mushroom_Soup.jpg" />
+    <None Remove="Bilder\Campbell_Tomato_Soup.jpg" />
+    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <None Remove="Bilder\VentilElektrischAusHellgrau.jpg" />
+    <None Remove="Bilder\VentilElektrischEinHellgrau.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Campbell_Asparagus_Soup.jpg" />
+    <Resource Include="Bilder\Campbell_Chicken_Soup.jpg" />
+    <Resource Include="Bilder\Campbell_Mushroom_Soup.jpg" />
+    <Resource Include="Bilder\Campbell_Tomato_Soup.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinHellgrau.jpg" />
   </ItemGroup>
 
 </Project>

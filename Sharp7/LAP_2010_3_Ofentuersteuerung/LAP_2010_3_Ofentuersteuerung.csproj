@@ -7,7 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <None Remove="Bilder\Zahnrad.PNG" />
+    <None Remove="Bilder\Zahnstange.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <Resource Include="Bilder\Zahnrad.PNG" />
+    <Resource Include="Bilder\Zahnstange.PNG" />
   </ItemGroup>
 
 </Project>

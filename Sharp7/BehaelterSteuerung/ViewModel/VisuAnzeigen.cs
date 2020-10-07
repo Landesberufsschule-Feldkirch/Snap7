@@ -2,15 +2,15 @@
 using System.Threading;
 using System.Windows;
 
-namespace BehälterSteuerung.ViewModel
+namespace BehaelterSteuerung.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly double _hoeheFuellBalken = 200.0;
-        private readonly BehälterSteuerung.Model.BehaelterSteuerung _alleBehaelter;
+        private const double HoeheFuellBalken = 200.0;
+        private readonly Model.BehaelterSteuerung _alleBehaelter;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, BehälterSteuerung.Model.BehaelterSteuerung aB)
+        public VisuAnzeigen(MainWindow mw, Model.BehaelterSteuerung aB)
         {
             _mainWindow = mw;
             _alleBehaelter = aB;
@@ -142,15 +142,15 @@ namespace BehälterSteuerung.ViewModel
                 EnableAutomatik1432 = !_alleBehaelter.AutomatikModusAktiv;
                 EnableAutomatik4321 = !_alleBehaelter.AutomatikModusAktiv;
 
-                if (_mainWindow.S71200 != null)
+                if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -1028,7 +1028,7 @@ namespace BehälterSteuerung.ViewModel
 
         #region Margin1
 
-        public void Margin_1(double pegel) => Margin1 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
+        public void Margin_1(double pegel) => Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin1;
 
@@ -1046,7 +1046,7 @@ namespace BehälterSteuerung.ViewModel
 
         #region Margin2
 
-        public void Margin_2(double pegel) => Margin2 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
+        public void Margin_2(double pegel) => Margin2 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin2;
 
@@ -1064,7 +1064,7 @@ namespace BehälterSteuerung.ViewModel
 
         #region Margin3
 
-        public void Margin_3(double pegel) => Margin3 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
+        public void Margin_3(double pegel) => Margin3 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin3;
 
@@ -1082,7 +1082,7 @@ namespace BehälterSteuerung.ViewModel
 
         #region Margin4
 
-        public void Margin_4(double pegel) => Margin4 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
+        public void Margin_4(double pegel) => Margin4 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
 
         private Thickness _margin4;
 

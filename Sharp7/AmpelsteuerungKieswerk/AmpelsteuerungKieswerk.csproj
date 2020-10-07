@@ -7,8 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\LKW_braun.PNG" />
+    <None Remove="Bilder\LKW_gelb.PNG" />
+    <None Remove="Bilder\LKW_gruen.PNG" />
+    <None Remove="Bilder\LKW_pink.PNG" />
+    <None Remove="Bilder\LKW_rot.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\LKW_braun.PNG" />
+    <Resource Include="Bilder\LKW_gelb.PNG" />
+    <Resource Include="Bilder\LKW_gruen.PNG" />
+    <Resource Include="Bilder\LKW_pink.PNG" />
+    <Resource Include="Bilder\LKW_rot.PNG" />
   </ItemGroup>
 
 </Project>

@@ -1,13 +1,16 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 
 namespace Tiefgarage
 {
     public partial class MainWindow
     {
-        public S7_1200 S71200 { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
+        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
         private const int AnzByteAnalogInput = 0;
@@ -19,13 +22,17 @@ namespace Tiefgarage
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+            };
             var viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(viewModel);
+            _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
         }
     }
 }

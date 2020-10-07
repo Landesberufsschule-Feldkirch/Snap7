@@ -97,6 +97,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ManualConfig\AA.json" />
+    <None Include="ManualConfig\AI.json" />
+    <None Include="ManualConfig\DA.json" />
+    <None Include="ManualConfig\DI.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

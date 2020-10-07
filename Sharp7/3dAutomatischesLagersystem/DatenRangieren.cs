@@ -19,25 +19,25 @@
             S2      // Ab
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
             /*
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, viewModel.paternosterlager.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, viewModel.paternosterlager.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, viewModel.paternosterlager.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, viewModel.paternosterlager.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
 
             S7.SetUint8At(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
     */
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
                 /*
-  viewModel.paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-  viewModel.paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+  viewModel.paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+  viewModel.paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
   */
             }
 

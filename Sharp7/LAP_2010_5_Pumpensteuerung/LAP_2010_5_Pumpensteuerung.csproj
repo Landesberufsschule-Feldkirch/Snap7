@@ -7,7 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\Pumpe_AusWeiss.jpg" />
+    <None Remove="Bilder\Pumpe_EinWeiss.jpg" />
+    <None Remove="Bilder\SchwimmerschalterWeiss.jpg" />
+    <None Remove="Bilder\Schwimmerschalter_BetaetigtWeiss.jpg" />
+    <None Remove="Bilder\VentilElektrischAusWeiss.jpg" />
+    <None Remove="Bilder\VentilElektrischEinWeiss.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Pumpe_AusWeiss.jpg" />
+    <Resource Include="Bilder\Pumpe_EinWeiss.jpg" />
+    <Resource Include="Bilder\SchwimmerschalterWeiss.jpg" />
+    <Resource Include="Bilder\Schwimmerschalter_BetaetigtWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
   </ItemGroup>
 
 </Project>

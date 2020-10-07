@@ -24,23 +24,23 @@ namespace LAP_2010_5_Pumpensteuerung
             S3,     // Störung quittieren
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.Pumpensteuerung.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.Pumpensteuerung.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F1, _viewModel.Pumpensteuerung.F1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.Pumpensteuerung.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.Pumpensteuerung.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _viewModel.Pumpensteuerung.S3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Pumpensteuerung.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Pumpensteuerung.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Pumpensteuerung.F1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Pumpensteuerung.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Pumpensteuerung.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Pumpensteuerung.S3);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _viewModel.Pumpensteuerung.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-                _viewModel.Pumpensteuerung.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-                _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
+                _viewModel.Pumpensteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+                _viewModel.Pumpensteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+                _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             }
         }
 

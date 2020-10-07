@@ -1,4 +1,4 @@
-﻿namespace BehälterSteuerung.Model
+﻿namespace BehaelterSteuerung.Model
 {
     public class Behaelter
     {
@@ -10,10 +10,10 @@
 
         private bool _automatikModus;
         private double _internerPegel;
-        private readonly double _sinkGeschwindigkeit = 0.005;
-        private readonly double _fuellGeschwindigkeit = 0.2 * 0.005;
-        private readonly double _positionSchwimmerschalterOben = 0.95;
-        private readonly double _positionSchwimmerschalterUnten = 0.05;
+        private const double SinkGeschwindigkeit = 0.005;
+        private const double FuellGeschwindigkeit = 0.2 * 0.005;
+        private const double PositionSchwimmerschalterOben = 0.95;
+        private const double PositionSchwimmerschalterUnten = 0.05;
 
         public Behaelter(double pegel)
         {
@@ -33,26 +33,26 @@
 
             if (_internerPegel > 0)
             {
-                _internerPegel -= _sinkGeschwindigkeit;
+                _internerPegel -= SinkGeschwindigkeit;
                 Pegel = _internerPegel;
             }
             else
             {
-                if (VentilOben) Pegel += _fuellGeschwindigkeit;
-                if (VentilUnten) Pegel -= _sinkGeschwindigkeit;
+                if (VentilOben) Pegel += FuellGeschwindigkeit;
+                if (VentilUnten) Pegel -= SinkGeschwindigkeit;
             }
 
             if (Pegel > 1) Pegel = 1;
             if (Pegel < 0) Pegel = 0;
 
-            SchwimmerschalterOben = (Pegel > _positionSchwimmerschalterOben);
-            SchwimmerschalterUnten = (Pegel > _positionSchwimmerschalterUnten);
+            SchwimmerschalterOben = Pegel > PositionSchwimmerschalterOben;
+            SchwimmerschalterUnten = Pegel > PositionSchwimmerschalterUnten;
         }
 
         public void AutomatikmodusStarten(double startpegel)
         {
             _automatikModus = true;
-            this._internerPegel = startpegel;
+            _internerPegel = startpegel;
             VentilUnten = true;
         }
 

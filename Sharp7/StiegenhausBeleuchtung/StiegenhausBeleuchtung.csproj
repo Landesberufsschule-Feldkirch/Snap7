@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\BewegungsmelderAktivWeiss.jpg" />
+    <None Remove="Bilder\BewegungsmelderWeiss.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\BewegungsmelderAktivWeiss.jpg" />
+    <Resource Include="Bilder\BewegungsmelderWeiss.jpg" />
   </ItemGroup>
 
 </Project>

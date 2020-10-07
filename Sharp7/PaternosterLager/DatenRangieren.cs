@@ -21,26 +21,26 @@
             S2      // Ab
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.Paternosterlager.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.Paternosterlager.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Paternosterlager.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Paternosterlager.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
 
-            S7.SetUint8At(digInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
+            S7.SetUint8At(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _viewModel.Paternosterlager.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                _viewModel.Paternosterlager.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
+                _viewModel.Paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+                _viewModel.Paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             }
 
-            _viewModel.Paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
-            _viewModel.Paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
+            _viewModel.Paternosterlager.IstPos = S7.GetUint8At(datenstruktur.DigOutput, 1);
+            _viewModel.Paternosterlager.SollPos = S7.GetUint8At(datenstruktur.DigOutput, 2);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)

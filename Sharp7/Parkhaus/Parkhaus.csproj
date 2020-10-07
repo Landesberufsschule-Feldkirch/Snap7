@@ -9,16 +9,20 @@
 
   <ItemGroup>
     <None Remove="Bilder\CarGreen.jpg" />
+    <None Remove="Bilder\CarGreen.png" />
     <None Remove="Bilder\CarYellow.jpg" />
+    <None Remove="Bilder\CarYellow.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Bilder\CarGreen.jpg">
+    <Resource Include="Bilder\CarGreen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Bilder\CarYellow.jpg">
+    </Resource>
+    <Resource Include="Bilder\CarGreen.png" />
+    <Resource Include="Bilder\CarYellow.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Bilder\CarYellow.png" />
   </ItemGroup>
 
   <ItemGroup>

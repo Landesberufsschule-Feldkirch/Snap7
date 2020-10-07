@@ -29,29 +29,29 @@ namespace LAP_2018_3_Hydraulikaggregat
             S3      // Taster Quittieren
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.Hydraulikaggregat.B1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.Hydraulikaggregat.B2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.Hydraulikaggregat.B3);
-            S7.SetBitAt(digInput, (int)BitPosEingang.F1, _viewModel.Hydraulikaggregat.F1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S1, _viewModel.Hydraulikaggregat.S1);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S2, _viewModel.Hydraulikaggregat.S2);
-            S7.SetBitAt(digInput, (int)BitPosEingang.S3, _viewModel.Hydraulikaggregat.S3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Hydraulikaggregat.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Hydraulikaggregat.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.Hydraulikaggregat.B3);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Hydraulikaggregat.F1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Hydraulikaggregat.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Hydraulikaggregat.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Hydraulikaggregat.S3);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            _viewModel.Hydraulikaggregat.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
-            _viewModel.Hydraulikaggregat.P2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P2);
-            _viewModel.Hydraulikaggregat.P3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P3);
-            _viewModel.Hydraulikaggregat.P4 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P4);
+            _viewModel.Hydraulikaggregat.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Hydraulikaggregat.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Hydraulikaggregat.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+            _viewModel.Hydraulikaggregat.P4 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
 
             if (!_mainWindow.DebugWindowAktiv)
             {
-                _viewModel.Hydraulikaggregat.Q1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-                _viewModel.Hydraulikaggregat.Q2 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q2);
-                _viewModel.Hydraulikaggregat.Q3 = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
+                _viewModel.Hydraulikaggregat.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+                _viewModel.Hydraulikaggregat.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+                _viewModel.Hydraulikaggregat.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
             }
         }
 

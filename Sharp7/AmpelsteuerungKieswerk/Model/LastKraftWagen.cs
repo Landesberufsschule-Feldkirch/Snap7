@@ -1,4 +1,6 @@
-﻿namespace AmpelsteuerungKieswerk.Model
+﻿using System;
+
+namespace AmpelsteuerungKieswerk.Model
 {
     using Utilities;
 
@@ -45,7 +47,7 @@
         private readonly Punkt _positionB2 = new Punkt(350, 0);
         private readonly Punkt _positionB3 = new Punkt(1000, 0);
         private readonly Punkt _positionB4 = new Punkt(1075, 0);
-        private readonly double _xyBewegung = 1;
+        private const double XyBewegung = 1;
         private const double KurveGeschwindigkeit = 0.002;
 
         public LastKraftWagen(int id)
@@ -86,8 +88,7 @@
         private bool LichtschrankeUnterbrochen(double xPos)
         {
             if (Position.Punkt.X + _groesseLkw.X < xPos) return false;
-            if (Position.Punkt.X > xPos) return false;
-            return true;
+            return !(Position.Punkt.X > xPos);
         }
 
         public (bool b1, bool b2, bool b3, bool b4) LastwagenFahren(bool stop)
@@ -115,7 +116,7 @@
                     _kurvePosition = 0;
                     if (!stop)
                     {
-                        if (Position.Punkt.X < _anfangRechteKurve.X) Position.Punkt.X += _xyBewegung;
+                        if (Position.Punkt.X < _anfangRechteKurve.X) Position.Punkt.X += XyBewegung;
                         else LkwPosition = LkwPositionen.LrRechtKurve;
                     }
                     break;
@@ -145,7 +146,7 @@
                     _kurvePosition = 1;
                     if (!stop)
                     {
-                        if (Position.Punkt.X > _endeLinkeKurve.X) Position.Punkt.X -= _xyBewegung;
+                        if (Position.Punkt.X > _endeLinkeKurve.X) Position.Punkt.X -= XyBewegung;
                         else LkwPosition = LkwPositionen.RlLinkeKurve;
                     }
                     break;
@@ -156,6 +157,8 @@
                     if (!stop) _kurvePosition -= KurveGeschwindigkeit;
                     if (_kurvePosition <= 0) LkwPosition = LkwPositionen.LinksGeparkt;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(LkwPosition));
             }
 
             return (LichtschrankeUnterbrochen(_positionB1.X), LichtschrankeUnterbrochen(_positionB2.X), LichtschrankeUnterbrochen(_positionB3.X), LichtschrankeUnterbrochen(_positionB4.X));

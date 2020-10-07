@@ -23,9 +23,11 @@ namespace LAP_2010_2_Transportwagen
             const string versionText = "LAP 2010/2 Transportwagen";
             VersionNummer = "V2.0";
 
+           VersionInfo = versionText + " - " + VersionNummer;
+
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(versionText + " - " + VersionNummer)
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
 

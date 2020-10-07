@@ -1,20 +1,23 @@
-﻿namespace AmpelsteuerungKieswerk.ViewModel
+﻿using System;
+using AmpelsteuerungKieswerk.Model;
+
+namespace AmpelsteuerungKieswerk.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
     using Utilities;
-    using static Model.LastKraftWagen;
+    using static LastKraftWagen;
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.AlleLastKraftWagen _alleLastKraftWagen;
+        private readonly AlleLastKraftWagen _alleLastKraftWagen;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.AlleLastKraftWagen alleLkw)
+        public VisuAnzeigen(MainWindow mw, AlleLastKraftWagen alleLkw)
         {
             _mainWindow = mw;
             _alleLastKraftWagen = alleLkw;
-            DatenRangieren_AmpelChangedEvent(null, new Model.AmpelZustandEventArgs(Model.AmpelZustand.Aus, Model.AmpelZustand.Aus));
+            DatenRangieren_AmpelChangedEvent(null, new AmpelZustandEventArgs(AmpelZustand.Aus, AmpelZustand.Aus));
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -78,15 +81,15 @@
 
                 VersionNr = _mainWindow.VersionNummer;
 
-                if (_mainWindow.S71200 != null)
+                if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.S71200.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
-                    SpsColor = _mainWindow.S71200.GetSpsError() ? "Red" : "LightGray";
-                    SpsStatus = _mainWindow.S71200?.GetSpsStatus();
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
                 Thread.Sleep(10);
@@ -94,7 +97,7 @@
             // ReSharper disable once FunctionNeverReturns
         }
 
-        public void DatenRangieren_AmpelChangedEvent(object sender, Model.AmpelZustandEventArgs e)
+        public void DatenRangieren_AmpelChangedEvent(object sender, AmpelZustandEventArgs e)
         {
             FarbeLinksRot(false);
             FarbeLinksGelb(false);
@@ -106,42 +109,50 @@
 
             switch (e.AmpelZustandLinks)
             {
-                case Model.AmpelZustand.Rot:
+                case AmpelZustand.Rot:
                     FarbeLinksRot(true);
                     break;
 
-                case Model.AmpelZustand.RotUndGelb:
+                case AmpelZustand.RotUndGelb:
                     FarbeLinksRot(true);
                     FarbeLinksGelb(true);
                     break;
 
-                case Model.AmpelZustand.Gelb:
+                case AmpelZustand.Gelb:
                     FarbeLinksGelb(true);
                     break;
 
-                case Model.AmpelZustand.Gruen:
+                case AmpelZustand.Gruen:
                     FarbeLinksGruen(true);
                     break;
+                case AmpelZustand.Aus:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(e.AmpelZustandLinks));
             }
 
             switch (e.AmpelZustandRechts)
             {
-                case Model.AmpelZustand.Rot:
+                case AmpelZustand.Rot:
                     FarbeRechtsRot(true);
                     break;
 
-                case Model.AmpelZustand.RotUndGelb:
+                case AmpelZustand.RotUndGelb:
                     FarbeRechtsRot(true);
                     FarbeRechtsGelb(true);
                     break;
 
-                case Model.AmpelZustand.Gelb:
+                case AmpelZustand.Gelb:
                     FarbeRechtsGelb(true);
                     break;
 
-                case Model.AmpelZustand.Gruen:
+                case AmpelZustand.Gruen:
                     FarbeRechtsGruen(true);
                     break;
+                case AmpelZustand.Aus:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(e.AmpelZustandRechts));
             }
         }
 

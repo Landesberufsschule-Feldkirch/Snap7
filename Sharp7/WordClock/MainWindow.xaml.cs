@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using System.Text;
+using Kommunikation;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -7,10 +8,12 @@ namespace WordClock
 {
     public partial class MainWindow
     {
-        public S7_1200 S71200 { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
+        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 9;
         private const int AnzByteDigOutput = 0;
         private const int AnzByteAnalogInput = 0;
@@ -22,6 +25,11 @@ namespace WordClock
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
+            {
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+            };
+
             var viewModel = new ViewModel.ViewModel(this);
 
             var datenRangieren = new DatenRangieren(viewModel);
@@ -29,7 +37,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = viewModel;
 
-            S71200 = new S7_1200(VersionInfo.Length, AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

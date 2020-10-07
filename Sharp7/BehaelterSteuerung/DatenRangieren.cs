@@ -1,10 +1,10 @@
 ﻿using Sharp7;
 
-namespace BehälterSteuerung
+namespace BehaelterSteuerung
 {
     public class DatenRangieren
     {
-        private readonly BehälterSteuerung.ViewModel.ViewModel _viewModel;
+        private readonly BehaelterSteuerung.ViewModel.ViewModel _viewModel;
 
         private enum BitPosEingang
         {
@@ -27,31 +27,31 @@ namespace BehälterSteuerung
             P1
         }
 
-        public DatenRangieren(BehälterSteuerung.ViewModel.ViewModel behaelterViewModel)
+        public DatenRangieren(BehaelterSteuerung.ViewModel.ViewModel behaelterViewModel)
         {
             _viewModel = behaelterViewModel;
         }
 
-        public void RangierenInput(byte[] digInput, byte[] _)
+        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetBitAt(digInput, (int)BitPosEingang.B1, _viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B2, _viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B3, _viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B4, _viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B5, _viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B6, _viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B7, _viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
-            S7.SetBitAt(digInput, (int)BitPosEingang.B8, _viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.AlleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B4, _viewModel.AlleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B5, _viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B6, _viewModel.AlleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B7, _viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B8, _viewModel.AlleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
         }
 
-        public void RangierenOutput(byte[] digOutput, byte[] _)
+        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            _viewModel.AlleBehaelter.P1 = S7.GetBitAt(digOutput, (int)BitPosAusgang.P1);
+            _viewModel.AlleBehaelter.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
 
-            _viewModel.AlleBehaelter.AlleBehaelter[0].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q1);
-            _viewModel.AlleBehaelter.AlleBehaelter[1].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q3);
-            _viewModel.AlleBehaelter.AlleBehaelter[2].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q5);
-            _viewModel.AlleBehaelter.AlleBehaelter[3].VentilOben = S7.GetBitAt(digOutput, (int)BitPosAusgang.Q7);
+            _viewModel.AlleBehaelter.AlleBehaelter[0].VentilOben = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.AlleBehaelter.AlleBehaelter[1].VentilOben = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
+            _viewModel.AlleBehaelter.AlleBehaelter[2].VentilOben = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q5);
+            _viewModel.AlleBehaelter.AlleBehaelter[3].VentilOben = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q7);
         }
     }
 }

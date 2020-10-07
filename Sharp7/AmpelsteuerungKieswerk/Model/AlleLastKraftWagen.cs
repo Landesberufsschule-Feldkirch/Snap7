@@ -1,4 +1,6 @@
-﻿namespace AmpelsteuerungKieswerk.Model
+﻿using System.Linq;
+
+namespace AmpelsteuerungKieswerk.Model
 {
     using System.Collections.Generic;
     using System.Threading;
@@ -55,18 +57,15 @@
 
         private bool KollisionErkennen(LastKraftWagen laster)
         {
-            bool stop = false;
+            var stop = false;
             var (lx, ly) = laster.GetRichtung();
 
-            foreach (var lkw in _alleLkw)
+            foreach (var lkw in _alleLkw.Where(lkw => laster.Id != lkw.Id))
             {
-                if (laster.Id != lkw.Id)
+                var (hx, hy) = lkw.GetRichtung();
+                if (hx != Rechteck.RichtungX.Steht || hy != Rechteck.RichtungY.Steht)
                 {
-                    var (hx, hy) = lkw.GetRichtung();
-                    if (hx != Rechteck.RichtungX.Steht || hy != Rechteck.RichtungY.Steht)
-                    {
-                        stop |= Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
-                    }
+                    stop |= Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
                 }
             }
 

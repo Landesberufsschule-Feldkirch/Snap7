@@ -23,9 +23,11 @@ namespace Nadeltelegraph
             const string versionText = "Nadeltelegraph";
             VersionNummer = "V2.0";
 
+            VersionInfo = versionText + " - " + VersionNummer;
+
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(versionText + " - " + VersionNummer)
+                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
             var viewModel = new ViewModel.ViewModel(this);
