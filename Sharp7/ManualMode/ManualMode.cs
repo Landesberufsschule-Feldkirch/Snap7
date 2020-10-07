@@ -5,7 +5,7 @@ using System;
 namespace ManualMode
 {
     public class ManualMode
-    {
+    {        
         public enum ManualModeConfig
         {
             Di,
@@ -15,9 +15,7 @@ namespace ManualMode
         }
 
         public ManualViewModel ManualViewModel { get; set; }
-
         public Kommunikation.Datenstruktur Datenstruktur { get; set; }
-
         public GetConfig GetConfig { get; set; }
 
         public ManualMode(Kommunikation.Datenstruktur datenstruktur)
@@ -27,8 +25,6 @@ namespace ManualMode
 
             GetConfig = new GetConfig();
         }
-
-
 
         public void SetManualConfig(ManualModeConfig config, string pfad)
         {
@@ -53,7 +49,7 @@ namespace ManualMode
 
         public void FensterAnzeigen()
         {
-            if (Datenstruktur.AnzahlByteDigitalOutput > 0)
+            if (Datenstruktur.AnzahlByteDigitalInput > 0)
             {
                 var fensterDi = new FensterDi(GetConfig.ConfigDi, ManualViewModel);
                 fensterDi.Show();

@@ -113,27 +113,27 @@
             </Button.Resources>
         </Button>
 
-        <Label Content="S1 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-        <Label Content="S2 " Grid.Column="16" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-        <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-        <Label Content="S4 " Grid.Column="16" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-        <Label Content="F1 " Grid.Column="14" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
+        <Label Content="S1 " Grid.Column="14" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+        <Label Content="S2 " Grid.Column="16" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+        <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+        <Label Content="S4 " Grid.Column="16" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+        <Label Content="F1 " Grid.Column="14" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
 
         <Ellipse Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP1}" />
         <Ellipse Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP2}" />
 
-        <Label Content="P1 " Grid.Column="14" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-        <Label Content="P2 " Grid.Column="14" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
+        <Label Content="P1 " Grid.Column="14" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+        <Label Content="P2 " Grid.Column="14" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
 
-        <Label Content="Betrieb" Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
-        <Label Content="Störung" Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt" />
+        <Label Content="Betrieb" Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
+        <Label Content="Störung" Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
 
         <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="0,0,50,0" />
         <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="50,0,0,0" />
 
         <Image Source="Bilder\VentilElektrischAusWeiss.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK2Aus}" />
         <Image Source="Bilder\VentilElektrischEinWeiss.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK2Ein}" />
-        <Label Content="K2" Grid.Column="4" Grid.Row="14" Margin="32,5,4,0" FontSize="14pt" />
+        <Label Content="K2" Grid.Column="4" Grid.Row="14" Margin="32,5,4,0" FontSize="14pt"/>
 
         <Rectangle Fill="LightBlue"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
         <Rectangle Fill="Blue"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
@@ -142,7 +142,7 @@
 
         <Image Source="Bilder/VentilElektrischAusWeiss.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Aus}" />
         <Image Source="Bilder/VentilElektrischEinWeiss.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Ein}" />
-        <Label Content="K1" Grid.Column="7" Grid.Row="14" Margin="10,5,24,0" FontSize="14pt" />
+        <Label Content="K1" Grid.Column="7" Grid.Row="14" Margin="10,5,24,0" FontSize="14pt"/>
 
         <Rectangle Fill="Blue" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="66,0,66,0" Visibility="{Binding ViAnzeige.VisibilityRectangleAbleitung}" />
 
@@ -171,8 +171,8 @@
         <Label Grid.Column="17" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Width="36" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="21"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
         <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
     </Grid>
 </Window>

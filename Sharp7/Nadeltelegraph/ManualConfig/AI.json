@@ -4,10 +4,10 @@
       "LaufendeNr": 0,
       "StartByte": 0,
       "StartBit": 0,
-      "AnzahlBit": 16,
+      "AnzahlBit": 8,
       "Type": "-",
-      "Bezeichnung": "AI0",
-      "Kommentar": "Dummy analog Eingang 0"
+      "Bezeichnung": "ASCII",
+      "Kommentar": "ASCII Code der Taste"
     }
   ]
 }

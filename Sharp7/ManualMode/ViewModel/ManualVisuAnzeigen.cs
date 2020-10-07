@@ -25,6 +25,11 @@ namespace ManualMode.ViewModel
                 VisibilityDi.Add(Visibility.Hidden);
                 BezeichnungDi.Add("-");
                 KommentarDi.Add("-");
+
+                ContentAi.Add("-");
+                VisibilityAi.Add(Visibility.Hidden);
+                BezeichnungAi.Add("-");
+                KommentarAi.Add("-");
             }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -44,12 +49,93 @@ namespace ManualMode.ViewModel
                         SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster, i);
                         SetFarbeDi((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
                     }
+
+
+
+                }
+
+
+                if (_manualMode?.GetConfig?.ConfigAi?.AnalogeEingaenge != null)
+                {
+                    foreach (var analogeEingaenge in _manualMode.GetConfig.ConfigAi.AnalogeEingaenge)
+                    {
+                        switch (analogeEingaenge.AnzahlBit)
+                        {
+                            case 8:
+                                var wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
+                                ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X");
+                                break;
+                        }
+                    }
                 }
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+
+        #region Digitale Eingänge
+
+        public void SetFarbeDi(bool val, int id)
+        {
+            if (val)
+            {
+                FarbeDi[id] = Brushes.LawnGreen;
+            }
+            else
+            {
+                FarbeDi[id] = Brushes.LightGray;
+            }
+        }
+
+        private ObservableCollection<Brush> _farbeDi = new ObservableCollection<Brush>();
+        public ObservableCollection<Brush> FarbeDi
+        {
+            get => _farbeDi;
+            set
+            {
+                _farbeDi = value;
+                OnPropertyChanged("FarbeDi");
+            }
+        }
+
+        private ObservableCollection<Visibility> _visibilityDi = new ObservableCollection<Visibility>();
+        public ObservableCollection<Visibility> VisibilityDi
+        {
+            get => _visibilityDi;
+            set
+            {
+                _visibilityDi = value;
+                OnPropertyChanged(nameof(VisibilityDi));
+            }
+        }
+
+        private ObservableCollection<string> _bezeichnungDi = new ObservableCollection<string>();
+        public ObservableCollection<string> BezeichnungDi
+        {
+            get => _bezeichnungDi;
+            set
+            {
+                _bezeichnungDi = value;
+                OnPropertyChanged(nameof(BezeichnungDi));
+            }
+        }
+
+
+        private ObservableCollection<string> _kommentarDi = new ObservableCollection<string>();
+        public ObservableCollection<string> KommentarDi
+        {
+            get => _kommentarDi;
+            set
+            {
+                _kommentarDi = value;
+                OnPropertyChanged(nameof(KommentarDi));
+            }
+        }
+
+        #endregion
+
 
         #region Digitale Ausgänge
 
@@ -177,68 +263,58 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-        #region Digitale Eingänge
 
-        public void SetFarbeDi(bool val, int id)
+
+        #region Analoge Eingänge
+
+
+
+        private ObservableCollection<string> _contentAi = new ObservableCollection<string>();
+        public ObservableCollection<string> ContentAi
         {
-            if (val)
+            get => _contentAi;
+            set
             {
-                FarbeDi[id] = Brushes.LawnGreen;
-            }
-            else
-            {
-                FarbeDi[id] = Brushes.LightGray;
+                _contentAi = value;
+                OnPropertyChanged("ContentAi");
             }
         }
 
-        private ObservableCollection<Brush> _farbeDi = new ObservableCollection<Brush>();
-        public ObservableCollection<Brush> FarbeDi
+        private ObservableCollection<Visibility> _visibilityAi = new ObservableCollection<Visibility>();
+        public ObservableCollection<Visibility> VisibilityAi
         {
-            get => _farbeDi;
+            get => _visibilityAi;
             set
             {
-                _farbeDi = value;
-                OnPropertyChanged("FarbeDi");
+                _visibilityAi = value;
+                OnPropertyChanged(nameof(VisibilityAi));
             }
         }
 
-        private ObservableCollection<Visibility> _visibilityDi = new ObservableCollection<Visibility>();
-        public ObservableCollection<Visibility> VisibilityDi
+        private ObservableCollection<string> _bezeichnungAi = new ObservableCollection<string>();
+        public ObservableCollection<string> BezeichnungAi
         {
-            get => _visibilityDi;
+            get => _bezeichnungAi;
             set
             {
-                _visibilityDi = value;
-                OnPropertyChanged(nameof(VisibilityDi));
-            }
-        }
-
-        private ObservableCollection<string> _bezeichnungDi = new ObservableCollection<string>();
-        public ObservableCollection<string> BezeichnungDi
-        {
-            get => _bezeichnungDi;
-            set
-            {
-                _bezeichnungDi = value;
-                OnPropertyChanged(nameof(BezeichnungDi));
+                _bezeichnungAi = value;
+                OnPropertyChanged(nameof(BezeichnungAi));
             }
         }
 
 
-        private ObservableCollection<string> _kommentarDi = new ObservableCollection<string>();
-        public ObservableCollection<string> KommentarDi
+        private ObservableCollection<string> _kommentarAi = new ObservableCollection<string>();
+        public ObservableCollection<string> KommentarAi
         {
-            get => _kommentarDi;
+            get => _kommentarAi;
             set
             {
-                _kommentarDi = value;
-                OnPropertyChanged(nameof(KommentarDi));
+                _kommentarAi = value;
+                OnPropertyChanged(nameof(KommentarAi));
             }
         }
 
         #endregion
-
-
 
 
         public event PropertyChangedEventHandler PropertyChanged;
