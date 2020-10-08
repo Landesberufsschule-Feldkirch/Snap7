@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Snap7.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,10 +12,16 @@
     <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
     <None Remove="Bilder\Zahnrad.PNG" />
     <None Remove="Bilder\Zahnstange.PNG" />
+    <None Remove="Video\Flammen.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +29,24 @@
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
     <Resource Include="Bilder\Zahnrad.PNG" />
     <Resource Include="Bilder\Zahnstange.PNG" />
+    <EmbeddedResource Include="Video\Flammen.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ManualConfig\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

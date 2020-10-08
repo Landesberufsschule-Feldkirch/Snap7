@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Kommunikation;
+﻿using Kommunikation;
+using System.Text;
 using System.Windows;
 
 namespace LAP_2010_5_Pumpensteuerung
@@ -7,11 +7,10 @@ namespace LAP_2010_5_Pumpensteuerung
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public bool DebugWindowAktiv { get; set; }
-        public LAP_2010_5_Pumpensteuerung.SetManual.SetManual SetManualWindow { get; set; }
-        public string VersionInfo { get; set; }
+       public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
+        public ManualMode.ManualMode ManualMode { get; set; }
         public readonly ViewModel.ViewModel ViewModel;
         public Datenstruktur Datenstruktur { get; set; }
 
@@ -34,21 +33,32 @@ namespace LAP_2010_5_Pumpensteuerung
 
             ViewModel = new ViewModel.ViewModel(this);
 
-            _datenRangieren = new DatenRangieren(this, ViewModel);
+            _datenRangieren = new DatenRangieren(ViewModel);
 
             InitializeComponent();
             DataContext = ViewModel;
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            DebugWindowAktiv = true;
-            SetManualWindow = new LAP_2010_5_Pumpensteuerung.SetManual.SetManual(ViewModel);
-            SetManualWindow.Show();
+            if (Plc.GetModel() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
     }
 }

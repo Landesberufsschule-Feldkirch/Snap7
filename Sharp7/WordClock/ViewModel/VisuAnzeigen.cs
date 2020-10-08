@@ -36,12 +36,12 @@
                 WinkelSekunden = _zeiten.GetSekunde() * 6;
                 WinkelMinuten = _zeiten.GetMinute() * 6;
                 WinkelStunden = _zeiten.GetStunde() * 30 + _zeiten.GetMinute() * 0.5;
-   
+
                 if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";

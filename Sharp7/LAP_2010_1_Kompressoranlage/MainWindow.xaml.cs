@@ -1,6 +1,5 @@
-﻿using System.Text;
-using Kommunikation;
-using System.Windows;
+﻿using Kommunikation;
+using System.Text;
 
 namespace LAP_2010_1_Kompressoranlage
 {
@@ -10,8 +9,6 @@ namespace LAP_2010_1_Kompressoranlage
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-
-        private readonly DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -23,7 +20,7 @@ namespace LAP_2010_1_Kompressoranlage
             const string versionText = "LAP 2010/1 Kompressoranlage";
             VersionNummer = "V2.0";
 
-           VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
@@ -32,12 +29,12 @@ namespace LAP_2010_1_Kompressoranlage
 
 
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            var datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

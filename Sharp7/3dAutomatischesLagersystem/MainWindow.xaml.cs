@@ -1,7 +1,7 @@
 ﻿using AutomatischesLagersystem.DreiD;
 using Kommunikation;
-using System.Windows;
 using SharpDX.Text;
+using System.Windows;
 
 namespace AutomatischesLagersystem
 {
@@ -35,7 +35,7 @@ namespace AutomatischesLagersystem
         {
             const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
-           VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
@@ -43,8 +43,8 @@ namespace AutomatischesLagersystem
             };
 
 
-           
-            
+
+
 
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;

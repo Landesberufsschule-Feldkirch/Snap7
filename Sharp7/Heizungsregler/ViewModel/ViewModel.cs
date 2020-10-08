@@ -9,7 +9,7 @@
         public VisuAnzeigen ViAnzeige { get; set; }
 
         private readonly MainWindow _mainWindow;
-        
+
         public ViewModel(MainWindow mw)
         {
             _mainWindow = mw;

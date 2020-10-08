@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Kommunikation;
+﻿using Kommunikation;
+using System.Text;
 using System.Windows;
 
 namespace LAP_2010_2_Transportwagen
@@ -23,7 +23,7 @@ namespace LAP_2010_2_Transportwagen
             const string versionText = "LAP 2010/2 Transportwagen";
             VersionNummer = "V2.0";
 
-           VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfo = versionText + " - " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
@@ -48,6 +48,8 @@ namespace LAP_2010_2_Transportwagen
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RealTimeGraphX
+﻿namespace RealTimeGraphX
 {
     /// <summary>
     ///  Represents a graph x/y data points boundaries.

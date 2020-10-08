@@ -70,7 +70,7 @@
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -86,7 +86,7 @@
 
         internal void SetManualQ2() => _ofentuerSteuerung.Q2 = ClickModeButtonQ2();
 
-        internal void SetS1() => _ofentuerSteuerung.S1 = ClickModeButtonS1();
+        internal void SetS1() => _ofentuerSteuerung.S1 = !ClickModeButtonS1();
 
         internal void SetS2() => _ofentuerSteuerung.S2 = ClickModeButtonS2();
 
@@ -280,10 +280,8 @@
                 ClickModeBtnQ1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1 = "Press";
-            }
+
+            ClickModeBtnQ1 = "Press";
             return false;
         }
 
@@ -310,10 +308,8 @@
                 ClickModeBtnQ2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ2 = "Press";
-            }
+
+            ClickModeBtnQ2 = "Press";
             return false;
         }
 
@@ -340,10 +336,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -370,10 +364,8 @@
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 
@@ -400,10 +392,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 
@@ -430,10 +420,8 @@
                 ClickModeBtnB3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnB3 = "Press";
-            }
+
+            ClickModeBtnB3 = "Press";
             return false;
         }
 

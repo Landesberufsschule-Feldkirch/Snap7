@@ -16,7 +16,7 @@ namespace Nadeltelegraph.Model
         public bool P4R { get; set; }
         public bool P5L { get; set; }
         public bool P5R { get; set; }
-        public  ObservableCollection<Zeiger> AlleZeiger = new ObservableCollection<Zeiger>();
+        public ObservableCollection<Zeiger> AlleZeiger = new ObservableCollection<Zeiger>();
 
         public Nadeltelegraph()
         {

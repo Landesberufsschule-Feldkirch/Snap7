@@ -6,7 +6,7 @@ namespace ManualMode
 {
     public partial class FensterAi
     {
-        public FensterAi(Model.ConfigAi configAi,  ManualViewModel mvm)
+        public FensterAi(Model.ConfigAi configAi, ManualViewModel mvm)
         {
             var manViewModel = mvm;
             InitializeComponent();

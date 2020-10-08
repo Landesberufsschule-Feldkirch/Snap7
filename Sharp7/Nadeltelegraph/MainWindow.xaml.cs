@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Kommunikation;
+﻿using Kommunikation;
+using System.Text;
 
 namespace Nadeltelegraph
 {
@@ -31,7 +31,7 @@ namespace Nadeltelegraph
             };
 
             var viewModel = new ViewModel.ViewModel(this);
-             _datenRangieren = new DatenRangieren(viewModel);
+            _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
@@ -44,6 +44,8 @@ namespace Nadeltelegraph
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void ManualModeOeffnen(object sender, System.Windows.RoutedEventArgs e)

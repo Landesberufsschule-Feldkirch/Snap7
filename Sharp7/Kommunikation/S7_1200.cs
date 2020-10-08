@@ -41,7 +41,7 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
         private bool _taskRunning = true;
 
-        public S7_1200(Datenstruktur datenstruktur , Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public S7_1200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 

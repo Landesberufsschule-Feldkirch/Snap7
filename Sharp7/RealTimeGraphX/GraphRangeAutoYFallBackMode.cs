@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RealTimeGraphX
+﻿namespace RealTimeGraphX
 {
     /// <summary>
     /// Represents an <see cref="IGraphRange"/> AutoY fall-back mode for then all Y values are equal.

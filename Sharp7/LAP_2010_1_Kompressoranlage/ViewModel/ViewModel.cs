@@ -6,19 +6,18 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
     public class ViewModel
     {
-        private readonly Model.Kompressoranlage _kompressoranlage;
-        public Model.Kompressoranlage Kompressoranlage => _kompressoranlage;
+        public Model.Kompressoranlage Kompressoranlage { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _kompressoranlage = new Model.Kompressoranlage();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _kompressoranlage);
+            Kompressoranlage = new Model.Kompressoranlage();
+            ViAnzeige = new VisuAnzeigen(mainWindow, Kompressoranlage);
         }
 
 
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnF1 => _btnF1 ?? (_btnF1 = new RelayCommand(p => _kompressoranlage.BtnF1(), p => true));
+        public ICommand BtnF1 => _btnF1 ?? (_btnF1 = new RelayCommand(p => Kompressoranlage.BtnF1(), p => true));
 
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global
@@ -30,6 +29,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         private ICommand _btnB1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnB1 => _btnB1 ?? (_btnB1 = new RelayCommand(p => _kompressoranlage.BtnB1(), p => true));
+        public ICommand BtnB1 => _btnB1 ?? (_btnB1 = new RelayCommand(p => Kompressoranlage.BtnB1(), p => true));
     }
 }

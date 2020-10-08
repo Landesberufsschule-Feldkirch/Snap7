@@ -67,7 +67,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -164,10 +164,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -194,10 +192,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 

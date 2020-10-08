@@ -1,11 +1,11 @@
-﻿using ManualMode.ViewModel;
-using ManualMode.Model;
+﻿using ManualMode.Model;
+using ManualMode.ViewModel;
 using System;
 
 namespace ManualMode
 {
     public class ManualMode
-    {        
+    {
         public enum ManualModeConfig
         {
             Di,

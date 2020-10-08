@@ -1,8 +1,8 @@
-﻿using System.Text;
-using Kommunikation;
-using System.Windows;
-using Heizungsregler.Model;
+﻿using Heizungsregler.Model;
 using Heizungsregler.SetManual;
+using Kommunikation;
+using System.Text;
+using System.Windows;
 
 namespace Heizungsregler
 {

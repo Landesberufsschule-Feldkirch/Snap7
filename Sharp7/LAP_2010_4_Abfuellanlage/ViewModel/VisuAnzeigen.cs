@@ -10,7 +10,7 @@
         private readonly Model.AbfuellAnlage _abfuellAnlage;
         private readonly MainWindow _mainWindow;
 
-        private readonly double HoeheFuellBalken = 9 * 35;
+        private const double HoeheFuellBalken = 9 * 35;
 
         public VisuAnzeigen(MainWindow mw, Model.AbfuellAnlage aa)
         {
@@ -89,7 +89,7 @@
                 VisibilityDose3(_abfuellAnlage.AlleDosen[2].Sichtbar);
                 VisibilityDose4(_abfuellAnlage.AlleDosen[3].Sichtbar);
 
-                VisibilityAbleitung(_abfuellAnlage.K2 && (_abfuellAnlage.Pegel > 0.01));
+                VisibilityAbleitung(_abfuellAnlage.K2 && _abfuellAnlage.Pegel > 0.01);
 
                 SichtbarkeitK1(_abfuellAnlage.K1);
                 SichtbarkeitK2(_abfuellAnlage.K2);
@@ -101,7 +101,7 @@
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -119,7 +119,7 @@
 
         internal void SetK2() => _abfuellAnlage.K2 = ClickModeButtonK2();
 
-        internal void SetS1() => _abfuellAnlage.S1 = ClickModeButtonS1();
+        internal void SetS1() => _abfuellAnlage.S1 = !ClickModeButtonS1();
 
         internal void BtnS2() => _abfuellAnlage.S2 = ClickModeButtonS2();
 
@@ -394,10 +394,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -424,10 +422,8 @@
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 
@@ -454,10 +450,8 @@
                 ClickModeBtnQ1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1 = "Press";
-            }
+
+            ClickModeBtnQ1 = "Press";
             return false;
         }
 
@@ -484,10 +478,8 @@
                 ClickModeBtnK1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnK1 = "Press";
-            }
+
+            ClickModeBtnK1 = "Press";
             return false;
         }
 
@@ -514,10 +506,8 @@
                 ClickModeBtnK2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnK2 = "Press";
-            }
+
+            ClickModeBtnK2 = "Press";
             return false;
         }
 

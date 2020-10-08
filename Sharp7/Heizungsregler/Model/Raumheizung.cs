@@ -1,5 +1,5 @@
-﻿using System;
-using Hydraulik;
+﻿using Hydraulik;
+using System;
 
 namespace Heizungsregler.Model
 {
@@ -26,7 +26,7 @@ namespace Heizungsregler.Model
                 case Betriebsarten.Aus:
                     _vorlaufSolltemperatur = 0;
                     break;
-                case Betriebsarten.Tag: 
+                case Betriebsarten.Tag:
                     _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur, _witterungsTemperatur);
                     break;
                 case Betriebsarten.Nacht:

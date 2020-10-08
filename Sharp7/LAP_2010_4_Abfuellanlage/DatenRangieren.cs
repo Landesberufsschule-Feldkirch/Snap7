@@ -4,7 +4,6 @@ namespace LAP_2010_4_Abfuellanlage
 {
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _abfuellanlageViewModel;
 
         private enum BitPosAusgang
@@ -33,18 +32,14 @@ namespace LAP_2010_4_Abfuellanlage
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
                 _abfuellanlageViewModel.AbfuellAnlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
                 _abfuellanlageViewModel.AbfuellAnlage.K2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
                 _abfuellanlageViewModel.AbfuellAnlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
                 _abfuellanlageViewModel.AbfuellAnlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            }
         }
 
-        public DatenRangieren(MainWindow mw, LAP_2010_4_Abfuellanlage.ViewModel.ViewModel vm)
+        public DatenRangieren(LAP_2010_4_Abfuellanlage.ViewModel.ViewModel vm)
         {
-            _mainWindow = mw;
             _abfuellanlageViewModel = vm;
         }
     }

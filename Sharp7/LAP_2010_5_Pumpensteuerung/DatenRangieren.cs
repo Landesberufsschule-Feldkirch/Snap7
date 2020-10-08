@@ -4,7 +4,6 @@ namespace LAP_2010_5_Pumpensteuerung
 {
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
@@ -21,7 +20,7 @@ namespace LAP_2010_5_Pumpensteuerung
             F1,     // Thermorelais
             S1,     // Wahlschalter Hand
             S2,     // Wahlschalter Automatik
-            S3,     // Störung quittieren
+            S3      // Störung quittieren
         }
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
@@ -36,17 +35,13 @@ namespace LAP_2010_5_Pumpensteuerung
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
                 _viewModel.Pumpensteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
                 _viewModel.Pumpensteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
                 _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            }
-        }
+           }
 
-        public DatenRangieren(MainWindow mw, LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm)
+        public DatenRangieren(LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm)
         {
-            _mainWindow = mw;
             _viewModel = vm;
         }
     }

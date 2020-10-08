@@ -7,8 +7,9 @@
         public bool P1 { get; set; } // Lampe rot
         public bool P2 { get; set; } // Lampe grün
 
-        public Zahlenschloss(MainWindow mw)
+        public Zahlenschloss()
         {
+            Zeichen = ' ';
         }
     }
 }

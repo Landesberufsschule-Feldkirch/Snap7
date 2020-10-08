@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using RealTimeGraphX;
+using System.Windows;
 using System.Windows.Controls;
-using RealTimeGraphX;
 
 namespace Synchronisiereinrichtung.GraphWindow
 {

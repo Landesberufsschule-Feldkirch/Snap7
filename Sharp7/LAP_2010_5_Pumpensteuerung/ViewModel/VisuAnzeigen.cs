@@ -6,7 +6,7 @@
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly double HoeheFuellBalken = 9 * 35;
+        private const double HoeheFuellBalken = 9 * 35;
 
         private readonly MainWindow _mainWindow;
         private readonly Model.Pumpensteuerung _pumpensteuerung;
@@ -64,7 +64,7 @@
                 FarbeZuleitungLinksWaagrecht(_pumpensteuerung.Q1);
                 FarbeZuleitungLinksSenkrecht(_pumpensteuerung.Q1);
                 FarbeAbleitungOben(_pumpensteuerung.Pegel > 0.01);
-                FarbeAbleitungUnten((_pumpensteuerung.Pegel > 0.01) && _pumpensteuerung.Y1);
+                FarbeAbleitungUnten(_pumpensteuerung.Pegel > 0.01 && _pumpensteuerung.Y1);
 
                 SichtbarkeitQ1(_pumpensteuerung.Q1);
                 SichtbarkeitB1(_pumpensteuerung.B1);
@@ -79,7 +79,7 @@
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -91,7 +91,7 @@
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS3() => _pumpensteuerung.S3 = ClickModeButtonS3();
+        internal void SetS3() => _pumpensteuerung.S3 = !ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
 
@@ -197,10 +197,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 

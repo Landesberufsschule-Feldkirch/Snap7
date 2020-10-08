@@ -5,13 +5,12 @@
 
     public class ViewModel
     {
-        private readonly Model.OfentuerSteuerung _ofentuerSteuerung;
-        public Model.OfentuerSteuerung OfentuerSteuerung => _ofentuerSteuerung;
+        public Model.OfentuerSteuerung OfentuerSteuerung { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _ofentuerSteuerung = new Model.OfentuerSteuerung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _ofentuerSteuerung);
+            OfentuerSteuerung = new Model.OfentuerSteuerung();
+            ViAnzeige = new VisuAnzeigen(mainWindow, OfentuerSteuerung);
         }
 
 

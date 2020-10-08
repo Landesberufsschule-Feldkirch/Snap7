@@ -1,8 +1,8 @@
-﻿using System.Text;
-using Kommunikation;
+﻿using Kommunikation;
 using Synchronisiereinrichtung.kraftwerk.ViewModel;
-using System.Windows;
 using Synchronisiereinrichtung.SetManual;
+using System.Text;
+using System.Windows;
 
 namespace Synchronisiereinrichtung
 {

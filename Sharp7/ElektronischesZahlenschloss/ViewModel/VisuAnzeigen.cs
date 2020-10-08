@@ -14,7 +14,7 @@
             _mainWindow = mw;
             _zahlenschloss = zs;
 
-            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
             CodeAnzeige = "00000";
 
@@ -44,7 +44,7 @@
                 {
                     VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();                  
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -58,11 +58,9 @@
 
         internal void Buchstabe(object buchstabe)
         {
-            if (buchstabe is string ascii)
-            {
-                var asciiCode = ascii[0];
-                _zahlenschloss.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
-            }
+            if (!(buchstabe is string ascii)) return;
+            var asciiCode = int.Parse(ascii);
+            _zahlenschloss.Zeichen = ClickModeButton(asciiCode) ? (char)asciiCode : ' ';
         }
 
         #region SPS Version, Status und Farbe
@@ -182,10 +180,8 @@
                 ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtn[asciiCode] = "Press";
-            }
+
+            ClickModeBtn[asciiCode] = "Press";
             return false;
         }
 

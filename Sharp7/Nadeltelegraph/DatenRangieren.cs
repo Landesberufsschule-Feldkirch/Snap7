@@ -6,7 +6,7 @@
     {
         private readonly ViewModel.ViewModel _viewModel;
 
-       public enum BitPosAusgang
+        public enum BitPosAusgang
         {
             P1R = 0,
             P1L,

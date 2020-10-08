@@ -16,7 +16,7 @@
             _stiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
         }
 
-       
+
 
         private ICommand _btnStart;
         // ReSharper disable once UnusedMember.Global

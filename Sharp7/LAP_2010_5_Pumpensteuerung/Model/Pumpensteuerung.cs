@@ -18,6 +18,7 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
         public Pumpensteuerung()
         {
+            S3 = true;
             F1 = true;
             Pegel = 0.95;
 
@@ -37,8 +38,8 @@ namespace LAP_2010_5_Pumpensteuerung.Model
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;
 
-                B1 = (Pegel > 0.9);
-                B2 = (Pegel > 0.1);
+                B1 = Pegel > 0.9;
+                B2 = Pegel > 0.1;
 
                 Thread.Sleep(10);
             }

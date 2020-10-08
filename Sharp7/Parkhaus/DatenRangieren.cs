@@ -1,12 +1,10 @@
 ﻿namespace Parkhaus
 {
-    using Sharp7;
-
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
 
-       public enum BitPosAusgang
+        public enum BitPosAusgang
         {
             P1R = 0,
             P1L,
@@ -22,12 +20,12 @@
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            
+
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-          
+
         }
 
         public DatenRangieren(MainWindow mainWindow, ViewModel.ViewModel vm) => _viewModel = vm;

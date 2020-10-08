@@ -1,7 +1,7 @@
-﻿using System.Text;
-using Kommunikation;
-using System.Windows;
+﻿using Kommunikation;
 using LAP_2019_Foerderanlage.SetManual;
+using System.Text;
+using System.Windows;
 using WpfAnimatedGif;
 
 namespace LAP_2019_Foerderanlage

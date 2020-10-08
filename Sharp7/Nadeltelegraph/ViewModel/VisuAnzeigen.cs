@@ -57,7 +57,7 @@
                     AlleBreiten[30 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteDownLeft();
                     AlleBreiten[40 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteDownRight();
                 }
-            
+
                 if (_mainWindow.Plc != null)
                 {
                     VersionNr = _mainWindow.VersionNummer;

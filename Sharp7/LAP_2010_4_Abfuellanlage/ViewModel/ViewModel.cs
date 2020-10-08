@@ -6,13 +6,12 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
     public class ViewModel
     {
-        private readonly Model.AbfuellAnlage _abfuellAnlage;
-        public Model.AbfuellAnlage AbfuellAnlage => _abfuellAnlage;
+        public Model.AbfuellAnlage AbfuellAnlage { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _abfuellAnlage = new Model.AbfuellAnlage();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _abfuellAnlage);
+            AbfuellAnlage = new Model.AbfuellAnlage();
+            ViAnzeige = new VisuAnzeigen(mainWindow, AbfuellAnlage);
         }
 
 
@@ -31,12 +30,12 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => _abfuellAnlage.AllesReset(), p => true);
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => AbfuellAnlage.AllesReset(), p => true);
 
         private ICommand _btnNachuellen;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnNachuellen =>
-            _btnNachuellen ??= new RelayCommand(p => _abfuellAnlage.Nachfuellen(), p => true);
+            _btnNachuellen ??= new RelayCommand(p => AbfuellAnlage.Nachfuellen(), p => true);
 
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global

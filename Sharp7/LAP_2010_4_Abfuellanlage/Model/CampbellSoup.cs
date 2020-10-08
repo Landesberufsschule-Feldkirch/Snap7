@@ -104,7 +104,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                     break;
             }
 
-            if ((Position.Punkt.X > _sensorB1Links.X) && (Position.Punkt.X < _sensorB1Rechts.X)) return (true, aktuelleDose);
+            if (Position.Punkt.X > _sensorB1Links.X && Position.Punkt.X < _sensorB1Rechts.X) return (true, aktuelleDose);
             return (false, aktuelleDose);
         }
 

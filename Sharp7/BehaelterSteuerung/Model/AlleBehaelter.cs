@@ -16,7 +16,7 @@
 
         public bool AlleKnoepfeAktivieren { get; set; }
         public bool P1 { get; set; }
-        public  List<Behaelter> AlleMeineBehaelter { get; set; }
+        public List<Behaelter> AlleMeineBehaelter { get; set; }
 
         private bool _automatikModusAktiv;
 
@@ -51,7 +51,7 @@
                     AlleAutomatikKnoepfeAktivieren();
                     _automatikModusAktiv = false;
                 }
-                
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
@@ -72,9 +72,9 @@
         internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus1324);
 
         // ReSharper disable once UnusedMember.Global
-        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus1432); 
+        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus1432);
         // ReSharper disable once UnusedMember.Global
-        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus4321); 
+        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus4321);
 
 
         private void AlleAutomatikKnoepfeDeaktivieren()

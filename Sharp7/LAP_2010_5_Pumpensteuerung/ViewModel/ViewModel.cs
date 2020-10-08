@@ -5,29 +5,28 @@
 
     public class ViewModel
     {
-        private readonly Model.Pumpensteuerung _pumpensteuerung;
-        public Model.Pumpensteuerung Pumpensteuerung => _pumpensteuerung;
+        public Model.Pumpensteuerung Pumpensteuerung { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _pumpensteuerung = new Model.Pumpensteuerung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _pumpensteuerung);
+            Pumpensteuerung = new Model.Pumpensteuerung();
+            ViAnzeige = new VisuAnzeigen(mainWindow, Pumpensteuerung);
         }
 
 
         private ICommand _btnTasterHand;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnTasterHand =>
-            _btnTasterHand ??= new RelayCommand(p => _pumpensteuerung.TasterHand(), p => true);
+            _btnTasterHand ??= new RelayCommand(p => Pumpensteuerung.TasterHand(), p => true);
 
         private ICommand _btnTasterAus;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterAus => _btnTasterAus ??= new RelayCommand(p => _pumpensteuerung.TasterAus(), p => true);
+        public ICommand BtnTasterAus => _btnTasterAus ??= new RelayCommand(p => Pumpensteuerung.TasterAus(), p => true);
 
         private ICommand _btnTasterAutomatik;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnTasterAutomatik =>
-            _btnTasterAutomatik ??= new RelayCommand(p => _pumpensteuerung.TasterAutomatik(), p => true);
+            _btnTasterAutomatik ??= new RelayCommand(p => Pumpensteuerung.TasterAutomatik(), p => true);
 
         private ICommand _btnS3;
         // ReSharper disable once UnusedMember.Global
@@ -36,15 +35,15 @@
         private ICommand _btnThermorelaisF1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnThermorelaisF1 =>
-            _btnThermorelaisF1 ??= new RelayCommand(p => _pumpensteuerung.ThermorelaisF1(), p => true);
+            _btnThermorelaisF1 ??= new RelayCommand(p => Pumpensteuerung.ThermorelaisF1(), p => true);
 
         private ICommand _btnVentilY1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilY1 => _btnVentilY1 ??= new RelayCommand(p => _pumpensteuerung.VentilY1(), p => true);
+        public ICommand BtnVentilY1 => _btnVentilY1 ??= new RelayCommand(p => Pumpensteuerung.VentilY1(), p => true);
 
         private ICommand _btnSetManualQ1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSetManualQ1 =>
-            _btnSetManualQ1 ??= new RelayCommand(p => _pumpensteuerung.SetManualQ1(), p => true);
+            _btnSetManualQ1 ??= new RelayCommand(p => Pumpensteuerung.SetManualQ1(), p => true);
     }
 }

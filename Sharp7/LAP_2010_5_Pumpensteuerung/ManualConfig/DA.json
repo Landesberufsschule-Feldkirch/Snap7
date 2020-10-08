@@ -1,0 +1,31 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Pumpe Ein"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Störung"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Pumpe"
+    }
+  ]
+}

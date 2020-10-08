@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace Hydraulik
 {
@@ -41,6 +42,10 @@ namespace Hydraulik
                     case Richtung.Schliessen:
                         _positionProzent -= _deltaMillisekunden;
                         break;
+                    case Richtung.Stop:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(_richtung));
                 }
 
                 LimitsTesten();
@@ -61,6 +66,10 @@ namespace Hydraulik
                 case Richtung.Schliessen:
                     _positionProzent -= _deltaMillisekunden * dauer;
                     break;
+                case Richtung.Stop:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(ri), ri, null);
             }
 
             LimitsTesten();

@@ -1,20 +1,10 @@
 ﻿using RealTimeGraphX.EventArguments;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RealTimeGraphX.WPF
 {
@@ -99,7 +89,7 @@ namespace RealTimeGraphX.WPF
 
             _items_control = GetTemplateChild("PART_ItemsControl") as ItemsControl;
 
-            _items_control.Loaded += (x, e) => 
+            _items_control.Loaded += (x, e) =>
             {
                 ItemsPresenter itemsPresenter = GetVisualChild<ItemsPresenter>(_items_control);
                 _axisPanel = VisualTreeHelper.GetChild(itemsPresenter, 0) as WpfGraphAxisPanel;

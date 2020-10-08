@@ -1,0 +1,40 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "K1",
+      "Kommentar": "Dosen Vereinzeln"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "K2",
+      "Kommentar": "Dosen Füllen"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "P1",
+      "Kommentar": "Behälter leer "
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Antrieb Förderband"
+    }
+  ]
+}

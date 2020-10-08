@@ -62,8 +62,20 @@ namespace ManualMode.ViewModel
                         switch (analogeEingaenge.AnzahlBit)
                         {
                             case 8:
-                                var wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
-                                ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X");
+                                byte wert;
+                                if (analogeEingaenge.Type.Contains("Ascii"))
+                                {
+                                    wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X") +" '"+ (char)wert + "'";
+                                }
+                                else
+                                {
+                                    wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X");
+                                }
+
+
+
                                 break;
                         }
                     }

@@ -173,7 +173,7 @@
             }
         }
 
-#region SPS Version, Status und Farbe
+        #region SPS Version, Status und Farbe
 
         private string _versionNr;
         public string VersionNr

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace LAP_2010_4_Abfuellanlage.Model
@@ -18,10 +19,11 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         private readonly int _anzahlDosen;
         private int _aktuelleDose;
-        private readonly double leerGeschwindigkeit = 0.002;
+        private const double LeerGeschwindigkeit = 0.002;
 
         public AbfuellAnlage()
         {
+            S1 = true;
             Pegel = 0.9;
 
             AlleDosen = new List<CampbellSoup>
@@ -39,7 +41,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         {
             while (true)
             {
-                if (K2) Pegel -= leerGeschwindigkeit;
+                if (K2) Pegel -= LeerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
                 B1 = Pegel > 0.1;
@@ -62,16 +64,13 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         private bool KollisionErkennen(CampbellSoup campbellSoup)
         {
-            bool stop = false;
+            var stop = false;
             var (lx, ly) = campbellSoup.GetRichtung();
 
-            foreach (var dose in AlleDosen)
+            foreach (var dose in AlleDosen.Where(dose => campbellSoup.Id != dose.Id))
             {
-                if (campbellSoup.Id != dose.Id)
-                {
-                    var (hx, hy) = dose.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
-                }
+                var (hx, hy) = dose.GetRichtung();
+                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
             }
 
             return stop;

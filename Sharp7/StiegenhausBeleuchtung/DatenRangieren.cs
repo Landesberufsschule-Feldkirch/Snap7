@@ -77,7 +77,7 @@
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B13, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(13));
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B14, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(14));
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B15, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(15));
-            
+
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B21, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(21));
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B22, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(22));
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B23, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(23));
