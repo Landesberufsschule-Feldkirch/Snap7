@@ -1,0 +1,22 @@
+﻿{
+  "AnalogeEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "-",
+      "Bezeichnung": "Pegel",
+      "Kommentar": "Pegel 0-100"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwert",
+      "Bezeichnung": "Pegel",
+      "Kommentar": "Pegel"
+    }
+  ]
+}

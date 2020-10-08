@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
@@ -33,6 +34,21 @@
     <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
     <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
     <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ManualConfig\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

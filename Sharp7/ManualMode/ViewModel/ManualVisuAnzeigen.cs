@@ -62,19 +62,28 @@ namespace ManualMode.ViewModel
                         switch (analogeEingaenge.AnzahlBit)
                         {
                             case 8:
-                                byte wert;
+                                byte wertByte = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
                                 if (analogeEingaenge.Type.Contains("Ascii"))
                                 {
-                                    wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X") +" '"+ (char)wert + "'";
+
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
                                 }
                                 else
                                 {
-                                    wert = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wert + " 0x" + wert.ToString("X");
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
                                 }
+                                break;
+                            case 16:
+                                int wertInt = 256 * _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte] + _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte + 1];
 
-
+                                if (analogeEingaenge.Type.Contains("SiemensAnalogwert"))
+                                {
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                }
+                                else
+                                {
+                                    ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                }
 
                                 break;
                         }

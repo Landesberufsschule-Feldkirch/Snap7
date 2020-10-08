@@ -1,0 +1,58 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "B1",
+      "Kommentar": "Position Flasche"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster Start"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Stop"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Vereinzeln"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "-",
+      "Bezeichnung": "S4",
+      "Kommentar": "Taster Quittieren"
+    }
+  ]
+}

@@ -42,14 +42,11 @@ namespace LAP_2018_2_Abfuellanlage
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _viewModel.Abfuellanlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
-                _viewModel.Abfuellanlage.K2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
-                _viewModel.Abfuellanlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-                _viewModel.Abfuellanlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-                _viewModel.Abfuellanlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            }
+            _viewModel.Abfuellanlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
+            _viewModel.Abfuellanlage.K2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
+            _viewModel.Abfuellanlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Abfuellanlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Abfuellanlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
