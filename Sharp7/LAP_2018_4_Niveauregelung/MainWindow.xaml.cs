@@ -7,8 +7,7 @@ namespace LAP_2018_4_Niveauregelung
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public bool DebugWindowAktiv { get; set; }
-        public SetManual.SetManualWindow SetManualWindow { get; set; }
+        public ManualMode.ManualMode ManualMode { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -33,21 +32,32 @@ namespace LAP_2018_4_Niveauregelung
 
             ViewModel = new ViewModel.ViewModel(this);
 
-            _datenRangieren = new DatenRangieren(this, ViewModel);
+            _datenRangieren = new DatenRangieren(ViewModel);
 
             InitializeComponent();
             DataContext = ViewModel;
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            DebugWindowAktiv = true;
-            SetManualWindow = new SetManual.SetManualWindow(ViewModel);
-            SetManualWindow.Show();
+            if (Plc.GetPlcModus() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
     }
 }

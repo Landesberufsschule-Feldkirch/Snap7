@@ -4,7 +4,6 @@ namespace LAP_2018_4_Niveauregelung
 {
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
@@ -42,19 +41,15 @@ namespace LAP_2018_4_Niveauregelung
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _viewModel.NiveauRegelung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-                _viewModel.NiveauRegelung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-                _viewModel.NiveauRegelung.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
-                _viewModel.NiveauRegelung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                _viewModel.NiveauRegelung.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-            }
+            _viewModel.NiveauRegelung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.NiveauRegelung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.NiveauRegelung.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+            _viewModel.NiveauRegelung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.NiveauRegelung.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
         }
 
-        public DatenRangieren(MainWindow mw, LAP_2018_4_Niveauregelung.ViewModel.ViewModel vm)
+        public DatenRangieren(LAP_2018_4_Niveauregelung.ViewModel.ViewModel vm)
         {
-            _mainWindow = mw;
             _viewModel = vm;
         }
     }

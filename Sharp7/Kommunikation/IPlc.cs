@@ -5,7 +5,7 @@
         string GetSpsStatus();
         bool GetSpsError();
         string GetVersion();
-        string GetModel();
+        string GetPlcModus();
         void SetTaskRunning(bool active);
 
         // ReSharper disable once UnusedMember.Global

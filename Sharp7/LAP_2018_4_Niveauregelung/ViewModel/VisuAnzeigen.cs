@@ -74,7 +74,7 @@
                 FarbeZuleitungRechtsWaagrecht(_niveauRegelung.Q2);
                 FarbeZuleitungRechtsSenkrecht(_niveauRegelung.Q2);
                 FarbeAbleitungOben(_niveauRegelung.Pegel > 0.01);
-                FarbeAbleitungUnten(_niveauRegelung.Y1 && (_niveauRegelung.Pegel > 0.01));
+                FarbeAbleitungUnten(_niveauRegelung.Y1 && _niveauRegelung.Pegel > 0.01);
 
                 VisibilitySensorB1(_niveauRegelung.B1);
                 VisibilitySensorB2(_niveauRegelung.B2);
@@ -87,10 +87,13 @@
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
-                    SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
+                    {
+                        VersionNr = _mainWindow.VersionNummer;
+                        SpsVersionLokal = _mainWindow.VersionInfo;
+                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
@@ -188,10 +191,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -218,10 +219,8 @@
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 
@@ -248,10 +247,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 

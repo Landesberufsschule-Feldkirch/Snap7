@@ -45,7 +45,7 @@ namespace Kommunikation
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetVersion() => "42";
-        public string GetModel() => "Manual";
+        public string GetPlcModus() => "Manual";
         public void SetTaskRunning(bool active) => _taskRunning = active;
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)

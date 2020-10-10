@@ -79,14 +79,15 @@ namespace AmpelsteuerungKieswerk.ViewModel
                 RichtungLkw4(_alleLastKraftWagen.GetRichtungLkw(3));
                 RichtungLkw5(_alleLastKraftWagen.GetRichtungLkw(4));
 
-                VersionNr = _mainWindow.VersionNummer;
-
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
-                    SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
+                    {
+                        VersionNr = _mainWindow.VersionNummer;
+                        SpsVersionLokal = _mainWindow.VersionInfo;
+                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();

@@ -49,7 +49,7 @@ namespace LAP_2010_4_Abfuellanlage
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            if (Plc.GetModel() == "S7-1200")
+            if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
                 Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);

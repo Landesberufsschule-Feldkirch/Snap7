@@ -36,7 +36,7 @@ namespace LAP_2010_3_Ofentuersteuerung
             DataContext = viewModel;
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
-            
+
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
@@ -49,7 +49,7 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            if (Plc.GetModel() == "S7-1200")
+            if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
                 Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);

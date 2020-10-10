@@ -32,21 +32,21 @@ namespace LAP_2018_4_Niveauregelung.Model
 
         private void NiveauRegelungTask()
         {
-            double FuellGeschwindigkeit = 0.0008;
-            double LeerGeschwindigkeit = 0.001;
+            const double fuellGeschwindigkeit = 0.0008;
+            const double leerGeschwindigkeit = 0.001;
 
             while (true)
             {
-                if (Q1) Pegel += FuellGeschwindigkeit;
-                if (Q2) Pegel += FuellGeschwindigkeit;
-                if (Y1) Pegel -= LeerGeschwindigkeit;
+                if (Q1) Pegel += fuellGeschwindigkeit;
+                if (Q2) Pegel += fuellGeschwindigkeit;
+                if (Y1) Pegel -= leerGeschwindigkeit;
 
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;
 
-                B1 = (Pegel > 0.1);
-                B2 = (Pegel > 0.5);
-                B3 = (Pegel > 0.9);
+                B1 = Pegel > 0.1;
+                B2 = Pegel > 0.5;
+                B3 = Pegel > 0.9;
 
                 Thread.Sleep(10);
             }

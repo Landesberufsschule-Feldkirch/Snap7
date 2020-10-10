@@ -1,13 +1,13 @@
 ﻿{
-  "DigitaleEingaenge": [
+  "DigitaleAusgaenge": [
     {
       "LaufendeNr": 0,
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "B1",
-      "Kommentar": "Füllstand"
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Betrieb"
     },
     {
       "LaufendeNr": 1,
@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "B2",
-      "Kommentar": "Position Dose"
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Störung"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S1",
-      "Kommentar": "Taster Reset"
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte Füllstand"
     },
     {
       "LaufendeNr": 3,
@@ -33,8 +33,17 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Start"
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Pumpe"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Motor Pumpe"
     }
   ]
 }

@@ -13,7 +13,6 @@ namespace LAP_2018_2_Abfuellanlage
         public ManualMode.ManualMode ManualMode { get; set; }
 
         private readonly DatenRangieren _datenRangieren;
-        private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 4;
@@ -30,11 +29,11 @@ namespace LAP_2018_2_Abfuellanlage
                 VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
-            _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            var viewModel = new ViewModel.ViewModel(this);
+            _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
@@ -52,7 +51,7 @@ namespace LAP_2018_2_Abfuellanlage
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            if (Plc.GetModel() == "S7-1200")
+            if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
                 Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);

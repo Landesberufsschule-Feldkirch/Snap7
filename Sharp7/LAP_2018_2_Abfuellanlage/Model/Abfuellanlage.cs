@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace LAP_2018_2_Abfuellanlage.Model
@@ -43,11 +44,11 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
         private void AbfuellanlageTask()
         {
-            double LeerGeschwindigkeit = 0.001;
+            const double leerGeschwindigkeit = 0.001;
 
             while (true)
             {
-                if (K1) Pegel -= LeerGeschwindigkeit;
+                if (K1) Pegel -= leerGeschwindigkeit;
                 if (Pegel < 0) Pegel = 0;
 
                 if (K2) AlleFlaschen[_aktuelleFlasche].FlascheVereinzeln();
@@ -68,16 +69,13 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
         private bool KollisionErkennen(Flaschen bierflasche)
         {
-            bool stop = false;
+            var stop = false;
             var (lx, ly) = bierflasche.GetRichtung();
 
-            foreach (var flasche in AlleFlaschen)
+            foreach (var flasche in AlleFlaschen.Where(flasche => bierflasche.Id != flasche.Id))
             {
-                if (bierflasche.Id != flasche.Id)
-                {
-                    var (hx, hy) = flasche.GetRichtung();
-                    if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
-                }
+                var (hx, hy) = flasche.GetRichtung();
+                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.Position, flasche.Position, lx, ly); }
             }
 
             return stop;

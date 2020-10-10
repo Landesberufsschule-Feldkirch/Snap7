@@ -45,12 +45,12 @@ namespace Nadeltelegraph
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
-             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void ManualModeOeffnen(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (Plc.GetModel() == "S7-1200")
+            if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
                 Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);

@@ -169,7 +169,7 @@ namespace Kommunikation
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetVersion() => Encoding.ASCII.GetString(_datenstruktur.VersionInput, 0, _datenstruktur.VersionInput.Length);
-        public string GetModel() => "S7-1200";
+        public string GetPlcModus() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();

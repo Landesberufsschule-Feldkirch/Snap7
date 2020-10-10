@@ -5,28 +5,27 @@
 
     public class ViewModel
     {
-        private readonly Model.Abfuellanlage _abfuellAnlage;
-        public Model.Abfuellanlage Abfuellanlage => _abfuellAnlage;
+        public Model.Abfuellanlage Abfuellanlage { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _abfuellAnlage = new Model.Abfuellanlage();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _abfuellAnlage);
+            Abfuellanlage = new Model.Abfuellanlage();
+            ViAnzeige = new VisuAnzeigen(mainWindow, Abfuellanlage);
         }
 
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => _abfuellAnlage.AllesReset(), p => true);
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => Abfuellanlage.AllesReset(), p => true);
 
         private ICommand _btnNachfuellen;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnNachfuellen =>
-            _btnNachfuellen ??= new RelayCommand(p => _abfuellAnlage.TasterNachfuellen(), p => true);
+            _btnNachfuellen ??= new RelayCommand(p => Abfuellanlage.TasterNachfuellen(), p => true);
 
         private ICommand _btnTasterF1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterF1 => _btnTasterF1 ??= new RelayCommand(p => _abfuellAnlage.TasterF1(), p => true);
+        public ICommand BtnTasterF1 => _btnTasterF1 ??= new RelayCommand(p => Abfuellanlage.TasterF1(), p => true);
 
         private ICommand _btnTasterS1;
         // ReSharper disable once UnusedMember.Global

@@ -35,10 +35,10 @@ namespace LAP_2010_5_Pumpensteuerung
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-                _viewModel.Pumpensteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-                _viewModel.Pumpensteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-                _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-           }
+            _viewModel.Pumpensteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Pumpensteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+        }
 
         public DatenRangieren(LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm)
         {

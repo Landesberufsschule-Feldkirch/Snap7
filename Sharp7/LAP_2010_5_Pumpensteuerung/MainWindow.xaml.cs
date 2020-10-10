@@ -7,7 +7,7 @@ namespace LAP_2010_5_Pumpensteuerung
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-       public string VersionInfo { get; set; }
+        public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
 
         public ManualMode.ManualMode ManualMode { get; set; }
@@ -52,7 +52,7 @@ namespace LAP_2010_5_Pumpensteuerung
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            if (Plc.GetModel() == "S7-1200")
+            if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
                 Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);

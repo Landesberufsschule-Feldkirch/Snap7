@@ -5,7 +5,7 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "B1",
       "Kommentar": "Schwimmerschalter oben"
     },
@@ -14,7 +14,7 @@
       "StartByte": 0,
       "StartBit": 1,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "B2",
       "Kommentar": "Schwimmerschalter unten"
     },
@@ -23,7 +23,7 @@
       "StartByte": 0,
       "StartBit": 2,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "F1",
       "Kommentar": "Thermorelais"
     },
@@ -32,7 +32,7 @@
       "StartByte": 0,
       "StartBit": 3,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "S1",
       "Kommentar": "Wahlschalter Hand"
     },
@@ -41,7 +41,7 @@
       "StartByte": 0,
       "StartBit": 4,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "S2",
       "Kommentar": "Wahlschalter Automatik"
     },
@@ -50,7 +50,7 @@
       "StartByte": 0,
       "StartBit": 5,
       "AnzahlBit": 1,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "S3",
       "Kommentar": "Taster Störung quittieren"
     }

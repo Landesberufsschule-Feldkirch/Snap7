@@ -20,7 +20,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         private BewegungSchritt _bewegungSchritt;
         private readonly Punkt _startPosition;
         private const double BewegungIncrement = 0.5;
-        private readonly double _flascheBreite = 40;
+        private const double FlascheBreite = 40;
         private const double FlascheHoehe = 80;
         private readonly Punkt _vereinzelnerVentil = new Punkt(105, 385);
         private readonly Punkt _foerderbandLinks = new Punkt(105, 525);
@@ -38,7 +38,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             Sichtbar = true;
 
             _startPosition = new Punkt(_foerderbandLinks.X, _vereinzelnerVentil.Y - Id * FlascheHoehe);
-            Position = new Rechteck(_startPosition.Clone(), _flascheBreite, FlascheHoehe);
+            Position = new Rechteck(_startPosition.Clone(), FlascheBreite, FlascheHoehe);
         }
 
         public (Rechteck.RichtungX, Rechteck.RichtungY) GetRichtung() => (_richtungX, _richtungY);
@@ -103,7 +103,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     break;
             }
 
-            if ((Position.Punkt.X > _sensorB1Links.X) && (Position.Punkt.X < _sensorB1Rechts.X)) return (true, aktuelleFlasche);
+            if (Position.Punkt.X > _sensorB1Links.X && Position.Punkt.X < _sensorB1Rechts.X) return (true, aktuelleFlasche);
             return (false, aktuelleFlasche);
         }
 

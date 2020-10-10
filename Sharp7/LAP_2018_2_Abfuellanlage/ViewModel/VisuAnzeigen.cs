@@ -9,7 +9,7 @@
     {
         private readonly Model.Abfuellanlage _alleFlaschen;
         private readonly MainWindow _mainWindow;
-        private readonly double _hoeheFuellBalken = 9 * 35;
+        private const double HoeheFuellBalken = 9 * 35;
 
         public VisuAnzeigen(MainWindow mw, Model.Abfuellanlage af)
         {
@@ -95,7 +95,7 @@
                 VisibilitySensorB1(_alleFlaschen.B1);
                 VisibilityVentilK1(_alleFlaschen.K1);
                 VisibilityVentilK2(_alleFlaschen.K2);
-                VisibilityAbleitung(_alleFlaschen.K1 && (_alleFlaschen.Pegel > 0.01));
+                VisibilityAbleitung(_alleFlaschen.K1 && _alleFlaschen.Pegel > 0.01);
 
                 FarbeCircle_F1(_alleFlaschen.F1);
                 FarbeCircle_Q1(_alleFlaschen.Q1);
@@ -108,10 +108,13 @@
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
-                    SpsVersionLokal = _mainWindow.VersionInfo;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
+                    {
+                        VersionNr = _mainWindow.VersionNummer;
+                        SpsVersionLokal = _mainWindow.VersionInfo;
+                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
@@ -217,10 +220,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -247,10 +248,8 @@
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 
@@ -277,10 +276,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 
@@ -307,10 +304,8 @@
                 ClickModeBtnS4 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS4 = "Press";
-            }
+
+            ClickModeBtnS4 = "Press";
             return false;
         }
 
@@ -337,10 +332,8 @@
                 ClickModeBtnK1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnK1 = "Press";
-            }
+
+            ClickModeBtnK1 = "Press";
             return false;
         }
 
@@ -367,10 +360,8 @@
                 ClickModeBtnK2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnK2 = "Press";
-            }
+
+            ClickModeBtnK2 = "Press";
             return false;
         }
 
@@ -397,10 +388,8 @@
                 ClickModeBtnQ1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1 = "Press";
-            }
+
+            ClickModeBtnQ1 = "Press";
             return false;
         }
 
@@ -968,7 +957,7 @@
 
         public void Margin_1(double pegel)
         {
-            Margin1 = new Thickness(0, _hoeheFuellBalken * (1 - pegel), 0, 0);
+            Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
 
         private Thickness _margin1;

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using ManualMode.Model;
+using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
@@ -9,8 +11,14 @@ namespace ManualMode.ViewModel
     public class ManualVisuAnzeigen : INotifyPropertyChanged
     {
         private readonly ManualMode _manualMode;
+
+
+
         public ManualVisuAnzeigen(ManualMode mm)
         {
+
+
+
             _manualMode = mm;
 
             for (var i = 0; i < 100; i++)
@@ -38,6 +46,8 @@ namespace ManualMode.ViewModel
 
         private void VisuAnzeigenTask()
         {
+            const double siemensAnalogSkalierung = 27648;
+
             while (true)
             {
                 if (_manualMode?.Datenstruktur.DigOutput != null)
@@ -49,9 +59,6 @@ namespace ManualMode.ViewModel
                         SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster, i);
                         SetFarbeDi((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
                     }
-
-
-
                 }
 
 
@@ -62,29 +69,41 @@ namespace ManualMode.ViewModel
                         switch (analogeEingaenge.AnzahlBit)
                         {
                             case 8:
-                                byte wertByte = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
-                                if (analogeEingaenge.Type.Contains("Ascii"))
+                                var wertByte = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
+                                switch (analogeEingaenge.Type)
                                 {
-
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
-                                }
-                                else
-                                {
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
+                                    case PlcEinUndAusgaengeTypen.Default:
+                                        ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.Ascii:
+                                        ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                                 }
                                 break;
                             case 16:
-                                int wertInt = 256 * _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte] + _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte + 1];
-
-                                if (analogeEingaenge.Type.Contains("SiemensAnalogwert"))
+                                var wertInt = 256 * _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte] + _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte + 1];
+                                switch (analogeEingaenge.Type)
                                 {
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                    case PlcEinUndAusgaengeTypen.Default:
+                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (100 * (double)wertInt / siemensAnalogSkalierung).ToString("F1") + "%";
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / siemensAnalogSkalierung).ToString("F1") + "‰";
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.Ascii:
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                                 }
-                                else
-                                {
-                                    ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
-                                }
-
                                 break;
                         }
                     }

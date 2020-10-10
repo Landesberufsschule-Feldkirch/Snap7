@@ -5,7 +5,7 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 8,
-      "Type": "-",
+      "Type": "Default",
       "Bezeichnung": "Pegel",
       "Kommentar": "Pegel 0-100"
     },
@@ -14,7 +14,7 @@
       "StartByte": 2,
       "StartBit": 0,
       "AnzahlBit": 16,
-      "Type": "SiemensAnalogwert",
+      "Type": "SiemensAnalogwertProzent",
       "Bezeichnung": "Pegel",
       "Kommentar": "Pegel"
     }
