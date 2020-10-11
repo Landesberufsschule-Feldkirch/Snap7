@@ -1,0 +1,49 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S1",
+      "Kommentar": "Frequenz +"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S2",
+      "Kommentar": "Frequenz -"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S3",
+      "Kommentar": "Tastverhältnis +"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S4",
+      "Kommentar": "Tastverhältnis -"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S5",
+      "Kommentar": "Taster Reset"
+    }
+  ]
+}
