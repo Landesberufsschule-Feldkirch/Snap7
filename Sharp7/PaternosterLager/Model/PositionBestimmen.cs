@@ -100,12 +100,19 @@
 
             if (Math.Abs(x - xDavor) < 0.1) return (x, y, 0, zeichenBereich);
             if (zeichenBereichVorher == Zeichenbereich.Rechts) { return (x, y, 0, zeichenBereich); }
-            if (zeichenBereich == Zeichenbereich.Links) { return (x, y, 0, zeichenBereich); }
-
-            if (zeichenBereich == Zeichenbereich.Oben)
+            switch (zeichenBereich)
             {
-                phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
-                return (x, y, phi, zeichenBereichVorher);
+                case Zeichenbereich.Links:
+                    return (x, y, 0, zeichenBereich);
+                case Zeichenbereich.Oben:
+                    phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
+                    return (x, y, phi, zeichenBereichVorher);
+                case Zeichenbereich.Rechts:
+                    break;
+                case Zeichenbereich.Unten:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(zeichenBereich));
             }
 
             if (zeichenBereichVorher == Zeichenbereich.Rechts)

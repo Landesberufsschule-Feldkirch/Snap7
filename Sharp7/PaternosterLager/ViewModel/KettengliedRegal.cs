@@ -1,4 +1,6 @@
-﻿namespace PaternosterLager.ViewModel
+﻿using PaternosterLager.Model;
+
+namespace PaternosterLager.ViewModel
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -22,7 +24,7 @@
         {
             _id = id;
 
-            var abstandLagerkisten = Model.PositionBestimmen.GetGesamtLaenge(DurchmesserBolzen) / anzahlKisten;
+            var abstandLagerkisten = PositionBestimmen.GetGesamtLaenge(DurchmesserBolzen) / anzahlKisten;
             _hoeheKettenglied = abstandLagerkisten / 3;
 
             _position = id * abstandLagerkisten;
@@ -31,20 +33,19 @@
 
         internal void Zeichnen(MainWindow mainWindow, double pos)
         {
-            if (mainWindow.FensterAktiv)
-            {
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * _hoeheKettenglied, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * _hoeheKettenglied, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * _hoeheKettenglied, Brushes.Cyan));
+            if (!mainWindow.FensterAktiv) return;
 
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * _hoeheKettenglied, 1, Brushes.Black));
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * _hoeheKettenglied, 1, Brushes.Red));
-                mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * _hoeheKettenglied, 1, Brushes.Cyan));
+            mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 0 * _hoeheKettenglied, Brushes.Black));
+            mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 1 * _hoeheKettenglied, Brushes.Red));
+            mainWindow.ZeichenFlaeche.Children.Add(ZapfenZeichnen(pos + 2 * _hoeheKettenglied, Brushes.Cyan));
 
-                mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * _hoeheKettenglied, Brushes.Red));
+            mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 0 * _hoeheKettenglied, 1, Brushes.Black));
+            mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 1 * _hoeheKettenglied, 1, Brushes.Red));
+            mainWindow.ZeichenFlaeche.Children.Add(KettengliedZeichnen(pos + 2 * _hoeheKettenglied, 1, Brushes.Cyan));
 
-                mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * _hoeheKettenglied, _id));
-            }
+            mainWindow.ZeichenFlaeche.Children.Add(LagerkisteZeichnen(pos + 1 * _hoeheKettenglied, Brushes.Red));
+
+            mainWindow.ZeichenFlaeche.Children.Add(BeschriftungZeichnen(pos + 1 * _hoeheKettenglied, _id));
         }
 
         internal Ellipse ZapfenZeichnen(double offset, SolidColorBrush farbe)
@@ -56,7 +57,7 @@
                 Fill = farbe
             };
 
-            var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
+            var (x, y, _) = PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
             Canvas.SetLeft(bolzen, x - DurchmesserBolzen / 2);
             Canvas.SetTop(bolzen, y - DurchmesserBolzen / 2);
 
@@ -73,17 +74,16 @@
                 StrokeThickness = staerke
             };
 
-            var (x, y, phi, positionUndRichtung) = Model.PositionBestimmen.KettengliedPositionBerechnen(_position + offset, DurchmesserBolzen, BreiteKettenglied, _hoeheKettenglied);
+            var (x, y, phi, positionUndRichtung) = PositionBestimmen.KettengliedPositionBerechnen(_position + offset, DurchmesserBolzen, BreiteKettenglied, _hoeheKettenglied);
 
             switch (positionUndRichtung)
             {
-                case Model.Zeichenbereich.Links:
+                case Zeichenbereich.Links:
                     kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
                     kettenglied.RenderTransform = new RotateTransform(phi);
                     Canvas.SetLeft(kettenglied, x - BreiteKettenglied / 2);
                     Canvas.SetTop(kettenglied, y + BreiteKettenglied / 2 - _hoeheKettenglied);
                     return kettenglied;
-
                 default:
                     kettenglied.RenderTransformOrigin = new Point(0.5, 0.14);
                     kettenglied.RenderTransform = new RotateTransform(phi);
@@ -103,7 +103,7 @@
                 StrokeThickness = 3
             };
 
-            var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
+            var (x, y, _) = PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
             Canvas.SetLeft(lagerKiste, x - Breitelagerkisted / 2);
             Canvas.SetTop(lagerKiste, y - DurchmesserBolzen / 2);
 
@@ -118,7 +118,7 @@
                 FontSize = 14
             };
 
-            var (x, y, _) = Model.PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
+            var (x, y, _) = PositionBestimmen.ZapfenPositionBerechnen(_position + offset, DurchmesserBolzen);
             Canvas.SetLeft(beschriftung, x + Breitelagerkisted / 2);
             Canvas.SetTop(beschriftung, y);
 
@@ -126,7 +126,6 @@
         }
 
         internal void SetGeschwindigkeit(double geschwindigkeit) => _position += geschwindigkeit;
-
-        internal double GetGesamtLaenge() => Model.PositionBestimmen.GetGesamtLaenge(DurchmesserBolzen);
+        internal double GetGesamtLaenge() => PositionBestimmen.GetGesamtLaenge(DurchmesserBolzen);
     }
 }

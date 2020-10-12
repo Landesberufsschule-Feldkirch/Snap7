@@ -4,7 +4,6 @@
 
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
@@ -33,19 +32,15 @@
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _viewModel.Paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                _viewModel.Paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-            }
+            _viewModel.Paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.Paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
             _viewModel.Paternosterlager.IstPos = S7.GetUint8At(datenstruktur.DigOutput, 1);
             _viewModel.Paternosterlager.SollPos = S7.GetUint8At(datenstruktur.DigOutput, 2);
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
+        public DatenRangieren(ViewModel.ViewModel vm)
         {
-            _mainWindow = mw;
             _viewModel = vm;
         }
     }

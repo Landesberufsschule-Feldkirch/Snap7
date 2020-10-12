@@ -37,8 +37,6 @@ namespace LAP_2018_2_Abfuellanlage
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
-
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");

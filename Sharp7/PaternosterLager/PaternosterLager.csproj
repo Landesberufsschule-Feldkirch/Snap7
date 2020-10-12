@@ -14,12 +14,28 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
     <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ManualConfig\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

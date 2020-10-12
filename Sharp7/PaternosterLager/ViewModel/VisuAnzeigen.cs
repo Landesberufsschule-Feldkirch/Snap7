@@ -83,11 +83,10 @@
 
         internal void Buchstabe(object buchstabe)
         {
-            if (buchstabe is string ascii)
-            {
-                var asciiCode = ascii[0];
-                _paternosterlager.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
-            }
+            if (!(buchstabe is string ascii)) return;
+
+            var asciiCode = ascii[0];
+            _paternosterlager.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
         }
 
         internal void TasterAuf() => _paternosterlager.ManualAuf = ClickModeButtonAuf();
@@ -275,10 +274,8 @@
                 ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtn[asciiCode] = "Press";
-            }
+
+            ClickModeBtn[asciiCode] = "Press";
             return false;
         }
 
@@ -305,10 +302,8 @@
                 ClickModeBtnAuf = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnAuf = "Press";
-            }
+
+            ClickModeBtnAuf = "Press";
             return false;
         }
 
@@ -335,10 +330,8 @@
                 ClickModeBtnAb = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnAb = "Press";
-            }
+
+            ClickModeBtnAb = "Press";
             return false;
         }
 

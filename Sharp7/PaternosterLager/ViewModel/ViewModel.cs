@@ -5,19 +5,18 @@ namespace PaternosterLager.ViewModel
 {
     public class ViewModel
     {
-        private readonly Model.Paternosterlager _paternosterlager;
-        public Model.Paternosterlager Paternosterlager => _paternosterlager;
+        public Model.Paternosterlager Paternosterlager { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow, double anzahlKisten)
         {
-            _paternosterlager = new Model.Paternosterlager(mainWindow, anzahlKisten);
-            ViAnzeige = new VisuAnzeigen(mainWindow, _paternosterlager, anzahlKisten);
+            Paternosterlager = new Model.Paternosterlager(anzahlKisten);
+            ViAnzeige = new VisuAnzeigen(mainWindow, Paternosterlager, anzahlKisten);
         }
 
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => _paternosterlager.AllesReset(), p => true);
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => Paternosterlager.AllesReset(), p => true);
 
         private ICommand _btnBuchstabe;
         // ReSharper disable once UnusedMember.Global
