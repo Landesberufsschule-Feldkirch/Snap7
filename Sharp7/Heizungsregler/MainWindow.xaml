@@ -8,7 +8,7 @@
         Title="Heizungsregler" Height="1000" Width="1700" Closing="Window_Closing">
     <Grid>
         <Grid.Resources>
-            <model:EnumBooleanConverter  x:Key="enumBooleanConverter" />
+            <model:EnumBooleanConverter  x:Key="EnumBooleanConverter" />
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
@@ -94,9 +94,9 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="34" Grid.Row="2" Click="DebugWindowOeffnen" />
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="33" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="3" />
 
-        <Button Grid.Column="35" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="3" Margin="25,0,10,0">
+        <Button Grid.Column="36" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -104,7 +104,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="GraphWindow"  Grid.Column="32" Grid.Row="2" Click="GraphWindow_Click">
+        <Button x:Name="GraphWindow"  Grid.Column="31" Grid.Row="2" Click="PlotWindowOeffnen">
             <Image Source="Bilder/icon_graph.png" />
         </Button>
 
@@ -251,10 +251,10 @@
 
         <TextBlock      Grid.Column="41"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Betriebsart</TextBlock>
         <StackPanel Orientation="Vertical" Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Tag}">Tag</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Nacht}">Nacht</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource enumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Tag}">Tag</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Nacht}">Nacht</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
         </StackPanel>
 
         <Label Content="Witterungstemperatur"   Grid.Column="41" Grid.ColumnSpan="6"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt"/>

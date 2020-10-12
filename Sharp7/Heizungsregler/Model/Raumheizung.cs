@@ -21,23 +21,14 @@ namespace Heizungsregler.Model
 
         public void RaumheizungAktualisieren()
         {
-            switch (_betriebsart)
+            _vorlaufSolltemperatur = _betriebsart switch
             {
-                case Betriebsarten.Aus:
-                    _vorlaufSolltemperatur = 0;
-                    break;
-                case Betriebsarten.Tag:
-                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur, _witterungsTemperatur);
-                    break;
-                case Betriebsarten.Nacht:
-                    _vorlaufSolltemperatur = _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur - NachtAbsenkung, _witterungsTemperatur);
-                    break;
-                case Betriebsarten.Hand:
-                    _vorlaufSolltemperatur = 0;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                Betriebsarten.Aus => 0,
+                Betriebsarten.Tag => _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur, _witterungsTemperatur),
+                Betriebsarten.Nacht => _heizkurve.GetVorlaufSollTemperatur(RaumTemperatur - NachtAbsenkung, _witterungsTemperatur),
+                Betriebsarten.Hand => 0,
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
 
         internal double GetVorlaufSolltemperatur() => _vorlaufSolltemperatur;

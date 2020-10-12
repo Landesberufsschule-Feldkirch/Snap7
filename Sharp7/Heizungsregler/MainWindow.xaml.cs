@@ -1,30 +1,36 @@
-﻿using Heizungsregler.Model;
-using Heizungsregler.SetManual;
+﻿using System;
+using System.Drawing;
+using Heizungsregler.Model;
 using Kommunikation;
 using System.Text;
 using System.Windows;
+using System.Windows.Threading;
+using ScottPlot;
+
 
 namespace Heizungsregler
 {
     public partial class MainWindow
     {
-        public bool DebugWindowAktiv { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public WohnHaus WohnHaus { get; set; }
-
-        private SetManualWindow _setManualWindow;
-        private RealTimeGraphWindow _realTimeGraphWindow;
-        private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
+        public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
 
+        private PlotWindow _plotWindow;
+        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 20;
         private const int AnzByteAnalogOutput = 4;
+
+        public double[] Zeitachse = new double[100];
+        public double[] KesselTemperatur = new double[100];
+        public double[] VorlaufSolltemperatur = new double[100];
+        private int _nextDataIndex = 1;
 
         public MainWindow()
         {
@@ -37,31 +43,85 @@ namespace Heizungsregler
                 VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
-            _viewModel = new ViewModel.ViewModel(this);
+            var viewModel = new ViewModel.ViewModel(this);
 
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
             WohnHaus = new WohnHaus();
 
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            _datenRangieren = new DatenRangieren(this, viewModel);
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+
+
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            DebugWindowAktiv = true;
-            _setManualWindow = new SetManualWindow(_viewModel);
-            _setManualWindow.Show();
+            if (Plc.GetPlcModus() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
 
-        private void GraphWindow_Click(object sender, RoutedEventArgs e)
+        private void PlotWindowOeffnen(object sender, RoutedEventArgs e)
         {
-            _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
-            _realTimeGraphWindow.Show();
+            Zeitachse = DataGen.Consecutive(100);
+
+            _plotWindow = new PlotWindow();
+            _plotWindow.Show();
+
+            _plotWindow.WpfPlot.plt.YLabel("Temperatur");
+            _plotWindow.WpfPlot.plt.XLabel("Zeit");
+
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, KesselTemperatur, Color.Magenta, label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, label: "VorlaufSolltemperatur");
+            _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
+            
+
+            // create a timer to modify the data
+            var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            updateDataTimer.Tick += UpdateData;
+            updateDataTimer.Start();
+
+            // create a timer to update the GUI
+            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            renderTimer.Tick += Render;
+            renderTimer.Start();
+        }
+
+
+        private void UpdateData(object sender, EventArgs e)
+        {
+            if (_nextDataIndex >= 100)
+            {
+                _nextDataIndex = 0;
+            }
+
+
+            KesselTemperatur[_nextDataIndex] = WohnHaus.KesselTemperatur;
+            VorlaufSolltemperatur[_nextDataIndex] = WohnHaus.VorlaufSolltemperatur;
+
+            _nextDataIndex++;
+        }
+
+        private void Render(object sender, EventArgs e)
+        {
+            _plotWindow.WpfPlot.plt.AxisAuto(0);
+            _plotWindow.WpfPlot.Render(true);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Application.Current.Shutdown();

@@ -56,7 +56,7 @@ namespace AutomatischesLagersystem
             RegalBedienGeraet = new Model.RegalBedienGeraet();
 
             _viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(this, _viewModel);
+            _datenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
 

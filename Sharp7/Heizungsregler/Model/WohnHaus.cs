@@ -9,9 +9,11 @@ namespace Heizungsregler.Model
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (parameter == null) return null;
+
             var parameterString = parameter.ToString();
             if (parameterString == null) return DependencyProperty.UnsetValue;
-            if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
+            if (value != null && !Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
 
             var parameterValue = Enum.Parse(value.GetType(), parameterString);
 
@@ -20,11 +22,10 @@ namespace Heizungsregler.Model
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var parameterString = parameter.ToString();
-            if (parameterString == null)
-                return DependencyProperty.UnsetValue;
+            if (parameter == null) return null;
 
-            return Enum.Parse(targetType, parameterString);
+            var parameterString = parameter.ToString();
+            return parameterString == null ? DependencyProperty.UnsetValue : Enum.Parse(targetType, parameterString);
         }
     }
 
