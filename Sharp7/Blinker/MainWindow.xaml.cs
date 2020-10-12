@@ -1,6 +1,10 @@
 ﻿using Kommunikation;
+using ScottPlot;
+using System;
+using System.Drawing;
 using System.Text;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Blinker
 {
@@ -17,6 +21,12 @@ namespace Blinker
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
+
+        private readonly ViewModel.ViewModel _viewModel;
+
+        public double[] Data = new double[100_000];
+        private int _nextDataIndex = 1;
+
         public MainWindow()
         {
             const string versionText = "LAP 2018/2 Abfuellanlage";
@@ -28,11 +38,13 @@ namespace Blinker
                 VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
-            var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            _viewModel = new ViewModel.ViewModel(this);
+            _datenRangieren = new DatenRangieren(_viewModel);
+
+
 
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
             Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
@@ -46,7 +58,52 @@ namespace Blinker
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+
+
+            // plot the data array only once
+            var signalPlot = WpfPlot.plt.PlotSignal(Data);
+            signalPlot.maxRenderIndex = 5000;
+            signalPlot.fillType = FillType.FillBelow;
+            signalPlot.fillColor1 = Color.LawnGreen;
+
+            WpfPlot.plt.YLabel("Leuchtmelder");
+            WpfPlot.plt.XLabel("Zeit [ms]");
+
+
+
+            // create a timer to modify the data
+            var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
+            updateDataTimer.Tick += UpdateData;
+            updateDataTimer.Start();
+
+            // create a timer to update the GUI
+            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
+            renderTimer.Tick += Render;
+            renderTimer.Start();
         }
+
+
+        private void UpdateData(object sender, EventArgs e)
+        {
+            if (_nextDataIndex >= 5_000)
+            {
+                _nextDataIndex = 0;
+            }
+
+            for (var i = 0; i < 10; i++)
+            {
+                Data[_nextDataIndex + i] = _viewModel.Blinker.P1 ? 1 : 0;
+            }
+            _nextDataIndex += 10;
+        }
+
+        private void Render(object sender, EventArgs e)
+        {
+            WpfPlot.plt.AxisAuto(0);
+            WpfPlot.Render(true);
+        }
+
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {

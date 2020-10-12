@@ -1,5 +1,5 @@
-﻿using System.Windows.Input;
-using Blinker.Commands;
+﻿using Blinker.Commands;
+using System.Windows.Input;
 
 namespace Blinker.ViewModel
 {
@@ -7,8 +7,11 @@ namespace Blinker.ViewModel
     {
         public Model.Blinker Blinker { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
-        public ViewModel(MainWindow mainWindow)
+
+        public ViewModel(MainWindow mw)
         {
+            var mainWindow = mw;
+
             Blinker = new Model.Blinker();
             ViAnzeige = new VisuAnzeigen(mainWindow, Blinker);
         }
@@ -29,10 +32,9 @@ namespace Blinker.ViewModel
         private ICommand _btnTasterS4;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnTasterS4 => _btnTasterS4 ??= new RelayCommand(p => ViAnzeige.TasterS4(), p => true);
-       
+
         private ICommand _btnTasterS5;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnTasterS5 => _btnTasterS5 ??= new RelayCommand(p => ViAnzeige.TasterS5(), p => true);
-
     }
 }

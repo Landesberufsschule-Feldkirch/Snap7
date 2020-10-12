@@ -13,11 +13,11 @@ namespace Blinker
 
         private enum BitPosEingang
         {
-            S1= 0,
-            S2,
-            S3,
-            S4,
-            S5
+            S1 = 0,  // Frequenz weniger
+            S2,     // f +
+            S3,     // Tastverhältnis weniger
+            S4,     // t +
+            S5      // Reset
         }
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)

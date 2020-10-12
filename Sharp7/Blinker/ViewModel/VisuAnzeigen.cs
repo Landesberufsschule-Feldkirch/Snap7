@@ -27,6 +27,13 @@ namespace Blinker.ViewModel
 
             ColorCircleP1 = "LightGray";
 
+
+            FrequenzAnzeige = "Frequenz: 0Hz";
+            TastverhaeltnisAnzeige = "Tastverhältnis: 50%";
+            EinZeitAnzeige = "Einzeit: 500ms";
+            AusZeitAnzeige = "Auszeit: 500ms";
+
+
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
@@ -46,6 +53,11 @@ namespace Blinker.ViewModel
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+
+                    FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
+                    TastverhaeltnisAnzeige = "Tastverhältnis: " + _blinker.Tastverhaeltnis.ToString("F1") + "%";
+                    EinZeitAnzeige = "Einzeit: " + _blinker.EinZeit + "ms";
+                    AusZeitAnzeige = "Auszeit: " + _blinker.AusZeit + "ms";
                 }
 
                 FarbeCircle_P1(_blinker.P1);
@@ -274,6 +286,54 @@ namespace Blinker.ViewModel
         }
 
         #endregion
+
+        #region Texte
+
+        private string _frequenzAnzeige;
+        public string FrequenzAnzeige
+        {
+            get => _frequenzAnzeige;
+            set
+            {
+                _frequenzAnzeige = value;
+                OnPropertyChanged(nameof(FrequenzAnzeige));
+            }
+        }
+
+        private string _tastverhaeltnisAnzeige;
+        public string TastverhaeltnisAnzeige
+        {
+            get => _tastverhaeltnisAnzeige;
+            set
+            {
+                _tastverhaeltnisAnzeige = value;
+                OnPropertyChanged(nameof(TastverhaeltnisAnzeige));
+            }
+        }
+
+        private string _einZeitAnzeige;
+        public string EinZeitAnzeige
+        {
+            get => _einZeitAnzeige;
+            set
+            {
+                _einZeitAnzeige = value;
+                OnPropertyChanged(nameof(EinZeitAnzeige));
+            }
+        }
+
+        private string _ausZeitAnzeige;
+        public string AusZeitAnzeige
+        {
+            get => _ausZeitAnzeige;
+            set
+            {
+                _ausZeitAnzeige = value;
+                OnPropertyChanged(nameof(AusZeitAnzeige));
+            }
+        }
+        #endregion
+
 
         #region iNotifyPeropertyChanged Members
 

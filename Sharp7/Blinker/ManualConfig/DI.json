@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S1",
-      "Kommentar": "Frequenz +"
+      "Kommentar": "Frequenz -"
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S2",
-      "Kommentar": "Frequenz -"
+      "Kommentar": "Frequenz +"
     },
     {
       "LaufendeNr": 2,
@@ -25,7 +25,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S3",
-      "Kommentar": "Tastverhältnis +"
+      "Kommentar": "Tastverhältnis -"
     },
     {
       "LaufendeNr": 3,
@@ -34,7 +34,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S4",
-      "Kommentar": "Tastverhältnis -"
+      "Kommentar": "Tastverhältnis +"
     },
     {
       "LaufendeNr": 4,
