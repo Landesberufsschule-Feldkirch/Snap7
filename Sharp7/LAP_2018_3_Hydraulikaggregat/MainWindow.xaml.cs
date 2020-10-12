@@ -13,7 +13,6 @@ namespace LAP_2018_3_Hydraulikaggregat
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
         private readonly LAP_2018_3_Hydraulikaggregat.ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
@@ -32,12 +31,12 @@ namespace LAP_2018_3_Hydraulikaggregat
             };
 
             _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            var datenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }

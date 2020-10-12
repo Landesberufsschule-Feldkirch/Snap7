@@ -20,7 +20,7 @@
 
         public KettengliedRegal(int id, double anzahlKisten)
         {
-            this._id = id;
+            _id = id;
 
             var abstandLagerkisten = Model.PositionBestimmen.GetGesamtLaenge(DurchmesserBolzen) / anzahlKisten;
             _hoeheKettenglied = abstandLagerkisten / 3;

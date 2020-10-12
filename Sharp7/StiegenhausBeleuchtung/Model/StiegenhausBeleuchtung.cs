@@ -56,23 +56,10 @@ namespace StiegenhausBeleuchtung.Model
             System.Threading.Tasks.Task.Run(StiegenhausBeleuchtungTask);
         }
 
-        internal void ProblemLoesen(VisuAnzeigen viAnzeige)
-        {
-            _visuAnzeigen = viAnzeige;
-        }
-
+        internal void ProblemLoesen(VisuAnzeigen viAnzeige) => _visuAnzeigen = viAnzeige;
         public bool GetBewegungsmelder(int index) => _alleBewegungsmelder[index];
-
-        public void SetBewegungsmelder(int index, bool val)
-        {
-            _alleBewegungsmelder[index] = val;
-        }
-
-        public void SetLampen(int index, bool val)
-        {
-            _alleLampen[index] = val;
-        }
-
+        public void SetBewegungsmelder(int index, bool val) => _alleBewegungsmelder[index] = val;
+        public void SetLampen(int index, bool val) => _alleLampen[index] = val;
         public bool GetLampen(int index) => _alleLampen[index];
 
         private void StiegenhausBeleuchtungTask()
@@ -87,13 +74,13 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void BtnStart(object _)
         {
-            if (_visuAnzeigen.ReiseStart != "-" && _visuAnzeigen.ReiseZiel != "-" && _visuAnzeigen.ReiseStart != _visuAnzeigen.ReiseZiel)
-            {
-                _ortAktuell = _topologie[_visuAnzeigen.ReiseStart];
-                _ortZiel = _topologie[_visuAnzeigen.ReiseZiel];
-                _stopwatch.Restart();
-                JobAktiv = true;
-            }
+            if (_visuAnzeigen.ReiseStart == "-" || _visuAnzeigen.ReiseZiel == "-" ||
+                _visuAnzeigen.ReiseStart == _visuAnzeigen.ReiseZiel) return;
+
+            _ortAktuell = _topologie[_visuAnzeigen.ReiseStart];
+            _ortZiel = _topologie[_visuAnzeigen.ReiseZiel];
+            _stopwatch.Restart();
+            JobAktiv = true;
         }
 
         private void JobAusfuehren()
@@ -132,13 +119,13 @@ namespace StiegenhausBeleuchtung.Model
 
         internal void BewegungsmelderAktivieren((int raum, int stock) aktuell)
         {
-            for (int i = 0; i < 100; i++) _alleBewegungsmelder[i] = false;
+            for (var i = 0; i < 100; i++) _alleBewegungsmelder[i] = false;
 
-            if (aktuell.raum != -10 && aktuell.stock != -10)
-            {
-                var bewegungsmelder = 3 + aktuell.raum + 10 * aktuell.stock;
-                _alleBewegungsmelder[bewegungsmelder] = true;
-            }
+            var (raum, stock) = aktuell;
+            if (raum == -10 || stock == -10) return;
+
+            var bewegungsmelder = 3 + raum + 10 * stock;
+            _alleBewegungsmelder[bewegungsmelder] = true;
         }
     }
 }

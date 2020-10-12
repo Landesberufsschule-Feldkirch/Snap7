@@ -5,22 +5,19 @@
 
     public class ViewModel
     {
-        private readonly Model.StiegenhausBeleuchtung _stiegenhausBeleuchtung;
-        public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung => _stiegenhausBeleuchtung;
+        public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
-            _stiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _stiegenhausBeleuchtung);
-            _stiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
+            StiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
+            ViAnzeige = new VisuAnzeigen(mainWindow, StiegenhausBeleuchtung);
+            StiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
         }
-
-
 
         private ICommand _btnStart;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnStart => _btnStart ??= new RelayCommand(_stiegenhausBeleuchtung.BtnStart);
+        public ICommand BtnStart => _btnStart ??= new RelayCommand(StiegenhausBeleuchtung.BtnStart);
 
         private ICommand _btnBewegungsmelder;
         // ReSharper disable once UnusedMember.Global

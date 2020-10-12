@@ -13,7 +13,6 @@ namespace WordClock
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 9;
         private const int AnzByteDigOutput = 0;
         private const int AnzByteAnalogInput = 0;
@@ -37,7 +36,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

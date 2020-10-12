@@ -5,13 +5,12 @@
 
     public class ViewModel
     {
-        private readonly Model.Hydraulikaggregat _hydraulikaggregat;
-        public Model.Hydraulikaggregat Hydraulikaggregat => _hydraulikaggregat;
+        public Model.Hydraulikaggregat Hydraulikaggregat { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _hydraulikaggregat = new Model.Hydraulikaggregat();
-            ViAnzeige = new VisuAnzeigen(mainWindow, _hydraulikaggregat);
+            Hydraulikaggregat = new Model.Hydraulikaggregat();
+            ViAnzeige = new VisuAnzeigen(mainWindow, Hydraulikaggregat);
         }
 
 
@@ -19,11 +18,11 @@
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnNachfuellen =>
             _btnNachfuellen ??
-            (_btnNachfuellen = new RelayCommand(p => _hydraulikaggregat.BtnNachfuellen(), p => true));
+            (_btnNachfuellen = new RelayCommand(p => Hydraulikaggregat.BtnNachfuellen(), p => true));
 
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnF1 => _btnF1 ?? (_btnF1 = new RelayCommand(p => _hydraulikaggregat.BtnF1(), p => true));
+        public ICommand BtnF1 => _btnF1 ?? (_btnF1 = new RelayCommand(p => Hydraulikaggregat.BtnF1(), p => true));
 
         private ICommand _btnQ1;
         // ReSharper disable once UnusedMember.Global

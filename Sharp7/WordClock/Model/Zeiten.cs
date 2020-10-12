@@ -21,7 +21,7 @@ namespace WordClock.Model
         {
             _geschwindigkeitZeit = 1;
 
-            DateTime dateTime = DateTime.Now;
+            var dateTime = DateTime.Now;
             _timeSpan = new TimeSpan(dateTime.Hour, dateTime.Minute, dateTime.Second);
 
             DatumJahr = (ushort)dateTime.Year;
@@ -37,7 +37,7 @@ namespace WordClock.Model
 
         private void ZeitenTask()
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
 
             while (true)
             {

@@ -14,7 +14,7 @@
             _mainWindow = mw;
             _paternosterlager = pa;
 
-            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
 
             ClickModeBtnAuf = "Press";
             ClickModeBtnAb = "Press";

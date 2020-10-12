@@ -47,12 +47,11 @@ namespace LAP_2018_3_Hydraulikaggregat
             _viewModel.Hydraulikaggregat.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
             _viewModel.Hydraulikaggregat.P4 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
 
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _viewModel.Hydraulikaggregat.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                _viewModel.Hydraulikaggregat.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-                _viewModel.Hydraulikaggregat.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
-            }
+            if (_mainWindow.DebugWindowAktiv) return;
+
+            _viewModel.Hydraulikaggregat.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.Hydraulikaggregat.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+            _viewModel.Hydraulikaggregat.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)

@@ -18,8 +18,8 @@
             ReiseStart = "sadf:-";
             ReiseZiel = "sadf:-";
 
-            for (int i = 0; i < 100; i++) ClickModeBtn.Add("Press");
-            for (int i = 0; i < 100; i++) ColorLampe.Add("Yellow");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ColorLampe.Add("Yellow");
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -35,11 +35,11 @@
         {
             while (true)
             {
-                for (int i = 0; i < 100; i++) FarbeAlleLampen(i, _stiegenhausBeleuchtung.GetLampen(i));
+                for (var i = 0; i < 100; i++) FarbeAlleLampen(i, _stiegenhausBeleuchtung.GetLampen(i));
 
                 if (_bewegungAktiv)
                 {
-                    for (int i = 0; i < 100; i++)
+                    for (var i = 0; i < 100; i++)
                     {
                         if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = "Release"; else ClickModeBtn[i] = "Press";
                     }
@@ -202,10 +202,8 @@
                 ClickModeBtn[bewegungsmelder] = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtn[bewegungsmelder] = "Press";
-            }
+
+            ClickModeBtn[bewegungsmelder] = "Press";
             return false;
         }
 

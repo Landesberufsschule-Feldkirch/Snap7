@@ -34,8 +34,8 @@ namespace PaternosterLager.Model
 
             while (true)
             {
-                int abstandRegale = Convert.ToInt32(GesamtLaenge / anzahlKisten);
-                int pos = Convert.ToInt32(Position);
+                var abstandRegale = Convert.ToInt32(GesamtLaenge / anzahlKisten);
+                var pos = Convert.ToInt32(Position);
 
                 if (_mainWindow.DebugWindowAktiv)
                 {
@@ -53,8 +53,8 @@ namespace PaternosterLager.Model
                     if (pos > GesamtLaenge) Position -= GesamtLaenge;
                     if (pos < 0) Position += GesamtLaenge;
 
-                    if ((pos >= 0) && (pos < bereichInitiator)) B1 = true; else B1 = false;
-                    if (((pos % abstandRegale) >= 0) && ((pos % abstandRegale) < bereichInitiator)) B2 = true; else B2 = false;
+                    if (pos >= 0 && pos < bereichInitiator) B1 = true; else B1 = false;
+                    if (pos % abstandRegale >= 0 && pos % abstandRegale < bereichInitiator) B2 = true; else B2 = false;
                 }
 
                 Thread.Sleep(10);

@@ -24,15 +24,15 @@
             double x;
             double y;
             Zeichenbereich zeichenBereich;
-            double senkrechterTeil = ZentrumUnten.Y - ZentrumOben.Y;
+            var senkrechterTeil = ZentrumUnten.Y - ZentrumOben.Y;
             double positionRest;
             double bogenwinkel;
-            double bogenRadius = RadiusUmlenkung + breiteBolzen / 2;
-            double rundungBogen = Math.PI * bogenRadius;
-            double segmentRechtsSenkrecht = senkrechterTeil / 2;
-            double segmentMitBogenOben = segmentRechtsSenkrecht + rundungBogen;
-            double segmentMitLinksSenkrecht = segmentMitBogenOben + senkrechterTeil;
-            double segmentMitBogenUnten = segmentMitLinksSenkrecht + rundungBogen;
+            var bogenRadius = RadiusUmlenkung + breiteBolzen / 2;
+            var rundungBogen = Math.PI * bogenRadius;
+            var segmentRechtsSenkrecht = senkrechterTeil / 2;
+            var segmentMitBogenOben = segmentRechtsSenkrecht + rundungBogen;
+            var segmentMitLinksSenkrecht = segmentMitBogenOben + senkrechterTeil;
+            var segmentMitBogenUnten = segmentMitLinksSenkrecht + rundungBogen;
 
             if (pos > GetGesamtLaenge(breiteBolzen)) pos -= GetGesamtLaenge(breiteBolzen);
 

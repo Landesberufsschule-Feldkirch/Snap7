@@ -215,10 +215,8 @@
                 ClickModeBtnQ1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1 = "Press";
-            }
+
+            ClickModeBtnQ1 = "Press";
             return false;
         }
 
@@ -245,10 +243,8 @@
                 ClickModeBtnQ2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ2 = "Press";
-            }
+
+            ClickModeBtnQ2 = "Press";
             return false;
         }
 
@@ -275,10 +271,8 @@
                 ClickModeBtnQ3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ3 = "Press";
-            }
+
+            ClickModeBtnQ3 = "Press";
             return false;
         }
 
@@ -305,10 +299,8 @@
                 ClickModeBtnQ1Q3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnQ1Q3 = "Press";
-            }
+
+            ClickModeBtnQ1Q3 = "Press";
             return false;
         }
 
@@ -335,10 +327,8 @@
                 ClickModeBtnS1 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = "Press";
-            }
+
+            ClickModeBtnS1 = "Press";
             return false;
         }
 
@@ -365,10 +355,8 @@
                 ClickModeBtnS2 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS2 = "Press";
-            }
+
+            ClickModeBtnS2 = "Press";
             return false;
         }
 
@@ -395,10 +383,8 @@
                 ClickModeBtnS3 = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtnS3 = "Press";
-            }
+
+            ClickModeBtnS3 = "Press";
             return false;
         }
 
