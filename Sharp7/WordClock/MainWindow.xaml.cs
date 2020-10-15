@@ -36,7 +36,7 @@ namespace WordClock
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

@@ -15,6 +15,7 @@ namespace Blinker
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
+        public double[] WertLeuchtMelder = new double[5_000];
 
         private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
@@ -23,8 +24,6 @@ namespace Blinker
         private const int AnzByteAnalogOutput = 0;
 
         private readonly ViewModel.ViewModel _viewModel;
-
-        public double[] Data = new double[100_000];
         private int _nextDataIndex = 1;
 
         public MainWindow()
@@ -46,9 +45,8 @@ namespace Blinker
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc.SetZyklusZeitKommunikation(2);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 
@@ -61,15 +59,13 @@ namespace Blinker
 
 
 
-            // plot the data array only once
-            var signalPlot = WpfPlot.plt.PlotSignal(Data);
-            signalPlot.maxRenderIndex = 5000;
-            signalPlot.fillType = FillType.FillBelow;
-            signalPlot.fillColor1 = Color.LawnGreen;
+            var zeitachse = DataGen.Consecutive(5000);
+           
 
             WpfPlot.plt.YLabel("Leuchtmelder");
             WpfPlot.plt.XLabel("Zeit [ms]");
 
+            WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
 
 
             // create a timer to modify the data
@@ -86,14 +82,14 @@ namespace Blinker
 
         private void UpdateData(object sender, EventArgs e)
         {
-            if (_nextDataIndex >= 5_000)
+            if (_nextDataIndex >= 4_990)
             {
                 _nextDataIndex = 0;
             }
 
             for (var i = 0; i < 10; i++)
             {
-                Data[_nextDataIndex + i] = _viewModel.Blinker.P1 ? 1 : 0;
+                WertLeuchtMelder[_nextDataIndex + i] = _viewModel.Blinker.P1 ? 1 : 0;
             }
             _nextDataIndex += 10;
         }

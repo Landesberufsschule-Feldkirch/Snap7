@@ -36,7 +36,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }

@@ -31,7 +31,7 @@ namespace StiegenhausBeleuchtung
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

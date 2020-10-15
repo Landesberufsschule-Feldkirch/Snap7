@@ -37,10 +37,7 @@ namespace LAP_2010_2_Transportwagen
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
-
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 

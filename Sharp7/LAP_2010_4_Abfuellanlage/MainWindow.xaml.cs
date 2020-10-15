@@ -35,7 +35,7 @@ namespace LAP_2010_4_Abfuellanlage
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
 

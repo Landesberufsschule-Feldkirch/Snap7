@@ -34,7 +34,7 @@ namespace LAP_2010_1_Kompressoranlage
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S7_1200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

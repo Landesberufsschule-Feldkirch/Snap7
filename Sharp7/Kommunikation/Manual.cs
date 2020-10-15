@@ -6,8 +6,8 @@ namespace Kommunikation
 {
     public class Manual : IPlc
     {
-        private readonly Action<Kommunikation.Datenstruktur> _callbackInput;
-        private readonly Action<Kommunikation.Datenstruktur> _callbackOutput;
+        private readonly Action<Datenstruktur> _callbackInput;
+        private readonly Action<Datenstruktur> _callbackOutput;
 
         private readonly Datenstruktur _datenstruktur;
 
@@ -15,7 +15,7 @@ namespace Kommunikation
         private bool _spsError;
         private bool _taskRunning = true;
 
-        public Manual(Datenstruktur datenstruktur, Action<Kommunikation.Datenstruktur> cbInput, Action<Kommunikation.Datenstruktur> cbOutput)
+        public Manual(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _datenstruktur = datenstruktur;
 
@@ -47,6 +47,7 @@ namespace Kommunikation
         public string GetVersion() => "42";
         public string GetPlcModus() => "Manual";
         public void SetTaskRunning(bool active) => _taskRunning = active;
+        public void SetZyklusZeitKommunikation(int zeit) => throw new NotImplementedException();
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
         {
@@ -61,10 +62,17 @@ namespace Kommunikation
             switch (db)
             {
                 case Datenbausteine.DigOut:
-                    if (value)
-                        _datenstruktur.DigOutput[pos] = (byte)(_datenstruktur.DigOutput[pos] | mask[bit]);
-                    else
-                        _datenstruktur.DigOutput[pos] = (byte)(_datenstruktur.DigOutput[pos] & ~mask[bit]);
+                    _datenstruktur.DigOutput[pos] = value
+                        ? (byte) (_datenstruktur.DigOutput[pos] | mask[bit])
+                        : (byte) (_datenstruktur.DigOutput[pos] & ~mask[bit]);
+                    break;
+                case Datenbausteine.VersionIn:
+                    break;
+                case Datenbausteine.DigIn:
+                    break;
+                case Datenbausteine.AnIn:
+                    break;
+                case Datenbausteine.AnOut:
                     break;
                 default:
                     throw new NotImplementedException(nameof(Datenbausteine));
@@ -79,9 +87,17 @@ namespace Kommunikation
                     return (ushort)((_datenstruktur.AnalogInput[bytePos] << 8) | _datenstruktur.AnalogInput[bytePos + 1]);
                 case Datenbausteine.DigIn:
                     return (ushort)((_datenstruktur.DigInput[bytePos] << 8) | _datenstruktur.DigInput[bytePos + 1]);
+                case Datenbausteine.VersionIn:
+                    break;
+                case Datenbausteine.DigOut:
+                    break;
+                case Datenbausteine.AnOut:
+                    break;
                 default:
                     throw new NotImplementedException(nameof(Datenbausteine));
             }
+
+            return 0;
         }
     }
 }

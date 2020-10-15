@@ -133,7 +133,7 @@
         </Border>
         <Rectangle Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="11" Grid.RowSpan="12" Fill="LightBlue" Margin="{Binding ViAnzeige.Margin1}" />
 
-        <Button   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
+        <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
 
         <Label Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="19" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (Netz)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
         <Label Grid.Column="11" Grid.Row="20" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />

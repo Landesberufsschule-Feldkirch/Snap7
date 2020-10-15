@@ -165,10 +165,10 @@
             <Label Content="Materialwagen"              HorizontalAlignment="Center" FontSize="14pt" Width="130" Canvas.Left="{Binding ViAnzeige.PosWagenBeschriftungLeft}" Canvas.Top="{Binding ViAnzeige.PosWagenBeschriftungTop}" />
         </Canvas>
 
-        <Label   Grid.Column="16" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Label Grid.Column="16" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P1" HorizontalAlignment="Right" VerticalAlignment="Center" />
         <Ellipse Grid.Column="17" Grid.Row="2" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorP1}" Stroke="Black" StrokeThickness="2" Margin="10" />
 
-        <Label   Grid.Column="19" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <Label Grid.Column="19" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P2" HorizontalAlignment="Right" VerticalAlignment="Center" />
         <Ellipse Grid.Column="20" Grid.Row="2" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorP2}" Stroke="Black" StrokeThickness="2" Margin="10" />
 
         <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36"      Content="{Binding ViAnzeige.VersionNr}" />

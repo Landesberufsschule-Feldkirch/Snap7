@@ -7,6 +7,7 @@
         string GetVersion();
         string GetPlcModus();
         void SetTaskRunning(bool active);
+        void SetZyklusZeitKommunikation(int zeit);
 
         // ReSharper disable once UnusedMember.Global
         void SetBitAt(Datenbausteine db, int bitPos, bool value);
