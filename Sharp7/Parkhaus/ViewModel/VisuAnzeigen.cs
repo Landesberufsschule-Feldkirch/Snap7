@@ -9,12 +9,12 @@ namespace Parkhaus.ViewModel
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly Model.Parkhaus _parkhaus;
-        private readonly MainWindow _mainWindow;
-
-        public VisuAnzeigen(MainWindow mw, Model.Parkhaus parkhaus)
+        private readonly Random _random;
+        public VisuAnzeigen(Model.Parkhaus parkhaus)
         {
-            _mainWindow = mw;
             _parkhaus = parkhaus;
+
+            _random = new Random();
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = "hidden";
@@ -27,17 +27,9 @@ namespace Parkhaus.ViewModel
             for (var i = 0; i < 100; i++) AutoSichtbar.Add("Visible");
 
             ColorP0 = "LightGray";
+            ClickModeBtnZufall = "Press";
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
-        }
-
-        internal void ClickAuto(object auto)
-        {
-            if (auto is string nrAuto)
-            {
-                var autoNummer = Convert.ToInt32(nrAuto);
-                AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == "Visible" ? "Hidden" : "Visible";
-            }
         }
 
 
@@ -46,8 +38,12 @@ namespace Parkhaus.ViewModel
             while (true)
             {
 
+                AnzahlFreieParkplaetze = _parkhaus.FreieParkplaetze.ToString();
+
                 for (var i = 0; i < 50; i++)
                 {
+                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? "Visible" : "Hidden";
+
                     FarbeSensor[i] = AutoSichtbar[i] == "Visible" ? "Red" : "LawnGreen";
                 }
 
@@ -56,6 +52,16 @@ namespace Parkhaus.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+
+        internal bool BitMaskierenArray(byte[] besetzteParkPlaetzte, int i)
+        {
+            var ibyte =i / 8;
+            var bitMuster = (byte)(1 << i % 8);
+
+            return (besetzteParkPlaetzte[ibyte] & bitMuster) == bitMuster;
+        }
+
 
         #region SPS Version, Status und Farbe
 
@@ -130,6 +136,62 @@ namespace Parkhaus.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
+
+        internal void TasterZufall()
+        {
+            if (ClickModeButtonZufall())
+            {
+                // eine neue Anordnung der Auto errechnen
+                _random.NextBytes(_parkhaus.BesetzteParkPlaetze);
+            }
+        }
+
+
+        public bool ClickModeButtonZufall()
+        {
+            if (ClickModeBtnZufall == "Press")
+            {
+                ClickModeBtnZufall = "Release";
+                return true;
+            }
+
+            ClickModeBtnZufall = "Press";
+            return false;
+        }
+
+        private string _clickModeBtnZufall;
+        public string ClickModeBtnZufall
+        {
+            get => _clickModeBtnZufall;
+            set
+            {
+                _clickModeBtnZufall = value;
+                OnPropertyChanged(nameof(ClickModeBtnZufall));
+            }
+        }
+
+
+        internal void ClickAuto(object auto)
+        {
+            if (!(auto is string nrAuto)) return;
+
+            var autoNummer = Convert.ToInt32(nrAuto);
+            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == "Visible" ? "Hidden" : "Visible";
+        }
+
+
+        private string _anzahlFreieParkplaetze;
+
+        public string AnzahlFreieParkplaetze
+        {
+            get => _anzahlFreieParkplaetze;
+            set
+            {
+                _anzahlFreieParkplaetze = value;
+                OnPropertyChanged(nameof(AnzahlFreieParkplaetze));
+            }
+        }
+
         private ObservableCollection<string> _autoSichtbar = new ObservableCollection<string>();
         public ObservableCollection<string> AutoSichtbar
         {
@@ -161,6 +223,7 @@ namespace Parkhaus.ViewModel
 
         #region ClickModeAlleButtons
 
+        // ReSharper disable once UnusedMember.Global
         public bool ClickModeButton(int asciiCode)
         {
             if (ClickModeBtn[asciiCode] == "Press")
@@ -168,10 +231,8 @@ namespace Parkhaus.ViewModel
                 ClickModeBtn[asciiCode] = "Release";
                 return true;
             }
-            else
-            {
-                ClickModeBtn[asciiCode] = "Press";
-            }
+
+            ClickModeBtn[asciiCode] = "Press";
             return false;
         }
 
@@ -190,6 +251,7 @@ namespace Parkhaus.ViewModel
 
         #region Color P0
 
+        // ReSharper disable once UnusedMember.Global
         public void FarbeP0(bool val) => ColorP0 = val ? "Red" : "LightGray";
 
         private string _colorP0;

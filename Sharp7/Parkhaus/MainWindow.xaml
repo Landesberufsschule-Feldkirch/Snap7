@@ -26,7 +26,7 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition />
-            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="150" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="10" />
@@ -60,6 +60,10 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
+
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="17" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
+
+
         <!--#region Erste Autoreihe -->
 
         <Rectangle Grid.Column="1"  Grid.ColumnSpan="17" Grid.Row="1" Fill="LightGray" Margin="3,0,3,5"/>
@@ -83,14 +87,14 @@
         <Ellipse Grid.Column="14" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[6]}"/>
         <Ellipse Grid.Column="16" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[7]}"/>
 
-        <Label Grid.Column="2" Grid.Row="2" Content="B00" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="4" Grid.Row="2" Content="B01" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="6" Grid.Row="2" Content="B02" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="8" Grid.Row="2" Content="B03" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="10" Grid.Row="2" Content="B04" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="12" Grid.Row="2" Content="B05" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="14" Grid.Row="2" Content="B06" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="16" Grid.Row="2" Content="B07" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="2" Grid.Row="2" Content="B00" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="4" Grid.Row="2" Content="B01" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="6" Grid.Row="2" Content="B02" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="8" Grid.Row="2" Content="B03" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="10" Grid.Row="2" Content="B04" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="12" Grid.Row="2" Content="B05" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="14" Grid.Row="2" Content="B06" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="16" Grid.Row="2" Content="B07" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
 
         <Button  Grid.Column="2"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="0" >
             <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[0]}" />
@@ -142,14 +146,14 @@
         <Ellipse Grid.Column="14" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[14]}"/>
         <Ellipse Grid.Column="16" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[15]}"/>
 
-        <Label Grid.Column="2" Grid.Row="11" Grid.RowSpan="2" Content="B10" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" />
-        <Label Grid.Column="4" Grid.Row="11" Grid.RowSpan="2" Content="B11" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="6" Grid.Row="11" Grid.RowSpan="2" Content="B12" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Content="B13" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="10" Grid.Row="11" Grid.RowSpan="2" Content="B14" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="12" Grid.Row="11" Grid.RowSpan="2" Content="B15" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="14" Grid.Row="11" Grid.RowSpan="2" Content="B16" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="16" Grid.Row="11" Grid.RowSpan="2" Content="B17" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="2" Grid.Row="11" Grid.RowSpan="2" Content="B10" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40" />
+        <Label Grid.Column="4" Grid.Row="11" Grid.RowSpan="2" Content="B11" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="6" Grid.Row="11" Grid.RowSpan="2" Content="B12" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Content="B13" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="10" Grid.Row="11" Grid.RowSpan="2" Content="B14" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="12" Grid.Row="11" Grid.RowSpan="2" Content="B15" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="14" Grid.Row="11" Grid.RowSpan="2" Content="B16" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="16" Grid.Row="11" Grid.RowSpan="2" Content="B17" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
 
 
         <Button  Grid.Column="2"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="8" >
@@ -259,14 +263,14 @@
         <Ellipse Grid.Column="14" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[22]}"/>
         <Ellipse Grid.Column="16" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[23]}"/>
 
-        <Label Grid.Column="2" Grid.Row="14" Content="B20" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="4" Grid.Row="14" Content="B21" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="6" Grid.Row="14" Content="B22" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="8" Grid.Row="14" Content="B23" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="10" Grid.Row="14" Content="B24" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="12" Grid.Row="14" Content="B25" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="14" Grid.Row="14" Content="B26" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="16" Grid.Row="14" Content="B27" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="2" Grid.Row="14" Content="B20" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="4" Grid.Row="14" Content="B21" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="6" Grid.Row="14" Content="B22" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="8" Grid.Row="14" Content="B23" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="10" Grid.Row="14" Content="B24" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="12" Grid.Row="14" Content="B25" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="14" Grid.Row="14" Content="B26" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="16" Grid.Row="14" Content="B27" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
 
         <Button  Grid.Column="2"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="16" >
             <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[16]}"  />
@@ -317,14 +321,14 @@
         <Ellipse Grid.Column="14" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[30]}"/>
         <Ellipse Grid.Column="16" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[31]}"/>
 
-        <Label Grid.Column="2" Grid.Row="23" Grid.RowSpan="2" Content="B30" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" />
-        <Label Grid.Column="4" Grid.Row="23" Grid.RowSpan="2" Content="B31" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="6" Grid.Row="23" Grid.RowSpan="2" Content="B32" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="8" Grid.Row="23" Grid.RowSpan="2" Content="B33" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Content="B34" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="12" Grid.Row="23" Grid.RowSpan="2" Content="B35" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="14" Grid.Row="23" Grid.RowSpan="2" Content="B36" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-        <Label Grid.Column="16" Grid.Row="23" Grid.RowSpan="2" Content="B37" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+        <Label Grid.Column="2" Grid.Row="23" Grid.RowSpan="2" Content="B30" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40" />
+        <Label Grid.Column="4" Grid.Row="23" Grid.RowSpan="2" Content="B31" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="6" Grid.Row="23" Grid.RowSpan="2" Content="B32" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="8" Grid.Row="23" Grid.RowSpan="2" Content="B33" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Content="B34" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="12" Grid.Row="23" Grid.RowSpan="2" Content="B35" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="14" Grid.Row="23" Grid.RowSpan="2" Content="B36" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
+        <Label Grid.Column="16" Grid.Row="23" Grid.RowSpan="2" Content="B37" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
 
 
         <Button  Grid.Column="2"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="24" >
@@ -412,13 +416,17 @@
 
         <!--#endregion-->
 
-        <!--
-        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36"      Content="{Binding ViAnzeige.VersionNr}" />
-        <Label Grid.Column="16" Grid.ColumnSpan="6"  Grid.Row="26"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />
+
+        <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Left" Width="36"      Content="{Binding ViAnzeige.VersionNr}" Margin="44,0,0,0" />
+        <Label Grid.Column="16" Grid.ColumnSpan="6"  Grid.Row="25"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />
         <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
-    -->
+
+        <Label Grid.Column="19" Grid.Row="2" Content="Freie Parkplätzte" FontSize="14pt" />
+        <Label Grid.Column="20" Grid.Row="2" Content="{Binding ViAnzeige.AnzahlFreieParkplaetze}" FontSize="14pt" />
+
+        <Button Grid.Column="19" Grid.Row="4" Content="Zufall" FontSize="14pt" ClickMode="{Binding ViAnzeige.ClickModeBtnZufall}" Command="{Binding BtnTasterZufall}"/>
     </Grid>
 </Window>

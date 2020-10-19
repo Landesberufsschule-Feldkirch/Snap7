@@ -1,5 +1,6 @@
 ﻿using Kommunikation;
 using System.Text;
+using System.Windows;
 
 namespace Parkhaus
 {
@@ -10,14 +11,14 @@ namespace Parkhaus
         public string VersionInfo { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public ManualMode.ManualMode ManualMode { get; set; }
 
         private readonly DatenRangieren _datenRangieren;
-        private readonly ViewModel.ViewModel _viewModel;
 
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
         private const int AnzByteAnalogInput = 2;
-        private const int AnzByteAnalogOutput = 2;
+        private const int AnzByteAnalogOutput = 0;
 
 
         public MainWindow()
@@ -31,14 +32,33 @@ namespace Parkhaus
                 VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
-            _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            var viewModel = new ViewModel.ViewModel();
+            _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
             Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
+        {
+            if (Plc.GetPlcModus() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
     }
 }
