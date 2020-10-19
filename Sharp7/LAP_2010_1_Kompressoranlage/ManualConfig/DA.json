@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q1",
-      "Kommentar": "Motor LL"
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Betriebsbereit"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,26 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Netzschütz"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
       "Bezeichnung": "Q2",
-      "Kommentar": "Motor RL"
+      "Kommentar": "Motor Sternschütz"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q3",
+      "Kommentar": "Motor Dreieckschütz"
     }
   ]
 }

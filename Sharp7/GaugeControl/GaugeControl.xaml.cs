@@ -1,29 +1,20 @@
 ﻿// by Antonis Ntit (antonis68)
 // email: spanomarias68@gmail.com
-using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
- 
 
-namespace Gauge
+using System;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
+
+namespace GaugeControl
 {
-     
-    public partial class GaugeControl : UserControl
+
+    public partial class GaugeControl
     {
        
-        private TweenMotionLib.TweenMotion motion = new TweenMotionLib.TweenMotion();
+        private readonly TweenMotionLib.TweenMotion motion = new TweenMotionLib.TweenMotion();
         private FontFamily fontFamily = new FontFamily("Tahoma");
         private FontFamily gaugeTextFont = new FontFamily("Tahoma");
         private SolidColorBrush labelColor = Brushes.Black;
@@ -34,7 +25,7 @@ namespace Gauge
         private SolidColorBrush arcBackColor = Brushes.Ivory;
         private SolidColorBrush needleColor = Brushes.Red;
         private SolidColorBrush descrTextColor = Brushes.Black;
-        System.Windows.Media.Effects.DropShadowEffect shadow;
+        readonly System.Windows.Media.Effects.DropShadowEffect shadow;
         private Rectangle box;
         private Line needle;
         private Label lbl;
@@ -52,32 +43,31 @@ namespace Gauge
         private int labelX = 136;
         private int labelY = 142;
         private int labelQuantity = 10;
-        private int arcMinValue = 0;
+        private int arcMinValue;
         private int arcMaxValue = 100;
-        private int maxW = 300;
-        private int maxH = 300;
-        private int minW = 80;
-        private int minH = 80;
+        private const int maxW = 300;
+        private const int maxH = 300;
+        private const int minW = 80;
+        private const int minH = 80;
         private int arcFirstColorEndPos = 100;
         private int arcMidleColorEndPos = 130;
-        private int colorCount = 0;
+        private int colorCount;
         private double arcOpacity = 100;
         private double needleHeigth;
-        private int startPos = 0;
-        private int endPos = 0;
-        private double initPos = 0;
-        private double prevPos = 0;
-        private double motionTime=1;
+        private int startPos;
+        private int endPos;
+        private double initPos;
+        private double prevPos;
         private arcStyle _arcStyle;
         private int fontSize=12;
         private double labelOpacity = 1;
-        private bool isFirst = true;
+        private readonly bool isFirst = true;
         private int gaugeTextFontSize = 14;
         private string descrText = "Gauge";
         private double gaugeTextOpacity = 1;
         private Visibility backVisible;
-        motionType typeMotion;
-        public enum arcStyle { Flat, Αscending, Descending };
+
+        public enum arcStyle { Flat, Αscending, Descending }
 
         // Types of motion 
         public enum motionType
@@ -90,13 +80,11 @@ namespace Gauge
         {
             InitializeComponent();
             motion.onMotion += Motion_onMotion;
-            back_front.Fill = arcOutBackColor;
-            front.Fill = arcBackColor;
-            shadow = new System.Windows.Media.Effects.DropShadowEffect();
-            shadow.ShadowDepth = 5;
-            shadow.Opacity = .4;
+            BackFront.Fill = arcOutBackColor;
+            Front.Fill = arcBackColor;
+            shadow = new System.Windows.Media.Effects.DropShadowEffect {ShadowDepth = 5, Opacity = .4};
             needleHeigth = arcHeight;
-            if (isFirst) { setStyle(); }
+            if (isFirst) { SetStyle(); }
             isFirst = false;
             
           
@@ -117,28 +105,25 @@ namespace Gauge
             if (value <= arcMinValue) { value = arcMinValue; }
             else if (value >= arcMaxValue) { value = arcMaxValue; }
             value -= arcMinValue;
-            double factor = (double)arcLength / (arcMaxValue - arcMinValue);
+            var factor = (double)arcLength / (arcMaxValue - arcMinValue);
             value *= factor;
             initPos = 90 - (ArcLength + ArcOffset);
             startPos = (int)initPos + (int)prevPos;
             endPos = (int)initPos + (int)value;
-            motion.Start(typeMotion.ToString(), startPos, endPos, motionTime);
+            motion.Start(GaugeMotionType.ToString(), startPos, endPos, GaugeTime);
             prevPos = value;
         }
         // Set style of control
-        private void setStyle()
+        private void SetStyle()
         {
             removeChildren();
             colorCount = ArcLength;
             double counter = 0;
-            double radial = 0;
-            double sin = 0;
-            double cos = 0;
             double tempH = 0; // temporary height 
             box = null;
             double noFlat = 0;
-            double _arcHeight = arcHeight;
-            needleFront.Margin = new Thickness { Left = arcX - 10, Top = arcY - 60 };
+            var _arcHeight = arcHeight;
+            NeedleFront.Margin = new Thickness { Left = arcX - 10, Top = arcY - 60 };
             if (_arcStyle.ToString() == "Flat")
             {
               tempH = _arcHeight;
@@ -155,29 +140,26 @@ namespace Gauge
                 
             }                      
 
-            for (int i = offset; i < arcLength + offset+arcScale; i+=arcScale)
+            for (var i = offset; i < arcLength + offset+arcScale; i+=arcScale)
             {               
                 counter += noFlat;
                 _arcHeight = tempH + counter;
-                box = new Rectangle();
-                box.Width = _arcHeight;
-                box.Height = 4;
-                box.Opacity = arcOpacity / 100;
+                box = new Rectangle {Width = _arcHeight, Height = 4, Opacity = arcOpacity / 100};
                 if (colorCount > arcMidleColorEndPos) { box.Fill = arcEndColor; }
                 else if (colorCount > arcFirstColorEndPos) { box.Fill = arcMidleColor; }
                 else { box.Fill = ArcFirstColor; }
                 box.Name = "box_" + i;
-                radial = i * (Math.PI / 180);
-                sin = Math.Sin(radial) * arcDiameter;
-                cos = Math.Cos(radial) * arcDiameter;
+                var radial = i * (Math.PI / 180);
+                var sin = Math.Sin(radial) * arcDiameter;
+                var cos = Math.Cos(radial) * arcDiameter;
                 Canvas.SetLeft(box, arcX + sin);
                 Canvas.SetTop(box, ArcY + cos);
                 box.RenderTransform = new RotateTransform(90 - i);
-                canvas.Children.Add(box);
+                Canvas.Children.Add(box);
                 colorCount -= arcScale;
                
             }
-            canvas.Children.Add(setNeedle());
+            Canvas.Children.Add(setNeedle());
             Canvas.SetZIndex(needle, 1);
             setLabel();
             
@@ -185,10 +167,8 @@ namespace Gauge
         // Create the needle
         private Line setNeedle()
         {
-            double tail= (arcDiameter + needleHeigth) * (10f/100f)-8;
-            needle = new Line();
-            needle.X1 = ArcX - 30-tail;
-            needle.X2 = ArcX + arcDiameter + needleHeigth - 8;
+            var tail= (arcDiameter + needleHeigth) * (10f/100f)-8;
+            needle = new Line {X1 = ArcX - 30 - tail, X2 = ArcX + arcDiameter + needleHeigth - 8};
             needle.Y1 = needle.Y2 = arcY;
             needle.Stroke = needleColor;
             needle.StrokeThickness = 4;
@@ -202,95 +182,90 @@ namespace Gauge
         {
             double labelCount = arcMaxValue;
             double modul =  arcLength/labelQuantity;
-            double labelScale =  (arcMaxValue - arcMinValue);
+            double labelScale =  arcMaxValue - arcMinValue;
             labelScale /= labelQuantity;
-            double radial;         
-            double sin;
-            double cos;
-            for (int i = 0; i <= arcLength; i++)
+            for (var i = 0; i <= arcLength; i++)
             {
-                
-                if ( i % modul  == 0 )
+                if (i % modul != 0) continue;
+                lbl = new Label
                 {
-                    lbl = new Label();
-                    lbl.Name = "label_" + i;
-                    lbl.Content =  Math.Round(labelCount,1).ToString() ;
-                    lbl.Foreground = labelColor;
-                    lbl.FontFamily = fontFamily;
-                    lbl.FontSize = fontSize;
-                    lbl.Opacity = labelOpacity;
-                    radial = (i + labelOffset ) * (Math.PI / 180);
-                    sin = Math.Sin(radial) * labelDiameter;
-                    cos = Math.Cos(radial) * labelDiameter;
-                    Canvas.SetLeft(lbl, labelX + sin);
-                    Canvas.SetTop(lbl, labelY + cos);
-                    canvas.Children.Add(lbl);
-                    labelCount -= labelScale;
-                   
-                }
-               
+                    Name = "label_" + i,
+                    Content = Math.Round(labelCount, 1).ToString(),
+                    Foreground = labelColor,
+                    FontFamily = fontFamily,
+                    FontSize = fontSize,
+                    Opacity = labelOpacity
+                };
+                var radial = (i + labelOffset ) * (Math.PI / 180);
+                var sin = Math.Sin(radial) * labelDiameter;
+                var cos = Math.Cos(radial) * labelDiameter;
+                Canvas.SetLeft(lbl, labelX + sin);
+                Canvas.SetTop(lbl, labelY + cos);
+                Canvas.Children.Add(lbl);
+                labelCount -= labelScale;
+
             }
-            Label _descrLbl = getDescrText();
+            var _descrLbl = getDescrText();
             Canvas.SetLeft(_descrLbl, gaugeTextX);
             Canvas.SetTop(_descrLbl, gaugeTextY);
-            canvas.Children.Add( _descrLbl );
+            Canvas.Children.Add( _descrLbl );
             
         }
         // Description text
         private Label getDescrText()
         {
-            Label descrLbl = new Label();
-            descrLbl.Name = "descr_label";
-            descrLbl.Content =  descrText;
-            descrLbl.FontFamily = gaugeTextFont;
-            descrLbl.FontSize = gaugeTextFontSize;
-            descrLbl.Foreground = descrTextColor;
+            var descrLbl = new Label
+            {
+                Name = "descr_label",
+                Content = descrText,
+                FontFamily = gaugeTextFont,
+                FontSize = gaugeTextFontSize,
+                Foreground = descrTextColor
+            };
             return descrLbl;
         }
         public void removeChildren()
         {
-            canvas.Children.Clear();
+            Canvas.Children.Clear();
         }
         private void removeLabels()
         {
-            foreach (UIElement element in canvas.Children)
+            foreach (UIElement element in Canvas.Children)
             {
-                if (element is Label)
+                if (!(element is Label)) continue;
+
+                var lbl = (Label)element;
+                if (lbl.Name != "descr_label")
                 {
-                    Label lbl = (Label)element;
-                    if (lbl.Name != "descr_label")
-                    {
-                        canvas.Children.Remove(lbl);
-                    }
+                    Canvas.Children.Remove(lbl);
                 }
             }
         }
         // Change the labels
         private void changeLabels()
         {
-            foreach (UIElement element in canvas.Children)
-            {                
-                if (element is Label)
+            foreach (UIElement element in Canvas.Children)
+            {
+                if (!(element is Label)) continue;
+
+                var lbl = (Label)element;
+                if (lbl.Name != "descr_label")
                 {
-                    Label lbl = (Label)element;
-                    if (lbl.Name != "descr_label")
-                    {
-                        lbl.Foreground = labelColor;
-                        lbl.Opacity = labelOpacity;
-                        lbl.FontSize = fontSize;
-                        lbl.FontFamily = fontFamily;
+                    lbl.Foreground = labelColor;
+                    lbl.Opacity = labelOpacity;
+                    lbl.FontSize = fontSize;
+                    lbl.FontFamily = fontFamily;
                         
-                    }
-                    else
-                    {
-                        lbl.Content = descrText;
-                        lbl.Foreground = descrTextColor;
-                        lbl.FontFamily = GaugeTextFont;
-                        lbl.FontSize = gaugeTextFontSize;
-                        lbl.Opacity = gaugeTextOpacity;
-                        Canvas.SetLeft(lbl, gaugeTextX);
-                        Canvas.SetTop(lbl, gaugeTextY);
-                    }
+                }
+                else
+                {
+                    lbl.Content = descrText;
+                    lbl.Foreground = descrTextColor;
+                    lbl.FontFamily = GaugeTextFont;
+                    lbl.FontSize = gaugeTextFontSize;
+                    lbl.Opacity = gaugeTextOpacity;
+                    Canvas.SetLeft(lbl, gaugeTextX);
+                    Canvas.SetTop(lbl, gaugeTextY);
                 }
             }
         }
@@ -298,31 +273,10 @@ namespace Gauge
 
         // ---------------------- public variable
         [Description("(Gauge) Set the time raise of the needle"),Category("Gauge Control") ]
-        public double GaugeTime
-        {
-            set
-            {
-                motionTime = value;
-            
-            }
-            get
-            {
-                return motionTime;
-            }
-        }
+        public double GaugeTime { set; get; } = 1;
 
         [Description("(Gauge) Choose the motion type of the needle. "), Category("Gauge Control")]
-        public motionType GaugeMotionType
-        {
-            set
-            {
-                typeMotion = value;
-            }
-            get
-            {
-                return typeMotion;
-            }
-        }
+        public motionType GaugeMotionType { set; get; }
 
         [Description("(Gauge) Change opacity of the description text (0-100) . int"), Category("Gauge Control")]
         public double GaugeTextOpacity
@@ -334,10 +288,7 @@ namespace Gauge
                 gaugeTextOpacity = value / 100;
                 changeLabels();
             }
-            get
-            {
-                return gaugeTextOpacity*100;
-            }
+            get => gaugeTextOpacity*100;
         }
 
         [Description("(Gauge) Change font size of the description text . int"), Category("Gauge Control")]
@@ -349,10 +300,7 @@ namespace Gauge
                 gaugeTextFontSize = value;
                 changeLabels();
             }
-            get
-            {
-                return gaugeTextFontSize;
-            }
+            get => gaugeTextFontSize;
         }
 
         [Description("(Gauge) Choose font of the description text"), Category("Gauge Control")]
@@ -363,10 +311,7 @@ namespace Gauge
                 gaugeTextFont = value;
                 changeLabels();
             }
-            get
-            {
-                return gaugeTextFont;
-            }
+            get => gaugeTextFont;
         }
 
         [Description("(Gauge) Set X position of the description text . int"), Category("Gauge Control")]
@@ -377,10 +322,7 @@ namespace Gauge
                 gaugeTextX = value;
                 changeLabels();
             }
-            get
-            {
-                return gaugeTextX;
-            }
+            get => gaugeTextX;
         }
 
         [Description("(Gauge) Set Y position of the description text . int"), Category("Gauge Control")]
@@ -391,10 +333,7 @@ namespace Gauge
                gaugeTextY = value;
                changeLabels();
             }
-            get
-            {
-                return gaugeTextY;
-            }
+            get => gaugeTextY;
         }
 
         [Description("(Gauge) Set color of the description text. string "), Category("Gauge Control")]
@@ -405,10 +344,7 @@ namespace Gauge
                 descrTextColor = value;
                 changeLabels();
             }
-            get
-            {
-                return descrTextColor;
-            }
+            get => descrTextColor;
         }
 
         [Description("(Gauge) Set description text of the gauge. string "), Category("Gauge Control")]
@@ -419,10 +355,7 @@ namespace Gauge
                 descrText = value;
                 changeLabels();
             }
-            get
-            {
-                return descrText;
-            }
+            get => descrText;
         }
 
         [Description("(Gauge) Set the length of the needle. double "), Category("Gauge Control")]
@@ -431,13 +364,10 @@ namespace Gauge
             set
             {
                 needleHeigth = value;
-                setStyle();
+                SetStyle();
                    
             }
-            get
-            {
-                return needleHeigth;
-            }
+            get => needleHeigth;
         }
 
         [Description("(Gauge) Choose how much numbers labels you want to visible (Default is 10).The number must be an integer divider of the ArcLength"), Category("Gauge Control")]
@@ -448,12 +378,9 @@ namespace Gauge
                 if (value <= 1) { value = 1; }
                 if ( arcLength % value != 0) { return; }
                 labelQuantity = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return labelQuantity;
-            }
+            get => labelQuantity;
         }
 
         [Description("(Gauge) Numbers labels opacity (0-100) . double"), Category("Gauge Control")]
@@ -468,10 +395,7 @@ namespace Gauge
                 changeLabels();
                  
             }
-            get
-            {
-                return labelOpacity*100;
-            }
+            get => labelOpacity*100;
         }
 
         [Description("(Gauge) Numbers labels font size. 6 - 72"), Category("Gauge Control")]
@@ -484,11 +408,8 @@ namespace Gauge
                 fontSize = value;
                 changeLabels();
              }
-              get
-              {
-                return fontSize;
-             }
-            }
+              get => fontSize;
+        }
 
         [Description("(Gauge) Choose numbers labels font "), Category("Gauge Control")]
         public FontFamily LabelFont
@@ -500,10 +421,7 @@ namespace Gauge
                 changeLabels();
                 
             }
-            get
-            {
-                return fontFamily;
-            }
+            get => fontFamily;
         }
 
         [Description("(Gauge) Set the minimum number needle point. int "), Category("Gauge Control")]
@@ -513,12 +431,9 @@ namespace Gauge
             {
                 if (value >= arcMaxValue) { return; }
                 arcMinValue = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcMinValue;
-            }
+            get => arcMinValue;
         }
 
         [Description("(Gauge) Set the maximum number needle point. int "), Category("Gauge Control")]
@@ -528,25 +443,16 @@ namespace Gauge
             {
                 if (value <= arcMinValue) { return; }
                 arcMaxValue = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcMaxValue;
-            }
+            get => arcMaxValue;
         }
 
         [Description("(Gauge) Test the gauge.Give value between minimum and maximum"), Category("Gauge Control")]
         public double TestGauge
         {
-            set
-            {
-                setValue(value);
-            }
-            get
-            {
-                return 0;
-            }
+            set => setValue(value);
+            get => 0;
         }
 
         [Description("(Gauge) Arc style "), Category("Gauge Control")]
@@ -555,12 +461,9 @@ namespace Gauge
             set
             {             
                 _arcStyle = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-              return _arcStyle;
-            }
+            get => _arcStyle;
         }
 
         [Description("(Gauge) Numbers labelscolor "), Category("Gauge Control")]
@@ -571,10 +474,7 @@ namespace Gauge
                 labelColor = value;
                 changeLabels();
             }
-            get
-            {
-                return labelColor;
-            }
+            get => labelColor;
         }
 
         [Description("(Gauge) Numbers labels diameter. int "), Category("Gauge Control")]
@@ -583,12 +483,9 @@ namespace Gauge
             set
             {
                 labelDiameter = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return labelDiameter;
-            }
+            get => labelDiameter;
         }
 
         [Description("(Gauge) Numbers labels offset. int "), Category("Gauge Control")]
@@ -597,12 +494,9 @@ namespace Gauge
             set
             {
                 labelOffset = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return labelOffset;
-            }
+            get => labelOffset;
         }
 
         [Description("(Gauge) Set X position of numbers labels. int "), Category("Gauge Control")]
@@ -611,13 +505,10 @@ namespace Gauge
             set
             {
                 labelX = value;
-                setStyle();
+                SetStyle();
                 
             }
-            get
-            {
-                return labelX;
-            }
+            get => labelX;
         }
 
         [Description("(Gauge) Set Y position of numbers labels. int "), Category("Gauge Control")]
@@ -626,25 +517,16 @@ namespace Gauge
             set
             {
                 labelY = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return labelY;
-            }
+            get => labelY;
         }
 
         [Description("(Gauge) Set neddle color"), Category("Gauge Control")]
         public SolidColorBrush NeedleColor
         {
-            set
-            {
-                needle.Stroke = needleColor = value;
-            }
-            get
-            {
-                return needleColor;
-            }
+            set => needle.Stroke = needleColor = value;
+            get => needleColor;
         }
 
         [Description("(Gauge) Set gauge width (80-300)  . double "), Category("Gauge Control")]
@@ -654,14 +536,11 @@ namespace Gauge
             {
                 if (value >= maxW) { value = maxW; }
                 else if (value<= minW) { value = minW; }
-                back.Width=back_front.Width = value;
-                front.Width=front_back.Width=glass_canvas.Width =  value - 20;
-                front_back_mask.Width = value - 45;
+                Back.Width=BackFront.Width = value;
+                Front.Width=FrontBack.Width=GlassCanvas.Width =  value - 20;
+                FrontBackMask.Width = value - 45;
             }
-            get
-            {
-                return back.Width;
-            }
+            get => Back.Width;
         }
 
         [Description("(Gauge) Set gauge height (80-300)  . double "), Category("Gauge Control")]
@@ -671,14 +550,11 @@ namespace Gauge
             {
                 if (value >= maxH) { value = maxH; }
                 else if (value <= minH) { value = minH; }
-                back.Height=back_front.Height = value;
-                front.Height =front_back.Height=glass_canvas.Height = value - 20;
-                front_back_mask.Height = value - 45;
+                Back.Height=BackFront.Height = value;
+                Front.Height =FrontBack.Height=GlassCanvas.Height = value - 20;
+                FrontBackMask.Height = value - 45;
             }
-            get
-            {
-                return back.Height;
-            }
+            get => Back.Height;
         }
 
         [Description("(Gauge) Arc opacity 0-100  . int "), Category("Gauge Control")]
@@ -689,12 +565,9 @@ namespace Gauge
                 if (value <= 0) { value = 0; }
                 else if (value >= 100) { value = 100; }
                 arcOpacity = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcOpacity;
-            }
+            get => arcOpacity;
         }
 
         [Description("(Gauge) Set X position of the arc . int "), Category("Gauge Control")]
@@ -703,13 +576,10 @@ namespace Gauge
             set
             {
                 arcX = value;
-                setStyle();
+                SetStyle();
 
             }
-            get
-            {
-                return arcX;
-            }
+            get => arcX;
         }
 
         [Description("(Gauge) Set Y position of the arc . int "), Category("Gauge Control")]
@@ -718,12 +588,9 @@ namespace Gauge
             set
             {
                 arcY = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcY;
-            }
+            get => arcY;
         }
 
         [Description("(Gauge) Set gauge around color . "), Category("Gauge Control")]
@@ -732,12 +599,9 @@ namespace Gauge
             set
             {
                 arcOutBackColor = value;
-                back_front.Fill = value;
+                BackFront.Fill = value;
             }
-            get
-            {
-                return arcOutBackColor;
-            }
+            get => arcOutBackColor;
         }
 
         [Description("(Gauge) Set gauge background color . "), Category("Gauge Control")]
@@ -746,12 +610,9 @@ namespace Gauge
             set
             {
                 arcBackColor = value;
-                front.Fill = value;
+                Front.Fill = value;
             }
-            get
-            {
-                return arcBackColor;
-            }
+            get => arcBackColor;
         }
 
         [Description("(Gauge) Set first color in arc. "), Category("Gauge Control")]
@@ -760,12 +621,9 @@ namespace Gauge
             set
             {
                 arcFirstColor = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcFirstColor;
-            }
+            get => arcFirstColor;
         }
 
         [Description("(Gauge) Set secondly color in arc. "), Category("Gauge Control")]
@@ -774,12 +632,9 @@ namespace Gauge
             set
             {
                 arcMidleColor = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcMidleColor;
-            }
+            get => arcMidleColor;
         }
 
         [Description("(Gauge) Set end position last color of the arc."), Category("Gauge Control")]
@@ -788,12 +643,9 @@ namespace Gauge
             set
             {
                 arcEndColor = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcEndColor;
-            }
+            get => arcEndColor;
         }
 
         [Description("(Gauge) Set end position first color of the arc."), Category("Gauge Control")]
@@ -802,12 +654,9 @@ namespace Gauge
             set
             {
                 arcFirstColorEndPos = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcFirstColorEndPos;
-            }
+            get => arcFirstColorEndPos;
         }
 
         [Description("(Gauge) Set end position secondly color of the arc."), Category("Gauge Control")]
@@ -816,12 +665,9 @@ namespace Gauge
             set
             {
                 arcMidleColorEndPos = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcMidleColorEndPos;
-            }
+            get => arcMidleColorEndPos;
         }
 
         [Description("(Gauge) Arc scale. int "), Category("Gauge Control")]
@@ -831,13 +677,9 @@ namespace Gauge
             {
                 if (value <= 0) { value = 1; }
                 arcScale = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcScale;
-            }
-
+            get => arcScale;
         }
 
         [Description("(Gauge) Arc offset length. int "), Category("Gauge Control")]
@@ -847,14 +689,11 @@ namespace Gauge
             {
                 if (value <= 0) { value = 0; }
                 offset = value;
-                setStyle();
+                SetStyle();
                 // InvalidateVisual();
                 
             }
-            get
-            {
-                return offset;
-            }
+            get => offset;
         }
 
         [Description("(Gauge) Arc diameter. int "), Category("Gauge Control")]
@@ -864,12 +703,9 @@ namespace Gauge
             {
                 if (value <= 0) { value = 0; }
                 arcDiameter = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcDiameter;
-            }
+            get => arcDiameter;
         }
       
         [Description("(Gauge) Arc periphery length. int "), Category("Gauge Control")]
@@ -880,12 +716,9 @@ namespace Gauge
                 if (value <= 0) { value = 0; }
                 else if (value >= 360) { value = 360; }
                 arcLength = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return arcLength;
-            }
+            get => arcLength;
         }
        
         [Description("(Gauge) Arc height. double "), Category("Gauge Control")]
@@ -895,12 +728,9 @@ namespace Gauge
             {
                 if (value <= 1) { value = 1; }
                 arcHeight = value;
-                setStyle();
+                SetStyle();
             }
-            get
-            {
-                return Math.Round(arcHeight);
-            }
+            get => Math.Round(arcHeight);
         }
 
         [Description("(Gauge) Hide background of the gauge "), Category("Gauge Control")]
@@ -909,13 +739,10 @@ namespace Gauge
             set
             {
              backVisible = value ;
-             front.Visibility= front_back.Visibility = front_back_mask.Visibility = value;
-             back_front.Visibility =  back.Visibility = front.Visibility = glass_canvas.Visibility = value;
+             Front.Visibility= FrontBack.Visibility = FrontBackMask.Visibility = value;
+             BackFront.Visibility =  Back.Visibility = Front.Visibility = GlassCanvas.Visibility = value;
             }
-            get
-            {
-                return backVisible ;
-            }
+            get => backVisible;
         }
     }
 

@@ -25,6 +25,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
             Druck = 0;
             F1 = true;
             B1 = true;
+            S1 = true;
 
             System.Threading.Tasks.Task.Run(KompressoranlageTask);
         }

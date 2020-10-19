@@ -1,8 +1,6 @@
 ﻿// by Antonis Ntit (antonis68)
 // email: spanomarias68@gmail.com
 using System;
-using System.Threading;
-using System.Timers;
 
 namespace TweenMotionLib
 {
@@ -11,7 +9,7 @@ namespace TweenMotionLib
     /// </summary>
     public class TweenMotion
     {
-        private System.Timers.Timer timer = new System.Timers.Timer();
+        private readonly System.Timers.Timer timer = new System.Timers.Timer();
         /// <summary>
         /// Set tick interval. Default is 20
         /// </summary>
@@ -26,7 +24,7 @@ namespace TweenMotionLib
         /// This event is activated when called Start function 
         /// </summary>
         public event OnMotion onMotion;
-        private double timerValue = 0;
+        private double timerValue;
         private int starPos;
         private int endPos;
         private double duration;
@@ -49,7 +47,7 @@ namespace TweenMotionLib
         public TweenMotion()
         {
             if (TickInterval <= 0) { TickInterval = 20; }
-            timerValue = (double)TickInterval;
+            timerValue = TickInterval;
             timer.Interval = TickInterval;
             timer.Elapsed += Timer_Tick;           
         }
@@ -80,20 +78,14 @@ namespace TweenMotionLib
         /// <summary>
         /// return boolean if timer is enabled
         /// </summary>
-        public bool isEnable
-        {
-            get
-            {
-                return timer.Enabled;
-            }
-        }
+        public bool isEnable => timer.Enabled;
 
 
         private void Timer_Tick(object sender, EventArgs e)
         {
 
             timerValue += TickInterval;
-            double current = timerValue;
+            var current = timerValue;
             if (timerValue >= duration) { timer.Stop(); }
 
             switch (type)
@@ -250,28 +242,28 @@ namespace TweenMotionLib
     public class typeMotion
     {
 
-        public static string linearTween { get { return "linearTween"; } }
-        public static string easeInQuad { get { return "easeInQuad"; } }
-        public static string easeOutQuad { get { return "easeOutQuad"; } }
-        public static string easeInOutQuad { get { return "easeInOutQuad"; } }
-        public static string easeInCubic { get { return "easeInCubic"; } }
-        public static string easeOutCubic { get { return "easeOutCubic"; } }
-        public static string easeInOutCubic { get { return "easeInOutCubic"; } }
-        public static string easeInQuart { get { return "easeInQuart"; } }
-        public static string easeOutQuart { get { return "easeOutQuart"; } }
-        public static string easeInOutQuart { get { return "easeInOutQuart"; } }
-        public static string easeInQuint { get { return "easeInQuint"; } }
-        public static string easeOutQuint { get { return "easeOutQuint"; } }
-        public static string easeInOutQuint { get { return "easeInOutQuint"; } }
-        public static string easeInSine { get { return "easeInSine"; } }
-        public static string easeOutSine { get { return "easeOutSine"; } }
-        public static string easeInOutSine { get { return "easeInOutSine"; } }
-        public static string easeInExpo { get { return "easeInExpo"; } }
-        public static string easeOutExpo { get { return "easeOutExpo"; } }
-        public static string easeInOutExpo { get { return "easeInOutExpo"; } }
-        public static string easeInCirc { get { return "easeInCirc"; } }
-        public static string easeOutCirc { get { return "easeOutCirc"; } }
-        public static string easeInOutCirc { get { return "easeInOutCirc"; } }
+        public static string linearTween => "linearTween";
+        public static string easeInQuad => "easeInQuad";
+        public static string easeOutQuad => "easeOutQuad";
+        public static string easeInOutQuad => "easeInOutQuad";
+        public static string easeInCubic => "easeInCubic";
+        public static string easeOutCubic => "easeOutCubic";
+        public static string easeInOutCubic => "easeInOutCubic";
+        public static string easeInQuart => "easeInQuart";
+        public static string easeOutQuart => "easeOutQuart";
+        public static string easeInOutQuart => "easeInOutQuart";
+        public static string easeInQuint => "easeInQuint";
+        public static string easeOutQuint => "easeOutQuint";
+        public static string easeInOutQuint => "easeInOutQuint";
+        public static string easeInSine => "easeInSine";
+        public static string easeOutSine => "easeOutSine";
+        public static string easeInOutSine => "easeInOutSine";
+        public static string easeInExpo => "easeInExpo";
+        public static string easeOutExpo => "easeOutExpo";
+        public static string easeInOutExpo => "easeInOutExpo";
+        public static string easeInCirc => "easeInCirc";
+        public static string easeOutCirc => "easeOutCirc";
+        public static string easeInOutCirc => "easeInOutCirc";
     }
 
 

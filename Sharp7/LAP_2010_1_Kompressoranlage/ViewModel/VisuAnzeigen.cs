@@ -12,9 +12,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             _mainWindow = mw;
             _kompressoranlage = ka;
-
-            Druck = 1.1;
-
+            
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
 
@@ -48,8 +46,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             while (true)
             {
-                Druck = _kompressoranlage.Druck;
-
                 FarbeF1(_kompressoranlage.F1);
                 FarbeP1(_kompressoranlage.P1);
                 FarbeP2(_kompressoranlage.P2);
@@ -82,8 +78,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS1() => _kompressoranlage.S1 = ClickModeButtonS1();
-
+        internal void SetS1() => _kompressoranlage.S1 = !ClickModeButtonS1();
         internal void BtnS2() => _kompressoranlage.S2 = ClickModeButtonS2();
 
         #region SPS Version, Status und Farbe
@@ -461,22 +456,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         #endregion Sichtbarkeit B2
 
-        #region Druck
-
-        private double _druck;
-
-        public double Druck
-        {
-            get => _druck;
-            set
-            {
-                _druck = value;
-                OnPropertyChanged(nameof(Druck));
-            }
-        }
-
-        #endregion Druck
-
+   
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

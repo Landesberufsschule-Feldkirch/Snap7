@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B1",
-      "Kommentar": "Endschalter links"
+      "Kommentar": "Druckschalter"
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B2",
-      "Kommentar": "Endschalter rechts"
+      "Kommentar": "Temperaturfühler Kompressor"
     },
     {
       "LaufendeNr": 2,
@@ -25,7 +25,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "F1",
-      "Kommentar": "Thermorelais"
+      "Kommentar": "Störung Motorschutzschalter"
     },
     {
       "LaufendeNr": 3,
@@ -34,7 +34,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Start"
+      "Kommentar": "Taster Aus"
     },
     {
       "LaufendeNr": 4,
@@ -43,16 +43,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S2",
-      "Kommentar": "Nothalt"
-    },
-    {
-      "LaufendeNr": 5,
-      "StartByte": 0,
-      "StartBit": 5,
-      "AnzahlBit": 1,
-      "Type": "Default",
-      "Bezeichnung": "S3",
-      "Kommentar": "Taster Reset"
+      "Kommentar": "Taster Ein"
     }
   ]
 }
