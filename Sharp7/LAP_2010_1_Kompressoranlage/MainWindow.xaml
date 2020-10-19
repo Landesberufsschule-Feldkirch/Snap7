@@ -1,9 +1,10 @@
-﻿<Window x:Class="LAP_2010_1_Kompressoranlage.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:gauge="clr-namespace:CircularGauge;assembly=CircularGauge"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
+        x:Class="LAP_2010_1_Kompressoranlage.MainWindow"
         mc:Ignorable="d"
         Title="LAP 2010/1 Kompressoranlage" Height="830" Width="1000">
     <Grid>
@@ -60,7 +61,7 @@
 
         <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Aus" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
             <Button.Resources>
-                <Style TargetType="Border">
+                <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="25" />
                 </Style>
             </Button.Resources>
@@ -68,7 +69,7 @@
 
         <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Ein" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
             <Button.Resources>
-                <Style TargetType="Border">
+                <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="25" />
                 </Style>
             </Button.Resources>
@@ -139,40 +140,10 @@
         <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17" />
 
-        <gauge:CircularGaugeControl x:Name="GaugeDruck" Grid.Column="6" Grid.ColumnSpan="5" Grid.Row="4" Grid.RowSpan="9"
-                                        Radius="150"
-                                        ScaleRadius="110"
-                                        ScaleStartAngle="120"
-                                        ScaleSweepAngle="300"
-                                        PointerLength="85"
-                                        PointerCapRadius="35"
-                                        MinValue="0"
-                                        MaxValue="10"
-                                        MajorDivisionsCount="10"
-                                        MinorDivisionsCount="4"
-                                        CurrentValue="{Binding ViAnzeige.Druck}"
-                                        ImageSize="40,50"
-                                        RangeIndicatorThickness="8"
-                                        RangeIndicatorRadius="120"
-                                        RangeIndicatorLightRadius="20"
-                                        RangeIndicatorLightOffset="96"
-                                        ScaleLabelRadius="90"
-                                        ScaleLabelSize="40,20"
-                                        ScaleLabelFontSize="10"
-                                        ScaleLabelForeground="LightGray"
-                                        MajorTickSize="10,3"
-                                        MinorTickSize="3,1"
-                                        MajorTickColor="LightGray"
-                                        MinorTickColor="LightGray"
-                                        ImageOffset="-50"
-                                        GaugeBackgroundColor="Black"
-                                        PointerThickness ="16"
-                                        OptimalRangeStartValue="7"
-                                        OptimalRangeEndValue= "8"
-                                        DialTextOffset="40"
-                                        DialText="Druck [bar]"
-                                        DialTextColor="Black"
-                                        Visibility="Visible" />
+
+
+
+
 
         <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="12"                        Grid.Row="12"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
@@ -180,5 +151,15 @@
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <gaugeControl:GaugeControl x:Name="DruckAnzeige" Grid.Column="6" Grid.ColumnSpan="5"  Grid.Row="5" Grid.RowSpan="9" 
+                            GaugeText="Druck" GaugeTextFont="Arial Rounded MT Bold" 
+                            ArcMaxValue="10" 
+                            ArcMidleColorEndPos="200" 
+                            ArcMinValue="0" 
+                            ArcFirstColorEndPos="180" />
+
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
+
+
     </Grid>
 </Window>
