@@ -54,7 +54,7 @@ namespace LAP_2010_1_Kompressoranlage
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
 
             // create a timer to update the GUI
-            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
+            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
             renderTimer.Tick += UpdateDruckAnzeige;
             renderTimer.Start();
         }
@@ -62,7 +62,7 @@ namespace LAP_2010_1_Kompressoranlage
         private void UpdateDruckAnzeige(object sender, EventArgs e)
         {
 
-            //DruckAnzeige.setValue(_viewModel.Kompressoranlage.Druck);
+            DruckAnzeige.SetValue(_viewModel.Kompressoranlage.Druck);
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)

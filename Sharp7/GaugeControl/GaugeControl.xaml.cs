@@ -13,222 +13,220 @@ namespace GaugeControl
 
     public partial class GaugeControl
     {
-       
-        private readonly TweenMotionLib.TweenMotion motion = new TweenMotionLib.TweenMotion();
-        private FontFamily fontFamily = new FontFamily("Tahoma");
-        private FontFamily gaugeTextFont = new FontFamily("Tahoma");
-        private SolidColorBrush labelColor = Brushes.Black;
-        private SolidColorBrush arcFirstColor = Brushes.Green;
-        private SolidColorBrush arcMidleColor = Brushes.Yellow;
-        private SolidColorBrush arcEndColor = Brushes.Red;
-        private SolidColorBrush arcOutBackColor = Brushes.Black;
-        private SolidColorBrush arcBackColor = Brushes.Ivory;
-        private SolidColorBrush needleColor = Brushes.Red;
-        private SolidColorBrush descrTextColor = Brushes.Black;
-        readonly System.Windows.Media.Effects.DropShadowEffect shadow;
-        private Rectangle box;
-        private Line needle;
-        private Label lbl;
-        private int offset = 60;
-        private int arcLength = 240;
-        private double arcHeight = 15;
-        private int arcDiameter = 120;
-        private int arcX = 148;
-        private int arcY = 156;
-        private int gaugeTextX=125;
-        private int gaugeTextY=220;
-        private int arcScale = 1;
-        private int labelDiameter = 100;
-        private int labelOffset = 60;
-        private int labelX = 136;
-        private int labelY = 142;
-        private int labelQuantity = 10;
-        private int arcMinValue;
-        private int arcMaxValue = 100;
-        private const int maxW = 300;
-        private const int maxH = 300;
-        private const int minW = 80;
-        private const int minH = 80;
-        private int arcFirstColorEndPos = 100;
-        private int arcMidleColorEndPos = 130;
-        private int colorCount;
-        private double arcOpacity = 100;
-        private double needleHeigth;
-        private int startPos;
-        private int endPos;
-        private double initPos;
-        private double prevPos;
+        private readonly TweenMotion _motion = new TweenMotion();
+        private FontFamily _fontFamily = new FontFamily("Tahoma");
+        private FontFamily _gaugeTextFont = new FontFamily("Tahoma");
+        private SolidColorBrush _labelColor = Brushes.Black;
+        private SolidColorBrush _arcFirstColor = Brushes.Green;
+        private SolidColorBrush _arcMidleColor = Brushes.Yellow;
+        private SolidColorBrush _arcEndColor = Brushes.Red;
+        private SolidColorBrush _arcOutBackColor = Brushes.Black;
+        private SolidColorBrush _arcBackColor = Brushes.Ivory;
+        private SolidColorBrush _needleColor = Brushes.Red;
+        private SolidColorBrush _descrTextColor = Brushes.Black;
+        private readonly System.Windows.Media.Effects.DropShadowEffect _shadow;
+        private Rectangle _box;
+        private Line _needle;
+        private Label _lbl;
+        private int _offset = 60;
+        private int _arcLength = 240;
+        private double _arcHeight = 15;
+        private int _arcDiameter = 120;
+        private int _arcX = 148;
+        private int _arcY = 156;
+        private int _gaugeTextX = 125;
+        private int _gaugeTextY = 220;
+        private int _arcScale = 1;
+        private int _labelDiameter = 100;
+        private int _labelOffset = 60;
+        private int _labelX = 136;
+        private int _labelY = 142;
+        private int _labelQuantity = 10;
+        private int _arcMinValue;
+        private int _arcMaxValue = 100;
+        private const int MaxW = 300;
+        private const int MaxH = 300;
+        private const int MinW = 80;
+        private const int MinH = 80;
+        private int _arcFirstColorEndPos = 100;
+        private int _arcMidleColorEndPos = 130;
+        private int _colorCount;
+        private double _arcOpacity = 100;
+        private double _needleHeigth;
+        private int _startPos;
+        private int _endPos;
+        private double _initPos;
+        private double _prevPos;
         private arcStyle _arcStyle;
-        private int fontSize=12;
-        private double labelOpacity = 1;
-        private readonly bool isFirst = true;
-        private int gaugeTextFontSize = 14;
-        private string descrText = "Gauge";
-        private double gaugeTextOpacity = 1;
-        private Visibility backVisible;
+        private int _fontSize = 12;
+        private double _labelOpacity = 1;
+        private readonly bool _isFirst = true;
+        private int _gaugeTextFontSize = 14;
+        private string _descrText = "Gauge";
+        private double _gaugeTextOpacity = 1;
+        private Visibility _backVisible;
 
+
+        // ReSharper disable UnusedMember.Global
         public enum arcStyle { Flat, Αscending, Descending }
+        // ReSharper restore UnusedMember.Global
 
-        // Types of motion 
-        public enum motionType
+
+        // ReSharper disable UnusedMember.Global
+        public enum MotionType
         {
-            easeOutExpo, easeOutCubic, easeOutQuart, easeOutQuint,
-            easeOutSine, easeOutQuad, easeOutCirc,linearTween
+            EaseOutExpo, EaseOutCubic, EaseOutQuart, EaseOutQuint,
+            EaseOutSine, EaseOutQuad, EaseOutCirc, LinearTween
         }
-           
+        // ReSharper restore UnusedMember.Global
+
         public GaugeControl()
         {
             InitializeComponent();
-            motion.onMotion += Motion_onMotion;
-            BackFront.Fill = arcOutBackColor;
-            Front.Fill = arcBackColor;
-            shadow = new System.Windows.Media.Effects.DropShadowEffect {ShadowDepth = 5, Opacity = .4};
-            needleHeigth = arcHeight;
-            if (isFirst) { SetStyle(); }
-            isFirst = false;
-            
-          
+            _motion.onMotion += Motion_onMotion;
+            BackFront.Fill = _arcOutBackColor;
+            Front.Fill = _arcBackColor;
+            _shadow = new System.Windows.Media.Effects.DropShadowEffect { ShadowDepth = 5, Opacity = .4 };
+            _needleHeigth = _arcHeight;
+            if (_isFirst) { SetStyle(); }
+            _isFirst = false;
+
+
         }
-        // Event of TweenMotion
+
         private void Motion_onMotion(double value, string type)
-        {        
-            shadow.Direction = value;
-            needle.Effect = shadow;
-            needle.RenderTransform = new RotateTransform(value, ArcX, arcY);           
-        }
-        /// <summary>
-        ///  Set value to the gauge
-        /// </summary>
-        /// <param name="value"></param>
-        public void setValue(double value)
         {
-            if (value <= arcMinValue) { value = arcMinValue; }
-            else if (value >= arcMaxValue) { value = arcMaxValue; }
-            value -= arcMinValue;
-            var factor = (double)arcLength / (arcMaxValue - arcMinValue);
-            value *= factor;
-            initPos = 90 - (ArcLength + ArcOffset);
-            startPos = (int)initPos + (int)prevPos;
-            endPos = (int)initPos + (int)value;
-            motion.Start(GaugeMotionType.ToString(), startPos, endPos, GaugeTime);
-            prevPos = value;
+            _shadow.Direction = value;
+            _needle.Effect = _shadow;
+            _needle.RenderTransform = new RotateTransform(value, ArcX, _arcY);
         }
-        // Set style of control
+
+        public void SetValue(double value)
+        {
+            if (value <= _arcMinValue) { value = _arcMinValue; }
+            else if (value >= _arcMaxValue) { value = _arcMaxValue; }
+            value -= _arcMinValue;
+            var factor = (double)_arcLength / (_arcMaxValue - _arcMinValue);
+            value *= factor;
+            _initPos = 90 - (ArcLength + ArcOffset);
+            _startPos = (int)_initPos + (int)_prevPos;
+            _endPos = (int)_initPos + (int)value;
+            _motion.Start(GaugeMotionType.ToString(), _startPos, _endPos, GaugeTime);
+            _prevPos = value;
+        }
+
         private void SetStyle()
         {
-            removeChildren();
-            colorCount = ArcLength;
+            RemoveChildren();
+            _colorCount = ArcLength;
             double counter = 0;
             double tempH = 0; // temporary height 
-            box = null;
+            _box = null;
             double noFlat = 0;
-            var _arcHeight = arcHeight;
-            NeedleFront.Margin = new Thickness { Left = arcX - 10, Top = arcY - 60 };
+            var arcHeight = _arcHeight;
+            NeedleFront.Margin = new Thickness { Left = _arcX - 10, Top = _arcY - 60 };
             if (_arcStyle.ToString() == "Flat")
             {
-              tempH = _arcHeight;
+                tempH = arcHeight;
             }
             else
             {
-                noFlat = _arcHeight / arcLength;
+                noFlat = arcHeight / _arcLength;
                 if (_arcStyle.ToString() == "Αscending")
                 {
                     tempH = 0;
-                    counter = _arcHeight/ arcScale + 1;
+                    counter = arcHeight / _arcScale + 1;
                     noFlat *= -1;
                 }
-                
-            }                      
-
-            for (var i = offset; i < arcLength + offset+arcScale; i+=arcScale)
-            {               
-                counter += noFlat;
-                _arcHeight = tempH + counter;
-                box = new Rectangle {Width = _arcHeight, Height = 4, Opacity = arcOpacity / 100};
-                if (colorCount > arcMidleColorEndPos) { box.Fill = arcEndColor; }
-                else if (colorCount > arcFirstColorEndPos) { box.Fill = arcMidleColor; }
-                else { box.Fill = ArcFirstColor; }
-                box.Name = "box_" + i;
-                var radial = i * (Math.PI / 180);
-                var sin = Math.Sin(radial) * arcDiameter;
-                var cos = Math.Cos(radial) * arcDiameter;
-                Canvas.SetLeft(box, arcX + sin);
-                Canvas.SetTop(box, ArcY + cos);
-                box.RenderTransform = new RotateTransform(90 - i);
-                Canvas.Children.Add(box);
-                colorCount -= arcScale;
-               
             }
-            Canvas.Children.Add(setNeedle());
-            Canvas.SetZIndex(needle, 1);
-            setLabel();
-            
+
+            for (var i = _offset; i < _arcLength + _offset + _arcScale; i += _arcScale)
+            {
+                counter += noFlat;
+                arcHeight = tempH + counter;
+                _box = new Rectangle { Width = arcHeight, Height = 4, Opacity = _arcOpacity / 100 };
+                if (_colorCount > _arcMidleColorEndPos) { _box.Fill = _arcEndColor; }
+                else if (_colorCount > _arcFirstColorEndPos) { _box.Fill = _arcMidleColor; }
+                else { _box.Fill = ArcFirstColor; }
+                _box.Name = "box_" + i;
+                var radial = i * (Math.PI / 180);
+                var sin = Math.Sin(radial) * _arcDiameter;
+                var cos = Math.Cos(radial) * _arcDiameter;
+                Canvas.SetLeft(_box, _arcX + sin);
+                Canvas.SetTop(_box, ArcY + cos);
+                _box.RenderTransform = new RotateTransform(90 - i);
+                Canvas.Children.Add(_box);
+                _colorCount -= _arcScale;
+
+            }
+            Canvas.Children.Add(SetNeedle());
+            Canvas.SetZIndex(_needle, 1);
+            SetLabel();
+
         }
-        // Create the needle
-        private Line setNeedle()
+
+        private Line SetNeedle()
         {
-            var tail= (arcDiameter + needleHeigth) * (10f/100f)-8;
-            needle = new Line {X1 = ArcX - 30 - tail, X2 = ArcX + arcDiameter + needleHeigth - 8};
-            needle.Y1 = needle.Y2 = arcY;
-            needle.Stroke = needleColor;
-            needle.StrokeThickness = 4;
-            needle.StrokeEndLineCap = PenLineCap.Triangle;
-            needle.RenderTransform = new RotateTransform(90 - (arcLength + ArcOffset), ArcX, arcY);
-            needle.Effect = shadow;
-            return needle;
+            var tail = (_arcDiameter + _needleHeigth) * (10f / 100f) - 8;
+            _needle = new Line { X1 = ArcX - 30 - tail, X2 = ArcX + _arcDiameter + _needleHeigth - 8 };
+            _needle.Y1 = _needle.Y2 = _arcY;
+            _needle.Stroke = _needleColor;
+            _needle.StrokeThickness = 4;
+            _needle.StrokeEndLineCap = PenLineCap.Triangle;
+            _needle.RenderTransform = new RotateTransform(90 - (_arcLength + ArcOffset), ArcX, _arcY);
+            _needle.Effect = _shadow;
+            return _needle;
         }
-        // Create the labels
-        private void setLabel()
+
+        private void SetLabel()
         {
-            double labelCount = arcMaxValue;
-            double modul =  arcLength/labelQuantity;
-            double labelScale =  arcMaxValue - arcMinValue;
-            labelScale /= labelQuantity;
-            for (var i = 0; i <= arcLength; i++)
+            double labelCount = _arcMaxValue;
+            var modul = (double)_arcLength / _labelQuantity;
+            double labelScale = _arcMaxValue - _arcMinValue;
+            labelScale /= _labelQuantity;
+            for (var i = 0; i <= _arcLength; i++)
             {
                 if (i % modul != 0) continue;
-                lbl = new Label
+                _lbl = new Label
                 {
                     Name = "label_" + i,
                     Content = Math.Round(labelCount, 1).ToString(),
-                    Foreground = labelColor,
-                    FontFamily = fontFamily,
-                    FontSize = fontSize,
-                    Opacity = labelOpacity
+                    Foreground = _labelColor,
+                    FontFamily = _fontFamily,
+                    FontSize = _fontSize,
+                    Opacity = _labelOpacity
                 };
-                var radial = (i + labelOffset ) * (Math.PI / 180);
-                var sin = Math.Sin(radial) * labelDiameter;
-                var cos = Math.Cos(radial) * labelDiameter;
-                Canvas.SetLeft(lbl, labelX + sin);
-                Canvas.SetTop(lbl, labelY + cos);
-                Canvas.Children.Add(lbl);
+                var radial = (i + _labelOffset) * (Math.PI / 180);
+                var sin = Math.Sin(radial) * _labelDiameter;
+                var cos = Math.Cos(radial) * _labelDiameter;
+                Canvas.SetLeft(_lbl, _labelX + sin);
+                Canvas.SetTop(_lbl, _labelY + cos);
+                Canvas.Children.Add(_lbl);
                 labelCount -= labelScale;
 
             }
-            var _descrLbl = getDescrText();
-            Canvas.SetLeft(_descrLbl, gaugeTextX);
-            Canvas.SetTop(_descrLbl, gaugeTextY);
-            Canvas.Children.Add( _descrLbl );
-            
+            var descrLbl = GetDescrText();
+            Canvas.SetLeft(descrLbl, _gaugeTextX);
+            Canvas.SetTop(descrLbl, _gaugeTextY);
+            Canvas.Children.Add(descrLbl);
         }
-        // Description text
-        private Label getDescrText()
+
+        private Label GetDescrText()
         {
             var descrLbl = new Label
             {
                 Name = "descr_label",
-                Content = descrText,
-                FontFamily = gaugeTextFont,
-                FontSize = gaugeTextFontSize,
-                Foreground = descrTextColor
+                Content = _descrText,
+                FontFamily = _gaugeTextFont,
+                FontSize = _gaugeTextFontSize,
+                Foreground = _descrTextColor
             };
             return descrLbl;
         }
-        public void removeChildren()
-        {
-            Canvas.Children.Clear();
-        }
-        private void removeLabels()
+        public void RemoveChildren() => Canvas.Children.Clear();
+
+        // ReSharper disable once UnusedMember.Local
+        private void RemoveLabels()
         {
             foreach (UIElement element in Canvas.Children)
             {
@@ -242,7 +240,7 @@ namespace GaugeControl
             }
         }
         // Change the labels
-        private void changeLabels()
+        private void ChangeLabels()
         {
             foreach (UIElement element in Canvas.Children)
             {
@@ -251,33 +249,34 @@ namespace GaugeControl
                 var lbl = (Label)element;
                 if (lbl.Name != "descr_label")
                 {
-                    lbl.Foreground = labelColor;
-                    lbl.Opacity = labelOpacity;
-                    lbl.FontSize = fontSize;
-                    lbl.FontFamily = fontFamily;
-                        
+                    lbl.Foreground = _labelColor;
+                    lbl.Opacity = _labelOpacity;
+                    lbl.FontSize = _fontSize;
+                    lbl.FontFamily = _fontFamily;
+
                 }
                 else
                 {
-                    lbl.Content = descrText;
-                    lbl.Foreground = descrTextColor;
+                    lbl.Content = _descrText;
+                    lbl.Foreground = _descrTextColor;
                     lbl.FontFamily = GaugeTextFont;
-                    lbl.FontSize = gaugeTextFontSize;
-                    lbl.Opacity = gaugeTextOpacity;
-                    Canvas.SetLeft(lbl, gaugeTextX);
-                    Canvas.SetTop(lbl, gaugeTextY);
+                    lbl.FontSize = _gaugeTextFontSize;
+                    lbl.Opacity = _gaugeTextOpacity;
+                    Canvas.SetLeft(lbl, _gaugeTextX);
+                    Canvas.SetTop(lbl, _gaugeTextY);
                 }
             }
         }
 
 
         // ---------------------- public variable
-        [Description("(Gauge) Set the time raise of the needle"),Category("Gauge Control") ]
+        [Description("(Gauge) Set the time raise of the needle"), Category("Gauge Control")]
         public double GaugeTime { set; get; } = 1;
 
         [Description("(Gauge) Choose the motion type of the needle. "), Category("Gauge Control")]
-        public motionType GaugeMotionType { set; get; }
+        public MotionType GaugeMotionType { set; get; }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Change opacity of the description text (0-100) . int"), Category("Gauge Control")]
         public double GaugeTextOpacity
         {
@@ -285,22 +284,23 @@ namespace GaugeControl
             {
                 if (value <= 0) { value = 0; }
                 else if (value >= 100) { value = 100; }
-                gaugeTextOpacity = value / 100;
-                changeLabels();
+                _gaugeTextOpacity = value / 100;
+                ChangeLabels();
             }
-            get => gaugeTextOpacity*100;
+            get => _gaugeTextOpacity * 100;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Change font size of the description text . int"), Category("Gauge Control")]
         public int GaugeTextFontSize
         {
             set
             {
                 if (value >= 80) { value = 80; }
-                gaugeTextFontSize = value;
-                changeLabels();
+                _gaugeTextFontSize = value;
+                ChangeLabels();
             }
-            get => gaugeTextFontSize;
+            get => _gaugeTextFontSize;
         }
 
         [Description("(Gauge) Choose font of the description text"), Category("Gauge Control")]
@@ -308,255 +308,277 @@ namespace GaugeControl
         {
             set
             {
-                gaugeTextFont = value;
-                changeLabels();
+                _gaugeTextFont = value;
+                ChangeLabels();
             }
-            get => gaugeTextFont;
+            get => _gaugeTextFont;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set X position of the description text . int"), Category("Gauge Control")]
         public int GaugeTextX
         {
             set
             {
-                gaugeTextX = value;
-                changeLabels();
+                _gaugeTextX = value;
+                ChangeLabels();
             }
-            get => gaugeTextX;
+            get => _gaugeTextX;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set Y position of the description text . int"), Category("Gauge Control")]
         public int GaugeTextY
         {
             set
             {
-               gaugeTextY = value;
-               changeLabels();
+                _gaugeTextY = value;
+                ChangeLabels();
             }
-            get => gaugeTextY;
+            get => _gaugeTextY;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set color of the description text. string "), Category("Gauge Control")]
         public SolidColorBrush GaugeTextColor
         {
             set
             {
-                descrTextColor = value;
-                changeLabels();
+                _descrTextColor = value;
+                ChangeLabels();
             }
-            get => descrTextColor;
+            get => _descrTextColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set description text of the gauge. string "), Category("Gauge Control")]
         public string GaugeText
         {
             set
             {
-                descrText = value;
-                changeLabels();
+                _descrText = value;
+                ChangeLabels();
             }
-            get => descrText;
+            get => _descrText;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set the length of the needle. double "), Category("Gauge Control")]
         public double NeedleLength
         {
             set
             {
-                needleHeigth = value;
+                _needleHeigth = value;
                 SetStyle();
-                   
+
             }
-            get => needleHeigth;
+            get => _needleHeigth;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Choose how much numbers labels you want to visible (Default is 10).The number must be an integer divider of the ArcLength"), Category("Gauge Control")]
         public int LabelQuantity
         {
             set
             {
                 if (value <= 1) { value = 1; }
-                if ( arcLength % value != 0) { return; }
-                labelQuantity = value;
+                if (_arcLength % value != 0) { return; }
+                _labelQuantity = value;
                 SetStyle();
             }
-            get => labelQuantity;
+            get => _labelQuantity;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Numbers labels opacity (0-100) . double"), Category("Gauge Control")]
         public double LabelOpacity
         {
-        set
+            set
             {
-                if (value <= 0){ value = 0; }
+                if (value <= 0) { value = 0; }
                 else if (value >= 100) { value = 100; }
-                value/= 100;
-                labelOpacity = value;
-                changeLabels();
-                 
+                value /= 100;
+                _labelOpacity = value;
+                ChangeLabels();
+
             }
-            get => labelOpacity*100;
+            get => _labelOpacity * 100;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Numbers labels font size. 6 - 72"), Category("Gauge Control")]
         public int LabelFontSize
+        {
+            set
             {
-             set
-             {
                 if (value <= 6) { value = 6; }
                 else if (value >= 72) { value = 72; }
-                fontSize = value;
-                changeLabels();
-             }
-              get => fontSize;
+                _fontSize = value;
+                ChangeLabels();
+            }
+            get => _fontSize;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Choose numbers labels font "), Category("Gauge Control")]
         public FontFamily LabelFont
         {
 
             set
             {
-                fontFamily = value;
-                changeLabels();
-                
+                _fontFamily = value;
+                ChangeLabels();
+
             }
-            get => fontFamily;
+            get => _fontFamily;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set the minimum number needle point. int "), Category("Gauge Control")]
         public int ArcMinValue
         {
             set
             {
-                if (value >= arcMaxValue) { return; }
-                arcMinValue = value;
+                if (value >= _arcMaxValue) { return; }
+                _arcMinValue = value;
                 SetStyle();
             }
-            get => arcMinValue;
+            get => _arcMinValue;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set the maximum number needle point. int "), Category("Gauge Control")]
         public int ArcMaxValue
         {
             set
             {
-                if (value <= arcMinValue) { return; }
-                arcMaxValue = value;
+                if (value <= _arcMinValue) { return; }
+                _arcMaxValue = value;
                 SetStyle();
             }
-            get => arcMaxValue;
+            get => _arcMaxValue;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Test the gauge.Give value between minimum and maximum"), Category("Gauge Control")]
         public double TestGauge
         {
-            set => setValue(value);
+            set => SetValue(value);
             get => 0;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc style "), Category("Gauge Control")]
         public arcStyle ArcStyle
         {
             set
-            {             
+            {
                 _arcStyle = value;
                 SetStyle();
             }
             get => _arcStyle;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Numbers labelscolor "), Category("Gauge Control")]
         public SolidColorBrush LabelColor
         {
             set
             {
-                labelColor = value;
-                changeLabels();
+                _labelColor = value;
+                ChangeLabels();
             }
-            get => labelColor;
+            get => _labelColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Numbers labels diameter. int "), Category("Gauge Control")]
         public int LabelDiameter
         {
             set
             {
-                labelDiameter = value;
+                _labelDiameter = value;
                 SetStyle();
             }
-            get => labelDiameter;
+            get => _labelDiameter;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Numbers labels offset. int "), Category("Gauge Control")]
         public int LabelOffset
         {
             set
             {
-                labelOffset = value;
+                _labelOffset = value;
                 SetStyle();
             }
-            get => labelOffset;
+            get => _labelOffset;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set X position of numbers labels. int "), Category("Gauge Control")]
         public int LabelX
         {
             set
             {
-                labelX = value;
+                _labelX = value;
                 SetStyle();
-                
+
             }
-            get => labelX;
+            get => _labelX;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set Y position of numbers labels. int "), Category("Gauge Control")]
         public int LabelY
         {
             set
             {
-                labelY = value;
+                _labelY = value;
                 SetStyle();
             }
-            get => labelY;
+            get => _labelY;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set neddle color"), Category("Gauge Control")]
         public SolidColorBrush NeedleColor
         {
-            set => needle.Stroke = needleColor = value;
-            get => needleColor;
+            set => _needle.Stroke = _needleColor = value;
+            get => _needleColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set gauge width (80-300)  . double "), Category("Gauge Control")]
         public double ArcBackWidth
         {
             set
             {
-                if (value >= maxW) { value = maxW; }
-                else if (value<= minW) { value = minW; }
-                Back.Width=BackFront.Width = value;
-                Front.Width=FrontBack.Width=GlassCanvas.Width =  value - 20;
+                if (value >= MaxW) { value = MaxW; }
+                else if (value <= MinW) { value = MinW; }
+                Back.Width = BackFront.Width = value;
+                Front.Width = FrontBack.Width = GlassCanvas.Width = value - 20;
                 FrontBackMask.Width = value - 45;
             }
             get => Back.Width;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set gauge height (80-300)  . double "), Category("Gauge Control")]
         public double ArcBackHeight
         {
             set
             {
-                if (value >= maxH) { value = maxH; }
-                else if (value <= minH) { value = minH; }
-                Back.Height=BackFront.Height = value;
-                Front.Height =FrontBack.Height=GlassCanvas.Height = value - 20;
+                if (value >= MaxH) { value = MaxH; }
+                else if (value <= MinH) { value = MinH; }
+                Back.Height = BackFront.Height = value;
+                Front.Height = FrontBack.Height = GlassCanvas.Height = value - 20;
                 FrontBackMask.Height = value - 45;
             }
             get => Back.Height;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc opacity 0-100  . int "), Category("Gauge Control")]
         public double ArcOpacity
         {
@@ -564,22 +586,23 @@ namespace GaugeControl
             {
                 if (value <= 0) { value = 0; }
                 else if (value >= 100) { value = 100; }
-                arcOpacity = value;
+                _arcOpacity = value;
                 SetStyle();
             }
-            get => arcOpacity;
+            get => _arcOpacity;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set X position of the arc . int "), Category("Gauge Control")]
         public int ArcX
         {
             set
             {
-                arcX = value;
+                _arcX = value;
                 SetStyle();
 
             }
-            get => arcX;
+            get => _arcX;
         }
 
         [Description("(Gauge) Set Y position of the arc . int "), Category("Gauge Control")]
@@ -587,32 +610,34 @@ namespace GaugeControl
         {
             set
             {
-                arcY = value;
+                _arcY = value;
                 SetStyle();
             }
-            get => arcY;
+            get => _arcY;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set gauge around color . "), Category("Gauge Control")]
         public SolidColorBrush ArcOutBackColor
         {
             set
             {
-                arcOutBackColor = value;
+                _arcOutBackColor = value;
                 BackFront.Fill = value;
             }
-            get => arcOutBackColor;
+            get => _arcOutBackColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set gauge background color . "), Category("Gauge Control")]
         public SolidColorBrush ArcBackColor
         {
             set
             {
-                arcBackColor = value;
+                _arcBackColor = value;
                 Front.Fill = value;
             }
-            get => arcBackColor;
+            get => _arcBackColor;
         }
 
         [Description("(Gauge) Set first color in arc. "), Category("Gauge Control")]
@@ -620,94 +645,101 @@ namespace GaugeControl
         {
             set
             {
-                arcFirstColor = value;
+                _arcFirstColor = value;
                 SetStyle();
             }
-            get => arcFirstColor;
+            get => _arcFirstColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set secondly color in arc. "), Category("Gauge Control")]
         public SolidColorBrush ArcMidleColor
         {
             set
             {
-                arcMidleColor = value;
+                _arcMidleColor = value;
                 SetStyle();
             }
-            get => arcMidleColor;
+            get => _arcMidleColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set end position last color of the arc."), Category("Gauge Control")]
         public SolidColorBrush ArcEndColor
         {
             set
             {
-                arcEndColor = value;
+                _arcEndColor = value;
                 SetStyle();
             }
-            get => arcEndColor;
+            get => _arcEndColor;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set end position first color of the arc."), Category("Gauge Control")]
         public int ArcFirstColorEndPos
         {
             set
             {
-                arcFirstColorEndPos = value;
+                _arcFirstColorEndPos = value;
                 SetStyle();
             }
-            get => arcFirstColorEndPos;
+            get => _arcFirstColorEndPos;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Set end position secondly color of the arc."), Category("Gauge Control")]
         public int ArcMidleColorEndPos
         {
             set
             {
-                arcMidleColorEndPos = value;
+                _arcMidleColorEndPos = value;
                 SetStyle();
             }
-            get => arcMidleColorEndPos;
+            get => _arcMidleColorEndPos;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc scale. int "), Category("Gauge Control")]
         public int ArcScale
         {
             set
             {
                 if (value <= 0) { value = 1; }
-                arcScale = value;
+                _arcScale = value;
                 SetStyle();
             }
-            get => arcScale;
+            get => _arcScale;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc offset length. int "), Category("Gauge Control")]
         public int ArcOffset
         {
             set
             {
                 if (value <= 0) { value = 0; }
-                offset = value;
+                _offset = value;
                 SetStyle();
                 // InvalidateVisual();
-                
+
             }
-            get => offset;
+            get => _offset;
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc diameter. int "), Category("Gauge Control")]
         public int ArcDiameter
         {
             set
             {
                 if (value <= 0) { value = 0; }
-                arcDiameter = value;
+                _arcDiameter = value;
                 SetStyle();
             }
-            get => arcDiameter;
+            get => _arcDiameter;
         }
-      
+
         [Description("(Gauge) Arc periphery length. int "), Category("Gauge Control")]
         public int ArcLength
         {
@@ -715,37 +747,36 @@ namespace GaugeControl
             {
                 if (value <= 0) { value = 0; }
                 else if (value >= 360) { value = 360; }
-                arcLength = value;
+                _arcLength = value;
                 SetStyle();
             }
-            get => arcLength;
+            get => _arcLength;
         }
-       
+
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc height. double "), Category("Gauge Control")]
         public double ArcHeight
         {
             set
             {
                 if (value <= 1) { value = 1; }
-                arcHeight = value;
+                _arcHeight = value;
                 SetStyle();
             }
-            get => Math.Round(arcHeight);
+            get => Math.Round(_arcHeight);
         }
 
+        // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Hide background of the gauge "), Category("Gauge Control")]
         public Visibility GaugeBackVisible
         {
             set
             {
-             backVisible = value ;
-             Front.Visibility= FrontBack.Visibility = FrontBackMask.Visibility = value;
-             BackFront.Visibility =  Back.Visibility = Front.Visibility = GlassCanvas.Visibility = value;
+                _backVisible = value;
+                Front.Visibility = FrontBack.Visibility = FrontBackMask.Visibility = value;
+                BackFront.Visibility = Back.Visibility = Front.Visibility = GlassCanvas.Visibility = value;
             }
-            get => backVisible;
+            get => _backVisible;
         }
     }
-
-     
-
 }
