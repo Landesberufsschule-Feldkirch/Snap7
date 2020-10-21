@@ -62,7 +62,7 @@ namespace LAP_2010_1_Kompressoranlage
         private void UpdateDruckAnzeige(object sender, EventArgs e)
         {
 
-            DruckAnzeige.setValue(_viewModel.Kompressoranlage.Druck);
+            //DruckAnzeige.setValue(_viewModel.Kompressoranlage.Druck);
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)

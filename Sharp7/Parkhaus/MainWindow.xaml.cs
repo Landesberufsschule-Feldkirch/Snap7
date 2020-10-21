@@ -23,7 +23,7 @@ namespace Parkhaus
 
         public MainWindow()
         {
-            const string versionText = "LAP 2019 Foerderanlage";
+            const string versionText = "Parkhaus";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
@@ -32,7 +32,7 @@ namespace Parkhaus
                 VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
             };
 
-            var viewModel = new ViewModel.ViewModel();
+            var viewModel = new ViewModel.ViewModel(this);
             _datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();

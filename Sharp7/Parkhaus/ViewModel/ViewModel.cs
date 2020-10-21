@@ -7,10 +7,10 @@
     {
         public Model.Parkhaus Parkhaus { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
-        public ViewModel()
+        public ViewModel(MainWindow mainWindow)
         {
             Parkhaus = new Model.Parkhaus();
-            ViAnzeige = new VisuAnzeigen(Parkhaus);
+            ViAnzeige = new VisuAnzeigen(mainWindow, Parkhaus);
         }
 
 

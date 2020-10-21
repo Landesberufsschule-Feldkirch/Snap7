@@ -7,7 +7,7 @@ namespace Parkhaus.Model
     {
         public byte[] BesetzteParkPlaetze { get; set; } = new byte[16];
 
-        public  int FreieParkplaetze { get; set; }
+        public int FreieParkplaetze { get; set; }
 
         public bool ParkhausReihe1 { get; set; } // Signal von der SPS
         public bool ParkhausReihe2 { get; set; }
@@ -37,6 +37,8 @@ namespace Parkhaus.Model
         {
             while (true)
             {
+                ParkhausSpalte1 = ParkhausSpalte2 = ParkhausSpalte3 = ParkhausSpalte4 =
+                    ParkhausSpalte5 = ParkhausSpalte6 = ParkhausSpalte7 = ParkhausSpalte8 = false;
 
                 if (ParkhausReihe1) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[0]);
                 if (ParkhausReihe2) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[1]);

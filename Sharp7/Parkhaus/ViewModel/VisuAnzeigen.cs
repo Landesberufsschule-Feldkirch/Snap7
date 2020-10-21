@@ -9,9 +9,12 @@ namespace Parkhaus.ViewModel
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly Model.Parkhaus _parkhaus;
+        private readonly MainWindow _mainWindow;
         private readonly Random _random;
-        public VisuAnzeigen(Model.Parkhaus parkhaus)
+
+        public VisuAnzeigen(MainWindow mw, Model.Parkhaus parkhaus)
         {
+            _mainWindow = mw;
             _parkhaus = parkhaus;
 
             _random = new Random();
@@ -47,6 +50,19 @@ namespace Parkhaus.ViewModel
                     FarbeSensor[i] = AutoSichtbar[i] == "Visible" ? "Red" : "LawnGreen";
                 }
 
+                if (_mainWindow.Plc != null)
+                {
+                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
+                    {
+                        VersionNr = _mainWindow.VersionNummer;
+                        SpsVersionLokal = _mainWindow.VersionInfo;
+                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    }
+
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+                }
 
                 Thread.Sleep(10);
             }
