@@ -5,11 +5,9 @@ using System;
 
 namespace GaugeControl
 {
-
     public class TweenMotion
     {
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
-
 
         public int TickInterval { get; set; }
 
@@ -20,21 +18,40 @@ namespace GaugeControl
         private int _starPos;
         private int _endPos;
         private double _duration;
+        private static readonly string[] Array = {
+            "LinearTween",
+            "EaseInQuad",
+            "EaseOutQuad",
+            "EaseInOutQuad",
+            "EaseInCubic",
+            "EaseOutCubic",
+            "EaseInOutCubic",
+            "EaseInQuart",
+            "EaseOutQuart",
+            "EaseInOutQuart",
+            "EaseInQuint",
+            "EaseOutQuint",
+            "EaseInOutQuint",
+            "EaseInSine",
+            "EaseOutSine",
+            "EaseInOutSine",
+            "EaseInExpo",
+            "EaseOutExpo",
+            "EaseInOutExpo",
+            "EaseInCirc",
+            "EaseOutCirc",
+            "EaseInOutCirc"
+        };
 
-        public string[] TypeArray = {"linearTween","easeInQuad","easeOutQuad","easeInOutQuad",
-                                     "easeInCubic","easeOutCubic","easeInOutCubic","easeInQuart",
-                                     "easeOutQuart","easeInOutQuart","easeInQuint","easeOutQuint",
-                                     "easeInOutQuint","easeInSine","easeOutSine","easeInOutSine",
-                                     "easeInExpo","easeOutExpo","easeInOutExpo","easeInCirc",
-                                     "easeOutCirc","easeInOutCirc"
-                                     };
+        // ReSharper disable once UnusedMember.Global
+        public string[] TypeArray = Array;
 
         private double _motionValue;
         private string _type = "";
 
         public TweenMotion()
         {
-            if (TickInterval <= 0) { TickInterval = 20; }
+            if (TickInterval <= 0) { TickInterval = 10; }
             _timerValue = TickInterval;
             _timer.Interval = TickInterval;
             _timer.Elapsed += Timer_Tick;
@@ -64,21 +81,21 @@ namespace GaugeControl
 
             switch (_type)
             {
-                case "linearTween":
+                case "LinearTween":
                     _motionValue = _endPos * current / _duration + _starPos;
                     break;
 
-                case "easeInQuad":
+                case "EaseInQuad":
                     current /= _duration;
                     _motionValue = _endPos * current * current + _starPos;
                     break;
 
-                case "easeOutQuad":
+                case "EaseOutQuad":
                     current /= _duration;
                     _motionValue = -_endPos * current * (current - 2) + _starPos;
                     break;
 
-                case "easeInOutQuad":
+                case "EaseInOutQuad":
                     current /= _duration / 2;
                     if (current < 1) { _motionValue = (double)_endPos / 2 * current * current + _starPos; }
                     else
@@ -88,16 +105,18 @@ namespace GaugeControl
                     }
                     break;
 
-                case "easeInCubic":
+                case "EaseInCubic":
                     current /= _duration;
                     _motionValue = _endPos * current * current * current + _starPos;
                     break;
-                case "easeOutCubic":
+
+                case "EaseOutCubic":
                     current /= _duration;
                     current--;
                     _motionValue = _endPos * (current * current * current + 1) + _starPos;
                     break;
-                case "easeInOutCubic":
+
+                case "EaseInOutCubic":
                     current /= _duration / 2;
                     if (current < 1) { _motionValue = (double)_endPos / 2 * current * current * current + _starPos; }
                     else
@@ -106,18 +125,19 @@ namespace GaugeControl
                         _motionValue = (double)_endPos / 2 * (current * current * current + 2) + _starPos;
                     }
                     break;
-                case "easeInQuart":
+
+                case "EaseInQuart":
                     current /= _duration;
                     _motionValue = _endPos * current * current * current * current + _starPos;
                     break;
 
-
-                case "easeOutQuart":
+                case "EaseOutQuart":
                     current /= _duration;
                     current--;
                     _motionValue = -_endPos * (current * current * current * current - 1) + _starPos;
                     break;
-                case "easeInOutQuart":
+
+                case "EaseInOutQuart":
                     current /= _duration / 2;
                     if (current < 1) { _motionValue = (double)_endPos / 2 * current * current * current * current + _starPos; }
                     else
@@ -127,19 +147,18 @@ namespace GaugeControl
                     }
                     break;
 
-                case "easeInQuint":
+                case "EaseInQuint":
                     current /= _duration;
                     _motionValue = _endPos * current * current * current * current * current + _starPos;
                     break;
 
-
-                case "easeOutQuint":
+                case "EaseOutQuint":
                     current /= _duration;
                     current--;
                     _motionValue = _endPos * (current * current * current * current * current + 1) + _starPos;
                     break;
 
-                case "easeInOutQuint":
+                case "EaseInOutQuint":
                     current /= _duration / 2;
                     if (current < 1)
                     {
@@ -152,28 +171,28 @@ namespace GaugeControl
                         _motionValue = (double)_endPos / 2 * (current * current * current * current * current + 2) + _starPos;
                     }
                     break;
-                case "easeInSine":
+
+                case "EaseInSine":
                     _motionValue = -_endPos * Math.Cos(current / _duration * (Math.PI / 2)) + _endPos + _starPos;
                     break;
 
-
-                case "easeOutSine":
+                case "EaseOutSine":
                     _motionValue = _endPos * Math.Sin(current / _duration * (Math.PI / 2)) + _starPos;
                     break;
 
-                case "easeInOutSine":
+                case "EaseInOutSine":
                     _motionValue = -(double)_endPos / 2 * (Math.Cos(Math.PI * current / _duration) - 1) + _starPos;
                     break;
 
-                case "easeInExpo":
+                case "EaseInExpo":
                     _motionValue = _endPos * Math.Pow(2, 10 * (current / _duration - 1)) + _starPos;
                     break;
 
-                case "easeOutExpo":
+                case "EaseOutExpo":
                     _motionValue = _endPos * (-Math.Pow(2, -10 * current / _duration) + 1) + _starPos;
                     break;
 
-                case "easeInOutExpo":
+                case "EaseInOutExpo":
                     current /= _duration / 2;
                     if (current < 1) { _motionValue = (double)_endPos / 2 * Math.Pow(2, 10 * (current - 1)) + _starPos; }
                     else
@@ -182,18 +201,19 @@ namespace GaugeControl
                         _motionValue = (double)_endPos / 2 * (-Math.Pow(2, -10 * current) + 2) + _starPos;
                     }
                     break;
-                case "easeInCirc":
+
+                case "EaseInCirc":
                     current /= _duration;
                     _motionValue = -(double)_endPos * (Math.Sqrt(1 - current * current) - 1) + _starPos;
                     break;
 
-                case "easeOutCirc":
+                case "EaseOutCirc":
                     current /= _duration;
                     current--;
                     _motionValue = _endPos * Math.Sqrt(1 - current * current) + _starPos;
                     break;
 
-                case "easeInOutCirc":
+                case "EaseInOutCirc":
                     current /= _duration / 2;
                     if (current < 1) { _motionValue = -(double)_endPos / 2 * (Math.Sqrt(1 - current * current) - 1) + _starPos; }
                     else

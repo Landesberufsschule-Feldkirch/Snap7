@@ -7,10 +7,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GaugeControl
 {
-
     public partial class GaugeControl
     {
         private readonly TweenMotion _motion = new TweenMotion();
@@ -90,16 +90,15 @@ namespace GaugeControl
             _needleHeigth = _arcHeight;
             if (_isFirst) { SetStyle(); }
             _isFirst = false;
-
-
         }
 
-        private void Motion_onMotion(double value, string type)
-        {
-            _shadow.Direction = value;
-            _needle.Effect = _shadow;
-            _needle.RenderTransform = new RotateTransform(value, ArcX, _arcY);
-        }
+        private void Motion_onMotion(double value, string type) =>
+            Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
+            {
+                _shadow.Direction = value;
+                _needle.Effect = _shadow;
+                _needle.RenderTransform = new RotateTransform(value, ArcX, _arcY);
+            }));
 
         public void SetValue(double value)
         {
@@ -162,7 +161,6 @@ namespace GaugeControl
             Canvas.Children.Add(SetNeedle());
             Canvas.SetZIndex(_needle, 1);
             SetLabel();
-
         }
 
         private Line SetNeedle()
@@ -253,7 +251,6 @@ namespace GaugeControl
                     lbl.Opacity = _labelOpacity;
                     lbl.FontSize = _fontSize;
                     lbl.FontFamily = _fontFamily;
-
                 }
                 else
                 {
@@ -370,7 +367,6 @@ namespace GaugeControl
             {
                 _needleHeigth = value;
                 SetStyle();
-
             }
             get => _needleHeigth;
         }
@@ -400,7 +396,6 @@ namespace GaugeControl
                 value /= 100;
                 _labelOpacity = value;
                 ChangeLabels();
-
             }
             get => _labelOpacity * 100;
         }
@@ -423,7 +418,6 @@ namespace GaugeControl
         [Description("(Gauge) Choose numbers labels font "), Category("Gauge Control")]
         public FontFamily LabelFont
         {
-
             set
             {
                 _fontFamily = value;
@@ -523,7 +517,6 @@ namespace GaugeControl
             {
                 _labelX = value;
                 SetStyle();
-
             }
             get => _labelX;
         }
@@ -600,7 +593,6 @@ namespace GaugeControl
             {
                 _arcX = value;
                 SetStyle();
-
             }
             get => _arcX;
         }
@@ -777,6 +769,28 @@ namespace GaugeControl
                 BackFront.Visibility = Back.Visibility = Front.Visibility = GlassCanvas.Visibility = value;
             }
             get => _backVisible;
+        }
+
+        private double _currentValue;
+        public double CurrentValue
+        {
+            get => _currentValue;
+            set
+            {
+                _currentValue = value;
+                SetValue(CurrentValueProperty, _currentValue);
+            }
+        }
+
+        public static readonly DependencyProperty CurrentValueProperty =
+            DependencyProperty.Register("CurrentValue", typeof(double), typeof(GaugeControl),
+                new PropertyMetadata(double.MinValue, OnCurrentValuePropertyChanged));
+
+        private static void OnCurrentValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var neuerWert = (double)e.NewValue;
+            var gauge = d as GaugeControl;
+            gauge?.SetValue(neuerWert);
         }
     }
 }

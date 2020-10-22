@@ -151,12 +151,14 @@
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        
         <gaugeControl:GaugeControl x:Name="DruckAnzeige" Grid.Column="6" Grid.ColumnSpan="5"  Grid.Row="5" Grid.RowSpan="9" 
-                            GaugeText="Druck" GaugeTextFont="Arial Rounded MT Bold" 
-                            ArcMaxValue="10" 
-                            ArcMidleColorEndPos="200" 
-                            ArcMinValue="0" 
-                            ArcFirstColorEndPos="180" />
+                                   GaugeText="Druck" GaugeTextFont="Arial Rounded MT Bold" 
+                                   ArcMaxValue="10" 
+                                   ArcMidleColorEndPos="188" 
+                                   ArcMinValue="0" 
+                                   ArcFirstColorEndPos="165"
+                                   CurrentValue="{Binding ViAnzeige.AktuellerDruck}" />
 
         <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
 

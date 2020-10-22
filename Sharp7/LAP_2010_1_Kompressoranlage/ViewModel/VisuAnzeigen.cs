@@ -12,7 +12,9 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             _mainWindow = mw;
             _kompressoranlage = ka;
-            
+
+            AktuellerDruck = 2;
+
             ClickModeBtnS1 = "Press";
             ClickModeBtnS2 = "Press";
 
@@ -58,6 +60,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 SichtbarkeitB2(_kompressoranlage.B2);
 
                 if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+
+                AktuellerDruck = _kompressoranlage.Druck;
 
                 if (_mainWindow.Plc != null)
                 {
@@ -456,7 +460,18 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         #endregion Sichtbarkeit B2
 
-   
+
+        private double _aktuellerDruck;
+        public double AktuellerDruck
+        {
+            get => _aktuellerDruck;
+            set
+            {
+                _aktuellerDruck = value;
+                OnPropertyChanged(nameof(AktuellerDruck));
+            }
+        }
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

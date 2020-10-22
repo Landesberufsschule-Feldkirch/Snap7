@@ -1,9 +1,6 @@
-﻿using System;
-using Kommunikation;
+﻿using Kommunikation;
 using System.Text;
 using System.Windows;
-using System.Windows.Threading;
-using GaugeControl = GaugeControl.GaugeControl;
 
 namespace LAP_2010_1_Kompressoranlage
 {
@@ -16,7 +13,6 @@ namespace LAP_2010_1_Kompressoranlage
         public ManualMode.ManualMode ManualMode { get; set; }
 
         private readonly DatenRangieren _datenRangieren;
-        private readonly ViewModel.ViewModel _viewModel;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -36,11 +32,11 @@ namespace LAP_2010_1_Kompressoranlage
             };
 
 
-            _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(_viewModel);
-            
+            var viewModel = new ViewModel.ViewModel(this);
+            _datenRangieren = new DatenRangieren(viewModel);
+
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
             Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
@@ -52,17 +48,6 @@ namespace LAP_2010_1_Kompressoranlage
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
-
-            // create a timer to update the GUI
-            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
-            renderTimer.Tick += UpdateDruckAnzeige;
-            renderTimer.Start();
-        }
-
-        private void UpdateDruckAnzeige(object sender, EventArgs e)
-        {
-
-            DruckAnzeige.SetValue(_viewModel.Kompressoranlage.Druck);
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
