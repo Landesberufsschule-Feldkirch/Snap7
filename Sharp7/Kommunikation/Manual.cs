@@ -63,8 +63,8 @@ namespace Kommunikation
             {
                 case Datenbausteine.DigOut:
                     _datenstruktur.DigOutput[pos] = value
-                        ? (byte) (_datenstruktur.DigOutput[pos] | mask[bit])
-                        : (byte) (_datenstruktur.DigOutput[pos] & ~mask[bit]);
+                        ? (byte)(_datenstruktur.DigOutput[pos] | mask[bit])
+                        : (byte)(_datenstruktur.DigOutput[pos] & ~mask[bit]);
                     break;
                 case Datenbausteine.VersionIn:
                     break;

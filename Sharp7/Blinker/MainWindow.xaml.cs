@@ -60,7 +60,7 @@ namespace Blinker
 
 
             var zeitachse = DataGen.Consecutive(5000);
-           
+
 
             WpfPlot.plt.YLabel("Leuchtmelder");
             WpfPlot.plt.XLabel("Zeit [ms]");

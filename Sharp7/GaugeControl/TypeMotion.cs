@@ -3,28 +3,28 @@
     // ReSharper disable UnusedMember.Global
     public class TypeMotion
     {
-        public static string LinearTween => "linearTween";
-        public static string EaseInQuad => "easeInQuad";
-        public static string EaseOutQuad => "easeOutQuad";
-        public static string EaseInOutQuad => "easeInOutQuad";
-        public static string EaseInCubic => "easeInCubic";
-        public static string EaseOutCubic => "easeOutCubic";
-        public static string EaseInOutCubic => "easeInOutCubic";
-        public static string EaseInQuart => "easeInQuart";
-        public static string EaseOutQuart => "easeOutQuart";
-        public static string EaseInOutQuart => "easeInOutQuart";
-        public static string EaseInQuint => "easeInQuint";
-        public static string EaseOutQuint => "easeOutQuint";
-        public static string EaseInOutQuint => "easeInOutQuint";
-        public static string EaseInSine => "easeInSine";
-        public static string EaseOutSine => "easeOutSine";
-        public static string EaseInOutSine => "easeInOutSine";
-        public static string EaseInExpo => "easeInExpo";
-        public static string EaseOutExpo => "easeOutExpo";
-        public static string EaseInOutExpo => "easeInOutExpo";
-        public static string EaseInCirc => "easeInCirc";
-        public static string EaseOutCirc => "easeOutCirc";
-        public static string EaseInOutCirc => "easeInOutCirc";
+        public static string LinearTween => "LinearTween";
+        public static string EaseInQuad => "EaseInQuad";
+        public static string EaseOutQuad => "EaseOutQuad";
+        public static string EaseInOutQuad => "EaseInOutQuad";
+        public static string EaseInCubic => "EaseInCubic";
+        public static string EaseOutCubic => "EaseOutCubic";
+        public static string EaseInOutCubic => "EaseInOutCubic";
+        public static string EaseInQuart => "EaseInQuart";
+        public static string EaseOutQuart => "EaseOutQuart";
+        public static string EaseInOutQuart => "EaseInOutQuart";
+        public static string EaseInQuint => "EaseInQuint";
+        public static string EaseOutQuint => "EaseOutQuint";
+        public static string EaseInOutQuint => "EaseInOutQuint";
+        public static string EaseInSine => "EaseInSine";
+        public static string EaseOutSine => "EaseOutSine";
+        public static string EaseInOutSine => "EaseInOutSine";
+        public static string EaseInExpo => "EaseInExpo";
+        public static string EaseOutExpo => "EaseOutExpo";
+        public static string EaseInOutExpo => "EaseInOutExpo";
+        public static string EaseInCirc => "EaseInCirc";
+        public static string EaseOutCirc => "EaseOutCirc";
+        public static string EaseInOutCirc => "EaseInOutCirc";
     }
     // ReSharper restore UnusedMember.Global
 }

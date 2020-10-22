@@ -1,11 +1,11 @@
-﻿using System;
-using System.Drawing;
-using Heizungsregler.Model;
+﻿using Heizungsregler.Model;
 using Kommunikation;
+using ScottPlot;
+using System;
+using System.Drawing;
 using System.Text;
 using System.Windows;
 using System.Windows.Threading;
-using ScottPlot;
 
 
 namespace Heizungsregler
@@ -90,7 +90,7 @@ namespace Heizungsregler
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, KesselTemperatur, Color.Magenta, label: "Kesseltemperatur");
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, label: "VorlaufSolltemperatur");
             _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
-            
+
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };

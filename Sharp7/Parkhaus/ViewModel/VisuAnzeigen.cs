@@ -72,7 +72,7 @@ namespace Parkhaus.ViewModel
 
         internal bool BitMaskierenArray(byte[] besetzteParkPlaetzte, int i)
         {
-            var ibyte =i / 8;
+            var ibyte = i / 8;
             var bitMuster = (byte)(1 << i % 8);
 
             return (besetzteParkPlaetzte[ibyte] & bitMuster) == bitMuster;

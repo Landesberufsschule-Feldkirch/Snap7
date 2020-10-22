@@ -4,7 +4,8 @@
     using System.Windows.Input;
 
     public class ViewModel
-    { public VisuAnzeigen ViAnzeige { get; set; }
+    {
+        public VisuAnzeigen ViAnzeige { get; set; }
 
         private readonly MainWindow _mainWindow;
 

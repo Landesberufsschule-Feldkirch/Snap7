@@ -33,7 +33,7 @@ namespace PaternosterLager.Model
             {
                 var abstandRegale = Convert.ToInt32(GesamtLaenge / anzahlKisten);
                 var pos = Convert.ToInt32(Position);
-                
+
                 if (S1) Position += geschwindigkeit;
                 if (S2) Position -= geschwindigkeit;
 
