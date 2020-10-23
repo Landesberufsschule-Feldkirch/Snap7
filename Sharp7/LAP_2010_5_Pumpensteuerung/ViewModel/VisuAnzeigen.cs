@@ -94,7 +94,8 @@
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS3() => _pumpensteuerung.S3 = !ClickModeButtonS3();
+        internal void SetS3() => _pumpensteuerung.S3 = ClickModeButtonS3();
+
 
         #region SPS Version, Status und Farbe
 

@@ -23,7 +23,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         public AbfuellAnlage()
         {
-            S1 = true;
             Pegel = 0.9;
 
             AlleDosen = new List<CampbellSoup>
@@ -80,6 +79,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
         internal void AllesReset()
         {
+            Pegel = 0.9;
             _aktuelleDose = 0;
             foreach (var dose in AlleDosen) { dose.Reset(); }
         }

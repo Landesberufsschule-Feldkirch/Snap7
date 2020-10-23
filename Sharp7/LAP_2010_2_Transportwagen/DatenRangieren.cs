@@ -40,9 +40,6 @@ namespace LAP_2010_2_Transportwagen
             _transportwagenViewModel.Transportwagen.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _transportwagenViewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _transportwagenViewModel = vm;
     }
 }

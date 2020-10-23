@@ -18,7 +18,6 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
         public Pumpensteuerung()
         {
-            S3 = true;
             F1 = true;
             Pegel = 0.95;
 

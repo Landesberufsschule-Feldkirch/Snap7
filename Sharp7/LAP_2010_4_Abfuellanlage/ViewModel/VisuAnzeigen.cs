@@ -117,14 +117,11 @@
         }
 
         internal void SetQ1() => _abfuellAnlage.Q1 = ClickModeButtonQ1();
-
         internal void SetK1() => _abfuellAnlage.K1 = ClickModeButtonK1();
-
         internal void SetK2() => _abfuellAnlage.K2 = ClickModeButtonK2();
-
-        internal void SetS1() => _abfuellAnlage.S1 = !ClickModeButtonS1();
-
+        internal void SetS1() => _abfuellAnlage.S1 = ClickModeButtonS1();
         internal void BtnS2() => _abfuellAnlage.S2 = ClickModeButtonS2();
+
 
         #region SPS Version, Status und Farbe
 

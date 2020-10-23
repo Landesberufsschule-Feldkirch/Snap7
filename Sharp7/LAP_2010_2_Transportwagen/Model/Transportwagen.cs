@@ -57,7 +57,6 @@ namespace LAP_2010_2_Transportwagen.Model
         }
 
         internal void SetF1() => F1 = !F1;
-
         internal void SetS2() => S2 = !S2;
     }
 }

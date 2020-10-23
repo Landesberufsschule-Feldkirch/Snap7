@@ -17,11 +17,7 @@ namespace Blinker.Model
         public double EinZeit { get; set; }
         public double AusZeit { get; set; }
 
-        public Blinker()
-        {
-            System.Threading.Tasks.Task.Run(BlinkerTask);
-        }
-
+        public Blinker() => System.Threading.Tasks.Task.Run(BlinkerTask);
         private void BlinkerTask()
         {
             var p1Alt = false;
