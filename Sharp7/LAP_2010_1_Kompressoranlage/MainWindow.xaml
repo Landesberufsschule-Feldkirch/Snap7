@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         x:Class="LAP_2010_1_Kompressoranlage.MainWindow"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="LAP 2010/1 Kompressoranlage" Height="830" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>

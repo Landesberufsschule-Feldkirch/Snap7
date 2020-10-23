@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Windows.Controls.Canvas;
 
 namespace GaugeControl
 {
@@ -57,7 +58,7 @@ namespace GaugeControl
         private int _endPos;
         private double _initPos;
         private double _prevPos;
-        private arcStyle _arcStyle;
+        private ArcStyles _arcStyles;
         private int _fontSize = 12;
         private double _labelOpacity = 1;
         private readonly bool _isFirst = true;
@@ -68,7 +69,7 @@ namespace GaugeControl
 
 
         // ReSharper disable UnusedMember.Global
-        public enum arcStyle { Flat, Αscending, Descending }
+        public enum ArcStyles { Flat, Αscending, Descending }
         // ReSharper restore UnusedMember.Global
 
 
@@ -76,14 +77,28 @@ namespace GaugeControl
         public enum MotionType
         {
             EaseOutExpo, EaseOutCubic, EaseOutQuart, EaseOutQuint,
-            EaseOutSine, EaseOutQuad, EaseOutCirc, LinearTween
+            EaseOutSine, EaseOutQuad, EaseOutCirc, LinearTween,
+            EaseInOutQuart,
+            EaseInQuint,
+            EaseInOutQuint,
+            EaseInOutSine,
+            EaseInCirc,
+            EaseInOutCirc,
+            EaseInOutExpo,
+            EaseInQuad,
+            EaseInOutQuad,
+            EaseInCubic,
+            EaseInOutCubic,
+            EaseInSine,
+            EaseInExpo,
+            EaseInQuart
         }
         // ReSharper restore UnusedMember.Global
 
         public GaugeControl()
         {
             InitializeComponent();
-            _motion.onMotion += Motion_onMotion;
+            _motion.MyMotion += MotionMyMotion;
             BackFront.Fill = _arcOutBackColor;
             Front.Fill = _arcBackColor;
             _shadow = new System.Windows.Media.Effects.DropShadowEffect { ShadowDepth = 5, Opacity = .4 };
@@ -92,7 +107,7 @@ namespace GaugeControl
             _isFirst = false;
         }
 
-        private void Motion_onMotion(double value, string type) =>
+        private void MotionMyMotion(double value, MotionType motionType) =>
             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
                 _shadow.Direction = value;
@@ -110,7 +125,7 @@ namespace GaugeControl
             _initPos = 90 - (ArcLength + ArcOffset);
             _startPos = (int)_initPos + (int)_prevPos;
             _endPos = (int)_initPos + (int)value;
-            _motion.Start(GaugeMotionType.ToString(), _startPos, _endPos, GaugeTime);
+            _motion.Start(GaugeMotionType, _startPos, _endPos, GaugeTime);
             _prevPos = value;
         }
 
@@ -124,14 +139,14 @@ namespace GaugeControl
             double noFlat = 0;
             var arcHeight = _arcHeight;
             NeedleFront.Margin = new Thickness { Left = _arcX - 10, Top = _arcY - 60 };
-            if (_arcStyle.ToString() == "Flat")
+            if (_arcStyles.ToString() == "Flat")
             {
                 tempH = arcHeight;
             }
             else
             {
                 noFlat = arcHeight / _arcLength;
-                if (_arcStyle.ToString() == "Αscending")
+                if (_arcStyles.ToString() == "Αscending")
                 {
                     tempH = 0;
                     counter = arcHeight / _arcScale + 1;
@@ -151,15 +166,15 @@ namespace GaugeControl
                 var radial = i * (Math.PI / 180);
                 var sin = Math.Sin(radial) * _arcDiameter;
                 var cos = Math.Cos(radial) * _arcDiameter;
-                Canvas.SetLeft(_box, _arcX + sin);
-                Canvas.SetTop(_box, ArcY + cos);
+                SetLeft(_box, _arcX + sin);
+                SetTop(_box, ArcY + cos);
                 _box.RenderTransform = new RotateTransform(90 - i);
                 Canvas.Children.Add(_box);
                 _colorCount -= _arcScale;
 
             }
             Canvas.Children.Add(SetNeedle());
-            Canvas.SetZIndex(_needle, 1);
+            Panel.SetZIndex(_needle, 1);
             SetLabel();
         }
 
@@ -188,7 +203,7 @@ namespace GaugeControl
                 _lbl = new Label
                 {
                     Name = "label_" + i,
-                    Content = Math.Round(labelCount, 1).ToString(),
+                    Content = Math.Round(labelCount, 1).ToString("F1"),
                     Foreground = _labelColor,
                     FontFamily = _fontFamily,
                     FontSize = _fontSize,
@@ -197,15 +212,15 @@ namespace GaugeControl
                 var radial = (i + _labelOffset) * (Math.PI / 180);
                 var sin = Math.Sin(radial) * _labelDiameter;
                 var cos = Math.Cos(radial) * _labelDiameter;
-                Canvas.SetLeft(_lbl, _labelX + sin);
-                Canvas.SetTop(_lbl, _labelY + cos);
+                SetLeft(_lbl, _labelX + sin);
+                SetTop(_lbl, _labelY + cos);
                 Canvas.Children.Add(_lbl);
                 labelCount -= labelScale;
 
             }
             var descrLbl = GetDescrText();
-            Canvas.SetLeft(descrLbl, _gaugeTextX);
-            Canvas.SetTop(descrLbl, _gaugeTextY);
+            SetLeft(descrLbl, _gaugeTextX);
+            SetTop(descrLbl, _gaugeTextY);
             Canvas.Children.Add(descrLbl);
         }
 
@@ -259,8 +274,8 @@ namespace GaugeControl
                     lbl.FontFamily = GaugeTextFont;
                     lbl.FontSize = _gaugeTextFontSize;
                     lbl.Opacity = _gaugeTextOpacity;
-                    Canvas.SetLeft(lbl, _gaugeTextX);
-                    Canvas.SetTop(lbl, _gaugeTextY);
+                    SetLeft(lbl, _gaugeTextX);
+                    SetTop(lbl, _gaugeTextY);
                 }
             }
         }
@@ -463,14 +478,14 @@ namespace GaugeControl
 
         // ReSharper disable once UnusedMember.Global
         [Description("(Gauge) Arc style "), Category("Gauge Control")]
-        public arcStyle ArcStyle
+        public ArcStyles ArcStyle
         {
             set
             {
-                _arcStyle = value;
+                _arcStyles = value;
                 SetStyle();
             }
-            get => _arcStyle;
+            get => _arcStyles;
         }
 
         // ReSharper disable once UnusedMember.Global

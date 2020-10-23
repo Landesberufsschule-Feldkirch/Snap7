@@ -28,7 +28,7 @@ namespace Blinker
 
         public MainWindow()
         {
-            const string versionText = "LAP 2018/2 Abfuellanlage";
+            const string versionText = "Blinker";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
 
