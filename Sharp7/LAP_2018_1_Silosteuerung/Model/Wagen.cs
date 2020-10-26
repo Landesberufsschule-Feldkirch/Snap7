@@ -1,4 +1,5 @@
-﻿using Utilities;
+﻿using System;
+using Utilities;
 
 namespace LAP_2018_1_Silosteuerung.Model
 {
@@ -58,12 +59,16 @@ namespace LAP_2018_1_Silosteuerung.Model
                         _wagenRichtung = Richtung.Stehen;
                     }
                     break;
+                case Richtung.Stehen:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_wagenRichtung));
             }
 
             // Wagen bewegen
-            _endlageRechts = _aktuellePosition.X == _rechterAnschlag.X;
-            _wagenVoll = _wagenFuellstand == WagenFuellstandVoll;
-            if ((_aktuellePosition.X == _linkerAnschlag.X) && (_wagenFuellstand > 0)) _wagenFuellstand -= WagenFuellstandLeeren;
+            _endlageRechts = Math.Abs(_aktuellePosition.X - _rechterAnschlag.X) < 0.1;
+            _wagenVoll = Math.Abs(_wagenFuellstand - WagenFuellstandVoll) < 0.1;
+            if (Math.Abs(_aktuellePosition.X - _linkerAnschlag.X) < 0.1 && _wagenFuellstand > 0) _wagenFuellstand -= WagenFuellstandLeeren;
         }
 
         internal void Fuellen()
@@ -73,15 +78,10 @@ namespace LAP_2018_1_Silosteuerung.Model
         }
 
         internal void NachRechts() => _wagenRichtung = Richtung.NachRechts;
-
         internal void NachLinks() => _wagenRichtung = Richtung.NachLinks;
-
         public bool IstWagenVoll() => _wagenVoll;
-
         public bool IstWagenRechts() => _endlageRechts;
-
         internal Punkt GetPosition() => _aktuellePosition;
-
         internal double GetFuellstand() => _wagenFuellstand;
     }
 }

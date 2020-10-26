@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:gif="clr-namespace:WpfAnimatedGif;assembly=WpfAnimatedGif"
         mc:Ignorable="d"
         Title="LAP 2018/1 Silosteuerung mit Förderband und Wiegeeinrichtung" Height="980" Width="1400">
     <Grid>
@@ -67,13 +67,12 @@
 
         <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-        <Button x:Name="BtnDebugWindow" Grid.Column="14" Grid.Row="2" Visibility="{Binding ViAnzeige.VisibilityBtnSetManual}" Click="DebugWindowOeffnen" Content="set manual" />
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="13" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
 
-        <Image  x:Name="ImgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7"
-                gif:ImageBehavior.RepeatBehavior="Forever"
-                gif:ImageBehavior.AnimationLoaded="AnimatedLoaded"
-                gif:ImageBehavior.AutoStart="False"
-                gif:ImageBehavior.AnimatedSource="Bilder\Schneckenfoerderer.gif" />
+        <Image x:Name="ImgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7" 
+               gif:ImageBehavior.AnimatedSource="Bilder/Schneckenfoerderer.gif"
+               gif:ImageBehavior.AutoStart="False"
+               gif:ImageBehavior.AnimationLoaded="AnimatedLoaded" />
 
         <Rectangle Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="8"  Fill="#eeeeee" Margin="0,27,0,0" />
         <Rectangle Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="2"  Fill="#eeeeee" Margin="0,0,0,29" />
@@ -102,21 +101,22 @@
         </Label>
 
         <Ellipse Fill="Gray"   Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" />
-        <Ellipse Fill="Green"  Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityQ2Ein}"  Panel.ZIndex="5" />
-        <Label Content="Q2"    Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+        <Ellipse Fill="Green"  Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" Height="60" Width="60" Visibility="{Binding ViAnzeige.VisibilityXfuEin}"  Panel.ZIndex="5" />
+        <Label Content="Xfu"    Grid.Column="4" Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
         <Button Grid.Column="6" Grid.Row="9" Background="{Binding ViAnzeige.ColorF2}" FontSize="14pt" Content="F2" Command="{Binding BtnF2}" />
 
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Gray" />
         <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
         <Label     Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" Content="Materialsilo" />
+        <Button Grid.Column="12" Grid.Row="5" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}" />
 
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="LightGray" Margin="62,0" />
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialOben}" />
 
-        <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Ein}" />
-        <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK1Aus}" />
-        <Label Content="K1"                               Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Ein}" />
+        <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"    Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2"   Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityY1Aus}" />
+        <Label Content="Y1"                                       Grid.Column="10"                     Grid.Row="13"                   FontSize="14pt" Margin="50,18,30,22" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
         <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2"  Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialUnten}" />
 
@@ -170,6 +170,48 @@
 
         <Label Grid.Column="19" Grid.Row="2" Grid.RowSpan="2" FontSize="14pt" Content="P2" HorizontalAlignment="Right" VerticalAlignment="Center" />
         <Ellipse Grid.Column="20" Grid.Row="2" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorP2}" Stroke="Black" StrokeThickness="2" Margin="10" />
+
+
+
+
+        <Button Grid.Column="16" Grid.Row="5"  Content="Aus" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS0}" Command="{Binding BtnS0}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Grid.Column="19" Grid.Row="5" Content="Ein" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Grid.Column="16" Grid.Row="8" Content="Not-Halt" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Grid.Column="16" Grid.Row="11" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+
+
+
+
+
 
         <Label Grid.Column="16" Grid.ColumnSpan="2"  Grid.Row="0"   HorizontalAlignment="Right" Width="36"      Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="16" Grid.ColumnSpan="6"  Grid.Row="26"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />

@@ -1,74 +1,56 @@
-﻿namespace LAP_2018_1_Silosteuerung
+﻿using Sharp7;
+using Utilities;
+
+namespace LAP_2018_1_Silosteuerung
 {
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _foerderanlageViewModel;
 
         private enum BitPosAusgang
         {
             P1 = 0, // Anlage Ein
-            P2,     //Sammelstörung
-            Q3Rl,  //Förderband Rechtslauf
-            Q4Ll,  // Förderband Linkslauf
-            Xfu     // Freigabe FU (Schneckenförderer)
+            P2,     // Sammelstörung
+            Q1,     // Motorschütz Förderband M1 
+            Xfu,    // Freigabe FU M2 (Schneckenförderer)
+            Y1      // Mangnetventil
         }
 
         private enum BitPosEingang
         {
-            S0 = 0, // Anlage Aus
-            S1,     // Anlage Ein
+            B1 = 0, // Wagen vorhanden
+            B2,     // Wagen voll
+            F1,     // Störung Motorschutzschalter Förderband
+            F2,     // Störung Motorschutzschalter Schneckenförderer
+            S0,     // Taster Anlage Aus
+            S1,     // Taster Anlage Ein
             S2,     // Not-Halt
-            F4,     // Störung Motorschutzschalter
-            B1,
-            B2,
-            S6,
-            S7,     // Wagen Position rechts
-            S8,     // Wagen voll
-            S9,     // Handbetrieb Förderband RL
-            S10,    // Handbetrieb Förderband LL
-            S11,    // Handbetrieb Schneckenförderer
-            S12     // Handbetrieb Materialschieber
+            S3     // Störungen quittieren
         }
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            /*
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, foerderanlageViewModel.foerderanlage.S0);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, foerderanlageViewModel.foerderanlage.S1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, foerderanlageViewModel.foerderanlage.S2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F4, foerderanlageViewModel.foerderanlage.F4);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, foerderanlageViewModel.foerderanlage.B2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, foerderanlageViewModel.foerderanlage.S6);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, foerderanlageViewModel.foerderanlage.S7);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, foerderanlageViewModel.foerderanlage.S8);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S9, foerderanlageViewModel.foerderanlage.S8);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S10, foerderanlageViewModel.foerderanlage.S10);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S11, foerderanlageViewModel.foerderanlage.S11);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S12, foerderanlageViewModel.foerderanlage.S12);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _foerderanlageViewModel.Silosteuerung.B1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _foerderanlageViewModel.Silosteuerung.B2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _foerderanlageViewModel.Silosteuerung.F1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F2, _foerderanlageViewModel.Silosteuerung.F2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _foerderanlageViewModel.Silosteuerung.S0);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _foerderanlageViewModel.Silosteuerung.S1);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
+            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
 
-            S7.SetSint_16_At(anInput, 0, S7Analog.S7_Analog_2_Int16(foerderanlageViewModel.foerderanlage.Silo.GetFuellstand(), 1));
-            */
+            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, S7Analog.S7_Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            /*
-            if (!mainWindow.DebugWindowAktiv)
-            {
-                foerderanlageViewModel.foerderanlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-                foerderanlageViewModel.foerderanlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-                foerderanlageViewModel.foerderanlage.Q3_RL = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3_RL);
-                foerderanlageViewModel.foerderanlage.Q4_LL = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q4_LL);
-                foerderanlageViewModel.foerderanlage.XFU = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.XFU);
-            }
-            */
+            _foerderanlageViewModel.Silosteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _foerderanlageViewModel.Silosteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _foerderanlageViewModel.Silosteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _foerderanlageViewModel.Silosteuerung.Xfu = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Xfu);
+            _foerderanlageViewModel.Silosteuerung.Y1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Y1);
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
-        {
-            _mainWindow = mw;
-            _foerderanlageViewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _foerderanlageViewModel = vm;
     }
 }

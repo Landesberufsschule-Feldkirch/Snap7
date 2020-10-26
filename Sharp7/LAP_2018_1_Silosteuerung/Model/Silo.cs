@@ -18,11 +18,7 @@
             if (_fuellstand < 0) _fuellstand = 0;
         }
 
-        public Silo()
-        {
-            _fuellstand = 0.9;
-        }
-
+        public Silo() => _fuellstand = 0.9;
         public double GetFuellstand() => _fuellstand;
     }
 }
