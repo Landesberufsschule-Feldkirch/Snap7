@@ -4,7 +4,6 @@ namespace LAP_2018_3_Hydraulikaggregat
 {
     public class DatenRangieren
     {
-        private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
 
         private enum BitPosAusgang
@@ -46,18 +45,11 @@ namespace LAP_2018_3_Hydraulikaggregat
             _viewModel.Hydraulikaggregat.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             _viewModel.Hydraulikaggregat.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
             _viewModel.Hydraulikaggregat.P4 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
-
-            if (_mainWindow.DebugWindowAktiv) return;
-
             _viewModel.Hydraulikaggregat.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Hydraulikaggregat.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             _viewModel.Hydraulikaggregat.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
-        {
-            _mainWindow = mw;
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

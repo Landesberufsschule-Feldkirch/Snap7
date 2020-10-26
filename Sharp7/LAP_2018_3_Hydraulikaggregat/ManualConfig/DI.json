@@ -1,0 +1,67 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B1",
+      "Kommentar": "Sensor Ölstand"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B2",
+      "Kommentar": "Sensor Druck erreicht"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B3",
+      "Kommentar": "Sensor Überdruck"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "F1",
+      "Kommentar": "Störung Motorschutzschalter"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster Start"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Stop"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Quittieren"
+    }
+  ]
+}

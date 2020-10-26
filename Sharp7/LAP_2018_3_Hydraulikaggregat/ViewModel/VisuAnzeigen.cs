@@ -105,9 +105,7 @@
         }
 
         internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();
-
         internal void BtnQ2() => _hydraulikaggregat.Q2 = ClickModeButtonQ2();
-
         internal void BtnQ3() => _hydraulikaggregat.Q3 = ClickModeButtonQ3();
 
         internal void BtnQ1Q3()
@@ -125,8 +123,7 @@
         }
 
         internal void BtnS1() => _hydraulikaggregat.S1 = ClickModeButtonS1();
-
-        internal void BtnS2() => _hydraulikaggregat.S2 = ClickModeButtonS2();
+        internal void BtnS2() => _hydraulikaggregat.S2 = !ClickModeButtonS2();
 
         internal void BtnS3()
         {
@@ -422,7 +419,7 @@
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? "LawnGreen" : "White";
+        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
 
         private string _colorP1;
 

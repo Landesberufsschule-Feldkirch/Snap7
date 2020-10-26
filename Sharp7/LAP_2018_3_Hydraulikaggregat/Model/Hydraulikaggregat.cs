@@ -35,6 +35,7 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             Pegel = 0.8;
             B3 = true;
             F1 = true;
+            S2 = true;
 
             Stopwatch = new Stopwatch();
             Stopwatch.Restart();

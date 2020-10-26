@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:circularGauge="clr-namespace:CircularGauge;assembly=CircularGauge"
+        xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         mc:Ignorable="d"
         Title="LAP 2018/3 Hydraulikaggregat" Height="1050" Width="1400">
     <Grid>
@@ -68,7 +68,7 @@
 
         <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="1"  Grid.RowSpan="16" />
 
-        <Button Grid.Column="19" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+        <Button Grid.Column="19" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -76,7 +76,7 @@
             </Button.Resources>
         </Button>
 
-        <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="3" Content="Start" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt" Margin="0,1,0,34">
+        <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="3" Content="Start" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt" Margin="0,1,0,34">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -112,7 +112,9 @@
         <Label Content="Ölstand" Grid.Column="19" Grid.Row="13" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="13" Grid.Row="2" Grid.RowSpan="24" Fill="#eeeeee" />
-        <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="14" Grid.Row="2" Click="DebugWindowOeffnen" Height="35" VerticalAlignment="Top" />
+
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="13" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
+
 
         <Border Grid.Column="2" Grid.ColumnSpan="6" Grid.Row="9" Grid.RowSpan="17" HorizontalAlignment="Left" Width="420">
             <Path Stroke="Black"
@@ -194,40 +196,14 @@
         <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
         <Label Content="B3"                                Grid.Column="9" Grid.Row="16" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-        <circularGauge:CircularGaugeControl x:Name="GaugeDruck" Grid.Column="10" Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="10"
-                                        Radius="150"
-                                        ScaleRadius="110"
-                                        ScaleStartAngle="120"
-                                        ScaleSweepAngle="300"
-                                        PointerLength="85"
-                                        PointerCapRadius="35"
-                                        MinValue="0"
-                                        MaxValue="10"
-                                        MajorDivisionsCount="10"
-                                        MinorDivisionsCount="4"
-                                        CurrentValue="{Binding ViAnzeige.Druck}"
-                                        ImageSize="40,50"
-                                        RangeIndicatorThickness="8"
-                                        RangeIndicatorRadius="120"
-                                        RangeIndicatorLightRadius="20"
-                                        RangeIndicatorLightOffset="96"
-                                        ScaleLabelRadius="90"
-                                        ScaleLabelSize="40,20"
-                                        ScaleLabelFontSize="10"
-                                        ScaleLabelForeground="LightGray"
-                                        MajorTickSize="10,3"
-                                        MinorTickSize="3,1"
-                                        MajorTickColor="LightGray"
-                                        MinorTickColor="LightGray"
-                                        ImageOffset="-50"
-                                        GaugeBackgroundColor="Black"
-                                        PointerThickness ="16"
-                                        OptimalRangeStartValue="7"
-                                        OptimalRangeEndValue= "8"
-                                        DialTextOffset="40"
-                                        DialText="Druck [bar]"
-                                        DialTextColor="Black"
-                                        Visibility="Visible" Margin="0,1,0,34" />
+        <gaugeControl:GaugeControl x:Name="DruckAnzeige" Grid.Column="10" Grid.ColumnSpan="6"  Grid.Row="3" Grid.RowSpan="10" 
+                                   GaugeText="Druck" GaugeTextFont="Arial Rounded MT Bold" 
+                                   ArcMaxValue="10" 
+                                   ArcMidleColorEndPos="188" 
+                                   ArcMinValue="0" 
+                                   ArcFirstColorEndPos="165"
+                                   CurrentValue="{Binding ViAnzeige.Druck}" Margin="35,1,135,34" />
+
 
         <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="16"                        Grid.Row="18"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
