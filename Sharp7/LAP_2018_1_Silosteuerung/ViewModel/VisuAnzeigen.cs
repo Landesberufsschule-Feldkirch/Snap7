@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using Utilities;
@@ -93,7 +94,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 PositionWagenBeschriftung(Silosteuerung.Wagen.GetPosition());
                 PositionWagen(Silosteuerung.Wagen.GetPosition());
                 PositionWagenInhalt(Silosteuerung.Wagen.GetPosition(), Silosteuerung.Wagen.GetFuellstand());
-                WagenFuellstand = Silosteuerung.Wagen.GetFuellstand();
+                WagenFuellstand = Math.Floor(Silosteuerung.Wagen.GetFuellstand());
 
                 if (_mainWindow.AnimationGestartet)
                 {
@@ -109,7 +110,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         internal void BtnS1() => Silosteuerung.S1 = ClickModeButtonS1();
         internal void BtnS2() => Silosteuerung.S2 = !ClickModeButtonS2();
         internal void BtnS3() => Silosteuerung.S3 = ClickModeButtonS3();
-        
+
         #region SPS Version, Status und Farbe
 
         private string _versionNr;

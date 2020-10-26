@@ -49,10 +49,5 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnWagenNachRechts =>
             _btnWagenNachRechts ??= new RelayCommand(p => Silosteuerung.WagenNachRechts(), p => true);
-
-        private ICommand _btnNachuellen;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnNachuellen =>
-            _btnNachuellen ??= new RelayCommand(p => Silosteuerung.Nachfuellen(), p => true);
     }
 }

@@ -48,6 +48,8 @@ namespace LAP_2018_1_Silosteuerung.Model
 
                 if (Y1) Silo.Leeren();
 
+                if (Xfu) Silo.Fuellen();
+
                 if (Silo.GetFuellstand() > 0 && Q1 && Y1) Wagen.Fuellen();
 
                 Thread.Sleep(10);
@@ -59,6 +61,5 @@ namespace LAP_2018_1_Silosteuerung.Model
         internal void BtnF2() => F2 = !F2;
         internal void WagenNachLinks() => Wagen.NachLinks();
         internal void WagenNachRechts() => Wagen.NachRechts();
-        internal void Nachfuellen() => Silo.Fuellen();
     }
 }
