@@ -39,9 +39,6 @@
             _viewModel.Paternosterlager.SollPos = S7.GetUint8At(datenstruktur.DigOutput, 2);
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

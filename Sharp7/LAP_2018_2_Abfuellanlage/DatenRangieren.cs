@@ -48,9 +48,6 @@ namespace LAP_2018_2_Abfuellanlage
             _viewModel.Abfuellanlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
         }
 
-        public DatenRangieren(ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

@@ -40,9 +40,6 @@ namespace LAP_2010_5_Pumpensteuerung
             _viewModel.Pumpensteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
         }
 
-        public DatenRangieren(LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm)
-        {
-            _viewModel = vm;
-        }
+        public DatenRangieren(LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

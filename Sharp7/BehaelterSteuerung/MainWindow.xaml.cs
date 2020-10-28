@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using BehaelterSteuerung.Model;
+using Kommunikation;
 using System.Text;
 
 namespace BehaelterSteuerung
@@ -10,7 +11,6 @@ namespace BehaelterSteuerung
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -18,6 +18,8 @@ namespace BehaelterSteuerung
 
         public MainWindow()
         {
+            var johnsonTrotter = new JohnsonTrotter();
+
             const string versionText = "Behaeltersteuerung";
             VersionNummer = "V2.0";
             VersionInfo = versionText + " - " + VersionNummer;
@@ -28,12 +30,17 @@ namespace BehaelterSteuerung
             };
 
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            var datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            foreach (var p in johnsonTrotter.GetPermutations())
+            {
+                ComboBoxPermutationen.Items.Add(p.GetText());
+            }
+
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

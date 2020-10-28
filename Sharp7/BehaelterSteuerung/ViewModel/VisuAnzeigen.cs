@@ -7,10 +7,10 @@ namespace BehaelterSteuerung.ViewModel
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private const double HoeheFuellBalken = 200.0;
-        private readonly Model.BehaelterSteuerung _alleBehaelter;
+        private readonly Model.AlleBehaelter _alleBehaelter;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.BehaelterSteuerung aB)
+        public VisuAnzeigen(MainWindow mw, Model.AlleBehaelter aB)
         {
             _mainWindow = mw;
             _alleBehaelter = aB;
@@ -21,6 +21,8 @@ namespace BehaelterSteuerung.ViewModel
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
+
+            AktivePermutation = "0000";
 
             VisibilityVentilQ1Ein = "hidden";
             VisibilityVentilQ2Ein = "hidden";
@@ -70,12 +72,9 @@ namespace BehaelterSteuerung.ViewModel
             ColorLabelB7 = "red";
             ColorLabelB8 = "red";
 
-            ColorCircleP1 = "lightgray";
+            DropDownEnabled = "true";
 
-            EnableAutomatik1234 = true;
-            EnableAutomatik1324 = true;
-            EnableAutomatik1432 = true;
-            EnableAutomatik4321 = true;
+            ColorCircleP1 = "lightgray";
 
             Margin1 = new Thickness(0, 30, 0, 0);
             Margin2 = new Thickness(0, 50, 0, 0);
@@ -89,30 +88,30 @@ namespace BehaelterSteuerung.ViewModel
         {
             while (true)
             {
-                VisibilityVentilQ1(_alleBehaelter.AlleBehaelter[0].VentilOben);
-                VisibilityVentilQ3(_alleBehaelter.AlleBehaelter[1].VentilOben);
-                VisibilityVentilQ5(_alleBehaelter.AlleBehaelter[2].VentilOben);
-                VisibilityVentilQ7(_alleBehaelter.AlleBehaelter[3].VentilOben);
+                VisibilityVentilQ1(_alleBehaelter.AlleMeineBehaelter[0].VentilOben);
+                VisibilityVentilQ3(_alleBehaelter.AlleMeineBehaelter[1].VentilOben);
+                VisibilityVentilQ5(_alleBehaelter.AlleMeineBehaelter[2].VentilOben);
+                VisibilityVentilQ7(_alleBehaelter.AlleMeineBehaelter[3].VentilOben);
 
-                FarbeZuleitung1B(_alleBehaelter.AlleBehaelter[0].VentilOben);
-                FarbeZuleitung2B(_alleBehaelter.AlleBehaelter[1].VentilOben);
-                FarbeZuleitung3B(_alleBehaelter.AlleBehaelter[2].VentilOben);
-                FarbeZuleitung4B(_alleBehaelter.AlleBehaelter[3].VentilOben);
+                FarbeZuleitung1B(_alleBehaelter.AlleMeineBehaelter[0].VentilOben);
+                FarbeZuleitung2B(_alleBehaelter.AlleMeineBehaelter[1].VentilOben);
+                FarbeZuleitung3B(_alleBehaelter.AlleMeineBehaelter[2].VentilOben);
+                FarbeZuleitung4B(_alleBehaelter.AlleMeineBehaelter[3].VentilOben);
 
-                Margin_1(_alleBehaelter.AlleBehaelter[0].Pegel);
-                Margin_2(_alleBehaelter.AlleBehaelter[1].Pegel);
-                Margin_3(_alleBehaelter.AlleBehaelter[2].Pegel);
-                Margin_4(_alleBehaelter.AlleBehaelter[3].Pegel);
+                Margin_1(_alleBehaelter.AlleMeineBehaelter[0].Pegel);
+                Margin_2(_alleBehaelter.AlleMeineBehaelter[1].Pegel);
+                Margin_3(_alleBehaelter.AlleMeineBehaelter[2].Pegel);
+                Margin_4(_alleBehaelter.AlleMeineBehaelter[3].Pegel);
 
-                FarbeAbleitung1A(_alleBehaelter.AlleBehaelter[0].Pegel > 0.01);
-                FarbeAbleitung2A(_alleBehaelter.AlleBehaelter[1].Pegel > 0.01);
-                FarbeAbleitung3A(_alleBehaelter.AlleBehaelter[2].Pegel > 0.01);
-                FarbeAbleitung4A(_alleBehaelter.AlleBehaelter[3].Pegel > 0.01);
+                FarbeAbleitung1A(_alleBehaelter.AlleMeineBehaelter[0].Pegel > 0.01);
+                FarbeAbleitung2A(_alleBehaelter.AlleMeineBehaelter[1].Pegel > 0.01);
+                FarbeAbleitung3A(_alleBehaelter.AlleMeineBehaelter[2].Pegel > 0.01);
+                FarbeAbleitung4A(_alleBehaelter.AlleMeineBehaelter[3].Pegel > 0.01);
 
-                var ableitungUnten1 = _alleBehaelter.AlleBehaelter[0].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[0].VentilUnten;
-                var ableitungUnten2 = _alleBehaelter.AlleBehaelter[1].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[1].VentilUnten;
-                var ableitungUnten3 = _alleBehaelter.AlleBehaelter[2].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[2].VentilUnten;
-                var ableitungUnten4 = _alleBehaelter.AlleBehaelter[3].Pegel > 0.01 && _alleBehaelter.AlleBehaelter[3].VentilUnten;
+                var ableitungUnten1 = _alleBehaelter.AlleMeineBehaelter[0].Pegel > 0.01 && _alleBehaelter.AlleMeineBehaelter[0].VentilUnten;
+                var ableitungUnten2 = _alleBehaelter.AlleMeineBehaelter[1].Pegel > 0.01 && _alleBehaelter.AlleMeineBehaelter[1].VentilUnten;
+                var ableitungUnten3 = _alleBehaelter.AlleMeineBehaelter[2].Pegel > 0.01 && _alleBehaelter.AlleMeineBehaelter[2].VentilUnten;
+                var ableitungUnten4 = _alleBehaelter.AlleMeineBehaelter[3].Pegel > 0.01 && _alleBehaelter.AlleMeineBehaelter[3].VentilUnten;
                 var ableitungenUnten = ableitungUnten1 || ableitungUnten2 || ableitungUnten3 || ableitungUnten4;
 
                 VisibilityVentilQ2(ableitungUnten1);
@@ -126,21 +125,19 @@ namespace BehaelterSteuerung.ViewModel
                 FarbeAbleitung4B(ableitungenUnten);
                 FarbeAbleitungGesamt(ableitungenUnten);
 
-                FarbeLabelB1(_alleBehaelter.AlleBehaelter[0].SchwimmerschalterOben);
-                FarbeLabelB2(_alleBehaelter.AlleBehaelter[0].SchwimmerschalterUnten);
-                FarbeLabelB3(_alleBehaelter.AlleBehaelter[1].SchwimmerschalterOben);
-                FarbeLabelB4(_alleBehaelter.AlleBehaelter[1].SchwimmerschalterUnten);
-                FarbeLabelB5(_alleBehaelter.AlleBehaelter[2].SchwimmerschalterOben);
-                FarbeLabelB6(_alleBehaelter.AlleBehaelter[2].SchwimmerschalterUnten);
-                FarbeLabelB7(_alleBehaelter.AlleBehaelter[3].SchwimmerschalterOben);
-                FarbeLabelB8(_alleBehaelter.AlleBehaelter[3].SchwimmerschalterUnten);
+                FarbeLabelB1(_alleBehaelter.AlleMeineBehaelter[0].SchwimmerschalterOben);
+                FarbeLabelB2(_alleBehaelter.AlleMeineBehaelter[0].SchwimmerschalterUnten);
+                FarbeLabelB3(_alleBehaelter.AlleMeineBehaelter[1].SchwimmerschalterOben);
+                FarbeLabelB4(_alleBehaelter.AlleMeineBehaelter[1].SchwimmerschalterUnten);
+                FarbeLabelB5(_alleBehaelter.AlleMeineBehaelter[2].SchwimmerschalterOben);
+                FarbeLabelB6(_alleBehaelter.AlleMeineBehaelter[2].SchwimmerschalterUnten);
+                FarbeLabelB7(_alleBehaelter.AlleMeineBehaelter[3].SchwimmerschalterOben);
+                FarbeLabelB8(_alleBehaelter.AlleMeineBehaelter[3].SchwimmerschalterUnten);
 
                 FarbeCircle_P1(_alleBehaelter.P1);
 
-                EnableAutomatik1234 = !_alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik1324 = !_alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik1432 = !_alleBehaelter.AutomatikModusAktiv;
-                EnableAutomatik4321 = !_alleBehaelter.AutomatikModusAktiv;
+                DropDownEnabled = _alleBehaelter.AutomatikModusAktiv() ? "false" : "true";
+
 
                 if (_mainWindow.Plc != null)
                 {
@@ -155,6 +152,7 @@ namespace BehaelterSteuerung.ViewModel
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
+
 
                 Thread.Sleep(10);
             }
@@ -232,6 +230,30 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
+
+        private string _dropDownEnabled;
+        public string DropDownEnabled
+        {
+            get => _dropDownEnabled;
+            set
+            {
+                _dropDownEnabled = value;
+                OnPropertyChanged(nameof(DropDownEnabled));
+            }
+        }
+
+
+        private string _aktivePermutation;
+        public string AktivePermutation
+        {
+            get => _aktivePermutation;
+            set
+            {
+                _aktivePermutation = value;
+                _alleBehaelter.AutomatikBetriebStarten(_aktivePermutation);
+                OnPropertyChanged(nameof(AktivePermutation));
+            }
+        }
 
         #region Visibility Ventil Q1
 
@@ -964,70 +986,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         #endregion Color P1
-
-        #region EnableAutomatik1234
-
-        private bool _enableAutomatik1234;
-
-        public bool EnableAutomatik1234
-        {
-            get => _enableAutomatik1234;
-            set
-            {
-                _enableAutomatik1234 = value;
-                OnPropertyChanged(nameof(EnableAutomatik1234));
-            }
-        }
-
-        #endregion EnableAutomatik1234
-
-        #region EnableAutomatik1324
-
-        private bool _enableAutomatik1324;
-
-        public bool EnableAutomatik1324
-        {
-            get => _enableAutomatik1324;
-            set
-            {
-                _enableAutomatik1324 = value;
-                OnPropertyChanged(nameof(EnableAutomatik1324));
-            }
-        }
-
-        #endregion EnableAutomatik1324
-
-        #region EnableAutomatik1432
-
-        private bool _enableAutomatik1432;
-
-        public bool EnableAutomatik1432
-        {
-            get => _enableAutomatik1432;
-            set
-            {
-                _enableAutomatik1432 = value;
-                OnPropertyChanged(nameof(EnableAutomatik1432));
-            }
-        }
-
-        #endregion EnableAutomatik1432
-
-        #region EnableAutomatik4321
-
-        private bool _enableAutomatik4321;
-
-        public bool EnableAutomatik4321
-        {
-            get => _enableAutomatik4321;
-            set
-            {
-                _enableAutomatik4321 = value;
-                OnPropertyChanged(nameof(EnableAutomatik4321));
-            }
-        }
-
-        #endregion EnableAutomatik4321
 
         #region Margin1
 

@@ -4,9 +4,6 @@
     {
         private readonly MainWindow mainWindow;
 
-        public DatenRangieren(MainWindow window)
-        {
-            mainWindow = window;
-        }
+        public DatenRangieren(MainWindow window) => mainWindow = window;
     }
 }

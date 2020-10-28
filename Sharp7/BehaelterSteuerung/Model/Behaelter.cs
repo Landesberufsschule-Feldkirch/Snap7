@@ -21,8 +21,6 @@
             Pegel = pegel;
         }
 
-        public bool AutomatikModus() => _automatikModus;
-
         public void PegelUeberwachen()
         {
             if (_automatikModus && _internerPegel < 0.01)

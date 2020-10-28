@@ -6,22 +6,19 @@
     // ReSharper disable once UnusedMember.Global
     public class AlleBehaelter
     {
-        public enum AutomatikModus
-        {
-            Modus1234 = 0,
-            Modus1324,
-            Modus1432,
-            Modus4321
-        }
 
-        public bool AlleKnoepfeAktivieren { get; set; }
         public bool P1 { get; set; }
         public List<Behaelter> AlleMeineBehaelter { get; set; }
 
         private bool _automatikModusAktiv;
 
+        private string _aktuellePermutation;
+
+
         public AlleBehaelter()
         {
+            _aktuellePermutation = "0000";
+
             AlleMeineBehaelter = new List<Behaelter>
             {
                 new Behaelter(0.2), new Behaelter(0.4), new Behaelter(0.6), new Behaelter(0.8)
@@ -48,7 +45,7 @@
                 }
                 if (_automatikModusAktiv && !automatikModusNochAktiv)
                 {
-                    AlleAutomatikKnoepfeAktivieren();
+                    // AlleAutomatikKnoepfeAktivieren();
                     _automatikModusAktiv = false;
                 }
 
@@ -66,68 +63,25 @@
         // ReSharper disable once UnusedMember.Global
         internal void VentilQ8() => AlleMeineBehaelter[3].VentilUntenUmschalten();
 
-        // ReSharper disable once UnusedMember.Global
-        internal void Automatik1234() => AutomatikBetriebStarten(AutomatikModus.Modus1234);
-        // ReSharper disable once UnusedMember.Global
-        internal void Automatik1324() => AutomatikBetriebStarten(AutomatikModus.Modus1324);
 
-        // ReSharper disable once UnusedMember.Global
-        internal void Automatik1432() => AutomatikBetriebStarten(AutomatikModus.Modus1432);
-        // ReSharper disable once UnusedMember.Global
-        internal void Automatik4321() => AutomatikBetriebStarten(AutomatikModus.Modus4321);
-
-
-        private void AlleAutomatikKnoepfeDeaktivieren()
+        public void AutomatikBetriebStarten(string reihenfolge)
         {
-            AlleKnoepfeAktivieren = false;
-        }
-        private void AlleAutomatikKnoepfeAktivieren()
-        {
-            AlleKnoepfeAktivieren = true;
-        }
-        private void AutomatikBetriebStarten(AutomatikModus modus)
-        {
-            AlleAutomatikKnoepfeDeaktivieren();
+            if (_aktuellePermutation == reihenfolge) return;
             _automatikModusAktiv = true;
-            switch (modus)
-            {
-                case AutomatikModus.Modus1234:
-                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
-                    AlleMeineBehaelter[1].AutomatikmodusStarten(2.4);
-                    AlleMeineBehaelter[2].AutomatikmodusStarten(3.6);
-                    AlleMeineBehaelter[3].AutomatikmodusStarten(4.8);
-                    break;
+            _aktuellePermutation = reihenfolge;
 
-                case AutomatikModus.Modus1324:
-                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
-                    AlleMeineBehaelter[2].AutomatikmodusStarten(2.4);
-                    AlleMeineBehaelter[1].AutomatikmodusStarten(3.6);
-                    AlleMeineBehaelter[3].AutomatikmodusStarten(4.8);
-                    break;
-
-                case AutomatikModus.Modus1432:
-                    AlleMeineBehaelter[0].AutomatikmodusStarten(1.2);
-                    AlleMeineBehaelter[3].AutomatikmodusStarten(2.4);
-                    AlleMeineBehaelter[2].AutomatikmodusStarten(3.6);
-                    AlleMeineBehaelter[1].AutomatikmodusStarten(4.8);
-                    break;
-
-                case AutomatikModus.Modus4321:
-                    AlleMeineBehaelter[3].AutomatikmodusStarten(1.2);
-                    AlleMeineBehaelter[2].AutomatikmodusStarten(2.4);
-                    AlleMeineBehaelter[1].AutomatikmodusStarten(3.6);
-                    AlleMeineBehaelter[0].AutomatikmodusStarten(4.8);
-                    break;
-
-                default:
-                    AlleMeineBehaelter[0].AutomatikmodusStarten(0);
-                    AlleMeineBehaelter[1].AutomatikmodusStarten(0);
-                    AlleMeineBehaelter[2].AutomatikmodusStarten(0);
-                    AlleMeineBehaelter[3].AutomatikmodusStarten(0);
-                    break;
-
-            }
-
+            EndleerreihenfolgeZuordnen(_aktuellePermutation[0], 1.2);
+            EndleerreihenfolgeZuordnen(_aktuellePermutation[1], 2.4);
+            EndleerreihenfolgeZuordnen(_aktuellePermutation[2], 3.6);
+            EndleerreihenfolgeZuordnen(_aktuellePermutation[3], 4.8);
         }
+
+        private void EndleerreihenfolgeZuordnen(char behaelter, double menge)
+        {
+            var b = behaelter - '1';
+            AlleMeineBehaelter[b].AutomatikmodusStarten(menge);
+        }
+
+        public bool AutomatikModusAktiv() => _automatikModusAktiv;
     }
 }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="BehälterSteuerung" Height="650" Width="1000">
+        Title="BehälterSteuerung" Height="550" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -43,7 +43,6 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="10" />
-            <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
@@ -133,10 +132,15 @@
 
         <Rectangle Fill="{Binding ViAnzeige.ColorAbleitungGesamt}" Grid.Column="3"     Grid.ColumnSpan="11" Grid.Row="10" Margin="40,0,0,0" />
 
-        <Button Content="1-2-3-4" Grid.Column="18"  Grid.Row="7"  Command="{Binding BtnAutomatik1234}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik1234}" />
-        <Button Content="1-3-2-4" Grid.Column="20"  Grid.Row="7"  Command="{Binding BtnAutomatik1324}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik1324}" />
-        <Button Content="1-4-3-2" Grid.Column="18"  Grid.Row="9"  Command="{Binding BtnAutomatik1432}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik1432}" />
-        <Button Content="4-3-2-1" Grid.Column="20"  Grid.Row="9"  Command="{Binding BtnAutomatik4321}"  IsEnabled="{Binding ViAnzeige.EnableAutomatik4321}" />
+        <Label Grid.Column="18" Grid.ColumnSpan="3" Grid.Row="3" Content="Entleerreihenfolge:" />
+        <ComboBox Name="ComboBoxPermutationen" 
+                  Grid.Column="18" Grid.ColumnSpan="3" Grid.Row="4" SelectedIndex="0" 
+                  SelectedValue="{Binding ViAnzeige.AktivePermutation}" 
+                  IsDropDownOpen="True" 
+                  IsReadOnly="True" 
+                  IsEnabled="{Binding ViAnzeige.DropDownEnabled}" 
+                  FontSize="16pt"/>
+  
 
         <Ellipse Grid.Column="14" Fill="{Binding ViAnzeige.ColorCircleP1}" HorizontalAlignment="Left" Height="35" Grid.Row="3" Stroke="Black" Width="35" />
 
