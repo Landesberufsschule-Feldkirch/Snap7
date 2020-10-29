@@ -7,4 +7,11 @@
     <ApplicationIcon>Snap7.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\SiebenSegmentAnzeige\SiebenSegmentAnzeige.csproj" />
+    <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
 </Project>
