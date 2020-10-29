@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:siebensegmentanzeige="clr-namespace:SiebenSegmentAnzeige;assembly=SiebenSegmentAnzeige"
-        xmlns:Drawing="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" x:Class="VoltmeterMitSiebenSegmentAnzeige.MainWindow"
+        x:Class="VoltmeterMitSiebenSegmentAnzeige.MainWindow"
         mc:Ignorable="d"
         Title="Voltmeter mit 7-Segment Anzeige" Height="450" Width="800">
     <Grid>
@@ -32,11 +32,11 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <siebensegmentanzeige:UserControl1 x:Name="Anzeige4" Grid.Column="2"  Grid.Row="2"  />
+        <siebensegmentanzeige:UserControl x:Name="Anzeige4" Grid.Column="2"  Grid.Row="2" />
         
-        <siebensegmentanzeige:UserControl1 x:Name="Anzeige3" Grid.Column="4"  Grid.Row="2" />
-        <siebensegmentanzeige:UserControl1 x:Name="Anzeige2" Grid.Column="6"  Grid.Row="2" />
-        <siebensegmentanzeige:UserControl1 x:Name="Anzeige1" Grid.Column="8"  Grid.Row="2" />
+        <siebensegmentanzeige:UserControl x:Name="Anzeige3" Grid.Column="4"  Grid.Row="2" />
+        <siebensegmentanzeige:UserControl x:Name="Anzeige2" Grid.Column="6"  Grid.Row="2" />
+        <siebensegmentanzeige:UserControl x:Name="Anzeige1" Grid.Column="8"  Grid.Row="2" />
 
     </Grid>
 </Window>

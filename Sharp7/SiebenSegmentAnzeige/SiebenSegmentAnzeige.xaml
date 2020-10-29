@@ -1,9 +1,8 @@
-﻿<UserControl x:Class="SiebenSegmentAnzeige.UserControl1"
+﻿<UserControl x:Class="SiebenSegmentAnzeige.UserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SiebenSegmentAnzeige"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="190" d:DesignWidth="110">
     <Grid>
@@ -45,7 +44,7 @@
         </Grid.RowDefinitions>
         <Rectangle Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="1" Grid.RowSpan="18" Fill="WhiteSmoke" />
 
-        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="1" Fill="{Binding this.LedColor}">
+        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="1" Visibility="{Binding ViAnzeige.VisibilitySegmentA}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="6" Y="5" />
                 <Point X="11" Y="0" />
@@ -56,7 +55,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentB" Grid.Column="9" Grid.Row="1" Grid.RowSpan="9" Fill="Red">
+        <Polygon x:Name="SegmentB" Grid.Column="9" Grid.Row="1" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentB}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
@@ -67,7 +66,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentC" Grid.Column="9" Grid.Row="9" Grid.RowSpan="9" Fill="Red">
+        <Polygon x:Name="SegmentC" Grid.Column="9" Grid.Row="9" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentC}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
@@ -78,7 +77,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="17" Fill="Yellow">
+        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="17" Visibility="{Binding ViAnzeige.VisibilitySegmentD}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="6" Y="5" />
                 <Point X="11" Y="0" />
@@ -89,7 +88,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="9" Grid.RowSpan="9" Fill="Red">
+        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="9" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentE}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
@@ -100,7 +99,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="9" Fill="Red">
+        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentF}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
@@ -113,7 +112,7 @@
 
 
 
-        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="9" Fill="Yellow">
+        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="9" Visibility="{Binding ViAnzeige.VisibilitySegmentG}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
                 <Point X="6" Y="5" />
                 <Point X="11" Y="0" />
@@ -124,7 +123,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Ellipse Grid.Column="10" Grid.Row="18" Fill="Red"/>
+        <Ellipse Grid.Column="10" Grid.Row="18" Visibility="{Binding ViAnzeige.VisibilitySegmentDp}" Fill="{Binding ViAnzeige.FarbeLed}"/>
 
     </Grid>
 </UserControl>

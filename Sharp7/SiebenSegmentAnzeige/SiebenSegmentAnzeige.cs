@@ -3,7 +3,6 @@ using System.Windows.Controls;
 
 namespace SiebenSegmentAnzeige
 {
-
     public class SiebenSegmentAnzeige : Control
     {
         static SiebenSegmentAnzeige()
