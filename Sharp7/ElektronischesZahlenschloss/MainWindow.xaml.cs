@@ -7,7 +7,7 @@ namespace ElektronischesZahlenschloss
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -22,11 +22,11 @@ namespace ElektronischesZahlenschloss
         {
             const string versionText = "Elektronisches Zahlenschloss";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             var viewModel = new ViewModel.ViewModel(this);

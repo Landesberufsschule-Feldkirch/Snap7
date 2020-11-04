@@ -22,7 +22,7 @@ namespace Kommunikation
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
 
-            _datenstruktur.VersionInput = Encoding.ASCII.GetBytes("KeineVersionsinfo");
+            _datenstruktur.VersionInputSps = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
 

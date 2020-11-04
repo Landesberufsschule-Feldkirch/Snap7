@@ -1,13 +1,12 @@
 ﻿using BehaelterSteuerung.Model;
 using Kommunikation;
-using System.Text;
 
 namespace BehaelterSteuerung
 {
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokalLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
@@ -22,12 +21,9 @@ namespace BehaelterSteuerung
 
             const string versionText = "Behaeltersteuerung";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokalLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
             var datenRangieren = new DatenRangieren(viewModel);

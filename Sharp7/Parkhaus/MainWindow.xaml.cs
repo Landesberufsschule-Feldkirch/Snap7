@@ -8,7 +8,7 @@ namespace Parkhaus
     {
 
         public IPlc Plc { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
@@ -25,11 +25,11 @@ namespace Parkhaus
         {
             const string versionText = "Parkhaus";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             var viewModel = new ViewModel.ViewModel(this);

@@ -10,7 +10,7 @@ namespace Synchronisiereinrichtung
     {
         public bool DebugWindowAktiv { get; set; }
         public IPlc Plc { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
@@ -27,11 +27,11 @@ namespace Synchronisiereinrichtung
         {
             const string versionText = "Synchronisiereinrichtung";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             _viewModel = new ViewModel(this);

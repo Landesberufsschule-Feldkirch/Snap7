@@ -4,126 +4,112 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="190" d:DesignWidth="110">
+             d:DesignHeight="190" d:DesignWidth="130">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Rectangle Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="1" Grid.RowSpan="18" Fill="WhiteSmoke" />
 
-        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="1" Visibility="{Binding ViAnzeige.VisibilitySegmentA}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Rectangle Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="1" Grid.RowSpan="9" Fill="WhiteSmoke" />
+
+        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Visibility="{Binding ViAnzeige.VisibilitySegmentA}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="6" Y="5" />
-                <Point X="11" Y="0" />
-                <Point X="79" Y="0" />
-                <Point X="84"  Y="5" />
-                <Point X="79"  Y="10" />
                 <Point X="11" Y="10" />
+                <Point X="21" Y="0"  />
+                <Point X="79" Y="0"  />
+                <Point X="89" Y="10" />
+                <Point X="79" Y="20" />
+                <Point X="21" Y="20" />
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentB" Grid.Column="9" Grid.Row="1" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentB}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentB" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.VisibilitySegmentB}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
-                <Point X="10" Y="79" />
-                <Point X="5"  Y="84" />
+                <Point X="20" Y="21" />
+                <Point X="20" Y="79" />
+                <Point X="10" Y="89" />
                 <Point X="0"  Y="79" />
-                <Point X="0"  Y="11" />
+                <Point X="0"  Y="21" />
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentC" Grid.Column="9" Grid.Row="9" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentC}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentC" Grid.Column="5" Grid.Row="5" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.VisibilitySegmentC}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
-                <Point X="10" Y="79" />
-                <Point X="5"  Y="84" />
+                <Point X="20" Y="21" />
+                <Point X="20" Y="79" />
+                <Point X="10" Y="89" />
                 <Point X="0"  Y="79" />
-                <Point X="0"  Y="11" />
+                <Point X="0"  Y="21" />
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="17" Visibility="{Binding ViAnzeige.VisibilitySegmentD}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="9" Visibility="{Binding ViAnzeige.VisibilitySegmentD}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="6" Y="5" />
-                <Point X="11" Y="0" />
-                <Point X="79" Y="0" />
-                <Point X="84"  Y="5" />
-                <Point X="79"  Y="10" />
                 <Point X="11" Y="10" />
+                <Point X="21" Y="0"  />
+                <Point X="79" Y="0"  />
+                <Point X="89" Y="10" />
+                <Point X="79" Y="20" />
+                <Point X="21" Y="20" />
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="9" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentE}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="5" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.VisibilitySegmentE}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
-                <Point X="10" Y="79" />
-                <Point X="5"  Y="84" />
+                <Point X="20" Y="21" />
+                <Point X="20" Y="79" />
+                <Point X="10" Y="89" />
                 <Point X="0"  Y="79" />
-                <Point X="0"  Y="11" />
+                <Point X="0"  Y="21" />
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="9" Visibility="{Binding ViAnzeige.VisibilitySegmentF}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.VisibilitySegmentF}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="5" Y="6" />
                 <Point X="10" Y="11" />
-                <Point X="10" Y="79" />
-                <Point X="5"  Y="84" />
+                <Point X="20" Y="21" />
+                <Point X="20" Y="79" />
+                <Point X="10" Y="89" />
                 <Point X="0"  Y="79" />
-                <Point X="0"  Y="11" />
+                <Point X="0"  Y="21" />
             </Polygon.Points>
         </Polygon>
 
-
-
-        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="9" Visibility="{Binding ViAnzeige.VisibilitySegmentG}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5" Visibility="{Binding ViAnzeige.VisibilitySegmentG}" Fill="{Binding ViAnzeige.FarbeLed}">
             <Polygon.Points>
-                <Point X="6" Y="5" />
-                <Point X="11" Y="0" />
-                <Point X="79" Y="0" />
-                <Point X="84"  Y="5" />
-                <Point X="79"  Y="10" />
                 <Point X="11" Y="10" />
+                <Point X="21" Y="0"  />
+                <Point X="79" Y="0"  />
+                <Point X="89" Y="10" />
+                <Point X="79" Y="20" />
+                <Point X="21" Y="20" />
             </Polygon.Points>
         </Polygon>
 
-        <Ellipse Grid.Column="10" Grid.Row="18" Visibility="{Binding ViAnzeige.VisibilitySegmentDp}" Fill="{Binding ViAnzeige.FarbeLed}"/>
+        <Ellipse Grid.Column="6" Grid.Row="9" Visibility="{Binding ViAnzeige.VisibilitySegmentDp}" Fill="{Binding ViAnzeige.FarbeLed}"/>
 
     </Grid>
 </UserControl>

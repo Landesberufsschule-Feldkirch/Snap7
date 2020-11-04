@@ -13,7 +13,7 @@ namespace Heizungsregler
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public WohnHaus WohnHaus { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
@@ -36,11 +36,11 @@ namespace Heizungsregler
         {
             const string versionText = "Heizungsregler";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             var viewModel = new ViewModel.ViewModel(this);

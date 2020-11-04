@@ -9,7 +9,7 @@ namespace PaternosterLager
         public ManualMode.ManualMode ManualMode { get; set; }
         public IPlc Plc { get; set; }
         public bool FensterAktiv { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public const double AnzahlKisten = 16;
         public Datenstruktur Datenstruktur { get; set; }
@@ -25,11 +25,11 @@ namespace PaternosterLager
         {
             const string versionText = "Paternosterlager";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             FensterAktiv = true;

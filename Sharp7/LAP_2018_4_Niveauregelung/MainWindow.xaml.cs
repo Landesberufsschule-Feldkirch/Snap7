@@ -8,7 +8,7 @@ namespace LAP_2018_4_Niveauregelung
     {
         public IPlc Plc { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
@@ -23,11 +23,11 @@ namespace LAP_2018_4_Niveauregelung
         {
             const string versionText = "LAP 2018/4 Niveauregelung";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
             ViewModel = new ViewModel.ViewModel(this);

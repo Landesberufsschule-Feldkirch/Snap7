@@ -144,9 +144,10 @@ namespace BehaelterSteuerung.ViewModel
                     if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
                     {
                         VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfo;
+                        SpsVersionLokal = _mainWindow.VersionInfoLokalLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        //SpsVersionsInfoSichtbar = "hidden";
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";

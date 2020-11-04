@@ -1,4 +1,6 @@
-﻿namespace SiebenSegmentAnzeige
+﻿using System.Windows;
+
+namespace SiebenSegmentAnzeige
 {
     public partial class UserControl
     {
@@ -28,5 +30,28 @@
             InitializeComponent();
             DataContext = viewModel;
         }
+
+
+        private bool _visibilitySegmentA;
+        public bool VisibilitySegmentA
+        {
+            get => _visibilitySegmentA;
+            set
+            {
+                _visibilitySegmentA = value;
+                SetValue(VisibilitySegmentAProperty, _visibilitySegmentA);
+            }
+        }
+
+        public static readonly DependencyProperty VisibilitySegmentAProperty =
+            DependencyProperty.Register("VisSegA", typeof(bool), typeof(SiebenSegmentAnzeige),
+                new PropertyMetadata(OnVisibilitySegmentAChanged));
+
+        private static void OnVisibilitySegmentAChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //
+        }
+
+
     }
 }

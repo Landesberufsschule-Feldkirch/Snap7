@@ -19,7 +19,7 @@ namespace AutomatischesLagersystem
         public bool FensterAktiv { get; set; }
         public DreiDErstellen DreiD { get; set; }
         public int[] DreiDModelleIds { get; set; }
-        public string VersionInfo { get; set; }
+        public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
 
         public Datenstruktur Datenstruktur { get; set; }
@@ -35,11 +35,11 @@ namespace AutomatischesLagersystem
         {
             const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
-            VersionInfo = versionText + " - " + VersionNummer;
+            VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
             {
-                VersionInput = Encoding.ASCII.GetBytes(VersionInfo)
+                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
 

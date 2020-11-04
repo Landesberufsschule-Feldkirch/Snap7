@@ -25,8 +25,6 @@ namespace SiebenSegmentAnzeige.ViewModel
 
         private void VisuAnzeigenTask()
         {
-            var blinker = true;
-
             while (true)
             {
                 if (_userControl != null)
@@ -40,8 +38,6 @@ namespace SiebenSegmentAnzeige.ViewModel
                     SichtbarkeitSegmentG(_userControl.LedG);
                     SichtbarkeitSegmentDp(_userControl.LedDp);
 
-                    FarbeLed = blinker ? "Red" : "LawnGreen";
-                    blinker = !blinker;
                 }
 
                 Thread.Sleep(500);

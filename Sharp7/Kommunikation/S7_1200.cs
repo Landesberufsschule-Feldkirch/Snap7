@@ -13,7 +13,10 @@ namespace Kommunikation
         private enum BytePosition
         {
             Byte0 = 0,
-            Byte4 = 3
+            Byte1,
+            Byte2,
+            Byte3,
+            Byte4
         }
 
         private enum AnzahlByte
@@ -31,6 +34,9 @@ namespace Kommunikation
         private readonly Action<Datenstruktur> _callbackOutput;
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressen _spsClient;
+
+        private byte[] _zulStringLaenge = new byte[1024];
+        private byte[] _zeichenLaenge = new byte[1024];
 
         private int _zyklusZeitKommunikation = 100;
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
@@ -71,14 +77,16 @@ namespace Kommunikation
 
                             _callbackInput(_datenstruktur);
 
-                            if (_datenstruktur.VersionInput.Length > 0)
+                            if (_datenstruktur.VersionInputSps.Length > 0)
                             {
                                 _datenstruktur.BefehleSps[0]++;
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _datenstruktur.BefehleSps));
 
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _datenstruktur.VersionInput.Length, _datenstruktur.VersionInput));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
 
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[0] + 4, _datenstruktur.VersionInputSps));
                             }
                             if (_datenstruktur.AnzahlByteDigitalInput > 0)
                             {
@@ -141,10 +149,22 @@ namespace Kommunikation
             return "Nr: " + resultError + " Text: " + errorText;
         }
 
+        public string GetVersion()
+        {
+
+            if (_zeichenLaenge[0] > 0)
+            {
+                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+                return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
+
+            }
+            else return "Uups";
+        }
+
         public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
-        public string GetVersion() => Encoding.ASCII.GetString(_datenstruktur.VersionInput, 0, _datenstruktur.VersionInput.Length);
+
         public string GetPlcModus() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();

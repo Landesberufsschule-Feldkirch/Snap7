@@ -152,7 +152,7 @@
 
                 if (_mainWindow.Plc != null)
                 {
-                    SpsVersionLokal = _mainWindow.VersionInfo;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
 

@@ -4,9 +4,8 @@ namespace Kommunikation
 {
     public class Datenstruktur
     {
-
         public byte[] BefehleSps { get; set; } = new byte[1024];
-        public byte[] VersionInput { get; set; } = new byte[1024];
+        public byte[] VersionInputSps { get; set; } = new byte[1024];
         public byte[] DigInput { get; set; } = new byte[1024];
         public byte[] DigOutput { get; set; } = new byte[1024];
         public byte[] AnalogInput { get; set; } = new byte[1024];
@@ -26,7 +25,7 @@ namespace Kommunikation
 
 
             Array.Clear(BefehleSps, 0, BefehleSps.Length);
-            Array.Clear(VersionInput, 0, VersionInput.Length);
+            Array.Clear(VersionInputSps, 0, VersionInputSps.Length);
             Array.Clear(DigInput, 0, DigInput.Length);
             Array.Clear(DigOutput, 0, DigOutput.Length);
             Array.Clear(AnalogInput, 0, AnalogInput.Length);
