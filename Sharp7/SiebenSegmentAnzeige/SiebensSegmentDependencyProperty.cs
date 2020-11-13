@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 
 namespace SiebenSegmentAnzeige
@@ -162,6 +163,26 @@ namespace SiebenSegmentAnzeige
                 new PropertyMetadata(OnVisibilitySegmentDpChanged));
 
         private static void OnVisibilitySegmentDpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //
+        }
+
+        private Color _colorSegment;
+        public Color ColorSegment
+        {
+            get => _colorSegment;
+            set
+            {
+                _colorSegment = value;
+                SetValue(ColorSegmentProperty, _colorSegment);
+            }
+        }
+
+        public static readonly DependencyProperty ColorSegmentProperty =
+            DependencyProperty.Register("ColorSegment", typeof(Color), typeof(SiebenSegmentDisplay),
+                new PropertyMetadata(OnColorSegmentChanged));
+
+        private static void OnColorSegmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //
         }

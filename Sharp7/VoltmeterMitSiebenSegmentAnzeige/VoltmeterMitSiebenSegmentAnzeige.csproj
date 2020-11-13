@@ -18,4 +18,19 @@
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ManualConfig\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ManualConfig\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

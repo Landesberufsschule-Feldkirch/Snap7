@@ -34,54 +34,55 @@
         </Grid.RowDefinitions>
 
         <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2"  
-                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
-                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
-                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
-                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[3]}" 
-                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[4]}" 
-                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
-                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
-                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+                                                   ColorSegment="{Binding ViAnzeige.ColorSegment}"
+                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[50]}" 
+                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[51]}" 
+                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[52]}" 
+                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[53]}" 
+                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[54]}" 
+                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[55]}" 
+                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[56]}" 
+                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[57]}"/>
 
         <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige4" Grid.Column="3"  Grid.Row="2" 
-                                          VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
-                                          VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
-                                          VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
-                                          VisibilitySegmentD="{Binding ViAnzeige.AlleLed[3]}" 
-                                          VisibilitySegmentE="{Binding ViAnzeige.AlleLed[4]}" 
-                                          VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
-                                          VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
-                                          VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[40]}" 
+                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[41]}" 
+                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[42]}" 
+                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[43]}" 
+                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[44]}" 
+                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[45]}" 
+                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[46]}" 
+                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[47]}" />
 
         <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige3" Grid.Column="5"  Grid.Row="2" 
-                                          VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
-                                          VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
-                                          VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
-                                          VisibilitySegmentD="{Binding ViAnzeige.AlleLed[3]}" 
-                                          VisibilitySegmentE="{Binding ViAnzeige.AlleLed[4]}" 
-                                          VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
-                                          VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
-                                          VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[30]}" 
+                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[31]}" 
+                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[32]}" 
+                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[33]}" 
+                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[34]}" 
+                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[35]}" 
+                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[36]}" 
+                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[37]}" />
 
         <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige2" Grid.Column="7"  Grid.Row="2" 
-                                          VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
-                                          VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
-                                          VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
-                                          VisibilitySegmentD="{Binding ViAnzeige.AlleLed[3]}" 
-                                          VisibilitySegmentE="{Binding ViAnzeige.AlleLed[4]}" 
-                                          VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
-                                          VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
-                                          VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[20]}" 
+                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[21]}" 
+                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[22]}" 
+                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[23]}" 
+                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[24]}" 
+                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[25]}" 
+                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[26]}" 
+                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[27]}" />
 
         <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige1" Grid.Column="9"  Grid.Row="2" 
-                                          VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
-                                          VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
-                                          VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
-                                          VisibilitySegmentD="{Binding ViAnzeige.AlleLed[3]}" 
-                                          VisibilitySegmentE="{Binding ViAnzeige.AlleLed[4]}" 
-                                          VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
-                                          VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
-                                          VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[10]}" 
+                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[11]}" 
+                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[12]}" 
+                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[13]}" 
+                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[14]}" 
+                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[15]}" 
+                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[16]}" 
+                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[17]}" />
 
         <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="4" Click="ManualModeOeffnen" Background="Aquamarine" />
 

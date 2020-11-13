@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Threading;
 using System.Windows;
 
@@ -11,8 +12,8 @@ namespace SiebenSegmentAnzeige.ViewModel
         {
             _siebenSegmentDisplay = uc;
 
-            FarbeLed = "red";
-           
+            FarbeLed = Color.Violet;
+
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -23,7 +24,10 @@ namespace SiebenSegmentAnzeige.ViewModel
             {
                 if (_siebenSegmentDisplay != null)
                 {
+                    FarbeLed = _siebenSegmentDisplay.ColorSegment;
+
                     SegmentA = _siebenSegmentDisplay.VisibilitySegmentA;
+
 
                 }
 
@@ -34,8 +38,9 @@ namespace SiebenSegmentAnzeige.ViewModel
 
 
         #region Farbe umschalten
-        private string _farbeLed;
-        public string FarbeLed
+
+        private Color _farbeLed;
+        public Color FarbeLed
         {
             get => _farbeLed;
             set
@@ -47,7 +52,7 @@ namespace SiebenSegmentAnzeige.ViewModel
         #endregion
 
         #region Sichtbarkeit Segmente
-    
+
         private Visibility _segmentA;
         public Visibility SegmentA
         {
@@ -98,7 +103,7 @@ namespace SiebenSegmentAnzeige.ViewModel
             get => _segmentE;
             set
             {
-                 _segmentE= value;
+                _segmentE = value;
                 OnPropertyChanged(nameof(SegmentE));
             }
         }

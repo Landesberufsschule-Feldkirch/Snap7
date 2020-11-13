@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Drawing;
 
 namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 {
@@ -21,6 +22,8 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
+
+            ColorSegment = Color.Yellow;
 
             for (var i = 0; i < 100; i++) AlleLed.Add("Visible");
 
@@ -146,6 +149,18 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
+
+        private Color _colorSegment;
+
+        public Color ColorSegment
+        {
+            get => _colorSegment;
+            set
+            {
+                _colorSegment = value;
+                OnPropertyChanged(nameof(ColorSegment));
+            }
+        }
 
         private ObservableCollection<string> _alleLed = new ObservableCollection<string>();
 
