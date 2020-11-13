@@ -13,8 +13,6 @@
 
         public SiebenSegmentDisplay()
         {
-InitializeComponent();
-
             LedA = true;
             LedB = true;
             LedC = true;
@@ -25,9 +23,10 @@ InitializeComponent();
             LedDp = true;
 
 
+            InitializeComponent();
+
             var viewModel = new ViewModel.ViewModel(this);
 
-            
             DataContext = viewModel;
         }
     }

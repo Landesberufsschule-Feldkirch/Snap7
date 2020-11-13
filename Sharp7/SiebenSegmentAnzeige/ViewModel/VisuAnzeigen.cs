@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Threading;
+using System.Windows;
 
 namespace SiebenSegmentAnzeige.ViewModel
 {
@@ -11,14 +12,7 @@ namespace SiebenSegmentAnzeige.ViewModel
             _siebenSegmentDisplay = uc;
 
             FarbeLed = "red";
-            SichtbarkeitSegmentA(true);
-            SichtbarkeitSegmentB(true);
-            SichtbarkeitSegmentC(true);
-            SichtbarkeitSegmentD(true);
-            SichtbarkeitSegmentE(true);
-            SichtbarkeitSegmentF(true);
-            SichtbarkeitSegmentF(true);
-            SichtbarkeitSegmentDp(true);
+           
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -29,14 +23,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             {
                 if (_siebenSegmentDisplay != null)
                 {
-                    SichtbarkeitSegmentA(_siebenSegmentDisplay.LedA);
-                    SichtbarkeitSegmentB(_siebenSegmentDisplay.LedB);
-                    SichtbarkeitSegmentC(_siebenSegmentDisplay.LedC);
-                    SichtbarkeitSegmentD(_siebenSegmentDisplay.LedD);
-                    SichtbarkeitSegmentE(_siebenSegmentDisplay.LedE);
-                    SichtbarkeitSegmentF(_siebenSegmentDisplay.LedF);
-                    SichtbarkeitSegmentG(_siebenSegmentDisplay.LedG);
-                    SichtbarkeitSegmentDp(_siebenSegmentDisplay.LedDp);
+                    SegmentA = _siebenSegmentDisplay.VisibilitySegmentA;
+
                 }
 
                 Thread.Sleep(500);
@@ -59,108 +47,92 @@ namespace SiebenSegmentAnzeige.ViewModel
         #endregion
 
         #region Sichtbarkeit Segmente
-        public void SichtbarkeitSegmentA(bool val) => VisibilitySegmentA = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentA;
-        public string VisibilitySegmentA
+    
+        private Visibility _segmentA;
+        public Visibility SegmentA
         {
-            get => _visibilitySegmentA;
+            get => _segmentA;
             set
             {
-                _visibilitySegmentA = value;
-                OnPropertyChanged(nameof(VisibilitySegmentA));
+                _segmentA = value;
+                OnPropertyChanged(nameof(SegmentA));
             }
         }
 
-
-        public void SichtbarkeitSegmentB(bool val) => VisibilitySegmentB = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentB;
-        public string VisibilitySegmentB
+        private Visibility _segmentB;
+        public Visibility SegmentB
         {
-            get => _visibilitySegmentB;
+            get => _segmentB;
             set
             {
-                _visibilitySegmentB = value;
-                OnPropertyChanged(nameof(VisibilitySegmentB));
+                _segmentB = value;
+                OnPropertyChanged(nameof(SegmentB));
             }
         }
 
-        public void SichtbarkeitSegmentC(bool val) => VisibilitySegmentC = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentC;
-        public string VisibilitySegmentC
+        private Visibility _segmentC;
+        public Visibility SegmentC
         {
-            get => _visibilitySegmentC;
+            get => _segmentC;
             set
             {
-                _visibilitySegmentC = value;
-                OnPropertyChanged(nameof(VisibilitySegmentC));
+                _segmentC = value;
+                OnPropertyChanged(nameof(SegmentC));
             }
         }
 
-        public void SichtbarkeitSegmentD(bool val) => VisibilitySegmentD = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentD;
-        public string VisibilitySegmentD
+        private Visibility _segmentD;
+        public Visibility SegmentD
         {
-            get => _visibilitySegmentD;
+            get => _segmentD;
             set
             {
-                _visibilitySegmentD = value;
-                OnPropertyChanged(nameof(VisibilitySegmentD));
+                _segmentD = value;
+                OnPropertyChanged(nameof(SegmentD));
             }
         }
 
-        public void SichtbarkeitSegmentE(bool val) => VisibilitySegmentE = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentE;
-        public string VisibilitySegmentE
+        private Visibility _segmentE;
+        public Visibility SegmentE
         {
-            get => _visibilitySegmentE;
+            get => _segmentE;
             set
             {
-                _visibilitySegmentE = value;
-                OnPropertyChanged(nameof(VisibilitySegmentE));
+                 _segmentE= value;
+                OnPropertyChanged(nameof(SegmentE));
             }
         }
 
-        public void SichtbarkeitSegmentF(bool val) => VisibilitySegmentF = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentF;
-        public string VisibilitySegmentF
+        private Visibility _segmentF;
+        public Visibility SegmentF
         {
-            get => _visibilitySegmentF;
+            get => _segmentF;
             set
             {
-                _visibilitySegmentF = value;
-                OnPropertyChanged(nameof(VisibilitySegmentF));
+                _segmentF = value;
+                OnPropertyChanged(nameof(SegmentF));
             }
         }
 
-        public void SichtbarkeitSegmentG(bool val) => VisibilitySegmentG = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentG;
-        public string VisibilitySegmentG
+        private Visibility _segmentG;
+        public Visibility SegmentG
         {
-            get => _visibilitySegmentG;
+            get => _segmentG;
             set
             {
-                _visibilitySegmentG = value;
-                OnPropertyChanged(nameof(VisibilitySegmentG));
+                _segmentG = value;
+                OnPropertyChanged(nameof(SegmentG));
             }
         }
 
-        public void SichtbarkeitSegmentDp(bool val) => VisibilitySegmentDp = val ? "visible" : "hidden";
-
-        private string _visibilitySegmentDp;
-        public string VisibilitySegmentDp
+        private Visibility _segmentDp;
+        public Visibility SegmentDp
         {
-            get => _visibilitySegmentDp;
+            get => _segmentDp;
             set
             {
-                _visibilitySegmentDp = value;
-                OnPropertyChanged(nameof(VisibilitySegmentDp));
+                _segmentDp = value;
+                OnPropertyChanged(nameof(SegmentDp));
             }
         }
         #endregion

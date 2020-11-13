@@ -5,8 +5,8 @@ namespace SiebenSegmentAnzeige
     public partial class SiebenSegmentDisplay
     {
 
-        private bool _visibilitySegmentA;
-        public bool VisibilitySegmentA
+        private Visibility _visibilitySegmentA;
+        public Visibility VisibilitySegmentA
         {
             get => _visibilitySegmentA;
             set
@@ -17,7 +17,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentAProperty =
-            DependencyProperty.Register("VisSegA", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentA", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentAChanged));
 
         private static void OnVisibilitySegmentAChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -26,8 +26,8 @@ namespace SiebenSegmentAnzeige
         }
 
 
-        private bool _visibilitySegmentB;
-        public bool VisibilitySegmentB
+        private Visibility _visibilitySegmentB;
+        public Visibility VisibilitySegmentB
         {
             get => _visibilitySegmentB;
             set
@@ -38,7 +38,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentBProperty =
-            DependencyProperty.Register("VisSegB", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentB", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentBChanged));
 
         private static void OnVisibilitySegmentBChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -46,8 +46,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentC;
-        public bool VisibilitySegmentC
+        private Visibility _visibilitySegmentC;
+        public Visibility VisibilitySegmentC
         {
             get => _visibilitySegmentC;
             set
@@ -58,7 +58,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentCProperty =
-            DependencyProperty.Register("VisSegC", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentC", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentCChanged));
 
         private static void OnVisibilitySegmentCChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -66,8 +66,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentD;
-        public bool VisibilitySegmentD
+        private Visibility _visibilitySegmentD;
+        public Visibility VisibilitySegmentD
         {
             get => _visibilitySegmentD;
             set
@@ -78,7 +78,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentDProperty =
-            DependencyProperty.Register("VisSegD", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentD", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentDChanged));
 
         private static void OnVisibilitySegmentDChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -86,8 +86,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentE;
-        public bool VisibilitySegmentE
+        private Visibility _visibilitySegmentE;
+        public Visibility VisibilitySegmentE
         {
             get => _visibilitySegmentE;
             set
@@ -98,7 +98,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentEProperty =
-            DependencyProperty.Register("VisSegE", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentE", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentEChanged));
 
         private static void OnVisibilitySegmentEChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -106,8 +106,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentF;
-        public bool VisibilitySegmentF
+        private Visibility _visibilitySegmentF;
+        public Visibility VisibilitySegmentF
         {
             get => _visibilitySegmentF;
             set
@@ -118,7 +118,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentFProperty =
-            DependencyProperty.Register("VisSegF", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentF", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentFChanged));
 
         private static void OnVisibilitySegmentFChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -126,8 +126,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentG;
-        public bool VisibilitySegmentG
+        private Visibility _visibilitySegmentG;
+        public Visibility VisibilitySegmentG
         {
             get => _visibilitySegmentG;
             set
@@ -138,7 +138,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentGProperty =
-            DependencyProperty.Register("VisSegG", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentG", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentGChanged));
 
         private static void OnVisibilitySegmentGChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -146,8 +146,8 @@ namespace SiebenSegmentAnzeige
             //
         }
 
-        private bool _visibilitySegmentDp;
-        public bool VisibilitySegmentDp
+        private Visibility _visibilitySegmentDp;
+        public Visibility VisibilitySegmentDp
         {
             get => _visibilitySegmentDp;
             set
@@ -158,7 +158,7 @@ namespace SiebenSegmentAnzeige
         }
 
         public static readonly DependencyProperty VisibilitySegmentDpProperty =
-            DependencyProperty.Register("VisSegDp", typeof(bool), typeof(SiebenSegmentDisplay),
+            DependencyProperty.Register("VisibilitySegmentDp", typeof(Visibility), typeof(SiebenSegmentDisplay),
                 new PropertyMetadata(OnVisibilitySegmentDpChanged));
 
         private static void OnVisibilitySegmentDpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

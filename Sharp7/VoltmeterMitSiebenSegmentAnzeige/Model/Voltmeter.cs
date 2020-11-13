@@ -13,12 +13,12 @@ namespace VoltmeterMitSiebenSegmentAnzeige.Model
             System.Threading.Tasks.Task.Run(ZeitenTask);
         }
 
-        private void ZeitenTask()
+        private static void ZeitenTask()
         {
 
             while (true)
             {
-
+                //
 
                 Thread.Sleep(10);
             }

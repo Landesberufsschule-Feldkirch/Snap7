@@ -12,7 +12,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
         public Datenstruktur Datenstruktur { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
 
-        private DatenRangieren _datenRangieren;
+        private readonly DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 9;
         private const int AnzByteDigOutput = 0;
