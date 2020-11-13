@@ -1,10 +1,7 @@
-﻿using System.Windows;
-
-namespace SiebenSegmentAnzeige
+﻿namespace SiebenSegmentAnzeige
 {
-    public partial class UserControl
+    public partial class SiebenSegmentDisplay
     {
-
         public bool LedA { get; set; }
         public bool LedB { get; set; }
         public bool LedC { get; set; }
@@ -14,9 +11,9 @@ namespace SiebenSegmentAnzeige
         public bool LedG { get; set; }
         public bool LedDp { get; set; }
 
-        public UserControl()
+        public SiebenSegmentDisplay()
         {
-            var viewModel = new ViewModel.ViewModel(this);
+InitializeComponent();
 
             LedA = true;
             LedB = true;
@@ -27,31 +24,11 @@ namespace SiebenSegmentAnzeige
             LedG = true;
             LedDp = true;
 
-            InitializeComponent();
+
+            var viewModel = new ViewModel.ViewModel(this);
+
+            
             DataContext = viewModel;
         }
-
-
-        private bool _visibilitySegmentA;
-        public bool VisibilitySegmentA
-        {
-            get => _visibilitySegmentA;
-            set
-            {
-                _visibilitySegmentA = value;
-                SetValue(VisibilitySegmentAProperty, _visibilitySegmentA);
-            }
-        }
-
-        public static readonly DependencyProperty VisibilitySegmentAProperty =
-            DependencyProperty.Register("VisSegA", typeof(bool), typeof(SiebenSegmentAnzeige),
-                new PropertyMetadata(OnVisibilitySegmentAChanged));
-
-        private static void OnVisibilitySegmentAChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //
-        }
-
-
     }
 }

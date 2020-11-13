@@ -2,13 +2,13 @@
 {
     public class ViewModel
     {
-        public SiebenSegmentAnzeige SiebenSegmentAnzeige{ get; }
+        public  SiebenSegmentDisplay SiebenSegmentDisplay { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
 
-        public ViewModel(UserControl uc)
+        public ViewModel(SiebenSegmentDisplay siebenSegmentDisplay)
         {
-            SiebenSegmentAnzeige = new SiebenSegmentAnzeige();
-            ViAnzeige = new VisuAnzeigen(uc);
+            SiebenSegmentDisplay = new SiebenSegmentDisplay();
+            ViAnzeige = new VisuAnzeigen(siebenSegmentDisplay);
         }
     }
 }

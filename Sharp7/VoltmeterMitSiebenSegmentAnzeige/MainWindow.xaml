@@ -33,7 +33,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <siebensegmentanzeige:UserControl x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2"  
+        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2"  
                                           VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
                                           VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
                                           VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
@@ -43,7 +43,7 @@
                                           VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
                                           VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
 
-        <siebensegmentanzeige:UserControl x:Name="Anzeige4" Grid.Column="3"  Grid.Row="2" 
+        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige4" Grid.Column="3"  Grid.Row="2" 
                                           VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
                                           VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
                                           VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
@@ -53,7 +53,7 @@
                                           VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
                                           VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
 
-        <siebensegmentanzeige:UserControl x:Name="Anzeige3" Grid.Column="5"  Grid.Row="2" 
+        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige3" Grid.Column="5"  Grid.Row="2" 
                                           VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
                                           VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
                                           VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
@@ -63,7 +63,7 @@
                                           VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
                                           VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
 
-        <siebensegmentanzeige:UserControl x:Name="Anzeige2" Grid.Column="7"  Grid.Row="2" 
+        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige2" Grid.Column="7"  Grid.Row="2" 
                                           VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
                                           VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
                                           VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
@@ -73,7 +73,7 @@
                                           VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
                                           VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
 
-        <siebensegmentanzeige:UserControl x:Name="Anzeige1" Grid.Column="9"  Grid.Row="2" 
+        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige1" Grid.Column="9"  Grid.Row="2" 
                                           VisibilitySegmentA="{Binding ViAnzeige.AlleLed[0]}" 
                                           VisibilitySegmentB="{Binding ViAnzeige.AlleLed[1]}" 
                                           VisibilitySegmentC="{Binding ViAnzeige.AlleLed[2]}" 
@@ -82,6 +82,18 @@
                                           VisibilitySegmentF="{Binding ViAnzeige.AlleLed[5]}" 
                                           VisibilitySegmentG="{Binding ViAnzeige.AlleLed[6]}" 
                                           VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[7]}" />
+
+        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="4" Click="ManualModeOeffnen" Background="Aquamarine" />
+
+
+        <Label  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
+        <Label Grid.Column="17" Grid.ColumnSpan="4" Grid.Row="10"  Grid.RowSpan="2"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" Margin="0,0,0,10"  />
+
+
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="6"   Grid.Row="3"  Grid.RowSpan="5" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" Margin="0,5,0,0"  />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
 
     </Grid>
 </Window>

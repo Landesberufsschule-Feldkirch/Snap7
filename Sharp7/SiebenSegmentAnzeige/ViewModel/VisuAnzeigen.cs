@@ -5,10 +5,10 @@ namespace SiebenSegmentAnzeige.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly UserControl _userControl;
-        public VisuAnzeigen(UserControl uc)
+        private readonly SiebenSegmentDisplay _siebenSegmentDisplay;
+        public VisuAnzeigen(SiebenSegmentDisplay uc)
         {
-            _userControl = uc;
+            _siebenSegmentDisplay = uc;
 
             FarbeLed = "red";
             SichtbarkeitSegmentA(true);
@@ -27,17 +27,16 @@ namespace SiebenSegmentAnzeige.ViewModel
         {
             while (true)
             {
-                if (_userControl != null)
+                if (_siebenSegmentDisplay != null)
                 {
-                    SichtbarkeitSegmentA(_userControl.LedA);
-                    SichtbarkeitSegmentB(_userControl.LedB);
-                    SichtbarkeitSegmentC(_userControl.LedC);
-                    SichtbarkeitSegmentD(_userControl.LedD);
-                    SichtbarkeitSegmentE(_userControl.LedE);
-                    SichtbarkeitSegmentF(_userControl.LedF);
-                    SichtbarkeitSegmentG(_userControl.LedG);
-                    SichtbarkeitSegmentDp(_userControl.LedDp);
-
+                    SichtbarkeitSegmentA(_siebenSegmentDisplay.LedA);
+                    SichtbarkeitSegmentB(_siebenSegmentDisplay.LedB);
+                    SichtbarkeitSegmentC(_siebenSegmentDisplay.LedC);
+                    SichtbarkeitSegmentD(_siebenSegmentDisplay.LedD);
+                    SichtbarkeitSegmentE(_siebenSegmentDisplay.LedE);
+                    SichtbarkeitSegmentF(_siebenSegmentDisplay.LedF);
+                    SichtbarkeitSegmentG(_siebenSegmentDisplay.LedG);
+                    SichtbarkeitSegmentDp(_siebenSegmentDisplay.LedDp);
                 }
 
                 Thread.Sleep(500);
