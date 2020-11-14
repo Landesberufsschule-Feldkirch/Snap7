@@ -35,8 +35,8 @@ namespace Kommunikation
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressen _spsClient;
 
-        private byte[] _zulStringLaenge = new byte[1024];
-        private byte[] _zeichenLaenge = new byte[1024];
+        private readonly byte[] _zulStringLaenge = new byte[1024];
+        private readonly byte[] _zeichenLaenge = new byte[1024];
 
         private int _zyklusZeitKommunikation = 100;
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
@@ -151,14 +151,10 @@ namespace Kommunikation
 
         public string GetVersion()
         {
+            if (_zeichenLaenge[0] <= 0) return "Uups";
 
-            if (_zeichenLaenge[0] > 0)
-            {
-                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-                return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
-
-            }
-            else return "Uups";
+            var enc = new ASCIIEncoding();
+            return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
         }
 
         public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
@@ -168,6 +164,7 @@ namespace Kommunikation
         public string GetPlcModus() => "S7-1200";
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
+        public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
     }
 }

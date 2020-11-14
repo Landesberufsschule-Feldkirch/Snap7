@@ -1,4 +1,49 @@
 ﻿{
   "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P1",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P2",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P3",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 3,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P4",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 4,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P5",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    }
   ]
 }

@@ -79,6 +79,25 @@ namespace Kommunikation
             }
         }
 
+        public byte GetUint8At(Datenbausteine db, int bytePos)
+        {
+            switch (db)
+            {
+                case Datenbausteine.VersionIn:
+                    return _datenstruktur.VersionInputSps[bytePos];
+                case Datenbausteine.DigIn:
+                    return _datenstruktur.DigInput[bytePos];
+                case Datenbausteine.DigOut:
+                    return _datenstruktur.DigOutput[bytePos];
+                case Datenbausteine.AnIn:
+                    return _datenstruktur.AnalogInput[bytePos];
+                case Datenbausteine.AnOut:
+                    return _datenstruktur.AnalogOutput[bytePos];
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(db), db, null);
+            }
+        }
+
         public ushort GetUint16At(Datenbausteine db, int bytePos)
         {
             switch (db)
@@ -88,16 +107,14 @@ namespace Kommunikation
                 case Datenbausteine.DigIn:
                     return (ushort)((_datenstruktur.DigInput[bytePos] << 8) | _datenstruktur.DigInput[bytePos + 1]);
                 case Datenbausteine.VersionIn:
-                    break;
+                    return (ushort)((_datenstruktur.VersionInputSps[bytePos] << 8) | _datenstruktur.VersionInputSps[bytePos + 1]);
                 case Datenbausteine.DigOut:
-                    break;
+                    return (ushort)((_datenstruktur.DigOutput[bytePos] << 8) | _datenstruktur.DigOutput[bytePos + 1]);
                 case Datenbausteine.AnOut:
-                    break;
+                    return (ushort)((_datenstruktur.AnalogInput[bytePos] << 8) | _datenstruktur.AnalogInput[bytePos + 1]);
                 default:
-                    throw new NotImplementedException(nameof(Datenbausteine));
+                    throw new ArgumentOutOfRangeException(nameof(db), db, null);
             }
-
-            return 0;
         }
     }
 }

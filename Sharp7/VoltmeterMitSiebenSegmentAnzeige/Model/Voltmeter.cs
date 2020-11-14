@@ -5,22 +5,22 @@ namespace VoltmeterMitSiebenSegmentAnzeige.Model
     public class Voltmeter
     {
 
-        public byte[] AlleVoltmeter { get; set; } = new byte[10];
+        public byte[] AlleVoltmeter { get; set; }
 
         public Voltmeter()
         {
-
-            System.Threading.Tasks.Task.Run(ZeitenTask);
+            AlleVoltmeter = new byte[10];
+            System.Threading.Tasks.Task.Run(VoltmeterTask);
         }
 
-        private static void ZeitenTask()
+        private void VoltmeterTask()
         {
 
             while (true)
             {
                 //
-
-                Thread.Sleep(10);
+                
+                Thread.Sleep(200);
             }
             // ReSharper disable once FunctionNeverReturns
         }

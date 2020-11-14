@@ -12,12 +12,8 @@ namespace ManualMode.ViewModel
     {
         private readonly ManualMode _manualMode;
 
-
-
         public ManualVisuAnzeigen(ManualMode mm)
         {
-
-
 
             _manualMode = mm;
 
@@ -62,6 +58,36 @@ namespace ManualMode.ViewModel
                 }
 
 
+                if (_manualMode?.GetConfig?.ConfigDa?.DigitaleAusgaenge != null)
+                {
+                    foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge )
+                    {
+                        switch (digitaleAusgaenge.AnzahlBit)
+                        {
+                            case 1:
+                                break;
+
+                            case 8:
+                                switch (digitaleAusgaenge.Type)
+                                {
+                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.Default:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.Ascii:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
+                                }
+                                break;
+                        }
+                    }
+                }
+
                 if (_manualMode?.GetConfig?.ConfigAi?.AnalogeEingaenge != null)
                 {
                     foreach (var analogeEingaenge in _manualMode.GetConfig.ConfigAi.AnalogeEingaenge)
@@ -82,6 +108,8 @@ namespace ManualMode.ViewModel
                                         break;
                                     case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                                         break;
+                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                        break;
                                     default:
                                         throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                                 }
@@ -100,6 +128,8 @@ namespace ManualMode.ViewModel
                                         ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / siemensAnalogSkalierung).ToString("F1") + "‰";
                                         break;
                                     case PlcEinUndAusgaengeTypen.Ascii:
+                                        break;
+                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
                                         break;
                                     default:
                                         throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
