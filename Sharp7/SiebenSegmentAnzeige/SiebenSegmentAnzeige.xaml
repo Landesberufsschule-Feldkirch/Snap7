@@ -32,7 +32,7 @@
 
         <Rectangle Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="1" Grid.RowSpan="9" Fill="WhiteSmoke" />
 
-        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Visibility="{Binding ViAnzeige.SegmentA}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Fill="Yellow"> 
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -43,7 +43,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentB" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.SegmentB}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentB" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow"> 
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -54,7 +54,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentC" Grid.Column="5" Grid.Row="5" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.SegmentC}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentC" Grid.Column="5" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -65,7 +65,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="9" Visibility="{Binding ViAnzeige.SegmentD}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="9"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -76,7 +76,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="5" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.SegmentE}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -87,7 +87,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Visibility="{Binding ViAnzeige.SegmentF}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -98,7 +98,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5" Visibility="{Binding ViAnzeige.SegmentG}" Fill="{Binding ViAnzeige.FarbeLed}">
+        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5"  Fill="Yellow"> 
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -109,7 +109,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Ellipse Grid.Column="6" Grid.Row="9" Visibility="{Binding ViAnzeige.SegmentDp}" Fill="{Binding ViAnzeige.FarbeLed}"/>
+        <Ellipse Grid.Column="6" Grid.Row="9"  Fill="LawnGreen"/>
 
     </Grid>
 </UserControl>

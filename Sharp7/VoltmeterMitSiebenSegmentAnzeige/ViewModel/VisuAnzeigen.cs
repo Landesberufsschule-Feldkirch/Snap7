@@ -23,7 +23,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
-            ColorSegment = Color.Yellow;
+            ColorAllSegments = "Yellow";
 
             for (var i = 0; i < 100; i++) AlleLed.Add("Visible");
 
@@ -42,16 +42,15 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "Hidden" : "Visible";
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
 
+                    ColorAllSegments = "cyan";
+
                     for (var i = 0; i < 5; i++) SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
-
-
-
                 }
 
                 Thread.Sleep(10);
@@ -67,11 +66,11 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
                 if ((achtSegmente & bitMuster) == bitMuster)
                 {
-                    AlleLed[adresseSegmentA + bitIndex] = "visible";
+                    AlleLed[adresseSegmentA + bitIndex] = "Visible";
                 }
                 else
                 {
-                    AlleLed[adresseSegmentA + bitIndex] = "invisible";
+                    AlleLed[adresseSegmentA + bitIndex] = "Hidden";
                 }
 
             }
@@ -150,15 +149,15 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        private Color _colorSegment;
+        private string _colorAllSegments;
 
-        public Color ColorSegment
+        public string ColorAllSegments
         {
-            get => _colorSegment;
+            get => _colorAllSegments;
             set
             {
-                _colorSegment = value;
-                OnPropertyChanged(nameof(ColorSegment));
+                _colorAllSegments = value;
+                OnPropertyChanged(nameof(ColorAllSegments));
             }
         }
 

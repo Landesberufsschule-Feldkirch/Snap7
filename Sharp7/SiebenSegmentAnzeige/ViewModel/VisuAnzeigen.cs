@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Threading;
-using System.Windows;
 
 namespace SiebenSegmentAnzeige.ViewModel
 {
@@ -12,8 +10,16 @@ namespace SiebenSegmentAnzeige.ViewModel
         {
             _siebenSegmentDisplay = uc;
 
-            FarbeLed = Color.Violet;
+            FarbeLed = "Violet";
 
+            SegmentA = "visible";
+            SegmentB = "visible";
+            SegmentC = "visible";
+            SegmentD = "visible";
+            SegmentE = "visible";
+            SegmentF = "visible";
+            SegmentG = "visible";
+            SegmentDp = "visible";
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -24,11 +30,16 @@ namespace SiebenSegmentAnzeige.ViewModel
             {
                 if (_siebenSegmentDisplay != null)
                 {
-                    FarbeLed = _siebenSegmentDisplay.ColorSegment;
+                    FarbeLed = _siebenSegmentDisplay.ColorAllSegments;
 
                     SegmentA = _siebenSegmentDisplay.VisibilitySegmentA;
-
-
+                    SegmentB = _siebenSegmentDisplay.VisibilitySegmentB;
+                    SegmentC = _siebenSegmentDisplay.VisibilitySegmentC;
+                    SegmentD = _siebenSegmentDisplay.VisibilitySegmentD;
+                    SegmentE = _siebenSegmentDisplay.VisibilitySegmentE;
+                    SegmentF = _siebenSegmentDisplay.VisibilitySegmentF;
+                    SegmentG = _siebenSegmentDisplay.VisibilitySegmentG;
+                    SegmentDp = _siebenSegmentDisplay.VisibilitySegmentDp;
                 }
 
                 Thread.Sleep(500);
@@ -39,8 +50,8 @@ namespace SiebenSegmentAnzeige.ViewModel
 
         #region Farbe umschalten
 
-        private Color _farbeLed;
-        public Color FarbeLed
+        private string _farbeLed;
+        public string FarbeLed
         {
             get => _farbeLed;
             set
@@ -53,8 +64,8 @@ namespace SiebenSegmentAnzeige.ViewModel
 
         #region Sichtbarkeit Segmente
 
-        private Visibility _segmentA;
-        public Visibility SegmentA
+        private string _segmentA;
+        public string SegmentA
         {
             get => _segmentA;
             set
@@ -64,8 +75,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentB;
-        public Visibility SegmentB
+        private string _segmentB;
+        public string SegmentB
         {
             get => _segmentB;
             set
@@ -75,8 +86,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentC;
-        public Visibility SegmentC
+        private string _segmentC;
+        public string SegmentC
         {
             get => _segmentC;
             set
@@ -86,8 +97,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentD;
-        public Visibility SegmentD
+        private string _segmentD;
+        public string SegmentD
         {
             get => _segmentD;
             set
@@ -97,8 +108,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentE;
-        public Visibility SegmentE
+        private string _segmentE;
+        public string SegmentE
         {
             get => _segmentE;
             set
@@ -108,8 +119,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentF;
-        public Visibility SegmentF
+        private string _segmentF;
+        public string SegmentF
         {
             get => _segmentF;
             set
@@ -119,8 +130,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentG;
-        public Visibility SegmentG
+        private string _segmentG;
+        public string SegmentG
         {
             get => _segmentG;
             set
@@ -130,8 +141,8 @@ namespace SiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Visibility _segmentDp;
-        public Visibility SegmentDp
+        private string _segmentDp;
+        public string SegmentDp
         {
             get => _segmentDp;
             set

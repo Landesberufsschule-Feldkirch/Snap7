@@ -4,11 +4,11 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
     public class ViewModel
     {
         public Model.Voltmeter Voltmeter { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen VAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Voltmeter = new Model.Voltmeter();
-            ViAnzeige = new VisuAnzeigen(mainWindow, Voltmeter);
+            VAnzeige = new VisuAnzeigen(mainWindow, Voltmeter);
         }     
     }
 }

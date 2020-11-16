@@ -34,8 +34,9 @@ namespace VoltmeterMitSiebenSegmentAnzeige
 
             _datenRangieren = new DatenRangieren(viewModel);
 
-            InitializeComponent();
             DataContext = viewModel;
+            InitializeComponent();
+
 
             Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
