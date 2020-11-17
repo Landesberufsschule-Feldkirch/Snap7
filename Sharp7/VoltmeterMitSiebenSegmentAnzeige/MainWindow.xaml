@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:siebensegmentanzeige="clr-namespace:SiebenSegmentAnzeige;assembly=SiebenSegmentAnzeige"
+        xmlns:segmentdisplay="clr-namespace:SegmentDisplay;assembly=SegmentDisplay"
+        xmlns:gaugecontrol="clr-namespace:GaugeControl;assembly=GaugeControl"
         x:Class="VoltmeterMitSiebenSegmentAnzeige.MainWindow"
         mc:Ignorable="d"
-        Title="Voltmeter mit 7-Segment Anzeige" Height="450" Width="800">
-    <Grid>
+        Title="Voltmeter mit 7-Segment Anzeige" Height="1000" Width="800">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="130" />
@@ -32,75 +33,83 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-<!---
-        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2"  
-                                                   ColorAllSegments="{Binding ViAnzeige.ColorAllSegments}"
-                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[50]}" 
-                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[51]}" 
-                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[52]}" 
-                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[53]}" 
-                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[54]}" 
-                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[55]}" 
-                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[56]}" 
-                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[57]}"/>
-
-        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige4" Grid.Column="3"  Grid.Row="2" 
-                                                   ColorAllSegments="{Binding ViAnzeige.ColorAllSegments}"
-                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[40]}" 
-                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[41]}" 
-                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[42]}" 
-                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[43]}" 
-                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[44]}" 
-                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[45]}" 
-                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[46]}" 
-                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[47]}" />
-
-        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige3" Grid.Column="5"  Grid.Row="2" 
-                                                   ColorAllSegments="{Binding ViAnzeige.ColorAllSegments}"
-                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[30]}" 
-                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[31]}" 
-                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[32]}" 
-                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[33]}" 
-                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[34]}" 
-                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[35]}" 
-                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[36]}" 
-                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[37]}" />
-
-        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige2" Grid.Column="7"  Grid.Row="2" 
-                                                   ColorAllSegments="{Binding ViAnzeige.ColorAllSegments}"
-                                                   VisibilitySegmentA="{Binding ViAnzeige.AlleLed[20]}" 
-                                                   VisibilitySegmentB="{Binding ViAnzeige.AlleLed[21]}" 
-                                                   VisibilitySegmentC="{Binding ViAnzeige.AlleLed[22]}" 
-                                                   VisibilitySegmentD="{Binding ViAnzeige.AlleLed[23]}" 
-                                                   VisibilitySegmentE="{Binding ViAnzeige.AlleLed[24]}" 
-                                                   VisibilitySegmentF="{Binding ViAnzeige.AlleLed[25]}" 
-                                                   VisibilitySegmentG="{Binding ViAnzeige.AlleLed[26]}" 
-                                                   VisibilitySegmentDp="{Binding ViAnzeige.AlleLed[27]}" />
--->
-        <siebensegmentanzeige:SiebenSegmentDisplay x:Name="Anzeige1" Grid.Column="9"  Grid.Row="2" />
-                                                   <!--
-                                                   ColorAllSegments="{Binding VAnzeige.ColorAllSegments}"
-                                                   VisibilitySegmentA="{Binding VAnzeige.AlleLed[10]}" 
-                                                   VisibilitySegmentB="{Binding VAnzeige.AlleLed[11]}" 
-                                                   VisibilitySegmentC="{Binding VAnzeige.AlleLed[12]}" 
-                                                   VisibilitySegmentD="{Binding VAnzeige.AlleLed[13]}" 
-                                                   VisibilitySegmentE="{Binding VAnzeige.AlleLed[14]}" 
-                                                   VisibilitySegmentF="{Binding VAnzeige.AlleLed[15]}" 
-                                                   VisibilitySegmentG="{Binding VAnzeige.AlleLed[16]}" 
-                                                   VisibilitySegmentDp="{Binding VAnzeige.AlleLed[17]}" 
-                                                   -->
 
 
-        <Rectangle x:Name="testRechteckBinding" Grid.Column="1" Grid.Row="2" Fill="Aqua" Visibility="{Binding VAnzeige.AlleLed[10]}"  />
+        <gaugecontrol:GaugeControl x:Name="voltmeter" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5"
+                                   CurrentValue="{Binding VAnzeige.Spannung}" 
+                                   />
+
+
+        <segmentdisplay:SegmentDisplay x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2" 
+                                       HintergrundFarbe="silver"
+                                        ColorAllSegments="{Binding VAnzeige.ColorSegments}"
+                                        VisibilitySegmentA="{Binding VAnzeige.AlleLed[50]}" 
+                                        VisibilitySegmentB="{Binding VAnzeige.AlleLed[51]}" 
+                                        VisibilitySegmentC="{Binding VAnzeige.AlleLed[52]}" 
+                                        VisibilitySegmentD="{Binding VAnzeige.AlleLed[53]}" 
+                                        VisibilitySegmentE="{Binding VAnzeige.AlleLed[54]}" 
+                                        VisibilitySegmentF="{Binding VAnzeige.AlleLed[55]}" 
+                                        VisibilitySegmentG="{Binding VAnzeige.AlleLed[56]}" 
+                                        VisibilitySegmentDp="{Binding VAnzeige.AlleLed[57]}"/>
+
+        <segmentdisplay:SegmentDisplay x:Name="Anzeige4" Grid.Column="3"  Grid.Row="2" 
+                                           HintergrundFarbe="silver"
+                                            ColorAllSegments="{Binding VAnzeige.ColorSegments}"
+                                            VisibilitySegmentA="{Binding VAnzeige.AlleLed[40]}" 
+                                            VisibilitySegmentB="{Binding VAnzeige.AlleLed[41]}" 
+                                            VisibilitySegmentC="{Binding VAnzeige.AlleLed[42]}" 
+                                            VisibilitySegmentD="{Binding VAnzeige.AlleLed[43]}" 
+                                            VisibilitySegmentE="{Binding VAnzeige.AlleLed[44]}" 
+                                            VisibilitySegmentF="{Binding VAnzeige.AlleLed[45]}" 
+                                            VisibilitySegmentG="{Binding VAnzeige.AlleLed[46]}" 
+                                            VisibilitySegmentDp="{Binding VAnzeige.AlleLed[47]}" />
+
+        <segmentdisplay:SegmentDisplay x:Name="Anzeige3" Grid.Column="5"  Grid.Row="2" 
+                                       HintergrundFarbe="silver"
+                                       ColorAllSegments="{Binding VAnzeige.ColorSegments}"
+                                       VisibilitySegmentA="{Binding VAnzeige.AlleLed[30]}" 
+                                       VisibilitySegmentB="{Binding VAnzeige.AlleLed[31]}" 
+                                       VisibilitySegmentC="{Binding VAnzeige.AlleLed[32]}" 
+                                       VisibilitySegmentD="{Binding VAnzeige.AlleLed[33]}" 
+                                       VisibilitySegmentE="{Binding VAnzeige.AlleLed[34]}" 
+                                       VisibilitySegmentF="{Binding VAnzeige.AlleLed[35]}" 
+                                       VisibilitySegmentG="{Binding VAnzeige.AlleLed[36]}" 
+                                       VisibilitySegmentDp="{Binding VAnzeige.AlleLed[37]}" />
+
+        <segmentdisplay:SegmentDisplay x:Name="Anzeige2" Grid.Column="7"  Grid.Row="2" 
+                                       HintergrundFarbe="silver"
+                                       ColorAllSegments="{Binding VAnzeige.ColorSegments}"
+                                       VisibilitySegmentA="{Binding VAnzeige.AlleLed[20]}" 
+                                       VisibilitySegmentB="{Binding VAnzeige.AlleLed[21]}" 
+                                       VisibilitySegmentC="{Binding VAnzeige.AlleLed[22]}" 
+                                       VisibilitySegmentD="{Binding VAnzeige.AlleLed[23]}" 
+                                       VisibilitySegmentE="{Binding VAnzeige.AlleLed[24]}" 
+                                       VisibilitySegmentF="{Binding VAnzeige.AlleLed[25]}" 
+                                       VisibilitySegmentG="{Binding VAnzeige.AlleLed[26]}" 
+                                       VisibilitySegmentDp="{Binding VAnzeige.AlleLed[27]}" />
+
+        <segmentdisplay:SegmentDisplay x:Name="Anzeige1" Grid.Column="9"  Grid.Row="2" 
+                                       HintergrundFarbe="silver"
+                                       ColorAllSegments="{Binding VAnzeige.ColorSegments}"
+                                       VisibilitySegmentA="{Binding VAnzeige.AlleLed[10], Mode=OneWay, NotifyOnSourceUpdated=True}" 
+                                       VisibilitySegmentB="{Binding VAnzeige.AlleLed[11]}" 
+                                       VisibilitySegmentC="{Binding VAnzeige.AlleLed[12]}" 
+                                       VisibilitySegmentD="{Binding VAnzeige.AlleLed[13]}" 
+                                       VisibilitySegmentE="{Binding VAnzeige.AlleLed[14]}" 
+                                       VisibilitySegmentF="{Binding VAnzeige.AlleLed[15]}" 
+                                       VisibilitySegmentG="{Binding VAnzeige.AlleLed[16]}" 
+                                       VisibilitySegmentDp="{Binding VAnzeige.AlleLed[17]}" 
+        />
+
 
         <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="4" Click="ManualModeOeffnen" Background="Aquamarine" />
 
 
         <Label  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding VAnzeige.VersionNr}" />
-        <Label Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="5"  Grid.RowSpan="2"  Background="{Binding VAnzeige.SpsColor}" Content="{Binding VAnzeige.SpsStatus}" />
+        <Label Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="6"  Grid.RowSpan="2"  Background="{Binding VAnzeige.SpsColor}" Content="{Binding VAnzeige.SpsStatus}" />
 
 
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="6"   Grid.Row="3"  Grid.RowSpan="5" Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" Margin="0,5,0,0"  />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="6"   Grid.Row="3"  Grid.RowSpan="3" Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Fill="Red"   />
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding VAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding VAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>

@@ -5,20 +5,17 @@
         public SiebenSegmentDisplay()
         {
 
-            ColorAllSegments = "yellow";
+            ColorAllSegments = "Yellow";
 
-            VisibilitySegmentA = "visible";
-            VisibilitySegmentB = "visible";
-            VisibilitySegmentC = "visible";
-            VisibilitySegmentD = "visible";
-            VisibilitySegmentE = "visible";
-            VisibilitySegmentF = "visible";
-            VisibilitySegmentG = "visible";
-            VisibilitySegmentDp = "visible";
+            VisibilitySegmentA = "Visible";
+            VisibilitySegmentB = "Visible";
+            VisibilitySegmentC = "Visible";
+            VisibilitySegmentD = "Visible";
+            VisibilitySegmentE = "Visible";
+            VisibilitySegmentF = "Visible";
+            VisibilitySegmentG = "Visible";
+            VisibilitySegmentDp = "Visible";
 
-            var viewModel = new ViewModel.ViewModel(this);
-
-            DataContext = viewModel;
             InitializeComponent();
         }
     }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Drawing;
+using System.Windows;
 
 namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 {
@@ -23,9 +23,9 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
-            ColorAllSegments = "Yellow";
+            ColorSegments = "Yellow";
 
-            for (var i = 0; i < 100; i++) AlleLed.Add("Visible");
+            for (var i = 0; i < 100; i++) AlleLed.Add(Visibility.Visible);
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -48,12 +48,43 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
 
-                    ColorAllSegments = "cyan";
 
-                    for (var i = 0; i < 5; i++) SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
+                    ColorSegments = ColorSegments == "cyan" ? "red" : "cyan";
+
+                    byte wert = 0;
+                    switch (Spannung)
+                    {
+                        case 0: wert = 0;break;
+                        case 10: wert = 1;break;
+                        case 20: wert = 3; break;
+                        case 30: wert = 5; break;
+                        case 50: wert = 7; break;
+                        case 60: wert = 15; break;
+                        case 70: wert = 63; break;
+                        case 80: wert = 127; break;
+                        case 90: wert = 255; break;
+
+
+                    }
+
+                    _voltmeter.AlleVoltmeter[0] = wert;
+                    _voltmeter.AlleVoltmeter[1] = wert;
+                    _voltmeter.AlleVoltmeter[2] = wert;
+                    _voltmeter.AlleVoltmeter[3] = wert;
+                    _voltmeter.AlleVoltmeter[4] = wert;
+                    _voltmeter.AlleVoltmeter[5] = wert;
+
+                    for (var i = 0; i < 5; i++)
+                    {
+                        SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
+                    }
+
+                    Spannung += 10;
+                    if (Spannung > 100) Spannung = 0;
+
                 }
 
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
             }
             // ReSharper disable once FunctionNeverReturns
         }
@@ -64,14 +95,8 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             {
                 var bitMuster = (byte)(1 << bitIndex);
 
-                if ((achtSegmente & bitMuster) == bitMuster)
-                {
-                    AlleLed[adresseSegmentA + bitIndex] = "Visible";
-                }
-                else
-                {
-                    AlleLed[adresseSegmentA + bitIndex] = "Hidden";
-                }
+                if ((achtSegmente & bitMuster) == bitMuster) AlleLed[adresseSegmentA + bitIndex] = Visibility.Visible;
+                else AlleLed[adresseSegmentA + bitIndex] = Visibility.Hidden;
 
             }
 
@@ -149,21 +174,34 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        private string _colorAllSegments;
+        private double _spannung;
 
-        public string ColorAllSegments
+        public double Spannung
         {
-            get => _colorAllSegments;
+            get => _spannung;
             set
             {
-                _colorAllSegments = value;
-                OnPropertyChanged(nameof(ColorAllSegments));
+                _spannung = value;
+                OnPropertyChanged(nameof(Spannung));
             }
         }
 
-        private ObservableCollection<string> _alleLed = new ObservableCollection<string>();
 
-        public ObservableCollection<string> AlleLed
+        private string _colorSegments;
+
+        public string ColorSegments
+        {
+            get => _colorSegments;
+            set
+            {
+                _colorSegments = value;
+                OnPropertyChanged(nameof(ColorSegments));
+            }
+        }
+
+        private ObservableCollection<Visibility> _alleLed = new ObservableCollection<Visibility>();
+
+        public ObservableCollection<Visibility> AlleLed
         {
             get => _alleLed;
             set

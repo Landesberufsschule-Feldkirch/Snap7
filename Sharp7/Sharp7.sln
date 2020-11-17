@@ -75,7 +75,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaugeControl", "GaugeContro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoltmeterMitSiebenSegmentAnzeige", "VoltmeterMitSiebenSegmentAnzeige\VoltmeterMitSiebenSegmentAnzeige.csproj", "{D4F91E19-6921-4743-825C-4D6CFBA7C315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiebenSegmentAnzeige", "SiebenSegmentAnzeige\SiebenSegmentAnzeige.csproj", "{5B4671F5-E8A1-49B5-9D03-5C8A5B7C25E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiebenSegmentAnzeige", "SiebenSegmentAnzeige\SiebenSegmentAnzeige.csproj", "{5B4671F5-E8A1-49B5-9D03-5C8A5B7C25E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SegmentDisplay", "SevenSegmentDisplay\SegmentDisplay.csproj", "{E1989EB2-F358-4887-B02B-DECE789BEF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +233,10 @@ Global
 		{5B4671F5-E8A1-49B5-9D03-5C8A5B7C25E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B4671F5-E8A1-49B5-9D03-5C8A5B7C25E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B4671F5-E8A1-49B5-9D03-5C8A5B7C25E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1989EB2-F358-4887-B02B-DECE789BEF07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1989EB2-F358-4887-B02B-DECE789BEF07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1989EB2-F358-4887-B02B-DECE789BEF07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1989EB2-F358-4887-B02B-DECE789BEF07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.Model
             System.Threading.Tasks.Task.Run(VoltmeterTask);
         }
 
-        private void VoltmeterTask()
+        private static void VoltmeterTask()
         {
 
             while (true)
