@@ -8,22 +8,39 @@ namespace SegmentDisplay
 {
     public partial class SegmentDisplay
     {
-        
         public SegmentDisplay()
         {
             InitializeComponent();
 
-            ColorAllSegments = Brushes.Green;
-
             HintergrundRechteck.Fill = HintergrundFarbe;
 
+            ColorAllSegments = Brushes.Green;
+
+            VisibilitySegmentA = Visibility.Visible;
+            VisibilitySegmentB = Visibility.Visible;
+            VisibilitySegmentC = Visibility.Visible;
+            VisibilitySegmentD = Visibility.Visible;
+            VisibilitySegmentE = Visibility.Visible;
+            VisibilitySegmentF = Visibility.Visible;
+            VisibilitySegmentG = Visibility.Visible;
+            VisibilitySegmentDp = Visibility.Visible;
         }
 
-
-        // ReSharper disable once UnusedMember.Global
-        [Description("(SegmentDisplay) Hintergrundfarbe "), Category("SegmentDisplay")]
-
         private SolidColorBrush _hintergrundFarbe = Brushes.AntiqueWhite;
+        private SolidColorBrush _colorAllSegments = Brushes.Violet;
+
+        private Visibility _visibilitySegmentA = Visibility.Visible;
+        private Visibility _visibilitySegmentB = Visibility.Visible;
+        private Visibility _visibilitySegmentC = Visibility.Visible;
+        private Visibility _visibilitySegmentD = Visibility.Visible;
+        private Visibility _visibilitySegmentE = Visibility.Visible;
+        private Visibility _visibilitySegmentF = Visibility.Visible;
+        private Visibility _visibilitySegmentG = Visibility.Visible;
+        private Visibility _visibilitySegmentDp = Visibility.Visible;
+
+
+
+        [Description("(Display) Hintergrundfarbe "), Category("Segment Display")]
         public SolidColorBrush HintergrundFarbe
         {
             set
@@ -34,25 +51,31 @@ namespace SegmentDisplay
             get => _hintergrundFarbe;
         }
 
+
+
+
+
+
+
+
+
         private void ChangeHintergrundfarbe()
         {
-
             Dispatcher.Invoke(DispatcherPriority.Normal,
                 new Action(() => { HintergrundRechteck.Fill = HintergrundFarbe; }));
-
-
         }
 
 
-        private Visibility _visibilitySegmentA;
+
+        [Description("(Display) VisibilitySegmentA"), Category("Segment Display")]
         public Visibility VisibilitySegmentA
         {
-            get => _visibilitySegmentA;
             set
             {
                 _visibilitySegmentA = value;
                 SetValue(VisibilitySegmentAProperty, _visibilitySegmentA);
             }
+            get => _visibilitySegmentA;
         }
 
         public static readonly DependencyProperty VisibilitySegmentAProperty =
@@ -62,15 +85,16 @@ namespace SegmentDisplay
         private static void OnVisibilitySegmentAChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
 
-        private Visibility _visibilitySegmentB;
+
+        [Description("(Display) VisibilitySegmentB"), Category("Segment Display")]
         public Visibility VisibilitySegmentB
         {
-            get => _visibilitySegmentB;
             set
             {
                 _visibilitySegmentB = value;
                 SetValue(VisibilitySegmentBProperty, _visibilitySegmentB);
             }
+            get => _visibilitySegmentB;
         }
 
         public static readonly DependencyProperty VisibilitySegmentBProperty =
@@ -79,15 +103,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentBChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentC;
+
+        [Description("(Display) VisibilitySegmentC"), Category("Segment Display")]
         public Visibility VisibilitySegmentC
         {
-            get => _visibilitySegmentC;
             set
             {
                 _visibilitySegmentC = value;
                 SetValue(VisibilitySegmentCProperty, _visibilitySegmentC);
             }
+            get => _visibilitySegmentC;
         }
 
         public static readonly DependencyProperty VisibilitySegmentCProperty =
@@ -96,15 +121,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentCChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentD;
+
+        [Description("(Display) VisibilitySegmentD"), Category("Segment Display")]
         public Visibility VisibilitySegmentD
         {
-            get => _visibilitySegmentD;
             set
             {
                 _visibilitySegmentD = value;
                 SetValue(VisibilitySegmentDProperty, _visibilitySegmentD);
             }
+            get => _visibilitySegmentD;
         }
 
         public static readonly DependencyProperty VisibilitySegmentDProperty =
@@ -113,15 +139,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentDChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentE;
+
+        [Description("(Display) VisibilitySegmentE"), Category("Segment Display")]
         public Visibility VisibilitySegmentE
         {
-            get => _visibilitySegmentE;
             set
             {
                 _visibilitySegmentE = value;
                 SetValue(VisibilitySegmentEProperty, _visibilitySegmentE);
             }
+            get => _visibilitySegmentE;
         }
 
         public static readonly DependencyProperty VisibilitySegmentEProperty =
@@ -130,15 +157,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentEChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentF;
+
+        [Description("(Display) VisibilitySegmentF"), Category("Segment Display")]
         public Visibility VisibilitySegmentF
         {
-            get => _visibilitySegmentF;
             set
             {
                 _visibilitySegmentF = value;
                 SetValue(VisibilitySegmentFProperty, _visibilitySegmentF);
             }
+            get => _visibilitySegmentF;
         }
 
         public static readonly DependencyProperty VisibilitySegmentFProperty =
@@ -147,15 +175,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentFChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentG;
+
+        [Description("(Display) VisibilitySegmentG"), Category("Segment Display")]
         public Visibility VisibilitySegmentG
         {
-            get => _visibilitySegmentG;
             set
             {
                 _visibilitySegmentG = value;
                 SetValue(VisibilitySegmentGProperty, _visibilitySegmentG);
             }
+            get => _visibilitySegmentG;
         }
 
         public static readonly DependencyProperty VisibilitySegmentGProperty =
@@ -164,15 +193,16 @@ namespace SegmentDisplay
 
         private static void OnVisibilitySegmentGChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => DisplayAktualsieren(d, e);
 
-        private Visibility _visibilitySegmentDp;
+
+        [Description("(Display) VisibilitySegmentDp"), Category("Segment Display")]
         public Visibility VisibilitySegmentDp
         {
-            get => _visibilitySegmentDp;
             set
             {
                 _visibilitySegmentDp = value;
                 SetValue(VisibilitySegmentDpProperty, _visibilitySegmentDp);
             }
+            get => _visibilitySegmentDp;
         }
 
         public static readonly DependencyProperty VisibilitySegmentDpProperty =
@@ -183,15 +213,17 @@ namespace SegmentDisplay
 
 
 
-        private SolidColorBrush _colorAllSegments;
+
+
+        [Description("(Display) ColorAllSegments"), Category("Segment Display")]
         public SolidColorBrush ColorAllSegments
         {
-            get => _colorAllSegments;
             set
             {
                 _colorAllSegments = value;
                 SetValue(ColorAllSegmentsProperty, _colorAllSegments);
             }
+            get => _colorAllSegments;
         }
 
         public static readonly DependencyProperty ColorAllSegmentsProperty =
@@ -220,47 +252,14 @@ namespace SegmentDisplay
         {
             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
-
-                if (SegmentA != null)
-                {
-                    SegmentA.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentB != null)
-                {
-                    SegmentB.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentC != null)
-                {
-                    SegmentC.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentD != null)
-                {
-                    SegmentD.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentE != null)
-                {
-                    SegmentE.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentF != null)
-                {
-                    SegmentF.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentG != null)
-                {
-                    SegmentG.Fill = (Brush)ColorAllSegments;
-                }
-
-                if (SegmentDp != null)
-                {
-                    SegmentDp.Fill = (Brush)ColorAllSegments;
-                }
-
+                if (SegmentA != null) SegmentA.Fill = ColorAllSegments;
+                if (SegmentB != null) SegmentB.Fill = ColorAllSegments;
+                if (SegmentC != null) SegmentC.Fill = ColorAllSegments;
+                if (SegmentD != null) SegmentD.Fill = ColorAllSegments;
+                if (SegmentE != null) SegmentE.Fill = ColorAllSegments;
+                if (SegmentF != null) SegmentF.Fill = ColorAllSegments;
+                if (SegmentG != null) SegmentG.Fill = ColorAllSegments;
+                if (SegmentDp != null) SegmentDp.Fill = ColorAllSegments;
             }));
         }
 
@@ -274,53 +273,53 @@ namespace SegmentDisplay
         {
             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
-
                 if (SegmentA != null)
                 {
                     SegmentA.Visibility = VisibilitySegmentA;
-                    SegmentA.Fill = (Brush)ColorAllSegments;
+                    SegmentA.Fill = ColorAllSegments;
                 }
+
 
                 if (SegmentB != null)
                 {
                     SegmentB.Visibility = VisibilitySegmentB;
-                    SegmentB.Fill = (Brush)ColorAllSegments;
+                    SegmentB.Fill = ColorAllSegments;
                 }
 
                 if (SegmentC != null)
                 {
-                    SegmentC.Visibility =VisibilitySegmentC;
-                    SegmentC.Fill = (Brush)ColorAllSegments;
+                    SegmentC.Visibility = VisibilitySegmentC;
+                    SegmentC.Fill = ColorAllSegments;
                 }
 
                 if (SegmentD != null)
                 {
                     SegmentD.Visibility = VisibilitySegmentD;
-                    SegmentD.Fill = (Brush)ColorAllSegments;
+                    SegmentD.Fill = ColorAllSegments;
                 }
 
                 if (SegmentE != null)
                 {
                     SegmentE.Visibility = VisibilitySegmentE;
-                    SegmentE.Fill = (Brush)ColorAllSegments;
+                    SegmentE.Fill = ColorAllSegments;
                 }
 
                 if (SegmentF != null)
                 {
                     SegmentF.Visibility = VisibilitySegmentF;
-                    SegmentF.Fill = (Brush)ColorAllSegments;
+                    SegmentF.Fill = ColorAllSegments;
                 }
 
                 if (SegmentG != null)
                 {
                     SegmentG.Visibility = VisibilitySegmentG;
-                    SegmentG.Fill = (Brush)ColorAllSegments;
+                    SegmentG.Fill = ColorAllSegments;
                 }
 
                 if (SegmentDp != null)
                 {
                     SegmentDp.Visibility = VisibilitySegmentDp;
-                    SegmentDp.Fill = (Brush)ColorAllSegments;
+                    SegmentDp.Fill = ColorAllSegments;
                 }
 
             }));

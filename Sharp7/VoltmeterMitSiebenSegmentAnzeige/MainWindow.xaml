@@ -30,14 +30,18 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
+            <RowDefinition Height="350" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
 
-        <gaugecontrol:GaugeControl x:Name="voltmeter" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5"
-                                   CurrentValue="{Binding VAnzeige.Spannung}" 
-                                   />
+        <gaugecontrol:GaugeControl  x:Name="voltmeter" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="5"
+                                    GaugeText="Voltmeter [V]"
+                                    ArcEndColor="#FFC32E2E" 
+                                    ArcFirstColor="#FF71E671" 
+                                    CurrentValue="{Binding VAnzeige.Spannung}" 
+                                    />
 
 
         <segmentdisplay:SegmentDisplay x:Name="Anzeige5" Grid.Column="1"  Grid.Row="2" 
