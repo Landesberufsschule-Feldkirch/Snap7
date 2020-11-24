@@ -1,30 +1,25 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace Hydraulik
 {
     public class DreiwegeVentil
     {
-        public enum Richtung
-        {
-            Stop,
-            Oeffnen,
-            Schliessen
-        }
 
-        private Richtung _richtung;
         private double _positionProzent;
         private readonly double _posMinProzent;
         private readonly double _posMaxProzent;
         private readonly double _deltaMillisekunden;
         private const int Schrittweite = 10;
 
+        private bool _ventilOeffnen;
+        private bool _ventilSchliessen;
+
         public DreiwegeVentil(double minPosProzent, double maxPosProzent, double laufzeitSekunden)
         {
             _positionProzent = minPosProzent;
             _posMinProzent = minPosProzent;
             _posMaxProzent = maxPosProzent;
-            _deltaMillisekunden = (_posMaxProzent - _posMinProzent) * laufzeitSekunden / 1000 * Schrittweite;
+            _deltaMillisekunden = (_posMaxProzent - _posMinProzent) * laufzeitSekunden / (1000 * Schrittweite);
 
             System.Threading.Tasks.Task.Run(DreiwegeVentilTask);
         }
@@ -33,20 +28,19 @@ namespace Hydraulik
         {
             while (true)
             {
-                switch (_richtung)
-                {
-                    case Richtung.Oeffnen:
-                        _positionProzent += _deltaMillisekunden;
-                        break;
 
-                    case Richtung.Schliessen:
-                        _positionProzent -= _deltaMillisekunden;
-                        break;
-                    case Richtung.Stop:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(_richtung));
+                if (_ventilOeffnen)
+                {
+                    _positionProzent += _deltaMillisekunden;
                 }
+                else
+                {
+                    if (_ventilSchliessen)
+                    {
+                        _positionProzent -= _deltaMillisekunden;
+                    }
+                }
+
 
                 LimitsTesten();
 
@@ -55,27 +49,8 @@ namespace Hydraulik
             // ReSharper disable once FunctionNeverReturns
         }
 
-        public void SetNeuePosition(Richtung ri, double dauer)
-        {
-            switch (ri)
-            {
-                case Richtung.Oeffnen:
-                    _positionProzent += _deltaMillisekunden * dauer;
-                    break;
-
-                case Richtung.Schliessen:
-                    _positionProzent -= _deltaMillisekunden * dauer;
-                    break;
-                case Richtung.Stop:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(ri), ri, null);
-            }
-
-            LimitsTesten();
-        }
-
-        public void SetRichtung(Richtung ri) => _richtung = ri;
+        public void VentilOeffnen(bool wert) => _ventilOeffnen = wert;
+        public void VentilSchliessen(bool wert) => _ventilSchliessen = wert;
 
         public double GetPosition() => _positionProzent;
 

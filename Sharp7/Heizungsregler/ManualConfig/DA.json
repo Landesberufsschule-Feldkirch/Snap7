@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "K1",
-      "Kommentar": "Ventil Füllen"
+      "Kommentar": "Ventil Öffnen"
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "K2",
-      "Kommentar": "Vereinzeln"
+      "Kommentar": "Ventil schliessen"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P1",
-      "Kommentar": "Meldeleuchte Betrieb"
+      "Bezeichnung": "Q1",
+      "Kommentar": "Kesselpumpe"
     },
     {
       "LaufendeNr": 3,
@@ -33,17 +33,8 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P2",
-      "Kommentar": "Meldeleuchte Störung"
-    },
-    {
-      "LaufendeNr": 4,
-      "StartByte": 0,
-      "StartBit": 4,
-      "AnzahlBit": 1,
-      "Type": "Default",
-      "Bezeichnung": "Q1",
-      "Kommentar": "Motor Förderband"
+      "Bezeichnung": "Q2",
+      "Kommentar": "Öl-/Gasbrenner"
     }
   ]
 }

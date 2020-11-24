@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
+using Hydraulik;
 
 namespace Heizungsregler.Model
 {
@@ -45,6 +46,7 @@ namespace Heizungsregler.Model
     {
         public bool BrennerEin { get; set; }
         public bool HeizungsPumpe { get; set; }
+        public  DreiwegeVentil DreiwegeVentil { get; set; }
         public double WitterungsTemperatur { get; set; }
         public double KesselTemperatur { get; set; }
         public double VorlaufSolltemperatur { get; set; }
@@ -63,6 +65,7 @@ namespace Heizungsregler.Model
             _heizkessel = new Heizkessel();
             _raumheizung = new Raumheizung();
 
+            DreiwegeVentil = new DreiwegeVentil(0,100,10);
 
             System.Threading.Tasks.Task.Run(HeizungsreglerTask);
         }
@@ -87,8 +90,7 @@ namespace Heizungsregler.Model
 
         internal void Reset()
         {
-            HeizungsPumpe = !HeizungsPumpe;
-            BrennerEin = !BrennerEin;
+//
         }
     }
 }

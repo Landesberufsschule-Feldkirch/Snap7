@@ -1,4 +1,6 @@
-﻿namespace Heizungsregler
+﻿using Sharp7;
+
+namespace Heizungsregler
 {
     public class DatenRangieren
     {
@@ -7,7 +9,10 @@
 
         private enum BitPosAusgang
         {
-            Q1 = 0
+            K1, // Ventil öffnen
+            K2, // Ventil schliessen
+            Q1, // Schütz Kesselpumpe
+            Q2 // Öl-/Gasbrenner
         }
 
         private enum BitPosEingang
@@ -16,11 +21,7 @@
             S2      // Kraftwerk Stoppen
         }
 
-        public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
-        {
-            _mainWindow = mw;
-            _viewModel = vm;
-        }
+
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
@@ -45,14 +46,24 @@
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            /*
-            if (!mainWindow.DebugWindowAktiv)
-            {
-                viewModel.Kraftwerk.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                viewModel.Kraftwerk.Ventil_Y = viewModel.Kraftwerk.generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 0), 100));
-                viewModel.Kraftwerk.Generator_Ie = viewModel.Kraftwerk.generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(anOutput, 2), 10));
-            }
-            */
+            if (_mainWindow.WohnHaus == null) return;
+
+            _mainWindow.WohnHaus.HeizungsPumpe = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _mainWindow.WohnHaus.BrennerEin = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+
+
+
+            if (_mainWindow.WohnHaus.DreiwegeVentil == null) return;
+
+            _mainWindow.WohnHaus.DreiwegeVentil.VentilOeffnen(S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1));
+            _mainWindow.WohnHaus.DreiwegeVentil.VentilSchliessen(S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2));
         }
+
+        public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
+        {
+            _mainWindow = mw;
+            _viewModel = vm;
+        }
+
     }
 }

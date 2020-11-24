@@ -53,12 +53,14 @@ namespace Heizungsregler.ViewModel
 
                     KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.WohnHaus.KesselTemperatur.ToString("F1") + "°C";
 
-                    VentilStellungMitEinheit = "Y: 10%";
+                    VentilStellungMitEinheit = "Y: " + _mainWindow.WohnHaus.DreiwegeVentil.GetPosition().ToString("F1") + "%";
+                    
 
                     VorlaufIstMitAllem = "Ist: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
                     VorlaufSollMitAllem = "Soll: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
 
                     Pumpenfarbe(_mainWindow.WohnHaus.HeizungsPumpe);
+                    OelGasBrennerfarbe(_mainWindow.WohnHaus.BrennerEin);
 
                 }
 
@@ -140,11 +142,9 @@ namespace Heizungsregler.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ColorPumpe
-
         public void Pumpenfarbe(bool status) => ColorPumpe = status ? "LawnGreen" : "White";
 
         private string _colorPumpe;
-
         public string ColorPumpe
         {
             get => _colorPumpe;
@@ -154,8 +154,24 @@ namespace Heizungsregler.ViewModel
                 OnPropertyChanged(nameof(ColorPumpe));
             }
         }
-
         #endregion ColorPumpe
+
+        #region ColorOelGasBrenner
+        public void OelGasBrennerfarbe(bool status) => ColorOelGasBrenner = status ? "Red" : "White";
+
+        private string _colorOelGasBrenner;
+        public string ColorOelGasBrenner
+        {
+            get => _colorOelGasBrenner;
+            set
+            {
+                _colorOelGasBrenner = value;
+                OnPropertyChanged(nameof(ColorOelGasBrenner));
+            }
+        }
+        #endregion ColorPumpe
+
+
 
 
         #region WitterungsTemperaturSlider

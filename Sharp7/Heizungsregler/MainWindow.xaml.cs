@@ -24,8 +24,8 @@ namespace Heizungsregler
         private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
-        private const int AnzByteAnalogInput = 20;
-        private const int AnzByteAnalogOutput = 4;
+        private const int AnzByteAnalogInput = 0;
+        private const int AnzByteAnalogOutput = 0;
 
         public double[] Zeitachse = new double[100];
         public double[] KesselTemperatur = new double[100];
