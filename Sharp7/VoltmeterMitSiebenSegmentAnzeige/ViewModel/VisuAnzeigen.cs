@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Media;
 
 namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 {
@@ -23,7 +24,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
-            ColorSegments = "Yellow";
+            SegmentFarbe = Brushes.DarkOrange;
 
             for (var i = 0; i < 100; i++) AlleLed.Add(Visibility.Visible);
 
@@ -32,6 +33,9 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
         private void VisuAnzeigenTask()
         {
+
+            byte wert = 127;
+
             while (true)
             {
 
@@ -49,38 +53,23 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
 
 
-                    ColorSegments = ColorSegments == "cyan" ? "red" : "cyan";
+                    SegmentFarbe = SegmentFarbe == Brushes.Cyan ? Brushes.Red : Brushes.Cyan;
 
-                    byte wert = 0;
-                    switch (Spannung)
+                    wert = wert switch
                     {
-                        case 0: wert = 0;break;
-                        case 10: wert = 1;break;
-                        case 20: wert = 3; break;
-                        case 30: wert = 5; break;
-                        case 50: wert = 7; break;
-                        case 60: wert = 15; break;
-                        case 70: wert = 63; break;
-                        case 80: wert = 127; break;
-                        case 90: wert = 255; break;
+                        7 => 15,
+                        15 => 127,
+                        127 => 255,
+                        255=>15,
+                        _ => 7
+                    };
 
-
+                    for (var i = 0; i < 6; i++)
+                    {
+                        _voltmeter.AlleVoltmeter[i] = (byte)(wert + (byte)i);
+                        SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 10);
                     }
 
-                    _voltmeter.AlleVoltmeter[0] = wert;
-                    _voltmeter.AlleVoltmeter[1] = wert;
-                    _voltmeter.AlleVoltmeter[2] = wert;
-                    _voltmeter.AlleVoltmeter[3] = wert;
-                    _voltmeter.AlleVoltmeter[4] = wert;
-                    _voltmeter.AlleVoltmeter[5] = wert;
-
-                    for (var i = 0; i < 5; i++)
-                    {
-                        SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
-                    }
-
-                    Spannung += 10;
-                    if (Spannung > 100) Spannung = 0;
 
                 }
 
@@ -174,33 +163,18 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        private double _spannung;
-
-        public double Spannung
+        private Brush _segmentFarbe;
+        public Brush SegmentFarbe
         {
-            get => _spannung;
+            get => _segmentFarbe;
             set
             {
-                _spannung = value;
-                OnPropertyChanged(nameof(Spannung));
-            }
-        }
-
-
-        private string _colorSegments;
-
-        public string ColorSegments
-        {
-            get => _colorSegments;
-            set
-            {
-                _colorSegments = value;
-                OnPropertyChanged(nameof(ColorSegments));
+                _segmentFarbe = value;
+                OnPropertyChanged(nameof(SegmentFarbe));
             }
         }
 
         private ObservableCollection<Visibility> _alleLed = new ObservableCollection<Visibility>();
-
         public ObservableCollection<Visibility> AlleLed
         {
             get => _alleLed;
@@ -215,7 +189,6 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members

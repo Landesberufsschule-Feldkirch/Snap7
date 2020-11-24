@@ -32,9 +32,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Rectangle x:Name="HintergrundRechteck" Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="1" Grid.RowSpan="9" Fill="WhiteSmoke" />
+        <Rectangle x:Name="HintergrundRechteck" Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="1" Grid.RowSpan="9" Fill="Silver" />
 
-        <Polygon x:Name="SegmentA" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Fill="Yellow">
+        <Polygon x:Name="SegA" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Fill="Yellow">
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -45,7 +45,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentB" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow">
+        <Polygon x:Name="SegB" Grid.Column="5" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -56,7 +56,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentC" Grid.Column="5" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
+        <Polygon x:Name="SegC" Grid.Column="5" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -67,7 +67,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentD" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="9"  Fill="Yellow">
+        <Polygon x:Name="SegD" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="9"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -78,7 +78,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentE" Grid.Column="1" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
+        <Polygon x:Name="SegE" Grid.Column="1" Grid.Row="5" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -89,7 +89,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow">
+        <Polygon x:Name="SegF" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="10" Y="11" />
                 <Point X="20" Y="21" />
@@ -100,7 +100,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Polygon x:Name="SegmentG" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5"  Fill="Yellow">
+        <Polygon x:Name="SegG" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="5"  Fill="Yellow">
             <Polygon.Points>
                 <Point X="11" Y="10" />
                 <Point X="21" Y="0"  />
@@ -111,7 +111,7 @@
             </Polygon.Points>
         </Polygon>
 
-        <Ellipse x:Name="SegmentDp"  Grid.Column="6" Grid.Row="9"  Fill="LawnGreen"/>
+        <Ellipse x:Name="SegDp"  Grid.Column="6" Grid.Row="9"  Fill="LawnGreen"/>
 
     </Grid>
 </UserControl>
