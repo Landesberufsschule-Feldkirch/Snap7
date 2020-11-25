@@ -24,6 +24,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
+            HintergrundFarbe = Brushes.Aqua;
             SegmentFarbe = Brushes.DarkOrange;
 
             for (var i = 0; i < 100; i++) AlleLed.Add(Visibility.Visible);
@@ -33,12 +34,11 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
         private void VisuAnzeigenTask()
         {
-
-            byte wert = 127;
+            const byte bitmusterHintergrundfarbe = (byte)1;
+            const byte bitmusterSegmentfarbe = (byte)16;
 
             while (true)
             {
-
                 if (_mainWindow.Plc != null)
                 {
                     if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
@@ -51,29 +51,14 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
-
-
-                    SegmentFarbe = SegmentFarbe == Brushes.Cyan ? Brushes.Red : Brushes.Cyan;
-
-                    wert = wert switch
-                    {
-                        7 => 15,
-                        15 => 127,
-                        127 => 255,
-                        255=>15,
-                        _ => 7
-                    };
-
-                    for (var i = 0; i < 6; i++)
-                    {
-                        _voltmeter.AlleVoltmeter[i] = (byte)(wert + (byte)i);
-                        SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 10);
-                    }
-
-
                 }
 
-                Thread.Sleep(1000);
+                HintergrundFarbe = (_voltmeter.AlleVoltmeter[0] & bitmusterHintergrundfarbe) == bitmusterHintergrundfarbe ? Brushes.Chartreuse : Brushes.WhiteSmoke;
+                SegmentFarbe = (_voltmeter.AlleVoltmeter[0] & bitmusterSegmentfarbe) == bitmusterSegmentfarbe ? Brushes.Red : Brushes.Green;
+
+                for (var i = 1; i < 6; i++) SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
+
+                Thread.Sleep(100);
             }
             // ReSharper disable once FunctionNeverReturns
         }
@@ -86,9 +71,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
                 if ((achtSegmente & bitMuster) == bitMuster) AlleLed[adresseSegmentA + bitIndex] = Visibility.Visible;
                 else AlleLed[adresseSegmentA + bitIndex] = Visibility.Hidden;
-
             }
-
         }
 
         #region SPS Version, Status und Farbe
@@ -162,9 +145,20 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
+        #region Farben
+        private SolidColorBrush _hintergrundFarbe;
+        public SolidColorBrush HintergrundFarbe
+        {
+            get => _hintergrundFarbe;
+            set
+            {
+                _hintergrundFarbe = value;
+                OnPropertyChanged(nameof(HintergrundFarbe));
+            }
+        }
 
-        private Brush _segmentFarbe;
-        public Brush SegmentFarbe
+        private SolidColorBrush _segmentFarbe;
+        public SolidColorBrush SegmentFarbe
         {
             get => _segmentFarbe;
             set
@@ -173,6 +167,8 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                 OnPropertyChanged(nameof(SegmentFarbe));
             }
         }
+        #endregion
+
 
         private ObservableCollection<Visibility> _alleLed = new ObservableCollection<Visibility>();
         public ObservableCollection<Visibility> AlleLed

@@ -15,7 +15,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
         private readonly DatenRangieren _datenRangieren;
 
         private const int AnzByteDigInput = 0;
-        private const int AnzByteDigOutput = 5;
+        private const int AnzByteDigOutput = 6;
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
 

@@ -6,7 +6,7 @@
         xmlns:segmentdisplay="clr-namespace:SegmentDisplay;assembly=SegmentDisplay"
         x:Class="VoltmeterMitSiebenSegmentAnzeige.MainWindow"
         mc:Ignorable="d"
-        Title="Voltmeter mit 7-Segment Anzeige" Height="1000" Width="800">
+        Title="Voltmeter mit 7-Segment Anzeige" Height="500" Width="800">
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -29,65 +29,70 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="350" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <segmentdisplay:SegmentDisplay x:Name="Anzeige4" Grid.Column="1"  Grid.Row="2" 
-                                       ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
-                                        SegmentA="{Binding VAnzeige.AlleLed[40], Mode=TwoWay}" 
-                                        SegmentB="{Binding VAnzeige.AlleLed[41], Mode=TwoWay}" 
-                                        SegmentC="{Binding VAnzeige.AlleLed[42], Mode=TwoWay}" 
-                                        SegmentD="{Binding VAnzeige.AlleLed[43], Mode=TwoWay}" 
-                                        SegmentE="{Binding VAnzeige.AlleLed[44], Mode=TwoWay}" 
-                                        SegmentF="{Binding VAnzeige.AlleLed[45], Mode=TwoWay}" 
-                                        SegmentG="{Binding VAnzeige.AlleLed[46], Mode=TwoWay}" 
+        <segmentdisplay:SegmentDisplay  x:Name="Anzeige4" Grid.Column="1"  Grid.Row="2" 
+                                        ColorBackground="{Binding VAnzeige.HintergrundFarbe, Mode=TwoWay}"
+                                        ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
+                                        SegmentA ="{Binding VAnzeige.AlleLed[40], Mode=TwoWay}" 
+                                        SegmentB ="{Binding VAnzeige.AlleLed[41], Mode=TwoWay}" 
+                                        SegmentC ="{Binding VAnzeige.AlleLed[42], Mode=TwoWay}" 
+                                        SegmentD ="{Binding VAnzeige.AlleLed[43], Mode=TwoWay}" 
+                                        SegmentE ="{Binding VAnzeige.AlleLed[44], Mode=TwoWay}" 
+                                        SegmentF ="{Binding VAnzeige.AlleLed[45], Mode=TwoWay}" 
+                                        SegmentG ="{Binding VAnzeige.AlleLed[46], Mode=TwoWay}" 
                                         SegmentDp="{Binding VAnzeige.AlleLed[47], Mode=TwoWay}"/>
 
-        <segmentdisplay:SegmentDisplay x:Name="Anzeige3" Grid.Column="3"  Grid.Row="2"
-                                            ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
-                                            SegmentA="{Binding VAnzeige.AlleLed[30], Mode=TwoWay}" 
-                                            SegmentB="{Binding VAnzeige.AlleLed[31], Mode=TwoWay}" 
-                                            SegmentC="{Binding VAnzeige.AlleLed[32], Mode=TwoWay}" 
-                                            SegmentD="{Binding VAnzeige.AlleLed[33], Mode=TwoWay}" 
-                                            SegmentE="{Binding VAnzeige.AlleLed[34], Mode=TwoWay}" 
-                                            SegmentF="{Binding VAnzeige.AlleLed[35], Mode=TwoWay}" 
-                                            SegmentG="{Binding VAnzeige.AlleLed[36], Mode=TwoWay}" 
-                                            SegmentDp="{Binding VAnzeige.AlleLed[37], Mode=TwoWay}" />
+        <segmentdisplay:SegmentDisplay  x:Name="Anzeige3" Grid.Column="3"  Grid.Row="2"
+                                        ColorBackground="{Binding VAnzeige.HintergrundFarbe, Mode=TwoWay}"
+                                        ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
+                                        SegmentA ="{Binding VAnzeige.AlleLed[32], Mode=TwoWay}" 
+                                        SegmentB ="{Binding VAnzeige.AlleLed[33], Mode=TwoWay}" 
+                                        SegmentC ="{Binding VAnzeige.AlleLed[34], Mode=TwoWay}" 
+                                        SegmentD ="{Binding VAnzeige.AlleLed[35], Mode=TwoWay}" 
+                                        SegmentE ="{Binding VAnzeige.AlleLed[36], Mode=TwoWay}" 
+                                        SegmentF ="{Binding VAnzeige.AlleLed[37], Mode=TwoWay}" 
+                                        SegmentG ="{Binding VAnzeige.AlleLed[38], Mode=TwoWay}" 
+                                        SegmentDp="{Binding VAnzeige.AlleLed[39], Mode=TwoWay}" />
 
         <segmentdisplay:SegmentDisplay x:Name="Anzeige2" Grid.Column="5"  Grid.Row="2" 
+                                       ColorBackground="{Binding VAnzeige.HintergrundFarbe, Mode=TwoWay}"
                                        ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
-                                       SegmentA="{Binding VAnzeige.AlleLed[20], Mode=TwoWay}" 
-                                       SegmentB="{Binding VAnzeige.AlleLed[21], Mode=TwoWay}" 
-                                       SegmentC="{Binding VAnzeige.AlleLed[22], Mode=TwoWay}" 
-                                       SegmentD="{Binding VAnzeige.AlleLed[23], Mode=TwoWay}" 
-                                       SegmentE="{Binding VAnzeige.AlleLed[24], Mode=TwoWay}" 
-                                       SegmentF="{Binding VAnzeige.AlleLed[25], Mode=TwoWay}" 
-                                       SegmentG="{Binding VAnzeige.AlleLed[26], Mode=TwoWay}" 
-                                       SegmentDp="{Binding VAnzeige.AlleLed[27], Mode=TwoWay}" />
+                                       SegmentA ="{Binding VAnzeige.AlleLed[24], Mode=TwoWay}" 
+                                       SegmentB ="{Binding VAnzeige.AlleLed[25], Mode=TwoWay}" 
+                                       SegmentC ="{Binding VAnzeige.AlleLed[26], Mode=TwoWay}" 
+                                       SegmentD ="{Binding VAnzeige.AlleLed[27], Mode=TwoWay}" 
+                                       SegmentE ="{Binding VAnzeige.AlleLed[28], Mode=TwoWay}" 
+                                       SegmentF ="{Binding VAnzeige.AlleLed[29], Mode=TwoWay}" 
+                                       SegmentG ="{Binding VAnzeige.AlleLed[30], Mode=TwoWay}" 
+                                       SegmentDp="{Binding VAnzeige.AlleLed[31], Mode=TwoWay}" />
 
         <segmentdisplay:SegmentDisplay x:Name="Anzeige1" Grid.Column="7"  Grid.Row="2" 
+                                       ColorBackground="{Binding VAnzeige.HintergrundFarbe, Mode=TwoWay}"
                                        ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
-                                       SegmentA="{Binding VAnzeige.AlleLed[10], Mode=TwoWay}" 
-                                       SegmentB="{Binding VAnzeige.AlleLed[11], Mode=TwoWay}" 
-                                       SegmentC="{Binding VAnzeige.AlleLed[12], Mode=TwoWay}" 
-                                       SegmentD="{Binding VAnzeige.AlleLed[13], Mode=TwoWay}" 
-                                       SegmentE="{Binding VAnzeige.AlleLed[14], Mode=TwoWay}" 
-                                       SegmentF="{Binding VAnzeige.AlleLed[15], Mode=TwoWay}" 
-                                       SegmentG="{Binding VAnzeige.AlleLed[16], Mode=TwoWay}" 
-                                       SegmentDp="{Binding VAnzeige.AlleLed[17], Mode=TwoWay}" />
+                                       SegmentA ="{Binding VAnzeige.AlleLed[16], Mode=TwoWay}" 
+                                       SegmentB ="{Binding VAnzeige.AlleLed[17], Mode=TwoWay}" 
+                                       SegmentC ="{Binding VAnzeige.AlleLed[18], Mode=TwoWay}" 
+                                       SegmentD ="{Binding VAnzeige.AlleLed[19], Mode=TwoWay}" 
+                                       SegmentE ="{Binding VAnzeige.AlleLed[20], Mode=TwoWay}" 
+                                       SegmentF ="{Binding VAnzeige.AlleLed[21], Mode=TwoWay}" 
+                                       SegmentG ="{Binding VAnzeige.AlleLed[22], Mode=TwoWay}" 
+                                       SegmentDp="{Binding VAnzeige.AlleLed[23], Mode=TwoWay}" />
 
         <segmentdisplay:SegmentDisplay x:Name="Anzeige0" Grid.Column="9"  Grid.Row="2" 
+                                       ColorBackground="{Binding VAnzeige.HintergrundFarbe, Mode=TwoWay}"
                                        ColorSegments="{Binding VAnzeige.SegmentFarbe, Mode=TwoWay}"
-                                       SegmentA="{Binding VAnzeige.AlleLed[0], Mode=TwoWay}" 
-                                       SegmentB="{Binding VAnzeige.AlleLed[1], Mode=TwoWay}" 
-                                       SegmentC="{Binding VAnzeige.AlleLed[2], Mode=TwoWay}" 
-                                       SegmentD="{Binding VAnzeige.AlleLed[3], Mode=TwoWay}" 
-                                       SegmentE="{Binding VAnzeige.AlleLed[4], Mode=TwoWay}" 
-                                       SegmentF="{Binding VAnzeige.AlleLed[5], Mode=TwoWay}" 
-                                       SegmentG="{Binding VAnzeige.AlleLed[6], Mode=TwoWay}" 
-                                       SegmentDp="{Binding VAnzeige.AlleLed[7], Mode=TwoWay}" />
+                                       SegmentA ="{Binding VAnzeige.AlleLed[ 8], Mode=TwoWay}" 
+                                       SegmentB ="{Binding VAnzeige.AlleLed[ 9], Mode=TwoWay}" 
+                                       SegmentC ="{Binding VAnzeige.AlleLed[10], Mode=TwoWay}" 
+                                       SegmentD ="{Binding VAnzeige.AlleLed[11], Mode=TwoWay}" 
+                                       SegmentE ="{Binding VAnzeige.AlleLed[12], Mode=TwoWay}" 
+                                       SegmentF ="{Binding VAnzeige.AlleLed[13], Mode=TwoWay}" 
+                                       SegmentG ="{Binding VAnzeige.AlleLed[14], Mode=TwoWay}" 
+                                       SegmentDp="{Binding VAnzeige.AlleLed[15], Mode=TwoWay}" />
 
 
         <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="4" Click="ManualModeOeffnen" Background="Aquamarine" />

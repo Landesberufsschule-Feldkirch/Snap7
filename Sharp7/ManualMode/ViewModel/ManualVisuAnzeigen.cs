@@ -60,7 +60,7 @@ namespace ManualMode.ViewModel
 
                 if (_manualMode?.GetConfig?.ConfigDa?.DigitaleAusgaenge != null)
                 {
-                    foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge )
+                    foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge)
                     {
                         switch (digitaleAusgaenge.AnzahlBit)
                         {
@@ -147,17 +147,7 @@ namespace ManualMode.ViewModel
 
         #region Digitale Eingänge
 
-        public void SetFarbeDi(bool val, int id)
-        {
-            if (val)
-            {
-                FarbeDi[id] = Brushes.LawnGreen;
-            }
-            else
-            {
-                FarbeDi[id] = Brushes.LightGray;
-            }
-        }
+        public void SetFarbeDi(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
         private ObservableCollection<Brush> _farbeDi = new ObservableCollection<Brush>();
         public ObservableCollection<Brush> FarbeDi
@@ -208,7 +198,6 @@ namespace ManualMode.ViewModel
 
 
         #region Digitale Ausgänge
-
         internal void BtnTasten(object taste)
         {
             if (!(taste is string ascii)) return;
@@ -248,7 +237,6 @@ namespace ManualMode.ViewModel
         }
 
 
-
         public bool ClickModeButtonSchalten(int i)
         {
             if (ClickModeTasten[i] == System.Windows.Controls.ClickMode.Press)
@@ -272,17 +260,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        public void SetFarbeTastenToggelnDa(bool val, int id)
-        {
-            if (val)
-            {
-                FarbeTastenToggelnDa[id] = Brushes.LawnGreen;
-            }
-            else
-            {
-                FarbeTastenToggelnDa[id] = Brushes.LightGray;
-            }
-        }
+        public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
         private ObservableCollection<Brush> _farbeTastenToggelnDa = new ObservableCollection<Brush>();
         public ObservableCollection<Brush> FarbeTastenToggelnDa
@@ -334,10 +312,7 @@ namespace ManualMode.ViewModel
         #endregion
 
 
-
         #region Analoge Eingänge
-
-
 
         private ObservableCollection<string> _contentAi = new ObservableCollection<string>();
         public ObservableCollection<string> ContentAi
@@ -387,7 +362,9 @@ namespace ManualMode.ViewModel
         #endregion
 
 
+        #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        #endregion
     }
 }

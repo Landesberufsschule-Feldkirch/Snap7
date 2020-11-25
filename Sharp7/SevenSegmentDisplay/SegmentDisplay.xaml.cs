@@ -8,8 +8,9 @@ namespace SegmentDisplay
 {
     public partial class SegmentDisplay
     {
+        private Brush _colorBackground;
         private Brush _colorSegments;
-
+        
         private Visibility _segmentA;
         private Visibility _segmentB;
         private Visibility _segmentC;
@@ -21,6 +22,7 @@ namespace SegmentDisplay
 
         public SegmentDisplay()
         {
+            ColorBackground = Brushes.AliceBlue;
             ColorSegments = Brushes.Violet;
 
             SegmentA = Visibility.Visible;
@@ -34,6 +36,23 @@ namespace SegmentDisplay
 
             InitializeComponent();
         }
+
+
+
+        [Description("(Display) ColorBackground"), Category("Segment Display")]
+        public Brush ColorBackground
+        {
+            set
+            {
+                _colorBackground = value;
+                SetValue(ColorBackgroundProperty, _colorBackground);
+            }
+            get => _colorBackground;
+        }
+
+        public static readonly DependencyProperty ColorBackgroundProperty =
+            DependencyProperty.Register("ColorBackground", typeof(SolidColorBrush), typeof(SegmentDisplay),
+                new PropertyMetadata(OnDisplayChanged));
 
 
         [Description("(Display) ColorSegments"), Category("Segment Display")]
@@ -198,6 +217,7 @@ namespace SegmentDisplay
                 case "SegmentG": siebenSegment.SegmentG = (Visibility)arg.NewValue; break;
                 case "SegmentDp": siebenSegment.SegmentDp = (Visibility)arg.NewValue; break;
 
+                case "ColorBackground": siebenSegment.ColorBackground = (SolidColorBrush)arg.NewValue; break;
                 case "ColorSegments": siebenSegment.ColorSegments = (SolidColorBrush)arg.NewValue; break;
             }
             siebenSegment.SetValue();
@@ -208,6 +228,11 @@ namespace SegmentDisplay
         {
             Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
             {
+                if (HintergrundRechteck != null)
+                {
+                    HintergrundRechteck.Fill = ColorBackground;
+                }
+
                 if (SegA != null)
                 {
                     SegA.Visibility = SegmentA;
