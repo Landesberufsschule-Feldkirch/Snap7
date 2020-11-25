@@ -1,19 +1,17 @@
-﻿using System.Collections.ObjectModel;
+﻿using ManualMode.Model;
 using ManualMode.ViewModel;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows.Shapes;
-using ManualMode.Model;
 
 namespace ManualMode
 {
     public partial class FensterDi
     {
-        public FensterDi(Model.ConfigDi configDi, ManualViewModel mvm)
+        public FensterDi(ConfigDi configDi, ManualViewModel mvm)
         {
             var manViewModel = mvm;
             InitializeComponent();
@@ -22,8 +20,6 @@ namespace ManualMode
             var anzahlBit = DigitaleEingaengeDatenLesen(configDi, manViewModel);
             CreateGridDi(anzahlBit);
         }
-
-
 
         private static int DigitaleEingaengeDatenLesen(ConfigDi configDi, ManualViewModel manViewModel)
         {
@@ -47,8 +43,6 @@ namespace ManualMode
 
             return anzahlBit + 1;
         }
-
-
         private void CreateGridDi(int anzahlBit)
         {
 
@@ -83,11 +77,9 @@ namespace ManualMode
                     ButtonZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
                     BezeichnungZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDi);
                     KommentarZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDi);
-
                 }
             }
         }
-
         private static void ButtonZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -109,8 +101,6 @@ namespace ManualMode
 
             panel.Children.Add(buttonTasten);
         }
-
-
         private static void BezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -168,7 +158,5 @@ namespace ManualMode
             Grid.SetRow(text, y);
             panel.Children.Add(text);
         }
-
-
     }
 }

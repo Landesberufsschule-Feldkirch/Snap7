@@ -4,8 +4,5 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Analoge Ausgänge" Height="450" Width="800">
-    <Grid>
-        <Canvas Name="Canvas" />
-    </Grid>
+        Title="Analoge Ausgänge" Height="1050" Width="800">
 </Window>

@@ -11,10 +11,11 @@ namespace ManualMode.ViewModel
     public class ManualVisuAnzeigen : INotifyPropertyChanged
     {
         private readonly ManualMode _manualMode;
+        private const double SiemensAnalogSkalierung = 27648;
+
 
         public ManualVisuAnzeigen(ManualMode mm)
         {
-
             _manualMode = mm;
 
             for (var i = 0; i < 100; i++)
@@ -23,6 +24,7 @@ namespace ManualMode.ViewModel
                 FarbeTastenToggelnDa.Add(Brushes.LawnGreen);
                 VisibilityDa.Add(Visibility.Hidden);
                 BezeichnungDa.Add("-");
+                WertDa.Add("0");
                 KommentarDa.Add("-");
 
                 FarbeDi.Add(Brushes.LawnGreen);
@@ -34,118 +36,45 @@ namespace ManualMode.ViewModel
                 VisibilityAi.Add(Visibility.Hidden);
                 BezeichnungAi.Add("-");
                 KommentarAi.Add("-");
+
+                ContentAa.Add("-");
+                VisibilityAa.Add(Visibility.Hidden);
+                BezeichnungAa.Add("-");
+                KommentarAa.Add("-");
             }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
-
         private void VisuAnzeigenTask()
         {
-            const double siemensAnalogSkalierung = 27648;
 
             while (true)
             {
-                if (_manualMode?.Datenstruktur.DigOutput != null)
-                {
-                    for (var i = 0; i < 100; i++)
-                    {
-                        var (iByte, bitMuster) = NummerInBitUndBitmuster(i);
-
-                        SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster, i);
-                        SetFarbeDi((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
-                    }
-                }
-
-
-                if (_manualMode?.GetConfig?.ConfigDa?.DigitaleAusgaenge != null)
-                {
-                    foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge)
-                    {
-                        switch (digitaleAusgaenge.AnzahlBit)
-                        {
-                            case 1:
-                                break;
-
-                            case 8:
-                                switch (digitaleAusgaenge.Type)
-                                {
-                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.Default:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.Ascii:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                        break;
-                                    default:
-                                        throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
-                                }
-                                break;
-                        }
-                    }
-                }
-
-                if (_manualMode?.GetConfig?.ConfigAi?.AnalogeEingaenge != null)
-                {
-                    foreach (var analogeEingaenge in _manualMode.GetConfig.ConfigAi.AnalogeEingaenge)
-                    {
-                        switch (analogeEingaenge.AnzahlBit)
-                        {
-                            case 8:
-                                var wertByte = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
-                                switch (analogeEingaenge.Type)
-                                {
-                                    case PlcEinUndAusgaengeTypen.Default:
-                                        ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.Ascii:
-                                        ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                        break;
-                                    default:
-                                        throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
-                                }
-                                break;
-                            case 16:
-                                var wertInt = 256 * _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte] + _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte + 1];
-                                switch (analogeEingaenge.Type)
-                                {
-                                    case PlcEinUndAusgaengeTypen.Default:
-                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (100 * (double)wertInt / siemensAnalogSkalierung).ToString("F1") + "%";
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                        ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / siemensAnalogSkalierung).ToString("F1") + "‰";
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.Ascii:
-                                        break;
-                                    case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                        break;
-                                    default:
-                                        throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
-                                }
-                                break;
-                        }
-                    }
-                }
+                DigitaleEingaengeFarbeSichtbarkeit();
+                DigitaleAusgaengeSchaltenFarbeSichtbarkeit();
+                AnalogeEingaengeWerteSichtbarkeit();
+                AnalogeAusgaengeVeraendernSichtbarkeit();
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
+        
 
         #region Digitale Eingänge
+        private void DigitaleEingaengeFarbeSichtbarkeit()
+        {
+            if (_manualMode?.Datenstruktur.DigOutput == null) return;
+
+            for (var i = 0; i < 100; i++)
+            {
+                var (iByte, bitMuster) = NummerInBitUndBitmuster(i);
+
+                SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster, i);
+                SetFarbeDi((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
+            }
+        }
 
         public void SetFarbeDi(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
@@ -196,8 +125,40 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-
         #region Digitale Ausgänge
+
+        private void DigitaleAusgaengeSchaltenFarbeSichtbarkeit()
+        {
+            if (_manualMode?.GetConfig?.ConfigDa?.DigitaleAusgaenge == null) return;
+
+            foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge)
+            {
+                switch (digitaleAusgaenge.AnzahlBit)
+                {
+                    case 1:
+                        break;
+
+                    case 8:
+                        switch (digitaleAusgaenge.Type)
+                        {
+                            case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                break;
+                            case PlcEinUndAusgaengeTypen.Default:
+                                break;
+                            case PlcEinUndAusgaengeTypen.Ascii:
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
+                        }
+                        break;
+
+                }
+            }
+        }
         internal void BtnTasten(object taste)
         {
             if (!(taste is string ascii)) return;
@@ -299,6 +260,16 @@ namespace ManualMode.ViewModel
             }
         }
 
+        private ObservableCollection<string> _wertDa = new ObservableCollection<string>();
+        public ObservableCollection<string> WertDa
+        {
+            get => _wertDa;
+            set
+            {
+                _wertDa = value;
+                OnPropertyChanged(nameof(WertDa));
+            }
+        }
 
         private ObservableCollection<string> _kommentarDa = new ObservableCollection<string>();
         public ObservableCollection<string> KommentarDa
@@ -313,8 +284,62 @@ namespace ManualMode.ViewModel
 
         #endregion
 
-
         #region Analoge Eingänge
+
+        private void AnalogeEingaengeWerteSichtbarkeit()
+        {
+            if (_manualMode?.GetConfig?.ConfigAi?.AnalogeEingaenge == null) return;
+
+            foreach (var analogeEingaenge in _manualMode.GetConfig.ConfigAi.AnalogeEingaenge)
+            {
+                switch (analogeEingaenge.AnzahlBit)
+                {
+                    case 8:
+                        var wertByte = _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte];
+                        switch (analogeEingaenge.Type)
+                        {
+                            case PlcEinUndAusgaengeTypen.Default:
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
+                                break;
+                            case PlcEinUndAusgaengeTypen.Ascii:
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                break;
+                            case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
+                        }
+                        break;
+                    case 16:
+                        var wertInt = 256 * _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte] + _manualMode.Datenstruktur.AnalogInput[analogeEingaenge.StartByte + 1];
+                        switch (analogeEingaenge.Type)
+                        {
+                            case PlcEinUndAusgaengeTypen.Default:
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (100 * (double)wertInt / SiemensAnalogSkalierung).ToString("F1") + "%";
+                                break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / SiemensAnalogSkalierung).ToString("F1") + "‰";
+                                break;
+                            case PlcEinUndAusgaengeTypen.Ascii:
+                                break;
+                            case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
+                        }
+                        break;
+                }
+            }
+        }
+
+
 
         private ObservableCollection<string> _contentAi = new ObservableCollection<string>();
         public ObservableCollection<string> ContentAi
@@ -358,6 +383,79 @@ namespace ManualMode.ViewModel
             {
                 _kommentarAi = value;
                 OnPropertyChanged(nameof(KommentarAi));
+            }
+        }
+
+        #endregion
+
+        #region Analoge Ausgänge
+
+        private void AnalogeAusgaengeVeraendernSichtbarkeit()
+        {
+            if (_manualMode?.GetConfig?.ConfigAa?.AnalogeAusgaenge == null) return;
+
+
+            foreach (var analogeAusgaenge in _manualMode.GetConfig.ConfigAa.AnalogeAusgaenge)
+            {
+                switch (analogeAusgaenge.AnzahlBit)
+                {
+                    case 8:
+                        break;
+
+                    case 16:
+                        break;
+
+
+
+                }
+            }
+
+        }
+
+
+
+        private ObservableCollection<string> _contentAa = new ObservableCollection<string>();
+        public ObservableCollection<string> ContentAa
+        {
+            get => _contentAa;
+            set
+            {
+                _contentAa = value;
+                OnPropertyChanged("ContentAa");
+            }
+        }
+
+        private ObservableCollection<Visibility> _visibilityAa = new ObservableCollection<Visibility>();
+        public ObservableCollection<Visibility> VisibilityAa
+        {
+            get => _visibilityAa;
+            set
+            {
+                _visibilityAa = value;
+                OnPropertyChanged(nameof(VisibilityAa));
+            }
+        }
+
+        private ObservableCollection<string> _bezeichnungAa = new ObservableCollection<string>();
+        public ObservableCollection<string> BezeichnungAa
+        {
+            get => _bezeichnungAa;
+            set
+            {
+                _bezeichnungAa = value;
+                OnPropertyChanged(nameof(BezeichnungAa));
+            }
+        }
+
+
+        private ObservableCollection<string> _kommentarAa = new ObservableCollection<string>();
+        public ObservableCollection<string> KommentarAa
+        {
+            get => _kommentarAa;
+            set
+            {
+                _kommentarAa = value;
+                OnPropertyChanged(nameof(KommentarAa));
             }
         }
 

@@ -13,8 +13,11 @@ namespace ManualMode
 {
     public partial class FensterDa
     {
+        public bool DatenByteweiseEingeben { get; set; }
+
         public FensterDa(ConfigDa configDa, ManualViewModel mvm)
         {
+            DatenByteweiseEingeben = false;
             var manViewModel = mvm;
             InitializeComponent();
             DataContext = manViewModel;
@@ -22,7 +25,8 @@ namespace ManualMode
             var anzahlBit = DigitaleAusgaengeDatenLesen(configDa, manViewModel);
             CreateGridDa(anzahlBit, manViewModel);
         }
-        private static int DigitaleAusgaengeDatenLesen(ConfigDa configDa, ManualViewModel manualViewModel)
+
+        private int DigitaleAusgaengeDatenLesen(ConfigDa configDa, ManualViewModel manualViewModel)
         {
             var anzahlBit = 0;
 
@@ -33,8 +37,11 @@ namespace ManualMode
                     switch (config.Type)
                     {
                         case PlcEinUndAusgaengeTypen.BitmusterByte:
+                            DatenByteweiseEingeben = true;
+                            manualViewModel.ManVisuAnzeigen.VisibilityDa[config.LaufendeNr] = Visibility.Visible;
+                            manualViewModel.ManVisuAnzeigen.BezeichnungDa[config.LaufendeNr] = config.Bezeichnung;
+                            manualViewModel.ManVisuAnzeigen.KommentarDa[config.LaufendeNr] = config.Kommentar;
                             break;
-
                         case PlcEinUndAusgaengeTypen.Default:
                             manualViewModel.ManVisuAnzeigen.VisibilityDa[config.LaufendeNr] = Visibility.Visible;
                             manualViewModel.ManVisuAnzeigen.BezeichnungDa[config.LaufendeNr] = config.Bezeichnung;
@@ -82,24 +89,42 @@ namespace ManualMode
                 gridDa.RowDefinitions.Add(rowDefCollection[i]);
             }
 
-            TextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, gridDa);
-            TextZeichnen("Toggeln", HorizontalAlignment.Center, 1, 0, gridDa);
-            TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, gridDa);
-            TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
-
-            for (var vbyte = 0; vbyte < 10; vbyte++)
+            if (DatenByteweiseEingeben)
             {
-                for (var vBit = 0; vBit < 8; vBit++)
-                {
-                    if (8 * vbyte + vBit >= anzahlBit) continue;
+                TextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDa);
+                TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, gridDa);
+                TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
 
-                    ButtonTastenZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
-                    ButtonToggelnZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
-                    BezeichnungZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDa);
-                    KommentarZeichnen(vbyte, vBit, 3, 1 + vbyte * 8 + vBit, gridDa);
+                for (var vbyte = 0; vbyte < anzahlBit; vbyte++)
+                {
+                    TextboxByteZeichnen(vbyte, 0, 1 + vbyte, gridDa);
+                    BezeichnungByteZeichnen(vbyte, 2, 1 + vbyte, gridDa);
+                    KommentarByteZeichnen(vbyte, 3, 1 + vbyte, gridDa);
+                }
+            }
+            else
+            {
+                TextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, gridDa);
+                TextZeichnen("Toggeln", HorizontalAlignment.Center, 1, 0, gridDa);
+                TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, gridDa);
+                TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
+
+                for (var vbyte = 0; vbyte < 10; vbyte++)
+                {
+                    for (var vBit = 0; vBit < 8; vBit++)
+                    {
+                        if (8 * vbyte + vBit >= anzahlBit) continue;
+
+                        ButtonTastenZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
+                        ButtonToggelnZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
+                        BezeichnungBitZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDa);
+                        KommentarBitZeichnen(vbyte, vBit, 3, 1 + vbyte * 8 + vBit, gridDa);
+                    }
                 }
             }
         }
+
+
         private static void ButtonTastenZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -147,7 +172,7 @@ namespace ManualMode
 
             panel.Children.Add(buttonToggeln);
         }
-        private static void BezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void BezeichnungBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -167,7 +192,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void KommentarBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -188,6 +213,87 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
+
+        private static void TextboxByteZeichnen(int vbyte, int x, int y, Panel panel)
+        {
+            var parameterNummer = vbyte;
+
+            var textBox = new TextBox
+            {
+                FontSize = 22,
+                Padding = new Thickness(5, 5, 5, 5),
+                BorderThickness = new Thickness(1.0),
+                BorderBrush = new SolidColorBrush(Colors.Black)
+            };
+
+
+
+            //textBox.SetBinding(TextBox.TextProperty, new Binding( "ManVisuAnzeigen.WertDa[" + parameterNummer + "], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged"  ) );
+            //textBox.SetBinding(TextBox.TextProperty, new Binding("ManVisuAnzeigen.WertDa[" + parameterNummer + "], UpdateSourceTrigger=PropertyChanged"));
+            //textBox.SetBinding(TextBox.TextProperty, new Binding("ManVisuAnzeigen.WertDa[" + parameterNummer + "]"));
+
+
+            var textBinding = new Binding
+            {
+                Path = new PropertyPath("ManVisuAnzeigen.WertDa[" + parameterNummer + "]"),
+                Mode = BindingMode.TwoWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+            };
+
+            textBox.SetBinding(TextBox.TextProperty, textBinding);
+            textBox.IsEnabled = true;
+
+
+            textBox.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDa[" + parameterNummer + "]"));
+
+            Grid.SetColumn(textBox, x);
+            Grid.SetRow(textBox, y);
+
+            panel.Children.Add(textBox);
+        }
+
+        private static void BezeichnungByteZeichnen(int vbyte, int x, int y, Panel panel)
+        {
+            var parameterNummer = vbyte;
+
+            var bezeichnung = new TextBlock
+            {
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                Foreground = new SolidColorBrush(Colors.Green),
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+
+            bezeichnung.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.BezeichnungDa[" + parameterNummer + "]"));
+            bezeichnung.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDa[" + parameterNummer + "]"));
+
+            Grid.SetColumn(bezeichnung, x);
+            Grid.SetRow(bezeichnung, y);
+            panel.Children.Add(bezeichnung);
+        }
+        private static void KommentarByteZeichnen(int vbyte, int x, int y, Panel panel)
+        {
+            var parameterNummer = vbyte;
+
+            var kommentar = new TextBlock
+            {
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                Foreground = new SolidColorBrush(Colors.Green),
+                Padding = new Thickness(10, 5, 5, 5),
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+
+            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.KommentarDa[" + parameterNummer + "]"));
+            kommentar.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDa[" + parameterNummer + "]"));
+
+            Grid.SetColumn(kommentar, x);
+            Grid.SetRow(kommentar, y);
+            panel.Children.Add(kommentar);
+        }
+
         private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock

@@ -6,8 +6,8 @@
       "StartBit": 0,
       "AnzahlBit": 8,
       "Type": "BitmusterByte",
-      "Bezeichnung": "P1",
-      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+      "Bezeichnung": "P",
+      "Kommentar": "Farben Hintergrund/Segmente Bit0 Bit4"
     },
     {
       "LaufendeNr": 1,
@@ -15,7 +15,7 @@
       "StartBit": 0,
       "AnzahlBit": 8,
       "Type": "BitmusterByte",
-      "Bezeichnung": "P2",
+      "Bezeichnung": "P1",
       "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
     },
     {
@@ -24,7 +24,7 @@
       "StartBit": 0,
       "AnzahlBit": 8,
       "Type": "BitmusterByte",
-      "Bezeichnung": "P3",
+      "Bezeichnung": "P2",
       "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
     },
     {
@@ -33,12 +33,21 @@
       "StartBit": 0,
       "AnzahlBit": 8,
       "Type": "BitmusterByte",
-      "Bezeichnung": "P4",
+      "Bezeichnung": "P3",
       "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
     },
     {
       "LaufendeNr": 4,
       "StartByte": 4,
+      "StartBit": 0,
+      "AnzahlBit": 8,
+      "Type": "BitmusterByte",
+      "Bezeichnung": "P4",
+      "Kommentar": "7 Segement Anzeige mit Dezimalpunkt"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 5,
       "StartBit": 0,
       "AnzahlBit": 8,
       "Type": "BitmusterByte",
