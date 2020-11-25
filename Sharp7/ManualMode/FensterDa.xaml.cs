@@ -82,10 +82,10 @@ namespace ManualMode
                 gridDa.RowDefinitions.Add(rowDefCollection[i]);
             }
 
-            TextZeichnen("Tasten", 0, 0, gridDa);
-            TextZeichnen("Toggeln", 1, 0, gridDa);
-            TextZeichnen("Bezeichnung", 2, 0, gridDa);
-            TextZeichnen("Kommentar", 3, 0, gridDa);
+            TextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, gridDa);
+            TextZeichnen("Toggeln", HorizontalAlignment.Center, 1, 0, gridDa);
+            TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, gridDa);
+            TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -97,7 +97,6 @@ namespace ManualMode
                     ButtonToggelnZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
                     BezeichnungZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDa);
                     KommentarZeichnen(vbyte, vBit, 3, 1 + vbyte * 8 + vBit, gridDa);
-
                 }
             }
         }
@@ -141,7 +140,6 @@ namespace ManualMode
             };
 
             buttonToggeln.SetBinding(BackgroundProperty, new Binding("ManVisuAnzeigen.FarbeTastenToggelnDa[" + parameterNummer + "]"));
-            buttonToggeln.SetBinding(ButtonBase.ClickModeProperty, new Binding("ManVisuAnzeigen.ClickModeToggeln[" + parameterNummer + "]"));
             buttonToggeln.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDa[" + parameterNummer + "]"));
 
             Grid.SetColumn(buttonToggeln, x);
@@ -190,7 +188,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextZeichnen(string beschriftung, int x, int y, Panel panel)
+        private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {
@@ -199,7 +197,7 @@ namespace ManualMode
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Colors.Green),
                 VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
+                HorizontalAlignment = alignment
             };
 
             Grid.SetColumn(text, x);

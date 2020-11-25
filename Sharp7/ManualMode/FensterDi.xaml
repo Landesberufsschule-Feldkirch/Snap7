@@ -69,9 +69,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="1" Grid.Row="1" Content="Wert"          FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="1" Content="Bezeichnung"   FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="1" Content="Kommentar"     FontSize="14pt"/>
 
         <Label Grid.Column="1" Grid.Row="3"    Content = "    0.0    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt" HorizontalAlignment="Center"/>
         <Label Grid.Column="1" Grid.Row="5"    Content = "    0.1    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt" HorizontalAlignment="Center"/>
@@ -98,54 +95,5 @@
         <Label Grid.Column="1" Grid.Row="47"   Content = "    2.6    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[22]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[22]}" FontSize="14pt" HorizontalAlignment="Center"/>
         <Label Grid.Column="1" Grid.Row="49"   Content = "    2.7    "  Background = "{Binding  ManVisuAnzeigen.FarbeDi[23]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[23]}" FontSize="14pt" HorizontalAlignment="Center"/>
 
-        <Label Grid.Column="3" Grid.Row="3"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="5"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="7"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[2]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[2]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="9"  Content="{Binding ManVisuAnzeigen.BezeichnungDi[3]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[3]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="11" Content="{Binding ManVisuAnzeigen.BezeichnungDi[4]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[4]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="13" Content="{Binding ManVisuAnzeigen.BezeichnungDi[5]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[5]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="15" Content="{Binding ManVisuAnzeigen.BezeichnungDi[6]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[6]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="17" Content="{Binding ManVisuAnzeigen.BezeichnungDi[7]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[7]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="19" Content="{Binding ManVisuAnzeigen.BezeichnungDi[8]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[8]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="21" Content="{Binding ManVisuAnzeigen.BezeichnungDi[9]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[9]}"  FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="23" Content="{Binding ManVisuAnzeigen.BezeichnungDi[10]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[10]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="25" Content="{Binding ManVisuAnzeigen.BezeichnungDi[11]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[11]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="27" Content="{Binding ManVisuAnzeigen.BezeichnungDi[12]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[12]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="29" Content="{Binding ManVisuAnzeigen.BezeichnungDi[13]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[13]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="31" Content="{Binding ManVisuAnzeigen.BezeichnungDi[14]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[14]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="33" Content="{Binding ManVisuAnzeigen.BezeichnungDi[15]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[15]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="35" Content="{Binding ManVisuAnzeigen.BezeichnungDi[16]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[16]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="37" Content="{Binding ManVisuAnzeigen.BezeichnungDi[17]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[17]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="39" Content="{Binding ManVisuAnzeigen.BezeichnungDi[18]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[18]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="41" Content="{Binding ManVisuAnzeigen.BezeichnungDi[19]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[19]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="43" Content="{Binding ManVisuAnzeigen.BezeichnungDi[20]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[20]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="45" Content="{Binding ManVisuAnzeigen.BezeichnungDi[21]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[21]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="47" Content="{Binding ManVisuAnzeigen.BezeichnungDi[22]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[22]}" FontSize="14pt"/>
-        <Label Grid.Column="3" Grid.Row="49" Content="{Binding ManVisuAnzeigen.BezeichnungDi[23]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[23]}" FontSize="14pt"/>
-
-        <Label Grid.Column="5" Grid.Row="3"  Content="{Binding ManVisuAnzeigen.KommentarDi[0]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="5"  Content="{Binding ManVisuAnzeigen.KommentarDi[1]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[1]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="7"  Content="{Binding ManVisuAnzeigen.KommentarDi[2]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[2]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="9"  Content="{Binding ManVisuAnzeigen.KommentarDi[3]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[3]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="11" Content="{Binding ManVisuAnzeigen.KommentarDi[4]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[4]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="13" Content="{Binding ManVisuAnzeigen.KommentarDi[5]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[5]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="15" Content="{Binding ManVisuAnzeigen.KommentarDi[6]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[6]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="17" Content="{Binding ManVisuAnzeigen.KommentarDi[7]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[7]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="19" Content="{Binding ManVisuAnzeigen.KommentarDi[8]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[8]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="21" Content="{Binding ManVisuAnzeigen.KommentarDi[9]}"  Visibility="{Binding ManVisuAnzeigen.VisibilityDi[9]}"  FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="23" Content="{Binding ManVisuAnzeigen.KommentarDi[10]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[10]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="25" Content="{Binding ManVisuAnzeigen.KommentarDi[11]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[11]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="27" Content="{Binding ManVisuAnzeigen.KommentarDi[12]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[12]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="29" Content="{Binding ManVisuAnzeigen.KommentarDi[13]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[13]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="31" Content="{Binding ManVisuAnzeigen.KommentarDi[14]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[14]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="33" Content="{Binding ManVisuAnzeigen.KommentarDi[15]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[15]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="35" Content="{Binding ManVisuAnzeigen.KommentarDi[16]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[16]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="37" Content="{Binding ManVisuAnzeigen.KommentarDi[17]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[17]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="39" Content="{Binding ManVisuAnzeigen.KommentarDi[18]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[18]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="41" Content="{Binding ManVisuAnzeigen.KommentarDi[19]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[19]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="43" Content="{Binding ManVisuAnzeigen.KommentarDi[20]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[20]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="45" Content="{Binding ManVisuAnzeigen.KommentarDi[21]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[21]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="47" Content="{Binding ManVisuAnzeigen.KommentarDi[22]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[22]}" FontSize="14pt"/>
-        <Label Grid.Column="5" Grid.Row="49" Content="{Binding ManVisuAnzeigen.KommentarDi[23]}" Visibility="{Binding ManVisuAnzeigen.VisibilityDi[23]}" FontSize="14pt"/>
-    </Grid>
+       </Grid>
 </Window>
