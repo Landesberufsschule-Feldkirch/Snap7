@@ -22,7 +22,7 @@
             _viewModel.Zahlenschloss.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Zahlenschloss.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
 
-            _viewModel.Zahlenschloss.CodeAnzeige = S7.GetUint16At(datenstruktur.AnalogOutput, 1);
+            _viewModel.Zahlenschloss.CodeAnzeige = S7.GetUint16At(datenstruktur.AnalogOutput, 0);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

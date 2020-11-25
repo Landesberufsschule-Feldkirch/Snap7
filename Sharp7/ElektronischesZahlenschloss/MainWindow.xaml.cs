@@ -13,9 +13,9 @@ namespace ElektronischesZahlenschloss
         public Datenstruktur Datenstruktur { get; set; }
 
         private readonly DatenRangieren _datenRangieren;
-        private const int AnzByteDigInput = 2;
+        private const int AnzByteDigInput = 0;
         private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 2;
+        private const int AnzByteAnalogInput = 1;
         private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
