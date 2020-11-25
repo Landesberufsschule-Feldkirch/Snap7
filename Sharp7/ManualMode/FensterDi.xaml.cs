@@ -3,8 +3,10 @@ using ManualMode.ViewModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using ManualMode.Model;
 
 namespace ManualMode
@@ -78,7 +80,7 @@ namespace ManualMode
                 for (var vBit = 0; vBit < 8; vBit++)
                 {
                     if (8 * vbyte + vBit >= anzahlBit) continue;
-                    TextWertZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
+                    ButtonZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
                     BezeichnungZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDi);
                     KommentarZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDi);
 
@@ -86,41 +88,27 @@ namespace ManualMode
             }
         }
 
-
-        /*
-             <Label 
-           Grid.Column="1" 
-           Grid.Row="3"    
-           Content = "    0.0    " 
-           Background = "{Binding  ManVisuAnzeigen.FarbeDi[0]}"  
-           Visibility="{Binding ManVisuAnzeigen.VisibilityDi[0]}"  
-           FontSize="14pt" HorizontalAlignment="Center"/>
-            */
-
-
-        private static void TextWertZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void ButtonZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
-            var textWert = new TextBlock
+            var buttonTasten = new Button
             {
-                Text = vbyte.ToString() + "." + vbit.ToString(),
-                FontSize = 20,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Center
+                Content = vbyte + "." + vbit,
+                FontSize = 22,
+                Padding = new Thickness(5, 5, 5, 5),
+                BorderThickness = new Thickness(1.0),
+                BorderBrush = new SolidColorBrush(Colors.Black)
             };
 
-            textWert.SetBinding(BackgroundProperty, new Binding("ManVisuAnzeigen.FarbeDi[" + parameterNummer + "]"));
-            textWert.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDi[" + parameterNummer + "]"));
+            buttonTasten.SetBinding(BackgroundProperty, new Binding("ManVisuAnzeigen.FarbeDi[" + parameterNummer + "]"));
+            buttonTasten.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityDi[" + parameterNummer + "]"));
 
-            Grid.SetColumn(textWert, x);
-            Grid.SetRow(textWert, y);
-            panel.Children.Add(textWert);
+            Grid.SetColumn(buttonTasten, x);
+            Grid.SetRow(buttonTasten, y);
+
+            panel.Children.Add(buttonTasten);
         }
-
-
 
 
         private static void BezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
