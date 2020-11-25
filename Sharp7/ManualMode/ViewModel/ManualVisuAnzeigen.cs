@@ -201,6 +201,7 @@ namespace ManualMode.ViewModel
         internal void BtnTasten(object taste)
         {
             if (!(taste is string ascii)) return;
+
             var (iByte, bitMuster) = NummerInBitUndBitmuster(int.Parse(ascii));
 
             if (ClickModeButtonSchalten(int.Parse(ascii)))
@@ -216,6 +217,7 @@ namespace ManualMode.ViewModel
         internal void BtnToggeln(object taste)
         {
             if (!(taste is string ascii)) return;
+
             var (iByte, bitMuster) = NummerInBitUndBitmuster(int.Parse(ascii));
 
             if ((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster)

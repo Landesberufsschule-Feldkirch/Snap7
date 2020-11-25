@@ -7,9 +7,6 @@
         public bool P1 { get; set; } // Lampe rot
         public bool P2 { get; set; } // Lampe grün
 
-        public Zahlenschloss()
-        {
-            Zeichen = ' ';
-        }
+        public Zahlenschloss() => Zeichen = ' ';
     }
 }
