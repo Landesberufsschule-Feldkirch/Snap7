@@ -49,7 +49,7 @@ namespace Nadeltelegraph
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void ManualModeOeffnen(object sender, System.Windows.RoutedEventArgs e)
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
             if (Plc.GetPlcModus() == "S7-1200")
             {

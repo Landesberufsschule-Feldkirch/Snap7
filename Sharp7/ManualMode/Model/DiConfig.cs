@@ -2,14 +2,14 @@
 
 namespace ManualMode.Model
 {
-    public class ConfigDa
+    public class DiConfig
     {
-        public ObservableCollection<DaEinstellungen> DigitaleAusgaenge { get; set; } = new ObservableCollection<DaEinstellungen>();
+        public ObservableCollection<DiEinstellungen> DigitaleEingaenge { get; set; } = new ObservableCollection<DiEinstellungen>();
     }
 
-    public class DaEinstellungen
+    public class DiEinstellungen
     {
-        public DaEinstellungen()
+        public DiEinstellungen()
         {
             LaufendeNr = 0;
             StartByte = 0;

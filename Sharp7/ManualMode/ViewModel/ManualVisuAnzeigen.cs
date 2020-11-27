@@ -72,11 +72,11 @@ namespace ManualMode.ViewModel
                 var (iByte, bitMuster) = NummerInBitUndBitmuster(i);
 
                 SetFarbeTastenToggelnDa((_manualMode.Datenstruktur.DigOutput[iByte] & bitMuster) == bitMuster, i);
-                SetFarbeDi((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
+                DiSetFarbe((_manualMode.Datenstruktur.DigInput[iByte] & bitMuster) == bitMuster, i);
             }
         }
 
-        public void SetFarbeDi(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
+        public void DiSetFarbe(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
         private ObservableCollection<Brush> _farbeDi = new ObservableCollection<Brush>();
         public ObservableCollection<Brush> FarbeDi
@@ -129,9 +129,9 @@ namespace ManualMode.ViewModel
 
         private void DigitaleAusgaengeSchaltenFarbeSichtbarkeit()
         {
-            if (_manualMode?.GetConfig?.ConfigDa?.DigitaleAusgaenge == null) return;
+            if (_manualMode?.GetConfig?.DaConfig?.DigitaleAusgaenge == null) return;
 
-            foreach (var digitaleAusgaenge in _manualMode.GetConfig.ConfigDa.DigitaleAusgaenge)
+            foreach (var digitaleAusgaenge in _manualMode.GetConfig.DaConfig.DigitaleAusgaenge)
             {
                 switch (digitaleAusgaenge.AnzahlBit)
                 {
@@ -288,9 +288,9 @@ namespace ManualMode.ViewModel
 
         private void AnalogeEingaengeWerteSichtbarkeit()
         {
-            if (_manualMode?.GetConfig?.ConfigAi?.AnalogeEingaenge == null) return;
+            if (_manualMode?.GetConfig?.AiConfig?.AnalogeEingaenge == null) return;
 
-            foreach (var analogeEingaenge in _manualMode.GetConfig.ConfigAi.AnalogeEingaenge)
+            foreach (var analogeEingaenge in _manualMode.GetConfig.AiConfig.AnalogeEingaenge)
             {
                 switch (analogeEingaenge.AnzahlBit)
                 {
@@ -392,10 +392,10 @@ namespace ManualMode.ViewModel
 
         private void AnalogeAusgaengeVeraendernSichtbarkeit()
         {
-            if (_manualMode?.GetConfig?.ConfigAa?.AnalogeAusgaenge == null) return;
+            if (_manualMode?.GetConfig?.AaConfig?.AnalogeAusgaenge == null) return;
 
 
-            foreach (var analogeAusgaenge in _manualMode.GetConfig.ConfigAa.AnalogeAusgaenge)
+            foreach (var analogeAusgaenge in _manualMode.GetConfig.AaConfig.AnalogeAusgaenge)
             {
                 switch (analogeAusgaenge.AnzahlBit)
                 {

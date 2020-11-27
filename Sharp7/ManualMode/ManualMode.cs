@@ -51,25 +51,25 @@ namespace ManualMode
         {
             if (Datenstruktur.AnzahlByteDigitalInput > 0)
             {
-                var fensterDi = new FensterDi(GetConfig.ConfigDi, ManualViewModel);
-                fensterDi.Show();
+                var diFenster = new DiFenster(GetConfig.DiConfig, ManualViewModel);
+                diFenster.Show();
             }
 
             if (Datenstruktur.AnzahlByteDigitalOutput > 0)
             {
-                var fensterDa = new FensterDa(GetConfig.ConfigDa, ManualViewModel);
-                fensterDa.Show();
+                var daFenster = new DaFenster(GetConfig.DaConfig, ManualViewModel);
+                daFenster.Show();
             }
 
             if (Datenstruktur.AnzahlByteAnalogInput > 0)
             {
-                var fensterAi = new FensterAi(GetConfig.ConfigAi, ManualViewModel);
-                fensterAi.Show();
+                var aiFenster = new AiFenster(GetConfig.AiConfig, ManualViewModel);
+                aiFenster.Show();
             }
 
             if (Datenstruktur.AnzahlByteAnalogOutput <= 0) return;
-            var fensterAa = new FensterAa(GetConfig.ConfigAa, ManualViewModel);
-            fensterAa.Show();
+            var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
+            aaFenster.Show();
         }
     }
 }

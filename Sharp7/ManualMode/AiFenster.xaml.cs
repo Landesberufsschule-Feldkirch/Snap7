@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using ManualMode.ViewModel;
+﻿using ManualMode.ViewModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,22 +7,22 @@ using System.Windows.Media;
 
 namespace ManualMode
 {
-    public partial class FensterAi
+    public partial class AiFenster
     {
-        public FensterAi(Model.ConfigAi configAi, ManualViewModel mvm)
+        public AiFenster(Model.AiConfig aiConfig, ManualViewModel mvm)
         {
             var manViewModel = mvm;
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlByte = DatenAiLesen(configAi, manViewModel);
-            CreateGridAi(anzahlByte);
+            var anzahlByte = AiDatenLesen(aiConfig, manViewModel);
+            AiCreateGrid(anzahlByte);
         }
-        private static int DatenAiLesen(Model.ConfigAi configAi, ManualViewModel manViewModel)
+        private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
         {
             var anzahlByte = 0;
 
-            foreach (var config in configAi.AnalogeEingaenge)
+            foreach (var config in aiConfig.AnalogeEingaenge)
             {
                 if (config.LaufendeNr == anzahlByte)
                 {
@@ -35,36 +34,37 @@ namespace ManualMode
                 }
                 else
                 {
-                    throw new InvalidDataException($"{nameof(FensterDi)} invalid {config.LaufendeNr} ");
+                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
                 }
             }
             return anzahlByte + 1;
         }
-        private void CreateGridAi(in int anzahlBit)
+        private void AiCreateGrid(in int anzahlBit)
         {
 
-            var gridAi = new Grid
+            var aiGgrid = new Grid
             {
-                Name = "GridAi",
+                Name = "AiGrid",
                 Width = 600
             };
 
-            Content = gridAi;
+            Content = aiGgrid;
 
-            gridAi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
-            gridAi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            gridAi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            var rowDefCollection = new ObservableCollection<RowDefinition>();
             for (var i = 0; i < anzahlBit; i++)
             {
-                rowDefCollection.Add(new RowDefinition { Height = new GridLength(45) });
-                gridAi.RowDefinitions.Add(rowDefCollection[i]);
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
-            TextAiZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAi);
-            TextAiZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAi);
-            TextAiZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAi);
+            AiTextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
+            AiTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
+            AiTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -72,13 +72,13 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit >= anzahlBit) continue;
 
-                    WertAiZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridAi);
-                    BezeichnungAiZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridAi);
-                    KommentarAiZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridAi);
+                    AiWertZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
+                    AiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
+                    AiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                 }
             }
         }
-        private static void WertAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void AiWertZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -98,7 +98,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void BezeichnungAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void AiBezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -118,7 +118,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void AiKommentarZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -139,7 +139,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextAiZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void AiTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {

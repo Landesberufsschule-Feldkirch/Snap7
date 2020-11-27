@@ -76,6 +76,7 @@ namespace PaternosterLager.ViewModel
 
             var (x, y, phi, positionUndRichtung) = PositionBestimmen.KettengliedPositionBerechnen(_position + offset, DurchmesserBolzen, BreiteKettenglied, _hoeheKettenglied);
 
+            // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (positionUndRichtung)
             {
                 case Zeichenbereich.Links:

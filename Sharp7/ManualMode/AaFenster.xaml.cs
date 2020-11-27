@@ -1,30 +1,29 @@
-﻿using System.Collections.ObjectModel;
+﻿using ManualMode.Model;
+using ManualMode.ViewModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using ManualMode.Model;
-using ManualMode.ViewModel;
 
 namespace ManualMode
 {
-    public partial class FensterAa
+    public partial class AaFenster
     {
-        public FensterAa(ConfigAa configAa, ManualViewModel mvm)
+        public AaFenster(AaConfig aaConfig, ManualViewModel mvm)
         {
             var manualViewModel = mvm;
             InitializeComponent();
             DataContext = manualViewModel;
 
-            var anzahlByte = DatenAaLesen(configAa, manualViewModel);
-            CreateGridAa(anzahlByte);
+            var anzahlByte = AaDatenLesen(aaConfig, manualViewModel);
+            AaCreateGrid(anzahlByte);
         }
-        private static int DatenAaLesen(ConfigAa configAa, ManualViewModel manualViewModel)
+        private static int AaDatenLesen(AaConfig aaConfig, ManualViewModel manualViewModel)
         {
             var anzahlByte = 0;
 
-            foreach (var config in configAa.AnalogeAusgaenge)
+            foreach (var config in aaConfig.AnalogeAusgaenge)
             {
                 if (config.LaufendeNr == anzahlByte)
                 {
@@ -36,44 +35,44 @@ namespace ManualMode
                 }
                 else
                 {
-                    throw new InvalidDataException($"{nameof(FensterDi)} invalid {config.LaufendeNr} ");
+                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
                 }
             }
             return anzahlByte + 1;
         }
-        private void CreateGridAa(int anzahlByte)
+        private void AaCreateGrid(int anzahlByte)
         {
-            var gridAa = new Grid
+            var aaGrid = new Grid
             {
-                Name = "GridAa",
+                Name = "AaGrid",
                 Width = 600
             };
 
-            Content = gridAa;
+            Content = aaGrid;
 
-            gridAa.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
-            gridAa.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            gridAa.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
+            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            var rowDefCollection = new ObservableCollection<RowDefinition>();
             for (var i = 0; i < anzahlByte; i++)
             {
-                rowDefCollection.Add(new RowDefinition { Height = new GridLength(45) });
-                gridAa.RowDefinitions.Add(rowDefCollection[i]);
+                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
+                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
-            TextAaZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAa);
-            TextAaZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAa);
-            TextAaZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAa);
+            AaTextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aaGrid);
+            AaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aaGrid);
+            AaTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aaGrid);
 
             for (var vbyte = 0; vbyte < anzahlByte; vbyte++)
             {
-
-                BezeichnungAaZeichnen(vbyte, 1, 1 + vbyte, gridAa);
-                KommentarAaZeichnen(vbyte, 2, 1 + vbyte, gridAa);
+                AaBezeichnungZeichnen(vbyte, 2, 2 + 2 * vbyte, aaGrid);
+                AaKommentarZeichnen(vbyte, 4, 2 + 2 * vbyte, aaGrid);
             }
         }
-        private static void BezeichnungAaZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void AaBezeichnungZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -93,7 +92,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarAaZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void AaKommentarZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -114,7 +113,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextAaZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void AaTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {

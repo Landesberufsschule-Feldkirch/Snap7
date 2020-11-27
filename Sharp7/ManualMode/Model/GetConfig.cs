@@ -33,14 +33,14 @@ namespace ManualMode.Model
 
     public class GetConfig
     {
-        public ConfigDi ConfigDi { get; set; }
-        public ConfigDa ConfigDa { get; set; }
-        public ConfigAi ConfigAi { get; set; }
-        public ConfigAa ConfigAa { get; set; }
+        public DiConfig DiConfig { get; set; }
+        public DaConfig DaConfig { get; set; }
+        public AiConfig AiConfig { get; set; }
+        public AaConfig AaConfig { get; set; }
 
-        public void SetDiConfig(string pfad) => ConfigDi = JsonConvert.DeserializeObject<ConfigDi>(File.ReadAllText(pfad), new MyEnumConverter());
-        internal void SetDaConfig(string pfad) => ConfigDa = JsonConvert.DeserializeObject<ConfigDa>(File.ReadAllText(pfad), new MyEnumConverter());
-        internal void SetAiConfig(string pfad) => ConfigAi = JsonConvert.DeserializeObject<ConfigAi>(File.ReadAllText(pfad), new MyEnumConverter());
-        public void SetAaConfig(string pfad) => ConfigAa = JsonConvert.DeserializeObject<ConfigAa>(File.ReadAllText(pfad), new MyEnumConverter());
+        public void SetDiConfig(string pfad) => DiConfig = JsonConvert.DeserializeObject<DiConfig>(File.ReadAllText(pfad), new MyEnumConverter());
+        internal void SetDaConfig(string pfad) => DaConfig = JsonConvert.DeserializeObject<DaConfig>(File.ReadAllText(pfad), new MyEnumConverter());
+        internal void SetAiConfig(string pfad) => AiConfig = JsonConvert.DeserializeObject<AiConfig>(File.ReadAllText(pfad), new MyEnumConverter());
+        public void SetAaConfig(string pfad) => AaConfig = JsonConvert.DeserializeObject<AaConfig>(File.ReadAllText(pfad), new MyEnumConverter());
     }
 }

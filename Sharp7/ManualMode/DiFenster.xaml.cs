@@ -1,6 +1,5 @@
 ﻿using ManualMode.Model;
 using ManualMode.ViewModel;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,22 +8,22 @@ using System.Windows.Media;
 
 namespace ManualMode
 {
-    public partial class FensterDi
+    public partial class DiFenster
     {
-        public FensterDi(ConfigDi configDi, ManualViewModel mvm)
+        public DiFenster(DiConfig diConfig, ManualViewModel mvm)
         {
             var manViewModel = mvm;
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlBit = DatenDiLesen(configDi, manViewModel);
-            CreateGridDi(anzahlBit);
+            var anzahlBit = DiDatenLesen(diConfig, manViewModel);
+            DiCreateGrid(anzahlBit);
         }
-        private static int DatenDiLesen(ConfigDi configDi, ManualViewModel manViewModel)
+        private static int DiDatenLesen(DiConfig diConfig, ManualViewModel manViewModel)
         {
             var anzahlBit = 0;
 
-            foreach (var config in configDi.DigitaleEingaenge)
+            foreach (var config in diConfig.DigitaleEingaenge)
             {
                 if (config.LaufendeNr == anzahlBit)
                 {
@@ -36,50 +35,51 @@ namespace ManualMode
                 }
                 else
                 {
-                    throw new InvalidDataException($"{nameof(FensterDi)} invalid {config.LaufendeNr} ");
+                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
                 }
             }
 
             return anzahlBit + 1;
         }
-        private void CreateGridDi(int anzahlBit)
+        private void DiCreateGrid(int anzahlBit)
         {
 
-            var gridDi = new Grid
+            var diGrid = new Grid
             {
-                Name = "GridDi",
+                Name = "DiGrid",
                 Width = 600
             };
 
-            Content = gridDi;
+            Content = diGrid;
 
-            gridDi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80) });
-            gridDi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            gridDi.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            var rowDefCollection = new ObservableCollection<RowDefinition>();
             for (var i = 0; i < anzahlBit; i++)
             {
-                rowDefCollection.Add(new RowDefinition { Height = new GridLength(45) });
-                gridDi.RowDefinitions.Add(rowDefCollection[i]);
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
-            TextDiZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDi);
-            TextDiZeichnen("Bezeichnung", HorizontalAlignment.Center, 1, 0, gridDi);
-            TextDiZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridDi);
+            DiTextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, diGrid);
+            DiTextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, diGrid);
+            DiTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, diGrid);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
                 for (var vBit = 0; vBit < 8; vBit++)
                 {
                     if (8 * vbyte + vBit >= anzahlBit) continue;
-                    ButtonDiZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
-                    BezeichnungDiZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDi);
-                    KommentarDiZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDi);
+                    DiButtonZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, diGrid);
+                    DiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, diGrid);
+                    DiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, diGrid);
                 }
             }
         }
-        private static void ButtonDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void DiButtonZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -100,7 +100,7 @@ namespace ManualMode
 
             panel.Children.Add(buttonTasten);
         }
-        private static void BezeichnungDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void DiBezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -120,7 +120,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void DiKommentarZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -141,7 +141,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextDiZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void DiTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {
