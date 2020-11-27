@@ -16,11 +16,10 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlByte = AnalogeEingangeDatenLesen(configAi, manViewModel);
+            var anzahlByte = DatenAiLesen(configAi, manViewModel);
             CreateGridAi(anzahlByte);
         }
-        
-        private static int AnalogeEingangeDatenLesen(Model.ConfigAi configAi, ManualViewModel manViewModel)
+        private static int DatenAiLesen(Model.ConfigAi configAi, ManualViewModel manViewModel)
         {
             var anzahlByte = 0;
 
@@ -63,9 +62,9 @@ namespace ManualMode
                 gridAi.RowDefinitions.Add(rowDefCollection[i]);
             }
 
-            TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAi);
-            TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAi);
-            TextZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAi);
+            TextAiZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAi);
+            TextAiZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAi);
+            TextAiZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAi);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -73,13 +72,13 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit >= anzahlBit) continue;
 
-                    WertZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridAi);
-                    BezeichnungZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridAi);
-                    KommentarZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridAi);
+                    WertAiZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridAi);
+                    BezeichnungAiZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridAi);
+                    KommentarAiZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridAi);
                 }
             }
         }
-        private static void WertZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void WertAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -99,7 +98,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void BezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void BezeichnungAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -119,7 +118,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void KommentarAiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -140,7 +139,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void TextAiZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {

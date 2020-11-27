@@ -77,7 +77,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoltmeterMitSiebenSegmentAn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SegmentDisplay", "SevenSegmentDisplay\SegmentDisplay.csproj", "{E1989EB2-F358-4887-B02B-DECE789BEF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_TestProjekt", "_TestProjekt\_TestProjekt.csproj", "{585E4F42-257B-4979-997C-B2FE68BEF3B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_TestProjekt", "_TestProjekt\_TestProjekt.csproj", "{585E4F42-257B-4979-997C-B2FE68BEF3B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CB1D9F1-BEC0-4A07-9ABB-ED9AD8024D61}"
+	ProjectSection(SolutionItems) = preProject
+		__Uebersicht.html = __Uebersicht.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

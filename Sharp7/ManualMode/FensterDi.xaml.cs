@@ -17,11 +17,10 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlBit = DigitaleEingaengeDatenLesen(configDi, manViewModel);
+            var anzahlBit = DatenDiLesen(configDi, manViewModel);
             CreateGridDi(anzahlBit);
         }
-
-        private static int DigitaleEingaengeDatenLesen(ConfigDi configDi, ManualViewModel manViewModel)
+        private static int DatenDiLesen(ConfigDi configDi, ManualViewModel manViewModel)
         {
             var anzahlBit = 0;
 
@@ -65,22 +64,22 @@ namespace ManualMode
                 gridDi.RowDefinitions.Add(rowDefCollection[i]);
             }
 
-            TextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDi);
-            TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 1, 0, gridDi);
-            TextZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridDi);
+            TextDiZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDi);
+            TextDiZeichnen("Bezeichnung", HorizontalAlignment.Center, 1, 0, gridDi);
+            TextDiZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridDi);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
                 for (var vBit = 0; vBit < 8; vBit++)
                 {
                     if (8 * vbyte + vBit >= anzahlBit) continue;
-                    ButtonZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
-                    BezeichnungZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDi);
-                    KommentarZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDi);
+                    ButtonDiZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDi);
+                    BezeichnungDiZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDi);
+                    KommentarDiZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDi);
                 }
             }
         }
-        private static void ButtonZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void ButtonDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -101,7 +100,7 @@ namespace ManualMode
 
             panel.Children.Add(buttonTasten);
         }
-        private static void BezeichnungZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void BezeichnungDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -121,7 +120,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void KommentarDiZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -142,7 +141,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void TextDiZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {

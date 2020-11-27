@@ -15,6 +15,7 @@ namespace ManualMode
     {
         public bool DatenByteweiseEingeben { get; set; }
 
+
         public FensterDa(ConfigDa configDa, ManualViewModel mvm)
         {
             DatenByteweiseEingeben = false;
@@ -22,11 +23,10 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlBit = DigitaleAusgaengeDatenLesen(configDa, manViewModel);
+            var anzahlBit = DatenDaLesen(configDa, manViewModel);
             CreateGridDa(anzahlBit, manViewModel);
         }
-
-        private int DigitaleAusgaengeDatenLesen(ConfigDa configDa, ManualViewModel manualViewModel)
+        private int DatenDaLesen(ConfigDa configDa, ManualViewModel manualViewModel)
         {
             var anzahlBit = 0;
 
@@ -91,23 +91,23 @@ namespace ManualMode
 
             if (DatenByteweiseEingeben)
             {
-                TextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDa);
-                TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, gridDa);
-                TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
+                TextDaZeichnen("Wert", HorizontalAlignment.Center, 0, 0, gridDa);
+                TextDaZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, gridDa);
+                TextDaZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
 
                 for (var vbyte = 0; vbyte < anzahlBit; vbyte++)
                 {
-                    TextboxByteZeichnen(vbyte, 0, 1 + vbyte, gridDa);
-                    BezeichnungByteZeichnen(vbyte, 2, 1 + vbyte, gridDa);
-                    KommentarByteZeichnen(vbyte, 3, 1 + vbyte, gridDa);
+                    TextboxDaByteZeichnen(vbyte, 0, 1 + vbyte, gridDa);
+                    BezeichnungDaByteZeichnen(vbyte, 2, 1 + vbyte, gridDa);
+                    KommentarDaByteZeichnen(vbyte, 3, 1 + vbyte, gridDa);
                 }
             }
             else
             {
-                TextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, gridDa);
-                TextZeichnen("Toggeln", HorizontalAlignment.Center, 1, 0, gridDa);
-                TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, gridDa);
-                TextZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
+                TextDaZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, gridDa);
+                TextDaZeichnen("Toggeln", HorizontalAlignment.Center, 1, 0, gridDa);
+                TextDaZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, gridDa);
+                TextDaZeichnen("Kommentar", HorizontalAlignment.Left, 3, 0, gridDa);
 
                 for (var vbyte = 0; vbyte < 10; vbyte++)
                 {
@@ -115,17 +115,15 @@ namespace ManualMode
                     {
                         if (8 * vbyte + vBit >= anzahlBit) continue;
 
-                        ButtonTastenZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
-                        ButtonToggelnZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
-                        BezeichnungBitZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDa);
-                        KommentarBitZeichnen(vbyte, vBit, 3, 1 + vbyte * 8 + vBit, gridDa);
+                        ButtonTastenDaZeichnen(vbyte, vBit, 0, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
+                        ButtonToggelnDaZeichnen(vbyte, vBit, 1, 1 + vbyte * 8 + vBit, gridDa, manualViewModel);
+                        BezeichnungDaBitZeichnen(vbyte, vBit, 2, 1 + vbyte * 8 + vBit, gridDa);
+                        KommentarDaBitZeichnen(vbyte, vBit, 3, 1 + vbyte * 8 + vBit, gridDa);
                     }
                 }
             }
         }
-
-
-        private static void ButtonTastenZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
+        private static void ButtonTastenDaZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -149,7 +147,7 @@ namespace ManualMode
 
             panel.Children.Add(buttonTasten);
         }
-        private static void ButtonToggelnZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
+        private static void ButtonToggelnDaZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -172,7 +170,7 @@ namespace ManualMode
 
             panel.Children.Add(buttonToggeln);
         }
-        private static void BezeichnungBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void BezeichnungDaBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -192,7 +190,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
+        private static void KommentarDaBitZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
 
@@ -213,8 +211,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-
-        private static void TextboxByteZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void TextboxDaByteZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -237,7 +234,7 @@ namespace ManualMode
             {
                 Path = new PropertyPath("ManVisuAnzeigen.WertDa[" + parameterNummer + "]"),
                 Mode = BindingMode.TwoWay,
-                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
+                UpdateSourceTrigger = UpdateSourceTrigger.LostFocus
             };
 
             textBox.SetBinding(TextBox.TextProperty, textBinding);
@@ -251,8 +248,7 @@ namespace ManualMode
 
             panel.Children.Add(textBox);
         }
-
-        private static void BezeichnungByteZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void BezeichnungDaByteZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -272,7 +268,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarByteZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void KommentarDaByteZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -293,8 +289,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-
-        private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void TextDaZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {

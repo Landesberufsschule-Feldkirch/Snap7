@@ -17,13 +17,10 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manualViewModel;
 
-            var anzahlByte = DigitaleAusgaengeDatenLesen(configAa, manualViewModel);
+            var anzahlByte = DatenAaLesen(configAa, manualViewModel);
             CreateGridAa(anzahlByte);
         }
-
-
-
-        private static int DigitaleAusgaengeDatenLesen(ConfigAa configAa, ManualViewModel manualViewModel)
+        private static int DatenAaLesen(ConfigAa configAa, ManualViewModel manualViewModel)
         {
             var anzahlByte = 0;
 
@@ -44,7 +41,6 @@ namespace ManualMode
             }
             return anzahlByte + 1;
         }
-
         private void CreateGridAa(int anzahlByte)
         {
             var gridAa = new Grid
@@ -66,22 +62,18 @@ namespace ManualMode
                 gridAa.RowDefinitions.Add(rowDefCollection[i]);
             }
 
-            TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAa);
-            TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAa);
-            TextZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAa);
+            TextAaZeichnen("Wert", HorizontalAlignment.Left, 0, 0, gridAa);
+            TextAaZeichnen("Bezeichnung", HorizontalAlignment.Left, 1, 0, gridAa);
+            TextAaZeichnen("Kommentar", HorizontalAlignment.Left, 2, 0, gridAa);
 
             for (var vbyte = 0; vbyte < anzahlByte; vbyte++)
             {
 
-                BezeichnungZeichnen(vbyte, 1, 1 + vbyte, gridAa);
-                KommentarZeichnen(vbyte, 2, 1 + vbyte, gridAa);
+                BezeichnungAaZeichnen(vbyte, 1, 1 + vbyte, gridAa);
+                KommentarAaZeichnen(vbyte, 2, 1 + vbyte, gridAa);
             }
         }
-
-
-
-
-        private static void BezeichnungZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void BezeichnungAaZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -101,7 +93,7 @@ namespace ManualMode
             Grid.SetRow(bezeichnung, y);
             panel.Children.Add(bezeichnung);
         }
-        private static void KommentarZeichnen(int vbyte, int x, int y, Panel panel)
+        private static void KommentarAaZeichnen(int vbyte, int x, int y, Panel panel)
         {
             var parameterNummer = vbyte;
 
@@ -122,7 +114,7 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void TextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
+        private static void TextAaZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
         {
             var text = new TextBlock
             {
@@ -138,7 +130,5 @@ namespace ManualMode
             Grid.SetRow(text, y);
             panel.Children.Add(text);
         }
-
-
     }
 }
