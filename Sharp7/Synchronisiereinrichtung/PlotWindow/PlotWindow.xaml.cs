@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace Synchronisiereinrichtung.PlotWindow
+﻿namespace Synchronisiereinrichtung.PlotWindow
 {
     public partial class PlotWindow
     {

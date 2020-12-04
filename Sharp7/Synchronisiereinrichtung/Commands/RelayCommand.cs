@@ -1,8 +1,8 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Commands
-{
-    using System;
-    using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
+namespace Synchronisiereinrichtung.Commands
+{
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;

@@ -1,8 +1,8 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
-{
-    using System;
-    using Utilities;
+﻿using System;
+using Utilities;
 
+namespace Synchronisiereinrichtung.Model
+{
     public static class DrehstromZeiger
     {
         public static double WinkelBerechnen(double zeit, double freqenz, double winkel)

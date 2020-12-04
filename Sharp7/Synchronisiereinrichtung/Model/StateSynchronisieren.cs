@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.Model
 {
     internal class StateSynchronisieren
     {
-        private readonly Kraftwerk _kraftWerk;
+        private readonly Kraftwerk.Model.Kraftwerk _kraftWerk;
 
-        public StateSynchronisieren(Kraftwerk kw) => _kraftWerk = kw;
+        public StateSynchronisieren(Kraftwerk.Model.Kraftwerk kw) => _kraftWerk = kw;
         public void OnEntry()
         {
             _kraftWerk.Q1 = true;

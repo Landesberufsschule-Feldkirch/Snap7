@@ -1,12 +1,11 @@
 ﻿using Sharp7;
-using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using Utilities;
 
 namespace Synchronisiereinrichtung
 {
     public class DatenRangieren
     {
-        private readonly ViewModel _viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
         private readonly MainWindow _mainWindow;
 
         private enum BitPosAusgang
@@ -20,7 +19,7 @@ namespace Synchronisiereinrichtung
             S2      // Kraftwerk Stoppen
         }
 
-        public DatenRangieren(MainWindow mw, ViewModel vm)
+        public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)
         {
             _mainWindow = mw;
             _viewModel = vm;

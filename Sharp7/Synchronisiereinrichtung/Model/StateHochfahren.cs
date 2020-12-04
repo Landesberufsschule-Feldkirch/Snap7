@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.Model
 {
     internal class StateHochfahren
     {
-        private readonly Kraftwerk _kraftWerk;
+        private readonly Kraftwerk.Model.Kraftwerk _kraftWerk;
 
-        public StateHochfahren(Kraftwerk kw) => _kraftWerk = kw;
+        public StateHochfahren(Kraftwerk.Model.Kraftwerk kw) => _kraftWerk = kw;
         public void Doing()
         {
             _kraftWerk.Generator.MaschineAntreiben(_kraftWerk.VentilY);

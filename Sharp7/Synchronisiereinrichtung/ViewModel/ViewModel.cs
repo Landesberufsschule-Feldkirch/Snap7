@@ -1,15 +1,15 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
-{
-    using Commands;
-    using System.Windows.Input;
+﻿using System.Windows.Input;
+using Synchronisiereinrichtung.Commands;
 
+namespace Synchronisiereinrichtung.ViewModel
+{
     public class ViewModel
     {
-        public Model.Kraftwerk Kraftwerk { get; }
+        public Kraftwerk.Model.Kraftwerk Kraftwerk { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            Kraftwerk = new Model.Kraftwerk();
+            Kraftwerk = new Kraftwerk.Model.Kraftwerk();
             ViAnzeige = new VisuAnzeigen(mainWindow, Kraftwerk);
         }
 

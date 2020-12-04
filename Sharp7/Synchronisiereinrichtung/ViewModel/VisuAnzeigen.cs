@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using System.Threading;
 
-namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
+namespace Synchronisiereinrichtung.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Kraftwerk _kraftwerk;
+        private readonly Kraftwerk.Model.Kraftwerk _kraftwerk;
         private readonly MainWindow _mainWindow;
 
-        public VisuAnzeigen(MainWindow mw, Model.Kraftwerk kw)
+        public VisuAnzeigen(MainWindow mw, Kraftwerk.Model.Kraftwerk kw)
         {
             _mainWindow = mw;
             _kraftwerk = kw;

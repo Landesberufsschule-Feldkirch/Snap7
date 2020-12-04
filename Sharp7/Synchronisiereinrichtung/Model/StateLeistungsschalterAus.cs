@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.Model
 {
     internal class StateLeistungsschalterAus
     {
-        private readonly Kraftwerk _kraftWerk;
+        private readonly Kraftwerk.Model.Kraftwerk _kraftWerk;
 
-        public StateLeistungsschalterAus(Kraftwerk kw) => _kraftWerk = kw;
+        public StateLeistungsschalterAus(Kraftwerk.Model.Kraftwerk kw) => _kraftWerk = kw;
 
         public void Doing()
         {

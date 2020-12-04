@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.Model
 {
     public class Drehstromgenerator
     {

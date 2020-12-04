@@ -2,7 +2,7 @@
 using Stateless.Graph;
 using System;
 
-namespace Synchronisiereinrichtung.Kraftwerk.Model
+namespace Synchronisiereinrichtung.Model
 {
     public class Statemachine
     {
@@ -39,7 +39,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         private readonly StateLeistungsschalterAus _stateLeistungsschalterAus;
         private readonly StateReset _stateReset;
 
-        public Statemachine(Kraftwerk kw)
+        public Statemachine(Kraftwerk.Model.Kraftwerk kw)
         {
             var kraftWerk = kw;
 

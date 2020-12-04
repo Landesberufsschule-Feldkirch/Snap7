@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using Kommunikation;
-using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using Synchronisiereinrichtung.SetManual;
 using System.Text;
 using System.Windows;
@@ -29,7 +28,7 @@ namespace Synchronisiereinrichtung
 
         private SetManualWindow _setManualWindow;
         private PlotWindow.PlotWindow _plotWindow;
-        private readonly ViewModel _viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 20;
@@ -46,7 +45,7 @@ namespace Synchronisiereinrichtung
                 VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
-            _viewModel = new ViewModel(this);
+            _viewModel = new ViewModel.ViewModel(this);
 
             InitializeComponent();
 
@@ -109,8 +108,8 @@ namespace Synchronisiereinrichtung
             }
 
 
-           // KesselTemperatur[_nextDataIndex] = WohnHaus.KesselTemperatur;
-          //  VorlaufSolltemperatur[_nextDataIndex] = WohnHaus.VorlaufSolltemperatur;
+            // KesselTemperatur[_nextDataIndex] = WohnHaus.KesselTemperatur;
+            //  VorlaufSolltemperatur[_nextDataIndex] = WohnHaus.VorlaufSolltemperatur;
 
             _nextDataIndex++;
         }

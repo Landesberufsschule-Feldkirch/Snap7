@@ -1,7 +1,7 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
-{
-    using System;
+﻿using System;
 
+namespace Synchronisiereinrichtung.Model
+{
     public class MagnetischerKreis
     {
         private readonly double _kennlinie;

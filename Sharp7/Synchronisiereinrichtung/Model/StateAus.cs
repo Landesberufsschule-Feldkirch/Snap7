@@ -1,10 +1,10 @@
-﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Model
 {
     public class StateAus
     {
-        private readonly Kraftwerk _kraftWerk;
+        private readonly Kraftwerk.Model.Kraftwerk _kraftWerk;
 
-        public StateAus(Kraftwerk kw) => _kraftWerk = kw;
+        public StateAus(Kraftwerk.Model.Kraftwerk kw) => _kraftWerk = kw;
         public void Doing()
         {
             _kraftWerk.GeneratorN = 0;
