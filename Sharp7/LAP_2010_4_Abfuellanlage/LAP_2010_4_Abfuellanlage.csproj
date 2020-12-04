@@ -8,14 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Campbell_Asparagus_Soup.jpg" />
-    <None Remove="Bilder\Campbell_Chicken_Soup.jpg" />
-    <None Remove="Bilder\Campbell_Mushroom_Soup.jpg" />
-    <None Remove="Bilder\Campbell_Tomato_Soup.jpg" />
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <None Remove="Bilder\VentilElektrischAusHellgrau.jpg" />
-    <None Remove="Bilder\VentilElektrischEinHellgrau.jpg" />
+    <None Remove="Bilder\dose1.jpg" />
+    <None Remove="Bilder\dose2.jpg" />
+    <None Remove="Bilder\dose3.jpg" />
+    <None Remove="Bilder\dose4.jpg" />
+    <None Remove="Bilder\dose5.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +22,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\Campbell_Asparagus_Soup.jpg" />
-    <Resource Include="Bilder\Campbell_Chicken_Soup.jpg" />
-    <Resource Include="Bilder\Campbell_Mushroom_Soup.jpg" />
-    <Resource Include="Bilder\Campbell_Tomato_Soup.jpg" />
+    <Resource Include="Bilder\dose1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
     <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg" />

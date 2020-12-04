@@ -6,7 +6,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
 {
     public class AbfuellAnlage
     {
-        public List<CampbellSoup> AlleDosen { get; set; }
+        public List<BlechDosen> AlleDosen { get; set; }
         public bool S1 { get; set; } // Taster Reset
         public bool S2 { get; set; } // Taster Start
         public bool B1 { get; set; } // Behälter Füllstand
@@ -25,12 +25,13 @@ namespace LAP_2010_4_Abfuellanlage.Model
         {
             Pegel = 0.9;
 
-            AlleDosen = new List<CampbellSoup>
+            AlleDosen = new List<BlechDosen>
             {
-                new CampbellSoup(_anzahlDosen++),
-                new CampbellSoup(_anzahlDosen++),
-                new CampbellSoup(_anzahlDosen++),
-                new CampbellSoup(_anzahlDosen++)
+                new BlechDosen(_anzahlDosen++),
+                new BlechDosen(_anzahlDosen++),
+                new BlechDosen(_anzahlDosen++),
+                new BlechDosen(_anzahlDosen++),
+                new BlechDosen(_anzahlDosen++)
             };
 
             System.Threading.Tasks.Task.Run(AbfuellAnlageTask);
@@ -61,15 +62,15 @@ namespace LAP_2010_4_Abfuellanlage.Model
             // ReSharper disable once FunctionNeverReturns
         }
 
-        private bool KollisionErkennen(CampbellSoup campbellSoup)
+        private bool KollisionErkennen(BlechDosen blechDosen)
         {
             var stop = false;
-            var (lx, ly) = campbellSoup.GetRichtung();
+            var (lx, ly) = blechDosen.GetRichtung();
 
-            foreach (var dose in AlleDosen.Where(dose => campbellSoup.Id != dose.Id))
+            foreach (var dose in AlleDosen.Where(dose => blechDosen.Id != dose.Id))
             {
                 var (hx, hy) = dose.GetRichtung();
-                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(campbellSoup.Position, dose.Position, lx, ly); }
+                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(blechDosen.Position, dose.Position, lx, ly); }
             }
 
             return stop;

@@ -1,4 +1,6 @@
-﻿namespace LAP_2010_4_Abfuellanlage.ViewModel
+﻿using System.Collections.ObjectModel;
+
+namespace LAP_2010_4_Abfuellanlage.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -28,24 +30,13 @@
             ClickModeBtnK1 = "Press";
             ClickModeBtnK2 = "Press";
 
-            ImageTop1 = 10;
-            ImageTop2 = 20;
-            ImageTop3 = 30;
-            ImageTop4 = 40;
-
-            ImageLeft1 = 10;
-            ImageLeft2 = 20;
-            ImageLeft3 = 30;
-            ImageLeft4 = 10;
-
             Margin1 = new Thickness(0, 30, 0, 0);
 
             VisibilityRectangleAbleitung = "visible";
 
-            VisibilityImage1 = "visible";
-            VisibilityImage2 = "visible";
-            VisibilityImage3 = "visible";
-            VisibilityImage4 = "visible";
+            for (var i = 0; i < 10; i++) VisDose.Add(Visibility.Visible);
+            for (var i = 0; i < 10; i++) TopDose.Add(10 + i * 10);
+            for (var i = 0; i < 10; i++) LeftDose.Add(10 + i * 10);
 
             VisibilityK1Ein = "hidden";
             VisibilityK2Ein = "hidden";
@@ -79,15 +70,12 @@
 
                 Margin_1(_abfuellAnlage.Pegel);
 
-                PositionImage_1(_abfuellAnlage.AlleDosen[0].Position.Punkt);
-                PositionImage_2(_abfuellAnlage.AlleDosen[1].Position.Punkt);
-                PositionImage_3(_abfuellAnlage.AlleDosen[2].Position.Punkt);
-                PositionImage_4(_abfuellAnlage.AlleDosen[3].Position.Punkt);
+                for (var i = 0; i < 5; i++)
+                {
+                    VisibilityDose1(_abfuellAnlage.AlleDosen[i].Sichtbar, i);
+                    PositionDose(_abfuellAnlage.AlleDosen[i].Position.Punkt, i);
+                }
 
-                VisibilityDose1(_abfuellAnlage.AlleDosen[0].Sichtbar);
-                VisibilityDose2(_abfuellAnlage.AlleDosen[1].Sichtbar);
-                VisibilityDose3(_abfuellAnlage.AlleDosen[2].Sichtbar);
-                VisibilityDose4(_abfuellAnlage.AlleDosen[3].Sichtbar);
 
                 VisibilityAbleitung(_abfuellAnlage.K2 && _abfuellAnlage.Pegel > 0.01);
 
@@ -170,7 +158,6 @@
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -182,7 +169,6 @@
         }
 
         private string _spsColor;
-
         public string SpsColor
         {
             get => _spsColor;
@@ -195,148 +181,59 @@
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region Image1
 
-        public void PositionImage_1(Punkt pos)
+        #region Position Dosen
+
+        private void VisibilityDose1(bool v, int id) => VisDose[id] = v ? Visibility.Visible : Visibility.Hidden;
+
+        private void PositionDose(Punkt p, int id)
         {
-            ImageLeft1 = pos.X;
-            ImageTop1 = pos.Y;
+            LeftDose[id] = (int)p.X;
+            TopDose[id] = (int)p.Y;
         }
 
-        private double _imageTop1;
 
-        public double ImageTop1
+
+        private ObservableCollection<int> _topDose = new ObservableCollection<int>();
+        public ObservableCollection<int> TopDose
         {
-            get => _imageTop1;
+            get => _topDose;
             set
             {
-                _imageTop1 = value;
-                OnPropertyChanged(nameof(ImageTop1));
+                _topDose = value;
+                OnPropertyChanged(nameof(TopDose));
             }
         }
 
-        private double _imageLeft1;
-
-        public double ImageLeft1
+        private ObservableCollection<int> _leftDose = new ObservableCollection<int>();
+        public ObservableCollection<int> LeftDose
         {
-            get => _imageLeft1;
+            get => _leftDose;
             set
             {
-                _imageLeft1 = value;
-                OnPropertyChanged(nameof(ImageLeft1));
+                _leftDose = value;
+                OnPropertyChanged(nameof(LeftDose));
             }
         }
 
-        #endregion Image1
-
-        #region Image2
-
-        public void PositionImage_2(Punkt pos)
+        private ObservableCollection<Visibility> _visDose = new ObservableCollection<Visibility>();
+        public ObservableCollection<Visibility> VisDose
         {
-            ImageLeft2 = pos.X;
-            ImageTop2 = pos.Y;
-        }
-
-        private double _imageTop2;
-
-        public double ImageTop2
-        {
-            get => _imageTop2;
+            get => _visDose;
             set
             {
-                _imageTop2 = value;
-                OnPropertyChanged(nameof(ImageTop2));
+                _visDose = value;
+                OnPropertyChanged(nameof(VisDose));
             }
         }
 
-        private double _imageLeft2;
-
-        public double ImageLeft2
-        {
-            get => _imageLeft2;
-            set
-            {
-                _imageLeft2 = value;
-                OnPropertyChanged(nameof(ImageLeft2));
-            }
-        }
-
-        #endregion Image2
-
-        #region Image3
-
-        public void PositionImage_3(Punkt pos)
-        {
-            ImageLeft3 = pos.X;
-            ImageTop3 = pos.Y;
-        }
-
-        private double _imageTop3;
-
-        public double ImageTop3
-        {
-            get => _imageTop3;
-            set
-            {
-                _imageTop3 = value;
-                OnPropertyChanged(nameof(ImageTop3));
-            }
-        }
-
-        private double _imageLeft3;
-
-        public double ImageLeft3
-        {
-            get => _imageLeft3;
-            set
-            {
-                _imageLeft3 = value;
-                OnPropertyChanged(nameof(ImageLeft3));
-            }
-        }
-
-        #endregion Image3
-
-        #region Image4
-
-        public void PositionImage_4(Punkt pos)
-        {
-            ImageLeft4 = pos.X;
-            ImageTop4 = pos.Y;
-        }
-
-        private double _imageTop4;
-
-        public double ImageTop4
-        {
-            get => _imageTop4;
-            set
-            {
-                _imageTop4 = value;
-                OnPropertyChanged(nameof(ImageTop4));
-            }
-        }
-
-        private double _imageLeft4;
-
-        public double ImageLeft4
-        {
-            get => _imageLeft4;
-            set
-            {
-                _imageLeft4 = value;
-                OnPropertyChanged(nameof(ImageLeft4));
-            }
-        }
-
-        #endregion Image4
-
+        #endregion
+        
         #region Color P1
 
         public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
 
         private string _colorP1;
-
         public string ColorP1
         {
             get => _colorP1;
@@ -354,7 +251,6 @@
         public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "LightGray";
 
         private string _colorQ1;
-
         public string ColorQ1
         {
             get => _colorQ1;
@@ -372,7 +268,6 @@
         public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? "Coral" : "LightCoral";
 
         private string _colorRectangleZuleitung;
-
         public string ColorRectangleZuleitung
         {
             get => _colorRectangleZuleitung;
@@ -400,7 +295,6 @@
         }
 
         private string _clickModeBtnS1;
-
         public string ClickModeBtnS1
         {
             get => _clickModeBtnS1;
@@ -428,7 +322,6 @@
         }
 
         private string _clickModeBtnS2;
-
         public string ClickModeBtnS2
         {
             get => _clickModeBtnS2;
@@ -456,7 +349,6 @@
         }
 
         private string _clickModeBtnQ1;
-
         public string ClickModeBtnQ1
         {
             get => _clickModeBtnQ1;
@@ -484,7 +376,6 @@
         }
 
         private string _clickModeBtnK1;
-
         public string ClickModeBtnK1
         {
             get => _clickModeBtnK1;
@@ -512,7 +403,6 @@
         }
 
         private string _clickModeBtnK2;
-
         public string ClickModeBtnK2
         {
             get => _clickModeBtnK2;
@@ -542,7 +432,6 @@
         }
 
         private string _visibilityK1Ein;
-
         public string VisibilityK1Ein
         {
             get => _visibilityK1Ein;
@@ -584,7 +473,6 @@
         }
 
         private string _visibilityK2Ein;
-
         public string VisibilityK2Ein
         {
             get => _visibilityK2Ein;
@@ -614,7 +502,6 @@
         public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? "visible" : "hidden";
 
         private string _visibilityRectangleAbleitung;
-
         public string VisibilityRectangleAbleitung
         {
             get => _visibilityRectangleAbleitung;
@@ -626,78 +513,6 @@
         }
 
         #endregion Visibility Ableitung
-
-        #region Visibility Dose 1
-
-        public void VisibilityDose1(bool val) => VisibilityImage1 = val ? "visible" : "hidden";
-
-        private string _visibilityImage1;
-
-        public string VisibilityImage1
-        {
-            get => _visibilityImage1;
-            set
-            {
-                _visibilityImage1 = value;
-                OnPropertyChanged(nameof(VisibilityImage1));
-            }
-        }
-
-        #endregion Visibility Dose 1
-
-        #region Visibility Dose 2
-
-        public void VisibilityDose2(bool val) => VisibilityImage2 = val ? "visible" : "hidden";
-
-        private string _visibilityImage2;
-
-        public string VisibilityImage2
-        {
-            get => _visibilityImage2;
-            set
-            {
-                _visibilityImage2 = value;
-                OnPropertyChanged(nameof(VisibilityImage2));
-            }
-        }
-
-        #endregion Visibility Dose 2
-
-        #region Visibility Dose 3
-
-        public void VisibilityDose3(bool val) => VisibilityImage3 = val ? "visible" : "hidden";
-
-        private string _visibilityImage3;
-
-        public string VisibilityImage3
-        {
-            get => _visibilityImage3;
-            set
-            {
-                _visibilityImage3 = value;
-                OnPropertyChanged(nameof(VisibilityImage3));
-            }
-        }
-
-        #endregion Visibility Dose 3
-
-        #region Visibility Dose 4
-
-        public void VisibilityDose4(bool val) => VisibilityImage4 = val ? "visible" : "hidden";
-
-        private string _visibilityImage4;
-
-        public string VisibilityImage4
-        {
-            get => _visibilityImage4;
-            set
-            {
-                _visibilityImage4 = value;
-                OnPropertyChanged(nameof(VisibilityImage4));
-            }
-        }
-
-        #endregion Visibility Dose 4
 
         #region Sichtbarkeit B1
 
@@ -716,7 +531,6 @@
         }
 
         private string _visibilityB1Ein;
-
         public string VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -758,7 +572,6 @@
         }
 
         private string _visibilityB2Ein;
-
         public string VisibilityB2Ein
         {
             get => _visibilityB2Ein;
@@ -791,7 +604,6 @@
         }
 
         private Thickness _margin1;
-
         public Thickness Margin1
         {
             get => _margin1;

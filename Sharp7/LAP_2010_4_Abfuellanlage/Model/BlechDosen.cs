@@ -2,7 +2,7 @@
 
 namespace LAP_2010_4_Abfuellanlage.Model
 {
-    public class CampbellSoup
+    public class BlechDosen
     {
         private enum BewegungSchritt
         {
@@ -22,16 +22,16 @@ namespace LAP_2010_4_Abfuellanlage.Model
         private const double DoseHoehe = 80;
         private BewegungSchritt _bewegungSchritt;
         private readonly Punkt _startPosition;
-        private readonly Punkt _vereinzelnerVentil = new Punkt(105, 385);
-        private readonly Punkt _foerderbandLinks = new Punkt(92, 525);
-        private readonly Punkt _foerderbandRechts = new Punkt(640, 525);
-        private readonly Punkt _sensorB1Links = new Punkt(400, 525);
-        private readonly Punkt _sensorB1Rechts = new Punkt(450, 525);
-        private readonly Punkt _boden = new Punkt(640, 700);
+        private readonly Punkt _vereinzelnerVentil = new Punkt(105, 375);
+        private readonly Punkt _foerderbandLinks = new Punkt(82, 515);
+        private readonly Punkt _foerderbandRechts = new Punkt(630, 515);
+        private readonly Punkt _sensorB2Links = new Punkt(395, 515);
+        private readonly Punkt _sensorB2Rechts = new Punkt(440, 515);
+        private readonly Punkt _boden = new Punkt(640, 690);
         private Rechteck.RichtungX _richtungX;
         private Rechteck.RichtungY _richtungY;
 
-        public CampbellSoup(int id)
+        public BlechDosen(int id)
         {
             Id = id;
             Sichtbar = true;
@@ -49,7 +49,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             if (_bewegungSchritt == BewegungSchritt.Oberhalb) _bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
 
-        public (bool, int) DosenBewegen(bool m1, int anzahlDosen, int aktuelleDose, bool stop)
+        public (bool lichtschranke, int aktuelleDose) DosenBewegen(bool m1, int anzahlDosen, int aktuelleDose, bool stop)
         {
             _richtungX = Rechteck.RichtungX.Steht;
             _richtungY = Rechteck.RichtungY.Steht;
@@ -104,7 +104,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                     break;
             }
 
-            if (Position.Punkt.X > _sensorB1Links.X && Position.Punkt.X < _sensorB1Rechts.X) return (true, aktuelleDose);
+            if (Position.Punkt.X > _sensorB2Links.X && Position.Punkt.X < _sensorB2Rechts.X) return (true, aktuelleDose);
             return (false, aktuelleDose);
         }
 

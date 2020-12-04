@@ -87,7 +87,7 @@
         <Rectangle Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22" Fill="#eeeeee" />
         <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="11" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
 
-        <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+        <Button Grid.Column="11" Grid.Row="3"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
@@ -95,8 +95,8 @@
             </Button.Resources>
         </Button>
 
-        <Rectangle Fill="DarkGray" Grid.Column="2" Grid.Row="5" Grid.RowSpan="10" Margin="61,0,59,0" Grid.ColumnSpan="2" />
-        <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="5" Grid.RowSpan="10" Margin="60,0" Grid.ColumnSpan="2" />
+        <Rectangle Fill="DarkGray" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="12" Margin="61,0,59,0" />
+        <Rectangle Fill="DarkGray" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="12" Margin="60,0,60,0" />
 
         <Image Source="Bilder\VentilElektrischAusHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Aus}" />
         <Image Source="Bilder\VentilElektrischEinHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Ein}" />
@@ -108,7 +108,7 @@
 
         <Rectangle Fill="#fcdada"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
         <Rectangle Fill="Coral"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
-        <Button Grid.Column="8" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}" />
+        <Button Grid.Column="7" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}" />
         <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
 
         <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Aus}" />
@@ -130,12 +130,6 @@
         <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
         <Label Content="B2" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
-        <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="24">
-            <Image Source="Bilder/Campbell_Asparagus_Soup.jpg"  Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft1}" Canvas.Top="{Binding ViAnzeige.ImageTop1}"  Visibility="{Binding ViAnzeige.VisibilityImage1}" />
-            <Image Source="Bilder/Campbell_Chicken_Soup.jpg"    Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft2}" Canvas.Top="{Binding ViAnzeige.ImageTop2}"  Visibility="{Binding ViAnzeige.VisibilityImage2}" />
-            <Image Source="Bilder/Campbell_Mushroom_Soup.jpg"   Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft3}" Canvas.Top="{Binding ViAnzeige.ImageTop3}"  Visibility="{Binding ViAnzeige.VisibilityImage3}" />
-            <Image Source="Bilder/Campbell_Tomato_Soup.jpg"     Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft4}" Canvas.Top="{Binding ViAnzeige.ImageTop4}"  Visibility="{Binding ViAnzeige.VisibilityImage4}" />
-        </Canvas>
 
         <Label Grid.Column="19"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" Margin="0,0,34,0" />
         <Label Grid.Column="15"                        Grid.Row="12"  Grid.ColumnSpan="6" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
@@ -143,5 +137,13 @@
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+
+        <Canvas Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22">
+            <Image x:Name="Dose1" Source="Bilder/dose1.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[0]}" Canvas.Top="{Binding ViAnzeige.TopDose[0]}"  Visibility="{Binding ViAnzeige.VisDose[1]}" />
+            <Image x:Name="Dose2" Source="Bilder/dose2.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[1]}" Canvas.Top="{Binding ViAnzeige.TopDose[1]}"  Visibility="{Binding ViAnzeige.VisDose[1]}" />
+            <Image x:Name="Dose3" Source="Bilder/dose3.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[2]}" Canvas.Top="{Binding ViAnzeige.TopDose[2]}"  Visibility="{Binding ViAnzeige.VisDose[2]}" />
+            <Image x:Name="Dose4" Source="Bilder/dose4.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[3]}" Canvas.Top="{Binding ViAnzeige.TopDose[3]}"  Visibility="{Binding ViAnzeige.VisDose[3]}" />
+            <Image x:Name="Dose5" Source="Bilder/dose5.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[4]}" Canvas.Top="{Binding ViAnzeige.TopDose[4]}"  Visibility="{Binding ViAnzeige.VisDose[4]}" />
+        </Canvas>
     </Grid>
 </Window>

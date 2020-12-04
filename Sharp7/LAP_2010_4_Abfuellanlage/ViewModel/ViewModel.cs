@@ -15,7 +15,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         }
 
 
-
         private ICommand _btnQ1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnQ1 => _btnQ1 ??= new RelayCommand(p => ViAnzeige.SetQ1(), p => true);
