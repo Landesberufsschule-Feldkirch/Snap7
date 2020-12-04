@@ -1,5 +1,5 @@
 ﻿using Kommunikation;
-using Synchronisiereinrichtung.kraftwerk.ViewModel;
+using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using Synchronisiereinrichtung.SetManual;
 using System.Text;
 using System.Windows;
@@ -14,9 +14,8 @@ namespace Synchronisiereinrichtung
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
         private SetManualWindow _setManualWindow;
-        private RealTimeGraphWindow _realTimeGraphWindow;
+        //private RealTimeGraphWindow _realTimeGraphWindow;
         private readonly ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -39,11 +38,14 @@ namespace Synchronisiereinrichtung
             InitializeComponent();
 
             DataContext = _viewModel;
-            GaugeDifferenzSpannung.DataContext = _viewModel;
-            _datenRangieren = new DatenRangieren(this, _viewModel);
-            GaugeDifferenzSpannung.ApplyTemplate();
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            var datenRangieren = new DatenRangieren(this, _viewModel);
+
+
+            //  GaugeDifferenzSpannung.DataContext = _viewModel;
+            // GaugeDifferenzSpannung.ApplyTemplate();
+
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
@@ -62,8 +64,8 @@ namespace Synchronisiereinrichtung
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
-            _realTimeGraphWindow.Show();
+          // _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
+          //  _realTimeGraphWindow.Show();
         }
     }
 }
