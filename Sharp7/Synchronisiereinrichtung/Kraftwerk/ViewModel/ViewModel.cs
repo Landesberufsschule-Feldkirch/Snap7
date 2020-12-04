@@ -6,13 +6,10 @@
     public class ViewModel
     {
         public Model.Kraftwerk Kraftwerk { get; }
-
-        public Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Kraftwerk = new Model.Kraftwerk();
-            Schreiber = new Schreiber(Kraftwerk);
             ViAnzeige = new VisuAnzeigen(mainWindow, Kraftwerk);
         }
 

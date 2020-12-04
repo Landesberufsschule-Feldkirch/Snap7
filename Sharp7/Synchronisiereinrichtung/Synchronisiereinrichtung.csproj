@@ -17,12 +17,13 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ScottPlot.WPF" Version="4.0.45" />
     <PackageReference Include="Stateless" Version="5.1.5" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GaugeControl\GaugeControl.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\RealTimeGraphX.WPF\RealTimeGraphX.WPF.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
@@ -42,10 +43,6 @@
     <Resource Include="Bilder\VentilElektrischEinWeiss.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="GraphWindow\" />
   </ItemGroup>
 
 </Project>

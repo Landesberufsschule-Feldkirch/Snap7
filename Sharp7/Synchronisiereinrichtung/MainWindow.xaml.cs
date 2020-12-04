@@ -1,8 +1,12 @@
-﻿using Kommunikation;
+﻿using System;
+using System.Drawing;
+using Kommunikation;
 using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using Synchronisiereinrichtung.SetManual;
 using System.Text;
 using System.Windows;
+using System.Windows.Threading;
+using ScottPlot;
 
 namespace Synchronisiereinrichtung
 {
@@ -14,8 +18,17 @@ namespace Synchronisiereinrichtung
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
+
+        public double[] Zeitachse = new double[100];
+        public double[] KesselTemperatur = new double[100];
+        public double[] VorlaufSolltemperatur = new double[100];
+        private int _nextDataIndex = 1;
+
+
+
+
         private SetManualWindow _setManualWindow;
-        //private RealTimeGraphWindow _realTimeGraphWindow;
+        private PlotWindow.PlotWindow _plotWindow;
         private readonly ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -64,8 +77,48 @@ namespace Synchronisiereinrichtung
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-          // _realTimeGraphWindow = new RealTimeGraphWindow(_viewModel);
-          //  _realTimeGraphWindow.Show();
+            Zeitachse = DataGen.Consecutive(100);
+
+            _plotWindow = new PlotWindow.PlotWindow();
+            _plotWindow.Show();
+
+            _plotWindow.WpfPlot.plt.YLabel("Temperatur");
+            _plotWindow.WpfPlot.plt.XLabel("Zeit");
+
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, KesselTemperatur, Color.Magenta, label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, label: "VorlaufSolltemperatur");
+            _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
+
+
+            // create a timer to modify the data
+            var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            updateDataTimer.Tick += UpdateData;
+            updateDataTimer.Start();
+
+            // create a timer to update the GUI
+            var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            renderTimer.Tick += Render;
+            renderTimer.Start();
+        }
+
+        private void UpdateData(object sender, EventArgs e)
+        {
+            if (_nextDataIndex >= 100)
+            {
+                _nextDataIndex = 0;
+            }
+
+
+           // KesselTemperatur[_nextDataIndex] = WohnHaus.KesselTemperatur;
+          //  VorlaufSolltemperatur[_nextDataIndex] = WohnHaus.VorlaufSolltemperatur;
+
+            _nextDataIndex++;
+        }
+
+        private void Render(object sender, EventArgs e)
+        {
+            _plotWindow.WpfPlot.plt.AxisAuto(0);
+            _plotWindow.WpfPlot.Render(true);
         }
     }
 }

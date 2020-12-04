@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         mc:Ignorable="d"
         xmlns:src="clr-namespace:Synchronisiereinrichtung"
         Title="Synchronisiereinrichtung" Height="1000" Width="1700" Closing="Window_Closing">
@@ -166,7 +167,17 @@
         <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding ViAnzeige.VisibilityMaschineTot}" />
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>
         <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="14" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Synchronisierung fehlgeschlagen!</TextBlock>
-<!--
+
+        <gaugeControl:GaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10"
+                                   GaugeText="DifferenzSpannung" GaugeTextFont="Arial Rounded MT Bold" 
+                                   ArcMaxValue="500" 
+                                   ArcMidleColorEndPos="40" 
+                                   ArcMinValue="0" 
+                                   ArcFirstColorEndPos="25"
+                                   CurrentValue="{Binding ViAnzeige.SpannungsDifferenz}" GaugeTextX="90" />
+
+
+        <!--
         <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10"
                                         Radius="150"
                                         ScaleRadius="110"
