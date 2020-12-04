@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     using System;
 
@@ -6,7 +6,7 @@
     {
         private readonly double _kennlinie;
 
-        public MagnetischerKreis(double kennlinie) => this._kennlinie = kennlinie;
+        public MagnetischerKreis(double kennlinie) => _kennlinie = kennlinie;
 
         public double Magnetisierungskennlinie(double strom) => 1 - Math.Exp(-_kennlinie * strom);
     }

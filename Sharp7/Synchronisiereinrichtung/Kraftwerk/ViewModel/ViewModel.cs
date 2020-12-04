@@ -1,41 +1,39 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.ViewModel
+﻿namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
     using Commands;
     using System.Windows.Input;
 
     public class ViewModel
     {
-        private readonly Model.Kraftwerk _kraftwerk;
-        public Model.Kraftwerk Kraftwerk => _kraftwerk;
+        public Model.Kraftwerk Kraftwerk { get; }
+
         public Schreiber Schreiber { get; set; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _kraftwerk = new Model.Kraftwerk();
-            Schreiber = new Schreiber(_kraftwerk);
-            ViAnzeige = new VisuAnzeigen(mainWindow, _kraftwerk);
+            Kraftwerk = new Model.Kraftwerk();
+            Schreiber = new Schreiber(Kraftwerk);
+            ViAnzeige = new VisuAnzeigen(mainWindow, Kraftwerk);
         }
 
 
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => _kraftwerk.Reset(), p => true));
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => Kraftwerk.Reset(), p => true);
 
         private ICommand _btnSchalterQ1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSchalterQ1 =>
-            _btnSchalterQ1 ??
-            (_btnSchalterQ1 = new RelayCommand(p => _kraftwerk.Synchronisieren(), p => true));
+            _btnSchalterQ1 ??= new RelayCommand(p => Kraftwerk.Synchronisieren(), p => true);
 
         private ICommand _btnSchalterStart;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSchalterStart =>
-            _btnSchalterStart ??
-            (_btnSchalterStart = new RelayCommand(p => _kraftwerk.Starten(), p => true));
+            _btnSchalterStart ??= new RelayCommand(p => Kraftwerk.Starten(), p => true);
 
         private ICommand _btnSchalterStop;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnSchalterStop => _btnSchalterStop ?? (_btnSchalterStop = new RelayCommand(p => _kraftwerk.Stoppen(), p => true));
+        public ICommand BtnSchalterStop => _btnSchalterStop ??= new RelayCommand(p => Kraftwerk.Stoppen(), p => true);
     }
 }

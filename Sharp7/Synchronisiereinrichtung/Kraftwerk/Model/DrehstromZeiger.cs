@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     using System;
     using Utilities;
@@ -7,7 +7,7 @@
     {
         public static double WinkelBerechnen(double zeit, double freqenz, double winkel)
         {
-            double periodenDauer = 1000 / freqenz; // in ms
+            var periodenDauer = 1000 / freqenz; // in ms
             winkel += 360 * zeit / periodenDauer;
             if (winkel > 360) winkel -= 360;
             return winkel;

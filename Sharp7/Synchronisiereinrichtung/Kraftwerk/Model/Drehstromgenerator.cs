@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.kraftwerk.Model
+namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Drehstromgenerator
     {
@@ -21,7 +21,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         private const double NBremsFaktor = 0.991;
 
         private const double YLeistungsFaktor = 15;
-        private readonly double _yLeistungsBremse = 0.9;
+        private const double YLeistungsBremse = 0.9;
 
         private double _leistungsfaktorFaktor = 1;
 
@@ -74,7 +74,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
             else
             {
                 _p += YLeistungsFaktor * (y - SynchVentil);
-                _p *= _yLeistungsBremse;
+                _p *= YLeistungsBremse;
             }
         }
 
@@ -91,10 +91,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
                     // übererregt -> kapazitiv
                     _cosPhi = 90 - _leistungsfaktorFaktor * (ie - SynchErregerstrom);
                 }
-                else
-                {
-                    // untererregt ->induktiv
-                }
+                // else --> untererregt
             }
         }
     }

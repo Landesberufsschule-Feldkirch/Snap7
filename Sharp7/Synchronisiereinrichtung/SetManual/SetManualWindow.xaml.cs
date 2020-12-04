@@ -2,7 +2,7 @@
 {
     public partial class SetManualWindow
     {
-        public SetManualWindow(kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
+        public SetManualWindow(Kraftwerk.ViewModel.ViewModel kraftwerkViewModel)
         {
             InitializeComponent();
             DataContext = kraftwerkViewModel;

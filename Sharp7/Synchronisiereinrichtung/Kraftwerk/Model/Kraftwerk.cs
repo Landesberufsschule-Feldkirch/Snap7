@@ -10,22 +10,19 @@ namespace Synchronisiereinrichtung
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string parameterString = parameter.ToString();
+            var parameterString = parameter.ToString();
             if (parameterString == null) return DependencyProperty.UnsetValue;
             if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
 
-            object parameterValue = Enum.Parse(value.GetType(), parameterString);
+            var parameterValue = Enum.Parse(value.GetType(), parameterString);
 
             return parameterValue.Equals(value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string parameterString = parameter.ToString();
-            if (parameterString == null)
-                return DependencyProperty.UnsetValue;
-
-            return Enum.Parse(targetType, parameterString);
+            var parameterString = parameter.ToString();
+            return parameterString == null ? DependencyProperty.UnsetValue : Enum.Parse(targetType, parameterString);
         }
     }
 
@@ -38,11 +35,11 @@ namespace Synchronisiereinrichtung
     }
 }
 
-namespace Synchronisiereinrichtung.kraftwerk.Model
+namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Kraftwerk
     {
-        public readonly Drehstromgenerator Generator = new Drehstromgenerator(0.35, (1 / 30.0));
+        public readonly Drehstromgenerator Generator = new Drehstromgenerator(0.35, 1 / 30.0);
         public readonly Statemachine KraftwerkStatemachine;
 
         public double FrequenzDifferenz { get; set; }
@@ -66,8 +63,6 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
         public bool MaschineTot { get; set; }
         public SynchronisierungAuswahl SynchAuswahl { get; set; }
         public double SpannungsDifferenz { get; set; }
-        public double ManualVentilstellung { get; set; }
-        public double ManualErregerstrom { get; set; }
         public double MessgeraetOptimalerBereich { get; set; }
 
         public Kraftwerk()
@@ -105,6 +100,8 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
                         SpannungsdifferenzGeneratorNetz = spannungsDiff.Laenge();
                         break;
 
+                    case SynchronisierungAuswahl.Uf:
+                        break;
                     default:
                         SpannungsdifferenzGeneratorNetz = Math.Abs(NetzU - GeneratorU);
                         break;
@@ -114,6 +111,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 
                 Thread.Sleep((int)zeitdauer);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void Starten()

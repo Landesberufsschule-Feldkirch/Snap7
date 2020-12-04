@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 
-namespace Synchronisiereinrichtung.kraftwerk.ViewModel
+namespace Synchronisiereinrichtung.Kraftwerk.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -87,6 +87,12 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
                         }
                         break;
 
+                    case SynchronisierungAuswahl.UfPhase:
+                        break;
+                    case SynchronisierungAuswahl.UfPhaseLeistung:
+                        break;
+                    case SynchronisierungAuswahl.UfPhaseLeistungsfaktor:
+                        break;
                     default:
                         if (Math.Abs(_kraftwerk.OptimalerSpannungswert - 100) > 0.001)
                         {
@@ -112,6 +118,7 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         #region SPS Version, Status und Farbe
@@ -263,8 +270,8 @@ namespace Synchronisiereinrichtung.kraftwerk.ViewModel
         public double SliderNetz_CosPhi()
         {
             // Der Slider geht fast von 0 bis 180 ==> -90° bis 90°
-            if (_netzPhasenverschiebungSlider < 90) return (-1) * Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
-            else return Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
+            if (_netzPhasenverschiebungSlider < 90) return -1 * Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
+            return Math.Cos(Math.PI * (_netzPhasenverschiebungSlider - 90) / 180);
         }
 
         private double _netzPhasenverschiebungSlider;

@@ -1,4 +1,4 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.Commands
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Commands
 {
     using System;
     using System.Windows.Input;

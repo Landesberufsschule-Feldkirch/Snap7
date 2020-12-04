@@ -2,7 +2,7 @@
 using Stateless.Graph;
 using System;
 
-namespace Synchronisiereinrichtung.kraftwerk.Model
+namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Statemachine
     {
@@ -67,7 +67,7 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 
         private StateMachine<State, Trigger> CreateStateMachine()
         {
-            StateMachine<State, Trigger> stateMachine = new StateMachine<State, Trigger>(State.Aus);
+            var stateMachine = new StateMachine<State, Trigger>(State.Aus);
 
             stateMachine.Configure(State.Aus)
                 .InternalTransition(Trigger.Aktualisieren, t => _stateAus.Doing())
@@ -110,10 +110,10 @@ namespace Synchronisiereinrichtung.kraftwerk.Model
 
             stateMachine.OnUnhandledTrigger((state, trigger) =>
             {
-                Console.WriteLine("Unhandled: '{0}' state, '{1}' trigger!");
+                Console.WriteLine("Unhandled:");
             });
 
-            string graph = UmlDotGraph.Format(stateMachine.GetInfo());
+            var graph = UmlDotGraph.Format(stateMachine.GetInfo());
             Console.Write("\n \n" + graph + "\n \n");
 
             return stateMachine;

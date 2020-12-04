@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synchronisiereinrichtung.kraftwerk.Model
+namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     internal class StateLeistungsschalterAus
     {

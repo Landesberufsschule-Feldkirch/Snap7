@@ -1,5 +1,5 @@
 ﻿using Sharp7;
-using Synchronisiereinrichtung.kraftwerk.ViewModel;
+using Synchronisiereinrichtung.Kraftwerk.ViewModel;
 using Utilities;
 
 namespace Synchronisiereinrichtung
@@ -47,12 +47,11 @@ namespace Synchronisiereinrichtung
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _viewModel.Kraftwerk.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                _viewModel.Kraftwerk.VentilY = _viewModel.Kraftwerk.Generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(datenstruktur.AnalogOutput, 0), 100));
-                _viewModel.Kraftwerk.GeneratorIe = _viewModel.Kraftwerk.Generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(datenstruktur.AnalogOutput, 2), 10));
-            }
+            if (_mainWindow.DebugWindowAktiv) return;
+
+            _viewModel.Kraftwerk.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.Kraftwerk.VentilY = _viewModel.Kraftwerk.Generator.VentilRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(datenstruktur.AnalogOutput, 0), 100));
+            _viewModel.Kraftwerk.GeneratorIe = _viewModel.Kraftwerk.Generator.ErregerstromRampe.GetWert(S7Analog.S7_Analog_2_Double(S7.GetSint_16_At(datenstruktur.AnalogOutput, 2), 10));
         }
     }
 }

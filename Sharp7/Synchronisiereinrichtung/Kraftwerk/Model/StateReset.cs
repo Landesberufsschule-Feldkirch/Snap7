@@ -1,11 +1,10 @@
-﻿namespace Synchronisiereinrichtung.kraftwerk.Model
+﻿namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     internal class StateReset
     {
         private readonly Kraftwerk _kraftWerk;
 
         public StateReset(Kraftwerk kw) => _kraftWerk = kw;
-
         public void OnEntry()
         {
             _kraftWerk.Q1 = false;
