@@ -85,7 +85,7 @@ namespace ManualMode.ViewModel
             set
             {
                 _farbeDi = value;
-                OnPropertyChanged("FarbeDi");
+                OnPropertyChanged(nameof(FarbeDi));
             }
         }
 
@@ -152,7 +152,7 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException();
+                                throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
                         }
                         break;
 
@@ -232,7 +232,7 @@ namespace ManualMode.ViewModel
             set
             {
                 _farbeTastenToggelnDa = value;
-                OnPropertyChanged("FarbeTastenToggelnDa");
+                OnPropertyChanged(nameof(FarbeTastenToggelnDa));
             }
         }
 
@@ -348,7 +348,7 @@ namespace ManualMode.ViewModel
             set
             {
                 _contentAi = value;
-                OnPropertyChanged("ContentAi");
+                OnPropertyChanged(nameof(ContentAi));
             }
         }
 
@@ -421,7 +421,7 @@ namespace ManualMode.ViewModel
             set
             {
                 _contentAa = value;
-                OnPropertyChanged("ContentAa");
+                OnPropertyChanged(nameof(ContentAa));
             }
         }
 

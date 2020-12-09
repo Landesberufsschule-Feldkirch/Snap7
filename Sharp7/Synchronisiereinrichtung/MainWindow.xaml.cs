@@ -16,20 +16,17 @@ namespace Synchronisiereinrichtung
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
+        public double[] Zeitachse { get; set; }
+        public double[] PlotVentilOeffnung { get; set; }
+        public double[] PlotErregerstrom { get; set; }
+        public double[] PlotFrequenz { get; set; }
+        public double[] PlotGeneratorSpannung { get; set; }
+        public double[] PlotSpannungsdifferenz { get; set; }
+        public double[] PlotLeistung { get; set; }
 
-        public double[] Zeitachse = new double[1000];
 
-        public double[] PlotVentilOeffnung = new double[1000];
-        public double[] PlotErregerstrom = new double[1000];
-        public double[] PlotFrequenz = new double[1000];
-        public double[] PlotGeneratorSpannung = new double[1000];
-        public double[] PlotSpannungsdifferenz = new double[1000];
-        public double[] PlotLeistung = new double[1000];
 
         private int _nextDataIndex = 1;
-
-
-
 
         private SetManualWindow _setManualWindow;
         private PlotWindow.PlotWindow _plotWindow;
@@ -41,6 +38,14 @@ namespace Synchronisiereinrichtung
 
         public MainWindow()
         {
+            Zeitachse = new double[1000];
+            PlotVentilOeffnung = new double[1000];
+            PlotErregerstrom = new double[1000];
+            PlotFrequenz = new double[1000];
+            PlotGeneratorSpannung = new double[1000];
+            PlotSpannungsdifferenz = new double[1000];
+            PlotLeistung = new double[1000];
+
             const string versionText = "Synchronisiereinrichtung";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
@@ -100,7 +105,7 @@ namespace Synchronisiereinrichtung
 
             _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
 
-            _plotWindow.WpfPlot.plt.XLabel("Zeit ms");
+            _plotWindow.WpfPlot.plt.XLabel("Zeit");
             _plotWindow.WpfPlot.plt.YLabel("Y");
 
 
@@ -117,10 +122,7 @@ namespace Synchronisiereinrichtung
 
         private void UpdateData(object sender, EventArgs e)
         {
-            if (_nextDataIndex >= 1000)
-            {
-                _nextDataIndex = 0;
-            }
+            if (_nextDataIndex >= 1000) _nextDataIndex = 0;
 
             PlotVentilOeffnung[_nextDataIndex] = _viewModel.Kraftwerk.VentilY;
             PlotErregerstrom[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorIe;

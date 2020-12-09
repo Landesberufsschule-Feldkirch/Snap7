@@ -30,12 +30,10 @@ namespace Blinker.ViewModel
 
             ColorCircleP1 = Brushes.LightGray;
 
-
             FrequenzAnzeige = "Frequenz: 0Hz";
             TastverhaeltnisAnzeige = "Tastverhältnis: 50%";
             EinZeitAnzeige = "Einzeit: 500ms";
             AusZeitAnzeige = "Auszeit: 500ms";
-
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -75,7 +73,6 @@ namespace Blinker.ViewModel
         internal void TasterS3() => _blinker.S3 = ClickModeButtonS3();
         internal void TasterS4() => _blinker.S4 = ClickModeButtonS4();
         internal void TasterS5() => _blinker.S5 = ClickModeButtonS5();
-
 
         #region SPS Version, Status und Farbe
 
@@ -174,7 +171,6 @@ namespace Blinker.ViewModel
             }
         }
 
-
         public bool ClickModeButtonS2()
         {
             if (ClickModeBtnS2 == ClickMode.Press)
@@ -197,7 +193,6 @@ namespace Blinker.ViewModel
                 OnPropertyChanged(nameof(ClickModeBtnS2));
             }
         }
-
 
         public bool ClickModeButtonS3()
         {
@@ -222,7 +217,6 @@ namespace Blinker.ViewModel
             }
         }
 
-
         public bool ClickModeButtonS4()
         {
             if (ClickModeBtnS4 == ClickMode.Press)
@@ -245,7 +239,6 @@ namespace Blinker.ViewModel
                 OnPropertyChanged(nameof(ClickModeBtnS4));
             }
         }
-
 
         public bool ClickModeButtonS5()
         {
@@ -336,7 +329,6 @@ namespace Blinker.ViewModel
             }
         }
         #endregion
-
 
         #region iNotifyPeropertyChanged Members
 
