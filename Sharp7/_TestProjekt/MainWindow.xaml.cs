@@ -6,11 +6,8 @@
         {
             var viewModel = new ViewModel.ViewModel();
 
-
             InitializeComponent();
             DataContext = viewModel;
-
-
         }
     }
 }
