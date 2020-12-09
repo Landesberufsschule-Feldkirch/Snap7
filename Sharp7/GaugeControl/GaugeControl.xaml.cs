@@ -729,7 +729,6 @@ namespace GaugeControl
                 _offset = value;
                 SetStyle();
                 // InvalidateVisual();
-
             }
             get => _offset;
         }
@@ -780,11 +779,40 @@ namespace GaugeControl
             set
             {
                 _backVisible = value;
-                Front.Visibility = FrontBack.Visibility = FrontBackMask.Visibility = value;
-                BackFront.Visibility = Back.Visibility = Front.Visibility = GlassCanvas.Visibility = value;
+                SichtbarkeitSetzen(_backVisible);
             }
             get => _backVisible;
         }
+
+        private void SichtbarkeitSetzen(Visibility v)
+        {
+            Front.Visibility = FrontBack.Visibility = FrontBackMask.Visibility = v;
+            BackFront.Visibility = Back.Visibility = Front.Visibility = GlassCanvas.Visibility = v;
+            GesamtesGrid.Visibility = v;
+        }
+
+        private Visibility _sichtbarkeit;
+        public Visibility Sichtbarkeit
+        {
+            get => _sichtbarkeit;
+            set
+            {
+                _sichtbarkeit = value;
+                SetValue(SichtbarkeitValueProperty, _sichtbarkeit);
+            }
+        }
+
+        public static readonly DependencyProperty SichtbarkeitValueProperty =
+            DependencyProperty.Register("Sichtbarkeit", typeof(Visibility), typeof(GaugeControl),
+                new PropertyMetadata(Visibility.Visible, OnSichtbarkeitPropertyChanged));
+
+        private static void OnSichtbarkeitPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var neuerWert = (Visibility)e.NewValue;
+            var gauge = d as GaugeControl;
+            gauge?.SichtbarkeitSetzen(neuerWert);
+        }
+
 
         private double _currentValue;
         public double CurrentValue

@@ -17,7 +17,7 @@
             _niveauRegelung = nr;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -41,19 +41,19 @@
             ColorZuleitungRechtsWaagrecht = "LightBlue";
             ColorZuleitungRechtsSenkrecht = "LightBlue";
 
-            VisibilityB1Ein = "visible";
-            VisibilityB2Ein = "visible";
-            VisibilityB3Ein = "visible";
-            VisibilityQ1Ein = "visible";
-            VisibilityQ2Ein = "visible";
-            VisibilityVentilEin = "visible";
+            VisibilityB1Ein = Visibility.Visible;
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB3Ein = Visibility.Visible;
+            VisibilityQ1Ein = Visibility.Visible;
+            VisibilityQ2Ein = Visibility.Visible;
+            VisibilityVentilEin = Visibility.Visible;
 
-            VisibilityB1Aus = "hidden";
-            VisibilityB2Aus = "hidden";
-            VisibilityB3Aus = "hidden";
-            VisibilityQ1Aus = "hidden";
-            VisibilityQ2Aus = "hidden";
-            VisibilityVentilAus = "hidden";
+            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB3Aus =  Visibility.Hidden;
+            VisibilityQ1Aus =  Visibility.Hidden;
+            VisibilityQ2Aus =  Visibility.Hidden;
+            VisibilityVentilAus =  Visibility.Hidden;
 
             Margin1 = new Thickness(0, 30, 0, 0);
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -92,7 +92,7 @@
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -145,8 +145,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -470,19 +470,19 @@
         {
             if (val)
             {
-                VisibilityB1Ein = "visible";
-                VisibilityB1Aus = "hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "hidden";
-                VisibilityB1Aus = "visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -492,9 +492,9 @@
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -512,19 +512,19 @@
         {
             if (val)
             {
-                VisibilityB2Ein = "visible";
-                VisibilityB2Aus = "hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "hidden";
-                VisibilityB2Aus = "visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -534,9 +534,9 @@
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -554,19 +554,19 @@
         {
             if (val)
             {
-                VisibilityB3Ein = "visible";
-                VisibilityB3Aus = "hidden";
+                VisibilityB3Ein = Visibility.Visible;
+                VisibilityB3Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB3Ein = "hidden";
-                VisibilityB3Aus = "visible";
+                VisibilityB3Ein =  Visibility.Hidden;
+                VisibilityB3Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB3Ein;
+        private Visibility _visibilityB3Ein;
 
-        public string VisibilityB3Ein
+        public Visibility VisibilityB3Ein
         {
             get => _visibilityB3Ein;
             set
@@ -576,9 +576,9 @@
             }
         }
 
-        private string _visibilityB3Aus;
+        private Visibility _visibilityB3Aus;
 
-        public string VisibilityB3Aus
+        public Visibility VisibilityB3Aus
         {
             get => _visibilityB3Aus;
             set
@@ -596,19 +596,19 @@
         {
             if (val)
             {
-                VisibilityQ1Ein = "visible";
-                VisibilityQ1Aus = "hidden";
+                VisibilityQ1Ein = Visibility.Visible;
+                VisibilityQ1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityQ1Ein = "hidden";
-                VisibilityQ1Aus = "visible";
+                VisibilityQ1Ein =  Visibility.Hidden;
+                VisibilityQ1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityQ1Ein;
+        private Visibility _visibilityQ1Ein;
 
-        public string VisibilityQ1Ein
+        public Visibility VisibilityQ1Ein
         {
             get => _visibilityQ1Ein;
             set
@@ -618,9 +618,9 @@
             }
         }
 
-        private string _visibilityQ1Aus;
+        private Visibility _visibilityQ1Aus;
 
-        public string VisibilityQ1Aus
+        public Visibility VisibilityQ1Aus
         {
             get => _visibilityQ1Aus;
             set
@@ -638,19 +638,19 @@
         {
             if (val)
             {
-                VisibilityQ2Ein = "visible";
-                VisibilityQ2Aus = "hidden";
+                VisibilityQ2Ein = Visibility.Visible;
+                VisibilityQ2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityQ2Ein = "hidden";
-                VisibilityQ2Aus = "visible";
+                VisibilityQ2Ein =  Visibility.Hidden;
+                VisibilityQ2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityQ2Ein;
+        private Visibility _visibilityQ2Ein;
 
-        public string VisibilityQ2Ein
+        public Visibility VisibilityQ2Ein
         {
             get => _visibilityQ2Ein;
             set
@@ -660,9 +660,9 @@
             }
         }
 
-        private string _visibilityQ2Aus;
+        private Visibility _visibilityQ2Aus;
 
-        public string VisibilityQ2Aus
+        public Visibility VisibilityQ2Aus
         {
             get => _visibilityQ2Aus;
             set
@@ -680,19 +680,19 @@
         {
             if (val)
             {
-                VisibilityVentilEin = "visible";
-                VisibilityVentilAus = "hidden";
+                VisibilityVentilEin = Visibility.Visible;
+                VisibilityVentilAus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilEin = "hidden";
-                VisibilityVentilAus = "visible";
+                VisibilityVentilEin =  Visibility.Hidden;
+                VisibilityVentilAus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilEin;
+        private Visibility _visibilityVentilEin;
 
-        public string VisibilityVentilEin
+        public Visibility VisibilityVentilEin
         {
             get => _visibilityVentilEin;
             set
@@ -702,9 +702,9 @@
             }
         }
 
-        private string _visibilityVentilAus;
+        private Visibility _visibilityVentilAus;
 
-        public string VisibilityVentilAus
+        public Visibility VisibilityVentilAus
         {
             get => _visibilityVentilAus;
             set

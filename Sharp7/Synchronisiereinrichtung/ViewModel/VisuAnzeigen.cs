@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows;
 
 namespace Synchronisiereinrichtung.ViewModel
 {
@@ -15,7 +16,7 @@ namespace Synchronisiereinrichtung.ViewModel
             _kraftwerk = kw;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -30,9 +31,9 @@ namespace Synchronisiereinrichtung.ViewModel
             NetzLeistungSlider = 600;
             SynchAuswahl = SynchronisierungAuswahl.Uf;
 
-            VisibilityMaschineTot = "Hidden";
-            VisibilityVentilAus = "Visible";
-            VisibilityVentilEin = "Hidden";
+            VisibilityMaschineTot = Visibility.Hidden;
+            VisibilityVentilAus = Visibility.Visible;
+            VisibilityVentilEin = Visibility.Hidden;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -75,6 +76,10 @@ namespace Synchronisiereinrichtung.ViewModel
 
                 MessgeraetAnzeigen(_kraftwerk.MessgeraetAnzeigen);
 
+                VisibilityMaschineTot = _kraftwerk.MaschineTot ? Visibility.Visible : Visibility.Hidden;
+
+
+
                 _kraftwerk.SynchAuswahl = SynchAuswahl;
 
                 switch (SynchAuswahl)
@@ -109,7 +114,7 @@ namespace Synchronisiereinrichtung.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -156,8 +161,8 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -168,7 +173,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -180,7 +184,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private string _spsColor;
-
         public string SpsColor
         {
             get => _spsColor;
@@ -198,7 +201,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public double ManualY() => ManualVentilstellung;
 
         private double _manualVentilstellung;
-
         public double ManualVentilstellung
         {
             get => _manualVentilstellung;
@@ -216,7 +218,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public double ManualIe() => ManualErregerstrom;
 
         private double _manualErregerstrom;
-
         public double ManualErregerstrom
         {
             get => _manualErregerstrom;
@@ -234,7 +235,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public double SliderNetz_U() => NetzSpannungSlider;
 
         private double _netzSpannungSlider;
-
         public double NetzSpannungSlider
         {
             get => _netzSpannungSlider;
@@ -252,7 +252,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public double SliderNetz_f() => NetzFrequenzSlider;
 
         private double _netzFrequenzSlider;
-
         public double NetzFrequenzSlider
         {
             get => _netzFrequenzSlider;
@@ -275,7 +274,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _netzPhasenverschiebungSlider;
-
         public double NetzPhasenverschiebungSlider
         {
             get => _netzPhasenverschiebungSlider;
@@ -293,7 +291,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public double SliderNetz_P() => NetzLeistungSlider;
 
         private double _netzLeistungSlider;
-
         public double NetzLeistungSlider
         {
             get => _netzLeistungSlider;
@@ -309,7 +306,6 @@ namespace Synchronisiereinrichtung.ViewModel
         #region SynchronisierungAuswahl
 
         private SynchronisierungAuswahl _synchAuswahl;
-
         public SynchronisierungAuswahl SynchAuswahl
         {
             get => _synchAuswahl;
@@ -329,7 +325,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Netz_CosPhi(double val) => NetzCosPhiString = $"cos φ={val:N2}";
 
         private double _generatorCosPhiString;
-
         public string GeneratorCosPhiString
         {
             get => "cos φ=" + _generatorCosPhiString;
@@ -341,7 +336,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _netzCosPhiString;
-
         public string NetzCosPhiString
         {
             get => "cos φ=" + _netzCosPhiString;
@@ -361,7 +355,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Netz_P(double val) => NetzLeistungString = $"P={val}W";
 
         private double _generatorLeistungString;
-
         public string GeneratorLeistungString
         {
             get => "P=" + _generatorLeistungString + "W";
@@ -373,7 +366,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _netzLeistungString;
-
         public string NetzLeistungString
         {
             get => "P=" + _netzLeistungString + "W";
@@ -393,7 +385,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Netz_f(double val) => NetzFrequenzString = $"f={val}Hz";
 
         private double _generatorFrequenzString;
-
         public string GeneratorFrequenzString
         {
             get => "f=" + _generatorFrequenzString + "Hz";
@@ -405,7 +396,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _netzFrequenzString;
-
         public string NetzFrequenzString
         {
             get => "f=" + _netzFrequenzString + "Hz";
@@ -425,7 +415,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Netz_U(double val) => NetzSpannungString = $"U={val}V";
 
         private double _generatorSpannungString;
-
         public string GeneratorSpannungString
         {
             get => "U=" + _generatorSpannungString + "V";
@@ -437,7 +426,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _netzSpannungString;
-
         public string NetzSpannungString
         {
             get => "U=" + _netzSpannungString + "V";
@@ -455,7 +443,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Ie(double val) => Erregerstrom = $"IE={ val:N1}A";
 
         private double _erregerstrom;
-
         public string Erregerstrom
         {
             get => "IE=" + _erregerstrom + "A";
@@ -473,7 +460,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void N(double val) => Drehzahl = $"n={val:N1}RPM";
 
         private double _drehzahl;
-
         public string Drehzahl
         {
             get => "n=" + _drehzahl + "RPM";
@@ -491,7 +477,6 @@ namespace Synchronisiereinrichtung.ViewModel
         //"{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}"
 
         private double _messgeraetOptimalerBereich;
-
         public double MessgeraetOptimalerBereich
         {
             get => _messgeraetOptimalerBereich;
@@ -502,14 +487,10 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        public void MessgeraetAnzeigen(bool val)
-        {
-            VisibilityMessgeraetSichtbar = val ? "Visible" : "Hidden";
-        }
+        public void MessgeraetAnzeigen(bool val) => VisibilityMessgeraetSichtbar = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityMessgeraetSichtbar;
-
-        public string VisibilityMessgeraetSichtbar
+        private Visibility _visibilityMessgeraetSichtbar;
+        public Visibility VisibilityMessgeraetSichtbar
         {
             get => _visibilityMessgeraetSichtbar;
             set
@@ -520,7 +501,6 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         private double _spannungsDifferenz;
-
         public double SpannungsDifferenz
         {
             get => _spannungsDifferenz;
@@ -535,9 +515,8 @@ namespace Synchronisiereinrichtung.ViewModel
 
         #region Maschine tot
 
-        private string _visibilityMaschineTotAnzeigen;
-
-        public string VisibilityMaschineTot
+        private Visibility _visibilityMaschineTotAnzeigen;
+        public Visibility VisibilityMaschineTot
         {
             get => _visibilityMaschineTotAnzeigen;
             set
@@ -555,19 +534,18 @@ namespace Synchronisiereinrichtung.ViewModel
         {
             if (val)
             {
-                LeistungsschalterEin = "Visible";
-                LeistungsschalterAus = "Hidden";
+                LeistungsschalterEin = Visibility.Visible;
+                LeistungsschalterAus =  Visibility.Hidden;
             }
             else
             {
-                LeistungsschalterEin = "Hidden";
-                LeistungsschalterAus = "Visible";
+                LeistungsschalterEin =  Visibility.Hidden;
+                LeistungsschalterAus = Visibility.Visible;
             }
         }
 
-        private string _leistungsschalterEin;
-
-        public string LeistungsschalterEin
+        private Visibility _leistungsschalterEin;
+        public Visibility LeistungsschalterEin
         {
             get => _leistungsschalterEin;
             set
@@ -577,9 +555,8 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        private string _leistungsschalterAus;
-
-        public string LeistungsschalterAus
+        private Visibility _leistungsschalterAus;
+        public Visibility LeistungsschalterAus
         {
             get => _leistungsschalterAus;
             set
@@ -594,7 +571,6 @@ namespace Synchronisiereinrichtung.ViewModel
         #region Ventil
 
         private double _ventilPosition;
-
         public string VentilPosition
         {
             get => "Y=" + _ventilPosition + "%";
@@ -607,9 +583,8 @@ namespace Synchronisiereinrichtung.ViewModel
 
         public void Y(double val) => VentilPosition = $"Y={ val:N1}%";
 
-        private string _visibilityVentilAus;
-
-        public string VisibilityVentilAus
+        private Visibility _visibilityVentilAus;
+        public Visibility VisibilityVentilAus
         {
             get => _visibilityVentilAus;
             set
@@ -619,9 +594,8 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        private string _visibilityVentilEin;
-
-        public string VisibilityVentilEin
+        private Visibility _visibilityVentilEin;
+        public Visibility VisibilityVentilEin
         {
             get => _visibilityVentilEin;
             set
@@ -635,13 +609,13 @@ namespace Synchronisiereinrichtung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilEin = "Visible";
-                VisibilityVentilAus = "Hidden";
+                VisibilityVentilEin = Visibility.Visible;
+                VisibilityVentilAus = Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilEin = "Hidden";
-                VisibilityVentilAus = "Visible";
+                VisibilityVentilEin = Visibility.Hidden;
+                VisibilityVentilAus = Visibility.Visible;
             }
         }
 
@@ -652,7 +626,6 @@ namespace Synchronisiereinrichtung.ViewModel
         public void Status(string val) => KraftwerkStatus = "Status Kraftwerk: " + val;
 
         private string _kraftwerkStatus;
-
         public string KraftwerkStatus
         {
             get => _kraftwerkStatus;

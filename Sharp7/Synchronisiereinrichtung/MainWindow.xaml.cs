@@ -1,11 +1,10 @@
-﻿using System;
-using System.Drawing;
-using Kommunikation;
+﻿using Kommunikation;
+using ScottPlot;
 using Synchronisiereinrichtung.SetManual;
+using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Threading;
-using ScottPlot;
 
 namespace Synchronisiereinrichtung
 {
@@ -18,9 +17,16 @@ namespace Synchronisiereinrichtung
         public Datenstruktur Datenstruktur { get; set; }
 
 
-        public double[] Zeitachse = new double[100];
-        public double[] KesselTemperatur = new double[100];
-        public double[] VorlaufSolltemperatur = new double[100];
+        public double[] Zeitachse = new double[1000];
+
+        public double[] PlotVentilOeffnung = new double[1000];
+        public double[] PlotErregerstrom = new double[1000];
+        public double[] PlotDrehzahl = new double[1000];
+        public double[] PlotFrequenz = new double[1000];
+        public double[] PlotGeneratorSpannung = new double[1000];
+        public double[] PlotSpannungsdifferenz = new double[1000];
+        public double[] PlotLeistung = new double[1000];
+
         private int _nextDataIndex = 1;
 
 
@@ -76,21 +82,37 @@ namespace Synchronisiereinrichtung
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)
         {
-            Zeitachse = DataGen.Consecutive(100);
+            Zeitachse = DataGen.Consecutive(1000);
 
             _plotWindow = new PlotWindow.PlotWindow();
             _plotWindow.Show();
 
-            _plotWindow.WpfPlot.plt.YLabel("Temperatur");
+            _plotWindow.WpfPlot.plt.YLabel("Ventilöffnung Y");
+            _plotWindow.WpfPlot.plt.YLabel("Erregerstrom IE");
+            _plotWindow.WpfPlot.plt.YLabel("Drehzahl n");
+            _plotWindow.WpfPlot.plt.YLabel("Frequenz f");
+            _plotWindow.WpfPlot.plt.YLabel("Generatorspannung UG");
+            _plotWindow.WpfPlot.plt.YLabel("Spannungsdifferenz Ud");
+            _plotWindow.WpfPlot.plt.YLabel("Leistung P");
+
             _plotWindow.WpfPlot.plt.XLabel("Zeit");
 
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, KesselTemperatur, Color.Magenta, label: "Kesseltemperatur");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, label: "VorlaufSolltemperatur");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotVentilOeffnung, label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotErregerstrom, label: "Erregerstrom");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotDrehzahl, label: "Drehzahl");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotFrequenz, label: "Frequenz");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotGeneratorSpannung, label: "Generatorspannung");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotSpannungsdifferenz, label: "Spannungsdifferenz");
+            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotLeistung, label: "Leistung");
+
             _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
+
+            _plotWindow.WpfPlot.plt.XLabel("Zeit ms");
+            _plotWindow.WpfPlot.plt.YLabel("Y");
 
 
             // create a timer to modify the data
-            var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+            var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             updateDataTimer.Tick += UpdateData;
             updateDataTimer.Start();
 
@@ -102,14 +124,18 @@ namespace Synchronisiereinrichtung
 
         private void UpdateData(object sender, EventArgs e)
         {
-            if (_nextDataIndex >= 100)
+            if (_nextDataIndex >= 1000)
             {
                 _nextDataIndex = 0;
             }
 
-
-            // KesselTemperatur[_nextDataIndex] = WohnHaus.KesselTemperatur;
-            //  VorlaufSolltemperatur[_nextDataIndex] = WohnHaus.VorlaufSolltemperatur;
+            PlotVentilOeffnung[_nextDataIndex] = _viewModel.Kraftwerk.VentilY;
+            PlotErregerstrom[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorIe;
+            PlotDrehzahl[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorN;
+            PlotFrequenz[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorF;
+            PlotGeneratorSpannung[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorU;
+            PlotSpannungsdifferenz[_nextDataIndex] = _viewModel.Kraftwerk.SpannungsDifferenz;
+            PlotLeistung[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorP;
 
             _nextDataIndex++;
         }
@@ -117,7 +143,8 @@ namespace Synchronisiereinrichtung
         private void Render(object sender, EventArgs e)
         {
             _plotWindow.WpfPlot.plt.AxisAuto(0);
-            _plotWindow.WpfPlot.Render(true);
+          // _plotWindow.WpfPlot.Render(skipIfCurrentlyRendering:true, recalculateLayout:true);
+            _plotWindow.WpfPlot.Render();
         }
     }
 }

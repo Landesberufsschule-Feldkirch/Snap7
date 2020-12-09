@@ -164,55 +164,15 @@
         <Slider Grid.Column="21" Grid.ColumnSpan="5"    Grid.Row="16" Minimum="0"   Maximum="1000" TickFrequency="10"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.NetzLeistungSlider, Mode=TwoWay}" />
         <Slider Grid.Column="20" Grid.ColumnSpan="6"    Grid.Row="18" Minimum="0"   Maximum="180"    TickFrequency="1"   IsSnapToTickEnabled="True" Value="{Binding  ViAnzeige.NetzPhasenverschiebungSlider,   Mode=TwoWay}" />
 
-        <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding ViAnzeige.VisibilityMaschineTot}" />
-        <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>
-        <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="14" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Synchronisierung fehlgeschlagen!</TextBlock>
-
+    
         <gaugeControl:GaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10"
                                    GaugeText="DifferenzSpannung" GaugeTextFont="Arial Rounded MT Bold" 
+                                   Sichtbarkeit="{Binding ViAnzeige.VisibilityMessgeraetSichtbar}"
                                    ArcMaxValue="500" 
                                    ArcMidleColorEndPos="40" 
                                    ArcMinValue="0" 
                                    ArcFirstColorEndPos="25"
                                    CurrentValue="{Binding ViAnzeige.SpannungsDifferenz}" GaugeTextX="90" />
-
-
-        <!--
-        <gauge:CircularGaugeControl x:Name="GaugeDifferenzSpannung" Grid.Column="11" Grid.ColumnSpan="6" Grid.Row="18" Grid.RowSpan="10"
-                                        Radius="150"
-                                        ScaleRadius="110"
-                                        ScaleStartAngle="120"
-                                        ScaleSweepAngle="300"
-                                        PointerLength="85"
-                                        PointerCapRadius="35"
-                                        MinValue="0"
-                                        MaxValue="400"
-                                        MajorDivisionsCount="8"
-                                        MinorDivisionsCount="16"
-                                        CurrentValue="{Binding ViAnzeige.SpannungsDifferenz}"
-                                        ImageSize="40,50"
-                                        RangeIndicatorThickness="8"
-                                        RangeIndicatorRadius="120"
-                                        RangeIndicatorLightRadius="20"
-                                        RangeIndicatorLightOffset="96"
-                                        ScaleLabelRadius="90"
-                                        ScaleLabelSize="40,20"
-                                        ScaleLabelFontSize="10"
-                                        ScaleLabelForeground="LightGray"
-                                        MajorTickSize="10,3"
-                                        MinorTickSize="3,1"
-                                        MajorTickColor="LightGray"
-                                        MinorTickColor="LightGray"
-                                        ImageOffset="-50"
-                                        GaugeBackgroundColor="Black"
-                                        PointerThickness ="16"
-                                        OptimalRangeStartValue="0"
-                                        OptimalRangeEndValue= "25"
-                                        DialTextOffset="40"
-                                        DialText="Differenzspannung"
-                                        DialTextColor="Black"
-                                        Visibility="{Binding ViAnzeige.VisibilityMessgeraetSichtbar}" />
--->
 
         <Label Grid.Column="25" Grid.Row="0" VerticalAlignment="Top"  Grid.RowSpan="3" Grid.ColumnSpan="3" Content="{Binding ViAnzeige.VersionNr}" />
         <Label Grid.Column="20" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
@@ -220,5 +180,12 @@
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
         <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+
+
+        <Ellipse    Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="4" Grid.RowSpan="20" Fill="Red" Panel.ZIndex="10"                                                            Visibility="{Binding ViAnzeige.VisibilityMaschineTot}" />
+        <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="12" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Maschine tot</TextBlock>
+        <TextBlock  Grid.Column="6" Grid.ColumnSpan="10" Grid.Row="14" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" Panel.ZIndex="11"   Visibility="{Binding ViAnzeige.VisibilityMaschineTot}">Synchronisierung fehlgeschlagen!</TextBlock>
+
+
     </Grid>
 </Window>

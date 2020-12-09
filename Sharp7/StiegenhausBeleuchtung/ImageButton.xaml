@@ -5,16 +5,16 @@
         <ControlTemplate TargetType="{x:Type Button}">
             <Grid>
                 <Image Name="Normal" Source="Bilder/BewegungsmelderWeiss.jpg" />
-                <Image Name="Pressed" Source="Bilder/BewegungsmelderAktivWeiss.jpg" Visibility="Hidden" />
-                <Image Name="Disabled" Source="Bilder/BewegungsmelderWeiss.jpg" Visibility="Hidden" />
+                <Image Name="Pressed" Source="Bilder/BewegungsmelderAktivWeiss.jpg" Visibility= "Hidden"/>
+                <Image Name="Disabled" Source="Bilder/BewegungsmelderWeiss.jpg" Visibility= "Hidden" />
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="ClickMode" Value="Release">
-                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="Normal" Property="Visibility" Value= "Hidden" />
                     <Setter TargetName="Pressed" Property="Visibility" Value="Visible" />
                 </Trigger>
                 <Trigger Property="ClickMode" Value="Press">
-                    <Setter TargetName="Normal" Property="Visibility" Value="Hidden" />
+                    <Setter TargetName="Normal" Property="Visibility" Value= "Hidden" />
                     <Setter TargetName="Disabled" Property="Visibility" Value="Visible" />
                 </Trigger>
             </ControlTemplate.Triggers>

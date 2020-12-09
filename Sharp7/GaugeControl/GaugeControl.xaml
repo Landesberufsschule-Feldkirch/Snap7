@@ -6,7 +6,7 @@
              x:Class="GaugeControl.GaugeControl"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" MinWidth="300" MinHeight="299">
-    <Grid MaxWidth="300" MaxHeight="300" >
+    <Grid x:Name="GesamtesGrid" MaxWidth="300" MaxHeight="300" >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="37*"/>

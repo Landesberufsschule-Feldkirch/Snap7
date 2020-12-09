@@ -1,4 +1,6 @@
-﻿namespace Tiefgarage.ViewModel
+﻿using System.Windows;
+
+namespace Tiefgarage.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -15,7 +17,7 @@
             _alleFahrzeugePersonen = aFp;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -92,7 +94,7 @@
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -139,8 +141,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set

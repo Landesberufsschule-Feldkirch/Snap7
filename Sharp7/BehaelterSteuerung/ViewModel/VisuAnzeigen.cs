@@ -16,7 +16,7 @@ namespace BehaelterSteuerung.ViewModel
             _alleBehaelter = aB;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -24,23 +24,23 @@ namespace BehaelterSteuerung.ViewModel
 
             AktivePermutation = "0000";
 
-            VisibilityVentilQ1Ein = "hidden";
-            VisibilityVentilQ2Ein = "hidden";
-            VisibilityVentilQ3Ein = "hidden";
-            VisibilityVentilQ4Ein = "hidden";
-            VisibilityVentilQ5Ein = "hidden";
-            VisibilityVentilQ6Ein = "hidden";
-            VisibilityVentilQ7Ein = "hidden";
-            VisibilityVentilQ8Ein = "hidden";
+            VisibilityVentilQ1Ein =  Visibility.Hidden;
+            VisibilityVentilQ2Ein =  Visibility.Hidden;
+            VisibilityVentilQ3Ein =  Visibility.Hidden;
+            VisibilityVentilQ4Ein =  Visibility.Hidden;
+            VisibilityVentilQ5Ein =  Visibility.Hidden;
+            VisibilityVentilQ6Ein =  Visibility.Hidden;
+            VisibilityVentilQ7Ein =  Visibility.Hidden;
+            VisibilityVentilQ8Ein =  Visibility.Hidden;
 
-            VisibilityVentilQ1Aus = "visible";
-            VisibilityVentilQ2Aus = "visible";
-            VisibilityVentilQ3Aus = "visible";
-            VisibilityVentilQ4Aus = "visible";
-            VisibilityVentilQ5Aus = "visible";
-            VisibilityVentilQ6Aus = "visible";
-            VisibilityVentilQ7Aus = "visible";
-            VisibilityVentilQ8Aus = "visible";
+            VisibilityVentilQ1Aus = Visibility.Visible;
+            VisibilityVentilQ2Aus = Visibility.Visible;
+            VisibilityVentilQ3Aus = Visibility.Visible;
+            VisibilityVentilQ4Aus = Visibility.Visible;
+            VisibilityVentilQ5Aus = Visibility.Visible;
+            VisibilityVentilQ6Aus = Visibility.Visible;
+            VisibilityVentilQ7Aus = Visibility.Visible;
+            VisibilityVentilQ8Aus = Visibility.Visible;
 
             ColorZuleitung1B = "blue";
             ColorZuleitung2B = "blue";
@@ -146,8 +146,8 @@ namespace BehaelterSteuerung.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokalLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
-                        //SpsVersionsInfoSichtbar = "hidden";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                        //SpsVersionsInfoSichtbar = Visibility.Hidden;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -195,8 +195,8 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -262,19 +262,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ1Ein = "visible";
-                VisibilityVentilQ1Aus = "hidden";
+                VisibilityVentilQ1Ein = Visibility.Visible;
+                VisibilityVentilQ1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ1Ein = "hidden";
-                VisibilityVentilQ1Aus = "visible";
+                VisibilityVentilQ1Ein =  Visibility.Hidden;
+                VisibilityVentilQ1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ1Ein;
+        private Visibility _visibilityVentilQ1Ein;
 
-        public string VisibilityVentilQ1Ein
+        public Visibility VisibilityVentilQ1Ein
         {
             get => _visibilityVentilQ1Ein;
             set
@@ -284,9 +284,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ1Aus;
+        private Visibility _visibilityVentilQ1Aus;
 
-        public string VisibilityVentilQ1Aus
+        public Visibility VisibilityVentilQ1Aus
         {
             get => _visibilityVentilQ1Aus;
             set
@@ -304,19 +304,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ2Ein = "visible";
-                VisibilityVentilQ2Aus = "hidden";
+                VisibilityVentilQ2Ein = Visibility.Visible;
+                VisibilityVentilQ2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ2Ein = "hidden";
-                VisibilityVentilQ2Aus = "visible";
+                VisibilityVentilQ2Ein =  Visibility.Hidden;
+                VisibilityVentilQ2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ2Ein;
+        private Visibility _visibilityVentilQ2Ein;
 
-        public string VisibilityVentilQ2Ein
+        public Visibility VisibilityVentilQ2Ein
         {
             get => _visibilityVentilQ2Ein;
             set
@@ -326,9 +326,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ2Aus;
+        private Visibility _visibilityVentilQ2Aus;
 
-        public string VisibilityVentilQ2Aus
+        public Visibility VisibilityVentilQ2Aus
         {
             get => _visibilityVentilQ2Aus;
             set
@@ -346,19 +346,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ3Ein = "visible";
-                VisibilityVentilQ3Aus = "hidden";
+                VisibilityVentilQ3Ein = Visibility.Visible;
+                VisibilityVentilQ3Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ3Ein = "hidden";
-                VisibilityVentilQ3Aus = "visible";
+                VisibilityVentilQ3Ein =  Visibility.Hidden;
+                VisibilityVentilQ3Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ3Ein;
+        private Visibility _visibilityVentilQ3Ein;
 
-        public string VisibilityVentilQ3Ein
+        public Visibility VisibilityVentilQ3Ein
         {
             get => _visibilityVentilQ3Ein;
             set
@@ -368,9 +368,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ3Aus;
+        private Visibility _visibilityVentilQ3Aus;
 
-        public string VisibilityVentilQ3Aus
+        public Visibility VisibilityVentilQ3Aus
         {
             get => _visibilityVentilQ3Aus;
             set
@@ -388,19 +388,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ4Ein = "visible";
-                VisibilityVentilQ4Aus = "hidden";
+                VisibilityVentilQ4Ein = Visibility.Visible;
+                VisibilityVentilQ4Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ4Ein = "hidden";
-                VisibilityVentilQ4Aus = "visible";
+                VisibilityVentilQ4Ein =  Visibility.Hidden;
+                VisibilityVentilQ4Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ4Ein;
+        private Visibility _visibilityVentilQ4Ein;
 
-        public string VisibilityVentilQ4Ein
+        public Visibility VisibilityVentilQ4Ein
         {
             get => _visibilityVentilQ4Ein;
             set
@@ -410,9 +410,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ4Aus;
+        private Visibility _visibilityVentilQ4Aus;
 
-        public string VisibilityVentilQ4Aus
+        public Visibility VisibilityVentilQ4Aus
         {
             get => _visibilityVentilQ4Aus;
             set
@@ -430,19 +430,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ5Ein = "visible";
-                VisibilityVentilQ5Aus = "hidden";
+                VisibilityVentilQ5Ein = Visibility.Visible;
+                VisibilityVentilQ5Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ5Ein = "hidden";
-                VisibilityVentilQ5Aus = "visible";
+                VisibilityVentilQ5Ein =  Visibility.Hidden;
+                VisibilityVentilQ5Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ5Ein;
+        private Visibility _visibilityVentilQ5Ein;
 
-        public string VisibilityVentilQ5Ein
+        public Visibility VisibilityVentilQ5Ein
         {
             get => _visibilityVentilQ5Ein;
             set
@@ -452,9 +452,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ5Aus;
+        private Visibility _visibilityVentilQ5Aus;
 
-        public string VisibilityVentilQ5Aus
+        public Visibility VisibilityVentilQ5Aus
         {
             get => _visibilityVentilQ5Aus;
             set
@@ -472,19 +472,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ6Ein = "visible";
-                VisibilityVentilQ6Aus = "hidden";
+                VisibilityVentilQ6Ein = Visibility.Visible;
+                VisibilityVentilQ6Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ6Ein = "hidden";
-                VisibilityVentilQ6Aus = "visible";
+                VisibilityVentilQ6Ein =  Visibility.Hidden;
+                VisibilityVentilQ6Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ6Ein;
+        private Visibility _visibilityVentilQ6Ein;
 
-        public string VisibilityVentilQ6Ein
+        public Visibility VisibilityVentilQ6Ein
         {
             get => _visibilityVentilQ6Ein;
             set
@@ -494,9 +494,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ6Aus;
+        private Visibility _visibilityVentilQ6Aus;
 
-        public string VisibilityVentilQ6Aus
+        public Visibility VisibilityVentilQ6Aus
         {
             get => _visibilityVentilQ6Aus;
             set
@@ -514,19 +514,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ7Ein = "visible";
-                VisibilityVentilQ7Aus = "hidden";
+                VisibilityVentilQ7Ein = Visibility.Visible;
+                VisibilityVentilQ7Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ7Ein = "hidden";
-                VisibilityVentilQ7Aus = "visible";
+                VisibilityVentilQ7Ein =  Visibility.Hidden;
+                VisibilityVentilQ7Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ7Ein;
+        private Visibility _visibilityVentilQ7Ein;
 
-        public string VisibilityVentilQ7Ein
+        public Visibility VisibilityVentilQ7Ein
         {
             get => _visibilityVentilQ7Ein;
             set
@@ -536,9 +536,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ7Aus;
+        private Visibility _visibilityVentilQ7Aus;
 
-        public string VisibilityVentilQ7Aus
+        public Visibility VisibilityVentilQ7Aus
         {
             get => _visibilityVentilQ7Aus;
             set
@@ -556,19 +556,19 @@ namespace BehaelterSteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityVentilQ8Ein = "visible";
-                VisibilityVentilQ8Aus = "hidden";
+                VisibilityVentilQ8Ein = Visibility.Visible;
+                VisibilityVentilQ8Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityVentilQ8Ein = "hidden";
-                VisibilityVentilQ8Aus = "visible";
+                VisibilityVentilQ8Ein =  Visibility.Hidden;
+                VisibilityVentilQ8Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityVentilQ8Ein;
+        private Visibility _visibilityVentilQ8Ein;
 
-        public string VisibilityVentilQ8Ein
+        public Visibility VisibilityVentilQ8Ein
         {
             get => _visibilityVentilQ8Ein;
             set
@@ -578,9 +578,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _visibilityVentilQ8Aus;
+        private Visibility _visibilityVentilQ8Aus;
 
-        public string VisibilityVentilQ8Aus
+        public Visibility VisibilityVentilQ8Aus
         {
             get => _visibilityVentilQ8Aus;
             set

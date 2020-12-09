@@ -17,7 +17,7 @@
             Foerderanlage = fa;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -40,27 +40,27 @@
             ClickModeBtnK1 = "Press";
             ClickModeBtnM1LlK1 = "Press";
 
-            VisibilityBtnSetManual = "Visible";
+            VisibilityBtnSetManual = Visibility.Visible;
 
-            VisibilityM1Ein = "Hidden";
-            VisibilityM2Ein = "Hidden";
+            VisibilityM1Ein =  Visibility.Hidden;
+            VisibilityM2Ein =  Visibility.Hidden;
 
-            VisibilityK1Ein = "Hidden";
-            VisibilityK1Aus = "Visible";
+            VisibilityK1Ein =  Visibility.Hidden;
+            VisibilityK1Aus = Visibility.Visible;
 
-            VisibilityB1Ein = "Visible";
-            VisibilityB1Aus = "Hidden";
+            VisibilityB1Ein = Visibility.Visible;
+            VisibilityB1Aus =  Visibility.Hidden;
 
-            VisibilityB2Ein = "Visible";
-            VisibilityB2Aus = "Hidden";
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
-            VisibilityMaterialOben = "Hidden";
-            VisibilityMaterialUnten = "Hidden";
+            VisibilityMaterialOben =  Visibility.Hidden;
+            VisibilityMaterialUnten =  Visibility.Hidden;
 
-            VisibilityPfeilLinkslauf = "Hidden";
-            VisibilityPfeilRechtslauf = "Hidden";
+            VisibilityPfeilLinkslauf =  Visibility.Hidden;
+            VisibilityPfeilRechtslauf =  Visibility.Hidden;
 
-            VisibilityKurzschluss = "Hidden";
+            VisibilityKurzschluss =  Visibility.Hidden;
 
             ColorF1 = "LawnGreen";
             ColorP1 = "LawnGreen";
@@ -103,7 +103,7 @@
                 SichtbarkeitMaterialOben(Foerderanlage.Silo.GetFuellstand() > 0.01);
                 SichtbarkeitMaterialUnten((Foerderanlage.Silo.GetFuellstand() > 0.01) && (Foerderanlage.K1));
 
-                if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
 
                 FarbeF1(Foerderanlage.F1);
                 FarbeP1(Foerderanlage.P1);
@@ -127,7 +127,7 @@
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -201,8 +201,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -618,11 +618,11 @@
 
         #region Sichtbarkeit BtnSetManual
 
-        public void SichtbarkeitBtnSetManual(bool val) => VisibilityBtnSetManual = val ? "Visible" : "Hidden";
+        public void SichtbarkeitBtnSetManual(bool val) => VisibilityBtnSetManual = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityBtnSetManual;
+        private Visibility _visibilityBtnSetManual;
 
-        public string VisibilityBtnSetManual
+        public Visibility VisibilityBtnSetManual
         {
             get => _visibilityBtnSetManual;
             set
@@ -636,11 +636,11 @@
 
         #region Sichtbarkeit PfeilLinkslauf
 
-        public void SichtbarkeitPfeilLinkslauf(bool val) => VisibilityPfeilLinkslauf = val ? "Visible" : "Hidden";
+        public void SichtbarkeitPfeilLinkslauf(bool val) => VisibilityPfeilLinkslauf = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityPfeilLinkslauf;
+        private Visibility _visibilityPfeilLinkslauf;
 
-        public string VisibilityPfeilLinkslauf
+        public Visibility VisibilityPfeilLinkslauf
         {
             get => _visibilityPfeilLinkslauf;
             set
@@ -654,11 +654,11 @@
 
         #region Sichtbarkeit PfeilRechtslauf
 
-        public void SichtbarkeitPfeilRechtslauf(bool val) => VisibilityPfeilRechtslauf = val ? "Visible" : "Hidden";
+        public void SichtbarkeitPfeilRechtslauf(bool val) => VisibilityPfeilRechtslauf = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityPfeilRechtslauf;
+        private Visibility _visibilityPfeilRechtslauf;
 
-        public string VisibilityPfeilRechtslauf
+        public Visibility VisibilityPfeilRechtslauf
         {
             get => _visibilityPfeilRechtslauf;
             set
@@ -672,11 +672,11 @@
 
         #region Sichtbarkeit M1
 
-        public void SichtbarkeitM1(bool val) => VisibilityM1Ein = val ? "Visible" : "Hidden";
+        public void SichtbarkeitM1(bool val) => VisibilityM1Ein = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityM1Ein;
+        private Visibility _visibilityM1Ein;
 
-        public string VisibilityM1Ein
+        public Visibility VisibilityM1Ein
         {
             get => _visibilityM1Ein;
             set
@@ -690,11 +690,11 @@
 
         #region Sichtbarkeit M2
 
-        public void SichtbarkeitM2(bool val) => VisibilityM2Ein = val ? "Visible" : "Hidden";
+        public void SichtbarkeitM2(bool val) => VisibilityM2Ein = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityM2Ein;
+        private Visibility _visibilityM2Ein;
 
-        public string VisibilityM2Ein
+        public Visibility VisibilityM2Ein
         {
             get => _visibilityM2Ein;
             set
@@ -712,19 +712,19 @@
         {
             if (val)
             {
-                VisibilityK1Ein = "Visible";
-                VisibilityK1Aus = "Hidden";
+                VisibilityK1Ein = Visibility.Visible;
+                VisibilityK1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityK1Ein = "Hidden";
-                VisibilityK1Aus = "Visible";
+                VisibilityK1Ein =  Visibility.Hidden;
+                VisibilityK1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityK1Ein;
+        private Visibility _visibilityK1Ein;
 
-        public string VisibilityK1Ein
+        public Visibility VisibilityK1Ein
         {
             get => _visibilityK1Ein;
             set
@@ -734,9 +734,9 @@
             }
         }
 
-        private string _visibilityK1Aus;
+        private Visibility _visibilityK1Aus;
 
-        public string VisibilityK1Aus
+        public Visibility VisibilityK1Aus
         {
             get => _visibilityK1Aus;
             set
@@ -754,19 +754,19 @@
         {
             if (val)
             {
-                VisibilityB1Ein = "Visible";
-                VisibilityB1Aus = "Hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "Hidden";
-                VisibilityB1Aus = "Visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -776,9 +776,9 @@
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -796,19 +796,19 @@
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -818,9 +818,9 @@
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -834,11 +834,11 @@
 
         #region Sichtbarkeit MaterialOben
 
-        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? "Visible" : "Hidden";
+        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityMaterialOben;
+        private Visibility _visibilityMaterialOben;
 
-        public string VisibilityMaterialOben
+        public Visibility VisibilityMaterialOben
         {
             get => _visibilityMaterialOben;
             set
@@ -852,11 +852,11 @@
 
         #region Sichtbarkeit MaterialUnten
 
-        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? "Visible" : "Hidden";
+        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityMaterialUnten;
+        private Visibility _visibilityMaterialUnten;
 
-        public string VisibilityMaterialUnten
+        public Visibility VisibilityMaterialUnten
         {
             get => _visibilityMaterialUnten;
             set
@@ -870,9 +870,9 @@
 
         #region VisibilityKurzschluss
 
-        private string _visibilityKurzschluss;
+        private Visibility _visibilityKurzschluss;
 
-        public string VisibilityKurzschluss
+        public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
             set

@@ -19,7 +19,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             Silosteuerung = st;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -38,22 +38,22 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
             Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
-            VisibilityB1Ein = "hidden";
-            VisibilityB1Aus = "visible";
+            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein = "visible";
-            VisibilityB2Aus = "hidden";
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
-            VisibilityQ1Ein = "visible";
-            VisibilityQ1Aus = "hidden";
+            VisibilityQ1Ein = Visibility.Visible;
+            VisibilityQ1Aus =  Visibility.Hidden;
 
-            VisibilityXfuEin = "visible";
+            VisibilityXfuEin = Visibility.Visible;
 
-            VisibilityY1Ein = "hidden";
-            VisibilityY1Aus = "visible";
+            VisibilityY1Ein =  Visibility.Hidden;
+            VisibilityY1Aus = Visibility.Visible;
 
-            VisibilityMaterialOben = "Hidden";
-            VisibilityMaterialUnten = "Hidden";
+            VisibilityMaterialOben =  Visibility.Hidden;
+            VisibilityMaterialUnten =  Visibility.Hidden;
 
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
@@ -146,8 +146,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -204,11 +204,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #region Sichtbarkeit
 
-        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? "Visible" : "Hidden";
+        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityMaterialOben;
+        private Visibility _visibilityMaterialOben;
 
-        public string VisibilityMaterialOben
+        public Visibility VisibilityMaterialOben
         {
             get => _visibilityMaterialOben;
             set
@@ -218,11 +218,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? "Visible" : "Hidden";
+        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityMaterialUnten;
+        private Visibility _visibilityMaterialUnten;
 
-        public string VisibilityMaterialUnten
+        public Visibility VisibilityMaterialUnten
         {
             get => _visibilityMaterialUnten;
             set
@@ -236,19 +236,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityB1Ein = "visible";
-                VisibilityB1Aus = "hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "hidden";
-                VisibilityB1Aus = "visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -258,9 +258,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -275,19 +275,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -297,9 +297,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -315,19 +315,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityQ1Ein = "visible";
-                VisibilityQ1Aus = "hidden";
+                VisibilityQ1Ein = Visibility.Visible;
+                VisibilityQ1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityQ1Ein = "hidden";
-                VisibilityQ1Aus = "visible";
+                VisibilityQ1Ein =  Visibility.Hidden;
+                VisibilityQ1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityQ1Ein;
+        private Visibility _visibilityQ1Ein;
 
-        public string VisibilityQ1Ein
+        public Visibility VisibilityQ1Ein
         {
             get => _visibilityQ1Ein;
             set
@@ -337,9 +337,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _visibilityQ1Aus;
+        private Visibility _visibilityQ1Aus;
 
-        public string VisibilityQ1Aus
+        public Visibility VisibilityQ1Aus
         {
             get => _visibilityQ1Aus;
             set
@@ -355,19 +355,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityXfuEin = "visible";
-                VisibilityXfuAus = "hidden";
+                VisibilityXfuEin = Visibility.Visible;
+                VisibilityXfuAus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityXfuEin = "hidden";
-                VisibilityXfuAus = "visible";
+                VisibilityXfuEin =  Visibility.Hidden;
+                VisibilityXfuAus = Visibility.Visible;
             }
         }
 
-        private string _visibilityXfuEin;
+        private Visibility _visibilityXfuEin;
 
-        public string VisibilityXfuEin
+        public Visibility VisibilityXfuEin
         {
             get => _visibilityXfuEin;
             set
@@ -377,9 +377,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _visibilityXfuAus;
+        private Visibility _visibilityXfuAus;
 
-        public string VisibilityXfuAus
+        public Visibility VisibilityXfuAus
         {
             get => _visibilityXfuAus;
             set
@@ -394,19 +394,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityY1Ein = "visible";
-                VisibilityY1Aus = "hidden";
+                VisibilityY1Ein = Visibility.Visible;
+                VisibilityY1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityY1Ein = "hidden";
-                VisibilityY1Aus = "visible";
+                VisibilityY1Ein =  Visibility.Hidden;
+                VisibilityY1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityY1Ein;
+        private Visibility _visibilityY1Ein;
 
-        public string VisibilityY1Ein
+        public Visibility VisibilityY1Ein
         {
             get => _visibilityY1Ein;
             set
@@ -416,9 +416,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _visibilityY1Aus;
+        private Visibility _visibilityY1Aus;
 
-        public string VisibilityY1Aus
+        public Visibility VisibilityY1Aus
         {
             get => _visibilityY1Aus;
             set

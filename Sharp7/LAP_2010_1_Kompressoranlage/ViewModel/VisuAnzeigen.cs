@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Threading;
+using System.Windows;
 
 namespace LAP_2010_1_Kompressoranlage.ViewModel
 {
@@ -26,16 +27,16 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             ColorQ3 = "LawnGreen";
             ColorB1 = "LawnGreen";
 
-            VisibilityB1Ein = "hidden";
-            VisibilityB1Aus = "visible";
+            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein = "Visible";
-            VisibilityB2Aus = "Hidden";
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
-            VisibilityKurzschluss = "Hidden";
+            VisibilityKurzschluss =  Visibility.Hidden;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -59,7 +60,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 SichtbarkeitB1(_kompressoranlage.B1);
                 SichtbarkeitB2(_kompressoranlage.B2);
 
-                if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
 
                 AktuellerDruck = _kompressoranlage.Druck;
 
@@ -70,7 +71,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -120,8 +121,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -362,9 +363,9 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         #region VisibilityKurzschluss
 
-        private string _visibilityKurzschluss;
+        private Visibility _visibilityKurzschluss;
 
-        public string VisibilityKurzschluss
+        public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
             set
@@ -382,19 +383,19 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             if (val)
             {
-                VisibilityB1Ein = "visible";
-                VisibilityB1Aus = "hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "hidden";
-                VisibilityB1Aus = "visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -404,9 +405,9 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -424,19 +425,19 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -446,9 +447,9 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set

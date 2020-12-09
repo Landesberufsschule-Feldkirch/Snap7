@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace Parkhaus.ViewModel
 {
@@ -20,14 +21,14 @@ namespace Parkhaus.ViewModel
             _random = new Random();
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = "LightBlue";
 
             for (var i = 0; i < 100; i++) FarbeSensor.Add("LightGray");
-            for (var i = 0; i < 100; i++) AutoSichtbar.Add("Visible");
+            for (var i = 0; i < 100; i++) AutoSichtbar.Add(Visibility.Visible);
 
             ColorP0 = "LightGray";
             ClickModeBtnZufall = "Press";
@@ -45,9 +46,9 @@ namespace Parkhaus.ViewModel
 
                 for (var i = 0; i < 50; i++)
                 {
-                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? "Visible" : "Hidden";
+                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? Visibility.Visible :  Visibility.Hidden;
 
-                    FarbeSensor[i] = AutoSichtbar[i] == "Visible" ? "Red" : "LawnGreen";
+                    FarbeSensor[i] = AutoSichtbar[i] == Visibility.Visible ? "Red" : "LawnGreen";
                 }
 
                 if (_mainWindow.Plc != null)
@@ -57,7 +58,7 @@ namespace Parkhaus.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -114,8 +115,8 @@ namespace Parkhaus.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -192,7 +193,7 @@ namespace Parkhaus.ViewModel
             if (!(auto is string nrAuto)) return;
 
             var autoNummer = Convert.ToInt32(nrAuto);
-            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == "Visible" ? "Hidden" : "Visible";
+            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == Visibility.Visible ?  Visibility.Hidden : Visibility.Visible;
         }
 
 
@@ -208,8 +209,8 @@ namespace Parkhaus.ViewModel
             }
         }
 
-        private ObservableCollection<string> _autoSichtbar = new ObservableCollection<string>();
-        public ObservableCollection<string> AutoSichtbar
+        private ObservableCollection<Visibility> _autoSichtbar = new ObservableCollection<Visibility>();
+        public ObservableCollection<Visibility> AutoSichtbar
         {
             get => _autoSichtbar;
             set

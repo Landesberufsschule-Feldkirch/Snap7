@@ -36,8 +36,8 @@
 
             ColorKollisionRegalMitSchlitten = "Lawngreen";
 
-            VisibilityButtonsAktiv = "hidden";
-            VisibilitySlidersAktiv = "visible";
+            VisibilityButtonsAktiv =  Visibility.Hidden;
+            VisibilitySlidersAktiv = Visibility.Visible;
 
             IstPosition = "00";
             SollPosition = "00";
@@ -50,14 +50,14 @@
             YPosSlider = 0;
             ZPosSlider = 0;
 
-            VisibilityB1Ein = "hidden";
-            VisibilityB1Aus = "visible";
+            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein = "visible";
-            VisibilityB2Aus = "hidden";
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -77,15 +77,15 @@
 
         internal void SetButtonsAktiv()
         {
-            if (VisibilityButtonsAktiv == "hidden")
+            if (VisibilityButtonsAktiv ==  Visibility.Hidden)
             {
-                VisibilityButtonsAktiv = "visible";
-                VisibilitySlidersAktiv = "hidden";
+                VisibilityButtonsAktiv = Visibility.Visible;
+                VisibilitySlidersAktiv =  Visibility.Hidden;
             }
             else
             {
-                VisibilityButtonsAktiv = "hidden";
-                VisibilitySlidersAktiv = "visible";
+                VisibilityButtonsAktiv =  Visibility.Hidden;
+                VisibilitySlidersAktiv = Visibility.Visible;
             }
         }
 
@@ -109,7 +109,7 @@
         {
             while (true)
             {
-                if (_mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == "visible"))
+                if (_mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == Visibility.Visible))
                 {
                     _mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
                     _mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich -1 .. 1
@@ -154,7 +154,7 @@
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
@@ -208,8 +208,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -252,19 +252,19 @@
         {
             if (val)
             {
-                VisibilityB1Ein = "visible";
-                VisibilityB1Aus = "hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "hidden";
-                VisibilityB1Aus = "visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -274,9 +274,9 @@
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -295,19 +295,19 @@
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -317,9 +317,9 @@
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -351,9 +351,9 @@
 
         #region VisibilityButtonsAktiv
 
-        private string _visibilityButtonsAktiv;
+        private Visibility _visibilityButtonsAktiv;
 
-        public string VisibilityButtonsAktiv
+        public Visibility VisibilityButtonsAktiv
         {
             get => _visibilityButtonsAktiv;
             set
@@ -367,9 +367,9 @@
 
         #region VisibilitySlidersAktiv
 
-        private string _visibilitySlidersAktiv;
+        private Visibility _visibilitySlidersAktiv;
 
-        public string VisibilitySlidersAktiv
+        public Visibility VisibilitySlidersAktiv
         {
             get => _visibilitySlidersAktiv;
             set

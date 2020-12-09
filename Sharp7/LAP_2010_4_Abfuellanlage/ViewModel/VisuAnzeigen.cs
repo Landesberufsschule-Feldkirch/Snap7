@@ -32,25 +32,25 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
             Margin1 = new Thickness(0, 30, 0, 0);
 
-            VisibilityRectangleAbleitung = "visible";
+            VisibilityRectangleAbleitung = Visibility.Visible;
 
             for (var i = 0; i < 10; i++) VisDose.Add(Visibility.Visible);
             for (var i = 0; i < 10; i++) TopDose.Add(10 + i * 10);
             for (var i = 0; i < 10; i++) LeftDose.Add(10 + i * 10);
 
-            VisibilityK1Ein = "hidden";
-            VisibilityK2Ein = "hidden";
+            VisibilityK1Ein =  Visibility.Hidden;
+            VisibilityK2Ein =  Visibility.Hidden;
 
-            VisibilityK1Aus = "visible";
-            VisibilityK2Aus = "visible";
+            VisibilityK1Aus = Visibility.Visible;
+            VisibilityK2Aus = Visibility.Visible;
 
-            VisibilityB1Ein = "Visible";
-            VisibilityB1Aus = "Hidden";
-            VisibilityB2Ein = "Visible";
-            VisibilityB2Aus = "Hidden";
+            VisibilityB1Ein = Visibility.Visible;
+            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -92,7 +92,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -146,8 +146,8 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -421,18 +421,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         {
             if (val)
             {
-                VisibilityK1Ein = "visible";
-                VisibilityK1Aus = "hidden";
+                VisibilityK1Ein = Visibility.Visible;
+                VisibilityK1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityK1Ein = "hidden";
-                VisibilityK1Aus = "visible";
+                VisibilityK1Ein =  Visibility.Hidden;
+                VisibilityK1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityK1Ein;
-        public string VisibilityK1Ein
+        private Visibility _visibilityK1Ein;
+        public Visibility VisibilityK1Ein
         {
             get => _visibilityK1Ein;
             set
@@ -442,9 +442,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _visibilityK1Aus;
+        private Visibility _visibilityK1Aus;
 
-        public string VisibilityK1Aus
+        public Visibility VisibilityK1Aus
         {
             get => _visibilityK1Aus;
             set
@@ -462,18 +462,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         {
             if (val)
             {
-                VisibilityK2Ein = "visible";
-                VisibilityK2Aus = "hidden";
+                VisibilityK2Ein = Visibility.Visible;
+                VisibilityK2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityK2Ein = "hidden";
-                VisibilityK2Aus = "visible";
+                VisibilityK2Ein =  Visibility.Hidden;
+                VisibilityK2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityK2Ein;
-        public string VisibilityK2Ein
+        private Visibility _visibilityK2Ein;
+        public Visibility VisibilityK2Ein
         {
             get => _visibilityK2Ein;
             set
@@ -483,9 +483,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _visibilityK2Aus;
+        private Visibility _visibilityK2Aus;
 
-        public string VisibilityK2Aus
+        public Visibility VisibilityK2Aus
         {
             get => _visibilityK2Aus;
             set
@@ -499,10 +499,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? "visible" : "hidden";
+        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? Visibility.Visible :  Visibility.Hidden;
 
-        private string _visibilityRectangleAbleitung;
-        public string VisibilityRectangleAbleitung
+        private Visibility _visibilityRectangleAbleitung;
+        public Visibility VisibilityRectangleAbleitung
         {
             get => _visibilityRectangleAbleitung;
             set
@@ -520,18 +520,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         {
             if (val)
             {
-                VisibilityB1Ein = "Visible";
-                VisibilityB1Aus = "Hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "Hidden";
-                VisibilityB1Aus = "Visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
-        public string VisibilityB1Ein
+        private Visibility _visibilityB1Ein;
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -541,9 +541,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -561,18 +561,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
-        public string VisibilityB2Ein
+        private Visibility _visibilityB2Ein;
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -582,9 +582,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set

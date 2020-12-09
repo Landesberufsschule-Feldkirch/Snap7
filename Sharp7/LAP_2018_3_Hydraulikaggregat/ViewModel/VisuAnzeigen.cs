@@ -39,19 +39,19 @@
 
             Margin1 = new Thickness(42, 0, 32, 0);
 
-            VisibilityB1Ein = "hidden";
-            VisibilityB1Aus = "visible";
+            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein = "hidden";
-            VisibilityB2Aus = "visible";
+            VisibilityB2Ein =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Visible;
 
-            VisibilityB3Ein = "hidden";
-            VisibilityB3Aus = "visible";
+            VisibilityB3Ein =  Visibility.Hidden;
+            VisibilityB3Aus = Visibility.Visible;
 
-            VisibilityKurzschluss = "Hidden";
+            VisibilityKurzschluss =  Visibility.Hidden;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -83,7 +83,7 @@
                 SichtbarkeitB2(_hydraulikaggregat.B2);
                 SichtbarkeitB3(_hydraulikaggregat.B3);
 
-                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
+                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
 
                 if (_mainWindow.Plc != null)
                 {
@@ -92,7 +92,7 @@
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -166,8 +166,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -586,19 +586,19 @@
         {
             if (val)
             {
-                VisibilityB1Ein = "visible";
-                VisibilityB1Aus = "hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "hidden";
-                VisibilityB1Aus = "visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -608,9 +608,9 @@
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -628,19 +628,19 @@
         {
             if (val)
             {
-                VisibilityB2Ein = "visible";
-                VisibilityB2Aus = "hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "hidden";
-                VisibilityB2Aus = "visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -650,9 +650,9 @@
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -670,19 +670,19 @@
         {
             if (val)
             {
-                VisibilityB3Ein = "visible";
-                VisibilityB3Aus = "hidden";
+                VisibilityB3Ein = Visibility.Visible;
+                VisibilityB3Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB3Ein = "hidden";
-                VisibilityB3Aus = "visible";
+                VisibilityB3Ein =  Visibility.Hidden;
+                VisibilityB3Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB3Ein;
+        private Visibility _visibilityB3Ein;
 
-        public string VisibilityB3Ein
+        public Visibility VisibilityB3Ein
         {
             get => _visibilityB3Ein;
             set
@@ -692,9 +692,9 @@
             }
         }
 
-        private string _visibilityB3Aus;
+        private Visibility _visibilityB3Aus;
 
-        public string VisibilityB3Aus
+        public Visibility VisibilityB3Aus
         {
             get => _visibilityB3Aus;
             set
@@ -708,9 +708,9 @@
 
         #region VisibilityKurzschluss
 
-        private string _visibilityKurzschluss;
+        private Visibility _visibilityKurzschluss;
 
-        public string VisibilityKurzschluss
+        public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
             set

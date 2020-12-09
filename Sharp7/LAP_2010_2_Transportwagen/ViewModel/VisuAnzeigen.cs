@@ -1,4 +1,6 @@
-﻿namespace LAP_2010_2_Transportwagen.ViewModel
+﻿using System.Windows;
+
+namespace LAP_2010_2_Transportwagen.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -14,7 +16,7 @@
             _transportwagen = tw;
 
             VersionNr = "V0.0";
-            SpsVersionsInfoSichtbar = "hidden";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -31,13 +33,13 @@
             ClickModeBtnS1 = "Press";
             ClickModeBtnS3 = "Press";
 
-            VisibilityB1Ein = "Visible";
-            VisibilityB1Aus = "Hidden";
-            VisibilityB2Ein = "Visible";
-            VisibilityB2Aus = "Hidden";
+            VisibilityB1Ein = Visibility.Visible;
+            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB2Ein = Visibility.Visible;
+            VisibilityB2Aus =  Visibility.Hidden;
 
-            VisibilityFuellen = "Hidden";
-            VisibilityKurzschluss = "Hidden";
+            VisibilityFuellen =  Visibility.Hidden;
+            VisibilityKurzschluss =  Visibility.Hidden;
 
             PositionRadLinks = 0;
             PositionRadRechts = 0;
@@ -61,8 +63,8 @@
                 SichtbarkeitB1(_transportwagen.B1);
                 SichtbarkeitB2(_transportwagen.B2);
 
-                if (_transportwagen.Q1 && _transportwagen.Q2) VisibilityKurzschluss = "Visible"; else VisibilityKurzschluss = "Hidden";
-                VisibilityFuellen = _transportwagen.Fuellen ? "Visible" : "Hidden";
+                if (_transportwagen.Q1 && _transportwagen.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
+                VisibilityFuellen = _transportwagen.Fuellen ? Visibility.Visible :  Visibility.Hidden;
 
                 PositionRadLinks = _transportwagen.Position + abstandRadWagen;
                 PositionRadRechts = _transportwagen.Position + _transportwagen.AbstandRadRechts + abstandRadWagen;
@@ -75,7 +77,7 @@
                         VersionNr = _mainWindow.VersionNummer;
                         SpsVersionLokal = _mainWindow.VersionInfoLokal;
                         SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? "hidden" : "visible";
+                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
@@ -130,8 +132,8 @@
             }
         }
 
-        private string _spsVersionsInfoSichtbar;
-        public string SpsVersionsInfoSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
             set
@@ -375,19 +377,19 @@
         {
             if (val)
             {
-                VisibilityB1Ein = "Visible";
-                VisibilityB1Aus = "Hidden";
+                VisibilityB1Ein = Visibility.Visible;
+                VisibilityB1Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein = "Hidden";
-                VisibilityB1Aus = "Visible";
+                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB1Ein;
+        private Visibility _visibilityB1Ein;
 
-        public string VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -397,9 +399,9 @@
             }
         }
 
-        private string _visibilityB1Aus;
+        private Visibility _visibilityB1Aus;
 
-        public string VisibilityB1Aus
+        public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
             set
@@ -417,19 +419,19 @@
         {
             if (val)
             {
-                VisibilityB2Ein = "Visible";
-                VisibilityB2Aus = "Hidden";
+                VisibilityB2Ein = Visibility.Visible;
+                VisibilityB2Aus =  Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein = "Hidden";
-                VisibilityB2Aus = "Visible";
+                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Visible;
             }
         }
 
-        private string _visibilityB2Ein;
+        private Visibility _visibilityB2Ein;
 
-        public string VisibilityB2Ein
+        public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
             set
@@ -439,9 +441,9 @@
             }
         }
 
-        private string _visibilityB2Aus;
+        private Visibility _visibilityB2Aus;
 
-        public string VisibilityB2Aus
+        public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
             set
@@ -455,9 +457,9 @@
 
         #region VisibilityKurzschluss
 
-        private string _visibilityKurzschluss;
+        private Visibility _visibilityKurzschluss;
 
-        public string VisibilityKurzschluss
+        public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
             set
@@ -471,9 +473,9 @@
 
         #region VisibilityFuellen
 
-        private string _visibilityFuellen;
+        private Visibility _visibilityFuellen;
 
-        public string VisibilityFuellen
+        public Visibility VisibilityFuellen
         {
             get => _visibilityFuellen;
             set

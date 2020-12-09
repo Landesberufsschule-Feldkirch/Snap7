@@ -152,7 +152,7 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                                 break;
                             default:
-                                throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
+                                throw new ArgumentOutOfRangeException();
                         }
                         break;
 
