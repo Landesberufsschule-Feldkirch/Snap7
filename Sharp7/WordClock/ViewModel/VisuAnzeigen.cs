@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace WordClock.ViewModel
 {
@@ -20,7 +21,7 @@ namespace WordClock.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             GeschwindigkeitSlider = 1;
 
@@ -49,7 +50,7 @@ namespace WordClock.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -115,9 +116,9 @@ namespace WordClock.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set

@@ -1,4 +1,7 @@
-﻿namespace LAP_2018_4_Niveauregelung.ViewModel
+﻿using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace LAP_2018_4_Niveauregelung.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -21,25 +24,25 @@
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS2 = "Press";
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS2 = ClickMode.Press;
+            ClickModeBtnS3 = ClickMode.Press;
 
-            ColorThermorelaisF1 = "LawnGreen";
-            ColorThermorelaisF2 = "LawnGreen";
+            ColorThermorelaisF1 = Colors.LawnGreen;
+            ColorThermorelaisF2 = Colors.LawnGreen;
 
-            ColorCircleP1 = "White";
-            ColorCircleP2 = "White";
-            ColorCircleP2 = "White";
+            ColorCircleP1 = Colors.White;
+            ColorCircleP2 = Colors.White;
+            ColorCircleP2 = Colors.White;
 
-            ColorAbleitungOben = "LightBlue";
-            ColorAbleitungUnten = "LightBlue";
-            ColorZuleitungLinksWaagrecht = "LightBlue";
-            ColorZuleitungLinksSenkrecht = "LightBlue";
-            ColorZuleitungRechtsWaagrecht = "LightBlue";
-            ColorZuleitungRechtsSenkrecht = "LightBlue";
+            ColorAbleitungOben = Colors.LightBlue;
+            ColorAbleitungUnten = Colors.LightBlue;
+            ColorZuleitungLinksWaagrecht = Colors.LightBlue;
+            ColorZuleitungLinksSenkrecht = Colors.LightBlue;
+            ColorZuleitungRechtsWaagrecht = Colors.LightBlue;
+            ColorZuleitungRechtsSenkrecht = Colors.LightBlue;
 
             VisibilityB1Ein = Visibility.Visible;
             VisibilityB2Ein = Visibility.Visible;
@@ -95,7 +98,7 @@
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -168,9 +171,9 @@
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -186,19 +189,19 @@
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
+        private ClickMode _clickModeBtnS1;
 
-        public string ClickModeBtnS1
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -214,19 +217,19 @@
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 == "Press")
+            if (ClickModeBtnS2 ==  ClickMode.Press)
             {
-                ClickModeBtnS2 = "Release";
+                ClickModeBtnS2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS2;
+        private ClickMode _clickModeBtnS2;
 
-        public string ClickModeBtnS2
+        public ClickMode ClickModeBtnS2
         {
             get => _clickModeBtnS2;
             set
@@ -242,19 +245,19 @@
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 == "Press")
+            if (ClickModeBtnS3 ==  ClickMode.Press)
             {
-                ClickModeBtnS3 = "Release";
+                ClickModeBtnS3 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS3 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS3;
+        private ClickMode _clickModeBtnS3;
 
-        public string ClickModeBtnS3
+        public ClickMode ClickModeBtnS3
         {
             get => _clickModeBtnS3;
             set
@@ -268,11 +271,11 @@
 
         #region Color Thermorelais F1
 
-        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? "Red" : "LawnGreen";
+        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorThermorelaisF1;
+        private Color _colorThermorelaisF1;
 
-        public string ColorThermorelaisF1
+        public Color ColorThermorelaisF1
         {
             get => _colorThermorelaisF1;
             set
@@ -286,11 +289,11 @@
 
         #region Color Thermorelais F2
 
-        public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? "Red" : "LawnGreen";
+        public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorThermorelaisF2;
+        private Color _colorThermorelaisF2;
 
-        public string ColorThermorelaisF2
+        public Color ColorThermorelaisF2
         {
             get => _colorThermorelaisF2;
             set
@@ -304,11 +307,11 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "Green" : "White";
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Colors.Green : Colors.White;
 
-        private string _colorCircleP1;
+        private Color _colorCircleP1;
 
-        public string ColorCircleP1
+        public Color ColorCircleP1
         {
             get => _colorCircleP1;
             set
@@ -322,11 +325,11 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? "Red" : "White";
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Colors.Red : Colors.White;
 
-        private string _colorCircleP2;
+        private Color _colorCircleP2;
 
-        public string ColorCircleP2
+        public Color ColorCircleP2
         {
             get => _colorCircleP2;
             set
@@ -340,11 +343,11 @@
 
         #region Color P3
 
-        public void FarbeCircle_P3(bool val) => ColorCircleP3 = val ? "OrangeRed" : "White";
+        public void FarbeCircle_P3(bool val) => ColorCircleP3 = val ? Colors.OrangeRed : Colors.White;
 
-        private string _colorCircleP3;
+        private Color _colorCircleP3;
 
-        public string ColorCircleP3
+        public Color ColorCircleP3
         {
             get => _colorCircleP3;
             set
@@ -358,11 +361,11 @@
 
         #region Color AbleitungOben
 
-        public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? "Blue" : "LightBlue";
+        public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitungOben;
+        private Color _colorAbleitungOben;
 
-        public string ColorAbleitungOben
+        public Color ColorAbleitungOben
         {
             get => _colorAbleitungOben;
             set
@@ -376,11 +379,11 @@
 
         #region Color AbleitungUnten
 
-        public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? "Blue" : "LightBlue";
+        public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitungUnten;
+        private Color _colorAbleitungUnten;
 
-        public string ColorAbleitungUnten
+        public Color ColorAbleitungUnten
         {
             get => _colorAbleitungUnten;
             set
@@ -394,11 +397,11 @@
 
         #region Color ZuleitungLinksWaagrecht
 
-        public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? "Blue" : "LightBlue";
+        public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitungLinksWaagrecht;
+        private Color _colorZuleitungLinksWaagrecht;
 
-        public string ColorZuleitungLinksWaagrecht
+        public Color ColorZuleitungLinksWaagrecht
         {
             get => _colorZuleitungLinksWaagrecht;
             set
@@ -412,11 +415,11 @@
 
         #region Color ZuleitungLinksSenkrecht
 
-        public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? "Blue" : "LightBlue";
+        public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitungLinksSenkrecht;
+        private Color _colorZuleitungLinksSenkrecht;
 
-        public string ColorZuleitungLinksSenkrecht
+        public Color ColorZuleitungLinksSenkrecht
         {
             get => _colorZuleitungLinksSenkrecht;
             set
@@ -430,11 +433,11 @@
 
         #region Color ZuleitungRechtsWaagrecht
 
-        public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? "Blue" : "LightBlue";
+        public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitungRechtsWaagrecht;
+        private Color _colorZuleitungRechtsWaagrecht;
 
-        public string ColorZuleitungRechtsWaagrecht
+        public Color ColorZuleitungRechtsWaagrecht
         {
             get => _colorZuleitungRechtsWaagrecht;
             set
@@ -448,11 +451,11 @@
 
         #region Color ZuleitungRechtsSenkrecht
 
-        public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? "Blue" : "LightBlue";
+        public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitungRechtsSenkrecht;
+        private Color _colorZuleitungRechtsSenkrecht;
 
-        public string ColorZuleitungRechtsSenkrecht
+        public Color ColorZuleitungRechtsSenkrecht
         {
             get => _colorZuleitungRechtsSenkrecht;
             set

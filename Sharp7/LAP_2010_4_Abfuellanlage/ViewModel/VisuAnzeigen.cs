@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace LAP_2010_4_Abfuellanlage.ViewModel
 {
@@ -19,16 +21,16 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             _mainWindow = mw;
             _abfuellAnlage = aa;
 
-            ColorP1 = "White";
-            ColorQ1 = "LawnGreen";
-            ColorRectangleZuleitung = "Coral";
+            ColorP1 = Colors.White;
+            ColorQ1 = Colors.LawnGreen;
+            ColorRectangleZuleitung = Colors.Coral;
 
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS2 = ClickMode.Press;
 
-            ClickModeBtnQ1 = "Press";
-            ClickModeBtnK1 = "Press";
-            ClickModeBtnK2 = "Press";
+            ClickModeBtnQ1 = ClickMode.Press;
+            ClickModeBtnK1 = ClickMode.Press;
+            ClickModeBtnK2 = ClickMode.Press;
 
             Margin1 = new Thickness(0, 30, 0, 0);
 
@@ -54,7 +56,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -95,7 +97,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -168,8 +170,8 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private string _spsColor;
-        public string SpsColor
+        private Color _spsColor;
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -231,10 +233,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
+        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
 
-        private string _colorP1;
-        public string ColorP1
+        private Color _colorP1;
+        public Color ColorP1
         {
             get => _colorP1;
             set
@@ -248,10 +250,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "LightGray";
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Colors.LawnGreen : Colors.LightGray;
 
-        private string _colorQ1;
-        public string ColorQ1
+        private Color _colorQ1;
+        public Color ColorQ1
         {
             get => _colorQ1;
             set
@@ -265,10 +267,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? "Coral" : "LightCoral";
+        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Colors.Coral : Colors.LightCoral;
 
-        private string _colorRectangleZuleitung;
-        public string ColorRectangleZuleitung
+        private Color _colorRectangleZuleitung;
+        public Color ColorRectangleZuleitung
         {
             get => _colorRectangleZuleitung;
             set
@@ -284,18 +286,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
-        public string ClickModeBtnS1
+        private ClickMode _clickModeBtnS1;
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -311,18 +313,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 == "Press")
+            if (ClickModeBtnS2 ==  ClickMode.Press)
             {
-                ClickModeBtnS2 = "Release";
+                ClickModeBtnS2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS2;
-        public string ClickModeBtnS2
+        private ClickMode _clickModeBtnS2;
+        public ClickMode ClickModeBtnS2
         {
             get => _clickModeBtnS2;
             set
@@ -338,18 +340,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 == "Press")
+            if (ClickModeBtnQ1 ==  ClickMode.Press)
             {
-                ClickModeBtnQ1 = "Release";
+                ClickModeBtnQ1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnQ1 = "Press";
+            ClickModeBtnQ1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnQ1;
-        public string ClickModeBtnQ1
+        private ClickMode _clickModeBtnQ1;
+        public ClickMode ClickModeBtnQ1
         {
             get => _clickModeBtnQ1;
             set
@@ -365,18 +367,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonK1()
         {
-            if (ClickModeBtnK1 == "Press")
+            if (ClickModeBtnK1 ==  ClickMode.Press)
             {
-                ClickModeBtnK1 = "Release";
+                ClickModeBtnK1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnK1 = "Press";
+            ClickModeBtnK1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnK1;
-        public string ClickModeBtnK1
+        private ClickMode _clickModeBtnK1;
+        public ClickMode ClickModeBtnK1
         {
             get => _clickModeBtnK1;
             set
@@ -392,18 +394,18 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonK2()
         {
-            if (ClickModeBtnK2 == "Press")
+            if (ClickModeBtnK2 ==  ClickMode.Press)
             {
-                ClickModeBtnK2 = "Release";
+                ClickModeBtnK2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnK2 = "Press";
+            ClickModeBtnK2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnK2;
-        public string ClickModeBtnK2
+        private ClickMode _clickModeBtnK2;
+        public ClickMode ClickModeBtnK2
         {
             get => _clickModeBtnK2;
             set

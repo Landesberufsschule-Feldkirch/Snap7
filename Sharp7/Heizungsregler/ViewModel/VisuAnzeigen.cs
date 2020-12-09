@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Heizungsregler.ViewModel
 {
@@ -18,9 +19,9 @@ namespace Heizungsregler.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ColorPumpe = "White";
+            ColorPumpe = Colors.White;
 
             WitterungsTempMitEinheit = "0°C";
             WitterungsTemperaturSlider = 20;
@@ -42,7 +43,7 @@ namespace Heizungsregler.ViewModel
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -128,9 +129,9 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -143,10 +144,10 @@ namespace Heizungsregler.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ColorPumpe
-        public void Pumpenfarbe(bool status) => ColorPumpe = status ? "LawnGreen" : "White";
+        public void Pumpenfarbe(bool status) => ColorPumpe = status ? Colors.LawnGreen : Colors.White;
 
-        private string _colorPumpe;
-        public string ColorPumpe
+        private Color _colorPumpe;
+        public Color ColorPumpe
         {
             get => _colorPumpe;
             set
@@ -158,10 +159,10 @@ namespace Heizungsregler.ViewModel
         #endregion ColorPumpe
 
         #region ColorOelGasBrenner
-        public void OelGasBrennerfarbe(bool status) => ColorOelGasBrenner = status ? "Red" : "White";
+        public void OelGasBrennerfarbe(bool status) => ColorOelGasBrenner = status ? Colors.Red : Colors.White;
 
-        private string _colorOelGasBrenner;
-        public string ColorOelGasBrenner
+        private Color _colorOelGasBrenner;
+        public Color ColorOelGasBrenner
         {
             get => _colorOelGasBrenner;
             set

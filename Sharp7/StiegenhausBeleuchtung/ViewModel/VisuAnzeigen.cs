@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace StiegenhausBeleuchtung.ViewModel
 {
@@ -20,15 +22,15 @@ namespace StiegenhausBeleuchtung.ViewModel
             ReiseStart = "sadf:-";
             ReiseZiel = "sadf:-";
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
-            for (var i = 0; i < 100; i++) ColorLampe.Add("Yellow");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
+            for (var i = 0; i < 100; i++) ColorLampe.Add(Colors.Yellow);
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -43,7 +45,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                 {
                     for (var i = 0; i < 100; i++)
                     {
-                        if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = "Release"; else ClickModeBtn[i] = "Press";
+                        if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = ClickMode.Release; else ClickModeBtn[i] = ClickMode.Press;
                     }
                 }
 
@@ -59,7 +61,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -126,9 +128,9 @@ namespace StiegenhausBeleuchtung.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -178,12 +180,11 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         public void FarbeAlleLampen(int lampe, bool val)
         {
-            if (val) ColorLampe[lampe] = "Yellow"; else ColorLampe[lampe] = "White";
+            if (val) ColorLampe[lampe] = Colors.Yellow; else ColorLampe[lampe] = Colors.White;
         }
 
-        private ObservableCollection<string> _colorLampe = new ObservableCollection<string>();
-
-        public ObservableCollection<string> ColorLampe
+        private ObservableCollection<Color> _colorLampe = new ObservableCollection<Color>();
+        public ObservableCollection<Color> ColorLampe
         {
             get => _colorLampe;
             set
@@ -199,19 +200,19 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         public bool ClickModeButton(int bewegungsmelder)
         {
-            if (ClickModeBtn[bewegungsmelder] == "Press")
+            if (ClickModeBtn[bewegungsmelder] ==  ClickMode.Press)
             {
-                ClickModeBtn[bewegungsmelder] = "Release";
+                ClickModeBtn[bewegungsmelder] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[bewegungsmelder] = "Press";
+            ClickModeBtn[bewegungsmelder] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<string> _clickModeBtn = new ObservableCollection<string>();
+        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeBtn = new ObservableCollection<System.Windows.Controls.ClickMode>();
 
-        public ObservableCollection<string> ClickModeBtn
+        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;
             set

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Synchronisiereinrichtung.ViewModel
 {
@@ -20,7 +21,7 @@ namespace Synchronisiereinrichtung.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             ManualVentilstellung = 0;
             ManualErregerstrom = 0;
@@ -117,7 +118,7 @@ namespace Synchronisiereinrichtung.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -183,8 +184,8 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        private string _spsColor;
-        public string SpsColor
+        private Color _spsColor;
+        public Color SpsColor
         {
             get => _spsColor;
             set

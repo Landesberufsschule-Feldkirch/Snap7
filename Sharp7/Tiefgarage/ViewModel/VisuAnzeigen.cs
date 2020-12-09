@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace Tiefgarage.ViewModel
 {
@@ -21,10 +22,10 @@ namespace Tiefgarage.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ColorB1 = "LightGray";
-            ColorB2 = "LightGray";
+            ColorB1 = Colors.LightGray;
+            ColorB2 = Colors.LightGray;
 
             EnableAuto1 = true;
             EnableAuto2 = true;
@@ -97,7 +98,7 @@ namespace Tiefgarage.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -164,9 +165,9 @@ namespace Tiefgarage.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -182,12 +183,12 @@ namespace Tiefgarage.ViewModel
 
         public void FarbeB1(bool val)
         {
-            ColorB1 = val ? "Red" : "LightGray";
+            ColorB1 = val ? Colors.Red : Colors.LightGray;
         }
 
-        private string _colorB1;
+        private Color _colorB1;
 
-        public string ColorB1
+        public Color ColorB1
         {
             get => _colorB1;
             set
@@ -203,12 +204,12 @@ namespace Tiefgarage.ViewModel
 
         public void FarbeB2(bool val)
         {
-            ColorB2 = val ? "Red" : "LightGray";
+            ColorB2 = val ? Colors.Red : Colors.LightGray;
         }
 
-        private string _colorB2;
+        private Color _colorB2;
 
-        public string ColorB2
+        public Color ColorB2
         {
             get => _colorB2;
             set

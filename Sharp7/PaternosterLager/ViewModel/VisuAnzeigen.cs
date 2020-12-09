@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PaternosterLager.ViewModel
 {
@@ -16,14 +18,13 @@ namespace PaternosterLager.ViewModel
             _mainWindow = mw;
             _paternosterlager = pa;
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
 
-            ClickModeBtnAuf = "Press";
-            ClickModeBtnAb = "Press";
+            ClickModeBtnAuf = ClickMode.Press;
+            ClickModeBtnAb = ClickMode.Press;
 
             IstPosition = "00";
             SollPosition = "00";
-
             VisibilityB1Ein =  Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 
@@ -35,7 +36,7 @@ namespace PaternosterLager.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
@@ -74,7 +75,7 @@ namespace PaternosterLager.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -153,9 +154,9 @@ namespace PaternosterLager.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -271,19 +272,18 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
             {
-                ClickModeBtn[asciiCode] = "Release";
+                ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[asciiCode] = "Press";
+            ClickModeBtn[asciiCode] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<string> _clickModeBtn = new ObservableCollection<string>();
-
-        public ObservableCollection<string> ClickModeBtn
+        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeBtn = new ObservableCollection<System.Windows.Controls.ClickMode>();
+        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;
             set
@@ -299,19 +299,19 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButtonAuf()
         {
-            if (ClickModeBtnAuf == "Press")
+            if (ClickModeBtnAuf ==  ClickMode.Press)
             {
-                ClickModeBtnAuf = "Release";
+                ClickModeBtnAuf = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnAuf = "Press";
+            ClickModeBtnAuf = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnAuf;
+        private ClickMode _clickModeBtnAuf;
 
-        public string ClickModeBtnAuf
+        public ClickMode ClickModeBtnAuf
         {
             get => _clickModeBtnAuf;
             set
@@ -327,19 +327,19 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButtonAb()
         {
-            if (ClickModeBtnAb == "Press")
+            if (ClickModeBtnAb ==  ClickMode.Press)
             {
-                ClickModeBtnAb = "Release";
+                ClickModeBtnAb = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnAb = "Press";
+            ClickModeBtnAb = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnAb;
+        private ClickMode _clickModeBtnAb;
 
-        public string ClickModeBtnAb
+        public ClickMode ClickModeBtnAb
         {
             get => _clickModeBtnAb;
             set

@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace LAP_2010_2_Transportwagen.ViewModel
 {
@@ -20,18 +22,18 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ColorF1 = "LawnGreen";
-            ColorP1 = "LawnGreen";
-            ColorQ1 = "LawnGreen";
-            ColorQ2 = "LawnGreen";
-            ColorS2 = "LawnGreen";
+            ColorF1 = Colors.LawnGreen;
+            ColorP1 = Colors.LawnGreen;
+            ColorQ1 = Colors.LawnGreen;
+            ColorQ2 = Colors.LawnGreen;
+            ColorS2 = Colors.LawnGreen;
 
-            ClickModeBtnQ1 = "Press";
-            ClickModeBtnQ2 = "Press";
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnQ1 = ClickMode.Press;
+            ClickModeBtnQ2 = ClickMode.Press;
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS3 = ClickMode.Press;
 
             VisibilityB1Ein = Visibility.Visible;
             VisibilityB1Aus =  Visibility.Hidden;
@@ -80,7 +82,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -155,9 +157,9 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -171,11 +173,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color F1
 
-        public void FarbeF1(bool val) => ColorF1 = val ? "LawnGreen" : "Red";
+        public void FarbeF1(bool val) => ColorF1 = val ? Colors.LawnGreen : Colors.Red;
 
-        private string _colorF1;
+        private Color _colorF1;
 
-        public string ColorF1
+        public Color ColorF1
         {
             get => _colorF1;
             set
@@ -189,11 +191,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? "Red" : "White";
+        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
 
-        private string _colorP1;
+        private Color _colorP1;
 
-        public string ColorP1
+        public Color ColorP1
         {
             get => _colorP1;
             set
@@ -207,11 +209,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? "LawnGreen" : "White";
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Colors.LawnGreen : Colors.White;
 
-        private string _colorQ1;
+        private Color _colorQ1;
 
-        public string ColorQ1
+        public Color ColorQ1
         {
             get => _colorQ1;
             set
@@ -225,11 +227,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) => ColorQ2 = val ? "LawnGreen" : "White";
+        public void FarbeQ2(bool val) => ColorQ2 = val ? Colors.LawnGreen : Colors.White;
 
-        private string _colorQ2;
+        private Color _colorQ2;
 
-        public string ColorQ2
+        public Color ColorQ2
         {
             get => _colorQ2;
             set
@@ -243,11 +245,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color S2
 
-        public void FarbeS2(bool val) => ColorS2 = val ? "LawnGreen" : "Red";
+        public void FarbeS2(bool val) => ColorS2 = val ? Colors.LawnGreen : Colors.Red;
 
-        private string _colorS2;
+        private Color _colorS2;
 
-        public string ColorS2
+        public Color ColorS2
         {
             get => _colorS2;
             set
@@ -263,19 +265,19 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 == "Press")
+            if (ClickModeBtnQ1 ==  ClickMode.Press)
             {
-                ClickModeBtnQ1 = "Release";
+                ClickModeBtnQ1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnQ1 = "Press";
+            ClickModeBtnQ1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnQ1;
+        private ClickMode _clickModeBtnQ1;
 
-        public string ClickModeBtnQ1
+        public ClickMode ClickModeBtnQ1
         {
             get => _clickModeBtnQ1;
             set
@@ -291,19 +293,19 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonQ2()
         {
-            if (ClickModeBtnQ2 == "Press")
+            if (ClickModeBtnQ2 ==  ClickMode.Press)
             {
-                ClickModeBtnQ2 = "Release";
+                ClickModeBtnQ2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnQ2 = "Press";
+            ClickModeBtnQ2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnQ2;
+        private ClickMode _clickModeBtnQ2;
 
-        public string ClickModeBtnQ2
+        public ClickMode ClickModeBtnQ2
         {
             get => _clickModeBtnQ2;
             set
@@ -319,19 +321,19 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
+        private ClickMode _clickModeBtnS1;
 
-        public string ClickModeBtnS1
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -347,19 +349,19 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 == "Press")
+            if (ClickModeBtnS3 ==  ClickMode.Press)
             {
-                ClickModeBtnS3 = "Release";
+                ClickModeBtnS3 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS3 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS3;
+        private ClickMode _clickModeBtnS3;
 
-        public string ClickModeBtnS3
+        public ClickMode ClickModeBtnS3
         {
             get => _clickModeBtnS3;
             set

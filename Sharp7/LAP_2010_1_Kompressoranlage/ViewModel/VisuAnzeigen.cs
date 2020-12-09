@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace LAP_2010_1_Kompressoranlage.ViewModel
 {
@@ -16,16 +18,16 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
             AktuellerDruck = 2;
 
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS2 = ClickMode.Press;
 
-            ColorF1 = "LawnGreen";
-            ColorP1 = "LawnGreen";
-            ColorP2 = "LawnGreen";
-            ColorQ1 = "LawnGreen";
-            ColorQ2 = "LawnGreen";
-            ColorQ3 = "LawnGreen";
-            ColorB1 = "LawnGreen";
+            ColorF1 = Colors.LawnGreen;
+            ColorP1 = Colors.LawnGreen;
+            ColorP2 = Colors.LawnGreen;
+            ColorQ1 = Colors.LawnGreen;
+            ColorQ2 = Colors.LawnGreen;
+            ColorQ3 = Colors.LawnGreen;
+            ColorB1 = Colors.LawnGreen;
 
             VisibilityB1Ein =  Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
@@ -40,7 +42,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -74,7 +76,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -144,9 +146,9 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -162,19 +164,19 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
+        private ClickMode _clickModeBtnS1;
 
-        public string ClickModeBtnS1
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -190,19 +192,19 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 == "Press")
+            if (ClickModeBtnS2 ==  ClickMode.Press)
             {
-                ClickModeBtnS2 = "Release";
+                ClickModeBtnS2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS2;
+        private ClickMode _clickModeBtnS2;
 
-        public string ClickModeBtnS2
+        public ClickMode ClickModeBtnS2
         {
             get => _clickModeBtnS2;
             set
@@ -218,12 +220,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeF1(bool val)
         {
-            ColorF1 = val ? "LawnGreen" : "Red";
+            ColorF1 = val ? Colors.LawnGreen : Colors.Red;
         }
 
-        private string _colorF1;
+        private Color _colorF1;
 
-        public string ColorF1
+        public Color ColorF1
         {
             get => _colorF1;
             set
@@ -239,12 +241,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeP1(bool val)
         {
-            ColorP1 = val ? "Red" : "White";
+            ColorP1 = val ? Colors.Red : Colors.White;
         }
 
-        private string _colorP1;
+        private Color _colorP1;
 
-        public string ColorP1
+        public Color ColorP1
         {
             get => _colorP1;
             set
@@ -260,12 +262,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeP2(bool val)
         {
-            ColorP2 = val ? "LawnGreen" : "White";
+            ColorP2 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorP2;
+        private Color _colorP2;
 
-        public string ColorP2
+        public Color ColorP2
         {
             get => _colorP2;
             set
@@ -281,12 +283,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeQ1(bool val)
         {
-            ColorQ1 = val ? "LawnGreen" : "White";
+            ColorQ1 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorQ1;
+        private Color _colorQ1;
 
-        public string ColorQ1
+        public Color ColorQ1
         {
             get => _colorQ1;
             set
@@ -302,12 +304,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeQ2(bool val)
         {
-            ColorQ2 = val ? "LawnGreen" : "White";
+            ColorQ2 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorQ2;
+        private Color _colorQ2;
 
-        public string ColorQ2
+        public Color ColorQ2
         {
             get => _colorQ2;
             set
@@ -323,12 +325,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeQ3(bool val)
         {
-            ColorQ3 = val ? "LawnGreen" : "White";
+            ColorQ3 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorQ3;
+        private Color _colorQ3;
 
-        public string ColorQ3
+        public Color ColorQ3
         {
             get => _colorQ3;
             set
@@ -344,12 +346,12 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         public void FarbeB1(bool val)
         {
-            ColorB1 = val ? "LawnGreen" : "Red";
+            ColorB1 = val ? Colors.LawnGreen : Colors.Red;
         }
 
-        private string _colorB1;
+        private Color _colorB1;
 
-        public string ColorB1
+        public Color ColorB1
         {
             get => _colorB1;
             set

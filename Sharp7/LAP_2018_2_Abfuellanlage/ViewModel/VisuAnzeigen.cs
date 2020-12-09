@@ -1,4 +1,7 @@
-﻿namespace LAP_2018_2_Abfuellanlage.ViewModel
+﻿using System.Windows.Controls;
+using System.Windows.Media;
+
+namespace LAP_2018_2_Abfuellanlage.ViewModel
 {
     using System.ComponentModel;
     using System.Threading;
@@ -21,15 +24,15 @@
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS2 = "Press";
-            ClickModeBtnS3 = "Press";
-            ClickModeBtnS4 = "Press";
-            ClickModeBtnK1 = "Press";
-            ClickModeBtnK2 = "Press";
-            ClickModeBtnQ1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS2 = ClickMode.Press;
+            ClickModeBtnS3 = ClickMode.Press;
+            ClickModeBtnS4 = ClickMode.Press;
+            ClickModeBtnK1 = ClickMode.Press;
+            ClickModeBtnK2 = ClickMode.Press;
+            ClickModeBtnQ1 = ClickMode.Press;
 
             ImageTop1 = 10;
             ImageTop2 = 20;
@@ -62,12 +65,12 @@
 
             VisibilityRectangleAbleitung =  Visibility.Hidden;
 
-            ColorCircleF1 = "LawnGreen";
-            ColorCircleQ1 = "LightGray";
-            ColorCircleP1 = "LightGray";
-            ColorCircleP2 = "LightGray";
+            ColorCircleF1 = Colors.LawnGreen;
+            ColorCircleQ1 = Colors.LightGray;
+            ColorCircleP1 = Colors.LightGray;
+            ColorCircleP2 = Colors.LightGray;
 
-            ColorRectangleZuleitung = "LightBlue";
+            ColorRectangleZuleitung = Colors.LightBlue;
 
             Margin1 = new Thickness(0, 30, 0, 0);
 
@@ -116,7 +119,7 @@
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -197,9 +200,9 @@
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -215,19 +218,19 @@
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
+        private ClickMode _clickModeBtnS1;
 
-        public string ClickModeBtnS1
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -243,19 +246,19 @@
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 == "Press")
+            if (ClickModeBtnS2 ==  ClickMode.Press)
             {
-                ClickModeBtnS2 = "Release";
+                ClickModeBtnS2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS2;
+        private ClickMode _clickModeBtnS2;
 
-        public string ClickModeBtnS2
+        public ClickMode ClickModeBtnS2
         {
             get => _clickModeBtnS2;
             set
@@ -271,19 +274,19 @@
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 == "Press")
+            if (ClickModeBtnS3 ==  ClickMode.Press)
             {
-                ClickModeBtnS3 = "Release";
+                ClickModeBtnS3 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS3 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS3;
+        private ClickMode _clickModeBtnS3;
 
-        public string ClickModeBtnS3
+        public ClickMode ClickModeBtnS3
         {
             get => _clickModeBtnS3;
             set
@@ -299,19 +302,19 @@
 
         public bool ClickModeButtonS4()
         {
-            if (ClickModeBtnS4 == "Press")
+            if (ClickModeBtnS4 ==  ClickMode.Press)
             {
-                ClickModeBtnS4 = "Release";
+                ClickModeBtnS4 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS4 = "Press";
+            ClickModeBtnS4 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS4;
+        private ClickMode _clickModeBtnS4;
 
-        public string ClickModeBtnS4
+        public ClickMode ClickModeBtnS4
         {
             get => _clickModeBtnS4;
             set
@@ -327,19 +330,19 @@
 
         public bool ClickModeButtonK1()
         {
-            if (ClickModeBtnK1 == "Press")
+            if (ClickModeBtnK1 ==  ClickMode.Press)
             {
-                ClickModeBtnK1 = "Release";
+                ClickModeBtnK1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnK1 = "Press";
+            ClickModeBtnK1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnK1;
+        private ClickMode _clickModeBtnK1;
 
-        public string ClickModeBtnK1
+        public ClickMode ClickModeBtnK1
         {
             get => _clickModeBtnK1;
             set
@@ -355,19 +358,19 @@
 
         public bool ClickModeButtonK2()
         {
-            if (ClickModeBtnK2 == "Press")
+            if (ClickModeBtnK2 ==  ClickMode.Press)
             {
-                ClickModeBtnK2 = "Release";
+                ClickModeBtnK2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnK2 = "Press";
+            ClickModeBtnK2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnK2;
+        private ClickMode _clickModeBtnK2;
 
-        public string ClickModeBtnK2
+        public ClickMode ClickModeBtnK2
         {
             get => _clickModeBtnK2;
             set
@@ -383,19 +386,19 @@
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 == "Press")
+            if (ClickModeBtnQ1 ==  ClickMode.Press)
             {
-                ClickModeBtnQ1 = "Release";
+                ClickModeBtnQ1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnQ1 = "Press";
+            ClickModeBtnQ1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnQ1;
+        private ClickMode _clickModeBtnQ1;
 
-        public string ClickModeBtnQ1
+        public ClickMode ClickModeBtnQ1
         {
             get => _clickModeBtnQ1;
             set
@@ -865,11 +868,11 @@
 
         #region Color F1
 
-        public void FarbeCircle_F1(bool val) => ColorCircleF1 = val ? "LawnGreen" : "Red";
+        public void FarbeCircle_F1(bool val) => ColorCircleF1 = val ? Colors.LawnGreen : Colors.Red;
 
-        private string _colorCircleF1;
+        private Color _colorCircleF1;
 
-        public string ColorCircleF1
+        public Color ColorCircleF1
         {
             get => _colorCircleF1;
             set
@@ -883,11 +886,11 @@
 
         #region Color Q1
 
-        public void FarbeCircle_Q1(bool val) => ColorCircleQ1 = val ? "lawngreen" : "LightGray";
+        public void FarbeCircle_Q1(bool val) => ColorCircleQ1 = val ? Colors.LawnGreen : Colors.LightGray;
 
-        private string _colorCircleQ1;
+        private Color _colorCircleQ1;
 
-        public string ColorCircleQ1
+        public Color ColorCircleQ1
         {
             get => _colorCircleQ1;
             set
@@ -901,11 +904,11 @@
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "lawngreen" : "LightGray";
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Colors.LawnGreen : Colors.LightGray;
 
-        private string _colorCircleP1;
+        private Color _colorCircleP1;
 
-        public string ColorCircleP1
+        public Color ColorCircleP1
         {
             get => _colorCircleP1;
             set
@@ -919,11 +922,11 @@
 
         #region Color P2
 
-        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? "red" : "LightGray";
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorCircleP2;
+        private Color _colorCircleP2;
 
-        public string ColorCircleP2
+        public Color ColorCircleP2
         {
             get => _colorCircleP2;
             set
@@ -937,11 +940,11 @@
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? "blue" : "lightblue";
+        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorRectangleZuleitung;
+        private Color _colorRectangleZuleitung;
 
-        public string ColorRectangleZuleitung
+        public Color ColorRectangleZuleitung
         {
             get => _colorRectangleZuleitung;
             set

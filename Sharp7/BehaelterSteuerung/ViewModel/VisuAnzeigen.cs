@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 
 namespace BehaelterSteuerung.ViewModel
 {
@@ -20,7 +21,7 @@ namespace BehaelterSteuerung.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
             AktivePermutation = "0000";
 
@@ -42,39 +43,39 @@ namespace BehaelterSteuerung.ViewModel
             VisibilityVentilQ7Aus = Visibility.Visible;
             VisibilityVentilQ8Aus = Visibility.Visible;
 
-            ColorZuleitung1B = "blue";
-            ColorZuleitung2B = "blue";
-            ColorZuleitung3B = "blue";
-            ColorZuleitung4B = "blue";
+            ColorZuleitung1B = Colors.Blue;
+            ColorZuleitung2B = Colors.Blue;
+            ColorZuleitung3B = Colors.Blue;
+            ColorZuleitung4B = Colors.Blue;
 
-            ColorAbleitung1A = "blue";
-            ColorAbleitung2A = "blue";
-            ColorAbleitung3A = "blue";
-            ColorAbleitung4A = "blue";
+            ColorAbleitung1A = Colors.Blue;
+            ColorAbleitung2A = Colors.Blue;
+            ColorAbleitung3A = Colors.Blue;
+            ColorAbleitung4A = Colors.Blue;
 
-            ColorAbleitung1A = "blue";
-            ColorAbleitung1B = "blue";
-            ColorAbleitung2A = "blue";
-            ColorAbleitung2B = "blue";
-            ColorAbleitung3A = "blue";
-            ColorAbleitung3B = "blue";
-            ColorAbleitung4A = "blue";
-            ColorAbleitung4B = "blue";
+            ColorAbleitung1A = Colors.Blue;
+            ColorAbleitung1B = Colors.Blue;
+            ColorAbleitung2A = Colors.Blue;
+            ColorAbleitung2B = Colors.Blue;
+            ColorAbleitung3A = Colors.Blue;
+            ColorAbleitung3B = Colors.Blue;
+            ColorAbleitung4A = Colors.Blue;
+            ColorAbleitung4B = Colors.Blue;
 
-            ColorAbleitungGesamt = "blue";
+            ColorAbleitungGesamt = Colors.Blue;
 
-            ColorLabelB1 = "red";
-            ColorLabelB2 = "red";
-            ColorLabelB3 = "red";
-            ColorLabelB4 = "red";
-            ColorLabelB5 = "red";
-            ColorLabelB6 = "red";
-            ColorLabelB7 = "red";
-            ColorLabelB8 = "red";
+            ColorLabelB1 = Colors.Red;
+            ColorLabelB2 = Colors.Red;
+            ColorLabelB3 = Colors.Red;
+            ColorLabelB4 = Colors.Red;
+            ColorLabelB5 = Colors.Red;
+            ColorLabelB6 = Colors.Red;
+            ColorLabelB7 = Colors.Red;
+            ColorLabelB8 = Colors.Red;
 
             DropDownEnabled = "true";
 
-            ColorCircleP1 = "lightgray";
+            ColorCircleP1 = Colors.LightGray;
 
             Margin1 = new Thickness(0, 30, 0, 0);
             Margin2 = new Thickness(0, 50, 0, 0);
@@ -150,7 +151,7 @@ namespace BehaelterSteuerung.ViewModel
                         //SpsVersionsInfoSichtbar = Visibility.Hidden;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -218,9 +219,9 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -273,7 +274,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ1Ein;
-
         public Visibility VisibilityVentilQ1Ein
         {
             get => _visibilityVentilQ1Ein;
@@ -285,7 +285,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ1Aus;
-
         public Visibility VisibilityVentilQ1Aus
         {
             get => _visibilityVentilQ1Aus;
@@ -315,7 +314,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ2Ein;
-
         public Visibility VisibilityVentilQ2Ein
         {
             get => _visibilityVentilQ2Ein;
@@ -327,7 +325,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ2Aus;
-
         public Visibility VisibilityVentilQ2Aus
         {
             get => _visibilityVentilQ2Aus;
@@ -357,7 +354,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ3Ein;
-
         public Visibility VisibilityVentilQ3Ein
         {
             get => _visibilityVentilQ3Ein;
@@ -369,7 +365,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ3Aus;
-
         public Visibility VisibilityVentilQ3Aus
         {
             get => _visibilityVentilQ3Aus;
@@ -399,7 +394,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ4Ein;
-
         public Visibility VisibilityVentilQ4Ein
         {
             get => _visibilityVentilQ4Ein;
@@ -411,7 +405,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ4Aus;
-
         public Visibility VisibilityVentilQ4Aus
         {
             get => _visibilityVentilQ4Aus;
@@ -441,7 +434,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ5Ein;
-
         public Visibility VisibilityVentilQ5Ein
         {
             get => _visibilityVentilQ5Ein;
@@ -453,7 +445,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ5Aus;
-
         public Visibility VisibilityVentilQ5Aus
         {
             get => _visibilityVentilQ5Aus;
@@ -483,7 +474,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ6Ein;
-
         public Visibility VisibilityVentilQ6Ein
         {
             get => _visibilityVentilQ6Ein;
@@ -495,7 +485,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ6Aus;
-
         public Visibility VisibilityVentilQ6Aus
         {
             get => _visibilityVentilQ6Aus;
@@ -525,7 +514,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ7Ein;
-
         public Visibility VisibilityVentilQ7Ein
         {
             get => _visibilityVentilQ7Ein;
@@ -537,7 +525,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ7Aus;
-
         public Visibility VisibilityVentilQ7Aus
         {
             get => _visibilityVentilQ7Aus;
@@ -567,7 +554,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ8Ein;
-
         public Visibility VisibilityVentilQ8Ein
         {
             get => _visibilityVentilQ8Ein;
@@ -579,7 +565,6 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         private Visibility _visibilityVentilQ8Aus;
-
         public Visibility VisibilityVentilQ8Aus
         {
             get => _visibilityVentilQ8Aus;
@@ -594,11 +579,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Zuleitung_1b
 
-        public void FarbeZuleitung1B(bool val) => ColorZuleitung1B = val ? "blue" : "lightblue";
+        public void FarbeZuleitung1B(bool val) => ColorZuleitung1B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitung1B;
-
-        public string ColorZuleitung1B
+        private Color _colorZuleitung1B;
+        public Color ColorZuleitung1B
         {
             get => _colorZuleitung1B;
             set
@@ -612,11 +596,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Zuleitung_2b
 
-        public void FarbeZuleitung2B(bool val) => ColorZuleitung2B = val ? "blue" : "lightblue";
+        public void FarbeZuleitung2B(bool val) => ColorZuleitung2B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitung2B;
-
-        public string ColorZuleitung2B
+        private Color _colorZuleitung2B;
+        public Color ColorZuleitung2B
         {
             get => _colorZuleitung2B;
             set
@@ -630,11 +613,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Zuleitung_3b
 
-        public void FarbeZuleitung3B(bool val) => ColorZuleitung3B = val ? "blue" : "lightblue";
+        public void FarbeZuleitung3B(bool val) => ColorZuleitung3B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitung3B;
-
-        public string ColorZuleitung3B
+        private Color _colorZuleitung3B;
+        public Color ColorZuleitung3B
         {
             get => _colorZuleitung3B;
             set
@@ -648,11 +630,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Zuleitung_4b
 
-        public void FarbeZuleitung4B(bool val) => ColorZuleitung4B = val ? "blue" : "lightblue";
+        public void FarbeZuleitung4B(bool val) => ColorZuleitung4B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorZuleitung4B;
-
-        public string ColorZuleitung4B
+        private Color _colorZuleitung4B;
+        public Color ColorZuleitung4B
         {
             get => _colorZuleitung4B;
             set
@@ -666,11 +647,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_1a
 
-        public void FarbeAbleitung1A(bool val) => ColorAbleitung1A = val ? "blue" : "lightblue";
+        public void FarbeAbleitung1A(bool val) => ColorAbleitung1A = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung1A;
-
-        public string ColorAbleitung1A
+        private Color _colorAbleitung1A;
+        public Color ColorAbleitung1A
         {
             get => _colorAbleitung1A;
             set
@@ -684,11 +664,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_2a
 
-        public void FarbeAbleitung2A(bool val) => ColorAbleitung2A = val ? "blue" : "lightblue";
+        public void FarbeAbleitung2A(bool val) => ColorAbleitung2A = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung2A;
-
-        public string ColorAbleitung2A
+        private Color _colorAbleitung2A;
+        public Color ColorAbleitung2A
         {
             get => _colorAbleitung2A;
             set
@@ -702,11 +681,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_3a
 
-        public void FarbeAbleitung3A(bool val) => ColorAbleitung3A = val ? "blue" : "lightblue";
+        public void FarbeAbleitung3A(bool val) => ColorAbleitung3A = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung3A;
-
-        public string ColorAbleitung3A
+        private Color _colorAbleitung3A;
+        public Color ColorAbleitung3A
         {
             get => _colorAbleitung3A;
             set
@@ -720,11 +698,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_4a
 
-        public void FarbeAbleitung4A(bool val) => ColorAbleitung4A = val ? "blue" : "lightblue";
+        public void FarbeAbleitung4A(bool val) => ColorAbleitung4A = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung4A;
-
-        public string ColorAbleitung4A
+        private Color _colorAbleitung4A;
+        public Color ColorAbleitung4A
         {
             get => _colorAbleitung4A;
             set
@@ -738,11 +715,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_1b
 
-        public void FarbeAbleitung1B(bool val) => ColorAbleitung1B = val ? "blue" : "lightblue";
+        public void FarbeAbleitung1B(bool val) => ColorAbleitung1B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung1B;
-
-        public string ColorAbleitung1B
+        private Color _colorAbleitung1B;
+        public Color ColorAbleitung1B
         {
             get => _colorAbleitung1B;
             set
@@ -756,11 +732,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_2b
 
-        public void FarbeAbleitung2B(bool val) => ColorAbleitung2B = val ? "blue" : "lightblue";
+        public void FarbeAbleitung2B(bool val) => ColorAbleitung2B = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung2B;
-
-        public string ColorAbleitung2B
+        private Color _colorAbleitung2B;
+        public Color ColorAbleitung2B
         {
             get => _colorAbleitung2B;
             set
@@ -774,11 +749,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_3b
 
-        public void FarbeAbleitung3B(bool val) => ColorAbleitung3B = val ? "blue" : "lightblue";
+        public void FarbeAbleitung3B(bool val) => ColorAbleitung3B = val ? Colors.Blue: Colors.LightBlue;
 
-        private string _colorAbleitung3B;
-
-        public string ColorAbleitung3B
+        private Color _colorAbleitung3B;
+        public Color ColorAbleitung3B
         {
             get => _colorAbleitung3B;
             set
@@ -792,11 +766,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_4b
 
-        public void FarbeAbleitung4B(bool val) => ColorAbleitung4B = val ? "blue" : "lightblue";
+        public void FarbeAbleitung4B(bool val) => ColorAbleitung4B = val ?Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitung4B;
-
-        public string ColorAbleitung4B
+        private Color _colorAbleitung4B;
+        public Color ColorAbleitung4B
         {
             get => _colorAbleitung4B;
             set
@@ -810,11 +783,10 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color Ableitung_Gesamt
 
-        public void FarbeAbleitungGesamt(bool val) => ColorAbleitungGesamt = val ? "blue" : "lightblue";
+        public void FarbeAbleitungGesamt(bool val) => ColorAbleitungGesamt = val ? Colors.Blue : Colors.LightBlue;
 
-        private string _colorAbleitungGesamt;
-
-        public string ColorAbleitungGesamt
+        private Color _colorAbleitungGesamt;
+        public Color ColorAbleitungGesamt
         {
             get => _colorAbleitungGesamt;
             set
@@ -828,11 +800,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB1
 
-        public void FarbeLabelB1(bool val) => ColorLabelB1 = val ? "red" : "lawngreen";
+        public void FarbeLabelB1(bool val) => ColorLabelB1 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB1;
+        private Color _colorLabelB1;
 
-        public string ColorLabelB1
+        public Color ColorLabelB1
         {
             get => _colorLabelB1;
             set
@@ -846,11 +818,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB2
 
-        public void FarbeLabelB2(bool val) => ColorLabelB2 = val ? "red" : "lawngreen";
+        public void FarbeLabelB2(bool val) => ColorLabelB2 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB2;
+        private Color _colorLabelB2;
 
-        public string ColorLabelB2
+        public Color ColorLabelB2
         {
             get => _colorLabelB2;
             set
@@ -864,11 +836,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB3
 
-        public void FarbeLabelB3(bool val) => ColorLabelB3 = val ? "red" : "lawngreen";
+        public void FarbeLabelB3(bool val) => ColorLabelB3 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB3;
+        private Color _colorLabelB3;
 
-        public string ColorLabelB3
+        public Color ColorLabelB3
         {
             get => _colorLabelB3;
             set
@@ -882,11 +854,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB4
 
-        public void FarbeLabelB4(bool val) => ColorLabelB4 = val ? "red" : "lawngreen";
+        public void FarbeLabelB4(bool val) => ColorLabelB4 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB4;
+        private Color _colorLabelB4;
 
-        public string ColorLabelB4
+        public Color ColorLabelB4
         {
             get => _colorLabelB4;
             set
@@ -900,11 +872,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB5
 
-        public void FarbeLabelB5(bool val) => ColorLabelB5 = val ? "red" : "lawngreen";
+        public void FarbeLabelB5(bool val) => ColorLabelB5 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB5;
+        private Color _colorLabelB5;
 
-        public string ColorLabelB5
+        public Color ColorLabelB5
         {
             get => _colorLabelB5;
             set
@@ -918,11 +890,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB6
 
-        public void FarbeLabelB6(bool val) => ColorLabelB6 = val ? "red" : "lawngreen";
+        public void FarbeLabelB6(bool val) => ColorLabelB6 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB6;
+        private Color _colorLabelB6;
 
-        public string ColorLabelB6
+        public Color ColorLabelB6
         {
             get => _colorLabelB6;
             set
@@ -936,11 +908,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB7
 
-        public void FarbeLabelB7(bool val) => ColorLabelB7 = val ? "red" : "lawngreen";
+        public void FarbeLabelB7(bool val) => ColorLabelB7 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB7;
+        private Color _colorLabelB7;
 
-        public string ColorLabelB7
+        public Color ColorLabelB7
         {
             get => _colorLabelB7;
             set
@@ -954,11 +926,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color LabelB8
 
-        public void FarbeLabelB8(bool val) => ColorLabelB8 = val ? "red" : "lawngreen";
+        public void FarbeLabelB8(bool val) => ColorLabelB8 = val ? Colors.Red : Colors.LawnGreen;
 
-        private string _colorLabelB8;
+        private Color _colorLabelB8;
 
-        public string ColorLabelB8
+        public Color ColorLabelB8
         {
             get => _colorLabelB8;
             set
@@ -972,11 +944,11 @@ namespace BehaelterSteuerung.ViewModel
 
         #region Color P1
 
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? "lawngreen" : "lightgray";
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Colors.LawnGreen : Colors.LightGray;
 
-        private string _colorCircleP1;
+        private Color _colorCircleP1;
 
-        public string ColorCircleP1
+        public Color ColorCircleP1
         {
             get => _colorCircleP1;
             set

@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Nadeltelegraph.ViewModel
 {
@@ -21,13 +23,13 @@ namespace Nadeltelegraph.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add("Press");
+            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
             for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
             for (var i = 0; i < 100; i++) AlleBreiten.Add(0);
 
-            ColorP0 = "LightGray";
+            ColorP0 = Colors.LightGray;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -70,7 +72,7 @@ namespace Nadeltelegraph.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -137,9 +139,9 @@ namespace Nadeltelegraph.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -185,18 +187,18 @@ namespace Nadeltelegraph.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] == "Press")
+            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
             {
-                ClickModeBtn[asciiCode] = "Release";
+                ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[asciiCode] = "Press";
+            ClickModeBtn[asciiCode] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<string> _clickModeBtn = new ObservableCollection<string>();
-        public ObservableCollection<string> ClickModeBtn
+        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeBtn = new ObservableCollection<System.Windows.Controls.ClickMode>();
+        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;
             set
@@ -210,10 +212,10 @@ namespace Nadeltelegraph.ViewModel
 
         #region Color P0
 
-        public void FarbeP0(bool val) => ColorP0 = val ? "Red" : "LightGray";
+        public void FarbeP0(bool val) => ColorP0 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorP0;
-        public string ColorP0
+        private Color _colorP0;
+        public Color ColorP0
         {
             get => _colorP0;
             set

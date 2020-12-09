@@ -1,6 +1,7 @@
 ﻿using AmpelsteuerungKieswerk.Model;
 using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace AmpelsteuerungKieswerk.ViewModel
 {
@@ -25,19 +26,19 @@ namespace AmpelsteuerungKieswerk.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ColorB1 = "LightGray";
-            ColorB2 = "LightGray";
-            ColorB3 = "LightGray";
-            ColorB4 = "LightGray";
+            ColorB1 = Colors.LightGray;
+            ColorB2 = Colors.LightGray;
+            ColorB3 = Colors.LightGray;
+            ColorB4 = Colors.LightGray;
 
-            ColorLinksRot = "White";
-            ColorLinksGelb = "White";
-            ColorLinksGruen = "White";
-            ColorRechtsRot = "White";
-            ColorRechtsGelb = "White";
-            ColorRechtsGruen = "White";
+            ColorLinksRot = Colors.White;
+            ColorLinksGelb = Colors.White;
+            ColorLinksGruen = Colors.White;
+            ColorRechtsRot = Colors.White;
+            ColorRechtsGelb = Colors.White;
+            ColorRechtsGruen = Colors.White;
 
             PosLkw1Left = 10;
             PosLkw1Top = 10;
@@ -90,7 +91,7 @@ namespace AmpelsteuerungKieswerk.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? "Red" : "LightGray";
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -215,9 +216,9 @@ namespace AmpelsteuerungKieswerk.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -231,11 +232,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region Color B1
 
-        public void FarbeB1(bool val) => ColorB1 = val ? "Red" : "LightGray";
+        public void FarbeB1(bool val) => ColorB1 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorB1;
+        private Color _colorB1;
 
-        public string ColorB1
+        public Color ColorB1
         {
             get => _colorB1;
             set
@@ -249,11 +250,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region Color B2
 
-        public void FarbeB2(bool val) => ColorB2 = val ? "Red" : "LightGray";
+        public void FarbeB2(bool val) => ColorB2 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorB2;
+        private Color _colorB2;
 
-        public string ColorB2
+        public Color ColorB2
         {
             get => _colorB2;
             set
@@ -267,11 +268,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region Color B3
 
-        public void FarbeB3(bool val) => ColorB3 = val ? "Red" : "LightGray";
+        public void FarbeB3(bool val) => ColorB3 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorB3;
+        private Color _colorB3;
 
-        public string ColorB3
+        public Color ColorB3
         {
             get => _colorB3;
             set
@@ -285,11 +286,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region Color B4
 
-        public void FarbeB4(bool val) => ColorB4 = val ? "Red" : "LightGray";
+        public void FarbeB4(bool val) => ColorB4 = val ? Colors.Red : Colors.LightGray;
 
-        private string _colorB4;
+        private Color _colorB4;
 
-        public string ColorB4
+        public Color ColorB4
         {
             get => _colorB4;
             set
@@ -303,11 +304,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorLinksRot
 
-        public void FarbeLinksRot(bool val) => ColorLinksRot = val ? "Red" : "White";
+        public void FarbeLinksRot(bool val) => ColorLinksRot = val ? Colors.Red : Colors.White;
 
-        private string _colorLinksRot;
+        private Color _colorLinksRot;
 
-        public string ColorLinksRot
+        public Color ColorLinksRot
         {
             get => _colorLinksRot;
             set
@@ -321,11 +322,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorLinksGelb
 
-        public void FarbeLinksGelb(bool val) => ColorLinksGelb = val ? "Yellow" : "White";
+        public void FarbeLinksGelb(bool val) => ColorLinksGelb = val ? Colors.Yellow : Colors.White;
 
-        private string _colorLinksGelb;
+        private Color _colorLinksGelb;
 
-        public string ColorLinksGelb
+        public Color ColorLinksGelb
         {
             get => _colorLinksGelb;
             set
@@ -339,11 +340,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorLinksGruen
 
-        public void FarbeLinksGruen(bool val) => ColorLinksGruen = val ? "Green" : "White";
+        public void FarbeLinksGruen(bool val) => ColorLinksGruen = val ? Colors.Green : Colors.White;
 
-        private string _colorLinksGruen;
+        private Color _colorLinksGruen;
 
-        public string ColorLinksGruen
+        public Color ColorLinksGruen
         {
             get => _colorLinksGruen;
             set
@@ -357,11 +358,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorRechtsRot
 
-        public void FarbeRechtsRot(bool val) => ColorRechtsRot = val ? "Red" : "White";
+        public void FarbeRechtsRot(bool val) => ColorRechtsRot = val ? Colors.Red : Colors.White;
 
-        private string _colorRechtsRot;
+        private Color _colorRechtsRot;
 
-        public string ColorRechtsRot
+        public Color ColorRechtsRot
         {
             get => _colorRechtsRot;
             set
@@ -375,11 +376,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorRechtsGelb
 
-        public void FarbeRechtsGelb(bool val) => ColorRechtsGelb = val ? "Yellow" : "White";
+        public void FarbeRechtsGelb(bool val) => ColorRechtsGelb = val ? Colors.Yellow : Colors.White;
 
-        private string _colorRechtsGelb;
+        private Color _colorRechtsGelb;
 
-        public string ColorRechtsGelb
+        public Color ColorRechtsGelb
         {
             get => _colorRechtsGelb;
             set
@@ -393,11 +394,11 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         #region ColorRechtsGruen
 
-        public void FarbeRechtsGruen(bool val) => ColorRechtsGruen = val ? "Green" : "White";
+        public void FarbeRechtsGruen(bool val) => ColorRechtsGruen = val ? Colors.Green : Colors.White;
 
-        private string _colorRechtsGruen;
+        private Color _colorRechtsGruen;
 
-        public string ColorRechtsGruen
+        public Color ColorRechtsGruen
         {
             get => _colorRechtsGruen;
             set

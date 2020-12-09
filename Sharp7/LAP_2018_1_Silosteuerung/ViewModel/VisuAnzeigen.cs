@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Utilities;
 
 namespace LAP_2018_1_Silosteuerung.ViewModel
@@ -23,18 +25,18 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = "LightBlue";
+            SpsColor = Colors.LightBlue;
 
-            ColorF1 = "LawnGreen";
-            ColorF2 = "LawnGreen";
-            ColorP1 = "White";
-            ColorP2 = "White";
-            ColorQ1 = "LawnGreen";
+            ColorF1 = Colors.LawnGreen;
+            ColorF2 = Colors.LawnGreen;
+            ColorP1 = Colors.White;
+            ColorP2 = Colors.White;
+            ColorQ1 = Colors.LawnGreen;
 
-            ClickModeBtnS0 = "Press";
-            ClickModeBtnS1 = "Press";
-            ClickModeBtnS2 = "Press";
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS0 = ClickMode.Press;
+            ClickModeBtnS1 = ClickMode.Press;
+            ClickModeBtnS2 = ClickMode.Press;
+            ClickModeBtnS3 = ClickMode.Press;
 
             Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
@@ -169,9 +171,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private string _spsColor;
+        private Color _spsColor;
 
-        public string SpsColor
+        public Color SpsColor
         {
             get => _spsColor;
             set
@@ -434,12 +436,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeF1(bool val)
         {
-            ColorF1 = val ? "LawnGreen" : "Red";
+            ColorF1 = val ? Colors.LawnGreen : Colors.Red;
         }
 
-        private string _colorF1;
+        private Color _colorF1;
 
-        public string ColorF1
+        public Color ColorF1
         {
             get => _colorF1;
             set
@@ -453,12 +455,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeF2(bool val)
         {
-            ColorF2 = val ? "LawnGreen" : "Red";
+            ColorF2 = val ? Colors.LawnGreen : Colors.Red;
         }
 
-        private string _colorF2;
+        private Color _colorF2;
 
-        public string ColorF2
+        public Color ColorF2
         {
             get => _colorF2;
             set
@@ -473,12 +475,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeP1(bool val)
         {
-            ColorP1 = val ? "LawnGreen" : "White";
+            ColorP1 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorP1;
+        private Color _colorP1;
 
-        public string ColorP1
+        public Color ColorP1
         {
             get => _colorP1;
             set
@@ -491,12 +493,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeP2(bool val)
         {
-            ColorP2 = val ? "Red" : "White";
+            ColorP2 = val ? Colors.Red : Colors.White;
         }
 
-        private string _colorP2;
+        private Color _colorP2;
 
-        public string ColorP2
+        public Color ColorP2
         {
             get => _colorP2;
             set
@@ -508,12 +510,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeQ1(bool val)
         {
-            ColorQ1 = val ? "LawnGreen" : "White";
+            ColorQ1 = val ? Colors.LawnGreen : Colors.White;
         }
 
-        private string _colorQ1;
+        private Color _colorQ1;
 
-        public string ColorQ1
+        public Color ColorQ1
         {
             get => _colorQ1;
             set
@@ -529,19 +531,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS0()
         {
-            if (ClickModeBtnS0 == "Press")
+            if (ClickModeBtnS0 ==  ClickMode.Press)
             {
-                ClickModeBtnS0 = "Release";
+                ClickModeBtnS0 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS0 = "Press";
+            ClickModeBtnS0 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS0;
+        private ClickMode _clickModeBtnS0;
 
-        public string ClickModeBtnS0
+        public ClickMode ClickModeBtnS0
         {
             get => _clickModeBtnS0;
             set
@@ -555,19 +557,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 == "Press")
+            if (ClickModeBtnS1 ==  ClickMode.Press)
             {
-                ClickModeBtnS1 = "Release";
+                ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = "Press";
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS1;
+        private ClickMode _clickModeBtnS1;
 
-        public string ClickModeBtnS1
+        public ClickMode ClickModeBtnS1
         {
             get => _clickModeBtnS1;
             set
@@ -580,19 +582,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 == "Press")
+            if (ClickModeBtnS2 ==  ClickMode.Press)
             {
-                ClickModeBtnS2 = "Release";
+                ClickModeBtnS2 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS2 = "Press";
+            ClickModeBtnS2 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS2;
+        private ClickMode _clickModeBtnS2;
 
-        public string ClickModeBtnS2
+        public ClickMode ClickModeBtnS2
         {
             get => _clickModeBtnS2;
             set
@@ -604,19 +606,19 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 == "Press")
+            if (ClickModeBtnS3 ==  ClickMode.Press)
             {
-                ClickModeBtnS3 = "Release";
+                ClickModeBtnS3 = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS3 = "Press";
+            ClickModeBtnS3 = ClickMode.Press;
             return false;
         }
 
-        private string _clickModeBtnS3;
+        private ClickMode _clickModeBtnS3;
 
-        public string ClickModeBtnS3
+        public ClickMode ClickModeBtnS3
         {
             get => _clickModeBtnS3;
             set
