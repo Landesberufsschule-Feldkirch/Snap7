@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using ScottPlot;
-using Synchronisiereinrichtung.SetManual;
 using System;
 using System.Text;
 using System.Windows;
@@ -15,6 +14,7 @@ namespace Synchronisiereinrichtung
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public ManualMode.ManualMode ManualMode { get; set; }
 
         public double[] Zeitachse { get; set; }
         public double[] PlotVentilOeffnung { get; set; }
@@ -28,7 +28,8 @@ namespace Synchronisiereinrichtung
 
         private int _nextDataIndex = 1;
 
-        private SetManualWindow _setManualWindow;
+
+        private readonly DatenRangieren _datenRangieren;
         private PlotWindow.PlotWindow _plotWindow;
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
@@ -58,14 +59,21 @@ namespace Synchronisiereinrichtung
             _viewModel = new ViewModel.ViewModel(this);
 
             InitializeComponent();
-
             DataContext = _viewModel;
 
-            var datenRangieren = new DatenRangieren(this, _viewModel);
+            _datenRangieren = new DatenRangieren(this, _viewModel);
 
-            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
+            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
+
+            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -73,11 +81,15 @@ namespace Synchronisiereinrichtung
             Application.Current.Shutdown();
         }
 
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
         {
-            DebugWindowAktiv = true;
-            _setManualWindow = new SetManualWindow(_viewModel);
-            _setManualWindow.Show();
+            if (Plc.GetPlcModus() == "S7-1200")
+            {
+                Plc.SetTaskRunning(false);
+                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            }
+
+            ManualMode.FensterAnzeigen();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)

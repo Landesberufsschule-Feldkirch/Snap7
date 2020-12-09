@@ -15,31 +15,31 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlByte = AiDatenLesen(aiConfig, manViewModel);
-            AiCreateGrid(anzahlByte);
+            var anzahlZeilenConfig = AiDatenLesen(aiConfig, manViewModel);
+            AiCreateGrid(anzahlZeilenConfig);
         }
         private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
         {
-            var anzahlByte = 0;
+            var anzahlZeilenConfig = 0;
 
             foreach (var config in aiConfig.AnalogeEingaenge)
             {
-                if (config.LaufendeNr == anzahlByte)
+                if (config.LaufendeNr == anzahlZeilenConfig)
                 {
                     manViewModel.ManVisuAnzeigen.VisibilityAi[config.LaufendeNr] = Visibility.Visible;
                     manViewModel.ManVisuAnzeigen.BezeichnungAi[config.LaufendeNr] = config.Bezeichnung;
                     manViewModel.ManVisuAnzeigen.KommentarAi[config.LaufendeNr] = config.Kommentar;
 
-                    anzahlByte++;
+                    anzahlZeilenConfig++;
                 }
                 else
                 {
                     throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
                 }
             }
-            return anzahlByte + 1;
+            return anzahlZeilenConfig + 1;
         }
-        private void AiCreateGrid(in int anzahlBit)
+        private void AiCreateGrid(in int anzahlZeilenConfig)
         {
 
             var aiGgrid = new Grid
@@ -56,7 +56,7 @@ namespace ManualMode
             aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlBit; i++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
@@ -70,7 +70,7 @@ namespace ManualMode
             {
                 for (var vBit = 0; vBit < 8; vBit++)
                 {
-                    if (8 * vbyte + vBit >= anzahlBit) continue;
+                    if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
                     AiWertZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                     AiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, aiGgrid);

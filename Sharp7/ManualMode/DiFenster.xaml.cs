@@ -16,32 +16,69 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlBit = DiDatenLesen(diConfig, manViewModel);
-            DiCreateGrid(anzahlBit);
+            var anzahlZeilenConfig = DiDatenLesen(diConfig, manViewModel);
+            DiCreateGrid(anzahlZeilenConfig);
         }
         private static int DiDatenLesen(DiConfig diConfig, ManualViewModel manViewModel)
         {
-            var anzahlBit = 0;
+            var anzahlZeilenConfig = 0;
+            var aktuellesBit = 0;
+            var aktuellesByte = 0;
 
             foreach (var config in diConfig.DigitaleEingaenge)
             {
-                if (config.LaufendeNr == anzahlBit)
+                if (config.LaufendeNr == anzahlZeilenConfig)
                 {
+                    switch (config.Type)
+                    {
+                        case PlcEinUndAusgaengeTypen.Default:
+                        {
+                            if (config.AnzahlBit == 1)
+                            {
+                                if (config.StartByte == aktuellesByte && config.StartBit == aktuellesBit)
+                                {
+                                    aktuellesBit++;
+                                    if (aktuellesBit > 7)
+                                    {
+                                        aktuellesBit = 0;
+                                        aktuellesByte++;
+                                    }
+                                }
+                                else throw new InvalidDataException("Byte und Bit müssen schön gefüllt sein!");
+
+
+                            }
+
+                            break;
+                        }
+                        case PlcEinUndAusgaengeTypen.Ascii:
+                            break;
+                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                            break;
+                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                            break;
+                        case PlcEinUndAusgaengeTypen.BitmusterByte:
+                            break;
+                        case PlcEinUndAusgaengeTypen.Schieberegler:
+                            break;
+                        default:
+                            throw new InvalidDataException(config.Type.ToString() + config.AnzahlBit);
+                    }
+
+
                     manViewModel.ManVisuAnzeigen.VisibilityDi[config.LaufendeNr] = Visibility.Visible;
                     manViewModel.ManVisuAnzeigen.BezeichnungDi[config.LaufendeNr] = config.Bezeichnung;
                     manViewModel.ManVisuAnzeigen.KommentarDi[config.LaufendeNr] = config.Kommentar;
 
-                    anzahlBit++;
+                    anzahlZeilenConfig++;
                 }
-                else
-                {
-                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
-                }
+                else throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
+
             }
 
-            return anzahlBit + 1;
+            return anzahlZeilenConfig + 1;
         }
-        private void DiCreateGrid(int anzahlBit)
+        private void DiCreateGrid(int anzahlZeilenConfig)
         {
 
             var diGrid = new Grid
@@ -58,7 +95,7 @@ namespace ManualMode
             diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlBit; i++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
                 diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
@@ -72,7 +109,7 @@ namespace ManualMode
             {
                 for (var vBit = 0; vBit < 8; vBit++)
                 {
-                    if (8 * vbyte + vBit >= anzahlBit) continue;
+                    if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
                     DiButtonZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, diGrid);
                     DiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, diGrid);
                     DiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, diGrid);

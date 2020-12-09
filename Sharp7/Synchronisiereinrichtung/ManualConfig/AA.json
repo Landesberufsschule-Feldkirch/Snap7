@@ -1,0 +1,28 @@
+﻿{
+  "AnalogeAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "MinimalWert": 0,
+      "MaximalWert": 100,
+      "Schrittweite": 1, 
+      "Type": "Schieberegler",
+      "Bezeichnung": "Generator Ventil Öffnung",
+      "Kommentar": "0-100%"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "MinimalWert": 0,
+      "MaximalWert": 100,
+      "Schrittweite": 0.1,
+      "Type": "Schieberegler",
+      "Bezeichnung": "Generator Erregerstrom",
+      "Kommentar": "0-10A"
+    }
+  ]
+}

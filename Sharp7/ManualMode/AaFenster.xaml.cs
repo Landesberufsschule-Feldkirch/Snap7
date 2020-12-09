@@ -16,31 +16,31 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manualViewModel;
 
-            var anzahlByte = AaDatenLesen(aaConfig, manualViewModel);
-            AaCreateGrid(anzahlByte);
+            var anzahlZeilenConfig = AaDatenLesen(aaConfig, manualViewModel);
+            AaCreateGrid(anzahlZeilenConfig);
         }
         private static int AaDatenLesen(AaConfig aaConfig, ManualViewModel manualViewModel)
         {
-            var anzahlByte = 0;
+            var anzahlZeilenConfig = 0;
 
             foreach (var config in aaConfig.AnalogeAusgaenge)
             {
-                if (config.LaufendeNr == anzahlByte)
+                if (config.LaufendeNr == anzahlZeilenConfig)
                 {
                     manualViewModel.ManVisuAnzeigen.VisibilityAa[config.LaufendeNr] = Visibility.Visible;
                     manualViewModel.ManVisuAnzeigen.BezeichnungAa[config.LaufendeNr] = config.Bezeichnung;
                     manualViewModel.ManVisuAnzeigen.KommentarAa[config.LaufendeNr] = config.Kommentar;
 
-                    anzahlByte++;
+                    anzahlZeilenConfig++;
                 }
                 else
                 {
                     throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
                 }
             }
-            return anzahlByte + 1;
+            return anzahlZeilenConfig + 1;
         }
-        private void AaCreateGrid(int anzahlByte)
+        private void AaCreateGrid(int anzahlZeilenConfig)
         {
             var aaGrid = new Grid
             {
@@ -56,7 +56,7 @@ namespace ManualMode
             aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlByte; i++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
                 aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
@@ -66,7 +66,7 @@ namespace ManualMode
             AaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aaGrid);
             AaTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aaGrid);
 
-            for (var vbyte = 0; vbyte < anzahlByte; vbyte++)
+            for (var vbyte = 0; vbyte < anzahlZeilenConfig; vbyte++)
             {
                 AaBezeichnungZeichnen(vbyte, 2, 2 + 2 * vbyte, aaGrid);
                 AaKommentarZeichnen(vbyte, 4, 2 + 2 * vbyte, aaGrid);

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Snap7.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Bilder\Snap7.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Snap7.ico" />
+  </ItemGroup>
+
+</Project>

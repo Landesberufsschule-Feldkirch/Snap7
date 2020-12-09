@@ -1,0 +1,98 @@
+﻿{
+  "AnalogeEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator Drehzahl",
+      "Kommentar": "0-10000 U/min"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator Spannung",
+      "Kommentar": "0-1000V"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 4,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator Frequenz",
+      "Kommentar": "0-100Hz"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 6,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator Leistung",
+      "Kommentar": "0-10000W"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 8,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator Leistungsfaktor",
+      "Kommentar": "0-1"
+    },
+
+
+    {
+      "LaufendeNr": 5,
+      "StartByte": 10,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Netz Spannung",
+      "Kommentar": "0-1000V"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 12,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Netz Frequenz",
+      "Kommentar": "0-100Hz"
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 14,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Netz Leistung",
+      "Kommentar": "0-10000W"
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 16,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Netz Leistungsfaktor",
+      "Kommentar": "0-1"
+    },
+
+
+    {
+      "LaufendeNr": 9,
+      "StartByte": 18,
+      "StartBit": 0,
+      "AnzahlBit": 16,
+      "Type": "SiemensAnalogwertProzent",
+      "Bezeichnung": "Generator/Netz Spannungsdifferenz",
+      "Kommentar": "0-1000V"
+    }
+  ]
+}

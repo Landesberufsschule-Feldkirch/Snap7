@@ -12,7 +12,8 @@ namespace ManualMode.Model
         Ascii,
         SiemensAnalogwertProzent,
         SiemensAnalogwertPromille,
-        BitmusterByte
+        BitmusterByte,
+        Schieberegler
     }
 
     internal class MyEnumConverter : JsonConverter<PlcEinUndAusgaengeTypen>

@@ -22,16 +22,16 @@ namespace ManualMode
             InitializeComponent();
             DataContext = manViewModel;
 
-            var anzahlBit = DaDatenLesen(daConfig, manViewModel);
-            DaCreateGrid(anzahlBit, manViewModel);
+            var anzahlZeilenConfig = DaDatenLesen(daConfig, manViewModel);
+            DaCreateGrid(anzahlZeilenConfig, manViewModel);
         }
         private int DaDatenLesen(DaConfig daConfig, ManualViewModel manualViewModel)
         {
-            var anzahlBit = 0;
+            var anzahlZeilenConfig = 0;
 
             foreach (var config in daConfig.DigitaleAusgaenge)
             {
-                if (config.LaufendeNr == anzahlBit)
+                if (config.LaufendeNr == anzahlZeilenConfig)
                 {
                     switch (config.Type)
                     {
@@ -52,11 +52,13 @@ namespace ManualMode
                             break;
                         case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                             break;
+                        case PlcEinUndAusgaengeTypen.Schieberegler:
+                            break;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
 
-                    anzahlBit++;
+                    anzahlZeilenConfig++;
                 }
                 else
                 {
@@ -64,9 +66,9 @@ namespace ManualMode
                 }
             }
 
-            return anzahlBit + 1;
+            return anzahlZeilenConfig + 1;
         }
-        private void DaCreateGrid(int anzahlBit, ManualViewModel manualViewModel)
+        private void DaCreateGrid(int anzahlZeilenConfig, ManualViewModel manualViewModel)
         {
             var daGrid = new Grid
             {
@@ -84,7 +86,7 @@ namespace ManualMode
             daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlBit; i++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
@@ -97,7 +99,7 @@ namespace ManualMode
                 DaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 4, 0, daGrid);
                 DaTextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
 
-                for (var vbyte = 0; vbyte < anzahlBit; vbyte++)
+                for (var vbyte = 0; vbyte < anzahlZeilenConfig; vbyte++)
                 {
                     DaTextboxByteZeichnen(vbyte, 0, 2 + 2 * vbyte, daGrid);
                     DaBezeichnungByteZeichnen(vbyte, 4, 2 + 2 * vbyte, daGrid);
@@ -115,7 +117,7 @@ namespace ManualMode
                 {
                     for (var vBit = 0; vBit < 8; vBit++)
                     {
-                        if (8 * vbyte + vBit >= anzahlBit) continue;
+                        if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
                         DaButtonTastenZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
                         DaButtonToggelnZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);

@@ -151,6 +151,8 @@ namespace ManualMode.ViewModel
                                 break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                                 break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler:
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
                         }
@@ -310,6 +312,8 @@ namespace ManualMode.ViewModel
                                 break;
                             case PlcEinUndAusgaengeTypen.BitmusterByte:
                                 break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler:
+                                break;
                             default:
                                 throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
@@ -330,6 +334,8 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.Ascii:
                                 break;
                             case PlcEinUndAusgaengeTypen.BitmusterByte:
+                                break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler:
                                 break;
                             default:
                                 throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
