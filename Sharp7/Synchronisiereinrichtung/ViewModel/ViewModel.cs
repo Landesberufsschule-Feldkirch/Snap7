@@ -1,5 +1,5 @@
-﻿using System.Windows.Input;
-using Synchronisiereinrichtung.Commands;
+﻿using Synchronisiereinrichtung.Commands;
+using System.Windows.Input;
 
 namespace Synchronisiereinrichtung.ViewModel
 {

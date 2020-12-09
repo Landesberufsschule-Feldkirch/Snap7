@@ -22,15 +22,15 @@ namespace ElektronischesZahlenschloss.ViewModel
 
             CodeAnzeige = "00000";
 
-            ColorP1 = Colors.White;
-            ColorP2 = Colors.White;
+            ColorP1 = Brushes.White;
+            ColorP2 = Brushes.White;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -54,7 +54,7 @@ namespace ElektronischesZahlenschloss.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -128,9 +128,9 @@ namespace ElektronischesZahlenschloss.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -144,11 +144,11 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP1;
+        private Brush _colorP1;
 
-        public Color ColorP1
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -162,11 +162,11 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         #region Color P2
 
-        public void FarbeP2(bool val) => ColorP2 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorP2;
+        private Brush _colorP2;
 
-        public Color ColorP2
+        public Brush ColorP2
         {
             get => _colorP2;
             set
@@ -182,7 +182,7 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
+            if (ClickModeBtn[asciiCode] == ClickMode.Press)
             {
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;

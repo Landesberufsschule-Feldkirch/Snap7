@@ -23,14 +23,14 @@ namespace StiegenhausBeleuchtung.ViewModel
             ReiseZiel = "sadf:-";
 
             for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
-            for (var i = 0; i < 100; i++) ColorLampe.Add(Colors.Yellow);
+            for (var i = 0; i < 100; i++) ColorLampe.Add(Brushes.Yellow);
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -61,7 +61,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -128,9 +128,9 @@ namespace StiegenhausBeleuchtung.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -180,11 +180,11 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         public void FarbeAlleLampen(int lampe, bool val)
         {
-            if (val) ColorLampe[lampe] = Colors.Yellow; else ColorLampe[lampe] = Colors.White;
+            if (val) ColorLampe[lampe] = Brushes.Yellow; else ColorLampe[lampe] = Brushes.White;
         }
 
-        private ObservableCollection<Color> _colorLampe = new ObservableCollection<Color>();
-        public ObservableCollection<Color> ColorLampe
+        private ObservableCollection<Brush> _colorLampe = new ObservableCollection<Brush>();
+        public ObservableCollection<Brush> ColorLampe
         {
             get => _colorLampe;
             set
@@ -200,7 +200,7 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         public bool ClickModeButton(int bewegungsmelder)
         {
-            if (ClickModeBtn[bewegungsmelder] ==  ClickMode.Press)
+            if (ClickModeBtn[bewegungsmelder] == ClickMode.Press)
             {
                 ClickModeBtn[bewegungsmelder] = ClickMode.Release;
                 return true;

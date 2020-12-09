@@ -31,34 +31,34 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             ClickModeBtnS2 = ClickMode.Press;
             ClickModeBtnS3 = ClickMode.Press;
 
-            ColorP1 = Colors.LawnGreen;
-            ColorP2 = Colors.LawnGreen;
-            ColorP3 = Colors.LawnGreen;
-            ColorP4 = Colors.LawnGreen;
+            ColorP1 = Brushes.LawnGreen;
+            ColorP2 = Brushes.LawnGreen;
+            ColorP3 = Brushes.LawnGreen;
+            ColorP4 = Brushes.LawnGreen;
 
-            ColorQ1 = Colors.LawnGreen;
-            ColorQ2 = Colors.LawnGreen;
-            ColorQ3 = Colors.LawnGreen;
+            ColorQ1 = Brushes.LawnGreen;
+            ColorQ2 = Brushes.LawnGreen;
+            ColorQ3 = Brushes.LawnGreen;
 
             Margin1 = new Thickness(42, 0, 32, 0);
 
-            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein =  Visibility.Hidden;
+            VisibilityB2Ein = Visibility.Hidden;
             VisibilityB2Aus = Visibility.Visible;
 
-            VisibilityB3Ein =  Visibility.Hidden;
+            VisibilityB3Ein = Visibility.Hidden;
             VisibilityB3Aus = Visibility.Visible;
 
-            VisibilityKurzschluss =  Visibility.Hidden;
+            VisibilityKurzschluss = Visibility.Hidden;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -86,7 +86,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 SichtbarkeitB2(_hydraulikaggregat.B2);
                 SichtbarkeitB3(_hydraulikaggregat.B3);
 
-                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
+                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
 
                 if (_mainWindow.Plc != null)
                 {
@@ -98,7 +98,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -192,9 +192,9 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -210,7 +210,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 ==  ClickMode.Press)
+            if (ClickModeBtnQ1 == ClickMode.Press)
             {
                 ClickModeBtnQ1 = ClickMode.Release;
                 return true;
@@ -238,7 +238,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonQ2()
         {
-            if (ClickModeBtnQ2 ==  ClickMode.Press)
+            if (ClickModeBtnQ2 == ClickMode.Press)
             {
                 ClickModeBtnQ2 = ClickMode.Release;
                 return true;
@@ -266,7 +266,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonQ3()
         {
-            if (ClickModeBtnQ3 ==  ClickMode.Press)
+            if (ClickModeBtnQ3 == ClickMode.Press)
             {
                 ClickModeBtnQ3 = ClickMode.Release;
                 return true;
@@ -294,7 +294,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonQ1Q3()
         {
-            if (ClickModeBtnQ1Q3 ==  ClickMode.Press)
+            if (ClickModeBtnQ1Q3 == ClickMode.Press)
             {
                 ClickModeBtnQ1Q3 = ClickMode.Release;
                 return true;
@@ -322,7 +322,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -350,7 +350,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 ==  ClickMode.Press)
+            if (ClickModeBtnS2 == ClickMode.Press)
             {
                 ClickModeBtnS2 = ClickMode.Release;
                 return true;
@@ -378,7 +378,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 ==  ClickMode.Press)
+            if (ClickModeBtnS3 == ClickMode.Press)
             {
                 ClickModeBtnS3 = ClickMode.Release;
                 return true;
@@ -404,11 +404,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color F1
 
-        public void FarbeF1(bool val) => ColorF1 = val ? Colors.LawnGreen : Colors.Red;
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
-        private Color _colorF1;
+        private Brush _colorF1;
 
-        public Color ColorF1
+        public Brush ColorF1
         {
             get => _colorF1;
             set
@@ -422,11 +422,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP1;
+        private Brush _colorP1;
 
-        public Color ColorP1
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -440,11 +440,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color P2
 
-        public void FarbeP2(bool val) => ColorP2 = val ? Colors.Red : Colors.White;
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP2;
+        private Brush _colorP2;
 
-        public Color ColorP2
+        public Brush ColorP2
         {
             get => _colorP2;
             set
@@ -458,11 +458,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color P3
 
-        public void FarbeP3(bool val) => ColorP3 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeP3(bool val) => ColorP3 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorP3;
+        private Brush _colorP3;
 
-        public Color ColorP3
+        public Brush ColorP3
         {
             get => _colorP3;
             set
@@ -476,11 +476,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color P4
 
-        public void FarbeP4(bool val) => ColorP4 = val ? Colors.Red : Colors.White;
+        public void FarbeP4(bool val) => ColorP4 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP4;
+        private Brush _colorP4;
 
-        public Color ColorP4
+        public Brush ColorP4
         {
             get => _colorP4;
             set
@@ -494,11 +494,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorQ1;
+        private Brush _colorQ1;
 
-        public Color ColorQ1
+        public Brush ColorQ1
         {
             get => _colorQ1;
             set
@@ -512,11 +512,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) => ColorQ2 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorQ2;
+        private Brush _colorQ2;
 
-        public Color ColorQ2
+        public Brush ColorQ2
         {
             get => _colorQ2;
             set
@@ -530,11 +530,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color Q3
 
-        public void FarbeQ3(bool val) => ColorQ3 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeQ3(bool val) => ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorQ3;
+        private Brush _colorQ3;
 
-        public Color ColorQ3
+        public Brush ColorQ3
         {
             get => _colorQ3;
             set
@@ -590,11 +590,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -632,11 +632,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
@@ -674,11 +674,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             if (val)
             {
                 VisibilityB3Ein = Visibility.Visible;
-                VisibilityB3Aus =  Visibility.Hidden;
+                VisibilityB3Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB3Ein =  Visibility.Hidden;
+                VisibilityB3Ein = Visibility.Hidden;
                 VisibilityB3Aus = Visibility.Visible;
             }
         }

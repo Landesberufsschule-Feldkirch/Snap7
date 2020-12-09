@@ -10,7 +10,7 @@ namespace SegmentDisplay
     {
         private Brush _colorBackground;
         private Brush _colorSegments;
-        
+
         private Visibility _segmentA;
         private Visibility _segmentB;
         private Visibility _segmentC;

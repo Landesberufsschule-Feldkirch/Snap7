@@ -22,7 +22,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             HintergrundFarbe = Brushes.Aqua;
             SegmentFarbe = Brushes.DarkOrange;
@@ -49,7 +49,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -131,9 +131,9 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set

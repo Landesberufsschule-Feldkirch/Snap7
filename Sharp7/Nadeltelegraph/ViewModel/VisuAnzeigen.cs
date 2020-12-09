@@ -23,13 +23,13 @@ namespace Nadeltelegraph.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
             for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
             for (var i = 0; i < 100; i++) AlleBreiten.Add(0);
 
-            ColorP0 = Colors.LightGray;
+            ColorP0 = Brushes.LightGray;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -72,7 +72,7 @@ namespace Nadeltelegraph.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -139,9 +139,9 @@ namespace Nadeltelegraph.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -187,7 +187,7 @@ namespace Nadeltelegraph.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
+            if (ClickModeBtn[asciiCode] == ClickMode.Press)
             {
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
@@ -212,10 +212,10 @@ namespace Nadeltelegraph.ViewModel
 
         #region Color P0
 
-        public void FarbeP0(bool val) => ColorP0 = val ? Colors.Red : Colors.LightGray;
+        public void FarbeP0(bool val) => ColorP0 = val ? Brushes.Red : Brushes.LightGray;
 
-        private Color _colorP0;
-        public Color ColorP0
+        private Brush _colorP0;
+        public Brush ColorP0
         {
             get => _colorP0;
             set

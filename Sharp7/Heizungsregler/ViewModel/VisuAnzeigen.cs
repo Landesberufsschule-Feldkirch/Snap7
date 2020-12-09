@@ -19,9 +19,9 @@ namespace Heizungsregler.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
-            ColorPumpe = Colors.White;
+            ColorPumpe = Brushes.White;
 
             WitterungsTempMitEinheit = "0°C";
             WitterungsTemperaturSlider = 20;
@@ -43,7 +43,7 @@ namespace Heizungsregler.ViewModel
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -56,7 +56,7 @@ namespace Heizungsregler.ViewModel
                     KesselTemperaturMitEinheit = "Kesseltemperatur: " + _mainWindow.WohnHaus.KesselTemperatur.ToString("F1") + "°C";
 
                     VentilStellungMitEinheit = "Y: " + _mainWindow.WohnHaus.DreiwegeVentil.GetPosition().ToString("F1") + "%";
-                    
+
 
                     VorlaufIstMitAllem = "Ist: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
                     VorlaufSollMitAllem = "Soll: " + _mainWindow.WohnHaus.VorlaufSolltemperatur.ToString("F1") + "°C";
@@ -129,9 +129,9 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -144,10 +144,10 @@ namespace Heizungsregler.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ColorPumpe
-        public void Pumpenfarbe(bool status) => ColorPumpe = status ? Colors.LawnGreen : Colors.White;
+        public void Pumpenfarbe(bool status) => ColorPumpe = status ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorPumpe;
-        public Color ColorPumpe
+        private Brush _colorPumpe;
+        public Brush ColorPumpe
         {
             get => _colorPumpe;
             set
@@ -159,10 +159,10 @@ namespace Heizungsregler.ViewModel
         #endregion ColorPumpe
 
         #region ColorOelGasBrenner
-        public void OelGasBrennerfarbe(bool status) => ColorOelGasBrenner = status ? Colors.Red : Colors.White;
+        public void OelGasBrennerfarbe(bool status) => ColorOelGasBrenner = status ? Brushes.Red : Brushes.White;
 
-        private Color _colorOelGasBrenner;
-        public Color ColorOelGasBrenner
+        private Brush _colorOelGasBrenner;
+        public Brush ColorOelGasBrenner
         {
             get => _colorOelGasBrenner;
             set

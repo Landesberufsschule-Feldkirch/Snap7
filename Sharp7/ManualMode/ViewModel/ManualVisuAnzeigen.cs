@@ -60,7 +60,7 @@ namespace ManualMode.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-        
+
 
         #region Digitale Eingänge
         private void DigitaleEingaengeFarbeSichtbarkeit()

@@ -24,7 +24,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             SelectedIndex = 0; // Automatikbetrieb
 
@@ -45,30 +45,30 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
             VisibilityBtnSetManual = Visibility.Visible;
 
-            VisibilityM1Ein =  Visibility.Hidden;
-            VisibilityM2Ein =  Visibility.Hidden;
+            VisibilityM1Ein = Visibility.Hidden;
+            VisibilityM2Ein = Visibility.Hidden;
 
-            VisibilityK1Ein =  Visibility.Hidden;
+            VisibilityK1Ein = Visibility.Hidden;
             VisibilityK1Aus = Visibility.Visible;
 
             VisibilityB1Ein = Visibility.Visible;
-            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Hidden;
 
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
-            VisibilityMaterialOben =  Visibility.Hidden;
-            VisibilityMaterialUnten =  Visibility.Hidden;
+            VisibilityMaterialOben = Visibility.Hidden;
+            VisibilityMaterialUnten = Visibility.Hidden;
 
-            VisibilityPfeilLinkslauf =  Visibility.Hidden;
-            VisibilityPfeilRechtslauf =  Visibility.Hidden;
+            VisibilityPfeilLinkslauf = Visibility.Hidden;
+            VisibilityPfeilRechtslauf = Visibility.Hidden;
 
-            VisibilityKurzschluss =  Visibility.Hidden;
+            VisibilityKurzschluss = Visibility.Hidden;
 
-            ColorF1 = Colors.LawnGreen;
-            ColorP1 = Colors.LawnGreen;
-            ColorP2 = Colors.LawnGreen;
-            ColorS2 = Colors.LawnGreen;
+            ColorF1 = Brushes.LawnGreen;
+            ColorP1 = Brushes.LawnGreen;
+            ColorP2 = Brushes.LawnGreen;
+            ColorS2 = Brushes.LawnGreen;
 
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
@@ -106,7 +106,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 SichtbarkeitMaterialOben(Foerderanlage.Silo.GetFuellstand() > 0.01);
                 SichtbarkeitMaterialUnten((Foerderanlage.Silo.GetFuellstand() > 0.01) && (Foerderanlage.K1));
 
-                if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
+                if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
 
                 FarbeF1(Foerderanlage.F1);
                 FarbeP1(Foerderanlage.P1);
@@ -133,7 +133,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -227,9 +227,9 @@ namespace LAP_2019_Foerderanlage.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -272,7 +272,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS0()
         {
-            if (ClickModeBtnS0 ==  ClickMode.Press)
+            if (ClickModeBtnS0 == ClickMode.Press)
             {
                 ClickModeBtnS0 = ClickMode.Release;
                 return true;
@@ -302,7 +302,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -332,7 +332,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS5()
         {
-            if (ClickModeBtnS5 ==  ClickMode.Press)
+            if (ClickModeBtnS5 == ClickMode.Press)
             {
                 ClickModeBtnS5 = ClickMode.Release;
                 return true;
@@ -362,7 +362,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS6()
         {
-            if (ClickModeBtnS6 ==  ClickMode.Press)
+            if (ClickModeBtnS6 == ClickMode.Press)
             {
                 ClickModeBtnS6 = ClickMode.Release;
                 return true;
@@ -392,7 +392,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS7()
         {
-            if (ClickModeBtnS7 ==  ClickMode.Press)
+            if (ClickModeBtnS7 == ClickMode.Press)
             {
                 ClickModeBtnS7 = ClickMode.Release;
                 return true;
@@ -422,7 +422,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonS8()
         {
-            if (ClickModeBtnS8 ==  ClickMode.Press)
+            if (ClickModeBtnS8 == ClickMode.Press)
             {
                 ClickModeBtnS8 = ClickMode.Release;
                 return true;
@@ -452,7 +452,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonM1_RL()
         {
-            if (ClickModeBtnM1Rl ==  ClickMode.Press)
+            if (ClickModeBtnM1Rl == ClickMode.Press)
             {
                 ClickModeBtnM1Rl = ClickMode.Release;
                 return true;
@@ -482,7 +482,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonM1_LL()
         {
-            if (ClickModeBtnM1Ll ==  ClickMode.Press)
+            if (ClickModeBtnM1Ll == ClickMode.Press)
             {
                 ClickModeBtnM1Ll = ClickMode.Release;
                 return true;
@@ -512,7 +512,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonM2()
         {
-            if (ClickModeBtnM2 ==  ClickMode.Press)
+            if (ClickModeBtnM2 == ClickMode.Press)
             {
                 ClickModeBtnM2 = ClickMode.Release;
                 return true;
@@ -542,7 +542,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonK1()
         {
-            if (ClickModeBtnK1 ==  ClickMode.Press)
+            if (ClickModeBtnK1 == ClickMode.Press)
             {
                 ClickModeBtnK1 = ClickMode.Release;
                 return true;
@@ -572,7 +572,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         public bool ClickModeButtonM1_LL_K1()
         {
-            if (ClickModeBtnM1LlK1 ==  ClickMode.Press)
+            if (ClickModeBtnM1LlK1 == ClickMode.Press)
             {
                 ClickModeBtnM1LlK1 = ClickMode.Release;
                 return true;
@@ -621,7 +621,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit BtnSetManual
 
-        public void SichtbarkeitBtnSetManual(bool val) => VisibilityBtnSetManual = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitBtnSetManual(bool val) => VisibilityBtnSetManual = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityBtnSetManual;
 
@@ -639,7 +639,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit PfeilLinkslauf
 
-        public void SichtbarkeitPfeilLinkslauf(bool val) => VisibilityPfeilLinkslauf = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitPfeilLinkslauf(bool val) => VisibilityPfeilLinkslauf = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityPfeilLinkslauf;
 
@@ -657,7 +657,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit PfeilRechtslauf
 
-        public void SichtbarkeitPfeilRechtslauf(bool val) => VisibilityPfeilRechtslauf = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitPfeilRechtslauf(bool val) => VisibilityPfeilRechtslauf = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityPfeilRechtslauf;
 
@@ -675,7 +675,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit M1
 
-        public void SichtbarkeitM1(bool val) => VisibilityM1Ein = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitM1(bool val) => VisibilityM1Ein = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityM1Ein;
 
@@ -693,7 +693,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit M2
 
-        public void SichtbarkeitM2(bool val) => VisibilityM2Ein = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitM2(bool val) => VisibilityM2Ein = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityM2Ein;
 
@@ -716,11 +716,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
             if (val)
             {
                 VisibilityK1Ein = Visibility.Visible;
-                VisibilityK1Aus =  Visibility.Hidden;
+                VisibilityK1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityK1Ein =  Visibility.Hidden;
+                VisibilityK1Ein = Visibility.Hidden;
                 VisibilityK1Aus = Visibility.Visible;
             }
         }
@@ -758,11 +758,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -800,11 +800,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
@@ -837,7 +837,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit MaterialOben
 
-        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityMaterialOben;
 
@@ -855,7 +855,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Sichtbarkeit MaterialUnten
 
-        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityMaterialUnten;
 
@@ -889,11 +889,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Color F1
 
-        public void FarbeF1(bool val) => ColorF1 = val ? Colors.LawnGreen : Colors.Red;
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
-        private Color _colorF1;
+        private Brush _colorF1;
 
-        public Color ColorF1
+        public Brush ColorF1
         {
             get => _colorF1;
             set
@@ -907,11 +907,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorP1;
+        private Brush _colorP1;
 
-        public Color ColorP1
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -925,11 +925,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Color P2
 
-        public void FarbeP2(bool val) => ColorP2 = val ? Colors.Red : Colors.White;
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP2;
+        private Brush _colorP2;
 
-        public Color ColorP2
+        public Brush ColorP2
         {
             get => _colorP2;
             set
@@ -943,11 +943,11 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         #region Color S2
 
-        public void FarbeS2(bool val) => ColorS2 = val ? Colors.LawnGreen : Colors.Red;
+        public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
 
-        private Color _colorS2;
+        private Brush _colorS2;
 
-        public Color ColorS2
+        public Brush ColorS2
         {
             get => _colorS2;
             set

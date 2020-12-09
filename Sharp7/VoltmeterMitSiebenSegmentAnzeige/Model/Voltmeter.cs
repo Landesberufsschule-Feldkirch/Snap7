@@ -19,7 +19,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.Model
             while (true)
             {
                 //
-                
+
                 Thread.Sleep(200);
             }
             // ReSharper disable once FunctionNeverReturns

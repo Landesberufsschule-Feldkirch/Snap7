@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Synchronisiereinrichtung.Model;
+using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Data;
-using Synchronisiereinrichtung.Model;
 using Utilities;
 
 namespace Synchronisiereinrichtung

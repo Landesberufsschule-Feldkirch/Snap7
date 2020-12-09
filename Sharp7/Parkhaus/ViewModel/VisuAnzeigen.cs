@@ -27,12 +27,12 @@ namespace Parkhaus.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
-            for (var i = 0; i < 100; i++) FarbeSensor.Add(Colors.LightGray);
+            for (var i = 0; i < 100; i++) FarbeSensor.Add(Brushes.LightGray);
             for (var i = 0; i < 100; i++) AutoSichtbar.Add(Visibility.Visible);
 
-            ColorP0 = Colors.LightGray;
+            ColorP0 = Brushes.LightGray;
             ClickModeBtnZufall = ClickMode.Press;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
@@ -48,9 +48,9 @@ namespace Parkhaus.ViewModel
 
                 for (var i = 0; i < 50; i++)
                 {
-                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? Visibility.Visible :  Visibility.Hidden;
+                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? Visibility.Visible : Visibility.Hidden;
 
-                    FarbeSensor[i] = AutoSichtbar[i] == Visibility.Visible ? Colors.Red : Colors.LawnGreen;
+                    FarbeSensor[i] = AutoSichtbar[i] == Visibility.Visible ? Brushes.Red : Brushes.LawnGreen;
                 }
 
                 if (_mainWindow.Plc != null)
@@ -63,7 +63,7 @@ namespace Parkhaus.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -140,9 +140,9 @@ namespace Parkhaus.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -168,7 +168,7 @@ namespace Parkhaus.ViewModel
 
         public bool ClickModeButtonZufall()
         {
-            if (ClickModeBtnZufall ==  ClickMode.Press)
+            if (ClickModeBtnZufall == ClickMode.Press)
             {
                 ClickModeBtnZufall = ClickMode.Release;
                 return true;
@@ -195,7 +195,7 @@ namespace Parkhaus.ViewModel
             if (!(auto is string nrAuto)) return;
 
             var autoNummer = Convert.ToInt32(nrAuto);
-            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == Visibility.Visible ?  Visibility.Hidden : Visibility.Visible;
+            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
         }
 
 
@@ -224,8 +224,8 @@ namespace Parkhaus.ViewModel
 
 
 
-        private ObservableCollection<Color> _farbeSensor = new ObservableCollection<Color>();
-        public ObservableCollection<Color> FarbeSensor
+        private ObservableCollection<Brush>_farbeSensor = new ObservableCollection<Brush>();
+        public ObservableCollection<Brush>FarbeSensor
         {
             get => _farbeSensor;
             set
@@ -245,7 +245,7 @@ namespace Parkhaus.ViewModel
         // ReSharper disable once UnusedMember.Global
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
+            if (ClickModeBtn[asciiCode] == ClickMode.Press)
             {
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
@@ -271,10 +271,10 @@ namespace Parkhaus.ViewModel
         #region Color P0
 
         // ReSharper disable once UnusedMember.Global
-        public void FarbeP0(bool val) => ColorP0 = val ? Colors.Red : Colors.LightGray;
+        public void FarbeP0(bool val) => ColorP0 = val ? Brushes.Red : Brushes.LightGray;
 
-        private Color _colorP0;
-        public Color ColorP0
+        private Brush _colorP0;
+        public Brush ColorP0
         {
             get => _colorP0;
             set

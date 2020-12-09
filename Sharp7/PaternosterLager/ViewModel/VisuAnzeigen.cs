@@ -25,18 +25,18 @@ namespace PaternosterLager.ViewModel
 
             IstPosition = "00";
             SollPosition = "00";
-            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
             for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
@@ -75,7 +75,7 @@ namespace PaternosterLager.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -154,9 +154,9 @@ namespace PaternosterLager.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -175,11 +175,11 @@ namespace PaternosterLager.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -217,11 +217,11 @@ namespace PaternosterLager.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
@@ -272,7 +272,7 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
+            if (ClickModeBtn[asciiCode] == ClickMode.Press)
             {
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
@@ -299,7 +299,7 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButtonAuf()
         {
-            if (ClickModeBtnAuf ==  ClickMode.Press)
+            if (ClickModeBtnAuf == ClickMode.Press)
             {
                 ClickModeBtnAuf = ClickMode.Release;
                 return true;
@@ -327,7 +327,7 @@ namespace PaternosterLager.ViewModel
 
         public bool ClickModeButtonAb()
         {
-            if (ClickModeBtnAb ==  ClickMode.Press)
+            if (ClickModeBtnAb == ClickMode.Press)
             {
                 ClickModeBtnAb = ClickMode.Release;
                 return true;

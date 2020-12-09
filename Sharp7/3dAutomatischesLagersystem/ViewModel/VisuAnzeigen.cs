@@ -37,9 +37,9 @@ namespace AutomatischesLagersystem.ViewModel
             ClickModeBtnK5 = ClickMode.Press;
             ClickModeBtnK6 = ClickMode.Press;
 
-            ColorKollisionRegalMitSchlitten = Colors.LawnGreen;
+            ColorKollisionRegalMitSchlitten = Brushes.LawnGreen;
 
-            VisibilityButtonsAktiv =  Visibility.Hidden;
+            VisibilityButtonsAktiv = Visibility.Hidden;
             VisibilitySlidersAktiv = Visibility.Visible;
 
             IstPosition = "00";
@@ -53,18 +53,18 @@ namespace AutomatischesLagersystem.ViewModel
             YPosSlider = 0;
             ZPosSlider = 0;
 
-            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -80,14 +80,14 @@ namespace AutomatischesLagersystem.ViewModel
 
         internal void SetButtonsAktiv()
         {
-            if (VisibilityButtonsAktiv ==  Visibility.Hidden)
+            if (VisibilityButtonsAktiv == Visibility.Hidden)
             {
                 VisibilityButtonsAktiv = Visibility.Visible;
-                VisibilitySlidersAktiv =  Visibility.Hidden;
+                VisibilitySlidersAktiv = Visibility.Hidden;
             }
             else
             {
-                VisibilityButtonsAktiv =  Visibility.Hidden;
+                VisibilityButtonsAktiv = Visibility.Hidden;
                 VisibilitySlidersAktiv = Visibility.Visible;
             }
         }
@@ -159,7 +159,7 @@ namespace AutomatischesLagersystem.ViewModel
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -233,8 +233,8 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-        private Color _spsColor;
-        public Color SpsColor
+         private Brush _spsColor;
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -254,11 +254,11 @@ namespace AutomatischesLagersystem.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -297,11 +297,11 @@ namespace AutomatischesLagersystem.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
@@ -334,11 +334,11 @@ namespace AutomatischesLagersystem.ViewModel
 
         #region ColorKollisionRegalMitSchlitten
 
-        public void FarbeKollisionRegalMitSchlitten(bool val) => ColorKollisionRegalMitSchlitten = val ? Colors.Red : Colors.LawnGreen;
+        public void FarbeKollisionRegalMitSchlitten(bool val) => ColorKollisionRegalMitSchlitten = val ? Brushes.Red : Brushes.LawnGreen;
 
-        private Color _colorKollisionRegalMitSchlitten;
+        private Brush _colorKollisionRegalMitSchlitten;
 
-        public Color ColorKollisionRegalMitSchlitten
+        public Brush ColorKollisionRegalMitSchlitten
         {
             get => _colorKollisionRegalMitSchlitten;
             set
@@ -386,7 +386,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK1()
         {
-            if (ClickModeBtnK1 ==  ClickMode.Press)
+            if (ClickModeBtnK1 == ClickMode.Press)
             {
                 ClickModeBtnK1 = ClickMode.Release;
                 return true;
@@ -416,7 +416,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK2()
         {
-            if (ClickModeBtnK2 ==  ClickMode.Press)
+            if (ClickModeBtnK2 == ClickMode.Press)
             {
                 ClickModeBtnK2 = ClickMode.Release;
                 return true;
@@ -446,7 +446,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK3()
         {
-            if (ClickModeBtnK3 ==  ClickMode.Press)
+            if (ClickModeBtnK3 == ClickMode.Press)
             {
                 ClickModeBtnK3 = ClickMode.Release;
                 return true;
@@ -476,7 +476,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK4()
         {
-            if (ClickModeBtnK4 ==  ClickMode.Press)
+            if (ClickModeBtnK4 == ClickMode.Press)
             {
                 ClickModeBtnK4 = ClickMode.Release;
                 return true;
@@ -506,7 +506,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK5()
         {
-            if (ClickModeBtnK5 ==  ClickMode.Press)
+            if (ClickModeBtnK5 == ClickMode.Press)
             {
                 ClickModeBtnK5 = ClickMode.Release;
                 return true;
@@ -536,7 +536,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButtonK6()
         {
-            if (ClickModeBtnK6 ==  ClickMode.Press)
+            if (ClickModeBtnK6 == ClickMode.Press)
             {
                 ClickModeBtnK6 = ClickMode.Release;
                 return true;
@@ -566,7 +566,7 @@ namespace AutomatischesLagersystem.ViewModel
 
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] ==  ClickMode.Press)
+            if (ClickModeBtn[asciiCode] == ClickMode.Press)
             {
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;

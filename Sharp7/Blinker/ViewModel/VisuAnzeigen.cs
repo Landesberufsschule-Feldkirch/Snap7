@@ -20,7 +20,7 @@ namespace Blinker.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             ClickModeBtnS1 = ClickMode.Press;
             ClickModeBtnS2 = ClickMode.Press;
@@ -28,7 +28,7 @@ namespace Blinker.ViewModel
             ClickModeBtnS4 = ClickMode.Press;
             ClickModeBtnS5 = ClickMode.Press;
 
-            ColorCircleP1 = Colors.LightGray;
+            ColorCircleP1 = Brushes.LightGray;
 
 
             FrequenzAnzeige = "Frequenz: 0Hz";
@@ -54,7 +54,7 @@ namespace Blinker.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
 
                     FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
@@ -135,9 +135,9 @@ namespace Blinker.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -153,7 +153,7 @@ namespace Blinker.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -177,7 +177,7 @@ namespace Blinker.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 ==  ClickMode.Press)
+            if (ClickModeBtnS2 == ClickMode.Press)
             {
                 ClickModeBtnS2 = ClickMode.Release;
                 return true;
@@ -201,7 +201,7 @@ namespace Blinker.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 ==  ClickMode.Press)
+            if (ClickModeBtnS3 == ClickMode.Press)
             {
                 ClickModeBtnS3 = ClickMode.Release;
                 return true;
@@ -225,7 +225,7 @@ namespace Blinker.ViewModel
 
         public bool ClickModeButtonS4()
         {
-            if (ClickModeBtnS4 ==  ClickMode.Press)
+            if (ClickModeBtnS4 == ClickMode.Press)
             {
                 ClickModeBtnS4 = ClickMode.Release;
                 return true;
@@ -249,7 +249,7 @@ namespace Blinker.ViewModel
 
         public bool ClickModeButtonS5()
         {
-            if (ClickModeBtnS5 ==  ClickMode.Press)
+            if (ClickModeBtnS5 == ClickMode.Press)
             {
                 ClickModeBtnS5 = ClickMode.Release;
                 return true;
@@ -274,11 +274,11 @@ namespace Blinker.ViewModel
 
         #region Circle
 
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Colors.LawnGreen : Colors.LightGray;
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
 
-        private Color _colorCircleP1;
+        private Brush _colorCircleP1;
 
-        public Color ColorCircleP1
+        public Brush ColorCircleP1
         {
             get => _colorCircleP1;
             set

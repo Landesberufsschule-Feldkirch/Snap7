@@ -22,13 +22,13 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
-            ColorF1 = Colors.LawnGreen;
-            ColorP1 = Colors.LawnGreen;
-            ColorQ1 = Colors.LawnGreen;
-            ColorQ2 = Colors.LawnGreen;
-            ColorS2 = Colors.LawnGreen;
+            ColorF1 = Brushes.LawnGreen;
+            ColorP1 = Brushes.LawnGreen;
+            ColorQ1 = Brushes.LawnGreen;
+            ColorQ2 = Brushes.LawnGreen;
+            ColorS2 = Brushes.LawnGreen;
 
             ClickModeBtnQ1 = ClickMode.Press;
             ClickModeBtnQ2 = ClickMode.Press;
@@ -36,12 +36,12 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             ClickModeBtnS3 = ClickMode.Press;
 
             VisibilityB1Ein = Visibility.Visible;
-            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Hidden;
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
-            VisibilityFuellen =  Visibility.Hidden;
-            VisibilityKurzschluss =  Visibility.Hidden;
+            VisibilityFuellen = Visibility.Hidden;
+            VisibilityKurzschluss = Visibility.Hidden;
 
             PositionRadLinks = 0;
             PositionRadRechts = 0;
@@ -65,8 +65,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 SichtbarkeitB1(_transportwagen.B1);
                 SichtbarkeitB2(_transportwagen.B2);
 
-                if (_transportwagen.Q1 && _transportwagen.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss =  Visibility.Hidden;
-                VisibilityFuellen = _transportwagen.Fuellen ? Visibility.Visible :  Visibility.Hidden;
+                if (_transportwagen.Q1 && _transportwagen.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
+                VisibilityFuellen = _transportwagen.Fuellen ? Visibility.Visible : Visibility.Hidden;
 
                 PositionRadLinks = _transportwagen.Position + abstandRadWagen;
                 PositionRadRechts = _transportwagen.Position + _transportwagen.AbstandRadRechts + abstandRadWagen;
@@ -82,7 +82,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -157,9 +157,9 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -173,11 +173,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color F1
 
-        public void FarbeF1(bool val) => ColorF1 = val ? Colors.LawnGreen : Colors.Red;
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
-        private Color _colorF1;
+        private Brush _colorF1;
 
-        public Color ColorF1
+        public Brush ColorF1
         {
             get => _colorF1;
             set
@@ -191,11 +191,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP1;
+        private Brush _colorP1;
 
-        public Color ColorP1
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -209,11 +209,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorQ1;
+        private Brush _colorQ1;
 
-        public Color ColorQ1
+        public Brush ColorQ1
         {
             get => _colorQ1;
             set
@@ -227,11 +227,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color Q2
 
-        public void FarbeQ2(bool val) => ColorQ2 = val ? Colors.LawnGreen : Colors.White;
+        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
 
-        private Color _colorQ2;
+        private Brush _colorQ2;
 
-        public Color ColorQ2
+        public Brush ColorQ2
         {
             get => _colorQ2;
             set
@@ -245,11 +245,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         #region Color S2
 
-        public void FarbeS2(bool val) => ColorS2 = val ? Colors.LawnGreen : Colors.Red;
+        public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
 
-        private Color _colorS2;
+        private Brush _colorS2;
 
-        public Color ColorS2
+        public Brush ColorS2
         {
             get => _colorS2;
             set
@@ -265,7 +265,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 ==  ClickMode.Press)
+            if (ClickModeBtnQ1 == ClickMode.Press)
             {
                 ClickModeBtnQ1 = ClickMode.Release;
                 return true;
@@ -293,7 +293,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonQ2()
         {
-            if (ClickModeBtnQ2 ==  ClickMode.Press)
+            if (ClickModeBtnQ2 == ClickMode.Press)
             {
                 ClickModeBtnQ2 = ClickMode.Release;
                 return true;
@@ -321,7 +321,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -349,7 +349,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 ==  ClickMode.Press)
+            if (ClickModeBtnS3 == ClickMode.Press)
             {
                 ClickModeBtnS3 = ClickMode.Release;
                 return true;
@@ -380,11 +380,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -422,11 +422,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }

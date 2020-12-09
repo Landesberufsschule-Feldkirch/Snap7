@@ -21,7 +21,7 @@ namespace Synchronisiereinrichtung.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             ManualVentilstellung = 0;
             ManualErregerstrom = 0;
@@ -118,7 +118,7 @@ namespace Synchronisiereinrichtung.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -184,8 +184,8 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        private Color _spsColor;
-        public Color SpsColor
+        private Brush _spsColor;
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -488,7 +488,7 @@ namespace Synchronisiereinrichtung.ViewModel
             }
         }
 
-        public void MessgeraetAnzeigen(bool val) => VisibilityMessgeraetSichtbar = val ? Visibility.Visible :  Visibility.Hidden;
+        public void MessgeraetAnzeigen(bool val) => VisibilityMessgeraetSichtbar = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityMessgeraetSichtbar;
         public Visibility VisibilityMessgeraetSichtbar
@@ -536,11 +536,11 @@ namespace Synchronisiereinrichtung.ViewModel
             if (val)
             {
                 LeistungsschalterEin = Visibility.Visible;
-                LeistungsschalterAus =  Visibility.Hidden;
+                LeistungsschalterAus = Visibility.Hidden;
             }
             else
             {
-                LeistungsschalterEin =  Visibility.Hidden;
+                LeistungsschalterEin = Visibility.Hidden;
                 LeistungsschalterAus = Visibility.Visible;
             }
         }

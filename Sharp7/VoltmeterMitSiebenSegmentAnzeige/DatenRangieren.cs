@@ -17,7 +17,7 @@
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-           //
+            //
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)

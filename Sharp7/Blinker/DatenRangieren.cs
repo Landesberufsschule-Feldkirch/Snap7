@@ -30,7 +30,7 @@ namespace Blinker
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur) => _viewModel.Blinker.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-        
+
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

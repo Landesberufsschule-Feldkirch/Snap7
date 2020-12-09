@@ -20,6 +20,6 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         {
             Voltmeter = new Model.Voltmeter();
             VAnzeige = new VisuAnzeigen(mainWindow, Voltmeter);
-        }     
+        }
     }
 }

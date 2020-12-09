@@ -25,13 +25,13 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
-            ColorF1 = Colors.LawnGreen;
-            ColorF2 = Colors.LawnGreen;
-            ColorP1 = Colors.White;
-            ColorP2 = Colors.White;
-            ColorQ1 = Colors.LawnGreen;
+            ColorF1 = Brushes.LawnGreen;
+            ColorF2 = Brushes.LawnGreen;
+            ColorP1 = Brushes.White;
+            ColorP2 = Brushes.White;
+            ColorQ1 = Brushes.LawnGreen;
 
             ClickModeBtnS0 = ClickMode.Press;
             ClickModeBtnS1 = ClickMode.Press;
@@ -40,22 +40,22 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
             Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
-            VisibilityB1Ein =  Visibility.Hidden;
+            VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
             VisibilityQ1Ein = Visibility.Visible;
-            VisibilityQ1Aus =  Visibility.Hidden;
+            VisibilityQ1Aus = Visibility.Hidden;
 
             VisibilityXfuEin = Visibility.Visible;
 
-            VisibilityY1Ein =  Visibility.Hidden;
+            VisibilityY1Ein = Visibility.Hidden;
             VisibilityY1Aus = Visibility.Visible;
 
-            VisibilityMaterialOben =  Visibility.Hidden;
-            VisibilityMaterialUnten =  Visibility.Hidden;
+            VisibilityMaterialOben = Visibility.Hidden;
+            VisibilityMaterialUnten = Visibility.Hidden;
 
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
@@ -171,9 +171,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private Color _spsColor;
+         private Brush _spsColor;
 
-        public Color SpsColor
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -206,7 +206,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #region Sichtbarkeit
 
-        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityMaterialOben;
 
@@ -220,7 +220,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible :  Visibility.Hidden;
+        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityMaterialUnten;
 
@@ -239,11 +239,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -278,11 +278,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
@@ -318,11 +318,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             if (val)
             {
                 VisibilityQ1Ein = Visibility.Visible;
-                VisibilityQ1Aus =  Visibility.Hidden;
+                VisibilityQ1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityQ1Ein =  Visibility.Hidden;
+                VisibilityQ1Ein = Visibility.Hidden;
                 VisibilityQ1Aus = Visibility.Visible;
             }
         }
@@ -358,11 +358,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             if (val)
             {
                 VisibilityXfuEin = Visibility.Visible;
-                VisibilityXfuAus =  Visibility.Hidden;
+                VisibilityXfuAus = Visibility.Hidden;
             }
             else
             {
-                VisibilityXfuEin =  Visibility.Hidden;
+                VisibilityXfuEin = Visibility.Hidden;
                 VisibilityXfuAus = Visibility.Visible;
             }
         }
@@ -397,11 +397,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             if (val)
             {
                 VisibilityY1Ein = Visibility.Visible;
-                VisibilityY1Aus =  Visibility.Hidden;
+                VisibilityY1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityY1Ein =  Visibility.Hidden;
+                VisibilityY1Ein = Visibility.Hidden;
                 VisibilityY1Aus = Visibility.Visible;
             }
         }
@@ -436,12 +436,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeF1(bool val)
         {
-            ColorF1 = val ? Colors.LawnGreen : Colors.Red;
+            ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
         }
 
-        private Color _colorF1;
+        private Brush _colorF1;
 
-        public Color ColorF1
+        public Brush ColorF1
         {
             get => _colorF1;
             set
@@ -455,12 +455,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeF2(bool val)
         {
-            ColorF2 = val ? Colors.LawnGreen : Colors.Red;
+            ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
         }
 
-        private Color _colorF2;
+        private Brush _colorF2;
 
-        public Color ColorF2
+        public Brush ColorF2
         {
             get => _colorF2;
             set
@@ -475,12 +475,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeP1(bool val)
         {
-            ColorP1 = val ? Colors.LawnGreen : Colors.White;
+            ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
         }
 
-        private Color _colorP1;
+        private Brush _colorP1;
 
-        public Color ColorP1
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -493,12 +493,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeP2(bool val)
         {
-            ColorP2 = val ? Colors.Red : Colors.White;
+            ColorP2 = val ? Brushes.Red : Brushes.White;
         }
 
-        private Color _colorP2;
+        private Brush _colorP2;
 
-        public Color ColorP2
+        public Brush ColorP2
         {
             get => _colorP2;
             set
@@ -510,12 +510,12 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public void FarbeQ1(bool val)
         {
-            ColorQ1 = val ? Colors.LawnGreen : Colors.White;
+            ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
         }
 
-        private Color _colorQ1;
+        private Brush _colorQ1;
 
-        public Color ColorQ1
+        public Brush ColorQ1
         {
             get => _colorQ1;
             set
@@ -531,7 +531,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS0()
         {
-            if (ClickModeBtnS0 ==  ClickMode.Press)
+            if (ClickModeBtnS0 == ClickMode.Press)
             {
                 ClickModeBtnS0 = ClickMode.Release;
                 return true;
@@ -557,7 +557,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -582,7 +582,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 ==  ClickMode.Press)
+            if (ClickModeBtnS2 == ClickMode.Press)
             {
                 ClickModeBtnS2 = ClickMode.Release;
                 return true;
@@ -606,7 +606,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         public bool ClickModeButtonS3()
         {
-            if (ClickModeBtnS3 ==  ClickMode.Press)
+            if (ClickModeBtnS3 == ClickMode.Press)
             {
                 ClickModeBtnS3 = ClickMode.Release;
                 return true;

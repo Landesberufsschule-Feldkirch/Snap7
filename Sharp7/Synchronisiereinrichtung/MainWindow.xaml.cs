@@ -21,7 +21,6 @@ namespace Synchronisiereinrichtung
 
         public double[] PlotVentilOeffnung = new double[1000];
         public double[] PlotErregerstrom = new double[1000];
-        public double[] PlotDrehzahl = new double[1000];
         public double[] PlotFrequenz = new double[1000];
         public double[] PlotGeneratorSpannung = new double[1000];
         public double[] PlotSpannungsdifferenz = new double[1000];
@@ -59,10 +58,6 @@ namespace Synchronisiereinrichtung
 
             var datenRangieren = new DatenRangieren(this, _viewModel);
 
-
-            //  GaugeDifferenzSpannung.DataContext = _viewModel;
-            // GaugeDifferenzSpannung.ApplyTemplate();
-
             Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
@@ -89,7 +84,6 @@ namespace Synchronisiereinrichtung
 
             _plotWindow.WpfPlot.plt.YLabel("Ventilöffnung Y");
             _plotWindow.WpfPlot.plt.YLabel("Erregerstrom IE");
-            _plotWindow.WpfPlot.plt.YLabel("Drehzahl n");
             _plotWindow.WpfPlot.plt.YLabel("Frequenz f");
             _plotWindow.WpfPlot.plt.YLabel("Generatorspannung UG");
             _plotWindow.WpfPlot.plt.YLabel("Spannungsdifferenz Ud");
@@ -99,7 +93,6 @@ namespace Synchronisiereinrichtung
 
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotVentilOeffnung, label: "Kesseltemperatur");
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotErregerstrom, label: "Erregerstrom");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotDrehzahl, label: "Drehzahl");
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotFrequenz, label: "Frequenz");
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotGeneratorSpannung, label: "Generatorspannung");
             _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotSpannungsdifferenz, label: "Spannungsdifferenz");
@@ -131,7 +124,6 @@ namespace Synchronisiereinrichtung
 
             PlotVentilOeffnung[_nextDataIndex] = _viewModel.Kraftwerk.VentilY;
             PlotErregerstrom[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorIe;
-            PlotDrehzahl[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorN;
             PlotFrequenz[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorF;
             PlotGeneratorSpannung[_nextDataIndex] = _viewModel.Kraftwerk.GeneratorU;
             PlotSpannungsdifferenz[_nextDataIndex] = _viewModel.Kraftwerk.SpannungsDifferenz;
@@ -143,7 +135,6 @@ namespace Synchronisiereinrichtung
         private void Render(object sender, EventArgs e)
         {
             _plotWindow.WpfPlot.plt.AxisAuto(0);
-          // _plotWindow.WpfPlot.Render(skipIfCurrentlyRendering:true, recalculateLayout:true);
             _plotWindow.WpfPlot.Render();
         }
     }

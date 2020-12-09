@@ -14,7 +14,7 @@ namespace ThermischeSolarAnlage.ViewModel
         {
             while (true)
             {
-              
+
 
                 Thread.Sleep(10);
             }

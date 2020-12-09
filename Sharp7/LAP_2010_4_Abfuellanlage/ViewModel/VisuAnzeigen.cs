@@ -21,9 +21,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             _mainWindow = mw;
             _abfuellAnlage = aa;
 
-            ColorP1 = Colors.White;
-            ColorQ1 = Colors.LawnGreen;
-            ColorRectangleZuleitung = Colors.Coral;
+            ColorP1 = Brushes.White;
+            ColorQ1 = Brushes.LawnGreen;
+            ColorRectangleZuleitung = Brushes.Coral;
 
             ClickModeBtnS1 = ClickMode.Press;
             ClickModeBtnS2 = ClickMode.Press;
@@ -40,23 +40,23 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             for (var i = 0; i < 10; i++) TopDose.Add(10 + i * 10);
             for (var i = 0; i < 10; i++) LeftDose.Add(10 + i * 10);
 
-            VisibilityK1Ein =  Visibility.Hidden;
-            VisibilityK2Ein =  Visibility.Hidden;
+            VisibilityK1Ein = Visibility.Hidden;
+            VisibilityK2Ein = Visibility.Hidden;
 
             VisibilityK1Aus = Visibility.Visible;
             VisibilityK2Aus = Visibility.Visible;
 
             VisibilityB1Ein = Visibility.Visible;
-            VisibilityB1Aus =  Visibility.Hidden;
+            VisibilityB1Aus = Visibility.Hidden;
             VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus =  Visibility.Hidden;
+            VisibilityB2Aus = Visibility.Hidden;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
-            SpsColor = Colors.LightBlue;
+            SpsColor = Brushes.LightBlue;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -97,7 +97,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                         SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     }
 
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Colors.Red : Colors.LightGray;
+                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
@@ -170,8 +170,8 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private Color _spsColor;
-        public Color SpsColor
+         private Brush _spsColor;
+        public Brush SpsColor
         {
             get => _spsColor;
             set
@@ -230,13 +230,13 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         }
 
         #endregion
-        
+
         #region Color P1
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Colors.Red : Colors.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
 
-        private Color _colorP1;
-        public Color ColorP1
+        private Brush _colorP1;
+        public Brush ColorP1
         {
             get => _colorP1;
             set
@@ -250,10 +250,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Color Q1
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Colors.LawnGreen : Colors.LightGray;
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.LightGray;
 
-        private Color _colorQ1;
-        public Color ColorQ1
+        private Brush _colorQ1;
+        public Brush ColorQ1
         {
             get => _colorQ1;
             set
@@ -267,10 +267,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Color Zuleitung
 
-        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Colors.Coral : Colors.LightCoral;
+        public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Brushes.Coral : Brushes.LightCoral;
 
-        private Color _colorRectangleZuleitung;
-        public Color ColorRectangleZuleitung
+        private Brush _colorRectangleZuleitung;
+        public Brush ColorRectangleZuleitung
         {
             get => _colorRectangleZuleitung;
             set
@@ -286,7 +286,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonS1()
         {
-            if (ClickModeBtnS1 ==  ClickMode.Press)
+            if (ClickModeBtnS1 == ClickMode.Press)
             {
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
@@ -313,7 +313,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonS2()
         {
-            if (ClickModeBtnS2 ==  ClickMode.Press)
+            if (ClickModeBtnS2 == ClickMode.Press)
             {
                 ClickModeBtnS2 = ClickMode.Release;
                 return true;
@@ -340,7 +340,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonQ1()
         {
-            if (ClickModeBtnQ1 ==  ClickMode.Press)
+            if (ClickModeBtnQ1 == ClickMode.Press)
             {
                 ClickModeBtnQ1 = ClickMode.Release;
                 return true;
@@ -367,7 +367,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonK1()
         {
-            if (ClickModeBtnK1 ==  ClickMode.Press)
+            if (ClickModeBtnK1 == ClickMode.Press)
             {
                 ClickModeBtnK1 = ClickMode.Release;
                 return true;
@@ -394,7 +394,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         public bool ClickModeButtonK2()
         {
-            if (ClickModeBtnK2 ==  ClickMode.Press)
+            if (ClickModeBtnK2 == ClickMode.Press)
             {
                 ClickModeBtnK2 = ClickMode.Release;
                 return true;
@@ -424,11 +424,11 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             if (val)
             {
                 VisibilityK1Ein = Visibility.Visible;
-                VisibilityK1Aus =  Visibility.Hidden;
+                VisibilityK1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityK1Ein =  Visibility.Hidden;
+                VisibilityK1Ein = Visibility.Hidden;
                 VisibilityK1Aus = Visibility.Visible;
             }
         }
@@ -465,11 +465,11 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             if (val)
             {
                 VisibilityK2Ein = Visibility.Visible;
-                VisibilityK2Aus =  Visibility.Hidden;
+                VisibilityK2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityK2Ein =  Visibility.Hidden;
+                VisibilityK2Ein = Visibility.Hidden;
                 VisibilityK2Aus = Visibility.Visible;
             }
         }
@@ -501,7 +501,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #region Visibility Ableitung
 
-        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? Visibility.Visible :  Visibility.Hidden;
+        public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityRectangleAbleitung;
         public Visibility VisibilityRectangleAbleitung
@@ -523,11 +523,11 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             if (val)
             {
                 VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus =  Visibility.Hidden;
+                VisibilityB1Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB1Ein =  Visibility.Hidden;
+                VisibilityB1Ein = Visibility.Hidden;
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
@@ -564,11 +564,11 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             if (val)
             {
                 VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus =  Visibility.Hidden;
+                VisibilityB2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityB2Ein =  Visibility.Hidden;
+                VisibilityB2Ein = Visibility.Hidden;
                 VisibilityB2Aus = Visibility.Visible;
             }
         }

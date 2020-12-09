@@ -44,7 +44,7 @@
         internal void VentilQ4() => AlleMeineBehaelter[1].VentilUntenUmschalten();
         internal void VentilQ6() => AlleMeineBehaelter[2].VentilUntenUmschalten();
         internal void VentilQ8() => AlleMeineBehaelter[3].VentilUntenUmschalten();
-        
+
         public void AutomatikBetriebStarten(string reihenfolge)
         {
             if (_aktuellePermutation == reihenfolge) return;

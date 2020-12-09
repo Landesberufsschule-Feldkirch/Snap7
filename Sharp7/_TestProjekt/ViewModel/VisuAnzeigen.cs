@@ -14,7 +14,7 @@ namespace _TestProjekt.ViewModel
         {
             while (true)
             {
-              
+
 
                 Thread.Sleep(10);
             }
