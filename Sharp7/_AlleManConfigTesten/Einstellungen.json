@@ -1,0 +1,19 @@
+﻿{
+  "AlleDateienFilter": [
+    {
+      "Beschreibung": "Quellordner",
+      "Einlesen": true,
+      "Quelle": "k:\\git\\Snap7"
+    },
+    {
+      "Beschreibung": "Suchordner",
+      "Einlesen": true,
+      "Quelle": "ManualConfig"
+    },
+    {
+      "Beschreibung": "Debug",
+      "Einlesen": false,
+      "Quelle": "Debug"
+    }
+  ]
+}

@@ -4,15 +4,16 @@ namespace _AlleManConfigTesten
 {
     public partial class MainWindow
     {
-        private Model.AlleManConfigTesten _alleManConfigTesten;
-
         public MainWindow()
         {
-            _alleManConfigTesten=new AlleManConfigTesten(this);
+            
+            var viewModel = new ViewModel.ViewModel(this);
+var alleManConfigTesten = new AlleManConfigTesten(viewModel);
 
             InitializeComponent();
+            DataContext = viewModel;
 
-            _alleManConfigTesten.Anzeigen();
+            alleManConfigTesten.AlleConfigEinlesen();
         }
     }
 }

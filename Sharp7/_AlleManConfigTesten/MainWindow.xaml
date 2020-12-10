@@ -6,6 +6,31 @@
         mc:Ignorable="d"
         Title="Alle ManConfig Anzeigen/Testen" Height="850" Width="1200">
     <Grid>
-        <Canvas x:Name="Canvas"/>
+        <TabControl>
+            <TabItem Header="Analoge Ausgänge AA">
+                <Grid Background="LightCyan">
+                    <DataGrid x:Name="DataGridAa" DataContext="{Binding ViAnzeige.AaAlleDaten}" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Analoge Eingänge AI">
+                <Grid Background="LightCyan">
+                    <DataGrid x:Name="DataGridAi" DataContext="{Binding ViAnzeige.AiAlleDaten}" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Digitale Ausgänge DA">
+                <Grid Background="LightCyan">
+                    <DataGrid x:Name="DataGridDa" DataContext="{Binding ViAnzeige.DaAlleDaten}" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Digitale Eingänge DI">
+                <Grid Background="LightCyan">
+                    <DataGrid x:Name="DataGridDi" DataContext="{Binding ViAnzeige.DiAlleDaten}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+
     </Grid>
 </Window>
