@@ -10,7 +10,6 @@ namespace Tiefgarage
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
         private const int AnzByteAnalogInput = 0;
@@ -27,12 +26,12 @@ namespace Tiefgarage
                 VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            var datenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
         }
     }
 }

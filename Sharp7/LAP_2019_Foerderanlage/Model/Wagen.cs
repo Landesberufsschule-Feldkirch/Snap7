@@ -60,12 +60,16 @@ namespace LAP_2019_Foerderanlage.Model
                         _wagenRichtung = Richtung.Stehen;
                     }
                     break;
+                case Richtung.Stehen:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             // Wagen bewegen
             _endlageRechts = Math.Abs(_aktuellePosition.X - _rechterAnschlag.X) < 0.01;
             _wagenVoll = Math.Abs(_wagenFuellstand - WagenFuellstandVoll) < 0.01;
-            if ((Math.Abs(_aktuellePosition.X - _linkerAnschlag.X) < 0.01) && (_wagenFuellstand > 0)) _wagenFuellstand -= WagenFuellstandLeeren;
+            if (Math.Abs(_aktuellePosition.X - _linkerAnschlag.X) < 0.01 && _wagenFuellstand > 0) _wagenFuellstand -= WagenFuellstandLeeren;
         }
 
         internal void Fuellen()

@@ -1,6 +1,7 @@
 ﻿using ManualMode.Model;
 using ManualMode.ViewModel;
 using System;
+using System.Windows.Shapes;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,18 +13,22 @@ namespace ManualMode
 {
     public partial class DaFenster
     {
-        public bool DatenByteweiseEingeben { get; set; }
+        public bool DatenTypenBit { get; set; }
+        public bool DatenTypenByte { get; set; }
+        public bool DatenTypenWord { get; set; }
 
 
         public DaFenster(DaConfig daConfig, ManualViewModel mvm)
         {
-            DatenByteweiseEingeben = false;
-            var manViewModel = mvm;
-            InitializeComponent();
-            DataContext = manViewModel;
+            DatenTypenBit = false;
+            DatenTypenByte = false;
+            DatenTypenWord = false;
 
-            var anzahlZeilenConfig = DaDatenLesen(daConfig, manViewModel);
-            DaCreateGrid(anzahlZeilenConfig, manViewModel);
+            InitializeComponent();
+            DataContext = mvm;
+
+            var anzahlZeilenConfig = DaDatenLesen(daConfig, mvm);
+            DaCreateGrid(anzahlZeilenConfig, mvm);
         }
         private int DaDatenLesen(DaConfig daConfig, ManualViewModel manualViewModel)
         {
@@ -33,14 +38,27 @@ namespace ManualMode
             {
                 if (config.LaufendeNr == anzahlZeilenConfig)
                 {
+
+                    switch (config.AnzahlBit)
+                    {
+                        case 1:
+                            DatenTypenBit = true;
+                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 8:
+                            DatenTypenByte = true;
+                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 16:
+                            DatenTypenWord = true;
+                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            break;
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+
                     switch (config.Type)
                     {
                         case PlcEinUndAusgaengeTypen.BitmusterByte:
-                            DatenByteweiseEingeben = true;
-                            manualViewModel.ManVisuAnzeigen.VisibilityDa[config.LaufendeNr] = Visibility.Visible;
-                            manualViewModel.ManVisuAnzeigen.BezeichnungDa[config.LaufendeNr] = config.Bezeichnung;
-                            manualViewModel.ManVisuAnzeigen.KommentarDa[config.LaufendeNr] = config.Kommentar;
-                            break;
                         case PlcEinUndAusgaengeTypen.Default:
                             manualViewModel.ManVisuAnzeigen.VisibilityDa[config.LaufendeNr] = Visibility.Visible;
                             manualViewModel.ManVisuAnzeigen.BezeichnungDa[config.LaufendeNr] = config.Bezeichnung;
@@ -60,20 +78,17 @@ namespace ManualMode
 
                     anzahlZeilenConfig++;
                 }
-                else
-                {
-                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
-                }
+                else throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
+
             }
 
-            return anzahlZeilenConfig + 1;
+            return anzahlZeilenConfig;
         }
         private void DaCreateGrid(int anzahlZeilenConfig, ManualViewModel manualViewModel)
         {
             var daGrid = new Grid
             {
-                Name = "DaGrid",
-                Width = 600
+                Name = "DaGrid"
             };
 
             Content = daGrid;
@@ -86,21 +101,24 @@ namespace ManualMode
             daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlZeilenConfig; i++)
+            for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
-            if (DatenByteweiseEingeben)
+            DaHintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
+
+            if (DatenTypenByte)
             {
                 DaTextZeichnen("Eingabe", HorizontalAlignment.Center, 0, 0, daGrid);
                 DaTextZeichnen("Aktuell", HorizontalAlignment.Center, 2, 0, daGrid);
                 DaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 4, 0, daGrid);
                 DaTextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
 
-                for (var vbyte = 0; vbyte < anzahlZeilenConfig; vbyte++)
+                for (var vbyte = 0; vbyte <= anzahlZeilenConfig; vbyte++)
                 {
+                    DaHintergrundRechteckZeichnen(0, 2 + 2 * vbyte, 7, Brushes.YellowGreen, daGrid);
                     DaTextboxByteZeichnen(vbyte, 0, 2 + 2 * vbyte, daGrid);
                     DaBezeichnungByteZeichnen(vbyte, 4, 2 + 2 * vbyte, daGrid);
                     DaKommentarByteZeichnen(vbyte, 6, 2 + 2 * vbyte, daGrid);
@@ -119,6 +137,7 @@ namespace ManualMode
                     {
                         if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
+                        DaHintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 7, Brushes.YellowGreen, daGrid);
                         DaButtonTastenZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
                         DaButtonToggelnZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
                         DaBezeichnungBitZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, daGrid);
@@ -127,6 +146,21 @@ namespace ManualMode
                 }
             }
         }
+
+        private static void DaHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        {
+            var hintergrund = new Rectangle
+            {
+                Margin = new Thickness(-4, -4, 0, -4),
+                Fill = farbe
+            };
+
+            Grid.SetColumn(hintergrund, x);
+            Grid.SetColumnSpan(hintergrund, span);
+            Grid.SetRow(hintergrund, y);
+            panel.Children.Add(hintergrund);
+        }
+
         private static void DaButtonTastenZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -139,7 +173,8 @@ namespace ManualMode
                 BorderThickness = new Thickness(1.0),
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 Command = manualViewModel.BtnTasten,
-                CommandParameter = parameterNummer.ToString()
+                CommandParameter = parameterNummer.ToString(),
+                Margin = new Thickness(3, 3, 3, 3)
             };
 
             buttonTasten.SetBinding(BackgroundProperty, new Binding("ManVisuAnzeigen.FarbeTastenToggelnDa[" + parameterNummer + "]"));
@@ -163,7 +198,8 @@ namespace ManualMode
                 BorderThickness = new Thickness(1.0),
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 Command = manualViewModel.BtnToggeln,
-                CommandParameter = parameterNummer.ToString()
+                CommandParameter = parameterNummer.ToString(),
+                Margin = new Thickness(3, 3, 3, 3)
             };
 
             buttonToggeln.SetBinding(BackgroundProperty, new Binding("ManVisuAnzeigen.FarbeTastenToggelnDa[" + parameterNummer + "]"));

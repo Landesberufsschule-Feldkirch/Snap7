@@ -4,18 +4,26 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace ManualMode
 {
     public partial class AiFenster
     {
+        public bool DatenTypenBit { get; set; }
+        public bool DatenTypenByte { get; set; }
+        public bool DatenTypenWord { get; set; }
+
         public AiFenster(Model.AiConfig aiConfig, ManualViewModel mvm)
         {
-            var manViewModel = mvm;
-            InitializeComponent();
-            DataContext = manViewModel;
+            DatenTypenBit = false;
+            DatenTypenByte = false;
+            DatenTypenWord = false;
 
-            var anzahlZeilenConfig = AiDatenLesen(aiConfig, manViewModel);
+            InitializeComponent();
+            DataContext = mvm;
+
+            var anzahlZeilenConfig = AiDatenLesen(aiConfig, mvm);
             AiCreateGrid(anzahlZeilenConfig);
         }
         private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
@@ -32,20 +40,16 @@ namespace ManualMode
 
                     anzahlZeilenConfig++;
                 }
-                else
-                {
-                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
-                }
+                else throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
             }
-            return anzahlZeilenConfig + 1;
+            return anzahlZeilenConfig;
         }
         private void AiCreateGrid(in int anzahlZeilenConfig)
         {
 
             var aiGgrid = new Grid
             {
-                Name = "AiGrid",
-                Width = 600
+                Name = "AiGrid"
             };
 
             Content = aiGgrid;
@@ -56,12 +60,13 @@ namespace ManualMode
             aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlZeilenConfig; i++)
+            for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
+            AiHintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
             AiTextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
             AiTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
             AiTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
@@ -72,11 +77,27 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
+                    AiHintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, aiGgrid);
                     AiWertZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                     AiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                     AiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                 }
             }
+        }
+        private static void AiHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        {
+            if (y == 4) farbe = Brushes.Red;
+
+            var hintergrund = new Rectangle
+            {
+                Margin = new Thickness(-4, -4, 0, -4),
+                Fill = farbe
+            };
+
+            Grid.SetColumn(hintergrund, x);
+            Grid.SetColumnSpan(hintergrund, span);
+            Grid.SetRow(hintergrund, y);
+            panel.Children.Add(hintergrund);
         }
         private static void AiWertZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {

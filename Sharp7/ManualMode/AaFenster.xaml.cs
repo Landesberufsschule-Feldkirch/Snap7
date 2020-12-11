@@ -5,13 +5,22 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace ManualMode
 {
     public partial class AaFenster
     {
+        public bool DatenTypenBit { get; set; }
+        public bool DatenTypenByte { get; set; }
+        public bool DatenTypenWord { get; set; }
+
         public AaFenster(AaConfig aaConfig, ManualViewModel mvm)
         {
+            DatenTypenBit = false;
+            DatenTypenByte = false;
+            DatenTypenWord = false;
+
             var manualViewModel = mvm;
             InitializeComponent();
             DataContext = manualViewModel;
@@ -33,19 +42,15 @@ namespace ManualMode
 
                     anzahlZeilenConfig++;
                 }
-                else
-                {
-                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
-                }
+                else throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
             }
-            return anzahlZeilenConfig + 1;
+            return anzahlZeilenConfig;
         }
         private void AaCreateGrid(int anzahlZeilenConfig)
         {
             var aaGrid = new Grid
             {
-                Name = "AaGrid",
-                Width = 600
+                Name = "AaGrid"
             };
 
             Content = aaGrid;
@@ -56,21 +61,38 @@ namespace ManualMode
             aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
 
-            for (var i = 0; i < anzahlZeilenConfig; i++)
+            for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
                 aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
                 aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
+            AaHintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aaGrid);
             AaTextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aaGrid);
             AaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aaGrid);
             AaTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aaGrid);
 
             for (var vbyte = 0; vbyte < anzahlZeilenConfig; vbyte++)
             {
+                AaHintergrundRechteckZeichnen(0, 2 + 2 * vbyte, 5, Brushes.YellowGreen, aaGrid);
                 AaBezeichnungZeichnen(vbyte, 2, 2 + 2 * vbyte, aaGrid);
                 AaKommentarZeichnen(vbyte, 4, 2 + 2 * vbyte, aaGrid);
             }
+        }
+        private static void AaHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        {
+            if (y == 4) farbe = Brushes.Red;
+
+            var hintergrund = new Rectangle
+            {
+                Margin = new Thickness(-4, -4, 0, -4),
+                Fill = farbe
+            };
+
+            Grid.SetColumn(hintergrund, x);
+            Grid.SetColumnSpan(hintergrund, span);
+            Grid.SetRow(hintergrund, y);
+            panel.Children.Add(hintergrund);
         }
         private static void AaBezeichnungZeichnen(int vbyte, int x, int y, Panel panel)
         {

@@ -54,15 +54,14 @@ namespace LAP_2019_Foerderanlage
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            if (!_mainWindow.DebugWindowAktiv)
-            {
-                _foerderanlageViewModel.Foerderanlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
-                _foerderanlageViewModel.Foerderanlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-                _foerderanlageViewModel.Foerderanlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-                _foerderanlageViewModel.Foerderanlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-                _foerderanlageViewModel.Foerderanlage.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-                _foerderanlageViewModel.Foerderanlage.T1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.T1);
-            }
+            if (_mainWindow.DebugWindowAktiv) return;
+
+            _foerderanlageViewModel.Foerderanlage.K1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
+            _foerderanlageViewModel.Foerderanlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _foerderanlageViewModel.Foerderanlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _foerderanlageViewModel.Foerderanlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _foerderanlageViewModel.Foerderanlage.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+            _foerderanlageViewModel.Foerderanlage.T1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.T1);
         }
 
         public DatenRangieren(MainWindow mw, ViewModel.ViewModel vm)

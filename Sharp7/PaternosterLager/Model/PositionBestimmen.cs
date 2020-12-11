@@ -99,7 +99,9 @@
             (x, y, zeichenBereich) = ZapfenPositionBerechnen(posZapfen, breiteZapfen);
 
             if (Math.Abs(x - xDavor) < 0.1) return (x, y, 0, zeichenBereich);
+
             if (zeichenBereichVorher == Zeichenbereich.Rechts) { return (x, y, 0, zeichenBereich); }
+
             switch (zeichenBereich)
             {
                 case Zeichenbereich.Links:
@@ -113,12 +115,6 @@
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(zeichenBereich));
-            }
-
-            if (zeichenBereichVorher == Zeichenbereich.Rechts)
-            {
-                phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yDavor) / (x - xDavor)));
-                return (x, y, phi, zeichenBereichVorher);
             }
 
             phi = 270 + Winkel.Rad2Deg(Math.Atan((y - yVorher) / (x - xVorher)));

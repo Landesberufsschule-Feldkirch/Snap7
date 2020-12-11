@@ -1,4 +1,6 @@
-﻿namespace Utilities
+﻿using System;
+
+namespace Utilities
 {
     public class Rechteck
     {
@@ -27,20 +29,27 @@
 
         public static bool Ausgebremst(Rechteck bewegt, Rechteck hinderniss, RichtungX x, RichtungY y)
         {
-            bool stop = false;
+            var stop = false;
 
-            if (Kollision(bewegt, hinderniss))
+            if (!Kollision(bewegt, hinderniss)) return false;
+
+            switch (x)
             {
-                switch (x)
-                {
-                    case RichtungX.NachRechts: stop |= hinderniss.Punkt.X > bewegt.Punkt.X; break;
-                    case RichtungX.NachLinks: stop |= hinderniss.Punkt.X < bewegt.Punkt.X; break;
-                }
-                switch (y)
-                {
-                    case RichtungY.NachOben: stop |= hinderniss.Punkt.Y < bewegt._hoehe; break;
-                    case RichtungY.NachUnten: stop |= hinderniss.Punkt.Y > bewegt.Punkt.Y; break;
-                }
+                case RichtungX.NachRechts: stop |= hinderniss.Punkt.X > bewegt.Punkt.X; break;
+                case RichtungX.NachLinks: stop |= hinderniss.Punkt.X < bewegt.Punkt.X; break;
+                case RichtungX.Steht:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(x), x, null);
+            }
+            switch (y)
+            {
+                case RichtungY.NachOben: stop |= hinderniss.Punkt.Y < bewegt._hoehe; break;
+                case RichtungY.NachUnten: stop |= hinderniss.Punkt.Y > bewegt.Punkt.Y; break;
+                case RichtungY.Steht:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(y), y, null);
             }
             return stop;
         }

@@ -104,7 +104,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 SichtbarkeitB2(Foerderanlage.Wagen.IstWagenVoll());
 
                 SichtbarkeitMaterialOben(Foerderanlage.Silo.GetFuellstand() > 0.01);
-                SichtbarkeitMaterialUnten((Foerderanlage.Silo.GetFuellstand() > 0.01) && (Foerderanlage.K1));
+                SichtbarkeitMaterialUnten(Foerderanlage.Silo.GetFuellstand() > 0.01 && Foerderanlage.K1);
 
                 if (Foerderanlage.Q1 && Foerderanlage.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
 
@@ -160,7 +160,7 @@ namespace LAP_2019_Foerderanlage.ViewModel
 
         internal void SetManualM1_LL_K1()
         {
-            bool m1LlK1 = ClickModeButtonM1_LL_K1();
+            var m1LlK1 = ClickModeButtonM1_LL_K1();
             Foerderanlage.ManualM1Ll = m1LlK1;
             Foerderanlage.ManualK1 = m1LlK1;
         }
@@ -277,10 +277,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS0 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS0 = ClickMode.Press;
-            }
+
+            ClickModeBtnS0 = ClickMode.Press;
             return false;
         }
 
@@ -307,10 +305,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS1 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS1 = ClickMode.Press;
-            }
+
+            ClickModeBtnS1 = ClickMode.Press;
             return false;
         }
 
@@ -337,10 +333,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS5 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS5 = ClickMode.Press;
-            }
+
+            ClickModeBtnS5 = ClickMode.Press;
             return false;
         }
 
@@ -367,10 +361,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS6 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS6 = ClickMode.Press;
-            }
+
+            ClickModeBtnS6 = ClickMode.Press;
             return false;
         }
 
@@ -397,10 +389,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS7 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS7 = ClickMode.Press;
-            }
+
+            ClickModeBtnS7 = ClickMode.Press;
             return false;
         }
 
@@ -427,10 +417,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnS8 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnS8 = ClickMode.Press;
-            }
+
+            ClickModeBtnS8 = ClickMode.Press;
             return false;
         }
 
@@ -457,10 +445,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnM1Rl = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnM1Rl = ClickMode.Press;
-            }
+
+            ClickModeBtnM1Rl = ClickMode.Press;
             return false;
         }
 
@@ -487,10 +473,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnM1Ll = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnM1Ll = ClickMode.Press;
-            }
+
+            ClickModeBtnM1Ll = ClickMode.Press;
             return false;
         }
 
@@ -517,10 +501,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnM2 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnM2 = ClickMode.Press;
-            }
+
+            ClickModeBtnM2 = ClickMode.Press;
             return false;
         }
 
@@ -547,10 +529,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnK1 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK1 = ClickMode.Press;
-            }
+
+            ClickModeBtnK1 = ClickMode.Press;
             return false;
         }
 
@@ -577,10 +557,8 @@ namespace LAP_2019_Foerderanlage.ViewModel
                 ClickModeBtnM1LlK1 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnM1LlK1 = ClickMode.Press;
-            }
+
+            ClickModeBtnM1LlK1 = ClickMode.Press;
             return false;
         }
 

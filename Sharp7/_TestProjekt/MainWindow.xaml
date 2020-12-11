@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="TestProjekt (.net core 3.1)" Height="450" Width="800">
-    <Grid>
+    <Grid Width="800">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="10" />
@@ -39,9 +39,14 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Column="3" Grid.Row="8" Text="{Binding ViAnzeige.TextFeld, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   FontSize="14pt" />
+<Rectangle Grid.Column="0" Grid.ColumnSpan="13" Grid.Row="4" Fill="Red"></Rectangle>
 
-<Button Grid.Column="5" Grid.Row="7" Content="Taster" ClickMode="Press"/>
+        <TextBox x:Name="TextBox" Grid.Column="3" Grid.Row="8"  Background="Aqua" FontSize="14pt" Grid.ColumnSpan="2" />
+        <Slider x:Name="Slider" Grid.Column="3" Grid.ColumnSpan="6"  Grid.Row="10" Background="Yellow" Width="420" 
+                Minimum="0" Maximum="100" 
+                IsSnapToTickEnabled="True" TickFrequency="10"/>
+
+
 
     </Grid>
 </Window>

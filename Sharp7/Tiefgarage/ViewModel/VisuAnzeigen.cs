@@ -623,10 +623,7 @@ namespace Tiefgarage.ViewModel
 
         #region AnzahlAutos
 
-        public void AnzahlAutosInDerTiefgarage(int val)
-        {
-            AnzahlAutos = "Autos in der Tiefgarage: " + val.ToString();
-        }
+        public void AnzahlAutosInDerTiefgarage(int val) => AnzahlAutos = "Autos in der Tiefgarage: " + val;
 
         private string _anzahlAutos;
 
@@ -644,10 +641,7 @@ namespace Tiefgarage.ViewModel
 
         #region AnzahlPersonen
 
-        public void AnzahlPersonenInDerTiefgarage(int val)
-        {
-            AnzahlPersonen = "Personen in der Tiefgarage: " + val.ToString();
-        }
+        public void AnzahlPersonenInDerTiefgarage(int val) => AnzahlPersonen = "Personen in der Tiefgarage: " + val;
 
         private string _anzahlPersonen;
 

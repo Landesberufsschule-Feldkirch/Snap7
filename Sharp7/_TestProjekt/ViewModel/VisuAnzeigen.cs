@@ -15,7 +15,6 @@ namespace _TestProjekt.ViewModel
             while (true)
             {
 
-
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
@@ -23,7 +22,6 @@ namespace _TestProjekt.ViewModel
 
 
         private string _textFeld;
-
         public string TextFeld
         {
             get => _textFeld;
@@ -31,6 +29,19 @@ namespace _TestProjekt.ViewModel
             {
                 _textFeld = value;
                 OnPropertyChanged(nameof(TextFeld));
+            }
+        }
+
+
+
+        private double _sliderValue;
+        public double SliderValue
+        {
+            get => _sliderValue;
+            set
+            {
+                _sliderValue = value;
+                OnPropertyChanged(nameof(SliderValue));
             }
         }
 

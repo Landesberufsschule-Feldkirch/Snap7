@@ -1,4 +1,5 @@
-﻿using Utilities;
+﻿using System;
+using Utilities;
 
 namespace Tiefgarage.Model
 {
@@ -28,8 +29,8 @@ namespace Tiefgarage.Model
         public FahrenRichtung Bewegung { get; set; } = FahrenRichtung.ObenGeparkt;
         public Punkt AktuellePosition { get; set; } = new Punkt(0, 0);
 
-        private readonly double xy_Bewegung = 1;
-        private readonly double kurveGeschwindigkeit = 0.002;
+        private const double XyBewegung = 1;
+        private const double KurveGeschwindigkeit = 0.002;
 
         private double _kurvePosition;
 
@@ -48,8 +49,8 @@ namespace Tiefgarage.Model
         private readonly Punkt _fahrspurOben = new Punkt(350, 250);
         private readonly Punkt _fahrspurUnten = new Punkt(350, 400);
 
-        private readonly double yPosition_B1 = 300;
-        private readonly double yPosition_B2 = 330;
+        private const double YPositionB1 = 300;
+        private const double YPositionB2 = 330;
 
         public readonly Punkt ParkenOben;
         public readonly Punkt ParkenUnten;
@@ -128,9 +129,14 @@ namespace Tiefgarage.Model
         private bool LichtschrankeUnterbrochen(double pos)
         {
             if (AktuellePosition.Y < pos) return false;
-            if (FpRolle == Rolle.Fahrzeug && AktuellePosition.Y > pos + _fahrzeug.Y) return false;
-            if (FpRolle == Rolle.Person && AktuellePosition.Y > pos + _person.Y) return false;
-            return true;
+            switch (FpRolle)
+            {
+                case Rolle.Fahrzeug when AktuellePosition.Y > pos + _fahrzeug.Y:
+                case Rolle.Person when AktuellePosition.Y > pos + _person.Y:
+                    return false;
+                default:
+                    return true;
+            }
         }
 
         public (bool b1, bool b2, bool park) Bewegen()
@@ -147,19 +153,19 @@ namespace Tiefgarage.Model
 
                 case FahrenRichtung.AbwaertsKurveOben:
                     AktuellePosition = _kurveOben.PunktBestimmen(_kurvePosition);
-                    _kurvePosition += kurveGeschwindigkeit;
+                    _kurvePosition += KurveGeschwindigkeit;
                     if (_kurvePosition >= 1) Bewegung = FahrenRichtung.AbwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AbwaertsSenkrecht:
-                    if (AktuellePosition.Y < _fahrspurUnten.Y) AktuellePosition.Y += xy_Bewegung;
+                    if (AktuellePosition.Y < _fahrspurUnten.Y) AktuellePosition.Y += XyBewegung;
                     else Bewegung = FahrenRichtung.AbwaertsKurveUnten;
                     _kurvePosition = 0;
                     break;
 
                 case FahrenRichtung.AbwaertsKurveUnten:
                     AktuellePosition = _kurveUnten.PunktBestimmen(_kurvePosition);
-                    _kurvePosition += kurveGeschwindigkeit;
+                    _kurvePosition += KurveGeschwindigkeit;
                     if (_kurvePosition >= 1) Bewegung = FahrenRichtung.UntenGeparkt;
                     break;
 
@@ -171,24 +177,26 @@ namespace Tiefgarage.Model
 
                 case FahrenRichtung.AufwaertsKurveUnten:
                     AktuellePosition = _kurveUnten.PunktBestimmen(_kurvePosition);
-                    _kurvePosition -= kurveGeschwindigkeit;
+                    _kurvePosition -= KurveGeschwindigkeit;
                     if (_kurvePosition <= 0) Bewegung = FahrenRichtung.AufwaertsSenkrecht;
                     break;
 
                 case FahrenRichtung.AufwaertsSenkrecht:
-                    if (AktuellePosition.Y > _fahrspurOben.Y) AktuellePosition.Y -= xy_Bewegung;
+                    if (AktuellePosition.Y > _fahrspurOben.Y) AktuellePosition.Y -= XyBewegung;
                     else Bewegung = FahrenRichtung.AufwaertsKurveOben;
                     _kurvePosition = 1;
                     break;
 
                 case FahrenRichtung.AufwaertsKurveOben:
                     AktuellePosition = _kurveOben.PunktBestimmen(_kurvePosition);
-                    _kurvePosition -= kurveGeschwindigkeit;
+                    _kurvePosition -= KurveGeschwindigkeit;
                     if (_kurvePosition <= 0) Bewegung = FahrenRichtung.ObenGeparkt;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
-            return (LichtschrankeUnterbrochen(yPosition_B1), LichtschrankeUnterbrochen(yPosition_B2), allesInParkPosition);
+            return (LichtschrankeUnterbrochen(YPositionB1), LichtschrankeUnterbrochen(YPositionB2), allesInParkPosition);
         }
     }
 }

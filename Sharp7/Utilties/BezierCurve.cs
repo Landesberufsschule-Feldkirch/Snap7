@@ -42,29 +42,18 @@ namespace Utilities
             _ptY3 = py3;
         }
 
-        public Punkt PunktBestimmen(double t)
-        {
-            return new Punkt(X_Berechnen(t), Y_Berechnen(t));
-        }
+        public Punkt PunktBestimmen(double t) => new Punkt(X_Berechnen(t), Y_Berechnen(t));
 
-        private double X_Berechnen(double t)
-        {
-            return (
-                _ptX0 * Math.Pow((1 - t), 3) +
-                _ptX1 * 3 * t * Math.Pow((1 - t), 2) +
-                _ptX2 * 3 * Math.Pow(t, 2) * (1 - t) +
-                _ptX3 * Math.Pow(t, 3)
-            );
-        }
+        private double X_Berechnen(double t) =>
+            _ptX0 * Math.Pow(1 - t, 3) +
+            _ptX1 * 3 * t * Math.Pow(1 - t, 2) +
+            _ptX2 * 3 * Math.Pow(t, 2) * (1 - t) +
+            _ptX3 * Math.Pow(t, 3);
 
-        private double Y_Berechnen(double t)
-        {
-            return (
-                _ptY0 * Math.Pow((1 - t), 3) +
-                _ptY1 * 3 * t * Math.Pow((1 - t), 2) +
-                _ptY2 * 3 * Math.Pow(t, 2) * (1 - t) +
-                _ptY3 * Math.Pow(t, 3)
-            );
-        }
+        private double Y_Berechnen(double t) =>
+            _ptY0 * Math.Pow(1 - t, 3) +
+            _ptY1 * 3 * t * Math.Pow(1 - t, 2) +
+            _ptY2 * 3 * Math.Pow(t, 2) * (1 - t) +
+            _ptY3 * Math.Pow(t, 3);
     }
 }
