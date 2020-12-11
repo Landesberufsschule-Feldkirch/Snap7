@@ -578,8 +578,8 @@ namespace AutomatischesLagersystem.ViewModel
             return false;
         }
 
-        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeBtn = new ObservableCollection<System.Windows.Controls.ClickMode>();
-        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;
             set

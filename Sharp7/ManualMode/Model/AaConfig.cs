@@ -9,6 +9,17 @@ namespace ManualMode.Model
 
     public class AaEinstellungen
     {
+        public int LaufendeNr { get; set; }
+        public int StartByte { get; set; }
+        public int StartBit { get; set; }
+        public int AnzahlBit { get; set; }
+        public double MinimalWert { get; set; }
+        public double MaximalWert { get; set; }
+        public double Schrittweite { get; set; }
+        public PlcEinUndAusgaengeTypen Type { get; set; }
+        public string Bezeichnung { get; set; }
+        public string Kommentar { get; set; }
+
         public AaEinstellungen()
         {
             LaufendeNr = 0;
@@ -22,16 +33,5 @@ namespace ManualMode.Model
             Bezeichnung = "";
             Kommentar = "";
         }
-
-        public int LaufendeNr { get; set; }
-        public int StartByte { get; set; }
-        public int StartBit { get; set; }
-        public int AnzahlBit { get; set; }
-        public double MinimalWert { get; set; }
-        public double MaximalWert { get; set; }
-        public double Schrittweite { get; set; }
-        public PlcEinUndAusgaengeTypen Type { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Kommentar { get; set; }
     }
 }

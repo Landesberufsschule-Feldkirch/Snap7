@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Bilder\Snap7.ico" />
+    <None Remove="Model\DiDaten.cs~RF57bd6b0.TMP" />
   </ItemGroup>
 
   <ItemGroup>

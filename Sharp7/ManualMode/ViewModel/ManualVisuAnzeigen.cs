@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ManualMode.ViewModel
@@ -20,7 +21,7 @@ namespace ManualMode.ViewModel
 
             for (var i = 0; i < 100; i++)
             {
-                ClickModeTasten.Add(System.Windows.Controls.ClickMode.Press);
+                ClickModeTasten.Add(ClickMode.Press);
                 FarbeTastenToggelnDa.Add(Brushes.LawnGreen);
                 VisibilityDa.Add(Visibility.Hidden);
                 BezeichnungDa.Add("-");
@@ -204,17 +205,17 @@ namespace ManualMode.ViewModel
 
         public bool ClickModeButtonSchalten(int i)
         {
-            if (ClickModeTasten[i] == System.Windows.Controls.ClickMode.Press)
+            if (ClickModeTasten[i] == ClickMode.Press)
             {
-                ClickModeTasten[i] = System.Windows.Controls.ClickMode.Release;
+                ClickModeTasten[i] = ClickMode.Release;
                 return true;
             }
-            ClickModeTasten[i] = System.Windows.Controls.ClickMode.Press;
+            ClickModeTasten[i] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeTasten = new ObservableCollection<System.Windows.Controls.ClickMode>();
-        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeTasten
+        private ObservableCollection<ClickMode> _clickModeTasten = new ObservableCollection<ClickMode>();
+        public ObservableCollection<ClickMode> ClickModeTasten
         {
             get => _clickModeTasten;
             set

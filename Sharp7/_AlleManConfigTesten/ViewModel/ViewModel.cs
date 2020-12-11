@@ -3,7 +3,7 @@
     public class ViewModel
     {
         public VisuAnzeigen ViAnzeige { get; set; }
-        public ViewModel(MainWindow mainWindow)
+        public ViewModel()
         {
             ViAnzeige = new VisuAnzeigen();
         }

@@ -9,6 +9,17 @@ namespace _AlleManConfigTesten.Model
 
     public class AaEinstellungen
     {
+        public int LaufendeNr { get; set; }
+        public int StartByte { get; set; }
+        public int StartBit { get; set; }
+        public int AnzahlBit { get; set; }
+        public double MinimalWert { get; set; }
+        public double MaximalWert { get; set; }
+        public double Schrittweite { get; set; }
+        public ManConfigTesten.PlcEinUndAusgaengeTypen Type { get; set; }
+        public string Bezeichnung { get; set; }
+        public string Kommentar { get; set; }
+        
         public AaEinstellungen()
         {
             LaufendeNr = 0;
@@ -18,20 +29,9 @@ namespace _AlleManConfigTesten.Model
             MinimalWert = 0;
             MaximalWert = 0;
             Schrittweite = 0;
-            Type = AlleManConfigTesten.PlcEinUndAusgaengeTypen.Default;
+            Type = ManConfigTesten.PlcEinUndAusgaengeTypen.Default;
             Bezeichnung = "";
             Kommentar = "";
         }
-
-        public int LaufendeNr { get; set; }
-        public int StartByte { get; set; }
-        public int StartBit { get; set; }
-        public int AnzahlBit { get; set; }
-        public double MinimalWert { get; set; }
-        public double MaximalWert { get; set; }
-        public double Schrittweite { get; set; }
-        public AlleManConfigTesten.PlcEinUndAusgaengeTypen Type { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Kommentar { get; set; }
     }
 }

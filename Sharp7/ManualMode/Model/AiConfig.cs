@@ -9,6 +9,14 @@ namespace ManualMode.Model
 
     public class AiEinstellungen
     {
+        public int LaufendeNr { get; set; }
+        public int StartByte { get; set; }
+        public int StartBit { get; set; }
+        public int AnzahlBit { get; set; }
+        public PlcEinUndAusgaengeTypen Type { get; set; }
+        public string Bezeichnung { get; set; }
+        public string Kommentar { get; set; }
+
         public AiEinstellungen()
         {
             LaufendeNr = 0;
@@ -19,13 +27,5 @@ namespace ManualMode.Model
             Bezeichnung = "";
             Kommentar = "";
         }
-
-        public int LaufendeNr { get; set; }
-        public int StartByte { get; set; }
-        public int StartBit { get; set; }
-        public int AnzahlBit { get; set; }
-        public PlcEinUndAusgaengeTypen Type { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Kommentar { get; set; }
     }
 }

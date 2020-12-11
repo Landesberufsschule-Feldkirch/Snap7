@@ -9,6 +9,15 @@ namespace ManualMode.Model
 
     public class DaEinstellungen
     {
+        public int LaufendeNr { get; set; }
+        public int StartByte { get; set; }
+        public int StartBit { get; set; }
+        public int AnzahlBit { get; set; }
+        public PlcEinUndAusgaengeTypen Type { get; set; }
+        public string Bezeichnung { get; set; }
+        public string Kommentar { get; set; }
+
+
         public DaEinstellungen()
         {
             LaufendeNr = 0;
@@ -19,13 +28,5 @@ namespace ManualMode.Model
             Bezeichnung = "";
             Kommentar = "";
         }
-
-        public int LaufendeNr { get; set; }
-        public int StartByte { get; set; }
-        public int StartBit { get; set; }
-        public int AnzahlBit { get; set; }
-        public PlcEinUndAusgaengeTypen Type { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Kommentar { get; set; }
     }
 }

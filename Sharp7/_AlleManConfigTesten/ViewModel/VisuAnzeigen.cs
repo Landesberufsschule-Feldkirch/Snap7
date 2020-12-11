@@ -1,23 +1,20 @@
-﻿using System.Collections.ObjectModel;
+﻿using _AlleManConfigTesten.Model;
+using System.Collections.Generic;
 using System.ComponentModel;
-using _AlleManConfigTesten.Model;
 
 namespace _AlleManConfigTesten.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        public VisuAnzeigen()
-        {
-            AaAlleDaten.Add(new AaConfig());
-            AiAlleDaten.Add(new AiConfig());
-            DaAlleDaten.Add(new DaConfig());
-            DiAlleDaten.Add(new DiConfig());
-        }
+        public void AddAaDaten(AaDaten daten) => AaAlleDaten.Add(daten);
+        public void AddAiDaten(AiDaten daten) => AiAlleDaten.Add(daten);
+        public void AddDaDaten(DaDaten daten) => DaAlleDaten.Add(daten);
+        public void AddDiDaten(DiDaten daten) => DiAlleDaten.Add(daten);
 
 
 
-        private ObservableCollection<AaConfig> _aaAlleDaten = new ObservableCollection<AaConfig>();
-        public ObservableCollection<AaConfig> AaAlleDaten
+        private List<AaDaten> _aaAlleDaten = new List<AaDaten>();
+        public List<AaDaten> AaAlleDaten
         {
             get => _aaAlleDaten;
             set
@@ -27,8 +24,8 @@ namespace _AlleManConfigTesten.ViewModel
             }
         }
 
-        private ObservableCollection<AiConfig> _aiAlleDaten = new ObservableCollection<AiConfig>();
-        public ObservableCollection<AiConfig> AiAlleDaten
+        private List<AiDaten> _aiAlleDaten = new List<AiDaten>();
+        public List<AiDaten> AiAlleDaten
         {
             get => _aiAlleDaten;
             set
@@ -39,8 +36,8 @@ namespace _AlleManConfigTesten.ViewModel
         }
 
 
-        private ObservableCollection<DaConfig> _daAlleDaten = new ObservableCollection<DaConfig>();
-        public ObservableCollection<DaConfig> DaAlleDaten
+        private List<DaDaten> _daAlleDaten = new List<DaDaten>();
+        public List<DaDaten> DaAlleDaten
         {
             get => _daAlleDaten;
             set
@@ -50,8 +47,8 @@ namespace _AlleManConfigTesten.ViewModel
             }
         }
 
-        private ObservableCollection<DiConfig> _diAlleDaten = new ObservableCollection<DiConfig>();
-        public ObservableCollection<DiConfig> DiAlleDaten
+        private List<DiDaten> _diAlleDaten = new List<DiDaten>();
+        public List<DiDaten> DiAlleDaten
         {
             get => _diAlleDaten;
             set

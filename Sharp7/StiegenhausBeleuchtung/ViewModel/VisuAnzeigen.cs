@@ -210,9 +210,9 @@ namespace StiegenhausBeleuchtung.ViewModel
             return false;
         }
 
-        private ObservableCollection<System.Windows.Controls.ClickMode> _clickModeBtn = new ObservableCollection<System.Windows.Controls.ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
 
-        public ObservableCollection<System.Windows.Controls.ClickMode> ClickModeBtn
+        public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;
             set

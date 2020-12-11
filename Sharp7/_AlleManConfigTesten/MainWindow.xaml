@@ -9,22 +9,22 @@
         <TabControl>
             <TabItem Header="Analoge Ausgänge AA">
                 <Grid Background="LightCyan">
-                    <DataGrid x:Name="DataGridAa" DataContext="{Binding ViAnzeige.AaAlleDaten}" />
+                    <DataGrid x:Name="DataGridAa" />
                 </Grid>
             </TabItem>
             <TabItem Header="Analoge Eingänge AI">
                 <Grid Background="LightCyan">
-                    <DataGrid x:Name="DataGridAi" DataContext="{Binding ViAnzeige.AiAlleDaten}" />
+                    <DataGrid x:Name="DataGridAi" />
                 </Grid>
             </TabItem>
             <TabItem Header="Digitale Ausgänge DA">
                 <Grid Background="LightCyan">
-                    <DataGrid x:Name="DataGridDa" DataContext="{Binding ViAnzeige.DaAlleDaten}" />
+                    <DataGrid x:Name="DataGridDa" />
                 </Grid>
             </TabItem>
             <TabItem Header="Digitale Eingänge DI">
                 <Grid Background="LightCyan">
-                    <DataGrid x:Name="DataGridDi" DataContext="{Binding ViAnzeige.DiAlleDaten}" />
+                    <DataGrid x:Name="DataGridDi" />
                 </Grid>
             </TabItem>
         </TabControl>
