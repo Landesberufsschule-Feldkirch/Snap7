@@ -1,4 +1,5 @@
-﻿using ManualMode.ViewModel;
+﻿using System;
+using ManualMode.ViewModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,10 +11,18 @@ namespace ManualMode
 {
     public partial class AiFenster
     {
-        public bool DatenTypenBit { get; set; }
-        public bool DatenTypenByte { get; set; }
-        public bool DatenTypenWord { get; set; }
+        public static bool DatenTypenBit { get; set; }
+        public static bool DatenTypenByte { get; set; }
+        public static bool DatenTypenWord { get; set; }
 
+
+        private const int SpaltenAbstand = 10;
+        private const int SpaltenWert = 300;
+        private const int SpaltenBezeichnung = 120;
+        private const int SpaltenKommentar = 300;
+
+        private const int ZeilenAbstand = 10;
+        private const int ZeilenHoehe = 45;
         public AiFenster(Model.AiConfig aiConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
@@ -24,7 +33,7 @@ namespace ManualMode
             DataContext = mvm;
 
             var anzahlZeilenConfig = AiDatenLesen(aiConfig, mvm);
-            AiCreateGrid(anzahlZeilenConfig);
+            if (DatenTypenBit) AiCreateGridBit(anzahlZeilenConfig);
         }
         private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
         {
@@ -34,6 +43,23 @@ namespace ManualMode
             {
                 if (config.LaufendeNr == anzahlZeilenConfig)
                 {
+                    switch (config.AnzahlBit)
+                    {
+                        case 1:
+                            DatenTypenBit = true;
+                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 8:
+                            DatenTypenByte = true;
+                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 16:
+                            DatenTypenWord = true;
+                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            break;
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+
                     manViewModel.ManVisuAnzeigen.VisibilityAi[config.LaufendeNr] = Visibility.Visible;
                     manViewModel.ManVisuAnzeigen.BezeichnungAi[config.LaufendeNr] = config.Bezeichnung;
                     manViewModel.ManVisuAnzeigen.KommentarAi[config.LaufendeNr] = config.Kommentar;
@@ -44,26 +70,22 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
-        private void AiCreateGrid(in int anzahlZeilenConfig)
+        private void AiCreateGridBit(in int anzahlZeilenConfig)
         {
 
-            var aiGgrid = new Grid
-            {
-                Name = "AiGrid"
-            };
-
+            var aiGgrid = new Grid {Name = "AiGrid"};
             Content = aiGgrid;
 
-            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
-            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
 
             for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
-                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
-                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
             AiHintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
@@ -86,8 +108,6 @@ namespace ManualMode
         }
         private static void AiHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
         {
-            if (y == 4) farbe = Brushes.Red;
-
             var hintergrund = new Rectangle
             {
                 Margin = new Thickness(-4, -4, 0, -4),

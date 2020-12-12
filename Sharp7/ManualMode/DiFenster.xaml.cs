@@ -1,4 +1,5 @@
-﻿using ManualMode.Model;
+﻿using System;
+using ManualMode.Model;
 using ManualMode.ViewModel;
 using System.IO;
 using System.Windows;
@@ -11,9 +12,18 @@ namespace ManualMode
 {
     public partial class DiFenster
     {
-        public bool DatenTypenBit { get; set; }
-        public bool DatenTypenByte { get; set; }
-        public bool DatenTypenWord { get; set; }
+        public static bool DatenTypenBit { get; set; }
+        public static bool DatenTypenByte { get; set; }
+        public static bool DatenTypenWord { get; set; }
+
+
+        private const int SpaltenAbstand = 10;
+        private const int SpaltenWert = 80;
+        private const int SpaltenBezeichnung = 120;
+        private const int SpaltenKommentar = 300;
+
+        private const int ZeilenAbstand = 10;
+        private const int ZeilenHoehe = 45;
 
         public DiFenster(DiConfig diConfig, ManualViewModel mvm)
         {
@@ -25,7 +35,7 @@ namespace ManualMode
             DataContext = mvm;
 
             var anzahlZeilenConfig = DiDatenLesen(diConfig, mvm);
-            DiCreateGrid(anzahlZeilenConfig);
+            if (DatenTypenBit) DiCreateGridBit(anzahlZeilenConfig);
         }
         private static int DiDatenLesen(DiConfig diConfig, ManualViewModel manViewModel)
         {
@@ -35,31 +45,45 @@ namespace ManualMode
 
             foreach (var config in diConfig.DigitaleEingaenge)
             {
-                if (config.LaufendeNr != anzahlZeilenConfig)
+                if (config.LaufendeNr == anzahlZeilenConfig)
                 {
-                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
-                }
-                else
-                {
+                    switch (config.AnzahlBit)
+                    {
+                        case 1:
+                            DatenTypenBit = true;
+                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 8:
+                            DatenTypenByte = true;
+                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 16:
+                            DatenTypenWord = true;
+                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            break;
+                        default: throw new ArgumentOutOfRangeException();
+                    }
+
                     switch (config.Type)
                     {
                         case PlcEinUndAusgaengeTypen.Default:
+                        {
+                            if (config.AnzahlBit == 1)
                             {
-                                if (config.AnzahlBit == 1)
+                                if (config.StartByte == aktuellesByte && config.StartBit == aktuellesBit)
                                 {
-                                    if (config.StartByte == aktuellesByte && config.StartBit == aktuellesBit)
+                                    aktuellesBit++;
+                                    if (aktuellesBit > 7)
                                     {
-                                        aktuellesBit++;
-                                        if (aktuellesBit > 7)
-                                        {
-                                            aktuellesBit = 0;
-                                            aktuellesByte++;
-                                        }
+                                        aktuellesBit = 0;
+                                        aktuellesByte++;
                                     }
-                                    else throw new InvalidDataException("Byte und Bit müssen schön gefüllt sein!");
                                 }
-                                break;
+                                else throw new InvalidDataException("Byte und Bit müssen schön gefüllt sein!");
                             }
+
+                            break;
+                        }
                         case PlcEinUndAusgaengeTypen.Ascii:
                             break;
                         case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
@@ -81,30 +105,29 @@ namespace ManualMode
 
                     anzahlZeilenConfig++;
                 }
+                else
+                {
+                    throw new InvalidDataException($"{nameof(DiFenster)} invalid {config.LaufendeNr} ");
+                }
             }
 
             return anzahlZeilenConfig;
         }
-        private void DiCreateGrid(int anzahlZeilenConfig)
+        private void DiCreateGridBit(int anzahlZeilenConfig)
         {
-
-            var diGrid = new Grid
-            {
-                Name = "DiGrid"
-            };
-
+            var diGrid = new Grid {Name = "DiGrid"};
             Content = diGrid;
 
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
 
             for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
-                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
-                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
             DiHintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, diGrid);
