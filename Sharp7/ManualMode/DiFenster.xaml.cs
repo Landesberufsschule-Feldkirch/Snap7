@@ -12,9 +12,12 @@ namespace ManualMode
 {
     public partial class DiFenster
     {
+
         public static bool DatenTypenBit { get; set; }
         public static bool DatenTypenByte { get; set; }
         public static bool DatenTypenWord { get; set; }
+        public static bool DatenTypenLong { get; set; }
+
 
 
         private const int SpaltenAbstand = 10;
@@ -24,6 +27,8 @@ namespace ManualMode
 
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
+
+        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
 
         public DiFenster(DiConfig diConfig, ManualViewModel mvm)
         {
@@ -35,8 +40,13 @@ namespace ManualMode
             DataContext = mvm;
 
             var anzahlZeilenConfig = DiDatenLesen(diConfig, mvm);
+
             if (DatenTypenBit) DiCreateGridBit(anzahlZeilenConfig);
+            if (DatenTypenByte) DiCreateGridByte(anzahlZeilenConfig);
+            if (DatenTypenWord) DiCreateGridWord(anzahlZeilenConfig);
+            if (DatenTypenLong) DiCreateGridLong(anzahlZeilenConfig);
         }
+
         private static int DiDatenLesen(DiConfig diConfig, ManualViewModel manViewModel)
         {
             var anzahlZeilenConfig = 0;
@@ -51,15 +61,19 @@ namespace ManualMode
                     {
                         case 1:
                             DatenTypenBit = true;
-                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 8:
                             DatenTypenByte = true;
-                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 16:
                             DatenTypenWord = true;
-                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 32:
+                            DatenTypenLong = true;
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
                             break;
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -67,23 +81,23 @@ namespace ManualMode
                     switch (config.Type)
                     {
                         case PlcEinUndAusgaengeTypen.Default:
-                        {
-                            if (config.AnzahlBit == 1)
                             {
-                                if (config.StartByte == aktuellesByte && config.StartBit == aktuellesBit)
+                                if (config.AnzahlBit == 1)
                                 {
-                                    aktuellesBit++;
-                                    if (aktuellesBit > 7)
+                                    if (config.StartByte == aktuellesByte && config.StartBit == aktuellesBit)
                                     {
-                                        aktuellesBit = 0;
-                                        aktuellesByte++;
+                                        aktuellesBit++;
+                                        if (aktuellesBit > 7)
+                                        {
+                                            aktuellesBit = 0;
+                                            aktuellesByte++;
+                                        }
                                     }
+                                    else throw new InvalidDataException("Byte und Bit müssen schön gefüllt sein!");
                                 }
-                                else throw new InvalidDataException("Byte und Bit müssen schön gefüllt sein!");
-                            }
 
-                            break;
-                        }
+                                break;
+                            }
                         case PlcEinUndAusgaengeTypen.Ascii:
                             break;
                         case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
@@ -113,9 +127,10 @@ namespace ManualMode
 
             return anzahlZeilenConfig;
         }
+
         private void DiCreateGridBit(int anzahlZeilenConfig)
         {
-            var diGrid = new Grid {Name = "DiGrid"};
+            var diGrid = new Grid { Name = "DiGrid" };
             Content = diGrid;
 
             diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
@@ -130,10 +145,10 @@ namespace ManualMode
                 diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
-            DiHintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, diGrid);
-            DiTextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, diGrid);
-            DiTextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, diGrid);
-            DiTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, diGrid);
+            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, diGrid);
+            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Center, 0, 0, diGrid);
+            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, diGrid);
+            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, diGrid);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -141,27 +156,27 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit > anzahlZeilenConfig) continue;
 
-                    DiHintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, diGrid);
+                    _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, diGrid);
                     DiButtonZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, diGrid);
                     DiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, diGrid);
-                    DiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, diGrid);
+                    _fensterFunktionen.KommentarZeichnen(4, 2 + vbyte * 16 + 2 * vBit, 8 * vbyte + vBit, "KommentarDi", "VisibilityDi",VisibilityProperty, diGrid );
                 }
             }
         }
-
-        private static void DiHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        private void DiCreateGridByte(int anzahlZeilenConfig)
         {
-            var hintergrund = new Rectangle
-            {
-                Margin = new Thickness(-4, -4, 0, -4),
-                Fill = farbe
-            };
-
-            Grid.SetColumn(hintergrund, x);
-            Grid.SetColumnSpan(hintergrund, span);
-            Grid.SetRow(hintergrund, y);
-            panel.Children.Add(hintergrund);
+            throw new NotImplementedException();
         }
+        private void DiCreateGridWord(int anzahlZeilenConfig)
+        {
+            throw new NotImplementedException();
+        }
+        private void DiCreateGridLong(int anzahlZeilenConfig)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private static void DiButtonZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -224,22 +239,6 @@ namespace ManualMode
             Grid.SetColumn(kommentar, x);
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
-        }
-        private static void DiTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
-        {
-            var text = new TextBlock
-            {
-                Text = beschriftung,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = alignment
-            };
-
-            Grid.SetColumn(text, x);
-            Grid.SetRow(text, y);
-            panel.Children.Add(text);
         }
     }
 }

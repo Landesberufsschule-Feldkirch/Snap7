@@ -16,6 +16,7 @@ namespace ManualMode
         public static bool DatenTypenBit { get; set; }
         public static bool DatenTypenByte { get; set; }
         public static bool DatenTypenWord { get; set; }
+        public static bool DatenTypenLong { get; set; }
 
 
         private const int SpaltenAbstand = 10;
@@ -25,6 +26,8 @@ namespace ManualMode
 
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
+
+        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
 
         public DaFenster(DaConfig daConfig, ManualViewModel mvm)
         {
@@ -38,7 +41,13 @@ namespace ManualMode
             var anzahlZeilenConfig = DaDatenLesen(daConfig, mvm);
             if (DatenTypenBit) DaCreateGridBit(anzahlZeilenConfig, mvm);
             if (DatenTypenByte) DaCreateGridByte(anzahlZeilenConfig, mvm);
+            if (DatenTypenWord) DaCreateGridWord(anzahlZeilenConfig, mvm);
+            if (DatenTypenLong) DaCreateGridLong(anzahlZeilenConfig, mvm);
         }
+
+
+
+
         private static int DaDatenLesen(DaConfig daConfig, ManualViewModel manualViewModel)
         {
             var anzahlZeilenConfig = 0;
@@ -51,15 +60,19 @@ namespace ManualMode
                     {
                         case 1:
                             DatenTypenBit = true;
-                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 8:
                             DatenTypenByte = true;
-                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 16:
                             DatenTypenWord = true;
-                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 32:
+                            DatenTypenLong = true;
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
                             break;
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -90,6 +103,7 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
+
         private void DaCreateGridBit(int anzahlZeilenConfig, ManualViewModel manualViewModel)
         {
             var daGrid = new Grid { Name = "DaGrid" };
@@ -109,12 +123,12 @@ namespace ManualMode
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
-            DaHintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
+            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
 
-            DaTextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, daGrid);
-            DaTextZeichnen("Toggeln", HorizontalAlignment.Center, 2, 0, daGrid);
-            DaTextZeichnen("Bezeichnung", HorizontalAlignment.Center, 4, 0, daGrid);
-            DaTextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Tasten", HorizontalAlignment.Center, 0, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Toggeln", HorizontalAlignment.Center, 2, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 4, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -122,7 +136,7 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
-                    DaHintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 7, Brushes.YellowGreen, daGrid);
+                    _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 7, Brushes.YellowGreen, daGrid);
                     DaButtonTastenZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
                     DaButtonToggelnZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
                     DaBezeichnungBitZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, daGrid);
@@ -149,37 +163,33 @@ namespace ManualMode
                 daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
             }
 
-            DaHintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
+            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
 
 
-            DaTextZeichnen("Eingabe", HorizontalAlignment.Center, 0, 0, daGrid);
-            DaTextZeichnen("Aktuell", HorizontalAlignment.Center, 2, 0, daGrid);
-            DaTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 4, 0, daGrid);
-            DaTextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Eingabe", HorizontalAlignment.Center, 0, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Aktuell", HorizontalAlignment.Center, 2, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 4, 0, daGrid);
+            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
 
             for (var vbyte = 0; vbyte <= anzahlZeilenConfig; vbyte++)
             {
-                DaHintergrundRechteckZeichnen(0, 2 + 2 * vbyte, 7, Brushes.YellowGreen, daGrid);
+                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * vbyte, 7, Brushes.YellowGreen, daGrid);
                 DaTextboxByteZeichnen(vbyte, 0, 2 + 2 * vbyte, daGrid);
                 DaBezeichnungByteZeichnen(vbyte, 4, 2 + 2 * vbyte, daGrid);
                 DaKommentarByteZeichnen(vbyte, 6, 2 + 2 * vbyte, daGrid);
             }
         }
-
-        private static void DaHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        private void DaCreateGridWord(int anzahlZeilenConfig, ManualViewModel manualViewModel)
         {
-            var hintergrund = new Rectangle
-            {
-                Margin = new Thickness(-4, -4, 0, -4),
-                Fill = farbe
-            };
-
-            Grid.SetColumn(hintergrund, x);
-            Grid.SetColumnSpan(hintergrund, span);
-            Grid.SetRow(hintergrund, y);
-            panel.Children.Add(hintergrund);
+            throw new NotImplementedException();
+        }
+        private void DaCreateGridLong(int anzahlZeilenConfig, ManualViewModel manualViewModel)
+        {
+            throw new NotImplementedException();
         }
 
+
+    
         private static void DaButtonTastenZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -347,22 +357,6 @@ namespace ManualMode
             Grid.SetColumn(kommentar, x);
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
-        }
-        private static void DaTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
-        {
-            var text = new TextBlock
-            {
-                Text = beschriftung,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = alignment
-            };
-
-            Grid.SetColumn(text, x);
-            Grid.SetRow(text, y);
-            panel.Children.Add(text);
         }
     }
 }

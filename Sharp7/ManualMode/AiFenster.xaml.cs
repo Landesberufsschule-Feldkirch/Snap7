@@ -14,6 +14,7 @@ namespace ManualMode
         public static bool DatenTypenBit { get; set; }
         public static bool DatenTypenByte { get; set; }
         public static bool DatenTypenWord { get; set; }
+        public static bool DatenTypenLong { get; set; }
 
 
         private const int SpaltenAbstand = 10;
@@ -23,6 +24,9 @@ namespace ManualMode
 
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
+
+        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
+
         public AiFenster(Model.AiConfig aiConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
@@ -34,7 +38,11 @@ namespace ManualMode
 
             var anzahlZeilenConfig = AiDatenLesen(aiConfig, mvm);
             if (DatenTypenBit) AiCreateGridBit(anzahlZeilenConfig);
+            if (DatenTypenByte) AiCreateGridByte(anzahlZeilenConfig);
+            if (DatenTypenWord) AiCreateGridWord(anzahlZeilenConfig);
+            if (DatenTypenLong) AiCreateGridLong(anzahlZeilenConfig);
         }
+
         private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
         {
             var anzahlZeilenConfig = 0;
@@ -47,15 +55,19 @@ namespace ManualMode
                     {
                         case 1:
                             DatenTypenBit = true;
-                            if (DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 8:
                             DatenTypenByte = true;
-                            if (DatenTypenBit || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
                             break;
                         case 16:
                             DatenTypenWord = true;
-                            if (DatenTypenBit || DatenTypenByte) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            break;
+                        case 32:
+                            DatenTypenLong = true;
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
                             break;
                         default: throw new ArgumentOutOfRangeException();
                     }
@@ -70,10 +82,9 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
-        private void AiCreateGridBit(in int anzahlZeilenConfig)
+        private void AiCreateGridBit(int anzahlZeilenConfig)
         {
-
-            var aiGgrid = new Grid {Name = "AiGrid"};
+            var aiGgrid = new Grid { Name = "AiGrid" };
             Content = aiGgrid;
 
             aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
@@ -88,10 +99,10 @@ namespace ManualMode
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
-            AiHintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
-            AiTextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
-            AiTextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
-            AiTextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
+            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
 
             for (var vbyte = 0; vbyte < 10; vbyte++)
             {
@@ -99,26 +110,58 @@ namespace ManualMode
                 {
                     if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
 
-                    AiHintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, aiGgrid);
+                    _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, aiGgrid);
                     AiWertZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                     AiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
-                    AiKommentarZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
+                    _fensterFunktionen.KommentarZeichnen( 4, 2 + vbyte * 16 + 2 * vBit,vbyte,"KommentarAi", "VisibilityAi",VisibilityProperty,aiGgrid);
                 }
             }
         }
-        private static void AiHintergrundRechteckZeichnen(int x, int y, int span, Brush farbe, Panel panel)
+        private void AiCreateGridByte(int anzahlZeilenConfig)
         {
-            var hintergrund = new Rectangle
-            {
-                Margin = new Thickness(-4, -4, 0, -4),
-                Fill = farbe
-            };
 
-            Grid.SetColumn(hintergrund, x);
-            Grid.SetColumnSpan(hintergrund, span);
-            Grid.SetRow(hintergrund, y);
-            panel.Children.Add(hintergrund);
+            var aiGgrid = new Grid { Name = "AiGrid" };
+            Content = aiGgrid;
+
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
+            aiGgrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
+
+            for (var i = 0; i <= anzahlZeilenConfig; i++)
+            {
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
+                aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
+            }
+
+            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
+            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
+
+            for (var vbyte = 0; vbyte < 10; vbyte++)
+            {
+
+                if (vbyte >= anzahlZeilenConfig) continue;
+
+                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte, 5, Brushes.YellowGreen, aiGgrid);
+                AiWertZeichnen(vbyte, 0, 0, 2 + vbyte, aiGgrid);
+                AiBezeichnungZeichnen(vbyte, 0, 2, 2 + vbyte, aiGgrid);
+                 _fensterFunktionen.KommentarZeichnen(  4, 2 + vbyte, vbyte,"KommentarAi", "VisibilityAi",VisibilityProperty,aiGgrid);
+
+            }
         }
+        private void AiCreateGridWord(int anzahlZeilenConfig)
+        {
+            throw new NotImplementedException();
+        }
+        private void AiCreateGridLong(int anzahlZeilenConfig)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private static void AiWertZeichnen(int vbyte, int vbit, int x, int y, Panel panel)
         {
             var parameterNummer = 8 * vbyte + vbit;
@@ -180,21 +223,6 @@ namespace ManualMode
             Grid.SetRow(kommentar, y);
             panel.Children.Add(kommentar);
         }
-        private static void AiTextZeichnen(string beschriftung, HorizontalAlignment alignment, int x, int y, Panel panel)
-        {
-            var text = new TextBlock
-            {
-                Text = beschriftung,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = alignment
-            };
 
-            Grid.SetColumn(text, x);
-            Grid.SetRow(text, y);
-            panel.Children.Add(text);
-        }
     }
 }
