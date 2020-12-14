@@ -142,20 +142,13 @@ namespace ManualMode.ViewModel
                     case 8:
                         switch (digitaleAusgaenge.Type)
                         {
-                            case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                break;
-                            case PlcEinUndAusgaengeTypen.Default:
-                                break;
-                            case PlcEinUndAusgaengeTypen.Ascii:
-                                break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                break;
-                            case PlcEinUndAusgaengeTypen.Schieberegler:
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
+                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.Default: break;
+                            case PlcEinUndAusgaengeTypen.Ascii: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            default: throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
                         }
                         break;
 
@@ -302,21 +295,16 @@ namespace ManualMode.ViewModel
                         switch (analogeEingaenge.Type)
                         {
                             case PlcEinUndAusgaengeTypen.Default:
-                                ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X");
+                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertByte} 0x{wertByte:X}";
                                 break;
                             case PlcEinUndAusgaengeTypen.Ascii:
-                                ContentAi[analogeEingaenge.LaufendeNr] = wertByte + " 0x" + wertByte.ToString("X") + " '" + (char)wertByte + "'";
+                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertByte} 0x{wertByte:X} {(char) wertByte} ";
                                 break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                break;
-                            case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                break;
-                            case PlcEinUndAusgaengeTypen.Schieberegler:
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
+                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
                         break;
                     case 16:
@@ -332,14 +320,10 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                                 ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / SiemensAnalogSkalierung).ToString("F1") + "‰";
                                 break;
-                            case PlcEinUndAusgaengeTypen.Ascii:
-                                break;
-                            case PlcEinUndAusgaengeTypen.BitmusterByte:
-                                break;
-                            case PlcEinUndAusgaengeTypen.Schieberegler:
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
+                            case PlcEinUndAusgaengeTypen.Ascii: break;
+                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
                         break;
                 }

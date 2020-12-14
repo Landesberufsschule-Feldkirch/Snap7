@@ -16,12 +16,10 @@ namespace ManualMode.ViewModel
 
 
         private ICommand _btnTasten;
-        // ReSharper disable once UnusedMember.Global
         public ICommand BtnTasten => _btnTasten ??= new RelayCommand(ManVisuAnzeigen.BtnTasten);
 
 
         private ICommand _btnToggeln;
-        // ReSharper disable once UnusedMember.Global
         public ICommand BtnToggeln => _btnToggeln ??= new RelayCommand(ManVisuAnzeigen.BtnToggeln);
     }
 }

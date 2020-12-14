@@ -16,7 +16,7 @@ namespace ManualMode.Model
         public PlcEinUndAusgaengeTypen Type { get; set; }
         public string Bezeichnung { get; set; }
         public string Kommentar { get; set; }
-        
+
         public DiEinstellungen()
         {
             LaufendeNr = 0;

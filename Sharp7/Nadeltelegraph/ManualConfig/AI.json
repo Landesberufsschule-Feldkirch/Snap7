@@ -5,7 +5,7 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 8,
-      "Type": "Default",
+      "Type": "Ascii",
       "Bezeichnung": "ASCII",
       "Kommentar": "ASCII Code der Taste"
     }

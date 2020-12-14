@@ -1,12 +1,8 @@
-﻿using System;
-using ManualMode.Model;
+﻿using ManualMode.Model;
 using ManualMode.ViewModel;
+using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace ManualMode
 {
@@ -39,13 +35,11 @@ namespace ManualMode
 
             var anzahlZeilenConfig = AaDatenLesen(aaConfig, manualViewModel);
 
-            if (DatenTypenBit) AaCreateGridBit(anzahlZeilenConfig, aaConfig);
-            if (DatenTypenByte) AaCreateGridByte(anzahlZeilenConfig, aaConfig);
-            if (DatenTypenWord) AaCreateGridWord(anzahlZeilenConfig, aaConfig);
-            if (DatenTypenLong) AaCreateGridLong(anzahlZeilenConfig, aaConfig);
+            if (DatenTypenBit) AaCreateGridBit(anzahlZeilenConfig);
+            if (DatenTypenByte) AaCreateGridByte();
+            if (DatenTypenWord) AaCreateGridWord(anzahlZeilenConfig);
+            if (DatenTypenLong) AaCreateGridLong();
         }
-
-
         private static int AaDatenLesen(AaConfig aaConfig, ManualViewModel manualViewModel)
         {
             var anzahlZeilenConfig = 0;
@@ -85,114 +79,5 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
-        private void AaCreateGridBit(int anzahlZeilenConfig, AaConfig config)
-        {
-            var aaGrid = new Grid { Name = "AaGrid" };
-            Content = aaGrid;
-
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
-
-            for (var i = 0; i <= anzahlZeilenConfig; i++)
-            {
-                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
-                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
-            }
-
-            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aaGrid);
-            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aaGrid);
-            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aaGrid);
-            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aaGrid);
-
-            for (var i = 0; i < anzahlZeilenConfig; i++)
-            {
-                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 5, Brushes.YellowGreen, aaGrid);
-                AaBezeichnungZeichnen(config.AnalogeAusgaenge[i].StartByte, 2, 2 + 2 * i, aaGrid);
-                _fensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Aa", VisibilityProperty, aaGrid);
-            }
-        }
-        private void AaCreateGridByte(in int anzahlZeilenConfig, AaConfig config)
-        {
-            throw new NotImplementedException();
-        }
-        private void AaCreateGridWord(in int anzahlZeilenConfig, AaConfig config)
-        {
-            var aaGrid = new Grid { Name = "AaGrid" };
-            Content = aaGrid;
-
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            aaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
-
-            for (var i = 0; i <= anzahlZeilenConfig; i++)
-            {
-                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
-                aaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
-            }
-
-            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aaGrid);
-            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aaGrid);
-            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aaGrid);
-            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aaGrid);
-
-            for (var vbyte = 0; vbyte < anzahlZeilenConfig; vbyte++)
-            {
-                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * vbyte, 5, Brushes.YellowGreen, aaGrid);
-                AaBezeichnungZeichnen(vbyte, 2, 2 + 2 * vbyte, aaGrid);
-                _fensterFunktionen.KommentarZeichnen(4, 2 + 2 * vbyte, vbyte, "Aa", VisibilityProperty, aaGrid);
-            }
-        }
-        private void AaCreateGridLong(in int anzahlZeilenConfig, AaConfig config)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void AaBezeichnungZeichnen(int vbyte, int x, int y, Panel panel)
-        {
-            var parameterNummer = vbyte;
-
-            var bezeichnung = new TextBlock
-            {
-                FontSize = 14,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Left
-            };
-
-            bezeichnung.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.BezeichnungAa[" + parameterNummer + "]"));
-            bezeichnung.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityAa[" + parameterNummer + "]"));
-
-            Grid.SetColumn(bezeichnung, x);
-            Grid.SetRow(bezeichnung, y);
-            panel.Children.Add(bezeichnung);
-        }
-        private static void AaKommentarZeichnen(int vbyte, int x, int y, Panel panel)
-        {
-            var parameterNummer = vbyte;
-
-            var kommentar = new TextBlock
-            {
-                FontSize = 14,
-                FontWeight = FontWeights.Bold,
-                Foreground = new SolidColorBrush(Colors.Green),
-                Padding = new Thickness(10, 5, 5, 5),
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Left
-            };
-
-            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.KommentarAa[" + parameterNummer + "]"));
-            kommentar.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityAa[" + parameterNummer + "]"));
-
-            Grid.SetColumn(kommentar, x);
-            Grid.SetRow(kommentar, y);
-            panel.Children.Add(kommentar);
-        }
-
     }
 }

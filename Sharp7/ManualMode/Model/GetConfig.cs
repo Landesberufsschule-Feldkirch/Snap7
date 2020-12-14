@@ -25,7 +25,7 @@ namespace ManualMode.Model
             var stripped = Regex.Replace(token!, @"<[^>]+>", string.Empty);
             return Enum.TryParse<PlcEinUndAusgaengeTypen>(stripped, out var result) ? result : default;
         }
-        public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer)=> writer.WriteValue(value.ToString());
+        public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer) => writer.WriteValue(value.ToString());
     }
 
     public class GetConfig

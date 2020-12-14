@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -44,7 +43,7 @@ namespace ManualMode
         }
 
 
-        internal void KommentarZeichnen(int x, int y, int par, string bezeichnung, DependencyProperty visibilityProperty, Grid grid)
+        internal void KommentarZeichnen(int x, int y, int par, string bez, DependencyProperty visibilityProperty, Grid grid)
         {
             var kommentar = new TextBlock
             {
@@ -56,12 +55,31 @@ namespace ManualMode
                 HorizontalAlignment = HorizontalAlignment.Left
             };
 
-            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.Kommentar" + bezeichnung + "[" + par + "]"));
-            kommentar.SetBinding(visibilityProperty, new Binding("ManVisuAnzeigen.Visibility" + bezeichnung + "[" + par + "]"));
+            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.Kommentar" + bez + "[" + par + "]"));
+            kommentar.SetBinding(visibilityProperty, new Binding("ManVisuAnzeigen.Visibility" + bez + "[" + par + "]"));
 
             Grid.SetColumn(kommentar, x);
             Grid.SetRow(kommentar, y);
             grid.Children.Add(kommentar);
+        }
+
+        public void BezeichnungZeichnen(int x, int y, int par, string bez, HorizontalAlignment horizontal, DependencyProperty visibilityProperty, Grid grid)
+        {
+            var bezeichnung = new TextBlock
+            {
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                Foreground = new SolidColorBrush(Colors.Green),
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = horizontal
+            };
+
+            bezeichnung.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.Bezeichnung" + bez + "[" + par + "]"));
+            bezeichnung.SetBinding(visibilityProperty, new Binding("ManVisuAnzeigen.Visibility" + bez + "[" + par + "]"));
+
+            Grid.SetColumn(bezeichnung, x);
+            Grid.SetRow(bezeichnung, y);
+            grid.Children.Add(bezeichnung);
         }
     }
 }
