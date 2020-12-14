@@ -44,7 +44,7 @@ namespace ManualMode
         }
 
 
-        internal void KommentarZeichnen(int x, int y, int par, string bezKommentar, string bezVisibility, DependencyProperty visibilityProperty, Grid grid)
+        internal void KommentarZeichnen(int x, int y, int par, string bezeichnung, DependencyProperty visibilityProperty, Grid grid)
         {
             var kommentar = new TextBlock
             {
@@ -56,8 +56,8 @@ namespace ManualMode
                 HorizontalAlignment = HorizontalAlignment.Left
             };
 
-            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.KommentarAa[" + par + "]"));
-            kommentar.SetBinding(visibilityProperty, new Binding("ManVisuAnzeigen.VisibilityAa[" + par + "]"));
+            kommentar.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.Kommentar" + bezeichnung + "[" + par + "]"));
+            kommentar.SetBinding(visibilityProperty, new Binding("ManVisuAnzeigen.Visibility" + bezeichnung + "[" + par + "]"));
 
             Grid.SetColumn(kommentar, x);
             Grid.SetRow(kommentar, y);

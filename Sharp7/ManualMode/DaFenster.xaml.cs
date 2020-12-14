@@ -27,7 +27,7 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
+        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
 
         public DaFenster(DaConfig daConfig, ManualViewModel mvm)
         {
@@ -39,10 +39,10 @@ namespace ManualMode
             DataContext = mvm;
 
             var anzahlZeilenConfig = DaDatenLesen(daConfig, mvm);
-            if (DatenTypenBit) DaCreateGridBit(anzahlZeilenConfig, mvm);
-            if (DatenTypenByte) DaCreateGridByte(anzahlZeilenConfig, mvm);
-            if (DatenTypenWord) DaCreateGridWord(anzahlZeilenConfig, mvm);
-            if (DatenTypenLong) DaCreateGridLong(anzahlZeilenConfig, mvm);
+            if (DatenTypenBit) DaCreateGridBit(anzahlZeilenConfig, daConfig, mvm);
+            if (DatenTypenByte) DaCreateGridByte(anzahlZeilenConfig, daConfig, mvm);
+            if (DatenTypenWord) DaCreateGridWord(anzahlZeilenConfig, daConfig, mvm);
+            if (DatenTypenLong) DaCreateGridLong(anzahlZeilenConfig, daConfig, mvm);
         }
 
 
@@ -104,7 +104,7 @@ namespace ManualMode
             return anzahlZeilenConfig;
         }
 
-        private void DaCreateGridBit(int anzahlZeilenConfig, ManualViewModel manualViewModel)
+        private void DaCreateGridBit(int anzahlZeilenConfig, DaConfig config, ManualViewModel manualViewModel)
         {
             var daGrid = new Grid { Name = "DaGrid" };
             Content = daGrid;
@@ -130,21 +130,21 @@ namespace ManualMode
             _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 4, 0, daGrid);
             _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 6, 0, daGrid);
 
-            for (var vbyte = 0; vbyte < 10; vbyte++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-                for (var vBit = 0; vBit < 8; vBit++)
-                {
-                    if (8 * vbyte + vBit >= anzahlZeilenConfig) continue;
+                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 7, Brushes.YellowGreen, daGrid);
 
-                    _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 7, Brushes.YellowGreen, daGrid);
-                    DaButtonTastenZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
-                    DaButtonToggelnZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, daGrid, manualViewModel);
-                    DaBezeichnungBitZeichnen(vbyte, vBit, 4, 2 + vbyte * 16 + 2 * vBit, daGrid);
-                    DaKommentarBitZeichnen(vbyte, vBit, 6, 2 + vbyte * 16 + 2 * vBit, daGrid);
-                }
+                DaButtonTastenZeichnen(config.DigitaleAusgaenge[i].StartByte, config.DigitaleAusgaenge[i].StartBit, 0,
+                    2 + 2 * i, daGrid, manualViewModel);
+                DaButtonToggelnZeichnen(config.DigitaleAusgaenge[i].StartByte, config.DigitaleAusgaenge[i].StartBit, 2,
+                    2 + 2 * i, daGrid, manualViewModel);
+                DaBezeichnungBitZeichnen(config.DigitaleAusgaenge[i].StartByte, config.DigitaleAusgaenge[i].StartBit, 4,
+                    2 + 2 * i, daGrid);
+                DaKommentarBitZeichnen(config.DigitaleAusgaenge[i].StartByte, config.DigitaleAusgaenge[i].StartBit, 6,
+                    2 + 2 * i, daGrid);
             }
         }
-        private void DaCreateGridByte(int anzahlZeilenConfig, ManualViewModel manualViewModel)
+        private void DaCreateGridByte(int anzahlZeilenConfig, DaConfig config, ManualViewModel manualViewModel)
         {
             var daGrid = new Grid { Name = "DaGrid" };
             Content = daGrid;
@@ -165,7 +165,6 @@ namespace ManualMode
 
             _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
 
-
             _fensterFunktionen.TextZeichnen("Eingabe", HorizontalAlignment.Center, 0, 0, daGrid);
             _fensterFunktionen.TextZeichnen("Aktuell", HorizontalAlignment.Center, 2, 0, daGrid);
             _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 4, 0, daGrid);
@@ -179,17 +178,17 @@ namespace ManualMode
                 DaKommentarByteZeichnen(vbyte, 6, 2 + 2 * vbyte, daGrid);
             }
         }
-        private void DaCreateGridWord(int anzahlZeilenConfig, ManualViewModel manualViewModel)
+        private void DaCreateGridWord(int anzahlZeilenConfig, DaConfig config, ManualViewModel manualViewModel)
         {
             throw new NotImplementedException();
         }
-        private void DaCreateGridLong(int anzahlZeilenConfig, ManualViewModel manualViewModel)
+        private void DaCreateGridLong(int anzahlZeilenConfig, DaConfig config, ManualViewModel manualViewModel)
         {
             throw new NotImplementedException();
         }
 
 
-    
+
         private static void DaButtonTastenZeichnen(int vbyte, int vbit, int x, int y, Panel panel, ManualViewModel manualViewModel)
         {
             var parameterNummer = 8 * vbyte + vbit;

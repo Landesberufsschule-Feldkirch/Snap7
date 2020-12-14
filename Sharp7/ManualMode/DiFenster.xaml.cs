@@ -28,7 +28,7 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
+        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
 
         public DiFenster(DiConfig diConfig, ManualViewModel mvm)
         {
@@ -41,10 +41,10 @@ namespace ManualMode
 
             var anzahlZeilenConfig = DiDatenLesen(diConfig, mvm);
 
-            if (DatenTypenBit) DiCreateGridBit(anzahlZeilenConfig);
-            if (DatenTypenByte) DiCreateGridByte(anzahlZeilenConfig);
-            if (DatenTypenWord) DiCreateGridWord(anzahlZeilenConfig);
-            if (DatenTypenLong) DiCreateGridLong(anzahlZeilenConfig);
+            if (DatenTypenBit) DiCreateGridBit(anzahlZeilenConfig, diConfig);
+            if (DatenTypenByte) DiCreateGridByte(anzahlZeilenConfig, diConfig);
+            if (DatenTypenWord) DiCreateGridWord(anzahlZeilenConfig, diConfig);
+            if (DatenTypenLong) DiCreateGridLong(anzahlZeilenConfig, diConfig);
         }
 
         private static int DiDatenLesen(DiConfig diConfig, ManualViewModel manViewModel)
@@ -128,7 +128,7 @@ namespace ManualMode
             return anzahlZeilenConfig;
         }
 
-        private void DiCreateGridBit(int anzahlZeilenConfig)
+        private void DiCreateGridBit(int anzahlZeilenConfig, DiConfig config)
         {
             var diGrid = new Grid { Name = "DiGrid" };
             Content = diGrid;
@@ -150,28 +150,25 @@ namespace ManualMode
             _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Center, 2, 0, diGrid);
             _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, diGrid);
 
-            for (var vbyte = 0; vbyte < 10; vbyte++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-                for (var vBit = 0; vBit < 8; vBit++)
-                {
-                    if (8 * vbyte + vBit > anzahlZeilenConfig) continue;
 
-                    _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, diGrid);
-                    DiButtonZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, diGrid);
-                    DiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, diGrid);
-                    _fensterFunktionen.KommentarZeichnen(4, 2 + vbyte * 16 + 2 * vBit, 8 * vbyte + vBit, "KommentarDi", "VisibilityDi",VisibilityProperty, diGrid );
-                }
+                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 5, Brushes.YellowGreen, diGrid);
+                DiButtonZeichnen(config.DigitaleEingaenge[i].StartByte, config.DigitaleEingaenge[i].StartBit, 0, 2 + config.DigitaleEingaenge[i].StartByte * 16 + 2 * config.DigitaleEingaenge[i].StartBit, diGrid);
+                DiBezeichnungZeichnen(config.DigitaleEingaenge[i].StartByte, config.DigitaleEingaenge[i].StartBit, 2, 2 + config.DigitaleEingaenge[i].StartByte * 16 + 2 * config.DigitaleEingaenge[i].StartBit, diGrid);
+                _fensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Di", VisibilityProperty, diGrid);
+
             }
         }
-        private void DiCreateGridByte(int anzahlZeilenConfig)
+        private void DiCreateGridByte(int anzahlZeilenConfig, DiConfig config)
         {
             throw new NotImplementedException();
         }
-        private void DiCreateGridWord(int anzahlZeilenConfig)
+        private void DiCreateGridWord(int anzahlZeilenConfig, DiConfig config)
         {
             throw new NotImplementedException();
         }
-        private void DiCreateGridLong(int anzahlZeilenConfig)
+        private void DiCreateGridLong(int anzahlZeilenConfig, DiConfig config)
         {
             throw new NotImplementedException();
         }

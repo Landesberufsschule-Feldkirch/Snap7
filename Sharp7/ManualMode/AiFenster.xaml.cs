@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using ManualMode.Model;
 
 namespace ManualMode
 {
@@ -25,7 +26,7 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private FensterFunktionen _fensterFunktionen = new FensterFunktionen();
+        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
 
         public AiFenster(Model.AiConfig aiConfig, ManualViewModel mvm)
         {
@@ -37,10 +38,10 @@ namespace ManualMode
             DataContext = mvm;
 
             var anzahlZeilenConfig = AiDatenLesen(aiConfig, mvm);
-            if (DatenTypenBit) AiCreateGridBit(anzahlZeilenConfig);
-            if (DatenTypenByte) AiCreateGridByte(anzahlZeilenConfig);
-            if (DatenTypenWord) AiCreateGridWord(anzahlZeilenConfig);
-            if (DatenTypenLong) AiCreateGridLong(anzahlZeilenConfig);
+            if (DatenTypenBit) AiCreateGridBit(anzahlZeilenConfig, aiConfig);
+            if (DatenTypenByte) AiCreateGridByte(anzahlZeilenConfig, aiConfig);
+            if (DatenTypenWord) AiCreateGridWord(anzahlZeilenConfig, aiConfig);
+            if (DatenTypenLong) AiCreateGridLong(anzahlZeilenConfig, aiConfig);
         }
 
         private static int AiDatenLesen(Model.AiConfig aiConfig, ManualViewModel manViewModel)
@@ -82,7 +83,7 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
-        private void AiCreateGridBit(int anzahlZeilenConfig)
+        private void AiCreateGridBit(int anzahlZeilenConfig, AiConfig config)
         {
             var aiGgrid = new Grid { Name = "AiGrid" };
             Content = aiGgrid;
@@ -113,11 +114,11 @@ namespace ManualMode
                     _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte * 16 + 2 * vBit, 5, Brushes.YellowGreen, aiGgrid);
                     AiWertZeichnen(vbyte, vBit, 0, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
                     AiBezeichnungZeichnen(vbyte, vBit, 2, 2 + vbyte * 16 + 2 * vBit, aiGgrid);
-                    _fensterFunktionen.KommentarZeichnen( 4, 2 + vbyte * 16 + 2 * vBit,vbyte,"KommentarAi", "VisibilityAi",VisibilityProperty,aiGgrid);
+                    _fensterFunktionen.KommentarZeichnen(4, 2 + vbyte * 16 + 2 * vBit, vbyte, "Ai", VisibilityProperty, aiGgrid);
                 }
             }
         }
-        private void AiCreateGridByte(int anzahlZeilenConfig)
+        private void AiCreateGridByte(int anzahlZeilenConfig, AiConfig config)
         {
 
             var aiGgrid = new Grid { Name = "AiGrid" };
@@ -140,23 +141,20 @@ namespace ManualMode
             _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
             _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
 
-            for (var vbyte = 0; vbyte < 10; vbyte++)
+            for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-
-                if (vbyte >= anzahlZeilenConfig) continue;
-
-                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + vbyte, 5, Brushes.YellowGreen, aiGgrid);
-                AiWertZeichnen(vbyte, 0, 0, 2 + vbyte, aiGgrid);
-                AiBezeichnungZeichnen(vbyte, 0, 2, 2 + vbyte, aiGgrid);
-                 _fensterFunktionen.KommentarZeichnen(  4, 2 + vbyte, vbyte,"KommentarAi", "VisibilityAi",VisibilityProperty,aiGgrid);
+                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + i, 5, Brushes.YellowGreen, aiGgrid);
+                AiWertZeichnen(i, 0, 0, 2 + i, aiGgrid);
+                AiBezeichnungZeichnen(i, 0, 2, 2 + i, aiGgrid);
+                _fensterFunktionen.KommentarZeichnen(4, 2 + i, i, "Ai", VisibilityProperty, aiGgrid);
 
             }
         }
-        private void AiCreateGridWord(int anzahlZeilenConfig)
+        private void AiCreateGridWord(int anzahlZeilenConfig, AiConfig config)
         {
             throw new NotImplementedException();
         }
-        private void AiCreateGridLong(int anzahlZeilenConfig)
+        private void AiCreateGridLong(int anzahlZeilenConfig, AiConfig config)
         {
             throw new NotImplementedException();
         }
