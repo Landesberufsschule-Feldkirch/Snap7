@@ -22,8 +22,6 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
-
         public DaFenster(DaConfig daConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
@@ -35,7 +33,7 @@ namespace ManualMode
 
             var anzahlZeilenConfig = DaDatenLesen(daConfig, mvm);
             if (DatenTypenBit) DaCreateGridBit(anzahlZeilenConfig, daConfig, mvm);
-            if (DatenTypenByte) DaCreateGridByte(anzahlZeilenConfig);
+            if (DatenTypenByte) DaCreateGridByte(anzahlZeilenConfig, mvm);
             if (DatenTypenWord) DaCreateGridWord();
             if (DatenTypenLong) DaCreateGridLong();
         }

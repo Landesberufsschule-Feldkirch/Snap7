@@ -21,8 +21,6 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
-
         public AaFenster(AaConfig aaConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;

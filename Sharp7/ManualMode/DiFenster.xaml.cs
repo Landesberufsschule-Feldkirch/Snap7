@@ -21,8 +21,6 @@ namespace ManualMode
         private const int ZeilenAbstand = 10;
         private const int ZeilenHoehe = 45;
 
-        private readonly FensterFunktionen _fensterFunktionen = new FensterFunktionen();
-
         public DiFenster(DiConfig diConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;

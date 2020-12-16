@@ -49,7 +49,6 @@ namespace ManualMode.ViewModel
 
         private void VisuAnzeigenTask()
         {
-
             while (true)
             {
                 DigitaleEingaengeFarbeSichtbarkeit();
@@ -298,11 +297,17 @@ namespace ManualMode.ViewModel
                                 ContentAi[analogeEingaenge.LaufendeNr] = $"{wertByte} 0x{wertByte:X}";
                                 break;
                             case PlcEinUndAusgaengeTypen.Ascii:
-                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertByte} 0x{wertByte:X} {(char) wertByte} ";
+                                ContentAi[analogeEingaenge.LaufendeNr] = wertByte switch
+                                {
+                                    (byte) 0x0d => $"{wertByte} 0x{wertByte:X} 'Enter'",
+                                    (byte) 0x20 => $"{wertByte} 0x{wertByte:X} 'Space'",
+                                    _ => $"{wertByte} 0x{wertByte:X} '{(char) wertByte}'"
+                                };
+
                                 break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
-                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
-                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                            case PlcEinUndAusgaengeTypen.BitmusterByte:
                             case PlcEinUndAusgaengeTypen.Schieberegler: break;
                             default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
@@ -312,16 +317,18 @@ namespace ManualMode.ViewModel
                         switch (analogeEingaenge.Type)
                         {
                             case PlcEinUndAusgaengeTypen.Default:
-                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X");
+                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertInt} 0x {wertInt:X}";
                                 break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
-                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (100 * (double)wertInt / SiemensAnalogSkalierung).ToString("F1") + "%";
+                                // ReSharper disable once ArrangeRedundantParentheses
+                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertInt} 0x {wertInt:X}  ->  {(100 * (double)wertInt / SiemensAnalogSkalierung):F1} %";
                                 break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
-                                ContentAi[analogeEingaenge.LaufendeNr] = wertInt + " 0x" + wertInt.ToString("X") + " -> " + (1000 * (double)wertInt / SiemensAnalogSkalierung).ToString("F1") + "‰";
+                                // ReSharper disable once ArrangeRedundantParentheses
+                                ContentAi[analogeEingaenge.LaufendeNr] = $"{wertInt} 0x {wertInt:X} ->  { (1000 * (double)wertInt / SiemensAnalogSkalierung):F1} + ‰";
                                 break;
-                            case PlcEinUndAusgaengeTypen.Ascii: break;
-                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.Ascii:
+                            case PlcEinUndAusgaengeTypen.BitmusterByte:
                             case PlcEinUndAusgaengeTypen.Schieberegler: break;
                             default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }

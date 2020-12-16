@@ -25,17 +25,17 @@ namespace ManualMode
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
-            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
+            FensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
+            FensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
+            FensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
+            FensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
 
             for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 5, Brushes.YellowGreen, aiGgrid);
-                AiWertZeichnen(0, 2 + 2 * i, i,  aiGgrid);
-                _fensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Ai", HorizontalAlignment.Center, VisibilityProperty, aiGgrid);
-                _fensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Ai", VisibilityProperty, aiGgrid);
+                FensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 5, Brushes.YellowGreen, aiGgrid);
+                AiWertZeichnen(0, 2 + 2 * i, i, aiGgrid);
+                FensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Ai", HorizontalAlignment.Center, VisibilityProperty, aiGgrid);
+                FensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Ai", VisibilityProperty, aiGgrid);
             }
         }
         private void AiCreateGridByte(int anzahlZeilenConfig)
@@ -55,17 +55,17 @@ namespace ManualMode
                 aiGgrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
             }
 
-            _fensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
-            _fensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
+            FensterFunktionen.HintergrundRechteckZeichnen(0, 0, 5, Brushes.Yellow, aiGgrid);
+            FensterFunktionen.TextZeichnen("Wert", HorizontalAlignment.Left, 0, 0, aiGgrid);
+            FensterFunktionen.TextZeichnen("Bezeichnung", HorizontalAlignment.Left, 2, 0, aiGgrid);
+            FensterFunktionen.TextZeichnen("Kommentar", HorizontalAlignment.Left, 4, 0, aiGgrid);
 
             for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-                _fensterFunktionen.HintergrundRechteckZeichnen(0, 2 + i, 5, Brushes.YellowGreen, aiGgrid);
-                AiWertZeichnen(0, 2 + 2 * i, i,  aiGgrid);
-                _fensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Ai", HorizontalAlignment.Center, VisibilityProperty, aiGgrid);
-                _fensterFunktionen.KommentarZeichnen(4, 2 + i, i, "Ai", VisibilityProperty, aiGgrid);
+                FensterFunktionen.HintergrundRechteckZeichnen(0, 2 + i, 5, Brushes.YellowGreen, aiGgrid);
+                AiWertZeichnen(0, 2 + 2 * i, i, aiGgrid);
+                FensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Ai", HorizontalAlignment.Center, VisibilityProperty, aiGgrid);
+                FensterFunktionen.KommentarZeichnen(4, 2 + i, i, "Ai", VisibilityProperty, aiGgrid);
             }
         }
         private static void AiCreateGridWord() => throw new NotImplementedException();
@@ -79,11 +79,11 @@ namespace ManualMode
                 Foreground = new SolidColorBrush(Colors.Green),
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Margin = new Thickness(10,0,0,0)
+                Margin = new Thickness(10, 0, 0, 0)
             };
 
-            bezeichnung.SetBinding(TextBlock.TextProperty, new Binding("ManVisuAnzeigen.ContentAi[" + par + "]"));
-            bezeichnung.SetBinding(VisibilityProperty, new Binding("ManVisuAnzeigen.VisibilityAi[" + par + "]"));
+            bezeichnung.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.ContentAi[{par}]"));
+            bezeichnung.SetBinding(VisibilityProperty, new Binding($"ManVisuAnzeigen.VisibilityAi[{par}]"));
 
             Grid.SetColumn(bezeichnung, x);
             Grid.SetRow(bezeichnung, y);
