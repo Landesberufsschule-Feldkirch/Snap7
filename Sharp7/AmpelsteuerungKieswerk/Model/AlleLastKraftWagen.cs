@@ -13,7 +13,7 @@ namespace AmpelsteuerungKieswerk.Model
         public bool B3 { get; set; }
         public bool B4 { get; set; }
 
-        private readonly List<LastKraftWagen> _alleLkw = new List<LastKraftWagen>();
+        private readonly List<LastKraftWagen> _alleLkw = new();
         private readonly int _anzahlLkw;
 
         public AlleLastKraftWagen()

@@ -154,7 +154,7 @@ namespace Nadeltelegraph.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        private ObservableCollection<int> _alleWinkel = new ObservableCollection<int>();
+        private ObservableCollection<int> _alleWinkel = new();
         public ObservableCollection<int> AlleWinkel
         {
             get => _alleWinkel;
@@ -167,7 +167,7 @@ namespace Nadeltelegraph.ViewModel
 
 
 
-        private ObservableCollection<int> _alleBreiten = new ObservableCollection<int>();
+        private ObservableCollection<int> _alleBreiten = new();
         public ObservableCollection<int> AlleBreiten
         {
             get => _alleBreiten;
@@ -197,7 +197,7 @@ namespace Nadeltelegraph.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;

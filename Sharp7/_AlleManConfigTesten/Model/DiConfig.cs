@@ -4,7 +4,7 @@ namespace _AlleManConfigTesten.Model
 {
     public class DiConfig
     {
-        public ObservableCollection<DiEinstellungen> DigitaleEingaenge { get; set; } = new ObservableCollection<DiEinstellungen>();
+        public ObservableCollection<DiEinstellungen> DigitaleEingaenge { get; set; } = new();
     }
 
     public class DiEinstellungen

@@ -14,9 +14,9 @@ namespace GaugeControl
 {
     public partial class GaugeControl
     {
-        private readonly TweenMotion _motion = new TweenMotion();
-        private FontFamily _fontFamily = new FontFamily("Tahoma");
-        private FontFamily _gaugeTextFont = new FontFamily("Tahoma");
+        private readonly TweenMotion _motion = new();
+        private FontFamily _fontFamily = new("Tahoma");
+        private FontFamily _gaugeTextFont = new("Tahoma");
         private SolidColorBrush _labelColor = Brushes.Black;
         private SolidColorBrush _arcFirstColor = Brushes.Green;
         private SolidColorBrush _arcMidleColor = Brushes.Yellow;

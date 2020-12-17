@@ -13,15 +13,6 @@ namespace ManualMode
         public static bool DatenTypenWord { get; set; }
         public static bool DatenTypenLong { get; set; }
 
-
-        private const int SpaltenAbstand = 10;
-        private const int SpaltenWert = 80;
-        private const int SpaltenBezeichnung = 120;
-        private const int SpaltenKommentar = 300;
-
-        private const int ZeilenAbstand = 10;
-        private const int ZeilenHoehe = 45;
-
         public DaFenster(DaConfig daConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
@@ -49,21 +40,21 @@ namespace ManualMode
                     {
                         case 1:
                             DatenTypenBit = true;
-                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
                         case 8:
                             DatenTypenByte = true;
-                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
                         case 16:
                             DatenTypenWord = true;
-                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
                         case 32:
                             DatenTypenLong = true;
-                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
-                        default: throw new ArgumentOutOfRangeException();
+                        default: throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                     }
 
                     switch (config.Type)
@@ -77,8 +68,8 @@ namespace ManualMode
                         case PlcEinUndAusgaengeTypen.Ascii: break;
                         case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
                         case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
-                        case PlcEinUndAusgaengeTypen.Schieberegler: break;
-                        default: throw new ArgumentOutOfRangeException();
+                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler: break;
+                        default: throw new ArgumentOutOfRangeException(config.Type.ToString());
                     }
 
                     anzahlZeilenConfig++;

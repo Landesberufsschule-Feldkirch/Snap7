@@ -27,7 +27,7 @@ namespace Tiefgarage.Model
 
         public Rolle FpRolle { get; set; }
         public FahrenRichtung Bewegung { get; set; } = FahrenRichtung.ObenGeparkt;
-        public Punkt AktuellePosition { get; set; } = new Punkt(0, 0);
+        public Punkt AktuellePosition { get; set; } = new(0, 0);
 
         private const double XyBewegung = 1;
         private const double KurveGeschwindigkeit = 0.002;
@@ -37,17 +37,17 @@ namespace Tiefgarage.Model
         private readonly BezierCurve _kurveOben;
         private readonly BezierCurve _kurveUnten;
 
-        private readonly Punkt _fahrzeug = new Punkt(100, 50);
-        private readonly Punkt _fahrzeugOben = new Punkt(10, 10);
-        private readonly Punkt _fahrzeugUntenLinks = new Punkt(110, 500);
-        private readonly Punkt _fahrzeugUntenRechts = new Punkt(810, 500);
+        private readonly Punkt _fahrzeug = new(100, 50);
+        private readonly Punkt _fahrzeugOben = new(10, 10);
+        private readonly Punkt _fahrzeugUntenLinks = new(110, 500);
+        private readonly Punkt _fahrzeugUntenRechts = new(810, 500);
 
-        private readonly Punkt _person = new Punkt(25, 15);
-        private readonly Punkt _personOben = new Punkt(500, 10);
-        private readonly Punkt _personUnten = new Punkt(250, 650);
+        private readonly Punkt _person = new(25, 15);
+        private readonly Punkt _personOben = new(500, 10);
+        private readonly Punkt _personUnten = new(250, 650);
 
-        private readonly Punkt _fahrspurOben = new Punkt(350, 250);
-        private readonly Punkt _fahrspurUnten = new Punkt(350, 400);
+        private readonly Punkt _fahrspurOben = new(350, 250);
+        private readonly Punkt _fahrspurUnten = new(350, 400);
 
         private const double YPositionB1 = 300;
         private const double YPositionB2 = 330;

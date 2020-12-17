@@ -4,7 +4,7 @@ namespace _AlleManConfigTesten.Model
 {
     public class AaConfig
     {
-        public ObservableCollection<AaEinstellungen> AnalogeAusgaenge { get; set; } = new ObservableCollection<AaEinstellungen>();
+        public ObservableCollection<AaEinstellungen> AnalogeAusgaenge { get; set; } = new();
     }
 
     public class AaEinstellungen

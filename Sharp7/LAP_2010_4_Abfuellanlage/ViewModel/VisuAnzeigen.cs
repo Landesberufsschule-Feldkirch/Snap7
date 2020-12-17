@@ -196,7 +196,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
 
 
-        private ObservableCollection<int> _topDose = new ObservableCollection<int>();
+        private ObservableCollection<int> _topDose = new();
         public ObservableCollection<int> TopDose
         {
             get => _topDose;
@@ -207,7 +207,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private ObservableCollection<int> _leftDose = new ObservableCollection<int>();
+        private ObservableCollection<int> _leftDose = new();
         public ObservableCollection<int> LeftDose
         {
             get => _leftDose;
@@ -218,7 +218,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        private ObservableCollection<Visibility> _visDose = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _visDose = new();
         public ObservableCollection<Visibility> VisDose
         {
             get => _visDose;

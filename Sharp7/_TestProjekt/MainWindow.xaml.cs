@@ -12,11 +12,9 @@ namespace _TestProjekt
 
             InitializeComponent();
             DataContext = _viewModel;
-
-
+            
             TextBox.TextChanged += TextBox_TextChanged;
             Slider.ValueChanged += Slider_ValueChanged;
-            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

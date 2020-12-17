@@ -40,7 +40,7 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
     public class Kraftwerk
     {
-        public readonly Drehstromgenerator Generator = new Drehstromgenerator(0.35, 1 / 30.0);
+        public readonly Drehstromgenerator Generator = new(0.35, 1 / 30.0);
         public readonly Statemachine KraftwerkStatemachine;
 
         public double FrequenzDifferenz { get; set; }

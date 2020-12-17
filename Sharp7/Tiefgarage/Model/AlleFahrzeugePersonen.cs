@@ -17,15 +17,15 @@
             AllesInParkposition = true;
             AllePkwPersonen = new List<FahrzeugPerson>
             {
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
+                new(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
+                new(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
+                new(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
+                new(FahrzeugPerson.Rolle.Fahrzeug, AnzahlAutos ++),
 
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
-                new FahrzeugPerson(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++)
+                new(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
+                new(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
+                new(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++),
+                new(FahrzeugPerson.Rolle.Person, AnzahlPersonen ++)
             };
 
             System.Threading.Tasks.Task.Run(AlleFahrzeugePersonenTask);

@@ -11,21 +11,29 @@ namespace ManualMode
     {
         private void DaCreateGridBit(int anzahlZeilenConfig, DaConfig config, ManualViewModel manualViewModel)
         {
+            const int spaltenAbstand = 10;
+            const int spaltenWert = 80;
+            const int spaltenBezeichnung = 120;
+            const int spaltenKommentar = 300;
+
+            const int zeilenAbstand = 10;
+            const int zeilenHoehe = 45;
+
             var daGrid = new Grid { Name = "DaGrid" };
             Content = daGrid;
 
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenWert) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenWert) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBezeichnung) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenKommentar) });
 
             for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
-                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
-                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
+                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenHoehe) });
+                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenAbstand) });
             }
 
             FensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);
@@ -46,21 +54,29 @@ namespace ManualMode
         }
         private void DaCreateGridByte(int anzahlZeilenConfig, ManualViewModel manualViewModel)
         {
+            const int spaltenAbstand = 10;
+            const int spaltenWert = 80;
+            const int spaltenBezeichnung = 120;
+            const int spaltenKommentar = 300;
+
+            const int zeilenAbstand = 10;
+            const int zeilenHoehe = 45;
+            
             var daGrid = new Grid { Name = "DaGrid" };
             Content = daGrid;
 
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(80) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(300) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenWert) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenWert) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBezeichnung) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            daGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenKommentar) });
 
             for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
-                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(45) });
-                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10) });
+                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenHoehe) });
+                daGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenAbstand) });
             }
 
             FensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, daGrid);

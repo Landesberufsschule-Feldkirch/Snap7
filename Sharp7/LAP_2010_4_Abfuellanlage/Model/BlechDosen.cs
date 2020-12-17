@@ -22,12 +22,12 @@ namespace LAP_2010_4_Abfuellanlage.Model
         private const double DoseHoehe = 80;
         private BewegungSchritt _bewegungSchritt;
         private readonly Punkt _startPosition;
-        private readonly Punkt _vereinzelnerVentil = new Punkt(105, 375);
-        private readonly Punkt _foerderbandLinks = new Punkt(82, 515);
-        private readonly Punkt _foerderbandRechts = new Punkt(630, 515);
-        private readonly Punkt _sensorB2Links = new Punkt(395, 515);
-        private readonly Punkt _sensorB2Rechts = new Punkt(440, 515);
-        private readonly Punkt _boden = new Punkt(640, 690);
+        private readonly Punkt _vereinzelnerVentil = new(105, 375);
+        private readonly Punkt _foerderbandLinks = new(82, 515);
+        private readonly Punkt _foerderbandRechts = new(630, 515);
+        private readonly Punkt _sensorB2Links = new(395, 515);
+        private readonly Punkt _sensorB2Rechts = new(440, 515);
+        private readonly Punkt _boden = new(640, 690);
         private Rechteck.RichtungX _richtungX;
         private Rechteck.RichtungY _richtungY;
 

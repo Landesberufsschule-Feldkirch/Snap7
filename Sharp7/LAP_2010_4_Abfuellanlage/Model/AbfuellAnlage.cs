@@ -27,11 +27,11 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
             AlleDosen = new List<BlechDosen>
             {
-                new BlechDosen(_anzahlDosen++),
-                new BlechDosen(_anzahlDosen++),
-                new BlechDosen(_anzahlDosen++),
-                new BlechDosen(_anzahlDosen++),
-                new BlechDosen(_anzahlDosen++)
+                new(_anzahlDosen++),
+                new(_anzahlDosen++),
+                new(_anzahlDosen++),
+                new(_anzahlDosen++),
+                new(_anzahlDosen++)
             };
 
             System.Threading.Tasks.Task.Run(AbfuellAnlageTask);

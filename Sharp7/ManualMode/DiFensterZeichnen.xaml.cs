@@ -10,19 +10,27 @@ namespace ManualMode
     {
         private void DiCreateGridBit(int anzahlZeilenConfig, DiConfig config)
         {
+            const int spaltenAbstand = 10;
+            const int spaltenWert = 80;
+            const int spaltenBezeichnung = 120;
+            const int spaltenKommentar = 300;
+
+            const int zeilenAbstand = 10;
+            const int zeilenHoehe = 45;
+
             var diGrid = new Grid { Name = "DiGrid" };
             Content = diGrid;
 
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenWert) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenBezeichnung) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenAbstand) });
-            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(SpaltenKommentar) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenWert) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBezeichnung) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenAbstand) });
+            diGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenKommentar) });
 
             for (var i = 0; i <= anzahlZeilenConfig; i++)
             {
-                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenHoehe) });
-                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(ZeilenAbstand) });
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenHoehe) });
+                diGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(zeilenAbstand) });
             }
 
             FensterFunktionen.HintergrundRechteckZeichnen(0, 0, 7, Brushes.Yellow, diGrid);

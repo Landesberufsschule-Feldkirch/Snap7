@@ -32,7 +32,7 @@
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
             <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
+            <RowDefinition Height="45" />
 
             <RowDefinition Height="35" />
             <RowDefinition Height="*" />
@@ -41,10 +41,12 @@
 
 <Rectangle Grid.Column="0" Grid.ColumnSpan="13" Grid.Row="4" Fill="Red"></Rectangle>
 
-        <TextBox x:Name="TextBox" Grid.Column="3" Grid.Row="8"  Background="Aqua" FontSize="14pt" Grid.ColumnSpan="2" />
-        <Slider x:Name="Slider" Grid.Column="3" Grid.ColumnSpan="6"  Grid.Row="10" Background="Yellow" Width="420" 
+        <TextBox x:Name="TextBox" Grid.Column="3" Grid.Row="8"  Background="Aqua" FontSize="14pt" Grid.ColumnSpan="2" TextWrapping="NoWrap" />
+        <Slider x:Name="Slider" Grid.Column="3" Grid.ColumnSpan="6"  Grid.Row="10" Background="Yellow" Width="420" Height="18" VerticalAlignment="Top"
                 Minimum="0" Maximum="100" 
                 IsSnapToTickEnabled="True" TickFrequency="10"/>
+        <Label Grid.Column="3" Grid.ColumnSpan="6"  Grid.Row="10" Content="1234" VerticalAlignment="Bottom"/>
+
 
 
 

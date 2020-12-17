@@ -26,8 +26,8 @@ namespace LAP_2019_Foerderanlage.Model
         private const double WagenFuellstandFuellen = 0.1;
         private const double WagenFuellstandVoll = 88;
 
-        private readonly Punkt _linkerAnschlag = new Punkt(0, 0);
-        private readonly Punkt _rechterAnschlag = new Punkt(125, 0);
+        private readonly Punkt _linkerAnschlag = new(0, 0);
+        private readonly Punkt _rechterAnschlag = new(125, 0);
 
         public Wagen()
         {

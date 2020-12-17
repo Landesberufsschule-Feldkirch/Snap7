@@ -7,7 +7,7 @@ namespace GaugeControl
 {
     public class TweenMotion
     {
-        private readonly System.Timers.Timer _timer = new System.Timers.Timer();
+        private readonly System.Timers.Timer _timer = new();
 
         public int TickInterval { get; set; }
 

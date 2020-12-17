@@ -4,7 +4,7 @@ namespace ManualMode.Model
 {
     public class AiConfig
     {
-        public ObservableCollection<AiEinstellungen> AnalogeEingaenge { get; set; } = new ObservableCollection<AiEinstellungen>();
+        public ObservableCollection<AiEinstellungen> AnalogeEingaenge { get; set; } = new();
     }
 
     public class AiEinstellungen

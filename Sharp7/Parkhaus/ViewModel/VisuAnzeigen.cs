@@ -211,7 +211,7 @@ namespace Parkhaus.ViewModel
             }
         }
 
-        private ObservableCollection<Visibility> _autoSichtbar = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _autoSichtbar = new();
         public ObservableCollection<Visibility> AutoSichtbar
         {
             get => _autoSichtbar;
@@ -224,7 +224,7 @@ namespace Parkhaus.ViewModel
 
 
 
-        private ObservableCollection<Brush>_farbeSensor = new ObservableCollection<Brush>();
+        private ObservableCollection<Brush>_farbeSensor = new();
         public ObservableCollection<Brush>FarbeSensor
         {
             get => _farbeSensor;
@@ -255,7 +255,7 @@ namespace Parkhaus.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;

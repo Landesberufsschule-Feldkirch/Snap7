@@ -13,14 +13,6 @@ namespace ManualMode
         public static bool DatenTypenWord { get; set; }
         public static bool DatenTypenLong { get; set; }
 
-        private const int SpaltenAbstand = 10;
-        private const int SpaltenWert = 300;
-        private const int SpaltenBezeichnung = 120;
-        private const int SpaltenKommentar = 300;
-
-        private const int ZeilenAbstand = 10;
-        private const int ZeilenHoehe = 45;
-
         public AaFenster(AaConfig aaConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
@@ -35,7 +27,7 @@ namespace ManualMode
 
             if (DatenTypenBit) AaCreateGridBit(anzahlZeilenConfig);
             if (DatenTypenByte) AaCreateGridByte();
-            if (DatenTypenWord) AaCreateGridWord(anzahlZeilenConfig);
+            if (DatenTypenWord) AaCreateGridWord(anzahlZeilenConfig, manualViewModel.ManualMode);
             if (DatenTypenLong) AaCreateGridLong();
         }
         private static int AaDatenLesen(AaConfig aaConfig, ManualViewModel manualViewModel)

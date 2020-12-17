@@ -78,7 +78,7 @@ namespace ManualMode.ViewModel
 
         public void DiSetFarbe(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
-        private ObservableCollection<Brush> _farbeDi = new ObservableCollection<Brush>();
+        private ObservableCollection<Brush> _farbeDi = new();
         public ObservableCollection<Brush> FarbeDi
         {
             get => _farbeDi;
@@ -89,7 +89,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<Visibility> _visibilityDi = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _visibilityDi = new();
         public ObservableCollection<Visibility> VisibilityDi
         {
             get => _visibilityDi;
@@ -100,7 +100,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<string> _bezeichnungDi = new ObservableCollection<string>();
+        private ObservableCollection<string> _bezeichnungDi = new();
         public ObservableCollection<string> BezeichnungDi
         {
             get => _bezeichnungDi;
@@ -112,7 +112,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        private ObservableCollection<string> _kommentarDi = new ObservableCollection<string>();
+        private ObservableCollection<string> _kommentarDi = new();
         public ObservableCollection<string> KommentarDi
         {
             get => _kommentarDi;
@@ -146,7 +146,7 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.Ascii: break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
-                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler: break;
                             default: throw new ArgumentOutOfRangeException(nameof(digitaleAusgaenge.Type));
                         }
                         break;
@@ -206,7 +206,7 @@ namespace ManualMode.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeTasten = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeTasten = new();
         public ObservableCollection<ClickMode> ClickModeTasten
         {
             get => _clickModeTasten;
@@ -220,7 +220,7 @@ namespace ManualMode.ViewModel
 
         public void SetFarbeTastenToggelnDa(bool val, int id) => FarbeTastenToggelnDa[id] = val ? Brushes.LawnGreen : Brushes.LightGray;
 
-        private ObservableCollection<Brush> _farbeTastenToggelnDa = new ObservableCollection<Brush>();
+        private ObservableCollection<Brush> _farbeTastenToggelnDa = new();
         public ObservableCollection<Brush> FarbeTastenToggelnDa
         {
             get => _farbeTastenToggelnDa;
@@ -232,7 +232,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        private ObservableCollection<Visibility> _visibilityDa = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _visibilityDa = new();
         public ObservableCollection<Visibility> VisibilityDa
         {
             get => _visibilityDa;
@@ -244,7 +244,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        private ObservableCollection<string> _bezeichnungDa = new ObservableCollection<string>();
+        private ObservableCollection<string> _bezeichnungDa = new();
         public ObservableCollection<string> BezeichnungDa
         {
             get => _bezeichnungDa;
@@ -255,7 +255,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<string> _wertDa = new ObservableCollection<string>();
+        private ObservableCollection<string> _wertDa = new();
         public ObservableCollection<string> WertDa
         {
             get => _wertDa;
@@ -266,7 +266,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<string> _kommentarDa = new ObservableCollection<string>();
+        private ObservableCollection<string> _kommentarDa = new();
         public ObservableCollection<string> KommentarDa
         {
             get => _kommentarDa;
@@ -299,16 +299,16 @@ namespace ManualMode.ViewModel
                             case PlcEinUndAusgaengeTypen.Ascii:
                                 ContentAi[analogeEingaenge.LaufendeNr] = wertByte switch
                                 {
-                                    (byte) 0x0d => $"{wertByte} 0x{wertByte:X} 'Enter'",
-                                    (byte) 0x20 => $"{wertByte} 0x{wertByte:X} 'Space'",
-                                    _ => $"{wertByte} 0x{wertByte:X} '{(char) wertByte}'"
+                                    (byte)0x0d => $"{wertByte} 0x{wertByte:X} 'Enter'",
+                                    (byte)0x20 => $"{wertByte} 0x{wertByte:X} 'Space'",
+                                    _ => $"{wertByte} 0x{wertByte:X} '{(char)wertByte}'"
                                 };
 
                                 break;
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
                             case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
                             case PlcEinUndAusgaengeTypen.BitmusterByte:
-                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler: break;
                             default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
                         break;
@@ -329,7 +329,7 @@ namespace ManualMode.ViewModel
                                 break;
                             case PlcEinUndAusgaengeTypen.Ascii:
                             case PlcEinUndAusgaengeTypen.BitmusterByte:
-                            case PlcEinUndAusgaengeTypen.Schieberegler: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler: break;
                             default: throw new ArgumentOutOfRangeException(nameof(analogeEingaenge.Type));
                         }
                         break;
@@ -339,7 +339,7 @@ namespace ManualMode.ViewModel
 
 
 
-        private ObservableCollection<string> _contentAi = new ObservableCollection<string>();
+        private ObservableCollection<string> _contentAi = new();
         public ObservableCollection<string> ContentAi
         {
             get => _contentAi;
@@ -350,7 +350,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<Visibility> _visibilityAi = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _visibilityAi = new();
         public ObservableCollection<Visibility> VisibilityAi
         {
             get => _visibilityAi;
@@ -361,7 +361,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<string> _bezeichnungAi = new ObservableCollection<string>();
+        private ObservableCollection<string> _bezeichnungAi = new();
         public ObservableCollection<string> BezeichnungAi
         {
             get => _bezeichnungAi;
@@ -373,7 +373,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        private ObservableCollection<string> _kommentarAi = new ObservableCollection<string>();
+        private ObservableCollection<string> _kommentarAi = new();
         public ObservableCollection<string> KommentarAi
         {
             get => _kommentarAi;
@@ -395,16 +395,26 @@ namespace ManualMode.ViewModel
 
             foreach (var analogeAusgaenge in _manualMode.GetConfig.AaConfig.AnalogeAusgaenge)
             {
-                switch (analogeAusgaenge.AnzahlBit)
+                switch (analogeAusgaenge.Type)
                 {
-                    case 8:
+                    case PlcEinUndAusgaengeTypen.Default:
                         break;
-
-                    case 16:
+                    case PlcEinUndAusgaengeTypen.Ascii:
                         break;
-
-
-
+                    case PlcEinUndAusgaengeTypen.BitmusterByte:
+                        break;
+                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:
+                        break;
+                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille:
+                        break;
+                    case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler:
+                        // SiemensAnalogwerte sind immer 16Bit Werte
+                        var wertInt = 256 * _manualMode.Datenstruktur.AnalogOutput[analogeAusgaenge.StartByte] + _manualMode.Datenstruktur.AnalogOutput[analogeAusgaenge.StartByte + 1];
+                        // ReSharper disable once ArrangeRedundantParentheses
+                        ContentAa[analogeAusgaenge.LaufendeNr] = $"{wertInt} 0x {wertInt:X}  ->  {(analogeAusgaenge.MaximalWert * (double)wertInt / SiemensAnalogSkalierung):F1}";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
 
@@ -412,7 +422,7 @@ namespace ManualMode.ViewModel
 
 
 
-        private ObservableCollection<string> _contentAa = new ObservableCollection<string>();
+        private ObservableCollection<string> _contentAa = new();
         public ObservableCollection<string> ContentAa
         {
             get => _contentAa;
@@ -423,7 +433,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<Visibility> _visibilityAa = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _visibilityAa = new();
         public ObservableCollection<Visibility> VisibilityAa
         {
             get => _visibilityAa;
@@ -434,7 +444,7 @@ namespace ManualMode.ViewModel
             }
         }
 
-        private ObservableCollection<string> _bezeichnungAa = new ObservableCollection<string>();
+        private ObservableCollection<string> _bezeichnungAa = new();
         public ObservableCollection<string> BezeichnungAa
         {
             get => _bezeichnungAa;
@@ -446,7 +456,7 @@ namespace ManualMode.ViewModel
         }
 
 
-        private ObservableCollection<string> _kommentarAa = new ObservableCollection<string>();
+        private ObservableCollection<string> _kommentarAa = new();
         public ObservableCollection<string> KommentarAa
         {
             get => _kommentarAa;

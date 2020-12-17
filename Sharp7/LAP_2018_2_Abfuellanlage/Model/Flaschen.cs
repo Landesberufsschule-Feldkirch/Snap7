@@ -22,12 +22,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
         private const double BewegungIncrement = 0.5;
         private const double FlascheBreite = 40;
         private const double FlascheHoehe = 80;
-        private readonly Punkt _vereinzelnerVentil = new Punkt(105, 385);
-        private readonly Punkt _foerderbandLinks = new Punkt(105, 525);
-        private readonly Punkt _foerderbandRechts = new Punkt(640, 525);
-        private readonly Punkt _sensorB1Links = new Punkt(418, 525);
-        private readonly Punkt _sensorB1Rechts = new Punkt(450, 525);
-        private readonly Punkt _boden = new Punkt(640, 700);
+        private readonly Punkt _vereinzelnerVentil = new(105, 385);
+        private readonly Punkt _foerderbandLinks = new(105, 525);
+        private readonly Punkt _foerderbandRechts = new(640, 525);
+        private readonly Punkt _sensorB1Links = new(418, 525);
+        private readonly Punkt _sensorB1Rechts = new(450, 525);
+        private readonly Punkt _boden = new(640, 700);
         private Rechteck.RichtungX _richtungX;
         private Rechteck.RichtungY _richtungY;
 

@@ -9,7 +9,7 @@ namespace Synchronisiereinrichtung.Model
         public Utilities.Rampen VentilRampe { get; set; }
         public Utilities.Rampen ErregerstromRampe { get; set; }
 
-        private readonly MagnetischerKreis _magnetisierung = new MagnetischerKreis(0.5);
+        private readonly MagnetischerKreis _magnetisierung = new(0.5);
 
         private double _n;
         private double _p;

@@ -13,15 +13,7 @@ namespace ManualMode
         public static bool DatenTypenWord { get; set; }
         public static bool DatenTypenLong { get; set; }
 
-        private const int SpaltenAbstand = 10;
-        private const int SpaltenWert = 300;
-        private const int SpaltenBezeichnung = 120;
-        private const int SpaltenKommentar = 300;
-
-        private const int ZeilenAbstand = 10;
-        private const int ZeilenHoehe = 45;
-
-             public AiFenster(AiConfig aiConfig, ManualViewModel mvm)
+        public AiFenster(AiConfig aiConfig, ManualViewModel mvm)
         {
             DatenTypenBit = false;
             DatenTypenByte = false;
@@ -33,7 +25,7 @@ namespace ManualMode
             var anzahlZeilenConfig = AiDatenLesen(aiConfig, mvm);
             if (DatenTypenBit) AiCreateGridBit(anzahlZeilenConfig);
             if (DatenTypenByte) AiCreateGridByte(anzahlZeilenConfig);
-            if (DatenTypenWord) AiCreateGridWord();
+            if (DatenTypenWord) AiCreateGridWord(anzahlZeilenConfig);
             if (DatenTypenLong) AiCreateGridLong();
         }
         private static int AiDatenLesen(AiConfig aiConfig, ManualViewModel manViewModel)
@@ -48,25 +40,25 @@ namespace ManualMode
                     {
                         case 1:
                             DatenTypenBit = true;
-                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenByte || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
 
                         case 8:
                             DatenTypenByte = true;
-                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenWord || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
 
                         case 16:
                             DatenTypenWord = true;
-                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenLong) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
 
                         case 32:
                             DatenTypenLong = true;
-                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException();
+                            if (DatenTypenBit || DatenTypenByte || DatenTypenWord) throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                             break;
 
-                        default: throw new ArgumentOutOfRangeException();
+                        default: throw new ArgumentOutOfRangeException(config.AnzahlBit.ToString());
                     }
 
                     manViewModel.ManVisuAnzeigen.VisibilityAi[config.LaufendeNr] = Visibility.Visible;
@@ -79,5 +71,5 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
-      }
+    }
 }

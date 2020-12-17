@@ -13,8 +13,8 @@
 
     public static class PositionBestimmen
     {
-        private static readonly Punkt ZentrumOben = new Punkt(200, 150);
-        private static readonly Punkt ZentrumUnten = new Punkt(200, 150 + 680);
+        private static readonly Punkt ZentrumOben = new(200, 150);
+        private static readonly Punkt ZentrumUnten = new(200, 150 + 680);
         private const double RadiusUmlenkung = 100;
 
         public static double GetGesamtLaenge(double breiteBolzen) => 2 * 680 + breiteBolzen + Math.PI * (2 * RadiusUmlenkung + breiteBolzen);

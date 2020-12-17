@@ -4,7 +4,7 @@ namespace _AlleManConfigTesten.Model
 {
     public class DaConfig
     {
-        public ObservableCollection<DaEinstellungen> DigitaleAusgaenge { get; set; } = new ObservableCollection<DaEinstellungen>();
+        public ObservableCollection<DaEinstellungen> DigitaleAusgaenge { get; set; } = new();
     }
 
     public class DaEinstellungen

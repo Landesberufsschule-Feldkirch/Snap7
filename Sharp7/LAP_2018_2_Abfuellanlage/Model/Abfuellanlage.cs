@@ -27,12 +27,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
         {
             AlleFlaschen = new List<Flaschen>
             {
-                new Flaschen(_anzahlFlaschen++),
-                new Flaschen(_anzahlFlaschen++),
-                new Flaschen(_anzahlFlaschen++),
-                new Flaschen(_anzahlFlaschen++),
-                new Flaschen(_anzahlFlaschen++),
-                new Flaschen(_anzahlFlaschen++)
+                new(_anzahlFlaschen++),
+                new(_anzahlFlaschen++),
+                new(_anzahlFlaschen++),
+                new(_anzahlFlaschen++),
+                new(_anzahlFlaschen++),
+                new(_anzahlFlaschen++)
             };
 
             S2 = false;

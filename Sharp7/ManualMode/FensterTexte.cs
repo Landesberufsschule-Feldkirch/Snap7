@@ -81,22 +81,21 @@ namespace ManualMode
 
             grid.Children.Add(textBox);
         }
-        private static void TextBoxChanged(object s, TextChangedEventArgs e)
+        private static void TextBoxChanged(object sender, TextChangedEventArgs e)
         {
-            if (s is not TextBox) return;
-            var localSender = (TextBox) s;
+            if (sender is not TextBox) return;
+            var localSender = (TextBox)sender;
 
-            var manMode = localSender.Tag as ManualMode;
+            if (localSender.Tag is not ManualMode manMode) return;
+
             var textBoxNamensTeile = localSender.Name.Split("_");
 
             var id = short.Parse(textBoxNamensTeile[1]);
-            var eingabe = localSender.Text.Length > 0 ? byte.Parse(localSender.Text) : (byte) 0;
+            var eingabe = localSender.Text.Length > 0 ? byte.Parse(localSender.Text) : (byte)0;
 
             switch (textBoxNamensTeile[0])
             {
-                case "Da":
-                    if (manMode != null) manMode.Datenstruktur.DigOutput[id] = eingabe;
-                    break;
+                case "Da": manMode.Datenstruktur.DigOutput[id] = eingabe; break;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace _AlleManConfigTesten.ViewModel
 
 
 
-        private List<AaDaten> _aaAlleDaten = new List<AaDaten>();
+        private List<AaDaten> _aaAlleDaten = new();
         public List<AaDaten> AaAlleDaten
         {
             get => _aaAlleDaten;
@@ -24,7 +24,7 @@ namespace _AlleManConfigTesten.ViewModel
             }
         }
 
-        private List<AiDaten> _aiAlleDaten = new List<AiDaten>();
+        private List<AiDaten> _aiAlleDaten = new();
         public List<AiDaten> AiAlleDaten
         {
             get => _aiAlleDaten;
@@ -36,7 +36,7 @@ namespace _AlleManConfigTesten.ViewModel
         }
 
 
-        private List<DaDaten> _daAlleDaten = new List<DaDaten>();
+        private List<DaDaten> _daAlleDaten = new();
         public List<DaDaten> DaAlleDaten
         {
             get => _daAlleDaten;
@@ -47,7 +47,7 @@ namespace _AlleManConfigTesten.ViewModel
             }
         }
 
-        private List<DiDaten> _diAlleDaten = new List<DiDaten>();
+        private List<DiDaten> _diAlleDaten = new();
         public List<DiDaten> DiAlleDaten
         {
             get => _diAlleDaten;

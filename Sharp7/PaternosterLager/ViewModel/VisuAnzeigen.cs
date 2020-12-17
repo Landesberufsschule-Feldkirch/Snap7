@@ -254,7 +254,7 @@ namespace PaternosterLager.ViewModel
 
         #region KettengliederRegale
 
-        private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+        private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new();
 
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
@@ -282,7 +282,7 @@ namespace PaternosterLager.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;

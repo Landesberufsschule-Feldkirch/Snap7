@@ -192,7 +192,7 @@ namespace ElektronischesZahlenschloss.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
             get => _clickModeBtn;

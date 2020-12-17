@@ -19,7 +19,7 @@
 
             AlleMeineBehaelter = new List<Behaelter>
             {
-                new Behaelter(0.2), new Behaelter(0.4), new Behaelter(0.6), new Behaelter(0.8)
+                new(0.2), new(0.4), new(0.6), new(0.8)
             };
 
             System.Threading.Tasks.Task.Run(AlleBehaelterTask);

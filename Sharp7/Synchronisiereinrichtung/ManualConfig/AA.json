@@ -8,9 +8,9 @@
       "MinimalWert": 0,
       "MaximalWert": 100,
       "Schrittweite": 1, 
-      "Type": "Schieberegler",
-      "Bezeichnung": "Generator Ventil Öffnung",
-      "Kommentar": "0-100%"
+      "Type": "SiemensAnalogwertSchieberegler",
+      "Bezeichnung": "Y",
+      "Kommentar": "Ventilöffnung 0-100%"
     },
     {
       "LaufendeNr": 1,
@@ -18,11 +18,11 @@
       "StartBit": 0,
       "AnzahlBit": 16,
       "MinimalWert": 0,
-      "MaximalWert": 100,
+      "MaximalWert": 10,
       "Schrittweite": 0.1,
-      "Type": "Schieberegler",
-      "Bezeichnung": "Generator Erregerstrom",
-      "Kommentar": "0-10A"
+      "Type": "SiemensAnalogwertSchieberegler",
+      "Bezeichnung": "Ie",
+      "Kommentar": "Erregerstrom 0-10A"
     }
   ]
 }

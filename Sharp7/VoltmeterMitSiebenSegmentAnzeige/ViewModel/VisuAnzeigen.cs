@@ -170,7 +170,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
         #endregion
 
 
-        private ObservableCollection<Visibility> _alleLed = new ObservableCollection<Visibility>();
+        private ObservableCollection<Visibility> _alleLed = new();
         public ObservableCollection<Visibility> AlleLed
         {
             get => _alleLed;

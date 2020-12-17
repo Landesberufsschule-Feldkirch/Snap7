@@ -38,15 +38,15 @@ namespace AmpelsteuerungKieswerk.Model
         private readonly BezierCurve _rechteKurve;
         private double _kurvePosition;
 
-        private readonly Punkt _parkpositionLinks = new Punkt(10, 10);
-        private readonly Punkt _parkpositionRechts = new Punkt(1340, 10);
-        private readonly Punkt _endeLinkeKurve = new Punkt(250, 200);
-        private readonly Punkt _anfangRechteKurve = new Punkt(1100, 200);
-        private readonly Punkt _groesseLkw = new Punkt(100, 80);
-        private readonly Punkt _positionB1 = new Punkt(275, 0);
-        private readonly Punkt _positionB2 = new Punkt(350, 0);
-        private readonly Punkt _positionB3 = new Punkt(1000, 0);
-        private readonly Punkt _positionB4 = new Punkt(1075, 0);
+        private readonly Punkt _parkpositionLinks = new(10, 10);
+        private readonly Punkt _parkpositionRechts = new(1340, 10);
+        private readonly Punkt _endeLinkeKurve = new(250, 200);
+        private readonly Punkt _anfangRechteKurve = new(1100, 200);
+        private readonly Punkt _groesseLkw = new(100, 80);
+        private readonly Punkt _positionB1 = new(275, 0);
+        private readonly Punkt _positionB2 = new(350, 0);
+        private readonly Punkt _positionB3 = new(1000, 0);
+        private readonly Punkt _positionB4 = new(1075, 0);
         private const double XyBewegung = 1;
         private const double KurveGeschwindigkeit = 0.002;
 

@@ -183,7 +183,7 @@ namespace StiegenhausBeleuchtung.ViewModel
             if (val) ColorLampe[lampe] = Brushes.Yellow; else ColorLampe[lampe] = Brushes.White;
         }
 
-        private ObservableCollection<Brush> _colorLampe = new ObservableCollection<Brush>();
+        private ObservableCollection<Brush> _colorLampe = new();
         public ObservableCollection<Brush> ColorLampe
         {
             get => _colorLampe;
@@ -210,7 +210,7 @@ namespace StiegenhausBeleuchtung.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new ObservableCollection<ClickMode>();
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
 
         public ObservableCollection<ClickMode> ClickModeBtn
         {

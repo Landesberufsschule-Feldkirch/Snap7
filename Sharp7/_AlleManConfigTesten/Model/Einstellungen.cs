@@ -4,7 +4,7 @@ namespace _AlleManConfigTesten.Model
 {
     public class Einstellungen
     {
-        public ObservableCollection<DateiFilter> AlleDateienFilter { get; set; } = new ObservableCollection<DateiFilter>();
+        public ObservableCollection<DateiFilter> AlleDateienFilter { get; set; } = new();
     }
 
     public class DateiFilter
