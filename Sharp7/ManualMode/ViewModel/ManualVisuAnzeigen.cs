@@ -65,7 +65,7 @@ namespace ManualMode.ViewModel
         #region Digitale Eingänge
         private void DigitaleEingaengeFarbeSichtbarkeit()
         {
-            if (_manualMode?.Datenstruktur.DigOutput == null) return;
+            if (_manualMode?.Datenstruktur?.DigOutput == null) return;
 
             for (var i = 0; i < 100; i++)
             {

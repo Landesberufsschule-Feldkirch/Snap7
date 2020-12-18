@@ -1,0 +1,58 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Linearantrieb Rechtslauf "
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Linearantrieb Linkslauf "
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte im Taster S1/S2 (weiß) "
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte weiß"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte rot"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P4",
+      "Kommentar": "Meldeleuchte grün"
+    }
+  ]
+}
