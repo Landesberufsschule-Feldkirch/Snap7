@@ -1,0 +1,112 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster ( ① ) → Schliesser"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster ( ⓪ ) → Öffner"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S4",
+      "Kommentar": "Taster ( STOP ) → Öffner"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster ( Ⅰ ) → Schliesser"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S5",
+      "Kommentar": "Taster ( Ⅱ ) → Schliesser"
+    },
+   {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S7",
+      "Kommentar": "Taster (STOP) → Öffner"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S6",
+      "Kommentar": "Taster (←) → Schliesser"
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S8",
+      "Kommentar": "Taster (→) → Schliesser"
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S9.1",
+      "Kommentar": "Not-Halt → Schliesser"
+    },
+    {
+      "LaufendeNr": 9,
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S9.2",
+      "Kommentar": " Not-Halt → Öffner"
+    },
+    {
+      "LaufendeNr": 10,
+      "StartByte": 1,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B1",
+      "Kommentar": "Lichtschranke 0°"
+    },
+    {
+      "LaufendeNr": 11,
+      "StartByte": 1,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B2",
+      "Kommentar": "Lichtschranke 45° CCW"
+    }
+  ]
+}

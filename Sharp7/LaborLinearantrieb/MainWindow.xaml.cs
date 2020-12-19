@@ -6,7 +6,6 @@ namespace LaborLinearantrieb
 {
     public partial class MainWindow
     {
-
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }

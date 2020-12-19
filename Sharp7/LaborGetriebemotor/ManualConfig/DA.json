@@ -1,0 +1,67 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Getriebemotor Schnell Rechtslauf"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Getriebemotor Linkslauf"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q3",
+      "Kommentar": "Getriebemotor Langsam Rechtslauf"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "-",
+      "Kommentar": "Reserve - nicht belegt "
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte weiß"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte rot"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte grün"
+    }
+  ]
+}
