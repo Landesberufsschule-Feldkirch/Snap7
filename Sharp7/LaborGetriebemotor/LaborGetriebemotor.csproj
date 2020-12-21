@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
     <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
     <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
   </ItemGroup>
@@ -19,15 +20,41 @@
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
     <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="AutoTestConfig\TestBeispiel1\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel1\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel2\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel2\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel3\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel3\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel4\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel4\test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ManualConfig\AA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

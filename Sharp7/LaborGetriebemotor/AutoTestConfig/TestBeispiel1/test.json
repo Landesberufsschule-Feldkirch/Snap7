@@ -1,0 +1,16 @@
+﻿{
+  "AutomatischeSoftwareTests": [
+    {
+      "LaufendeNr": 0,
+      "EingaengeBitmuster": 0,
+      "EingaengeAnzahlBit":8,
+      "AusgaengeBitmuster": 0,
+      "AusgaengeBitmaske":0,
+      "AusgaengeAnzahlBit":8,
+      "Befehl": "-",
+      "BefehlZusatz1":"-",
+      "BefehlZusatz2":"-",
+      "Kommentar": "Initialisierung"
+    }
+  ]
+}
