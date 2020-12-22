@@ -9,14 +9,13 @@ namespace LaborGetriebemotor.ViewModel
     public class ViewModel
     {
         public Getriebemotor Getriebemotor { get; }
-        public TestAutomat.AutoTester.AutoTester AutoTester { get; }
+      // public TestAutomat.AutoTester.AutoTester AutoTester { get; }
         public VisuAnzeigen ViAnzeige { get; set; }
         public  TestAutomat.AutoTesterViewModel.AutoTesterViewModel AutoTesterViAnzeige { get; set; }
         
         public ViewModel(MainWindow mainWindow)
         {
             Getriebemotor = new Getriebemotor();
-            AutoTester = new AutoTester(mainWindow.AlleOrdnerLesen, AutoTester);
             ViAnzeige = new VisuAnzeigen(mainWindow, Getriebemotor);
             AutoTesterViAnzeige = new AutoTesterViewModel();
         }

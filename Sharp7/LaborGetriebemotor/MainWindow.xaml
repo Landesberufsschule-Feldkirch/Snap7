@@ -236,56 +236,9 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Automatischer Softwaretest">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="10" />
-                    </Grid.RowDefinitions>
 
-                    <Button x:Name="BtnTestWindow" Content="Test starten" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="3" Click="TestWindowOeffnen" FontSize="16pt" IsEnabled="False"  />
+            <TabItem x:Name="TabItemAutomatischerSoftwareTest" Header="Automatischer Softwaretest"/>
 
-                    <StackPanel x:Name="StackPanel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="10" />
-                    <WebBrowser x:Name="WebBrowser" Grid.Column="4" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="16" />
-                </Grid>
-
-
-            </TabItem>
         </TabControl>
 
     </Grid>

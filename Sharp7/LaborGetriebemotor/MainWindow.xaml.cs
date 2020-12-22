@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Kommunikation;
-using TestAutomat;
+
 
 namespace LaborGetriebemotor
 {
@@ -18,9 +18,8 @@ namespace LaborGetriebemotor
         public bool TestWindowAktiv { get; set; }
         public DirectoryInfo AktuellesProjekt { get; set; }
         
-        public TestAutomat.Model.OrdnerLesen AlleOrdnerLesen { get; set; }
+        public TestAutomat.TestAutomat TestAutomat{ get; set; }
 
-        private AutoTesterWindow _autoTesterWindow;
 
         private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
@@ -39,7 +38,7 @@ namespace LaborGetriebemotor
                 VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
-            AlleOrdnerLesen = new TestAutomat.Model.OrdnerLesen();
+            
             
             var viewModel = new ViewModel.ViewModel(this);
             _datenRangieren = new DatenRangieren(viewModel);
@@ -50,7 +49,6 @@ namespace LaborGetriebemotor
             Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur);
-
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
@@ -58,9 +56,9 @@ namespace LaborGetriebemotor
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
 
-
-            
-            
+            TestAutomat = new TestAutomat.TestAutomat(ManualMode);
+            TestAutomat.SetTestConfig("./AutoTestConfig/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
@@ -72,53 +70,6 @@ namespace LaborGetriebemotor
             }
 
             ManualMode.FensterAnzeigen();
-        }
-
-
-
-        private void ProjekteAnzeigen()
-        {
-            foreach (var projekt in AlleOrdnerLesen.AlleTestOrdner)
-            {
-                var rdo = new RadioButton
-                {
-                    GroupName = "TestProjekte",
-                    Name = projekt.Name,
-                    FontSize = 14,
-                    Content = projekt.Name,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    Tag = projekt
-                };
-                rdo.Checked += RadioButton_Checked;
-                StackPanel.Children.Add(rdo);
-            }
-        }
-
-        public void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!(sender is RadioButton rb) || !(rb.Tag is DirectoryInfo)) return;
-            BtnTestWindow.IsEnabled = true;
-            BtnTestWindow.Background = new SolidColorBrush(Colors.LawnGreen);
-
-            AktuellesProjekt = rb.Tag as DirectoryInfo;
-
-            if (AktuellesProjekt == null) return;
-            var dateiName = $@"{AktuellesProjekt.FullName}\index.html";
-
-            var htmlSeite = File.Exists(dateiName) ? File.ReadAllText(dateiName) : "--??--";
-
-            var dataHtmlSeite = Encoding.UTF8.GetBytes(htmlSeite);
-            var stmHtmlSeite = new MemoryStream(dataHtmlSeite, 0, dataHtmlSeite.Length);
-
-            WebBrowser.NavigateToStream(stmHtmlSeite);
-        }
-
-        private void TestWindowOeffnen(object sender, RoutedEventArgs e)
-        {
-            TestWindowAktiv = true;
-            _autoTesterWindow = new AutoTesterWindow(AktuellesProjekt);
-            _autoTesterWindow.Show();
-
         }
     }
 }
