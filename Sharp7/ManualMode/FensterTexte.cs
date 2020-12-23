@@ -73,30 +73,29 @@ namespace ManualMode
                 Tag = manualMode
             };
 
+            textBox.TextChanged += (sender, _) =>
+            {
+                if (sender is not TextBox) return;
+                var localSender = (TextBox)sender;
 
-            textBox.TextChanged += TextBoxChanged;
+                if (localSender.Tag is not ManualMode manMode) return;
+
+                var textBoxNamensTeile = localSender.Name.Split("_");
+
+                var id = short.Parse(textBoxNamensTeile[1]);
+                var eingabe = localSender.Text.Length > 0 ? byte.Parse(localSender.Text) : (byte)0;
+
+                switch (textBoxNamensTeile[0])
+                {
+                    case "Da": manMode.Datenstruktur.DigOutput[id] = eingabe; break;
+                }
+            };
 
             Grid.SetColumn(textBox, x);
             Grid.SetRow(textBox, y);
 
             grid.Children.Add(textBox);
         }
-        private static void TextBoxChanged(object sender, TextChangedEventArgs e)
-        {
-            if (sender is not TextBox) return;
-            var localSender = (TextBox)sender;
 
-            if (localSender.Tag is not ManualMode manMode) return;
-
-            var textBoxNamensTeile = localSender.Name.Split("_");
-
-            var id = short.Parse(textBoxNamensTeile[1]);
-            var eingabe = localSender.Text.Length > 0 ? byte.Parse(localSender.Text) : (byte)0;
-
-            switch (textBoxNamensTeile[0])
-            {
-                case "Da": manMode.Datenstruktur.DigOutput[id] = eingabe; break;
-            }
-        }
     }
 }

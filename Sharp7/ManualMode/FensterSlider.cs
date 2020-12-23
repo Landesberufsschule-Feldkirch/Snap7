@@ -25,7 +25,40 @@ namespace ManualMode
                 Tag = manualMode
             };
 
-            schiebeRegler.ValueChanged += SliderChanged;
+            schiebeRegler.ValueChanged += (sender, _) =>
+            {
+
+                if (sender is not Slider) return;
+                var localSender = (Slider)sender;
+                if (localSender.Tag is not ManualMode manMode) return;
+                var textBoxNamensTeile = localSender.Name.Split("_");
+                var id = short.Parse(textBoxNamensTeile[1]);
+
+                switch (textBoxNamensTeile[0])
+                {
+                    case "Aa":
+                        var startByte = manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].StartByte;
+                        const double siemensAnalogSkalierung = 27648;
+
+                        switch (manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].Type)
+                        {
+                            case PlcEinUndAusgaengeTypen.Ascii: break;
+                            case PlcEinUndAusgaengeTypen.BitmusterByte: break;
+                            case PlcEinUndAusgaengeTypen.Default: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
+                            case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler:
+                                var siemens = (short)(localSender.Value * siemensAnalogSkalierung / manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].MaximalWert);
+                                var einzelneBytes = BitConverter.GetBytes(siemens);
+                                manMode.Datenstruktur.AnalogOutput[startByte] = einzelneBytes[1];//Siemens --> BigEndian
+                                manMode.Datenstruktur.AnalogOutput[startByte + 1] = einzelneBytes[0];
+                                break;
+                            default: throw new ArgumentOutOfRangeException();
+                        }
+                        break;
+                }
+
+            };
             Grid.SetColumn(schiebeRegler, x);
             Grid.SetRow(schiebeRegler, y);
             grid.Children.Add(schiebeRegler);
@@ -52,38 +85,5 @@ namespace ManualMode
             grid.Children.Add(kommentar);
         }
 
-
-        private static void SliderChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (sender is not Slider) return;
-            var localSender = (Slider)sender;
-            if (localSender.Tag is not ManualMode manMode) return;
-            var textBoxNamensTeile = localSender.Name.Split("_");
-            var id = short.Parse(textBoxNamensTeile[1]);
-
-            switch (textBoxNamensTeile[0])
-            {
-                case "Aa":
-                    var startByte = manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].StartByte;
-                    const double siemensAnalogSkalierung = 27648;
-
-                    switch (manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].Type)
-                    {
-                        case PlcEinUndAusgaengeTypen.Ascii: break;
-                        case PlcEinUndAusgaengeTypen.BitmusterByte: break;
-                        case PlcEinUndAusgaengeTypen.Default: break;
-                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertProzent:break;
-                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertPromille: break;
-                        case PlcEinUndAusgaengeTypen.SiemensAnalogwertSchieberegler: 
-                            var siemens = (short)(localSender.Value * siemensAnalogSkalierung / manMode.GetConfig.AaConfig.AnalogeAusgaenge[id].MaximalWert);
-                            var einzelneBytes = BitConverter.GetBytes(siemens);
-                            manMode.Datenstruktur.AnalogOutput[startByte] = einzelneBytes[1];//Siemens --> BigEndian
-                            manMode.Datenstruktur.AnalogOutput[startByte + 1] = einzelneBytes[0];
-                            break;
-                        default: throw new ArgumentOutOfRangeException();
-                    }
-                    break;
-            }
-        }
     }
 }
