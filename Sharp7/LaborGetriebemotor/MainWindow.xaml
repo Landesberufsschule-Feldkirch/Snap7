@@ -92,15 +92,22 @@
                     <Rectangle Grid.Column="1" Grid.ColumnSpan="24" Grid.Row="1" Grid.RowSpan="24" Fill="#eeeeee" />
 
 
+                    <Ellipse Grid.Column="3" Grid.ColumnSpan="6" Grid.Row="3" Grid.RowSpan="6" Fill="SlateGray"/>
+                    <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" Fill="Yellow" Margin="25,0,25,20" RenderTransformOrigin="0.5,2.1" >
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="{Binding ViAnzeige.WinkelGetriebemotor}"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
 
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+                    <Label Content="B1"                                        Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" FontSize="14pt" VerticalAlignment="Center"  />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="3" Grid.Row="7" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="3" Grid.Row="7" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
-                    <Label Content="B1"                                        Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="2" FontSize="14pt" VerticalAlignment="Center"  />
-
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="21" Grid.Row="7" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="21" Grid.Row="7" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
-                    <Label Content="B2"                                        Grid.Column="20" Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="2" FontSize="14pt" VerticalAlignment="Center"  />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+                    <Label Content="B2"                                        Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" FontSize="14pt"  VerticalAlignment="Center"   />
 
 
                     <Rectangle Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="7" Fill="Silver"  />

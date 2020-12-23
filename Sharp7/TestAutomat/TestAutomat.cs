@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Kommunikation;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,25 +11,20 @@ namespace TestAutomat
     public class TestAutomat
     {
         public DirectoryInfo AktuellesProjekt { get; set; }
-
         public OrdnerLesen ConfigOrdner { get; set; }
 
-
         private AutoTesterWindow _autoTesterWindow;
-
+        private readonly Datenstruktur _datenstruktur;
         private readonly ManualMode.ManualMode _manualMode;
 
-        public TestAutomat(ManualMode.ManualMode manualMode)
+        public TestAutomat(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode)
         {
+            _datenstruktur = datenstruktur;
             _manualMode = manualMode;
         }
-
         public void SetTestConfig(string autotestconfig) => ConfigOrdner = new OrdnerLesen(autotestconfig);
-
-
         public void TabItemFuellen(TabItem tabItemAutomatischerSoftwareTest)
         {
-
             var autoTestGrid = new Grid
             {
                 Name = "AutoTestGrid",
@@ -36,10 +32,10 @@ namespace TestAutomat
             };
 
             foreach (var row in new[] { 10, 50, 10, 500 })
-                autoTestGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(row) });
+                autoTestGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
 
-            foreach (var column in new[] { 10, 150, 100, 10, 500, 150 })
-                autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(column) });
+            foreach (var column in new[] { 10, 150, 100, 10, 300, 300, 150 })
+                autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(column) });
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
 
@@ -49,17 +45,13 @@ namespace TestAutomat
                 IsEnabled = false,
                 Visibility = Visibility.Hidden,
                 Content = "ManualWindow",
-                FontSize = 22,
                 Padding = new Thickness(5, 5, 5, 5),
                 BorderThickness = new Thickness(1.0),
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 Margin = new Thickness(3, 3, 3, 3)
             };
 
-            btnManualTest.Click += (sender, _) =>
-            {
-                TestAutomatStarten(AktuellesProjekt);
-            };
+            btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
 
             Grid.SetColumn(btnManualTest, 5);
             Grid.SetRow(btnManualTest, 1);
@@ -78,7 +70,7 @@ namespace TestAutomat
                 Margin = new Thickness(3, 3, 3, 3)
             };
 
-            btnStart.Click += (sender, _) =>
+            btnStart.Click += (_, _) =>
             {
                 btnStart.IsEnabled = true;
                 if (System.Diagnostics.Debugger.IsAttached)
@@ -86,7 +78,6 @@ namespace TestAutomat
                     btnManualTest.Visibility = Visibility.Visible;
                     btnManualTest.IsEnabled = true;
                 }
-
                 TestAutomatStarten(AktuellesProjekt);
             };
 
@@ -106,19 +97,15 @@ namespace TestAutomat
             Grid.SetRow(stackPanel, 3);
             autoTestGrid.Children.Add(stackPanel);
 
-            var webBrowser = new WebBrowser
-            {
-                Name = "WebBrowser"
-            };
+            var webBrowser = new WebBrowser { Name = "WebBrowser" };
 
             Grid.SetColumn(webBrowser, 4);
+            Grid.SetColumnSpan(webBrowser, 2);
             Grid.SetRow(webBrowser, 3);
             autoTestGrid.Children.Add(webBrowser);
 
             TestProjekteEinfuellen(btnStart, stackPanel, webBrowser);
         }
-
-
         public void TestProjekteEinfuellen(Button btnStart, StackPanel stackPanel, WebBrowser webBrowser)
         {
             foreach (var projekt in ConfigOrdner.AlleTestOrdner)
@@ -132,7 +119,7 @@ namespace TestAutomat
                     VerticalAlignment = VerticalAlignment.Top,
                     Tag = projekt
                 };
-                rdo.Checked += (sender, args) =>
+                rdo.Checked += (sender, _) =>
                 {
                     if (!(sender is RadioButton { Tag: DirectoryInfo } rb)) return;
 
@@ -155,7 +142,6 @@ namespace TestAutomat
                 stackPanel.Children.Add(rdo);
             }
         }
-
         private void TestAutomatStarten(DirectoryInfo aktuellesProjekt)
         {
             _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);

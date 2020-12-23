@@ -1,31 +1,24 @@
-﻿using System.IO;
+﻿using Kommunikation;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using Kommunikation;
-
 
 namespace LaborGetriebemotor
 {
     public partial class MainWindow
-    { public IPlc Plc { get; set; }
+    {
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public TestAutomat.TestAutomat TestAutomat { get; set; }
+        public DatenRangieren DatenRangieren { get; set; }
 
-        public bool TestWindowAktiv { get; set; }
-        public DirectoryInfo AktuellesProjekt { get; set; }
-        
-        public TestAutomat.TestAutomat TestAutomat{ get; set; }
-
-
-        private readonly DatenRangieren _datenRangieren;
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
+
         public MainWindow()
         {
             const string versionText = "Labor Getriebemotor";
@@ -38,17 +31,17 @@ namespace LaborGetriebemotor
                 VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
-            
-            
+
+
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            DatenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
@@ -56,20 +49,10 @@ namespace LaborGetriebemotor
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
 
-            TestAutomat = new TestAutomat.TestAutomat(ManualMode);
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
         }
-
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
-        {
-            if (Plc.GetPlcModus() == "S7-1200")
-            {
-                Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
-            }
-
-            ManualMode.FensterAnzeigen();
-        }
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
     }
 }

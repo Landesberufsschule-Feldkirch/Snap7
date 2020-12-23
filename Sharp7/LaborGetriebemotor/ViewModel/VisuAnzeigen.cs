@@ -39,9 +39,6 @@ namespace LaborGetriebemotor.ViewModel
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
-
-
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -344,8 +341,7 @@ namespace LaborGetriebemotor.ViewModel
         }
 
         #endregion ClickModeAlleTaster
-
-
+        
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

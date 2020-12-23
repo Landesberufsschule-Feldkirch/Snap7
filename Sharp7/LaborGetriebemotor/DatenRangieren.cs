@@ -18,7 +18,6 @@ namespace LaborGetriebemotor
 
         private enum BitPosEingang
         {
-
             S1 = 0, // 0.0  Taster ( ① ) → Schliesser
             S2,     // 0.1  Taster ( ⓪ ) → Öffner
             S4,     // 0.2  Taster ( STOP ) → Öffner 
@@ -48,7 +47,6 @@ namespace LaborGetriebemotor
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S91, _viewModel.Getriebemotor.S91);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S92, _viewModel.Getriebemotor.S92);
         }
-
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
             _viewModel.Getriebemotor.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
@@ -58,7 +56,6 @@ namespace LaborGetriebemotor
             _viewModel.Getriebemotor.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             _viewModel.Getriebemotor.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
-
         public DatenRangieren(LaborGetriebemotor.ViewModel.ViewModel vm) => _viewModel = vm;
     }
 }

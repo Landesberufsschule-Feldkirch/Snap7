@@ -1,6 +1,7 @@
 ﻿using ManualMode.Model;
 using ManualMode.ViewModel;
 using System;
+using Kommunikation;
 
 namespace ManualMode
 {
@@ -15,13 +16,28 @@ namespace ManualMode
         }
 
         public ManualViewModel ManualViewModel { get; set; }
-        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
-        public GetConfig GetConfig { get; set; }
 
-        public ManualMode(Kommunikation.Datenstruktur datenstruktur)
+        public GetConfig GetConfig { get; set; }
+        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
+        
+        
+        
+        private Kommunikation.IPlc _plc;
+        private readonly Action<Datenstruktur> _cbInput;
+        private readonly Action<Datenstruktur> _cbOutput;
+
+
+
+        public ManualMode(Kommunikation.Datenstruktur datenstruktur, IPlc plc, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
-            ManualViewModel = new ManualViewModel(this);
+
             Datenstruktur = datenstruktur;
+            _plc = plc;
+            _cbInput = cbInput;
+            _cbOutput = cbOutput;
+
+            ManualViewModel = new ManualViewModel(this);
+
 
             GetConfig = new GetConfig();
         }
@@ -47,6 +63,19 @@ namespace ManualMode
             }
         }
 
+        public void ManualModeStarten()
+        {
+
+            if (_plc.GetPlcModus() == "S7-1200")
+            {
+                _plc.SetTaskRunning(false);
+                _plc = new Manual(Datenstruktur, _cbInput, _cbOutput);
+            }
+
+            FensterAnzeigen();
+        }
+
+
         public void FensterAnzeigen()
         {
             if (Datenstruktur.AnzahlByteDigitalInput > 0)
@@ -71,5 +100,7 @@ namespace ManualMode
             var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
             aaFenster.Show();
         }
+
+
     }
 }
