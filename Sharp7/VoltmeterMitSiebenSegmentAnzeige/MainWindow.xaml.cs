@@ -12,7 +12,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
         public Datenstruktur Datenstruktur { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 0;
         private const int AnzByteDigOutput = 6;
@@ -32,15 +32,15 @@ namespace VoltmeterMitSiebenSegmentAnzeige
 
             var viewModel = new ViewModel.ViewModel(this);
 
-            _datenRangieren = new DatenRangieren(viewModel);
+            DatenRangieren = new DatenRangieren(viewModel);
 
             DataContext = viewModel;
             InitializeComponent();
 
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -55,7 +55,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
             if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

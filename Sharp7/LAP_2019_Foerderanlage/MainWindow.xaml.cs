@@ -17,7 +17,7 @@ namespace LAP_2019_Foerderanlage
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
@@ -36,12 +36,12 @@ namespace LAP_2019_Foerderanlage
             };
 
             _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            DatenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }

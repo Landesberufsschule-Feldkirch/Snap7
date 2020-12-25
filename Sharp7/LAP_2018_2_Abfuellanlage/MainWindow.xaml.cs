@@ -12,7 +12,7 @@ namespace LAP_2018_2_Abfuellanlage
         public Datenstruktur Datenstruktur { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 4;
@@ -30,14 +30,14 @@ namespace LAP_2018_2_Abfuellanlage
             };
 
             var viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(viewModel);
+            DatenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -52,7 +52,7 @@ namespace LAP_2018_2_Abfuellanlage
             if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

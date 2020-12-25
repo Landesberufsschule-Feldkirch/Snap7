@@ -21,7 +21,7 @@ namespace Heizungsregler
 
 
         private PlotWindow _plotWindow;
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -50,11 +50,11 @@ namespace Heizungsregler
 
             WohnHaus = new WohnHaus();
 
-            _datenRangieren = new DatenRangieren(this, viewModel);
+            DatenRangieren = new DatenRangieren(this, viewModel);
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -71,7 +71,7 @@ namespace Heizungsregler
             if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

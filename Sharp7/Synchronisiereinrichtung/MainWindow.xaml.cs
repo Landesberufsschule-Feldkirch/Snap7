@@ -29,7 +29,7 @@ namespace Synchronisiereinrichtung
         private int _nextDataIndex = 1;
 
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private PlotWindow.PlotWindow _plotWindow;
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
@@ -61,12 +61,12 @@ namespace Synchronisiereinrichtung
             InitializeComponent();
             DataContext = _viewModel;
 
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            DatenRangieren = new DatenRangieren(this, _viewModel);
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -86,7 +86,7 @@ namespace Synchronisiereinrichtung
             if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

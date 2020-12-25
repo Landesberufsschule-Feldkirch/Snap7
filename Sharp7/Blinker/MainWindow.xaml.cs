@@ -17,7 +17,7 @@ namespace Blinker
         public ManualMode.ManualMode ManualMode { get; set; }
         public double[] WertLeuchtMelder = new double[5_000];
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -38,17 +38,17 @@ namespace Blinker
             };
 
             _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(_viewModel);
+            DatenRangieren = new DatenRangieren(_viewModel);
 
 
 
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             Plc.SetZyklusZeitKommunikation(2);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -106,7 +106,7 @@ namespace Blinker
             if (Plc.GetPlcModus() == "S7-1200")
             {
                 Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             }
 
             ManualMode.FensterAnzeigen();

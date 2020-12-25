@@ -1,8 +1,8 @@
 ﻿namespace TestAutomat.ViewModel
 {
-    public class AutoTesterViewModel
+    public class ViewModel
     {
-        public AutoTesterVisuAnzeigen ViAnzeige { get; set; }
-        public AutoTesterViewModel() => ViAnzeige = new AutoTesterVisuAnzeigen();
+        public VisuAnzeigen ViAnzeige { get; set; }
+        public ViewModel() => ViAnzeige = new VisuAnzeigen();
     }
 }

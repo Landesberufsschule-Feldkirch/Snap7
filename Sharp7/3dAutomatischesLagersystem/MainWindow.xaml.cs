@@ -24,7 +24,7 @@ namespace AutomatischesLagersystem
 
         public Datenstruktur Datenstruktur { get; set; }
 
-        private readonly DatenRangieren _datenRangieren;
+        public DatenRangieren DatenRangieren { get; set; }
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
@@ -56,12 +56,12 @@ namespace AutomatischesLagersystem
             RegalBedienGeraet = new Model.RegalBedienGeraet();
 
             _viewModel = new ViewModel.ViewModel(this);
-            _datenRangieren = new DatenRangieren(this, _viewModel);
+            DatenRangieren = new DatenRangieren(this, _viewModel);
 
             InitializeComponent();
 
             DataContext = _viewModel;
-            Plc = new S71200(Datenstruktur, _datenRangieren.RangierenInput, _datenRangieren.RangierenOutput);
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             DreiD = new DreiDErstellen(this);
 

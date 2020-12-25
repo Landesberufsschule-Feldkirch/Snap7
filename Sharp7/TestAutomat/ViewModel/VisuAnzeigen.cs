@@ -1,11 +1,13 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
+using TestAutomat.Model;
 
 namespace TestAutomat.ViewModel
 {
-    public class AutoTesterVisuAnzeigen : INotifyPropertyChanged
+    public class VisuAnzeigen : INotifyPropertyChanged
     {
-        public AutoTesterVisuAnzeigen()
+        public VisuAnzeigen()
         {
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -19,6 +21,19 @@ namespace TestAutomat.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
+        public void AddEinzelneZeileAnzeigen(TestAusgabe daten) => TestAusgabe.Add(daten);
+        
+
+        private List<TestAusgabe> _testAusgabe = new();
+        public List<TestAusgabe> TestAusgabe
+        {
+            get => _testAusgabe;
+            set
+            {
+                _testAusgabe = value;
+                OnPropertyChanged(nameof(TestAusgabe));
+            }
+        }
 
         #region iNotifyPeropertyChanged Members
 
