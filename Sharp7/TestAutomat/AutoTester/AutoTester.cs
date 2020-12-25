@@ -1,39 +1,43 @@
-﻿using System.Collections.ObjectModel;
-using System.IO;
-using System.Threading;
+﻿using System.IO;
 using TestAutomat.Model;
 
 namespace TestAutomat.AutoTester
 {
     public class AutoTester
     {
-        private ObservableCollection<DirectoryInfo> alleTestOrdner;
-        private AutoTester _autoTester;
-        private OrdnerLesen _alleOrdnerLesen;
+        private readonly ViewModel.ViewModel _viewModel;
 
         public GetConfig GetConfig { get; set; }
 
-       
-        public AutoTester(FileSystemInfo aktuellesProjekt)
+
+        public AutoTester(ViewModel.ViewModel viewModel, FileSystemInfo aktuellesProjekt)
         {
+            _viewModel = viewModel;
+
             GetConfig = new GetConfig(aktuellesProjekt);
+            GetConfig.KonfigurationTesten();
+
 
             System.Threading.Tasks.Task.Run(TestRunnerTask);
         }
 
-        public AutoTester(OrdnerLesen alleOrdnerLesen, AutoTester autoTester)
+        private void TestRunnerTask()
         {
-            _alleOrdnerLesen = alleOrdnerLesen;
-            _autoTester = autoTester;
+            foreach (var einzelneZeile in GetConfig.ConfigTests.AutomatischeSoftwareTests)
+            {
+                ZeileAusfuehren(einzelneZeile);
+            }
+
+            // ReSharper disable once FunctionNeverReturns
         }
 
-        private static void TestRunnerTask()
+        private void ZeileAusfuehren(TestsEinstellungen testZeile)
         {
-            while (true)
-            {
-                Thread.Sleep(10);
-            }
-            // ReSharper disable once FunctionNeverReturns
+            _viewModel.ViAnzeige.AddEinzelneZeileAnzeigen(
+                new TestAusgabe(testZeile.LaufendeNr,
+                    int.Parse(testZeile.EingaengeBitmuster),
+                    int.Parse(testZeile.AusgaengeBitmuster),
+                    testZeile.Kommentar));
         }
     }
 }

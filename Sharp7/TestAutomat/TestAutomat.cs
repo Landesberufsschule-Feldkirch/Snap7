@@ -142,7 +142,7 @@ namespace TestAutomat
                 stackPanel.Children.Add(rdo);
             }
         }
-        private void TestAutomatStarten(DirectoryInfo aktuellesProjekt)
+        private void TestAutomatStarten(FileSystemInfo aktuellesProjekt)
         {
             _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);
             _autoTesterWindow.Show();

@@ -18,16 +18,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
+        <DataGrid x:Name="TestAusgabe" Grid.Column="1" Grid.Row="1" />
 
-        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.Row="1" IsReadOnly="True" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="50" Header="Schritt"/>
-                <DataGridTextColumn Width="100" Header="Bezeichnung"/>
-                <DataGridTextColumn Width="100" Header="Befehl"/>
-                <DataGridTextColumn Width="50" Header="S1"/>
-                <DataGridTextColumn Width="50" Header="S2"/>
-                <DataGridTextColumn Width="50" Header="Q1"/>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Window>
