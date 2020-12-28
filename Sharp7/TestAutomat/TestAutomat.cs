@@ -148,7 +148,7 @@ namespace TestAutomat
             _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);
             _autoTesterWindow.Show();
 
-            _plcWindow = new PlcWindow();
+            _plcWindow = new PlcWindow(_datenstruktur, aktuellesProjekt);
             _plcWindow.Show();
 
         }
