@@ -14,6 +14,7 @@ namespace TestAutomat
         public OrdnerLesen ConfigOrdner { get; set; }
 
         private AutoTesterWindow _autoTesterWindow;
+        private PlcWindow _plcWindow;
         private readonly Datenstruktur _datenstruktur;
         private readonly ManualMode.ManualMode _manualMode;
 
@@ -146,6 +147,10 @@ namespace TestAutomat
         {
             _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);
             _autoTesterWindow.Show();
+
+            _plcWindow = new PlcWindow();
+            _plcWindow.Show();
+
         }
     }
 }
