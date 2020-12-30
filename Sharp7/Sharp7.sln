@@ -90,6 +90,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaborGetriebemotor", "Labor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomat", "TestAutomat\TestAutomat.csproj", "{1985D28A-63D2-484E-BD8D-D2D496E2A15D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcUint", "PlcUint\PlcUint.csproj", "{569A31B6-786A-427E-81FD-10F429157174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcUint.Tests", "PlcUint.Tests\PlcUint.Tests.csproj", "{5E134212-1A5F-405A-8C81-282141DA3989}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +264,14 @@ Global
 		{1985D28A-63D2-484E-BD8D-D2D496E2A15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1985D28A-63D2-484E-BD8D-D2D496E2A15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1985D28A-63D2-484E-BD8D-D2D496E2A15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{569A31B6-786A-427E-81FD-10F429157174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569A31B6-786A-427E-81FD-10F429157174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569A31B6-786A-427E-81FD-10F429157174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569A31B6-786A-427E-81FD-10F429157174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E134212-1A5F-405A-8C81-282141DA3989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E134212-1A5F-405A-8C81-282141DA3989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E134212-1A5F-405A-8C81-282141DA3989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E134212-1A5F-405A-8C81-282141DA3989}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
