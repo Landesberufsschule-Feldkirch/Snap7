@@ -23,7 +23,7 @@ namespace TestAutomat.AutoTester
 
         private void TestRunnerTask()
         {
-            foreach (var einzelneZeile in GetConfig.ConfigTests.AutomatischeSoftwareTests)
+            foreach (var einzelneZeile in GetConfig.TestConfig.AutomatischeSoftwareTests)
             {
                 ZeileAusfuehren(einzelneZeile);
             }
@@ -35,8 +35,8 @@ namespace TestAutomat.AutoTester
         {
             _viewModel.ViAnzeige.AddEinzelneZeileAnzeigen(
                 new TestAusgabe(testZeile.LaufendeNr,
-                    int.Parse(testZeile.EingaengeBitmuster),
-                    int.Parse(testZeile.AusgaengeBitmuster),
+                    (int)testZeile.EingaengeBitmuster.GetDec(),
+                    (int)testZeile.AusgaengeBitmuster.GetDec(),
                     testZeile.Kommentar));
         }
     }

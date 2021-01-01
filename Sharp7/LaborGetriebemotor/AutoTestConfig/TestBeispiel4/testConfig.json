@@ -1,0 +1,14 @@
+﻿{
+  "AutomatischeSoftwareTests": [
+    {
+      "LaufendeNr": 0,
+      "EingaengeBitmuster": "2#1111_1010_0101_1111",
+      "AusgaengeBitmuster": "2#1111_1010_0101_1111",
+      "AusgaengeBitmaske": "2#1111_1010_0101_1111",
+      "Befehl": "Init",
+      "BefehlZusatz1": "-",
+      "BefehlZusatz2": "-",
+      "Kommentar": "Initialisierung"
+    }
+  ]
+}

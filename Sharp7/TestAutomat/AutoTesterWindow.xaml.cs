@@ -18,7 +18,6 @@ namespace TestAutomat
             InitializeComponent();
 
             TestAusgabe.ItemsSource = ViewModel.ViAnzeige.TestAusgabe;
-
         }
     }
 }

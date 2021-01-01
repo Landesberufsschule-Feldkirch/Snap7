@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 
 namespace TestAutomat
@@ -22,20 +21,16 @@ namespace TestAutomat
             grid.Children.Add(label);
         }
 
-        internal static void PlcBezeichnungZeichnen(int x, int y, int par, string bez, DependencyProperty visibilityProperty, Grid grid)
+        internal static void PlcBezeichnungZeichnen(int x, int y, string bez, Grid grid)
         {
             var bezeichnung = new TextBlock
             {
-                Text = $"{bez}{par}",
+                Text = bez,
                 FontSize = 18,
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Colors.Black),
                 Padding = new Thickness(10, 5, 5, 5)
             };
-
-          //  bezeichnung.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.{bez} [{ par }]"));
-           // bezeichnung.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
-
             Grid.SetColumn(bezeichnung, x);
             Grid.SetRow(bezeichnung, y);
             grid.Children.Add(bezeichnung);

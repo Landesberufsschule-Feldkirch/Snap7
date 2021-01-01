@@ -9,13 +9,13 @@ namespace TestAutomat
     public partial class PlcWindow
     {
 
-        public PlcWindow(Datenstruktur datenstruktur, FileSystemInfo fileSystemInfo)
+        public PlcWindow(Datenstruktur datenstruktur, FileSystemInfo fileSystemInfo, ManualMode.ManualMode manualMode, AutoTesterWindow autoTesterWindow)
         {
-            PlcWindowZeichnen();
+            PlcWindowZeichnen(manualMode, autoTesterWindow);
             InitializeComponent();
         }
 
-        private void PlcWindowZeichnen()
+        private void PlcWindowZeichnen(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester)
         {
             var plcGrid = new Grid { Name = "PlcGrid" };
             Content = plcGrid;
@@ -35,7 +35,9 @@ namespace TestAutomat
             {
                 PlcFensterFormen.PlcLabelZeichnen(3 + i, 4, Brushes.White, 16, $".{i}", plcGrid);
                 PlcFensterFormen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", BackgroundProperty, plcGrid);
-                PlcFensterFormen.PlcBezeichnungZeichnen(3 + i, 2, i, "BezDi", VisibilityProperty, plcGrid);
+
+                var (anzeigen, bezeichnung) = DiGetBezeichnung(manualMode, autoTester, i);
+                if (anzeigen) PlcFensterFormen.PlcBezeichnungZeichnen(3 + i, 2, bezeichnung, plcGrid);
             }
 
             PlcFensterFormen.PlcBorderZeichnen(13, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
@@ -43,9 +45,11 @@ namespace TestAutomat
             PlcFensterFormen.PlcLabelZeichnen(14, 5, Brushes.White, 16, "b", plcGrid);
             for (var i = 0; i < 8; i++)
             {
+
                 PlcFensterFormen.PlcLabelZeichnen(13 + i, 4, Brushes.White, 16, $".{i}", plcGrid);
                 PlcFensterFormen.PlcButtonZeichnen(13 + i, 3, 10 + i, "FarbeDi", BackgroundProperty, plcGrid);
-                PlcFensterFormen.PlcBezeichnungZeichnen(13 + i, 2, i, "BezDi", VisibilityProperty, plcGrid);
+                var (anzeigen, bezeichnung) = DiGetBezeichnung(manualMode, autoTester, 8 + i);
+                if (anzeigen) PlcFensterFormen.PlcBezeichnungZeichnen(13 + i, 2, bezeichnung, plcGrid);
             }
 
             PlcFensterFormen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
@@ -55,7 +59,9 @@ namespace TestAutomat
             {
                 PlcFensterFormen.PlcLabelZeichnen(3 + i, 10, Brushes.White, 16, $".{i}", plcGrid);
                 PlcFensterFormen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", BackgroundProperty, plcGrid);
-                PlcFensterFormen.PlcBezeichnungZeichnen(3 + i, 12, i, "BezDa", VisibilityProperty, plcGrid);
+
+                var (anzeigen, bezeichnung) = DaGetBezeichnung(manualMode, autoTester, i);
+                if (anzeigen) PlcFensterFormen.PlcBezeichnungZeichnen(3 + i, 12, bezeichnung, plcGrid);
             }
 
             PlcFensterFormen.PlcBorderZeichnen(13, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
@@ -65,8 +71,23 @@ namespace TestAutomat
             {
                 PlcFensterFormen.PlcLabelZeichnen(13 + i, 10, Brushes.White, 16, $".{i}", plcGrid);
                 PlcFensterFormen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", BackgroundProperty, plcGrid);
-                PlcFensterFormen.PlcBezeichnungZeichnen(13 + i, 12, i, "BezDa", VisibilityProperty, plcGrid);
+
+                var (anzeigen, bezeichnung) = DaGetBezeichnung(manualMode, autoTester, 8 + i);
+                if (anzeigen) PlcFensterFormen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung, plcGrid);
             }
         }
+
+        private (bool anzeigen, string bezeichnung) DiGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
+        {
+            if (!autoTester.AutoTester.GetConfig.TestEaBelegung.GetEingangAktiv(i)) return (false, "");
+            return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung);
+        }
+
+        private (bool anzeigen, string bezeichnung) DaGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
+        {
+            if (!autoTester.AutoTester.GetConfig.TestEaBelegung.GetAusgangAktiv(i)) return (false, "");
+            return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung);
+        }
+
     }
 }
