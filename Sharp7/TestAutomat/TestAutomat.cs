@@ -145,10 +145,10 @@ namespace TestAutomat
         }
         private void TestAutomatStarten(FileSystemInfo aktuellesProjekt)
         {
-            _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);
+            _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt, _datenstruktur);
             _autoTesterWindow.Show();
 
-            _plcWindow = new PlcWindow(_datenstruktur, aktuellesProjekt,_manualMode,  _autoTesterWindow);
+            _plcWindow = new PlcWindow(_manualMode, _autoTesterWindow);
             _plcWindow.Show();
         }
     }

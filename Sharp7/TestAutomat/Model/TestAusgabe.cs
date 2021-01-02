@@ -17,12 +17,11 @@ namespace TestAutomat.Model
             Kommentar = kommentar;
         }
 
-        private string Dez2Bin(int bin)
+        private static string Dez2Bin(int bin)
         {
             var binaer = Convert.ToString(bin, 2);
-            string ergebnis;
-            
-            ergebnis = $"2#0000_0000_0000_00{binaer}";
+
+            var ergebnis = $"2#0000_0000_0000_00{binaer}";
             
             return ergebnis;
         }

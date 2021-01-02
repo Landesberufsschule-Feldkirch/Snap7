@@ -16,7 +16,7 @@ namespace TestAutomat
                 Margin = new Thickness(3, 3, 3, 3)
             };
 
-            buttonTasten.SetBinding(backgroundProperty, new Binding($"PlcVisuAnzeigen.{bez} [{ par }]"));
+            buttonTasten.SetBinding(backgroundProperty, new Binding($"ViAnzeige.{bez} [{ par }]"));
 
             Grid.SetColumn(buttonTasten, x);
             Grid.SetRow(buttonTasten, y);

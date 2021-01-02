@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Kommunikation;
 
 namespace TestAutomat
 {
@@ -8,9 +9,9 @@ namespace TestAutomat
         public ViewModel.ViewModel ViewModel { get; set; }
 
 
-        public AutoTesterWindow(FileSystemInfo aktuellesProjekt)
+        public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
         {
-            ViewModel = new ViewModel.ViewModel();
+            ViewModel = new ViewModel.ViewModel(datenstruktur);
             AutoTester = new AutoTester.AutoTester(ViewModel, aktuellesProjekt);
 
             DataContext = ViewModel;

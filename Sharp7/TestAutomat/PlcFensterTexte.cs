@@ -20,8 +20,7 @@ namespace TestAutomat
             Grid.SetRow(label, y);
             grid.Children.Add(label);
         }
-
-        internal static void PlcBezeichnungZeichnen(int x, int y, string bez, Grid grid)
+        internal static void PlcBezeichnungZeichnen(int x, int y, string bez, VerticalAlignment vertical, Grid grid)
         {
             var bezeichnung = new TextBlock
             {
@@ -29,13 +28,35 @@ namespace TestAutomat
                 FontSize = 18,
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Colors.Black),
-                Padding = new Thickness(10, 5, 5, 5)
+                Padding = new Thickness(10, 5, 5, 5),
+                Background = new SolidColorBrush(Colors.AliceBlue),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = vertical,
+                RenderTransformOrigin = new Point(0.5, 0.5),
+                LayoutTransform = new RotateTransform { Angle = 270 }
             };
             Grid.SetColumn(bezeichnung, x);
             Grid.SetRow(bezeichnung, y);
             grid.Children.Add(bezeichnung);
         }
-
-
+        internal static void PlcKommentarZeichnen(int x, int y, string komment, VerticalAlignment vertical, Grid grid)
+        {
+            var kommentar = new TextBlock
+            {
+                Text = komment,
+                FontSize = 16,
+                FontWeight = FontWeights.Bold,
+                Foreground = new SolidColorBrush(Colors.Black),
+                Padding = new Thickness(10, 5, 5, 5),
+                Background = new SolidColorBrush(Colors.LightGoldenrodYellow),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = vertical,
+                RenderTransformOrigin = new Point(0.5, 0.5),
+                LayoutTransform = new RotateTransform { Angle = 270 }
+            };
+            Grid.SetColumn(kommentar, x);
+            Grid.SetRow(kommentar, y);
+            grid.Children.Add(kommentar);
+        }
     }
 }

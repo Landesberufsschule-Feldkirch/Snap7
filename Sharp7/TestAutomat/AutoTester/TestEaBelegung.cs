@@ -12,6 +12,7 @@ namespace TestAutomat.AutoTester
         public bool GetEingangAktiv(int i) => Eingaenge.GetBitGesetzt(i);
         public bool GetAusgangAktiv(int i) => Ausgaenge.GetBitGesetzt(i);
 
+        // ReSharper disable once UnusedMember.Global
         internal class MyUintConverter : JsonConverter<Uint>
         {
             public override Uint ReadJson(JsonReader reader, Type objectType, Uint existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new Uint(reader.Value.ToString());
