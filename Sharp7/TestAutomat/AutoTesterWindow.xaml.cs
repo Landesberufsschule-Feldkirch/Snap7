@@ -1,24 +1,23 @@
 ﻿using System.IO;
-using Kommunikation;
+using TestAutomat.AutoTester.ViewModel;
 
 namespace TestAutomat
 {
     public partial class AutoTesterWindow
     {
-        public AutoTester.AutoTester AutoTester { get; set; }
-        public ViewModel.ViewModel ViewModel { get; set; }
+        public AutoTester.Config.AutoTester AutoTester { get; set; }
+        public AutoTesterViewModel AutoTesterViewModel { get; set; }
 
-
-        public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
+        public AutoTesterWindow(FileSystemInfo aktuellesProjekt)
         {
-            ViewModel = new ViewModel.ViewModel(datenstruktur);
-            AutoTester = new AutoTester.AutoTester(ViewModel, aktuellesProjekt);
+            AutoTesterViewModel = new AutoTesterViewModel();
+            AutoTester = new AutoTester.Config.AutoTester(AutoTesterViewModel, aktuellesProjekt);
 
-            DataContext = ViewModel;
+            DataContext = AutoTesterViewModel;
 
             InitializeComponent();
 
-            TestAusgabe.ItemsSource = ViewModel.ViAnzeige.TestAusgabe;
+            TestAusgabe.ItemsSource = AutoTesterViewModel.AutoTesterAnzeige.TestAusgabe;
         }
     }
 }

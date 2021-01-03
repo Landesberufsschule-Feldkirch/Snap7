@@ -4,7 +4,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using TestAutomat.Model;
+using TestAutomat.AutoTester.Model;
+using TestAutomat.PlcDisplay;
 
 namespace TestAutomat
 {
@@ -145,10 +146,10 @@ namespace TestAutomat
         }
         private void TestAutomatStarten(FileSystemInfo aktuellesProjekt)
         {
-            _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt, _datenstruktur);
+            _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt);
             _autoTesterWindow.Show();
 
-            _plcWindow = new PlcWindow(_manualMode, _autoTesterWindow);
+            _plcWindow = new PlcWindow(_datenstruktur, _manualMode, _autoTesterWindow);
             _plcWindow.Show();
         }
     }

@@ -1,7 +1,7 @@
 ﻿using LaborGetriebemotor.Commands;
 using LaborGetriebemotor.Model;
 using System.Windows.Input;
-using TestAutomat.AutoTesterViewModel;
+using TestAutomat.AutoTester.ViewModel;
 
 namespace LaborGetriebemotor.ViewModel
 {

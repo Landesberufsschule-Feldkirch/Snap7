@@ -1,15 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 
-namespace TestAutomat.Model
+namespace TestAutomat.AutoTester.Model
 {
     public class OrdnerLesen
     {
         public ObservableCollection<DirectoryInfo> AlleTestOrdner { get; set; } = new();
-
         public OrdnerLesen(string autoTestConfig) => OrdnerEinlesen(autoTestConfig);
-
-
         private void OrdnerEinlesen(string autoTestConfig)
         {
             var parentDirectory = new DirectoryInfo(autoTestConfig);

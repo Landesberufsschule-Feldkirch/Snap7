@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using PlcUint;
 
-namespace TestAutomat.AutoTester
+namespace TestAutomat.PlcDisplay.Config
 {
-    public class TestEaBelegung
+    public class PlcBelegung
     {
         public Uint Eingaenge { get; set; }
         public Uint Ausgaenge { get; set; }

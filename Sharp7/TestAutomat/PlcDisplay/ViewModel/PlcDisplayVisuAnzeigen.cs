@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using Kommunikation;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Media;
-using Kommunikation;
-using TestAutomat.Model;
 
-namespace TestAutomat.ViewModel
+namespace TestAutomat.PlcDisplay.ViewModel
 {
-    public class VisuAnzeigen : INotifyPropertyChanged
+    public class PlcDisplayVisuAnzeigen : INotifyPropertyChanged
     {
         private readonly Datenstruktur _datenstruktur;
-        public VisuAnzeigen(Datenstruktur datenstruktur)
+
+        public PlcDisplayVisuAnzeigen(Datenstruktur datenstruktur)
         {
             _datenstruktur = datenstruktur;
 
@@ -39,22 +39,7 @@ namespace TestAutomat.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-
-
-        public void AddEinzelneZeileAnzeigen(TestAusgabe daten) => TestAusgabe.Add(daten);
-
-
-        private List<TestAusgabe> _testAusgabe = new();
-        public List<TestAusgabe> TestAusgabe
-        {
-            get => _testAusgabe;
-            set
-            {
-                _testAusgabe = value;
-                OnPropertyChanged(nameof(TestAusgabe));
-            }
-        }
+        
 
 
         public void DiSetFarbe(bool val, int id) => FarbeDi[id] = val ? Brushes.LawnGreen : Brushes.DarkGray;

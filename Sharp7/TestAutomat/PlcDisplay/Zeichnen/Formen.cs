@@ -3,9 +3,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace TestAutomat
+namespace TestAutomat.PlcDisplay.Zeichnen
 {
-    public partial class PlcFensterFormen
+    public partial class Formen
     {
         internal static void PlcRechteckZeichnen(int x, int xSpan, int y, int ySpan, Brush farbe, Grid grid)
         {

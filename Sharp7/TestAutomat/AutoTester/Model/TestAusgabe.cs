@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestAutomat.Model
+namespace TestAutomat.AutoTester.Model
 {
     public class TestAusgabe
     {
@@ -16,7 +16,6 @@ namespace TestAutomat.Model
             DigOutput = Dez2Bin(digOutput);
             Kommentar = kommentar;
         }
-
         private static string Dez2Bin(int bin)
         {
             var binaer = Convert.ToString(bin, 2);

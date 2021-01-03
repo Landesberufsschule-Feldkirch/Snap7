@@ -2,9 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace TestAutomat
+namespace TestAutomat.PlcDisplay.Zeichnen
 {
-    public partial class PlcFensterFormen
+    public partial class Formen
     {
         internal static void PlcLabelZeichnen(int x, int y, Brush farbe, double fontSize, string text, Grid grid)
         {

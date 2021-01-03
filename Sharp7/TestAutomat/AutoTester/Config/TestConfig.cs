@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using PlcUint;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using PlcUint;
 
-namespace TestAutomat.AutoTester
+namespace TestAutomat.AutoTester.Config
 {
 
     [JsonConverter(typeof(MyEnumConverter))]
@@ -29,14 +29,11 @@ namespace TestAutomat.AutoTester
         }
         public override void WriteJson(JsonWriter writer, TestBefehle value, JsonSerializer serializer) => writer.WriteValue(value.ToString());
     }
-
-
     public class TestConfig
     {
         // ReSharper disable once UnusedMember.Global
         public ObservableCollection<TestsEinstellungen> AutomatischeSoftwareTests { get; set; } = new();
     }
-
     public class TestsEinstellungen
     {
         public TestsEinstellungen()
@@ -60,7 +57,6 @@ namespace TestAutomat.AutoTester
         public string BefehlZusatz2 { get; set; }
         public string Kommentar { get; set; }
     }
-
     internal class MyUintConverter : JsonConverter<Uint>
     {
         public override Uint ReadJson(JsonReader reader, Type objectType, Uint existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new Uint(reader.Value.ToString());

@@ -1,23 +1,14 @@
 ﻿using System;
 using System.IO;
 
-namespace TestAutomat.AutoTester
+namespace TestAutomat.AutoTester.Config
 {
-    public class GetConfig
+    public class GetTestConfig
     {
-
         public TestConfig TestConfig { get; set; }
-        public TestEaBelegung TestEaBelegung { get; set; }
-
-        public GetConfig(FileSystemInfo aktuellesProjekt)
-        {
-            SetTestConfig(aktuellesProjekt.FullName + "\\testConfig.json");
-            SetEaBelegung(aktuellesProjekt.FullName + "\\testEaBelegung.json");
-        }
-
+     
+        public GetTestConfig(FileSystemInfo aktuellesProjekt) => SetTestConfig(aktuellesProjekt.FullName + "\\testConfig.json");
         public void SetTestConfig(string pfad) => TestConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<TestConfig>(File.ReadAllText(pfad), new MyUintConverter());
-        private void SetEaBelegung(string pfad) => TestEaBelegung = Newtonsoft.Json.JsonConvert.DeserializeObject<TestEaBelegung>(File.ReadAllText(pfad), new MyUintConverter());
-        
         public void KonfigurationTesten()
         {
             var laufendeNr = 0;

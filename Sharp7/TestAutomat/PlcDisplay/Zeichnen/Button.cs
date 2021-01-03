@@ -3,9 +3,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace TestAutomat
+namespace TestAutomat.PlcDisplay.Zeichnen
 {
-    public partial class PlcFensterFormen
+    public partial class Formen
     {
         internal static void PlcButtonZeichnen(int x, int y, int par, string bez, DependencyProperty backgroundProperty, Grid grid)
         {
@@ -16,7 +16,7 @@ namespace TestAutomat
                 Margin = new Thickness(3, 3, 3, 3)
             };
 
-            buttonTasten.SetBinding(backgroundProperty, new Binding($"ViAnzeige.{bez} [{ par }]"));
+            buttonTasten.SetBinding(backgroundProperty, new Binding($"PlcDisplayAnzeige.{bez} [{ par }]"));
 
             Grid.SetColumn(buttonTasten, x);
             Grid.SetRow(buttonTasten, y);
