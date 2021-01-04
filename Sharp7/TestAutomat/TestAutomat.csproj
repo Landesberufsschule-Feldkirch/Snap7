@@ -12,7 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
-    <ProjectReference Include="..\PlcUint\PlcUint.csproj" />
+    <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 

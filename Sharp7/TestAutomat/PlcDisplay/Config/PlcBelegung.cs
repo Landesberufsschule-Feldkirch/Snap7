@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-using PlcUint;
+using PlcDatenTypen;
 
 namespace TestAutomat.PlcDisplay.Config
 {

@@ -6,6 +6,7 @@
       "AusgaengeBitmuster": "2#1111_1010_0101_1111",
       "AusgaengeBitmaske": "2#1111_1010_0101_1111",
       "Befehl": "Init",
+      "Dauer":"T#100ms",
       "BefehlZusatz1": "-",
       "BefehlZusatz2": "-",
       "Kommentar": "Initialisierung"

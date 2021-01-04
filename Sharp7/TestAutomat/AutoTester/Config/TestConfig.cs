@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using PlcUint;
+using PlcDatenTypen;
 
 namespace TestAutomat.AutoTester.Config
 {
@@ -53,13 +53,18 @@ namespace TestAutomat.AutoTester.Config
         public Uint AusgaengeBitmuster { get; set; }
         public Uint AusgaengeBitmaske { get; set; }
         public TestBefehle Befehl { get; set; }
+        public  ZeitDauer Dauer { get; set; }
         public string BefehlZusatz1 { get; set; }
         public string BefehlZusatz2 { get; set; }
         public string Kommentar { get; set; }
     }
     internal class MyUintConverter : JsonConverter<Uint>
     {
+        // public override ZeitDauer ReadJson(JsonReader reader, Type objectType, ZeitDauer existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new ZeitDauer(reader.Value.ToString());
+
         public override Uint ReadJson(JsonReader reader, Type objectType, Uint existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new Uint(reader.Value.ToString());
+       
+       // public override void WriteJson(JsonWriter writer, ZeitDauer value, JsonSerializer serializer) => throw new NotImplementedException();
         public override void WriteJson(JsonWriter writer, Uint value, JsonSerializer serializer) => throw new NotImplementedException();
     }
-}
+    }

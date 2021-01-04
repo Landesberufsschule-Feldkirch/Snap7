@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlcUint
+namespace PlcDatenTypen
 {
     public class Uint
     {

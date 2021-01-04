@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using TestAutomat.AutoTester.Model;
 using TestAutomat.PlcDisplay.Config;
 
@@ -18,13 +19,31 @@ namespace TestAutomat.AutoTester.Config
             GetTestConfig = new GetTestConfig(aktuellesProjekt);
             GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
             GetTestConfig.KonfigurationTesten();
-            
+
             System.Threading.Tasks.Task.Run(TestRunnerTask);
         }
         private void TestRunnerTask()
         {
             foreach (var einzelneZeile in GetTestConfig.TestConfig.AutomatischeSoftwareTests)
             {
+                switch (einzelneZeile.Befehl)
+                {
+                    case TestBefehle.Init:
+                        break;
+
+
+                    case TestBefehle.EingaengeTesten:
+                        break;
+
+                    case TestBefehle.Pause:
+                        break;
+
+                    case TestBefehle.Default:
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                
+
                 ZeileAusfuehren(einzelneZeile);
             }
 

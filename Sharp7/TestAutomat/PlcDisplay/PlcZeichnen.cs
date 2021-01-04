@@ -7,7 +7,7 @@ namespace TestAutomat.PlcDisplay
 {
     public partial class PlcWindow
     {
-        internal void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty  ,ManualMode.ManualMode manualMode, AutoTesterWindow autoTester)
+        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty  ,ManualMode.ManualMode manualMode, AutoTesterWindow autoTester)
         {
             plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             for (var i = 0; i < 40; i++) plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(45) });

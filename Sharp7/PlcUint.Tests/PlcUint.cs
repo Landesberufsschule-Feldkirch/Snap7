@@ -1,6 +1,7 @@
 ﻿using Xunit;
 
-namespace PlcUint.Tests
+
+namespace PlcDatenTypen.Tests
 {
     public class PlcUint
     {

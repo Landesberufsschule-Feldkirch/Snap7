@@ -90,9 +90,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaborGetriebemotor", "Labor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomat", "TestAutomat\TestAutomat.csproj", "{1985D28A-63D2-484E-BD8D-D2D496E2A15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcUint", "PlcUint\PlcUint.csproj", "{569A31B6-786A-427E-81FD-10F429157174}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlcDatenTypen", "PlcUint\PlcDatenTypen.csproj", "{569A31B6-786A-427E-81FD-10F429157174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlcUint.Tests", "PlcUint.Tests\PlcUint.Tests.csproj", "{5E134212-1A5F-405A-8C81-282141DA3989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlcDatenTypen.Tests", "PlcUint.Tests\PlcDatenTypen.Tests.csproj", "{5E134212-1A5F-405A-8C81-282141DA3989}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
