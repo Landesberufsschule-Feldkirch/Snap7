@@ -39,8 +39,9 @@ namespace TestAutomat.AutoTester.Config
                         break;
 
                     case TestBefehle.Default:
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                        break;
+
+                    default: throw new ArgumentOutOfRangeException();
                 }
                 
 

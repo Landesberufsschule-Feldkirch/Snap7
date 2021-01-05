@@ -11,6 +11,7 @@ namespace PlcDatenTypen
 
             if (zahl.Contains("#"))
             {
+                // ReSharper disable once ConvertIfStatementToSwitchStatement
                 if (zahl.Substring(0, 2) == "2#")
                 {
                     _uintDec = Convert.ToUInt16(zahl[2..].Replace("_", ""), 2);

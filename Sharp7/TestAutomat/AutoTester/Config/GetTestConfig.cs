@@ -8,7 +8,7 @@ namespace TestAutomat.AutoTester.Config
         public TestConfig TestConfig { get; set; }
      
         public GetTestConfig(FileSystemInfo aktuellesProjekt) => SetTestConfig(aktuellesProjekt.FullName + "\\testConfig.json");
-        public void SetTestConfig(string pfad) => TestConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<TestConfig>(File.ReadAllText(pfad), new MyUintConverter());
+        public void SetTestConfig(string pfad) => TestConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<TestConfig>(File.ReadAllText(pfad), new MyUintConverter(), new MyzeitDauerConverter());
         public void KonfigurationTesten()
         {
             var laufendeNr = 0;
