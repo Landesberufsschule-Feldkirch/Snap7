@@ -13,7 +13,7 @@ namespace PlcDatenTypen.Tests
 
         public void Test(string zahl, uint ergebnis)
         {
-            var plc = new Uint(zahl);
+            var plc = new PlcDatenTypen.PlcUint(zahl);
             Assert.Equal(ergebnis, plc.GetDec());
         }
 

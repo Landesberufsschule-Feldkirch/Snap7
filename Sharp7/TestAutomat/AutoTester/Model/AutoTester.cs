@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using TestAutomat.AutoTester.Model;
+using TestAutomat.AutoTester.Config;
 using TestAutomat.PlcDisplay.Config;
 
-namespace TestAutomat.AutoTester.Config
+namespace TestAutomat.AutoTester.Model
 {
     public class AutoTester
     {
@@ -28,22 +28,15 @@ namespace TestAutomat.AutoTester.Config
             {
                 switch (einzelneZeile.Befehl)
                 {
-                    case TestBefehle.Init:
-                        break;
+                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(einzelneZeile); break;
+                    case TestBefehle.EingaengeTesten: AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile); break;
+                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(einzelneZeile); break;
 
-
-                    case TestBefehle.EingaengeTesten:
-                        break;
-
-                    case TestBefehle.Pause:
-                        break;
-
-                    case TestBefehle.Default:
-                        break;
+                    case TestBefehle.Default: break;
 
                     default: throw new ArgumentOutOfRangeException();
                 }
-                
+
 
                 ZeileAusfuehren(einzelneZeile);
             }

@@ -12,7 +12,7 @@ namespace PlcDatenTypen.Tests
 
         public void Test(string zahl, long ergebnis)
         {
-            var zeitMs = new PlcDatenTypen.ZeitDauer(zahl);
+            var zeitMs = new PlcDatenTypen.PlcZeitDauer(zahl);
             Assert.Equal(ergebnis, zeitMs.GetZeitDauerMs());
         }
     }

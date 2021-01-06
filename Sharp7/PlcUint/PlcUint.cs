@@ -2,11 +2,11 @@
 
 namespace PlcDatenTypen
 {
-    public class Uint
+    public class PlcUint
     {
         private readonly uint _uintDec;
 
-        public Uint(string zahl)
+        public PlcUint(string zahl)
         {
 
             if (zahl.Contains("#"))
@@ -30,8 +30,6 @@ namespace PlcDatenTypen
                     return;
                 }
             }
-
-
 
             _uintDec = Convert.ToUInt16(zahl);
         }
