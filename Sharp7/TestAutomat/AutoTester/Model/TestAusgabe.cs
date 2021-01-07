@@ -1,28 +1,29 @@
 ﻿using System;
+using TestAutomat.AutoTester.Config;
 
 namespace TestAutomat.AutoTester.Model
 {
     public class TestAusgabe
     {
         public int Nr { get; set; }
+        public TestBefehle Befehle { get; set; }
         public string DigInput { get; set; }
         public string DigOutput { get; set; }
-        public  string Kommentar { get; set; }
+        public string Kommentar { get; set; }
 
-        public TestAusgabe(int nr, int digInput, int digOutput, string kommentar)
+        public TestAusgabe(int nr, TestBefehle befehle, uint digInput, uint digOutput, string kommentar)
         {
             Nr = nr;
+            Befehle = befehle;
             DigInput = Dez2Bin(digInput);
             DigOutput = Dez2Bin(digOutput);
             Kommentar = kommentar;
         }
-        private static string Dez2Bin(int bin)
+        private static string Dez2Bin(uint bin)
         {
-            var binaer = Convert.ToString(bin, 2);
+            var binaer = Convert.ToString(bin, 2).PadLeft(16, '0');
 
-            var ergebnis = $"2#0000_0000_0000_00{binaer}";
-            
-            return ergebnis;
+            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}";
         }
     }
 }

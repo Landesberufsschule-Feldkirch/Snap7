@@ -28,28 +28,16 @@ namespace TestAutomat.AutoTester.Model
             {
                 switch (einzelneZeile.Befehl)
                 {
-                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(einzelneZeile); break;
-                    case TestBefehle.EingaengeTesten: AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile); break;
-                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(einzelneZeile); break;
+                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(einzelneZeile, _autoTesterViewModel); break;
+                    case TestBefehle.EingaengeTesten: AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile, _autoTesterViewModel); break;
+                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(einzelneZeile, _autoTesterViewModel); break;
 
                     case TestBefehle.Default: break;
 
                     default: throw new ArgumentOutOfRangeException();
                 }
-
-
-                ZeileAusfuehren(einzelneZeile);
             }
-
-            // ReSharper disable once FunctionNeverReturns
         }
-        private void ZeileAusfuehren(TestsEinstellungen testZeile)
-        {
-            _autoTesterViewModel.AutoTesterAnzeige.AddEinzelneZeileAnzeigen(
-                new TestAusgabe(testZeile.LaufendeNr,
-                    (int)testZeile.EingaengeBitmuster.GetDec(),
-                    (int)testZeile.AusgaengeBitmuster.GetDec(),
-                    testZeile.Kommentar));
-        }
+      
     }
 }

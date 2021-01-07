@@ -17,7 +17,7 @@ namespace TestAutomat
 
             InitializeComponent();
 
-            TestAusgabe.ItemsSource = AutoTesterViewModel.AutoTesterAnzeige.TestAusgabe;
+            TestAusgabe.ItemsSource =  AutoTesterViewModel.AutoTesterAnzeige.TestAusgabe;
         }
     }
 }
