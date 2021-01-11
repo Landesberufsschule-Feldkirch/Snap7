@@ -15,8 +15,8 @@ namespace TestAutomat.AutoTester.Model
             var ergebnis = new TestAusgabe(
                 befehlsZeile.LaufendeNr,
                 befehlsZeile.Befehl,
-                befehlsZeile.EingaengeBitmuster.GetDec(),
-                befehlsZeile.AusgaengeBitmuster.GetDec(),
+                befehlsZeile.EingaengeBitmuster,
+                befehlsZeile.AusgaengeBitmuster,
                 befehlsZeile.Kommentar);
 
             autoTesterViewModel.AutoTesterAnzeige.AddEinzelneZeileAnzeigen(ergebnis);

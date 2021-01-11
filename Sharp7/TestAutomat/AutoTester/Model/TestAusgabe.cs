@@ -1,4 +1,5 @@
 ﻿using System;
+using PlcDatenTypen;
 using TestAutomat.AutoTester.Config;
 
 namespace TestAutomat.AutoTester.Model
@@ -11,12 +12,12 @@ namespace TestAutomat.AutoTester.Model
         public string DigOutput { get; set; }
         public string Kommentar { get; set; }
 
-        public TestAusgabe(int nr, TestBefehle befehle, uint digInput, uint digOutput, string kommentar)
+        public TestAusgabe(int nr, TestBefehle befehle, PlcUint digInput, PlcUint digOutput, string kommentar)
         {
             Nr = nr;
             Befehle = befehle;
-            DigInput = Dez2Bin(digInput);
-            DigOutput = Dez2Bin(digOutput);
+            DigInput = digInput.GetBinFormatiert();
+            DigOutput = digOutput.GetBinFormatiert();
             Kommentar = kommentar;
         }
         private static string Dez2Bin(uint bin)

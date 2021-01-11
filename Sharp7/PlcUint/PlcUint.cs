@@ -41,5 +41,11 @@ namespace PlcDatenTypen
             var bitMuster = (uint)(1 << i);
             return (_uintDec & bitMuster) == bitMuster;
         }
+
+        public string GetBinFormatiert()
+        {
+            var binaer = Convert.ToString(_uintDec, 2).PadLeft(16, '0');
+            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}";
+        }
     }
 }
