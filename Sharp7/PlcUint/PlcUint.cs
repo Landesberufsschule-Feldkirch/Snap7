@@ -4,7 +4,7 @@ namespace PlcDatenTypen
 {
     public class PlcUint
     {
-        private readonly uint _uintDec;
+        private readonly ulong _uintDec;
 
         public PlcUint(string zahl)
         {
@@ -14,27 +14,30 @@ namespace PlcDatenTypen
                 // ReSharper disable once ConvertIfStatementToSwitchStatement
                 if (zahl.Substring(0, 2) == "2#")
                 {
-                    _uintDec = Convert.ToUInt16(zahl[2..].Replace("_", ""), 2);
+                    _uintDec = Convert.ToUInt64(zahl[2..].Replace("_", ""), 2);
                     return;
                 }
 
                 if (zahl.Substring(0, 2) == "8#")
                 {
-                    _uintDec = Convert.ToUInt16(zahl[2..], 8);
+                    _uintDec = Convert.ToUInt64(zahl[2..], 8);
                     return;
                 }
 
+                // ReSharper disable once InvertIf
                 if (zahl.Substring(0, 3) == "16#")
                 {
-                    _uintDec = Convert.ToUInt16(zahl[3..], 16);
+                    _uintDec = Convert.ToUInt64(zahl[3..], 16);
                     return;
                 }
+
+                throw new ArgumentOutOfRangeException(nameof(zahl));
             }
 
-            _uintDec = Convert.ToUInt16(zahl);
+            _uintDec = Convert.ToUInt64(zahl);
         }
 
-        public uint GetDec() => _uintDec;
+        public ulong GetDec() => _uintDec;
 
         public bool GetBitGesetzt(int i)
         {
@@ -42,10 +45,32 @@ namespace PlcDatenTypen
             return (_uintDec & bitMuster) == bitMuster;
         }
 
-        public string GetBinFormatiert()
+        public string GetBin8Bit()
         {
-            var binaer = Convert.ToString(_uintDec, 2).PadLeft(16, '0');
-            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}";
+            if (_uintDec > Math.Pow(2, 8) - 1) return "uuups - zu große Zahl!";
+
+            var binaer =  Convert.ToString((long)_uintDec, 2).PadLeft(8, '0');
+            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}";
+        }
+
+        public string GetBin16Bit()
+        {
+            if (_uintDec > Math.Pow(2, 16) - 1) return "uuups - zu große Zahl!";
+
+            var binaer = Convert.ToString((long)_uintDec, 2).PadLeft(16, '0');
+            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}"
+                    + $"_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}";
+        }
+
+        public string GetBin32Bit()
+        {
+            if (_uintDec > Math.Pow(2, 32) - 1) return "uuups - zu große Zahl!";
+
+            var binaer = Convert.ToString((long)_uintDec, 2).PadLeft(32, '0');
+            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}"
+                   + $"_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}"
+                   + $"_{binaer.Substring(16, 4)}_{binaer.Substring(20, 4)}"
+                   + $"_{binaer.Substring(24, 4)}_{binaer.Substring(28, 4)}";
         }
     }
 }

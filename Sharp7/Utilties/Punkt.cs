@@ -4,6 +4,7 @@ namespace Utilities
 {
     public class Punkt
     {
+        private readonly int _nix;
         public double X { get; set; }
         public double Y { get; set; }
 
@@ -13,14 +14,9 @@ namespace Utilities
             Y = y;
         }
 
-        public Punkt()
-        {
-            X = 0;
-            Y = 0;
-        }
-
         public Punkt(double radius, double winkel, int nix)
         {
+            _nix = nix;
             // Winkel in Grad --> für Synchronisiereinrichtung
             X = radius * Math.Cos(Winkel.Deg2Rad(winkel));
             Y = radius * Math.Sin(Winkel.Deg2Rad(winkel));

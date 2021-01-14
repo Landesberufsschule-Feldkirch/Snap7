@@ -16,8 +16,8 @@ namespace TestAutomat.AutoTester.Model
         {
             Nr = nr;
             Befehle = befehle;
-            DigInput = digInput.GetBinFormatiert();
-            DigOutput = digOutput.GetBinFormatiert();
+            DigInput = digInput.GetBin16Bit();
+            DigOutput = digOutput.GetBin16Bit();
             Kommentar = kommentar;
         }
         private static string Dez2Bin(uint bin)

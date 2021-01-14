@@ -5,26 +5,31 @@ namespace Utilities
     public class Rechteck
     {
         public enum RichtungX { NachLinks, Steht, NachRechts }
-
         public enum RichtungY { NachOben, Steht, NachUnten }
 
-        public Punkt Punkt { get; set; }
+        private readonly Punkt _linksOben;
         private readonly double _breite;
         private readonly double _hoehe;
 
-        public Rechteck(Punkt p, double b, double h)
+        public Rechteck(Punkt linksOben, double b, double h)
         {
-            Punkt = p;
+            _linksOben = linksOben;
             _breite = b;
             _hoehe = h;
         }
 
+        public Punkt GetPosition() => _linksOben;
+        public double GetLinks() => _linksOben.X;
+        public double GetRechts() => _linksOben.X + _breite;
+        public double GetOben() => _linksOben.Y;
+        public double GetUnten() => _linksOben.Y + _hoehe;
+
         public static bool Kollision(Rechteck r1, Rechteck r2)
         {
-            return r1.Punkt.X < r2.Punkt.X + r2._breite &&
-                   r2.Punkt.X < r1.Punkt.X + r1._breite &&
-                   r1.Punkt.Y < r2.Punkt.Y + r2._hoehe &&
-                   r2.Punkt.Y < r1.Punkt.Y + r1._hoehe;
+            return r1.GetLinks() < r2.GetRechts() &&
+                   r2.GetLinks() < r1.GetRechts() &&
+                   r1.GetOben() < r2.GetUnten() &&
+                   r2.GetOben() < r1.GetUnten();
         }
 
         public static bool Ausgebremst(Rechteck bewegt, Rechteck hinderniss, RichtungX x, RichtungY y)
@@ -35,8 +40,8 @@ namespace Utilities
 
             switch (x)
             {
-                case RichtungX.NachRechts: stop |= hinderniss.Punkt.X > bewegt.Punkt.X; break;
-                case RichtungX.NachLinks: stop |= hinderniss.Punkt.X < bewegt.Punkt.X; break;
+                case RichtungX.NachRechts: stop |= hinderniss.GetLinks() > bewegt.GetLinks(); break;
+                case RichtungX.NachLinks: stop |= hinderniss.GetLinks() < bewegt.GetLinks(); break;
                 case RichtungX.Steht:
                     break;
                 default:
@@ -44,8 +49,8 @@ namespace Utilities
             }
             switch (y)
             {
-                case RichtungY.NachOben: stop |= hinderniss.Punkt.Y < bewegt._hoehe; break;
-                case RichtungY.NachUnten: stop |= hinderniss.Punkt.Y > bewegt.Punkt.Y; break;
+                case RichtungY.NachOben: stop |= hinderniss.GetOben() < bewegt._hoehe; break;
+                case RichtungY.NachUnten: stop |= hinderniss.GetOben() > bewegt.GetOben(); break;
                 case RichtungY.Steht:
                     break;
                 default:
