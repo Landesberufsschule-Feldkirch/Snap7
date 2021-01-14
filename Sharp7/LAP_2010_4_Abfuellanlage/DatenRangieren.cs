@@ -17,7 +17,7 @@ namespace LAP_2010_4_Abfuellanlage
         private enum BitPosEingang
         {
             B1 = 0, // Füllstand
-            B2,     // Position Dose
+            B2,     // EineDose Dose
             S1,     // Taster Reset
             S2      // Taster Start
         }

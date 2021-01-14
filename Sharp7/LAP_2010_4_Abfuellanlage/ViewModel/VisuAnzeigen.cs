@@ -75,7 +75,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 for (var i = 0; i < 5; i++)
                 {
                     VisibilityDose1(_abfuellAnlage.AlleDosen[i].Sichtbar, i);
-                    PositionDose(_abfuellAnlage.AlleDosen[i].Position.Punkt, i);
+                    PositionDose(_abfuellAnlage.AlleDosen[i].EineDose.GetPosition(), i);
                 }
 
 
@@ -184,7 +184,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        #region Position Dosen
+        #region EineDose Dosen
 
         private void VisibilityDose1(bool v, int id) => VisDose[id] = v ? Visibility.Visible : Visibility.Hidden;
 

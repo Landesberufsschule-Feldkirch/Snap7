@@ -7,7 +7,7 @@ namespace Utilities
         public enum RichtungX { NachLinks, Steht, NachRechts }
         public enum RichtungY { NachOben, Steht, NachUnten }
 
-        private readonly Punkt _linksOben;
+        private Punkt _linksOben;
         private readonly double _breite;
         private readonly double _hoehe;
 
@@ -18,6 +18,9 @@ namespace Utilities
             _hoehe = h;
         }
 
+        public void SetPosition(Punkt linksOben) => _linksOben = linksOben.Clone();
+        public void SetWaagrechtSchieben(double x) => _linksOben.X += x;
+        public void SetSenkrechtSchieben(double y) => _linksOben.Y += y;
         public Punkt GetPosition() => _linksOben;
         public double GetLinks() => _linksOben.X;
         public double GetRechts() => _linksOben.X + _breite;

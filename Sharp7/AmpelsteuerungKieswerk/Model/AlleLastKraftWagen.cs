@@ -27,7 +27,7 @@ namespace AmpelsteuerungKieswerk.Model
             System.Threading.Tasks.Task.Run(AlleLastKraftWagenTask);
         }
 
-        public Punkt GetPositionLkw(int index) => _alleLkw[index].Position.Punkt;
+        public Punkt GetPositionLkw(int index) => _alleLkw[index].Lkw.GetPosition();
 
         public LastKraftWagen.LkwRichtungen GetRichtungLkw(int index) => _alleLkw[index].LkwRichtung;
 
@@ -65,7 +65,7 @@ namespace AmpelsteuerungKieswerk.Model
                 var (hx, hy) = lkw.GetRichtung();
                 if (hx != Rechteck.RichtungX.Steht || hy != Rechteck.RichtungY.Steht)
                 {
-                    stop |= Rechteck.Ausgebremst(laster.Position, lkw.Position, lx, ly);
+                    stop |= Rechteck.Ausgebremst(laster.Lkw, lkw.Lkw, lx, ly);
                 }
             }
 

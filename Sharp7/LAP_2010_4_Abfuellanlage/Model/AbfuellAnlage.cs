@@ -10,7 +10,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
         public bool S1 { get; set; } // Taster Reset
         public bool S2 { get; set; } // Taster Start
         public bool B1 { get; set; } // Behälter Füllstand
-        public bool B2 { get; set; } // Position Dose Füllen
+        public bool B2 { get; set; } // EineDose Dose Füllen
         public bool Q1 { get; set; } // Motor Förderband
         public bool K1 { get; set; } // Spule Magazin Förderband
         public bool K2 { get; set; } // Spule Füllen
@@ -70,7 +70,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             foreach (var dose in AlleDosen.Where(dose => blechDosen.Id != dose.Id))
             {
                 var (hx, hy) = dose.GetRichtung();
-                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(blechDosen.Position, dose.Position, lx, ly); }
+                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(blechDosen.EineDose, dose.EineDose, lx, ly); }
             }
 
             return stop;
