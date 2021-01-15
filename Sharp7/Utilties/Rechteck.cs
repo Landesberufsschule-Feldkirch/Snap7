@@ -35,31 +35,29 @@ namespace Utilities
                    r2.GetOben() < r1.GetUnten();
         }
 
-        public static bool Ausgebremst(Rechteck bewegt, Rechteck hinderniss, RichtungX x, RichtungY y)
+        public static bool Ausgebremst(Rechteck bewegt, Rechteck hinderniss, RichtungX richtungX, RichtungY richtungY)
         {
-            var stop = false;
+            if (Kollision(bewegt, hinderniss)) return true;
 
-            if (!Kollision(bewegt, hinderniss)) return false;
+            var bewegungStoppen = false;
 
-            switch (x)
+            switch (richtungX)
             {
-                case RichtungX.NachRechts: stop |= hinderniss.GetLinks() > bewegt.GetLinks(); break;
-                case RichtungX.NachLinks: stop |= hinderniss.GetLinks() < bewegt.GetLinks(); break;
-                case RichtungX.Steht:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(x), x, null);
+                case RichtungX.NachRechts: bewegungStoppen |= hinderniss.GetLinks() > bewegt.GetLinks(); break;
+                case RichtungX.NachLinks: bewegungStoppen |= hinderniss.GetLinks() < bewegt.GetLinks(); break;
+                case RichtungX.Steht: break;
+                default: throw new ArgumentOutOfRangeException(nameof(richtungX), richtungX, null);
             }
-            switch (y)
+
+            switch (richtungY)
             {
-                case RichtungY.NachOben: stop |= hinderniss.GetOben() < bewegt._hoehe; break;
-                case RichtungY.NachUnten: stop |= hinderniss.GetOben() > bewegt.GetOben(); break;
-                case RichtungY.Steht:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(y), y, null);
+                case RichtungY.NachOben: bewegungStoppen |= hinderniss.GetOben() < bewegt._hoehe; break;
+                case RichtungY.NachUnten: bewegungStoppen |= hinderniss.GetOben() > bewegt.GetOben(); break;
+                case RichtungY.Steht: break;
+                default: throw new ArgumentOutOfRangeException(nameof(richtungY), richtungY, null);
             }
-            return stop;
+
+            return bewegungStoppen;
         }
     }
 }

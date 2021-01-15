@@ -1,12 +1,11 @@
 ﻿using System.Threading;
 using TestAutomat.AutoTester.Config;
-using TestAutomat.AutoTester.ViewModel;
 
 namespace TestAutomat.AutoTester.Model
 {
     internal partial class AlleTestBefehle
     {
-        internal static void TestBefehlInit(TestsEinstellungen befehlsZeile, AutoTesterViewModel autoTesterViewModel)
+        internal static TestAusgabe TestBefehlInit(TestsEinstellungen befehlsZeile)
         {
             //
             Thread.Sleep((int)befehlsZeile.Dauer.GetZeitDauerMs());
@@ -17,8 +16,8 @@ namespace TestAutomat.AutoTester.Model
                 befehlsZeile.EingaengeBitmuster,
                 befehlsZeile.AusgaengeBitmuster, 
                 befehlsZeile.Kommentar);
-          
-            autoTesterViewModel.AutoTesterAnzeige.AddEinzelneZeileAnzeigen(ergebnis);
+
+            return ergebnis;
         }
     }
 }

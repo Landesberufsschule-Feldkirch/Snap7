@@ -1,5 +1,4 @@
-﻿using System;
-using PlcDatenTypen;
+﻿using PlcDatenTypen;
 using TestAutomat.AutoTester.Config;
 
 namespace TestAutomat.AutoTester.Model
@@ -19,12 +18,6 @@ namespace TestAutomat.AutoTester.Model
             DigInput = digInput.GetBin16Bit();
             DigOutput = digOutput.GetBin16Bit();
             Kommentar = kommentar;
-        }
-        private static string Dez2Bin(uint bin)
-        {
-            var binaer = Convert.ToString(bin, 2).PadLeft(16, '0');
-
-            return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}_{binaer.Substring(8, 4)}_{binaer.Substring(12, 4)}";
         }
     }
 }

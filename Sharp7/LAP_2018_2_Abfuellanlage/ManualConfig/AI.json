@@ -4,7 +4,7 @@
       "LaufendeNr": 0,
       "StartByte": 0,
       "StartBit": 0,
-      "AnzahlBit": 8,
+      "AnzahlBit": 16,
       "Type": "Default",
       "Bezeichnung": "Pegel",
       "Kommentar": "Pegel 0-100"

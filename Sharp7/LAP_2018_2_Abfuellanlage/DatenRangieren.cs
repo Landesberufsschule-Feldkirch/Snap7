@@ -35,7 +35,7 @@ namespace LAP_2018_2_Abfuellanlage
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Abfuellanlage.S3);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Abfuellanlage.S4);
 
-            S7.SetUInt_8_At(datenstruktur.AnalogInput, 0, (byte)(_viewModel.Abfuellanlage.Pegel * 100.0));
+            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, (short)(_viewModel.Abfuellanlage.Pegel * 100.0));
             S7.SetSint_16_At(datenstruktur.AnalogInput, 2, S7Analog.S7_Analog_2_Int16(_viewModel.Abfuellanlage.Pegel, 1));
         }
 

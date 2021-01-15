@@ -1,4 +1,6 @@
-﻿namespace Hydraulik
+﻿using System;
+
+namespace Hydraulik
 {
     public class Thermostat
     {
@@ -8,10 +10,12 @@
 
         public Thermostat(double min, double max)
         {
-            _temperaturErreicht = false;
-            _temperaturMin = min;
-            _temperaturMax = max;
-        }
+                _temperaturErreicht = false;
+                _temperaturMin = min;
+                _temperaturMax = max;
+
+                if (min >= max) throw new ArgumentOutOfRangeException(nameof(min));
+          }
 
         public void SetTemperatur(double temp)
         {
@@ -20,5 +24,7 @@
         }
 
         public bool GetTemperaturErreicht() => _temperaturErreicht;
+        public double GetTemperaturMin() => _temperaturMin;
+        public double GetTemperaturMax() => _temperaturMax;
     }
 }

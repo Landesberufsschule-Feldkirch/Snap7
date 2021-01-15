@@ -18,7 +18,7 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="TestAusgabe" Grid.Column="1" Grid.Row="1" />
+        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.Row="1" />
 
     </Grid>
 </Window>

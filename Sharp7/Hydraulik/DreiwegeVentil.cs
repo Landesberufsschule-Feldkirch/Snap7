@@ -16,7 +16,7 @@ namespace Hydraulik
 
         public DreiwegeVentil(double minPosProzent, double maxPosProzent, double laufzeitSekunden)
         {
-            _positionProzent = minPosProzent;
+            _positionProzent = 0;
             _posMinProzent = minPosProzent;
             _posMaxProzent = maxPosProzent;
             _deltaMillisekunden = (_posMaxProzent - _posMinProzent) * laufzeitSekunden / (1000 * Schrittweite);
@@ -28,7 +28,6 @@ namespace Hydraulik
         {
             while (true)
             {
-
                 if (_ventilOeffnen)
                 {
                     _positionProzent += _deltaMillisekunden;
@@ -42,7 +41,7 @@ namespace Hydraulik
                 }
 
 
-                LimitsTesten();
+                VentilPositionLimitieren();
 
                 Thread.Sleep(Schrittweite);
             }
@@ -51,10 +50,9 @@ namespace Hydraulik
 
         public void VentilOeffnen(bool wert) => _ventilOeffnen = wert;
         public void VentilSchliessen(bool wert) => _ventilSchliessen = wert;
-
         public double GetPosition() => _positionProzent;
 
-        private void LimitsTesten()
+        private void VentilPositionLimitieren()
         {
             if (_positionProzent > _posMaxProzent) _positionProzent = _posMaxProzent;
             if (_positionProzent < _posMinProzent) _positionProzent = _posMinProzent;
