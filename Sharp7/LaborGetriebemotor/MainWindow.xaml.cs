@@ -1,11 +1,13 @@
 ﻿using Kommunikation;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace LaborGetriebemotor
 {
     public partial class MainWindow
     {
+        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -21,6 +23,8 @@ namespace LaborGetriebemotor
 
         public MainWindow()
         {
+            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
+
             const string versionText = "Labor Getriebemotor";
             VersionNummer = "V2.0";
 
@@ -31,8 +35,6 @@ namespace LaborGetriebemotor
                 VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
             };
 
-
-
             var viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(viewModel);
 
@@ -41,7 +43,7 @@ namespace LaborGetriebemotor
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, BetriebsartProjekt, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
@@ -54,5 +56,16 @@ namespace LaborGetriebemotor
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
+        private void BetriebsartProjektChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (sender is not TabControl tc) return;
+            BetriebsartProjekt = tc.SelectedIndex switch
+            {
+                0 => S71200.BetriebsartProjekt.LaborPlatte,
+                1 => S71200.BetriebsartProjekt.Simulation,
+                2 => S71200.BetriebsartProjekt.AutomatischerSoftwareTest,
+                _ => S71200.BetriebsartProjekt.LaborPlatte
+            };
+        }
     }
 }

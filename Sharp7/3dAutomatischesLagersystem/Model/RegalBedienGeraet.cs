@@ -31,10 +31,10 @@
 
         public void SetZ(double pos) => _z = pos;
 
-        internal void FahreX(double geschwindigkeit) => _x = Utilities.S7Analog.Clamp((_x + geschwindigkeit), -1, 1);
+        internal void FahreX(double geschwindigkeit) => _x = Utilities.Simatic.Clamp((_x + geschwindigkeit), -1, 1);
 
-        internal void FahreY(double geschwindigkeit) => _y = Utilities.S7Analog.Clamp((_y + geschwindigkeit), -1, 1);
+        internal void FahreY(double geschwindigkeit) => _y = Utilities.Simatic.Clamp((_y + geschwindigkeit), -1, 1);
 
-        internal void FahreZ(double geschwindigkeit) => _z = Utilities.S7Analog.Clamp((_z + geschwindigkeit), -1, 1);
+        internal void FahreZ(double geschwindigkeit) => _z = Utilities.Simatic.Clamp((_z + geschwindigkeit), -1, 1);
     }
 }

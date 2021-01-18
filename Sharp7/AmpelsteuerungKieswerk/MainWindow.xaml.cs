@@ -5,6 +5,7 @@ namespace AmpelsteuerungKieswerk
 {
     public partial class MainWindow
     {
+        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -18,6 +19,8 @@ namespace AmpelsteuerungKieswerk
 
         public MainWindow()
         {
+            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
+            
             const string versionText = "Ampelsteuerung Kieswerk";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;

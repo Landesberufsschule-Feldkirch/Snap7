@@ -5,6 +5,7 @@ namespace BehaelterSteuerung
 {
     public partial class MainWindow
     {
+        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokalLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -17,6 +18,8 @@ namespace BehaelterSteuerung
 
         public MainWindow()
         {
+            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
+            
             var johnsonTrotter = new JohnsonTrotter();
 
             const string versionText = "Behaeltersteuerung";

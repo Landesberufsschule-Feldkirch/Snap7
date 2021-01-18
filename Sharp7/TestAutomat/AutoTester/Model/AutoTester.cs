@@ -9,11 +9,13 @@ namespace TestAutomat.AutoTester.Model
     {
         public GetTestConfig GetTestConfig { get; set; }
         public GetPlcConfig GetPlcConfig { get; set; }
-
         public AutoTesterWindow AutoTesterWindow { get; set; }
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt)
+        public  Kommunikation.Datenstruktur Datenstruktur { get; set; }
+
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
         {
             AutoTesterWindow = autoTesterWindow;
+            Datenstruktur = datenstruktur;
             GetTestConfig = new GetTestConfig(aktuellesProjekt);
             GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
             GetTestConfig.KonfigurationTesten();
@@ -26,9 +28,9 @@ namespace TestAutomat.AutoTester.Model
             {
                 switch (einzelneZeile.Befehl)
                 {
-                    case TestBefehle.Init: AutoTesterWindow.UpdateForReal(AlleTestBefehle.TestBefehlInit(einzelneZeile)); break;
-                    case TestBefehle.EingaengeTesten: AutoTesterWindow.UpdateForReal(AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile)); break;
-                    case TestBefehle.Pause: AutoTesterWindow.UpdateForReal(AlleTestBefehle.TestBefehlPause(einzelneZeile)); break;
+                    case TestBefehle.Init: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlInit(einzelneZeile, Datenstruktur)); break;
+                    case TestBefehle.EingaengeTesten: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile)); break;
+                    case TestBefehle.Pause: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlPause(einzelneZeile)); break;
 
                     case TestBefehle.Default: break;
                     default: throw new ArgumentOutOfRangeException();

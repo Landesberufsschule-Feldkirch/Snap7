@@ -27,7 +27,7 @@ namespace Utilities
             while (true)
             {
                 var akt = _aktuell + _faktor * (_neuerSollwert - _aktuell);
-                _aktuell = S7Analog.Clamp(akt, _limitMin, _limitMax);
+                _aktuell = Simatic.Clamp(akt, _limitMin, _limitMax);
 
                 Thread.Sleep(_zeitkonstante);
             }

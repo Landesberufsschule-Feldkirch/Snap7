@@ -6,6 +6,8 @@ namespace PaternosterLager
 {
     public partial class MainWindow
     {
+
+        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
         public IPlc Plc { get; set; }
         public bool FensterAktiv { get; set; }
@@ -23,6 +25,8 @@ namespace PaternosterLager
 
         public MainWindow()
         {
+            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
+            
             const string versionText = "Paternosterlager";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
@@ -40,7 +44,7 @@ namespace PaternosterLager
             DataContext = _viewModel;
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, BetriebsartProjekt, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");

@@ -20,12 +20,12 @@ namespace TestAutomat.PlcDisplay.Zeichnen
             Grid.SetRow(label, y);
             grid.Children.Add(label);
         }
-        internal static void PlcBezeichnungZeichnen(int x, int y, string bez, VerticalAlignment vertical, Grid grid)
+        internal static void PlcBezeichnungZeichnen(int x, int y, string bez, int schriftGroesse, VerticalAlignment vertical, Grid grid)
         {
             var bezeichnung = new TextBlock
             {
                 Text = bez,
-                FontSize = 18,
+                FontSize = schriftGroesse,
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Colors.Black),
                 Padding = new Thickness(10, 5, 5, 5),
@@ -39,12 +39,12 @@ namespace TestAutomat.PlcDisplay.Zeichnen
             Grid.SetRow(bezeichnung, y);
             grid.Children.Add(bezeichnung);
         }
-        internal static void PlcKommentarZeichnen(int x, int y, string komment, VerticalAlignment vertical, Grid grid)
+        internal static void PlcKommentarZeichnen(int x, int y, string komment, int schriftGroesse, VerticalAlignment vertical, Grid grid)
         {
             var kommentar = new TextBlock
             {
                 Text = komment,
-                FontSize = 16,
+                FontSize = schriftGroesse,
                 FontWeight = FontWeights.Bold,
                 Foreground = new SolidColorBrush(Colors.Black),
                 Padding = new Thickness(10, 5, 5, 5),

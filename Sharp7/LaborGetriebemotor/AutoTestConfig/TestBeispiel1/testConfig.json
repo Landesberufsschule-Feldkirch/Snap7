@@ -2,11 +2,11 @@
   "AutomatischeSoftwareTests": [
     {
       "LaufendeNr": 0,
-      "EingaengeBitmuster": "1",
-      "AusgaengeBitmuster": "2",
-      "AusgaengeBitmaske": "3",
+      "EingaengeBitmuster": "2#0000_0001",
+      "AusgaengeBitmuster": "2#0000_0001",
+      "AusgaengeBitmaske": "2#0000_0001",
       "Befehl": "Init",
-      "Dauer":"T#1s234ms",
+      "Dauer": "T#1s234ms",
       "BefehlZusatz1": "-",
       "BefehlZusatz2": "-",
       "Kommentar": "Initialisierung"
@@ -17,7 +17,7 @@
       "AusgaengeBitmuster": "12",
       "AusgaengeBitmaske": "13",
       "Befehl": "EingaengeTesten",
-      "Dauer":"T#2s",
+      "Dauer": "T#2s",
       "BefehlZusatz1": "-",
       "BefehlZusatz2": "-",
       "Kommentar": "Schritt 1"
@@ -28,7 +28,7 @@
       "AusgaengeBitmuster": "22",
       "AusgaengeBitmaske": "23",
       "Befehl": "EingaengeTesten",
-      "Dauer":"T#3s",
+      "Dauer": "T#3s",
       "BefehlZusatz1": "-",
       "BefehlZusatz2": "-",
       "Kommentar": "Schritt 2"
@@ -39,7 +39,7 @@
       "AusgaengeBitmuster": "32",
       "AusgaengeBitmaske": "33",
       "Befehl": "Pause",
-      "Dauer":"T#4s",
+      "Dauer": "T#4s",
       "BefehlZusatz1": "-",
       "BefehlZusatz2": "-",
       "Kommentar": "Schritt 3"

@@ -10,6 +10,13 @@ namespace Kommunikation
 {
     public class S71200 : IPlc
     {
+        public enum BetriebsartProjekt
+        {
+            LaborPlatte = 0,
+            Simulation,
+            AutomatischerSoftwareTest
+        }
+
         private enum BytePosition
         {
             Byte0 = 0,

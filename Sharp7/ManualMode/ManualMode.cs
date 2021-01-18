@@ -1,7 +1,7 @@
-﻿using ManualMode.Model;
+﻿using Kommunikation;
+using ManualMode.Model;
 using ManualMode.ViewModel;
 using System;
-using Kommunikation;
 
 namespace ManualMode
 {
@@ -16,28 +16,23 @@ namespace ManualMode
         }
 
         public ManualViewModel ManualViewModel { get; set; }
-
         public GetConfig GetConfig { get; set; }
-        public Kommunikation.Datenstruktur Datenstruktur { get; set; }
-        
-        
-        
-        private Kommunikation.IPlc _plc;
+        public Datenstruktur Datenstruktur { get; set; }
+
+        private IPlc _plc;
+        private readonly S71200.BetriebsartProjekt _betriebsartProjekt;
         private readonly Action<Datenstruktur> _cbInput;
         private readonly Action<Datenstruktur> _cbOutput;
 
-
-
-        public ManualMode(Kommunikation.Datenstruktur datenstruktur, IPlc plc, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public ManualMode(Datenstruktur datenstruktur, IPlc plc, S71200.BetriebsartProjekt betriebsartProjekt, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
-
             Datenstruktur = datenstruktur;
             _plc = plc;
+            _betriebsartProjekt = betriebsartProjekt;
             _cbInput = cbInput;
             _cbOutput = cbOutput;
 
             ManualViewModel = new ManualViewModel(this);
-
 
             GetConfig = new GetConfig();
         }
@@ -75,7 +70,6 @@ namespace ManualMode
             FensterAnzeigen();
         }
 
-
         public void FensterAnzeigen()
         {
             if (Datenstruktur.AnzahlByteDigitalInput > 0)
@@ -100,7 +94,5 @@ namespace ManualMode
             var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
             aaFenster.Show();
         }
-
-
     }
 }

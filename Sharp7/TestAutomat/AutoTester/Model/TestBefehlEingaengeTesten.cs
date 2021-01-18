@@ -12,6 +12,7 @@ namespace TestAutomat.AutoTester.Model
 
             var ergebnis = new TestAusgabe(
                 befehlsZeile.LaufendeNr,
+                TestErgebnis.Fehler,
                 befehlsZeile.Befehl,
                 befehlsZeile.EingaengeBitmuster,
                 befehlsZeile.AusgaengeBitmuster,

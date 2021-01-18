@@ -17,13 +17,13 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <TabControl Grid.Column="1" Grid.Row="1">
-            <TabItem Header="Laborplatte" ToolTip="Die SPS mit der Laborplatte mit über den dSub25 Stecker verbinden">
+        <TabControl Grid.Column="1" Grid.Row="1" SelectionChanged="BetriebsartProjektChanged">
+            <TabItem x:Name="LaborPlatte" Header="Laborplatte" ToolTip="Die SPS mit der Laborplatte mit über den dSub25 Stecker verbinden">
                 <Grid Background="LightGray">
                     <Image Source="Bilder/getriebemotor_mit_gabellichtschranke.jpg"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Simulation">
+            <TabItem x:Name="Simulation" Header="Simulation">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />

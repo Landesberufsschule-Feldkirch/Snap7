@@ -7,6 +7,7 @@ namespace AutomatischesLagersystem
 {
     public partial class MainWindow
     {
+        //public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public DreiDElemente[] BediengeraetStartpositionen { get; set; }
         public DreiDElemente[] KistenStartPositionen { get; set; }
@@ -33,6 +34,8 @@ namespace AutomatischesLagersystem
 
         public MainWindow()
         {
+            //BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
+            
             const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;

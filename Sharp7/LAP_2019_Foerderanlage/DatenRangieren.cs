@@ -49,7 +49,7 @@ namespace LAP_2019_Foerderanlage
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _foerderanlageViewModel.Foerderanlage.S7);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _foerderanlageViewModel.Foerderanlage.S8);
 
-            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, S7Analog.S7_Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
+            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, Simatic.Simatic_Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
