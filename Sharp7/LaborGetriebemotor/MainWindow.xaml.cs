@@ -16,7 +16,7 @@ namespace LaborGetriebemotor
         public TestAutomat.TestAutomat TestAutomat { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
-        private const int AnzByteDigInput = 1;
+        private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
@@ -41,8 +41,6 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-
             ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, BetriebsartProjekt, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -50,6 +48,8 @@ namespace LaborGetriebemotor
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            Plc = new S71200(Datenstruktur, ManualMode.Datenstruktur.DigInput, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
@@ -66,6 +66,7 @@ namespace LaborGetriebemotor
                 2 => S71200.BetriebsartProjekt.AutomatischerSoftwareTest,
                 _ => S71200.BetriebsartProjekt.LaborPlatte
             };
+            Plc.SetBetriebsartProjekt(BetriebsartProjekt);
         }
     }
 }

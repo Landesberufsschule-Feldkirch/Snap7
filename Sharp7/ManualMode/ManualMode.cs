@@ -60,13 +60,12 @@ namespace ManualMode
 
         public void ManualModeStarten()
         {
-
             if (_plc.GetPlcModus() == "S7-1200")
             {
+                _plc.SetPlcModus("Manual");
                 _plc.SetTaskRunning(false);
                 _plc = new Manual(Datenstruktur, _cbInput, _cbOutput);
             }
-
             FensterAnzeigen();
         }
 
@@ -94,5 +93,8 @@ namespace ManualMode
             var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
             aaFenster.Show();
         }
+
+
+
     }
 }

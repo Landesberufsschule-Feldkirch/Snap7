@@ -6,6 +6,7 @@
         bool GetSpsError();
         string GetVersion();
         string GetPlcModus();
+        void SetPlcModus(string modus);
         void SetTaskRunning(bool active);
         void SetZyklusZeitKommunikation(int zeit);
 
@@ -16,5 +17,6 @@
         byte GetUint8At(Datenbausteine db, int bytePos);
         // ReSharper disable once UnusedMember.Global
         ushort GetUint16At(Datenbausteine db, int bytePos);
+        void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt);
     }
 }
