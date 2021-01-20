@@ -70,5 +70,16 @@ namespace PlcDatenTypen
         }
 
         public long GetZeitDauerMs() => _dauerMs;
+
+        public static string ConvertLong2Ms(long zeit)
+        {
+            if (zeit < 1000) return $"{zeit}ms";
+            var ms = zeit % 1000;
+            zeit /= 1000;
+            if (zeit < 60) return $"{zeit}s {ms}ms";
+            var s = zeit % 60;
+            var min = zeit / 60;
+            return $"{min}m {s}s {ms}ms";
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace LAP_2018_1_Silosteuerung
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
 
-            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, Simatic.Simatic_Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
+            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)

@@ -20,6 +20,8 @@ namespace Kommunikation
         private enum BytePosition
         {
             Byte0 = 0,
+            // ReSharper disable once UnusedMember.Local
+            // ReSharper disable once UnusedMember.Global
             Byte1,
             Byte2,
             Byte3,
@@ -32,11 +34,13 @@ namespace Kommunikation
         }
 
 
+
+        public byte[] ManDigInput;
+
         public const int SpsTimeout = 1000;
         public const int SpsRack = 0;
         public const int SpsSlot = 0;
 
-        public byte[] ManDigInput;
         private readonly S7Client _client = new S7Client();
         private readonly Action<Datenstruktur> _callbackInput;
         private readonly Action<Datenstruktur> _callbackOutput;
@@ -75,7 +79,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                if (_betriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
                 if (reply?.Status == IPStatus.Success)
                 {
@@ -184,7 +188,7 @@ namespace Kommunikation
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
         public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
-        
+
         public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;

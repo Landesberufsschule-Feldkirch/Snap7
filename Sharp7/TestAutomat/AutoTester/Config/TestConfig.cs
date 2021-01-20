@@ -11,7 +11,7 @@ namespace TestAutomat.AutoTester.Config
         // ReSharper disable UnusedMember.Global
         Default = 0,
         Init,
-        EingaengeTesten,
+        BitmusterTesten,
         Pause
         // ReSharper restore UnusedMember.Global
     }
@@ -19,7 +19,7 @@ namespace TestAutomat.AutoTester.Config
     public enum TestErgebnis
     {
         // ReSharper disable UnusedMember.Global
-        Default = 0,
+        Aktiv = 0,
         Init,
         Erfolgreich,
         Timeout,
@@ -35,7 +35,7 @@ namespace TestAutomat.AutoTester.Config
         public TestsEinstellungen()
         {
             LaufendeNr = 0;
-            Ergebnis = TestErgebnis.Default;
+            Ergebnis = TestErgebnis.Erfolgreich;
             EingaengeBitmuster = new PlcUint("0");
             AusgaengeBitmuster = new PlcUint("0");
             AusgaengeBitmaske = new PlcUint("0");

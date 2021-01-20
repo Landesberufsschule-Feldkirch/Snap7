@@ -13,7 +13,13 @@ namespace TestAutomat
         public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
         public AutoTester.Model.AutoTester AutoTester { get; set; }
 
-        public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() => AutoTesterDataGrid.Add(data));
+        public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
+        {
+            var zeile = data.Nr;
+
+            if (AutoTesterDataGrid.Count <= zeile) AutoTesterDataGrid.Add(data);
+            else AutoTesterDataGrid[zeile] = data;
+        });
 
         public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
         {
@@ -32,11 +38,11 @@ namespace TestAutomat
                 // ReSharper disable once ConvertSwitchStatementToSwitchExpression
                 switch (AutoTesterDataGrid[reihe - 1].Ergebnis)
                 {
+                    case TestErgebnis.Aktiv: row.Background = Brushes.White; break;
                     case TestErgebnis.Init: row.Background = Brushes.Aquamarine; break;
                     case TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
                     case TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
                     case TestErgebnis.Fehler: row.Background = Brushes.Red; break;
-                    case TestErgebnis.Default: row.Background = Brushes.White; break;
                 }
             };
         }

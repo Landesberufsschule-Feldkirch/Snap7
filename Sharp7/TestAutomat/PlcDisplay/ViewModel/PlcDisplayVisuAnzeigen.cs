@@ -67,8 +67,7 @@ namespace TestAutomat.PlcDisplay.ViewModel
                 OnPropertyChanged(nameof(FarbeDa));
             }
         }
-
-
+        
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -76,9 +75,7 @@ namespace TestAutomat.PlcDisplay.ViewModel
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
-
-
-
+        
         private static bool BitTesten(IReadOnlyList<byte> datenArray, int i)
         {
             var ibyte = i / 8;

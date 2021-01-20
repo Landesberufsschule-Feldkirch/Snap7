@@ -28,9 +28,9 @@ namespace TestAutomat.AutoTester.Model
             {
                 switch (einzelneZeile.Befehl)
                 {
-                    case TestBefehle.Init: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlInit(einzelneZeile, Datenstruktur)); break;
-                    case TestBefehle.EingaengeTesten: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlEingaengeTesten(einzelneZeile)); break;
-                    case TestBefehle.Pause: AutoTesterWindow.UpdateDataGrid(AlleTestBefehle.TestBefehlPause(einzelneZeile)); break;
+                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
+                    case TestBefehle.BitmusterTesten: AlleTestBefehle.TestBefehlBitmusterTesten(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
+                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
 
                     case TestBefehle.Default: break;
                     default: throw new ArgumentOutOfRangeException();
