@@ -41,7 +41,10 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, BetriebsartProjekt, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+
+            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
@@ -49,14 +52,14 @@ namespace LaborGetriebemotor
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
 
-            Plc = new S71200(Datenstruktur, ManualMode.Datenstruktur.DigInput, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            Plc.SetManualModeReferenz(ManualMode.Datenstruktur);
 
             TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
-        private void BetriebsartProjektChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is not TabControl tc) return;
             BetriebsartProjekt = tc.SelectedIndex switch

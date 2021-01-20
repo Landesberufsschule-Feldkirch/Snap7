@@ -50,17 +50,15 @@ namespace Kommunikation
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private string _plcModus = "S7-1200";
         private bool _spsError;
-
         private bool _taskRunning = true;
 
         private BetriebsartProjekt _betriebsartProjekt;
 
-        public S71200(Datenstruktur datenstruktur, byte[] manDigInput, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
             _datenstruktur = datenstruktur;
-            ManDigInput = manDigInput;
 
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
@@ -79,7 +77,7 @@ namespace Kommunikation
 
                 _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
-                if (reply != null && reply.Status == IPStatus.Success)
+                if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
                     var res = _client?.ConnectTo(_spsClient.Adress, SpsRack, SpsSlot);
@@ -89,7 +87,7 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            _callbackInput(_datenstruktur);
+                            if (_betriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
                             {
@@ -111,17 +109,19 @@ namespace Kommunikation
                                     _datenstruktur.DigInput[1] = ManDigInput[1];
                                 }
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
-
-
                             }
-                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning)
-                            {
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
-                            }
+
                             if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
+
+
+                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning)
+                            {
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
+                            }
+
                             if (_datenstruktur.AnzahlByteAnalogOutput > 0 && _taskRunning)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
@@ -179,14 +179,19 @@ namespace Kommunikation
             return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
         }
 
-        public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
+
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
-
         public string GetPlcModus() => _plcModus;
+        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
+        
+        public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) => ManDigInput = manualModeDatenstruktur.DigInput;
+
+
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();

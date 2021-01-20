@@ -50,12 +50,15 @@ namespace Kommunikation
         public bool GetSpsError() => _spsError;
         public string GetVersion() => "42";
         public string GetPlcModus() => _plcModus;
+        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
+        
+        
         public void SetPlcModus(string modus) => _plcModus = modus;
-
         public void SetTaskRunning(bool active) => _taskRunning = active;
-
-        public void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) { /*nicht erforderlich*/}
         public void SetZyklusZeitKommunikation(int zeit) => throw new NotImplementedException();
+
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
         {

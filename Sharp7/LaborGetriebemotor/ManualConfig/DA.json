@@ -52,7 +52,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P2",
-      "Kommentar": "Meldeleuchte rot"
+      "Kommentar": "Meldeleuchte grün"
     },
     {
       "LaufendeNr": 6,
@@ -61,7 +61,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P3",
-      "Kommentar": "Meldeleuchte grün"
+      "Kommentar": "Meldeleuchte rot"
     }
   ]
 }

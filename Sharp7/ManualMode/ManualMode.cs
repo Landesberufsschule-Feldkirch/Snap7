@@ -24,11 +24,11 @@ namespace ManualMode
         private readonly Action<Datenstruktur> _cbInput;
         private readonly Action<Datenstruktur> _cbOutput;
 
-        public ManualMode(Datenstruktur datenstruktur, IPlc plc, S71200.BetriebsartProjekt betriebsartProjekt, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public ManualMode(Datenstruktur datenstruktur, IPlc plc, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             Datenstruktur = datenstruktur;
             _plc = plc;
-            _betriebsartProjekt = betriebsartProjekt;
+            _betriebsartProjekt = _plc.GetBetriebsartProjekt();
             _cbInput = cbInput;
             _cbOutput = cbOutput;
 

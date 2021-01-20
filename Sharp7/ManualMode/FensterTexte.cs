@@ -85,6 +85,7 @@ namespace ManualMode
                 var id = short.Parse(textBoxNamensTeile[1]);
                 var eingabe = localSender.Text.Length > 0 ? byte.Parse(localSender.Text) : (byte)0;
 
+                // ReSharper disable once ConvertSwitchStatementToSwitchExpression
                 switch (textBoxNamensTeile[0])
                 {
                     case "Da": manMode.Datenstruktur.DigOutput[id] = eingabe; break;
