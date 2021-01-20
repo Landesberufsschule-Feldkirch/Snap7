@@ -18,5 +18,6 @@
         // ReSharper disable once UnusedMember.Global
         ushort GetUint16At(Datenbausteine db, int bytePos);
         void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt);
+        void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur);
     }
 }

@@ -55,12 +55,11 @@ namespace Kommunikation
 
         private BetriebsartProjekt _betriebsartProjekt;
 
-        public S71200(Datenstruktur datenstruktur, byte[] manDigInput, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
 
             _datenstruktur = datenstruktur;
-            ManDigInput = manDigInput;
 
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
@@ -187,6 +186,9 @@ namespace Kommunikation
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        
+        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) => ManDigInput = manualModeDatenstruktur.DigInput;
+        
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();

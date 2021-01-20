@@ -55,6 +55,8 @@ namespace Kommunikation
         public void SetTaskRunning(bool active) => _taskRunning = active;
 
         public void SetBetriebsartProjekt(S71200.BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
+        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) { /*nicht erforderlich*/}
+
         public void SetZyklusZeitKommunikation(int zeit) => throw new NotImplementedException();
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
