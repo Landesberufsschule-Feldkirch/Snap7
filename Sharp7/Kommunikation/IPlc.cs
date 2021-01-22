@@ -2,6 +2,7 @@
 {
     public interface IPlc
     {
+        S71200.BetriebsartProjekt IBbetriebsartProjekt { get; set; }
         string GetSpsStatus();
         bool GetSpsError();
         string GetVersion();

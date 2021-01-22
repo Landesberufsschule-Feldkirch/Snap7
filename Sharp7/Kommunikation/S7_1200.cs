@@ -56,7 +56,7 @@ namespace Kommunikation
         private bool _spsError;
         private bool _taskRunning = true;
 
-        private BetriebsartProjekt _betriebsartProjekt;
+       // public BetriebsartProjekt IBbetriebsartProjekt { get => GetBetriebsartProjekt(); set => value SetBetriebsartProjekt(); }
 
         public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
@@ -67,7 +67,7 @@ namespace Kommunikation
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
 
-            _betriebsartProjekt = BetriebsartProjekt.Simulation;
+            IBbetriebsartProjekt = BetriebsartProjekt.LaborPlatte;
 
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }

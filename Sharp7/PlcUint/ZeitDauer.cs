@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace PlcDatenTypen
 {
-    public class PlcZeitDauer
+    public class ZeitDauer
     {
         private readonly long _dauerMs;
-        public PlcZeitDauer(string dauer)
+        public ZeitDauer(string dauer)
         {
             const long dauer1S = 1000;
             const long dauer1M = 60 * dauer1S;
@@ -76,7 +76,7 @@ namespace PlcDatenTypen
             if (zeit < 1000) return $"{zeit}ms";
             var ms = zeit % 1000;
             zeit /= 1000;
-            if (zeit < 60) return $"{zeit}s {ms}ms";
+            if (zeit < 60) return ms == 0 ? $"{zeit}s" : $"{zeit}s {ms}ms";
             var s = zeit % 60;
             var min = zeit / 60;
             return $"{min}m {s}s {ms}ms";

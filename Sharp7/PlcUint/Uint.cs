@@ -2,11 +2,11 @@
 
 namespace PlcDatenTypen
 {
-    public class PlcUint
+    public class Uint
     {
         private readonly ulong _uintDec;
 
-        public PlcUint(string zahl)
+        public Uint(string zahl)
         {
 
             if (zahl.Contains("#"))

@@ -20,7 +20,6 @@ namespace ManualMode
         public Datenstruktur Datenstruktur { get; set; }
 
         private IPlc _plc;
-        private readonly S71200.BetriebsartProjekt _betriebsartProjekt;
         private readonly Action<Datenstruktur> _cbInput;
         private readonly Action<Datenstruktur> _cbOutput;
 
@@ -28,7 +27,6 @@ namespace ManualMode
         {
             Datenstruktur = datenstruktur;
             _plc = plc;
-            _betriebsartProjekt = _plc.GetBetriebsartProjekt();
             _cbInput = cbInput;
             _cbOutput = cbOutput;
 
@@ -71,7 +69,7 @@ namespace ManualMode
 
         public void FensterAnzeigen()
         {
-            if (Datenstruktur.AnzahlByteDigitalInput > 0)
+            if (Datenstruktur.AnzahlByteDigitalInput > 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest)
             {
                 var diFenster = new DiFenster(GetConfig.DiConfig, ManualViewModel);
                 diFenster.Show();
@@ -83,18 +81,15 @@ namespace ManualMode
                 daFenster.Show();
             }
 
-            if (Datenstruktur.AnzahlByteAnalogInput > 0)
+            if (Datenstruktur.AnzahlByteAnalogInput > 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest)
             {
                 var aiFenster = new AiFenster(GetConfig.AiConfig, ManualViewModel);
                 aiFenster.Show();
             }
 
-            if (Datenstruktur.AnzahlByteAnalogOutput <= 0) return;
+            if (Datenstruktur.AnzahlByteAnalogOutput <= 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest) return;
             var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
             aaFenster.Show();
         }
-
-
-
     }
 }

@@ -17,7 +17,10 @@ namespace Kommunikation
         private bool _taskRunning = true;
 
         private string _plcModus = "Manual";
-        private BetriebsartProjekt _betriebsartProjekt;
+
+        public BetriebsartProjekt IBbetriebsartProjekt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        // private BetriebsartProjekt _betriebsartProjekt;
 
         public Manual(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {

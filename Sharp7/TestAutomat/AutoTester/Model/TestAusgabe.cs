@@ -13,7 +13,7 @@ namespace TestAutomat.AutoTester.Model
         public string DigOutput { get; set; }
         public string Kommentar { get; set; }
 
-        public TestAusgabe(int nr, string zeit, TestErgebnis ergebnis, TestBefehle befehle, PlcUint digInput, PlcUint digOutput, string kommentar)
+        public TestAusgabe(int nr, string zeit, TestErgebnis ergebnis, TestBefehle befehle, Uint digInput, Uint digOutput, string kommentar)
         {
             Nr = nr;
             Zeit = zeit;

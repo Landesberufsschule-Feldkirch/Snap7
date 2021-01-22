@@ -20,11 +20,11 @@ namespace TestAutomat.AutoTester.Model
             {
                 autoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 befehlsZeile.LaufendeNr,
-                PlcZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
+                ZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
                 TestErgebnis.Aktiv,
                 befehlsZeile.Befehl,
                 befehlsZeile.EingaengeBitmuster,
-                new PlcUint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
+                new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
                 befehlsZeile.Kommentar));
 
                 Thread.Sleep(10);
@@ -32,11 +32,11 @@ namespace TestAutomat.AutoTester.Model
 
             autoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 befehlsZeile.LaufendeNr,
-                PlcZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
+                ZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
                 TestErgebnis.Erfolgreich,
                 befehlsZeile.Befehl,
                 befehlsZeile.EingaengeBitmuster,
-                new PlcUint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
+                new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
                 befehlsZeile.Kommentar));
         }
     }

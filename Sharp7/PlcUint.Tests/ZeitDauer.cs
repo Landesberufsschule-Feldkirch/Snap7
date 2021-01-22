@@ -12,8 +12,21 @@ namespace PlcDatenTypen.Tests
 
         public void Test(string zahl, long ergebnis)
         {
-            var zeitMs = new PlcZeitDauer(zahl);
+            var zeitMs = new PlcDatenTypen.ZeitDauer(zahl);
             Assert.Equal(ergebnis, zeitMs.GetZeitDauerMs());
+        }
+
+
+
+        [Theory]
+        [InlineData(1, "1ms")]
+        [InlineData(999, "999ms")]
+        [InlineData(1000, "1s")]
+        [InlineData(6101100, "101m 41s 100ms")]
+
+        public void FormatiertAusgebenTest(long dauer, string ergebnis)
+        {
+            Assert.Equal(ergebnis, PlcDatenTypen.ZeitDauer.ConvertLong2Ms(dauer));
         }
     }
 }
