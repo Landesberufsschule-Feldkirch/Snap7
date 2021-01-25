@@ -8,7 +8,6 @@ namespace LAP_2019_Foerderanlage
 {
     public partial class MainWindow
     {
-        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
@@ -27,8 +26,6 @@ namespace LAP_2019_Foerderanlage
 
         public MainWindow()
         {
-            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-            
             const string versionText = "LAP 2019 Foerderanlage";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;

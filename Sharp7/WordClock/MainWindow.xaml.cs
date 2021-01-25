@@ -8,7 +8,6 @@ namespace WordClock
 {
     public partial class MainWindow
     {
-        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -21,8 +20,6 @@ namespace WordClock
 
         public MainWindow()
         {
-            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-            
             const string versionText = "WorkClock";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;

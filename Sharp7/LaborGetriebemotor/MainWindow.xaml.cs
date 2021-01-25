@@ -38,7 +38,6 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
-
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
@@ -62,10 +61,12 @@ namespace LaborGetriebemotor
 
             switch (tc.SelectedIndex)
             {
-                case 0: Plc.SetBetriebsartProjekt(S71200.BetriebsartProjekt.LaborPlatte); break;
-                case 1: Plc.SetBetriebsartProjekt(S71200.BetriebsartProjekt.Simulation); break;
-                case 2: Plc.SetBetriebsartProjekt(S71200.BetriebsartProjekt.AutomatischerSoftwareTest); break;
+                case 0: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.LaborPlatte); break;
+                case 1: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.Simulation); break;
+                case 2: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.AutomatischerSoftwareTest); break;
             }
+
+            ManualMode.SetSichtbarkeitFenster();
         }
     }
 }

@@ -69,5 +69,7 @@ namespace ManualMode
             }
             return anzahlZeilenConfig;
         }
+        public void SetUnsichtbar() => Hide();
+        public void SetSichtbar() => Show();
     }
 }

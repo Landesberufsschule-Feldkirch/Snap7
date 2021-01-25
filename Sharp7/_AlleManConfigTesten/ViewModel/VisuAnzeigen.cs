@@ -11,8 +11,6 @@ namespace _AlleManConfigTesten.ViewModel
         public void AddDaDaten(DaDaten daten) => DaAlleDaten.Add(daten);
         public void AddDiDaten(DiDaten daten) => DiAlleDaten.Add(daten);
 
-
-
         private List<AaDaten> _aaAlleDaten = new();
         public List<AaDaten> AaAlleDaten
         {
@@ -35,7 +33,6 @@ namespace _AlleManConfigTesten.ViewModel
             }
         }
 
-
         private List<DaDaten> _daAlleDaten = new();
         public List<DaDaten> DaAlleDaten
         {
@@ -57,7 +54,6 @@ namespace _AlleManConfigTesten.ViewModel
                 OnPropertyChanged(nameof(DiAlleDaten));
             }
         }
-
 
         #region iNotifyPeropertyChanged Members
 

@@ -6,7 +6,6 @@ namespace LAP_2010_4_Abfuellanlage
 {
     public partial class MainWindow
     {
-        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -21,8 +20,6 @@ namespace LAP_2010_4_Abfuellanlage
 
         public MainWindow()
         {
-            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-            
             const string versionText = "LAP 2010/4 Abfuellanlage";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;

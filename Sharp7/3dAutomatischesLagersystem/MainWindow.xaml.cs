@@ -7,7 +7,6 @@ namespace AutomatischesLagersystem
 {
     public partial class MainWindow
     {
-        //public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public DreiDElemente[] BediengeraetStartpositionen { get; set; }
         public DreiDElemente[] KistenStartPositionen { get; set; }

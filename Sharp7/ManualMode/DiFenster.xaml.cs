@@ -88,7 +88,6 @@ namespace ManualMode
                         default: throw new InvalidDataException(config.Type.ToString() + config.AnzahlBit);
                     }
 
-
                     manViewModel.ManVisuAnzeigen.VisibilityDi[config.LaufendeNr] = Visibility.Visible;
                     manViewModel.ManVisuAnzeigen.BezeichnungDi[config.LaufendeNr] = config.Bezeichnung;
                     manViewModel.ManVisuAnzeigen.KommentarDi[config.LaufendeNr] = config.Kommentar;
@@ -103,5 +102,7 @@ namespace ManualMode
 
             return anzahlZeilenConfig;
         }
+        public void SetUnsichtbar() => Hide();
+        public void SetSichtbar() => Show();
     }
 }

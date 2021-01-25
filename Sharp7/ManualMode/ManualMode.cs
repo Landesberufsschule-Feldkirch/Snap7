@@ -23,6 +23,16 @@ namespace ManualMode
         private readonly Action<Datenstruktur> _cbInput;
         private readonly Action<Datenstruktur> _cbOutput;
 
+        private DiFenster _diFenster;
+        private DaFenster _daFenster;
+        private AiFenster _aiFenster;
+        private AaFenster _aaFenster;
+
+        private bool _fensterDiAktiv;
+        private bool _fensterDaAktiv;
+        private bool _fensterAiAktiv;
+        private bool _fensterAaAktiv;
+
         public ManualMode(Datenstruktur datenstruktur, IPlc plc, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             Datenstruktur = datenstruktur;
@@ -69,27 +79,56 @@ namespace ManualMode
 
         public void FensterAnzeigen()
         {
-            if (Datenstruktur.AnzahlByteDigitalInput > 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest)
+            if (_fensterDiAktiv) return;
+            if (Datenstruktur.AnzahlByteDigitalInput > 0 && Datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest)
             {
-                var diFenster = new DiFenster(GetConfig.DiConfig, ManualViewModel);
-                diFenster.Show();
+                _fensterDiAktiv = true;
+                _diFenster = new DiFenster(GetConfig.DiConfig, ManualViewModel);
+                _diFenster.Show();
             }
 
+            if (_fensterDaAktiv) return;
             if (Datenstruktur.AnzahlByteDigitalOutput > 0)
             {
-                var daFenster = new DaFenster(GetConfig.DaConfig, ManualViewModel);
-                daFenster.Show();
+                _fensterDaAktiv = true;
+                _daFenster = new DaFenster(GetConfig.DaConfig, ManualViewModel);
+                _daFenster.Show();
             }
 
-            if (Datenstruktur.AnzahlByteAnalogInput > 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest)
+            if (_fensterAiAktiv) return;
+            if (Datenstruktur.AnzahlByteAnalogInput > 0 && Datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest)
             {
-                var aiFenster = new AiFenster(GetConfig.AiConfig, ManualViewModel);
-                aiFenster.Show();
+                _fensterAiAktiv = true;
+                _aiFenster = new AiFenster(GetConfig.AiConfig, ManualViewModel);
+                _aiFenster.Show();
             }
 
-            if (Datenstruktur.AnzahlByteAnalogOutput <= 0 && _plc.GetBetriebsartProjekt() != S71200.BetriebsartProjekt.AutomatischerSoftwareTest) return;
-            var aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
-            aaFenster.Show();
+            if (_fensterAaAktiv) return;
+            if (Datenstruktur.AnzahlByteAnalogOutput == 0 || Datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest) return;
+            _fensterAaAktiv = true;
+            _aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
+            _aaFenster.Show();
+        }
+
+        public void SetSichtbarkeitFenster()
+        {
+            switch (Datenstruktur.GetBetriebsartProjekt())
+            {
+                case BetriebsartProjekt.LaborPlatte: break;
+
+                case BetriebsartProjekt.Simulation:
+                    if (_fensterDiAktiv) _diFenster.SetSichtbar();
+                    if (_fensterAiAktiv) _aiFenster.SetSichtbar();
+                    if (_fensterAaAktiv) _aaFenster.SetSichtbar();
+                    break;
+
+                case BetriebsartProjekt.AutomatischerSoftwareTest:
+
+                    if (_fensterDiAktiv) _diFenster.SetUnsichtbar();
+                    if (_fensterAiAktiv) _aiFenster.SetUnsichtbar();
+                    if (_fensterAaAktiv) _aaFenster.SetUnsichtbar();
+                    break;
+            }
         }
     }
 }

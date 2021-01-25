@@ -40,12 +40,10 @@ namespace ManualMode
 
             for (var i = 0; i < anzahlZeilenConfig; i++)
             {
-
                 FensterFunktionen.HintergrundRechteckZeichnen(0, 2 + 2 * i, 5, Brushes.YellowGreen, diGrid);
                 FensterFunktionen.ButtonZeichnen(0, 2 + 2 * i, config.DigitaleEingaenge[i].StartByte, config.DigitaleEingaenge[i].StartBit, i, "Di", BackgroundProperty, VisibilityProperty, diGrid);
                 FensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Di", HorizontalAlignment.Center, VisibilityProperty, diGrid);
                 FensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Di", VisibilityProperty, diGrid);
-
             }
         }
         private static void DiCreateGridByte() => throw new NotImplementedException();

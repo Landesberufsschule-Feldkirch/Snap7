@@ -12,7 +12,6 @@ namespace TestAutomat.AutoTester.Model
             Stopwatch stopwatch = new();
             stopwatch.Start();
 
-            // Little und Bit Endian verwirrt irgendwann jeden
             datenstruktur.DigInput[0] = Simatic.Simatic_Digital_GetLowByte((uint)befehlsZeile.EingaengeBitmuster.GetDec());
             datenstruktur.DigInput[1] = Simatic.Simatic_Digital_GetHighByte((uint)befehlsZeile.EingaengeBitmuster.GetDec());
 
@@ -27,7 +26,7 @@ namespace TestAutomat.AutoTester.Model
                     new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
                     befehlsZeile.Kommentar));
 
-                Thread.Sleep(10);
+                Thread.Sleep(50);
             } while (stopwatch.ElapsedMilliseconds < befehlsZeile.Dauer.GetZeitDauerMs());
 
             autoTesterWindow.UpdateDataGrid(new TestAusgabe(

@@ -18,7 +18,6 @@ namespace ManualMode
             const int zeilenAbstand = 10;
             const int zeilenHoehe = 45;
 
-
             var aiGgrid = new Grid { Name = "AiGrid" };
             Content = aiGgrid;
 
@@ -122,7 +121,6 @@ namespace ManualMode
                 FensterFunktionen.BezeichnungZeichnen(2, 2 + 2 * i, i, "Ai", HorizontalAlignment.Center, VisibilityProperty, aiGgrid);
                 FensterFunktionen.KommentarZeichnen(4, 2 + 2 * i, i, "Ai", VisibilityProperty, aiGgrid);
             }
-
         }
         private static void AiCreateGridLong() => throw new NotImplementedException();
         private static void AiWertZeichnen(int x, int y, int par, Panel grid)
