@@ -81,15 +81,25 @@ namespace Kommunikation
                             if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
-                            {
-                                _datenstruktur.BefehleSps[0]++;
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _datenstruktur.BefehleSps));
-
+                            {                               
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[0] + 4, _datenstruktur.VersionInputSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[4], _datenstruktur.VersionInputSps));
+                            }
+
+                            if (_taskRunning)
+                            {
+                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                {
+                                    _datenstruktur.BefehleSps[0] = 1;
+                                }
+                                else
+                                {
+                                    _datenstruktur.BefehleSps[0] = 0;
+                                }
+                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
                             }
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)

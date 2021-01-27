@@ -60,8 +60,6 @@ namespace TestAutomat.AutoTester.Model
                 befehlsZeile.EingaengeBitmuster,
                 new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
                 befehlsZeile.Kommentar));
-
-            Thread.Sleep(50);
         }
     }
 }
