@@ -1,0 +1,31 @@
+///////////////////////////////////////////////////////////////
+// Silk - Sample script
+//
+
+main()
+{
+    // Print header
+    println string("*", 78)
+    println "* SILK Example Program"
+    println string("*", 78)
+    println
+
+	Sleep 500
+
+    // Expressions
+    println "Expressions:"
+    println "  2 + 2 = ", 2 + 2
+    println "  50 / (2 + 3) = ", 50 / (2 + 3)
+    println "  (2 + 7) * (2 * (8 + double(5) * (100 + triple(7)))) = ", (2 + 7) * (2 * (8 + double(5) * (100 + triple(7))))
+    println
+}
+
+double(x)
+{
+    return x * 2
+}
+
+triple(x)
+{
+    return x * 3
+}

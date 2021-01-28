@@ -7,6 +7,8 @@ namespace TestAutomat
 {
     public partial class TestAutomat
     {
+
+
         public DirectoryInfo AktuellesProjekt { get; set; }
         public OrdnerLesen ConfigOrdner { get; set; }
 
@@ -20,6 +22,11 @@ namespace TestAutomat
             _datenstruktur = datenstruktur;
             _manualMode = manualMode;
         }
-        public void SetTestConfig(string autotestconfig) => ConfigOrdner = new OrdnerLesen(autotestconfig);
+        public void SetTestConfig(string autotestconfig)
+        {
+            ConfigOrdner = new OrdnerLesen(autotestconfig);
+
+            AutoTester.Silk.Silk.Compile(ConfigOrdner.AlleTestOrdner[0] + "\\testSource.ssc");
+        }
     }
 }

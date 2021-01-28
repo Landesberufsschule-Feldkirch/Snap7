@@ -40,6 +40,9 @@
     <None Update="AutoTestConfig\TestBeispiel1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="AutoTestConfig\TestBeispiel1\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="AutoTestConfig\TestBeispiel2\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -47,6 +50,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="AutoTestConfig\TestBeispiel2\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel2\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="AutoTestConfig\TestBeispiel3\index.html">
@@ -58,6 +64,9 @@
     <None Update="AutoTestConfig\TestBeispiel3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="AutoTestConfig\TestBeispiel3\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="AutoTestConfig\TestBeispiel4\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -65,6 +74,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="AutoTestConfig\TestBeispiel4\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\TestBeispiel4\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ManualConfig\AA.json">

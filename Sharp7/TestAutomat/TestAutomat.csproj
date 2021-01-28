@@ -26,4 +26,11 @@
     <Folder Include="AutoTester\ViewModel\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Silk">
+      <HintPath>..\..\..\Silk\Silk\bin\Debug\netstandard2.0\Silk.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
 </Project>
