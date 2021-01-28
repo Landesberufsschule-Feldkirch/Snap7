@@ -7,7 +7,6 @@ namespace LaborGetriebemotor
 {
     public partial class MainWindow
     {
-        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
@@ -23,8 +22,6 @@ namespace LaborGetriebemotor
 
         public MainWindow()
         {
-            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-
             const string versionText = "Labor Getriebemotor";
             VersionNummer = "V2.0";
 
@@ -40,7 +37,6 @@ namespace LaborGetriebemotor
 
             InitializeComponent();
             DataContext = viewModel;
-
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
@@ -62,14 +58,15 @@ namespace LaborGetriebemotor
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is not TabControl tc) return;
-            BetriebsartProjekt = tc.SelectedIndex switch
+
+            switch (tc.SelectedIndex)
             {
-                0 => S71200.BetriebsartProjekt.LaborPlatte,
-                1 => S71200.BetriebsartProjekt.Simulation,
-                2 => S71200.BetriebsartProjekt.AutomatischerSoftwareTest,
-                _ => S71200.BetriebsartProjekt.LaborPlatte
-            };
-            Plc.SetBetriebsartProjekt(BetriebsartProjekt);
+                case 0: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.LaborPlatte); break;
+                case 1: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.Simulation); break;
+                case 2: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.AutomatischerSoftwareTest); break;
+            }
+
+            ManualMode.SetSichtbarkeitFenster();
         }
     }
 }

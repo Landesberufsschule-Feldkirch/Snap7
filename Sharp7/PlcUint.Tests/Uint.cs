@@ -2,7 +2,7 @@
 
 namespace PlcDatenTypen.Tests
 {
-    public class PlcUint
+    public class Uint
     {
         [Theory]
         [InlineData("12345", 12345)]
@@ -12,7 +12,7 @@ namespace PlcDatenTypen.Tests
 
         public void EinlesenTest(string zahl, uint ergebnis)
         {
-            var plc = new PlcDatenTypen.PlcUint(zahl);
+            var plc = new PlcDatenTypen.Uint(zahl);
             Assert.Equal(ergebnis, plc.GetDec());
         }
 
@@ -23,7 +23,7 @@ namespace PlcDatenTypen.Tests
 
         public void Bin_Test(string zahl, int position)
         {
-            var plc = new PlcDatenTypen.PlcUint(zahl);
+            var plc = new PlcDatenTypen.Uint(zahl);
             Assert.True(plc.GetBitGesetzt(position));
         }
         
@@ -34,7 +34,7 @@ namespace PlcDatenTypen.Tests
 
         public void Bin_8Bit_Test(string zahl, string ergebnis)
         {
-            var plc = new PlcDatenTypen.PlcUint(zahl);
+            var plc = new PlcDatenTypen.Uint(zahl);
             Assert.Equal(ergebnis, plc.GetBin8Bit());
         }
 
@@ -45,7 +45,7 @@ namespace PlcDatenTypen.Tests
 
         public void Bin_16Bit_Test(string zahl, string ergebnis)
         {
-            var plc = new PlcDatenTypen.PlcUint(zahl);
+            var plc = new PlcDatenTypen.Uint(zahl);
             Assert.Equal(ergebnis, plc.GetBin16Bit());
         }
 
@@ -56,7 +56,7 @@ namespace PlcDatenTypen.Tests
 
         public void Bin_32Bit_Test(string zahl, string ergebnis)
         {
-            var plc = new PlcDatenTypen.PlcUint(zahl);
+            var plc = new PlcDatenTypen.Uint(zahl);
             Assert.Equal(ergebnis, plc.GetBin32Bit());
         }
 

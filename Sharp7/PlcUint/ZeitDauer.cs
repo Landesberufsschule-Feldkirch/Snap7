@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace PlcDatenTypen
 {
-    public class PlcZeitDauer
+    public class ZeitDauer
     {
         private readonly long _dauerMs;
-        public PlcZeitDauer(string dauer)
+        public ZeitDauer(string dauer)
         {
             const long dauer1S = 1000;
             const long dauer1M = 60 * dauer1S;
@@ -17,7 +17,7 @@ namespace PlcDatenTypen
 
             {
                 // IEC Zeitangabe
-                var iecZeit = dauer.Substring(2).ToUpper();
+                var iecZeit = dauer[2..].ToUpper();
                 var posD = iecZeit.IndexOf("D", StringComparison.Ordinal);
                 var posH = iecZeit.IndexOf("H", StringComparison.Ordinal);
                 var posM = iecZeit.IndexOf("M", StringComparison.Ordinal);
@@ -35,21 +35,21 @@ namespace PlcDatenTypen
 
                 if (posH > -1)
                 {
-                    var stunden = iecZeit.Substring(anfangZahl, posH - anfangZahl);
+                    var stunden = iecZeit[anfangZahl..posH];
                     _dauerMs += long.Parse(stunden) * dauer1H;
                     anfangZahl = posH + 1;
                 }
 
                 if (posM > -1 && posM != posMs)
                 {
-                    var minuten = iecZeit.Substring(anfangZahl, posM - anfangZahl);
+                    var minuten = iecZeit[anfangZahl..posM];
                     _dauerMs += long.Parse(minuten) * dauer1M;
                     anfangZahl = posM + 1;
                 }
 
                 if (posS > -1 && posS != posMs + 1)
                 {
-                    var sekunden = iecZeit.Substring(anfangZahl, posS - anfangZahl);
+                    var sekunden = iecZeit[anfangZahl..posS];
                     _dauerMs += long.Parse(sekunden) * dauer1S;
                     anfangZahl = posS + 1;
                 }
@@ -57,11 +57,9 @@ namespace PlcDatenTypen
                 // ReSharper disable once InvertIf
                 if (posMs > -1)
                 {
-                    var milliSekunden = iecZeit.Substring(anfangZahl, posMs - anfangZahl);
+                    var milliSekunden = iecZeit[anfangZahl..posMs];
                     _dauerMs += long.Parse(milliSekunden);
                 }
-
-
             }
             else
             {
@@ -70,5 +68,23 @@ namespace PlcDatenTypen
         }
 
         public long GetZeitDauerMs() => _dauerMs;
+
+        public static string ConvertLong2Ms(long zeit)
+        {
+            if (zeit < 1000) return $"{zeit}ms";
+            var ms = zeit % 1000;
+
+            zeit /= 1000;
+            if (zeit < 60) return $"{zeit}s {ms}ms";
+
+            var s = zeit % 60;
+            zeit /= 60;
+            var min = zeit;
+            if (zeit < 60) return $"{min}min {s}s {ms}ms";
+
+            var h = zeit / 60;
+            min = zeit % 60;
+            return $"{h}h {min}min {s}s {ms}ms";
+        }
     }
 }

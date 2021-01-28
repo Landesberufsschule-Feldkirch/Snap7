@@ -10,16 +10,11 @@ namespace Kommunikation
 {
     public class S71200 : IPlc
     {
-        public enum BetriebsartProjekt
-        {
-            LaborPlatte = 0,
-            Simulation,
-            AutomatischerSoftwareTest
-        }
-
         private enum BytePosition
         {
             Byte0 = 0,
+            // ReSharper disable once UnusedMember.Local
+            // ReSharper disable once UnusedMember.Global
             Byte1,
             Byte2,
             Byte3,
@@ -31,12 +26,12 @@ namespace Kommunikation
             EinByte = 1
         }
 
+        public byte[] ManDigInput { get; set; }
 
         public const int SpsTimeout = 1000;
         public const int SpsRack = 0;
         public const int SpsSlot = 0;
 
-        public byte[] ManDigInput;
         private readonly S7Client _client = new S7Client();
         private readonly Action<Datenstruktur> _callbackInput;
         private readonly Action<Datenstruktur> _callbackOutput;
@@ -52,8 +47,6 @@ namespace Kommunikation
         private bool _spsError;
         private bool _taskRunning = true;
 
-        private BetriebsartProjekt _betriebsartProjekt;
-
         public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
             _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
@@ -62,8 +55,6 @@ namespace Kommunikation
 
             _callbackInput = cbInput;
             _callbackOutput = cbOutput;
-
-            _betriebsartProjekt = BetriebsartProjekt.Simulation;
 
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
@@ -75,7 +66,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
                 if (reply?.Status == IPStatus.Success)
                 {
@@ -87,23 +78,33 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            if (_betriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
+                            if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
-                            {
-                                _datenstruktur.BefehleSps[0]++;
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, (int)AnzahlByte.EinByte, _datenstruktur.BefehleSps));
-
+                            {                               
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[0] + 4, _datenstruktur.VersionInputSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[4], _datenstruktur.VersionInputSps));
+                            }
+
+                            if (_taskRunning)
+                            {
+                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                {
+                                    _datenstruktur.BefehleSps[0] = 1;
+                                }
+                                else
+                                {
+                                    _datenstruktur.BefehleSps[0] = 0;
+                                }
+                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
                             }
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)
                             {
-                                if (_betriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
                                 {
                                     _datenstruktur.DigInput[0] = ManDigInput[0];
                                     _datenstruktur.DigInput[1] = ManDigInput[1];
@@ -115,7 +116,6 @@ namespace Kommunikation
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
-
 
                             if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning)
                             {
@@ -162,7 +162,6 @@ namespace Kommunikation
 
             _spsStatus = ErrorAnzeigen(error.GetValueOrDefault());
             return true;
-
         }
 
         public string ErrorAnzeigen(int resultError)
@@ -179,19 +178,14 @@ namespace Kommunikation
             return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
         }
 
-
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
-        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
-        
+
         public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
         public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) => ManDigInput = manualModeDatenstruktur.DigInput;
-
-
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();

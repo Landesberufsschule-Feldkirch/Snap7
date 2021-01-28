@@ -9,7 +9,6 @@ namespace Synchronisiereinrichtung
 {
     public partial class MainWindow
     {
-        public S71200.BetriebsartProjekt BetriebsartProjekt { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
@@ -24,13 +23,9 @@ namespace Synchronisiereinrichtung
         public double[] PlotGeneratorSpannung { get; set; }
         public double[] PlotSpannungsdifferenz { get; set; }
         public double[] PlotLeistung { get; set; }
-
-
+        public DatenRangieren DatenRangieren { get; set; }
 
         private int _nextDataIndex = 1;
-
-
-        public DatenRangieren DatenRangieren { get; set; }
         private PlotWindow.PlotWindow _plotWindow;
         private readonly ViewModel.ViewModel _viewModel;
         private const int AnzByteDigInput = 1;
@@ -47,8 +42,6 @@ namespace Synchronisiereinrichtung
             PlotGeneratorSpannung = new double[1000];
             PlotSpannungsdifferenz = new double[1000];
             PlotLeistung = new double[1000];
-
-            BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
 
             const string versionText = "Synchronisiereinrichtung";
             VersionNummer = "V2.0";
@@ -68,8 +61,7 @@ namespace Synchronisiereinrichtung
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, BetriebsartProjekt, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -78,7 +70,6 @@ namespace Synchronisiereinrichtung
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
         }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
@@ -122,7 +113,6 @@ namespace Synchronisiereinrichtung
 
             _plotWindow.WpfPlot.plt.XLabel("Zeit");
             _plotWindow.WpfPlot.plt.YLabel("Y");
-
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };

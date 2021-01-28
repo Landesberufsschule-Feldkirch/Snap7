@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
-using static Kommunikation.S71200;
 
 namespace Kommunikation
 {
@@ -17,7 +16,6 @@ namespace Kommunikation
         private bool _taskRunning = true;
 
         private string _plcModus = "Manual";
-        private BetriebsartProjekt _betriebsartProjekt;
 
         public Manual(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
@@ -29,7 +27,6 @@ namespace Kommunikation
             _datenstruktur.VersionInputSps = Encoding.ASCII.GetBytes("KeineVersionsinfo");
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
-
 
         public void SPS_Pingen_Task()
         {
@@ -45,20 +42,15 @@ namespace Kommunikation
             }
         }
 
-
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetVersion() => "42";
         public string GetPlcModus() => _plcModus;
-        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
-        
-        
+
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsartProjekt) => _betriebsartProjekt = betriebsartProjekt;
         public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) { /*nicht erforderlich*/}
-        public void SetZyklusZeitKommunikation(int zeit) => throw new NotImplementedException();
-
+        public void SetZyklusZeitKommunikation(int zeit) { /*nicht erforderlich*/}
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
         {

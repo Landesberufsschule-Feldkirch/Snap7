@@ -6,17 +6,17 @@ namespace TestAutomat.PlcDisplay.Config
 {
     public class PlcBelegung
     {
-        public PlcUint Eingaenge { get; set; }
-        public PlcUint Ausgaenge { get; set; }
+        public Uint Eingaenge { get; set; }
+        public Uint Ausgaenge { get; set; }
 
         public bool GetEingangAktiv(int i) => Eingaenge.GetBitGesetzt(i);
         public bool GetAusgangAktiv(int i) => Ausgaenge.GetBitGesetzt(i);
 
         // ReSharper disable once UnusedMember.Global
-        internal class MyUintConverter : JsonConverter<PlcUint>
+        internal class MyUintConverter : JsonConverter<Uint>
         {
-            public override PlcUint ReadJson(JsonReader reader, Type objectType, PlcUint existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new PlcUint(reader.Value.ToString());
-            public override void WriteJson(JsonWriter writer, PlcUint value, JsonSerializer serializer) => throw new NotImplementedException();
+            public override Uint ReadJson(JsonReader reader, Type objectType, Uint existingValue, bool hasExistingValue, JsonSerializer serializer) => reader.Value == null ? default : new Uint(reader.Value.ToString());
+            public override void WriteJson(JsonWriter writer, Uint value, JsonSerializer serializer) => throw new NotImplementedException();
         }
     }
 }

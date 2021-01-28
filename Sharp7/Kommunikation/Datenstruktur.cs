@@ -2,8 +2,16 @@
 
 namespace Kommunikation
 {
+    public enum BetriebsartProjekt
+    {
+        LaborPlatte = 0,
+        Simulation,
+        AutomatischerSoftwareTest
+    }
+
     public class Datenstruktur
     {
+        private BetriebsartProjekt _betriebsartProjekt;
         public byte[] BefehleSps { get; set; } = new byte[1024];
         public byte[] VersionInputSps { get; set; } = new byte[1024];
         public byte[] DigInput { get; set; } = new byte[1024];
@@ -18,11 +26,12 @@ namespace Kommunikation
 
         public Datenstruktur(int byteDigitalInput, int byteDigitalOutput, int byteAnalogInput, int byteAnalogOutput)
         {
+            _betriebsartProjekt = BetriebsartProjekt.LaborPlatte;
+
             AnzahlByteDigitalInput = byteDigitalInput;
             AnzahlByteDigitalOutput = byteDigitalOutput;
             AnzahlByteAnalogInput = byteAnalogInput;
             AnzahlByteAnalogOutput = byteAnalogOutput;
-
 
             Array.Clear(BefehleSps, 0, BefehleSps.Length);
             Array.Clear(VersionInputSps, 0, VersionInputSps.Length);
@@ -31,5 +40,8 @@ namespace Kommunikation
             Array.Clear(AnalogInput, 0, AnalogInput.Length);
             Array.Clear(AnalogOutput, 0, AnalogOutput.Length);
         }
+
+        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsart) => _betriebsartProjekt = betriebsart;
+        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
     }
 }

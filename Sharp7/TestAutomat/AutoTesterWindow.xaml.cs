@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -13,7 +14,13 @@ namespace TestAutomat
         public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
         public AutoTester.Model.AutoTester AutoTester { get; set; }
 
-        public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() => AutoTesterDataGrid.Add(data));
+        public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
+        {
+            var zeile = data.Nr;
+
+            if (AutoTesterDataGrid.Count <= zeile) AutoTesterDataGrid.Add(data);
+            else AutoTesterDataGrid[zeile] = data;
+        });
 
         public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
         {
@@ -25,18 +32,23 @@ namespace TestAutomat
             DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
             {
                 if (DataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated) return;
-                var reihe = AutoTesterDataGrid.Count;
-                if (reihe < 1) return;
-                var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(reihe - 1);
+                var count = AutoTesterDataGrid.Count;
+                if (count < 1) return;
 
-                // ReSharper disable once ConvertSwitchStatementToSwitchExpression
-                switch (AutoTesterDataGrid[reihe - 1].Ergebnis)
+                for (var zeile = 0; zeile < count; zeile++)
                 {
-                    case TestErgebnis.Init: row.Background = Brushes.Aquamarine; break;
-                    case TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
-                    case TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
-                    case TestErgebnis.Fehler: row.Background = Brushes.Red; break;
-                    case TestErgebnis.Default: row.Background = Brushes.White; break;
+                    var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(zeile);
+
+                    // ReSharper disable once ConvertSwitchStatementToSwitchExpression
+                    switch (AutoTesterDataGrid[zeile].Ergebnis)
+                    {
+                        case TestErgebnis.Aktiv: row.Background = Brushes.White; break;
+                        case TestErgebnis.Init: row.Background = Brushes.Aquamarine; break;
+                        case TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
+                        case TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
+                        case TestErgebnis.Fehler: row.Background = Brushes.Red; break;
+                        default: throw new ArgumentOutOfRangeException();
+                    }
                 }
             };
         }
