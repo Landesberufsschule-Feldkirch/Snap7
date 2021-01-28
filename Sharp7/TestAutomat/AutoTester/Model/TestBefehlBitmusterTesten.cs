@@ -1,8 +1,7 @@
-﻿using System;
+﻿using PlcDatenTypen;
 using System.Diagnostics;
 using System.Threading;
 using TestAutomat.AutoTester.Config;
-using PlcDatenTypen;
 
 namespace TestAutomat.AutoTester.Model
 {
@@ -35,17 +34,15 @@ namespace TestAutomat.AutoTester.Model
 
                     return;
                 }
-                else
-                {
-                    autoTesterWindow.UpdateDataGrid(new TestAusgabe(
-                   befehlsZeile.LaufendeNr,
-                   ZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
-                   TestErgebnis.Aktiv,
-                   befehlsZeile.Befehl,
-                   befehlsZeile.EingaengeBitmuster,
-                   new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
-                   befehlsZeile.Kommentar));
-                }
+
+                autoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                    befehlsZeile.LaufendeNr,
+                    ZeitDauer.ConvertLong2Ms(stopwatch.ElapsedMilliseconds),
+                    TestErgebnis.Aktiv,
+                    befehlsZeile.Befehl,
+                    befehlsZeile.EingaengeBitmuster,
+                    new Uint(Simatic.Simatic_Digital_CombineTwoByte(datenstruktur.DigOutput[0], datenstruktur.DigOutput[1]).ToString()),
+                    befehlsZeile.Kommentar));
 
                 Thread.Sleep(50);
             } while (stopwatch.ElapsedMilliseconds < befehlsZeile.Dauer.GetZeitDauerMs());

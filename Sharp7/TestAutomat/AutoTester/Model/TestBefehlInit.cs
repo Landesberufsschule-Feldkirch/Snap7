@@ -27,6 +27,7 @@ namespace TestAutomat.AutoTester.Model
                 befehlsZeile.Kommentar));
 
                 Thread.Sleep(50);
+
             } while (stopwatch.ElapsedMilliseconds < befehlsZeile.Dauer.GetZeitDauerMs());
 
             autoTesterWindow.UpdateDataGrid(new TestAusgabe(
