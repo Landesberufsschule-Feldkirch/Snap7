@@ -7,7 +7,8 @@ namespace TestAutomat.PlcDisplay
 {
     public partial class PlcWindow
     {
-        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ManualMode.ManualMode manualMode, AutoTesterWindow autoTester)
+        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty,
+            ManualMode.ManualMode manualMode, AutoTester.Model.AutoTester myAutoTester)
         {
             const int spaltenBreite = 30;
             const int reiheHoehe = 35;
@@ -35,7 +36,7 @@ namespace TestAutomat.PlcDisplay
                 Formen.PlcLabelZeichnen(3 + i, 4, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, autoTester, i);
+                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode,myAutoTester, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
                 Formen.PlcKommentarZeichnen(3 + i, 1, kommentar,schriftKlein, VerticalAlignment.Bottom, plcGrid);
@@ -48,7 +49,7 @@ namespace TestAutomat.PlcDisplay
             {
                 Formen.PlcLabelZeichnen(13 + i, 4, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 3, 10 + i, "FarbeDi", backgroundProperty, plcGrid);
-                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, autoTester, 8 + i);
+                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, myAutoTester, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 2, bezeichnung,schriftGross, VerticalAlignment.Bottom, plcGrid);
                 Formen.PlcKommentarZeichnen(13 + i, 1, kommentar, schriftKlein,VerticalAlignment.Bottom, plcGrid);
@@ -62,7 +63,7 @@ namespace TestAutomat.PlcDisplay
                 Formen.PlcLabelZeichnen(3 + i, 10, Brushes.White, schriftGross, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, autoTester, i);
+                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, myAutoTester, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 12, bezeichnung,schriftGross, VerticalAlignment.Top, plcGrid);
                 Formen.PlcKommentarZeichnen(3 + i, 13, kommentar,schriftKlein, VerticalAlignment.Top, plcGrid);
@@ -76,22 +77,26 @@ namespace TestAutomat.PlcDisplay
                 Formen.PlcLabelZeichnen(13 + i, 10, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, autoTester, 8 + i);
+                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, myAutoTester, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung,schriftGross, VerticalAlignment.Top, plcGrid);
                 Formen.PlcKommentarZeichnen(13 + i, 13, kommentar,schriftKlein, VerticalAlignment.Top, plcGrid);
             }
         }
 
-        private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
+        private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(
+            ManualMode.ManualMode manualMode, AutoTester.Model.AutoTester myAutoTester,
+            int i)
         {
-            if (!autoTester.MyAutoTester.GetPlcConfig.PlcBelegung.GetEingangAktiv(i)) return (false, "", "");
+            if (!myAutoTester.GetPlcConfig.PlcBelegung.GetEingangAktiv(i)) return (false, "", "");
             return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
         }
 
-        private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
+        private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(
+            ManualMode.ManualMode manualMode, AutoTester.Model.AutoTester myAutoTester,
+            int i)
         {
-            if (!autoTester.MyAutoTester.GetPlcConfig.PlcBelegung.GetAusgangAktiv(i)) return (false, "", "");
+            if (!myAutoTester.GetPlcConfig.PlcBelegung.GetAusgangAktiv(i)) return (false, "", "");
             return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
         }
     }

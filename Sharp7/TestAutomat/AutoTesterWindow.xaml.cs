@@ -11,7 +11,6 @@ namespace TestAutomat
     public partial class AutoTesterWindow
     {
         public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
-        public AutoTester.Model.AutoTester MyAutoTester { get; set; }
 
         public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
         {
@@ -24,8 +23,7 @@ namespace TestAutomat
         public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
         {
             AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
-            MyAutoTester = new AutoTester.Model.AutoTester(this, aktuellesProjekt, datenstruktur);
-
+            
             InitializeComponent();
             DataGrid.ItemsSource = AutoTesterDataGrid;
             DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
