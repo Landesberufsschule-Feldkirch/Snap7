@@ -18,6 +18,10 @@ main()
     println "  50 / (2 + 3) = ", 50 / (2 + 3)
     println "  (2 + 7) * (2 * (8 + double(5) * (100 + triple(7)))) = ", (2 + 7) * (2 * (8 + double(5) * (100 + triple(7))))
     println
+	
+	GetDigitaleAusgaenge
+	SetDigitaleEingaenge 1234
+	UpdateAnzeige 1
 }
 
 double(x)

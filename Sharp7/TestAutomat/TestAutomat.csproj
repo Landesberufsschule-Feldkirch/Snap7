@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AutoTester\ViewModel\**" />
+    <EmbeddedResource Remove="AutoTester\ViewModel\**" />
+    <None Remove="AutoTester\ViewModel\**" />
+    <Page Remove="AutoTester\ViewModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -20,10 +27,6 @@
     <Compile Update="AutoTester\Model\AutoTester.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AutoTester\ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>

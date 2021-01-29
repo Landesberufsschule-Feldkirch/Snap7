@@ -22,11 +22,6 @@ namespace TestAutomat
             _datenstruktur = datenstruktur;
             _manualMode = manualMode;
         }
-        public void SetTestConfig(string autotestconfig)
-        {
-            ConfigOrdner = new OrdnerLesen(autotestconfig);
-
-            AutoTester.Silk.Silk.Compile(ConfigOrdner.AlleTestOrdner[0] + "\\testSource.ssc");
-        }
+        public void SetTestConfig(string autotestconfig) => ConfigOrdner = new OrdnerLesen(autotestconfig);
     }
 }

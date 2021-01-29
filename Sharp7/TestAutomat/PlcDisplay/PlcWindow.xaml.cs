@@ -9,7 +9,6 @@ namespace TestAutomat.PlcDisplay
         public PlcDisplayViewModel PlcDisplayViewModel { get; set; }
         public PlcWindow(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode, AutoTesterWindow autoTesterWindow)
         {
-            
             PlcDisplayViewModel = new PlcDisplayViewModel(datenstruktur);
 
             var plcGrid = new Grid { Name = "PlcGrid" };

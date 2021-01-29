@@ -1,5 +1,4 @@
 ﻿using PlcDatenTypen;
-using TestAutomat.AutoTester.Config;
 
 namespace TestAutomat.AutoTester.Model
 {
@@ -7,13 +6,13 @@ namespace TestAutomat.AutoTester.Model
     {
         public int Nr { get; set; }
         public  string Zeit { get; set; }
-        public TestErgebnis Ergebnis { get; set; }
-        public TestBefehle Befehle { get; set; }
+        public AutoTester.TestErgebnis Ergebnis { get; set; }
+        public string Befehle { get; set; }
         public string DigInput { get; set; }
         public string DigOutput { get; set; }
         public string Kommentar { get; set; }
 
-        public TestAusgabe(int nr, string zeit, TestErgebnis ergebnis, TestBefehle befehle, Uint digInput, Uint digOutput, string kommentar)
+        public TestAusgabe(int nr, string zeit, AutoTester.TestErgebnis ergebnis, string befehle, Uint digInput, Uint digOutput, string kommentar)
         {
             Nr = nr;
             Zeit = zeit;

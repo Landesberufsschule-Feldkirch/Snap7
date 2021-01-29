@@ -1,41 +1,45 @@
-﻿using System;
+﻿using SoftCircuits.Silk;
 using System.IO;
-using TestAutomat.AutoTester.Config;
+using Kommunikation;
 using TestAutomat.PlcDisplay.Config;
 
 namespace TestAutomat.AutoTester.Model
 {
     public class AutoTester
     {
-        public GetTestConfig GetTestConfig { get; set; }
+
+        public enum TestErgebnis
+        {
+            // ReSharper disable UnusedMember.Global
+            Aktiv = 0,
+            Init,
+            Erfolgreich,
+            Timeout,
+            Fehler
+            // ReSharper restore UnusedMember.Global
+        }
+
         public GetPlcConfig GetPlcConfig { get; set; }
         public AutoTesterWindow AutoTesterWindow { get; set; }
-        public  Kommunikation.Datenstruktur Datenstruktur { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
 
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
+        private readonly bool _compilerlaufErfolgreich;
+        private readonly CompiledProgram _compiledProgram;
+
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
         {
             AutoTesterWindow = autoTesterWindow;
             Datenstruktur = datenstruktur;
-            GetTestConfig = new GetTestConfig(aktuellesProjekt);
             GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
-            GetTestConfig.KonfigurationTesten();
 
-            System.Threading.Tasks.Task.Run(TestRunnerTask);
+            Silk.Silk.ReferenzenUebergeben(autoTesterWindow);
+            (_compilerlaufErfolgreich, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
+
+            if (_compilerlaufErfolgreich) System.Threading.Tasks.Task.Run(TestRunnerTask);
         }
         private void TestRunnerTask()
         {
-            foreach (var einzelneZeile in GetTestConfig.TestConfig.AutomatischeSoftwareTests)
-            {
-                switch (einzelneZeile.Befehl)
-                {
-                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-                    case TestBefehle.BitmusterTesten: AlleTestBefehle.TestBefehlBitmusterTesten(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-
-                    case TestBefehle.Default: break;
-                    default: throw new ArgumentOutOfRangeException();
-                }
-            }
+            if (_compilerlaufErfolgreich) Silk.Silk.RunProgram(_compiledProgram);
         }
     }
 }

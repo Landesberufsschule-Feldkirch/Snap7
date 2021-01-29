@@ -85,13 +85,13 @@ namespace TestAutomat.PlcDisplay
 
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
         {
-            if (!autoTester.AutoTester.GetPlcConfig.PlcBelegung.GetEingangAktiv(i)) return (false, "", "");
+            if (!autoTester.MyAutoTester.GetPlcConfig.PlcBelegung.GetEingangAktiv(i)) return (false, "", "");
             return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
         }
 
         private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ManualMode.ManualMode manualMode, AutoTesterWindow autoTester, int i)
         {
-            if (!autoTester.AutoTester.GetPlcConfig.PlcBelegung.GetAusgangAktiv(i)) return (false, "", "");
+            if (!autoTester.MyAutoTester.GetPlcConfig.PlcBelegung.GetAusgangAktiv(i)) return (false, "", "");
             return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
         }
     }

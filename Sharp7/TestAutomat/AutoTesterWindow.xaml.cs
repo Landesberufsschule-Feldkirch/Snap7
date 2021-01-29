@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using TestAutomat.AutoTester.Config;
 using TestAutomat.AutoTester.Model;
 
 namespace TestAutomat
@@ -12,7 +11,7 @@ namespace TestAutomat
     public partial class AutoTesterWindow
     {
         public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
-        public AutoTester.Model.AutoTester AutoTester { get; set; }
+        public AutoTester.Model.AutoTester MyAutoTester { get; set; }
 
         public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
         {
@@ -25,7 +24,7 @@ namespace TestAutomat
         public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
         {
             AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
-            AutoTester = new AutoTester.Model.AutoTester(this, aktuellesProjekt, datenstruktur);
+            MyAutoTester = new AutoTester.Model.AutoTester(this, aktuellesProjekt, datenstruktur);
 
             InitializeComponent();
             DataGrid.ItemsSource = AutoTesterDataGrid;
@@ -42,11 +41,11 @@ namespace TestAutomat
                     // ReSharper disable once ConvertSwitchStatementToSwitchExpression
                     switch (AutoTesterDataGrid[zeile].Ergebnis)
                     {
-                        case TestErgebnis.Aktiv: row.Background = Brushes.White; break;
-                        case TestErgebnis.Init: row.Background = Brushes.Aquamarine; break;
-                        case TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
-                        case TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
-                        case TestErgebnis.Fehler: row.Background = Brushes.Red; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Aktiv: row.Background = Brushes.White; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Init: row.Background = Brushes.Aquamarine; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Fehler: row.Background = Brushes.Red; break;
                         default: throw new ArgumentOutOfRangeException();
                     }
                 }

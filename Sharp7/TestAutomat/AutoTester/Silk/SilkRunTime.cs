@@ -4,7 +4,7 @@ using SoftCircuits.Silk;
 
 namespace TestAutomat.AutoTester.Silk
 {
-    public static partial class Silk
+    public partial class Silk
     {
         public static void Runtime_Begin(object sender, BeginEventArgs e)
         {
@@ -32,16 +32,20 @@ namespace TestAutomat.AutoTester.Silk
                     var sleepTime = e.Parameters[0].ToInteger();
                     Sleep(sleepTime);
                     break;
+
+                case "GetDigitaleAusgaenge":
+                    GetDigitaleAusgaenge(e);
+                    break;
+
+                case "SetDigitaleEingaenge":
+                    SetDigitaleEingaenge(e);
+                    break;
+                    
+                case "UpdateAnzeige":
+                    UpdateAnzeige(e);
+                    break;
             }
         }
         private static void Runtime_End(object sender, EndEventArgs e) { /* nichts zu tun */ }
-        public static void Sleep(int sleepTime)
-        {
-            var now = DateTime.Now;
-            do
-            {
-                // Application.DoEvents();
-            } while (now.AddSeconds(5) > DateTime.Now);
-        }
     }
 }
