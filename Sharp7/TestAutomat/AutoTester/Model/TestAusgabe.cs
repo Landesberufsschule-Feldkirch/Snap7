@@ -1,6 +1,4 @@
-﻿using PlcDatenTypen;
-
-namespace TestAutomat.AutoTester.Model
+﻿namespace TestAutomat.AutoTester.Model
 {
     public class TestAusgabe
     {
@@ -12,14 +10,14 @@ namespace TestAutomat.AutoTester.Model
         public string DigOutput { get; set; }
         public string Kommentar { get; set; }
 
-        public TestAusgabe(int nr, string zeit, AutoTester.TestErgebnis ergebnis, string befehle, Uint digInput, Uint digOutput, string kommentar)
+        public TestAusgabe(int nr, string zeit, AutoTester.TestErgebnis ergebnis, string befehle, string digInput, string digOutput, string kommentar)
         {
             Nr = nr;
             Zeit = zeit;
             Ergebnis = ergebnis;
             Befehle = befehle;
-            DigInput = digInput.GetBin16Bit();
-            DigOutput = digOutput.GetBin16Bit();
+            DigInput = digInput;
+            DigOutput = digOutput;
             Kommentar = kommentar;
         }
     }

@@ -2,15 +2,18 @@
 // Silk - Sample script
 //
 
+var a = 0.1
+
 main()
 {
     // Print header
+    IncrementDataGridId
+    UpdateAnzeige 1
+
     println string("*", 78)
     println "* SILK Example Program"
     println string("*", 78)
     println
-
-	Sleep 500
 
     // Expressions
     println "Expressions:"
@@ -21,7 +24,28 @@ main()
 	
 	GetDigitaleAusgaenge
 	SetDigitaleEingaenge 1234
-	UpdateAnzeige 1
+    
+    ResetStopwatch
+    Sleep(10)
+    IncrementDataGridId
+	UpdateAnzeige
+
+    ResetStopwatch
+    Sleep(20)
+    IncrementDataGridId
+    UpdateAnzeige
+
+    ResetStopwatch
+    Sleep(30)
+    IncrementDataGridId
+	UpdateAnzeige
+
+    ResetStopwatch
+    Sleep(40)
+    IncrementDataGridId
+    UpdateAnzeige
+
+    IncrementDataGridId
 }
 
 double(x)
