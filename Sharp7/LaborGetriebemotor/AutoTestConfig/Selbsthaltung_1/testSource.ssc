@@ -1,0 +1,55 @@
+///////////////////////////////////////////////////////////////
+//
+//  Sebsthaltung 1
+//
+//  Eingänge:
+//      S1  "2#0000_0001"   Taster ( ⓪ ) → Öffner
+//      S2  "2#0000_0010"   Taster ( ① ) → Schliesser
+//
+//  Ausgänge: 
+//      P2  "2#0010_0000"   Meldeleuchte Motorschütz (grün)
+//
+
+
+var digInput
+var digOutput
+
+main()
+{
+    Sleep(100)
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 2
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ausgeschaltet?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 3
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ein?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 2
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor immer noch Ein?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 0
+    BitmusterTesten "2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 1
+    BitmusterTesten"2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    IncrementDataGridId
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

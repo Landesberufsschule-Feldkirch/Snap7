@@ -7,7 +7,6 @@ namespace TestAutomat.AutoTester.Silk
 {
     public partial class Silk
     {
-
         public static void Runtime_Function(object sender, FunctionEventArgs e)
         {
             switch (e.Name)
@@ -50,9 +49,11 @@ namespace TestAutomat.AutoTester.Silk
         }
         private static void SetDigitaleEingaenge(FunctionEventArgs e)
         {
-            var digitalInput = (uint)e.Parameters[0].ToInteger();
-            Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte(digitalInput);
-            Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte(digitalInput);
+            var di = e.Parameters[0].ToString();
+            var digitalInput = new PlcDatenTypen.Uint(di);
+            Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
+            Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
+            Thread.Sleep(100);
         }
         public static void Sleep(int sleepTime) => Thread.Sleep(sleepTime);
         private static void IncrementDataGridId() => AutoTesterWindow.DataGridId++;
@@ -79,10 +80,13 @@ namespace TestAutomat.AutoTester.Silk
         }
         private static void BitmusterTesten(FunctionEventArgs e)
         {
-            var bitMuster = (short)e.Parameters[0].ToInteger();
-            var bitMaske = (short)e.Parameters[1].ToInteger();
-            var maxLaufzeit = (long)e.Parameters[2].ToInteger();
+            var muster = e.Parameters[0].ToString();
+            var maske = e.Parameters[1].ToString();
+            var maxLaufzeit = e.Parameters[2].ToInteger();
             var kommentar = e.Parameters[3].ToString();
+
+            var bitMuster = new PlcDatenTypen.Uint(muster);
+            var bitMaske = new PlcDatenTypen.Uint(maske);
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -91,7 +95,7 @@ namespace TestAutomat.AutoTester.Silk
             {
                 var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
-                if ((digitalOutput & bitMaske) == bitMuster)
+                if ((digitalOutput & (short)bitMaske.GetDec()) == (short)bitMuster.GetDec())
                 {
                     DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, kommentar);
                     return;

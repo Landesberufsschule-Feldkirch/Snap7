@@ -14,6 +14,13 @@
             display: inline-block;
         }
 
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
         .text_schwarz {
             font-family: arial, sans-serif;
             font-size: 12pt;
@@ -31,7 +38,9 @@
             width: 80px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid black;
             padding: 5px;
         }
@@ -39,9 +48,17 @@
 </head>
 
 <body>
-    <h1>Schützschaltung 1</h1>
+    <h1>Selbsthaltung 1</h1>
+    <br>
+    <span class="beschreibung">Beschreibung</span>
+
     <br><br>
+
     <span class="text_schwarz">
+        Der Motorschütz wird mit S1 und S2 bedient.
+
+        <br><br>
+
         <table>
             <tr>
                 <td>SPS </td>
@@ -59,9 +76,9 @@
                 <td>Taster Ein </td>
             </tr>
             <tr class="dq">
-                <td>DQ 0.0 </td>
-                <td>-Q1 </td>
-                <td>Motorschütz </td>
+                <td>DQ 0.5 </td>
+                <td>-P2 </td>
+                <td>Motorschütz (grün)</td>
             </tr>
         </table>
     </span>

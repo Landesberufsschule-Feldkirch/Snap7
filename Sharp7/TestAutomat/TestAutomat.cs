@@ -7,8 +7,6 @@ namespace TestAutomat
 {
     public partial class TestAutomat
     {
-
-
         public DirectoryInfo AktuellesProjekt { get; set; }
         public OrdnerLesen ConfigOrdner { get; set; }
 

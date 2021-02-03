@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Labor Getriebemotor" Height="885" Width="940">
+        Title="Labor Getriebemotor" Height="885" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -27,6 +27,15 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
@@ -84,13 +93,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-
-
-
-
-
-                    <Rectangle Grid.Column="1" Grid.ColumnSpan="24" Grid.Row="1" Grid.RowSpan="24" Fill="#eeeeee" />
-
+                    <Rectangle Grid.Column="1" Grid.ColumnSpan="33" Grid.Row="1" Grid.RowSpan="24" Fill="#eeeeee" />
 
                     <Ellipse Grid.Column="3" Grid.ColumnSpan="6" Grid.Row="3" Grid.RowSpan="6" Fill="SlateGray"/>
                     <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" Fill="Yellow" Margin="25,0,25,20" RenderTransformOrigin="0.5,2.1" >
@@ -108,7 +111,6 @@
                     <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
                     <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
                     <Label Content="B2"                                        Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" FontSize="14pt"  VerticalAlignment="Center"   />
-
 
                     <Rectangle Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="7" Fill="Silver"  />
 
@@ -134,7 +136,6 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
 
                     <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="7" Fill="Silver"  />
 
@@ -171,7 +172,6 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
 
                     <Rectangle Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="7" Fill="Silver"  />
 
@@ -210,7 +210,6 @@
                     </Button>
 
 
-
                     <Label  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Content="-P1" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2" />
                     <Ellipse   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnzeige.ColorP1}" />
@@ -227,7 +226,7 @@
                     <Label  Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" Content="-S9.2" FontSize="20pt" VerticalAlignment="Center" />
 
                     <Button Grid.Column="21" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"  
-                Content="-" Background="Red" Command="{Binding BtnTaster}" CommandParameter="9" >
+                            Content="-" Background="Red" Command="{Binding BtnTaster}" CommandParameter="9" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50" />
@@ -236,10 +235,7 @@
                     </Button>
 
 
-
-
                     <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="14" Grid.Row="1" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="3" />
-
 
                     <Label Grid.Column="22" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top"   Content="{Binding ViAnzeige.VersionNr}" />
                     <Label Grid.Column="14" Grid.ColumnSpan="10"  Grid.Row="24" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
@@ -249,7 +245,6 @@
                     <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
 
                 </Grid>
-
             </TabItem>
 
             <TabItem x:Name="TabItemAutomatischerSoftwareTest" Header="Automatischer Softwaretest"/>

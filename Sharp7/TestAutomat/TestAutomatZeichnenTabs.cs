@@ -14,10 +14,10 @@ namespace TestAutomat
                 Background = Brushes.Yellow
             };
 
-            foreach (var row in new[] {10, 50, 10, 500})
+            foreach (var row in new[] {10, 50, 10, 800})
                 autoTestGrid.RowDefinitions.Add(new RowDefinition {Height = new GridLength(row)});
 
-            foreach (var column in new[] {10, 150, 100, 10, 300, 300, 150})
+            foreach (var column in new[] {10, 150, 100, 10, 400, 450, 50})
                 autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(column)});
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;

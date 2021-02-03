@@ -1,0 +1,59 @@
+///////////////////////////////////////////////////////////////
+//
+//  Sebsthaltung 1
+//
+//  Eingänge:
+//      S1  "2#0000_0000_0001"      Taster ( ⓪ ) → Öffner
+//      S2  "2#0000_0000_0010"      Taster ( ① ) → Schliesser
+//      F1  "2#0000_0000_0100"      Thermorelais (STOP links) → Öffner
+//      S9.1 "2#0010_0000_0000"     Not-Halt → Öffner
+//
+//  Ausgänge: 
+//      P1  "2#0001_0000"   Meldeleuchte Betriebsbereit (weiß)
+//      P2  "2#0010_0000"   Meldeleuchte Motorschütz (grün)
+//      P3  "2#0100_0000"   Meldeleuchte Störung (rot)
+//
+
+
+var digInput
+var digOutput
+
+main()
+{
+    Sleep(100)
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 2
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ausgeschaltet?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 3
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ein?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 2
+    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor immer noch Ein?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 0
+    BitmusterTesten "2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    IncrementDataGridId
+
+
+    ResetStopwatch
+    SetDigitaleEingaenge 1
+    BitmusterTesten"2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    IncrementDataGridId
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}
