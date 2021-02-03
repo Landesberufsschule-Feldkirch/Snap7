@@ -6,55 +6,36 @@ var digInput
 var digOutput
 
 main()
-{
-    // Print header
+{    
     IncrementDataGridId
-    UpdateAnzeige "Init"," "
+	Sleep(100)
+    UpdateAnzeige "Init",""	
 
-    println string("*", 78)
-    println "* SILK Example Program"
-    println string("*", 78)
-    println
-
-    // Expressions
-    println "Expressions:"
-    println "  2 + 2 = ", 2 + 2
-    println "  50 / (2 + 3) = ", 50 / (2 + 3)
-    println "  (2 + 7) * (2 * (8 + double(5) * (100 + triple(7)))) = ", (2 + 7) * (2 * (8 + double(5) * (100 + triple(7))))
-    println
-
-    digOutput = GetDigitaleAusgaenge
-    SetDigitaleEingaenge (digInput)
-
+	IncrementDataGridId
+	ResetStopwatch
+	SetDigitaleEingaenge 2
+	BitmusterTesten 0,3,5000,"Motor Ausgeschaltet?"
+    
+	IncrementDataGridId
+	ResetStopwatch
+	SetDigitaleEingaenge 3	
+	BitmusterTesten 1,3,5000,"Motor Ein?"
+	
+	IncrementDataGridId
     ResetStopwatch
-    Sleep(10)
-    IncrementDataGridId
-    UpdateAnzeige "Aktiv","10ms"
-
-    ResetStopwatch
-    Sleep(20)
-    IncrementDataGridId
-    UpdateAnzeige "Fehler","20ms"
-
-    ResetStopwatch
-    Sleep(30)
-    IncrementDataGridId
-    UpdateAnzeige "Erfolgreich","30ms"
-
-    ResetStopwatch
-    Sleep(40)
-    IncrementDataGridId
-    UpdateAnzeige "TimeOut","40ms"
-
-    IncrementDataGridId
-}
-
-double(x)
-{
-    return x * 2
-}
-
-triple(x)
-{
-    return x * 3
+	SetDigitaleEingaenge 2
+	BitmusterTesten 1,3,5000,"Motor immer noch Ein?"
+	
+	IncrementDataGridId
+	ResetStopwatch
+	SetDigitaleEingaenge 0
+	BitmusterTesten 0,3,5000,"Motor Aus?"
+	
+	IncrementDataGridId
+	ResetStopwatch
+	SetDigitaleEingaenge 1
+	BitmusterTesten 0,3,5000,"Motor Aus?"
+	
+	IncrementDataGridId
+    UpdateAnzeige "Erfolgreich","30ms"   
 }

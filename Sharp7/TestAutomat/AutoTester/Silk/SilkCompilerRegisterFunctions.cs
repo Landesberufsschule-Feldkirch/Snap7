@@ -17,7 +17,8 @@ namespace TestAutomat.AutoTester.Silk
             compiler.RegisterFunction("SetDigitaleEingaenge", 1, 1);
             compiler.RegisterFunction("UpdateAnzeige", 2, 2);
             compiler.RegisterFunction("IncrementDataGridId", 0, 0);
-            compiler.RegisterFunction("ResetStopwatch",0,0);
+            compiler.RegisterFunction("ResetStopwatch", 0, 0);
+            compiler.RegisterFunction("BitmusterTesten", 4, 4);
             // ReSharper restore RedundantArgumentDefaultValue
         }
     }

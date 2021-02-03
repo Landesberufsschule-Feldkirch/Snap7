@@ -1,4 +1,5 @@
-﻿using Sharp7;
+﻿using PlcDatenTypen;
+using Sharp7;
 using Utilities;
 
 namespace LAP_2019_Foerderanlage

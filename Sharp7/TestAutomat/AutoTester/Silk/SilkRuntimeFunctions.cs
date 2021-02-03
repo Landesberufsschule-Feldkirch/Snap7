@@ -1,6 +1,5 @@
 ﻿using SoftCircuits.Silk;
-using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Threading;
 using TestAutomat.AutoTester.Model;
 
@@ -8,22 +7,11 @@ namespace TestAutomat.AutoTester.Silk
 {
     public partial class Silk
     {
+
         public static void Runtime_Function(object sender, FunctionEventArgs e)
         {
             switch (e.Name)
             {
-                case "Print":
-                    var resultText = string.Join("", e.Parameters.Select(p => p.ToString()));
-                    // KatanaForm.form3.programOutputText.AppendText(resultText);
-                    break;
-                case "Debug":
-                    var consoleText = string.Join("", e.Parameters.Select(p => p.ToString()));
-                    Console.WriteLine(consoleText);
-                    break;
-                case "println":
-                    var resultText1 = string.Join("", e.Parameters.Select(p => p.ToString()));
-                    // KatanaForm.form3.programOutputText.AppendText(resultText1 + "\n");
-                    break;
                 case "Sleep":
                     var sleepTime = e.Parameters[0].ToInteger();
                     Sleep(sleepTime);
@@ -48,6 +36,10 @@ namespace TestAutomat.AutoTester.Silk
                 case "ResetStopwatch":
                     ResetStopwatch();
                     break;
+
+                case "BitmusterTesten":
+                    BitmusterTesten(e);
+                    break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
@@ -67,11 +59,11 @@ namespace TestAutomat.AutoTester.Silk
         private static void ResetStopwatch() => SilkStopwatch.Restart();
         private static void UpdateAnzeige(FunctionEventArgs e)
         {
-
             var silkTestergebnis = e.Parameters[0].ToString();
             var silkKommentar = e.Parameters[0].ToString();
             Model.AutoTester.TestErgebnis ergebnis;
 
+            // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (silkTestergebnis)
             {
                 case "Aktiv": ergebnis = Model.AutoTester.TestErgebnis.Aktiv; break;
@@ -83,6 +75,37 @@ namespace TestAutomat.AutoTester.Silk
                 default: ergebnis = Model.AutoTester.TestErgebnis.UnbekanntesErgebnis; break;
             }
 
+            DataGridAnzeigeUpdaten(ergebnis, silkKommentar);
+        }
+        private static void BitmusterTesten(FunctionEventArgs e)
+        {
+            var bitMuster = (short)e.Parameters[0].ToInteger();
+            var bitMaske = (short)e.Parameters[1].ToInteger();
+            var maxLaufzeit = (long)e.Parameters[2].ToInteger();
+            var kommentar = e.Parameters[3].ToString();
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            while (stopwatch.ElapsedMilliseconds < maxLaufzeit)
+            {
+                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+
+                if ((digitalOutput & bitMaske) == bitMuster)
+                {
+                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, kommentar);
+                    return;
+                }
+
+                DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, kommentar);
+
+                Thread.Sleep(10);
+            }
+
+            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
+        }
+        private static void DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis testErgebnis, string silkKommentar)
+        {
             var digitalInput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
             var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
@@ -92,11 +115,10 @@ namespace TestAutomat.AutoTester.Silk
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
-                ergebnis,
-              dInput.GetHex16Bit() + "  " + dInput.GetBin16Bit(),
-             dOutput.GetHex16Bit() + "  " + dOutput.GetBin16Bit(),
+                testErgebnis,
+                dInput.GetHex16Bit() + "  " + dInput.GetBin16Bit(),
+                dOutput.GetHex16Bit() + "  " + dOutput.GetBin16Bit(),
                 silkKommentar));
         }
-
     }
 }
