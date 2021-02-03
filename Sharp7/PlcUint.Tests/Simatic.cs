@@ -14,7 +14,7 @@ namespace PlcDatenTypen.Tests
 
         public void Analog2Int16Test(double analog, double scale, int siemens)
         {
-            Assert.Equal(siemens, PlcDatenTypen.Simatic.Simatic_Analog_2_Int16(analog, scale));
+            Assert.Equal(siemens, PlcDatenTypen.Simatic.Analog_2_Int16(analog, scale));
         }
 
         [Theory]
@@ -26,7 +26,7 @@ namespace PlcDatenTypen.Tests
 
         public void Analog2Int32Test(double analog, double scale, int siemens)
         {
-            Assert.Equal(siemens, PlcDatenTypen.Simatic.Simatic_Analog_2_Int32(analog, scale));
+            Assert.Equal(siemens, PlcDatenTypen.Simatic.Analog_2_Int32(analog, scale));
         }
 
         [Theory]
@@ -36,7 +36,7 @@ namespace PlcDatenTypen.Tests
 
         public void Analog2DoubleTest(int analog, double scale, int siemens)
         {
-            Assert.Equal(siemens, PlcDatenTypen.Simatic.Simatic_Analog_2_Double(analog, scale), 3);
+            Assert.Equal(siemens, PlcDatenTypen.Simatic.Analog_2_Double(analog, scale), 3);
         }
 
         [Theory]
@@ -65,7 +65,7 @@ namespace PlcDatenTypen.Tests
 
         public void GetLowByteTest(uint wert, byte exp)
         {
-            Assert.Equal(exp, PlcDatenTypen.Simatic.Simatic_Digital_GetLowByte(wert));
+            Assert.Equal(exp, PlcDatenTypen.Simatic.Digital_GetLowByte(wert));
         }
 
 
@@ -77,7 +77,7 @@ namespace PlcDatenTypen.Tests
 
         public void GetHighByteTest(uint wert, byte exp)
         {
-            Assert.Equal(exp, PlcDatenTypen.Simatic.Simatic_Digital_GetHighByte(wert));
+            Assert.Equal(exp, PlcDatenTypen.Simatic.Digital_GetHighByte(wert));
         }
 
 
@@ -88,7 +88,7 @@ namespace PlcDatenTypen.Tests
 
         public void GetCombineByteTest(byte low, byte high, uint exp)
         {
-            Assert.Equal(exp, PlcDatenTypen.Simatic.Simatic_Digital_CombineTwoByte(low, high));
+            Assert.Equal(exp, PlcDatenTypen.Simatic.Digital_CombineTwoByte(low, high));
         }
 
     }

@@ -16,7 +16,7 @@ namespace PlcDatenTypen.Tests
             Assert.Equal(ergebnis, plc.GetDec());
         }
 
-        
+
         [Theory]
         [InlineData("1", 0)]
         [InlineData("4", 2)]
@@ -26,7 +26,7 @@ namespace PlcDatenTypen.Tests
             var plc = new PlcDatenTypen.Uint(zahl);
             Assert.True(plc.GetBitGesetzt(position));
         }
-        
+
         [Theory]
         [InlineData("256", "uuups - zu große Zahl!")]
         [InlineData("1", "2#0000_0001")]
@@ -61,6 +61,40 @@ namespace PlcDatenTypen.Tests
         }
 
 
+
+
+        [Theory]
+        [InlineData("256", "uuups - zu große Zahl!")]
+        [InlineData("1", "16#01")]
+        [InlineData("105", "16#69")]
+
+        public void Hex_8Bit_Test(string zahl, string ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetHex8Bit());
+        }
+
+        [Theory]
+        [InlineData("65536", "uuups - zu große Zahl!")]
+        [InlineData("2", "16#0002")]
+        [InlineData("26985", "16#6969")]
+
+        public void Hex_16Bit_Test(string zahl, string ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetHex16Bit());
+        }
+
+        [Theory]
+        [InlineData("4294967296", "uuups - zu große Zahl!")]
+        [InlineData("3", "16#00000003")]
+        [InlineData("4660", "16#00001234")]
+
+        public void Hex_32Bit_Test(string zahl, string ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetHex32Bit());
+        }
 
     }
 }

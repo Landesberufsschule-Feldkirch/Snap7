@@ -16,7 +16,7 @@ namespace TestAutomat
             if (!_autoTesterWindowAktiv)
             {
                 _autoTesterWindowAktiv = true;
-                _autoTesterWindow = new AutoTesterWindow(aktuellesProjekt, datenstruktur);
+                _autoTesterWindow = new AutoTesterWindow();
                 _autoTesterWindow.Show();
             }
 

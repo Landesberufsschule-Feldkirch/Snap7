@@ -2,13 +2,14 @@
 // Silk - Sample script
 //
 
-var a = 0.1
+var digInput
+var digOutput
 
 main()
 {
     // Print header
     IncrementDataGridId
-    UpdateAnzeige 1
+    UpdateAnzeige "Init"," "
 
     println string("*", 78)
     println "* SILK Example Program"
@@ -22,28 +23,28 @@ main()
     println "  (2 + 7) * (2 * (8 + double(5) * (100 + triple(7)))) = ", (2 + 7) * (2 * (8 + double(5) * (100 + triple(7))))
     println
 
-    GetDigitaleAusgaenge
-    SetDigitaleEingaenge 1234
+    digOutput = GetDigitaleAusgaenge
+    SetDigitaleEingaenge (digInput)
 
     ResetStopwatch
     Sleep(10)
     IncrementDataGridId
-    UpdateAnzeige
+    UpdateAnzeige "Aktiv","10ms"
 
     ResetStopwatch
     Sleep(20)
     IncrementDataGridId
-    UpdateAnzeige
+    UpdateAnzeige "Fehler","20ms"
 
     ResetStopwatch
     Sleep(30)
     IncrementDataGridId
-    UpdateAnzeige
+    UpdateAnzeige "Erfolgreich","30ms"
 
     ResetStopwatch
     Sleep(40)
     IncrementDataGridId
-    UpdateAnzeige
+    UpdateAnzeige "TimeOut","40ms"
 
     IncrementDataGridId
 }

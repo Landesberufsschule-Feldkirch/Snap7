@@ -20,14 +20,15 @@ namespace TestAutomat.AutoTester.Model
             Init,
             Erfolgreich,
             Timeout,
-            Fehler
+            Fehler,
+            UnbekanntesErgebnis
             // ReSharper restore UnusedMember.Global
         }
 
         public GetPlcConfig GetPlcConfig { get; set; }
         public AutoTesterWindow AutoTesterWindow { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-        public  Stopwatch SilkStopwatch{ get; set; }
+        public Stopwatch SilkStopwatch { get; set; }
 
         private readonly bool _compilerlaufErfolgreich;
         private readonly CompiledProgram _compiledProgram;
@@ -41,24 +42,24 @@ namespace TestAutomat.AutoTester.Model
             Datenstruktur = datenstruktur;
             GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
 
-            Silk.Silk.ReferenzenUebergeben(autoTesterWindow, SilkStopwatch);
+            Silk.Silk.ReferenzenUebergeben(autoTesterWindow, datenstruktur, SilkStopwatch);
 
             autoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 autoTesterWindow.DataGridId++,
                 "0",
                 TestErgebnis.CompilerStart,
-                "Compilerlauf starten", "", "", ""));
+                 "", "", ""));
 
             SilkStopwatch.Start();
             (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
-            
+
             if (_compilerlaufErfolgreich)
             {
                 autoTesterWindow.UpdateDataGrid(new TestAusgabe(
                     autoTesterWindow.DataGridId++,
                     $"{SilkStopwatch.ElapsedMilliseconds}ms",
                     TestErgebnis.CompilerErfolgreich,
-                    "Compilerlauf war erfolgreich", "", "", ""));
+                     "", "", ""));
 
                 System.Threading.Tasks.Task.Run(TestRunnerTask);
             }
@@ -70,7 +71,7 @@ namespace TestAutomat.AutoTester.Model
                         autoTesterWindow.DataGridId++,
                         $"{SilkStopwatch.ElapsedMilliseconds}ms",
                         TestErgebnis.CompilerError,
-                        error.ToString(), "", "", ""));
+                        error.ToString(), "", ""));
                 }
             }
         }

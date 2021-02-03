@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.IO;
+using System.DirectoryServices.ActiveDirectory;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -21,15 +21,17 @@ namespace TestAutomat
             else AutoTesterDataGrid[zeile] = data;
         });
 
-        public AutoTesterWindow(FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
+        public AutoTesterWindow()
         {
             AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
-            
+
             InitializeComponent();
+
             DataGrid.ItemsSource = AutoTesterDataGrid;
             DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
             {
                 if (DataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated) return;
+
                 var count = AutoTesterDataGrid.Count;
                 if (count < 1) return;
 
@@ -52,6 +54,7 @@ namespace TestAutomat
                         case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Erfolgreich: row.Background = Brushes.LawnGreen; break;
                         case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Timeout: row.Background = Brushes.Orange; break;
                         case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Fehler: row.Background = Brushes.Red; break;
+                        case global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.UnbekanntesErgebnis: row.Background = Brushes.Red; break;
                         default: throw new ArgumentOutOfRangeException();
                     }
                 }

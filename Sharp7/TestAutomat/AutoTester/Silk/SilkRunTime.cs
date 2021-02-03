@@ -14,16 +14,16 @@ namespace TestAutomat.AutoTester.Silk
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 Model.AutoTester.TestErgebnis.TestStart,
-                "", "", "", ""));
+                "", "", ""));
         }
-     
+
         private static void Runtime_End(object sender, EndEventArgs e)
         {
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 Model.AutoTester.TestErgebnis.TestEnde,
-                "", "", "", ""));
+                "", "", ""));
         }
     }
 }
