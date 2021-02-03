@@ -21,6 +21,6 @@
 
         private ICommand _btnTasterZufall;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterZufall => _btnTasterZufall ??= new RelayCommand(p => ViAnzeige.TasterZufall(), p => true);
+        public ICommand BtnTasterZufall => _btnTasterZufall ??= new RelayCommand(_ => ViAnzeige.TasterZufall(), _ => true);
     }
 }

@@ -70,12 +70,12 @@ namespace Synchronisiereinrichtung.Model
             var stateMachine = new StateMachine<State, Trigger>(State.Aus);
 
             stateMachine.Configure(State.Aus)
-                .InternalTransition(Trigger.Aktualisieren, t => _stateAus.Doing())
+                .InternalTransition(Trigger.Aktualisieren, _ => _stateAus.Doing())
                 .Permit(Trigger.Hochfahren, State.Hochfahren)
                 .Permit(Trigger.Reset, State.Reset);
 
             stateMachine.Configure(State.Hochfahren)
-                .InternalTransition(Trigger.Aktualisieren, t => _stateHochfahren.Doing())
+                .InternalTransition(Trigger.Aktualisieren, _ => _stateHochfahren.Doing())
                 .Permit(Trigger.Synchronisieren, State.Synchronisieren)
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.VentilGeschlossen, State.Aus)
@@ -93,13 +93,13 @@ namespace Synchronisiereinrichtung.Model
 
             stateMachine.Configure(State.Belasten)
                 .OnEntry(() => _stateBelasten.OnEntry())
-                .InternalTransition(Trigger.Aktualisieren, t => _stateBelasten.Doing())
+                .InternalTransition(Trigger.Aktualisieren, _=> _stateBelasten.Doing())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.LeistungsschalterAus, State.LeistungsschalterAus)
                 .Permit(Trigger.Reset, State.Reset);
 
             stateMachine.Configure(State.LeistungsschalterAus)
-                .InternalTransition(Trigger.Aktualisieren, t => _stateLeistungsschalterAus.Doing())
+                .InternalTransition(Trigger.Aktualisieren, _ => _stateLeistungsschalterAus.Doing())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.VentilGeschlossen, State.Aus)
                 .Permit(Trigger.Reset, State.Reset);
@@ -108,7 +108,7 @@ namespace Synchronisiereinrichtung.Model
                 .OnEntry(() => _stateReset.OnEntry())
                 .Permit(Trigger.Neustart, State.Aus);
 
-            stateMachine.OnUnhandledTrigger((state, trigger) =>
+            stateMachine.OnUnhandledTrigger((_, _) =>
             {
                 Console.WriteLine("Unhandled:");
             });

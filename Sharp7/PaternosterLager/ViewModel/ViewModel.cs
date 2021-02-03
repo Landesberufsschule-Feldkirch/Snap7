@@ -16,7 +16,7 @@ namespace PaternosterLager.ViewModel
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => Paternosterlager.AllesReset(), p => true);
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(_ => Paternosterlager.AllesReset(), _ => true);
 
         private ICommand _btnBuchstabe;
         // ReSharper disable once UnusedMember.Global
@@ -24,10 +24,10 @@ namespace PaternosterLager.ViewModel
 
         private ICommand _btnAuf;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnAuf => _btnAuf ??= new RelayCommand(p => ViAnzeige.TasterAuf(), p => true);
+        public ICommand BtnAuf => _btnAuf ??= new RelayCommand(_ => ViAnzeige.TasterAuf(), _ => true);
 
         private ICommand _btnAb;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnAb => _btnAb ??= new RelayCommand(p => ViAnzeige.TasterAb(), p => true);
+        public ICommand BtnAb => _btnAb ??= new RelayCommand(_ => ViAnzeige.TasterAb(), _ => true);
     }
 }

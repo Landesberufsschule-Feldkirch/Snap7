@@ -21,11 +21,6 @@ namespace Kommunikation
             Byte4
         }
 
-        private enum AnzahlByte
-        {
-            EinByte = 1
-        }
-
         public byte[] ManDigInput { get; set; }
 
         public const int SpsTimeout = 1000;
