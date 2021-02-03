@@ -18,8 +18,8 @@ namespace LaborGetriebemotor
 
         private enum BitPosEingang
         {
-            S1 = 0, // 0.0  Taster ( ① ) → Schliesser
-            S2,     // 0.1  Taster ( ⓪ ) → Öffner
+            S1 = 0, // 0.0  Taster ( ⓪ ) → Öffner
+            S2,     // 0.1  Taster ( ① ) → Schliesser
             S4,     // 0.2  Taster ( STOP ) → Öffner 
             S3,     // 0.3  Taster ( Ⅰ ) → Schliesser 
             S5,     // 0.4  Taster ( Ⅱ ) → Schliesser 
@@ -28,7 +28,7 @@ namespace LaborGetriebemotor
             S8,     // 0.7  Taster (→) → Schliesser
             S91,    // 1.0  Not-Halt → Schliesser 
             S92,    // 1.1  Not-Halt → Öffner
-            B1,     // 1.2  Lichtschranke 0° 
+            B1,     // 1.2  Lichtschranke 0°
             B2      // 1.3  Lichtschranke 45° CCW 
         }
 

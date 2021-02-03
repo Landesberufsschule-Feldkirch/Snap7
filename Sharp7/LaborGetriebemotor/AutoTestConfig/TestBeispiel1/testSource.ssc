@@ -21,14 +21,14 @@ main()
     println "  50 / (2 + 3) = ", 50 / (2 + 3)
     println "  (2 + 7) * (2 * (8 + double(5) * (100 + triple(7)))) = ", (2 + 7) * (2 * (8 + double(5) * (100 + triple(7))))
     println
-	
-	GetDigitaleAusgaenge
-	SetDigitaleEingaenge 1234
-    
+
+    GetDigitaleAusgaenge
+    SetDigitaleEingaenge 1234
+
     ResetStopwatch
     Sleep(10)
     IncrementDataGridId
-	UpdateAnzeige
+    UpdateAnzeige
 
     ResetStopwatch
     Sleep(20)
@@ -38,7 +38,7 @@ main()
     ResetStopwatch
     Sleep(30)
     IncrementDataGridId
-	UpdateAnzeige
+    UpdateAnzeige
 
     ResetStopwatch
     Sleep(40)

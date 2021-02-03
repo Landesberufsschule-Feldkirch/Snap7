@@ -91,7 +91,7 @@ namespace Kommunikation
 
                             if (_taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte)
                                 {
                                     _datenstruktur.BefehleSps[0] = 1;
                                 }
