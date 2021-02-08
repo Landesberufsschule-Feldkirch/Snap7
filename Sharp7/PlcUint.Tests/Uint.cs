@@ -4,13 +4,25 @@ namespace PlcDatenTypen.Tests
 {
     public class Uint
     {
+
+
+        [Theory]
+        [InlineData(1, 1)]
+        [InlineData(12345, 12345)]
+
+        public void KonstruktorIntTest(ulong zahl, uint ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetDec());
+        }
+
         [Theory]
         [InlineData("12345", 12345)]
         [InlineData("2#0001_0010_0011_0100", 4660)]
         [InlineData("8#12345", 5349)]
         [InlineData("16#1234", 4660)]
 
-        public void EinlesenTest(string zahl, uint ergebnis)
+        public void KonstruktorStringTest(string zahl, uint ergebnis)
         {
             var plc = new PlcDatenTypen.Uint(zahl);
             Assert.Equal(ergebnis, plc.GetDec());

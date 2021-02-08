@@ -6,6 +6,7 @@ namespace PlcDatenTypen
     {
         private readonly ulong _uintDec;
 
+        public Uint(ulong zahl) => _uintDec = zahl;
         public Uint(string zahl)
         {
 
@@ -38,12 +39,12 @@ namespace PlcDatenTypen
         }
 
         public ulong GetDec() => _uintDec;
-        
+
         public string GetBin8Bit()
         {
             if (_uintDec > Math.Pow(2, 8) - 1) return "uuups - zu große Zahl!";
 
-            var binaer =  Convert.ToString((long)_uintDec, 2).PadLeft(8, '0');
+            var binaer = Convert.ToString((long)_uintDec, 2).PadLeft(8, '0');
             return $"2#{binaer.Substring(0, 4)}_{binaer.Substring(4, 4)}";
         }
         public string GetBin16Bit()
@@ -74,7 +75,7 @@ namespace PlcDatenTypen
         public string GetHex16Bit()
         {
             if (_uintDec > Math.Pow(2, 16) - 1) return "uuups - zu große Zahl!";
-            var hex = Convert.ToString((long) _uintDec, 16).PadLeft(4, '0');
+            var hex = Convert.ToString((long)_uintDec, 16).PadLeft(4, '0');
             return $"16#{hex}";
         }
         public string GetHex32Bit()
@@ -82,12 +83,12 @@ namespace PlcDatenTypen
             if (_uintDec > Math.Pow(2, 32) - 1) return "uuups - zu große Zahl!";
             var hex = Convert.ToString((long)_uintDec, 16).PadLeft(8, '0');
             return $"16#{hex}";
-        } 
-        
+        }
+
         public bool GetBitGesetzt(int i)
         {
             var bitMuster = (uint)(1 << i);
             return (_uintDec & bitMuster) == bitMuster;
         }
-      }
+    }
 }

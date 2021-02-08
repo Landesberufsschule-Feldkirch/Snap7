@@ -39,6 +39,10 @@ namespace TestAutomat.AutoTester.Silk
                 case "BitmusterTesten":
                     BitmusterTesten(e);
                     break;
+
+                case "Plc2Dec":
+                    Plc2Dec(e);
+                    break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
@@ -80,13 +84,10 @@ namespace TestAutomat.AutoTester.Silk
         }
         private static void BitmusterTesten(FunctionEventArgs e)
         {
-            var muster = e.Parameters[0].ToString();
-            var maske = e.Parameters[1].ToString();
+            var bitMuster = e.Parameters[0].ToInteger();
+            var bitMaske = e.Parameters[1].ToInteger();
             var maxLaufzeit = e.Parameters[2].ToInteger();
             var kommentar = e.Parameters[3].ToString();
-
-            var bitMuster = new PlcDatenTypen.Uint(muster);
-            var bitMaske = new PlcDatenTypen.Uint(maske);
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -95,7 +96,7 @@ namespace TestAutomat.AutoTester.Silk
             {
                 var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
-                if ((digitalOutput & (short)bitMaske.GetDec()) == (short)bitMuster.GetDec())
+                if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
                 {
                     DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, kommentar);
                     return;
@@ -123,6 +124,12 @@ namespace TestAutomat.AutoTester.Silk
                 dInput.GetHex16Bit() + "  " + dInput.GetBin16Bit(),
                 dOutput.GetHex16Bit() + "  " + dOutput.GetBin16Bit(),
                 silkKommentar));
+        }
+        private static void Plc2Dec(FunctionEventArgs e)
+        {
+            var zahl = e.Parameters[0].ToString();
+            var plcZahl = new PlcDatenTypen.Uint(zahl);
+            e.ReturnValue.SetValue((int)plcZahl.GetDec());
         }
     }
 }
