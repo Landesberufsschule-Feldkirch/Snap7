@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using DisplayPlc;
 
 namespace LaborGetriebemotor
 {
@@ -13,6 +14,7 @@ namespace LaborGetriebemotor
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
+        public DisplayPlc.PlcWindow PlcWindow { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 2;
@@ -53,8 +55,9 @@ namespace LaborGetriebemotor
             TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
+
+            PlcWindow = new PlcWindow(Datenstruktur, ManualMode);
         }
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is not TabControl tc) return;
@@ -68,5 +71,7 @@ namespace LaborGetriebemotor
 
             ManualMode.SetSichtbarkeitFenster();
         }
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => PlcWindow.Show();
     }
 }
