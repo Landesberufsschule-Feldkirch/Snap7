@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using static System.Windows.Controls.Grid;
 
 namespace ManualMode
 {
@@ -15,9 +16,9 @@ namespace ManualMode
                 Fill = farbe
             };
 
-            Grid.SetColumn(hintergrund, x);
-            Grid.SetColumnSpan(hintergrund, span);
-            Grid.SetRow(hintergrund, y);
+            SetColumn(hintergrund, x);
+            SetColumnSpan(hintergrund, span);
+            SetRow(hintergrund, y);
             grid.Children.Add(hintergrund);
         }
     }

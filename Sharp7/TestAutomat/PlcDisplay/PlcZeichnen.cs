@@ -17,11 +17,12 @@ namespace TestAutomat.PlcDisplay
             const int reiheBezeichnung = 50;
             const int reiheLabel = 25;
 
+            const int schriftGanzGross = 35;
             const int schriftGross = 14;
             const int schriftKlein = 12;
 
             plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            for (var i = 0; i < 40; i++) plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBreite) });
+            for (var i = 0; i < 25; i++) plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBreite) });
 
             foreach (var row in new[] { reiheObererRand, reiheKommentar, reiheBezeichnung, reiheHoehe, reiheLabel, reiheLabel, reiheHoehe, reiheHoehe, reiheHoehe, reiheLabel, reiheLabel, reiheHoehe, reiheBezeichnung, reiheKommentar })
                 plcGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
@@ -29,11 +30,12 @@ namespace TestAutomat.PlcDisplay
             Formen.PlcRechteckZeichnen(1, 22, 3, 9, Brushes.LightGray, plcGrid);
 
             Formen.PlcBorderZeichnen(3, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(3, 5, Brushes.White, schriftGross, "DI", plcGrid);
-            Formen.PlcLabelZeichnen(4, 5, Brushes.White, schriftKlein, "a", plcGrid);
+
+            Formen.PlcLabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", plcGrid);
+            Formen.PlcLabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 4, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode,myAutoTester, i);
@@ -43,11 +45,11 @@ namespace TestAutomat.PlcDisplay
             }
 
             Formen.PlcBorderZeichnen(13, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 5, Brushes.White, schriftGross, "DI", plcGrid);
-            Formen.PlcLabelZeichnen(14, 5, Brushes.White, schriftKlein, "b", plcGrid);
+            Formen.PlcLabelZeichnen(13, 1, 5, 1, Brushes.White, schriftGross, "DI", plcGrid);
+            Formen.PlcLabelZeichnen(14, 1, 5, 1, Brushes.White, schriftKlein, "b", plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 4, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 3, 10 + i, "FarbeDi", backgroundProperty, plcGrid);
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, myAutoTester, 8 + i);
                 if (!anzeigen) continue;
@@ -56,11 +58,11 @@ namespace TestAutomat.PlcDisplay
             }
 
             Formen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(3, 9, Brushes.White, schriftGross, "DQ", plcGrid);
-            Formen.PlcLabelZeichnen(4, 9, Brushes.White, schriftKlein, "a", plcGrid);
+            Formen.PlcLabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", plcGrid);
+            Formen.PlcLabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 10, Brushes.White, schriftGross, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, myAutoTester, i);
@@ -70,11 +72,11 @@ namespace TestAutomat.PlcDisplay
             }
 
             Formen.PlcBorderZeichnen(13, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 9, Brushes.White, schriftGross, "DQ", plcGrid);
-            Formen.PlcLabelZeichnen(14, 9, Brushes.White, schriftKlein, "b", plcGrid);
+            Formen.PlcLabelZeichnen(13, 1, 9, 1, Brushes.White, schriftGross, "DQ", plcGrid);
+            Formen.PlcLabelZeichnen(14, 1, 9, 1, Brushes.White, schriftKlein, "b", plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 10, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, myAutoTester, 8 + i);
@@ -82,6 +84,8 @@ namespace TestAutomat.PlcDisplay
                 Formen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung,schriftGross, VerticalAlignment.Top, plcGrid);
                 Formen.PlcKommentarZeichnen(13 + i, 13, kommentar,schriftKlein, VerticalAlignment.Top, plcGrid);
             }
+
+            Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", plcGrid);
         }
 
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(

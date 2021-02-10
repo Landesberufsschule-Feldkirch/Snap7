@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static System.Windows.Controls.Grid;
 
 namespace TestAutomat
 {
@@ -36,8 +37,8 @@ namespace TestAutomat
 
             btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
 
-            Grid.SetColumn(btnManualTest, 5);
-            Grid.SetRow(btnManualTest, 1);
+            SetColumn(btnManualTest, 5);
+            SetRow(btnManualTest, 1);
             autoTestGrid.Children.Add(btnManualTest);
 
 
@@ -65,8 +66,8 @@ namespace TestAutomat
                 TestAutomatStarten(AktuellesProjekt, _datenstruktur);
             };
 
-            Grid.SetColumn(btnStart, 1);
-            Grid.SetRow(btnStart, 1);
+            SetColumn(btnStart, 1);
+            SetRow(btnStart, 1);
             autoTestGrid.Children.Add(btnStart);
 
 
@@ -76,16 +77,16 @@ namespace TestAutomat
                 Background = Brushes.GreenYellow
             };
 
-            Grid.SetColumn(stackPanel, 1);
-            Grid.SetColumnSpan(stackPanel, 2);
-            Grid.SetRow(stackPanel, 3);
+            SetColumn(stackPanel, 1);
+            SetColumnSpan(stackPanel, 2);
+            SetRow(stackPanel, 3);
             autoTestGrid.Children.Add(stackPanel);
 
             var webBrowser = new WebBrowser {Name = "WebBrowser"};
 
-            Grid.SetColumn(webBrowser, 4);
-            Grid.SetColumnSpan(webBrowser, 2);
-            Grid.SetRow(webBrowser, 3);
+            SetColumn(webBrowser, 4);
+            SetColumnSpan(webBrowser, 2);
+            SetRow(webBrowser, 3);
             autoTestGrid.Children.Add(webBrowser);
 
             TestProjekteEinfuellen(btnStart, stackPanel, webBrowser);

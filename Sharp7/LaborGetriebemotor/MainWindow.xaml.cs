@@ -14,7 +14,7 @@ namespace LaborGetriebemotor
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
-        public DisplayPlc.PlcWindow PlcWindow { get; set; }
+        public PlcWindow PlcWindow { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 2;
@@ -72,6 +72,6 @@ namespace LaborGetriebemotor
             ManualMode.SetSichtbarkeitFenster();
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
-        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => PlcWindow.Show();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => PlcWindow.Oeffnen();
     }
 }

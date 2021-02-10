@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using static System.Windows.Controls.Grid;
 
 namespace ManualMode
 {
@@ -19,8 +20,8 @@ namespace ManualMode
                 HorizontalAlignment = alignment
             };
 
-            Grid.SetColumn(text, x);
-            Grid.SetRow(text, y);
+            SetColumn(text, x);
+            SetRow(text, y);
             grid.Children.Add(text);
         }
         internal static void KommentarZeichnen(int x, int y, int par, string bez, DependencyProperty visibilityProperty, Grid grid)
@@ -38,8 +39,8 @@ namespace ManualMode
             kommentar.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.Kommentar{bez} [{ par }]"));
             kommentar.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(kommentar, x);
-            Grid.SetRow(kommentar, y);
+            SetColumn(kommentar, x);
+            SetRow(kommentar, y);
             grid.Children.Add(kommentar);
         }
         internal static void BezeichnungZeichnen(int x, int y, int par, string bez, HorizontalAlignment horizontal, DependencyProperty visibilityProperty, Grid grid)
@@ -56,8 +57,8 @@ namespace ManualMode
             bezeichnung.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.Bezeichnung{bez} [{ par }]"));
             bezeichnung.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(bezeichnung, x);
-            Grid.SetRow(bezeichnung, y);
+            SetColumn(bezeichnung, x);
+            SetRow(bezeichnung, y);
             grid.Children.Add(bezeichnung);
         }
         internal static void TextboxByteZeichnen(int x, int y, int par, string bez, DependencyProperty visibilityProperty, ManualMode manualMode, Grid grid)
@@ -92,8 +93,8 @@ namespace ManualMode
                 }
             };
 
-            Grid.SetColumn(textBox, x);
-            Grid.SetRow(textBox, y);
+            SetColumn(textBox, x);
+            SetRow(textBox, y);
 
             grid.Children.Add(textBox);
         }

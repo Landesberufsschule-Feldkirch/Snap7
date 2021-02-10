@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
+using static System.Windows.Controls.Grid;
 
 namespace ManualMode
 {
@@ -24,8 +25,8 @@ namespace ManualMode
             buttonTasten.SetBinding(backgroundProperty, new Binding($"ManVisuAnzeigen.Farbe{bez} [{ par }]"));
             buttonTasten.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(buttonTasten, x);
-            Grid.SetRow(buttonTasten, y);
+            SetColumn(buttonTasten, x);
+            SetRow(buttonTasten, y);
 
             grid.Children.Add(buttonTasten);
         }
@@ -47,8 +48,8 @@ namespace ManualMode
             buttonTasten.SetBinding(ButtonBase.ClickModeProperty, new Binding($"ManVisuAnzeigen.ClickModeTasten [{ par }]"));
             buttonTasten.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(buttonTasten, x);
-            Grid.SetRow(buttonTasten, y);
+            SetColumn(buttonTasten, x);
+            SetRow(buttonTasten, y);
 
             grid.Children.Add(buttonTasten);
         }
@@ -70,8 +71,8 @@ namespace ManualMode
             buttonToggeln.SetBinding(backgroundProperty, new Binding($"ManVisuAnzeigen.FarbeTastenToggeln{bez} [{ par }]"));
             buttonToggeln.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(buttonToggeln, x);
-            Grid.SetRow(buttonToggeln, y);
+            SetColumn(buttonToggeln, x);
+            SetRow(buttonToggeln, y);
 
             grid.Children.Add(buttonToggeln);
         }

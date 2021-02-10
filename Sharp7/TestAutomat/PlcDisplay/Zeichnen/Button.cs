@@ -2,10 +2,11 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using static System.Windows.Controls.Grid;
 
 namespace TestAutomat.PlcDisplay.Zeichnen
 {
-    public partial class Formen
+    public static partial class Formen
     {
         internal static void PlcButtonZeichnen(int x, int y, int par, string bez, DependencyProperty backgroundProperty, Grid grid)
         {
@@ -18,11 +19,10 @@ namespace TestAutomat.PlcDisplay.Zeichnen
 
             buttonTasten.SetBinding(backgroundProperty, new Binding($"PlcDisplayAnzeige.{bez} [{ par }]"));
 
-            Grid.SetColumn(buttonTasten, x);
-            Grid.SetRow(buttonTasten, y);
+            SetColumn(buttonTasten, x);
+            SetRow(buttonTasten, y);
 
             grid.Children.Add(buttonTasten);
         }
-
     }
 }
