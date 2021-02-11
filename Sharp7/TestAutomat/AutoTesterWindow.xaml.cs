@@ -11,6 +11,7 @@ namespace TestAutomat
     {
         public int DataGridId { get; set; }
         public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
+        
 
         public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
         {

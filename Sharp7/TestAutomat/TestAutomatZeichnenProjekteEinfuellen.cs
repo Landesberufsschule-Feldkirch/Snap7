@@ -21,16 +21,21 @@ namespace TestAutomat
                     VerticalAlignment = VerticalAlignment.Top,
                     Tag = projekt
                 };
+
                 rdo.Checked += (sender, _) =>
                 {
-                    if (!(sender is RadioButton {Tag: DirectoryInfo} rb)) return;
-
+                    if (!(sender is RadioButton { Tag: DirectoryInfo } rb)) return;
+                    
                     btnStart.IsEnabled = true;
                     btnStart.Background = new SolidColorBrush(Colors.LawnGreen);
 
                     AktuellesProjekt = rb.Tag as DirectoryInfo;
 
                     if (AktuellesProjekt == null) return;
+
+                    _datenstruktur.TestProjektOrdner = AktuellesProjekt.FullName;
+                    _callbackPlcWindow?.Invoke(_datenstruktur);
+
                     var dateiName = $@"{AktuellesProjekt.FullName}\index.html";
 
                     var htmlSeite = File.Exists(dateiName) ? File.ReadAllText(dateiName) : "--??--";

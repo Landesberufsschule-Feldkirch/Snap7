@@ -1,12 +1,20 @@
-﻿using DisplayPlc.Zeichnen;
+﻿using System.IO;
+using DisplayPlc.Zeichnen;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using DisplayPlc.Config;
+using Kommunikation;
+using PlcDatenTypen;
 
 namespace DisplayPlc
 {
     public partial class PlcWindow
     {
+        public GetPlcConfig GetPlcConfig { get; set; }
+        public Uint PlcEingaenge { get; set; }
+        public Uint PlcAusgaenge { get; set; }
+
         internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ManualMode.ManualMode manualMode)
         {
             const int spaltenBreite = 30;
@@ -19,6 +27,7 @@ namespace DisplayPlc
             const int schriftGanzGross = 35;
             const int schriftGross = 14;
             const int schriftKlein = 12;
+
 
             plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
             for (var i = 0; i < 25; i++) plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBreite) });
@@ -87,12 +96,6 @@ namespace DisplayPlc
 
             Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", plcGrid);
         }
-        public void Oeffnen()
-        {
-            Show();
-            Title = "PLC";
-            MaxWidth = 700;
-        }
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ManualMode.ManualMode manualMode, int i)
         {
             return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
@@ -100,6 +103,34 @@ namespace DisplayPlc
         private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ManualMode.ManualMode manualMode, int i)
         {
             return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
+        }
+
+        public void SetBetriebsartProjekt(Datenstruktur datenstruktur)
+        {
+            if (datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+            {
+                PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
+                PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
+            }
+            else
+            {
+                PlcAusgaenge = new Uint("16#FFFF");
+                PlcEingaenge = new Uint("16#FFFF");
+            }
+            SetBeschriftungAktualisieren();
+        }
+
+        public void EventBeschriftungAktualisieren(Datenstruktur datenstruktur)
+        {
+            GetPlcConfig = new GetPlcConfig(new FileInfo(datenstruktur.TestProjektOrdner));
+            PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
+            PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
+            SetBeschriftungAktualisieren();
+        }
+
+        public void SetBeschriftungAktualisieren()
+        {
+            //
         }
     }
 }

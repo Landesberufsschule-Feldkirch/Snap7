@@ -52,11 +52,11 @@ namespace LaborGetriebemotor
 
             Plc.SetManualModeReferenz(ManualMode.Datenstruktur);
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode);
+            PlcWindow = new PlcWindow(Datenstruktur, ManualMode);
+
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode, PlcWindow.EventBeschriftungAktualisieren);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
-
-            PlcWindow = new PlcWindow(Datenstruktur, ManualMode);
         }
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -70,6 +70,7 @@ namespace LaborGetriebemotor
             }
 
             ManualMode.SetSichtbarkeitFenster();
+            PlcWindow.SetBetriebsartProjekt(Datenstruktur);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
         private void PlcButton_OnClick(object sender, RoutedEventArgs e) => PlcWindow.Oeffnen();
