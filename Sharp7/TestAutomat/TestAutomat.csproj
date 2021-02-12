@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
@@ -34,6 +35,12 @@
       <HintPath>..\..\..\Silk\Silk\bin\Debug\netstandard2.0\Silk.dll</HintPath>
       <Private>true</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Bilder\S7_1200.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

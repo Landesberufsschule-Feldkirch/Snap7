@@ -1,19 +1,14 @@
-﻿using System.IO;
+﻿using DisplayPlc.Config;
 using DisplayPlc.Zeichnen;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using DisplayPlc.Config;
-using Kommunikation;
-using PlcDatenTypen;
 
 namespace DisplayPlc
 {
-    public partial class PlcWindow
+    public partial class DisplayPlc
     {
         public GetPlcConfig GetPlcConfig { get; set; }
-        public Uint PlcEingaenge { get; set; }
-        public Uint PlcAusgaenge { get; set; }
 
         internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ManualMode.ManualMode manualMode)
         {
@@ -39,63 +34,66 @@ namespace DisplayPlc
 
             Formen.PlcBorderZeichnen(3, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
 
-            Formen.PlcLabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", plcGrid);
-            Formen.PlcLabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", plcGrid);
+            Formen.PlcLabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcLabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", i, "Di", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
-                Formen.PlcKommentarZeichnen(3 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, plcGrid);
+                Formen.PlcKommentarZeichnen(3 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, i, "Di", VisibilityProperty, plcGrid);
             }
 
             Formen.PlcBorderZeichnen(13, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 1, 5, 1, Brushes.White, schriftGross, "DI", plcGrid);
-            Formen.PlcLabelZeichnen(14, 1, 5, 1, Brushes.White, schriftKlein, "b", plcGrid);
+            Formen.PlcLabelZeichnen(13, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcLabelZeichnen(14, 1, 5, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Di", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 3, 10 + i, "FarbeDi", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
-                Formen.PlcKommentarZeichnen(13 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, plcGrid);
+                Formen.PlcKommentarZeichnen(13 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, 8 + i, "Di", VisibilityProperty, plcGrid);
             }
 
             Formen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", plcGrid);
-            Formen.PlcLabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", plcGrid);
+            Formen.PlcLabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcLabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", i, "Da", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
-                Formen.PlcKommentarZeichnen(3 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, plcGrid);
+                Formen.PlcKommentarZeichnen(3 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, i, "Da", VisibilityProperty, plcGrid);
             }
 
             Formen.PlcBorderZeichnen(13, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 1, 9, 1, Brushes.White, schriftGross, "DQ", plcGrid);
-            Formen.PlcLabelZeichnen(14, 1, 9, 1, Brushes.White, schriftKlein, "b", plcGrid);
+            Formen.PlcLabelZeichnen(13, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcLabelZeichnen(14, 1, 9, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, plcGrid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", plcGrid);
+                Formen.PlcLabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
-                Formen.PlcKommentarZeichnen(13 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, plcGrid);
+                Formen.PlcKommentarZeichnen(13 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, 8 + i, "Da", VisibilityProperty, plcGrid);
             }
 
-            Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", plcGrid);
+            Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", 0, "-", VisibilityProperty, plcGrid);
         }
+
+   
+
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ManualMode.ManualMode manualMode, int i)
         {
             return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
@@ -105,32 +103,6 @@ namespace DisplayPlc
             return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
         }
 
-        public void SetBetriebsartProjekt(Datenstruktur datenstruktur)
-        {
-            if (datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
-            {
-                PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
-                PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
-            }
-            else
-            {
-                PlcAusgaenge = new Uint("16#FFFF");
-                PlcEingaenge = new Uint("16#FFFF");
-            }
-            SetBeschriftungAktualisieren();
-        }
 
-        public void EventBeschriftungAktualisieren(Datenstruktur datenstruktur)
-        {
-            GetPlcConfig = new GetPlcConfig(new FileInfo(datenstruktur.TestProjektOrdner));
-            PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
-            PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
-            SetBeschriftungAktualisieren();
-        }
-
-        public void SetBeschriftungAktualisieren()
-        {
-            //
-        }
     }
 }

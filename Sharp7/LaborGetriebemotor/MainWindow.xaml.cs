@@ -2,7 +2,6 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using DisplayPlc;
 
 namespace LaborGetriebemotor
 {
@@ -14,7 +13,7 @@ namespace LaborGetriebemotor
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
-        public PlcWindow PlcWindow { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 2;
@@ -52,11 +51,11 @@ namespace LaborGetriebemotor
 
             Plc.SetManualModeReferenz(ManualMode.Datenstruktur);
 
-            PlcWindow = new PlcWindow(Datenstruktur, ManualMode);
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ManualMode);
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode, PlcWindow.EventBeschriftungAktualisieren);
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode, DisplayPlc.EventBeschriftungAktualisieren);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
-            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest);
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
         }
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -70,9 +69,9 @@ namespace LaborGetriebemotor
             }
 
             ManualMode.SetSichtbarkeitFenster();
-            PlcWindow.SetBetriebsartProjekt(Datenstruktur);
+            DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
-        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => PlcWindow.Oeffnen();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => DisplayPlc.Oeffnen();
     }
 }

@@ -1,13 +1,15 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using static System.Windows.Controls.Grid;
 
 namespace TestAutomat
 {
     public partial class TestAutomat
     {
-        public void TabItemFuellen(TabItem tabItemAutomatischerSoftwareTest)
+        public void TabItemFuellen(TabItem tabItemAutomatischerSoftwareTest, DisplayPlc.DisplayPlc displayPlc)
         {
             var autoTestGrid = new Grid
             {
@@ -15,13 +17,33 @@ namespace TestAutomat
                 Background = Brushes.Yellow
             };
 
-            foreach (var row in new[] {10, 50, 10, 800})
-                autoTestGrid.RowDefinitions.Add(new RowDefinition {Height = new GridLength(row)});
+            foreach (var row in new[] { 10, 50, 10, 700 })
+                autoTestGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
 
-            foreach (var column in new[] {10, 150, 100, 10, 400, 450, 50})
-                autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = new GridLength(column)});
+            foreach (var column in new[] { 10, 150, 100, 10, 400, 400, 100 })
+                autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(column) });
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
+
+      
+            var btnPlcWindowOeffnen = new Button
+            {
+                Width = 60,
+                Height = 40,
+                Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("/S7_1200.jpg", UriKind.Relative))
+                }
+            };
+
+            btnPlcWindowOeffnen.Click += (_, _) => displayPlc.PlcAnzeigen();
+
+            SetColumn(btnPlcWindowOeffnen, 6);
+            SetColumnSpan(btnPlcWindowOeffnen,2);
+            SetRow(btnPlcWindowOeffnen, 0);
+            SetRowSpan(btnPlcWindowOeffnen,2);
+            autoTestGrid.Children.Add(btnPlcWindowOeffnen);
+
 
             var btnManualTest = new Button
             {
@@ -82,7 +104,7 @@ namespace TestAutomat
             SetRow(stackPanel, 3);
             autoTestGrid.Children.Add(stackPanel);
 
-            var webBrowser = new WebBrowser {Name = "WebBrowser"};
+            var webBrowser = new WebBrowser { Name = "WebBrowser" };
 
             SetColumn(webBrowser, 4);
             SetColumnSpan(webBrowser, 2);

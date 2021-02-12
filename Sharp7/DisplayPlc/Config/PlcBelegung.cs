@@ -9,9 +9,6 @@ namespace DisplayPlc.Config
         public Uint Eingaenge { get; set; }
         public Uint Ausgaenge { get; set; }
 
-        public bool GetEingangAktiv(int i) => Eingaenge.GetBitGesetzt(i);
-        public bool GetAusgangAktiv(int i) => Ausgaenge.GetBitGesetzt(i);
-
         // ReSharper disable once UnusedMember.Global
         internal class MyUintConverter : JsonConverter<Uint>
         {
