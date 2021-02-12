@@ -94,7 +94,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlcDatenTypen", "PlcUint\Pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlcDatenTypen.Tests", "PlcUint.Tests\PlcDatenTypen.Tests.csproj", "{5E134212-1A5F-405A-8C81-282141DA3989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayPlc", "DisplayPlc\DisplayPlc.csproj", "{DEA58F94-3D06-44D5-8EE9-801C53886877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisplayPlc", "DisplayPlc\DisplayPlc.csproj", "{DEA58F94-3D06-44D5-8EE9-801C53886877}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silk", "Silk\Silk.csproj", "{10A72B19-3BDA-4E66-AF0C-2EB7EE355261}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -278,6 +280,10 @@ Global
 		{DEA58F94-3D06-44D5-8EE9-801C53886877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEA58F94-3D06-44D5-8EE9-801C53886877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEA58F94-3D06-44D5-8EE9-801C53886877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A72B19-3BDA-4E66-AF0C-2EB7EE355261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A72B19-3BDA-4E66-AF0C-2EB7EE355261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A72B19-3BDA-4E66-AF0C-2EB7EE355261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A72B19-3BDA-4E66-AF0C-2EB7EE355261}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
