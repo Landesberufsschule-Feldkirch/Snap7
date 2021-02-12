@@ -2,7 +2,6 @@
 using Kommunikation;
 using System.IO;
 using TestAutomat.AutoTester.Model;
-using TestAutomat.PlcDisplay;
 
 namespace TestAutomat
 {
@@ -12,7 +11,6 @@ namespace TestAutomat
         public OrdnerLesen ConfigOrdner { get; set; }
 
         private AutoTesterWindow _autoTesterWindow;
-        private PlcWindow _plcWindow;
         private readonly Datenstruktur _datenstruktur;
         private readonly ManualMode.ManualMode _manualMode;
         private readonly Action<Datenstruktur> _callbackPlcWindow;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -59,6 +60,14 @@ namespace TestAutomat
                     }
                 }
             };
+
+            Closing += AutoTester_Closing;
+        }
+
+        private void AutoTester_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }

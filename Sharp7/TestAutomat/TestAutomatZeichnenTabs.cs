@@ -63,6 +63,11 @@ namespace TestAutomat
             SetRow(btnManualTest, 1);
             autoTestGrid.Children.Add(btnManualTest);
 
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                btnManualTest.Visibility = Visibility.Visible;
+                btnManualTest.IsEnabled = true;
+            }
 
             var btnStart = new Button
             {
@@ -79,13 +84,7 @@ namespace TestAutomat
             btnStart.Click += (_, _) =>
             {
                 btnStart.IsEnabled = true;
-                if (System.Diagnostics.Debugger.IsAttached)
-                {
-                    btnManualTest.Visibility = Visibility.Visible;
-                    btnManualTest.IsEnabled = true;
-                }
-
-                TestAutomatStarten(AktuellesProjekt, _datenstruktur);
+               TestAutomatStarten(AktuellesProjekt, _datenstruktur);
             };
 
             SetColumn(btnStart, 1);

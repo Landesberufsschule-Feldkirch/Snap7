@@ -2,7 +2,6 @@
 using SoftCircuits.Silk;
 using System.Diagnostics;
 using System.IO;
-using TestAutomat.PlcDisplay.Config;
 
 namespace TestAutomat.AutoTester.Model
 {
@@ -25,7 +24,6 @@ namespace TestAutomat.AutoTester.Model
             // ReSharper restore UnusedMember.Global
         }
 
-        public GetPlcConfig GetPlcConfig { get; set; }
         public AutoTesterWindow AutoTesterWindow { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public Stopwatch SilkStopwatch { get; set; }
@@ -40,7 +38,6 @@ namespace TestAutomat.AutoTester.Model
 
             AutoTesterWindow = autoTesterWindow;
             Datenstruktur = datenstruktur;
-            GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
 
             Silk.Silk.ReferenzenUebergeben(autoTesterWindow, datenstruktur, SilkStopwatch);
 
