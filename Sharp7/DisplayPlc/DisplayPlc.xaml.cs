@@ -59,10 +59,5 @@ namespace DisplayPlc
             Title = "PLC";
             MaxWidth = 700;
         }
-
-        public void PlcAnzeigen()
-        {
-            Oeffnen();
-        }
     }
 }

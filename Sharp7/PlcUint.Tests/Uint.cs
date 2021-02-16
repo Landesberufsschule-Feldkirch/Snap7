@@ -73,6 +73,16 @@ namespace PlcDatenTypen.Tests
         }
 
 
+        [Theory]
+        [InlineData(8, 3, "2#0000_0011")]
+        [InlineData(16, 3, "2#0000_0000_0000_0011")]
+        [InlineData(32, 3, "2#0000_0000_0000_0000_0000_0000_0000_0011")]
+
+        public void Bin_xBit_Test(int anzahlbit, ulong zahl, string ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetBinBit(anzahlbit));
+        }
 
 
         [Theory]
@@ -108,5 +118,15 @@ namespace PlcDatenTypen.Tests
             Assert.Equal(ergebnis, plc.GetHex32Bit());
         }
 
+        [Theory]
+        [InlineData(8, 3, "16#03")]
+        [InlineData(16, 3, "16#0003")]
+        [InlineData(32, 3, "16#00000003")]
+
+        public void Hex_xBit_Test(int anzahlBit, ulong zahl, string ergebnis)
+        {
+            var plc = new PlcDatenTypen.Uint(zahl);
+            Assert.Equal(ergebnis, plc.GetHexBit(anzahlBit));
+        }
     }
 }

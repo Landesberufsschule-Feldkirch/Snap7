@@ -36,7 +36,7 @@ namespace TestAutomat
                 }
             };
 
-            btnPlcWindowOeffnen.Click += (_, _) => displayPlc.PlcAnzeigen();
+            btnPlcWindowOeffnen.Click += (_, _) => displayPlc.Oeffnen();
 
             SetColumn(btnPlcWindowOeffnen, 6);
             SetColumnSpan(btnPlcWindowOeffnen,2);

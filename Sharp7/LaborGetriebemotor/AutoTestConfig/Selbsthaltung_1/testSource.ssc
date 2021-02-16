@@ -43,38 +43,43 @@ main()
     var P3 = Plc2Dec(DQ_0_6)    // rot
     var MaskeP1_P2_P3 = P1 + P2 + P3
 
+    SetDataGridBitAnzahl 8, 8
 
     Sleep(100)
     UpdateAnzeige "Init", ""
     IncrementDataGridId
 
-
+    SetDigitaleEingaenge 0
     ResetStopwatch
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    IncrementDataGridId
+
     SetDigitaleEingaenge S1
+    ResetStopwatch
     BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Ausgeschaltet?"
     IncrementDataGridId
 
 
-    ResetStopwatch
     SetDigitaleEingaenge (S1 + S2)
+    ResetStopwatch
     BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor Ein?"
     IncrementDataGridId
 
 
-    ResetStopwatch
     SetDigitaleEingaenge S1
+    ResetStopwatch
     BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor immer noch Ein?"
     IncrementDataGridId
 
 
-    ResetStopwatch
     SetDigitaleEingaenge 0
+    ResetStopwatch
     BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
     IncrementDataGridId
 
 
-    ResetStopwatch
     SetDigitaleEingaenge S1
+    ResetStopwatch
     BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
     IncrementDataGridId
 

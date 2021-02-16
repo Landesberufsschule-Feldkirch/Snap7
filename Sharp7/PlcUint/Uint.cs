@@ -65,6 +65,17 @@ namespace PlcDatenTypen
                    + $"_{binaer.Substring(16, 4)}_{binaer.Substring(20, 4)}"
                    + $"_{binaer.Substring(24, 4)}_{binaer.Substring(28, 4)}";
         }
+        public string GetBinBit(int anzahlBit)
+        {
+            switch (anzahlBit)
+            {
+                case 8: return GetBin8Bit();
+                case 16: return GetBin16Bit();
+                case 32: return GetBin32Bit();
+            }
+
+            return "--2#--";
+        }
 
         public string GetHex8Bit()
         {
@@ -83,6 +94,17 @@ namespace PlcDatenTypen
             if (_uintDec > Math.Pow(2, 32) - 1) return "uuups - zu große Zahl!";
             var hex = Convert.ToString((long)_uintDec, 16).PadLeft(8, '0');
             return $"16#{hex}";
+        }
+        public string GetHexBit(int anzahlBit)
+        {
+            switch (anzahlBit)
+            {
+                case 8: return GetHex8Bit();
+                case 16: return GetHex16Bit();
+                case 32: return GetHex32Bit();
+            }
+
+            return "--16#--";
         }
 
         public bool GetBitGesetzt(int i)

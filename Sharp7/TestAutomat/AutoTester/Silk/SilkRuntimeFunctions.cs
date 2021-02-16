@@ -7,6 +7,9 @@ namespace TestAutomat.AutoTester.Silk
 {
     public partial class Silk
     {
+        private static int _anzahlBitEingaenge = 16;
+        private static int _anzahlBitAusgaenge = 16;
+
         public static void Runtime_Function(object sender, FunctionEventArgs e)
         {
             switch (e.Name)
@@ -43,6 +46,10 @@ namespace TestAutomat.AutoTester.Silk
                 case "Plc2Dec":
                     Plc2Dec(e);
                     break;
+
+                case "SetDataGridBitAnzahl":
+                    SetDataGridBitAnzahl(e);
+                    break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
@@ -53,8 +60,7 @@ namespace TestAutomat.AutoTester.Silk
         }
         private static void SetDigitaleEingaenge(FunctionEventArgs e)
         {
-            var di = e.Parameters[0].ToString();
-            var digitalInput = new PlcDatenTypen.Uint(di);
+            var digitalInput = new PlcDatenTypen.Uint((ulong)e.Parameters[0].ToInteger());
             Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
             Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
             Thread.Sleep(100);
@@ -94,6 +100,9 @@ namespace TestAutomat.AutoTester.Silk
 
             while (stopwatch.ElapsedMilliseconds < maxLaufzeit)
             {
+
+                Thread.Sleep(10);
+
                 var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
                 if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
@@ -103,8 +112,6 @@ namespace TestAutomat.AutoTester.Silk
                 }
 
                 DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, kommentar);
-
-                Thread.Sleep(10);
             }
 
             DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
@@ -121,8 +128,8 @@ namespace TestAutomat.AutoTester.Silk
                 AutoTesterWindow.DataGridId,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 testErgebnis,
-                dInput.GetHex16Bit() + "  " + dInput.GetBin16Bit(),
-                dOutput.GetHex16Bit() + "  " + dOutput.GetBin16Bit(),
+                dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
+                dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
                 silkKommentar));
         }
         private static void Plc2Dec(FunctionEventArgs e)
@@ -130,6 +137,11 @@ namespace TestAutomat.AutoTester.Silk
             var zahl = e.Parameters[0].ToString();
             var plcZahl = new PlcDatenTypen.Uint(zahl);
             e.ReturnValue.SetValue((int)plcZahl.GetDec());
+        }
+        private static void SetDataGridBitAnzahl(FunctionEventArgs e)
+        {
+            _anzahlBitEingaenge = e.Parameters[0].ToInteger();
+            _anzahlBitAusgaenge = e.Parameters[1].ToInteger();
         }
     }
 }

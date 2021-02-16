@@ -11,15 +11,16 @@ namespace LaborGetriebemotor
             Q1 = 0, // 0.0  Getriebemotor Schnell Rechtslauf
             Q2,     // 0.1  Getriebemotor Linkslauf
             Q3,     // 0.2  Getriebemotor Langsam Rechtslauf
-            P1 = 4, // 0.4  Meldeleuchte weiß
+            _,      // 0.3  Nicht belegt
+            P1,     // 0.4  Meldeleuchte weiß
             P2,     // 0.5  Meldeleuchte grün
             P3      // 0.6  Meldeleuchte rot
         }
 
         private enum BitPosEingang
         {
-            S1 = 0, // 0.0  Taster ( ⓪ ) → Öffner
-            S2,     // 0.1  Taster ( ① ) → Schliesser
+            S2 = 0, // 0.0  Taster ( ⓪ ) → Öffner
+            S1,     // 0.1  Taster ( ① ) → Schliesser
             S4,     // 0.2  Taster ( STOP ) → Öffner 
             S3,     // 0.3  Taster ( Ⅰ ) → Schliesser 
             S5,     // 0.4  Taster ( Ⅱ ) → Schliesser 

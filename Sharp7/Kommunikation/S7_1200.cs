@@ -66,7 +66,7 @@ namespace Kommunikation
                 if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
-                    var res = _client?.ConnectTo(_spsClient.Adress, SpsRack, SpsSlot);
+                    var res = _client?.ConnectTo(_spsClient.Adress, 0, 1);
                     if (res == 0)
                     {
                         while (_taskRunning)
