@@ -17,7 +17,11 @@ namespace TestAutomat
                 _autoTesterWindow = new AutoTesterWindow();
                 _autoTesterWindow.Show();
             }
-
+            else
+            {
+                _autoTesterWindow.AutoTesterDataGrid.Clear();
+                _autoTesterWindow.DataGridId = 0;
+            }
             MyAutoTester = new AutoTester.Model.AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur);
         }
     }

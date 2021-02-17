@@ -9,6 +9,7 @@ namespace TestAutomat
 {
     public partial class TestAutomat
     {
+        private bool _testWurdeSchonMalGestartet;
         public void TabItemFuellen(TabItem tabItemAutomatischerSoftwareTest, DisplayPlc.DisplayPlc displayPlc)
         {
             var autoTestGrid = new Grid
@@ -25,7 +26,7 @@ namespace TestAutomat
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
 
-      
+
             var btnPlcWindowOeffnen = new Button
             {
                 Width = 60,
@@ -39,9 +40,9 @@ namespace TestAutomat
             btnPlcWindowOeffnen.Click += (_, _) => displayPlc.Oeffnen();
 
             SetColumn(btnPlcWindowOeffnen, 6);
-            SetColumnSpan(btnPlcWindowOeffnen,2);
+            SetColumnSpan(btnPlcWindowOeffnen, 2);
             SetRow(btnPlcWindowOeffnen, 0);
-            SetRowSpan(btnPlcWindowOeffnen,2);
+            SetRowSpan(btnPlcWindowOeffnen, 2);
             autoTestGrid.Children.Add(btnPlcWindowOeffnen);
 
 
@@ -83,8 +84,17 @@ namespace TestAutomat
 
             btnStart.Click += (_, _) =>
             {
-                btnStart.IsEnabled = true;
-               TestAutomatStarten(AktuellesProjekt, _datenstruktur);
+                if (_testWurdeSchonMalGestartet)
+                {
+                    _autoTesterWindow.Show();
+                }
+                else
+                {
+                    _testWurdeSchonMalGestartet = true;
+                    btnStart.Content = "Test erneut starten?";
+                    SetColumnSpan(btnStart, 2);
+                }
+                TestAutomatStarten(AktuellesProjekt, _datenstruktur);
             };
 
             SetColumn(btnStart, 1);

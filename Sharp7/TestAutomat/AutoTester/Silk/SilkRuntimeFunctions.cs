@@ -123,7 +123,7 @@ namespace TestAutomat.AutoTester.Silk
 
             var dInput = new PlcDatenTypen.Uint(digitalInput.ToString());
             var dOutput = new PlcDatenTypen.Uint(digitalOutput.ToString());
-
+            
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
