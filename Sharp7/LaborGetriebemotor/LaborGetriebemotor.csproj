@@ -11,6 +11,7 @@
     <None Remove="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
     <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
     <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <None Remove="S7_1200.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
@@ -28,43 +30,47 @@
     <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
     <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <Resource Include="S7_1200.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AutoTestConfig\TestBeispiel1\index.html">
+    <None Update="AutoTestConfig\Selbsthaltung_1\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel1\testConfig.json">
+    <None Update="AutoTestConfig\Selbsthaltung_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel1\testEaBelegung.json">
+    <None Update="AutoTestConfig\Selbsthaltung_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel2\index.html">
+    <None Update="AutoTestConfig\Selbsthaltung_2\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel2\testConfig.json">
+    <None Update="AutoTestConfig\Selbsthaltung_2\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel2\testEaBelegung.json">
+    <None Update="AutoTestConfig\Selbsthaltung_2\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel3\index.html">
+    <None Update="AutoTestConfig\Selbsthaltung_3\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel3\testConfig.json">
+    <None Update="AutoTestConfig\Selbsthaltung_3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel3\testEaBelegung.json">
+    <None Update="AutoTestConfig\Selbsthaltung_3\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel4\index.html">
+    <None Update="AutoTestConfig\Selbsthaltung_4\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel4\testConfig.json">
+    <None Update="AutoTestConfig\Selbsthaltung_4\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\TestBeispiel4\testEaBelegung.json">
+    <None Update="AutoTestConfig\Selbsthaltung_4\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ManualConfig\AA.json">

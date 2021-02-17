@@ -16,39 +16,38 @@
 
         private ICommand _btnNachfuellen;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnNachfuellen =>
-            _btnNachfuellen ??= new RelayCommand(p => Hydraulikaggregat.BtnNachfuellen(), p => true);
+        public ICommand BtnNachfuellen => _btnNachfuellen ??= new RelayCommand(_ => Hydraulikaggregat.BtnNachfuellen(), _ => true);
 
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnF1 => _btnF1 ??= new RelayCommand(p => Hydraulikaggregat.BtnF1(), p => true);
+        public ICommand BtnF1 => _btnF1 ??= new RelayCommand(_ => Hydraulikaggregat.BtnF1(), _ => true);
 
         private ICommand _btnQ1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnQ1 => _btnQ1 ??= new RelayCommand(p => ViAnzeige.BtnQ1(), p => true);
+        public ICommand BtnQ1 => _btnQ1 ??= new RelayCommand(_ => ViAnzeige.BtnQ1(), _ => true);
 
         private ICommand _btnQ2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnQ2 => _btnQ2 ??= new RelayCommand(p => ViAnzeige.BtnQ2(), p => true);
+        public ICommand BtnQ2 => _btnQ2 ??= new RelayCommand(_ => ViAnzeige.BtnQ2(), _ => true);
 
         private ICommand _btnQ3;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnQ3 => _btnQ3 ??= new RelayCommand(p => ViAnzeige.BtnQ3(), p => true);
+        public ICommand BtnQ3 => _btnQ3 ??= new RelayCommand(_ => ViAnzeige.BtnQ3(), _ => true);
 
         private ICommand _btnQ1Q3;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnQ1Q3 => _btnQ1Q3 ??= new RelayCommand(p => ViAnzeige.BtnQ1Q3(), p => true);
+        public ICommand BtnQ1Q3 => _btnQ1Q3 ??= new RelayCommand(_ => ViAnzeige.BtnQ1Q3(), _ => true);
 
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS1 => _btnS1 ??= new RelayCommand(p => ViAnzeige.BtnS1(), p => true);
+        public ICommand BtnS1 => _btnS1 ??= new RelayCommand(_ => ViAnzeige.BtnS1(), _ => true);
 
         private ICommand _btnS2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS2 => _btnS2 ??= new RelayCommand(p => ViAnzeige.BtnS2(), p => true);
+        public ICommand BtnS2 => _btnS2 ??= new RelayCommand(_ => ViAnzeige.BtnS2(), _ => true);
 
         private ICommand _btnS3;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS3 => _btnS3 ??= new RelayCommand(p => ViAnzeige.BtnS3(), p => true);
+        public ICommand BtnS3 => _btnS3 ??= new RelayCommand(_ => ViAnzeige.BtnS3(), _ => true);
     }
 }

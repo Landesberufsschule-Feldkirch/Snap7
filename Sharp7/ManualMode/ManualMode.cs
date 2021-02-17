@@ -123,11 +123,12 @@ namespace ManualMode
                     break;
 
                 case BetriebsartProjekt.AutomatischerSoftwareTest:
-
                     if (_fensterDiAktiv) _diFenster.SetUnsichtbar();
                     if (_fensterAiAktiv) _aiFenster.SetUnsichtbar();
                     if (_fensterAaAktiv) _aaFenster.SetUnsichtbar();
                     break;
+                
+                default: throw new ArgumentOutOfRangeException();
             }
         }
     }

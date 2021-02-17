@@ -57,7 +57,7 @@ namespace LaborGetriebemotor.Model
                 if (WinkelGetriebemotor > 360) WinkelGetriebemotor -= 360;
                 if (WinkelGetriebemotor < 0) WinkelGetriebemotor += 360;
 
-                B1 = WinkelGetriebemotor > 350 || WinkelGetriebemotor < 10;
+                B1 = WinkelGetriebemotor > 80 && WinkelGetriebemotor < 100;
                 B2 = WinkelGetriebemotor > 35 && WinkelGetriebemotor < 55;
 
                 Thread.Sleep(10);

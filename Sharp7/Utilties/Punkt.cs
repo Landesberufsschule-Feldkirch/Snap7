@@ -4,6 +4,7 @@ namespace Utilities
 {
     public class Punkt
     {
+        // ReSharper disable once NotAccessedField.Local
         private readonly int _nix;
         public double X { get; set; }
         public double Y { get; set; }

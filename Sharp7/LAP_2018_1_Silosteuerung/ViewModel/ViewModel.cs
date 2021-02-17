@@ -17,37 +17,35 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnF1 => _btnF1 ??= new RelayCommand(p => Silosteuerung.BtnF1(), p => true);
+        public ICommand BtnF1 => _btnF1 ??= new RelayCommand(_ => Silosteuerung.BtnF1(), _ => true);
 
         private ICommand _btnF2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnF2 => _btnF2 ??= new RelayCommand(p => Silosteuerung.BtnF2(), p => true);
+        public ICommand BtnF2 => _btnF2 ??= new RelayCommand(_ => Silosteuerung.BtnF2(), _ => true);
 
 
         private ICommand _btnS0;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS0 => _btnS0 ??= new RelayCommand(p => ViAnzeige.BtnS0(), p => true);
+        public ICommand BtnS0 => _btnS0 ??= new RelayCommand(_ => ViAnzeige.BtnS0(), _ => true);
 
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS1 => _btnS1 ??= new RelayCommand(p => ViAnzeige.BtnS1(), p => true);
+        public ICommand BtnS1 => _btnS1 ??= new RelayCommand(_ => ViAnzeige.BtnS1(), _ => true);
 
         private ICommand _btnS2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS2 => _btnS2 ??= new RelayCommand(p => ViAnzeige.BtnS2(), p => true);
+        public ICommand BtnS2 => _btnS2 ??= new RelayCommand(_ => ViAnzeige.BtnS2(), _ => true);
 
         private ICommand _btnS3;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnS3 => _btnS3 ??= new RelayCommand(p => ViAnzeige.BtnS3(), p => true);
+        public ICommand BtnS3 => _btnS3 ??= new RelayCommand(_ => ViAnzeige.BtnS3(), _ => true);
 
         private ICommand _btnWagenNachLinks;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnWagenNachLinks =>
-            _btnWagenNachLinks ??= new RelayCommand(p => Silosteuerung.WagenNachLinks(), p => true);
+        public ICommand BtnWagenNachLinks => _btnWagenNachLinks ??= new RelayCommand(_ => Silosteuerung.WagenNachLinks(), _ => true);
 
         private ICommand _btnWagenNachRechts;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnWagenNachRechts =>
-            _btnWagenNachRechts ??= new RelayCommand(p => Silosteuerung.WagenNachRechts(), p => true);
+        public ICommand BtnWagenNachRechts => _btnWagenNachRechts ??= new RelayCommand(_ => Silosteuerung.WagenNachRechts(), _ => true);
     }
 }

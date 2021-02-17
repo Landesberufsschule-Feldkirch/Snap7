@@ -1,41 +1,81 @@
-﻿using System;
+﻿using Kommunikation;
+using SoftCircuits.Silk;
+using System.Diagnostics;
 using System.IO;
-using TestAutomat.AutoTester.Config;
-using TestAutomat.PlcDisplay.Config;
 
 namespace TestAutomat.AutoTester.Model
 {
     public class AutoTester
     {
-        public GetTestConfig GetTestConfig { get; set; }
-        public GetPlcConfig GetPlcConfig { get; set; }
-        public AutoTesterWindow AutoTesterWindow { get; set; }
-        public  Kommunikation.Datenstruktur Datenstruktur { get; set; }
-
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Kommunikation.Datenstruktur datenstruktur)
+        public enum TestErgebnis
         {
+            // ReSharper disable UnusedMember.Global
+            CompilerStart = 0,
+            CompilerErfolgreich,
+            CompilerError,
+            TestStart,
+            TestEnde,
+            Aktiv,
+            Init,
+            Erfolgreich,
+            Timeout,
+            Fehler,
+            UnbekanntesErgebnis
+            // ReSharper restore UnusedMember.Global
+        }
+
+        public AutoTesterWindow AutoTesterWindow { get; set; }
+        public Datenstruktur Datenstruktur { get; set; }
+        public Stopwatch SilkStopwatch { get; set; }
+
+        private readonly bool _compilerlaufErfolgreich;
+        private readonly CompiledProgram _compiledProgram;
+
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
+        {
+            Compiler compiler;
+            SilkStopwatch = new Stopwatch();
+
             AutoTesterWindow = autoTesterWindow;
             Datenstruktur = datenstruktur;
-            GetTestConfig = new GetTestConfig(aktuellesProjekt);
-            GetPlcConfig = new GetPlcConfig(aktuellesProjekt);
-            GetTestConfig.KonfigurationTesten();
 
-            System.Threading.Tasks.Task.Run(TestRunnerTask);
+            Silk.Silk.ReferenzenUebergeben(autoTesterWindow, datenstruktur, SilkStopwatch);
+
+            autoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                autoTesterWindow.DataGridId++,
+                "0",
+                TestErgebnis.CompilerStart,
+                 "", "", ""));
+
+            SilkStopwatch.Start();
+            (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
+
+            if (_compilerlaufErfolgreich)
+            {
+                autoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                    autoTesterWindow.DataGridId++,
+                    $"{SilkStopwatch.ElapsedMilliseconds}ms",
+                    TestErgebnis.CompilerErfolgreich,
+                     "", "", ""));
+
+                System.Threading.Tasks.Task.Run(TestRunnerTask);
+            }
+            else
+            {
+                foreach (var error in compiler.Errors)
+                {
+                    autoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                        autoTesterWindow.DataGridId++,
+                        $"{SilkStopwatch.ElapsedMilliseconds}ms",
+                        TestErgebnis.CompilerError,
+                        error.ToString(), "", ""));
+                }
+            }
         }
         private void TestRunnerTask()
         {
-            foreach (var einzelneZeile in GetTestConfig.TestConfig.AutomatischeSoftwareTests)
-            {
-                switch (einzelneZeile.Befehl)
-                {
-                    case TestBefehle.Init: AlleTestBefehle.TestBefehlInit(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-                    case TestBefehle.BitmusterTesten: AlleTestBefehle.TestBefehlBitmusterTesten(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-                    case TestBefehle.Pause: AlleTestBefehle.TestBefehlPause(AutoTesterWindow, einzelneZeile, Datenstruktur); break;
-
-                    case TestBefehle.Default: break;
-                    default: throw new ArgumentOutOfRangeException();
-                }
-            }
+            SilkStopwatch.Restart();
+            if (_compilerlaufErfolgreich) Silk.Silk.RunProgram(_compiledProgram);
         }
     }
 }

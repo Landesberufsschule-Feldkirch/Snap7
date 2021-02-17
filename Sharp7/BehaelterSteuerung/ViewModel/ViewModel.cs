@@ -18,18 +18,18 @@ namespace BehaelterSteuerung.ViewModel
 
         private ICommand _btnVentilQ2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilQ2 => _btnVentilQ2 ??= new RelayCommand(p => AlleBehaelter.VentilQ2(), p => true);
+        public ICommand BtnVentilQ2 => _btnVentilQ2 ??= new RelayCommand(_ => AlleBehaelter.VentilQ2(), _ => true);
 
         private ICommand _btnVentilQ4;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilQ4 => _btnVentilQ4 ??= new RelayCommand(p => AlleBehaelter.VentilQ4(), p => true);
+        public ICommand BtnVentilQ4 => _btnVentilQ4 ??= new RelayCommand(_ => AlleBehaelter.VentilQ4(), _ => true);
 
         private ICommand _btnVentilQ6;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilQ6 => _btnVentilQ6 ??= new RelayCommand(p => AlleBehaelter.VentilQ6(), p => true);
+        public ICommand BtnVentilQ6 => _btnVentilQ6 ??= new RelayCommand(_ => AlleBehaelter.VentilQ6(), _ => true);
 
         private ICommand _btnVentilQ8;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilQ8 => _btnVentilQ8 ??= new RelayCommand(p => AlleBehaelter.VentilQ8(), p => true);
+        public ICommand BtnVentilQ8 => _btnVentilQ8 ??= new RelayCommand(_ => AlleBehaelter.VentilQ8(), _ => true);
     }
 }

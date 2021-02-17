@@ -197,6 +197,10 @@
       <Project>{b017d739-a408-49bd-a9b2-974f7a573c41}</Project>
       <Name>Kommunikation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj">
+      <Project>{569a31b6-786a-427e-81fd-10f429157174}</Project>
+      <Name>PlcDatenTypen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilties\Utilities.csproj">
       <Project>{f6bf4f68-53bd-460b-8235-dba4188eee6d}</Project>
       <Name>Utilities</Name>

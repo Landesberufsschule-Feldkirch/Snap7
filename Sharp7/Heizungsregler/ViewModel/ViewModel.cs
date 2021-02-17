@@ -19,6 +19,6 @@
 
         private ICommand _btnReset;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(p => _mainWindow.WohnHaus.Reset(), p => true);
+        public ICommand BtnReset => _btnReset ??= new RelayCommand(_ => _mainWindow.WohnHaus.Reset(), _ => true);
     }
 }

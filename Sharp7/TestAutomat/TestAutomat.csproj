@@ -6,13 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AutoTester\ViewModel\**" />
+    <EmbeddedResource Remove="AutoTester\ViewModel\**" />
+    <None Remove="AutoTester\ViewModel\**" />
+    <Page Remove="AutoTester\ViewModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
+    <ProjectReference Include="..\Silk\Silk.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
@@ -23,7 +32,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AutoTester\ViewModel\" />
+    <Reference Include="Silk">
+      <HintPath>..\..\..\Silk\Silk\bin\Debug\netstandard2.0\Silk.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Bilder\S7_1200.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

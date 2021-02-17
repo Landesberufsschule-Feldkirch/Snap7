@@ -21,11 +21,6 @@ namespace Kommunikation
             Byte4
         }
 
-        private enum AnzahlByte
-        {
-            EinByte = 1
-        }
-
         public byte[] ManDigInput { get; set; }
 
         public const int SpsTimeout = 1000;
@@ -71,7 +66,7 @@ namespace Kommunikation
                 if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
-                    var res = _client?.ConnectTo(_spsClient.Adress, SpsRack, SpsSlot);
+                    var res = _client?.ConnectTo(_spsClient.Adress, 0, 1);
                     if (res == 0)
                     {
                         while (_taskRunning)
@@ -91,7 +86,7 @@ namespace Kommunikation
 
                             if (_taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte)
                                 {
                                     _datenstruktur.BefehleSps[0] = 1;
                                 }

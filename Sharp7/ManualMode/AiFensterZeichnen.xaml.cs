@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using static System.Windows.Controls.Grid;
 
 namespace ManualMode
 {
@@ -138,8 +139,8 @@ namespace ManualMode
             bezeichnung.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.ContentAi[{par}]"));
             bezeichnung.SetBinding(VisibilityProperty, new Binding($"ManVisuAnzeigen.VisibilityAi[{par}]"));
 
-            Grid.SetColumn(bezeichnung, x);
-            Grid.SetRow(bezeichnung, y);
+            SetColumn(bezeichnung, x);
+            SetRow(bezeichnung, y);
             grid.Children.Add(bezeichnung);
         }
     }

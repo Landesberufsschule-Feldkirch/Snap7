@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using ManualMode.Model;
+using static System.Windows.Controls.Grid;
 
 namespace ManualMode
 {
@@ -59,8 +60,8 @@ namespace ManualMode
                 }
 
             };
-            Grid.SetColumn(schiebeRegler, x);
-            Grid.SetRow(schiebeRegler, y);
+            SetColumn(schiebeRegler, x);
+            SetRow(schiebeRegler, y);
             grid.Children.Add(schiebeRegler);
         }
 
@@ -80,8 +81,8 @@ namespace ManualMode
             kommentar.SetBinding(TextBlock.TextProperty, new Binding($"ManVisuAnzeigen.Content{bez} [{ par }]"));
             kommentar.SetBinding(visibilityProperty, new Binding($"ManVisuAnzeigen.Visibility{bez} [{ par }]"));
 
-            Grid.SetColumn(kommentar, x);
-            Grid.SetRow(kommentar, y);
+            SetColumn(kommentar, x);
+            SetRow(kommentar, y);
             grid.Children.Add(kommentar);
         }
 

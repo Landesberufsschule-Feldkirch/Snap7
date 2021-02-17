@@ -29,6 +29,7 @@ namespace Utilities
             _ptY3 = pt3.Y;
         }
 
+        // ReSharper disable once UnusedMember.Global
         public BezierCurve(double px0, double py0, double px1, double py1, double px2, double py2, double px3, double py3)
         {
             _ptX0 = px0;
