@@ -32,13 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Silk">
-      <HintPath>..\..\..\Silk\Silk\bin\Debug\netstandard2.0\Silk.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

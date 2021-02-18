@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////
 //
-//  Sebsthaltung 3
+//  Motorschaltungen 1 - 3 (Getriebemotor)
 //
 ///////////////////////////////////////////////////////////////
 
@@ -31,53 +31,78 @@ var DQ_0_6 = "2#0100_0000"  // P3 Meldeleuchte Störung(rot)
 
 main()
 {
-    var F1 = Plc2Dec(DI_0_2)
-    var S1 = Plc2Dec(DI_0_0)
-    var S2 = Plc2Dec(DI_0_1)
-    var S7 = Plc2Dec(DI_0_5)
-    var S91 = Plc2Dec(DI_1_1)
+    var F1 = Plc2Dec(DI_0_2)    // Thermorelais
+    var S1 = Plc2Dec(DI_0_0)    // Stop
+    var S2 = Plc2Dec(DI_0_1)    // Start
+    var S7 = Plc2Dec(DI_0_5)    // Quittieren
+    var S92 = Plc2Dec(DI_1_1)   // Not-Halt
 
     var AllesAus = 0
-    var P1 = Plc2Dec(DQ_0_4)
-    var P2 = Plc2Dec(DQ_0_5)
-    var P3 = Plc2Dec(DQ_0_6)
+    var P1 = Plc2Dec(DQ_0_4)    // weiß
+    var P2 = Plc2Dec(DQ_0_5)    // grün
+    var P3 = Plc2Dec(DQ_0_6)    // rot
     var MaskeP1_P2_P3 = P1 + P2 + P3
 
-    
+    SetDataGridBitAnzahl 0, 0
+
     Sleep(100)
     UpdateAnzeige "Init", ""
     IncrementDataGridId
-
-
+ 
+    SetDigitaleEingaenge (F1 + S1 + S92)
     ResetStopwatch
-    SetDigitaleEingaenge 2
-    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ausgeschaltet?"
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
     IncrementDataGridId
 
-
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
     ResetStopwatch
-    SetDigitaleEingaenge 3
-    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor Ein?"
+    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor Ein?"
     IncrementDataGridId
 
-
+    SetDigitaleEingaenge (F1 + S1 + S92)
     ResetStopwatch
-    SetDigitaleEingaenge 2
-    BitmusterTesten "2#0010_0000", "2#0000_0011", 5000, "Motor immer noch Ein?"
+    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor noch Ein?"
     IncrementDataGridId
 
-
+    SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    SetDigitaleEingaenge 0
-    BitmusterTesten "2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor immer noch Ein?"
     IncrementDataGridId
 
-
+    SetDigitaleEingaenge AllesAus
     ResetStopwatch
-    SetDigitaleEingaenge 1
-    BitmusterTesten"2#0000_0000", "2#0000_0011", 5000, "Motor Aus?"
+    BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung und Motor Aus?"
     IncrementDataGridId
 
+    SetDigitaleEingaenge (F1 + S92)
+    ResetStopwatch
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor wieder Ein?"
+    IncrementDataGridId
+    
+    SetDigitaleEingaenge (S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung Thermorelais und Motor Aus?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor wieder Ein?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2)
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung Not-Halt und Motor Aus?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S92)
+    ResetStopwatch
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    IncrementDataGridId
+    
     UpdateAnzeige "Erfolgreich", "30ms"
 }

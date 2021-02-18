@@ -34,40 +34,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AutoTestConfig\Selbsthaltung_1\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_1\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_1\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Bilder\S7_1200.jpg">

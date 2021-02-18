@@ -53,7 +53,7 @@ namespace DisplayPlc
             for (var i = 0; i < 8; i++)
             {
                 Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Di", VisibilityProperty, plcGrid);
-                Formen.PlcButtonZeichnen(13 + i, 3, 10 + i, "FarbeDi", backgroundProperty, plcGrid);
+                Formen.PlcButtonZeichnen(13 + i, 3, 8 + i, "FarbeDi", backgroundProperty, plcGrid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, 8 + i);
                 if (!anzeigen) continue;

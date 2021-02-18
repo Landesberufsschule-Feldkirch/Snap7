@@ -76,7 +76,7 @@ namespace Kommunikation
                             if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
-                            {                               
+                            {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
@@ -86,14 +86,9 @@ namespace Kommunikation
 
                             if (_taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte)
-                                {
-                                    _datenstruktur.BefehleSps[0] = 1;
-                                }
-                                else
-                                {
-                                    _datenstruktur.BefehleSps[0] = 0;
-                                }
+                                var betriebsartPlc = _datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte ? 1 : 0;
+                                _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
+
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
                             }
 
