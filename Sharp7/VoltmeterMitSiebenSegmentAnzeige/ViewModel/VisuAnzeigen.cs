@@ -58,7 +58,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
                 for (var i = 1; i < 6; i++) SegmenteSchalten(_voltmeter.AlleVoltmeter[i], i * 8);
 
-                Thread.Sleep("T#100ms");
+                Thread.Sleep(100);
             }
             // ReSharper disable once FunctionNeverReturns
         }

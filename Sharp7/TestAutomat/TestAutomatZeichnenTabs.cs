@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Kommunikation;
 using static System.Windows.Controls.Grid;
 
 namespace TestAutomat
@@ -55,7 +56,8 @@ namespace TestAutomat
                 Padding = new Thickness(5, 5, 5, 5),
                 BorderThickness = new Thickness(1.0),
                 BorderBrush = new SolidColorBrush(Colors.Black),
-                Margin = new Thickness(3, 3, 3, 3)
+                Margin = new Thickness(3, 3, 3, 3),
+                Width = 200
             };
 
             btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
@@ -100,6 +102,41 @@ namespace TestAutomat
             SetColumn(btnStart, 1);
             SetRow(btnStart, 1);
             autoTestGrid.Children.Add(btnStart);
+
+            var btnEinzelSchritt = new Button { Content = "Einzelschritt" };
+            btnEinzelSchritt.Click += (_, _) =>
+            {
+                if (_datenstruktur.BetriebsartTestablauf == BetriebsartTestablauf.Einzelschritt)
+                    _datenstruktur.NaechstenSchrittGehen = true;
+            };
+
+            var tabItemAuto = new TabItem { Name = "Automatik", Header = "Automatik" };
+            var tabItemManual = new TabItem { Name = "Manual", Header = "Einzelschritt", Content = btnEinzelSchritt };
+
+            var tabControlAutomatikManual = new TabControl { Name = "AutomatikEinzelschritt", Width = 200};
+            tabControlAutomatikManual.Items.Add(tabItemAuto);
+            tabControlAutomatikManual.Items.Add(tabItemManual);
+
+            tabControlAutomatikManual.SelectionChanged += (sender, _) =>
+            {
+                if (!(sender is TabControl s)) return;
+
+                switch (s.SelectedIndex)
+                {
+                    case 0: // Automatik
+                        _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Automatik;
+                        break;
+
+                    case 1: // Einzelschritt
+                        _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
+                        break;
+                }
+            };
+
+            SetColumn(tabControlAutomatikManual, 3);
+            SetColumnSpan(tabControlAutomatikManual, 2);
+            SetRow(tabControlAutomatikManual, 1);
+            autoTestGrid.Children.Add(tabControlAutomatikManual);
 
 
             var stackPanel = new StackPanel

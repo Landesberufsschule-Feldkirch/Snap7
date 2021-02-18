@@ -28,11 +28,15 @@ namespace DisplayPlc
             PlcZeichnen(plcGrid, BackgroundProperty, manualMode);
 
             DataContext = ViewModel;
-            Closing += PlcWindow_Closing;
+            Closing += (_, e) =>
+            {
+                e.Cancel = true;
+                Hide();
+            };
         }
         public void SetBetriebsartProjekt(Datenstruktur datenstruktur)
         {
-            if (datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest && GetPlcConfig != null)
+            if (datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest && GetPlcConfig != null)
             {
                 PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
                 PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
@@ -47,11 +51,6 @@ namespace DisplayPlc
             GetPlcConfig = new GetPlcConfig(new FileInfo(datenstruktur.TestProjektOrdner));
             PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
             PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
-        }
-        private void PlcWindow_Closing(object sender, CancelEventArgs e)
-        {
-            e.Cancel = true;
-            Hide();
         }
         public void Oeffnen()
         {

@@ -63,9 +63,9 @@ namespace LaborGetriebemotor
 
             switch (tc.SelectedIndex)
             {
-                case 0: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.LaborPlatte); break;
-                case 1: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.Simulation); break;
-                case 2: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.AutomatischerSoftwareTest); break;
+                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.LaborPlatte; break;
+                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 2: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
             ManualMode.SetSichtbarkeitFenster();

@@ -61,7 +61,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
                 if (reply?.Status == IPStatus.Success)
                 {
@@ -73,7 +73,7 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
+                            if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
                             {
@@ -86,7 +86,7 @@ namespace Kommunikation
 
                             if (_taskRunning)
                             {
-                                var betriebsartPlc = _datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte ? 1 : 0;
+                                var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
                                 _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
 
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
@@ -94,7 +94,7 @@ namespace Kommunikation
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest)
                                 {
                                     _datenstruktur.DigInput[0] = ManDigInput[0];
                                     _datenstruktur.DigInput[1] = ManDigInput[1];

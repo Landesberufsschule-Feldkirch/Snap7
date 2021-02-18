@@ -23,5 +23,15 @@ namespace _TestProjekt
         }
 
         private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) => _viewModel.ViAnzeige.SliderValue = e.NewValue;
+
+        private void TabAutomatikManualChanged(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void BtnNaechsterSchritt(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //
+        }
     }
 }

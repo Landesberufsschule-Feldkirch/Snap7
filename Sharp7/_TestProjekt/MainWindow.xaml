@@ -39,7 +39,15 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-<Rectangle Grid.Column="0" Grid.ColumnSpan="13" Grid.Row="4" Fill="Red"></Rectangle>
+        <TabControl Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="2" SelectionChanged="TabAutomatikManualChanged" >
+            <TabItem x:Name="Automatik" Header="Automatik">
+            </TabItem>
+            <TabItem x:Name="Einzelschritt" Header="Einzelschritt">
+                <Button Content="Step" Click="BtnNaechsterSchritt" />
+            </TabItem>
+        </TabControl>
+
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="13" Grid.Row="4" Fill="Red"></Rectangle>
 
         <TextBox x:Name="TextBox" Grid.Column="3" Grid.Row="8"  Background="Aqua" FontSize="14pt" Grid.ColumnSpan="2" TextWrapping="NoWrap" />
         <Slider x:Name="Slider" Grid.Column="3" Grid.ColumnSpan="6"  Grid.Row="10" Background="Yellow" Width="420" Height="18" VerticalAlignment="Top"

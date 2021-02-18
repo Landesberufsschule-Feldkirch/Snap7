@@ -1,6 +1,7 @@
 ﻿using SoftCircuits.Silk;
 using System.Diagnostics;
 using System.Threading;
+using Kommunikation;
 using TestAutomat.AutoTester.Model;
 
 namespace TestAutomat.AutoTester.Silk
@@ -80,7 +81,20 @@ namespace TestAutomat.AutoTester.Silk
             var sleepTime = new PlcDatenTypen.ZeitDauer(e.Parameters[0].ToString());
             Thread.Sleep((int)sleepTime.GetZeitDauerMs());
         }
-        private static void IncrementDataGridId() => AutoTesterWindow.DataGridId++;
+        private static void IncrementDataGridId()
+        {
+            AutoTesterWindow.DataGridId++;
+
+            if (Datenstruktur.BetriebsartTestablauf == BetriebsartTestablauf.Automatik) return;
+
+            while (!Datenstruktur.NaechstenSchrittGehen)
+            {
+                Thread.Sleep(10);
+            }
+
+            Datenstruktur.NaechstenSchrittGehen = false;
+        }
+
         private static void ResetStopwatch() => SilkStopwatch.Restart();
         private static void UpdateAnzeige(FunctionEventArgs e)
         {

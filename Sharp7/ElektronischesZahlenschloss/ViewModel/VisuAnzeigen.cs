@@ -58,7 +58,7 @@ namespace ElektronischesZahlenschloss.ViewModel
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
-                Thread.Sleep("T#100ms");
+                Thread.Sleep(100);
             }
             // ReSharper disable once FunctionNeverReturns
         }
