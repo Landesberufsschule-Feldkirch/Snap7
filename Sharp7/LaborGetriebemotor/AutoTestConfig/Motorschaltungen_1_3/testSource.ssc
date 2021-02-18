@@ -51,7 +51,7 @@ main()
  
     SetDigitaleEingaenge (F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2 + S92)
@@ -69,6 +69,11 @@ main()
     BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor immer noch Ein?"
     IncrementDataGridId
 
+    SetDigitaleEingaenge (F1 + S1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
+    IncrementDataGridId
+
     SetDigitaleEingaenge AllesAus
     ResetStopwatch
     BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung und Motor Aus?"
@@ -76,7 +81,7 @@ main()
 
     SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2 + S92)
@@ -101,8 +106,8 @@ main()
 
     SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
     IncrementDataGridId
-    
+
     UpdateAnzeige "Erfolgreich", "30ms"
 }

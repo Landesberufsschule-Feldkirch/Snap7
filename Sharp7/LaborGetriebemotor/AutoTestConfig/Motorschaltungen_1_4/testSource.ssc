@@ -34,7 +34,7 @@ main()
     var F1 = Plc2Dec(DI_0_2)    // Thermorelais
     var S1 = Plc2Dec(DI_0_0)    // Stop
     var S2 = Plc2Dec(DI_0_1)    // Start
-    var S7 = Plc2Dec(DI_0_5)    // Quittieren
+    var S8 = Plc2Dec(DI_0_7)    // Quittieren
     var S92 = Plc2Dec(DI_1_1)   // Not-Halt
 
     var AllesAus = 0
@@ -49,9 +49,10 @@ main()
     UpdateAnzeige "Init", ""
     IncrementDataGridId
  
-    SetDigitaleEingaenge (F1 + S1 + S92)
+    SetDigitaleEingaenge (F1 + S1 + S8 + S92)
+    Sleep(100)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2 + S92)
@@ -69,14 +70,19 @@ main()
     BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor immer noch Ein?"
     IncrementDataGridId
 
-    SetDigitaleEingaenge AllesAus
+    SetDigitaleEingaenge (F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung und Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge S92
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, 5000, "Störung Thermorelais und Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    BitmusterBlinktTesten P3, MaskeP1_P2_P3, 1.25, 0.50, 2, 0.1, 10000, "Störung blinkt mit 0,8Hz"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2 + S92)
@@ -101,8 +107,9 @@ main()
 
     SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "keine Störung und Motor Aus?"
+    BitmusterTesten P1, MaskeP1_P2_P3, 5000, "Betriebsbereit?"
     IncrementDataGridId
-    
+
     UpdateAnzeige "Erfolgreich", "30ms"
 }
+

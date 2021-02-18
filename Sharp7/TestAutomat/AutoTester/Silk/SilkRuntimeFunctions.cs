@@ -1,4 +1,5 @@
-﻿using SoftCircuits.Silk;
+﻿using System;
+using SoftCircuits.Silk;
 using System.Diagnostics;
 using System.Threading;
 using TestAutomat.AutoTester.Model;
@@ -7,6 +8,13 @@ namespace TestAutomat.AutoTester.Silk
 {
     public partial class Silk
     {
+
+        private enum SchritteBlinken
+        {
+            AufPosFlankeWarten = 0,
+            AufNegFlankeWarten
+        }
+
         private static int _anzahlBitEingaenge = 16;
         private static int _anzahlBitAusgaenge = 16;
 
@@ -49,6 +57,10 @@ namespace TestAutomat.AutoTester.Silk
 
                 case "SetDataGridBitAnzahl":
                     SetDataGridBitAnzahl(e);
+                    break;
+
+                case "BitmusterBlinktTesten":
+                    BitmusterBlinktTesten(e);
                     break;
             }
         }
@@ -123,7 +135,7 @@ namespace TestAutomat.AutoTester.Silk
 
             var dInput = new PlcDatenTypen.Uint(digitalInput.ToString());
             var dOutput = new PlcDatenTypen.Uint(digitalOutput.ToString());
-            
+
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
@@ -143,5 +155,88 @@ namespace TestAutomat.AutoTester.Silk
             _anzahlBitEingaenge = e.Parameters[0].ToInteger();
             _anzahlBitAusgaenge = e.Parameters[1].ToInteger();
         }
+        private static void BitmusterBlinktTesten(FunctionEventArgs e)
+        {
+            var bitMuster = e.Parameters[0].ToInteger();
+            var bitMaske = e.Parameters[1].ToInteger();
+            var periodenDauer = e.Parameters[2].ToFloat();
+            var tastVerhaeltnis = e.Parameters[3].ToFloat();
+            var anzahlPerioden = e.Parameters[4].ToInteger();
+            var toleranz = e.Parameters[5].ToFloat();
+            var maxLaufzeit = e.Parameters[6].ToInteger();
+            var kommentar = e.Parameters[7].ToString();
+
+            var periodenDauerMax = periodenDauer * (1 + toleranz);
+            var periodenDauerMin = periodenDauer * (1 - toleranz);
+
+            var tastVerhaeltnisMax = periodenDauer * (1 + toleranz);
+            var tastVerhaeltnisMin = periodenDauer * (1 - toleranz);
+
+            var messungAktiv = false;
+            var halbwellen = 0;
+            double aktuelleEinZeit = 0.0;
+            double aktuellePeriodenDauer = 0.0;
+            var schritte = SchritteBlinken.AufPosFlankeWarten;
+            var periodenDauerMessen = new Stopwatch();
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+
+            while (stopwatch.ElapsedMilliseconds < maxLaufzeit)
+            {
+
+                Thread.Sleep(10);
+
+                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+
+                switch (schritte)
+                {
+                    case SchritteBlinken.AufPosFlankeWarten:
+                        if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
+                        {
+                            if (messungAktiv)
+                            {
+                                aktuellePeriodenDauer = (double)periodenDauerMessen.ElapsedMilliseconds;
+                                var tastverhaeltnis = aktuelleEinZeit / aktuellePeriodenDauer;
+                                if (aktuellePeriodenDauer > periodenDauerMax || aktuellePeriodenDauer < periodenDauerMin)
+                                {
+                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Fehler, $"Falsche Periodendauer: {aktuellePeriodenDauer}ms");
+                                    return;
+                                }
+
+                                if (tastverhaeltnis > tastVerhaeltnisMax || tastverhaeltnis < tastVerhaeltnisMin)
+                                {
+                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Fehler, $"Falschs Tastverhältnis: {tastverhaeltnis}ms");
+                                    return;
+                                }
+
+
+                            }
+
+                            messungAktiv = true;
+                            schritte = SchritteBlinken.AufNegFlankeWarten;
+                            periodenDauerMessen.Restart();
+
+                        }
+                        break;
+
+                    case SchritteBlinken.AufNegFlankeWarten:
+                        if ((digitalOutput & (short)bitMaske) == 0)
+                        {
+                            aktuelleEinZeit = (double)periodenDauerMessen.ElapsedMilliseconds;
+                            schritte = SchritteBlinken.AufPosFlankeWarten;
+                        }
+
+                        break;
+                }
+
+                DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, kommentar);
+            }
+
+            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
+        }
+
+
     }
+
 }
