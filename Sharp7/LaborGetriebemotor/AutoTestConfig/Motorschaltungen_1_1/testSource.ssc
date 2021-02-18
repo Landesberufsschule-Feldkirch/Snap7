@@ -45,42 +45,42 @@ main()
 
     SetDataGridBitAnzahl 0, 0
 
-    Sleep(100)
+    Sleep("T#100ms")
     UpdateAnzeige "Init", ""
     IncrementDataGridId
 
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge S1
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Ausgeschaltet?"
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Ausgeschaltet?"
     IncrementDataGridId
 
 
     SetDigitaleEingaenge (S1 + S2)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor Ein?"
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor Ein?"
     IncrementDataGridId
 
 
     SetDigitaleEingaenge S1
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, 5000, "Motor immer noch Ein?"
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor immer noch Ein?"
     IncrementDataGridId
 
 
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
 
     SetDigitaleEingaenge S1
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, 5000, "Motor Aus?"
+    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
 

@@ -163,7 +163,7 @@ namespace AutomatischesLagersystem.ViewModel
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
-                Thread.Sleep(100);
+                Thread.Sleep("T#100ms");
             }
         }
 
