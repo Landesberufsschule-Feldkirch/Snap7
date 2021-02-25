@@ -73,7 +73,7 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
+                            if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
                             {
@@ -99,7 +99,14 @@ namespace Kommunikation
                                     _datenstruktur.DigInput[0] = ManDigInput[0];
                                     _datenstruktur.DigInput[1] = ManDigInput[1];
                                 }
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
+                                { 
+                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput)); 
+                                }
+                                else
+                                { 
+                                    fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                }
                             }
 
                             if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning)

@@ -22,7 +22,7 @@ namespace TestAutomat
             foreach (var row in new[] { 10, 50, 10, 700 })
                 autoTestGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
 
-            foreach (var column in new[] { 10, 150, 100, 10, 400, 400, 100 })
+            foreach (var column in new[] { 10, 150, 100, 10, 150, 50, 200, 400, 100 })
                 autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(column) });
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
@@ -40,7 +40,7 @@ namespace TestAutomat
 
             btnPlcWindowOeffnen.Click += (_, _) => displayPlc.Oeffnen();
 
-            SetColumn(btnPlcWindowOeffnen, 6);
+            SetColumn(btnPlcWindowOeffnen, 8);
             SetColumnSpan(btnPlcWindowOeffnen, 2);
             SetRow(btnPlcWindowOeffnen, 0);
             SetRowSpan(btnPlcWindowOeffnen, 2);
@@ -59,10 +59,8 @@ namespace TestAutomat
                 Margin = new Thickness(3, 3, 3, 3),
                 Width = 200
             };
-
             btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
-
-            SetColumn(btnManualTest, 5);
+            SetColumn(btnManualTest, 7);
             SetRow(btnManualTest, 1);
             autoTestGrid.Children.Add(btnManualTest);
 
@@ -71,6 +69,7 @@ namespace TestAutomat
                 btnManualTest.Visibility = Visibility.Visible;
                 btnManualTest.IsEnabled = true;
             }
+
 
             var btnStart = new Button
             {
@@ -83,7 +82,6 @@ namespace TestAutomat
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 Margin = new Thickness(3, 3, 3, 3)
             };
-
             btnStart.Click += (_, _) =>
             {
                 if (_testWurdeSchonMalGestartet)
@@ -98,45 +96,61 @@ namespace TestAutomat
                 }
                 TestAutomatStarten(AktuellesProjekt, _datenstruktur);
             };
-
             SetColumn(btnStart, 1);
             SetRow(btnStart, 1);
             autoTestGrid.Children.Add(btnStart);
 
-            var btnEinzelSchritt = new Button { Content = "Einzelschritt" };
+
+
+            var btnEinzelSchritt = new Button
+            {
+                Content = "Einzelschritt",
+                FontSize = 22,
+                Visibility = Visibility.Hidden
+            };
             btnEinzelSchritt.Click += (_, _) =>
             {
                 if (_datenstruktur.BetriebsartTestablauf == BetriebsartTestablauf.Einzelschritt)
-                    _datenstruktur.NaechstenSchrittGehen = true;
-            };
-
-            var tabItemAuto = new TabItem { Name = "Automatik", Header = "Automatik" };
-            var tabItemManual = new TabItem { Name = "Manual", Header = "Einzelschritt", Content = btnEinzelSchritt };
-
-            var tabControlAutomatikManual = new TabControl { Name = "AutomatikEinzelschritt", Width = 200};
-            tabControlAutomatikManual.Items.Add(tabItemAuto);
-            tabControlAutomatikManual.Items.Add(tabItemManual);
-
-            tabControlAutomatikManual.SelectionChanged += (sender, _) =>
-            {
-                if (!(sender is TabControl s)) return;
-
-                switch (s.SelectedIndex)
                 {
-                    case 0: // Automatik
-                        _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Automatik;
-                        break;
-
-                    case 1: // Einzelschritt
-                        _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
-                        break;
+                    _datenstruktur.NaechstenSchrittGehen = true;
                 }
             };
+            SetColumn(btnEinzelSchritt, 6);
+            SetRow(btnEinzelSchritt, 1);
+            autoTestGrid.Children.Add(btnEinzelSchritt);
 
-            SetColumn(tabControlAutomatikManual, 3);
-            SetColumnSpan(tabControlAutomatikManual, 2);
-            SetRow(tabControlAutomatikManual, 1);
-            autoTestGrid.Children.Add(tabControlAutomatikManual);
+
+
+            var lblSingleStep = new Label
+            {
+                Content = "Single Step",
+                FontSize = 22
+            };
+            SetColumn(lblSingleStep, 4);
+            SetRow(lblSingleStep, 1);
+            autoTestGrid.Children.Add(lblSingleStep);
+
+            var checkboxSingleStep = new CheckBox { VerticalAlignment = VerticalAlignment.Center };
+            checkboxSingleStep.Click += (sender, _) =>
+            {
+                if (sender is not CheckBox s) return;
+
+                if ((bool)s.IsChecked)
+                {
+                    _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
+                    btnEinzelSchritt.Visibility = Visibility.Visible;
+                }
+
+                else
+                {
+                    _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Automatik;
+                    btnEinzelSchritt.Visibility = Visibility.Hidden;
+                }
+
+            };
+            SetColumn(checkboxSingleStep, 5);
+            SetRow(checkboxSingleStep, 1);
+            autoTestGrid.Children.Add(checkboxSingleStep);
 
 
             var stackPanel = new StackPanel
@@ -150,10 +164,12 @@ namespace TestAutomat
             SetRow(stackPanel, 3);
             autoTestGrid.Children.Add(stackPanel);
 
+
+
             var webBrowser = new WebBrowser { Name = "WebBrowser" };
 
             SetColumn(webBrowser, 4);
-            SetColumnSpan(webBrowser, 2);
+            SetColumnSpan(webBrowser, 4);
             SetRow(webBrowser, 3);
             autoTestGrid.Children.Add(webBrowser);
 

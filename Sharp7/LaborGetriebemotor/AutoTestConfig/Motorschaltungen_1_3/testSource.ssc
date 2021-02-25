@@ -66,12 +66,12 @@ main()
 
     SetDigitaleEingaenge (F1 + S92)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor immer noch Ein?"
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Immer noch Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge AllesAus
