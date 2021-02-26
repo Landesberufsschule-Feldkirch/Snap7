@@ -72,7 +72,6 @@ main()
 
     SetDigitaleEingaenge(F1 + S92)
     ResetStopwatch
-
     BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
     IncrementDataGridId
 

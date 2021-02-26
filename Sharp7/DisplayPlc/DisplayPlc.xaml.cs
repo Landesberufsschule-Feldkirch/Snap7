@@ -13,7 +13,7 @@ namespace DisplayPlc
         public ViewModel.ViewModel ViewModel { get; set; }
         public Uint PlcEingaenge { get; set; }
         public Uint PlcAusgaenge { get; set; }
-
+        public bool FensterAktiv { get; set; }
         public DisplayPlc(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode)
         {
             PlcAusgaenge = new Uint("16#FFFF");
@@ -31,7 +31,7 @@ namespace DisplayPlc
             Closing += (_, e) =>
             {
                 e.Cancel = true;
-                Hide();
+                Schliessen();
             };
         }
         public void SetBetriebsartProjekt(Datenstruktur datenstruktur)
@@ -52,11 +52,17 @@ namespace DisplayPlc
             PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
             PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
         }
+        public void Schliessen()
+        {
+            FensterAktiv = false;
+            Hide();
+        }
         public void Oeffnen()
         {
             Show();
             Title = "PLC";
             MaxWidth = 700;
+            FensterAktiv = true;
         }
     }
 }

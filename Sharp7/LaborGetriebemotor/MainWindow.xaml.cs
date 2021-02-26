@@ -72,6 +72,10 @@ namespace LaborGetriebemotor
             DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
-        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => DisplayPlc.Oeffnen();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
+        }
     }
 }

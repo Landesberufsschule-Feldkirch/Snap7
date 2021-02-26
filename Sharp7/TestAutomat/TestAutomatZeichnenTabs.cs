@@ -22,10 +22,12 @@ namespace TestAutomat
             foreach (var row in new[] { 10, 50, 10, 700 })
                 autoTestGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
 
-            foreach (var column in new[] { 10, 150, 100, 10, 150, 50, 200, 400, 100 })
+            foreach (var column in new[] { 10, 150, 100, 10, 150, 50, 200, 300, 100, 100 })
                 autoTestGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(column) });
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
+
+
 
 
             var btnPlcWindowOeffnen = new Button
@@ -38,13 +40,36 @@ namespace TestAutomat
                 }
             };
 
-            btnPlcWindowOeffnen.Click += (_, _) => displayPlc.Oeffnen();
+            btnPlcWindowOeffnen.Click += (_, _) =>
+            {
+                if (displayPlc.FensterAktiv) displayPlc.Schliessen();
+                else displayPlc.Oeffnen();
+            };
 
-            SetColumn(btnPlcWindowOeffnen, 8);
-            SetColumnSpan(btnPlcWindowOeffnen, 2);
+            SetColumn(btnPlcWindowOeffnen, 9);
             SetRow(btnPlcWindowOeffnen, 0);
             SetRowSpan(btnPlcWindowOeffnen, 2);
             autoTestGrid.Children.Add(btnPlcWindowOeffnen);
+
+
+            var PlotterWindowOeffnen = new Button
+            {
+                Width = 60,
+                Height = 40,
+                Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("/IconPlotter.gif", UriKind.Relative))
+                }
+            };
+
+            SetColumn(PlotterWindowOeffnen, 8);
+            SetRow(PlotterWindowOeffnen, 0);
+            SetRowSpan(PlotterWindowOeffnen, 2);
+            autoTestGrid.Children.Add(PlotterWindowOeffnen);
+
+
+
+
 
 
             var btnManualTest = new Button
@@ -106,7 +131,8 @@ namespace TestAutomat
             {
                 Content = "Einzelschritt",
                 FontSize = 22,
-                Visibility = Visibility.Hidden
+                Visibility = Visibility.Hidden,
+                Background = Brushes.Silver
             };
             btnEinzelSchritt.Click += (_, _) =>
             {
@@ -169,7 +195,7 @@ namespace TestAutomat
             var webBrowser = new WebBrowser { Name = "WebBrowser" };
 
             SetColumn(webBrowser, 4);
-            SetColumnSpan(webBrowser, 4);
+            SetColumnSpan(webBrowser, 5);
             SetRow(webBrowser, 3);
             autoTestGrid.Children.Add(webBrowser);
 
