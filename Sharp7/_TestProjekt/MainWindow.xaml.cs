@@ -4,7 +4,6 @@ namespace _TestProjekt
 {
     public partial class MainWindow
     {
-
         private readonly ViewModel.ViewModel _viewModel;
         public MainWindow()
         {
@@ -12,7 +11,7 @@ namespace _TestProjekt
 
             InitializeComponent();
             DataContext = _viewModel;
-            
+
             TextBox.TextChanged += TextBox_TextChanged;
             Slider.ValueChanged += Slider_ValueChanged;
         }
