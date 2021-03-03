@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <None Remove="S7_1200.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -27,10 +20,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
-    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <Resource Include="S7_1200.jpg" />
+    <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -68,9 +69,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="AutoTestConfig\Motorschaltungen_1_4\testSource.ssc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ManualConfig\AA.json">

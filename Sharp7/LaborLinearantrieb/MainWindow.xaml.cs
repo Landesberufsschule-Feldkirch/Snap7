@@ -1,6 +1,7 @@
-﻿using System.Text;
+﻿using Kommunikation;
+using System.Text;
 using System.Windows;
-using Kommunikation;
+using System.Windows.Controls;
 
 namespace LaborLinearantrieb
 {
@@ -11,8 +12,10 @@ namespace LaborLinearantrieb
         public string VersionNummer { get; set; }
         public ManualMode.ManualMode ManualMode { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-
+        public TestAutomat.TestAutomat TestAutomat { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
+
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -38,7 +41,7 @@ namespace LaborLinearantrieb
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc,  DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
@@ -46,17 +49,35 @@ namespace LaborLinearantrieb
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
-        }
 
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
+            Plc.SetManualModeReferenz(ManualMode.Datenstruktur);
+
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ManualMode);
+
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode, DisplayPlc.EventBeschriftungAktualisieren);
+            TestAutomat.SetTestConfig("./AutoTestConfig/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+        }
+        private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Plc.GetPlcModus() == "S7-1200")
+            if (sender is not TabControl tc) return;
+
+            // ReSharper disable once ConvertSwitchStatementToSwitchExpression
+            switch (tc.SelectedIndex)
             {
-                Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.LaborPlatte; break;
+                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 2: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
-            ManualMode.FensterAnzeigen();
+            ManualMode.SetSichtbarkeitFenster();
+            DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
+        }
+        private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

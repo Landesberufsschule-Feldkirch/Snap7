@@ -8,21 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\CarGreen.jpg" />
-    <None Remove="Bilder\CarGreen.png" />
-    <None Remove="Bilder\CarYellow.jpg" />
-    <None Remove="Bilder\CarYellow.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Bilder\CarGreen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Bilder\CarGreen.png" />
+    <Resource Include="Bilder\CarGreen.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Bilder\CarYellow.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Bilder\CarYellow.png" />
+    <Resource Include="Bilder\CarYellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

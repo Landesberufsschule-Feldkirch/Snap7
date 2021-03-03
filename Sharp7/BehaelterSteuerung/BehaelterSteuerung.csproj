@@ -8,17 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\VentilElektrischAusWeiss.jpg" />
-    <None Remove="Bilder\VentilElektrischEinWeiss.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
-    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

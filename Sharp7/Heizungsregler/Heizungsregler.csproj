@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\icon_graph.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ScottPlot.WPF" Version="4.0.42" />
   </ItemGroup>
 
@@ -23,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\icon_graph.png" />
+    <Resource Include="Bilder\icon_graph.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

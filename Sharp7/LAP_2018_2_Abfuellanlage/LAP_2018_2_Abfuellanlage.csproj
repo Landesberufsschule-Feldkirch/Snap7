@@ -8,33 +8,39 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Fransziskaner.jpg" />
-    <None Remove="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserWeiss.jpg" />
-    <None Remove="Bilder\Kellerbier.jpg" />
-    <None Remove="Bilder\OberLänder.jpg" />
-    <None Remove="Bilder\Schwimmerschalter.jpg" />
-    <None Remove="Bilder\Schwimmerschalter_Betaetigt.jpg" />
-    <None Remove="Bilder\VentilElektrischAusWeiss.jpg" />
-    <None Remove="Bilder\VentilElektrischEinWeiss.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\Fransziskaner.jpg" />
-    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
-    <Resource Include="Bilder\Kellerbier.jpg" />
-    <Resource Include="Bilder\OberLänder.jpg" />
-    <Resource Include="Bilder\Schwimmerschalter.jpg" />
-    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg" />
-    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg" />
-    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg" />
+    <Resource Include="Bilder\Fransziskaner.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Kellerbier.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\OberLänder.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Schwimmerschalter.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Schwimmerschalter_Betaetigt.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischAusWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischEinWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

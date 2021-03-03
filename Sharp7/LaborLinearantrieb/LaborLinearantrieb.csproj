@@ -8,17 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
@@ -29,9 +26,51 @@
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\platte_linearantrieb.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ManualConfig\AA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

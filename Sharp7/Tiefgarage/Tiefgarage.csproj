@@ -7,25 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\auto_1.jpg" />
-    <None Remove="Bilder\auto_2.jpg" />
-    <None Remove="Bilder\auto_3.jpg" />
-    <None Remove="Bilder\auto_4.jpg" />
-    <None Remove="Bilder\auto_5.jpg" />
-    <None Remove="Bilder\auto_6.jpg" />
-    <None Remove="Bilder\auto_7.jpg" />
-    <None Remove="Bilder\auto_8.jpg" />
-    <None Remove="Bilder\mensch_1.jpg" />
-    <None Remove="Bilder\mensch_2.jpg" />
-    <None Remove="Bilder\mensch_3.jpg" />
-    <None Remove="Bilder\mensch_4.jpg" />
-    <None Remove="Bilder\mensch_5.jpg" />
-    <None Remove="Bilder\mensch_6.jpg" />
-    <None Remove="Bilder\mensch_7.jpg" />
-    <None Remove="Bilder\mensch_8.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Bilder\auto_1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

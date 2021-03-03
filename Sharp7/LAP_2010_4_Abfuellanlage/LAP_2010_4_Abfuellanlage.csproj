@@ -8,14 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\dose1.jpg" />
-    <None Remove="Bilder\dose2.jpg" />
-    <None Remove="Bilder\dose3.jpg" />
-    <None Remove="Bilder\dose4.jpg" />
-    <None Remove="Bilder\dose5.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
@@ -25,22 +17,45 @@
     <Resource Include="Bilder\dose1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\dose1a.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Bilder\dose2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose2a.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Bilder\dose3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\dose3a.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Bilder\dose4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\dose4a.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Bilder\dose5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg" />
-    <Resource Include="Bilder\VentilElektrischEinHellgrau.jpg" />
+    <Resource Include="Bilder\dose5a.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischEinHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

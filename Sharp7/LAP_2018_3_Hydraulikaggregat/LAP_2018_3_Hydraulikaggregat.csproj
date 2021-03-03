@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ScottPlot.WPF" Version="4.0.42" />
   </ItemGroup>
 
@@ -23,8 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

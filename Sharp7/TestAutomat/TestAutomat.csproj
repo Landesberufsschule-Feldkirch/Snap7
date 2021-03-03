@@ -19,21 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AutoTester\Model\AutoTester.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Bilder\IconPlotter.gif">
+    <Resource Include="Bilder\IconPlotter.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\IconPlotter.gif">
+    </Resource>
+    <Resource Include="Bilder\IconPlotter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\S7_1200.jpg">
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Resource>
   </ItemGroup>
 
 </Project>

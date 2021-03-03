@@ -8,17 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\backGround.png" />
-    <None Remove="Bilder\clock.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\backGround.png" />
-    <Resource Include="Bilder\clock.ico" />
+    <Resource Include="Bilder\backGround.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\clock.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
