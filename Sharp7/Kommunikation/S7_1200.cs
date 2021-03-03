@@ -24,8 +24,6 @@ namespace Kommunikation
         public byte[] ManDigInput { get; set; }
 
         public const int SpsTimeout = 1000;
-        public const int SpsRack = 0;
-        public const int SpsSlot = 0;
 
         private readonly S7Client _client = new S7Client();
         private readonly Action<Datenstruktur> _callbackInput;
