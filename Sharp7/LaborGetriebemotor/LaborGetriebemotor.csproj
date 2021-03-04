@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <None Remove="S7_1200.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -27,50 +20,55 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg" />
-    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <Resource Include="S7_1200.jpg" />
+    <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg" >
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AutoTestConfig\Selbsthaltung_1\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_1\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_1\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_2\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_2\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_3\testSource.ssc">
+    <None Update="AutoTestConfig\Motorschaltungen_1_3\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\index.html">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\testEaBelegung.json">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Selbsthaltung_4\testSource.ssc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\S7_1200.jpg">
+    <None Update="AutoTestConfig\Motorschaltungen_1_4\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ManualConfig\AA.json">

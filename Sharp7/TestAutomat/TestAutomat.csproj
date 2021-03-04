@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AutoTester\ViewModel\**" />
-    <EmbeddedResource Remove="AutoTester\ViewModel\**" />
-    <None Remove="AutoTester\ViewModel\**" />
-    <Page Remove="AutoTester\ViewModel\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -26,22 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AutoTester\Model\AutoTester.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Silk">
-      <HintPath>..\..\..\Silk\Silk\bin\Debug\netstandard2.0\Silk.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Bilder\S7_1200.jpg">
+    <Resource Include="TestAutomatBilder\IconPlotter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Resource>
+    <Resource Include="TestAutomatBilder\S7_1200.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

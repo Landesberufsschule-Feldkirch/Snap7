@@ -24,8 +24,6 @@ namespace Kommunikation
         public byte[] ManDigInput { get; set; }
 
         public const int SpsTimeout = 1000;
-        public const int SpsRack = 0;
-        public const int SpsSlot = 0;
 
         private readonly S7Client _client = new S7Client();
         private readonly Action<Datenstruktur> _callbackInput;
@@ -61,7 +59,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
 
                 if (reply?.Status == IPStatus.Success)
                 {
@@ -73,10 +71,10 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur);
+                            if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
-                            {                               
+                            {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
@@ -86,25 +84,27 @@ namespace Kommunikation
 
                             if (_taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.LaborPlatte)
-                                {
-                                    _datenstruktur.BefehleSps[0] = 1;
-                                }
-                                else
-                                {
-                                    _datenstruktur.BefehleSps[0] = 0;
-                                }
+                                var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
+                                _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
+
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
                             }
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)
                             {
-                                if (_datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest)
+                                if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest)
                                 {
                                     _datenstruktur.DigInput[0] = ManDigInput[0];
                                     _datenstruktur.DigInput[1] = ManDigInput[1];
                                 }
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
+                                { 
+                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput)); 
+                                }
+                                else
+                                { 
+                                    fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                }
                             }
 
                             if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning)

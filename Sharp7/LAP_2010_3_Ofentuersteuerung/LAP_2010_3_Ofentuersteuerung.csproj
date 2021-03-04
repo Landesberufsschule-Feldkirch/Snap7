@@ -8,14 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <None Remove="Bilder\Zahnrad.PNG" />
-    <None Remove="Bilder\Zahnstange.PNG" />
-    <None Remove="Video\Flammen.mp4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -25,10 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-    <Resource Include="Bilder\Zahnrad.PNG" />
-    <Resource Include="Bilder\Zahnstange.PNG" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Zahnrad.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Zahnstange.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <EmbeddedResource Include="Video\Flammen.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

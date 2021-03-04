@@ -1,8 +1,12 @@
 ﻿using System;
-using System.IO;
 
 namespace Kommunikation
 {
+    public enum BetriebsartTestablauf
+    {
+        Automatik = 0,
+        Einzelschritt
+    }
     public enum BetriebsartProjekt
     {
         LaborPlatte = 0,
@@ -11,7 +15,9 @@ namespace Kommunikation
     }
     public class Datenstruktur
     {
-        private BetriebsartProjekt _betriebsartProjekt;
+        public BetriebsartProjekt BetriebsartProjekt;
+        public BetriebsartTestablauf BetriebsartTestablauf;
+        public bool NaechstenSchrittGehen;
         public byte[] BefehleSps { get; set; } = new byte[1024];
         public byte[] VersionInputSps { get; set; } = new byte[1024];
         public byte[] DigInput { get; set; } = new byte[1024];
@@ -27,8 +33,9 @@ namespace Kommunikation
 
         public Datenstruktur(int byteDigitalInput, int byteDigitalOutput, int byteAnalogInput, int byteAnalogOutput)
         {
-            _betriebsartProjekt = BetriebsartProjekt.LaborPlatte;
-
+            BetriebsartTestablauf = BetriebsartTestablauf.Automatik;
+            BetriebsartProjekt = BetriebsartProjekt.LaborPlatte;
+            NaechstenSchrittGehen = false;
             AnzahlByteDigitalInput = byteDigitalInput;
             AnzahlByteDigitalOutput = byteDigitalOutput;
             AnzahlByteAnalogInput = byteAnalogInput;
@@ -41,8 +48,5 @@ namespace Kommunikation
             Array.Clear(AnalogInput, 0, AnalogInput.Length);
             Array.Clear(AnalogOutput, 0, AnalogOutput.Length);
         }
-
-        public void SetBetriebsartProjekt(BetriebsartProjekt betriebsart) => _betriebsartProjekt = betriebsart;
-        public BetriebsartProjekt GetBetriebsartProjekt() => _betriebsartProjekt;
     }
 }

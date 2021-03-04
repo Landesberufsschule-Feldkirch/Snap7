@@ -188,9 +188,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
-    <Resource Include="Bilder\Snap7.ico" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Snap7.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj">

@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Initiatoren_BetaetigtHellgrau.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserHellgrau.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
   </ItemGroup>
@@ -27,9 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Bilder\Snap7.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="ManualConfig\AA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

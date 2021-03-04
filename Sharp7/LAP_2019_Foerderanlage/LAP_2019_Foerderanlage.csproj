@@ -19,21 +19,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
+    <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\Initiatoren_SchliesserHellgrau.jpg">
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\Schneckenfoerderer.gif">
+    </Resource>
+    <Resource Include="Bilder\Schneckenfoerderer.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\VentilElektrischAusHellgrau.jpg">
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischAusHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\VentilElektrischEinHellgrau.jpg">
+    </Resource>
+    <Resource Include="Bilder\VentilElektrischEinHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Resource>
   </ItemGroup>
 
 </Project>

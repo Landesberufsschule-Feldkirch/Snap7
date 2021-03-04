@@ -84,7 +84,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_TestBibliothek", "_TestBib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_AlleManConfigTesten", "_AlleManConfigTesten\_AlleManConfigTesten.csproj", "{1EA35E6B-062B-48F7-AAA1-A9AD1C9A56DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaborLinearantrieb", "LaborLinearantrieb\LaborLinearantrieb.csproj", "{8F4AFBC2-002F-4AEB-A9C7-8B3D57975820}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaborLinearachse", "LaborLinearachse\LaborLinearachse.csproj", "{8F4AFBC2-002F-4AEB-A9C7-8B3D57975820}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LaborGetriebemotor", "LaborGetriebemotor\LaborGetriebemotor.csproj", "{551C581A-07C5-4005-8178-3459BBFC2A82}"
 EndProject

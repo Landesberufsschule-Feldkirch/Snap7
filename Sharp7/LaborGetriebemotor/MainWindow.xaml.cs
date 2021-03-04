@@ -61,17 +61,22 @@ namespace LaborGetriebemotor
         {
             if (sender is not TabControl tc) return;
 
+            // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (tc.SelectedIndex)
             {
-                case 0: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.LaborPlatte); break;
-                case 1: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.Simulation); break;
-                case 2: Datenstruktur.SetBetriebsartProjekt(BetriebsartProjekt.AutomatischerSoftwareTest); break;
+                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.LaborPlatte; break;
+                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 2: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
             ManualMode.SetSichtbarkeitFenster();
             DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
         }
         private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
-        private void PlcButton_OnClick(object sender, RoutedEventArgs e) => DisplayPlc.Oeffnen();
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
+        }
     }
 }

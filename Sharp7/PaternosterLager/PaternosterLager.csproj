@@ -8,19 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
-    <None Remove="Bilder\Initiatoren_SchliesserWeiss.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg" />
-    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg" />
+    <Resource Include="Bilder\Initiatoren_BetaetigtWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\Initiatoren_SchliesserWeiss.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

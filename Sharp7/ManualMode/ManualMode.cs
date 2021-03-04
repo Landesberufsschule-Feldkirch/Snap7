@@ -80,7 +80,7 @@ namespace ManualMode
         public void FensterAnzeigen()
         {
             if (_fensterDiAktiv) return;
-            if (Datenstruktur.AnzahlByteDigitalInput > 0 && Datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest)
+            if (Datenstruktur.AnzahlByteDigitalInput > 0 && Datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest)
             {
                 _fensterDiAktiv = true;
                 _diFenster = new DiFenster(GetConfig.DiConfig, ManualViewModel);
@@ -96,7 +96,7 @@ namespace ManualMode
             }
 
             if (_fensterAiAktiv) return;
-            if (Datenstruktur.AnzahlByteAnalogInput > 0 && Datenstruktur.GetBetriebsartProjekt() != BetriebsartProjekt.AutomatischerSoftwareTest)
+            if (Datenstruktur.AnzahlByteAnalogInput > 0 && Datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest)
             {
                 _fensterAiAktiv = true;
                 _aiFenster = new AiFenster(GetConfig.AiConfig, ManualViewModel);
@@ -104,7 +104,7 @@ namespace ManualMode
             }
 
             if (_fensterAaAktiv) return;
-            if (Datenstruktur.AnzahlByteAnalogOutput == 0 || Datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest) return;
+            if (Datenstruktur.AnzahlByteAnalogOutput == 0 || Datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest) return;
             _fensterAaAktiv = true;
             _aaFenster = new AaFenster(GetConfig.AaConfig, ManualViewModel);
             _aaFenster.Show();
@@ -112,7 +112,7 @@ namespace ManualMode
 
         public void SetSichtbarkeitFenster()
         {
-            switch (Datenstruktur.GetBetriebsartProjekt())
+            switch (Datenstruktur.BetriebsartProjekt)
             {
                 case BetriebsartProjekt.LaborPlatte: break;
 

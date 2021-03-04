@@ -1,0 +1,113 @@
+///////////////////////////////////////////////////////////////
+//
+//  Motorschaltungen 1 - 3 (Getriebemotor)
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0000_0001"      // S1   Taster(⓪) → Öffner
+var DI_0_1 = "2#0000_0010"      // S2   Taster(①) → Schliesser
+var DI_0_2 = "2#0000_0100"      // S4   Taster (STOP links) → Öffner
+var DI_0_3 = "2#0000_1000"      // S3   Taster ( Ⅰ ) → Schliesser 
+
+var DI_0_4 = "2#0001_0000"      // S5   Taster ( Ⅱ ) → Schliesser 
+var DI_0_5 = "2#0010_0000"      // S7   Taster (STOP rechts) → Öffner
+var DI_0_6 = "2#0100_0000"      // S6   Taster (←) → Schliesser
+var DI_0_7 = "2#1000_0000"      // S8   Taster (→) → Schliesser
+
+var DI_1_0 = "2#0001_0000_0000" // S9.1 Not-Halt → Schliesser 
+var DI_1_1 = "2#0010_0000_0000" // S9.2 Not-Halt → Öffner
+var DI_1_2 = "2#0100_0000_0000" // B1   Lichtschranke 0°
+var DI_1_3 = "2#1000_0000_0000" // B2   Lichtschranke 45° CCW 
+
+// Ausgänge:
+var DQ_0_0  ="2#0000_0001"  // Q1 Getriebemotor Schnell Rechtslauf
+var DQ_0_1  ="2#0000_0010"  // Q2 Getriebemotor Linkslauf
+var DQ_0_2  ="2#0000_0100"  // Q3 Getriebemotor Langsam Rechtslauf
+
+var DQ_0_4 = "2#0001_0000"  // P1 Meldeleuchte Betriebsbereit(weiß)
+var DQ_0_5 = "2#0010_0000"  // P2 Meldeleuchte Motorschütz(grün)
+var DQ_0_6 = "2#0100_0000"  // P3 Meldeleuchte Störung(rot)
+
+main()
+{
+    var F1 = Plc2Dec(DI_0_2)    // Thermorelais
+    var S1 = Plc2Dec(DI_0_0)    // Stop
+    var S2 = Plc2Dec(DI_0_1)    // Start
+    var S7 = Plc2Dec(DI_0_5)    // Quittieren
+    var S92 = Plc2Dec(DI_1_1)   // Not-Halt
+
+    var AllesAus = 0
+    var P1 = Plc2Dec(DQ_0_4)    // weiß
+    var P2 = Plc2Dec(DQ_0_5)    // grün
+    var P3 = Plc2Dec(DQ_0_6)    // rot
+    var MaskeP1_P2_P3 = P1 + P2 + P3
+
+    SetDataGridBitAnzahl 0, 0
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+ 
+    SetDigitaleEingaenge (F1 + S1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor Ein?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor noch Ein?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Immer noch Betriebsbereit?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge AllesAus
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung und Motor Aus?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor wieder Ein?"
+    IncrementDataGridId
+    
+    SetDigitaleEingaenge (S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Thermorelais und Motor Aus?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2 + S92)
+    ResetStopwatch
+    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor wieder Ein?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S1 + S2)
+    ResetStopwatch
+    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Not-Halt und Motor Aus?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (F1 + S92)
+    ResetStopwatch
+    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    IncrementDataGridId
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

@@ -13,7 +13,7 @@ namespace DisplayPlc
         public ViewModel.ViewModel ViewModel { get; set; }
         public Uint PlcEingaenge { get; set; }
         public Uint PlcAusgaenge { get; set; }
-
+        public bool FensterAktiv { get; set; }
         public DisplayPlc(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode)
         {
             PlcAusgaenge = new Uint("16#FFFF");
@@ -28,11 +28,15 @@ namespace DisplayPlc
             PlcZeichnen(plcGrid, BackgroundProperty, manualMode);
 
             DataContext = ViewModel;
-            Closing += PlcWindow_Closing;
+            Closing += (_, e) =>
+            {
+                e.Cancel = true;
+                Schliessen();
+            };
         }
         public void SetBetriebsartProjekt(Datenstruktur datenstruktur)
         {
-            if (datenstruktur.GetBetriebsartProjekt() == BetriebsartProjekt.AutomatischerSoftwareTest && GetPlcConfig != null)
+            if (datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest && GetPlcConfig != null)
             {
                 PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
                 PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
@@ -48,9 +52,9 @@ namespace DisplayPlc
             PlcAusgaenge = GetPlcConfig.PlcBelegung.Ausgaenge;
             PlcEingaenge = GetPlcConfig.PlcBelegung.Eingaenge;
         }
-        private void PlcWindow_Closing(object sender, CancelEventArgs e)
+        public void Schliessen()
         {
-            e.Cancel = true;
+            FensterAktiv = false;
             Hide();
         }
         public void Oeffnen()
@@ -58,6 +62,7 @@ namespace DisplayPlc
             Show();
             Title = "PLC";
             MaxWidth = 700;
+            FensterAktiv = true;
         }
     }
 }
