@@ -5,29 +5,31 @@
 ///////////////////////////////////////////////////////////////
 
 // Eingänge:
-var DI_0_0 = "2#0000_0001" // S1   Taster(⓪) → Öffner
-var DI_0_1 = "2#0000_0010" // S2   Taster(①) → Schliesser
-var DI_0_2 = "2#0000_0100" // S4   Taster(STOP links) → Öffner
-var DI_0_3 = "2#0000_1000" // S3   Taster(Ⅰ) → Schliesser
+var DI_0_0 = "2#0000_0001" // B1   Linearachse Endlage links → Öffner
+var DI_0_1 = "2#0000_0010" // B2   Linearachse Endlage rechts → Öffner
+var DI_0_2 = "2#0000_0100" // S2   Taster(⓪) → Öffner
+var DI_0_3 = "2#0000_1000" // S1   Taster(①) → Schliesser
 
-var DI_0_4 = "2#0001_0000" // S5   Taster(Ⅱ) → Schliesser
-var DI_0_5 = "2#0010_0000" // S7   Taster(STOP rechts) → Öffner
-var DI_0_6 = "2#0100_0000" // S6   Taster(←) → Schliesser
-var DI_0_7 = "2#1000_0000" // S8   Taster(→) → Schliesser
+var DI_0_4 = "2#0001_0000" // S4   Taster(Ⅱ) → Schliesser
+var DI_0_5 = "2#0010_0000" // S3   Taster(Ⅰ) → Schliesser
+var DI_0_6 = "2#0100_0000" // S6   Taster(↓) → Schliesser
+var DI_0_7 = "2#1000_0000" // S5   Taster(↑) → Schliesser
 
-var DI_1_0 = "2#0001_0000_0000" // S9.1 Not-Halt → Schliesser
-var DI_1_1 = "2#0010_0000_0000" // S9.2 Not-Halt → Öffner
-var DI_1_2 = "2#0100_0000_0000" // B1   Lichtschranke 0°
-var DI_1_3 = "2#1000_0000_0000" // B2   Lichtschranke 45° CCW
+var DI_1_0 = "2#0001_0000_0000" // S8   Taster(－) → Schliesser
+var DI_1_1 = "2#0010_0000_0000" // S7   Taster(+) → Schliesser
+var DI_1_2 = "2#0100_0000_0000" // S9   Taster(STOP) → Öffner
+var DI_1_3 = "2#1000_0000_0000" // S10  Not-Halt → Öffner
+
+var DI_1_4 = "2#0001_0000_0000_0000" // S11  Not-Halt → Schliesser
 
 // Ausgänge:
-var DQ_0_0 = "2#0000_0001" // Q1 Getriebemotor Schnell Rechtslauf
-var DQ_0_1 = "2#0000_0010" // Q2 Getriebemotor Linkslauf
-var DQ_0_2 = "2#0000_0100" // Q3 Getriebemotor Langsam Rechtslauf
+var DQ_0_0 = "2#0000_0001" // Q1   Linearachse Rechtslauf
+var DQ_0_1 = "2#0000_0010" // Q2   Linearachse Linkslauf
+var DQ_0_2 = "2#0000_0100" // P1   Meldeleuchte im Taster S1/S2(weiß)
+var DQ_0_3 = "2#0000_1000" // P2   Meldeleuchte weiß
 
-var DQ_0_4 = "2#0001_0000" // P1 Meldeleuchte Betriebsbereit(weiß)
-var DQ_0_5 = "2#0010_0000" // P2 Meldeleuchte Motorschütz(grün)
-var DQ_0_6 = "2#0100_0000" // P3 Meldeleuchte Störung(rot)
+var DQ_0_4 = "2#0001_0000" // P3   Meldeleuchte rot
+var DQ_0_5 = "2#0010_0000" // P4   Meldeleuchte grün
 
 main()
 {
