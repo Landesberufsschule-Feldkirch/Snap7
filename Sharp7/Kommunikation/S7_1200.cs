@@ -169,8 +169,9 @@ namespace Kommunikation
         {
             if (_zeichenLaenge[0] <= 0) return "Uups";
 
+            var textLaenge = _datenstruktur.VersionInputSps.Length;
             var enc = new ASCIIEncoding();
-            return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
+            return enc.GetString(_datenstruktur.VersionInputSps, 0, textLaenge);
         }
 
         public string GetSpsStatus() => _spsStatus;

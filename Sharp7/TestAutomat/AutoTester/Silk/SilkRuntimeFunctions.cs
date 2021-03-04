@@ -1,14 +1,14 @@
-﻿using SoftCircuits.Silk;
+﻿using System;
+using Kommunikation;
+using SoftCircuits.Silk;
 using System.Diagnostics;
 using System.Threading;
-using Kommunikation;
 using TestAutomat.AutoTester.Model;
 
 namespace TestAutomat.AutoTester.Silk
 {
     public partial class Silk
     {
-
         private enum SchritteBlinken
         {
             AufPosFlankeWarten = 0,
@@ -22,50 +22,21 @@ namespace TestAutomat.AutoTester.Silk
         {
             switch (e.Name)
             {
-                case "Sleep":
-                    Sleep(e);
-                    break;
-
-                case "GetDigitaleAusgaenge":
-                    GetDigitaleAusgaenge(e);
-                    break;
-
-                case "SetDigitaleEingaenge":
-                    SetDigitaleEingaenge(e);
-                    break;
-
-                case "UpdateAnzeige":
-                    UpdateAnzeige(e);
-                    break;
-
-                case "IncrementDataGridId":
-                    IncrementDataGridId();
-                    break;
-
-                case "ResetStopwatch":
-                    ResetStopwatch();
-                    break;
-
-                case "BitmusterTesten":
-                    BitmusterTesten(e);
-                    break;
-
-                case "Plc2Dec":
-                    Plc2Dec(e);
-                    break;
-
-                case "SetDataGridBitAnzahl":
-                    SetDataGridBitAnzahl(e);
-                    break;
-
-                case "BitmusterBlinktTesten":
-                    BitmusterBlinktTesten(e);
-                    break;
+                case "Sleep": Sleep(e); break;
+                case "GetDigitaleAusgaenge": GetDigitaleAusgaenge(e); break;
+                case "SetDigitaleEingaenge": SetDigitaleEingaenge(e); break;
+                case "UpdateAnzeige": UpdateAnzeige(e); break;
+                case "IncrementDataGridId": IncrementDataGridId(); break;
+                case "ResetStopwatch": ResetStopwatch(); break;
+                case "BitmusterTesten": BitmusterTesten(e); break;
+                case "Plc2Dec": Plc2Dec(e); break;
+                case "SetDataGridBitAnzahl": SetDataGridBitAnzahl(e); break;
+                case "BitmusterBlinktTesten": BitmusterBlinktTesten(e); break;
+                case "KommentarAnzeigen": KommentarAnzeigen(e); break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
         {
-            //
             var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
             e.ReturnValue.SetValue((int)digitalOutput);
         }
@@ -94,7 +65,6 @@ namespace TestAutomat.AutoTester.Silk
 
             Datenstruktur.NaechstenSchrittGehen = false;
         }
-
         private static void ResetStopwatch() => SilkStopwatch.Restart();
         private static void UpdateAnzeige(FunctionEventArgs e)
         {
@@ -152,13 +122,27 @@ namespace TestAutomat.AutoTester.Silk
             var dInput = new PlcDatenTypen.Uint(digitalInput.ToString());
             var dOutput = new PlcDatenTypen.Uint(digitalOutput.ToString());
 
-            AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
-                AutoTesterWindow.DataGridId,
-                $"{SilkStopwatch.ElapsedMilliseconds}ms",
-                testErgebnis,
-                dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
-                dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
-                silkKommentar));
+            if (testErgebnis == Model.AutoTester.TestErgebnis.Kommentar)
+            {
+                AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                               AutoTesterWindow.DataGridId,
+                               " ",
+                               testErgebnis,
+                               " ",
+                               " ",
+                               silkKommentar));
+            }
+            else
+            {
+                AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
+                               AutoTesterWindow.DataGridId,
+                               $"{SilkStopwatch.ElapsedMilliseconds}ms",
+                               testErgebnis,
+                               dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
+                               dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
+                               silkKommentar));
+            }
+
         }
         private static void Plc2Dec(FunctionEventArgs e)
         {
@@ -228,7 +212,7 @@ namespace TestAutomat.AutoTester.Silk
                                 periodenAnzahl++;
                                 if (periodenAnzahl > anzahlPerioden)
                                 {
-                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, $"{kommentar}: T: {aktuellePeriodenDauer}ms / {100 * tastverhaeltnis:F1}%");
+                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, $"{kommentar}: E:{aktuelleEinZeit}ms A: {aktuellePeriodenDauer-aktuelleEinZeit} / {100 * tastverhaeltnis:F1}%");
                                     return;
                                 }
                             }
@@ -246,12 +230,21 @@ namespace TestAutomat.AutoTester.Silk
                             schritte = SchritteBlinken.AufPosFlankeWarten;
                         }
                         break;
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
 
                 DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, $"{kommentar}: T: {aktuellePeriodenDauer}ms / {100 * tastverhaeltnis:F1}%");
             }
 
             DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
+        }
+        private static void KommentarAnzeigen(FunctionEventArgs e)
+        {
+            var kommentar = e.Parameters[0].ToString();
+            AutoTesterWindow.DataGridId++;
+            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Kommentar, kommentar);
         }
     }
 }
