@@ -3,7 +3,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace LaborGetriebemotor
+namespace LaborLinearachse
 {
     public partial class MainWindow
     {
@@ -16,14 +16,14 @@ namespace LaborGetriebemotor
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
-        private const int AnzByteDigInput = 2;
+        private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()
         {
-            const string versionText = "Labor Getriebemotor";
+            const string versionText = "Labor Linearachse";
             VersionNummer = "V2.0";
 
             VersionInfoLokal = versionText + " " + VersionNummer;
@@ -42,6 +42,7 @@ namespace LaborGetriebemotor
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");

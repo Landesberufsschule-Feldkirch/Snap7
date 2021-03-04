@@ -19,13 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Bilder\IconPlotter.gif">
+    <Resource Include="TestAutomatBilder\IconPlotter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Bilder\IconPlotter.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Bilder\S7_1200.jpg">
+    <Resource Include="TestAutomatBilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
