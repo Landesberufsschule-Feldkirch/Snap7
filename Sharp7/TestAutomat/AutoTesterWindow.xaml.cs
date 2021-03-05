@@ -50,7 +50,8 @@ namespace TestAutomat
                         global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
                         global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Timeout => Brushes.Orange,
                         global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Fehler => Brushes.Red,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Kommentar => Brushes.Silver,
+                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Kommentar => Brushes.White,
+                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Version => Brushes.White,
                         global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
                         _ => throw new ArgumentOutOfRangeException()
                     };

@@ -161,7 +161,7 @@ namespace TestAutomat
             {
                 if (sender is not CheckBox s) return;
 
-                if ((bool)s.IsChecked)
+                if (s.IsChecked != null && (bool)s.IsChecked)
                 {
                     _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
                     btnEinzelSchritt.Visibility = Visibility.Visible;

@@ -41,9 +41,10 @@ main()
     var P1 = Plc2Dec(DQ_0_4)    // weiß
     var P2 = Plc2Dec(DQ_0_5)    // grün
     var P3 = Plc2Dec(DQ_0_6)    // rot
-    var MaskeP1_P2_P3 = P1 + P2 + P3
+    var Maske_P1_P2_P3 = P1 + P2 + P3
 
     SetDataGridBitAnzahl 0, 0
+    VersionAnzeigen
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
@@ -51,42 +52,42 @@ main()
  
     SetDigitaleEingaenge (F1 + S1)
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Aus?"
+    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor Ein?"
+    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor Ein?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor noch Ein?"
+    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor noch Ein?"
     IncrementDataGridId
 
     SetDigitaleEingaenge F1
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "Motor Aus?"
+    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge AllesAus
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung und Motor Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung und Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge F1
     ResetStopwatch
-    BitmusterTesten AllesAus, MaskeP1_P2_P3, "T#5s", "keine Störung und Motor Aus?"
+    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "keine Störung und Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge (F1 + S1 + S2)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor wieder Ein?"
+    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor wieder Ein?"
     IncrementDataGridId
     
     SetDigitaleEingaenge (S1 + S2)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung und Motor Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung und Motor Aus?"
     IncrementDataGridId
 
     UpdateAnzeige "Erfolgreich", "30ms"

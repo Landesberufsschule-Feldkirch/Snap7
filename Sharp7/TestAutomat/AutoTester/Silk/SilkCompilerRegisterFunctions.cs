@@ -23,6 +23,7 @@ namespace TestAutomat.AutoTester.Silk
             compiler.RegisterFunction("SetDataGridBitAnzahl", 2, 2);
             compiler.RegisterFunction("BitmusterBlinktTesten", 8, 8);
             compiler.RegisterFunction("KommentarAnzeigen",1,1);
+            compiler.RegisterFunction("VersionAnzeigen", 0, 0);
             // ReSharper restore RedundantArgumentDefaultValue
         }
     }

@@ -21,6 +21,7 @@ namespace TestAutomat.AutoTester.Model
             Timeout,
             Fehler,
             Kommentar,
+            Version,
             UnbekanntesErgebnis
             // ReSharper restore UnusedMember.Global
         }

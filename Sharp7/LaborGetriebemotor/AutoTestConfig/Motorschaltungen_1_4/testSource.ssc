@@ -41,9 +41,10 @@ main()
     var P1 = Plc2Dec(DQ_0_4) // weiß
     var P2 = Plc2Dec(DQ_0_5) // grün
     var P3 = Plc2Dec(DQ_0_6) // rot
-    var MaskeP1_P2_P3 = P1 + P2 + P3
+    var Maske_P1_P2_P3 = P1 + P2 + P3
 
     SetDataGridBitAnzahl 0, 0
+    VersionAnzeigen
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
@@ -52,82 +53,82 @@ main()
     SetDigitaleEingaenge(F1 + S1 + S8 + S92)
     ResetStopwatch
     Sleep("T#100ms")
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S2 + S92)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor Ein?"
+    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor Ein?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten P2, MaskeP1_P2_P3, "T#5s", "Motor noch Ein?"
+    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor noch Ein?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Immer noch Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Immer noch Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(S1 + S92)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Thermorelais und Motor Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung Thermorelais und Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(S1 + S2 + S92)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Thermorelais und Motor bleibt Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung Thermorelais und Motor bleibt Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S92)
     ResetStopwatch
-    BitmusterBlinktTesten P3, MaskeP1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz)"
+    BitmusterBlinktTesten P3, Maske_P1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz)"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S2 + S92)
     ResetStopwatch
-    BitmusterBlinktTesten P3, MaskeP1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz) und Motor bleibt aus"
+    BitmusterBlinktTesten P3, Maske_P1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz) und Motor bleibt aus"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S8 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Not-Halt und Motor Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung Not-Halt und Motor Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S2)
     ResetStopwatch
-    BitmusterTesten P3, MaskeP1_P2_P3, "T#5s", "Störung Not-Halt und Motor bleibt Aus?"
+    BitmusterTesten P3, Maske_P1_P2_P3, "T#5s", "Störung Not-Halt und Motor bleibt Aus?"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S92)
     ResetStopwatch
-    BitmusterBlinktTesten P3, MaskeP1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz)"
+    BitmusterBlinktTesten P3, Maske_P1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz)"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S2 + S92)
     ResetStopwatch
-    BitmusterBlinktTesten P3, MaskeP1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz) und Motor bleibt aus"
+    BitmusterBlinktTesten P3, Maske_P1_P2_P3, "T#1s500ms", 0.50, 2, 1.1, "T#10s", "Störung (0,8Hz) und Motor bleibt aus"
     IncrementDataGridId
 
     SetDigitaleEingaenge(F1 + S1 + S8 + S92)
     ResetStopwatch
-    BitmusterTesten P1, MaskeP1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
+    BitmusterTesten P1, Maske_P1_P2_P3, "T#5s", "Quittieren -> Betriebsbereit?"
     IncrementDataGridId
 
     UpdateAnzeige "Erfolgreich", ""
