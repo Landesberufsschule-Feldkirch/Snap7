@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Bilder\IconPlotter.jpg" />
-    <None Remove="Bilder\S7_1200.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ScottPlot.WPF" Version="4.0.48" />
   </ItemGroup>
@@ -22,15 +17,6 @@
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
     <ProjectReference Include="..\Silk\Silk.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Bilder\IconPlotter.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bilder\S7_1200.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

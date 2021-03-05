@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\IconPlotter.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -23,13 +27,16 @@
     <Resource Include="Bilder\getriebemotor_mit_gabellichtschranke.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\IconPlotter.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Bilder\Initiatoren_BetaetigtHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Bilder\Initiatoren_SchliesserHellgrau.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Bilder\S7_1200.jpg" >
+    <Resource Include="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
