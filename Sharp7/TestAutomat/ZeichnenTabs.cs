@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Kommunikation;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Kommunikation;
 using static System.Windows.Controls.Grid;
 
 namespace TestAutomat
@@ -27,16 +27,15 @@ namespace TestAutomat
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
 
-
-
-
+            var imgPlc = new BitmapImage(new Uri(@"Bilder\S7_1200.jpg", UriKind.Relative));
             var btnPlcWindowOeffnen = new Button
             {
                 Width = 60,
                 Height = 40,
                 Content = new Image
                 {
-                    Source = new BitmapImage(new Uri("TestAutomatBilder/IconPlotter.jpg", UriKind.Relative))
+                    Source = imgPlc,
+                    Stretch = Stretch.Fill
                 }
             };
 
@@ -52,20 +51,29 @@ namespace TestAutomat
             autoTestGrid.Children.Add(btnPlcWindowOeffnen);
 
 
-            var plotterWindowOeffnen = new Button
+            var imgPlotter = new BitmapImage(new Uri(@"Bilder\IconPlotter.jpg", UriKind.Relative));
+            var btnplotterWindowOeffnen = new Button
             {
                 Width = 60,
                 Height = 40,
                 Content = new Image
                 {
-                    Source = new BitmapImage(new Uri("TestAutomatBilder/IconPlotter.jpg", UriKind.Relative))
+                    Source = imgPlotter,
+                    Stretch = Stretch.Fill
                 }
             };
 
-            SetColumn(plotterWindowOeffnen, 8);
-            SetRow(plotterWindowOeffnen, 0);
-            SetRowSpan(plotterWindowOeffnen, 2);
-            autoTestGrid.Children.Add(plotterWindowOeffnen);
+            btnplotterWindowOeffnen.Click += (_, _) =>
+            {
+                if (_plotWindow.FensterAktiv) _plotWindow.Schliessen();
+                else _plotWindow.Oeffnen();
+            };
+
+
+            SetColumn(btnplotterWindowOeffnen, 8);
+            SetRow(btnplotterWindowOeffnen, 0);
+            SetRowSpan(btnplotterWindowOeffnen, 2);
+            autoTestGrid.Children.Add(btnplotterWindowOeffnen);
 
 
 

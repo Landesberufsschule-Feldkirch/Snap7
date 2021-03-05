@@ -6,7 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\IconPlotter.jpg" />
+    <None Remove="Bilder\S7_1200.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ScottPlot.WPF" Version="4.0.48" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,12 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="TestAutomatBilder\IconPlotter.jpg">
+    <EmbeddedResource Include="Bilder\IconPlotter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="TestAutomatBilder\S7_1200.jpg">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
