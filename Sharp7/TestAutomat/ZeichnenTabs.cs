@@ -75,35 +75,6 @@ namespace TestAutomat
             SetRowSpan(btnplotterWindowOeffnen, 2);
             autoTestGrid.Children.Add(btnplotterWindowOeffnen);
 
-
-
-
-
-
-            var btnManualTest = new Button
-            {
-                Name = "BtnManualTest",
-                IsEnabled = false,
-                Visibility = Visibility.Hidden,
-                Content = "ManualWindow",
-                Padding = new Thickness(5, 5, 5, 5),
-                BorderThickness = new Thickness(1.0),
-                BorderBrush = new SolidColorBrush(Colors.Black),
-                Margin = new Thickness(3, 3, 3, 3),
-                Width = 200
-            };
-            btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
-            SetColumn(btnManualTest, 7);
-            SetRow(btnManualTest, 1);
-            autoTestGrid.Children.Add(btnManualTest);
-
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                btnManualTest.Visibility = Visibility.Visible;
-                btnManualTest.IsEnabled = true;
-            }
-
-
             var btnStart = new Button
             {
                 Name = "BtnTestStarten",

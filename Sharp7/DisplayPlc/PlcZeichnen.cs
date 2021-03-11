@@ -10,7 +10,7 @@ namespace DisplayPlc
     {
         public GetPlcConfig GetPlcConfig { get; set; }
 
-        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ManualMode.ManualMode manualMode)
+        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ConfigPlc.Plc configPlc)
         {
             const int spaltenBreite = 30;
             const int reiheHoehe = 35;
@@ -41,7 +41,7 @@ namespace DisplayPlc
                 Formen.PlcLabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", i, "Di", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, i);
+                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(configPlc, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
                 Formen.PlcKommentarZeichnen(3 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, i, "Di", VisibilityProperty, plcGrid);
@@ -55,7 +55,7 @@ namespace DisplayPlc
                 Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Di", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 3, 8 + i, "FarbeDi", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(manualMode, 8 + i);
+                var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
                 Formen.PlcKommentarZeichnen(13 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, 8 + i, "Di", VisibilityProperty, plcGrid);
@@ -69,7 +69,7 @@ namespace DisplayPlc
                 Formen.PlcLabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", i, "Da", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, i);
+                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(3 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
                 Formen.PlcKommentarZeichnen(3 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, i, "Da", VisibilityProperty, plcGrid);
@@ -83,7 +83,7 @@ namespace DisplayPlc
                 Formen.PlcLabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, plcGrid);
                 Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, plcGrid);
 
-                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(manualMode, 8 + i);
+                var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;
                 Formen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
                 Formen.PlcKommentarZeichnen(13 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, 8 + i, "Da", VisibilityProperty, plcGrid);
@@ -94,13 +94,13 @@ namespace DisplayPlc
 
    
 
-        private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ManualMode.ManualMode manualMode, int i)
+        private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ConfigPlc.Plc configPlc, int i)
         {
-            return i + 1 > manualMode.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, manualMode.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
+            return i + 1 > configPlc.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, configPlc.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, configPlc.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
         }
-        private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ManualMode.ManualMode manualMode, int i)
+        private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ConfigPlc.Plc configPlc, int i)
         {
-            return i + 1 > manualMode.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, manualMode.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
+            return i + 1 > configPlc.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, configPlc.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, configPlc.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
         }
 
 

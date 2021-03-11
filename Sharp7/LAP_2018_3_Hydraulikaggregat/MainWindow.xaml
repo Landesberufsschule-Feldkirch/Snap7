@@ -113,9 +113,6 @@
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="13" Grid.Row="2" Grid.RowSpan="24" Fill="#eeeeee" />
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="13" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
-
         <Border Grid.Column="2" Grid.ColumnSpan="6" Grid.Row="9" Grid.RowSpan="17" HorizontalAlignment="Left" Width="420">
             <Path Stroke="Black"
                 StrokeThickness="2">

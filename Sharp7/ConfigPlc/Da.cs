@@ -1,10 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace ManualMode.Model
+namespace ConfigPlc
 {
-    public class DaConfig
+    public class Da
     {
-        public ObservableCollection<DaEinstellungen> DigitaleAusgaenge { get; set; } = new();
+        public Da(ObservableCollection<DaEinstellungen> digitaleAusgaenge)
+        {
+            DigitaleAusgaenge = digitaleAusgaenge;
+        }
+
+        public ObservableCollection<DaEinstellungen> DigitaleAusgaenge { get; set; }
     }
 
     public class DaEinstellungen

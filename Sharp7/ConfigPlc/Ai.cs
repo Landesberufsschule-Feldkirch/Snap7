@@ -1,13 +1,18 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace ManualMode.Model
+namespace ConfigPlc
 {
-    public class DiConfig
+    public class Ai
     {
-        public ObservableCollection<DiEinstellungen> DigitaleEingaenge { get; set; } = new();
+        public Ai(ObservableCollection<AiEinstellungen> analogeEingaenge)
+        {
+            AnalogeEingaenge = analogeEingaenge;
+        }
+
+        public ObservableCollection<AiEinstellungen> AnalogeEingaenge { get; set; }
     }
 
-    public class DiEinstellungen
+    public class AiEinstellungen
     {
         public int LaufendeNr { get; set; }
         public int StartByte { get; set; }
@@ -17,7 +22,7 @@ namespace ManualMode.Model
         public string Bezeichnung { get; set; }
         public string Kommentar { get; set; }
 
-        public DiEinstellungen()
+        public AiEinstellungen()
         {
             LaufendeNr = 0;
             StartByte = 0;

@@ -95,9 +95,6 @@
                                        SegmentDp="{Binding VAnzeige.AlleLed[15], Mode=TwoWay}" />
 
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="4" Click="ManualModeOeffnen" Background="Aquamarine" />
-
-
         <Label  Grid.Column="9" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Right" Content="{Binding VAnzeige.VersionNr}" />
         <Label Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="6"  Grid.RowSpan="2"  Background="{Binding VAnzeige.SpsColor}" Content="{Binding VAnzeige.SpsStatus}" />
 

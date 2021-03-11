@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,7 +9,7 @@ namespace LaborGetriebemotor
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
-        public ManualMode.ManualMode ManualMode { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
@@ -36,21 +35,11 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
+            ConfigPlc = new ConfigPlc.Plc(Datenstruktur, "./ManualConfig");
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
-
-            Plc.SetManualModeReferenz(ManualMode.Datenstruktur);
-
-            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ManualMode);
-
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ManualMode, DisplayPlc.EventBeschriftungAktualisieren);
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ConfigPlc, DisplayPlc.EventBeschriftungAktualisieren);
             TestAutomat.SetTestConfig("./AutoTestConfig/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
         }
@@ -66,10 +55,8 @@ namespace LaborGetriebemotor
                 case 2: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
-            ManualMode.SetSichtbarkeitFenster();
             DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
         }
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e) => ManualMode.ManualModeStarten();
         private void PlcButton_OnClick(object sender, RoutedEventArgs e)
         {
             if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();

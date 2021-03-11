@@ -16,6 +16,5 @@
         byte GetUint8At(Datenbausteine db, int bytePos);
         // ReSharper disable once UnusedMember.Global
         ushort GetUint16At(Datenbausteine db, int bytePos);
-        void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur);
     }
 }

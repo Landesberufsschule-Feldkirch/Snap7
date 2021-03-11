@@ -78,9 +78,7 @@
 
         <TextBlock Grid.Column="20" Grid.Row=" 25" Grid.ColumnSpan="7" Background="Yellow" FontSize="14pt" Text="{Binding ViAnzeige.KraftwerkStatus, Mode=TwoWay}" />
 
-        <Button x:Name="BtnManualMode" Content="set manual" Grid.Column="16" Grid.Row="2" Click="ManualModeOeffnen" />
-
-        <Button Grid.Column="18" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+         <Button Grid.Column="18" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />

@@ -49,7 +49,6 @@ namespace Kommunikation
 
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) { /*nicht erforderlich*/}
         public void SetZyklusZeitKommunikation(int zeit) { /*nicht erforderlich*/}
 
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
@@ -81,7 +80,6 @@ namespace Kommunikation
                     throw new NotImplementedException(nameof(Datenbausteine));
             }
         }
-
         public byte GetUint8At(Datenbausteine db, int bytePos)
         {
             switch (db)
@@ -100,7 +98,6 @@ namespace Kommunikation
                     throw new ArgumentOutOfRangeException(nameof(db), db, null);
             }
         }
-
         public ushort GetUint16At(Datenbausteine db, int bytePos)
         {
             switch (db)

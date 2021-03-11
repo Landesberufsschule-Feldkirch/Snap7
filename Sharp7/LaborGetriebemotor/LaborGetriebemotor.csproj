@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>

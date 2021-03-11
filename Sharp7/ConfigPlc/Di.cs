@@ -1,34 +1,33 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace ManualMode.Model
+namespace ConfigPlc
 {
-    public class AaConfig
+    public class Di
     {
-        public ObservableCollection<AaEinstellungen> AnalogeAusgaenge { get; set; } = new();
+        public Di(ObservableCollection<DiEinstellungen> digitaleEingaenge)
+        {
+            DigitaleEingaenge = digitaleEingaenge;
+        }
+
+        public ObservableCollection<DiEinstellungen> DigitaleEingaenge { get; set; }
     }
 
-    public class AaEinstellungen
+    public class DiEinstellungen
     {
         public int LaufendeNr { get; set; }
         public int StartByte { get; set; }
         public int StartBit { get; set; }
         public int AnzahlBit { get; set; }
-        public double MinimalWert { get; set; }
-        public double MaximalWert { get; set; }
-        public double Schrittweite { get; set; }
         public PlcEinUndAusgaengeTypen Type { get; set; }
         public string Bezeichnung { get; set; }
         public string Kommentar { get; set; }
 
-        public AaEinstellungen()
+        public DiEinstellungen()
         {
             LaufendeNr = 0;
             StartByte = 0;
             StartBit = 0;
             AnzahlBit = 0;
-            MinimalWert = 0;
-            MaximalWert = 0;
-            Schrittweite = 0;
             Type = PlcEinUndAusgaengeTypen.Default;
             Bezeichnung = "";
             Kommentar = "";

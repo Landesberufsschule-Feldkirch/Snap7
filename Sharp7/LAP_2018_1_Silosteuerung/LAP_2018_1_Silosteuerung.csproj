@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GaugeControl\GaugeControl.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
     <ProjectReference Include="..\Silk\Silk.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />

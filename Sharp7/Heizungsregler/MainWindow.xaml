@@ -94,8 +94,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="33" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="3" />
-
         <Button Grid.Column="36" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Grid.ColumnSpan="2">
             <Button.Resources>
                 <Style TargetType="Border">

@@ -14,7 +14,7 @@ namespace DisplayPlc
         public Uint PlcEingaenge { get; set; }
         public Uint PlcAusgaenge { get; set; }
         public bool FensterAktiv { get; set; }
-        public DisplayPlc(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode)
+        public DisplayPlc(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc)
         {
             PlcAusgaenge = new Uint("16#FFFF");
             PlcEingaenge = new Uint("16#FFFF");
@@ -25,7 +25,7 @@ namespace DisplayPlc
 
             Content = plcGrid;
 
-            PlcZeichnen(plcGrid, BackgroundProperty, manualMode);
+            PlcZeichnen(plcGrid, BackgroundProperty, configPlc);
 
             DataContext = ViewModel;
             Closing += (_, e) =>

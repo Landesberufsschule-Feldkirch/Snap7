@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
   </ItemGroup>
 
   <ItemGroup>
