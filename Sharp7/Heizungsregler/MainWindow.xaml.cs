@@ -35,10 +35,7 @@ namespace Heizungsregler
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
 

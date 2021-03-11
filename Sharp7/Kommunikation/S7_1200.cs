@@ -31,8 +31,7 @@ namespace Kommunikation
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressen _spsClient;
 
-        private readonly byte[] _zulStringLaenge = new byte[1024];
-        private readonly byte[] _zeichenLaenge = new byte[1024];
+        private readonly byte[] _VersionsStringDaten = new byte[1024];
 
         private int _zyklusZeitKommunikation = 10;
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
@@ -76,10 +75,8 @@ namespace Kommunikation
                             if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
-
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[4], _datenstruktur.VersionInputSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 4, _VersionsStringDaten));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _VersionsStringDaten[3], _datenstruktur.VersionInputSps));
                             }
 
                             if (_taskRunning)
@@ -167,9 +164,9 @@ namespace Kommunikation
 
         public string GetVersion()
         {
-            if (_zeichenLaenge[0] <= 0) return "Uups";
+            if (_VersionsStringDaten[3] < 1) return "Uups";
 
-            var textLaenge = _datenstruktur.VersionInputSps.Length;
+            var textLaenge = _VersionsStringDaten[3];
             var enc = new ASCIIEncoding();
             return enc.GetString(_datenstruktur.VersionInputSps, 0, textLaenge);
         }

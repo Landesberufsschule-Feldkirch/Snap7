@@ -30,10 +30,7 @@ namespace LAP_2019_Foerderanlage
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             _viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(this, _viewModel);
@@ -44,6 +41,8 @@ namespace LAP_2019_Foerderanlage
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

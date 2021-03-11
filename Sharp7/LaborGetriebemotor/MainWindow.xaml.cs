@@ -28,10 +28,7 @@ namespace LaborGetriebemotor
 
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(viewModel);

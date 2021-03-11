@@ -31,10 +31,7 @@ namespace Blinker
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             _viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(_viewModel);
@@ -69,6 +66,8 @@ namespace Blinker
             var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             renderTimer.Tick += Render;
             renderTimer.Start();
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
         private void UpdateData(object sender, EventArgs e)
         {

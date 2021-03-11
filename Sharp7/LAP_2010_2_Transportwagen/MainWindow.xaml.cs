@@ -25,10 +25,7 @@ namespace LAP_2010_2_Transportwagen
 
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(viewModel);
@@ -46,6 +43,8 @@ namespace LAP_2010_2_Transportwagen
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)

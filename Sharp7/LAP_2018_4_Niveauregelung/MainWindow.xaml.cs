@@ -25,10 +25,7 @@ namespace LAP_2018_4_Niveauregelung
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             ViewModel = new ViewModel.ViewModel(this);
 
@@ -47,6 +44,8 @@ namespace LAP_2018_4_Niveauregelung
             ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
 
             BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
 
         private void ManualModeOeffnen(object sender, RoutedEventArgs e)
