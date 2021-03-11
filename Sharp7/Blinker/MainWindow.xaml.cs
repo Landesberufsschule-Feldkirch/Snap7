@@ -42,7 +42,7 @@ namespace Blinker
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             Plc.SetZyklusZeitKommunikation(2);
 
-            ConfigPlc = new ConfigPlc.Plc(Datenstruktur, "./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
 
             var zeitachse = DataGen.Consecutive(5000);
             WpfPlot.plt.YLabel("Leuchtmelder");

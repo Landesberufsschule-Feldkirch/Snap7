@@ -35,7 +35,7 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
-            ConfigPlc = new ConfigPlc.Plc(Datenstruktur, "./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc);
 

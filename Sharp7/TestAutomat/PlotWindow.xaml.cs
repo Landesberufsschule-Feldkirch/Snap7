@@ -6,6 +6,12 @@
         public PlotWindow()
         {
             InitializeComponent();
+
+            Closing += (_, e) =>
+            {
+                e.Cancel = true;
+                Schliessen();
+            };
         }
 
         public void Schliessen()

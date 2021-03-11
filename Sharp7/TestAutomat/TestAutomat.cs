@@ -24,5 +24,9 @@ namespace TestAutomat
             _callbackPlcWindow = cbPlcWindow;
         }
         public void SetTestConfig(string autotestconfig) => ConfigOrdner = new OrdnerLesen(autotestconfig);
+        public void TaskBeenden()
+        {
+            // funktioniert nicht
+        }
     }
 }

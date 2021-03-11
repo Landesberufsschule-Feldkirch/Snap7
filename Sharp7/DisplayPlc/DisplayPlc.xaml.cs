@@ -1,7 +1,6 @@
 ﻿using DisplayPlc.Config;
 using Kommunikation;
 using PlcDatenTypen;
-using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +27,7 @@ namespace DisplayPlc
             PlcZeichnen(plcGrid, BackgroundProperty, configPlc);
 
             DataContext = ViewModel;
+
             Closing += (_, e) =>
             {
                 e.Cancel = true;
@@ -64,5 +64,6 @@ namespace DisplayPlc
             MaxWidth = 700;
             FensterAktiv = true;
         }
+        public void TaskBeenden() => Close();
     }
 }

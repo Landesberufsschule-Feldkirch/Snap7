@@ -38,7 +38,7 @@ namespace Parkhaus
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ConfigPlc = new ConfigPlc.Plc(Datenstruktur, "./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
         }
     }
 }

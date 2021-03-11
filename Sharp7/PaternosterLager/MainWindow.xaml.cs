@@ -40,7 +40,7 @@ namespace PaternosterLager
             DataContext = _viewModel;
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ConfigPlc = new ConfigPlc.Plc(Datenstruktur, "./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
         }
 
         private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => _viewModel.Paternosterlager.S1 = true;
