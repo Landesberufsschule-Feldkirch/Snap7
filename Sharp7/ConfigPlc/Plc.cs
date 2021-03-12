@@ -2,16 +2,16 @@
 {
     public class Plc
     {
-        public GetConfig GetConfig { get; set; }
+        public GetConfigPlc GetConfigPlc { get; set; }
 
         public Plc(string pfad)
         {
-            GetConfig = new GetConfig();
+            GetConfigPlc = new GetConfigPlc();
 
-            GetConfig.SetDiConfig($"{pfad}/DI.json");
-            GetConfig.SetDaConfig($"{pfad}/DA.json");
-            GetConfig.SetAiConfig($"{pfad}/AI.json");
-            GetConfig.SetAaConfig($"{pfad}/AA.json");
+            GetConfigPlc.SetDiConfig($"{pfad}/DI.json");
+            GetConfigPlc.SetDaConfig($"{pfad}/DA.json");
+            GetConfigPlc.SetAiConfig($"{pfad}/AI.json");
+            GetConfigPlc.SetAaConfig($"{pfad}/AA.json");
         }
     }
 }

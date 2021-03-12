@@ -13,10 +13,15 @@ namespace DisplayPlc
         public Uint PlcEingaenge { get; set; }
         public Uint PlcAusgaenge { get; set; }
         public bool FensterAktiv { get; set; }
-        public DisplayPlc(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc)
+
+        private readonly BeschriftungPlc.BeschriftungenPlc _beschriftungenPlc;
+
+        public DisplayPlc(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {
             PlcAusgaenge = new Uint("16#FFFF");
             PlcEingaenge = new Uint("16#FFFF");
+
+            _beschriftungenPlc = beschriftungenPlc;
 
             ViewModel = new ViewModel.ViewModel(datenstruktur, this);
 

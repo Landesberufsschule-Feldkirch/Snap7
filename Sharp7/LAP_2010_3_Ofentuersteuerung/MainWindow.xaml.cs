@@ -34,7 +34,7 @@ namespace LAP_2010_3_Ofentuersteuerung
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }

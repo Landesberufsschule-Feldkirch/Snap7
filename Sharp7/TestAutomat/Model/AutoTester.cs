@@ -1,9 +1,9 @@
-﻿using Kommunikation;
-using SoftCircuits.Silk;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
+using Kommunikation;
+using SoftCircuits.Silk;
 
-namespace TestAutomat.AutoTester.Model
+namespace TestAutomat.Model
 {
     public class AutoTester
     {

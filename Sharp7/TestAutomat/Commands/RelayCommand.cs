@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TestAutomat.AutoTester.Commands
+namespace TestAutomat.Commands
 {
     public class RelayCommand : ICommand
     {

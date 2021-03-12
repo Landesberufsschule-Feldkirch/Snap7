@@ -1,6 +1,6 @@
 ﻿using SoftCircuits.Silk;
 
-namespace TestAutomat.AutoTester.Silk
+namespace TestAutomat.Silk
 {
     public partial class Silk
     {

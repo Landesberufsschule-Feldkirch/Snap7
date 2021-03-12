@@ -1,6 +1,6 @@
 ﻿using SoftCircuits.Silk;
 
-namespace TestAutomat.AutoTester.Silk
+namespace TestAutomat.Silk
 {
     // Register intrinsic functions - NOTE that silk internal functions are also available
     // as per https://github.com/SoftCircuits/Silk/blob/master/docs/InternalFunctions.md

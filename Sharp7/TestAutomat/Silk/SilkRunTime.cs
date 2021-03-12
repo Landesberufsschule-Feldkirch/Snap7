@@ -1,7 +1,7 @@
 ﻿using SoftCircuits.Silk;
-using TestAutomat.AutoTester.Model;
+using TestAutomat.Model;
 
-namespace TestAutomat.AutoTester.Silk
+namespace TestAutomat.Silk
 {
     public partial class Silk
     {
@@ -13,7 +13,7 @@ namespace TestAutomat.AutoTester.Silk
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
-                Model.AutoTester.TestErgebnis.TestStart,
+                AutoTester.TestErgebnis.TestStart,
                 "", "", ""));
         }
 
@@ -22,7 +22,7 @@ namespace TestAutomat.AutoTester.Silk
             AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
-                Model.AutoTester.TestErgebnis.TestEnde,
+                AutoTester.TestErgebnis.TestEnde,
                 "", "", ""));
         }
     }

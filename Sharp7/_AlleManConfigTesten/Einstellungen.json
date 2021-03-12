@@ -8,7 +8,7 @@
     {
       "Beschreibung": "Suchordner",
       "Einlesen": true,
-      "Quelle": "ManualConfig"
+      "Quelle": "ConfigPlc"
     },
     {
       "Beschreibung": "Debug",

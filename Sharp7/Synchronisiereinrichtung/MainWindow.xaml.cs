@@ -61,7 +61,7 @@ namespace Synchronisiereinrichtung
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

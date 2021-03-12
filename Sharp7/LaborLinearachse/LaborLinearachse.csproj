@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
@@ -38,52 +39,76 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AutoTestConfig\Motorschaltungen_1_1\index.html">
+    <None Update="ConfigTests\Motorschaltungen_1_1\beschriftungDa.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_1\testEaBelegung.json">
+    <None Update="ConfigTests\Motorschaltungen_1_1\BeschriftungDi.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_1\testSource.ssc">
+    <None Update="ConfigTests\Motorschaltungen_1_1\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_2\index.html">
+    <None Update="ConfigTests\Motorschaltungen_1_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_2\testEaBelegung.json">
+    <None Update="ConfigTests\Motorschaltungen_1_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_2\testSource.ssc">
+    <None Update="ConfigTests\Motorschaltungen_1_2\beschriftungDa.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_3\index.html">
+    <None Update="ConfigTests\Motorschaltungen_1_2\BeschriftungDi.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_3\testEaBelegung.json">
+    <None Update="ConfigTests\Motorschaltungen_1_2\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_3\testSource.ssc">
+    <None Update="ConfigTests\Motorschaltungen_1_2\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_4\index.html">
+    <None Update="ConfigTests\Motorschaltungen_1_2\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_4\testEaBelegung.json">
+    <None Update="ConfigTests\Motorschaltungen_1_3\beschriftungDa.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="AutoTestConfig\Motorschaltungen_1_4\testSource.ssc">
+    <None Update="ConfigTests\Motorschaltungen_1_3\BeschriftungDi.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\AA.json">
+    <None Update="ConfigTests\Motorschaltungen_1_3\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\AI.json">
+    <None Update="ConfigTests\Motorschaltungen_1_3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\DA.json">
+    <None Update="ConfigTests\Motorschaltungen_1_3\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\DI.json">
+    <None Update="ConfigTests\Motorschaltungen_1_4\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_4\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_4\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_4\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_4\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\DI.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

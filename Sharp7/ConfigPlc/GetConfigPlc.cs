@@ -30,16 +30,16 @@ namespace ConfigPlc
         public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer) => writer.WriteValue(value.ToString());
     }
 
-    public class GetConfig
+    public class GetConfigPlc
     {
         public Di DiConfig { get; set; }
         public Da DaConfig { get; set; }
         public Ai AiConfig { get; set; }
         public Aa AaConfig { get; set; }
 
-        public void SetDiConfig(string pfad) => DiConfig = JsonConvert.DeserializeObject<Di>(File.ReadAllText(pfad), new MyEnumConverter());
+        internal void SetDiConfig(string pfad) => DiConfig = JsonConvert.DeserializeObject<Di>(File.ReadAllText(pfad), new MyEnumConverter());
         internal void SetDaConfig(string pfad) => DaConfig = JsonConvert.DeserializeObject<Da>(File.ReadAllText(pfad), new MyEnumConverter());
         internal void SetAiConfig(string pfad) => AiConfig = JsonConvert.DeserializeObject<Ai>(File.ReadAllText(pfad), new MyEnumConverter());
-        public void SetAaConfig(string pfad) => AaConfig = JsonConvert.DeserializeObject<Aa>(File.ReadAllText(pfad), new MyEnumConverter());
+        internal void SetAaConfig(string pfad) => AaConfig = JsonConvert.DeserializeObject<Aa>(File.ReadAllText(pfad), new MyEnumConverter());
     }
 }

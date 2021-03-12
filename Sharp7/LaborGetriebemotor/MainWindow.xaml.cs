@@ -35,12 +35,12 @@ namespace LaborGetriebemotor
             InitializeComponent();
             DataContext = viewModel;
 
-            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc);
 
             TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ConfigPlc, DisplayPlc.EventBeschriftungAktualisieren);
-            TestAutomat.SetTestConfig("./AutoTestConfig/");
+            TestAutomat.SetTestConfig("./ConfigTests/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
         }
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)

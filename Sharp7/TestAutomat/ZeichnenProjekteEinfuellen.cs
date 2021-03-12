@@ -25,7 +25,7 @@ namespace TestAutomat
                 rdo.Checked += (sender, _) =>
                 {
                     if (!(sender is RadioButton { Tag: DirectoryInfo } rb)) return;
-                    
+
                     btnStart.IsEnabled = true;
                     btnStart.Background = new SolidColorBrush(Colors.LawnGreen);
 
@@ -33,6 +33,7 @@ namespace TestAutomat
 
                     if (AktuellesProjekt == null) return;
 
+                    BeschriftungenPlc.UpdateBeschriftungen(AktuellesProjekt.FullName);
                     _datenstruktur.TestProjektOrdner = AktuellesProjekt.FullName;
                     _callbackPlcWindow?.Invoke(_datenstruktur);
 

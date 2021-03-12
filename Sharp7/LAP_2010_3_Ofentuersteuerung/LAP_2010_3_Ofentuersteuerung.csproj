@@ -35,16 +35,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ManualConfig\AA.json">
+    <None Update="ConfigPlc\AA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\AI.json">
+    <None Update="ConfigPlc\AI.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\DA.json">
+    <None Update="ConfigPlc\DA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="ManualConfig\DI.json">
+    <None Update="ConfigPlc\DI.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

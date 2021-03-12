@@ -1,11 +1,12 @@
 ﻿using Kommunikation;
 using System.IO;
+using TestAutomat.Model;
 
 namespace TestAutomat
 {
     public partial class TestAutomat
     {
-        public AutoTester.Model.AutoTester MyAutoTester { get; set; }
+        public AutoTester MyAutoTester { get; set; }
 
         private bool _autoTesterWindowAktiv;
 
@@ -22,7 +23,7 @@ namespace TestAutomat
                 _autoTesterWindow.AutoTesterDataGrid.Clear();
                 _autoTesterWindow.DataGridId = 0;
             }
-            MyAutoTester = new AutoTester.Model.AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur);
+            MyAutoTester = new AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur);
         }
     }
 }

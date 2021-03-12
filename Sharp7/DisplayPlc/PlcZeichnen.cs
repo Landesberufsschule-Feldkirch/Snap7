@@ -91,18 +91,13 @@ namespace DisplayPlc
 
             Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", 0, "-", VisibilityProperty, plcGrid);
         }
-
-   
-
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ConfigPlc.Plc configPlc, int i)
         {
-            return i + 1 > configPlc.GetConfig.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, configPlc.GetConfig.DiConfig.DigitaleEingaenge[i].Bezeichnung, configPlc.GetConfig.DiConfig.DigitaleEingaenge[i].Kommentar);
+            return i + 1 > configPlc.GetConfigPlc.DiConfig.DigitaleEingaenge.Count ? (false, "", "") : (true, configPlc.GetConfigPlc.DiConfig.DigitaleEingaenge[i].Bezeichnung, configPlc.GetConfigPlc.DiConfig.DigitaleEingaenge[i].Kommentar);
         }
         private static (bool anzeigen, string bezeichnung, string kommentar) DaGetBezeichnung(ConfigPlc.Plc configPlc, int i)
         {
-            return i + 1 > configPlc.GetConfig.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, configPlc.GetConfig.DaConfig.DigitaleAusgaenge[i].Bezeichnung, configPlc.GetConfig.DaConfig.DigitaleAusgaenge[i].Kommentar);
+            return i + 1 > configPlc.GetConfigPlc.DaConfig.DigitaleAusgaenge.Count ? (false, "", "") : (true, configPlc.GetConfigPlc.DaConfig.DigitaleAusgaenge[i].Bezeichnung, configPlc.GetConfigPlc.DaConfig.DigitaleAusgaenge[i].Kommentar);
         }
-
-
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
-using Kommunikation;
-using SoftCircuits.Silk;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
-using TestAutomat.AutoTester.Model;
+using Kommunikation;
+using SoftCircuits.Silk;
+using TestAutomat.Model;
 
-namespace TestAutomat.AutoTester.Silk
+namespace TestAutomat.Silk
 {
     public partial class Silk
     {
@@ -72,18 +72,18 @@ namespace TestAutomat.AutoTester.Silk
         {
             var silkTestergebnis = e.Parameters[0].ToString();
             var silkKommentar = e.Parameters[0].ToString();
-            Model.AutoTester.TestErgebnis ergebnis;
+            AutoTester.TestErgebnis ergebnis;
 
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (silkTestergebnis)
             {
-                case "Aktiv": ergebnis = Model.AutoTester.TestErgebnis.Aktiv; break;
-                case "Init": ergebnis = Model.AutoTester.TestErgebnis.Init; break;
-                case "Erfolgreich": ergebnis = Model.AutoTester.TestErgebnis.Erfolgreich; break;
-                case "Timeout": ergebnis = Model.AutoTester.TestErgebnis.Timeout; break;
-                case "Fehler": ergebnis = Model.AutoTester.TestErgebnis.Fehler; break;
+                case "Aktiv": ergebnis = AutoTester.TestErgebnis.Aktiv; break;
+                case "Init": ergebnis = AutoTester.TestErgebnis.Init; break;
+                case "Erfolgreich": ergebnis = AutoTester.TestErgebnis.Erfolgreich; break;
+                case "Timeout": ergebnis = AutoTester.TestErgebnis.Timeout; break;
+                case "Fehler": ergebnis = AutoTester.TestErgebnis.Fehler; break;
 
-                default: ergebnis = Model.AutoTester.TestErgebnis.UnbekanntesErgebnis; break;
+                default: ergebnis = AutoTester.TestErgebnis.UnbekanntesErgebnis; break;
             }
 
             DataGridAnzeigeUpdaten(ergebnis, silkKommentar);
@@ -107,16 +107,16 @@ namespace TestAutomat.AutoTester.Silk
 
                 if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
                 {
-                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, kommentar);
+                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, kommentar);
                     return;
                 }
 
-                DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, kommentar);
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, kommentar);
             }
 
-            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Timeout, kommentar);
         }
-        private static void DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis testErgebnis, string silkKommentar)
+        private static void DataGridAnzeigeUpdaten(AutoTester.TestErgebnis testErgebnis, string silkKommentar)
         {
             var digitalInput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
             var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
@@ -127,8 +127,8 @@ namespace TestAutomat.AutoTester.Silk
             // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (testErgebnis)
             {
-                case Model.AutoTester.TestErgebnis.Kommentar:
-                case Model.AutoTester.TestErgebnis.Version:
+                case AutoTester.TestErgebnis.Kommentar:
+                case AutoTester.TestErgebnis.Version:
                     AutoTesterWindow.UpdateDataGrid(new TestAusgabe(
                                    AutoTesterWindow.DataGridId,
                                    " ",
@@ -206,20 +206,20 @@ namespace TestAutomat.AutoTester.Silk
                             {
                                 if (aktuellePeriodenDauer > periodenDauerMax || aktuellePeriodenDauer < periodenDauerMin)
                                 {
-                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Fehler, $"{kommentar}: Falsche Periodendauer: {aktuellePeriodenDauer}ms");
+                                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, $"{kommentar}: Falsche Periodendauer: {aktuellePeriodenDauer}ms");
                                     return;
                                 }
 
                                 if (tastverhaeltnis > tastVerhaeltnisMax || tastverhaeltnis < tastVerhaeltnisMin)
                                 {
-                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Fehler, $"{kommentar}: Falsches Tastverhältnis: {tastverhaeltnis:F2}ms");
+                                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, $"{kommentar}: Falsches Tastverhältnis: {tastverhaeltnis:F2}ms");
                                     return;
                                 }
 
                                 periodenAnzahl++;
                                 if (periodenAnzahl > anzahlPerioden)
                                 {
-                                    DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Erfolgreich, $"{kommentar}: E:{zeitImpuls}ms A: {zeitPause}ms → {100 * tastverhaeltnis:F1}%");
+                                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, $"{kommentar}: E:{zeitImpuls}ms A: {zeitPause}ms → {100 * tastverhaeltnis:F1}%");
                                     return;
                                 }
                             }
@@ -242,16 +242,16 @@ namespace TestAutomat.AutoTester.Silk
                         throw new ArgumentOutOfRangeException();
                 }
 
-                DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Aktiv, $"{kommentar}: I:{zeitImpuls}ms A: {zeitPause}ms → {100 * tastverhaeltnis:F1}%");
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, $"{kommentar}: I:{zeitImpuls}ms A: {zeitPause}ms → {100 * tastverhaeltnis:F1}%");
             }
 
-            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Timeout, kommentar);
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Timeout, kommentar);
         }
         private static void KommentarAnzeigen(FunctionEventArgs e)
         {
             var kommentar = e.Parameters[0].ToString();
             AutoTesterWindow.DataGridId++;
-            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Kommentar, kommentar);
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Kommentar, kommentar);
         }
         private static void VersionAnzeigen()
         {
@@ -259,7 +259,7 @@ namespace TestAutomat.AutoTester.Silk
             var enc = new ASCIIEncoding();
             var version = enc.GetString(Datenstruktur.VersionInputSps, 0, textLaenge);
             AutoTesterWindow.DataGridId++;
-            DataGridAnzeigeUpdaten(Model.AutoTester.TestErgebnis.Version, version);
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Version, version);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Heizungsregler
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ConfigPlc = new ConfigPlc.Plc("./ManualConfig");
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }
 
         private void PlotWindowOeffnen(object sender, RoutedEventArgs e)

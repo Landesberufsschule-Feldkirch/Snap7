@@ -1,4 +1,4 @@
-﻿namespace TestAutomat.AutoTester.Model
+﻿namespace TestAutomat.Model
 {
     public class TestAusgabe
     {

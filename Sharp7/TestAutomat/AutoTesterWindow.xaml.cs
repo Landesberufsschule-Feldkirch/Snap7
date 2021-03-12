@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using TestAutomat.AutoTester.Model;
+using TestAutomat.Model;
 
 namespace TestAutomat
 {
@@ -40,19 +40,19 @@ namespace TestAutomat
                     // ReSharper disable once ConvertSwitchStatementToSwitchExpression
                     row.Background = AutoTesterDataGrid[zeile].Ergebnis switch
                     {
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.CompilerError => Brushes.Red,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Aktiv => Brushes.White,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Timeout => Brushes.Orange,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Fehler => Brushes.Red,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Kommentar => Brushes.White,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.Version => Brushes.White,
-                        global::TestAutomat.AutoTester.Model.AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
+                        AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
+                        AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
+                        AutoTester.TestErgebnis.CompilerError => Brushes.Red,
+                        AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
+                        AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
+                        AutoTester.TestErgebnis.Aktiv => Brushes.White,
+                        AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
+                        AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
+                        AutoTester.TestErgebnis.Timeout => Brushes.Orange,
+                        AutoTester.TestErgebnis.Fehler => Brushes.Red,
+                        AutoTester.TestErgebnis.Kommentar => Brushes.White,
+                        AutoTester.TestErgebnis.Version => Brushes.White,
+                        AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
                         _ => throw new ArgumentOutOfRangeException()
                     };
                 }
