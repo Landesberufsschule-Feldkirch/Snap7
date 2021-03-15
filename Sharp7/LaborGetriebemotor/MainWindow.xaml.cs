@@ -1,6 +1,7 @@
 ﻿using Kommunikation;
 using System.Windows;
 using System.Windows.Controls;
+using BeschriftungPlc;
 
 namespace LaborGetriebemotor
 {
@@ -13,6 +14,7 @@ namespace LaborGetriebemotor
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 2;
@@ -36,12 +38,19 @@ namespace LaborGetriebemotor
             DataContext = viewModel;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc);
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ConfigPlc, DisplayPlc.EventBeschriftungAktualisieren);
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, ConfigPlc, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc);
             TestAutomat.SetTestConfig("./ConfigTests/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+
+            Closing += (_, e) =>
+            {
+                e.Cancel = true;
+                Schliessen();
+            };
         }
         private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,6 +70,12 @@ namespace LaborGetriebemotor
         {
             if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
             else DisplayPlc.Oeffnen();
+        }
+        private void Schliessen()
+        {
+            DisplayPlc.TaskBeenden();
+            TestAutomat.TaskBeenden();
+            Application.Current.Shutdown();
         }
     }
 }

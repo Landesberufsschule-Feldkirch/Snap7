@@ -60,12 +60,20 @@
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="10" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10" />
-                        <RowDefinition Height="35" />
                         <RowDefinition Height="35" />
                         <RowDefinition Height="35" />
                         <RowDefinition Height="35" />
@@ -301,7 +309,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlcButton_OnClick" Width="60" Height="40" Grid.Column="24" Grid.Row="1">
+                    <Button Grid.Column="31" Grid.ColumnSpan="2" Grid.Row="1"  Width="60" Height="40"  Click="PlcButton_OnClick" >
                         <Button.Background>
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>

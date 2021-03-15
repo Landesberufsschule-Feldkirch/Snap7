@@ -14,22 +14,18 @@ namespace DisplayPlc
         public Uint PlcAusgaenge { get; set; }
         public bool FensterAktiv { get; set; }
 
-        private readonly BeschriftungPlc.BeschriftungenPlc _beschriftungenPlc;
-
         public DisplayPlc(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {
             PlcAusgaenge = new Uint("16#FFFF");
             PlcEingaenge = new Uint("16#FFFF");
 
-            _beschriftungenPlc = beschriftungenPlc;
-
-            ViewModel = new ViewModel.ViewModel(datenstruktur, this);
+            ViewModel = new ViewModel.ViewModel(datenstruktur,configPlc, beschriftungenPlc, this);
 
             var plcGrid = new Grid { Name = "PlcGrid", MaxWidth = 700, MaxHeight = 1200, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
             Content = plcGrid;
 
-            PlcZeichnen(plcGrid, BackgroundProperty, configPlc);
+            PlcZeichnen(plcGrid, configPlc, BackgroundProperty);
 
             DataContext = ViewModel;
 

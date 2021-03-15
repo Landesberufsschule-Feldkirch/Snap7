@@ -1,6 +1,12 @@
 ﻿{
   "DiBeschriftung": [
     {
+      "Byte": 1,
+      "Bit": 2,
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais (STOP)"
+    },
+    {
       "Byte": 0,
       "Bit": 2,
       "Bezeichnung": "S2",
@@ -9,8 +15,14 @@
     {
       "Byte": 0,
       "Bit": 3,
-      "Bezeichnung": "B2",
+      "Bezeichnung": "S1",
       "Kommentar": "Taster Ein ( ① )"
+    },
+    {
+      "Byte": 1,
+      "Bit": 3,
+      "Bezeichnung": "S10",
+      "Kommentar": "Not-Halt"
     }
   ]
 }

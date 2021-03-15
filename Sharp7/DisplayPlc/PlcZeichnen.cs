@@ -10,7 +10,7 @@ namespace DisplayPlc
     {
         public GetPlcConfig GetPlcConfig { get; set; }
 
-        internal static void PlcZeichnen(Grid plcGrid, DependencyProperty backgroundProperty, ConfigPlc.Plc configPlc)
+        internal static void PlcZeichnen(Grid grid, ConfigPlc.Plc configPlc, DependencyProperty backgroundProperty)
         {
             const int spaltenBreite = 30;
             const int reiheHoehe = 35;
@@ -24,72 +24,80 @@ namespace DisplayPlc
             const int schriftKlein = 12;
 
 
-            plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
-            for (var i = 0; i < 25; i++) plcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBreite) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(10) });
+            for (var i = 0; i < 25; i++) grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(spaltenBreite) });
 
             foreach (var row in new[] { reiheObererRand, reiheKommentar, reiheBezeichnung, reiheHoehe, reiheLabel, reiheLabel, reiheHoehe, reiheHoehe, reiheHoehe, reiheLabel, reiheLabel, reiheHoehe, reiheBezeichnung, reiheKommentar })
-                plcGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
+                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(row) });
 
-            Formen.PlcRechteckZeichnen(1, 22, 3, 9, Brushes.LightGray, plcGrid);
+            Formen.PlcRechteckZeichnen(1, 22, 3, 9, Brushes.LightGray, grid);
 
-            Formen.PlcBorderZeichnen(3, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
+            Formen.PlcBorderZeichnen(3, 8, 3, 3, 3, 0, 3, 3, Brushes.White, grid);
 
-            Formen.PlcLabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, plcGrid);
-            Formen.PlcLabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, plcGrid);
+            ///////////////////////////////////////////////////////////////////
+            //  obere Hälfte zeichnen
+            ///////////////////////////////////////////////////////////////////
+             
+            Formen.LabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, grid);
+            Formen.LabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, grid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", i, "Di", VisibilityProperty, plcGrid);
-                Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, plcGrid);
+                Formen.LabelZeichnen(3 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", i, "Di", VisibilityProperty, grid);
+                Formen.PlcButtonZeichnen(3 + i, 3, i, "FarbeDi", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(configPlc, i);
                 if (!anzeigen) continue;
-                Formen.PlcBezeichnungZeichnen(3 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
-                Formen.PlcKommentarZeichnen(3 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, i, "Di", VisibilityProperty, plcGrid);
+                Formen.BezeichnungZeichnen(3 + i, 2, schriftGross, VerticalAlignment.Bottom, bezeichnung, i, "Di", VisibilityProperty, grid);
+                Formen.KommentarZeichnen(3 + i, 1, schriftKlein, VerticalAlignment.Bottom, kommentar, i, "Di", VisibilityProperty, grid);
             }
 
-            Formen.PlcBorderZeichnen(13, 8, 3, 3, 3, 0, 3, 3, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, plcGrid);
-            Formen.PlcLabelZeichnen(14, 1, 5, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcBorderZeichnen(13, 8, 3, 3, 3, 0, 3, 3, Brushes.White, grid);
+            Formen.LabelZeichnen(13, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, grid);
+            Formen.LabelZeichnen(14, 1, 5, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, grid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Di", VisibilityProperty, plcGrid);
-                Formen.PlcButtonZeichnen(13 + i, 3, 8 + i, "FarbeDi", backgroundProperty, plcGrid);
+                Formen.LabelZeichnen(13 + i, 1, 4, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Di", VisibilityProperty, grid);
+                Formen.PlcButtonZeichnen(13 + i, 3, 8 + i, "FarbeDi", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DiGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;
-                Formen.PlcBezeichnungZeichnen(13 + i, 2, bezeichnung, schriftGross, VerticalAlignment.Bottom, plcGrid);
-                Formen.PlcKommentarZeichnen(13 + i, 1, kommentar, schriftKlein, VerticalAlignment.Bottom, 8 + i, "Di", VisibilityProperty, plcGrid);
+                Formen.BezeichnungZeichnen(13 + i, 2, schriftGross, VerticalAlignment.Bottom, bezeichnung, 8 + i, "Di", VisibilityProperty, grid);
+                Formen.KommentarZeichnen(13 + i, 1, schriftKlein, VerticalAlignment.Bottom, kommentar, 8 + i, "Di", VisibilityProperty, grid);
             }
 
-            Formen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, plcGrid);
-            Formen.PlcLabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, plcGrid);
+            ///////////////////////////////////////////////////////////////////
+            //  untere Hälfte zeichnen
+            ///////////////////////////////////////////////////////////////////
+            
+            Formen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, grid);
+            Formen.LabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, grid);
+            Formen.LabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, grid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", i, "Da", VisibilityProperty, plcGrid);
-                Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, plcGrid);
+                Formen.LabelZeichnen(3 + i, 1, 10, 1, Brushes.White, schriftGross, $".{i}", i, "Da", VisibilityProperty, grid);
+                Formen.PlcButtonZeichnen(3 + i, 11, i, "FarbeDa", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, i);
                 if (!anzeigen) continue;
-                Formen.PlcBezeichnungZeichnen(3 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
-                Formen.PlcKommentarZeichnen(3 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, i, "Da", VisibilityProperty, plcGrid);
+                Formen.BezeichnungZeichnen(3 + i, 12, schriftGross, VerticalAlignment.Top, bezeichnung, i, "Da", VisibilityProperty, grid);
+                Formen.KommentarZeichnen(3 + i, 13, schriftKlein, VerticalAlignment.Top, kommentar, i, "Da", VisibilityProperty, grid);
             }
 
-            Formen.PlcBorderZeichnen(13, 8, 9, 3, 3, 3, 3, 0, Brushes.White, plcGrid);
-            Formen.PlcLabelZeichnen(13, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, plcGrid);
-            Formen.PlcLabelZeichnen(14, 1, 9, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, plcGrid);
+            Formen.PlcBorderZeichnen(13, 8, 9, 3, 3, 3, 3, 0, Brushes.White, grid);
+            Formen.LabelZeichnen(13, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, grid);
+            Formen.LabelZeichnen(14, 1, 9, 1, Brushes.White, schriftKlein, "b", 0, "-", VisibilityProperty, grid);
             for (var i = 0; i < 8; i++)
             {
-                Formen.PlcLabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, plcGrid);
-                Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, plcGrid);
+                Formen.LabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, grid);
+                Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;
-                Formen.PlcBezeichnungZeichnen(13 + i, 12, bezeichnung, schriftGross, VerticalAlignment.Top, plcGrid);
-                Formen.PlcKommentarZeichnen(13 + i, 13, kommentar, schriftKlein, VerticalAlignment.Top, 8 + i, "Da", VisibilityProperty, plcGrid);
+                Formen.BezeichnungZeichnen(13 + i, 12, schriftGross, VerticalAlignment.Top, bezeichnung, 8 + i, "Da", VisibilityProperty, grid);
+                Formen.KommentarZeichnen(13 + i, 13, schriftKlein, VerticalAlignment.Top, kommentar, 8 + i, "Da", VisibilityProperty, grid);
             }
 
-            Formen.PlcLabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", 0, "-", VisibilityProperty, plcGrid);
+            Formen.LabelZeichnen(3, 20, 6, 3, Brushes.White, schriftGanzGross, "S7-1214 DC/DC/DC", 0, "-", VisibilityProperty, grid);
         }
         private static (bool anzeigen, string bezeichnung, string kommentar) DiGetBezeichnung(ConfigPlc.Plc configPlc, int i)
         {

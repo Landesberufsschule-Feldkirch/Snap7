@@ -20,9 +20,13 @@
         <TabControl Grid.Column="1" Grid.Row="1" SelectionChanged="BetriebsartProjektChanged">
             <TabItem x:Name="LaborPlatte" Header="Laborplatte" ToolTip="Die SPS mit der Laborplatte mit über den dSub25 Stecker verbinden">
                 <Grid Background="LightGray">
-                    <Image Source="Bilder/getriebemotor_mit_gabellichtschranke.jpg"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52*"/>
+                        <ColumnDefinition Width="355*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Bilder/getriebemotor_mit_gabellichtschranke.jpg" Grid.ColumnSpan="2"/>
 
-                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlcButton_OnClick" Width="60" Height="40">
+                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlcButton_OnClick" Width="60" Height="40" Grid.Column="1">
                         <Button.Background>
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>
