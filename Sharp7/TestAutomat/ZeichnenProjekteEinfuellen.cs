@@ -34,6 +34,9 @@ namespace TestAutomat
                     if (AktuellesProjekt == null) return;
 
                     BeschriftungenPlc.UpdateBeschriftungen(AktuellesProjekt.FullName);
+                    
+                    UpdateBelegung();
+
                     _datenstruktur.TestProjektOrdner = AktuellesProjekt.FullName;
                     _callbackPlcWindow?.Invoke(_datenstruktur);
 

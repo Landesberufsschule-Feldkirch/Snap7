@@ -13,19 +13,20 @@ namespace TestAutomat
 
 
         private AutoTesterWindow _autoTesterWindow;
-        private readonly PlotWindow _plotWindow;
         private readonly Datenstruktur _datenstruktur;
-        private readonly ConfigPlc.Plc _configPlc;
         private readonly Action<Datenstruktur> _callbackPlcWindow;
 
-        public TestAutomat(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
+        private int _nextDataIndex = 1;
+
+        public TestAutomat(Datenstruktur datenstruktur, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {
-            _plotWindow = new PlotWindow();
             _datenstruktur = datenstruktur;
-            _configPlc = configPlc;
             _callbackPlcWindow = cbPlcWindow;
             BeschriftungenPlc = beschriftungenPlc;
+
+            PlotInitialisieren();
         }
+
         public void SetTestConfig(string ordnerConfigTests) => ConfigOrdner = new OrdnerLesen(ordnerConfigTests);
 
         public void TaskBeenden()
