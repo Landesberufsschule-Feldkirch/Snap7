@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="PlotWindow" Height="800" Width="1024">
+        Title="PlotWindow" Height="800" Width="1800">
     <Grid>
         <WpfPlot x:Name="WpfPlot" Background="AliceBlue"  />
     </Grid>

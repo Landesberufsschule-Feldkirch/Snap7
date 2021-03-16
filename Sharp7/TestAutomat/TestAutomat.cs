@@ -16,7 +16,7 @@ namespace TestAutomat
         private readonly Datenstruktur _datenstruktur;
         private readonly Action<Datenstruktur> _callbackPlcWindow;
 
-        private int _nextDataIndex = 1;
+        private int _pltNextDataIndex = 1;
 
         public TestAutomat(Datenstruktur datenstruktur, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {

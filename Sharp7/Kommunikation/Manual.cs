@@ -49,8 +49,6 @@ namespace Kommunikation
 
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetZyklusZeitKommunikation(int zeit) { /*nicht erforderlich*/}
-
         public void SetBitAt(Datenbausteine db, int bitPos, bool value)
         {
             byte[] mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };

@@ -30,8 +30,6 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
 
         private readonly byte[] _versionsStringDaten = new byte[1024];
-
-        private int _zyklusZeitKommunikation = 10;
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private string _plcModus = "S7-1200";
         private bool _spsError;
@@ -70,7 +68,7 @@ namespace Kommunikation
 
                             if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
-                            if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
+                            if (_taskRunning)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 4, _versionsStringDaten));
@@ -122,7 +120,7 @@ namespace Kommunikation
 
                             _spsError = false;
 
-                            Thread.Sleep(_zyklusZeitKommunikation);
+                            Thread.Sleep(1);
                         }
                     }
                     else
@@ -168,7 +166,6 @@ namespace Kommunikation
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
 
-        public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();

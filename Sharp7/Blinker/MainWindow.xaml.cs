@@ -40,7 +40,6 @@ namespace Blinker
             DataContext = _viewModel;
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            Plc.SetZyklusZeitKommunikation(2);
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 

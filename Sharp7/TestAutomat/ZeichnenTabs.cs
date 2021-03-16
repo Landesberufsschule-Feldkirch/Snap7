@@ -99,6 +99,7 @@ namespace TestAutomat
                     SetColumnSpan(btnStart, 2);
                 }
                 TestAutomatStarten(AktuellesProjekt, _datenstruktur);
+                ResetPlot();
             };
             SetColumn(btnStart, 1);
             SetRow(btnStart, 1);

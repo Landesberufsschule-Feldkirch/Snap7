@@ -23,8 +23,9 @@
         {
             Show();
             Title = "Plotter";
-            MaxWidth = 1200;
+            MaxWidth = 1800;
             FensterAktiv = true;
         }
+        
     }
 }
