@@ -20,7 +20,7 @@ namespace LAP_2010_2_Transportwagen.Model
         private const double Geschwindigkeit = 1;
         private const double RandLinks = 30;
         private const double RandRechts = 430;
-        private const double MaximaleFuellzeit = 700; // Zykluszeit ist 10ms --> 7"
+        private const double MaximaleFuellzeit = 500; // Zykluszeit ist 10ms --> 5 oder7"
         private double _laufzeitFuellen;
 
         public Transportwagen()

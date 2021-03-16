@@ -1,7 +1,7 @@
-﻿using System;
-using Kommunikation;
+﻿using Kommunikation;
+using System;
 using System.IO;
-using TestAutomat.AutoTester.Model;
+using TestAutomat.Model;
 
 namespace TestAutomat
 {
@@ -9,18 +9,29 @@ namespace TestAutomat
     {
         public DirectoryInfo AktuellesProjekt { get; set; }
         public OrdnerLesen ConfigOrdner { get; set; }
+        public BeschriftungPlc.BeschriftungenPlc BeschriftungenPlc { get; set; }
+
 
         private AutoTesterWindow _autoTesterWindow;
         private readonly Datenstruktur _datenstruktur;
-        private readonly ManualMode.ManualMode _manualMode;
         private readonly Action<Datenstruktur> _callbackPlcWindow;
 
-        public TestAutomat(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode, Action<Datenstruktur> cbPlcWindow)
+        private int _pltNextDataIndex = 1;
+
+        public TestAutomat(Datenstruktur datenstruktur, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {
             _datenstruktur = datenstruktur;
-            _manualMode = manualMode;
             _callbackPlcWindow = cbPlcWindow;
+            BeschriftungenPlc = beschriftungenPlc;
+
+            PlotInitialisieren();
         }
-        public void SetTestConfig(string autotestconfig) => ConfigOrdner = new OrdnerLesen(autotestconfig);
+
+        public void SetTestConfig(string ordnerConfigTests) => ConfigOrdner = new OrdnerLesen(ordnerConfigTests);
+
+        public void TaskBeenden()
+        {
+            // funktioniert nicht
+        }
     }
 }

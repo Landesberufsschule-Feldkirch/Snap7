@@ -58,8 +58,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="10" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
         <Rectangle Fill="LightGray"         Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="4"  Grid.RowSpan="5" />
         <Label Grid.Column="15" Grid.Row="5" Content="Hand" FontSize="14pt" HorizontalAlignment="Left" />
         <Label Grid.Column="16" Grid.Row="4" Content="0"    FontSize="14pt" HorizontalAlignment="Center" />

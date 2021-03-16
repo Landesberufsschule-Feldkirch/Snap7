@@ -7,24 +7,16 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="ScottPlot.WPF" Version="4.0.48" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\ManualMode\ManualMode.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
     <ProjectReference Include="..\Silk\Silk.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="TestAutomatBilder\IconPlotter.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="TestAutomatBilder\S7_1200.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
 
 </Project>

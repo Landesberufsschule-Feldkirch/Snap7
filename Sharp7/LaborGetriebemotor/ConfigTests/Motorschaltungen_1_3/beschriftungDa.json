@@ -1,0 +1,22 @@
+﻿{
+  "DaBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte (weiß)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte (rot)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "P4",
+      "Kommentar": "Meldeleuchte (grün)"
+    }
+  ]
+}

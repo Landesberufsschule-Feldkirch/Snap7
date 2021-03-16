@@ -14,7 +14,7 @@ namespace Synchronisiereinrichtung
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-        public ManualMode.ManualMode ManualMode { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
 
         public double[] Zeitachse { get; set; }
         public double[] PlotVentilOeffnung { get; set; }
@@ -61,29 +61,11 @@ namespace Synchronisiereinrichtung
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
-        {
-            if (Plc.GetPlcModus() == "S7-1200")
-            {
-                Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            }
-
-            ManualMode.FensterAnzeigen();
         }
 
         private void GraphWindow_Click(object sender, RoutedEventArgs e)

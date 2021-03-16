@@ -1,7 +1,6 @@
 ﻿using DisplayPlc.Config;
 using Kommunikation;
 using PlcDatenTypen;
-using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,20 +13,22 @@ namespace DisplayPlc
         public Uint PlcEingaenge { get; set; }
         public Uint PlcAusgaenge { get; set; }
         public bool FensterAktiv { get; set; }
-        public DisplayPlc(Datenstruktur datenstruktur, ManualMode.ManualMode manualMode)
+
+        public DisplayPlc(Datenstruktur datenstruktur, ConfigPlc.Plc configPlc, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc)
         {
             PlcAusgaenge = new Uint("16#FFFF");
             PlcEingaenge = new Uint("16#FFFF");
 
-            ViewModel = new ViewModel.ViewModel(datenstruktur, this);
+            ViewModel = new ViewModel.ViewModel(datenstruktur,configPlc, beschriftungenPlc, this);
 
             var plcGrid = new Grid { Name = "PlcGrid", MaxWidth = 700, MaxHeight = 1200, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 
             Content = plcGrid;
 
-            PlcZeichnen(plcGrid, BackgroundProperty, manualMode);
+            PlcZeichnen(plcGrid, configPlc, BackgroundProperty);
 
             DataContext = ViewModel;
+
             Closing += (_, e) =>
             {
                 e.Cancel = true;
@@ -64,5 +65,6 @@ namespace DisplayPlc
             MaxWidth = 700;
             FensterAktiv = true;
         }
+        public void TaskBeenden() => Close();
     }
 }

@@ -160,8 +160,5 @@
                                    ArcFirstColorEndPos="165"
                                    CurrentValue="{Binding ViAnzeige.AktuellerDruck}" />
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
-
     </Grid>
 </Window>

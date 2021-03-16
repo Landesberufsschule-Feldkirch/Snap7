@@ -51,13 +51,6 @@
 
         <WpfPlot x:Name="WpfPlot" Grid.Column="1" Grid.Row="4" Background="AliceBlue" Grid.ColumnSpan="10" Grid.RowSpan="5"  />
 
-
-
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="9" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
-
-
-
         <Label Content="P1 " Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
         <Ellipse Grid.Column="2" Grid.Row="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP1}" Height="70" VerticalAlignment="Center" />
 

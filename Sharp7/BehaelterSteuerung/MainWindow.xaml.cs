@@ -37,6 +37,8 @@ namespace BehaelterSteuerung
             }
 
             Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
     }
 }

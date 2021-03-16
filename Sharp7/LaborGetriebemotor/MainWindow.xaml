@@ -20,9 +20,13 @@
         <TabControl Grid.Column="1" Grid.Row="1" SelectionChanged="BetriebsartProjektChanged">
             <TabItem x:Name="LaborPlatte" Header="Laborplatte" ToolTip="Die SPS mit der Laborplatte mit über den dSub25 Stecker verbinden">
                 <Grid Background="LightGray">
-                    <Image Source="Bilder/getriebemotor_mit_gabellichtschranke.jpg"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52*"/>
+                        <ColumnDefinition Width="355*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Bilder/getriebemotor_mit_gabellichtschranke.jpg" Grid.ColumnSpan="2"/>
 
-                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlcButton_OnClick" Width="60" Height="40">
+                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlcButton_OnClick" Width="60" Height="40" Grid.Column="1">
                         <Button.Background>
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>
@@ -245,8 +249,6 @@
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>
                     </Button>
-
-                    <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="14" Grid.Row="1" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="3" />
 
                     <Label Grid.Column="22" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top"   Content="{Binding ViAnzeige.VersionNr}" />
                     <Label Grid.Column="14" Grid.ColumnSpan="10"  Grid.Row="24" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />

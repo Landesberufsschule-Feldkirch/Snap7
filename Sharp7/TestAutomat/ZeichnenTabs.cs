@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Kommunikation;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Kommunikation;
 using static System.Windows.Controls.Grid;
 
 namespace TestAutomat
@@ -27,16 +27,15 @@ namespace TestAutomat
 
             tabItemAutomatischerSoftwareTest.Content = autoTestGrid;
 
-
-
-
+            var imgPlc = new BitmapImage(new Uri(@"Bilder\S7_1200.jpg", UriKind.Relative));
             var btnPlcWindowOeffnen = new Button
             {
                 Width = 60,
                 Height = 40,
                 Content = new Image
                 {
-                    Source = new BitmapImage(new Uri("TestAutomatBilder/IconPlotter.jpg", UriKind.Relative))
+                    Source = imgPlc,
+                    Stretch = Stretch.Fill
                 }
             };
 
@@ -52,49 +51,29 @@ namespace TestAutomat
             autoTestGrid.Children.Add(btnPlcWindowOeffnen);
 
 
-            var plotterWindowOeffnen = new Button
+            var imgPlotter = new BitmapImage(new Uri(@"Bilder\IconPlotter.jpg", UriKind.Relative));
+            var btnplotterWindowOeffnen = new Button
             {
                 Width = 60,
                 Height = 40,
                 Content = new Image
                 {
-                    Source = new BitmapImage(new Uri("TestAutomatBilder/IconPlotter.jpg", UriKind.Relative))
+                    Source = imgPlotter,
+                    Stretch = Stretch.Fill
                 }
             };
 
-            SetColumn(plotterWindowOeffnen, 8);
-            SetRow(plotterWindowOeffnen, 0);
-            SetRowSpan(plotterWindowOeffnen, 2);
-            autoTestGrid.Children.Add(plotterWindowOeffnen);
-
-
-
-
-
-
-            var btnManualTest = new Button
+            btnplotterWindowOeffnen.Click += (_, _) =>
             {
-                Name = "BtnManualTest",
-                IsEnabled = false,
-                Visibility = Visibility.Hidden,
-                Content = "ManualWindow",
-                Padding = new Thickness(5, 5, 5, 5),
-                BorderThickness = new Thickness(1.0),
-                BorderBrush = new SolidColorBrush(Colors.Black),
-                Margin = new Thickness(3, 3, 3, 3),
-                Width = 200
+                if (_plotWindow.FensterAktiv) _plotWindow.Schliessen();
+                else _plotWindow.Oeffnen();
             };
-            btnManualTest.Click += (_, _) => _manualMode.ManualModeStarten();
-            SetColumn(btnManualTest, 7);
-            SetRow(btnManualTest, 1);
-            autoTestGrid.Children.Add(btnManualTest);
 
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                btnManualTest.Visibility = Visibility.Visible;
-                btnManualTest.IsEnabled = true;
-            }
 
+            SetColumn(btnplotterWindowOeffnen, 8);
+            SetRow(btnplotterWindowOeffnen, 0);
+            SetRowSpan(btnplotterWindowOeffnen, 2);
+            autoTestGrid.Children.Add(btnplotterWindowOeffnen);
 
             var btnStart = new Button
             {
@@ -120,6 +99,7 @@ namespace TestAutomat
                     SetColumnSpan(btnStart, 2);
                 }
                 TestAutomatStarten(AktuellesProjekt, _datenstruktur);
+                ResetPlot();
             };
             SetColumn(btnStart, 1);
             SetRow(btnStart, 1);
@@ -161,7 +141,7 @@ namespace TestAutomat
             {
                 if (sender is not CheckBox s) return;
 
-                if ((bool)s.IsChecked)
+                if (s.IsChecked != null && (bool)s.IsChecked)
                 {
                     _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
                     btnEinzelSchritt.Visibility = Visibility.Visible;

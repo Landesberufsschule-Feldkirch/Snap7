@@ -14,7 +14,7 @@ namespace Blinker
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-        public ManualMode.ManualMode ManualMode { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public double[] WertLeuchtMelder { get; set; } = new double[5_000];
         public DatenRangieren DatenRangieren { get; set; }
 
@@ -31,10 +31,7 @@ namespace Blinker
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             _viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(_viewModel);
@@ -43,16 +40,8 @@ namespace Blinker
             DataContext = _viewModel;
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            Plc.SetZyklusZeitKommunikation(2);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc,  DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             var zeitachse = DataGen.Consecutive(5000);
             WpfPlot.plt.YLabel("Leuchtmelder");
@@ -69,6 +58,8 @@ namespace Blinker
             var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             renderTimer.Tick += Render;
             renderTimer.Start();
+
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
         private void UpdateData(object sender, EventArgs e)
         {
@@ -87,16 +78,6 @@ namespace Blinker
         {
             WpfPlot.plt.AxisAuto(0);
             WpfPlot.Render(true);
-        }
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
-        {
-            if (Plc.GetPlcModus() == "S7-1200")
-            {
-                Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            }
-
-            ManualMode.FensterAnzeigen();
         }
     }
 }

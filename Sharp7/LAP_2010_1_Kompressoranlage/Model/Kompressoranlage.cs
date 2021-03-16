@@ -18,7 +18,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public double Druck { get; set; }
 
         private const double DruckVerlust = 0.998;
-        private const double DruckAnstieg = 0.04;
+        private const double DruckAnstieg = 0.03;
 
         public Kompressoranlage()
         {

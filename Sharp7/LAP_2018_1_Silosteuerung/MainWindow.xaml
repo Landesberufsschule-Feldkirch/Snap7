@@ -67,8 +67,6 @@
 
         <Rectangle Grid.ColumnSpan="15" Grid.Row="1" Grid.RowSpan="27" Fill="#eeeeee" />
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="13" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
         <Image x:Name="ImgSchneckenfoerderer" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="7" 
                gif:ImageBehavior.AnimatedSource="Bilder/Schneckenfoerderer.gif"
                gif:ImageBehavior.AutoStart="False"

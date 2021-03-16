@@ -7,7 +7,7 @@ namespace LAP_2018_4_Niveauregelung
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
-        public ManualMode.ManualMode ManualMode { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -25,10 +25,7 @@ namespace LAP_2018_4_Niveauregelung
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             ViewModel = new ViewModel.ViewModel(this);
 
@@ -39,25 +36,9 @@ namespace LAP_2018_4_Niveauregelung
 
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
 
-            ManualMode = new ManualMode.ManualMode(Datenstruktur, Plc,  DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Di, "./ManualConfig/DI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Da, "./ManualConfig/DA.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Ai, "./ManualConfig/AI.json");
-            ManualMode.SetManualConfig(global::ManualMode.ManualMode.ManualModeConfig.Aa, "./ManualConfig/AA.json");
-
-            BtnManualMode.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
-        }
-
-        private void ManualModeOeffnen(object sender, RoutedEventArgs e)
-        {
-            if (Plc.GetPlcModus() == "S7-1200")
-            {
-                Plc.SetTaskRunning(false);
-                Plc = new Manual(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
-            }
-
-            ManualMode.FensterAnzeigen();
+            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
     }
 }

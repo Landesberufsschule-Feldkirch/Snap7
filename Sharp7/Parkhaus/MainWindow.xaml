@@ -60,10 +60,6 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="17" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
-
         <!--#region Erste Autoreihe -->
 
         <Rectangle Grid.Column="1"  Grid.ColumnSpan="17" Grid.Row="1" Fill="LightGray" Margin="3,0,3,5"/>

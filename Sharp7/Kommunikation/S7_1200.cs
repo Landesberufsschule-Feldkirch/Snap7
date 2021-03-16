@@ -20,9 +20,7 @@ namespace Kommunikation
             Byte3,
             Byte4
         }
-
-        public byte[] ManDigInput { get; set; }
-
+        
         public const int SpsTimeout = 1000;
 
         private readonly S7Client _client = new S7Client();
@@ -31,10 +29,7 @@ namespace Kommunikation
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressen _spsClient;
 
-        private readonly byte[] _zulStringLaenge = new byte[1024];
-        private readonly byte[] _zeichenLaenge = new byte[1024];
-
-        private int _zyklusZeitKommunikation = 10;
+        private readonly byte[] _versionsStringDaten = new byte[1024];
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private string _plcModus = "S7-1200";
         private bool _spsError;
@@ -73,13 +68,11 @@ namespace Kommunikation
 
                             if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
-                            if (_datenstruktur.VersionInputSps.Length > 0 && _taskRunning)
+                            if (_taskRunning)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte2, 1, _zulStringLaenge));
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte3, 1, _zeichenLaenge));
-
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _zeichenLaenge[4], _datenstruktur.VersionInputSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 4, _versionsStringDaten));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _versionsStringDaten[3], _datenstruktur.VersionInputSps));
                             }
 
                             if (_taskRunning)
@@ -92,11 +85,6 @@ namespace Kommunikation
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)
                             {
-                                if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.AutomatischerSoftwareTest)
-                                {
-                                    _datenstruktur.DigInput[0] = ManDigInput[0];
-                                    _datenstruktur.DigInput[1] = ManDigInput[1];
-                                }
                                 if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
                                 { 
                                     fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput)); 
@@ -132,7 +120,7 @@ namespace Kommunikation
 
                             _spsError = false;
 
-                            Thread.Sleep(_zyklusZeitKommunikation);
+                            Thread.Sleep(1);
                         }
                     }
                     else
@@ -167,20 +155,19 @@ namespace Kommunikation
 
         public string GetVersion()
         {
-            if (_zeichenLaenge[0] <= 0) return "Uups";
+            if (_versionsStringDaten[3] < 1) return "Uups";
 
+            var textLaenge = _versionsStringDaten[3];
             var enc = new ASCIIEncoding();
-            return enc.GetString(_datenstruktur.VersionInputSps, 0, _zeichenLaenge[0]);
+            return enc.GetString(_datenstruktur.VersionInputSps, 0, textLaenge);
         }
 
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
 
-        public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) => ManDigInput = manualModeDatenstruktur.DigInput;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
         public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
         public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();

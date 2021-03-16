@@ -59,8 +59,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="10" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
         <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
 
         <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">

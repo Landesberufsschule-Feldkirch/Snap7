@@ -59,8 +59,6 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="10" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
         <Rectangle Fill="LightGray"         Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="17" />
 
         <Button Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnTasterS1}"  Margin="0,30,0,5">

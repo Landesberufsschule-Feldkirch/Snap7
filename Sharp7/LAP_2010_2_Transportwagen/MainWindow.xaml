@@ -89,9 +89,7 @@
         <Button Content="F1" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF1}" Command="{Binding BtnF1}"  FontSize="14pt"/>
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
-        <Button x:Name="BtnManualMode" Content="ManualMode" Grid.Column="10" Grid.Row="2" Click="ManualModeOeffnen" Background="Aquamarine" Grid.ColumnSpan="2" />
-
-
+  
         <Rectangle Grid.Column="8" Grid.Row="6" Fill="Firebrick" Grid.ColumnSpan="2" Margin="58,0" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFuellen}" />
 
         <Polygon Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5" Fill="DarkOrange">
