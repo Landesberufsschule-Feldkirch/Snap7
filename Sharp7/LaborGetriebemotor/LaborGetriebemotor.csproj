@@ -54,6 +54,9 @@
     <None Update="ConfigTests\Motorschaltungen_1_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ConfigTests\Motorschaltungen_1_1\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ConfigTests\Motorschaltungen_1_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -67,6 +70,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ConfigTests\Motorschaltungen_1_2\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_2\testProgramm.st">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ConfigTests\Motorschaltungen_1_2\testSource.ssc">
@@ -84,6 +90,9 @@
     <None Update="ConfigTests\Motorschaltungen_1_3\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ConfigTests\Motorschaltungen_1_3\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ConfigTests\Motorschaltungen_1_3\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -97,6 +106,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ConfigTests\Motorschaltungen_1_4\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Motorschaltungen_1_4\testProgramm.st">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ConfigTests\Motorschaltungen_1_4\testSource.ssc">

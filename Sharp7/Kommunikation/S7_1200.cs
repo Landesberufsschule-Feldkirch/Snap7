@@ -13,14 +13,9 @@ namespace Kommunikation
         private enum BytePosition
         {
             Byte0 = 0,
-            // ReSharper disable once UnusedMember.Local
-            // ReSharper disable once UnusedMember.Global
-            Byte1,
-            Byte2,
-            Byte3,
-            Byte4
+            Byte4 = 4
         }
-        
+
         public const int SpsTimeout = 1000;
 
         private readonly S7Client _client = new S7Client();
@@ -75,7 +70,7 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _versionsStringDaten[3], _datenstruktur.VersionInputSps));
                             }
 
-                            if (_taskRunning)
+                            if (_taskRunning && !fehlerAktiv)
                             {
                                 var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
                                 _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
@@ -83,29 +78,29 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning)
+                            if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning && !fehlerAktiv)
                             {
                                 if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
-                                { 
-                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput)); 
+                                {
+                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
                                 }
                                 else
-                                { 
+                                {
                                     fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
                                 }
                             }
 
-                            if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning)
+                            if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning)
+                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
                             }
 
-                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 && _taskRunning)
+                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 && _taskRunning && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
                             }
