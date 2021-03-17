@@ -34,15 +34,14 @@ var DQ_0_5 = "2#0010_0000"  // P4   Meldeleuchte grün
 main()
 {
     var S1 = Plc2Dec(DI_0_3) // Start
-    var S2 = Plc2Dec(DI_0_2) // Stop
     
     var AllesAus = 0
-    var P1 = Plc2Dec(DQ_0_2) // weiß im Taster S1/S2
-    var P2 = Plc2Dec(DQ_0_3) // weiß
-    var P3 = Plc2Dec(DQ_0_4) // grün
-    var P4 = Plc2Dec(DQ_0_5) // rot
+    var P4 = Plc2Dec(DQ_0_5) // grün
+    var Q1 = Plc2Dec(DQ_0_0) // Linearachse Rechtslauf
+    var Q2 = Plc2Dec(DQ_0_1) // Linearachse Linkslauf
 
-    var Maske_P1_P2_P3_P4 = P1 + P2 + P3 + P4
+
+    var Maske_P4_Q1_Q2 = P4 + Q1 + Q2
 
     SetDataGridBitAnzahl 0, 0
     VersionAnzeigen
@@ -53,38 +52,29 @@ main()
 
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
+    BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
     IncrementDataGridId
 
-    SetDigitaleEingaenge S2
+    SetDigitaleEingaenge S1
+    Sleep("T#200ms")
     ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Ausgeschaltet?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge(S1 + S2)
+    BitmusterTesten Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse Rechtslauf?"
+    IncrementDataGridId   
+    
+    SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten P4, Maske_P1_P2_P3_P4, "T#5s", "Motor Ein?"
+    BitmusterTesten Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse immer noch Rechtslauf?"
     IncrementDataGridId
-
-
-    SetDigitaleEingaenge S2
-    ResetStopwatch
-    BitmusterTesten P4, Maske_P1_P2_P3_P4, "T#5s", "Motor immer noch Ein?"
-    IncrementDataGridId
-
 
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
+    BitmusterTesten Q2, Maske_P4_Q1_Q2, "T#5s", "Linearachse Linkslauf?"
     IncrementDataGridId
 
-
-    SetDigitaleEingaenge S1
+    SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
+    BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
     IncrementDataGridId
-
-
+    
     UpdateAnzeige "Erfolgreich", "30ms"
 }

@@ -41,8 +41,8 @@ main()
 
     var P1 = Plc2Dec(DQ_0_2)    // weiß S1/S2
     var P2 = Plc2Dec(DQ_0_3)    // weiß
-    var P3 = Plc2Dec(DQ_0_4)    // grün
-    var P4 = Plc2Dec(DQ_0_5)    // rot
+    var P3 = Plc2Dec(DQ_0_4)    // rot
+    var P4 = Plc2Dec(DQ_0_5)    // grün
 
     var Maske_P1_P2_P3_P4 = P1 + P2 + P3 + P4
 

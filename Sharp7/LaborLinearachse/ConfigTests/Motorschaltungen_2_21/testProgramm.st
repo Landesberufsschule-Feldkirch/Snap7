@@ -4,7 +4,6 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    ZyklusAktiv: BOOL;
 	Zeit: TON;
 END_VAR
 
@@ -13,25 +12,15 @@ END_VAR
 (*  *************************************************************************************** *)
 
 IF "DigInput".S1 THEN
-    #ZyklusAktiv := true;
+    "DigOutput".P4 := TRUE;
 END_IF;
 
 IF "Zeit".Q THEN
-    #ZyklusAktiv := false;
+    "DigOutput".P4 := FALSE;
 END_IF;
 
-"Zeit".TON(IN := #ZyklusAktiv, PT := T#4s);
-"DigOutput".P4 := #ZyklusAktiv;
-"DigOutput".Q1 := FALSE;    // Die Ausgänge werden danach - eventuell - überschrieben
-"DigOutput".Q2 := FALSE;
+"Zeit".TON(IN := "DigOutput".P4 , PT := T#4S);
 
-IF #ZyklusAktiv THEN
-    
-    IF "Zeit".ET < T#2s THEN
-        "DigOutput".Q1 := TRUE;
-    END_IF;
-    IF "Zeit".ET > T#2s THEN
-        "DigOutput".Q2 := TRUE;
-    END_IF;
-END_IF;
-    
+"DigOutput".Q1 := ("Zeit".ET < T#2S) AND "DigOutput".P4;
+"DigOutput".Q2 := ( "Zeit".ET > T#2S ) AND "DigOutput".P4;
+     
