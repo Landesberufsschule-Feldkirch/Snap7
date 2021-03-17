@@ -4,141 +4,169 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="LAP 2010/3 Ofentürsteuerung" Height="650" Width="1000">
+        Title="LAP 2010/3 Ofentürsteuerung" Height="885" Width="1200">
     <Grid>
-
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="70" />
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="35" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
+        <TabControl Grid.Column="1" Grid.Row="1" SelectionChanged="BetriebsartProjektChanged">
+            <TabItem x:Name="Simulation" Header="Simulation">
+                <Grid>
 
-        <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="25" />
-                </Style>
-            </Button.Resources>
-        </Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
 
-        <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="25" />
-                </Style>
-            </Button.Resources>
-        </Button>
+                    <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
-        <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="10pt">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="25" />
-                </Style>
-            </Button.Resources>
-        </Button>
+                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
 
-        <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-        <Label Content="S2 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-        <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
 
-        <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorP1}" />
-        <Label Content="P1 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-        <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="10pt">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="25" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
 
-        <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
+                    <Label Content="S1 " Grid.Column="12" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+                    <Label Content="S2 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+                    <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
 
-        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
-        <Label Content="B1"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+                    <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorP1}" />
+                    <Label Content="P1 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
+                    <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
-        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
-        <Label Content="B2"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
+                    <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
 
-        <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
-        <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
-        <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
-        <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+                    <Label Content="B1"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <MediaElement Name="MyMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
-            <MediaElement.Triggers>
-                <EventTrigger RoutedEvent="MediaElement.Loaded">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <MediaTimeline Source="Video/Flammen.mp4" Storyboard.TargetName="MyMediaElement" RepeatBehavior="Forever" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </MediaElement.Triggers>
-        </MediaElement>
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+                    <Label Content="B2"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-        <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="16">
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB3Ein}" />
+                    <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
+                    <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnzeige.ClickModeBtnB3}" Command="{Binding BtnB3}" />
 
-            <Image Height="50" Canvas.Left="{Binding ViAnzeige.ZahnstangePosition}" Canvas.Top="185" Source="Bilder/Zahnstange.PNG" />
-            <Rectangle Height="187" Width="224" Canvas.Left="{Binding ViAnzeige.OfentuerePosition}" Canvas.Top="57"  Fill="Gray" />
+                    <MediaElement Name="MyMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
+                        <MediaElement.Triggers>
+                            <EventTrigger RoutedEvent="MediaElement.Loaded">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <MediaTimeline Source="Video/Flammen.mp4" Storyboard.TargetName="MyMediaElement" RepeatBehavior="Forever" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </MediaElement.Triggers>
+                    </MediaElement>
 
-            <Image Height="100" Width="100" Canvas.Top="225" Canvas.Left="15"   Source="Bilder/Zahnrad.PNG" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <RotateTransform Angle="{Binding ViAnzeige.ZahnradWinkel}" />
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Canvas>
+                    <Canvas Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="3" Grid.RowSpan="16">
 
-        <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
-        <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+                        <Image Height="50" Canvas.Left="{Binding ViAnzeige.ZahnstangePosition}" Canvas.Top="185" Source="Bilder/Zahnstange.PNG" />
+                        <Rectangle Height="187" Width="224" Canvas.Left="{Binding ViAnzeige.OfentuerePosition}" Canvas.Top="57"  Fill="Gray" />
 
-        <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
-        <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+                        <Image Height="100" Width="100" Canvas.Top="225" Canvas.Left="15"   Source="Bilder/Zahnrad.PNG" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="{Binding ViAnzeige.ZahnradWinkel}" />
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Canvas>
 
-        <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
-        <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+                    <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnzeige.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+
+                    <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+                    <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnzeige.VisibilityKurzschluss}" />
+
+                    <Button Grid.Column="18" Grid.Row="2" Width="60" Height="40" Click="PlcButton_OnClick" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
+                        </Button.Background>
+                    </Button>
+
+                    <Label Grid.Column="15" Grid.ColumnSpan="2"    Grid.Row="0"                        HorizontalAlignment="Right" Content="{Binding ViAnzeige.VersionNr}" />
+                    <Label Grid.Column="12"                        Grid.Row="15"  Grid.ColumnSpan="5" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
+                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="TabItemAutomatischerSoftwareTest" Header="Automatischer Softwaretest"/>
+
+        </TabControl>
+
     </Grid>
 </Window>
