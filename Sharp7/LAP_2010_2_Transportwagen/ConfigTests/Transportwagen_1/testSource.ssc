@@ -1,47 +1,39 @@
 ///////////////////////////////////////////////////////////////
 //
-// Motorschaltungen 1 - 1 (Getriebemotor)
+// LAP 2010/2 Transportwagen
 //
 ///////////////////////////////////////////////////////////////
 
 // Eingänge:
-var DI_0_0 = "2#0001"           // S1   Taster(⓪) → Öffner
-var DI_0_1 = "2#0010"           // S2   Taster(①) → Schliesser
-var DI_0_2 = "2#0100"           // S4   Taster (STOP links) → Öffner
-var DI_0_3 = "2#1000"           // S3   Taster ( Ⅰ ) → Schliesser 
-
-var DI_0_4 = "2#0001_0000"      // S5   Taster ( Ⅱ ) → Schliesser 
-var DI_0_5 = "2#0010_0000"      // S7   Taster (STOP rechts) → Öffner
-var DI_0_6 = "2#0100_0000"      // S6   Taster (←) → Schliesser
-var DI_0_7 = "2#1000_0000"      // S8   Taster (→) → Schliesser
-
-var DI_1_0 = "2#0001_0000_0000" // S9.1 Not-Halt → Schliesser 
-var DI_1_1 = "2#0010_0000_0000" // S9.2 Not-Halt → Öffner
-var DI_1_2 = "2#0100_0000_0000" // B1   Lichtschranke 0°
-var DI_1_3 = "2#1000_0000_0000" // B2   Lichtschranke 45° CCW 
+var DI_0_0 = "2#0000_0001" // -B1	Endschalter "Links"
+var DI_0_1 = "2#0000_0010" // -B2	Endschalter "Rechts"
+var DI_0_2 = "2#0000_0100" // -F1	Thermorelais
+var DI_0_3 = "2#0000_1000" // -S1	Taster "Start"
+var DI_0_4 = "2#0001_0000" // -S2	NotHalt
+var DI_0_5 = "2#0010_0000" // -S3	Taster "Reset"
 
 // Ausgänge:
-var DQ_0_0  ="2#0001"       // Q1 Getriebemotor Schnell Rechtslauf
-var DQ_0_1  ="2#0010"       // Q2 Getriebemotor Linkslauf
-var DQ_0_2  ="2#0100"       // Q3 Getriebemotor Langsam Rechtslauf
-
-var DQ_0_4 = "2#0001_0000"  // P1 Meldeleuchte Betriebsbereit(weiß)
-var DQ_0_5 = "2#0010_0000"  // P2 Meldeleuchte Motorschütz(grün)
-var DQ_0_6 = "2#0100_0000"  // P3 Meldeleuchte Störung(rot)
+var DQ_0_0 = "2#0000_0001" // -P1	Störung
+var DQ_0_1 = "2#0000_0010" // -Q1	Motor LL
+var DQ_0_2 = "2#0000_0100" // -Q2	Motor RL
 
 main()
 {
-    var F1 = Plc2Dec(DI_0_2)    // Thermorelais
-    var S1 = Plc2Dec(DI_0_0)    // Stop
-    var S2 = Plc2Dec(DI_0_1)    // Start
-    var S7 = Plc2Dec(DI_0_5)    // Quittieren
-    var S92 = Plc2Dec(DI_1_1)   // Not-Halt
+
+    var B1 = Plc2Dec(DI_0_0) // -B1	Endschalter "Links"
+    var B2 = Plc2Dec(DI_0_1) // -B2	Endschalter "Rechts"
+    var F1 = Plc2Dec(DI_0_2) // -F1	Thermorelais
+    var S1 = Plc2Dec(DI_0_3) // -S1	Taster "Start"
+    var S2 = Plc2Dec(DI_0_4) // -S2	NotHalt
+    var S3 = Plc2Dec(DI_0_5) // -S3	Taster "Reset"
 
     var AllesAus = 0
-    var P1 = Plc2Dec(DQ_0_4)    // weiß
-    var P2 = Plc2Dec(DQ_0_5)    // grün
-    var P3 = Plc2Dec(DQ_0_6)    // rot
-    var Maske_P1_P2_P3 = P1 + P2 + P3
+
+    var P1 = Plc2Dec(DQ_0_0) // -P1	Störung
+    var Q1 = Plc2Dec(DQ_0_1) // -Q1	Motor LL
+    var Q2 = Plc2Dec(DQ_0_2) // -Q2	Motor RL
+
+    var Maske_P1_Q1_Q2 = P1 + Q1 + Q2
 
     SetDataGridBitAnzahl 0, 0
     VersionAnzeigen
@@ -50,39 +42,12 @@ main()
     UpdateAnzeige "Init", ""
     IncrementDataGridId
 
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Ausgeschaltet?"
-    IncrementDataGridId
 
 
-    SetDigitaleEingaenge (S1 + S2)
-    ResetStopwatch
-    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor Ein?"
-    IncrementDataGridId
 
 
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor immer noch Ein?"
-    IncrementDataGridId
 
 
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
-    IncrementDataGridId
 
 
     UpdateAnzeige "Erfolgreich", "30ms"

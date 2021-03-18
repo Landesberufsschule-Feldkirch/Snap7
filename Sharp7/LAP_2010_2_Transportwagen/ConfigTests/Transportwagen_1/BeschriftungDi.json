@@ -2,15 +2,33 @@
   "DiBeschriftung": [
     {
       "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Endschalter Links"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Endschalter Rechts"
+    },
+    {
+      "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster Start"
     },
     {
       "Byte": 0,
       "Bit": 3,
-      "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Bezeichnung": "S2",
+      "Kommentar": "Not Halt"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Reset"
     }
   ]
 }

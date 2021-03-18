@@ -35,7 +35,7 @@ main()
     var Q2 = Plc2Dec(DQ_0_3) // -Q2	Sternschütz
     var Q3 = Plc2Dec(DQ_0_4) // -Q3	Dreieckschütz
 
-    var Maske_P1_P2_Q1_Q2_Q3 = P1 + P2 + Q1+Q2+Q3
+    var Maske_P1_P2_Q1_Q2_Q3 = P1 + P2 + Q1 + Q2 + Q3
 
     SetDataGridBitAnzahl 0, 0
     VersionAnzeigen
