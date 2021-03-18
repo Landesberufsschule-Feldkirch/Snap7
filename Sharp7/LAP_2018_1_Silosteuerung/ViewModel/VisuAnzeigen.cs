@@ -434,10 +434,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #region Farben
 
-        public void FarbeF1(bool val)
-        {
-            ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-        }
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF1;
 
@@ -450,13 +447,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorF1));
             }
         }
-
-
-
-        public void FarbeF2(bool val)
-        {
-            ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
-        }
+        
+        public void FarbeF2(bool val) => ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF2;
 
@@ -469,14 +461,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorF2));
             }
         }
-
-
-
-
-        public void FarbeP1(bool val)
-        {
-            ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-        }
+        
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorP1;
 
@@ -489,12 +475,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorP1));
             }
         }
-
-
-        public void FarbeP2(bool val)
-        {
-            ColorP2 = val ? Brushes.Red : Brushes.White;
-        }
+        
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorP2;
 
@@ -508,10 +490,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        public void FarbeQ1(bool val)
-        {
-            ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorQ1;
 
@@ -740,9 +719,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
 
         #endregion
-
-
-
+        
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

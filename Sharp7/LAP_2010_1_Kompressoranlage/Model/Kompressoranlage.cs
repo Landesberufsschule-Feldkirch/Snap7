@@ -24,7 +24,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
         {
             Druck = 0;
             F1 = true;
-            B1 = true;
+            B2 = true;
             S1 = true;
 
             System.Threading.Tasks.Task.Run(KompressoranlageTask);
@@ -39,16 +39,15 @@ namespace LAP_2010_1_Kompressoranlage.Model
 
                 if (Druck > 10) Druck = 10;
 
-                if (B2) { if (Druck > 8) B2 = false; }
-                else { if (Druck < 7) B2 = true; }
+                if (B1) { if (Druck > 8) B1 = false; }
+                else { if (Druck < 7) B1 = true; }
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
+        internal void BtnB2() => B2 = !B2;
         internal void BtnF1() => F1 = !F1;
 
-        internal void BtnB1() => B1 = !B1;
     }
 }

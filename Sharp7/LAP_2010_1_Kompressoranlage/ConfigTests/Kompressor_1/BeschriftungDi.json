@@ -2,15 +2,33 @@
   "DiBeschriftung": [
     {
       "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Druckschalter"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B1",
+      "Kommentar": "Temperaturfühler Kompressor"
+    },
+    {
+      "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+      "Bezeichnung": "F1",
+      "Kommentar": "Störung Motorschutzschalter"
     },
     {
       "Byte": 0,
       "Bit": 3,
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Kommentar": "Taster Aus"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Ein"
     }
   ]
 }

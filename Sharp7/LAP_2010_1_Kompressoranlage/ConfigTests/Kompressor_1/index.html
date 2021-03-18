@@ -48,38 +48,44 @@
 </head>
 
 <body>
-    <h1>Motorschaltungen 1 - 1 (Getriebemotor)</h1>
+    <h1>LAP 2010/1 Kompressoranlage</h1>
     <br>
     <div class="text_schwarz">
         <a href="https://www.linderonline.at/fk/drucker.php?ID=574" target="_blank">&rarr; Linderonline/FK</a>
         <br><br>
         <span class="beschreibung">Beschreibung</span>
         <br><br>
-        Der Motorschütz wird mit S1 und S2 bedient.
+
+        <ol>
+            <li>Mit den Tastern S2 und S1 kann die störungsfreie Anlage Ein- bzw. Ausgeschaltet werden</li>
+            <li>Die Betriebsbereitschaft wird mit der Meldeleuchte P2 angezeigt<br><br></li>
+            <li>Über den Druckschalter B1 (Hysterese: 8 Bar aus; 7 Bar ein) wird der Motor angesteuert</li>
+            <li>Der Motor wird über Stern/Dreieck hochgefahren (1 Sekunden Stern, 500ms Umschaltpause)<br><br></li>
+            <li>Bei einer Störung (Übertemperatur B2 bzw. Motorstörung F1) wird der Motor sofort ausgeschaltet</li>
+            <li>
+                Solange die Störung anliegt leuchtet die Meldeleuchte P1.<br>
+                Nachdem die Störung behoben wurde blinkt P1 mit 0,8Hz. <br>
+                Die Störung wird mit S1 quittiert.
+            </li>
+        </ol>
+
 
         <br><br>
 
         <table>
-            <tr>
-                <td>SPS </td>
-                <td>Bezeichnung </td>
-                <td>Kommentar </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.0 </td>
-                <td>-S1 </td>
-                <td>Taster Aus </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.1 </td>
-                <td>-S2 </td>
-                <td>Taster Ein </td>
-            </tr>
-            <tr class="dq">
-                <td>DQ 0.5 </td>
-                <td>-P2 </td>
-                <td>Motorschütz (grün)</td>
-            </tr>
+            <tr>                <td>SPS </td>           <td>Bezeichnung </td><td>Kommentar </td></tr>
+            <tr class="di">		<td>DigInput.B1 </td>	<td>-B1	</td>   <td>Druckschalter                   </td>	</tr>
+            <tr class="di">		<td>DigInput.B2 </td>	<td>-B2	</td>   <td>Temperaturfühler Kompressor     </td>	</tr>
+            <tr class="di">		<td>DigInput.F1 </td>	<td>-F1	</td>   <td>Störung Motorschutschalter      </td>	</tr>
+            <tr class="di">		<td>DigInput.S1 </td>   <td>-S1	</td>   <td>Taster "Aus"                    </td>	</tr>
+            <tr class="di">	    <td>DigInput.S2 </td>	<td>-S2	</td>   <td>Taster "Ein"                    </td>	</tr>
+
+            <tr class="dq">		<td>DigOutput.P1 </td>	<td>-P1	</td>   <td>Störung                         </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P2 </td>	<td>-P2	</td>   <td>Betriebsbereit                  </td>	</tr>
+            <tr class="dq">		<td>DigOutput.Q1 </td>	<td>-Q1	</td>   <td>Netzschütz                      </td>	</tr>
+            <tr class="dq"> 	<td>DigOutput.Q2 </td>	<td>-Q2	</td>   <td>Sternschütz                     </td>	</tr>
+            <tr class="dq">		<td>DigOutput.Q3 </td>	<td>-Q3	</td>   <td>Dreieckschütz                   </td>	</tr>
+
         </table>
     </div>
     <br><br>

@@ -181,10 +181,7 @@ namespace Tiefgarage.ViewModel
 
         #region Color B1
 
-        public void FarbeB1(bool val)
-        {
-            ColorB1 = val ? Brushes.Red : Brushes.LightGray;
-        }
+        public void FarbeB1(bool val) => ColorB1 = val ? Brushes.Red : Brushes.LightGray;
 
         private Brush _colorB1;
 
@@ -202,10 +199,7 @@ namespace Tiefgarage.ViewModel
 
         #region Color B2
 
-        public void FarbeB2(bool val)
-        {
-            ColorB2 = val ? Brushes.Red : Brushes.LightGray;
-        }
+        public void FarbeB2(bool val) => ColorB2 = val ? Brushes.Red : Brushes.LightGray;
 
         private Brush _colorB2;
 

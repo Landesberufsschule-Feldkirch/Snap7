@@ -124,7 +124,7 @@
                         </Path>
                     </Border>
 
-                    <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="7" Background="{Binding ViAnzeige.ColorB1}" FontSize="14pt" Content="B1" Command="{Binding BtnB1}" Margin="0,1,0,0" />
+                    <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="7" Background="{Binding ViAnzeige.ColorB2}" FontSize="14pt" Content="B2" Command="{Binding BtnB2}" Margin="0,1,0,0" />
 
                     <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="4" Fill="LightBlue" Stroke="Black" StrokeThickness="2" Margin="40,0,40,0" />
                     <Rectangle Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="12" Grid.RowSpan="2" Fill="LightBlue" Margin="42,0,42,10" />
@@ -152,9 +152,9 @@
                         </Polygon.Points>
                     </Polygon>
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
-                    <Label Content="B2"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+                    <Label Content="B1"                                Grid.Column="4" Grid.Row="14" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,17,0,17" />
 
 
 

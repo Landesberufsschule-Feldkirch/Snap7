@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B1",
-      "Kommentar": "Temperaturfühler Kompressor"
+      "Kommentar": "Druckschalter"
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B2",
-      "Kommentar": "Druckschalter"
+      "Kommentar": "Temperaturfühler Kompressor"
     },
     {
       "LaufendeNr": 2,

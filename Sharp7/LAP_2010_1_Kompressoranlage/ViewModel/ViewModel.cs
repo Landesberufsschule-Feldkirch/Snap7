@@ -27,8 +27,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnS2 => _btnS2 ??= new RelayCommand(_ => ViAnzeige.BtnS2(), _ => true);
 
-        private ICommand _btnB1;
+        private ICommand _btnB2;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnB1 => _btnB1 ??= new RelayCommand(_ => Kompressoranlage.BtnB1(), _ => true);
+        public ICommand BtnB2 => _btnB2 ??= new RelayCommand(_ => Kompressoranlage.BtnB2(), _ => true);
     }
 }
