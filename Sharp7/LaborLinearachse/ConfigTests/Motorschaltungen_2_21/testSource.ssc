@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////
 //
-// Motorschaltungen 1 - 1 (Linearachse)
+// Motorschaltungen 2 - 21 (Linearachse)
 //
 ///////////////////////////////////////////////////////////////
 
@@ -56,19 +56,19 @@ main()
     IncrementDataGridId
 
     SetDigitaleEingaenge S1
-    Sleep("T#200ms")
+    Sleep("T#500ms")
     ResetStopwatch
-    BitmusterTesten Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse Rechtslauf?"
+    BitmusterTesten P4+Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse Rechtslauf?"
     IncrementDataGridId   
     
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse immer noch Rechtslauf?"
+    BitmusterTesten P4+Q1, Maske_P4_Q1_Q2, "T#5s", "Linearachse immer noch Rechtslauf?"
     IncrementDataGridId
 
     SetDigitaleEingaenge 0
     ResetStopwatch
-    BitmusterTesten Q2, Maske_P4_Q1_Q2, "T#5s", "Linearachse Linkslauf?"
+    BitmusterTesten P4+Q2, Maske_P4_Q1_Q2, "T#5s", "Linearachse Linkslauf?"
     IncrementDataGridId
 
     SetDigitaleEingaenge 0

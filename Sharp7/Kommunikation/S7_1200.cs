@@ -10,12 +10,6 @@ namespace Kommunikation
 {
     public class S71200 : IPlc
     {
-        private enum BytePosition
-        {
-            Byte0 = 0,
-            Byte4 = 4
-        }
-
         public const int SpsTimeout = 1000;
 
         private readonly S7Client _client = new S7Client();
@@ -24,7 +18,6 @@ namespace Kommunikation
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressen _spsClient;
 
-        private readonly byte[] _versionsStringDaten = new byte[1024];
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private string _plcModus = "S7-1200";
         private bool _spsError;
@@ -49,8 +42,9 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                var lastUpdatTime = DateTime.Now;
 
+                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
                 if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
@@ -63,11 +57,11 @@ namespace Kommunikation
 
                             if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
-                            if (_taskRunning)
+                            if (_taskRunning && lastUpdatTime.AddMilliseconds(1000) > DateTime.Now)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 4, _versionsStringDaten));
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, (int)BytePosition.Byte4, _versionsStringDaten[3], _datenstruktur.VersionInputSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, 2, 202, _datenstruktur.VersionInputSps));
+                                lastUpdatTime = DateTime.Now;
                             }
 
                             if (_taskRunning && !fehlerAktiv)
@@ -75,34 +69,34 @@ namespace Kommunikation
                                 var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
                                 _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
 
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, (int)BytePosition.Byte0, 1, _datenstruktur.BefehleSps));
+                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, 0, 1, _datenstruktur.BefehleSps));
                             }
 
                             if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning && !fehlerAktiv)
                             {
                                 if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
                                 {
-                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                    fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigIn, 0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
                                 }
                                 else
                                 {
-                                    fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
+                                    fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.DigIn, 0, _datenstruktur.AnzahlByteDigitalInput, _datenstruktur.DigInput));
                                 }
                             }
 
                             if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning && !fehlerAktiv)
                             {
-                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
+                                fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, 0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
 
                             if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning && !fehlerAktiv)
                             {
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, 0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
                             }
 
                             if (_datenstruktur.AnzahlByteAnalogOutput > 0 && _taskRunning && !fehlerAktiv)
                             {
-                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, (int)BytePosition.Byte0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
+                                fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, 0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
                             }
 
                             _callbackOutput(_datenstruktur);
@@ -115,7 +109,7 @@ namespace Kommunikation
 
                             _spsError = false;
 
-                            Thread.Sleep(1);
+                            Thread.Sleep(10);
                         }
                     }
                     else
@@ -150,11 +144,11 @@ namespace Kommunikation
 
         public string GetVersion()
         {
-            if (_versionsStringDaten[3] < 1) return "Uups";
+            if (_datenstruktur.VersionInputSps[1] < 1) return "Uups";
 
-            var textLaenge = _versionsStringDaten[3];
+            var textLaenge = _datenstruktur.VersionInputSps[1];
             var enc = new ASCIIEncoding();
-            return enc.GetString(_datenstruktur.VersionInputSps, 0, textLaenge);
+            return enc.GetString(_datenstruktur.VersionInputSps, 2, textLaenge);
         }
 
         public string GetSpsStatus() => _spsStatus;
