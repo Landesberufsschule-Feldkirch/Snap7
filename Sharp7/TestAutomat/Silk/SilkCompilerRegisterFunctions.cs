@@ -24,6 +24,7 @@ namespace TestAutomat.Silk
             compiler.RegisterFunction("BitmusterBlinktTesten", 8, 8);
             compiler.RegisterFunction("KommentarAnzeigen",1,1);
             compiler.RegisterFunction("VersionAnzeigen", 0, 0);
+            compiler.RegisterFunction("TestAblauf", 0, 2);
             // ReSharper restore RedundantArgumentDefaultValue
         }
     }
