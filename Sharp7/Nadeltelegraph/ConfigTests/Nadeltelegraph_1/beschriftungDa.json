@@ -1,0 +1,64 @@
+﻿{
+  "DaBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "P1R",
+      "Kommentar": "Zeiger 1 - Rechts "
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "P1L",
+      "Kommentar": "Zeiger 1 - Links "
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "P2R",
+      "Kommentar": "Zeiger 2 - Rechts "
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "P2L",
+      "Kommentar": "Zeiger 2 - Links "
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "P3R",
+      "Kommentar": "Zeiger 3 - Rechts "
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "P3L",
+      "Kommentar": "Zeiger 3 - Links "
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
+      "Bezeichnung": "P4R",
+      "Kommentar": "Zeiger 4 - Rechts "
+    },
+    {
+      "Byte": 0,
+      "Bit": 7,
+      "Bezeichnung": "P4L",
+      "Kommentar": "Zeiger 4 - Links "
+    },
+    {
+      "Byte": 1,
+      "Bit": 0,
+      "Bezeichnung": "P5R",
+      "Kommentar": "Zeiger 5 - Rechts "
+    },
+    {
+      "Byte": 1,
+      "Bit": 1,
+      "Bezeichnung": "P5L",
+      "Kommentar": "Zeiger 5 - Links "
+    }
+  ]
+}

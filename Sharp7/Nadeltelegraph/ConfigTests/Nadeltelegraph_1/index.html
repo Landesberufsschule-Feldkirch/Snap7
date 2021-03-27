@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projekt</title>
+    <style>
+        h1 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            padding: 1em;
+            border: 3px solid black;
+            background-color: #E0E0E0;
+            display: inline-block;
+        }
+
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        .text_schwarz {
+            font-family: arial, sans-serif;
+            font-size: 12pt;
+            font-weight: normal;
+            color: black;
+        }
+
+        .di {
+            background-color: rgb(243, 247, 129);
+            width: 50px;
+        }
+
+        .dq {
+            background-color: rgb(169, 245, 225);
+            width: 80px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Nadeltelegraph</h1>
+    <br>
+    <div class="text_schwarz">
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=574" target="_blank">&rarr; Linderonline/FK</a>
+        <br><br>
+        <span class="beschreibung">Beschreibung</span>
+        <br><br>
+
+        Beim von Cooke und Wheatstone entwickelten Telegraphen wird beim Sender und Empfänger jeweils der gleiche Buchstabe angezeigt. 
+        Jede der 5 Spulen kann nicht bzw. unterschiedlich bestromt werden. Damit können die Zeiger nach rechts, senkrecht oder nach links zeigen. 
+        Es können fast alle Buchstaben des Alphabets übertragen werden.
+        <br/>
+        Solange mit der Maus auf einen Buchstaben geklickt wird, wird der entsprechende ASCII Code übertragen.
+        Es müssen von der Steuerung die passenden Wicklungen mit Strom versorgt werden.
+        <br/>
+        Es ist ein Fehler, wenn mehr als zwei Wicklungen bzw. bei einer Wicklung beide Richtungen bestromt werden.
+
+        <br><br>
+
+        <table>
+            <tr>                <td>SPS </td>           <td>Bezeichnung </td>   <td>Kommentar </td></tr>
+            <tr class="di">		<td>DigInput.ASCII </td>	<td>ASCII	</td>   <td>ASCII Code</td>	</tr>
+
+            <tr class="dq">		<td>DigOutput.P1R </td>	<td>-P1R	</td>   <td>Zeiger 1 - Rechts   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P1L </td>	<td>-P1L	</td>   <td>Zeiger 1 - Links    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P2R </td>	<td>-P2R	</td>   <td>Zeiger 2 - Rechts   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P2L </td>	<td>-P2L	</td>   <td>Zeiger 2 - Links    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P3R </td>	<td>-P3R	</td>   <td>Zeiger 3 - Rechts   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P3L </td>	<td>-P3L	</td>   <td>Zeiger 3 - Links    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P4R </td>	<td>-P4R	</td>   <td>Zeiger 4 - Rechts   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P4L </td>	<td>-P4L	</td>   <td>Zeiger 4 - Links    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P5R </td>	<td>-P5R	</td>   <td>Zeiger 5 - Rechts   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P5L </td>	<td>-P5L	</td>   <td>Zeiger 5 - Links    </td>	</tr>
+
+        </table>
+    </div>
+    <br><br>
+</body>
+
+</html>
