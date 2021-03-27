@@ -1,8 +1,7 @@
-﻿using Kommunikation;
-using System.Text;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using System.Windows;
 using System.Windows.Controls;
-using BeschriftungPlc;
 
 namespace Nadeltelegraph
 {
