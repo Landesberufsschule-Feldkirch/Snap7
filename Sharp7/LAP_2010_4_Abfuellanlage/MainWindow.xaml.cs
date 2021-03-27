@@ -59,9 +59,8 @@ namespace LAP_2010_4_Abfuellanlage
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (tc.SelectedIndex)
             {
-                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.LaborPlatte; break;
-                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
-                case 2: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
+                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
             DisplayPlc.SetBetriebsartProjekt(Datenstruktur);

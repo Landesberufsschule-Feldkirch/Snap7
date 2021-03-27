@@ -15,12 +15,12 @@ IF "DigInput".S1 THEN
     "DigOutput".P4 := TRUE;
 END_IF;
 
-IF "Zeit".Q THEN
+IF #Zeit.Q THEN
     "DigOutput".P4 := FALSE;
 END_IF;
 
-"Zeit".TON(IN := "DigOutput".P4 , PT := T#4S);
+#Zeit.TON(IN :="DigOutput".P4 , PT := T#4S);
 
-"DigOutput".Q1 := ("Zeit".ET < T#2S) AND "DigOutput".P4;
-"DigOutput".Q2 := ( "Zeit".ET > T#2S ) AND "DigOutput".P4;
+"DigOutput".Q1 := (#Zeit.ET < T#2s) AND "DigOutput".P4;
+"DigOutput".Q2 := (#Zeit.ET > T#2S) AND "DigOutput".P4;
      

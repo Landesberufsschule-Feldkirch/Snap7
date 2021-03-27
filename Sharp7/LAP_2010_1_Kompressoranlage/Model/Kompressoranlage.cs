@@ -18,7 +18,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public double Druck { get; set; }
 
         private const double DruckVerlust = 0.998;
-        private const double DruckAnstieg = 0.03;
+        private const double DruckAnstieg = 0.02;
 
         public Kompressoranlage()
         {
@@ -40,7 +40,7 @@ namespace LAP_2010_1_Kompressoranlage.Model
                 if (Druck > 10) Druck = 10;
 
                 if (B1) { if (Druck > 8) B1 = false; }
-                else { if (Druck < 7) B1 = true; }
+                else { if (Druck < 6) B1 = true; }
 
                 Thread.Sleep(10);
             }

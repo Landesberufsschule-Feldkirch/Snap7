@@ -258,9 +258,9 @@ namespace TestAutomat.Silk
         }
         private static void VersionAnzeigen()
         {
-            var textLaenge = Datenstruktur.VersionInputSps.Length;
+            var textLaenge = Datenstruktur.VersionInputSps[1];
             var enc = new ASCIIEncoding();
-            var version = enc.GetString(Datenstruktur.VersionInputSps, 0, textLaenge);
+            var version = enc.GetString(Datenstruktur.VersionInputSps, 2, textLaenge);
 
             DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Version, version);
             AutoTesterWindow.DataGridId++;
@@ -292,6 +292,7 @@ namespace TestAutomat.Silk
 
             var timeOut = listeAblaufTests.Sum(test => test.GetTimeoutMs());
 
+            bool testAblaufFertig = false;
             var setAktuellerSchritt = 0;
             long setAbgelaufeneZeit = 0;
             var testAktuellerschritt = 0;
@@ -301,46 +302,53 @@ namespace TestAutomat.Silk
             {
                 Thread.Sleep(10);
 
-                (setAktuellerSchritt, setAbgelaufeneZeit) = AblaufSetFunktion(listeAblaufSet, setAktuellerSchritt, setAbgelaufeneZeit, stopwatch);
-                (testAktuellerschritt, testAbgelaufeneZeit) = AblaufTestFunktion(listeAblaufTests, testAktuellerschritt, testAbgelaufeneZeit, stopwatch);
+                (testAblaufFertig, setAktuellerSchritt, setAbgelaufeneZeit) = AblaufSetFunktion(listeAblaufSet, setAktuellerSchritt, setAbgelaufeneZeit, stopwatch, testAblaufFertig);
+                (testAblaufFertig, testAktuellerschritt, testAbgelaufeneZeit) = AblaufTestFunktion(listeAblaufTests, testAktuellerschritt, testAbgelaufeneZeit, stopwatch, testAblaufFertig);
+                if (testAblaufFertig) return;
             }
         }
-        private static (int schritt, long zeit) AblaufSetFunktion(IReadOnlyList<AblaufSet> listeAblauf, int schritt, long zeit, Stopwatch stopwatch)
+        private static (bool fertig, int schritt, long zeit) AblaufSetFunktion(IReadOnlyList<AblaufSet> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
         {
             var setBitmuster = listeAblauf[schritt].GetBitmuster();
             Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)setBitmuster.GetDec());
             Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)setBitmuster.GetDec());
 
-            if (listeAblauf[schritt].GetDauer().GetZeitDauerMs() == 0) return (schritt, zeit);
-            if (stopwatch.ElapsedMilliseconds <= listeAblauf[schritt].GetDauer().GetZeitDauerMs() + zeit) return (schritt, zeit);
+            if (listeAblauf[schritt].GetDauer().GetZeitDauerMs() == 0) return (fertig, schritt, zeit);
+            if (stopwatch.ElapsedMilliseconds <= listeAblauf[schritt].GetDauer().GetZeitDauerMs() + zeit) return (fertig, schritt, zeit);
 
             DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, listeAblauf[schritt].GetKommentar());
             AutoTesterWindow.DataGridId++;
             zeit += listeAblauf[schritt].GetDauer().GetZeitDauerMs();
             schritt++;
 
-            return (schritt, zeit);
+            return (fertig, schritt, zeit);
         }
-        private static (int schritt, long zeit) AblaufTestFunktion(IReadOnlyList<AblaufTest> listeAblauf, int schritt, long zeit, Stopwatch stopwatch)
+        private static (bool fertig, int schritt, long zeit) AblaufTestFunktion(IReadOnlyList<AblaufTest> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
         {
             var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
-
-
             if ((digitalOutput & (short)listeAblauf[schritt].GetBitMaske().GetDec()) == (short)listeAblauf[schritt].GetBitMuster().GetDec())
             {
+                listeAblauf[schritt].SetSchrittAktiv(true);
                 DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, listeAblauf[schritt].GetKommentar());
 
             }
             else
             {
-                listeAblauf[schritt].SetLaufzeit(stopwatch.ElapsedMilliseconds - zeit);
-                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, listeAblauf[schritt].GetKommentar());
-
-               // AutoTesterWindow.DataGridId++;
-                
-               // schritt++;
-              //  if (schritt >= listeAblauf.Count) schritt = listeAblauf.Count;
+                if (listeAblauf[schritt].GetSchrittAktiv())
+                {
+                    zeit = stopwatch.ElapsedMilliseconds;
+                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, listeAblauf[schritt].GetKommentar());
+                    AutoTesterWindow.DataGridId++;
+                    schritt++;
+                    if (schritt >= listeAblauf.Count) return (true, schritt, zeit);
+                }
+                else
+                {
+                    //
+                }
+                //listeAblauf[schritt].SetLaufzeit(stopwatch.ElapsedMilliseconds - zeit);                             
+                //  if (schritt >= listeAblauf.Count) schritt = listeAblauf.Count;
             }
 
             DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, listeAblauf[schritt].GetKommentar());
@@ -354,10 +362,10 @@ namespace TestAutomat.Silk
                 AutoTesterWindow.DataGridId++;
                 zeit = stopwatch.ElapsedMilliseconds;
                 schritt++;
+                if (schritt >= listeAblauf.Count) return (true, schritt, zeit);
             }
 
-
-            return (schritt, zeit);
+            return (fertig, schritt, zeit);
         }
     }
 }

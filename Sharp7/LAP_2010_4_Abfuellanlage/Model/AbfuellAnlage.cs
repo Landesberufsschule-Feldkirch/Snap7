@@ -53,7 +53,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 {
                     bool lichtschranke;
                     var stop = KollisionErkennen(dose);
-                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose, stop);
+                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose); 
                     B2 |= lichtschranke;
                 }
 

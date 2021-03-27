@@ -34,7 +34,6 @@ namespace Kommunikation
 
             System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
         }
-
         public void SPS_Pingen_Task()
         {
             while (_taskRunning)
@@ -127,7 +126,6 @@ namespace Kommunikation
                 Thread.Sleep(50);
             }
         }
-
         private bool FehlerAktiv(int? error)
         {
             if (error == 0) return false;
@@ -135,13 +133,11 @@ namespace Kommunikation
             _spsStatus = ErrorAnzeigen(error.GetValueOrDefault());
             return true;
         }
-
         public string ErrorAnzeigen(int resultError)
         {
             var errorText = _client?.ErrorText(resultError);
             return "Nr: " + resultError + " Text: " + errorText;
         }
-
         public string GetVersion()
         {
             if (_datenstruktur.VersionInputSps[1] < 1) return "Uups";
@@ -150,11 +146,9 @@ namespace Kommunikation
             var enc = new ASCIIEncoding();
             return enc.GetString(_datenstruktur.VersionInputSps, 2, textLaenge);
         }
-
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
-
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
         public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();

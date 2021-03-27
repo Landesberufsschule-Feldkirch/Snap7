@@ -14,9 +14,9 @@ namespace Nadeltelegraph
 
         public DatenRangieren DatenRangieren { get; set; }
 
-        private const int AnzByteDigInput = 0;
+        private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 1;
+        private const int AnzByteAnalogInput = 0;
         private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()
