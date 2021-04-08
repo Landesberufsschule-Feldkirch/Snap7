@@ -19,7 +19,6 @@ var DQ_0_2 = "2#0000_0100" // -Q2	Motor RL
 
 main()
 {
-
     var B1 = Plc2Dec(DI_0_0) // -B1	Endschalter "Links"
     var B2 = Plc2Dec(DI_0_1) // -B2	Endschalter "Rechts"
     var F1 = Plc2Dec(DI_0_2) // -F1	Thermorelais

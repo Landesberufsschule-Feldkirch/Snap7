@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using PlcDatenTypen;
 using TestAutomat.Model;
 
 namespace TestAutomat.Silk
@@ -38,23 +39,36 @@ namespace TestAutomat.Silk
                 case "KommentarAnzeigen": KommentarAnzeigen(e); break;
                 case "VersionAnzeigen": VersionAnzeigen(); break;
                 case "TestAblauf": TestAblauf(e); break;
+                case "SetAnalogerEingang": SetAnalogerEingang(e); break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
         {
-            var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
             e.ReturnValue.SetValue((int)digitalOutput);
         }
         private static void SetDigitaleEingaenge(FunctionEventArgs e)
         {
-            var digitalInput = new PlcDatenTypen.Uint((ulong)e.Parameters[0].ToInteger());
-            Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
-            Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
+            var digitalInput = new Uint((ulong)e.Parameters[0].ToInteger());
+            Datenstruktur.DigInput[0] = Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
+            Datenstruktur.DigInput[1] = Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
             Thread.Sleep(100);
+        }
+        private static void SetAnalogerEingang(FunctionEventArgs e)
+        {
+            var startByte = e.Parameters[0].ToInteger();
+            var analogInput =e.Parameters[1].ToInteger();
+            var datenTyp = e.Parameters[2].ToString();
+
+            if (datenTyp != "S7 / 16 Bit / Prozent") return;
+
+            var siemens = Simatic.Analog_2_Int16((double) analogInput, 100);
+            Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint) siemens);
+            Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint) siemens);
         }
         public static void Sleep(FunctionEventArgs e)
         {
-            var sleepTime = new PlcDatenTypen.ZeitDauer(e.Parameters[0].ToString());
+            var sleepTime = new ZeitDauer(e.Parameters[0].ToString());
             Thread.Sleep((int)sleepTime.GetZeitDauerMs());
         }
         private static void IncrementDataGridId()
@@ -95,7 +109,7 @@ namespace TestAutomat.Silk
         {
             var bitMuster = e.Parameters[0].ToInteger();
             var bitMaske = e.Parameters[1].ToInteger();
-            var timeout = new PlcDatenTypen.ZeitDauer(e.Parameters[2].ToString());
+            var timeout = new ZeitDauer(e.Parameters[2].ToString());
             var kommentar = e.Parameters[3].ToString();
 
             var stopwatch = new Stopwatch();
@@ -106,7 +120,7 @@ namespace TestAutomat.Silk
 
                 Thread.Sleep(10);
 
-                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+                var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
                 if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
                 {
@@ -121,11 +135,11 @@ namespace TestAutomat.Silk
         }
         private static void DataGridAnzeigeUpdaten(AutoTester.TestErgebnis testErgebnis, string silkKommentar)
         {
-            var digitalInput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
-            var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+            var digitalInput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
-            var dInput = new PlcDatenTypen.Uint(digitalInput.ToString());
-            var dOutput = new PlcDatenTypen.Uint(digitalOutput.ToString());
+            var dInput = new Uint(digitalInput.ToString());
+            var dOutput = new Uint(digitalOutput.ToString());
 
             // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (testErgebnis)
@@ -154,7 +168,7 @@ namespace TestAutomat.Silk
         private static void Plc2Dec(FunctionEventArgs e)
         {
             var zahl = e.Parameters[0].ToString();
-            var plcZahl = new PlcDatenTypen.Uint(zahl);
+            var plcZahl = new Uint(zahl);
             e.ReturnValue.SetValue((int)plcZahl.GetDec());
         }
         private static void SetDataGridBitAnzahl(FunctionEventArgs e)
@@ -166,11 +180,11 @@ namespace TestAutomat.Silk
         {
             var bitMuster = e.Parameters[0].ToInteger();
             var bitMaske = e.Parameters[1].ToInteger();
-            var periodenDauer = new PlcDatenTypen.ZeitDauer(e.Parameters[2].ToString());
+            var periodenDauer = new ZeitDauer(e.Parameters[2].ToString());
             var tastVerhaeltnis = e.Parameters[3].ToFloat();
             var anzahlPerioden = e.Parameters[4].ToInteger();
             var toleranz = e.Parameters[5].ToFloat();
-            var timeout = new PlcDatenTypen.ZeitDauer(e.Parameters[6].ToString());
+            var timeout = new ZeitDauer(e.Parameters[6].ToString());
             var kommentar = e.Parameters[7].ToString();
 
             var periodenDauerMax = periodenDauer.GetZeitDauerMs() * (1 + toleranz);
@@ -193,7 +207,7 @@ namespace TestAutomat.Silk
             {
                 Thread.Sleep(10);
 
-                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+                var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
                 var aktuellePeriodenDauer = zeitImpuls + zeitPause;
                 if (zeitImpuls > 0) tastverhaeltnis = zeitImpuls / aktuellePeriodenDauer;
@@ -292,7 +306,7 @@ namespace TestAutomat.Silk
 
             var timeOut = listeAblaufTests.Sum(test => test.GetTimeoutMs());
 
-            bool testAblaufFertig = false;
+            var testAblaufFertig = false;
             var setAktuellerSchritt = 0;
             long setAbgelaufeneZeit = 0;
             var testAktuellerschritt = 0;
@@ -310,8 +324,8 @@ namespace TestAutomat.Silk
         private static (bool fertig, int schritt, long zeit) AblaufSetFunktion(IReadOnlyList<AblaufSet> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
         {
             var setBitmuster = listeAblauf[schritt].GetBitmuster();
-            Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)setBitmuster.GetDec());
-            Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)setBitmuster.GetDec());
+            Datenstruktur.DigInput[0] = Simatic.Digital_GetLowByte((uint)setBitmuster.GetDec());
+            Datenstruktur.DigInput[1] = Simatic.Digital_GetHighByte((uint)setBitmuster.GetDec());
 
             if (listeAblauf[schritt].GetDauer().GetZeitDauerMs() == 0) return (fertig, schritt, zeit);
             if (stopwatch.ElapsedMilliseconds <= listeAblauf[schritt].GetDauer().GetZeitDauerMs() + zeit) return (fertig, schritt, zeit);
@@ -325,7 +339,7 @@ namespace TestAutomat.Silk
         }
         private static (bool fertig, int schritt, long zeit) AblaufTestFunktion(IReadOnlyList<AblaufTest> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
         {
-            var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
             if ((digitalOutput & (short)listeAblauf[schritt].GetBitMaske().GetDec()) == (short)listeAblauf[schritt].GetBitMuster().GetDec())
             {

@@ -25,7 +25,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "F1",
-      "Kommentar": "Störung Motorschutzschalter Förderband"
+      "Kommentar": "Motorschutzschalter Förderband"
     },
     {
       "LaufendeNr": 3,
@@ -34,7 +34,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "F2",
-      "Kommentar": "Störung Motorschutzschalter Schneckenförderer"
+      "Kommentar": "Motorschutzschalter Schneckenförderer"
     },
     {
       "LaufendeNr": 4,

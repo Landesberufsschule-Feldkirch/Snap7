@@ -2,9 +2,34 @@
   "DaBeschriftung": [
     {
       "Byte": 0,
-      "Bit": 5,
-      "Bezeichnung": "P4",
-      "Kommentar": "Meldeleuchte (grün)"
+      "Bit": 0,
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Anlage Ein"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Sammelstörung"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Förderband "
+    },
+
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "Q2",
+      "Kommentar": "Freigabe Frequenzumrichter"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "Y1",
+      "Kommentar": "Magnetventil"
     }
   ]
 }

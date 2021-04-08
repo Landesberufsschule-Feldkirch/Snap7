@@ -9,7 +9,7 @@ VAR
 END_VAR
 
 (*  *********************************************************** *)
-(*  Getriebemotor: Motorschaltungen 1 - Version 1               *)
+(*  LAP2018/1 Silosteuerung                                     *)
 (*  *********************************************************** *)
 
 IF "DigInput".S1 THEN

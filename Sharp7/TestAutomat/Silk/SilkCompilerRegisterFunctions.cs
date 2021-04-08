@@ -25,6 +25,7 @@ namespace TestAutomat.Silk
             compiler.RegisterFunction("KommentarAnzeigen",1,1);
             compiler.RegisterFunction("VersionAnzeigen", 0, 0);
             compiler.RegisterFunction("TestAblauf", 0, 2);
+            compiler.RegisterFunction("SetAnalogerEingang", 3,3);
             // ReSharper restore RedundantArgumentDefaultValue
         }
     }

@@ -9,8 +9,8 @@ namespace LAP_2018_1_Silosteuerung.Model
 
         public bool B1 { get; set; }        // Wagen Position rechts
         public bool B2 { get; set; }        // Wagen voll
-        public bool F1 { get; set; }        //  Motorschutzschalter Förderband
-        public bool F2 { get; set; }        //  Motorschutzschalter Schneckenförderer
+        public bool F1 { get; set; }        // Motorschutzschalter Förderband
+        public bool F2 { get; set; }        // Motorschutzschalter Schneckenförderer
         public bool S0 { get; set; }        // Taster Aus
         public bool S1 { get; set; }        // Taster Ein
         public bool S2 { get; set; }        // Not-Halt
@@ -19,7 +19,7 @@ namespace LAP_2018_1_Silosteuerung.Model
         public bool P1 { get; set; }        // Anlage Ein
         public bool P2 { get; set; }        // Sammelstörung
         public bool Q1 { get; set; }        // Förderband 
-        public bool Xfu { get; set; }        // Freigabe FU Schneckenförderer
+        public bool Q2 { get; set; }        // Freigabe FU Schneckenförderer
         public bool Y1 { get; set; }        // Magnetventil Silo
 
 
@@ -48,7 +48,7 @@ namespace LAP_2018_1_Silosteuerung.Model
 
                 if (Y1) Silo.Leeren();
 
-                if (Xfu) Silo.Fuellen();
+                if (Q2) Silo.Fuellen();
 
                 if (Silo.GetFuellstand() > 0 && Q1 && Y1) Wagen.Fuellen();
 

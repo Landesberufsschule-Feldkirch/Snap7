@@ -2,15 +2,51 @@
   "DiBeschriftung": [
     {
       "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Wagen vorhanden"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Wagen voll"
+    },
+    {
+      "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+      "Bezeichnung": "F1",
+      "Kommentar": "Motorschutzschalter Förderband"
     },
     {
       "Byte": 0,
       "Bit": 3,
+      "Bezeichnung": "F2",
+      "Kommentar": "Motorschutzschalter Schneckenförderer"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S0",
+      "Kommentar": "Taster Anlage Aus"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Kommentar": "Taster Anlage Ein"
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
+      "Bezeichnung": "S2",
+      "Kommentar": "Not Halt"
+    },
+    {
+      "Byte": 0,
+      "Bit": 7,
+      "Bezeichnung": "S3",
+      "Kommentar": "Störungen quittieren"
     }
   ]
 }
