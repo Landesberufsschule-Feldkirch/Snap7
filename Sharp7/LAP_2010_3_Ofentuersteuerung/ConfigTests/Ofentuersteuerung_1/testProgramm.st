@@ -9,7 +9,7 @@ VAR
 END_VAR
 
 (*  *********************************************************** *)
-(*  Linearachse: Motorschaltungen 1 - Version 1                 *)
+(*  LAP 2010/3 Ofenstürsteuerung                                *)
 (*  *********************************************************** *)
 
 IF "DigInput".S1 THEN

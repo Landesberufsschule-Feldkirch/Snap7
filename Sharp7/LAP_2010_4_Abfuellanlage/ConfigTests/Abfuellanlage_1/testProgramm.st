@@ -9,7 +9,7 @@ VAR
 END_VAR
 
 (*  *********************************************************** *)
-(*  Getriebemotor: Motorschaltungen 1 - Version 1               *)
+(*  LAP 2010/4 Abfüllanlage                                     *)
 (*  *********************************************************** *)
 
 IF "DigInput".S1 THEN

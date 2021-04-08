@@ -9,7 +9,7 @@ VAR
 END_VAR
 
 (*  *********************************************************** *)
-(*  Getriebemotor: Motorschaltungen 1 - Version 1               *)
+(*  LAP 2010/5 Pumpensteuerung                                  *)
 (*  *********************************************************** *)
 
 IF "DigInput".S1 THEN

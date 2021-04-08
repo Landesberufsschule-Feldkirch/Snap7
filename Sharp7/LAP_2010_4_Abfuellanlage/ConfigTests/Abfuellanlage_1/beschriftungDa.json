@@ -2,9 +2,27 @@
   "DaBeschriftung": [
     {
       "Byte": 0,
-      "Bit": 5,
-      "Bezeichnung": "P4",
-      "Kommentar": "Meldeleuchte (grün)"
+      "Bit": 0,
+      "Bezeichnung": "K1",
+      "Kommentar": "Spule  Vereinzelner"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "K2",
+      "Kommentar": "Spule  Füllen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Behälter leer"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "Q1",
+      "Kommentar": "Antrieb  Förderband"
     }
   ]
 }

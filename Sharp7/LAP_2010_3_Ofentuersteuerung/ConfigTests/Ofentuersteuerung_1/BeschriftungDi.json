@@ -2,15 +2,39 @@
   "DiBeschriftung": [
     {
       "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Endschalter Offen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Endschalter Geschlossen"
+    },
+    {
+      "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+      "Bezeichnung": "B3",
+      "Kommentar": "Lichtschranke"
     },
     {
       "Byte": 0,
       "Bit": 3,
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Kommentar": "Taster Halt"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Öffnen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Schliessen"
     }
   ]
 }

@@ -1,48 +1,38 @@
 ///////////////////////////////////////////////////////////////
 //
-// Motorschaltungen 1 - 1 (Linearachse)
+// LAP 2010/3 Ofentürsteuerung
 //
 ///////////////////////////////////////////////////////////////
 
 // Eingänge:
-var DI_0_0 = "2#0001"       // B1   Linearachse Endlage links → Öffner
-var DI_0_1 = "2#0010"       // B2   Linearachse Endlage rechts → Öffner
-var DI_0_2 = "2#0100"       // S2   Taster(⓪) → Öffner
-var DI_0_3 = "2#1000"       // S1   Taster(①) → Schliesser
-
-var DI_0_4 = "2#0001_0000"  // S4   Taster(Ⅱ) → Schliesser
-var DI_0_5 = "2#0010_0000"  // S3   Taster(Ⅰ) → Schliesser
-var DI_0_6 = "2#0100_0000"  // S6   Taster(↓) → Schliesser
-var DI_0_7 = "2#1000_0000"  // S5   Taster(↑) → Schliesser
-
-var DI_1_0 = "2#0001_0000_0000" // S8   Taster(－) → Schliesser
-var DI_1_1 = "2#0010_0000_0000" // S7   Taster(+) → Schliesser
-var DI_1_2 = "2#0100_0000_0000" // S9   Taster(STOP) → Öffner
-var DI_1_3 = "2#1000_0000_0000" // S10  Not-Halt → Öffner
-
-var DI_1_4 = "2#0001_0000_0000_0000" // S11  Not-Halt → Schliesser
+var DI_0_0 = "2#0000_0001" // -B1	Endschalter Offen
+var DI_0_1 = "2#0000_0010" // -B2	Endschalter Geschlossen
+var DI_0_2 = "2#0000_0100" // -B3	Lichtschranke
+var DI_0_3 = "2#0000_1000" // -S1	Taster "Halt"
+var DI_0_4 = "2#0001_0000" // -S2	Taster "Öffnen"
+var DI_0_5 = "2#0010_0000" // -S3	Taster "Schliessen"
 
 // Ausgänge:
-var DQ_0_0 = "2#0001"       // Q1   Linearachse Rechtslauf
-var DQ_0_1 = "2#0010"       // Q2   Linearachse Linkslauf
-var DQ_0_2 = "2#0100"       // P1   Meldeleuchte im Taster S1/S2(weiß)
-var DQ_0_3 = "2#1000"       // P2   Meldeleuchte weiß
-
-var DQ_0_4 = "2#0001_0000"  // P3   Meldeleuchte rot
-var DQ_0_5 = "2#0010_0000"  // P4   Meldeleuchte grün
+var DQ_0_0 = "2#0000_0001" // -P1	Störung
+var DQ_0_1 = "2#0000_0010" // -Q1	Motor LL
+var DQ_0_2 = "2#0000_0100" // -Q2	Motor RL
 
 main()
 {
-    var S1 = Plc2Dec(DI_0_3) // Start
-    var S2 = Plc2Dec(DI_0_2) // Stop
+    var B1 = Plc2Dec(DI_0_0) // -B1	Endschalter Offen
+    var B2 = Plc2Dec(DI_0_1) // -B2	Endschalter Geschlossen
+    var B3 = Plc2Dec(DI_0_2) // -B3	Lichtschranke
+    var S1 = Plc2Dec(DI_0_3) // -S1	Taster "Halt"
+    var S2 = Plc2Dec(DI_0_4) // -S2	Taster "Öffnen"
+    var S3 = Plc2Dec(DI_0_5) // -S3	Taster "Schliessen"
     
     var AllesAus = 0
-    var P1 = Plc2Dec(DQ_0_2) // weiß im Taster S1/S2
-    var P2 = Plc2Dec(DQ_0_3) // weiß
-    var P3 = Plc2Dec(DQ_0_4) // rot
-    var P4 = Plc2Dec(DQ_0_5) // grün
 
-    var Maske_P1_P2_P3_P4 = P1 + P2 + P3 + P4
+    var P1 = Plc2Dec(DQ_0_0) // -P1	Störung
+    var Q1 = Plc2Dec(DQ_0_1) // -Q1	Motor LL
+    var Q2 = Plc2Dec(DQ_0_2) // -Q2	Motor RL
+
+    var Maske_P1_Q1_Q2 = P1 + Q1 + Q2
 
     SetDataGridBitAnzahl 0, 0
     VersionAnzeigen
@@ -51,40 +41,9 @@ main()
     UpdateAnzeige "Init", ""
     IncrementDataGridId
 
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-    SetDigitaleEingaenge S2
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Ausgeschaltet?"
-    IncrementDataGridId
 
 
-    SetDigitaleEingaenge(S1 + S2)
-    ResetStopwatch
-    BitmusterTesten P4, Maske_P1_P2_P3_P4, "T#5s", "Motor Ein?"
-    IncrementDataGridId
 
 
-    SetDigitaleEingaenge S2
-    ResetStopwatch
-    BitmusterTesten P4, Maske_P1_P2_P3_P4, "T#5s", "Motor immer noch Ein?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3_P4, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-
-    UpdateAnzeige "Erfolgreich", "30ms"
+        UpdateAnzeige "Erfolgreich", "30ms"
 }

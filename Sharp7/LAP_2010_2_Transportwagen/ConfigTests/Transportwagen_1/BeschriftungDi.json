@@ -15,18 +15,24 @@
     {
       "Byte": 0,
       "Bit": 2,
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
       "Bezeichnung": "S1",
       "Kommentar": "Taster Start"
     },
     {
       "Byte": 0,
-      "Bit": 3,
+      "Bit": 4,
       "Bezeichnung": "S2",
       "Kommentar": "Not Halt"
     },
     {
       "Byte": 0,
-      "Bit": 4,
+      "Bit": 5,
       "Bezeichnung": "S3",
       "Kommentar": "Taster Reset"
     }

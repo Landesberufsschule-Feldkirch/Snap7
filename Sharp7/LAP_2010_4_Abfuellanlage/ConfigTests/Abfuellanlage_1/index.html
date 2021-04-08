@@ -48,38 +48,52 @@
 </head>
 
 <body>
-    <h1>Motorschaltungen 1 - 1 (Getriebemotor)</h1>
+    <h1>LAP 2010 /4 Abfüllanlage</h1>
     <br>
     <div class="text_schwarz">
-        <a href="https://www.linderonline.at/fk/drucker.php?ID=574" target="_blank">&rarr; Linderonline/FK</a>
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=580" target="_blank">&rarr; Linderonline/FK</a>
         <br><br>
         <span class="beschreibung">Beschreibung</span>
         <br><br>
         Der Motorschütz wird mit S1 und S2 bedient.
 
+        <ol>
+            <li>Wird der Taster S2 „Start“ kurz betätigt, dann wird ein Behälter aus dem Magazin über eine Magnetspule K1 (Impuls 1") freigegeben. </li>
+            <li>
+                Erreicht der Behälter die Stellung „Füllen“ beim Sensor B2, dann wird  das Förderband stoppt.
+                Weiters wird der Behälter mit Material aus dem Silo zeitgeführt über eine Magnetspule K2 gefüllt.
+                Die Zeitdauer der Füllung beträgt 3 Sekunden.
+            </li>
+            <li>
+                Anschließend startet das Förderband zur Weiterbeförderung des gefüllten Behälters.
+                Die Laufzeit beträgt 5 Sekunden.
+            </li>
+            <li>Für jede weitere Behälterfüllung muss der Taster S2 „Start“ erneut gedrückt werden</li>
+            <li>
+                Bei leerem Silo (B1) leuchtet eine Warnlampe H4 bis der Silo wieder gefüllt ist.
+                Es kann kein neuer Durchgang gestartet werden.
+                Bei Leerung des Silos während einer Behälterfüllung wird der übliche Betriebsablauf bis zum Programm-Ende durchgefahren.
+            </li>
+            <li>
+                Solange die Störung anliegt leuchtet die Meldeleuchte H4.<br>
+                Nachdem die Störung behoben wurde blinkt P1 mit 0,8Hz. <br>
+                Die Störung wird mit S1 quittiert.
+            </li>
+        </ol>
+
         <br><br>
 
         <table>
-            <tr>
-                <td>SPS </td>
-                <td>Bezeichnung </td>
-                <td>Kommentar </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.0 </td>
-                <td>-S1 </td>
-                <td>Taster Aus </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.1 </td>
-                <td>-S2 </td>
-                <td>Taster Ein </td>
-            </tr>
-            <tr class="dq">
-                <td>DQ 0.5 </td>
-                <td>-P2 </td>
-                <td>Motorschütz (grün)</td>
-            </tr>
+            <tr><td>SPS </td><td>Bezeichnung </td><td>Kommentar </td></tr>
+            <tr class="di">		<td>DigInput.B1 </td>	<td>-B1	</td>   <td>Füllstand                       </td>	</tr>
+            <tr class="di">		<td>DigInput.B2 </td>	<td>-B2	</td>   <td>Position Dose                   </td>	</tr>
+            <tr class="di">		<td>DigInput.S1 </td>   <td>-S1	</td>   <td>Taster "Reset"                  </td>	</tr>
+            <tr class="di">	    <td>DigInput.S2 </td>	<td>-S2	</td>   <td>Taster "Start"                  </td>	</tr>
+
+            <tr class="dq"> 	<td>DigOutput.K1 </td>	<td>-K1	</td>   <td>Spule Vereinzelner              </td>	</tr>
+            <tr class="dq">		<td>DigOutput.K2 </td>	<td>-K2	</td>   <td>Spule Füllen                    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.P1 </td>	<td>-P1	</td>   <td>Meldeleuchte "Behälter leer"    </td>	</tr>
+            <tr class="dq">		<td>DigOutput.Q1 </td>	<td>-Q1	</td>   <td>Antrieb Förderband              </td>	</tr>
         </table>
     </div>
     <br><br>
