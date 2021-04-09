@@ -17,8 +17,7 @@ END_VAR
 
 #PumpeHandEin := "DigInput".S1 AND (NOT #StoerungAktiv);
 
-#Ueberschwappen(IN := "DigInput".B1,
-                PT := T#1s);
+#Ueberschwappen(IN := "DigInput".B1, PT := T#1s);
 
 IF (#PumpeAutomatikEin AND #Ueberschwappen.Q) OR #StoerungAktiv OR (NOT "DigInput".S2) THEN
     #PumpeAutomatikEin := FALSE;
