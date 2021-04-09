@@ -4,34 +4,70 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    ZyklusAktiv: BOOL;
-	Zeit: TON;
+    SchrittOfentuere: Int;
+	Warten: TON;
 END_VAR
 
 (*  *********************************************************** *)
 (*  LAP 2010/3 Ofenstürsteuerung                                *)
 (*  *********************************************************** *)
 
-IF "DigInput".S1 THEN
-    #ZyklusAktiv := true;
-END_IF;
 
-IF "Zeit".Q THEN
-    #ZyklusAktiv := false;
-END_IF;
 
-"Zeit".TON(IN := #ZyklusAktiv, PT := T#4s);
-"DigOutput".P4 := #ZyklusAktiv;
-"DigOutput".Q1 := FALSE;    // Die Ausgänge werden danach - eventuell - überschrieben
-"DigOutput".Q2 := FALSE;
-
-IF #ZyklusAktiv THEN
-    
-    IF "Zeit".ET < T#2s THEN
+CASE #SchrittOfentuere OF
+    0:  // Ofentüre ist geschlossen
+        "DigOutput".P1 := FALSE;
+        "DigOutput".Q1 := FALSE;
+        "DigOutput".Q2 := FALSE;
+        #Warten(IN := FALSE,
+                PT := T#6s); // Timer sind halt so
+        IF "DigInput".S2 THEN
+            #SchrittOfentuere := 1;
+        END_IF;
+        
+    1:  // Ofentüre öffnet
+        "DigOutput".P1 := FALSE;
         "DigOutput".Q1 := TRUE;
-    END_IF;
-    IF "Zeit".ET > T#2s THEN
-        "DigOutput".Q2 := TRUE;
-    END_IF;
-END_IF;
-    
+        "DigOutput".Q2 := FALSE;
+        IF "DigInput".B1 THEN
+            #SchrittOfentuere := 2;
+        END_IF;
+        IF NOT "DigInput".S1 THEN
+            #SchrittOfentuere := 10;
+        END_IF;
+        
+    2: // Ofentüre bleibt für 6" offen
+        "DigOutput".P1 := FALSE;
+        "DigOutput".Q1 := FALSE;
+        "DigOutput".Q2 := FALSE;
+        #Warten(IN := TRUE,
+                PT := T#6s);
+        IF #Warten.Q THEN
+            #SchrittOfentuere := 3;
+        END_IF;
+        
+        3: // Ofentüre fährt wieder zu
+            "DigOutput".P1 := TRUE;
+            "DigOutput".Q1 := FALSE;
+            "DigOutput".Q2 := "DigInput".B3;
+            IF "DigInput".B2 THEN
+                #SchrittOfentuere := 0;
+            END_IF;
+            IF NOT "DigInput".S1 THEN
+                #SchrittOfentuere := 10;
+            END_IF;
+            
+        10: // Es wurde "HALT" gedrückt
+            "DigOutput".P1 := FALSE;
+            "DigOutput".Q1 := FALSE;
+            "DigOutput".Q2 := FALSE;
+            IF "DigInput".S2 THEN
+                #SchrittOfentuere := 1;
+            END_IF;
+            IF "DigInput".S3 THEN
+                #SchrittOfentuere := 3;
+            END_IF;
+        
+    ELSE  // Unbekannter Schritt --> auf 0 setzen
+        #SchrittOfentuere := 0;
+END_CASE;

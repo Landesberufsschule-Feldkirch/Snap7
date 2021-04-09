@@ -100,8 +100,9 @@
                     <Label Content="P1 " Grid.Column="12" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
                     <Label Content="P2 " Grid.Column="14" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
 
-                    <Label Content="Störung" Grid.Column="13" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
-                    <Label Content="Betrieb" Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
+                    <Label Content="Störung" Grid.Column="13" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt"/>
+                    <Label Content="Betriebs-" Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" HorizontalAlignment="Center" FontSize="12pt" Margin="0,15,0,0"/>
+                    <Label Content="bereit" Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" HorizontalAlignment="Center" FontSize="12pt" Margin="0,30,0,0" />
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="21" Fill="#eeeeee" />
 

@@ -89,10 +89,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetManualQ1() => _ofentuerSteuerung.Q1 = ClickModeButtonQ1();
-
-        internal void SetManualQ2() => _ofentuerSteuerung.Q2 = ClickModeButtonQ2();
-
         internal void SetS1() => _ofentuerSteuerung.S1 = !ClickModeButtonS1();
 
         internal void SetS2() => _ofentuerSteuerung.S2 = ClickModeButtonS2();

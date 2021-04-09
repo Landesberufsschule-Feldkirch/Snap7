@@ -13,15 +13,6 @@
             ViAnzeige = new VisuAnzeigen(mainWindow, OfentuerSteuerung);
         }
 
-
-        private ICommand _setManualQ1;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand SetManualQ1 => _setManualQ1 ??= new RelayCommand(_ => ViAnzeige.SetManualQ1(), _ => true);
-
-        private ICommand _setManualQ2;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand SetManualQ2 => _setManualQ2 ??= new RelayCommand(_ => ViAnzeige.SetManualQ2(), _ => true);
-
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnS1 => _btnS1 ??= new RelayCommand(_ => ViAnzeige.SetS1(), _ => true);
