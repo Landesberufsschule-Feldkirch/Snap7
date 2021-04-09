@@ -4,7 +4,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    SchrittBehaelterFuellen: Int;
+    SchrittBehaelterFuellen: INT;
 	Impuls: TON;
     DoseFuellzeit: TON;
     DoseWeiterbefoerderzeit: TON;
@@ -23,11 +23,11 @@ CASE #SchrittBehaelterFuellen OF
         "DigOutput".K2 := FALSE;
         "DigOutput".Q1 := FALSE;
         #Impuls(IN := FALSE,
-                PT := T#1s);
+                PT := T#1S);
         #DoseFuellzeit(IN := FALSE,
-                       PT := T#3s);
+                       PT := T#3S);
         #DoseWeiterbefoerderzeit(IN := FALSE,
-                                 PT := T#8s);
+                                 PT := T#8S);
         
         IF "DigInput".S2 AND "DigInput".B1 AND (NOT #StoerungBehaelterLeer) THEN
             #SchrittBehaelterFuellen := 1;
@@ -38,7 +38,7 @@ CASE #SchrittBehaelterFuellen OF
         "DigOutput".K2 := FALSE;
         "DigOutput".Q1 := FALSE;
         #Impuls(IN := TRUE,
-                PT := T#1s);
+                PT := T#1S);
         
         IF #Impuls.Q THEN
             #SchrittBehaelterFuellen := 2;
@@ -58,7 +58,7 @@ CASE #SchrittBehaelterFuellen OF
         "DigOutput".K2 := TRUE;
         "DigOutput".Q1 := FALSE;
         #DoseFuellzeit(IN := TRUE,
-                       PT := T#3s);
+                       PT := T#3S);
         
         IF #DoseFuellzeit.Q THEN
             #SchrittBehaelterFuellen := 4;
@@ -69,7 +69,7 @@ CASE #SchrittBehaelterFuellen OF
         "DigOutput".K2 := FALSE;
         "DigOutput".Q1 := TRUE;
         #DoseWeiterbefoerderzeit(IN := TRUE,
-                                 PT := T#8s);
+                                 PT := T#8S);
         
         IF #DoseWeiterbefoerderzeit.Q THEN
             #SchrittBehaelterFuellen := 0;

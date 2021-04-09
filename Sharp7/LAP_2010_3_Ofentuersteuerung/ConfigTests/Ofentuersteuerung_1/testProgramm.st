@@ -4,7 +4,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    SchrittOfentuere: Int;
+    SchrittOfentuere: INT;
 	Warten: TON;
 END_VAR
 
@@ -20,7 +20,7 @@ CASE #SchrittOfentuere OF
         "DigOutput".Q1 := FALSE;
         "DigOutput".Q2 := FALSE;
         #Warten(IN := FALSE,
-                PT := T#6s); // Timer sind halt so
+                PT := T#6S); // Timer sind halt so
         IF "DigInput".S2 THEN
             #SchrittOfentuere := 1;
         END_IF;
@@ -41,7 +41,7 @@ CASE #SchrittOfentuere OF
         "DigOutput".Q1 := FALSE;
         "DigOutput".Q2 := FALSE;
         #Warten(IN := TRUE,
-                PT := T#6s);
+                PT := T#6S);
         IF #Warten.Q THEN
             #SchrittOfentuere := 3;
         END_IF;

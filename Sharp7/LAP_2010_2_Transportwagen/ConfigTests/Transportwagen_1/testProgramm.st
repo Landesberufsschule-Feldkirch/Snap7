@@ -4,7 +4,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    SchrittTransportwagen: Int;
+    SchrittTransportwagen: INT;
 	BeladenAbwarten: TON;
 END_VAR
 
@@ -22,7 +22,7 @@ CASE #SchrittTransportwagen OF
         "DigOutput".Q1 := FALSE;
         "DigOutput".Q2 := FALSE;
         #BeladenAbwarten(IN := FALSE,
-                         PT := T#7s); // Timer sind halt so
+                         PT := T#7S); // Timer sind halt so
         IF "DigInput".S1 THEN
             #SchrittTransportwagen := 1;
         END_IF;
@@ -39,7 +39,7 @@ CASE #SchrittTransportwagen OF
         "DigOutput".Q1 := FALSE;
         "DigOutput".Q2 := FALSE;
         #BeladenAbwarten(IN := TRUE,
-                         PT := T#7s);
+                         PT := T#7S);
         IF #BeladenAbwarten.Q THEN
             #SchrittTransportwagen := 3;
         END_IF;

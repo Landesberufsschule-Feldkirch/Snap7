@@ -22,18 +22,18 @@ IF #StoerungAktiv OR (NOT "DigInput".S1) OR (NOT "DigInput".B2) OR (NOT "DigInpu
 END_IF;
 
 IF #KompressorEin AND "DigInput".B1 THEN
-    "DigOutput".Q1 := true;
+    "DigOutput".Q1 := TRUE;
 END_IF;
 
 IF NOT #KompressorEin OR NOT "DigInput".B1 THEN
-    "DigOutput".Q1 := false;
+    "DigOutput".Q1 := FALSE;
 END_IF;
 
 #SternDreieckAnlauf(IN := "DigOutput".Q1,
-                    PT := T#2s);
+                    PT := T#2S);
 
-"DigOutput".Q2 := "DigOutput".Q1 AND (#SternDreieckAnlauf.ET < T#1s);
-"DigOutput".Q3 := "DigOutput".Q1 AND (#SternDreieckAnlauf.ET > T#1s500ms);
+"DigOutput".Q2 := "DigOutput".Q1 AND (#SternDreieckAnlauf.ET < T#1S);
+"DigOutput".Q3 := "DigOutput".Q1 AND (#SternDreieckAnlauf.ET > T#1S500MS);
 
 IF "DigInput".B2 AND "DigInput".F1 AND (NOT  "DigInput".S1) THEN
     #StoerungAktiv := FALSE;
