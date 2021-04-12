@@ -1,0 +1,50 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Taster langsam"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Taster schnell"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte Störung"
+    },
+
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Schleifmaschine Langsam"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Schleifmaschine Schnell"
+    }
+  ]
+}

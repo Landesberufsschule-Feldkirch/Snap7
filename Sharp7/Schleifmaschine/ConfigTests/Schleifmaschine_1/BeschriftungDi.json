@@ -1,0 +1,46 @@
+﻿{
+  "DiBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais langsame Drehzahl"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "F2",
+      "Kommentar": "Thermorelais schnelle Drehzahl"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "S0",
+      "Kommentar": "Taster ( ⓪ )"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster ( Ⅰ )"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster ( Ⅱ )"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "S3",
+      "Kommentar": "Not-halt"
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
+      "Bezeichnung": "S4",
+      "Kommentar": "Störungen quittieren"
+    }
+  ]
+}

@@ -27,7 +27,6 @@ IF (NOT #PumpeAutomatikEin) AND (NOT "DigInput".B2) AND "DigInput".S2 AND (NOT #
     #PumpeAutomatikEin := TRUE;
 END_IF;
 
-
 "DigOutput".Q1 := #PumpeHandEin OR #PumpeAutomatikEin;
 "DigOutput".P1 := "DigOutput".Q1;
 
