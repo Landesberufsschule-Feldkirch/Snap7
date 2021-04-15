@@ -11,13 +11,8 @@ END_VAR
 (*  Linearachse: Motorschaltungen 2 - Direktes Einschalten mit Reversieren Version 1        *)
 (*  *************************************************************************************** *)
 
-IF "DigInput".S1 THEN
-    "DigOutput".P4 := TRUE;
-END_IF;
-
-IF #Zeit.Q THEN
-    "DigOutput".P4 := FALSE;
-END_IF;
+IF "DigInput".S1 THEN   "DigOutput".P4 := TRUE;     END_IF;
+IF #Zeit.Q THEN         "DigOutput".P4 := FALSE;    END_IF;
 
 #Zeit.TON(IN :="DigOutput".P4 , PT := T#4S);
 

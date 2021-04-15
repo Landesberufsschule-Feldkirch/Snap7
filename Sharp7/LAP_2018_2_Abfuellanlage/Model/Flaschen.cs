@@ -28,8 +28,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
         private readonly Punkt _sensorB1Links = new(415, 525);
         private readonly Punkt _sensorB1Rechts = new(450, 525);
         private readonly Punkt _boden = new(640, 700);
-        private Rechteck.RichtungX _richtungX;
-        private Rechteck.RichtungY _richtungY;
 
         public Flaschen(int id)
         {
@@ -40,29 +38,21 @@ namespace LAP_2018_2_Abfuellanlage.Model
             _startPosition = new Punkt(_foerderbandLinks.X, _vereinzelnerVentil.Y - Id * FlascheHoehe);
             EineFlasche = new Rechteck(_startPosition.Clone(), FlascheBreite, FlascheHoehe);
         }
-
-        public (Rechteck.RichtungX, Rechteck.RichtungY) GetRichtung() => (_richtungX, _richtungY);
-
         public void FlascheVereinzeln()
         {
             if (_bewegungSchritt == BewegungSchritt.Oberhalb) _bewegungSchritt = BewegungSchritt.Vereinzeln;
         }
-
         public (bool, int) FlascheBewegen(bool q1, int anzahlFlaschen, int aktuelleFlasche)
         {
-            _richtungX = Rechteck.RichtungX.Steht;
-            _richtungY = Rechteck.RichtungY.Steht;
 
             switch (_bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:
-                    _richtungY = Rechteck.RichtungY.NachUnten;
                     var yNeu = _vereinzelnerVentil.Y - FlascheHoehe * (Id - aktuelleFlasche);
                     if (EineFlasche.GetOben() < yNeu) EineFlasche.SetSenkrechtSchieben(BewegungIncrement);
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    _richtungY = Rechteck.RichtungY.NachUnten;
                     if (EineFlasche.GetOben() < _foerderbandLinks.Y) EineFlasche.SetSenkrechtSchieben(BewegungIncrement);
                     else
                     {
@@ -72,7 +62,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Fahren:
-                    _richtungX = Rechteck.RichtungX.NachRechts;
                     if (q1)
                     {
                         if (EineFlasche.GetLinks() < _foerderbandRechts.X) EineFlasche.SetWaagrechtSchieben(BewegungIncrement);
@@ -81,7 +70,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    _richtungY = Rechteck.RichtungY.NachUnten;
                     if (EineFlasche.GetOben() < _boden.Y) EineFlasche.SetSenkrechtSchieben(BewegungIncrement);
                     else _bewegungSchritt = BewegungSchritt.Fertig;
                     break;
@@ -99,7 +87,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
             if (EineFlasche.GetLinks() > _sensorB1Links.X && EineFlasche.GetLinks() < _sensorB1Rechts.X) return (true, aktuelleFlasche);
             return (false, aktuelleFlasche);
         }
-
         internal void Reset()
         {
             _bewegungSchritt = BewegungSchritt.Oberhalb;

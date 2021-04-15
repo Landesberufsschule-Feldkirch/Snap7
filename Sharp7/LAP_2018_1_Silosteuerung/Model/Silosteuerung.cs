@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 
 namespace LAP_2018_1_Silosteuerung.Model
 {

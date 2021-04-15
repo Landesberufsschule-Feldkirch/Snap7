@@ -45,8 +45,7 @@ CASE #SchrittSilosteuerung OF
             #SchrittSilosteuerung := 2;
         END_IF;
         
-    2: // Wagen füllen48
-        
+    2: // Wagen füllen        
         "DigOutput".P1 := TRUE;
         "DigOutput".P2 := FALSE;
         "DigOutput".Y1 := TRUE;
@@ -85,13 +84,9 @@ END_CASE;
 
 IF #SiloFuellen THEN
     IF "DigOutput".Q2 THEN
-        IF "AnInput".SiloFüllstand > #"90Prozent" THEN
-            "DigOutput".Q2 := FALSE;
-        END_IF;
+        IF "AnInput".SiloFüllstand > #"90Prozent" THEN  "DigOutput".Q2 := FALSE;    END_IF;
     ELSE
-        IF "AnInput".SiloFüllstand < #"80Prozent" THEN
-            "DigOutput".Q2 := TRUE;
-        END_IF;
+        IF "AnInput".SiloFüllstand < #"80Prozent" THEN  "DigOutput".Q2 := TRUE;     END_IF;
     END_IF;
 ELSE
     "DigOutput".Q2 := FALSE;

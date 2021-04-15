@@ -62,7 +62,7 @@ namespace TestAutomat.Silk
 
             if (datenTyp != "S7 / 16 Bit / Prozent") return;
 
-            var siemens = Simatic.Analog_2_Int16((double) analogInput, 100);
+            var siemens = Simatic.Analog_2_Int16(analogInput, 100);
             Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint) siemens);
             Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint) siemens);
         }

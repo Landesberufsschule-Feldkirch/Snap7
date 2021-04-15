@@ -56,12 +56,7 @@ CASE #SchrittBehaelterFuellen OF
         #SchrittBehaelterFuellen := 0;
 END_CASE;
 
-IF NOT "DigInput".B1 THEN 
-    #StoerungBehaelterLeer := TRUE; 
-    END_IF;
-
-IF "DigInput".B1 AND "DigInput".S1 THEN 
-    #StoerungBehaelterLeer := FALSE; 
-    END_IF;
+IF NOT "DigInput".B1                THEN    #StoerungBehaelterLeer := TRUE;     END_IF;
+IF "DigInput".B1 AND "DigInput".S1  THEN    #StoerungBehaelterLeer := FALSE;    END_IF;
 
 "DigOutput".P1 := (NOT "DigInput".B1) OR (#StoerungBehaelterLeer AND "Clock_1Hz");

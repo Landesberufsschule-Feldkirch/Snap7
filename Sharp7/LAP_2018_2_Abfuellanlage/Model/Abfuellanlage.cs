@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 
 namespace LAP_2018_2_Abfuellanlage.Model
@@ -58,7 +57,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 B1 = false;
                 foreach (var flasche in AlleFlaschen)
                 {
-                    var stop = KollisionErkennen(flasche);
                     bool lichtschranke;
                     (lichtschranke, _aktuelleFlasche) = flasche.FlascheBewegen(Q1, _anzahlFlaschen, _aktuelleFlasche);
                     B1 |= lichtschranke;
@@ -67,20 +65,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
-        }
-
-        private bool KollisionErkennen(Flaschen bierflasche)
-        {
-            var stop = false;
-            var (lx, ly) = bierflasche.GetRichtung();
-
-            foreach (var flasche in AlleFlaschen.Where(flasche => bierflasche.Id != flasche.Id))
-            {
-                var (hx, hy) = flasche.GetRichtung();
-                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(bierflasche.EineFlasche, flasche.EineFlasche, lx, ly); }
-            }
-
-            return stop;
         }
 
         internal void TasterNachfuellen() => Pegel = 1;

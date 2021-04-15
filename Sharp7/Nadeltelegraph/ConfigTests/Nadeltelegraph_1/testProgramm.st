@@ -7,9 +7,8 @@ VAR
     Bitmuster: ARRAY[0..256] of Word;
     Init: BOOL;
     Zeiger: Int;
+    Ascii: Word;
     Ergebnis: Word;
-    LowByte: Byte;
-    HighByte: Byte;
 END_VAR
 CONST
     P1R: Word: 2#0000_0000_0001;
@@ -61,8 +60,5 @@ END_IF;
 #Ascii := "DigInput".ASCII;
 #Ergebnis := #BitMuster[#Ascii];
 
-#LowByte := WORD_TO_BYTE(IN := #Ergebnis);
-#HighByte := WORD_TO_BYTE(IN := #Ergebnis / 256);
-
-POKE(area := 16#84,     dbNumber := 3,     byteOffset := 0,     value := #LowByte);
-POKE(area := 16#84,     dbNumber := 3,     byteOffset := 1,     value := #HighByte);
+POKE(area := 16#84, dbNumber := 3, byteOffset := 0, value := #Ergebnis.%B0);
+POKE(area := 16#84, dbNumber := 3, byteOffset := 1, value := #Ergebnis.%B1);

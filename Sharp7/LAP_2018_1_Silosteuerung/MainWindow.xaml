@@ -230,7 +230,7 @@
 
 
 
-                    <Button Grid.Column="21" Width="60" Height="40" Click="PlcButton_OnClick" Margin="10,10,0,20" Grid.RowSpan="3" >
+                    <Button Grid.Column="21" Grid.Row="1" Grid.RowSpan="2"  Width="60" Height="40" Click="PlcButton_OnClick"  >
                         <Button.Background>
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>
