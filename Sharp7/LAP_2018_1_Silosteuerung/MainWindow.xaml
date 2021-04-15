@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="clr-namespace:WpfAnimatedGif;assembly=WpfAnimatedGif"
         mc:Ignorable="d"
-        Title="LAP 2018/1 Silosteuerung mit Förderband und Wiegeeinrichtung" Height="980" Width="1400">
+        Title="LAP 2018/1 Silosteuerung mit Förderband und Wiegeeinrichtung" Height="1020" Width="1400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -89,7 +89,7 @@
                     <Rectangle Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="8"  Fill="#eeeeee" Margin="0,27,0,0" />
                     <Rectangle Grid.Column="1" Grid.ColumnSpan="9" Grid.Row="2"  Fill="#eeeeee" Margin="0,0,0,29" />
 
-                    <Polygon Grid.Column="3" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="9" Stroke="Black" StrokeThickness="2" Fill="Silver">
+                    <Polygon Grid.Column="3" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="9" Stroke="Black" StrokeThickness="2" Fill="{Binding ViAnzeige.LagerSiloFarbe}">
                         <Polygon.Points>
                             <Point X="10" Y="10" />
                             <Point X="240" Y="10" />
@@ -100,7 +100,9 @@
                         </Polygon.Points>
                     </Polygon>
 
-                    <Label Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3"    HorizontalAlignment="Center" FontSize="14pt" Margin="10,0,0,0" Content="Lagersilo" Width="130" />
+                    <Button Grid.Column="4" Grid.Row="3" Background="LawnGreen" FontSize="14pt" Content="{Binding ViAnzeige.TxtLagerSiloVoll}" Command="{Binding BtnLagerSiloVoll}" Grid.ColumnSpan="2" />
+
+
                     <Label Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="3"                     FontSize="14pt" RenderTransformOrigin="0.5,0.5" Content="Schneckenförderer">
                         <Label.RenderTransform>
                             <TransformGroup>
@@ -122,6 +124,8 @@
                     <Rectangle Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  Grid.RowSpan="8"  Fill="Firebrick"  Margin="{Binding ViAnzeige.Margin1}" />
                     <Label     Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="4"  HorizontalAlignment="Center" FontSize="14pt" Content="Materialsilo" />
 
+                    <TextBlock Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="10" Text="{Binding ViAnzeige.FuellstandProzent}" HorizontalAlignment="Center" FontSize="20pt" />
+
                     <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="LightGray" Margin="62,0" />
                     <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="12" Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialOben}" />
 
@@ -132,11 +136,11 @@
                     <Rectangle Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2"  Fill="Firebrick" Margin="62,0" Visibility="{Binding ViAnzeige.VisibilityMaterialUnten}" />
 
                     <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Fill="Gray" />
-                    <Ellipse   Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Fill="Green" Visibility="{Binding ViAnzeige.VisibilityQ1Ein}" Panel.ZIndex="5" />
-                    <Label     Grid.Column="7" Grid.Row="17" Grid.RowSpan="2" Content="Q1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
+                    <Ellipse   Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Height="60" Width="60" Fill="Green" Visibility="{Binding ViAnzeige.VisibilityQ1Ein}" Panel.ZIndex="5" />
+                    <Label     Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Content="Q1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
                     <Ellipse   Grid.Column="13" Grid.Row="17" Grid.RowSpan="2" Fill="Gray" />
 
-                    <Button Grid.Column="7" Grid.Row="19" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}" />
+                    <Button Grid.Column="13" Grid.Row="19" Background="{Binding ViAnzeige.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}" />
 
                     <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="17" Fill="Gray" Margin="40,0,35,27" />
                     <Rectangle Grid.Column="7" Grid.ColumnSpan="7" Grid.Row="18" Fill="Gray" Margin="40,27,35,0" />
@@ -185,7 +189,8 @@
 
 
 
-                    <Button Grid.Column="16" Grid.Row="5"  Content="Aus" Background="Red"  ClickMode="{Binding ViAnzeige.ClickModeBtnS0}" Command="{Binding BtnS0}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="5"  Grid.RowSpan="2" Background="Red" FontSize="24pt" BorderBrush="Black" BorderThickness="2pt"
+                            Content="Aus" ClickMode="{Binding ViAnzeige.ClickModeBtnS0}" Command="{Binding BtnS0}"  >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -193,7 +198,8 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="19" Grid.Row="5" Content="Ein" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                    <Button Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" Content="Ein" Background="LawnGreen" BorderBrush="Black" BorderThickness="2pt" FontSize="24pt"
+                            ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -201,7 +207,8 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="16" Grid.Row="9" Content="Not-Halt" Background="{Binding ViAnzeige.ColorS2}"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2pt" FontSize="24pt"
+                            Content="Not-Halt" Background="{Binding ViAnzeige.ColorS2}" Command="{Binding BtnS2}">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -209,7 +216,8 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="19" Grid.Row="9" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="24pt" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                    <Button Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Background="LawnGreen" BorderBrush="Black" BorderThickness="2pt" FontSize="24pt"
+                            Content="Reset" ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />

@@ -19,7 +19,7 @@ namespace LAP_2018_2_Abfuellanlage
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
-        private const int AnzByteAnalogInput = 4;
+        private const int AnzByteAnalogInput = 2;
         private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()

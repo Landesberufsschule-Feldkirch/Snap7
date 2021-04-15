@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace Schleifmaschine.Model
 {
@@ -23,7 +24,7 @@ namespace Schleifmaschine.Model
         private const double GeschwindigkeitSchleifmaschineLangsam = 1000;
         private const double GeschwindigkeitSchleifmaschineSchnell = 3000;
         private const double Beschleunigung = 0.01;
-        private const double Verzoegerung = 0.001;
+        private const double Verzoegerung = 0.999;
 
         public Schleifmaschine()
         {
@@ -48,5 +49,7 @@ namespace Schleifmaschine.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
+        internal void ThermorelaisF1() => F1 = !F1;
+        internal void ThermorelaisF2() => F2 = !F2;
     }
 }

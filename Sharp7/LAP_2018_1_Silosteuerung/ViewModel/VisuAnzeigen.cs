@@ -27,6 +27,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
+            TxtLagerSiloVoll = "Rutsche Voll";
+
+            LagerSiloFarbe = Brushes.Silver;
+
             ColorF1 = Brushes.LawnGreen;
             ColorF2 = Brushes.LawnGreen;
             ColorP1 = Brushes.White;
@@ -86,6 +90,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 FarbeQ1(Silosteuerung.Q1);
 
                 FarbeS2(Silosteuerung.S2);
+                FarbeLagerSilo(Silosteuerung.RutscheVoll);
+
+
+                TxtLagerSiloVoll = Silosteuerung.RutscheVoll ? "LagerSilo Voll" : "LagerSilo Leer";
 
                 SichtbarkeitB1(Silosteuerung.B1);
                 SichtbarkeitB2(Silosteuerung.B2);
@@ -100,6 +108,8 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 PositionWagen(Silosteuerung.Wagen.GetPosition());
                 PositionWagenInhalt(Silosteuerung.Wagen.GetPosition(), Silosteuerung.Wagen.GetFuellstand());
                 WagenFuellstand = Math.Floor(Silosteuerung.Wagen.GetFuellstand());
+
+                FuellstandProzent = (100 * Silosteuerung.Silo.GetFuellstand()).ToString("F0") + "%";
 
                 if (_mainWindow.AnimationGestartet)
                 {
@@ -174,7 +184,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -188,7 +198,34 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
+
+
         #region Füllstand Silo
+
+        private string _txtRutscheVoll;
+        public string TxtLagerSiloVoll
+        {
+            get => _txtRutscheVoll;
+            set
+            {
+                _txtRutscheVoll = value;
+                OnPropertyChanged(nameof(TxtLagerSiloVoll));
+            }
+        }
+
+
+        private string _fuellstandProzent;
+        public string FuellstandProzent
+        {
+            get => _fuellstandProzent;
+            set
+            {
+                _fuellstandProzent = value;
+                OnPropertyChanged(nameof(FuellstandProzent));
+            }
+        }
+
+
         public void FuellstandSilo(double pegel)
         {
             Margin1 = new Thickness(0, MaterialSiloHoehe * (1 - pegel), 0, 0);
@@ -437,10 +474,21 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #region Farben
 
+        public void FarbeLagerSilo(bool val) => LagerSiloFarbe = val ? Brushes.Firebrick : Brushes.LightGray;
+        private Brush _lagerSiloFarbe;
+        public Brush LagerSiloFarbe
+        {
+            get => _lagerSiloFarbe;
+            set
+            {
+                _lagerSiloFarbe = value;
+                OnPropertyChanged(nameof(LagerSiloFarbe));
+            }
+        }
+
         public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF1;
-
         public Brush ColorF1
         {
             get => _colorF1;
@@ -450,11 +498,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorF1));
             }
         }
-        
+
         public void FarbeF2(bool val) => ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF2;
-
         public Brush ColorF2
         {
             get => _colorF2;
@@ -464,11 +511,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorF2));
             }
         }
-        
+
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorP1;
-
         public Brush ColorP1
         {
             get => _colorP1;
@@ -478,11 +524,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorP1));
             }
         }
-        
+
         public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorP2;
-
         public Brush ColorP2
         {
             get => _colorP2;
@@ -496,7 +541,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorQ1;
-
         public Brush ColorQ1
         {
             get => _colorQ1;
@@ -737,7 +781,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
 
         #endregion
-        
+
         #region iNotifyPeropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

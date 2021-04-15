@@ -9,15 +9,17 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public List<Flaschen> AlleFlaschen { get; set; }
         public bool B1 { get; set; }
         public bool F1 { get; set; }
-        public bool K1 { get; set; }
-        public bool K2 { get; set; }
-        public bool Q1 { get; set; }
-        public bool P1 { get; set; }
-        public bool P2 { get; set; }
         public bool S1 { get; set; }
         public bool S2 { get; set; }
         public bool S3 { get; set; }
         public bool S4 { get; set; }
+
+        public bool K1 { get; set; }
+        public bool K2 { get; set; }
+        public bool P1 { get; set; }
+        public bool P2 { get; set; }
+        public bool Q1 { get; set; }
+
         public double Pegel { get; set; }
 
         private readonly int _anzahlFlaschen;
@@ -35,7 +37,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 new(_anzahlFlaschen++)
             };
 
-            S2 = false;
+            S2 = true;
             F1 = true;
             Pegel = 0.4;
 
@@ -44,7 +46,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
 
         private void AbfuellanlageTask()
         {
-            const double leerGeschwindigkeit = 0.001;
+            const double leerGeschwindigkeit = 0.0005;
 
             while (true)
             {
@@ -58,7 +60,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 {
                     var stop = KollisionErkennen(flasche);
                     bool lichtschranke;
-                    (lichtschranke, _aktuelleFlasche) = flasche.FlascheBewegen(Q1, _anzahlFlaschen, _aktuelleFlasche, stop);
+                    (lichtschranke, _aktuelleFlasche) = flasche.FlascheBewegen(Q1, _anzahlFlaschen, _aktuelleFlasche);
                     B1 |= lichtschranke;
                 }
 

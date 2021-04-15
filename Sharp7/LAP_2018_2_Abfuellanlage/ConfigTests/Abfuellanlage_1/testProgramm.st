@@ -4,34 +4,136 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    ZyklusAktiv: BOOL;
-	Zeit: TON;
+    SchrittAbfuellanlage: Int;
+    StoerungAkiv: BOOL;
+	Vereinzeln: TON;
+    Fuellen: TON;
+    Nachlauf: TON;
+END_VAR
+CONST
+    30Prozent: Int = 8304;  //100% = 27648
 END_VAR
 
 (*  *********************************************************** *)
-(*  Getriebemotor: Motorschaltungen 1 - Version 1               *)
+(*  LAP 2018/2 Abfüllanlage                                     *)
 (*  *********************************************************** *)
 
-IF "DigInput".S1 THEN
-    #ZyklusAktiv := true;
+
+IF NOT "DigInput".F1 THEN
+    #SchrittAbfuellanlage := 100;
 END_IF;
 
-IF "Zeit".Q THEN
-    #ZyklusAktiv := false;
-END_IF;
+CASE #SchrittAbfuellanlage OF
+    0: // Aus
+        "DigOutput".K1 := FALSE;
+        "DigOutput".K2 := FALSE;
+        "DigOutput".Q1 := FALSE;
+        "DigOutput".P1 := FALSE;
+        "DigOutput".P2 := FALSE;
+        
 
-"Zeit".TON(IN := #ZyklusAktiv, PT := T#4s);
-"DigOutput".P4 := #ZyklusAktiv;
-"DigOutput".Q1 := FALSE;    // Die Ausgänge werden danach - eventuell - überschrieben
-"DigOutput".Q2 := FALSE;
-
-IF #ZyklusAktiv THEN
-    
-    IF "Zeit".ET < T#2s THEN
+        
+        IF "DigInput".S1 THEN
+            #SchrittAbfuellanlage := 1;
+        END_IF;
+        
+    1:  // Anlage Ein
+        
+        "DigOutput".K1 := FALSE;
+        "DigOutput".K2 := FALSE;
+        "DigOutput".Q1 := FALSE;
+        "DigOutput".P1 := TRUE;
+        "DigOutput".P2 := FALSE;
+        
+        #Vereinzeln(IN := FALSE,
+                    PT := T#2s);
+        
+        #Fuellen(IN := FALSE,
+                 PT := T#6s);
+        
+        #Nachlauf(IN := FALSE,
+                  PT := T#10s);
+        
+        IF NOT "DigInput".S2 THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        
+        IF "DigInput".S3 AND "AnInput".Pegel > #"30Prozent" THEN
+            #SchrittAbfuellanlage := 2;
+        END_IF;
+        
+    2: // Flasche Vereinzeln
+        "DigOutput".K2 := TRUE;
+        
+        #Vereinzeln(IN := TRUE,
+                    PT := T#2s);
+        
+        IF NOT "DigInput".S2 THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        IF #Vereinzeln.Q THEN
+            #SchrittAbfuellanlage := 3;
+        END_IF;
+        
+    3: // Förderband ein
+        "DigOutput".K1 := FALSE;
+        "DigOutput".K2 := FALSE;
+        "DigOutput".Q1 := true;
+        
+        IF NOT "DigInput".S2 THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        IF "DigInput".B1 THEN
+            #SchrittAbfuellanlage := 4;
+        END_IF;
+        
+    4: // Füllen
+        "DigOutput".K1 := TRUE;
+        "DigOutput".Q1 := FALSE;
+        
+        #Fuellen(IN := TRUE,
+                 PT := T#6s);
+        
+        IF NOT "DigInput".S2 THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        IF #Fuellen.Q THEN
+            #SchrittAbfuellanlage := 5;
+        END_IF;
+        
+    5: // Nachlauf
+        "DigOutput".K1 := FALSE;
         "DigOutput".Q1 := TRUE;
-    END_IF;
-    IF "Zeit".ET > T#2s THEN
-        "DigOutput".Q2 := TRUE;
-    END_IF;
-END_IF;
-    
+        
+        #Nachlauf(IN := TRUE,
+                  PT := T#10s);
+        
+        IF NOT "DigInput".S2 THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        IF #Nachlauf.Q THEN
+            #SchrittAbfuellanlage := 1;
+        END_IF;
+        
+    100: // Störung liegt an
+        "DigOutput".K1 := FALSE;
+        "DigOutput".K2 := FALSE;
+        "DigOutput".Q1 := FALSE;
+        "DigOutput".P1 := FALSE;
+        "DigOutput".P2 := (NOT "DigInput".F1) OR (#StoerungAkiv AND "Clock_1Hz");
+        
+        IF NOT "DigInput".F1 THEN
+            #StoerungAkiv := TRUE;
+        END_IF;
+        
+        IF "DigInput".F1 AND "DigInput".S4 THEN
+            #StoerungAkiv := FALSE;
+        END_IF;
+        
+        IF NOT #StoerungAkiv THEN
+            #SchrittAbfuellanlage := 0;
+        END_IF;
+        
+    ELSE  // Unbekannter Schritt --> auf was sicheres wechseln
+        #SchrittAbfuellanlage := 0;
+END_CASE;

@@ -109,6 +109,8 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
                 Margin_1(_alleFlaschen.Pegel);
 
+                FuellstandProzent = (100 * _alleFlaschen.Pegel).ToString("F0") + "%";
+
                 if (_mainWindow.Plc != null)
                 {
                     if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
@@ -213,6 +215,18 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
+
+
+        private string _fuellstandProzent;
+        public string FuellstandProzent
+        {
+            get => _fuellstandProzent;
+            set
+            {
+                _fuellstandProzent = value;
+                OnPropertyChanged(nameof(FuellstandProzent));
+            }
+        }
 
         #region ClickModeBtnS1
 

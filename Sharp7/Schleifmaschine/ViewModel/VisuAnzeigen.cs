@@ -24,13 +24,8 @@ namespace Schleifmaschine.ViewModel
 
             WinkelSchleifmaschine = 10;
 
-
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
-
+            ColorThermorelaisF1 = Brushes.LawnGreen;
+            ColorThermorelaisF2 = Brushes.LawnGreen;
 
             VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
@@ -46,6 +41,9 @@ namespace Schleifmaschine.ViewModel
             while (true)
             {
                 WinkelSchleifmaschine = _schleifmaschine.WinkelSchleifmaschine;
+
+                FarbeTherorelais_F1(_schleifmaschine.F1);
+                FarbeTherorelais_F2(_schleifmaschine.F2);
 
                 FarbeP1(_schleifmaschine.P1);
                 FarbeP2(_schleifmaschine.P2);
@@ -114,7 +112,6 @@ namespace Schleifmaschine.ViewModel
         }
 
         private Visibility _spsVersionsInfoSichtbar;
-
         public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
@@ -176,93 +173,36 @@ namespace Schleifmaschine.ViewModel
             }
         }
 
-        #region Sichtbarkeit B1
 
-        // ReSharper disable once UnusedMember.Global
-        public void SichtbarkeitB1(bool val)
+        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorThermorelaisF1;
+
+        public Brush ColorThermorelaisF1
         {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB1Ein;
-
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
+            get => _colorThermorelaisF1;
             set
             {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
+                _colorThermorelaisF1 = value;
+                OnPropertyChanged(nameof(ColorThermorelaisF1));
             }
         }
 
-        private Visibility _visibilityB1Aus;
 
-        public Visibility VisibilityB1Aus
+        public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorThermorelaisF2;
+
+        public Brush ColorThermorelaisF2
         {
-            get => _visibilityB1Aus;
+            get => _colorThermorelaisF2;
             set
             {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
+                _colorThermorelaisF2 = value;
+                OnPropertyChanged(nameof(ColorThermorelaisF2));
             }
         }
 
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
-
-        // ReSharper disable once UnusedMember.Global
-        public void SichtbarkeitB2(bool val)
-        {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB2Ein;
-
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
-            set
-            {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
-            }
-        }
-
-        private Visibility _visibilityB2Aus;
-
-        public Visibility VisibilityB2Aus
-        {
-            get => _visibilityB2Aus;
-            set
-            {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
-            }
-        }
-
-        #endregion Sichtbarkeit B2
-
-        #region Lampen
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.White : Brushes.LightGray;
 
         private Brush _colorP1;
@@ -301,9 +241,6 @@ namespace Schleifmaschine.ViewModel
                 OnPropertyChanged(nameof(ColorP3));
             }
         }
-        #endregion
-
-        #region ClickModeAlleTaster
 
         internal void Taster(object id)
         {
@@ -346,7 +283,6 @@ namespace Schleifmaschine.ViewModel
             }
         }
 
-        #endregion ClickModeAlleTaster
 
         #region iNotifyPeropertyChanged Members
 

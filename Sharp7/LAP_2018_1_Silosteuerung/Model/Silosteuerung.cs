@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
 namespace LAP_2018_1_Silosteuerung.Model
 {
@@ -22,11 +23,13 @@ namespace LAP_2018_1_Silosteuerung.Model
         public bool Q2 { get; set; }        // Freigabe FU Schneckenförderer
         public bool Y1 { get; set; }        // Magnetventil Silo
 
-
+        public bool RutscheVoll { get; set; }
         public Silosteuerung()
         {
             Wagen = new Wagen();
             Silo = new Silo();
+            
+            RutscheVoll = true;
 
             F1 = true;
             F2 = true;
@@ -48,7 +51,7 @@ namespace LAP_2018_1_Silosteuerung.Model
 
                 if (Y1) Silo.Leeren();
 
-                if (Q2) Silo.Fuellen();
+                if (Q2) Silo.Fuellen(RutscheVoll);
 
                 if (Silo.GetFuellstand() > 0 && Q1 && Y1) Wagen.Fuellen();
 
@@ -57,6 +60,7 @@ namespace LAP_2018_1_Silosteuerung.Model
             // ReSharper disable once FunctionNeverReturns
         }
 
+        internal void BtnLagerSiloVoll() => RutscheVoll = !RutscheVoll;
         internal void BtnF1() => F1 = !F1;
         internal void BtnF2() => F2 = !F2;
         internal void WagenNachLinks() => Wagen.NachLinks();

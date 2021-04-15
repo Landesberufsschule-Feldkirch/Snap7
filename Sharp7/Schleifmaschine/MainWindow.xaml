@@ -92,17 +92,14 @@
                     <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" Fill="Yellow" Margin="25,0,25,20" RenderTransformOrigin="0.5,2.1" >
                         <Rectangle.RenderTransform>
                             <TransformGroup>
-                                <RotateTransform Angle="{Binding ViAnzeige.WinkelGetriebemotor}"/>
+                                <RotateTransform Angle="{Binding ViAnzeige.WinkelSchleifmaschine}"/>
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
 
-                
                     <Rectangle Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="11" Grid.RowSpan="7" Fill="Silver"  />
 
-
                     <TextBlock Grid.Column="10" Grid.ColumnSpan="4"  Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="24pt" Text="{Binding ViAnzeige.SchleifmaschineDrehzahl}" />
-
 
                     <Label  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="11" Grid.RowSpan="3" Content="-S1" FontSize="20pt" VerticalAlignment="Center" />
                     <Label  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="3" Content="-S0" FontSize="20pt" VerticalAlignment="Center" />
@@ -110,7 +107,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="11" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅰ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="1" >
+                            ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -120,7 +117,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="14"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" Background="Red" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="0" >
+                            ClickMode="{Binding ViAnzeige.ClickModeBtn[0]}" Command="{Binding BtnTaster}" CommandParameter="0" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -130,7 +127,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅱ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[5]}" Command="{Binding BtnTaster}" CommandParameter="2" >
+                            ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -166,8 +163,7 @@
                     <Label  Grid.Column="17" Grid.ColumnSpan="3" Grid.Row="9" Grid.RowSpan="3" Content="-F2" FontSize="20pt" VerticalAlignment="Center" />
                     <Label  Grid.Column="17" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="3" Content="-S3" FontSize="20pt" VerticalAlignment="Center" />
 
-                    <Button Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="6" Grid.RowSpan="3"  Content="F1" 
-                            Background="{Binding ViAnzeige.ColorThermorelaisF1}" Command="{Binding BtnTaster}" CommandParameter="11" Margin="0,15,0,15" >
+                    <Button Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="6" Grid.RowSpan="3" Background="{Binding ViAnzeige.ColorThermorelaisF1}" Command="{Binding BtnThermorelaisF1}" Margin="0,15,0,15" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -175,8 +171,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="9" Grid.RowSpan="3"  Content="F2" 
-                            Background="{Binding ViAnzeige.ColorThermorelaisF2}" Command="{Binding BtnTaster}" CommandParameter="12" Margin="0,15,0,15">
+                    <Button Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="9" Grid.RowSpan="3" Background="{Binding ViAnzeige.ColorThermorelaisF2}"  Command="{Binding BtnThermorelaisF2}" Margin="0,15,0,15">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -187,7 +182,7 @@
                     <Ellipse Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="3"  Fill="Black" Margin="3,3,3,3"/>
 
                     <Button Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="12" Grid.RowSpan="3" Margin="5,5,5,5"  
-                            Content="-" Background="Red" Command="{Binding BtnTaster}" CommandParameter="3" >
+                            Background="Red" Command="{Binding BtnTaster}" CommandParameter="3" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50" />

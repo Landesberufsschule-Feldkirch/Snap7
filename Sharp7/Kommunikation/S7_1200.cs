@@ -41,7 +41,7 @@ namespace Kommunikation
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
 
-                var lastUpdatTime = DateTime.Now;
+                var verzoegerung = 0;
 
                 if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
                 if (reply?.Status == IPStatus.Success)
@@ -56,13 +56,13 @@ namespace Kommunikation
 
                             if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
-                            if (_taskRunning && lastUpdatTime.AddMilliseconds(1000) > DateTime.Now)
+                            if (_taskRunning && verzoegerung > 10)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, 2, 202, _datenstruktur.VersionInputSps));
-                                lastUpdatTime = DateTime.Now;
+                                verzoegerung = 0;
                             }
-
+                            verzoegerung++;
                             if (_taskRunning && !fehlerAktiv)
                             {
                                 var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
