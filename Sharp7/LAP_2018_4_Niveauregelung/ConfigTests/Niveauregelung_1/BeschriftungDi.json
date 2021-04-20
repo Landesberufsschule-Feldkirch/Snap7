@@ -1,16 +1,52 @@
 ﻿{
   "DiBeschriftung": [
+      {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Schwimmerschalter ganz unten"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Schwimmerschalter mitte "
+    },
     {
       "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+      "Bezeichnung": "B3",
+      "Kommentar": "Schwimmerschalter oben (Öffner)	"
     },
     {
       "Byte": 0,
       "Bit": 3,
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais Pumpe M1"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "F2",
+      "Kommentar": "Thermorelais Pumpe M2"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Kommentar": "Taster Start"
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Stop (Öffner)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 7,
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Reset "
     }
   ]
 }

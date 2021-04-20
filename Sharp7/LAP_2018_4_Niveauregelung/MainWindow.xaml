@@ -111,9 +111,9 @@
                     <Label Content="P2" Grid.Column="14"    Grid.Row="12" Grid.RowSpan="2" Margin="22,22,5,22" />
                     <Label Content="P3" Grid.Column="14"    Grid.Row="15" Grid.RowSpan="2" Margin="22,22,5,22" />
 
-                    <Label Content="Betrieb"    Grid.Column="15"    Grid.Row="9"  Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <Label Content="Störung"    Grid.Column="15"    Grid.Row="12" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                    <Label Content="Füllstand"  Grid.Column="15"    Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Content="Störung"    Grid.Column="15"    Grid.Row="9"    Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Content="Betrieb"    Grid.Column="15"    Grid.Row="12"   Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Label Content="Füllstand"  Grid.Column="15"    Grid.Row="15"   Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                     <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnzeige.ColorThermorelaisF1}" Command="{Binding BtnThermorelaisF1}" />
                     <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding ViAnzeige.ColorThermorelaisF2}" Command="{Binding BtnThermorelaisF2}" />

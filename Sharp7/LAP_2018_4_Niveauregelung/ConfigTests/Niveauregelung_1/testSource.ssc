@@ -1,87 +1,53 @@
 ///////////////////////////////////////////////////////////////
 //
-// Motorschaltungen 1 - 1 (Getriebemotor)
+// LAP 2018/4 Niveauregelung 
 //
 ///////////////////////////////////////////////////////////////
 
 // Eingänge:
-var DI_0_0 = "2#0001"           // S1   Taster(⓪) → Öffner
-var DI_0_1 = "2#0010"           // S2   Taster(①) → Schliesser
-var DI_0_2 = "2#0100"           // S4   Taster (STOP links) → Öffner
-var DI_0_3 = "2#1000"           // S3   Taster ( Ⅰ ) → Schliesser 
+var DI_0_0 = "2#0001"           // B1   Schwimmerschalter Tank 1 ganz unten
+var DI_0_1 = "2#0010"           // B2   Schwimmerschalter Tank 1 mitte
+var DI_0_2 = "2#0100"           // B3   Schwimmerschalter Tank 2 oben (Öffner)
+var DI_0_3 = "2#1000"           // F1   Thermorelais Pumpe M1 
 
-var DI_0_4 = "2#0001_0000"      // S5   Taster ( Ⅱ ) → Schliesser 
-var DI_0_5 = "2#0010_0000"      // S7   Taster (STOP rechts) → Öffner
-var DI_0_6 = "2#0100_0000"      // S6   Taster (←) → Schliesser
-var DI_0_7 = "2#1000_0000"      // S8   Taster (→) → Schliesser
-
-var DI_1_0 = "2#0001_0000_0000" // S9.1 Not-Halt → Schliesser 
-var DI_1_1 = "2#0010_0000_0000" // S9.2 Not-Halt → Öffner
-var DI_1_2 = "2#0100_0000_0000" // B1   Lichtschranke 0°
-var DI_1_3 = "2#1000_0000_0000" // B2   Lichtschranke 45° CCW 
+var DI_0_4 = "2#0001_0000"      // F2   Thermorelais Pumpe M2
+var DI_0_5 = "2#0010_0000"      // S1   Taster Start
+var DI_0_6 = "2#0100_0000"      // S2   Taster Stop (Öffner)
+var DI_0_7 = "2#1000_0000"      // S3   Taster Reset 
 
 // Ausgänge:
-var DQ_0_0  ="2#0001"       // Q1 Getriebemotor Schnell Rechtslauf
-var DQ_0_1  ="2#0010"       // Q2 Getriebemotor Linkslauf
-var DQ_0_2  ="2#0100"       // Q3 Getriebemotor Langsam Rechtslauf
+var DQ_0_0  ="2#0001"       // P1 Meldeleuchte Störung
+var DQ_0_1  ="2#0010"       // P2 Meldeleuchte Betrieb
+var DQ_0_2  ="2#0100"       // P3 Meldeleuchte Füllstand Min.
+var DQ_0_3 = "2#1000"       // Q1 Motorschütz Pumpe 1 
 
-var DQ_0_4 = "2#0001_0000"  // P1 Meldeleuchte Betriebsbereit(weiß)
-var DQ_0_5 = "2#0010_0000"  // P2 Meldeleuchte Motorschütz(grün)
-var DQ_0_6 = "2#0100_0000"  // P3 Meldeleuchte Störung(rot)
+var DQ_0_4 = "2#0001_0000"  // Q2 Motorschütz Pumpe 2 
 
 main()
 {
-    var F1 = Plc2Dec(DI_0_2)    // Thermorelais
-    var S1 = Plc2Dec(DI_0_0)    // Stop
-    var S2 = Plc2Dec(DI_0_1)    // Start
-    var S7 = Plc2Dec(DI_0_5)    // Quittieren
-    var S92 = Plc2Dec(DI_1_1)   // Not-Halt
+    var B1 = Plc2Dec(DI_0_0)    // Schwimmerschalter Tank 1 ganz unten
+    var B2 = Plc2Dec(DI_0_1)    // Schwimmerschalter Tank 1 mitte
+    var B3 = Plc2Dec(DI_0_2)    // Schwimmerschalter Tank 2 oben (Öffner)
+    var F1 = Plc2Dec(DI_0_3)    // Thermorelais Pumpe M1 
+    var F2 = Plc2Dec(DI_0_4)    // Thermorelais Pumpe M2
+    var S1 = Plc2Dec(DI_0_5)    // Taster Start
+    var S2 = Plc2Dec(DI_0_6)    // Taster Stop (Öffner)
+    var S3 = Plc2Dec(DI_0_7)    // Taster Reset 
 
     var AllesAus = 0
-    var P1 = Plc2Dec(DQ_0_4)    // weiß
-    var P2 = Plc2Dec(DQ_0_5)    // grün
-    var P3 = Plc2Dec(DQ_0_6)    // rot
-    var Maske_P1_P2_P3 = P1 + P2 + P3
+    var P1 = Plc2Dec(DQ_0_0)    // Meldeleuchte Störung
+    var P2 = Plc2Dec(DQ_0_1)    // Meldeleuchte Betrieb
+    var P3 = Plc2Dec(DQ_0_2)    // Meldeleuchte Füllstand Min.
+    var Q1 = Plc2Dec(DQ_0_3)    // Motorschütz Pumpe 1 
+    var Q2 = Plc2Dec(DQ_0_4)    // Motorschütz Pumpe 2
+
+    var Maske_P1_P2_P3_Q1_Q2 = P1 + P2 + P3 + Q1 + Q2
 
     SetDataGridBitAnzahl 0, 0
     VersionAnzeigen
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
-    IncrementDataGridId
-
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Ausgeschaltet?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge (S1 + S2)
-    ResetStopwatch
-    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor Ein?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten P2, Maske_P1_P2_P3, "T#5s", "Motor immer noch Ein?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge 0
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
-    IncrementDataGridId
-
-
-    SetDigitaleEingaenge S1
-    ResetStopwatch
-    BitmusterTesten AllesAus, Maske_P1_P2_P3, "T#5s", "Motor Aus?"
     IncrementDataGridId
 
 

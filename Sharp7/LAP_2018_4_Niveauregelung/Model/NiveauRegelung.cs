@@ -44,9 +44,9 @@ namespace LAP_2018_4_Niveauregelung.Model
                 if (Pegel > 1) Pegel = 1;
                 if (Pegel < 0) Pegel = 0;
 
-                B1 = Pegel > 0.1;
-                B2 = Pegel > 0.5;
-                B3 = Pegel > 0.9;
+                B1 = Pegel > 0.1;   // Schliesser
+                B2 = Pegel > 0.5;   // Schliesser
+                B3 = Pegel < 0.9;   // Öffner
 
                 Thread.Sleep(10);
             }

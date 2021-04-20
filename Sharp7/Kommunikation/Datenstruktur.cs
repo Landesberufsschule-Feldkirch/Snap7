@@ -30,6 +30,7 @@ namespace Kommunikation
         public int AnzahlByteAnalogInput { get; set; }
         public int AnzahlByteAnalogOutput { get; set; }
         public string TestProjektOrdner { get; set; }
+        public int DiagrammZeitbereich { get; set; }
 
         public Datenstruktur(int byteDigitalInput, int byteDigitalOutput, int byteAnalogInput, int byteAnalogOutput)
         {
@@ -40,6 +41,7 @@ namespace Kommunikation
             AnzahlByteDigitalOutput = byteDigitalOutput;
             AnzahlByteAnalogInput = byteAnalogInput;
             AnzahlByteAnalogOutput = byteAnalogOutput;
+            DiagrammZeitbereich = 20;
 
             Array.Clear(BefehleSps, 0, BefehleSps.Length);
             Array.Clear(VersionInputSps, 0, VersionInputSps.Length);

@@ -40,6 +40,7 @@ namespace TestAutomat.Silk
                 case "VersionAnzeigen": VersionAnzeigen(); break;
                 case "TestAblauf": TestAblauf(e); break;
                 case "SetAnalogerEingang": SetAnalogerEingang(e); break;
+                case "SetDiagrammZeitbereich": SetDiagrammZeitbereich(e); break;
             }
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
@@ -57,14 +58,18 @@ namespace TestAutomat.Silk
         private static void SetAnalogerEingang(FunctionEventArgs e)
         {
             var startByte = e.Parameters[0].ToInteger();
-            var analogInput =e.Parameters[1].ToInteger();
+            var analogInput = e.Parameters[1].ToInteger();
             var datenTyp = e.Parameters[2].ToString();
 
             if (datenTyp != "S7 / 16 Bit / Prozent") return;
 
             var siemens = Simatic.Analog_2_Int16(analogInput, 100);
-            Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint) siemens);
-            Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint) siemens);
+            Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint)siemens);
+            Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint)siemens);
+        }
+        public static void SetDiagrammZeitbereich (FunctionEventArgs e)
+        {
+            Datenstruktur.DiagrammZeitbereich = e.Parameters[0].ToInteger();
         }
         public static void Sleep(FunctionEventArgs e)
         {
@@ -88,12 +93,13 @@ namespace TestAutomat.Silk
         private static void UpdateAnzeige(FunctionEventArgs e)
         {
             var silkTestergebnis = e.Parameters[0].ToString();
-            var silkKommentar = e.Parameters[0].ToString();
+            var silkKommentar = e.Parameters[1].ToString();
             AutoTester.TestErgebnis ergebnis;
 
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (silkTestergebnis)
             {
+                case "Kommentar": ergebnis = AutoTester.TestErgebnis.Kommentar; break;
                 case "Aktiv": ergebnis = AutoTester.TestErgebnis.Aktiv; break;
                 case "Init": ergebnis = AutoTester.TestErgebnis.Init; break;
                 case "Erfolgreich": ergebnis = AutoTester.TestErgebnis.Erfolgreich; break;

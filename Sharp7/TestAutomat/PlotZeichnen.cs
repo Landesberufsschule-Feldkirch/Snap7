@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Threading;
 
 namespace TestAutomat
@@ -9,6 +10,7 @@ namespace TestAutomat
 
     public partial class TestAutomat
     {
+        public bool DatenArraysGueltig { get; set; }
         public double[] Zeitachse { get; set; }
 
         public bool[] DatenpunktAktivDa { get; set; }
@@ -56,8 +58,10 @@ namespace TestAutomat
 
 
         private PlotWindow _plotWindow;
-        private const int GroesseDatenArray = 2048;
-        private const int AnzahlDatenpunkte = 2000;
+        private int _anzahlDatenpunkte = 1000; // Es werden alle 10ms Daten gespeichert
+        private int _bisherigeAnzahlDatenpunkte;
+        private const int MaxGroesseDatenArray = 2048;
+
         private const int UpdateZeitDaten = 10;
 
         private void PlotInitialisieren()
@@ -68,54 +72,10 @@ namespace TestAutomat
             DatenpunktAktivDi = new bool[16];
             DatenpunktAdresseDa = new int[16];
             DatenpunktAdresseDi = new int[16];
-
-            Zeitachse = new double[GroesseDatenArray];
-
-            DatenDa00 = new double[GroesseDatenArray];
-            DatenDa01 = new double[GroesseDatenArray];
-            DatenDa02 = new double[GroesseDatenArray];
-            DatenDa03 = new double[GroesseDatenArray];
-            DatenDa04 = new double[GroesseDatenArray];
-            DatenDa05 = new double[GroesseDatenArray];
-            DatenDa06 = new double[GroesseDatenArray];
-            DatenDa07 = new double[GroesseDatenArray];
-            DatenDa08 = new double[GroesseDatenArray];
-            DatenDa09 = new double[GroesseDatenArray];
-            DatenDa10 = new double[GroesseDatenArray];
-            DatenDa11 = new double[GroesseDatenArray];
-            DatenDa12 = new double[GroesseDatenArray];
-            DatenDa13 = new double[GroesseDatenArray];
-            DatenDa14 = new double[GroesseDatenArray];
-            DatenDa15 = new double[GroesseDatenArray];
-
-            DatenDi00 = new double[GroesseDatenArray];
-            DatenDi01 = new double[GroesseDatenArray];
-            DatenDi02 = new double[GroesseDatenArray];
-            DatenDi03 = new double[GroesseDatenArray];
-            DatenDi04 = new double[GroesseDatenArray];
-            DatenDi05 = new double[GroesseDatenArray];
-            DatenDi06 = new double[GroesseDatenArray];
-            DatenDi07 = new double[GroesseDatenArray];
-            DatenDi08 = new double[GroesseDatenArray];
-            DatenDi09 = new double[GroesseDatenArray];
-            DatenDi10 = new double[GroesseDatenArray];
-            DatenDi11 = new double[GroesseDatenArray];
-            DatenDi12 = new double[GroesseDatenArray];
-            DatenDi13 = new double[GroesseDatenArray];
-            DatenDi14 = new double[GroesseDatenArray];
-            DatenDi15 = new double[GroesseDatenArray];
-
             OffsetDa = new double[16];
             OffsetDi = new double[16];
 
-            var start = new DateTime(2021, 1, 1);
-
-            for (var i = 0; i < GroesseDatenArray; i++)
-            {
-                var dtNow = start.AddMilliseconds(i * UpdateZeitDaten);
-                Zeitachse[i] = dtNow.ToOADate();
-            }
-
+            NeueArraysErzeugen();
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(UpdateZeitDaten) };
@@ -126,10 +86,11 @@ namespace TestAutomat
             var renderTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(50) };
             renderTimer.Tick += RenderPlot;
             renderTimer.Start();
-
         }
         public void UpdatePlot()
         {
+            if (!DatenArraysGueltig) return;
+
             for (var i = 0; i < 16; i++)
             {
                 DatenpunktAktivDa[i] = false;
@@ -219,7 +180,7 @@ namespace TestAutomat
         }
         private void UpdatePlotData(object sender, EventArgs e)
         {
-            if (_pltNextDataIndex >= AnzahlDatenpunkte) return;
+            if (_pltNextDataIndex >= _anzahlDatenpunkte) return;
 
             DatenDa00[_pltNextDataIndex] = DatenpunktAuswerten(DatenpunktAktivDa, 0, _datenstruktur.DigOutput, DatenpunktAdresseDa, OffsetDa);
             DatenDa01[_pltNextDataIndex] = DatenpunktAuswerten(DatenpunktAktivDa, 1, _datenstruktur.DigOutput, DatenpunktAdresseDa, OffsetDa);
@@ -272,49 +233,73 @@ namespace TestAutomat
         {
             var ibyte = i / 8;
             var bitMuster = (byte)(1 << i % 8);
-
             return (datenArray[ibyte] & bitMuster) == bitMuster;
         }
         private void ResetPlot()
         {
-            for (var i = 0; i < AnzahlDatenpunkte; i++)
+            _anzahlDatenpunkte = 1000 * _datenstruktur.DiagrammZeitbereich / UpdateZeitDaten;
+            if (_anzahlDatenpunkte > MaxGroesseDatenArray) _anzahlDatenpunkte = MaxGroesseDatenArray;
+            if (_anzahlDatenpunkte != _bisherigeAnzahlDatenpunkte)
             {
-                DatenDa00[i] = OffsetDa[0];
-                DatenDa01[i] = OffsetDa[1];
-                DatenDa02[i] = OffsetDa[2];
-                DatenDa03[i] = OffsetDa[3];
-                DatenDa04[i] = OffsetDa[4];
-                DatenDa05[i] = OffsetDa[5];
-                DatenDa06[i] = OffsetDa[6];
-                DatenDa07[i] = OffsetDa[7];
-                DatenDa08[i] = OffsetDa[8];
-                DatenDa09[i] = OffsetDa[9];
-                DatenDa10[i] = OffsetDa[10];
-                DatenDa11[i] = OffsetDa[11];
-                DatenDa12[i] = OffsetDa[12];
-                DatenDa13[i] = OffsetDa[13];
-                DatenDa14[i] = OffsetDa[14];
-                DatenDa15[i] = OffsetDa[15];
+                NeueArraysErzeugen();
+                UpdatePlot();
+            }
+            _pltNextDataIndex = 0;
+        }
 
-                DatenDi00[i] = OffsetDi[0];
-                DatenDi01[i] = OffsetDi[1];
-                DatenDi02[i] = OffsetDi[2];
-                DatenDi03[i] = OffsetDi[3];
-                DatenDi04[i] = OffsetDi[4];
-                DatenDi05[i] = OffsetDi[5];
-                DatenDi06[i] = OffsetDi[6];
-                DatenDi07[i] = OffsetDi[7];
-                DatenDi08[i] = OffsetDi[8];
-                DatenDi09[i] = OffsetDi[9];
-                DatenDi10[i] = OffsetDi[10];
-                DatenDi11[i] = OffsetDi[11];
-                DatenDi12[i] = OffsetDi[12];
-                DatenDi13[i] = OffsetDi[13];
-                DatenDi14[i] = OffsetDi[14];
-                DatenDi15[i] = OffsetDi[15];
+        private void NeueArraysErzeugen()
+        {
+            DatenArraysGueltig = false;
+            Thread.Sleep(50);
+
+            Zeitachse = new double[_anzahlDatenpunkte];
+
+            DatenDa00 = new double[_anzahlDatenpunkte];
+            DatenDa01 = new double[_anzahlDatenpunkte];
+            DatenDa02 = new double[_anzahlDatenpunkte];
+            DatenDa03 = new double[_anzahlDatenpunkte];
+            DatenDa04 = new double[_anzahlDatenpunkte];
+            DatenDa05 = new double[_anzahlDatenpunkte];
+            DatenDa06 = new double[_anzahlDatenpunkte];
+            DatenDa07 = new double[_anzahlDatenpunkte];
+            DatenDa08 = new double[_anzahlDatenpunkte];
+            DatenDa09 = new double[_anzahlDatenpunkte];
+            DatenDa10 = new double[_anzahlDatenpunkte];
+            DatenDa11 = new double[_anzahlDatenpunkte];
+            DatenDa12 = new double[_anzahlDatenpunkte];
+            DatenDa13 = new double[_anzahlDatenpunkte];
+            DatenDa14 = new double[_anzahlDatenpunkte];
+            DatenDa15 = new double[_anzahlDatenpunkte];
+
+            DatenDi00 = new double[_anzahlDatenpunkte];
+            DatenDi01 = new double[_anzahlDatenpunkte];
+            DatenDi02 = new double[_anzahlDatenpunkte];
+            DatenDi03 = new double[_anzahlDatenpunkte];
+            DatenDi04 = new double[_anzahlDatenpunkte];
+            DatenDi05 = new double[_anzahlDatenpunkte];
+            DatenDi06 = new double[_anzahlDatenpunkte];
+            DatenDi07 = new double[_anzahlDatenpunkte];
+            DatenDi08 = new double[_anzahlDatenpunkte];
+            DatenDi09 = new double[_anzahlDatenpunkte];
+            DatenDi10 = new double[_anzahlDatenpunkte];
+            DatenDi11 = new double[_anzahlDatenpunkte];
+            DatenDi12 = new double[_anzahlDatenpunkte];
+            DatenDi13 = new double[_anzahlDatenpunkte];
+            DatenDi14 = new double[_anzahlDatenpunkte];
+            DatenDi15 = new double[_anzahlDatenpunkte];
+
+            var start = new DateTime(2021, 1, 1);
+
+            for (var i = 0; i < _anzahlDatenpunkte; i++)
+            {
+                Zeitachse[i] = start.AddMilliseconds(i * UpdateZeitDaten).ToOADate();   //dtNow.ToOADate();
             }
 
-            _pltNextDataIndex = 0;
+            Thread.Sleep(10);
+
+            DatenArraysGueltig = true;
+
+            _bisherigeAnzahlDatenpunkte = _anzahlDatenpunkte;
         }
     }
 }

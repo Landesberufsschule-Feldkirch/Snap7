@@ -1,43 +1,26 @@
 ///////////////////////////////////////////////////////////////
 //
-// LAP 2010/1 Kompressoranlage
+// Nadeltelegraph
 //
 ///////////////////////////////////////////////////////////////
 
-// Eingänge:
-var DI_0_0 = "2#0000_0001" // -B1	Druckschalter
-var DI_0_1 = "2#0000_0010" // -B2	Temperaturfühler Kompressor
-var DI_0_2 = "2#0000_0100" // -F1	Störung Motorschutschalter
-var DI_0_3 = "2#0000_1000" // -S1	Taster "Aus"
-var DI_0_4 = "2#0001_0000" // -S2	Taster "Ein"
-
-// Ausgänge:
-var DQ_0_0 = "2#0000_0001" // -P1	Störung
-var DQ_0_1 = "2#0000_0010" // -P2	Betriebsbereit
-var DQ_0_2 = "2#0000_0100" // -Q1	Netzschütz
-var DQ_0_3 = "2#0000_1000" // -Q2	Sternschütz
-var DQ_0_4 = "2#0001_0000" // -Q3	Dreieckschütz
-
 main()
 {
-
-    var B1 = Plc2Dec(DI_0_0) // -B1	Druckschalter
-    var B2 = Plc2Dec(DI_0_1) // -B2	Temperaturfühler Kompressor
-    var F1 = Plc2Dec(DI_0_2) // -F1	Störung Motorschutschalter
-    var S1 = Plc2Dec(DI_0_3) // -S1	Taster "Aus"
-    var S2 = Plc2Dec(DI_0_4) // -S2	Taster "Ein"
+    var P1R = Plc2Dec("2#0000_0000_0001")
+    var P1L = Plc2Dec("2#0000_0000_0010")
+    var P2R = Plc2Dec("2#0000_0000_0100")
+    var P2L = Plc2Dec("2#0000_0000_1000")
+    var P3R = Plc2Dec("2#0000_0001_0000")
+    var P3L = Plc2Dec("2#0000_0010_0000")
+    var P4R = Plc2Dec("2#0000_0100_0000")
+    var P4L = Plc2Dec("2#0000_1000_0000")
+    var P5R = Plc2Dec("2#0001_0000_0000")
+    var P5L = Plc2Dec("2#0010_0000_0000")
 
     var AllesAus = 0
+    var Maske_Alle_Nadeln = Plc2Dec("2#0011_1111_1111")
 
-    var P1 = Plc2Dec(DQ_0_0) // -P1	Störung
-    var P2 = Plc2Dec(DQ_0_1) // -P2	Betriebsbereit
-    var Q1 = Plc2Dec(DQ_0_2) // -Q1	Netzschütz
-    var Q2 = Plc2Dec(DQ_0_3) // -Q2	Sternschütz
-    var Q3 = Plc2Dec(DQ_0_4) // -Q3	Dreieckschütz
-
-    var Maske_P1_P2_Q1_Q2_Q3 = P1 + P2 + Q1 + Q2 + Q3
-
-    SetDataGridBitAnzahl 0, 0
+    SetDataGridBitAnzahl 8, 12
     VersionAnzeigen
 
     Sleep("T#100ms")
@@ -45,12 +28,91 @@ main()
     IncrementDataGridId
 
 
+    SetDigitaleEingaenge Asc (' ')
+    BitmusterTesten AllesAus, Maske_Alle_Nadeln, "T#5s", "Alles Aus?"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('A')
+    BitmusterTesten P1R + P5L, Maske_Alle_Nadeln, "T#5s", "A"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('B')
+    BitmusterTesten P1R + P4L, Maske_Alle_Nadeln, "T#5s", "B"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('D')
+    BitmusterTesten P2R + P5L, Maske_Alle_Nadeln, "T#5s", "D"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('E')
+    BitmusterTesten P1R + P3L, Maske_Alle_Nadeln, "T#5s", "E"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('F')
+    BitmusterTesten P2R + P4L, Maske_Alle_Nadeln, "T#5s", "F"
+    IncrementDataGridId
 
+    SetDigitaleEingaenge Asc ('G')
+    BitmusterTesten P3R + P5L, Maske_Alle_Nadeln, "T#5s", "G"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('H')
+    BitmusterTesten P1R + P2L, Maske_Alle_Nadeln, "T#5s", "H"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('I')
+    BitmusterTesten P2R + P3L, Maske_Alle_Nadeln, "T#5s", "I"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('K')
+    BitmusterTesten P3R + P4L, Maske_Alle_Nadeln, "T#5s", "K"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('L')
+    BitmusterTesten P4R + P5L, Maske_Alle_Nadeln, "T#5s", "L"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('M')
+    BitmusterTesten P1L + P2R, Maske_Alle_Nadeln, "T#5s", "M"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('N')
+    BitmusterTesten P2L + P3R, Maske_Alle_Nadeln, "T#5s", "N"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('O')
+    BitmusterTesten P3L + P4R, Maske_Alle_Nadeln, "T#5s", "O"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('P')
+    BitmusterTesten P4L + P5R, Maske_Alle_Nadeln, "T#5s", "P"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('R')
+    BitmusterTesten P1L + P3R, Maske_Alle_Nadeln, "T#5s", "R"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('S')
+    BitmusterTesten P2L + P4R, Maske_Alle_Nadeln, "T#5s", "S"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('T')
+    BitmusterTesten P3L + P5R, Maske_Alle_Nadeln, "T#5s", "T"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('V')
+    BitmusterTesten P1L + P4R, Maske_Alle_Nadeln, "T#5s", "V"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('W')
+    BitmusterTesten P2L + P5R, Maske_Alle_Nadeln, "T#5s", "W"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge Asc ('Y')
+    BitmusterTesten P1L + P5R, Maske_Alle_Nadeln, "T#5s", "Y"  
+    IncrementDataGridId
+
+    
 
     UpdateAnzeige "Erfolgreich", "30ms"
 }
