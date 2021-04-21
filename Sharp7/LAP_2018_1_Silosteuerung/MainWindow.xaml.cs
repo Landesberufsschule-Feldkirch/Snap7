@@ -10,7 +10,7 @@ namespace LAP_2018_1_Silosteuerung
     {
         public bool AnimationGestartet { get; set; }
         public ImageAnimationController Controller { get; set; }
-        public IPlc Plc { get; set; }
+        public S71200 Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }

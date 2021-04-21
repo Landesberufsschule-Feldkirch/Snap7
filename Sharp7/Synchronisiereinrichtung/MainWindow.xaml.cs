@@ -10,7 +10,7 @@ namespace Synchronisiereinrichtung
     public partial class MainWindow
     {
         public bool DebugWindowAktiv { get; set; }
-        public IPlc Plc { get; set; }
+        public S71200 Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }

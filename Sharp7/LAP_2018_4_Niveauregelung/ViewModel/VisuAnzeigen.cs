@@ -90,14 +90,10 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -171,7 +167,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -236,7 +232,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
- 
+
         public bool ClickModeButtonS3()
         {
             if (ClickModeBtnS3 == ClickMode.Press)
@@ -386,7 +382,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
- 
+
         public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
         private Brush _colorZuleitungLinksSenkrecht;
@@ -401,7 +397,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-         public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
+        public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
         private Brush _colorZuleitungRechtsWaagrecht;
 
@@ -415,7 +411,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-         public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
+        public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
         private Brush _colorZuleitungRechtsSenkrecht;
 
@@ -448,7 +444,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
         }
 
         private Visibility _visibilityB1Ein;
-                public Visibility VisibilityB1Ein
+        public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
             set
@@ -470,7 +466,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-   
+
         public void VisibilitySensorB2(bool val)
         {
             if (val)
@@ -586,7 +582,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-          public void VisibilityMotorQ2(bool val)
+        public void VisibilityMotorQ2(bool val)
         {
             if (val)
             {

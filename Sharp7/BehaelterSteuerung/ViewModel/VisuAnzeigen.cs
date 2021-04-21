@@ -142,15 +142,11 @@ namespace BehaelterSteuerung.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokalLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                        //SpsVersionsInfoSichtbar = Visibility.Hidden;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokalLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    //SpsVersionsInfoSichtbar = Visibility.Hidden;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -219,7 +215,7 @@ namespace BehaelterSteuerung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {

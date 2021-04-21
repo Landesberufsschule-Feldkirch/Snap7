@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Kommunikation
 {
-    public class S71200 : IPlc
+    public class S71200
     {
         public const int SpsTimeout = 1000;
 
@@ -19,9 +19,7 @@ namespace Kommunikation
         private readonly IpAdressen _spsClient;
 
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
-        private string _plcModus = "S7-1200";
         private bool _spsError;
-        private bool _taskRunning = true;
 
         public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
         {
@@ -36,7 +34,7 @@ namespace Kommunikation
         }
         public void SPS_Pingen_Task()
         {
-            while (_taskRunning)
+            while (true)
             {
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.Adress, SpsTimeout);
@@ -50,20 +48,20 @@ namespace Kommunikation
                     var res = _client?.ConnectTo(_spsClient.Adress, 0, 1);
                     if (res == 0)
                     {
-                        while (_taskRunning)
+                        while (true)
                         {
                             var fehlerAktiv = false;
 
                             if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
 
-                            if (_taskRunning && verzoegerung > 10)
+                            if (verzoegerung > 10)
                             {
                                 //2 Byte Offset +  2 Byte Header (Zul. Stringlänge + Zeichenlänge) 
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.VersionIn, 2, 202, _datenstruktur.VersionInputSps));
                                 verzoegerung = 0;
                             }
                             verzoegerung++;
-                            if (_taskRunning && !fehlerAktiv)
+                            if ( !fehlerAktiv)
                             {
                                 var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
                                 _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
@@ -71,7 +69,7 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, 0, 1, _datenstruktur.BefehleSps));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalInput > 0 && _taskRunning && !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteDigitalInput > 0 &&  !fehlerAktiv)
                             {
                                 if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
                                 {
@@ -83,17 +81,17 @@ namespace Kommunikation
                                 }
                             }
 
-                            if (_datenstruktur.AnzahlByteAnalogInput > 0 && _taskRunning && !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteAnalogInput > 0 && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, 0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && _taskRunning && !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 &&  !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, 0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
                             }
 
-                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 && _taskRunning && !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 &&  !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, 0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
                             }
@@ -125,6 +123,7 @@ namespace Kommunikation
 
                 Thread.Sleep(50);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
         private bool FehlerAktiv(int? error)
         {
@@ -148,11 +147,5 @@ namespace Kommunikation
         }
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
-        public string GetPlcModus() => _plcModus;
-        public void SetPlcModus(string modus) => _plcModus = modus;
-        public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetBitAt(Datenbausteine db, int bitPos, bool value) => throw new NotImplementedException();
-        public byte GetUint8At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
-        public ushort GetUint16At(Datenbausteine db, int bytePos) => throw new NotImplementedException();
     }
 }
