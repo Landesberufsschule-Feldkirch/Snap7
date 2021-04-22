@@ -27,7 +27,7 @@
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
 
-            S7.SetUint8At(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
+            S7.SetUSIntAt(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
@@ -35,8 +35,8 @@
             _viewModel.Paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
-            _viewModel.Paternosterlager.IstPos = S7.GetUint8At(datenstruktur.DigOutput, 1);
-            _viewModel.Paternosterlager.SollPos = S7.GetUint8At(datenstruktur.DigOutput, 2);
+            _viewModel.Paternosterlager.IstPos = S7.GetUSIntAt(datenstruktur.DigOutput, 1);
+            _viewModel.Paternosterlager.SollPos = S7.GetUSIntAt(datenstruktur.DigOutput, 2);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

@@ -20,8 +20,8 @@ namespace Tiefgarage
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
         {
-            _viewModel.AlleFahrzeugePersonen.AnzahlAutos = S7.GetUint8At(datenstruktur.DigOutput, 0);
-            _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = S7.GetUint8At(datenstruktur.DigOutput, 1);
+            _viewModel.AlleFahrzeugePersonen.AnzahlAutos = S7.GetUSIntAt(datenstruktur.DigOutput, 0);
+            _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = S7.GetUSIntAt(datenstruktur.DigOutput, 1);
         }
 
         public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm) => _viewModel = vm;
