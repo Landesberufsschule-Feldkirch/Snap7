@@ -42,7 +42,7 @@ namespace LaborLinearachse
             Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc);
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, Plc);
             TestAutomat.SetTestConfig("./ConfigTests/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
 

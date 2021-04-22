@@ -10,7 +10,7 @@ namespace TestAutomat
 
         private bool _autoTesterWindowAktiv;
 
-        private void TestAutomatStarten(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
+        private void TestAutomatStarten(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, S71200 plc)
         {
             if (!_autoTesterWindowAktiv)
             {
@@ -23,7 +23,7 @@ namespace TestAutomat
                 _autoTesterWindow.AutoTesterDataGrid.Clear();
                 _autoTesterWindow.DataGridId = 0;
             }
-            MyAutoTester = new AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur);
+            MyAutoTester = new AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur, plc);
         }
     }
 }

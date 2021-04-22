@@ -26,6 +26,9 @@ namespace TestAutomat.Silk
         {
             switch (e.Name)
             {
+                case "PlcColdStart": PlcColdStart(); break;
+                case "PlcHotStart": PlcHotStart(); break;
+                case "PlcGetStatus": PlcGetStatus(); break;
                 case "Sleep": Sleep(e); break;
                 case "GetDigitaleAusgaenge": GetDigitaleAusgaenge(e); break;
                 case "SetDigitaleEingaenge": SetDigitaleEingaenge(e); break;
@@ -42,6 +45,46 @@ namespace TestAutomat.Silk
                 case "SetAnalogerEingang": SetAnalogerEingang(e); break;
                 case "SetDiagrammZeitbereich": SetDiagrammZeitbereich(e); break;
             }
+        }
+
+        private static void PlcColdStart()
+        {
+            var status = Plc.ColdStart();
+            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Coldstart");
+            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Coldstart");
+            AutoTesterWindow.DataGridId++;
+        }
+        private static void PlcHotStart()
+        {
+            var status = Plc.HotStart();
+            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Hotstart");
+            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Hotstart");
+            AutoTesterWindow.DataGridId++;
+        }
+        private static void PlcGetStatus()
+        {
+            var (retval, status) = Plc.GetStatus();
+            if (retval == 0)
+            {
+                switch (status)
+                {
+                    case 0x00:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis, "PLC: unbekannter Status");
+                        break;
+                    case 0x08:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: running");
+                        break;
+                    case 0x04:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: stopped");
+                        break;
+                }
+            }
+            else
+            {
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis,
+                    "PLC: Statusabfrage fehlgeschlagen");
+            }
+            AutoTesterWindow.DataGridId++;
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
         {
@@ -67,7 +110,7 @@ namespace TestAutomat.Silk
             Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint)siemens);
             Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint)siemens);
         }
-        public static void SetDiagrammZeitbereich (FunctionEventArgs e)
+        public static void SetDiagrammZeitbereich(FunctionEventArgs e)
         {
             Datenstruktur.DiagrammZeitbereich = e.Parameters[0].ToInteger();
         }

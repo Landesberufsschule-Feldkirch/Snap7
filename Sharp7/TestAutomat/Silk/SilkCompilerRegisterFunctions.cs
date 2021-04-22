@@ -9,6 +9,9 @@ namespace TestAutomat.Silk
         private static void CompilerRegisterFunctions(Compiler compiler)
         {
             // ReSharper disable RedundantArgumentDefaultValue
+            compiler.RegisterFunction("PlcColdStart", 0,0);
+            compiler.RegisterFunction("PlcHotStart", 0, 0);
+            compiler.RegisterFunction("PlcGetStatus", 0, 0);
             compiler.RegisterFunction("Print", 0, Function.NoParameterLimit);
             compiler.RegisterFunction("Debug", 0, Function.NoParameterLimit);
             compiler.RegisterFunction("println", 0, Function.NoParameterLimit);

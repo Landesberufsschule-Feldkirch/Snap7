@@ -37,8 +37,10 @@ main()
     SetDiagrammZeitbereich 10
     SetDataGridBitAnzahl 8, 4
     VersionAnzeigen
+    SetDigitaleEingaenge (B1 + F1 + S2 + S3)
+    PlcHotStart
+    PlcGetStatus
 
-    Sleep("T#100ms")
     UpdateAnzeige "Init", ""
     IncrementDataGridId
 

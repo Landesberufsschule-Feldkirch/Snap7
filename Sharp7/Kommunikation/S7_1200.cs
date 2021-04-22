@@ -61,7 +61,7 @@ namespace Kommunikation
                                 verzoegerung = 0;
                             }
                             verzoegerung++;
-                            if ( !fehlerAktiv)
+                            if (!fehlerAktiv)
                             {
                                 var betriebsartPlc = _datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte ? 1 : 0;
                                 _datenstruktur.BefehleSps[0] = (byte)betriebsartPlc;
@@ -69,7 +69,7 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.VersionIn, 0, 1, _datenstruktur.BefehleSps));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalInput > 0 &&  !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteDigitalInput > 0 && !fehlerAktiv)
                             {
                                 if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.LaborPlatte)
                                 {
@@ -86,12 +86,12 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, 0, _datenstruktur.AnzahlByteAnalogInput, _datenstruktur.AnalogInput));
                             }
 
-                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 &&  !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteDigitalOutput > 0 && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.DigOut, 0, _datenstruktur.AnzahlByteDigitalOutput, _datenstruktur.DigOutput));
                             }
 
-                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 &&  !fehlerAktiv)
+                            if (_datenstruktur.AnzahlByteAnalogOutput > 0 && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, 0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
                             }
@@ -147,5 +147,14 @@ namespace Kommunikation
         }
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
+        public int ColdStart() => _client.PlcColdStart();
+        public int HotStart() => _client.PlcHotStart();
+        public (int retval, int status) GetStatus()
+        {
+            var status = 0;
+            var retval = 0;
+            retval = _client.PlcGetStatus(ref status);
+            return (retval, status);
+        }
     }
 }
