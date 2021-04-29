@@ -44,11 +44,14 @@ main()
 
     var Maske_P1_P2_P3_P4 = P1 + P2 + P3 + P4
 
-    SetDataGridBitAnzahl 0, 0
+    SetDataGridBitAnzahl 0, 8
     VersionAnzeigen
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+    UpdateAnzeige "Kommentar", "Ohne Störung testen"
     IncrementDataGridId
 
     SetDigitaleEingaenge 0

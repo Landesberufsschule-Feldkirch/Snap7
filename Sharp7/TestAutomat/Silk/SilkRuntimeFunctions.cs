@@ -200,7 +200,7 @@ namespace TestAutomat.Silk
                                    " ",
                                    testErgebnis,
                                    silkKommentar,
-                                   " ",
+                                   " ", " ",
                                    " "));
                     break;
                 default:
@@ -209,7 +209,7 @@ namespace TestAutomat.Silk
                                    $"{SilkStopwatch.ElapsedMilliseconds}ms",
                                    testErgebnis,
                                    dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
-                                   dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
+                                   " ",dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge), 
                                    silkKommentar));
                     break;
             }

@@ -4,24 +4,43 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    ZyklusAktiv: BOOL;
-	Zeit: TON;
+    BlinkMerker: BOOL;
+    StörungAktiv: BOOL;
+    StörungNochNichtQuittiert: BOOL;
+	BlinkTimer: TON;
 END_VAR
 
 (*  *********************************************************** *)
 (*  Linearachse: Motorschaltungen 1 - Version 4                 *)
 (*  *********************************************************** *)
 
-IF "DigInput".S1    THEN    #ZyklusAktiv := true;   END_IF;
-IF "Zeit".Q         THEN    #ZyklusAktiv := false;  END_IF;
+#BlinkTimer.TON(IN := NOT #BlinkTimer.Q,
+PT := T#1250ms);
 
-"Zeit".TON(IN := #ZyklusAktiv, PT := T#4s);
-"DigOutput".P4 := #ZyklusAktiv;
-"DigOutput".Q1 := FALSE;    // Die Ausgänge werden danach - eventuell - überschrieben
-"DigOutput".Q2 := FALSE;
+#BlinkMerker := #BlinkTimer.ET < T#625ms;
 
-IF #ZyklusAktiv THEN    
-    IF "Zeit".ET < T#2s THEN        "DigOutput".Q1 := TRUE;    END_IF;
-    IF "Zeit".ET > T#2s THEN        "DigOutput".Q2 := TRUE;    END_IF;
+IF "DigInput".S1 AND "DigInput".S2 AND NOT #StörungNochNichtQuittiert THEN
+    "DigOutput".P4 := true;
 END_IF;
+
+IF NOT "DigInput".S2 OR #StörungNochNichtQuittiert THEN
+    "DigOutput".P4 := FALSE;
+END_IF;
+
+IF NOT "DigInput".S9 OR NOT "DigInput".S10 THEN
+    #StörungAktiv := true;
+    #StörungNochNichtQuittiert := true;
+END_IF;
+
+IF "DigInput".S9 AND "DigInput".S10 THEN
+    #StörungAktiv := false;
+END_IF;
+
+IF (NOT #StörungAktiv AND "DigInput".S8) THEN
+    #StörungNochNichtQuittiert := false;
+END_IF;
+
+"DigOutput".P3 := #StörungAktiv OR (#StörungNochNichtQuittiert AND #BlinkMerker);
+
+"DigOutput".P2 := NOT "DigOutput".P4 AND NOT #StörungNochNichtQuittiert;
     

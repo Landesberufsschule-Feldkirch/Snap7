@@ -1,35 +1,28 @@
 ﻿{
   "DiBeschriftung": [
-
-    {
-      "Byte": 0,
-      "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
-    },
     {
       "Byte": 0,
       "Bit": 3,
       "Bezeichnung": "S1",
       "Kommentar": "Taster Ein ( ① )"
-    },
+    }, 
     {
       "Byte": 1,
       "Bit": 0,
       "Bezeichnung": "S8",
-      "Kommentar": "Quittieren ( - )"
+      "Kommentar": "Quittieren ( – )"
     },
      {
       "Byte": 1,
       "Bit": 2,
       "Bezeichnung": "S9",
       "Kommentar": "Thermorelais (STOP)"
-    },   
-    {
+    },
+     {
       "Byte": 1,
       "Bit": 3,
       "Bezeichnung": "S10",
-      "Kommentar": "Not-Halt"
+      "Kommentar": "Not-Halt (Öffner)"
     }
   ]
 }

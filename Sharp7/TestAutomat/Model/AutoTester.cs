@@ -47,7 +47,7 @@ namespace TestAutomat.Model
                 autoTesterWindow.DataGridId++,
                 "0",
                 TestErgebnis.CompilerStart,
-                 "", "", ""));
+                 " ", " ", " ", " "));
 
             SilkStopwatch.Start();
             (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
@@ -58,7 +58,7 @@ namespace TestAutomat.Model
                     autoTesterWindow.DataGridId++,
                     $"{SilkStopwatch.ElapsedMilliseconds}ms",
                     TestErgebnis.CompilerErfolgreich,
-                     "", "", ""));
+                     " ", " ", " ", " "));
 
                 System.Threading.Tasks.Task.Run(TestRunnerTask);
             }
@@ -70,7 +70,8 @@ namespace TestAutomat.Model
                         autoTesterWindow.DataGridId++,
                         $"{SilkStopwatch.ElapsedMilliseconds}ms",
                         TestErgebnis.CompilerError,
-                        error.ToString(), "", ""));
+                        error.ToString(),
+                        " ", " ", " "));
                 }
             }
         }

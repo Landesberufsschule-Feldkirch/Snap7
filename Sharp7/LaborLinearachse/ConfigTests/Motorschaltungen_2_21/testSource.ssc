@@ -44,9 +44,7 @@ main()
     var Maske_P4_Q1_Q2 = P4 + Q1 + Q2
 
  
-
-
-    SetDataGridBitAnzahl 0, 0
+    SetDataGridBitAnzahl 0, 8
     VersionAnzeigen
 
     Sleep("T#100ms")

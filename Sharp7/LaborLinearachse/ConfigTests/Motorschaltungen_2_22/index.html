@@ -48,7 +48,7 @@
 </head>
 
 <body>
-    <h1>Motorschaltungen 2 - 2.1 (Linearachse)</h1>
+    <h1>Motorschaltungen 2 - 2.2 (Linearachse)</h1>
     <br>
     <div class="text_schwarz">
     
@@ -60,24 +60,27 @@
     
     <br><br>    
 
-        Ein Drehstromasynchronmotor soll direkt geschaltet werden. Der Zyklus kann nicht abgebrochen werden.
-        <br>
-
-        <ul>
-            <li>Sobald der Taster ① gedrückt wird, leuchtet die grüne Kontrollleuchte</li>
-            <li>Der Motor läuft 2 Sekunden lang im RL</li>
-            <li>Danach reversiert er 2 Sekunden lang</li>
-            <li>Der Zyklus ist damit abgeschlossen und die grüne Kontrollleuchte erlischt</li>
-        </ul>
-
-        <br /><br />
-        Es werden keinerlei Störungen ausgewertet.
+    <div class="text_schwarz">
+	    Zusätzlich:
+	    <ul>
+		    <li>Die rote Meldeleuchte soll Überlast (Thermorelais) und die Betätigung des Not-Halt anzeigen.</li>
+		    <li>Bei einer Störung wird der Motor sofort abgeschaltet und die grüne Meldeleuchte erlischt.
+			    <br>Solange die Störung anliegt, leuchtet die rote Meldeleuchte.</li>
+		    <li>Nach dem Beheben der Störung blinkt die rote Meldeleuchte mit 1,1 Hz bis sie mit dem Taster " - " quittiert wird.</li>
+		    <li>Sobald eine Störung quittiert wurde und die Anlage störungsfrei ist, reversiert der Motor für 3 Sekunden <br>
+		        Dieser Zustand wird durch Blinken der weißen Meldeleuchte mit 1,8Hz visualisiert.</li>
+	    </ul>
 
         <br><br>
 
         <table>
-            <tr class="di"> <td>DigInput.S1 </td> <td>-S1 </td> <td>Taster Start ( ① )          </td> </tr>
-                
+            <tr class="di"> <td>DigInput.S1  </td> <td>-S1  </td> <td>Taster Start ( ① )        </td> </tr>
+            <tr class="di"> <td>DigInput.S8  </td> <td>-S8  </td> <td>Quittieren ( – )          </td> </tr>
+            <tr class="di"> <td>DigInput.S9  </td> <td>-S9  </td> <td>Thermorelais (STOP)       </td> </tr>
+            <tr class="di"> <td>DigInput.S10 </td> <td>-S10 </td> <td>Not-Halt (Öffner)         </td> </tr>
+
+            <tr class="dq"> <td>DigOutput.P2 </td> <td>-P2 </td> <td>Meldeleuchte weiß          </td> </tr>
+            <tr class="dq"> <td>DigOutput.P3 </td> <td>-P3 </td> <td>Meldeleuchte rot           </td> </tr>
             <tr class="dq"> <td>DigOutput.P4 </td> <td>-P4 </td> <td>Meldeleuchte grün          </td> </tr>
             <tr class="dq"> <td>DigOutput.Q1 </td> <td>-Q1 </td> <td>Linearachse Rechtslauf     </td> </tr>
             <tr class="dq"> <td>DigOutput.Q2 </td> <td>-Q2 </td> <td>Linearachse Linkslauf	    </td> </tr>
