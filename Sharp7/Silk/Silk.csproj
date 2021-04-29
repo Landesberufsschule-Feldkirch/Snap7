@@ -1,7 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
+    <Nullable>annotations</Nullable>
+    <Nullable Condition="'$(TargetFramework)' == 'net5.0'">enable</Nullable>
+    <LangVersion>9.0</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Jonathan Wood</Authors>
@@ -16,20 +19,22 @@ Finally, the runtime component can execute a compiled program.
 
 The main power of this library is that it allows you to register your own functions and variables with the compiler and those functions and variables can be called from the Silk program. When one of your registered functions is called, the Function event is raised, allowing the host application to provide key functionality specific to the host application's domain.
 
-The Silk language itself is designed to be relatively easy to learn. It has no semicolons or other excessive punctuation, it's not case sensitive and is very flexible about expressions involving mixed data types.</Description>
-    <Copyright>Copyright © 2019-2020 SoftCircuits</Copyright>
+The Silk language itself is designed to be relatively easy to learn. It has no semicolons or other excessive punctuation, it's not case sensitive and is very flexible about expressions involving mixed data types.
+
+The library now includes support for .NET 5 and nullable reference types.</Description>
+    <Copyright>Copyright © 2019-2021 SoftCircuits</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageReleaseNotes>Modified package icon.</PackageReleaseNotes>
+    <PackageReleaseNotes>Minor changes and simplification to the way list variables are compared.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl></RepositoryUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://github.com/SoftCircuits/Silk</PackageProjectUrl>
     <PackageTags>interpreter script scripting .net compiler runtime bytecode automation</PackageTags>
     <PackageId>SoftCircuits.Silk</PackageId>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-    <FileVersion>1.0.4.0</FileVersion>
-    <Version>1.0.4</Version>
+    <AssemblyVersion>1.5.1.0</AssemblyVersion>
+    <FileVersion>1.5.1.0</FileVersion>
+    <Version>1.5.1</Version>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageIcon>Logo_64x64.png</PackageIcon>
   </PropertyGroup>

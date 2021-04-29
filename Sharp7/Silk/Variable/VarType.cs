@@ -1,10 +1,14 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+
 namespace SoftCircuits.Silk
 {
-    public static class StringExtensions
+    public enum VarType
     {
-        public static string MakeQuoted(this string s) => $"\"{s}\"";
+        String,
+        Integer,
+        Float,
+        List,
     }
 }

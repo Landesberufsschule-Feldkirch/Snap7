@@ -292,7 +292,7 @@ namespace TestAutomat
 
             for (var i = 0; i < _anzahlDatenpunkte; i++)
             {
-                Zeitachse[i] = start.AddMilliseconds(i * UpdateZeitDaten).ToOADate();   //dtNow.ToOADate();
+                Zeitachse[i] = start.AddMilliseconds(i * UpdateZeitDaten).ToOADate();
             }
 
             Thread.Sleep(10);
