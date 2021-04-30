@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projekt</title>
+    <style>
+        h1 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            padding: 1em;
+            border: 3px solid black;
+            background-color: #E0E0E0;
+            display: inline-block;
+        }
+
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        .text_schwarz {
+            font-family: arial, sans-serif;
+            font-size: 12pt;
+            font-weight: normal;
+            color: black;
+        }
+
+        .di {
+            background-color: rgb(243, 247, 129);
+            width: 50px;
+        }
+
+        .dq {
+            background-color: rgb(169, 245, 225);
+            width: 80px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LAP 2010/3 Ofentürsteuerung</h1>
+    <br>
+    <div class="text_schwarz">
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=579" target="_blank">&rarr; Linderonline/FK</a>
+        <br><br>
+        <span class="beschreibung">Beschreibung</span>
+        <br><br>
+
+        Eine Ofentüre wird mit einem Kettenantrieb gesteuert.<br />
+        In der Grundstellung ist die Ofentüre geschlossen.
+        <br />
+        <ul>
+            <li>Das Öffnen der Ofentüre wird mit dem Taster S2 gestartet </li>
+            <li>Die Türe fährt bis zur Endlage B1 und stoppt. </li>
+            <li>
+                Nach 6 Sekunden schließt die Ofentüre automatisch wieder <br />
+                Während dem Schließvorgang leuchtet die Meldeleuchte P1
+            </li>
+            <li>Wird beim Schließvorgang die Lichtschranke B3 unterbrochen, stoppt die Türe sofort. </li>
+            <li>Sobald die Lichtschranke unbetätigt ist fährt in die gleiche Richtung weiter. </li>
+            <li>Nach einem HALT (S1) muss die Türe wieder durch drücken auf die Taste S2 oder S3 in Bewegung gesetzt werden.</li>
+        </ul>
+
+
+
+
+        <br><br>
+
+        <table>
+            <tr>                <td>SPS </td>           <td>Bezeichnung </td><td>Kommentar </td></tr>
+
+            <tr class="di">		<td>DigInput.B1 </td>	<td>-B1	</td>   <td>Endschalter Offen           </td>	</tr>
+            <tr class="di">		<td>DigInput.B2 </td>	<td>-B2	</td>   <td>Endschalter Geschlossen     </td>	</tr>
+            <tr class="di">		<td>DigInput.B2 </td>	<td>-B3	</td>   <td>Lichtschranke               </td>	</tr>
+            <tr class="di">		<td>DigInput.S1 </td>   <td>-S1	</td>   <td>Taster "Halt"               </td>	</tr>
+            <tr class="di">	    <td>DigInput.S2 </td>	<td>-S2	</td>   <td>Taster "Öffnen"             </td>	</tr>
+            <tr class="di">	    <td>DigInput.S3 </td>	<td>-S3	</td>   <td>Taster "Schliessen"         </td>	</tr>
+
+            <tr class="dq">		<td>DigOutput.P1 </td>	<td>-P1	</td>   <td>Meldeleuchte "Schliessen"   </td>	</tr>
+            <tr class="dq">		<td>DigOutput.Q1 </td>	<td>-Q1	</td>   <td>Motor LL (Öffnen)           </td>	</tr>
+            <tr class="dq"> 	<td>DigOutput.Q2 </td>	<td>-Q2	</td>   <td>Motor RL (Schließen)        </td>	</tr>
+
+        </table>
+    </div>
+    <br><br>
+</body>
+
+</html>

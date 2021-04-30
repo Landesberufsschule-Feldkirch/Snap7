@@ -46,7 +46,7 @@ namespace Parkhaus
             _viewModel.Parkhaus.ParkhausReihe3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Pr3);
             _viewModel.Parkhaus.ParkhausReihe4 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Pr4);
 
-            _viewModel.Parkhaus.FreieParkplaetze = S7.GetUint16At(datenstruktur.AnalogOutput, 0);
+            _viewModel.Parkhaus.FreieParkplaetze = S7.GetUIntAt(datenstruktur.AnalogOutput, 0);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

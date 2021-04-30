@@ -14,7 +14,7 @@ namespace TestAutomat.Silk
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 AutoTester.TestErgebnis.TestStart,
-                "", "", ""));
+                " ", " ", " ", " "));
         }
 
         private static void Runtime_End(object sender, EndEventArgs e)
@@ -23,7 +23,7 @@ namespace TestAutomat.Silk
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 AutoTester.TestErgebnis.TestEnde,
-                "", "", ""));
+                " ", " ", " ", " "));
         }
     }
 }

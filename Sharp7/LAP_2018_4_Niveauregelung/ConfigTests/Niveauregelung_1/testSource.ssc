@@ -1,0 +1,55 @@
+///////////////////////////////////////////////////////////////
+//
+// LAP 2018/4 Niveauregelung 
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0001"           // B1   Schwimmerschalter Tank 1 ganz unten
+var DI_0_1 = "2#0010"           // B2   Schwimmerschalter Tank 1 mitte
+var DI_0_2 = "2#0100"           // B3   Schwimmerschalter Tank 2 oben (Öffner)
+var DI_0_3 = "2#1000"           // F1   Thermorelais Pumpe M1 
+
+var DI_0_4 = "2#0001_0000"      // F2   Thermorelais Pumpe M2
+var DI_0_5 = "2#0010_0000"      // S1   Taster Start
+var DI_0_6 = "2#0100_0000"      // S2   Taster Stop (Öffner)
+var DI_0_7 = "2#1000_0000"      // S3   Taster Reset 
+
+// Ausgänge:
+var DQ_0_0  ="2#0001"       // P1 Meldeleuchte Störung
+var DQ_0_1  ="2#0010"       // P2 Meldeleuchte Betrieb
+var DQ_0_2  ="2#0100"       // P3 Meldeleuchte Füllstand Min.
+var DQ_0_3 = "2#1000"       // Q1 Motorschütz Pumpe 1 
+
+var DQ_0_4 = "2#0001_0000"  // Q2 Motorschütz Pumpe 2 
+
+main()
+{
+    var B1 = Plc2Dec(DI_0_0)    // Schwimmerschalter Tank 1 ganz unten
+    var B2 = Plc2Dec(DI_0_1)    // Schwimmerschalter Tank 1 mitte
+    var B3 = Plc2Dec(DI_0_2)    // Schwimmerschalter Tank 2 oben (Öffner)
+    var F1 = Plc2Dec(DI_0_3)    // Thermorelais Pumpe M1 
+    var F2 = Plc2Dec(DI_0_4)    // Thermorelais Pumpe M2
+    var S1 = Plc2Dec(DI_0_5)    // Taster Start
+    var S2 = Plc2Dec(DI_0_6)    // Taster Stop (Öffner)
+    var S3 = Plc2Dec(DI_0_7)    // Taster Reset 
+
+    var AllesAus = 0
+    var P1 = Plc2Dec(DQ_0_0)    // Meldeleuchte Störung
+    var P2 = Plc2Dec(DQ_0_1)    // Meldeleuchte Betrieb
+    var P3 = Plc2Dec(DQ_0_2)    // Meldeleuchte Füllstand Min.
+    var Q1 = Plc2Dec(DQ_0_3)    // Motorschütz Pumpe 1 
+    var Q2 = Plc2Dec(DQ_0_4)    // Motorschütz Pumpe 2
+
+    var Maske_P1_P2_P3_Q1_Q2 = P1 + P2 + P3 + Q1 + Q2
+
+    SetDataGridBitAnzahl 0, 0
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

@@ -27,11 +27,16 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
+            TxtLagerSiloVoll = "Rutsche Voll";
+
+            LagerSiloFarbe = Brushes.Silver;
+
             ColorF1 = Brushes.LawnGreen;
             ColorF2 = Brushes.LawnGreen;
             ColorP1 = Brushes.White;
             ColorP2 = Brushes.White;
             ColorQ1 = Brushes.LawnGreen;
+            ColorS2 = Brushes.Red;
 
             ClickModeBtnS0 = ClickMode.Press;
             ClickModeBtnS1 = ClickMode.Press;
@@ -49,7 +54,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             VisibilityQ1Ein = Visibility.Visible;
             VisibilityQ1Aus = Visibility.Hidden;
 
-            VisibilityXfuEin = Visibility.Visible;
+            VisibilityQ2Ein = Visibility.Visible;
 
             VisibilityY1Ein = Visibility.Hidden;
             VisibilityY1Aus = Visibility.Visible;
@@ -84,10 +89,16 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 FarbeP2(Silosteuerung.P2);
                 FarbeQ1(Silosteuerung.Q1);
 
+                FarbeS2(Silosteuerung.S2);
+                FarbeLagerSilo(Silosteuerung.RutscheVoll);
+
+
+                TxtLagerSiloVoll = Silosteuerung.RutscheVoll ? "LagerSilo Voll" : "LagerSilo Leer";
+
                 SichtbarkeitB1(Silosteuerung.B1);
                 SichtbarkeitB2(Silosteuerung.B2);
                 SichtbarkeitQ1(Silosteuerung.Q1);
-                SichtbarkeitXfu(Silosteuerung.Xfu);
+                SichtbarkeitXfu(Silosteuerung.Q2);
                 SichtbarkeitY1(Silosteuerung.Y1);
 
                 SichtbarkeitMaterialOben(Silosteuerung.Silo.GetFuellstand() > 0.01);
@@ -98,9 +109,11 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 PositionWagenInhalt(Silosteuerung.Wagen.GetPosition(), Silosteuerung.Wagen.GetFuellstand());
                 WagenFuellstand = Math.Floor(Silosteuerung.Wagen.GetFuellstand());
 
+                FuellstandProzent = (100 * Silosteuerung.Silo.GetFuellstand()).ToString("F0") + "%";
+
                 if (_mainWindow.AnimationGestartet)
                 {
-                    if (Silosteuerung.Xfu) _mainWindow.Controller.Play(); else _mainWindow.Controller.Pause();
+                    if (Silosteuerung.Q2) _mainWindow.Controller.Play(); else _mainWindow.Controller.Pause();
                 }
 
                 Thread.Sleep(10);
@@ -171,7 +184,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -185,7 +198,34 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
+
+
         #region Füllstand Silo
+
+        private string _txtRutscheVoll;
+        public string TxtLagerSiloVoll
+        {
+            get => _txtRutscheVoll;
+            set
+            {
+                _txtRutscheVoll = value;
+                OnPropertyChanged(nameof(TxtLagerSiloVoll));
+            }
+        }
+
+
+        private string _fuellstandProzent;
+        public string FuellstandProzent
+        {
+            get => _fuellstandProzent;
+            set
+            {
+                _fuellstandProzent = value;
+                OnPropertyChanged(nameof(FuellstandProzent));
+            }
+        }
+
+
         public void FuellstandSilo(double pegel)
         {
             Margin1 = new Thickness(0, MaterialSiloHoehe * (1 - pegel), 0, 0);
@@ -357,37 +397,37 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         {
             if (val)
             {
-                VisibilityXfuEin = Visibility.Visible;
-                VisibilityXfuAus = Visibility.Hidden;
+                VisibilityQ2Ein = Visibility.Visible;
+                VisibilityQ2Aus = Visibility.Hidden;
             }
             else
             {
-                VisibilityXfuEin = Visibility.Hidden;
-                VisibilityXfuAus = Visibility.Visible;
+                VisibilityQ2Ein = Visibility.Hidden;
+                VisibilityQ2Aus = Visibility.Visible;
             }
         }
 
-        private Visibility _visibilityXfuEin;
+        private Visibility _visibilityQ2Ein;
 
-        public Visibility VisibilityXfuEin
+        public Visibility VisibilityQ2Ein
         {
-            get => _visibilityXfuEin;
+            get => _visibilityQ2Ein;
             set
             {
-                _visibilityXfuEin = value;
-                OnPropertyChanged(nameof(VisibilityXfuEin));
+                _visibilityQ2Ein = value;
+                OnPropertyChanged(nameof(VisibilityQ2Ein));
             }
         }
 
-        private Visibility _visibilityXfuAus;
+        private Visibility _visibilityQ2Aus;
 
-        public Visibility VisibilityXfuAus
+        public Visibility VisibilityQ2Aus
         {
-            get => _visibilityXfuAus;
+            get => _visibilityQ2Aus;
             set
             {
-                _visibilityXfuAus = value;
-                OnPropertyChanged(nameof(VisibilityXfuAus));
+                _visibilityQ2Aus = value;
+                OnPropertyChanged(nameof(VisibilityQ2Aus));
             }
         }
 
@@ -434,13 +474,21 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
         #region Farben
 
-        public void FarbeF1(bool val)
+        public void FarbeLagerSilo(bool val) => LagerSiloFarbe = val ? Brushes.Firebrick : Brushes.LightGray;
+        private Brush _lagerSiloFarbe;
+        public Brush LagerSiloFarbe
         {
-            ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
+            get => _lagerSiloFarbe;
+            set
+            {
+                _lagerSiloFarbe = value;
+                OnPropertyChanged(nameof(LagerSiloFarbe));
+            }
         }
 
-        private Brush _colorF1;
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
+        private Brush _colorF1;
         public Brush ColorF1
         {
             get => _colorF1;
@@ -451,15 +499,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
-
-        public void FarbeF2(bool val)
-        {
-            ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
-        }
+        public void FarbeF2(bool val) => ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF2;
-
         public Brush ColorF2
         {
             get => _colorF2;
@@ -470,16 +512,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
-
-
-        public void FarbeP1(bool val)
-        {
-            ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-        }
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorP1;
-
         public Brush ColorP1
         {
             get => _colorP1;
@@ -490,14 +525,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
-        public void FarbeP2(bool val)
-        {
-            ColorP2 = val ? Brushes.Red : Brushes.White;
-        }
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorP2;
-
         public Brush ColorP2
         {
             get => _colorP2;
@@ -508,13 +538,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        public void FarbeQ1(bool val)
-        {
-            ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        }
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorQ1;
-
         public Brush ColorQ1
         {
             get => _colorQ1;
@@ -522,6 +548,21 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             {
                 _colorQ1 = value;
                 OnPropertyChanged(nameof(ColorQ1));
+            }
+        }
+
+
+        public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorS2;
+
+        public Brush ColorS2
+        {
+            get => _colorS2;
+            set
+            {
+                _colorS2 = value;
+                OnPropertyChanged(nameof(ColorS2));
             }
         }
 
@@ -740,8 +781,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
 
 
         #endregion
-
-
 
         #region iNotifyPeropertyChanged Members
 

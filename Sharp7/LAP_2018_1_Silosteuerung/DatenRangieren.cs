@@ -12,7 +12,7 @@ namespace LAP_2018_1_Silosteuerung
             P1 = 0, // Anlage Ein
             P2,     // Sammelstörung
             Q1,     // Motorschütz Förderband M1 
-            Xfu,    // Freigabe FU M2 (Schneckenförderer)
+            Q2,     // Freigabe FU M2 (Schneckenförderer)
             Y1      // Mangnetventil
         }
 
@@ -20,12 +20,12 @@ namespace LAP_2018_1_Silosteuerung
         {
             B1 = 0, // Wagen vorhanden
             B2,     // Wagen voll
-            F1,     // Störung Motorschutzschalter Förderband
-            F2,     // Störung Motorschutzschalter Schneckenförderer
+            F1,     // Motorschutzschalter Förderband
+            F2,     // Motorschutzschalter Schneckenförderer
             S0,     // Taster Anlage Aus
             S1,     // Taster Anlage Ein
             S2,     // Not-Halt
-            S3     // Störungen quittieren
+            S3      // Störungen quittieren
         }
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
@@ -39,7 +39,7 @@ namespace LAP_2018_1_Silosteuerung
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
 
-            S7.SetSint_16_At(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
+            S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
@@ -47,7 +47,7 @@ namespace LAP_2018_1_Silosteuerung
             _foerderanlageViewModel.Silosteuerung.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _foerderanlageViewModel.Silosteuerung.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             _foerderanlageViewModel.Silosteuerung.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            _foerderanlageViewModel.Silosteuerung.Xfu = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Xfu);
+            _foerderanlageViewModel.Silosteuerung.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             _foerderanlageViewModel.Silosteuerung.Y1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Y1);
         }
 

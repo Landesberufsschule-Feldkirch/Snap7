@@ -21,19 +21,16 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             ClickModeBtnS1 = ClickMode.Press;
             ClickModeBtnS2 = ClickMode.Press;
 
+            ColorB2 = Brushes.LawnGreen;
             ColorF1 = Brushes.LawnGreen;
             ColorP1 = Brushes.LawnGreen;
             ColorP2 = Brushes.LawnGreen;
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
             ColorQ3 = Brushes.LawnGreen;
-            ColorB1 = Brushes.LawnGreen;
 
             VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
 
             VisibilityKurzschluss = Visibility.Hidden;
 
@@ -51,16 +48,15 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             while (true)
             {
+                FarbeB2(_kompressoranlage.B2);
                 FarbeF1(_kompressoranlage.F1);
                 FarbeP1(_kompressoranlage.P1);
                 FarbeP2(_kompressoranlage.P2);
                 FarbeQ1(_kompressoranlage.Q1);
                 FarbeQ2(_kompressoranlage.Q2);
                 FarbeQ3(_kompressoranlage.Q3);
-                FarbeB1(_kompressoranlage.B1);
 
                 SichtbarkeitB1(_kompressoranlage.B1);
-                SichtbarkeitB2(_kompressoranlage.B2);
 
                 if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
 
@@ -68,14 +64,10 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -146,7 +138,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -216,169 +208,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         #endregion ClickModeBtnS2
 
-        #region Color F1
-
-        public void FarbeF1(bool val)
-        {
-            ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-        }
-
-        private Brush _colorF1;
-
-        public Brush ColorF1
-        {
-            get => _colorF1;
-            set
-            {
-                _colorF1 = value;
-                OnPropertyChanged(nameof(ColorF1));
-            }
-        }
-
-        #endregion Color F1
-
-        #region Color P1
-
-        public void FarbeP1(bool val)
-        {
-            ColorP1 = val ? Brushes.Red : Brushes.White;
-        }
-
-        private Brush _colorP1;
-
-        public Brush ColorP1
-        {
-            get => _colorP1;
-            set
-            {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
-            }
-        }
-
-        #endregion Color P1
-
-        #region Color P2
-
-        public void FarbeP2(bool val)
-        {
-            ColorP2 = val ? Brushes.LawnGreen : Brushes.White;
-        }
-
-        private Brush _colorP2;
-
-        public Brush ColorP2
-        {
-            get => _colorP2;
-            set
-            {
-                _colorP2 = value;
-                OnPropertyChanged(nameof(ColorP2));
-            }
-        }
-
-        #endregion Color P2
-
-        #region Color Q1
-
-        public void FarbeQ1(bool val)
-        {
-            ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        }
-
-        private Brush _colorQ1;
-
-        public Brush ColorQ1
-        {
-            get => _colorQ1;
-            set
-            {
-                _colorQ1 = value;
-                OnPropertyChanged(nameof(ColorQ1));
-            }
-        }
-
-        #endregion Color Q1
-
-        #region Color Q2
-
-        public void FarbeQ2(bool val)
-        {
-            ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-        }
-
-        private Brush _colorQ2;
-
-        public Brush ColorQ2
-        {
-            get => _colorQ2;
-            set
-            {
-                _colorQ2 = value;
-                OnPropertyChanged(nameof(ColorQ2));
-            }
-        }
-
-        #endregion Color Q2
-
-        #region Color Q3
-
-        public void FarbeQ3(bool val)
-        {
-            ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
-        }
-
-        private Brush _colorQ3;
-
-        public Brush ColorQ3
-        {
-            get => _colorQ3;
-            set
-            {
-                _colorQ3 = value;
-                OnPropertyChanged(nameof(ColorQ3));
-            }
-        }
-
-        #endregion Color Q3
-
-        #region Color S7
-
-        public void FarbeB1(bool val)
-        {
-            ColorB1 = val ? Brushes.LawnGreen : Brushes.Red;
-        }
-
-        private Brush _colorB1;
-
-        public Brush ColorB1
-        {
-            get => _colorB1;
-            set
-            {
-                _colorB1 = value;
-                OnPropertyChanged(nameof(ColorB1));
-            }
-        }
-
-        #endregion Color S7
-
-        #region VisibilityKurzschluss
-
-        private Visibility _visibilityKurzschluss;
-
-        public Visibility VisibilityKurzschluss
-        {
-            get => _visibilityKurzschluss;
-            set
-            {
-                _visibilityKurzschluss = value;
-                OnPropertyChanged(nameof(VisibilityKurzschluss));
-            }
-        }
-
-        #endregion VisibilityKurzschluss
-
         #region Sichtbarkeit B1
 
         public void SichtbarkeitB1(bool val)
@@ -421,49 +250,123 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
         #endregion Sichtbarkeit B1
 
-        #region Sichtbarkeit B2
 
-        public void SichtbarkeitB2(bool val)
+        public void FarbeB2(bool val) => ColorB2 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorB2;
+
+        public Brush ColorB2
         {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB2Ein;
-
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
+            get => _colorB2;
             set
             {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
+                _colorB2 = value;
+                OnPropertyChanged(nameof(ColorB2));
             }
         }
 
-        private Visibility _visibilityB2Aus;
 
-        public Visibility VisibilityB2Aus
+        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorF1;
+
+        public Brush ColorF1
         {
-            get => _visibilityB2Aus;
+            get => _colorF1;
             set
             {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
+                _colorF1 = value;
+                OnPropertyChanged(nameof(ColorF1));
+            }
+        }
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
+
+        private Brush _colorP1;
+
+        public Brush ColorP1
+        {
+            get => _colorP1;
+            set
+            {
+                _colorP1 = value;
+                OnPropertyChanged(nameof(ColorP1));
             }
         }
 
-        #endregion Sichtbarkeit B2
+        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorP2;
+
+        public Brush ColorP2
+        {
+            get => _colorP2;
+            set
+            {
+                _colorP2 = value;
+                OnPropertyChanged(nameof(ColorP2));
+            }
+        }
+
+        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorQ1;
+
+        public Brush ColorQ1
+        {
+            get => _colorQ1;
+            set
+            {
+                _colorQ1 = value;
+                OnPropertyChanged(nameof(ColorQ1));
+            }
+        }
+
+        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorQ2;
+
+        public Brush ColorQ2
+        {
+            get => _colorQ2;
+            set
+            {
+                _colorQ2 = value;
+                OnPropertyChanged(nameof(ColorQ2));
+            }
+        }
+
+        public void FarbeQ3(bool val) => ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorQ3;
+
+        public Brush ColorQ3
+        {
+            get => _colorQ3;
+            set
+            {
+                _colorQ3 = value;
+                OnPropertyChanged(nameof(ColorQ3));
+            }
+        }
 
 
+        #region VisibilityKurzschluss
+
+        private Visibility _visibilityKurzschluss;
+
+        public Visibility VisibilityKurzschluss
+        {
+            get => _visibilityKurzschluss;
+            set
+            {
+                _visibilityKurzschluss = value;
+                OnPropertyChanged(nameof(VisibilityKurzschluss));
+            }
+        }
+
+        #endregion VisibilityKurzschluss
+
+        #region Aktueller Druck
         private double _aktuellerDruck;
         public double AktuellerDruck
         {
@@ -474,6 +377,7 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
                 OnPropertyChanged(nameof(AktuellerDruck));
             }
         }
+        #endregion
 
         #region iNotifyPeropertyChanged Members
 

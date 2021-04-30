@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Kommunikation;
+using SoftCircuits.Silk;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading;
-using Kommunikation;
-using SoftCircuits.Silk;
+using PlcDatenTypen;
 using TestAutomat.Model;
 
 namespace TestAutomat.Silk
@@ -23,6 +26,9 @@ namespace TestAutomat.Silk
         {
             switch (e.Name)
             {
+                case "PlcColdStart": PlcColdStart(); break;
+                case "PlcHotStart": PlcHotStart(); break;
+                case "PlcGetStatus": PlcGetStatus(); break;
                 case "Sleep": Sleep(e); break;
                 case "GetDigitaleAusgaenge": GetDigitaleAusgaenge(e); break;
                 case "SetDigitaleEingaenge": SetDigitaleEingaenge(e); break;
@@ -35,23 +41,82 @@ namespace TestAutomat.Silk
                 case "BitmusterBlinktTesten": BitmusterBlinktTesten(e); break;
                 case "KommentarAnzeigen": KommentarAnzeigen(e); break;
                 case "VersionAnzeigen": VersionAnzeigen(); break;
+                case "TestAblauf": TestAblauf(e); break;
+                case "SetAnalogerEingang": SetAnalogerEingang(e); break;
+                case "SetDiagrammZeitbereich": SetDiagrammZeitbereich(e); break;
             }
+        }
+
+        private static void PlcColdStart()
+        {
+            var status = Plc.ColdStart();
+            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Coldstart");
+            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Coldstart");
+            AutoTesterWindow.DataGridId++;
+        }
+        private static void PlcHotStart()
+        {
+            var status = Plc.HotStart();
+            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Hotstart");
+            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Hotstart");
+            AutoTesterWindow.DataGridId++;
+        }
+        private static void PlcGetStatus()
+        {
+            var (retval, status) = Plc.GetStatus();
+            if (retval == 0)
+            {
+                switch (status)
+                {
+                    case 0x00:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis, "PLC: unbekannter Status");
+                        break;
+                    case 0x08:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: running");
+                        break;
+                    case 0x04:
+                        DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: stopped");
+                        break;
+                }
+            }
+            else
+            {
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis,
+                    "PLC: Statusabfrage fehlgeschlagen");
+            }
+            AutoTesterWindow.DataGridId++;
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
         {
-            var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
             e.ReturnValue.SetValue((int)digitalOutput);
         }
         private static void SetDigitaleEingaenge(FunctionEventArgs e)
         {
-            var digitalInput = new PlcDatenTypen.Uint((ulong)e.Parameters[0].ToInteger());
-            Datenstruktur.DigInput[0] = PlcDatenTypen.Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
-            Datenstruktur.DigInput[1] = PlcDatenTypen.Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
+            var digitalInput = new Uint((ulong)e.Parameters[0].ToInteger());
+            Datenstruktur.DigInput[0] = Simatic.Digital_GetLowByte((uint)digitalInput.GetDec());
+            Datenstruktur.DigInput[1] = Simatic.Digital_GetHighByte((uint)digitalInput.GetDec());
             Thread.Sleep(100);
+        }
+        private static void SetAnalogerEingang(FunctionEventArgs e)
+        {
+            var startByte = e.Parameters[0].ToInteger();
+            var analogInput = e.Parameters[1].ToInteger();
+            var datenTyp = e.Parameters[2].ToString();
+
+            if (datenTyp != "S7 / 16 Bit / Prozent") return;
+
+            var siemens = Simatic.Analog_2_Int16(analogInput, 100);
+            Datenstruktur.AnalogInput[startByte] = Simatic.Digital_GetLowByte((uint)siemens);
+            Datenstruktur.AnalogInput[startByte + 1] = Simatic.Digital_GetHighByte((uint)siemens);
+        }
+        public static void SetDiagrammZeitbereich(FunctionEventArgs e)
+        {
+            Datenstruktur.DiagrammZeitbereich = e.Parameters[0].ToInteger();
         }
         public static void Sleep(FunctionEventArgs e)
         {
-            var sleepTime = new PlcDatenTypen.ZeitDauer(e.Parameters[0].ToString());
+            var sleepTime = new ZeitDauer(e.Parameters[0].ToString());
             Thread.Sleep((int)sleepTime.GetZeitDauerMs());
         }
         private static void IncrementDataGridId()
@@ -71,12 +136,13 @@ namespace TestAutomat.Silk
         private static void UpdateAnzeige(FunctionEventArgs e)
         {
             var silkTestergebnis = e.Parameters[0].ToString();
-            var silkKommentar = e.Parameters[0].ToString();
+            var silkKommentar = e.Parameters[1].ToString();
             AutoTester.TestErgebnis ergebnis;
 
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (silkTestergebnis)
             {
+                case "Kommentar": ergebnis = AutoTester.TestErgebnis.Kommentar; break;
                 case "Aktiv": ergebnis = AutoTester.TestErgebnis.Aktiv; break;
                 case "Init": ergebnis = AutoTester.TestErgebnis.Init; break;
                 case "Erfolgreich": ergebnis = AutoTester.TestErgebnis.Erfolgreich; break;
@@ -92,7 +158,7 @@ namespace TestAutomat.Silk
         {
             var bitMuster = e.Parameters[0].ToInteger();
             var bitMaske = e.Parameters[1].ToInteger();
-            var timeout = new PlcDatenTypen.ZeitDauer(e.Parameters[2].ToString());
+            var timeout = new ZeitDauer(e.Parameters[2].ToString());
             var kommentar = e.Parameters[3].ToString();
 
             var stopwatch = new Stopwatch();
@@ -103,7 +169,7 @@ namespace TestAutomat.Silk
 
                 Thread.Sleep(10);
 
-                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+                var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
                 if ((digitalOutput & (short)bitMaske) == (short)bitMuster)
                 {
@@ -118,11 +184,11 @@ namespace TestAutomat.Silk
         }
         private static void DataGridAnzeigeUpdaten(AutoTester.TestErgebnis testErgebnis, string silkKommentar)
         {
-            var digitalInput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
-            var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+            var digitalInput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigInput[0], Datenstruktur.DigInput[1]);
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
-            var dInput = new PlcDatenTypen.Uint(digitalInput.ToString());
-            var dOutput = new PlcDatenTypen.Uint(digitalOutput.ToString());
+            var dInput = new Uint(digitalInput.ToString());
+            var dOutput = new Uint(digitalOutput.ToString());
 
             // ReSharper disable once SwitchStatementHandlesSomeKnownEnumValuesWithDefault
             switch (testErgebnis)
@@ -134,7 +200,7 @@ namespace TestAutomat.Silk
                                    " ",
                                    testErgebnis,
                                    silkKommentar,
-                                   " ",
+                                   " ", " ",
                                    " "));
                     break;
                 default:
@@ -143,7 +209,7 @@ namespace TestAutomat.Silk
                                    $"{SilkStopwatch.ElapsedMilliseconds}ms",
                                    testErgebnis,
                                    dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
-                                   dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
+                                   " ",dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge), 
                                    silkKommentar));
                     break;
             }
@@ -151,7 +217,7 @@ namespace TestAutomat.Silk
         private static void Plc2Dec(FunctionEventArgs e)
         {
             var zahl = e.Parameters[0].ToString();
-            var plcZahl = new PlcDatenTypen.Uint(zahl);
+            var plcZahl = new Uint(zahl);
             e.ReturnValue.SetValue((int)plcZahl.GetDec());
         }
         private static void SetDataGridBitAnzahl(FunctionEventArgs e)
@@ -163,11 +229,11 @@ namespace TestAutomat.Silk
         {
             var bitMuster = e.Parameters[0].ToInteger();
             var bitMaske = e.Parameters[1].ToInteger();
-            var periodenDauer = new PlcDatenTypen.ZeitDauer(e.Parameters[2].ToString());
+            var periodenDauer = new ZeitDauer(e.Parameters[2].ToString());
             var tastVerhaeltnis = e.Parameters[3].ToFloat();
             var anzahlPerioden = e.Parameters[4].ToInteger();
             var toleranz = e.Parameters[5].ToFloat();
-            var timeout = new PlcDatenTypen.ZeitDauer(e.Parameters[6].ToString());
+            var timeout = new ZeitDauer(e.Parameters[6].ToString());
             var kommentar = e.Parameters[7].ToString();
 
             var periodenDauerMax = periodenDauer.GetZeitDauerMs() * (1 + toleranz);
@@ -190,7 +256,7 @@ namespace TestAutomat.Silk
             {
                 Thread.Sleep(10);
 
-                var digitalOutput = PlcDatenTypen.Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+                var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
 
                 var aktuellePeriodenDauer = zeitImpuls + zeitPause;
                 if (zeitImpuls > 0) tastverhaeltnis = zeitImpuls / aktuellePeriodenDauer;
@@ -255,11 +321,114 @@ namespace TestAutomat.Silk
         }
         private static void VersionAnzeigen()
         {
-            var textLaenge = Datenstruktur.VersionInputSps.Length;
+            var textLaenge = Datenstruktur.VersionInputSps[1];
             var enc = new ASCIIEncoding();
-            var version = enc.GetString(Datenstruktur.VersionInputSps, 0, textLaenge);
-            AutoTesterWindow.DataGridId++;
+            var version = enc.GetString(Datenstruktur.VersionInputSps, 2, textLaenge);
+
             DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Version, version);
+            AutoTesterWindow.DataGridId++;
+        }
+        private static void TestAblauf(FunctionEventArgs e)
+        {
+            var listeAblaufSet = new List<AblaufSet>();
+            var listeAblaufTests = new List<AblaufTest>();
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            for (var i = 0; i < e.Parameters[0].ListCount; i++)
+            {
+                listeAblaufSet.Add(new AblaufSet(
+                    (ulong)e.Parameters[0][i][0].ToInteger(),
+                    e.Parameters[0][i][1].ToString(),
+                    e.Parameters[0][i][2].ToString()));
+            }
+
+            for (var i = 0; i < e.Parameters[1].ListCount; i++)
+            {
+                listeAblaufTests.Add(new AblaufTest(
+                    (ulong)e.Parameters[1][i][0].ToInteger(),
+                    (ulong)e.Parameters[1][i][1].ToInteger(),
+                    e.Parameters[1][i][2].ToString(),
+                    e.Parameters[1][i][3].ToString(),
+                    e.Parameters[1][i][4].ToString()));
+            }
+
+            var timeOut = listeAblaufTests.Sum(test => test.GetTimeoutMs());
+
+            var testAblaufFertig = false;
+            var setAktuellerSchritt = 0;
+            long setAbgelaufeneZeit = 0;
+            var testAktuellerschritt = 0;
+            long testAbgelaufeneZeit = 0;
+
+            while (stopwatch.ElapsedMilliseconds < timeOut)
+            {
+                Thread.Sleep(10);
+
+                (testAblaufFertig, setAktuellerSchritt, setAbgelaufeneZeit) = AblaufSetFunktion(listeAblaufSet, setAktuellerSchritt, setAbgelaufeneZeit, stopwatch, testAblaufFertig);
+                (testAblaufFertig, testAktuellerschritt, testAbgelaufeneZeit) = AblaufTestFunktion(listeAblaufTests, testAktuellerschritt, testAbgelaufeneZeit, stopwatch, testAblaufFertig);
+                if (testAblaufFertig) return;
+            }
+        }
+        private static (bool fertig, int schritt, long zeit) AblaufSetFunktion(IReadOnlyList<AblaufSet> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
+        {
+            var setBitmuster = listeAblauf[schritt].GetBitmuster();
+            Datenstruktur.DigInput[0] = Simatic.Digital_GetLowByte((uint)setBitmuster.GetDec());
+            Datenstruktur.DigInput[1] = Simatic.Digital_GetHighByte((uint)setBitmuster.GetDec());
+
+            if (listeAblauf[schritt].GetDauer().GetZeitDauerMs() == 0) return (fertig, schritt, zeit);
+            if (stopwatch.ElapsedMilliseconds <= listeAblauf[schritt].GetDauer().GetZeitDauerMs() + zeit) return (fertig, schritt, zeit);
+
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, listeAblauf[schritt].GetKommentar());
+            AutoTesterWindow.DataGridId++;
+            zeit += listeAblauf[schritt].GetDauer().GetZeitDauerMs();
+            schritt++;
+
+            return (fertig, schritt, zeit);
+        }
+        private static (bool fertig, int schritt, long zeit) AblaufTestFunktion(IReadOnlyList<AblaufTest> listeAblauf, int schritt, long zeit, Stopwatch stopwatch, bool fertig)
+        {
+            var digitalOutput = Simatic.Digital_CombineTwoByte(Datenstruktur.DigOutput[0], Datenstruktur.DigOutput[1]);
+
+            if ((digitalOutput & (short)listeAblauf[schritt].GetBitMaske().GetDec()) == (short)listeAblauf[schritt].GetBitMuster().GetDec())
+            {
+                listeAblauf[schritt].SetSchrittAktiv(true);
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, listeAblauf[schritt].GetKommentar());
+
+            }
+            else
+            {
+                if (listeAblauf[schritt].GetSchrittAktiv())
+                {
+                    zeit = stopwatch.ElapsedMilliseconds;
+                    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, listeAblauf[schritt].GetKommentar());
+                    AutoTesterWindow.DataGridId++;
+                    schritt++;
+                    if (schritt >= listeAblauf.Count) return (true, schritt, zeit);
+                }
+                else
+                {
+                    //
+                }
+                //listeAblauf[schritt].SetLaufzeit(stopwatch.ElapsedMilliseconds - zeit);                             
+                //  if (schritt >= listeAblauf.Count) schritt = listeAblauf.Count;
+            }
+
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, listeAblauf[schritt].GetKommentar());
+
+            //    DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Aktiv, kommentar);
+
+
+            if (stopwatch.ElapsedMilliseconds > zeit + listeAblauf[schritt].GetTimeoutMs())
+            {
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Timeout, listeAblauf[schritt].GetKommentar());
+                AutoTesterWindow.DataGridId++;
+                zeit = stopwatch.ElapsedMilliseconds;
+                schritt++;
+                if (schritt >= listeAblauf.Count) return (true, schritt, zeit);
+            }
+
+            return (fertig, schritt, zeit);
         }
     }
 }

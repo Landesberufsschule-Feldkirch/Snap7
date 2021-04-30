@@ -1,0 +1,49 @@
+///////////////////////////////////////////////////////////////
+//
+// LAP 2010/4 Abfüllanlage
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0001"       // B1 	Füllstand 
+var DI_0_1 = "2#0010"       // B2 	Position Dose 
+var DI_0_2 = "2#0100"       // S1 	Taster "Reset" 
+var DI_0_3 = "2#1000"       // S2 	Taster "Start" 
+
+
+// Ausgänge:
+var DQ_0_0  ="2#0001"       // K1 	Spule Vereinzelner 
+var DQ_0_1  ="2#0010"       // K2 	Spule Füllen 
+var DQ_0_2  ="2#0100"       // P1 	Meldeleuchte "Behälter leer" 
+var DQ_0_3  ="2#1000"       // Q1 	Antrieb Förderband 
+
+
+main()
+{
+    var B1 = Plc2Dec(DI_0_0)    // Füllstand
+    var B2 = Plc2Dec(DI_0_1)    // Position Dose 
+    var S1 = Plc2Dec(DI_0_2)    // Taster "Reset" 
+    var S2 = Plc2Dec(DI_0_3)    // Taster "Start" 
+
+    var AllesAus = 0
+    var K1 = Plc2Dec(DQ_0_0)    // Spule Vereinzelner 
+    var K2 = Plc2Dec(DQ_0_1)    // Spule Füllen 
+    var P1 = Plc2Dec(DQ_0_2)    // Meldeleuchte "Behälter leer" 
+    var Q1 = Plc2Dec(DQ_0_3)    // Antrieb Förderband 
+
+    var Maske_K1_K2_P1_Q1 = K1 + K2 + P1 + Q1
+
+    SetDataGridBitAnzahl 0, 0
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+
+
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

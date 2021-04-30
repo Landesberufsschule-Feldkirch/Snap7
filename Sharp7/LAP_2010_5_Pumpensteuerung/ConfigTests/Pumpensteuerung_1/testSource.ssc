@@ -1,0 +1,41 @@
+///////////////////////////////////////////////////////////////
+//
+// LAP 2010/5 Pumpensteuerung
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0000_0001" // -B1	Schwimmerschalter oben 
+var DI_0_1 = "2#0000_0010" // -B2	Schwimmerschalter unten 
+var DI_0_2 = "2#0000_0100" // -F1	Störung Motorschutzschalter
+var DI_0_3 = "2#0000_1000" // -S1	Wahlschalter "Hand"
+var DI_0_4 = "2#0001_0000" // -S2	Wahlschalter "Automatik"
+var DI_0_5 = "2#0010_0000" // -S3	Störung quittieren
+
+// Ausgänge:
+var DQ_0_0 = "2#0000_0001" // -P1	Meldeleuchte "Pumpe" 
+var DQ_0_1 = "2#0000_0010" // -P2	Meldeleuchte "Störung" 
+var DQ_0_2 = "2#0000_0100" // -Q1	Schütz Pumpe 
+
+
+main()
+{
+    var B1 = Plc2Dec(DI_0_0) // -B1	Schwimmerschalter oben 
+    var B2 = Plc2Dec(DI_0_1) // -B2	Schwimmerschalter unten 
+    var F1 = Plc2Dec(DI_0_2) // -F1	Störung Motorschutzschalter
+    var S1 = Plc2Dec(DI_0_3) // -S1	Wahlschalter "Hand"
+    var S2 = Plc2Dec(DI_0_4) // -S2	Wahlschalter "Automatik"
+    var S3 = Plc2Dec(DI_0_5) // -S3	Störung quittieren
+
+    var AllesAus = 0
+
+    var P1 = Plc2Dec(DQ_0_0) // -P1	Meldeleuchte "Pumpe" 
+    var Q1 = Plc2Dec(DQ_0_1) // -P2	Meldeleuchte "Störung" 
+    var Q2 = Plc2Dec(DQ_0_2) // -Q1	Schütz Pumpe 
+
+    var Maske_P1_Q1_Q2 = P1 + Q1 + Q2
+
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

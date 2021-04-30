@@ -22,7 +22,7 @@
 
         public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
         {
-            S7.SetUint8At(datenstruktur.AnalogInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
+            S7.SetUSIntAt(datenstruktur.DigInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
         }
 
         public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)

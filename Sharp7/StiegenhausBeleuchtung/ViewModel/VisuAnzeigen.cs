@@ -53,14 +53,10 @@ namespace StiegenhausBeleuchtung.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -128,7 +124,7 @@ namespace StiegenhausBeleuchtung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -178,10 +174,7 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         #region FarbeAlleLampen
 
-        public void FarbeAlleLampen(int lampe, bool val)
-        {
-            if (val) ColorLampe[lampe] = Brushes.Yellow; else ColorLampe[lampe] = Brushes.White;
-        }
+        public void FarbeAlleLampen(int lampe, bool val) => ColorLampe[lampe] = val ? Brushes.Yellow : Brushes.White;
 
         private ObservableCollection<Brush> _colorLampe = new();
         public ObservableCollection<Brush> ColorLampe

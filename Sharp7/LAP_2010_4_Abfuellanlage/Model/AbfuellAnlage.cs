@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 
 namespace LAP_2010_4_Abfuellanlage.Model
@@ -36,7 +35,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
             System.Threading.Tasks.Task.Run(AbfuellAnlageTask);
         }
-
         private void AbfuellAnlageTask()
         {
             while (true)
@@ -52,8 +50,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 foreach (var dose in AlleDosen)
                 {
                     bool lichtschranke;
-                    var stop = KollisionErkennen(dose);
-                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose, stop);
+                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose); 
                     B2 |= lichtschranke;
                 }
 
@@ -61,23 +58,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        private bool KollisionErkennen(BlechDosen blechDosen)
-        {
-            var stop = false;
-            var (lx, ly) = blechDosen.GetRichtung();
-
-            foreach (var dose in AlleDosen.Where(dose => blechDosen.Id != dose.Id))
-            {
-                var (hx, hy) = dose.GetRichtung();
-                if (hx != Utilities.Rechteck.RichtungX.Steht || hy != Utilities.Rechteck.RichtungY.Steht) { stop |= Utilities.Rechteck.Ausgebremst(blechDosen.EineDose, dose.EineDose, lx, ly); }
-            }
-
-            return stop;
-        }
-
         internal void Nachfuellen() => Pegel = 1;
-
         internal void AllesReset()
         {
             Pegel = 0.9;

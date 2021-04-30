@@ -90,14 +90,10 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -171,7 +167,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -185,7 +181,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region ClickModeBtnS1
+        #region ClickModeBtn
 
         public bool ClickModeButtonS1()
         {
@@ -211,9 +207,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS2
 
         public bool ClickModeButtonS2()
         {
@@ -239,9 +232,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion ClickModeBtnS2
-
-        #region ClickModeBtnS3
 
         public bool ClickModeButtonS3()
         {
@@ -267,9 +257,9 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion ClickModeBtnS3
+        #endregion 
 
-        #region Color Thermorelais F1
+        #region Farben Leuchtmelder
 
         public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.Red : Brushes.LawnGreen;
 
@@ -285,9 +275,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color Thermorelais F1
-
-        #region Color Thermorelais F2
 
         public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? Brushes.Red : Brushes.LawnGreen;
 
@@ -303,11 +290,8 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color Thermorelais F2
 
-        #region Color P1
-
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.Green : Brushes.White;
+        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorCircleP1;
 
@@ -321,11 +305,8 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color P1
 
-        #region Color P2
-
-        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Brushes.Red : Brushes.White;
+        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorCircleP2;
 
@@ -338,10 +319,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
                 OnPropertyChanged(nameof(ColorCircleP2));
             }
         }
-
-        #endregion Color P2
-
-        #region Color P3
 
         public void FarbeCircle_P3(bool val) => ColorCircleP3 = val ? Brushes.OrangeRed : Brushes.White;
 
@@ -357,9 +334,9 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color P3
+        #endregion 
 
-        #region Color AbleitungOben
+        #region Farben Ableitungen, ...
 
         public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? Brushes.Blue : Brushes.LightBlue;
 
@@ -375,9 +352,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color AbleitungOben
-
-        #region Color AbleitungUnten
 
         public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? Brushes.Blue : Brushes.LightBlue;
 
@@ -393,9 +367,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color AbleitungUnten
-
-        #region Color ZuleitungLinksWaagrecht
 
         public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
@@ -411,9 +382,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color ZuleitungLinksWaagrecht
-
-        #region Color ZuleitungLinksSenkrecht
 
         public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
@@ -429,10 +397,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color ZuleitungLinksSenkrecht
-
-        #region Color ZuleitungRechtsWaagrecht
-
         public void FarbeZuleitungRechtsWaagrecht(bool val) => ColorZuleitungRechtsWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
         private Brush _colorZuleitungRechtsWaagrecht;
@@ -446,10 +410,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
                 OnPropertyChanged(nameof(ColorZuleitungRechtsWaagrecht));
             }
         }
-
-        #endregion Color ZuleitungRechtsWaagrecht
-
-        #region Color ZuleitungRechtsSenkrecht
 
         public void FarbeZuleitungRechtsSenkrecht(bool val) => ColorZuleitungRechtsSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
 
@@ -465,9 +425,9 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Color ZuleitungRechtsSenkrecht
+        #endregion 
 
-        #region Visibility Sensor B1
+        #region Visibility 
 
         public void VisibilitySensorB1(bool val)
         {
@@ -484,7 +444,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
         }
 
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -507,9 +466,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Sensor B1
-
-        #region Visibility Sensor B2
 
         public void VisibilitySensorB2(bool val)
         {
@@ -549,10 +505,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Sensor B2
-
-        #region Visibility Sensor B3
-
         public void VisibilitySensorB3(bool val)
         {
             if (val)
@@ -591,9 +543,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Sensor B3
-
-        #region Visibility Motor Q1
 
         public void VisibilityMotorQ1(bool val)
         {
@@ -633,10 +582,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Motor Q1
-
-        #region Visibility Motor Q2
-
         public void VisibilityMotorQ2(bool val)
         {
             if (val)
@@ -675,9 +620,6 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Motor Q2
-
-        #region Visibility Ventil Y1
 
         public void VisibilityVentilY1(bool val)
         {
@@ -717,7 +659,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
             }
         }
 
-        #endregion Visibility Ventil Y1
+        #endregion
 
         #region Margin1
 

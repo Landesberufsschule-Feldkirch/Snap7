@@ -1,0 +1,40 @@
+﻿{
+  "DiBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Schwimmerschalter oben"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Schwimmerschalter unten"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "S1",
+      "Kommentar": "Wahlschalter Hand"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "S2",
+      "Kommentar": "Wahlschalter Automatik"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Störung quittieren"
+    }
+  ]
+}

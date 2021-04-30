@@ -7,7 +7,7 @@ namespace AutomatischesLagersystem
 {
     public partial class MainWindow
     {
-        public IPlc Plc { get; set; }
+        public S71200 Plc { get; set; }
         public DreiDElemente[] BediengeraetStartpositionen { get; set; }
         public DreiDElemente[] KistenStartPositionen { get; set; }
         public DreiDKisten[] KistenAktuellePositionen { get; set; }
@@ -15,7 +15,6 @@ namespace AutomatischesLagersystem
         public bool KisteLiegtAufDemRegalbediengeraet { get; set; }
         public Model.RegalBedienGeraet RegalBedienGeraet { get; set; }
         public bool DebugWindowAktiv { get; set; }
-        public IPlc S71200 { get; set; }
         public bool FensterAktiv { get; set; }
         public DreiDErstellen DreiD { get; set; }
         public int[] DreiDModelleIds { get; set; }

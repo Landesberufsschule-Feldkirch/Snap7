@@ -90,14 +90,10 @@ namespace Tiefgarage.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -165,7 +161,7 @@ namespace Tiefgarage.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -181,10 +177,7 @@ namespace Tiefgarage.ViewModel
 
         #region Color B1
 
-        public void FarbeB1(bool val)
-        {
-            ColorB1 = val ? Brushes.Red : Brushes.LightGray;
-        }
+        public void FarbeB1(bool val) => ColorB1 = val ? Brushes.Red : Brushes.LightGray;
 
         private Brush _colorB1;
 
@@ -202,10 +195,7 @@ namespace Tiefgarage.ViewModel
 
         #region Color B2
 
-        public void FarbeB2(bool val)
-        {
-            ColorB2 = val ? Brushes.Red : Brushes.LightGray;
-        }
+        public void FarbeB2(bool val) => ColorB2 = val ? Brushes.Red : Brushes.LightGray;
 
         private Brush _colorB2;
 

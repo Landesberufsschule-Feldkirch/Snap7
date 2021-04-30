@@ -39,16 +39,19 @@ main()
     var AllesAus = 0
     var P1 = Plc2Dec(DQ_0_2) // weiß im Taster S1/S2
     var P2 = Plc2Dec(DQ_0_3) // weiß
-    var P3 = Plc2Dec(DQ_0_4) // grün
-    var P4 = Plc2Dec(DQ_0_5) // rot
+    var P3 = Plc2Dec(DQ_0_4) // rot
+    var P4 = Plc2Dec(DQ_0_5) // grün
 
     var Maske_P1_P2_P3_P4 = P1 + P2 + P3 + P4
 
-    SetDataGridBitAnzahl 0, 0
+    SetDataGridBitAnzahl 0, 8
     VersionAnzeigen
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+    UpdateAnzeige "Kommentar", "Ohne Störung testen"
     IncrementDataGridId
 
     SetDigitaleEingaenge 0

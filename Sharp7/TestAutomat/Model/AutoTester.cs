@@ -33,7 +33,7 @@ namespace TestAutomat.Model
         private readonly bool _compilerlaufErfolgreich;
         private readonly CompiledProgram _compiledProgram;
 
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur)
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, S71200 plc)
         {
             Compiler compiler;
             SilkStopwatch = new Stopwatch();
@@ -41,13 +41,13 @@ namespace TestAutomat.Model
             AutoTesterWindow = autoTesterWindow;
             Datenstruktur = datenstruktur;
 
-            Silk.Silk.ReferenzenUebergeben(autoTesterWindow, datenstruktur, SilkStopwatch);
+            Silk.Silk.ReferenzenUebergeben(autoTesterWindow, datenstruktur, SilkStopwatch, plc);
 
             autoTesterWindow.UpdateDataGrid(new TestAusgabe(
                 autoTesterWindow.DataGridId++,
                 "0",
                 TestErgebnis.CompilerStart,
-                 "", "", ""));
+                 " ", " ", " ", " "));
 
             SilkStopwatch.Start();
             (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
@@ -58,7 +58,7 @@ namespace TestAutomat.Model
                     autoTesterWindow.DataGridId++,
                     $"{SilkStopwatch.ElapsedMilliseconds}ms",
                     TestErgebnis.CompilerErfolgreich,
-                     "", "", ""));
+                     " ", " ", " ", " "));
 
                 System.Threading.Tasks.Task.Run(TestRunnerTask);
             }
@@ -70,7 +70,8 @@ namespace TestAutomat.Model
                         autoTesterWindow.DataGridId++,
                         $"{SilkStopwatch.ElapsedMilliseconds}ms",
                         TestErgebnis.CompilerError,
-                        error.ToString(), "", ""));
+                        error.ToString(),
+                        " ", " ", " "));
                 }
             }
         }

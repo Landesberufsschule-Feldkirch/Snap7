@@ -9,6 +9,9 @@ namespace TestAutomat.Silk
         private static void CompilerRegisterFunctions(Compiler compiler)
         {
             // ReSharper disable RedundantArgumentDefaultValue
+            compiler.RegisterFunction("PlcColdStart", 0,0);
+            compiler.RegisterFunction("PlcHotStart", 0, 0);
+            compiler.RegisterFunction("PlcGetStatus", 0, 0);
             compiler.RegisterFunction("Print", 0, Function.NoParameterLimit);
             compiler.RegisterFunction("Debug", 0, Function.NoParameterLimit);
             compiler.RegisterFunction("println", 0, Function.NoParameterLimit);
@@ -24,6 +27,9 @@ namespace TestAutomat.Silk
             compiler.RegisterFunction("BitmusterBlinktTesten", 8, 8);
             compiler.RegisterFunction("KommentarAnzeigen",1,1);
             compiler.RegisterFunction("VersionAnzeigen", 0, 0);
+            compiler.RegisterFunction("TestAblauf", 0, 2);
+            compiler.RegisterFunction("SetAnalogerEingang", 3,3);
+            compiler.RegisterFunction("SetDiagrammZeitbereich", 1, 1);
             // ReSharper restore RedundantArgumentDefaultValue
         }
     }

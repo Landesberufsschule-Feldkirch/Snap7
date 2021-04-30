@@ -98,7 +98,7 @@ namespace TestAutomat
                     btnStart.Content = "Test erneut starten?";
                     SetColumnSpan(btnStart, 2);
                 }
-                TestAutomatStarten(AktuellesProjekt, _datenstruktur);
+                TestAutomatStarten(AktuellesProjekt, _datenstruktur, _plc);
                 ResetPlot();
             };
             SetColumn(btnStart, 1);

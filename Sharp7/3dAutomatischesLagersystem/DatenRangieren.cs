@@ -27,7 +27,7 @@
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
             S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
 
-            S7.SetUint8At(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
+            S7.SetUSIntAt(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
     */
         }
 
@@ -42,8 +42,8 @@
             }
 
             /*
-            viewModel.paternosterlager.IstPos = S7.GetUint8At(digOutput, 1);
-            viewModel.paternosterlager.SollPos = S7.GetUint8At(digOutput, 2);
+            viewModel.paternosterlager.IstPos = S7.GetUSIntAt(digOutput, 1);
+            viewModel.paternosterlager.SollPos = S7.GetUSIntAt(digOutput, 2);
             */
         }
 

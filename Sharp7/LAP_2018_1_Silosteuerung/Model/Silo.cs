@@ -6,9 +6,13 @@
         private const double MaterialSiloFuellen = 0.001;
         private const double MaterialSiloLeeren = 0.0002;
 
-        public void Fuellen()
+        public void Fuellen(bool rutscheVoll)
         {
-            _fuellstand += MaterialSiloFuellen;
+            if (rutscheVoll)
+            {
+                _fuellstand += MaterialSiloFuellen;
+            }
+
             if (_fuellstand > 1) _fuellstand = 1;
         }
 

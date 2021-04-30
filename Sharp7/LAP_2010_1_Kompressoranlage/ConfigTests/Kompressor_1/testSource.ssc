@@ -1,0 +1,56 @@
+///////////////////////////////////////////////////////////////
+//
+// LAP 2010/1 Kompressoranlage
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0000_0001" // -B1	Druckschalter
+var DI_0_1 = "2#0000_0010" // -B2	Temperaturfühler Kompressor
+var DI_0_2 = "2#0000_0100" // -F1	Störung Motorschutschalter
+var DI_0_3 = "2#0000_1000" // -S1	Taster "Aus"
+var DI_0_4 = "2#0001_0000" // -S2	Taster "Ein"
+
+// Ausgänge:
+var DQ_0_0 = "2#0000_0001" // -P1	Störung
+var DQ_0_1 = "2#0000_0010" // -P2	Betriebsbereit
+var DQ_0_2 = "2#0000_0100" // -Q1	Netzschütz
+var DQ_0_3 = "2#0000_1000" // -Q2	Sternschütz
+var DQ_0_4 = "2#0001_0000" // -Q3	Dreieckschütz
+
+main()
+{
+
+    var B1 = Plc2Dec(DI_0_0) // -B1	Druckschalter
+    var B2 = Plc2Dec(DI_0_1) // -B2	Temperaturfühler Kompressor
+    var F1 = Plc2Dec(DI_0_2) // -F1	Störung Motorschutschalter
+    var S1 = Plc2Dec(DI_0_3) // -S1	Taster "Aus"
+    var S2 = Plc2Dec(DI_0_4) // -S2	Taster "Ein"
+
+    var AllesAus = 0
+
+    var P1 = Plc2Dec(DQ_0_0) // -P1	Störung
+    var P2 = Plc2Dec(DQ_0_1) // -P2	Betriebsbereit
+    var Q1 = Plc2Dec(DQ_0_2) // -Q1	Netzschütz
+    var Q2 = Plc2Dec(DQ_0_3) // -Q2	Sternschütz
+    var Q3 = Plc2Dec(DQ_0_4) // -Q3	Dreieckschütz
+
+    var Maske_P1_P2_Q1_Q2_Q3 = P1 + P2 + Q1 + Q2 + Q3
+
+    SetDataGridBitAnzahl 0, 0
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+
+
+
+
+
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

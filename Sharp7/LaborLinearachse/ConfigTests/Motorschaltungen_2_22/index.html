@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projekt</title>
+    <style>
+        h1 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            padding: 1em;
+            border: 3px solid black;
+            background-color: #E0E0E0;
+            display: inline-block;
+        }
+
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        .text_schwarz {
+            font-family: arial, sans-serif;
+            font-size: 12pt;
+            font-weight: normal;
+            color: black;
+        }
+
+        .di {
+            background-color: rgb(243, 247, 129);
+            width: 50px;
+        }
+
+        .dq {
+            background-color: rgb(169, 245, 225);
+            width: 80px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Motorschaltungen 2 - 2.2 (Linearachse)</h1>
+    <br>
+    <div class="text_schwarz">
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=600" target="_blank">&rarr; Linderonline/FK</a>
+    </div>
+
+    <br><br>
+    
+    <span class="beschreibung">Beschreibung</span>
+    
+    <br><br>    
+
+    <div class="text_schwarz">
+	    Zusätzlich:
+	    <ul>
+		    <li>Die rote Meldeleuchte soll Überlast (Thermorelais) und die Betätigung des Not-Halt anzeigen.</li>
+		    <li>Bei einer Störung wird der Motor sofort abgeschaltet und die grüne Meldeleuchte erlischt.
+			    <br>Solange die Störung anliegt, leuchtet die rote Meldeleuchte.</li>
+		    <li>Nach dem Beheben der Störung blinkt die rote Meldeleuchte mit 1,1 Hz bis sie mit dem Taster " - " quittiert wird.</li>
+		    <li>Sobald eine Störung quittiert wurde und die Anlage störungsfrei ist, reversiert der Motor für 3 Sekunden <br>
+		        Dieser Zustand wird durch Blinken der weißen Meldeleuchte mit 1,8Hz visualisiert.</li>
+	    </ul>
+
+        <br><br>
+
+        <table>
+            <tr class="di"> <td>DigInput.S1  </td> <td>-S1  </td> <td>Taster Start ( ① )        </td> </tr>
+            <tr class="di"> <td>DigInput.S8  </td> <td>-S8  </td> <td>Quittieren ( – )          </td> </tr>
+            <tr class="di"> <td>DigInput.S9  </td> <td>-S9  </td> <td>Thermorelais (STOP)       </td> </tr>
+            <tr class="di"> <td>DigInput.S10 </td> <td>-S10 </td> <td>Not-Halt (Öffner)         </td> </tr>
+
+            <tr class="dq"> <td>DigOutput.P2 </td> <td>-P2 </td> <td>Meldeleuchte weiß          </td> </tr>
+            <tr class="dq"> <td>DigOutput.P3 </td> <td>-P3 </td> <td>Meldeleuchte rot           </td> </tr>
+            <tr class="dq"> <td>DigOutput.P4 </td> <td>-P4 </td> <td>Meldeleuchte grün          </td> </tr>
+            <tr class="dq"> <td>DigOutput.Q1 </td> <td>-Q1 </td> <td>Linearachse Rechtslauf     </td> </tr>
+            <tr class="dq"> <td>DigOutput.Q2 </td> <td>-Q2 </td> <td>Linearachse Linkslauf	    </td> </tr>
+        </table>
+    </div>
+    <br><br>
+</body>
+
+</html>

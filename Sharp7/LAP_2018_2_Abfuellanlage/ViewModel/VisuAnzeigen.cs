@@ -109,16 +109,14 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
                 Margin_1(_alleFlaschen.Pegel);
 
+                FuellstandProzent = (100 * _alleFlaschen.Pegel).ToString("F0") + "%";
+
                 if (_mainWindow.Plc != null)
                 {
-                    if (_mainWindow.Plc.GetPlcModus() == "S7-1200")
-                    {
-                        VersionNr = _mainWindow.VersionNummer;
-                        SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                        SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                        SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    }
-
+                    VersionNr = _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -200,7 +198,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {
@@ -213,6 +211,18 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
+
+
+        private string _fuellstandProzent;
+        public string FuellstandProzent
+        {
+            get => _fuellstandProzent;
+            set
+            {
+                _fuellstandProzent = value;
+                OnPropertyChanged(nameof(FuellstandProzent));
+            }
+        }
 
         #region ClickModeBtnS1
 

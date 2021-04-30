@@ -7,7 +7,7 @@ namespace PaternosterLager
     public partial class MainWindow
     {
         public ConfigPlc.Plc ConfigPlc { get; set; }
-        public IPlc Plc { get; set; }
+        public S71200 Plc { get; set; }
         public bool FensterAktiv { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }

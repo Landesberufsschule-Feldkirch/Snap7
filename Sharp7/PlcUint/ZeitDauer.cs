@@ -6,6 +6,7 @@ namespace PlcDatenTypen
     public class ZeitDauer
     {
         private readonly long _dauerMs;
+
         public ZeitDauer(string dauer)
         {
             const long dauer1S = 1000;

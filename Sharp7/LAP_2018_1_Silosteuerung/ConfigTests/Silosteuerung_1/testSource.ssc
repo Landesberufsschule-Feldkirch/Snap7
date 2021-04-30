@@ -1,0 +1,55 @@
+///////////////////////////////////////////////////////////////
+//
+// Motorschaltungen 1 - 1 (Getriebemotor)
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0001"           // B1   Sensor Wagen Position 
+var DI_0_1 = "2#0010"           // B2   Sensor Wagen Voll 
+var DI_0_2 = "2#0100"           // F1   Motorschutzschalter Förderband 
+var DI_0_3 = "2#1000"           // F2   Motorschutzschalter Schneckenförderer
+
+var DI_0_4 = "2#0001_0000"      // S0   Taster "Aus" 
+var DI_0_5 = "2#0010_0000"      // S1   Taster "Ein" 
+var DI_0_6 = "2#0100_0000"      // S2   Not-Halt 
+var DI_0_7 = "2#1000_0000"      // S3   Taster "Quittieren" 
+
+var AI_0    = 0                 // Füllstand Materialsilo
+
+// Ausgänge:
+var DQ_0_0  ="2#0001"       // P1 Meldeleuchte "Anlage Ein" 
+var DQ_0_1  ="2#0010"       // P2 Meldeleuchte "Sammelstörung" 
+var DQ_0_2  ="2#0100"       // Q1 Förderband
+var DQ_0_3  ="2#1000"       // Q2 Schneckenförerer
+
+var DQ_0_4 = "2#0001_0000"  // Y1 Materialschieber Silo 
+
+main()
+{
+    var B1 = Plc2Dec(DI_0_0)    // Sensor Wagen Position 
+    var B2 = Plc2Dec(DI_0_1)    // Sensor Wagen Voll 
+    var F1 = Plc2Dec(DI_0_2)    // Motorschutzschalter Förderband 
+    var F2 = Plc2Dec(DI_0_3)    // Motorschutzschalter Schneckenförderer
+    var S0 = Plc2Dec(DI_0_4)    // Taster "Aus" 
+    var S1 = Plc2Dec(DI_0_5)    // Taster "Ein" 
+    var S2 = Plc2Dec(DI_0_6)    // Not-Halt
+    var S3 = Plc2Dec(DI_0_7)    // Taster "Quittieren" 
+
+    var Pegel = AI_0            //Füllstand Materialsilo
+
+    var AllesAus = 0
+    var P1 = Plc2Dec(DQ_0_0)    // Meldeleuchte "Anlage Ein" 
+    var P2 = Plc2Dec(DQ_0_1)    // Meldeleuchte "Sammelstörung" 
+    var Q1 = Plc2Dec(DQ_0_2)    // Förderband
+    var Q2 = Plc2Dec(DQ_0_3)    // Schneckenförerer
+    var Y1 = Plc2Dec(DQ_0_4)    // Materialschieber Silo 
+
+    var Maske_P1_P2_Q1_Q2_Y1 = P1 + P2 + Q1 + Q2 + Y1
+
+    SetAnalogerEingang Pegel, 100, "S7 / 16 Bit / Prozent"
+
+
+
+    UpdateAnzeige "Erfolgreich", "30ms"
+}

@@ -1,0 +1,22 @@
+﻿{
+  "DaBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Schliessen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor LL - Öffnen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "Q2",
+      "Kommentar": "Motor RL - Schliessen"
+    }
+  ]
+}
