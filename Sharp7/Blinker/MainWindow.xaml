@@ -49,12 +49,12 @@
         <Label Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="12" Content="{Binding ViAnzeige.EinZeitAnzeige}" FontSize="12pt"/>
         <Label Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="13" Content="{Binding ViAnzeige.AusZeitAnzeige}" FontSize="12pt"/>
 
-        <WpfPlot x:Name="WpfPlot" Grid.Column="1" Grid.Row="4" Background="AliceBlue" Grid.ColumnSpan="10" Grid.RowSpan="5"  />
+        <WpfPlot x:Name="WpfPlot" Grid.Column="1" Grid.Row="4" Background="AliceBlue" Grid.ColumnSpan="10" Grid.RowSpan="10"  />
 
         <Label Content="P1 " Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
         <Ellipse Grid.Column="2" Grid.Row="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorCircleP1}" Height="70" VerticalAlignment="Center" />
 
-        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="7" />
+        <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
         <Label Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="4" Content="Frequenz:" FontSize="20pt" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
         <Label Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="6" Content="Tastverhältnis:" FontSize="20pt" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
