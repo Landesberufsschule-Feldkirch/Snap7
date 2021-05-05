@@ -73,5 +73,5 @@ main()
     BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
     IncrementDataGridId
 
-    UpdateAnzeige "Erfolgreich", "30ms"
+    UpdateAnzeige "Test abgeschlossen", " "
 }

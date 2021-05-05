@@ -1,0 +1,37 @@
+///////////////////////////////////////////////////////////////
+//
+// Blinklicht Fibonacci 1
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0001"       // S1   Taster STart
+
+// Ausgänge:
+var DQ_0_0 = "2#0001"       // P1   Meldeleuchte 
+
+main()
+{
+    var S1 = Plc2Dec(DI_0_0) // Start
+    
+    var AllesAus = 0
+    var P1 = Plc2Dec(DQ_0_0) // grün
+
+    var Maske_P1 = P1
+
+    SetDataGridBitAnzahl 0, 8
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+ 
+
+
+
+
+
+
+    UpdateAnzeige "Test abgeschlossen", " "
+}

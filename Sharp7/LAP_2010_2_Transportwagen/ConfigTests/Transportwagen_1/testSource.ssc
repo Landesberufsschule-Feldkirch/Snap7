@@ -137,5 +137,5 @@ main()
     BitmusterTesten 0, Maske_P1_Q1_Q2, "T#5s", "Wagen wieder in Grundstellung"
     IncrementDataGridId
 
-    UpdateAnzeige "Erfolgreich", "30ms"
+    UpdateAnzeige "Test abgeschlossen", " "
 }
