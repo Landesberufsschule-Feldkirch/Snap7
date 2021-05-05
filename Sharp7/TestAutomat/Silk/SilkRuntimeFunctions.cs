@@ -49,20 +49,26 @@ namespace TestAutomat.Silk
 
         private static void PlcColdStart()
         {
+            /*
             var status = Plc.ColdStart();
             if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Coldstart");
-            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Coldstart");
+            else 
+            */
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Coldstart");
             AutoTesterWindow.DataGridId++;
         }
         private static void PlcHotStart()
         {
+            /*
             var status = Plc.HotStart();
-            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Hotstart");
-            else DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Hotstart");
+            if (status == 0) DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Erfolgreich, "PLC: Hotstart");            
+            else */
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, "PLC: ERROR Hotstart");
             AutoTesterWindow.DataGridId++;
         }
         private static void PlcGetStatus()
         {
+            /*
             var (retval, status) = Plc.GetStatus();
             if (retval == 0)
             {
@@ -81,9 +87,10 @@ namespace TestAutomat.Silk
             }
             else
             {
-                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis,
-                    "PLC: Statusabfrage fehlgeschlagen");
+                DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis, "PLC: Statusabfrage fehlgeschlagen");
             }
+            */
+            DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.UnbekanntesErgebnis, "PLC: Statusabfrage fehlgeschlagen");
             AutoTesterWindow.DataGridId++;
         }
         private static void GetDigitaleAusgaenge(FunctionEventArgs e)
@@ -209,7 +216,7 @@ namespace TestAutomat.Silk
                                    $"{SilkStopwatch.ElapsedMilliseconds}ms",
                                    testErgebnis,
                                    dInput.GetHexBit(_anzahlBitEingaenge) + "  " + dInput.GetBinBit(_anzahlBitEingaenge),
-                                   " ",dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge), 
+                                   " ", dOutput.GetHexBit(_anzahlBitAusgaenge) + "  " + dOutput.GetBinBit(_anzahlBitAusgaenge),
                                    silkKommentar));
                     break;
             }

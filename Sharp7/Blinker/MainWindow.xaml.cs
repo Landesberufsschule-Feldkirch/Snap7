@@ -10,7 +10,7 @@ namespace Blinker
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; } 
+       public IPlc Plc { get; set; } 
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -39,7 +39,12 @@ namespace Blinker
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            var plcType = befehlszeile[1][5..];
+            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 

@@ -1,4 +1,5 @@
-﻿using Sharp7;
+﻿using Kommunikation;
+using Sharp7;
 
 namespace Heizungsregler
 {
@@ -6,6 +7,7 @@ namespace Heizungsregler
     {
         private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
         private readonly MainWindow _mainWindow;
+         private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -23,11 +25,13 @@ namespace Heizungsregler
 
 
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
+            if (eingaengeRangieren)
+            {
             /*
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 
             S7.SetIntAt(anInput, 0, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
             S7.SetIntAt(anInput, 2, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
@@ -42,21 +46,20 @@ namespace Heizungsregler
 
             S7.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
             */
-        }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
+                }      
+
             if (_mainWindow.WohnHaus == null) return;
 
-            _mainWindow.WohnHaus.HeizungsPumpe = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            _mainWindow.WohnHaus.BrennerEin = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+            _mainWindow.WohnHaus.HeizungsPumpe = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _mainWindow.WohnHaus.BrennerEin = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
 
 
             if (_mainWindow.WohnHaus.DreiwegeVentil == null) return;
 
-            _mainWindow.WohnHaus.DreiwegeVentil.VentilOeffnen(S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1));
-            _mainWindow.WohnHaus.DreiwegeVentil.VentilSchliessen(S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2));
+            _mainWindow.WohnHaus.DreiwegeVentil.VentilOeffnen(_plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1));
+            _mainWindow.WohnHaus.DreiwegeVentil.VentilSchliessen(_plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2));
         }
 
         public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
@@ -64,6 +67,7 @@ namespace Heizungsregler
             _mainWindow = mw;
             _viewModel = vm;
         }
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
 
     }
 }

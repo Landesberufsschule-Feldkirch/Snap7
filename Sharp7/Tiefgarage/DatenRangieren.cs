@@ -1,10 +1,12 @@
-﻿using Sharp7;
+﻿using Kommunikation;
+using Sharp7;
 
 namespace Tiefgarage
 {
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         private enum BitPosEingang
         {
@@ -12,18 +14,19 @@ namespace Tiefgarage
             B2
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.AlleFahrzeugePersonen.B1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.AlleFahrzeugePersonen.B2);
-        }
+            if (eingaengeRangieren)
+            {
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.AlleFahrzeugePersonen.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.AlleFahrzeugePersonen.B2);
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
             _viewModel.AlleFahrzeugePersonen.AnzahlAutos = S7.GetUSIntAt(datenstruktur.DigOutput, 0);
             _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = S7.GetUSIntAt(datenstruktur.DigOutput, 1);
         }
 
         public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

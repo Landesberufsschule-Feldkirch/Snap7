@@ -1,10 +1,13 @@
-﻿namespace Nadeltelegraph
+﻿using Kommunikation;
+
+namespace Nadeltelegraph
 {
     using Sharp7;
 
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         public enum BitPosAusgang
         {
@@ -20,25 +23,27 @@
             P5L
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetUSIntAt(datenstruktur.DigInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
-        }
+            if (eingaengeRangieren)
+            {
+                _plc.SetUsIntAt(datenstruktur.DigInput, 0, (byte)_viewModel.Nadeltelegraph.Zeichen);
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
-            _viewModel.Nadeltelegraph.P1R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1R);
-            _viewModel.Nadeltelegraph.P1L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1L);
-            _viewModel.Nadeltelegraph.P2R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2R);
-            _viewModel.Nadeltelegraph.P2L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2L);
-            _viewModel.Nadeltelegraph.P3R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3R);
-            _viewModel.Nadeltelegraph.P3L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3L);
-            _viewModel.Nadeltelegraph.P4R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4R);
-            _viewModel.Nadeltelegraph.P4L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4L);
-            _viewModel.Nadeltelegraph.P5R = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5R);
-            _viewModel.Nadeltelegraph.P5L = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5L);
+
+            _viewModel.Nadeltelegraph.P1R = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1R);
+            _viewModel.Nadeltelegraph.P1L = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1L);
+            _viewModel.Nadeltelegraph.P2R = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2R);
+            _viewModel.Nadeltelegraph.P2L = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2L);
+            _viewModel.Nadeltelegraph.P3R = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3R);
+            _viewModel.Nadeltelegraph.P3L = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3L);
+            _viewModel.Nadeltelegraph.P4R = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4R);
+            _viewModel.Nadeltelegraph.P4L = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4L);
+            _viewModel.Nadeltelegraph.P5R = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5R);
+            _viewModel.Nadeltelegraph.P5L = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5L);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

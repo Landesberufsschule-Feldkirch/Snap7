@@ -1,11 +1,12 @@
-﻿using Kommunikation;
+﻿using System;
+using Kommunikation;
 using System.Text;
 
 namespace StiegenhausBeleuchtung
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+       public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -31,7 +32,12 @@ namespace StiegenhausBeleuchtung
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, datenRangieren.RangierenInput, datenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            var plcType = befehlszeile[1][5..];
+            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
+            else Plc = new S71200(Datenstruktur, datenRangieren.Rangieren);
+
+            datenRangieren.ReferenzUebergeben(Plc);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TestAutomat.Silk
         public static AutoTesterWindow AutoTesterWindow { get; set; }
         public  static Datenstruktur Datenstruktur { get; set; }
         public static Stopwatch SilkStopwatch { get; set; }
-        public  static  S71200 Plc { get; set; }
+        public  static IPlc Plc { get; set; }
 
         public static (bool erfolgreich, Compiler compiler, CompiledProgram program) Compile(string mySourceFile)
         {
@@ -17,7 +17,7 @@ namespace TestAutomat.Silk
             CompilerRegisterFunctions(compiler);
             return compiler.Compile(mySourceFile, out var program) ? (true, compiler, program) : (false, compiler, program);
         }
-        public static void ReferenzenUebergeben(AutoTesterWindow autoTesterWindow, Datenstruktur datenstruktur, Stopwatch silkStopwatch, S71200 plc)
+        public static void ReferenzenUebergeben(AutoTesterWindow autoTesterWindow, Datenstruktur datenstruktur, Stopwatch silkStopwatch, IPlc plc)
         {
             AutoTesterWindow = autoTesterWindow;
             Datenstruktur = datenstruktur;

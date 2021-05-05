@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using System;
+using Kommunikation;
 using LAP_2019_Foerderanlage.SetManual;
 using System.Text;
 using System.Windows;
@@ -12,7 +13,7 @@ namespace LAP_2019_Foerderanlage
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
         public ImageAnimationController Controller { get; set; }
-        public S71200 Plc { get; set; }
+       public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -38,8 +39,12 @@ namespace LAP_2019_Foerderanlage
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            var plcType = befehlszeile[1][5..];
+            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
+            DatenRangieren.ReferenzUebergeben(Plc);
             BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;

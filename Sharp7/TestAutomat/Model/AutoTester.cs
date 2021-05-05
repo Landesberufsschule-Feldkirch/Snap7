@@ -33,7 +33,7 @@ namespace TestAutomat.Model
         private readonly bool _compilerlaufErfolgreich;
         private readonly CompiledProgram _compiledProgram;
 
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, S71200 plc)
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, IPlc plc)
         {
             Compiler compiler;
             SilkStopwatch = new Stopwatch();

@@ -1,10 +1,12 @@
-﻿using Sharp7;
+﻿using Kommunikation;
+using Sharp7;
 
 namespace LaborGetriebemotor
 {
     public class DatenRangieren
     {
         private readonly LaborGetriebemotor.ViewModel.ViewModel _viewModel;
+         private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -32,30 +34,32 @@ namespace LaborGetriebemotor
             B2      // 1.3  Lichtschranke 45° CCW 
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Getriebemotor.B1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Getriebemotor.B2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Getriebemotor.S1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Getriebemotor.S2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Getriebemotor.S3);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Getriebemotor.S4);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Getriebemotor.S5);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _viewModel.Getriebemotor.S6);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _viewModel.Getriebemotor.S7);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _viewModel.Getriebemotor.S8);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S91, _viewModel.Getriebemotor.S91);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S92, _viewModel.Getriebemotor.S92);
+            if (eingaengeRangieren)
+            {
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Getriebemotor.B1);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Getriebemotor.B2);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Getriebemotor.S1);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Getriebemotor.S2);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Getriebemotor.S3);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Getriebemotor.S4);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Getriebemotor.S5);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _viewModel.Getriebemotor.S6);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _viewModel.Getriebemotor.S7);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _viewModel.Getriebemotor.S8);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S91, _viewModel.Getriebemotor.S91);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S92, _viewModel.Getriebemotor.S92);
         }
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
-            _viewModel.Getriebemotor.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-            _viewModel.Getriebemotor.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-            _viewModel.Getriebemotor.P3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
-            _viewModel.Getriebemotor.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            _viewModel.Getriebemotor.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-            _viewModel.Getriebemotor.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
+       
+            _viewModel.Getriebemotor.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Getriebemotor.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Getriebemotor.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+            _viewModel.Getriebemotor.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.Getriebemotor.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+            _viewModel.Getriebemotor.Q3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
         public DatenRangieren(LaborGetriebemotor.ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

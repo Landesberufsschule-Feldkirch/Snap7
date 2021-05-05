@@ -10,7 +10,7 @@ namespace TestAutomat
 
         private bool _autoTesterWindowAktiv;
 
-        private void TestAutomatStarten(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, S71200 plc)
+        private void TestAutomatStarten(FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, IPlc plc)
         {
             if (!_autoTesterWindowAktiv)
             {

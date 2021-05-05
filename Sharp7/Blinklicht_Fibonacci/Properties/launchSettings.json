@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Blinklicht_Fibonacci": {
+      "commandName": "Project",
+      "commandLineArgs": "-Plc:CX9020"
+    }
+  }
+}
