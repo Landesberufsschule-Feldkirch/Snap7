@@ -1,12 +1,12 @@
-﻿using System;
-using BehaelterSteuerung.Model;
+﻿using BehaelterSteuerung.Model;
 using Kommunikation;
+using System;
 
 namespace BehaelterSteuerung
 {
     public partial class MainWindow
     {
-       public IPlc Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokalLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -43,7 +43,7 @@ namespace BehaelterSteuerung
 
             datenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }

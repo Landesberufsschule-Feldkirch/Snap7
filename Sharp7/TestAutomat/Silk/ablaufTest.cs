@@ -16,7 +16,7 @@ namespace TestAutomat.Silk
             _bitMuster = new Uint(bitMuster);
             _bitMaske = new Uint(bitMaske);
             _dauer = new ZeitDauer(dauer);
-            _schrittAktiv =false;
+            _schrittAktiv = false;
             _timeout = new ZeitDauer(timeout);
             _kommentar = kommentar;
         }
@@ -25,6 +25,6 @@ namespace TestAutomat.Silk
         internal Uint GetBitMuster() => _bitMuster;
         internal string GetKommentar() => _kommentar;
         internal bool GetSchrittAktiv() => _schrittAktiv;
-        internal void SetSchrittAktiv(bool wert) => _schrittAktiv= wert;
+        internal void SetSchrittAktiv(bool wert) => _schrittAktiv = wert;
     }
 }

@@ -8,7 +8,7 @@ namespace Blinklicht_Fibonacci.Model
         public bool S1 { get; set; }
 
         public BlinklichtFibonacci() => System.Threading.Tasks.Task.Run(BlinklichtTask);
-        private void BlinklichtTask()
+        private static void BlinklichtTask()
         {
             while (true)
             {

@@ -7,7 +7,7 @@ namespace LAP_2018_2_Abfuellanlage
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -28,21 +28,21 @@ namespace LAP_2018_2_Abfuellanlage
             S4
         }
 
-      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Abfuellanlage.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Abfuellanlage.F1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Abfuellanlage.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Abfuellanlage.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Abfuellanlage.S3);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Abfuellanlage.S4);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Abfuellanlage.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Abfuellanlage.F1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Abfuellanlage.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Abfuellanlage.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Abfuellanlage.S3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Abfuellanlage.S4);
 
-            S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Abfuellanlage.Pegel, 1));
-        }
+                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Abfuellanlage.Pegel, 1));
+            }
 
-     
+
             _viewModel.Abfuellanlage.K1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
             _viewModel.Abfuellanlage.K2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
             _viewModel.Abfuellanlage.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);

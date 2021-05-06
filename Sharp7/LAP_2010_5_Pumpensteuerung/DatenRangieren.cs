@@ -1,12 +1,11 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace LAP_2010_5_Pumpensteuerung
 {
     public class DatenRangieren
     {
         private readonly LAP_2010_5_Pumpensteuerung.ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -25,17 +24,17 @@ namespace LAP_2010_5_Pumpensteuerung
             S3      // Störung quittieren
         }
 
-       public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Pumpensteuerung.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Pumpensteuerung.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Pumpensteuerung.F1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Pumpensteuerung.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Pumpensteuerung.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Pumpensteuerung.S3);
-        }
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Pumpensteuerung.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Pumpensteuerung.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Pumpensteuerung.F1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Pumpensteuerung.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Pumpensteuerung.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Pumpensteuerung.S3);
+            }
 
             _viewModel.Pumpensteuerung.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Pumpensteuerung.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);

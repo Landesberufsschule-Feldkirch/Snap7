@@ -1,12 +1,11 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace LaborLinearachse
 {
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -35,26 +34,26 @@ namespace LaborLinearachse
             S11     // 1.4  Not-Halt → Schliesser 
         }
 
-      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Linearachse.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Linearachse.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Linearachse.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Linearachse.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Linearachse.S3);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Linearachse.S4);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Linearachse.S5);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _viewModel.Linearachse.S6);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _viewModel.Linearachse.S7);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _viewModel.Linearachse.S8);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S9, _viewModel.Linearachse.S9);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S10, _viewModel.Linearachse.S10);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S11, _viewModel.Linearachse.S11);
-        }
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Linearachse.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Linearachse.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Linearachse.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Linearachse.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Linearachse.S3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Linearachse.S4);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Linearachse.S5);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _viewModel.Linearachse.S6);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _viewModel.Linearachse.S7);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _viewModel.Linearachse.S8);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S9, _viewModel.Linearachse.S9);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S10, _viewModel.Linearachse.S10);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S11, _viewModel.Linearachse.S11);
+            }
 
-      
+
             _viewModel.Linearachse.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Linearachse.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             _viewModel.Linearachse.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);

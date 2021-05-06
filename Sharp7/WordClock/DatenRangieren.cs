@@ -2,8 +2,6 @@
 
 namespace WordClock
 {
-    using Sharp7;
-
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
@@ -21,7 +19,7 @@ namespace WordClock
             Byte8
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

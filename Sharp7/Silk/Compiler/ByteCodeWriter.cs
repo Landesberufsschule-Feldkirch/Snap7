@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace SoftCircuits.Silk
 {
@@ -236,7 +235,7 @@ namespace SoftCircuits.Silk
                 Counters.RemoveAt(Counters.Count - 1);
         }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// Dumps the bytecode log to a file.

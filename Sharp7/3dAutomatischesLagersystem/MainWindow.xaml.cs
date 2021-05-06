@@ -1,7 +1,6 @@
-﻿using System;
-using AutomatischesLagersystem.DreiD;
+﻿using AutomatischesLagersystem.DreiD;
 using Kommunikation;
-using SharpDX.Text;
+using System;
 using System.Windows;
 
 namespace AutomatischesLagersystem

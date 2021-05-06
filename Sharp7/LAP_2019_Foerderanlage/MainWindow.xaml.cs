@@ -1,7 +1,6 @@
-﻿using System;
-using Kommunikation;
+﻿using Kommunikation;
 using LAP_2019_Foerderanlage.SetManual;
-using System.Text;
+using System;
 using System.Windows;
 using WpfAnimatedGif;
 
@@ -13,7 +12,7 @@ namespace LAP_2019_Foerderanlage
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
         public ImageAnimationController Controller { get; set; }
-       public IPlc Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -45,7 +44,7 @@ namespace LAP_2019_Foerderanlage
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }

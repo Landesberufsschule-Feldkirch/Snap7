@@ -19,7 +19,7 @@ namespace DisplayPlc
             PlcAusgaenge = new Uint("16#FFFF");
             PlcEingaenge = new Uint("16#FFFF");
 
-            ViewModel = new ViewModel.ViewModel(datenstruktur,configPlc, beschriftungenPlc, this);
+            ViewModel = new ViewModel.ViewModel(datenstruktur, configPlc, beschriftungenPlc, this);
 
             var plcGrid = new Grid { Name = "PlcGrid", MaxWidth = 700, MaxHeight = 1200, HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Top };
 

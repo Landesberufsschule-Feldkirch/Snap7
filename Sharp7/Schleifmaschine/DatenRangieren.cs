@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace Schleifmaschine
 {
@@ -28,7 +27,7 @@ namespace Schleifmaschine
             S4      // 0.6 Störung quittieren
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

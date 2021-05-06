@@ -22,12 +22,12 @@ namespace Synchronisiereinrichtung.ViewModel
         private ICommand _btnSchalterQ1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSchalterQ1 =>
-            _btnSchalterQ1 ??= new RelayCommand(_=> Kraftwerk.Synchronisieren(), _ => true);
+            _btnSchalterQ1 ??= new RelayCommand(_ => Kraftwerk.Synchronisieren(), _ => true);
 
         private ICommand _btnSchalterStart;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnSchalterStart =>
-            _btnSchalterStart ??= new RelayCommand(_=> Kraftwerk.Starten(), _ => true);
+            _btnSchalterStart ??= new RelayCommand(_ => Kraftwerk.Starten(), _ => true);
 
         private ICommand _btnSchalterStop;
         // ReSharper disable once UnusedMember.Global

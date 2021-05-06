@@ -14,7 +14,6 @@ namespace Heizungsregler.ViewModel
         {
             _mainWindow = mw;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -73,17 +72,6 @@ namespace Heizungsregler.ViewModel
 
         #region SPS Version, Status und Farbe
 
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
-
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -129,7 +117,7 @@ namespace Heizungsregler.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
 
         public Brush SpsColor
         {

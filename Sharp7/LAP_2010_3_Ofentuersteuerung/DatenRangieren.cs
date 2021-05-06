@@ -1,12 +1,11 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace LAP_2010_3_Ofentuersteuerung
 {
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -25,19 +24,19 @@ namespace LAP_2010_3_Ofentuersteuerung
             S3      // Taster "Schliessen"
         }
 
-     public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.OfentuerSteuerung.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.OfentuerSteuerung.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.OfentuerSteuerung.B3);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.OfentuerSteuerung.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.OfentuerSteuerung.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.OfentuerSteuerung.S3);
-        }
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.OfentuerSteuerung.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.OfentuerSteuerung.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.OfentuerSteuerung.B3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.OfentuerSteuerung.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.OfentuerSteuerung.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.OfentuerSteuerung.S3);
+            }
 
-       
+
             _viewModel.OfentuerSteuerung.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.OfentuerSteuerung.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.OfentuerSteuerung.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);

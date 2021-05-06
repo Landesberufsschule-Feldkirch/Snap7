@@ -14,7 +14,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, Silosteuerung);
         }
 
-        
+
 
         private ICommand _btnLagerSiloVoll;
         // ReSharper disable once UnusedMember.Global

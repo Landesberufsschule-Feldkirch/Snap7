@@ -49,7 +49,7 @@ namespace Blinklicht_Fibonacci
             if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             DatenRangieren.ReferenzUebergeben(Plc);
 

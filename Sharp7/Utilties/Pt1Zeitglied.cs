@@ -1,5 +1,5 @@
-﻿using System.Threading;
-using PlcDatenTypen;
+﻿using PlcDatenTypen;
+using System.Threading;
 
 namespace Utilities
 {
@@ -28,7 +28,7 @@ namespace Utilities
             while (true)
             {
                 var akt = _aktuell + _faktor * (_neuerSollwert - _aktuell);
-                _aktuell =   Simatic.Clamp(akt, _limitMin, _limitMax);
+                _aktuell = Simatic.Clamp(akt, _limitMin, _limitMax);
 
                 Thread.Sleep(_zeitkonstante);
             }

@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace LAP_2010_4_Abfuellanlage
 {
@@ -24,7 +23,7 @@ namespace LAP_2010_4_Abfuellanlage
             S2      // Taster Start
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

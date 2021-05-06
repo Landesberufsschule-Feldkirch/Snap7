@@ -7,7 +7,7 @@ namespace LAP_2018_1_Silosteuerung
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _foerderanlageViewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -30,23 +30,23 @@ namespace LAP_2018_1_Silosteuerung
             S3      // Störungen quittieren
         }
 
-       public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _foerderanlageViewModel.Silosteuerung.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _foerderanlageViewModel.Silosteuerung.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _foerderanlageViewModel.Silosteuerung.F1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F2, _foerderanlageViewModel.Silosteuerung.F2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _foerderanlageViewModel.Silosteuerung.S0);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _foerderanlageViewModel.Silosteuerung.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _foerderanlageViewModel.Silosteuerung.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _foerderanlageViewModel.Silosteuerung.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _foerderanlageViewModel.Silosteuerung.F1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F2, _foerderanlageViewModel.Silosteuerung.F2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _foerderanlageViewModel.Silosteuerung.S0);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _foerderanlageViewModel.Silosteuerung.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
 
-            S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
-        }
+                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
+            }
 
-       
+
             _foerderanlageViewModel.Silosteuerung.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _foerderanlageViewModel.Silosteuerung.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             _foerderanlageViewModel.Silosteuerung.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);

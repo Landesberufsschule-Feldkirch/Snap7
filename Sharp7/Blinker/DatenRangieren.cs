@@ -1,12 +1,11 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace Blinker
 {
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -22,19 +21,19 @@ namespace Blinker
             S5      // Reset
         }
 
-      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Blinker.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Blinker.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Blinker.S3);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Blinker.S4);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Blinker.S5);
-        }
-        }
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur) => _viewModel.Blinker.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Blinker.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Blinker.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Blinker.S3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Blinker.S4);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _viewModel.Blinker.S5);
+            }
 
+            _viewModel.Blinker.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+        }
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }

@@ -6,7 +6,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BytePosition
         {
@@ -18,13 +18,13 @@ namespace VoltmeterMitSiebenSegmentAnzeige
             Byte5
         }
 
-       public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            //
-        }
-     
+                //
+            }
+
 
             _viewModel.Voltmeter.AlleVoltmeter[0] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte0);    // Farbe
             _viewModel.Voltmeter.AlleVoltmeter[1] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte1);    // 7-Segment Anzeige ganz rechts

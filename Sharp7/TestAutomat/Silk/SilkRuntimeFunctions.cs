@@ -1,4 +1,5 @@
 ﻿using Kommunikation;
+using PlcDatenTypen;
 using SoftCircuits.Silk;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using PlcDatenTypen;
 using TestAutomat.Model;
 
 namespace TestAutomat.Silk

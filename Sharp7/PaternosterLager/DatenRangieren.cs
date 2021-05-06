@@ -7,7 +7,7 @@ namespace PaternosterLager
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -23,18 +23,18 @@ namespace PaternosterLager
             S2      // Ab
         }
 
-      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Paternosterlager.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Paternosterlager.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Paternosterlager.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Paternosterlager.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Paternosterlager.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Paternosterlager.S2);
 
-            _plc.SetUsIntAt(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
-        }
-    
+                _plc.SetUsIntAt(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
+            }
+
 
             _viewModel.Paternosterlager.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Paternosterlager.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);

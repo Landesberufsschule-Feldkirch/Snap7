@@ -2,7 +2,7 @@
 {
     using System;
     using System.Windows.Input;
-    
+
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;

@@ -1,12 +1,11 @@
-﻿using System;
-using Kommunikation;
-using System.Text;
+﻿using Kommunikation;
+using System;
 
 namespace Tiefgarage
 {
     public partial class MainWindow
     {
-       public IPlc Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -35,7 +34,7 @@ namespace Tiefgarage
 
             datenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
         }
     }
 }

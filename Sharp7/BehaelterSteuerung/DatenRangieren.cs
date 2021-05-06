@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace BehaelterSteuerung
 {
@@ -31,7 +30,7 @@ namespace BehaelterSteuerung
 
         public DatenRangieren(BehaelterSteuerung.ViewModel.ViewModel behaelterViewModel) => _viewModel = behaelterViewModel;
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

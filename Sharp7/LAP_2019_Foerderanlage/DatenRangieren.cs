@@ -8,7 +8,7 @@ namespace LAP_2019_Foerderanlage
     {
         private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _foerderanlageViewModel;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -36,27 +36,27 @@ namespace LAP_2019_Foerderanlage
             S8      // Handbetrieb Materialschieber
         }
 
-      public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _foerderanlageViewModel.Foerderanlage.B1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _foerderanlageViewModel.Foerderanlage.B2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _foerderanlageViewModel.Foerderanlage.F1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _foerderanlageViewModel.Foerderanlage.S0);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _foerderanlageViewModel.Foerderanlage.S1);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Foerderanlage.S2);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Foerderanlage.S3);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _foerderanlageViewModel.Foerderanlage.S4);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _foerderanlageViewModel.Foerderanlage.S5);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _foerderanlageViewModel.Foerderanlage.S6);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _foerderanlageViewModel.Foerderanlage.S7);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _foerderanlageViewModel.Foerderanlage.S8);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _foerderanlageViewModel.Foerderanlage.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _foerderanlageViewModel.Foerderanlage.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _foerderanlageViewModel.Foerderanlage.F1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _foerderanlageViewModel.Foerderanlage.S0);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _foerderanlageViewModel.Foerderanlage.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Foerderanlage.S2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Foerderanlage.S3);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _foerderanlageViewModel.Foerderanlage.S4);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S5, _foerderanlageViewModel.Foerderanlage.S5);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S6, _foerderanlageViewModel.Foerderanlage.S6);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _foerderanlageViewModel.Foerderanlage.S7);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _foerderanlageViewModel.Foerderanlage.S8);
 
-            S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
-        }
+                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
+            }
 
-      
+
             if (_mainWindow.DebugWindowAktiv) return;
 
             _foerderanlageViewModel.Foerderanlage.K1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);

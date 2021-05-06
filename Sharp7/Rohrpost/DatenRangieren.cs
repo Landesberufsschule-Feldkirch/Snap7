@@ -7,7 +7,7 @@ namespace Rohrpost
         private readonly MainWindow mainWindow;
         private IPlc _plc;
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

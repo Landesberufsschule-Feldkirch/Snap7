@@ -15,7 +15,6 @@ namespace Blinklicht_Fibonacci.ViewModel
             _mainWindow = mw;
             _blinklichtFibonacci = blinklichtFibonacci;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -35,7 +34,6 @@ namespace Blinklicht_Fibonacci.ViewModel
             {
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
@@ -53,17 +51,6 @@ namespace Blinklicht_Fibonacci.ViewModel
         internal void TasterS1() => _blinklichtFibonacci.S1 = ClickModeButtonS1();
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal
@@ -158,7 +145,7 @@ namespace Blinklicht_Fibonacci.ViewModel
                 OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

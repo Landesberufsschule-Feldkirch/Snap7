@@ -30,7 +30,7 @@ namespace LaborLinearachse.Model
         public double PositionSchlitten { get; set; }
 
         private const double GeschwindigkeitSchlitten = 0.2;
-        private const  double SchlittenBreite = 525;
+        private const double SchlittenBreite = 525;
         private const double SchlittenEndschalterBreite = 10;
         private const double SchlittenLinkerRand = SchlittenEndschalterBreite;
         private const double SchlittenRechterRand = SchlittenBreite - SchlittenEndschalterBreite;
@@ -39,7 +39,7 @@ namespace LaborLinearachse.Model
             S2 = true;
             S9 = true;
             S10 = true;
-            
+
             System.Threading.Tasks.Task.Run(LinearachseTask);
         }
 

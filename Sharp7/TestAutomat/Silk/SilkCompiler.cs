@@ -1,15 +1,15 @@
-﻿using System.Diagnostics;
-using Kommunikation;
+﻿using Kommunikation;
 using SoftCircuits.Silk;
+using System.Diagnostics;
 
 namespace TestAutomat.Silk
 {
     public partial class Silk
     {
         public static AutoTesterWindow AutoTesterWindow { get; set; }
-        public  static Datenstruktur Datenstruktur { get; set; }
+        public static Datenstruktur Datenstruktur { get; set; }
         public static Stopwatch SilkStopwatch { get; set; }
-        public  static IPlc Plc { get; set; }
+        public static IPlc Plc { get; set; }
 
         public static (bool erfolgreich, Compiler compiler, CompiledProgram program) Compile(string mySourceFile)
         {

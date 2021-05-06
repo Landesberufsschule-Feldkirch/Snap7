@@ -20,7 +20,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             _mainWindow = mw;
             Silosteuerung = st;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -127,17 +126,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         internal void BtnS3() => Silosteuerung.S3 = ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal

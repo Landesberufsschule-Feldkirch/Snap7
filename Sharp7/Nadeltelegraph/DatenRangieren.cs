@@ -2,8 +2,6 @@
 
 namespace Nadeltelegraph
 {
-    using Sharp7;
-
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
@@ -23,7 +21,7 @@ namespace Nadeltelegraph
             P5L
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

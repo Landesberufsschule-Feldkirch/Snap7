@@ -2,15 +2,13 @@
 using ScottPlot;
 using System;
 using System.Drawing;
-using System.Text;
-using System.Windows;
 using System.Windows.Threading;
 
 namespace Blinker
 {
     public partial class MainWindow
     {
-       public IPlc Plc { get; set; } 
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -45,7 +43,7 @@ namespace Blinker
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 

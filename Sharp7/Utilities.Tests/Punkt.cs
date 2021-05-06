@@ -13,7 +13,7 @@ namespace Utilities.Tests
         {
             var p = new Utilities.Punkt(x, y);
 
-            Assert.Equal(x,p.X, 3);
+            Assert.Equal(x, p.X, 3);
             Assert.Equal(y, p.Y, 3);
         }
 

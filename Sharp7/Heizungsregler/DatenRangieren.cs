@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace Heizungsregler
 {
@@ -7,7 +6,7 @@ namespace Heizungsregler
     {
         private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
         private readonly MainWindow _mainWindow;
-         private IPlc _plc;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -25,29 +24,29 @@ namespace Heizungsregler
 
 
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
-            /*
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
-            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
+                /*
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 
-            S7.SetIntAt(anInput, 0, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
-            S7.SetIntAt(anInput, 2, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
-            S7.SetIntAt(anInput, 4, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
-            S7.SetIntAt(anInput, 6, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
-            S7.SetIntAt(anInput, 8, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
+                S7.SetIntAt(anInput, 0, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
+                S7.SetIntAt(anInput, 2, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
+                S7.SetIntAt(anInput, 4, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
+                S7.SetIntAt(anInput, 6, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
+                S7.SetIntAt(anInput, 8, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
 
-            S7.SetIntAt(anInput, 10, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
-            S7.SetIntAt(anInput, 12, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
-            S7.SetIntAt(anInput, 14, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
-            S7.SetIntAt(anInput, 16, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
+                S7.SetIntAt(anInput, 10, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
+                S7.SetIntAt(anInput, 12, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
+                S7.SetIntAt(anInput, 14, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
+                S7.SetIntAt(anInput, 16, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
 
-            S7.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
-            */
+                S7.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
+                */
 
-                }      
+            }
 
             if (_mainWindow.WohnHaus == null) return;
 

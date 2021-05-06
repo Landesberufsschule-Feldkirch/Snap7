@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
-using System.IO;
-using Kommunikation;
+﻿using Kommunikation;
 using SoftCircuits.Silk;
+using System.Diagnostics;
+using System.IO;
 
 namespace TestAutomat.Model
 {

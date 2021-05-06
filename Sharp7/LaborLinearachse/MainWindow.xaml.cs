@@ -1,14 +1,14 @@
-﻿using System;
+﻿using BeschriftungPlc;
 using Kommunikation;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using BeschriftungPlc;
 
 namespace LaborLinearachse
 {
     public partial class MainWindow
     {
-       public IPlc Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
@@ -40,14 +40,14 @@ namespace LaborLinearachse
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
-            
+
             var befehlszeile = Environment.GetCommandLineArgs();
             if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 

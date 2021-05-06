@@ -113,7 +113,7 @@ namespace SoftCircuits.Silk
                 return token;
             }
 
-            ParseNextToken:
+        ParseNextToken:
 
             // Skip any whitespace (does not skip newlines)
             LexHelper.MovePastWhitespace();

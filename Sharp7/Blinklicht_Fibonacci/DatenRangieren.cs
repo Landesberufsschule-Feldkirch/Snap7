@@ -16,7 +16,7 @@ namespace Blinklicht_Fibonacci
             S1 = 0 // Taster Start
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

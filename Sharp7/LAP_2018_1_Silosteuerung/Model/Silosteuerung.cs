@@ -27,7 +27,7 @@ namespace LAP_2018_1_Silosteuerung.Model
         {
             Wagen = new Wagen();
             Silo = new Silo();
-            
+
             RutscheVoll = true;
 
             F1 = true;

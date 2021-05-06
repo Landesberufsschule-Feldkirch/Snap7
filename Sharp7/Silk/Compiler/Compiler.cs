@@ -669,7 +669,7 @@ namespace SoftCircuits.Silk
             return true;
         }
 
-#region Function/Variable/Literal/Labels handling
+        #region Function/Variable/Literal/Labels handling
 
         /// <summary>
         /// Registers an intrinsic function with the compiler. If the program calls this function at runtime,
@@ -879,9 +879,9 @@ namespace SoftCircuits.Silk
             return true;
         }
 
-#endregion
+        #endregion
 
-#region Parsing support
+        #region Parsing support
 
         /// <summary>
         /// Checks if there are any other tokens on the current line. If another token is
@@ -911,9 +911,9 @@ namespace SoftCircuits.Silk
             } while (token.Type != TokenType.EndOfLine && token.Type != TokenType.EndOfFile);
         }
 
-#endregion
+        #endregion
 
-#region Error handling
+        #region Error handling
 
         internal void Error(ErrorCode code, ErrorLevel level = ErrorLevel.Error)
         {
@@ -950,7 +950,7 @@ namespace SoftCircuits.Silk
                 Error(e.ErrorCode);
         }
 
-#endregion
+        #endregion
 
     }
 }

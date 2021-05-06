@@ -3,7 +3,6 @@
 namespace AmpelsteuerungKieswerk
 {
     using Model;
-    using Sharp7;
     using System;
 
     public class DatenRangieren
@@ -33,7 +32,7 @@ namespace AmpelsteuerungKieswerk
             B4
         }
 
-        public void Rangieren(Kommunikation.Datenstruktur datenstruktur, bool eingaengeRangieren)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {

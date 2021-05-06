@@ -1,13 +1,11 @@
-﻿using System;
-using Kommunikation;
-using System.Text;
-using System.Windows;
+﻿using Kommunikation;
+using System;
 
 namespace ElektronischesZahlenschloss
 {
     public partial class MainWindow
     {
-       public IPlc Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
@@ -32,15 +30,15 @@ namespace ElektronischesZahlenschloss
 
             InitializeComponent();
             DataContext = viewModel;
-            
+
             var befehlszeile = Environment.GetCommandLineArgs();
             if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
-            
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
