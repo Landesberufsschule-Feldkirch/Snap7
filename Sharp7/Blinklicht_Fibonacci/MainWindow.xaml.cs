@@ -37,23 +37,24 @@ namespace Blinklicht_Fibonacci
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
-            
+
             _viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(_viewModel);
-            
+
             InitializeComponent();
-            
+
             DataContext = _viewModel;
-            
+
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            
             BeschriftungenPlc = new BeschriftungenPlc();
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 

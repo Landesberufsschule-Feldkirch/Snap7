@@ -25,10 +25,7 @@ namespace WordClock
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
 
@@ -38,11 +35,12 @@ namespace WordClock
             DataContext = viewModel;
 
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, datenRangieren.Rangieren);
 
             datenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
 
             for (double i = 0; i < 360; i += 30) RotiertesRechteckHinzufuegen(8, 30, i);
             for (double i = 0; i < 360; i += 6) RotiertesRechteckHinzufuegen(2, 10, i);

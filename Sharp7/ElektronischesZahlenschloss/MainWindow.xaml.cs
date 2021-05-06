@@ -34,11 +34,13 @@ namespace ElektronischesZahlenschloss
             DataContext = viewModel;
             
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
+            
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;

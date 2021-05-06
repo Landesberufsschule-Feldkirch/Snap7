@@ -6,6 +6,7 @@
         bool GetSpsError();
         string GetVersion();
         string GetPlcModus();
+        string GetPlcBezeichnung();
         void SetPlcModus(string modus);
         void SetTaskRunning(bool active);
         void SetZyklusZeitKommunikation(int zeit);

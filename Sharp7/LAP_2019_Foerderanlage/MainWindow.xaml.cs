@@ -40,12 +40,12 @@ namespace LAP_2019_Foerderanlage
             DataContext = _viewModel;
 
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
-            BtnDebugWindow.Visibility = System.Diagnostics.Debugger.IsAttached ? Visibility.Visible : Visibility.Hidden;
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }

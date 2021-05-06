@@ -28,10 +28,7 @@ namespace PaternosterLager
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             FensterAktiv = true;
             _viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
@@ -41,11 +38,12 @@ namespace PaternosterLager
             DataContext = _viewModel;
             
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }

@@ -15,17 +15,15 @@ namespace Kommunikation
         private readonly S7Client _client = new S7Client();
         private readonly Action<Datenstruktur, bool> _callbackRangieren;
         private readonly Datenstruktur _datenstruktur;
-        private readonly IpAdressen _spsClient;
+        private readonly IpAdressenSiemens _spsClient;
 
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private bool _spsError;
 
         public S71200(Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
         {
-            _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
-
+            _spsClient = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
             _datenstruktur = datenstruktur;
-
             _callbackRangieren = cbRangieren;
 
             System.Threading.Tasks.Task.Run(SpsKommunikationTask);
@@ -146,6 +144,8 @@ namespace Kommunikation
         {
             throw new NotImplementedException();
         }
+
+        public string GetPlcBezeichnung() => _spsClient.Description;
 
         public void SetPlcModus(string modus)
         {

@@ -130,7 +130,8 @@ namespace Kommunikation
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public string GetPlcModus() => _plcModus;
-
+        public string GetPlcBezeichnung() => _spsClient.Description;
+        
         public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
 
 

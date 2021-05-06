@@ -16,7 +16,7 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <None Update="IpAdressen.json">
+    <None Update="IpAdressenSiemens.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="IpAdressenBeckhoff.json">

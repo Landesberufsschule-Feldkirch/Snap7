@@ -38,11 +38,12 @@ namespace BehaelterSteuerung
             }
 
             var befehlszeile = Environment.GetCommandLineArgs();
-            var plcType = befehlszeile[1][5..];
-            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
+            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
             else Plc = new S71200(Datenstruktur, datenRangieren.Rangieren);
 
             datenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText;
 
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
