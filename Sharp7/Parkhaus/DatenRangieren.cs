@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace Parkhaus
 {

@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\IconPlotter.jpg" />
+    <None Remove="Bilder\S7_1200.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Bilder\CarGreen.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -20,11 +25,16 @@
     <Resource Include="Bilder\CarYellow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\IconPlotter.jpg" />
+    <Resource Include="Bilder\S7_1200.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
+    <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 
@@ -39,6 +49,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ConfigPlc\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Parkhaus_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

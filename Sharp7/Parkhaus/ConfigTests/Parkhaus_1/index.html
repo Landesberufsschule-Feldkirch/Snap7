@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projekt</title>
+    <style>
+        h1 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            padding: 1em;
+            border: 3px solid black;
+            background-color: #E0E0E0;
+            display: inline-block;
+        }
+
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        .text_schwarz {
+            font-family: arial, sans-serif;
+            font-size: 12pt;
+            font-weight: normal;
+            color: black;
+        }
+
+        .di {
+            background-color: rgb(243, 247, 129);
+            width: 50px;
+        }
+
+        .dq {
+            background-color: rgb(169, 245, 225);
+            width: 80px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Parkhaus</h1>
+    <br>
+    <div class="text_schwarz">
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=596" target="_blank">&rarr; Linderonline/FK</a>
+        <br><br>
+        <span class="beschreibung">Beschreibung</span>
+        <br><br>
+
+
+        In einem Parkhaus wird mit Ultraschallsensoren bei allen Parkplätzen erfasst, ob der Parkplatz frei ist oder nicht.
+        <br>
+        Die Anzahl der freien Parkplätze soll angezeigt werden.
+        <br><br>
+        Damit nicht zu viele Anschlüsse der SPS verwendet werden müssen, werden nicht alle Sensoren auf einmal eingelesen.
+        Es werden immer zeilenweise 8 Eingänge erfasst.
+        <br>
+        Bei 8 Aus- und 8 Eingängen könnten daher 8 * 8 Sensoren erfasst werden.
+        D.h. mit 16 Leitungen können 64 Sensoren überwacht werden.
+
+
+        <br><br>
+
+
+        <table>
+            <tr>            <td>Name	 	        </td> <td>Adresse	</td> <td>Kommentar	            </td> </tr>
+            <tr class="di"> <td>DigInput.PS1        </td>	<td>-PS1    </td> <td>Parkplätze Spalte 1   </td> </tr>
+            <tr class="di"> <td>DigInput.PS2        </td>	<td>-PS2	</td> <td>Parkplätze Spalte 2   </td> </tr>
+            <tr class="di"> <td>DigInput.PS3        </td>	<td>-PS3	</td> <td>Parkplätze Spalte 3   </td> </tr>
+            <tr class="di"> <td>DigInput.PS4        </td>	<td>-PS4	</td> <td>Parkplätze Spalte 4   </td> </tr>
+            <tr class="di"> <td>DigInput.PS5        </td>	<td>-PS5	</td> <td>Parkplätze Spalte 5   </td> </tr>
+            <tr class="di"> <td>DigInput.PS6        </td>	<td>-PS6	</td> <td>Parkplätze Spalte 6   </td> </tr>
+            <tr class="di"> <td>DigInput.PS7        </td>	<td>-PS7	</td> <td>Parkplätze Spalte 7   </td> </tr>
+            <tr class="di"> <td>DigInput.PS8        </td>	<td>-PS8	</td> <td>Parkplätze Spalte 8   </td> </tr>
+
+            <tr class="dq"> <td>DigOutput.PR1       </td>	<td>-PR1	</td> <td>Parkplätze Reihe 1    </td> </tr>
+            <tr class="dq"> <td>DigOutput.PR2       </td>	<td>-PR2	</td> <td>Parkplätze Reihe 2    </td> </tr>
+            <tr class="dq"> <td>DigOutput.PR3       </td>	<td>-PR3	</td> <td>Parkplätze Reihe 3    </td> </tr>
+            <tr class="dq"> <td>DigOutput.PR4       </td>	<td>-PR4	</td> <td>Parkplätze Reihe 4    </td> </tr>
+
+            <tr class="dq">	<td>AnalogOutput.Anzahl </td>	<td>-Anzahl	</td> <td>freie Parkplätz       </td> </tr>
+        </table>
+        
+
+    </div>
+    <br><br>
+</body>
+
+</html>

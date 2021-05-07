@@ -1,0 +1,28 @@
+﻿{
+  "DaBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "PR1",
+      "Kommentar": "Parkhaus Reihe 1"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "PR2",
+      "Kommentar": "Parkhaus Reihe 2"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "PR3",
+      "Kommentar": "Parkhaus Reihe 3"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "PR4",
+      "Kommentar": "Parkhaus Reihe 4"
+    }
+  ]
+}
