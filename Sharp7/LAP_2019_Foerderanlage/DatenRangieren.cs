@@ -53,7 +53,7 @@ namespace LAP_2019_Foerderanlage
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _foerderanlageViewModel.Foerderanlage.S7);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _foerderanlageViewModel.Foerderanlage.S8);
 
-                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
+                _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
             }
 
 

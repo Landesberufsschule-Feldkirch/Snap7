@@ -43,7 +43,7 @@ namespace LAP_2018_1_Silosteuerung
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _foerderanlageViewModel.Silosteuerung.S2);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _foerderanlageViewModel.Silosteuerung.S3);
 
-                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
+                _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
             }
 
 

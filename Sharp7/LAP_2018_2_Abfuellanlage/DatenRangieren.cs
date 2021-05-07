@@ -39,7 +39,7 @@ namespace LAP_2018_2_Abfuellanlage
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _viewModel.Abfuellanlage.S3);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Abfuellanlage.S4);
 
-                S7.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Abfuellanlage.Pegel, 1));
+                _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Abfuellanlage.Pegel, 1));
             }
 
 

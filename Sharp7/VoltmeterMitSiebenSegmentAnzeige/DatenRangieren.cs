@@ -2,7 +2,6 @@
 
 namespace VoltmeterMitSiebenSegmentAnzeige
 {
-    using Sharp7;
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
@@ -26,12 +25,12 @@ namespace VoltmeterMitSiebenSegmentAnzeige
             }
 
 
-            _viewModel.Voltmeter.AlleVoltmeter[0] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte0);    // Farbe
-            _viewModel.Voltmeter.AlleVoltmeter[1] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte1);    // 7-Segment Anzeige ganz rechts
-            _viewModel.Voltmeter.AlleVoltmeter[2] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte2);
-            _viewModel.Voltmeter.AlleVoltmeter[3] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte3);
-            _viewModel.Voltmeter.AlleVoltmeter[4] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte4);
-            _viewModel.Voltmeter.AlleVoltmeter[5] = S7.GetUSIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte5);    // 7-Segment Anzeige ganz rechts
+            _viewModel.Voltmeter.AlleVoltmeter[0] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte0);    // Farbe
+            _viewModel.Voltmeter.AlleVoltmeter[1] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte1);    // 7-Segment Anzeige ganz rechts
+            _viewModel.Voltmeter.AlleVoltmeter[2] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte2);
+            _viewModel.Voltmeter.AlleVoltmeter[3] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte3);
+            _viewModel.Voltmeter.AlleVoltmeter[4] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte4);
+            _viewModel.Voltmeter.AlleVoltmeter[5] = _plc.GetUsIntAt(datenstruktur.DigOutput, (int)BytePosition.Byte5);    // 7-Segment Anzeige ganz rechts
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

@@ -39,8 +39,8 @@ namespace PaternosterLager
             _viewModel.Paternosterlager.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Paternosterlager.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
-            _viewModel.Paternosterlager.IstPos = S7.GetUSIntAt(datenstruktur.DigOutput, 1);
-            _viewModel.Paternosterlager.SollPos = S7.GetUSIntAt(datenstruktur.DigOutput, 2);
+            _viewModel.Paternosterlager.IstPos = _plc.GetUsIntAt(datenstruktur.DigOutput, 1);
+            _viewModel.Paternosterlager.SollPos = _plc.GetUsIntAt(datenstruktur.DigOutput, 2);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;

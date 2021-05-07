@@ -22,8 +22,8 @@ namespace Tiefgarage
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.AlleFahrzeugePersonen.B2);
             }
 
-            _viewModel.AlleFahrzeugePersonen.AnzahlAutos = S7.GetUSIntAt(datenstruktur.DigOutput, 0);
-            _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = S7.GetUSIntAt(datenstruktur.DigOutput, 1);
+            _viewModel.AlleFahrzeugePersonen.AnzahlAutos = _plc.GetUsIntAt(datenstruktur.DigOutput, 0);
+            _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = _plc.GetUsIntAt(datenstruktur.DigOutput, 1);
         }
 
         public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm) => _viewModel = vm;

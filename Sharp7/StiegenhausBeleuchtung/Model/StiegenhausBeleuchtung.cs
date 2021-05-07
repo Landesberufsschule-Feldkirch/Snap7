@@ -99,13 +99,21 @@ namespace StiegenhausBeleuchtung.Model
                 {
                     if (_ortAktuell.stock != _ortZiel.stock)// unterschiedlicher Stock?
                     {
-                        if (_ortAktuell.raum == 0)// im Stiegenhaus
+                        switch (_ortAktuell.raum)
                         {
-                            if (_ortAktuell.stock < _ortZiel.stock) _ortAktuell.stock++; else _ortAktuell.stock--;
-                        }
-                        else
-                        {
-                            if (_ortAktuell.raum < 0) _ortAktuell.raum++; else _ortAktuell.raum--;
+                            // im Stiegenhaus
+                            case 0 when _ortAktuell.stock < _ortZiel.stock:
+                                _ortAktuell.stock++;
+                                break;
+                            case 0:
+                                _ortAktuell.stock--;
+                                break;
+                            case < 0:
+                                _ortAktuell.raum++;
+                                break;
+                            default:
+                                _ortAktuell.raum--;
+                                break;
                         }
                     }
                     else

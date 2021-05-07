@@ -28,18 +28,20 @@ namespace Blinker.Model
             while (true)
             {
                 long zeitDauer;
-                if (P1 && !p1Alt) // positive Flanke
+                switch (P1)
                 {
-                    zeitDauer = stopwatch.ElapsedMilliseconds;
-                    stopwatch.Restart();
-                    AusZeit = zeitDauer;
-                }
-
-                if (!P1 && p1Alt)// negative Flanke
-                {
-                    zeitDauer = stopwatch.ElapsedMilliseconds;
-                    stopwatch.Restart();
-                    EinZeit = zeitDauer;
+                    // positive Flanke
+                    case true when !p1Alt:
+                        zeitDauer = stopwatch.ElapsedMilliseconds;
+                        stopwatch.Restart();
+                        AusZeit = zeitDauer;
+                        break;
+                    // negative Flanke
+                    case false when p1Alt:
+                        zeitDauer = stopwatch.ElapsedMilliseconds;
+                        stopwatch.Restart();
+                        EinZeit = zeitDauer;
+                        break;
                 }
 
                 p1Alt = P1;

@@ -46,8 +46,8 @@ namespace AutomatischesLagersystem
             }
 
             /*
-            viewModel.paternosterlager.IstPos = S7.GetUSIntAt(digOutput, 1);
-            viewModel.paternosterlager.SollPos = S7.GetUSIntAt(digOutput, 2);
+            viewModel.paternosterlager.IstPos = _plc.GetUSIntAt(digOutput, 1);
+            viewModel.paternosterlager.SollPos = _plc.GetUSIntAt(digOutput, 2);
             */
         }
 

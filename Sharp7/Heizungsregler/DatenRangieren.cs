@@ -32,18 +32,18 @@ namespace Heizungsregler
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.Kraftwerk.KraftwerkStarten);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.Kraftwerk.KraftwerkStoppen);
 
-                S7.SetIntAt(anInput, 0, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
-                S7.SetIntAt(anInput, 2, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
-                S7.SetIntAt(anInput, 4, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
-                S7.SetIntAt(anInput, 6, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
-                S7.SetIntAt(anInput, 8, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
+                _plc.SetIntAt(anInput, 0, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_n, 10000));
+                _plc.SetIntAt(anInput, 2, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_U, 1000));
+                _plc.SetIntAt(anInput, 4, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_f, 100));
+                _plc.SetIntAt(anInput, 6, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_P, 10000));
+                _plc.SetIntAt(anInput, 8, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Generator_CosPhi, 1));
 
-                S7.SetIntAt(anInput, 10, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
-                S7.SetIntAt(anInput, 12, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
-                S7.SetIntAt(anInput, 14, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
-                S7.SetIntAt(anInput, 16, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
+                _plc.SetIntAt(anInput, 10, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_U, 1000));
+                _plc.SetIntAt(anInput, 12, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_f, 100));
+                _plc.SetIntAt(anInput, 14, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_P, 10000));
+                _plc.SetIntAt(anInput, 16, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.Netz_CosPhi, 1));
 
-                S7.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
+                _plc.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
                 */
 
             }

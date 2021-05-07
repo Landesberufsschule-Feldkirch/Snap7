@@ -25,7 +25,7 @@ namespace ElektronischesZahlenschloss
             _viewModel.Zahlenschloss.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Zahlenschloss.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
 
-            _viewModel.Zahlenschloss.CodeAnzeige = S7.GetUIntAt(datenstruktur.AnalogOutput, 0);
+            _viewModel.Zahlenschloss.CodeAnzeige = _plc.GetUIntAt(datenstruktur.AnalogOutput, 0);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
