@@ -46,7 +46,7 @@ namespace PlcDatenTypen.Tests
 
         [Theory]
         [InlineData("256", "uuups - zu große Zahl!")]
-        [InlineData("1", "2#0001")]
+        [InlineData("1", "2#0000_0001")]
         [InlineData("105", "2#0110_1001")]
         public void Bin_8Bit_Test(string zahl, string ergebnis)
         {

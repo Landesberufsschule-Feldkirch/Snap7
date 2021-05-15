@@ -4,17 +4,31 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+    Zeitgeber: TON_TIME;
+    ZyklusAktiv: Bool;
 END_VAR
 
 (*  *********************************************************** *)
-(*  Linearachse: Motorschaltungen 1 - Version 1                 *)
+(*  Blinklicht Fibonacci                                        *)
 (*  *********************************************************** *)
 
+#Zeitgeber(IN := #ZyklusAktiv,
+           PT := T#4s);
+
 IF "DigInput".S1 THEN
-    "DigOutput".P4 := true;
+    #ZyklusAktiv := TRUE;
 END_IF;
 
-IF NOT "DigInput".S2 THEN
-    "DigOutput".P4 := FALSE;
+IF #Zeitgeber.Q THEN
+    #ZyklusAktiv := FALSE;
 END_IF;
+
+"DigOutput".P1 := #ZyklusAktiv
+    AND (
+            (#Zeitgeber.ET < T#100MS)
+        OR  (#Zeitgeber.ET > T#200MS AND #Zeitgeber.ET < T#400MS)
+        OR  (#Zeitgeber.ET > T#700MS AND #Zeitgeber.ET < T#1S200MS)
+        OR  (#Zeitgeber.ET > T#2S AND #Zeitgeber.ET < T#3S300MS)
+        );
+        
     

@@ -72,8 +72,8 @@ main()
     }
 
     testArray = {
-        {P4 + Q1, Maske_P2_P3_P4_Q1_Q2, "T#2s", "T#5s", "Linearachse Rechtslauf"},
-        {P4 + Q2, Maske_P2_P3_P4_Q1_Q2, "T#2s", "T#5s", "Linearachse Linkslauf"}
+        {P4 + Q1, Maske_P2_P3_P4_Q1_Q2,     "T#2s",     0.1,    "T#5s",     "Linearachse Rechtslauf"},
+        {P4 + Q2, Maske_P2_P3_P4_Q1_Q2,     "T#2s",     0.1,    "T#5s",     "Linearachse Linkslauf"}
     }
 
     TestAblauf setArray, testArray

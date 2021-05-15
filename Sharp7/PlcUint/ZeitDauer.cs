@@ -67,9 +67,8 @@ namespace PlcDatenTypen
                 _dauerMs = dauer.All(char.IsDigit) ? long.Parse(dauer) : 0;
             }
         }
-
         public long GetZeitDauerMs() => _dauerMs;
-
+        public double GetZeitDauer() => (double)_dauerMs;
         public static string ConvertLong2Ms(long zeit)
         {
             if (zeit < 1000) return $"{zeit}ms";

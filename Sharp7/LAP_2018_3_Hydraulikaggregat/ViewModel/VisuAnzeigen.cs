@@ -3,6 +3,7 @@ using System.Windows.Media;
 
 namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 {
+    using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;
@@ -99,6 +100,21 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+
+        internal void ErweiterungOelfilter()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ErweiterungZylinder()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ErweiterungOelkuehler()
+        {
+            throw new NotImplementedException();
         }
 
         internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();

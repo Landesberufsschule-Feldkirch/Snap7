@@ -49,5 +49,16 @@
         private ICommand _btnS3;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnS3 => _btnS3 ??= new RelayCommand(_ => ViAnzeige.BtnS3(), _ => true);
+
+
+
+        private ICommand _erweiterungOelkuehler;
+        public ICommand ErweiterungOelkuehler => _erweiterungOelkuehler ??= new RelayCommand(_ => ViAnzeige.ErweiterungOelkuehler(), _ => true);
+        
+        private ICommand _erweiterungZylinder;
+        public ICommand ErweiterungZylinder => _erweiterungZylinder ??= new RelayCommand(_ => ViAnzeige.ErweiterungZylinder(), _ => true);
+
+        private ICommand _erweiterungOelfilter;
+        public ICommand ErweiterungOelfilter => _erweiterungOelfilter ??= new RelayCommand(_ => ViAnzeige.ErweiterungOelfilter(), _ => true);
     }
 }

@@ -14,7 +14,10 @@ namespace TestAutomat.Silk
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 AutoTester.TestErgebnis.TestStart,
-                " ", " ", " ", " "));
+                " ",        // DigInput 
+                " ",        // DigOutput Soll
+                " ",        // DigOutput Ist
+                " "));
         }
 
         private static void Runtime_End(object sender, EndEventArgs e)
@@ -23,7 +26,10 @@ namespace TestAutomat.Silk
                 AutoTesterWindow.DataGridId++,
                 $"{SilkStopwatch.ElapsedMilliseconds}ms",
                 AutoTester.TestErgebnis.TestEnde,
-                " ", " ", " ", " "));
+                " ",        // DigInput 
+                " ",        // DigOutput Soll
+                " ",        // DigOutput Ist
+                " "));
         }
     }
 }

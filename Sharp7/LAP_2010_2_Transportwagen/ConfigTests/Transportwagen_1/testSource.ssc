@@ -38,8 +38,6 @@ main()
     SetDataGridBitAnzahl 8, 4
     VersionAnzeigen
     SetDigitaleEingaenge (B1 + F1 + S2 + S3)
-    PlcHotStart
-    PlcGetStatus
 
     UpdateAnzeige "Init", ""
     IncrementDataGridId
@@ -64,9 +62,9 @@ main()
     }
 
     testArray = {
-        {Q2,    Maske_P1_Q1_Q2,     "T#2s500ms",    "T#5s",     "Wagen Rechtslauf"},
-        {0,     Maske_P1_Q1_Q2,     "T#7s",         "T#10s",    "Wagen wird gefüllt"},
-        {Q1,    Maske_P1_Q1_Q2,     "T#2s",         "T#5s",     "Wagen Linkslauf"}
+        {Q2,    Maske_P1_Q1_Q2,     "T#2s500ms",   0.1,     "T#5s",     "Wagen Rechtslauf"},
+        {0,     Maske_P1_Q1_Q2,     "T#7s",        0.1,     "T#10s",    "Wagen wird gefüllt"},
+        {Q1,    Maske_P1_Q1_Q2,     "T#2s",        0.1,     "T#5s",     "Wagen Linkslauf"}
     }
 
     TestAblauf setArray, testArray

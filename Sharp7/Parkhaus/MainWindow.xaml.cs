@@ -21,8 +21,8 @@ namespace Parkhaus
 
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 2;
-        private const int AnzByteAnalogOutput = 0;
+        private const int AnzByteAnalogInput = 0;
+        private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
         {
