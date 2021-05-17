@@ -1,5 +1,4 @@
-﻿using Kommunikation;
-using PlcDatenTypen;
+﻿using PlcDatenTypen;
 using SoftCircuits.Silk;
 using System;
 using System.Diagnostics;
@@ -33,7 +32,7 @@ namespace TestAutomat.Silk
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            while (stopwatch.ElapsedMilliseconds < timeout.GetZeitDauerMs())
+            while (stopwatch.ElapsedMilliseconds < timeout.DauerMs)
             {
 
                 Thread.Sleep(10);
@@ -62,8 +61,8 @@ namespace TestAutomat.Silk
             var timeout = new ZeitDauer(e.Parameters[6].ToString());
             var kommentar = e.Parameters[7].ToString();
 
-            var periodenDauerMax = periodenDauer.GetZeitDauerMs() * (1 + toleranz);
-            var periodenDauerMin = periodenDauer.GetZeitDauerMs() * (1 - toleranz);
+            var periodenDauerMax = periodenDauer.DauerMs * (1 + toleranz);
+            var periodenDauerMin = periodenDauer.DauerMs * (1 - toleranz);
 
             var tastVerhaeltnisMax = tastVerhaeltnis * (1 + toleranz);
             var tastVerhaeltnisMin = tastVerhaeltnis * (1 - toleranz);
@@ -78,7 +77,7 @@ namespace TestAutomat.Silk
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            while (stopwatch.ElapsedMilliseconds < timeout.GetZeitDauerMs())
+            while (stopwatch.ElapsedMilliseconds < timeout.DauerMs)
             {
                 Thread.Sleep(10);
 

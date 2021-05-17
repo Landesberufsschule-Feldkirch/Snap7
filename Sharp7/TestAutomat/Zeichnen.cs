@@ -23,6 +23,8 @@ namespace TestAutomat
                 _autoTesterWindow.AutoTesterDataGrid.Clear();
                 _autoTesterWindow.DataGridId = 0;
             }
+
+            if (MyAutoTester != null) MyAutoTester = null;
             MyAutoTester = new AutoTester(_autoTesterWindow, aktuellesProjekt, datenstruktur, plc);
         }
     }

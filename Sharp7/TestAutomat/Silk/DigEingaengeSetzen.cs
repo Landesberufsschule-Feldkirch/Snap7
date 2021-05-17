@@ -28,8 +28,7 @@ namespace TestAutomat.Silk
         }
 
         internal void SetStartzeit(long zeit) => _startZeit = zeit;
-        internal long GetStartZeit() => _startZeit;
-        internal long GetEndZeit() => _startZeit + _dauer.GetZeitDauerMs();
+        internal long GetEndZeit() => _startZeit + _dauer.DauerMs;
 
         internal static int GetAktuellerSchritt() => _aktuellerSchritt;
         internal static void SetAktuellerSchritt(int schritt) => _aktuellerSchritt = schritt;
@@ -41,8 +40,5 @@ namespace TestAutomat.Silk
         internal Uint GetBitmuster() => _bitMuster;
         internal ZeitDauer GetDauer() => _dauer;
         internal string GetKommentar() => _kommentar;
-
-
-
     }
 }

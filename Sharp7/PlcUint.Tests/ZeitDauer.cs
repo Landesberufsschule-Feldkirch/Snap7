@@ -12,7 +12,7 @@ namespace PlcDatenTypen.Tests
         public void TestKonstruktorLong(string zahl, long ergebnis)
         {
             var zeitMs = new PlcDatenTypen.ZeitDauer(zahl);
-            Assert.Equal(ergebnis, zeitMs.GetZeitDauerMs());
+            Assert.Equal(ergebnis, zeitMs.DauerMs);
         }
 
         [Theory]
@@ -23,7 +23,7 @@ namespace PlcDatenTypen.Tests
         public void TestKonstruktorDouble(string zahl, long ergebnis)
         {
             var zeitMs = new PlcDatenTypen.ZeitDauer(zahl);
-            Assert.Equal(ergebnis, zeitMs.GetZeitDauer());
+            Assert.Equal(ergebnis, zeitMs.DauerMs);
         }
 
         [Theory]

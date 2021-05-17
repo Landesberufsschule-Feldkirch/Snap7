@@ -10,19 +10,22 @@ namespace TestAutomat.Model
         public enum TestErgebnis
         {
             // ReSharper disable UnusedMember.Global
-            CompilerStart = 0,
+            Aktiv,
+            AufBitmusterWarten,
             CompilerErfolgreich,
             CompilerError,
-            TestStart,
-            TestEnde,
-            Aktiv,
-            Init,
             Erfolgreich,
-            Timeout,
             Fehler,
+            ImpulsWarZuKurz,
+            ImpulsWarZuLang,
+            Init,
             Kommentar,
+            TestEnde,
+            TestStart,
+            Timeout,
+            UnbekanntesErgebnis,
             Version,
-            UnbekanntesErgebnis
+            CompilerStart
             // ReSharper restore UnusedMember.Global
         }
 

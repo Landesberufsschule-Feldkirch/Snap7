@@ -106,14 +106,13 @@ namespace Kommunikation
                     }
                     else
                     {
-                        ErrorAnzeigen(res.GetValueOrDefault());
+                        _spsStatus = ErrorAnzeigen(res.GetValueOrDefault());
                     }
                 }
                 else
                 {
                     _spsStatus = "Keine Verbindung zur S7-1200!";
                 }
-
 
                 Thread.Sleep(50);
             }
@@ -139,29 +138,23 @@ namespace Kommunikation
             var enc = new ASCIIEncoding();
             return enc.GetString(_datenstruktur.VersionInputSps, 2, textLaenge);
         }
-
         public string GetPlcModus()
         {
             throw new NotImplementedException();
         }
-
         public string GetPlcBezeichnung() => _spsClient.Description;
-
         public void SetPlcModus(string modus)
         {
             throw new NotImplementedException();
         }
-
         public void SetTaskRunning(bool active)
         {
             throw new NotImplementedException();
         }
-
         public void SetZyklusZeitKommunikation(int zeit)
         {
             throw new NotImplementedException();
         }
-
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public int ColdStart() => _client.PlcColdStart();
@@ -169,15 +162,9 @@ namespace Kommunikation
         public (int retval, int status) GetStatus()
         {
             var status = 0;
-            var retval = 0;
-            retval = _client.PlcGetStatus(ref status);
+            var retval = _client.PlcGetStatus(ref status);
             return (retval, status);
         }
-
-
-
-
-
 
         public bool GetBitAt(byte[] buffer, int bitPos)
         {
@@ -243,6 +230,5 @@ namespace Kommunikation
             buffer[pos] = (byte)(value >> 8);
             buffer[pos + 1] = (byte)(value & 0x00FF);
         }
-
     }
 }

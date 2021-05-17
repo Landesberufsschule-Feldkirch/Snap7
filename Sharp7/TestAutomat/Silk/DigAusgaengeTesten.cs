@@ -10,7 +10,6 @@ namespace TestAutomat.Silk
             Init = 0,
             AufBitmusterWarten,
             BitmusterLiegtAn,
-            SchrittAktiv,
             SchrittAbgeschlossen,
             Timeout
         }
@@ -21,8 +20,6 @@ namespace TestAutomat.Silk
 
         private readonly Uint _bitMuster;
         private readonly Uint _bitMaske;
-        private bool _schrittAktiv;
-        private readonly double _toleranz;
         private readonly ZeitDauer _timeout;
         private readonly string _kommentar;
         private long _startZeit;
@@ -37,16 +34,13 @@ namespace TestAutomat.Silk
             _bitMuster = new Uint(bitMuster);
             _bitMaske = new Uint(bitMaske);
             var dauer1 = new ZeitDauer(dauer);
-            _dauerMin = (long)(dauer1.GetZeitDauer() * (1 - toleranz));
-            _dauerMax = (long)(dauer1.GetZeitDauer() * (1 + toleranz));
-            _schrittAktiv = false;
-            _toleranz = toleranz;
+            _dauerMin = (long)(dauer1.DauerMs * (1 - toleranz));
+            _dauerMax = (long)(dauer1.DauerMs * (1 + toleranz));
             _timeout = new ZeitDauer(timeout);
             _kommentar = kommentar;
         }
 
         internal void SetStartzeit(long zeit) => _startZeit = zeit;
-        internal long GetStartZeit() => _startZeit;
         internal long GetZeitdauerMin() => _startZeit + _dauerMin;
         internal long GetZeitdauerMax() => _startZeit + _dauerMax;
         internal static int GetAktuellerSchritt() => _aktuellerSchritt;
@@ -54,15 +48,13 @@ namespace TestAutomat.Silk
         internal static void SetNaechsterSchritt() => _aktuellerSchritt++;
 
 
-        internal DigAusgaengeTesten.StatusDigAusgaenge GetAktuellerStatus() => _statusDigAusgaenge;
-        internal void SetAktuellerStatus(DigAusgaengeTesten.StatusDigAusgaenge status) => _statusDigAusgaenge = status;
+        internal StatusDigAusgaenge GetAktuellerStatus() => _statusDigAusgaenge;
+        internal void SetAktuellerStatus(StatusDigAusgaenge status) => _statusDigAusgaenge = status;
 
 
-        public long GetTimeoutMs() => _startZeit + _timeout.GetZeitDauerMs();
+        public long GetTimeoutMs() => _startZeit + _timeout.DauerMs;
         internal Uint GetBitMaske() => _bitMaske;
         internal Uint GetBitMuster() => _bitMuster;
         internal string GetKommentar() => _kommentar;
-        internal bool GetSchrittAktiv() => _schrittAktiv;
-        internal void SetSchrittAktiv(bool wert) => _schrittAktiv = wert;
     }
 }
