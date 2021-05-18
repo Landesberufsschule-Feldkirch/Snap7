@@ -127,22 +127,23 @@
 
                     <!--#region Erweiterung Ölkühler -->
                     <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="10"  Grid.RowSpan="6" Height="175" VerticalAlignment="Center" />
-                    <CheckBox Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="10" Grid.RowSpan="2" 
+                    <CheckBox x:Name="ChkOelkuehler" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="10" Grid.RowSpan="2" 
                               Content="Erweiterung Ölkühler" Command="{Binding ErweiterungOelkuehler}" FontSize="14pt" Margin="10,28,0,0"  />
 
-                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="12" Background="{Binding ViAnzeige.ColorB4}" FontSize="14pt" Content="B4" Command="{Binding BtnB4}" Margin="25,0,0,0" />
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="12" Background="{Binding ViAnzeige.ColorB4}" FontSize="14pt" Content="B4" Command="{Binding BtnB4}" Margin="25,0,0,0" Visibility="Visible" />
 
                     <Label Content="P5 " Grid.Column="18" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14pt" Margin="33,0,0,0"/>
-                    <Ellipse Grid.Column="19" Grid.Row="11" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnzeige.ColorP5}" Margin="5,22,5,23" />
+                    <Ellipse Grid.Column="19" Grid.Row="11" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnzeige.ColorP5}" Margin="5,22,5,23" IsEnabled="False" />
                     <Label Content="Lüfter" Grid.Column="19" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" />
 
                     <Label Content="Q4 " Grid.Column="18" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
                     <Label Grid.Column="19" Grid.Row="14" Background="{Binding ViAnzeige.ColorQ4}" Content="Lüfter" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="11" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnzeige.OelkuehlerAbgedeckt}" />
                     <!--#endregion Ölkühler -->
 
                     <!--#region  Zylinder-->
                     <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="16"  Grid.RowSpan="6" Margin="0,25,0,10"  />
-                    <CheckBox Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="16" Grid.RowSpan="2" 
+                    <CheckBox x:Name="ChZylinder" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="16" Grid.RowSpan="2" 
                               Content="Erweiterung Zylinder" Command="{Binding ErweiterungZylinder}" FontSize="14pt" Margin="10,28,0,0"  />
 
                     <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="18" Background="{Binding ViAnzeige.ColorS4}" FontSize="14pt" Content="S4" Command="{Binding BtnS4}" Margin="25,0,0,0" />
@@ -153,11 +154,12 @@
 
                     <Label Content="K2 " Grid.Column="18" Grid.Row="20" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
                     <Label Grid.Column="19" Grid.Row="20" Background="{Binding ViAnzeige.ColorK2}" Content="Einfahren" FontSize="9pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="17" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnzeige.ZylinderAbgedeckt}" />
                     <!--#endregion Zylinder -->
 
                     <!--#region  Ölfilter-->
                     <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="22"  Grid.RowSpan="4" Margin="0,17,0,0" />
-                    <CheckBox Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="22" Grid.RowSpan="2" 
+                    <CheckBox x:Name="ChkOelfilter" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="22" Grid.RowSpan="2" 
                               Content="Erweiterung Ölfilter" Command="{Binding ErweiterungOelfilter}" FontSize="14pt" Margin="10,28,0,0"  />
 
                     <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="24" Background="{Binding ViAnzeige.ColorB5}" FontSize="14pt" Content="B5" Command="{Binding BtnB5}" Margin="25,0,0,0" />
@@ -165,7 +167,7 @@
                     <Label Content="P6 " Grid.Column="18" Grid.Row="24" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14pt" Margin="33,0,0,0"/>
                     <Ellipse Grid.Column="19" Grid.Row="23" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnzeige.ColorP6}" Margin="5,22,5,23" />
                     <Label Content="Filter" Grid.Column="19" Grid.Row="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" />
-
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="23" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnzeige.OelfilterAbgedeckt}" />
                     <!--#endregion Ölfilter -->
 
 

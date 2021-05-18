@@ -3,7 +3,6 @@ using System.Windows.Media;
 
 namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 {
-    using System;
     using System.ComponentModel;
     using System.Threading;
     using System.Windows;
@@ -23,6 +22,9 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
             Druck = 1.1;
 
+            ClickModeBtnB4 = ClickMode.Press;
+            ClickModeBtnB5 = ClickMode.Press;
+
             ClickModeBtnQ1 = ClickMode.Press;
             ClickModeBtnQ2 = ClickMode.Press;
             ClickModeBtnQ3 = ClickMode.Press;
@@ -31,15 +33,22 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             ClickModeBtnS1 = ClickMode.Press;
             ClickModeBtnS2 = ClickMode.Press;
             ClickModeBtnS3 = ClickMode.Press;
+            ClickModeBtnS4 = ClickMode.Press;
+
+            ColorK1 = Brushes.LawnGreen;
+            ColorK2 = Brushes.LawnGreen;
 
             ColorP1 = Brushes.LawnGreen;
             ColorP2 = Brushes.LawnGreen;
             ColorP3 = Brushes.LawnGreen;
             ColorP4 = Brushes.LawnGreen;
+            ColorP5 = Brushes.LawnGreen;
+            ColorP6 = Brushes.LawnGreen;
 
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
             ColorQ3 = Brushes.LawnGreen;
+            ColorQ4 = Brushes.LawnGreen;
 
             Margin1 = new Thickness(42, 0, 32, 0);
 
@@ -53,6 +62,11 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             VisibilityB3Aus = Visibility.Visible;
 
             VisibilityKurzschluss = Visibility.Hidden;
+
+
+            OelkuehlerAbgedeckt = Visibility.Visible;
+            ZylinderAbgedeckt = Visibility.Visible;
+            OelfilterAbgedeckt = Visibility.Visible;
 
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -71,14 +85,20 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
                 FarbeF1(_hydraulikaggregat.F1);
 
+                FarbeK1(_hydraulikaggregat.K1);
+                FarbeK2(_hydraulikaggregat.K2);
+
                 FarbeP1(_hydraulikaggregat.P1);
                 FarbeP2(_hydraulikaggregat.P2);
                 FarbeP3(_hydraulikaggregat.P3);
                 FarbeP4(_hydraulikaggregat.P4);
+                FarbeP5(_hydraulikaggregat.P5);
+                FarbeP6(_hydraulikaggregat.P6);
 
                 FarbeQ1(_hydraulikaggregat.Q1);
                 FarbeQ2(_hydraulikaggregat.Q2);
                 FarbeQ3(_hydraulikaggregat.Q3);
+                FarbeQ4(_hydraulikaggregat.Q4);
 
                 Margin_1(_hydraulikaggregat.Pegel);
 
@@ -102,24 +122,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void ErweiterungOelfilter()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void ErweiterungZylinder()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void ErweiterungOelkuehler()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();
-        internal void BtnQ2() => _hydraulikaggregat.Q2 = ClickModeButtonQ2();
-        internal void BtnQ3() => _hydraulikaggregat.Q3 = ClickModeButtonQ3();
 
         internal void BtnQ1Q3()
         {
@@ -143,6 +145,17 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             _hydraulikaggregat.Stopwatch.Restart();
             _hydraulikaggregat.S3 = ClickModeButtonS3();
         }
+
+        internal void BtnS4() => _hydraulikaggregat.S4 = ClickModeButtonS4();
+        internal void BtnB4() => _hydraulikaggregat.B4 = ClickModeButtonB4();
+        internal void BtnB5() => _hydraulikaggregat.B5 = ClickModeButtonB5();
+        internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();
+        internal void BtnQ2() => _hydraulikaggregat.Q2 = ClickModeButtonQ2();
+        internal void BtnQ3() => _hydraulikaggregat.Q3 = ClickModeButtonQ3();
+
+
+
+
 
         #region SPS Version, Status und Farbe
 
@@ -205,7 +218,56 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region ClickModeBtnQ1
+        #region ClickMode
+
+
+        public bool ClickModeButtonB4()
+        {
+            if (ClickModeBtnB4 == ClickMode.Press)
+            {
+                ClickModeBtnB4 = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtnB4 = ClickMode.Press;
+            return false;
+        }
+
+        private ClickMode _clickModeBtnB4;
+
+        public ClickMode ClickModeBtnB4
+        {
+            get => _clickModeBtnB4;
+            set
+            {
+                _clickModeBtnB4 = value;
+                OnPropertyChanged(nameof(ClickModeBtnB4));
+            }
+        }
+
+        public bool ClickModeButtonB5()
+        {
+            if (ClickModeBtnB5 == ClickMode.Press)
+            {
+                ClickModeBtnB5 = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtnB5 = ClickMode.Press;
+            return false;
+        }
+
+        private ClickMode _clickModeBtnB5;
+
+        public ClickMode ClickModeBtnB5
+        {
+            get => _clickModeBtnB5;
+            set
+            {
+                _clickModeBtnB5 = value;
+                OnPropertyChanged(nameof(ClickModeBtnB5));
+            }
+        }
 
         public bool ClickModeButtonQ1()
         {
@@ -231,9 +293,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnQ1
-
-        #region ClickModeBtnQ2
 
         public bool ClickModeButtonQ2()
         {
@@ -259,10 +318,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnQ2
-
-        #region ClickModeBtnQ3
-
         public bool ClickModeButtonQ3()
         {
             if (ClickModeBtnQ3 == ClickMode.Press)
@@ -287,9 +342,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnQ3
-
-        #region ClickModeBtnQ1_Q3
 
         public bool ClickModeButtonQ1Q3()
         {
@@ -315,10 +367,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnQ1Q3
-
-        #region ClickModeBtnS1
-
         public bool ClickModeButtonS1()
         {
             if (ClickModeBtnS1 == ClickMode.Press)
@@ -342,10 +390,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 OnPropertyChanged(nameof(ClickModeBtnS1));
             }
         }
-
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS2
 
         public bool ClickModeButtonS2()
         {
@@ -371,9 +415,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnS2
-
-        #region ClickModeBtnS3
 
         public bool ClickModeButtonS3()
         {
@@ -399,9 +440,33 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion ClickModeBtnS3
+        public bool ClickModeButtonS4()
+        {
+            if (ClickModeBtnS4 == ClickMode.Press)
+            {
+                ClickModeBtnS4 = ClickMode.Release;
+                return true;
+            }
 
-        #region Color F1
+            ClickModeBtnS4 = ClickMode.Press;
+            return false;
+        }
+
+        private ClickMode _clickModeBtnS4;
+
+        public ClickMode ClickModeBtnS4
+        {
+            get => _clickModeBtnS4;
+            set
+            {
+                _clickModeBtnS4 = value;
+                OnPropertyChanged(nameof(ClickModeBtnS4));
+            }
+        }
+
+        #endregion ClickMode
+
+        #region Color
 
         public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
@@ -417,9 +482,34 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color F1
 
-        #region Color P1
+        public void FarbeK1(bool val) => ColorK1 = val ? Brushes.Red : Brushes.White;
+
+        private Brush _colorK1;
+
+        public Brush ColorK1
+        {
+            get => _colorK1;
+            set
+            {
+                _colorK1 = value;
+                OnPropertyChanged(nameof(ColorK1));
+            }
+        }
+
+        public void FarbeK2(bool val) => ColorK2 = val ? Brushes.Red : Brushes.White;
+
+        private Brush _colorK2;
+
+        public Brush ColorK2
+        {
+            get => _colorK2;
+            set
+            {
+                _colorK2 = value;
+                OnPropertyChanged(nameof(ColorK2));
+            }
+        }
 
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
 
@@ -435,9 +525,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color P1
-
-        #region Color P2
 
         public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
 
@@ -453,9 +540,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color P2
-
-        #region Color P3
 
         public void FarbeP3(bool val) => ColorP3 = val ? Brushes.LawnGreen : Brushes.White;
 
@@ -471,9 +555,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color P3
-
-        #region Color P4
 
         public void FarbeP4(bool val) => ColorP4 = val ? Brushes.Red : Brushes.White;
 
@@ -489,10 +570,35 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color P4
 
-        #region Color Q1
+        public void FarbeP5(bool val) => ColorP5 = val ? Brushes.Red : Brushes.White;
 
+        private Brush _colorP5;
+
+        public Brush ColorP5
+        {
+            get => _colorP5;
+            set
+            {
+                _colorP5 = value;
+                OnPropertyChanged(nameof(ColorP5));
+            }
+        }
+
+
+        public void FarbeP6(bool val) => ColorP6 = val ? Brushes.Red : Brushes.White;
+
+        private Brush _colorP6;
+
+        public Brush ColorP6
+        {
+            get => _colorP6;
+            set
+            {
+                _colorP6 = value;
+                OnPropertyChanged(nameof(ColorP6));
+            }
+        }
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorQ1;
@@ -507,9 +613,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color Q1
-
-        #region Color Q2
 
         public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
 
@@ -525,9 +628,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color Q2
-
-        #region Color Q3
 
         public void FarbeQ3(bool val) => ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
 
@@ -543,7 +643,21 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Color Q3
+        public void FarbeQ4(bool val) => ColorQ4 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorQ4;
+
+        public Brush ColorQ4
+        {
+            get => _colorQ4;
+            set
+            {
+                _colorQ4 = value;
+                OnPropertyChanged(nameof(ColorQ4));
+            }
+        }
+
+        #endregion Color
 
         #region Druck
 
@@ -582,7 +696,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #endregion Margin1
 
-        #region Sichtbarkeit B1
+        #region Sichtbarkeiten
 
         public void SichtbarkeitB1(bool val)
         {
@@ -622,10 +736,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
-
         public void SichtbarkeitB2(bool val)
         {
             if (val)
@@ -663,10 +773,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-
-        #endregion Sichtbarkeit B2
-
-        #region Sichtbarkeit B3
 
         public void SichtbarkeitB3(bool val)
         {
@@ -706,9 +812,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion Sichtbarkeit B3
-
-        #region VisibilityKurzschluss
 
         private Visibility _visibilityKurzschluss;
 
@@ -722,7 +825,40 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        #endregion VisibilityKurzschluss
+        private Visibility _oelkuehlerAbgedeckt;
+        public Visibility OelkuehlerAbgedeckt
+        {
+            get => _oelkuehlerAbgedeckt;
+            set
+            {
+                _oelkuehlerAbgedeckt = value;
+                OnPropertyChanged(nameof(OelkuehlerAbgedeckt));
+            }
+        }
+
+        private Visibility _zylinderAbgedeckt;
+        public Visibility ZylinderAbgedeckt
+        {
+            get => _zylinderAbgedeckt;
+            set
+            {
+                _zylinderAbgedeckt = value;
+                OnPropertyChanged(nameof(ZylinderAbgedeckt));
+            }
+        }
+
+        private Visibility _oelfilterAbgedeckt;
+        public Visibility OelfilterAbgedeckt
+        {
+            get => _oelfilterAbgedeckt;
+            set
+            {
+                _oelfilterAbgedeckt = value;
+                OnPropertyChanged(nameof(OelfilterAbgedeckt));
+            }
+        }
+
+        #endregion Sichtbarkeit
 
         #region iNotifyPeropertyChanged Members
 

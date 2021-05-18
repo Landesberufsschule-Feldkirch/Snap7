@@ -45,6 +45,7 @@ namespace LAP_2018_3_Hydraulikaggregat
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Hydraulikaggregat.B2);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.Hydraulikaggregat.B3);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B4, _viewModel.Hydraulikaggregat.B4);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B5, _viewModel.Hydraulikaggregat.B5);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Hydraulikaggregat.F1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Hydraulikaggregat.S1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Hydraulikaggregat.S2);
