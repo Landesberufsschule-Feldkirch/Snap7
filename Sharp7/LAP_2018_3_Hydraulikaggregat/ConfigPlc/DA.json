@@ -6,8 +6,8 @@
       "StartBit": 0,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P1",
-      "Kommentar": "Meldeleuchte Störung"
+      "Bezeichnung": "K1",
+      "Kommentar": "Ventil Zylinder ausfahren"
     },
     {
       "LaufendeNr": 1,
@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P2",
-      "Kommentar": "Meldeleuchte Überdruck"
+      "Bezeichnung": "K2",
+      "Kommentar": "Ventil Zylinder einfahren"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P2",
-      "Kommentar": "Meldeleuchte Druck erreicht"
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Betriebsbereit"
     },
     {
       "LaufendeNr": 3,
@@ -33,8 +33,8 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "P3",
-      "Kommentar": "Meldeleuchte Ölstand min."
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte Störung Motor"
     },
     {
       "LaufendeNr": 4,
@@ -42,8 +42,8 @@
       "StartBit": 4,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q1",
-      "Kommentar": "Motor Netzschütz"
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte Überdruck"
     },
     {
       "LaufendeNr": 5,
@@ -51,8 +51,8 @@
       "StartBit": 5,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q2",
-      "Kommentar": "Motor Sternschütz"
+      "Bezeichnung": "P4",
+      "Kommentar": "Meldeleuchte Druck erreicht."
     },
     {
       "LaufendeNr": 6,
@@ -60,8 +60,62 @@
       "StartBit": 6,
       "AnzahlBit": 1,
       "Type": "Default",
+      "Bezeichnung": "P5",
+      "Kommentar": "Meldeleuchte Ölstand min."
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P6",
+      "Kommentar": "Meldeleuchte Lüfter Ölkühler"
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P7",
+      "Kommentar": "MeldeleuchteÖlfilter welchseln"
+    },
+    {
+      "LaufendeNr": 9,
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Netzschütz"
+    },
+    {
+      "LaufendeNr": 10,
+      "StartByte": 1,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Motor Sternschütz"
+    },
+    {
+      "LaufendeNr": 11,
+      "StartByte": 1,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
       "Bezeichnung": "Q3",
       "Kommentar": "Motor Dreieckschütz"
+    },
+    {
+      "LaufendeNr": 12,
+      "StartByte": 1,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q4",
+      "Kommentar": "Lüfter (Ölkühler) "
     }
   ]
 }

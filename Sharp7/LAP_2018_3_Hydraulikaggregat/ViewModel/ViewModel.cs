@@ -18,6 +18,10 @@
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnNachfuellen => _btnNachfuellen ??= new RelayCommand(_ => Hydraulikaggregat.BtnNachfuellen(), _ => true);
 
+        private ICommand _btnUeberdruck;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnUeberdruck => _btnUeberdruck ??= new RelayCommand(_ => Hydraulikaggregat.BtnUeberdruck(), _ => true);
+
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnF1 => _btnF1 ??= new RelayCommand(_ => Hydraulikaggregat.BtnF1(), _ => true);

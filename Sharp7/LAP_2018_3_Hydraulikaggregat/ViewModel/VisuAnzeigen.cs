@@ -35,6 +35,8 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             ClickModeBtnS3 = ClickMode.Press;
             ClickModeBtnS4 = ClickMode.Press;
 
+            ColorUeberdruck = Brushes.LawnGreen;
+
             ColorK1 = Brushes.LawnGreen;
             ColorK2 = Brushes.LawnGreen;
 
@@ -82,6 +84,8 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             while (true)
             {
                 Druck = _hydraulikaggregat.Druck;
+
+                FarbeUeberdruck(_hydraulikaggregat.B3);
 
                 FarbeF1(_hydraulikaggregat.F1);
 
@@ -483,10 +487,26 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
 
+
+
+
+        public void FarbeUeberdruck(bool val) => ColorUeberdruck = val ? Brushes.White : Brushes.Red;
+
+        private Brush _colorUeberdruck;
+        public Brush ColorUeberdruck
+        {
+            get => _colorUeberdruck;
+            set
+            {
+                _colorUeberdruck = value;
+                OnPropertyChanged(nameof(ColorUeberdruck));
+            }
+        }
+
+
         public void FarbeK1(bool val) => ColorK1 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorK1;
-
         public Brush ColorK1
         {
             get => _colorK1;

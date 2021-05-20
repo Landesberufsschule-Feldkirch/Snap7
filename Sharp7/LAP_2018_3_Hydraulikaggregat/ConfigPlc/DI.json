@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B1",
-      "Kommentar": "Sensor Ölstand"
+      "Kommentar": "Füllstand Ölbehälter"
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B2",
-      "Kommentar": "Sensor Druck erreicht"
+      "Kommentar": "Druck erreicht"
     },
     {
       "LaufendeNr": 2,
@@ -25,7 +25,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "B3",
-      "Kommentar": "Sensor Überdruck"
+      "Kommentar": "Überdruck (Öffner)"
     },
     {
       "LaufendeNr": 3,
@@ -33,8 +33,8 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "F1",
-      "Kommentar": "Störung Motorschutzschalter"
+      "Bezeichnung": "B4",
+      "Kommentar": "Temperatur Ölbehälter (Öffner)"
     },
     {
       "LaufendeNr": 4,
@@ -42,17 +42,18 @@
       "StartBit": 4,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S1",
-      "Kommentar": "Taster Start"
+      "Bezeichnung": "B5",
+      "Kommentar": "Druckschalter Ölfilter (Öffner)"
     },
+
     {
       "LaufendeNr": 5,
       "StartByte": 0,
       "StartBit": 5,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Stop"
+      "Bezeichnung": "F1",
+      "Kommentar": "Störung Motorschutzschalter (Öffner)"
     },
     {
       "LaufendeNr": 6,
@@ -60,8 +61,35 @@
       "StartBit": 6,
       "AnzahlBit": 1,
       "Type": "Default",
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster Start"
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Stop"
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
       "Bezeichnung": "S3",
       "Kommentar": "Taster Quittieren"
+    },
+    {
+      "LaufendeNr": 9,
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S4",
+      "Kommentar": "Taster Zyklinder"
     }
   ]
 }
