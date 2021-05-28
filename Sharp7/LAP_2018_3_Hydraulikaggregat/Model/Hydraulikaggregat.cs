@@ -15,12 +15,13 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         public bool K1 { get; set; }    // Ventil "Zylinder ausfahren"  
         public bool K2 { get; set; }    // Ventil "Zylinder einfahren" 
         public bool P1 { get; set; }    // Meldeleuchte "Betriebsbereit" 
-        public bool P2 { get; set; }    // Meldeleuchte Störung Motor
-        public bool P3 { get; set; }    // Meldeleuchte Überdruck
-        public bool P4 { get; set; }    // Meldeleuchte Druck erreicht
-        public bool P5 { get; set; }    // Meldeleuchte Ölstand min.
-        public bool P6 { get; set; }    // Meldeleuchte "Lüfter Ölkühler"  
-        public bool P7 { get; set; }    // Meldeleuchte "Ölfilter wechseln" 
+        public bool P2 { get; set; }    // Meldeleuchte "Sammelstörung" 
+        public bool P3 { get; set; }    // Meldeleuchte Störung Motor
+        public bool P4 { get; set; }    // Meldeleuchte Überdruck
+        public bool P5 { get; set; }    // Meldeleuchte Druck erreicht
+        public bool P6 { get; set; }    // Meldeleuchte Ölstand min.
+        public bool P7 { get; set; }    // Meldeleuchte "Lüfter Ölkühler"  
+        public bool P8 { get; set; }    // Meldeleuchte "Ölfilter wechseln" 
         public bool Q1 { get; set; }    // Netzschütz
         public bool Q2 { get; set; }    // Sternschütz
         public bool Q3 { get; set; }    // Dreieckschütz
@@ -35,19 +36,20 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         public Stopwatch Stopwatch { get; set; }
 
         private const double DruckVerlust = 0.998;
-        private const double DruckAnstieg = 0.04;
+        private const double DruckAnstiegDreieck = 0.03;
+        private const double DruckAnstiegStern = 0.01;
         private const double PegelVerlust = 0.999;
 
         private const double DruckMin = 7;
         private const double DruckMax = 8;
-        private const double PegelMin = 0.45;
+        private const double PegelMin = 0.25;
 
         private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
 
-        private bool ErweiterungOelkuehlerAktiv;
-        private bool ErweiterungZylinderAktiv;
-        private bool ErweiterungOelfilterAktiv;
+        private bool _erweiterungOelkuehlerAktiv;
+        private bool _erweiterungZylinderAktiv;
+        private bool _erweiterungOelfilterAktiv;
 
         public Hydraulikaggregat(MainWindow mainWindow, ViewModel.ViewModel viewModel)
         {
@@ -57,6 +59,8 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
             Druck = 0;
             Pegel = 0.8;
             B3 = true;
+            B4 = true;
+            B5 = true;
             F1 = true;
             S2 = true;
 
@@ -70,30 +74,22 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         {
             while (true)
             {
-                if (Q1 && Q3)
-                {
-                    Pegel *= PegelVerlust;
-                    Druck += DruckAnstieg;
-                    Stopwatch.Start();
-                }
-                else
-                {
-                    Stopwatch.Stop();
-                }
-
+                if (Q1 && Q2) Druck += DruckAnstiegStern;
+                if (Q1 && Q3) Druck += DruckAnstiegDreieck;
                 Druck *= DruckVerlust;
 
                 if (Druck > 10) Druck = 10;
 
                 if (B2)
                 {
-                    if (Druck > DruckMax) B2 = true;
+                    if (Druck < DruckMin) B2 = false;
                 }
                 else
                 {
-                    if (Druck < DruckMin) B2 = false;
+                    if (Druck > DruckMax) B2 = true;
                 }
 
+                if (Druck > DruckMin) Pegel *= PegelVerlust;
                 B1 = Pegel > PegelMin;
 
                 ErweiterungOelkuehler();
@@ -108,19 +104,19 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
 
         internal void ErweiterungOelkuehler()
         {
-            if (ErweiterungOelkuehlerAktiv)
+            if (_erweiterungOelkuehlerAktiv)
             {
                 //
             }
             else
             {
-                P6 = false;
+                P7 = false;
             }
         }
 
         internal void ErweiterungZylinder()
         {
-            if (ErweiterungZylinderAktiv)
+            if (_erweiterungZylinderAktiv)
             {
                 //
             }
@@ -133,30 +129,30 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
 
         internal void ErweiterungOelfilter()
         {
-            if (ErweiterungOelfilterAktiv)
+            if (_erweiterungOelfilterAktiv)
             {
                 //
             }
             else
             {
-                P7 = false;
+                P8 = false;
             }
         }
         internal void CheckErweiterungOelkuehler()
         {
-            ErweiterungOelkuehlerAktiv = _mainWindow.ChkOelkuehler.IsChecked != null && (bool)_mainWindow.ChkOelkuehler.IsChecked;
-            _viewModel.ViAnzeige.OelkuehlerAbgedeckt = ErweiterungOelkuehlerAktiv ? Visibility.Hidden : Visibility.Visible;
+            _erweiterungOelkuehlerAktiv = _mainWindow.ChkOelkuehler.IsChecked != null && (bool)_mainWindow.ChkOelkuehler.IsChecked;
+            _viewModel.ViAnzeige.OelkuehlerAbgedeckt = _erweiterungOelkuehlerAktiv ? Visibility.Hidden : Visibility.Visible;
         }
         internal void CheckErweiterungZylinder()
         {
-            ErweiterungZylinderAktiv = _mainWindow.ChZylinder.IsChecked != null && (bool)_mainWindow.ChZylinder.IsChecked;
-            _viewModel.ViAnzeige.ZylinderAbgedeckt = ErweiterungZylinderAktiv ? Visibility.Hidden : Visibility.Visible;
+            _erweiterungZylinderAktiv = _mainWindow.ChZylinder.IsChecked != null && (bool)_mainWindow.ChZylinder.IsChecked;
+            _viewModel.ViAnzeige.ZylinderAbgedeckt = _erweiterungZylinderAktiv ? Visibility.Hidden : Visibility.Visible;
 
         }
         internal void CheckErweiterungOelfilter()
         {
-            ErweiterungOelfilterAktiv = _mainWindow.ChkOelfilter.IsChecked != null && (bool)_mainWindow.ChkOelfilter.IsChecked;
-            _viewModel.ViAnzeige.OelfilterAbgedeckt = ErweiterungOelfilterAktiv ? Visibility.Hidden : Visibility.Visible;
+            _erweiterungOelfilterAktiv = _mainWindow.ChkOelfilter.IsChecked != null && (bool)_mainWindow.ChkOelfilter.IsChecked;
+            _viewModel.ViAnzeige.OelfilterAbgedeckt = _erweiterungOelfilterAktiv ? Visibility.Hidden : Visibility.Visible;
         }
 
         internal void BtnF1() => F1 = !F1;

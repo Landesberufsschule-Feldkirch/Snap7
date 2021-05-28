@@ -80,12 +80,12 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         {
             while (true)
             {
-                PositionImage_1(_alleFlaschen.AlleFlaschen[0].EineFlasche.GetPosition());
-                PositionImage_2(_alleFlaschen.AlleFlaschen[1].EineFlasche.GetPosition());
-                PositionImage_3(_alleFlaschen.AlleFlaschen[2].EineFlasche.GetPosition());
-                PositionImage_4(_alleFlaschen.AlleFlaschen[3].EineFlasche.GetPosition());
-                PositionImage_5(_alleFlaschen.AlleFlaschen[4].EineFlasche.GetPosition());
-                PositionImage_6(_alleFlaschen.AlleFlaschen[5].EineFlasche.GetPosition());
+                PositionImage_1(_alleFlaschen.AlleFlaschen[0].Flasche.GetPosition());
+                PositionImage_2(_alleFlaschen.AlleFlaschen[1].Flasche.GetPosition());
+                PositionImage_3(_alleFlaschen.AlleFlaschen[2].Flasche.GetPosition());
+                PositionImage_4(_alleFlaschen.AlleFlaschen[3].Flasche.GetPosition());
+                PositionImage_5(_alleFlaschen.AlleFlaschen[4].Flasche.GetPosition());
+                PositionImage_6(_alleFlaschen.AlleFlaschen[5].Flasche.GetPosition());
 
                 VisibilityFlasche1(_alleFlaschen.AlleFlaschen[0].Sichtbar);
                 VisibilityFlasche2(_alleFlaschen.AlleFlaschen[1].Sichtbar);

@@ -4,18 +4,14 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-    TasterZylinderAlt: Bool;
-    StoerungOelfilter: Bool;
     SchrittHydraulik: int;
 	SternDreieckAnlauf: TON;
     VerzoegerungOelstand: TON;
-    VerzoegerungOelfilter: TON;
 END_VAR
 
 (*  *********************************************************** *)
 (*  LAP 2018/3 Hydraulikaggregat                                *)
 (*  *********************************************************** *)
-
 
 "DigOutput".P3 := NOT "DigInput".F1;
 "DigOutput".P4 := NOT "DigInput".B3;
@@ -55,7 +51,7 @@ CASE #SchrittHydraulik OF
         IF "DigInput".B2 THEN
             "DigOutput".P5 := TRUE;
         END_IF;
-        
+            
         #SternDreieckAnlauf(PT := T#10s,
                             IN := TRUE);
         
@@ -117,47 +113,3 @@ CASE #SchrittHydraulik OF
     ELSE  // Statement section ELSE
         #SchrittHydraulik := 0; // Auf einen gültigen Wert setzen
 END_CASE;
-
-////////////////////////////////////
-// Erweiterung "Ölkühler"
-////////////////////////////////////
-
-"DigOutput".Q4 := #SchrittHydraulik > 0 AND #SchrittHydraulik < 100 AND (NOT "DigInput".B4);
-"DigOutput".P7 := "DigOutput".Q4;
-
-////////////////////////////////////
-// Erweiterung "Zylinder"
-////////////////////////////////////
-
-IF "DigOutput".P5 THEN
-    IF "DigInput".S4 AND (NOT #TasterZylinderAlt) THEN
-        "DigOutput".K1 := NOT "DigOutput".K1;
-        "DigOutput".K2 := NOT "DigOutput".K1;
-    END_IF;
-ELSE
-    "DigOutput".K1 := FALSE;
-    "DigOutput".K2 := FALSE;
-END_IF;
-
-#TasterZylinderAlt := "DigInput".S4;
-
-////////////////////////////////////
-// Erweiterung "Ölfilter"
-////////////////////////////////////
-
-#VerzoegerungOelfilter(IN := (NOT "DigInput".B5) AND #SchrittHydraulik > 0 AND #SchrittHydraulik < 100,
-                       PT := T#5s);
-
-IF #VerzoegerungOelfilter.Q THEN
-    #StoerungOelfilter := TRUE;
-END_IF;
-
-"DigOutput".P8 := #StoerungOelfilter OR ((NOT "DigInput".B5) AND "Clock_1Hz");
-
-IF "DigInput".B5 AND "DigInput".S3 THEN
-    #StoerungOelfilter := FALSE;
-END_IF;
-
-
-
-

@@ -1,5 +1,4 @@
-﻿using Kommunikation;
-using PlcDatenTypen;
+﻿using PlcDatenTypen;
 using SoftCircuits.Silk;
 using System.Threading;
 

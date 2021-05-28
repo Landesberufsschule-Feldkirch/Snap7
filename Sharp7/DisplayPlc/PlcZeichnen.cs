@@ -89,7 +89,7 @@ namespace DisplayPlc
             for (var i = 0; i < 8; i++)
             {
                 Formen.LabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, grid);
-                Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, grid);
+                Formen.PlcButtonZeichnen(13 + i, 11, 8 + i, "FarbeDa", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;

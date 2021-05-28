@@ -74,7 +74,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 for (var i = 0; i < 5; i++)
                 {
                     VisibilityDose1(_abfuellAnlage.AlleDosen[i].Sichtbar, i);
-                    PositionDose(_abfuellAnlage.AlleDosen[i].EineDose.GetPosition(), i);
+                    PositionDose(_abfuellAnlage.AlleDosen[i].Dose.GetPosition(), i);
                 }
 
 

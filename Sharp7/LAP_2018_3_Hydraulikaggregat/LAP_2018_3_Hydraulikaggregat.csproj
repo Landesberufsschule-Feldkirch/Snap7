@@ -62,6 +62,60 @@
     <None Update="ConfigTests\Hydraulikaggregat_1\testSource.ssc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_2\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_3\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\Hydraulikaggregat_4\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

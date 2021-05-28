@@ -13,6 +13,11 @@ namespace PlcDatenTypen
             const long dauer1M = 60 * dauer1S;
             const long dauer1H = 60 * dauer1M;
             const long dauer1D = 24 * dauer1H;
+            if (dauer.Length == 0)
+            {
+                DauerMs = 0;
+                return;
+            }
 
             if (dauer.StartsWith("T#", StringComparison.OrdinalIgnoreCase))
 

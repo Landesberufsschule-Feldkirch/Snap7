@@ -7,6 +7,8 @@ namespace PlcDatenTypen.Tests
         [Theory]
         [InlineData("1234567890", 1234567890)]
         [InlineData("T#1d2h3m4s567ms", 93784567)]
+        [InlineData("T#5s500ms", 5500)]
+        [InlineData("T#5s123ms", 5123)]
         [InlineData("T#123ms", 123)]
 
         public void TestKonstruktorLong(string zahl, long ergebnis)
@@ -18,6 +20,8 @@ namespace PlcDatenTypen.Tests
         [Theory]
         [InlineData("1234567890", 1234567890)]
         [InlineData("T#1d2h3m4s567ms", 93784567)]
+        [InlineData("T#5s500ms", 5500)]
+        [InlineData("T#5s123ms", 5123)]
         [InlineData("T#123ms", 123)]
 
         public void TestKonstruktorDouble(string zahl, long ergebnis)

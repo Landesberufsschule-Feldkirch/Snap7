@@ -36,6 +36,8 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             ClickModeBtnS4 = ClickMode.Press;
 
             ColorUeberdruck = Brushes.LawnGreen;
+            ColorB4 = Brushes.LawnGreen;
+            ColorB5 = Brushes.LawnGreen;
 
             ColorK1 = Brushes.LawnGreen;
             ColorK2 = Brushes.LawnGreen;
@@ -46,11 +48,15 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             ColorP4 = Brushes.LawnGreen;
             ColorP5 = Brushes.LawnGreen;
             ColorP6 = Brushes.LawnGreen;
+            ColorP7 = Brushes.LawnGreen;
+            ColorP8 = Brushes.LawnGreen;
 
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
             ColorQ3 = Brushes.LawnGreen;
             ColorQ4 = Brushes.LawnGreen;
+
+            ColorS4 = Brushes.LawnGreen;
 
             Margin1 = new Thickness(42, 0, 32, 0);
 
@@ -87,6 +93,9 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
                 FarbeUeberdruck(_hydraulikaggregat.B3);
 
+                FarbeB4(_hydraulikaggregat.B4);
+                FarbeB5(_hydraulikaggregat.B5);
+
                 FarbeF1(_hydraulikaggregat.F1);
 
                 FarbeK1(_hydraulikaggregat.K1);
@@ -98,11 +107,15 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 FarbeP4(_hydraulikaggregat.P4);
                 FarbeP5(_hydraulikaggregat.P5);
                 FarbeP6(_hydraulikaggregat.P6);
+                FarbeP7(_hydraulikaggregat.P7);
+                FarbeP8(_hydraulikaggregat.P8);
 
                 FarbeQ1(_hydraulikaggregat.Q1);
                 FarbeQ2(_hydraulikaggregat.Q2);
                 FarbeQ3(_hydraulikaggregat.Q3);
                 FarbeQ4(_hydraulikaggregat.Q4);
+
+                FarbeS4(_hydraulikaggregat.S4);
 
                 Margin_1(_hydraulikaggregat.Pegel);
 
@@ -472,6 +485,33 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
         #region Color
 
+        public void FarbeB4(bool val) => ColorB4 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorB4;
+        public Brush ColorB4
+        {
+            get => _colorB4;
+            set
+            {
+                _colorB4 = value;
+                OnPropertyChanged(nameof(ColorB4));
+            }
+        }
+
+
+        public void FarbeB5(bool val) => ColorB5 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorB5;
+        public Brush ColorB5
+        {
+            get => _colorB5;
+            set
+            {
+                _colorB5 = value;
+                OnPropertyChanged(nameof(ColorB5));
+            }
+        }
+
         public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorF1;
@@ -490,7 +530,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
 
 
-        public void FarbeUeberdruck(bool val) => ColorUeberdruck = val ? Brushes.White : Brushes.Red;
+        public void FarbeUeberdruck(bool val) => ColorUeberdruck = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorUeberdruck;
         public Brush ColorUeberdruck
@@ -531,7 +571,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             }
         }
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
+        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorP1;
 
@@ -561,7 +601,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
 
-        public void FarbeP3(bool val) => ColorP3 = val ? Brushes.LawnGreen : Brushes.White;
+        public void FarbeP3(bool val) => ColorP3 = val ? Brushes.Red : Brushes.White;
 
         private Brush _colorP3;
 
@@ -591,7 +631,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
 
-        public void FarbeP5(bool val) => ColorP5 = val ? Brushes.Red : Brushes.White;
+        public void FarbeP5(bool val) => ColorP5 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorP5;
 
@@ -619,6 +659,35 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 OnPropertyChanged(nameof(ColorP6));
             }
         }
+
+        public void FarbeP7(bool val) => ColorP7 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorP7;
+        public Brush ColorP7
+        {
+            get => _colorP7;
+            set
+            {
+                _colorP7 = value;
+                OnPropertyChanged(nameof(ColorP7));
+            }
+        }
+
+        public void FarbeP8(bool val) => ColorP8 = val ? Brushes.Red : Brushes.White;
+
+        private Brush _colorP8;
+        public Brush ColorP8
+        {
+            get => _colorP8;
+            set
+            {
+                _colorP8 = value;
+                OnPropertyChanged(nameof(ColorP8));
+            }
+        }
+
+
+
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
 
         private Brush _colorQ1;
@@ -674,6 +743,20 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             {
                 _colorQ4 = value;
                 OnPropertyChanged(nameof(ColorQ4));
+            }
+        }
+
+
+        public void FarbeS4(bool val) => ColorS4 = val ? Brushes.LawnGreen : Brushes.White;
+
+        private Brush _colorS4;
+        public Brush ColorS4
+        {
+            get => _colorS4;
+            set
+            {
+                _colorS4 = value;
+                OnPropertyChanged(nameof(ColorS4));
             }
         }
 

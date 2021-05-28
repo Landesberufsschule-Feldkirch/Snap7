@@ -15,7 +15,6 @@
     {
       "Byte": 0,
       "Bit": 2,
-
       "Bezeichnung": "B3",
       "Kommentar": "Überdruck (Öffner)"
     },
@@ -31,6 +30,7 @@
       "Bezeichnung": "B5",
       "Kommentar": "Druckschalter Ölfilter (Öffner)"
     },
+
     {
       "Byte": 0,
       "Bit": 5,

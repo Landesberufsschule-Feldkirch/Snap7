@@ -27,14 +27,14 @@
       "Bezeichnung": "P1",
       "Kommentar": "Meldeleuchte Betriebsbereit"
     },
-    {
+        {
       "LaufendeNr": 3,
       "StartByte": 0,
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P2",
-      "Kommentar": "Meldeleuchte Störung Motor"
+      "Kommentar": "Meldeleuchte Sammelstörung"
     },
     {
       "LaufendeNr": 4,
@@ -43,7 +43,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P3",
-      "Kommentar": "Meldeleuchte Überdruck"
+      "Kommentar": "Meldeleuchte Störung Motor"
     },
     {
       "LaufendeNr": 5,
@@ -52,7 +52,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P4",
-      "Kommentar": "Meldeleuchte Druck erreicht."
+      "Kommentar": "Meldeleuchte Überdruck"
     },
     {
       "LaufendeNr": 6,
@@ -61,7 +61,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P5",
-      "Kommentar": "Meldeleuchte Ölstand min."
+      "Kommentar": "Meldeleuchte Druck erreicht."
     },
     {
       "LaufendeNr": 7,
@@ -70,7 +70,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P6",
-      "Kommentar": "Meldeleuchte Lüfter Ölkühler"
+      "Kommentar": "Meldeleuchte Ölstand min."
     },
     {
       "LaufendeNr": 8,
@@ -79,7 +79,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P7",
-      "Kommentar": "MeldeleuchteÖlfilter welchseln"
+      "Kommentar": "Meldeleuchte Lüfter Ölkühler"
     },
     {
       "LaufendeNr": 9,
@@ -87,8 +87,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q1",
-      "Kommentar": "Motor Netzschütz"
+      "Bezeichnung": "P8",
+      "Kommentar": "MeldeleuchteÖlfilter welchseln"
     },
     {
       "LaufendeNr": 10,
@@ -96,8 +96,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q2",
-      "Kommentar": "Motor Sternschütz"
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor Netzschütz"
     },
     {
       "LaufendeNr": 11,
@@ -105,13 +105,22 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q3",
-      "Kommentar": "Motor Dreieckschütz"
+      "Bezeichnung": "Q2",
+      "Kommentar": "Motor Sternschütz"
     },
     {
       "LaufendeNr": 12,
       "StartByte": 1,
       "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q3",
+      "Kommentar": "Motor Dreieckschütz"
+    },
+    {
+      "LaufendeNr": 13,
+      "StartByte": 1,
+      "StartBit": 5,
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "Q4",

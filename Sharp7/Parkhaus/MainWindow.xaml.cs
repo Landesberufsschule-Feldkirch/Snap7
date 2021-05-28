@@ -18,7 +18,6 @@ namespace Parkhaus
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
-
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
         private const int AnzByteAnalogInput = 0;

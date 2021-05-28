@@ -82,7 +82,9 @@ namespace TestAutomat.Silk
                     DigEingaengeSetzen.SetNaechsterSchritt();
                     return false;
 
-                case DigEingaengeSetzen.StatusDigEingaenge.SchrittAbgeschlossen: break;
+                case DigEingaengeSetzen.StatusDigEingaenge.SchrittAbgeschlossen:
+                    SetDigitaleEingaengeWord(aufgabe.GetBitmuster());
+                    break;
                 default: throw new ArgumentOutOfRangeException(aufgabe.GetAktuellerStatus().ToString());
             }
             return false;
@@ -147,6 +149,7 @@ namespace TestAutomat.Silk
                 case DigAusgaengeTesten.StatusDigAusgaenge.Timeout:
                     DataGridAnzeigeUpdaten(AutoTester.TestErgebnis.Fehler, (uint)digBitmuster, "DA[" + schritt + "]: " + "Status:" + aufgabe.GetAktuellerStatus());
                     return false;
+                default: throw new ArgumentOutOfRangeException(aufgabe.GetAktuellerStatus().ToString());
             }
             return false;
         }

@@ -34,6 +34,7 @@ var DQ_0_5 = "2#0010_0000" // P4   Meldeleuchte grün
 main()
 {
     var S1 = Plc2Dec(DI_0_3) // Start
+    var S2 = Plc2Dec(DI_0_2) // Stop
 
     var AllesAus = 0
     var P4 = Plc2Dec(DQ_0_5) // grün
@@ -57,17 +58,31 @@ main()
     BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
     IncrementDataGridId
 
+    UpdateAnzeige "Kommentar", "Einen kompletten Zyklus testen"
+    IncrementDataGridId
+
    setArray = {
-        {S1, "T#200ms", "S1 drücken"},
-        {0, "-", ""}
+        {S1 + S2,   "T#1s",         "S1 drücken"},
+        {S2,        "T#5s500ms",    ""},
+        {0,         "",             ""}
     }
 
     testArray = {
-        {P4 + Q1, Maske_P4_Q1_Q2, "T#2s",   0.1,    "T#5s", "Linearachse Rechtslauf"},
-        {P4 + Q2, Maske_P4_Q1_Q2, "T#2s",   0.1,    "T#5s", "Linearachse Linkslauf"}
+        {P4 + Q1,   Maske_P4_Q1_Q2, "T#2s",     0.1,    "T#5s", "Linearachse Rechtslauf"},
+        {P4,        Maske_P4_Q1_Q2, "T#1s",     0.1,    "T#5s", "Pause"},
+        {P4 + Q2,   Maske_P4_Q1_Q2, "T#2s",     0.1,    "T#5s", "Linearachse Linkslauf"},
+        {P4,        Maske_P4_Q1_Q2, "T#500ms",  0.1,    "T#5s", "Pause"}
     }
 
     TestAblauf setArray, testArray
+
+    SetDigitaleEingaenge 0
+    Sleep("T#500ms")
+
+    UpdateAnzeige "Kommentar", "Einen kompletten Zyklus mit Aus"
+    IncrementDataGridId
+
+
 
     SetDigitaleEingaenge 0
     ResetStopwatch
@@ -75,4 +90,5 @@ main()
     IncrementDataGridId
 
     UpdateAnzeige "Test abgeschlossen", " "
+
 }

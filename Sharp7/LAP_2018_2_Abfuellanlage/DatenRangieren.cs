@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using PlcDatenTypen;
-using Sharp7;
 
 namespace LAP_2018_2_Abfuellanlage
 {

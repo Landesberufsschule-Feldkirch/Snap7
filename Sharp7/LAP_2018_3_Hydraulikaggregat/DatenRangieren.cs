@@ -12,12 +12,13 @@ namespace LAP_2018_3_Hydraulikaggregat
             K1 = 0, // Ventil "Zylinder ausfahren"
             K2,     // Ventil "Zylinder einfahren"
             P1,     // Meldeleuchte "Betriebsbereit"
-            P2,     // Meldeleuchte "Störung Motor
-            P3,     // Meldeleuchte "Überdruck"
-            P4,     // Meldeleuchte "Druck erreicht"
-            P5,     // Meldeleuchte "Ölstand min"
-            P6,     // Meldeleuchte "Lüfter Ölkühler"
-            P7,     // Meldeleuchte "Ölfilter welchseln"
+            P2,     // Meldeleuchte "Sammelstörung
+            P3,     // Meldeleuchte "Störung Motor"
+            P4,     // Meldeleuchte "Überdruck"
+            P5,     // Meldeleuchte "Druck erreicht"
+            P6,     // Meldeleuchte "Ölstand min"
+            P7,     // Meldeleuchte "Lüfter Ölkühler"
+            P8,     // Meldeleuchte "Ölfilter welchseln"
             Q1,     // Netzschütz
             Q2,     // Sternschütz
             Q3,     // Dreieckschütz
@@ -54,7 +55,7 @@ namespace LAP_2018_3_Hydraulikaggregat
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S4, _viewModel.Hydraulikaggregat.S4);
             }
 
-            _viewModel.Hydraulikaggregat.K1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);
+            _viewModel.Hydraulikaggregat.K1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K1);    // Byte 0
             _viewModel.Hydraulikaggregat.K2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2);
             _viewModel.Hydraulikaggregat.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Hydraulikaggregat.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
@@ -62,7 +63,9 @@ namespace LAP_2018_3_Hydraulikaggregat
             _viewModel.Hydraulikaggregat.P4 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
             _viewModel.Hydraulikaggregat.P5 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5);
             _viewModel.Hydraulikaggregat.P6 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P6);
-            _viewModel.Hydraulikaggregat.P7 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P7);
+
+            _viewModel.Hydraulikaggregat.P7 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P7);    // Byte 1
+            _viewModel.Hydraulikaggregat.P8 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P8);
             _viewModel.Hydraulikaggregat.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Hydraulikaggregat.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             _viewModel.Hydraulikaggregat.Q3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
