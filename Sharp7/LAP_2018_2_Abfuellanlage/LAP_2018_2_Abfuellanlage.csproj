@@ -32,6 +32,13 @@
     <Resource Include="Bilder\Kellerbier.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Bilder\fohrenburger_0.jpg" />
+    <Resource Include="Bilder\fohrenburger_1.jpg" />
+    <Resource Include="Bilder\fohrenburger_2.jpg" />
+    <Resource Include="Bilder\fohrenburger_3.jpg" />
+    <Resource Include="Bilder\fohrenburger_4.jpg" />
+    <Resource Include="Bilder\fohrenburger_5.jpg" />
+    <Resource Include="Bilder\fohrenburger_6.jpg" />
     <Resource Include="Bilder\OberLänder.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

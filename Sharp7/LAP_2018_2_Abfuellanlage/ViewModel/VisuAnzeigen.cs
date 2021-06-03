@@ -64,6 +64,14 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
             VisibilityRectangleAbleitung = Visibility.Hidden;
 
+            VisibilityFohrenburger_0 = Visibility.Visible;
+            VisibilityFohrenburger_1 = Visibility.Hidden;
+            VisibilityFohrenburger_2 = Visibility.Hidden;
+            VisibilityFohrenburger_3 = Visibility.Hidden;
+            VisibilityFohrenburger_4 = Visibility.Hidden;
+            VisibilityFohrenburger_5 = Visibility.Hidden;
+            VisibilityFohrenburger_6 = Visibility.Hidden;
+
             ColorCircleF1 = Brushes.LawnGreen;
             ColorCircleQ1 = Brushes.LightGray;
             ColorCircleP1 = Brushes.LightGray;
@@ -99,6 +107,8 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 VisibilityVentilK2(_alleFlaschen.K2);
                 VisibilityAbleitung(_alleFlaschen.K1 && _alleFlaschen.Pegel > 0.01);
 
+                KisteAnzeigen(_alleFlaschen.FlaschenInDerKiste);
+
                 FarbeCircle_F1(_alleFlaschen.F1);
                 FarbeCircle_Q1(_alleFlaschen.Q1);
                 FarbeCircle_P1(_alleFlaschen.P1);
@@ -122,6 +132,79 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+
+        private void KisteAnzeigen(int anzahlFlaschen)
+        {
+             // wenn man zuerst alle ausblendet und dann selektiv einblendet flackert die Anzeige
+            switch (anzahlFlaschen)
+            {
+                case 0:
+                    VisibilityFohrenburger_0 = Visibility.Visible;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+
+                case 1:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Visible;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+                case 2:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Visible;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+                case 3:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Visible;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+                case 4:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Visible;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+                case 5:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Visible;
+                    VisibilityFohrenburger_6 = Visibility.Hidden;
+                    break;
+                case 6:
+                    VisibilityFohrenburger_0 = Visibility.Hidden;
+                    VisibilityFohrenburger_1 = Visibility.Hidden;
+                    VisibilityFohrenburger_2 = Visibility.Hidden;
+                    VisibilityFohrenburger_3 = Visibility.Hidden;
+                    VisibilityFohrenburger_4 = Visibility.Hidden;
+                    VisibilityFohrenburger_5 = Visibility.Hidden;
+                    VisibilityFohrenburger_6 = Visibility.Visible;
+                    break;
+                default: break;
+            }
         }
 
         internal void TasterS1() => _alleFlaschen.S1 = ClickModeButtonS1();
@@ -611,7 +694,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
         #endregion Image6
 
-        #region Visibility Flasche 1
+        #region Visibility 
 
         public void VisibilityFlasche1(bool val) => VisibilityImage1 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -627,9 +710,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Flasche 1
-
-        #region Visibility Flasche 2
 
         public void VisibilityFlasche2(bool val) => VisibilityImage2 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -645,9 +725,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Flasche 2
-
-        #region Visibility Flasche 3
 
         public void VisibilityFlasche3(bool val) => VisibilityImage3 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -663,10 +740,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Flasche 3
-
-        #region Visibility Flasche 4
-
         public void VisibilityFlasche4(bool val) => VisibilityImage4 = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityImage4;
@@ -680,10 +753,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityImage4));
             }
         }
-
-        #endregion Visibility Flasche 4
-
-        #region Visibility Flasche 5
 
         public void VisibilityFlasche5(bool val) => VisibilityImage5 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -699,9 +768,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Flasche 5
-
-        #region Visibility Flasche 6
 
         public void VisibilityFlasche6(bool val) => VisibilityImage6 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -716,10 +782,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityImage6));
             }
         }
-
-        #endregion Visibility Flasche 6
-
-        #region Visibility Sensor B1
 
         public void VisibilitySensorB1(bool val)
         {
@@ -759,9 +821,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Sensor B1
-
-        #region Visibility Ventil K1
 
         public void VisibilityVentilK1(bool val)
         {
@@ -800,10 +859,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityK1Aus));
             }
         }
-
-        #endregion Visibility Ventil K1
-
-        #region Visibility Ventil K2
 
         public void VisibilityVentilK2(bool val)
         {
@@ -861,7 +916,89 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Visibility Ableitung
+
+
+
+        private Visibility _visibilityFohrenburger_0;
+        public Visibility VisibilityFohrenburger_0
+        {
+            get => _visibilityFohrenburger_0;
+            set
+            {
+                _visibilityFohrenburger_0 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_0));
+            }
+        }
+
+
+        private Visibility _visibilityFohrenburger_1;
+        public Visibility VisibilityFohrenburger_1
+        {
+            get => _visibilityFohrenburger_1;
+            set
+            {
+                _visibilityFohrenburger_1 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_1));
+            }
+        }
+
+        private Visibility _visibilityFohrenburger_2;
+        public Visibility VisibilityFohrenburger_2
+        {
+            get => _visibilityFohrenburger_2;
+            set
+            {
+                _visibilityFohrenburger_2 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_2));
+            }
+        }
+
+        private Visibility _visibilityFohrenburger_3;
+        public Visibility VisibilityFohrenburger_3
+        {
+            get => _visibilityFohrenburger_3;
+            set
+            {
+                _visibilityFohrenburger_3 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_3));
+            }
+        }
+
+        private Visibility _visibilityFohrenburger_4;
+        public Visibility VisibilityFohrenburger_4
+        {
+            get => _visibilityFohrenburger_4;
+            set
+            {
+                _visibilityFohrenburger_4 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_4));
+            }
+        }
+
+        private Visibility _visibilityFohrenburger_5;
+        public Visibility VisibilityFohrenburger_5
+        {
+            get => _visibilityFohrenburger_5;
+            set
+            {
+                _visibilityFohrenburger_5 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_5));
+            }
+        }
+
+        private Visibility _visibilityFohrenburger_6;
+        public Visibility VisibilityFohrenburger_6
+        {
+            get => _visibilityFohrenburger_6;
+            set
+            {
+                _visibilityFohrenburger_6 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger_6));
+            }
+        }
+
+
+        #endregion Visibility 
 
         #region Color F1
 

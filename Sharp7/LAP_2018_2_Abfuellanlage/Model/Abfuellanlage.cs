@@ -19,6 +19,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public bool P2 { get; set; }
         public bool Q1 { get; set; }
 
+        public int FlaschenInDerKiste { get; set; }
         public double Pegel { get; set; }
 
         private readonly int _anzahlFlaschen;
@@ -62,6 +63,8 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     B1 |= lichtschranke;
                 }
 
+                FlaschenInDerKiste = _aktuelleFlasche;
+                
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns

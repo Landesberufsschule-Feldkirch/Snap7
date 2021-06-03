@@ -32,7 +32,7 @@
                         <ColumnDefinition Width="70" />
                         <ColumnDefinition Width="70" />
                         <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="100" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="50" />
@@ -67,12 +67,11 @@
                         <RowDefinition Height="35" />
                         <RowDefinition Height="35" />
                         <RowDefinition Height="35" />
-                        <RowDefinition Height="35" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
 
-                    <Button Content="Nachfüllen" Grid.Column="10" Grid.Row="4" FontSize="14pt" Command="{Binding BtnNachfuellen}" Grid.ColumnSpan="2" Margin="35,0,0,0" />
+                    <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
 
                     <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
                         <Button.Resources>
@@ -82,6 +81,7 @@
                         </Button.Resources>
                     </Button>
 
+                    <!--#region  Bedienung rechts -->
                     <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
                     <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnTasterS1}" FontSize="14pt">
@@ -139,6 +139,10 @@
                     <Label Content="Betrieb"  Grid.Column="15" Grid.Row="14" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
                     <Label Content="Störung"  Grid.Column="15" Grid.Row="17" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14pt"/>
 
+
+                    <!--#endregion  Bedienung rechts -->
+
+
                     <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="0,0,50,0" />
                     <Rectangle Fill="DarkGray" Grid.Column="3" Grid.Row="2" Grid.RowSpan="13" Margin="50,0,0,0" />
 
@@ -168,7 +172,7 @@
                     <Rectangle Fill="LightGray" Grid.Column="3" Grid.ColumnSpan="8" Grid.Row="19" Margin="40,0,35,27" />
                     <Rectangle Fill="LightGray" Grid.Column="3" Grid.ColumnSpan="8" Grid.Row="20" Margin="40,27,35,0" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserWeiss.jpg"         Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserWeiss.jpg"   Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
                     <Image Source="Bilder\Initiatoren_BetaetigtWeiss.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
                     <Label Content="B1" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
@@ -180,6 +184,14 @@
                         <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft5}" Canvas.Top="{Binding ViAnzeige.ImageTop5}"  Visibility="{Binding ViAnzeige.VisibilityImage5}" />
                         <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft6}" Canvas.Top="{Binding ViAnzeige.ImageTop6}"  Visibility="{Binding ViAnzeige.VisibilityImage6}" />
                     </Canvas>
+
+                    <Image Source="Bilder\fohrenburger_0.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_0}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_1.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_1}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_2.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_2}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_3.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_3}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_4.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_4}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_5.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_5}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_6.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_6}"  Margin="25,0,0,0" />
 
                     <Button Grid.Column="18" Grid.Row="2" Width="60" Height="40" Click="PlcButton_OnClick" >
                         <Button.Background>
