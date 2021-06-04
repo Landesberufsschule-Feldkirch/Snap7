@@ -1,20 +1,20 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
+using LAP_2018_2_Abfuellanlage.Model;
+using System.ComponentModel;
+using System.Threading;
+using System.Windows;
+using Utilities;
 
 namespace LAP_2018_2_Abfuellanlage.ViewModel
 {
-    using System.ComponentModel;
-    using System.Threading;
-    using System.Windows;
-    using Utilities;
-
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.Abfuellanlage _alleFlaschen;
+        private readonly Abfuellanlage _alleFlaschen;
         private readonly MainWindow _mainWindow;
         private const double HoeheFuellBalken = 9 * 35;
 
-        public VisuAnzeigen(MainWindow mw, Model.Abfuellanlage af)
+        public VisuAnzeigen(MainWindow mw, Abfuellanlage af)
         {
             _mainWindow = mw;
             _alleFlaschen = af;
@@ -64,13 +64,21 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
             VisibilityRectangleAbleitung = Visibility.Hidden;
 
-            VisibilityFohrenburger_0 = Visibility.Visible;
-            VisibilityFohrenburger_1 = Visibility.Hidden;
-            VisibilityFohrenburger_2 = Visibility.Hidden;
-            VisibilityFohrenburger_3 = Visibility.Hidden;
-            VisibilityFohrenburger_4 = Visibility.Hidden;
-            VisibilityFohrenburger_5 = Visibility.Hidden;
-            VisibilityFohrenburger_6 = Visibility.Hidden;
+            VisibilityFohrenburger0 = Visibility.Visible;
+            VisibilityFohrenburger1 = Visibility.Hidden;
+            VisibilityFohrenburger2 = Visibility.Hidden;
+            VisibilityFohrenburger3 = Visibility.Hidden;
+            VisibilityFohrenburger4 = Visibility.Hidden;
+            VisibilityFohrenburger5 = Visibility.Hidden;
+            VisibilityFohrenburger6 = Visibility.Hidden;
+
+            VisibilityMohren0 = Visibility.Hidden;
+            VisibilityMohren1 = Visibility.Hidden;
+            VisibilityMohren2 = Visibility.Hidden;
+            VisibilityMohren3 = Visibility.Hidden;
+            VisibilityMohren4 = Visibility.Hidden;
+            VisibilityMohren5 = Visibility.Hidden;
+            VisibilityMohren6 = Visibility.Hidden;
 
             ColorCircleF1 = Brushes.LawnGreen;
             ColorCircleQ1 = Brushes.LightGray;
@@ -136,75 +144,42 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
         private void KisteAnzeigen(int anzahlFlaschen)
         {
-             // wenn man zuerst alle ausblendet und dann selektiv einblendet flackert die Anzeige
-            switch (anzahlFlaschen)
-            {
-                case 0:
-                    VisibilityFohrenburger_0 = Visibility.Visible;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
 
-                case 1:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Visible;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
-                case 2:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Visible;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
-                case 3:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Visible;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
-                case 4:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Visible;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
-                case 5:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Visible;
-                    VisibilityFohrenburger_6 = Visibility.Hidden;
-                    break;
-                case 6:
-                    VisibilityFohrenburger_0 = Visibility.Hidden;
-                    VisibilityFohrenburger_1 = Visibility.Hidden;
-                    VisibilityFohrenburger_2 = Visibility.Hidden;
-                    VisibilityFohrenburger_3 = Visibility.Hidden;
-                    VisibilityFohrenburger_4 = Visibility.Hidden;
-                    VisibilityFohrenburger_5 = Visibility.Hidden;
-                    VisibilityFohrenburger_6 = Visibility.Visible;
-                    break;
-                default: break;
+            var alleFohrenburgerKisten = new Visibility[10];
+            var alleMohrenKisten = new Visibility[10];
+
+            for (var i = 0; i < 10; i++)
+            {
+                alleFohrenburgerKisten[i] = Visibility.Hidden;
+                alleMohrenKisten[i] = Visibility.Hidden;
             }
+
+
+            if (_alleFlaschen.AktuellesBier == Abfuellanlage.Bier.Fohrenburger)
+            {
+                alleFohrenburgerKisten[anzahlFlaschen] = Visibility.Visible;
+            }
+            else
+            {
+                alleMohrenKisten[anzahlFlaschen] = Visibility.Visible;
+            }
+
+
+            VisibilityFohrenburger0 = alleFohrenburgerKisten[0];
+            VisibilityFohrenburger1 = alleFohrenburgerKisten[1];
+            VisibilityFohrenburger2 = alleFohrenburgerKisten[2];
+            VisibilityFohrenburger3 = alleFohrenburgerKisten[3];
+            VisibilityFohrenburger4 = alleFohrenburgerKisten[4];
+            VisibilityFohrenburger5 = alleFohrenburgerKisten[5];
+            VisibilityFohrenburger6 = alleFohrenburgerKisten[6];
+
+            VisibilityMohren0 = alleMohrenKisten[0];
+            VisibilityMohren1 = alleMohrenKisten[1];
+            VisibilityMohren2 = alleMohrenKisten[2];
+            VisibilityMohren3 = alleMohrenKisten[3];
+            VisibilityMohren4 = alleMohrenKisten[4];
+            VisibilityMohren5 = alleMohrenKisten[5];
+            VisibilityMohren6 = alleMohrenKisten[6];
         }
 
         internal void TasterS1() => _alleFlaschen.S1 = ClickModeButtonS1();
@@ -919,81 +894,160 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
 
 
-        private Visibility _visibilityFohrenburger_0;
-        public Visibility VisibilityFohrenburger_0
+        private Visibility _visibilityFohrenburger0;
+        public Visibility VisibilityFohrenburger0
         {
-            get => _visibilityFohrenburger_0;
+            get => _visibilityFohrenburger0;
             set
             {
-                _visibilityFohrenburger_0 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_0));
+                _visibilityFohrenburger0 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger0));
             }
         }
 
 
-        private Visibility _visibilityFohrenburger_1;
-        public Visibility VisibilityFohrenburger_1
+        private Visibility _visibilityFohrenburger1;
+        public Visibility VisibilityFohrenburger1
         {
-            get => _visibilityFohrenburger_1;
+            get => _visibilityFohrenburger1;
             set
             {
-                _visibilityFohrenburger_1 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_1));
+                _visibilityFohrenburger1 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger1));
             }
         }
 
-        private Visibility _visibilityFohrenburger_2;
-        public Visibility VisibilityFohrenburger_2
+        private Visibility _visibilityFohrenburger2;
+        public Visibility VisibilityFohrenburger2
         {
-            get => _visibilityFohrenburger_2;
+            get => _visibilityFohrenburger2;
             set
             {
-                _visibilityFohrenburger_2 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_2));
+                _visibilityFohrenburger2 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger2));
             }
         }
 
-        private Visibility _visibilityFohrenburger_3;
-        public Visibility VisibilityFohrenburger_3
+        private Visibility _visibilityFohrenburger3;
+        public Visibility VisibilityFohrenburger3
         {
-            get => _visibilityFohrenburger_3;
+            get => _visibilityFohrenburger3;
             set
             {
-                _visibilityFohrenburger_3 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_3));
+                _visibilityFohrenburger3 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger3));
             }
         }
 
-        private Visibility _visibilityFohrenburger_4;
-        public Visibility VisibilityFohrenburger_4
+        private Visibility _visibilityFohrenburger4;
+        public Visibility VisibilityFohrenburger4
         {
-            get => _visibilityFohrenburger_4;
+            get => _visibilityFohrenburger4;
             set
             {
-                _visibilityFohrenburger_4 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_4));
+                _visibilityFohrenburger4 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger4));
             }
         }
 
-        private Visibility _visibilityFohrenburger_5;
-        public Visibility VisibilityFohrenburger_5
+        private Visibility _visibilityFohrenburger5;
+        public Visibility VisibilityFohrenburger5
         {
-            get => _visibilityFohrenburger_5;
+            get => _visibilityFohrenburger5;
             set
             {
-                _visibilityFohrenburger_5 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_5));
+                _visibilityFohrenburger5 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger5));
             }
         }
 
-        private Visibility _visibilityFohrenburger_6;
-        public Visibility VisibilityFohrenburger_6
+        private Visibility _visibilityFohrenburger6;
+        public Visibility VisibilityFohrenburger6
         {
-            get => _visibilityFohrenburger_6;
+            get => _visibilityFohrenburger6;
             set
             {
-                _visibilityFohrenburger_6 = value;
-                OnPropertyChanged(nameof(VisibilityFohrenburger_6));
+                _visibilityFohrenburger6 = value;
+                OnPropertyChanged(nameof(VisibilityFohrenburger6));
+            }
+        }
+
+
+
+        private Visibility _visibilityMohren0;
+        public Visibility VisibilityMohren0
+        {
+            get => _visibilityMohren0;
+            set
+            {
+                _visibilityMohren0 = value;
+                OnPropertyChanged(nameof(VisibilityMohren0));
+            }
+        }
+
+        private Visibility _visibilityMohren1;
+        public Visibility VisibilityMohren1
+        {
+            get => _visibilityMohren1;
+            set
+            {
+                _visibilityMohren1 = value;
+                OnPropertyChanged(nameof(VisibilityMohren1));
+            }
+        }
+
+        private Visibility _visibilityMohren2;
+        public Visibility VisibilityMohren2
+        {
+            get => _visibilityMohren2;
+            set
+            {
+                _visibilityMohren2 = value;
+                OnPropertyChanged(nameof(VisibilityMohren2));
+            }
+        }
+
+        private Visibility _visibilityMohren3;
+        public Visibility VisibilityMohren3
+        {
+            get => _visibilityMohren3;
+            set
+            {
+                _visibilityMohren3 = value;
+                OnPropertyChanged(nameof(VisibilityMohren3));
+            }
+        }
+
+        private Visibility _visibilityMohren4;
+        public Visibility VisibilityMohren4
+        {
+            get => _visibilityMohren4;
+            set
+            {
+                _visibilityMohren4 = value;
+                OnPropertyChanged(nameof(VisibilityMohren4));
+            }
+        }
+
+        private Visibility _visibilityMohren5;
+        public Visibility VisibilityMohren5
+        {
+            get => _visibilityMohren5;
+            set
+            {
+                _visibilityMohren5 = value;
+                OnPropertyChanged(nameof(VisibilityMohren5));
+            }
+        }
+
+        private Visibility _visibilityMohren6;
+        public Visibility VisibilityMohren6
+        {
+            get => _visibilityMohren6;
+            set
+            {
+                _visibilityMohren6 = value;
+                OnPropertyChanged(nameof(VisibilityMohren6));
             }
         }
 

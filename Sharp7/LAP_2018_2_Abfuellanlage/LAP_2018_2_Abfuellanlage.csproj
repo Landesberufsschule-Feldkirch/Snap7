@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\mohren_0.jpg" />
+    <None Remove="Bilder\mohren_1.jpg" />
+    <None Remove="Bilder\mohren_2.jpg" />
+    <None Remove="Bilder\mohren_3.jpg" />
+    <None Remove="Bilder\mohren_4.jpg" />
+    <None Remove="Bilder\mohren_5.jpg" />
+    <None Remove="Bilder\mohren_6.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
@@ -39,6 +49,13 @@
     <Resource Include="Bilder\fohrenburger_4.jpg" />
     <Resource Include="Bilder\fohrenburger_5.jpg" />
     <Resource Include="Bilder\fohrenburger_6.jpg" />
+    <Resource Include="Bilder\mohren_0.jpg" />
+    <Resource Include="Bilder\mohren_1.jpg" />
+    <Resource Include="Bilder\mohren_2.jpg" />
+    <Resource Include="Bilder\mohren_3.jpg" />
+    <Resource Include="Bilder\mohren_4.jpg" />
+    <Resource Include="Bilder\mohren_5.jpg" />
+    <Resource Include="Bilder\mohren_6.jpg" />
     <Resource Include="Bilder\OberLänder.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

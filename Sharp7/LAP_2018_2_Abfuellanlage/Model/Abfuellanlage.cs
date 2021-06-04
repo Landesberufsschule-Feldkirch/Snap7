@@ -5,6 +5,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
 {
     public class Abfuellanlage
     {
+        public enum Bier
+        {
+            Fohrenburger = 0,
+            Mohren
+        }
+        public Bier AktuellesBier { get; set; }
         public List<Flaschen> AlleFlaschen { get; set; }
         public bool B1 { get; set; }
         public bool F1 { get; set; }
@@ -64,7 +70,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 }
 
                 FlaschenInDerKiste = _aktuelleFlasche;
-                
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
@@ -78,7 +84,10 @@ namespace LAP_2018_2_Abfuellanlage.Model
         {
             Pegel = 0.4;
             _aktuelleFlasche = 0;
+            AktuellesBier = AktuellesBier == Bier.Fohrenburger ? Bier.Mohren : Bier.Fohrenburger;
+
             foreach (var flasche in AlleFlaschen) { flasche.Reset(); }
+
         }
     }
 }

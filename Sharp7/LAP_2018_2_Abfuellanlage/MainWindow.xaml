@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="LAP 2018/2 - Abfüllanlage mit Füllstandüberwachung" Height="900" Width="1200">
+        Title="LAP 2018/2 - Abfüllanlage mit Füllstandüberwachung" Height="920" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -184,14 +184,23 @@
                         <Image Source="Bilder/Kellerbier.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft5}" Canvas.Top="{Binding ViAnzeige.ImageTop5}"  Visibility="{Binding ViAnzeige.VisibilityImage5}" />
                         <Image Source="Bilder/OberLänder.jpg"      Height="80" Canvas.Left="{Binding ViAnzeige.ImageLeft6}" Canvas.Top="{Binding ViAnzeige.ImageTop6}"  Visibility="{Binding ViAnzeige.VisibilityImage6}" />
                     </Canvas>
+                
+                    <Image Source="Bilder\fohrenburger_0.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger0}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_1.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger1}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_2.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger2}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_3.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger3}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_4.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger4}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_5.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger5}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\fohrenburger_6.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger6}"  Margin="25,0,0,0" />
 
-                    <Image Source="Bilder\fohrenburger_0.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_0}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_1.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_1}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_2.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_2}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_3.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_3}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_4.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_4}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_5.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_5}"  Margin="25,0,0,0" />
-                    <Image Source="Bilder\fohrenburger_6.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityFohrenburger_6}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_0.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren0}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_1.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren1}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_2.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren2}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_3.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren3}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_4.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren4}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_5.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren5}"  Margin="25,0,0,0" />
+                    <Image Source="Bilder\mohren_6.jpg"   Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="3" Visibility="{Binding ViAnzeige.VisibilityMohren6}"  Margin="25,0,0,0" />
+
 
                     <Button Grid.Column="18" Grid.Row="2" Width="60" Height="40" Click="PlcButton_OnClick" >
                         <Button.Background>
