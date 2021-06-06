@@ -23,6 +23,7 @@ namespace Schleifmaschine.ViewModel
             for (var i = 0; i < 20; i++) ClickModeBtn.Add(ClickMode.Press);
 
             WinkelSchleifmaschine = 10;
+            AktuelleDrehzahl = 0;
 
             ColorThermorelaisF1 = Brushes.LawnGreen;
             ColorThermorelaisF2 = Brushes.LawnGreen;
@@ -48,6 +49,7 @@ namespace Schleifmaschine.ViewModel
                 FarbeP2(_schleifmaschine.P2);
                 FarbeP3(_schleifmaschine.P3);
 
+                AktuelleDrehzahl = _schleifmaschine.DrehzahlSchleifmaschine;
                 SchleifmaschineDrehzahl = "n=" + _schleifmaschine.DrehzahlSchleifmaschine;
 
                 if (_mainWindow.Plc != null)
@@ -153,6 +155,16 @@ namespace Schleifmaschine.ViewModel
             }
         }
 
+        private double _aktuelleDrehzahl;
+        public double AktuelleDrehzahl
+        {
+            get => _aktuelleDrehzahl;
+            set
+            {
+                _aktuelleDrehzahl = value;
+                OnPropertyChanged(nameof(AktuelleDrehzahl));
+            }
+        }
 
         public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
 

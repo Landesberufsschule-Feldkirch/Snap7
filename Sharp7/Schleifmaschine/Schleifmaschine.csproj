@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
+    <ProjectReference Include="..\GaugeControl\GaugeControl.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
