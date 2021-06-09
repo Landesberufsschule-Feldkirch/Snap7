@@ -1,8 +1,8 @@
-﻿using BeschriftungPlc;
-using Kommunikation;
+﻿using Kommunikation;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using BeschriftungPlc;
 
 namespace Schleifmaschine
 {
@@ -20,7 +20,7 @@ namespace Schleifmaschine
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
-        private const int AnzByteAnalogInput = 0;
+        private const int AnzByteAnalogInput = 2;
         private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()

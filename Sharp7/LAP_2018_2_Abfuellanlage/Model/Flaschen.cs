@@ -4,7 +4,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
 {
     public class Flaschen
     {
-        private enum BewegungSchritt
+        public enum BewegungSchritt
         {
             Oberhalb,
             Vereinzeln,
@@ -93,5 +93,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             Sichtbar = true;
             Flasche.SetPosition(_startPosition);
         }
+
+        internal BewegungSchritt GetBewegungSchritt() => _bewegungSchritt;
     }
 }

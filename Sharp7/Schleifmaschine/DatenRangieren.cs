@@ -1,4 +1,5 @@
 ﻿using Kommunikation;
+using PlcDatenTypen;
 
 namespace Schleifmaschine
 {
@@ -18,19 +19,21 @@ namespace Schleifmaschine
 
         private enum BitPosEingang
         {
-            F1 = 0, // 0.0 Thermorelais langsame Drehzahl
-            F2,     // 0.1 Thermorelais schnelle Drehzahl
-            S0,     // 0.2 Taster ( ⓪ ) 
-            S1,     // 0.3 Taster ( Ⅰ )  
-            S2,     // 0.4 Taster ( Ⅱ )  
-            S3,     // 0.5 Not-Halt
-            S4      // 0.6 Störung quittieren
+            B1 = 0, // 0.0 Störung Übersynchron
+            F1,     // 0.1 Thermorelais langsame Drehzahl
+            F2,     // 0.2 Thermorelais schnelle Drehzahl
+            S0,     // 0.3 Taster ( ⓪ ) 
+            S1,     // 0.4 Taster ( Ⅰ )  
+            S2,     // 0.5 Taster ( Ⅱ )  
+            S3,     // 0.6 Not-Halt
+            S4      // 0.7 Störung quittieren
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
             {
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Schleifmaschine.B1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Schleifmaschine.F1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F2, _viewModel.Schleifmaschine.F2);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S0, _viewModel.Schleifmaschine.S0);
@@ -42,9 +45,12 @@ namespace Schleifmaschine
 
             _viewModel.Schleifmaschine.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Schleifmaschine.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-            _viewModel.Schleifmaschine.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
+            _viewModel.Schleifmaschine.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);            
             _viewModel.Schleifmaschine.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Schleifmaschine.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+
+            _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Schleifmaschine.DrehzahlSchleifmaschine, 10000));
+
         }
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;

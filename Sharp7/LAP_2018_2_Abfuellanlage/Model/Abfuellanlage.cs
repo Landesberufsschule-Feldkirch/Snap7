@@ -69,7 +69,13 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     B1 |= lichtschranke;
                 }
 
-                FlaschenInDerKiste = _aktuelleFlasche;
+                var anzahlInDerKiste = 0;
+                foreach (var flasche in AlleFlaschen)
+                {
+                    if (flasche.GetBewegungSchritt() == Model.Flaschen.BewegungSchritt.Fertig) anzahlInDerKiste++;
+                }
+
+                FlaschenInDerKiste = anzahlInDerKiste;
 
                 Thread.Sleep(10);
             }
@@ -77,9 +83,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         }
 
         internal void TasterNachfuellen() => Pegel = 1;
-
         internal void TasterF1() => F1 = !F1;
-
         internal void AllesReset()
         {
             Pegel = 0.4;
@@ -87,7 +91,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
             AktuellesBier = AktuellesBier == Bier.Fohrenburger ? Bier.Mohren : Bier.Fohrenburger;
 
             foreach (var flasche in AlleFlaschen) { flasche.Reset(); }
-
         }
     }
 }

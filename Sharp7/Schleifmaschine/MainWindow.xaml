@@ -54,8 +54,8 @@
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="35" />
-                        <ColumnDefinition Width="35" /> 
-                        <ColumnDefinition Width="35" /> 
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="35" />
                         <ColumnDefinition Width="10" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
@@ -147,6 +147,11 @@
                         </Button.Resources>
                     </Button>
 
+                    
+                    <Rectangle Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisUebersynchron}" Fill="Red"/>
+                    <Label Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Content="Schleifmaschine Übersynchron!" Visibility="{Binding ViAnzeige.VisUebersynchron}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20pt" />
+
+
                     <Label  Grid.Column="11" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3" Content="-P1" FontSize="20pt" VerticalAlignment="Center"  />
                     <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2" />
                     <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Fill="{Binding ViAnzeige.ColorP1}" />
@@ -185,7 +190,7 @@
                     <Ellipse Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3"  Fill="Black" />
                     <Ellipse Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3"  Fill="Yellow" Margin="3,3,3,3"/>
                     <Button Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3" Margin="8,8,8,8"  
-                            Background="Red" Command="{Binding BtnTaster}" CommandParameter="3" >
+                            Background="{Binding ViAnzeige.ColorTasterS3}" Command="{Binding BtnS3}" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50" />
@@ -193,7 +198,7 @@
                         </Button.Resources>
                     </Button>
                     <Label  Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3" Content="Not-Halt" FontSize="16pt" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    
+
 
                     <Button Grid.Column="31" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Click="PlcButton_OnClick" Width="60" Height="40" Margin="10,0,0,30">
                         <Button.Background>
@@ -203,11 +208,11 @@
 
                     <gaugeControl:GaugeControl x:Name="Drehzahl" Grid.Column="10" Grid.ColumnSpan="9"  Grid.Row="1" Grid.RowSpan="10" 
                                                GaugeText="Drehzahl" GaugeTextFont="Arial Rounded MT Bold" 
-                                               ArcMaxValue="3000" 
-                                               ArcMidleColorEndPos="188" 
                                                ArcMinValue="0" 
-                                               ArcFirstColorEndPos="165"
-                                               CurrentValue="{Binding ViAnzeige.AktuellerDruck}" />
+                                               ArcMaxValue="3000" 
+                                               ArcFirstColorEndPos="80"
+                                               ArcMidleColorEndPos="225"  
+                                               CurrentValue="{Binding ViAnzeige.AktuelleDrehzahl}" />
 
 
                     <Label Grid.Column="19" Grid.ColumnSpan="10"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />

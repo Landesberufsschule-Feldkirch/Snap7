@@ -27,5 +27,9 @@ namespace Schleifmaschine.ViewModel
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnThermorelaisF2 => _btnThermorelaisF2 ??= new RelayCommand(_ => Schleifmaschine.ThermorelaisF2(), _ => true);
 
+        private ICommand _btnS3;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnS3 => _btnS3 ??= new RelayCommand(_ => Schleifmaschine.TasterS3(), _ => true);
+
     }
 }
