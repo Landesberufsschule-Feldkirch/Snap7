@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projekt</title>
+    <style>
+        h1 {
+            font-family: arial, sans-serif;
+            text-align: center;
+            padding: 1em;
+            border: 3px solid black;
+            background-color: #E0E0E0;
+            display: inline-block;
+        }
+
+        .beschreibung {
+            font-family: arial, sans-serif;
+            font-size: 14pt;
+            font-weight: bold;
+            color: black;
+        }
+
+        .text_schwarz {
+            font-family: arial, sans-serif;
+            font-size: 12pt;
+            font-weight: normal;
+            color: black;
+        }
+
+        .di {
+            background-color: rgb(243, 247, 129);
+            width: 50px;
+        }
+
+        .dq {
+            background-color: rgb(169, 245, 225);
+            width: 80px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>LAP 2010/2 Transportwagen</h1>
+    <br>
+    <div class="text_schwarz">
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=578" target="_blank">&rarr; Linderonline/FK</a>
+        <br><br>
+        <span class="beschreibung">Beschreibung</span>
+        <br><br>
+
+        Eine Ofentüre wird mit einem Kettenantrieb gesteuert. <br>
+        In der Grundstellung ist die Ofentüre geschlossen.
+        <br><br>
+
+        <ul>
+            <li>Bei Betätigung des S1 Tasters wird der Transportwagen gestartet.</li>
+            <li>
+                Er läuft zur Beladung von Punkt A nach Punkt B.
+                Bei Erreichen des Endschalters B2 bleibt der Transportwagen zum Beladen 7 Sekunden lang stehen und fährt dann wieder automatisch zum Entladen von Punkt B nach Punkt A zurück und wird durch B1 gestoppt.
+            </li>
+            <li>Der Vorgang kann mit S1 von neuem gestartet werden. </li>
+            <li>Mit dem Not-Aus-Taster S2 kann die Anlage im Notfall gestoppt werden. </li>
+            <li>Bei einer Störung (Thermorelais bzw. NotHalt) leuchtet die Lampe P1 und der Transportwagen bleibt stehen.</li>
+            <li>Nach Behebung der beiden Störungen blinkt die Meldeleuchte mit 1Hz</li>
+            <li>Mit dem Taster S3 wird die Störung quittiert (Meldeleucht aus) und der Transportwagen (Motor M1 – Linkslauf) wird in die Grundstellung gebracht</li>
+        </ul>
+
+
+
+        <br><br>
+
+        <table>
+            <tr>            <td>SPS         </td> <td>Bezeichnung   </td> <td>Kommentar                 </td> </tr>
+            <tr class="di"> <td>DigInput.B1 </td>	<td>-B1	        </td> <td>Endschalter Links         </td> </tr>
+            <tr class="di"> <td>DigInput.B2 </td>	<td>-B2	        </td> <td>Endschalter Rechts        </td> </tr>
+            <tr class="di"> <td>DigInput.F1 </td>	<td>-F1	        </td> <td>Thermorelais              </td> </tr>
+            <tr class="di"> <td>DigInput.S1 </td>   <td>-S1	        </td> <td>Taster "Start"            </td> </tr>
+            <tr class="di"> <td>DigInput.S2 </td>	<td>-S2	        </td> <td>NotHalt                   </td> </tr>
+            <tr class="di"> <td>DigInput.S3 </td>   <td>-S3	        </td> <td>Taster "Reset"            </td> </tr>
+
+            <tr class="dq"> <td>DigOutput.P1 </td>	<td>-P1	        </td> <td>Meldeleuchte "Störung"    </td> </tr>
+            <tr class="dq"> <td>DigOutput.Q1 </td>	<td>-Q1	        </td> <td>Motor LL                  </td> </tr>
+            <tr class="dq"> <td>DigOutput.Q2 </td>	<td>-Q2	        </td> <td>Motor RL                  </td> </tr>
+        </table>
+    </div>
+    <br><br>
+</body>
+
+</html>

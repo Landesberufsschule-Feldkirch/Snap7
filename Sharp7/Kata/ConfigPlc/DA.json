@@ -1,0 +1,31 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P1",
+      "Kommentar": "Meldeleuchte Störung"
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q1",
+      "Kommentar": "Motor LL"
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "Q2",
+      "Kommentar": "Motor RL"
+    }
+  ]
+}
