@@ -48,7 +48,7 @@ namespace Kata
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " 形 型 " + VersionNummer;
 
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 

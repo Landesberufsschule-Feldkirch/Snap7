@@ -14,11 +14,12 @@ namespace Kata.ViewModel
             ViAnzeige = new VisuAnzeigen(Kata);
         }
 
-
         private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnzeige.Taster);
 
-
+        private ICommand _btnSchalter;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnSchalter => _btnSchalter ??= new RelayCommand(ViAnzeige.Schalter);
     }
 }

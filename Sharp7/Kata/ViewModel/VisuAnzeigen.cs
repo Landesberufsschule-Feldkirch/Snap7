@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Media;
 using System.Threading;
@@ -11,10 +12,9 @@ namespace Kata.ViewModel
     {
         private readonly Model.Kata _kata;
 
-        public VisuAnzeigen( Model.Kata kata)
+        public VisuAnzeigen(Model.Kata kata)
         {
             _kata = kata;
-
 
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -30,17 +30,23 @@ namespace Kata.ViewModel
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
 
-        private static void VisuAnzeigenTask()
+        private void VisuAnzeigenTask()
         {
             while (true)
             {
+                SichtbarkeitKontakt(_kata.S1, 1);
+                SichtbarkeitKontakt(_kata.S2, 2);
+                SichtbarkeitKontakt(_kata.S3, 3);
+                SichtbarkeitKontakt(_kata.S4, 4);
+                SichtbarkeitKontakt(_kata.S5, 5);
+                SichtbarkeitKontakt(_kata.S6, 6);
+                SichtbarkeitKontakt(_kata.S7, 7);
+                SichtbarkeitKontakt(_kata.S8, 8);
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-
 
         #region SPS Version, Status und Farbe
 
@@ -78,7 +84,6 @@ namespace Kata.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -90,7 +95,6 @@ namespace Kata.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -103,7 +107,11 @@ namespace Kata.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
+        internal void SichtbarkeitKontakt(bool val, int i)
+        {
+            VisibilityEin[i] = val ? Visibility.Visible : Visibility.Hidden;
+            VisibilityAus[i] = val ? Visibility.Hidden : Visibility.Visible;
+        }
 
         private ObservableCollection<Visibility> _visibilityEin = new();
         public ObservableCollection<Visibility> VisibilityEin
@@ -128,7 +136,6 @@ namespace Kata.ViewModel
         }
 
         private ObservableCollection<Brush> _colorLampe = new();
-
         public ObservableCollection<Brush> ColorLampe
         {
             get => _colorLampe;
@@ -144,18 +151,33 @@ namespace Kata.ViewModel
             if (id is not string ascii) return;
 
             var tasterId = short.Parse(ascii);
-
             var gedrueckt = ClickModeButton(tasterId);
 
             switch (tasterId)
             {
                 case 1: _kata.S1 = gedrueckt; break;
                 case 2: _kata.S2 = gedrueckt; break;
-
+                case 3: _kata.S3 = !gedrueckt; break;
+                case 4: _kata.S4 = !gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
 
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
 
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 5: _kata.S5 = !_kata.S5; break;
+                case 6: _kata.S6 = !_kata.S5; break;
+                case 7: _kata.S7 = !_kata.S5; break;
+                case 8: _kata.S8 = !_kata.S5; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id)); 
+            }
+        }
         public bool ClickModeButton(int tasterId)
         {
             if (ClickModeBtn[tasterId] == ClickMode.Press)
@@ -168,7 +190,6 @@ namespace Kata.ViewModel
             return false;
         }
 
-
         private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
@@ -179,10 +200,6 @@ namespace Kata.ViewModel
                 OnPropertyChanged(nameof(ClickModeBtn));
             }
         }
-
-
-
-
 
         #region iNotifyPeropertyChanged Members
 
