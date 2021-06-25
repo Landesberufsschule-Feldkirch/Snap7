@@ -97,10 +97,34 @@
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="14" Grid.RowSpan="11" Stroke="Black"  Margin="35,0,35,0" />
                     <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="15" Content="Schalter" FontSize="20pt"/>
 
-                    <Button Grid.Column="3" Grid.Row="17" Grid.RowSpan="2"  Content="S5" Command="{Binding BtnSchalter}" CommandParameter="5" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="19" Grid.RowSpan="2"  Content="S6" Command="{Binding BtnSchalter}" CommandParameter="6" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="21" Grid.RowSpan="2"  Content="S7" Command="{Binding BtnSchalter}" CommandParameter="7" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="23" Grid.RowSpan="2"  Content="S8" Command="{Binding BtnSchalter}" CommandParameter="8" FontSize="20pt" Margin="0,10,0,10"  />
+                    <Button Grid.Column="3" Grid.Row="17" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="5" FontSize="20pt" Margin="0,10,0,10"  >
+                        <StackPanel>
+                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnzeige.VisibilityEin[5]}" />
+                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnzeige.VisibilityAus[5]}" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Column="3" Grid.Row="19" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="6" FontSize="20pt" Margin="0,10,0,10"  >
+                        <StackPanel>
+                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnzeige.VisibilityEin[6]}" />
+                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnzeige.VisibilityAus[6]}" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Column="3" Grid.Row="21" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="7" FontSize="20pt" Margin="0,10,0,10"  >
+                        <StackPanel>
+                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnzeige.VisibilityEin[7]}" />
+                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnzeige.VisibilityAus[7]}" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Grid.Column="3" Grid.Row="23" Grid.RowSpan="2"  Command="{Binding BtnSchalter}" CommandParameter="8" FontSize="20pt" Margin="0,10,0,10"  >
+                        <StackPanel>
+                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnzeige.VisibilityEin[8]}" />
+                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnzeige.VisibilityAus[8]}" />
+                        </StackPanel>
+                    </Button>
+
 
 
 

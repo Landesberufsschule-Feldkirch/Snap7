@@ -23,6 +23,8 @@ namespace Kommunikation
 
         public byte[] ManDigInput { get; set; }
 
+        public byte[] Versionsinfo = new byte[256];
+
         public const int SpsTimeout = 1000;
 
         private readonly AdsClient _adsClient;
@@ -35,7 +37,7 @@ namespace Kommunikation
         private readonly byte[] _versionsStringDaten = new byte[1024];
 
         private int _zyklusZeitKommunikation = 10;
-        private string _spsStatus = "Keine Verbindung zum CX9020!";
+        private string _spsStatus = "Keine Verbindung zur CX9020!";
         private string _plcModus = "CX9020";
         private bool _spsError;
         private bool _taskRunning = true;
@@ -57,8 +59,6 @@ namespace Kommunikation
         {
             var cancel = CancellationToken.None;
 
-            var valueWrite = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            var valueRead = new byte[100];
 
             while (_taskRunning)
             {
@@ -76,32 +76,42 @@ namespace Kommunikation
 
                     _callbackRangieren(_datenstruktur, true);
 
-
-                    var handleDigInput2 = _adsClient.CreateVariableHandle("Computer.DigInput[2]");
-                    var handleDigOutput = _adsClient.CreateVariableHandle("Computer.DigOutput");
+                    var handleVersionsInfo = _adsClient.CreateVariableHandle("VersionsInfo.Ver");
+                    var handleBefehle = _adsClient.CreateVariableHandle("VersionsInfo.Befehle");
+                    var handleAnalogInput = _adsClient.CreateVariableHandle("AnalogInput.AI");
+                    var handleAnalogOutput = _adsClient.CreateVariableHandle("AnalogOutput.AA");
+                    var handleDigInput = _adsClient.CreateVariableHandle("DigInput.DI");
+                    var handleDigOutput = _adsClient.CreateVariableHandle("DigOutput.DA");
 
                     while (true)
                     {
+                        byte betriebsartPlc = 0;
 
-                        valueRead[2] = (byte)_adsClient.ReadAny(handleDigInput2, typeof(byte));
+                        _callbackRangieren(_datenstruktur, true);
 
-                        _adsClient.WriteAny(handleDigOutput, valueWrite);
+                        if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte) betriebsartPlc = 1;
 
-                        valueWrite[0]++;
-                        valueWrite[2]++;
+                        Versionsinfo = (byte[])_adsClient.ReadAny(handleVersionsInfo, typeof(byte[]), new int[] { 255 });
 
-                        Thread.Sleep(100);
+                        _datenstruktur.AnalogOutput = (byte[])_adsClient.ReadAny(handleAnalogOutput, typeof(byte[]), new int[] { 1024 });
+                        _datenstruktur.DigOutput = (byte[])_adsClient.ReadAny(handleDigOutput, typeof(byte[]), new int[] { 1024 });
+
+                        _adsClient.WriteAny(handleBefehle, betriebsartPlc);
+                        _adsClient.WriteAny(handleAnalogInput, _datenstruktur.AnalogInput);
+                        _adsClient.WriteAny(handleDigInput, _datenstruktur.DigInput);
+
+                        for (var i = 0; i < 100; i++) _datenstruktur.VersionInputSps[1 + i] = Versionsinfo[i];
+
+                        Thread.Sleep(10);
                     }
 
                 }
 
-                _spsStatus = "Keine Verbindung zur S7-1200!";
+                _spsStatus = "Keine Verbindung zur CX9020!";
 
 
                 Thread.Sleep(50);
             }
-
-            valueRead[0] = valueRead[2];
         }
 
         private bool FehlerAktiv(int? error)
@@ -120,11 +130,21 @@ namespace Kommunikation
 
         public string GetVersion()
         {
-            if (_versionsStringDaten[3] < 1) return "Uups";
+            var textLaenge = 0;
 
-            var textLaenge = _versionsStringDaten[3];
+            if (Versionsinfo.Length < 1) return "Uups";
+
+            for (var i = 0; i < 255; i++)
+            {
+                if (Versionsinfo[i] == 0)
+                {
+                    textLaenge = i;
+                    break;
+                }
+            }
+
             var enc = new ASCIIEncoding();
-            return enc.GetString(_datenstruktur.VersionInputSps, 0, textLaenge);
+            return enc.GetString(Versionsinfo, 0, textLaenge);
         }
 
         public string GetSpsStatus() => _spsStatus;

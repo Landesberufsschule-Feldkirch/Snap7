@@ -8,6 +8,7 @@ namespace Parkhaus.Model
         public byte[] BesetzteParkPlaetze { get; set; } = new byte[16];
 
         public int FreieParkplaetze { get; set; }
+        public int FreieParkplaetzeSoll { get; set; }
 
         public bool ParkhausReihe1 { get; set; } // Signal von der SPS
         public bool ParkhausReihe2 { get; set; }
@@ -37,19 +38,33 @@ namespace Parkhaus.Model
         {
             while (true)
             {
-                ParkhausSpalte1 = ParkhausSpalte2 = ParkhausSpalte3 = ParkhausSpalte4 =
-                    ParkhausSpalte5 = ParkhausSpalte6 = ParkhausSpalte7 = ParkhausSpalte8 = false;
+                ParkhausSpalte1 = ParkhausSpalte2 = ParkhausSpalte3 = ParkhausSpalte4 = ParkhausSpalte5 = ParkhausSpalte6 = ParkhausSpalte7 = ParkhausSpalte8 = false;
 
                 if (ParkhausReihe1) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[0]);
                 if (ParkhausReihe2) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[1]);
                 if (ParkhausReihe3) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[2]);
                 if (ParkhausReihe4) (ParkhausSpalte1, ParkhausSpalte2, ParkhausSpalte3, ParkhausSpalte4, ParkhausSpalte5, ParkhausSpalte6, ParkhausSpalte7, ParkhausSpalte8) = AlleBitLesen(BesetzteParkPlaetze[3]);
 
-
+                FreieParkplaetzeSoll = 0;
+                for (var i = 0; i < 4; i++)
+                {
+                    FreieParkplaetzeSoll += 8 - GesetzteBitZaehlen(BesetzteParkPlaetze[i]);
+                }
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+
+        internal int GesetzteBitZaehlen(byte wert)
+        {
+            var ergebnis = 0;
+            for (var i = 0; i < 8; i++)
+            {
+                var bitMuster = (byte)(1 << i);
+                if ((wert & bitMuster) == bitMuster) ergebnis++;
+            }
+            return ergebnis;
         }
 
         internal (bool b0, bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7) AlleBitLesen(

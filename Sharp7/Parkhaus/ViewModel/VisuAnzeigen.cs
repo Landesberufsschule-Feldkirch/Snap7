@@ -44,6 +44,7 @@ namespace Parkhaus.ViewModel
             {
 
                 AnzahlFreieParkplaetze = _parkhaus.FreieParkplaetze.ToString();
+                AnzahlFreieParkplaetzeSoll = $"( {_parkhaus.FreieParkplaetzeSoll} )";
 
                 for (var i = 0; i < 50; i++)
                 {
@@ -191,6 +192,18 @@ namespace Parkhaus.ViewModel
             {
                 _anzahlFreieParkplaetze = value;
                 OnPropertyChanged(nameof(AnzahlFreieParkplaetze));
+            }
+        }
+
+        private string _anzahlFreieParkplaetzeSoll;
+
+        public string AnzahlFreieParkplaetzeSoll
+        {
+            get => _anzahlFreieParkplaetzeSoll;
+            set
+            {
+                _anzahlFreieParkplaetzeSoll = value;
+                OnPropertyChanged(nameof(AnzahlFreieParkplaetzeSoll));
             }
         }
 

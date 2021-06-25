@@ -9,7 +9,11 @@
 
   <ItemGroup>
     <None Remove="Bilder\IconPlotter.jpg" />
+    <None Remove="Bilder\Kippschalter_Off.JPG" />
+    <None Remove="Bilder\Kippschalter_On.JPG" />
     <None Remove="Bilder\S7_1200.jpg" />
+    <None Remove="Bilder\SchiebeSchalterOff.JPG" />
+    <None Remove="Bilder\SchiebeSchalterOn.JPG" />
     <None Remove="Bilder\Taster_BetaetigtHellgrau.jpg" />
     <None Remove="Bilder\Taster_SchliesserHellgrau.jpg" />
   </ItemGroup>
@@ -28,6 +32,10 @@
 
   <ItemGroup>
     <Resource Include="Bilder\IconPlotter.jpg" />
+    <Resource Include="Bilder\Kippschalter_Off.JPG" />
+    <Resource Include="Bilder\Kippschalter_On.JPG" />
+    <Resource Include="Bilder\SchiebeSchalterOff.JPG" />
+    <Resource Include="Bilder\SchiebeSchalterOn.JPG" />
     <Resource Include="Bilder\Taster_BetaetigtHellgrau.jpg" />
     <Resource Include="Bilder\Taster_SchliesserHellgrau.jpg" />
     <Resource Include="Bilder\S7_1200.jpg" />
