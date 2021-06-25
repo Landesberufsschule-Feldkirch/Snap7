@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "P1",
-      "Kommentar": "Meldeleuchte Störung"
+      "Kommentar": "Meldeleuchte grün"
     },
     {
       "LaufendeNr": 1,
@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q1",
-      "Kommentar": "Motor LL"
+      "Bezeichnung": "P2",
+      "Kommentar": "Meldeleuchte grün"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,53 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "Q2",
-      "Kommentar": "Motor RL"
+      "Bezeichnung": "P3",
+      "Kommentar": "Meldeleuchte grün"
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P4",
+      "Kommentar": "Meldeleuchte grün"
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P5",
+      "Kommentar": "Meldeleuchte grün"
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P6",
+      "Kommentar": "Meldeleuchte grün"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P7",
+      "Kommentar": "Meldeleuchte grün"
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P8",
+      "Kommentar": "Meldeleuchte grün"
     }
   ]
 }

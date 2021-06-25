@@ -6,8 +6,8 @@
       "StartBit": 0,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "B1",
-      "Kommentar": "Endschalter links"
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster"
     },
     {
       "LaufendeNr": 1,
@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "B2",
-      "Kommentar": "Endschalter rechts"
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "F1",
-      "Kommentar": "Thermorelais"
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster"
     },
     {
       "LaufendeNr": 3,
@@ -33,8 +33,8 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S1",
-      "Kommentar": "Taster Start"
+      "Bezeichnung": "S4",
+      "Kommentar": "Taster"
     },
     {
       "LaufendeNr": 4,
@@ -42,8 +42,8 @@
       "StartBit": 4,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S2",
-      "Kommentar": "Nothalt"
+      "Bezeichnung": "S5",
+      "Kommentar": "Schiebeschalter"
     },
     {
       "LaufendeNr": 5,
@@ -51,8 +51,26 @@
       "StartBit": 5,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S3",
-      "Kommentar": "Taster Reset"
+      "Bezeichnung": "S6",
+      "Kommentar": "Schiebeschalter"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S7",
+      "Kommentar": "Kippschalter"
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S8",
+      "Kommentar": "Kippschalter"
     }
   ]
 }

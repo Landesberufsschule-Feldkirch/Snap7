@@ -9,6 +9,9 @@ namespace StiegenhausBeleuchtung
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DatenRangieren DatenRangieren { get; set; }
+
+        private readonly ViewModel.ViewModel _viewModel;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -22,17 +25,19 @@ namespace StiegenhausBeleuchtung
             VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
-            var viewModel = new ViewModel.ViewModel(this);
-            var datenRangieren = new DatenRangieren(viewModel);
+
+            _viewModel = new ViewModel.ViewModel(this);
+            DatenRangieren = new DatenRangieren(_viewModel);
 
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
             var befehlszeile = Environment.GetCommandLineArgs();
-            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, datenRangieren.Rangieren);
-            else Plc = new S71200(Datenstruktur, datenRangieren.Rangieren);
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
-            datenRangieren.ReferenzUebergeben(Plc);
+            DatenRangieren.ReferenzUebergeben(Plc);
 
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
         }

@@ -1,28 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using TwinCAT.Ads;
 
 namespace Kommunikation
 {
     public class Cx9020 : IPlc
     {
-        private enum BytePosition
-        {
-            Byte0 = 0,
-            // ReSharper disable once UnusedMember.Local
-            // ReSharper disable once UnusedMember.Global
-            Byte1,
-            Byte2,
-            Byte3,
-            Byte4
-        }
-
-        public byte[] ManDigInput { get; set; }
-
         public byte[] Versionsinfo = new byte[256];
 
         public const int SpsTimeout = 1000;
@@ -34,12 +22,9 @@ namespace Kommunikation
         private readonly Datenstruktur _datenstruktur;
         private readonly IpAdressenBeckhoff _spsClient;
 
-        private readonly byte[] _versionsStringDaten = new byte[1024];
-
-        private int _zyklusZeitKommunikation = 10;
         private string _spsStatus = "Keine Verbindung zur CX9020!";
         private string _plcModus = "CX9020";
-        private bool _spsError;
+        private readonly bool _spsError;
         private bool _taskRunning = true;
 
 
@@ -51,21 +36,17 @@ namespace Kommunikation
             _spsClient = JsonConvert.DeserializeObject<IpAdressenBeckhoff>(File.ReadAllText("IpAdressenBeckhoff.json"));
             _adsClient = new AdsClient();
 
-            System.Threading.Tasks.Task.Run(SpsKommunikationTask);
+            _spsError = false;
+            Task.Run(SpsKommunikationTask);
         }
 
 
         public void SpsKommunikationTask()
         {
-            var cancel = CancellationToken.None;
-
-
             while (_taskRunning)
             {
                 var pingSender = new Ping();
                 var reply = pingSender.Send(_spsClient.IpAdresse, SpsTimeout);
-
-                _callbackRangieren(_datenstruktur, true); // TODO wieder entfernen!!
 
                 if (reply?.Status == IPStatus.Success)
                 {
@@ -91,10 +72,10 @@ namespace Kommunikation
 
                         if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.LaborPlatte) betriebsartPlc = 1;
 
-                        Versionsinfo = (byte[])_adsClient.ReadAny(handleVersionsInfo, typeof(byte[]), new int[] { 255 });
+                        Versionsinfo = (byte[])_adsClient.ReadAny(handleVersionsInfo, typeof(byte[]), new[] { 255 });
 
-                        _datenstruktur.AnalogOutput = (byte[])_adsClient.ReadAny(handleAnalogOutput, typeof(byte[]), new int[] { 1024 });
-                        _datenstruktur.DigOutput = (byte[])_adsClient.ReadAny(handleDigOutput, typeof(byte[]), new int[] { 1024 });
+                        _datenstruktur.AnalogOutput = (byte[])_adsClient.ReadAny(handleAnalogOutput, typeof(byte[]), new[] { 1024 });
+                        _datenstruktur.DigOutput = (byte[])_adsClient.ReadAny(handleDigOutput, typeof(byte[]), new[] { 1024 });
 
                         _adsClient.WriteAny(handleBefehle, betriebsartPlc);
                         _adsClient.WriteAny(handleAnalogInput, _datenstruktur.AnalogInput);
@@ -114,20 +95,6 @@ namespace Kommunikation
             }
         }
 
-        private bool FehlerAktiv(int? error)
-        {
-            if (error == 0) return false;
-
-            _spsStatus = ErrorAnzeigen(error.GetValueOrDefault());
-            return true;
-        }
-
-        public string ErrorAnzeigen(int resultError)
-        {
-            const string errorText = "??"; //_client?.ErrorText(resultError);
-            return "Nr: " + resultError + " Text: " + errorText;
-        }
-
         public string GetVersion()
         {
             var textLaenge = 0;
@@ -136,11 +103,9 @@ namespace Kommunikation
 
             for (var i = 0; i < 255; i++)
             {
-                if (Versionsinfo[i] == 0)
-                {
-                    textLaenge = i;
-                    break;
-                }
+                if (Versionsinfo[i] != 0) continue;
+                textLaenge = i;
+                break;
             }
 
             var enc = new ASCIIEncoding();
@@ -152,13 +117,13 @@ namespace Kommunikation
         public string GetPlcModus() => _plcModus;
         public string GetPlcBezeichnung() => _spsClient.Description;
 
-        public void SetZyklusZeitKommunikation(int zeit) => _zyklusZeitKommunikation = zeit;
+        public void SetZyklusZeitKommunikation(int zeit)
+        {
+        }
 
 
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
-        public void SetManualModeReferenz(Datenstruktur manualModeDatenstruktur) => ManDigInput = manualModeDatenstruktur.DigInput;
-
 
         public bool GetBitAt(byte[] buffer, int bitPos)
         {

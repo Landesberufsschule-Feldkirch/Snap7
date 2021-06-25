@@ -22,10 +22,13 @@ namespace Kata.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
-            for (var i = 0; i < 100; i++) VisibilityEin.Add(Visibility.Hidden);
-            for (var i = 0; i < 100; i++) VisibilityAus.Add(Visibility.Visible);
-            for (var i = 0; i < 100; i++) ColorLampe.Add(Brushes.Aqua);
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+                VisibilityEin.Add(Visibility.Hidden);
+                VisibilityAus.Add(Visibility.Visible);
+                ColorLampe.Add(Brushes.White);
+            }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -43,10 +46,21 @@ namespace Kata.ViewModel
                 SichtbarkeitKontakt(_kata.S7, 7);
                 SichtbarkeitKontakt(_kata.S8, 8);
 
+                FarbeAendern(_kata.P1, 1, Brushes.LawnGreen);
+                FarbeAendern(_kata.P2, 2, Brushes.LawnGreen);
+                FarbeAendern(_kata.P3, 3, Brushes.LawnGreen);
+                FarbeAendern(_kata.P4, 4, Brushes.LawnGreen);
+                FarbeAendern(_kata.P5, 5, Brushes.Yellow);
+                FarbeAendern(_kata.P6, 6, Brushes.Yellow);
+                FarbeAendern(_kata.P7, 7, Brushes.Red);
+                FarbeAendern(_kata.P8, 8, Brushes.Red);
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+        private void FarbeAendern(bool val, int i, Brush farbe) => ColorLampe[i] = val ? farbe : Brushes.White;
 
         #region SPS Version, Status und Farbe
 
@@ -109,8 +123,8 @@ namespace Kata.ViewModel
 
         internal void SichtbarkeitKontakt(bool val, int i)
         {
-            VisibilityEin[i] = val ? Visibility.Visible : Visibility.Hidden;
-            VisibilityAus[i] = val ? Visibility.Hidden : Visibility.Visible;
+            VisibilityEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            VisibilityAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private ObservableCollection<Visibility> _visibilityEin = new();
@@ -172,10 +186,10 @@ namespace Kata.ViewModel
             switch (schalterId)
             {
                 case 5: _kata.S5 = !_kata.S5; break;
-                case 6: _kata.S6 = !_kata.S5; break;
-                case 7: _kata.S7 = !_kata.S5; break;
-                case 8: _kata.S8 = !_kata.S5; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id)); 
+                case 6: _kata.S6 = !_kata.S6; break;
+                case 7: _kata.S7 = !_kata.S7; break;
+                case 8: _kata.S8 = !_kata.S8; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
         public bool ClickModeButton(int tasterId)

@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Leere Kommandozeile": {
+      "commandName": "Project"
+    },
+    "CX9020": {
+      "commandName": "Project",
+      "commandLineArgs": "-Plc:CX9020"
+    },
+    "S7-1200": {
+      "commandName": "Project",
+      "commandLineArgs": "-Plc:S7-1200"
+    }
+  }
+}

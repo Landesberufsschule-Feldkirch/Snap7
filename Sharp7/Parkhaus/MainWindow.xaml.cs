@@ -38,8 +38,9 @@ namespace Parkhaus
             DataContext = viewModel;
 
             var befehlszeile = Environment.GetCommandLineArgs();
-            if (befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")) Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
-            else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
