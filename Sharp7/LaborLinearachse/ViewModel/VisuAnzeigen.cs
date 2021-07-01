@@ -12,7 +12,6 @@ namespace LaborLinearachse.ViewModel
     {
         private readonly Linearachse _linearachse;
         private readonly MainWindow _mainWindow;
-
         public VisuAnzeigen(MainWindow mw, Linearachse linearachse)
         {
             _mainWindow = mw;
@@ -21,7 +20,6 @@ namespace LaborLinearachse.ViewModel
             for (var i = 0; i < 20; i++) ClickModeBtn.Add(ClickMode.Press);
 
             PositionSchlitten = 200;
-
 
             VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
@@ -37,9 +35,6 @@ namespace LaborLinearachse.ViewModel
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
-
-
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -72,7 +67,6 @@ namespace LaborLinearachse.ViewModel
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
-
         public string SpsVersionLokal
         {
             get => _spsVersionLokal;
@@ -84,7 +78,6 @@ namespace LaborLinearachse.ViewModel
         }
 
         private string _spsVersionEntfernt;
-
         public string SpsVersionEntfernt
         {
             get => _spsVersionEntfernt;
@@ -96,7 +89,6 @@ namespace LaborLinearachse.ViewModel
         }
 
         private Visibility _spsVersionsInfoSichtbar;
-
         public Visibility SpsVersionsInfoSichtbar
         {
             get => _spsVersionsInfoSichtbar;
@@ -108,7 +100,6 @@ namespace LaborLinearachse.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -120,7 +111,6 @@ namespace LaborLinearachse.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -162,9 +152,7 @@ namespace LaborLinearachse.ViewModel
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -174,9 +162,7 @@ namespace LaborLinearachse.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
-
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -205,9 +191,7 @@ namespace LaborLinearachse.ViewModel
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB2Ein;
-
         public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
@@ -217,9 +201,7 @@ namespace LaborLinearachse.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
-
         private Visibility _visibilityB2Aus;
-
         public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
@@ -234,7 +216,6 @@ namespace LaborLinearachse.ViewModel
 
         #region Lampen
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.White : Brushes.LightGray;
-
         private Brush _colorP1;
         public Brush ColorP1
         {
@@ -245,9 +226,7 @@ namespace LaborLinearachse.ViewModel
                 OnPropertyChanged(nameof(ColorP1));
             }
         }
-
         public void FarbeP2(bool val) => ColorP2 = val ? Brushes.White : Brushes.LightGray;
-
         private Brush _colorP2;
         public Brush ColorP2
         {
@@ -258,9 +237,7 @@ namespace LaborLinearachse.ViewModel
                 OnPropertyChanged(nameof(ColorP2));
             }
         }
-
         public void FarbeP3(bool val) => ColorP3 = val ? Brushes.Red : Brushes.LightGray;
-
         private Brush _colorP3;
         public Brush ColorP3
         {
@@ -271,9 +248,7 @@ namespace LaborLinearachse.ViewModel
                 OnPropertyChanged(nameof(ColorP3));
             }
         }
-
         public void FarbeP4(bool val) => ColorP4 = val ? Brushes.GreenYellow : Brushes.LightGray;
-
         private Brush _colorP4;
         public Brush ColorP4
         {
@@ -287,7 +262,6 @@ namespace LaborLinearachse.ViewModel
         #endregion
 
         #region ClickModeAlleTaster
-
         internal void Taster(object id)
         {
             if (id is not string ascii) return;
@@ -313,7 +287,6 @@ namespace LaborLinearachse.ViewModel
                     break;
             }
         }
-
         public bool ClickModeButton(int tasterId)
         {
             if (ClickModeBtn[tasterId] == ClickMode.Press)
@@ -325,7 +298,6 @@ namespace LaborLinearachse.ViewModel
             ClickModeBtn[tasterId] = ClickMode.Press;
             return false;
         }
-
         private ObservableCollection<ClickMode> _clickModeBtn = new();
         public ObservableCollection<ClickMode> ClickModeBtn
         {
@@ -339,11 +311,8 @@ namespace LaborLinearachse.ViewModel
 
         #endregion ClickModeAlleTaster
 
-
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 

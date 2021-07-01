@@ -22,7 +22,6 @@ namespace LaborGetriebemotor.ViewModel
 
             WinkelGetriebemotor = 10;
 
-
             VisibilityB1Ein = Visibility.Hidden;
             VisibilityB1Aus = Visibility.Visible;
 

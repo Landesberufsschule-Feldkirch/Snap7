@@ -12,8 +12,8 @@ namespace LAP_2010_1_Kompressoranlage.Model
         public bool Q1 { get; set; }    // Netzschütz
         public bool Q2 { get; set; }    // Sternschütz
         public bool Q3 { get; set; }    // Dreieckschütz
-        public bool S1 { get; set; }    // Aus
-        public bool S2 { get; set; }    // Ein
+        public bool S1 { get; set; }    // Aus Taster
+        public bool S2 { get; set; }    // Ein Taster
 
         public double Druck { get; set; }
 
@@ -46,8 +46,5 @@ namespace LAP_2010_1_Kompressoranlage.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-        internal void BtnB2() => B2 = !B2;
-        internal void BtnF1() => F1 = !F1;
-
     }
 }

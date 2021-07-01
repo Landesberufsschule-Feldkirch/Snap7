@@ -32,15 +32,11 @@ namespace AutomatischesLagersystem
 
         public MainWindow()
         {
-            //BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-
             const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
-
-
 
             FensterAktiv = true;
             KisteLiegtAufDemRegalbediengeraet = false;
