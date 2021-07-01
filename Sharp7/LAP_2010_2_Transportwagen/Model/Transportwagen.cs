@@ -33,7 +33,6 @@ namespace LAP_2010_2_Transportwagen.Model
 
             System.Threading.Tasks.Task.Run(TransportwagtenTask);
         }
-
         private void TransportwagtenTask()
         {
             while (true)
@@ -55,8 +54,5 @@ namespace LAP_2010_2_Transportwagen.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void SetF1() => F1 = !F1;
-        internal void SetS2() => S2 = !S2;
     }
 }

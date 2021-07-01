@@ -69,7 +69,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
-                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -77,7 +77,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Not Halt" Background="{Binding ViAnzeige.ColorS2}" Command="{Binding BtnS2}" FontSize="12pt">
+                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Not Halt" Background="{Binding ViAnzeige.ColorS2}" Command="{Binding BtnSchalter}" CommandParameter="2" FontSize="12pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -85,7 +85,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -101,7 +101,7 @@
                     <Label Content="P1 " Grid.Column="12" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Grid.ColumnSpan="2" Margin="0,19,67,16" />
                     <Label Content="Störung" Grid.Column="13" Grid.Row="9" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13pt" Grid.ColumnSpan="2" Margin="3,21,67,16" />
 
-                    <Button Content="F1" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF1}" Command="{Binding BtnF1}"  FontSize="14pt"/>
+                    <Button Content="F1" Grid.Column="13" Grid.Row="12" Background="{Binding ViAnzeige.ColorF1}" Command="{Binding BtnSchalter}" CommandParameter="5"  FontSize="14pt"/>
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
 

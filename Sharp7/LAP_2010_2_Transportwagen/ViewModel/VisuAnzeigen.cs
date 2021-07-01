@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -23,16 +25,16 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
+
             ColorF1 = Brushes.LawnGreen;
             ColorP1 = Brushes.LawnGreen;
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
             ColorS2 = Brushes.LawnGreen;
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            ClickModeBtnQ2 = ClickMode.Press;
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
 
             VisibilityB1Ein = Visibility.Visible;
             VisibilityB1Aus = Visibility.Hidden;
@@ -85,14 +87,6 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetManualQ1() => _transportwagen.Q1 = ClickModeButtonQ1();
-
-        internal void SetManualQ2() => _transportwagen.Q2 = ClickModeButtonQ2();
-
-        internal void SetS1() => _transportwagen.S1 = ClickModeButtonS1();
-
-        internal void SetS3() => _transportwagen.S3 = ClickModeButtonS3();
-
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
@@ -129,7 +123,6 @@ namespace LAP_2010_2_Transportwagen.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -141,7 +134,6 @@ namespace LAP_2010_2_Transportwagen.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -151,15 +143,11 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region Color F1
-
+        #region Farben
         public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorF1;
-
         public Brush ColorF1
         {
             get => _colorF1;
@@ -170,14 +158,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion Color F1
-
-        #region Color P1
-
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
-
         private Brush _colorP1;
-
         public Brush ColorP1
         {
             get => _colorP1;
@@ -188,14 +170,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion Color P1
-
-        #region Color Q1
-
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorQ1;
-
         public Brush ColorQ1
         {
             get => _colorQ1;
@@ -206,14 +182,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion Color Q1
-
-        #region Color Q2
-
         public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorQ2;
-
         public Brush ColorQ2
         {
             get => _colorQ2;
@@ -224,14 +194,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion Color Q2
-
-        #region Color S2
-
         public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorS2;
-
         public Brush ColorS2
         {
             get => _colorS2;
@@ -241,123 +205,9 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(ColorS2));
             }
         }
+        #endregion Farben
 
-        #endregion Color S2
-
-        #region ClickModeBtnQ1
-
-        public bool ClickModeButtonQ1()
-        {
-            if (ClickModeBtnQ1 == ClickMode.Press)
-            {
-                ClickModeBtnQ1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1;
-
-        public ClickMode ClickModeBtnQ1
-        {
-            get => _clickModeBtnQ1;
-            set
-            {
-                _clickModeBtnQ1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1));
-            }
-        }
-
-        #endregion ClickModeBtnQ1
-
-        #region ClickModeBtnQ2
-
-        public bool ClickModeButtonQ2()
-        {
-            if (ClickModeBtnQ2 == ClickMode.Press)
-            {
-                ClickModeBtnQ2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ2;
-
-        public ClickMode ClickModeBtnQ2
-        {
-            get => _clickModeBtnQ2;
-            set
-            {
-                _clickModeBtnQ2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ2));
-            }
-        }
-
-        #endregion ClickModeBtnQ2
-
-        #region ClickModeBtnS1
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS3
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        #endregion ClickModeBtnS3
-
-        #region Sichtbarkeit B1
-
+        #region Sichtbarkeit 
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -371,9 +221,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -385,7 +233,6 @@ namespace LAP_2010_2_Transportwagen.ViewModel
         }
 
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -395,10 +242,6 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
 
         public void SichtbarkeitB2(bool val)
         {
@@ -413,9 +256,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB2Ein;
-
         public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
@@ -425,9 +266,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
-
         private Visibility _visibilityB2Aus;
-
         public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
@@ -438,12 +277,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion Sichtbarkeit B2
-
-        #region VisibilityKurzschluss
-
         private Visibility _visibilityKurzschluss;
-
         public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
@@ -454,12 +288,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion VisibilityKurzschluss
-
-        #region VisibilityFuellen
-
         private Visibility _visibilityFuellen;
-
         public Visibility VisibilityFuellen
         {
             get => _visibilityFuellen;
@@ -469,13 +298,10 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(VisibilityFuellen));
             }
         }
+        #endregion
 
-        #endregion VisibilityFuellen
-
-        #region PositionRadLinks
-
+        #region Position
         private double _positionRadLinks;
-
         public double PositionRadLinks
         {
             get => _positionRadLinks;
@@ -486,12 +312,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion PositionRadLinks
-
-        #region PositionRadRechts
-
         private double _positionRadRechts;
-
         public double PositionRadRechts
         {
             get => _positionRadRechts;
@@ -502,12 +323,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
             }
         }
 
-        #endregion PositionRadRechts
-
-        #region PositionWagenkasten
-
         private double _positionWagenkasten;
-
         public double PositionWagenkasten
         {
             get => _positionWagenkasten;
@@ -517,8 +333,59 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 OnPropertyChanged(nameof(PositionWagenkasten));
             }
         }
+        #endregion Position
 
-        #endregion PositionWagenkasten
+        #region Taster/Schalter
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 1: _transportwagen.S1 = gedrueckt; break;
+                case 3: _transportwagen.S3 = gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 2: _transportwagen.S2 = !_transportwagen.S2; break;
+                case 5: _transportwagen.F1 = !_transportwagen.F1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
 
