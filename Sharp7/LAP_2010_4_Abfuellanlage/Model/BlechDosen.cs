@@ -43,7 +43,6 @@ namespace LAP_2010_4_Abfuellanlage.Model
         }
         public (bool lichtschranke, int aktuelleDose) DosenBewegen(bool m1, int anzahlDosen, int aktuelleDose)
         {
-
             switch (_bewegungSchritt)
             {
                 case BewegungSchritt.Oberhalb:

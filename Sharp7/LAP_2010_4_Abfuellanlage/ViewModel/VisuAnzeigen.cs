@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -25,12 +26,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             ColorQ1 = Brushes.LawnGreen;
             ColorRectangleZuleitung = Brushes.Coral;
 
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            ClickModeBtnK1 = ClickMode.Press;
-            ClickModeBtnK2 = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
 
             Margin1 = new Thickness(0, 30, 0, 0);
 
@@ -77,7 +76,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                     PositionDose(_abfuellAnlage.AlleDosen[i].Dose.GetPosition(), i);
                 }
 
-
                 VisibilityAbleitung(_abfuellAnlage.K2 && _abfuellAnlage.Pegel > 0.01);
 
                 SichtbarkeitK1(_abfuellAnlage.K1);
@@ -99,16 +97,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void SetQ1() => _abfuellAnlage.Q1 = ClickModeButtonQ1();
-        internal void SetK1() => _abfuellAnlage.K1 = ClickModeButtonK1();
-        internal void SetK2() => _abfuellAnlage.K2 = ClickModeButtonK2();
-        internal void SetS1() => _abfuellAnlage.S1 = ClickModeButtonS1();
-        internal void BtnS2() => _abfuellAnlage.S2 = ClickModeButtonS2();
-
-
         #region SPS Version, Status und Farbe
-
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -166,19 +155,13 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
         #region EineDose Dosen
-
         private void VisibilityDose1(bool v, int id) => VisDose[id] = v ? Visibility.Visible : Visibility.Hidden;
-
         private void PositionDose(Punkt p, int id)
         {
             LeftDose[id] = (int)p.X;
             TopDose[id] = (int)p.Y;
         }
-
-
-
         private ObservableCollection<int> _topDose = new();
         public ObservableCollection<int> TopDose
         {
@@ -212,12 +195,10 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion
+        #endregion EineDose Dosen
 
-        #region Color P1
-
+        #region Farben
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
-
         private Brush _colorP1;
         public Brush ColorP1
         {
@@ -229,12 +210,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Color P1
-
-        #region Color Q1
-
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
         private Brush _colorQ1;
         public Brush ColorQ1
         {
@@ -246,12 +222,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Color Q1
-
-        #region Color Zuleitung
-
         public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Brushes.Coral : Brushes.LightCoral;
-
         private Brush _colorRectangleZuleitung;
         public Brush ColorRectangleZuleitung
         {
@@ -262,146 +233,9 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ColorRectangleZuleitung));
             }
         }
+        #endregion Farben
 
-        #endregion Color Zuleitung
-
-        #region ClickModeBtnS1
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS2
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-        #endregion ClickModeBtnS2
-
-        #region ClickModeBtnQ1
-
-        public bool ClickModeButtonQ1()
-        {
-            if (ClickModeBtnQ1 == ClickMode.Press)
-            {
-                ClickModeBtnQ1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1;
-        public ClickMode ClickModeBtnQ1
-        {
-            get => _clickModeBtnQ1;
-            set
-            {
-                _clickModeBtnQ1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1));
-            }
-        }
-
-        #endregion ClickModeBtnQ1
-
-        #region ClickModeBtnK1
-
-        public bool ClickModeButtonK1()
-        {
-            if (ClickModeBtnK1 == ClickMode.Press)
-            {
-                ClickModeBtnK1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnK1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnK1;
-        public ClickMode ClickModeBtnK1
-        {
-            get => _clickModeBtnK1;
-            set
-            {
-                _clickModeBtnK1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnK1));
-            }
-        }
-
-        #endregion ClickModeBtnK1
-
-        #region ClickModeBtnK2
-
-        public bool ClickModeButtonK2()
-        {
-            if (ClickModeBtnK2 == ClickMode.Press)
-            {
-                ClickModeBtnK2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnK2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnK2;
-        public ClickMode ClickModeBtnK2
-        {
-            get => _clickModeBtnK2;
-            set
-            {
-                _clickModeBtnK2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnK2));
-            }
-        }
-
-        #endregion ClickModeBtnK2
-
-        #region Sichtbarkeit K1
-
+        #region Sichtbarkeit 
         public void SichtbarkeitK1(bool val)
         {
             if (val)
@@ -428,7 +262,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityK1Aus;
-
         public Visibility VisibilityK1Aus
         {
             get => _visibilityK1Aus;
@@ -438,10 +271,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityK1Aus));
             }
         }
-
-        #endregion Sichtbarkeit K1
-
-        #region Sichtbarkeit K2
 
         public void SichtbarkeitK2(bool val)
         {
@@ -469,7 +298,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityK2Aus;
-
         public Visibility VisibilityK2Aus
         {
             get => _visibilityK2Aus;
@@ -479,10 +307,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityK2Aus));
             }
         }
-
-        #endregion Sichtbarkeit K2
-
-        #region Visibility Ableitung
 
         public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -496,10 +320,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityRectangleAbleitung));
             }
         }
-
-        #endregion Visibility Ableitung
-
-        #region Sichtbarkeit B1
 
         public void SichtbarkeitB1(bool val)
         {
@@ -527,7 +347,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -537,10 +356,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
 
         public void SichtbarkeitB2(bool val)
         {
@@ -579,15 +394,13 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Sichtbarkeit B2
+        #endregion Sichtbarkeit
 
         #region Margin1
-
         public void Margin_1(double pegel)
         {
             Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
-
         private Thickness _margin1;
         public Thickness Margin1
         {
@@ -598,8 +411,49 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(Margin1));
             }
         }
-
         #endregion Margin1
+
+        #region Taster
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 1: _abfuellAnlage.S1 = !gedrueckt; break;
+                case 2: _abfuellAnlage.S2 = gedrueckt; break;
+                case 3: _abfuellAnlage.AllesReset(); break;
+                case 4: _abfuellAnlage.Nachfuellen(); break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+
+        #endregion
 
         #region iNotifyPeropertyChanged Members
 

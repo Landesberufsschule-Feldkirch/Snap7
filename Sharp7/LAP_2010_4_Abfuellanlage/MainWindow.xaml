@@ -75,7 +75,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="15" Grid.ColumnSpan="6"  Grid.RowSpan="9" Grid.Row="2" />
 
-                    <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt">
+                    <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -83,7 +83,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt">
+                    <Button Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -100,7 +100,7 @@
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22" Fill="#eeeeee" />
 
-                    <Button Grid.Column="11" Grid.Row="3"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+                    <Button Grid.Column="11" Grid.Row="3"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt" Panel.ZIndex="98">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -121,7 +121,7 @@
 
                     <Rectangle Fill="#fcdada"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
                     <Rectangle Fill="Coral"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
-                    <Button Grid.Column="7" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" Command="{Binding BtnNachuellen}" />
+                    <Button Grid.Column="7" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
                     <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
 
                     <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Aus}" />
@@ -143,7 +143,7 @@
                     <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
                     <Label Content="B2" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
-                    <Button Grid.Column="15" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="40" Click="PlcButton_OnClick" >
+                    <Button Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Height="40" Click="PlcButton_OnClick" >
                         <Button.Background>
                             <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
                         </Button.Background>

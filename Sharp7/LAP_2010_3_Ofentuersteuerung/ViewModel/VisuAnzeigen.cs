@@ -8,8 +8,6 @@ using System.Threading;
 
 namespace LAP_2010_3_Ofentuersteuerung.ViewModel
 {
-
-
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private readonly Model.OfentuerSteuerung _ofentuerSteuerung;
