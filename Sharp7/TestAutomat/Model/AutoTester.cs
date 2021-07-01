@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
-using System.IO;
-using Kommunikation;
+﻿using Kommunikation;
 using SoftCircuits.Silk;
+using System.Diagnostics;
+using System.IO;
 
 namespace TestAutomat.Model
 {
@@ -10,19 +10,22 @@ namespace TestAutomat.Model
         public enum TestErgebnis
         {
             // ReSharper disable UnusedMember.Global
-            CompilerStart = 0,
+            Aktiv,
+            AufBitmusterWarten,
             CompilerErfolgreich,
             CompilerError,
-            TestStart,
-            TestEnde,
-            Aktiv,
-            Init,
             Erfolgreich,
-            Timeout,
             Fehler,
+            ImpulsWarZuKurz,
+            ImpulsWarZuLang,
+            Init,
             Kommentar,
+            TestEnde,
+            TestStart,
+            Timeout,
+            UnbekanntesErgebnis,
             Version,
-            UnbekanntesErgebnis
+            CompilerStart
             // ReSharper restore UnusedMember.Global
         }
 
@@ -33,7 +36,7 @@ namespace TestAutomat.Model
         private readonly bool _compilerlaufErfolgreich;
         private readonly CompiledProgram _compiledProgram;
 
-        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, S71200 plc)
+        public AutoTester(AutoTesterWindow autoTesterWindow, FileSystemInfo aktuellesProjekt, Datenstruktur datenstruktur, IPlc plc)
         {
             Compiler compiler;
             SilkStopwatch = new Stopwatch();
@@ -47,7 +50,10 @@ namespace TestAutomat.Model
                 autoTesterWindow.DataGridId++,
                 "0",
                 TestErgebnis.CompilerStart,
-                 " ", " ", " ", " "));
+                 " ",       // DigInput 
+                 " ",       // DigOutput Soll
+                 " ",       // DigOutput Ist
+                 " "));
 
             SilkStopwatch.Start();
             (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
@@ -58,7 +64,10 @@ namespace TestAutomat.Model
                     autoTesterWindow.DataGridId++,
                     $"{SilkStopwatch.ElapsedMilliseconds}ms",
                     TestErgebnis.CompilerErfolgreich,
-                     " ", " ", " ", " "));
+                    " ",       // DigInput 
+                    " ",       // DigOutput Soll
+                    " ",       // DigOutput Ist
+                    " "));
 
                 System.Threading.Tasks.Task.Run(TestRunnerTask);
             }
@@ -70,8 +79,10 @@ namespace TestAutomat.Model
                         autoTesterWindow.DataGridId++,
                         $"{SilkStopwatch.ElapsedMilliseconds}ms",
                         TestErgebnis.CompilerError,
-                        error.ToString(),
-                        " ", " ", " "));
+                        error.ToString(),   // DigInpt
+                        " ",                // DigOutput Soll
+                        " ",                // DigOutput Ist
+                        " "));
                 }
             }
         }

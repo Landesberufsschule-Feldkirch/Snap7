@@ -17,7 +17,6 @@ namespace Tiefgarage.ViewModel
             _mainWindow = mw;
             _alleFahrzeugePersonen = aFp;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -90,7 +89,6 @@ namespace Tiefgarage.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
@@ -104,17 +102,6 @@ namespace Tiefgarage.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal

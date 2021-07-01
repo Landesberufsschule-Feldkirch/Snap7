@@ -10,12 +10,12 @@ namespace Hydraulik
 
         public Thermostat(double min, double max)
         {
-                _temperaturErreicht = false;
-                _temperaturMin = min;
-                _temperaturMax = max;
+            _temperaturErreicht = false;
+            _temperaturMin = min;
+            _temperaturMax = max;
 
-                if (min >= max) throw new ArgumentOutOfRangeException(nameof(min));
-          }
+            if (min >= max) throw new ArgumentOutOfRangeException(nameof(min));
+        }
 
         public void SetTemperatur(double temp)
         {

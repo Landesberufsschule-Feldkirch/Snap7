@@ -15,7 +15,7 @@ namespace SoftCircuits.Silk
             Value = 0.0;
         }
 
-        public FloatValue(double value) 
+        public FloatValue(double value)
         {
             Value = value;
         }

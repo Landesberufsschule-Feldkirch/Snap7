@@ -18,7 +18,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             _mainWindow = mw;
             _ofentuerSteuerung = oSt;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -32,9 +31,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             ColorP1 = Brushes.LawnGreen;
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            ClickModeBtnQ2 = ClickMode.Press;
 
             ClickModeBtnS1 = ClickMode.Press;
             ClickModeBtnS2 = ClickMode.Press;
@@ -72,7 +68,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
@@ -94,17 +89,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         internal void SetB3() => _ofentuerSteuerung.B3 = !ClickModeButtonB3();
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal
@@ -269,62 +253,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         }
 
         #endregion Color Q2
-
-        #region ClickModeBtnQ1
-
-        public bool ClickModeButtonQ1()
-        {
-            if (ClickModeBtnQ1 == ClickMode.Press)
-            {
-                ClickModeBtnQ1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1;
-
-        public ClickMode ClickModeBtnQ1
-        {
-            get => _clickModeBtnQ1;
-            set
-            {
-                _clickModeBtnQ1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1));
-            }
-        }
-
-        #endregion ClickModeBtnQ1
-
-        #region ClickModeBtnQ2
-
-        public bool ClickModeButtonQ2()
-        {
-            if (ClickModeBtnQ2 == ClickMode.Press)
-            {
-                ClickModeBtnQ2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ2;
-
-        public ClickMode ClickModeBtnQ2
-        {
-            get => _clickModeBtnQ2;
-            set
-            {
-                _clickModeBtnQ2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ2));
-            }
-        }
-
-        #endregion ClickModeBtnQ2
 
         #region ClickModeBtnS1
 

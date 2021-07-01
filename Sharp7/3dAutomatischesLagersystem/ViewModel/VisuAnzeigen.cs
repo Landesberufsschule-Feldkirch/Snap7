@@ -59,7 +59,6 @@ namespace AutomatischesLagersystem.ViewModel
             VisibilityB2Ein = Visibility.Visible;
             VisibilityB2Aus = Visibility.Hidden;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -178,17 +177,6 @@ namespace AutomatischesLagersystem.ViewModel
 
         #region SPS Version, Status und Farbe
 
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
-
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -233,7 +221,7 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
         public Brush SpsColor
         {
             get => _spsColor;

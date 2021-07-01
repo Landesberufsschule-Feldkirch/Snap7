@@ -6,7 +6,7 @@
         public PlotWindow()
         {
             InitializeComponent();
-            
+
             Closing += (_, e) =>
             {
                 e.Cancel = true;
@@ -26,6 +26,6 @@
             MaxWidth = 1800;
             FensterAktiv = true;
         }
-        
+
     }
 }

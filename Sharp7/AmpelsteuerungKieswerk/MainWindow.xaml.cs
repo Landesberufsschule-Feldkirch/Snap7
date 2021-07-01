@@ -1,11 +1,11 @@
 ﻿using Kommunikation;
-using System.Text;
+using System;
 
 namespace AmpelsteuerungKieswerk
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -30,8 +30,16 @@ namespace AmpelsteuerungKieswerk
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
 
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
+            DatenRangieren.ReferenzUebergeben(Plc);
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
         }
     }

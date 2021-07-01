@@ -1,13 +1,13 @@
 ﻿using AutomatischesLagersystem.DreiD;
 using Kommunikation;
-using SharpDX.Text;
+using System;
 using System.Windows;
 
 namespace AutomatischesLagersystem
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public DreiDElemente[] BediengeraetStartpositionen { get; set; }
         public DreiDElemente[] KistenStartPositionen { get; set; }
         public DreiDKisten[] KistenAktuellePositionen { get; set; }
@@ -33,7 +33,7 @@ namespace AutomatischesLagersystem
         public MainWindow()
         {
             //BetriebsartProjekt = S71200.BetriebsartProjekt.LaborPlatte;
-            
+
             const string versionText = "3D Automatisches Lagersystem";
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
@@ -57,7 +57,13 @@ namespace AutomatischesLagersystem
             InitializeComponent();
 
             DataContext = _viewModel;
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+
+            var befehlszeile = Environment.GetCommandLineArgs();
+            var plcType = befehlszeile[1].Substring(5);
+            if (plcType == "CX9020") Plc = new Cx9020(Datenstruktur, DatenRangieren.Rangieren);
+            else Plc = new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
 
             DreiD = new DreiDErstellen(this);
 

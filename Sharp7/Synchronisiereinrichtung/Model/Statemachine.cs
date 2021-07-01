@@ -93,7 +93,7 @@ namespace Synchronisiereinrichtung.Model
 
             stateMachine.Configure(State.Belasten)
                 .OnEntry(() => _stateBelasten.OnEntry())
-                .InternalTransition(Trigger.Aktualisieren, _=> _stateBelasten.Doing())
+                .InternalTransition(Trigger.Aktualisieren, _ => _stateBelasten.Doing())
                 .Permit(Trigger.MaschineTot, State.MaschineTot)
                 .Permit(Trigger.LeistungsschalterAus, State.LeistungsschalterAus)
                 .Permit(Trigger.Reset, State.Reset);

@@ -1,10 +1,13 @@
-﻿namespace ElektronischesZahlenschloss
+﻿using Kommunikation;
+
+namespace ElektronischesZahlenschloss
 {
     using Sharp7;
 
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -12,19 +15,20 @@
             P2      // Lampe grün
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetUSIntAt(datenstruktur.AnalogInput, 0, (byte)_viewModel.Zahlenschloss.Zeichen);
-        }
+            if (eingaengeRangieren)
+            {
+                _plc.SetUsIntAt(datenstruktur.AnalogInput, 0, (byte)_viewModel.Zahlenschloss.Zeichen);
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
-            _viewModel.Zahlenschloss.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-            _viewModel.Zahlenschloss.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Zahlenschloss.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Zahlenschloss.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
 
-            _viewModel.Zahlenschloss.CodeAnzeige = S7.GetUIntAt(datenstruktur.AnalogOutput, 0);
+            _viewModel.Zahlenschloss.CodeAnzeige = _plc.GetUIntAt(datenstruktur.AnalogOutput, 0);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

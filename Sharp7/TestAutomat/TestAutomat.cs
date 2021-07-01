@@ -14,11 +14,11 @@ namespace TestAutomat
         private AutoTesterWindow _autoTesterWindow;
         private readonly Datenstruktur _datenstruktur;
         private readonly Action<Datenstruktur> _callbackPlcWindow;
-        private readonly S71200 _plc;
+        private readonly IPlc _plc;
 
         private int _pltNextDataIndex = 1;
 
-        public TestAutomat(Datenstruktur datenstruktur, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc, S71200 plc)
+        public TestAutomat(Datenstruktur datenstruktur, Action<Datenstruktur> cbPlcWindow, BeschriftungPlc.BeschriftungenPlc beschriftungenPlc, IPlc plc)
         {
             BeschriftungenPlc = beschriftungenPlc;
             _datenstruktur = datenstruktur;

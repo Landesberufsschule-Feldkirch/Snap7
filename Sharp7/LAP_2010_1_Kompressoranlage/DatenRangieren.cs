@@ -1,10 +1,11 @@
-﻿using Sharp7;
+﻿using Kommunikation;
 
 namespace LAP_2010_1_Kompressoranlage
 {
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -24,24 +25,26 @@ namespace LAP_2010_1_Kompressoranlage
             S2      // Taster Ein
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Kompressoranlage.B1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Kompressoranlage.B2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Kompressoranlage.F1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Kompressoranlage.S1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Kompressoranlage.S2);
-        }
+            if (eingaengeRangieren)
+            {
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, _viewModel.Kompressoranlage.B1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, _viewModel.Kompressoranlage.B2);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.F1, _viewModel.Kompressoranlage.F1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Kompressoranlage.S1);
+                _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Kompressoranlage.S2);
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
-            _viewModel.Kompressoranlage.P1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
-            _viewModel.Kompressoranlage.P2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-            _viewModel.Kompressoranlage.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-            _viewModel.Kompressoranlage.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-            _viewModel.Kompressoranlage.Q3 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
+
+            _viewModel.Kompressoranlage.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
+            _viewModel.Kompressoranlage.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
+            _viewModel.Kompressoranlage.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+            _viewModel.Kompressoranlage.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+            _viewModel.Kompressoranlage.Q3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

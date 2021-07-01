@@ -30,7 +30,7 @@ namespace SoftCircuits.Silk
     {
         public static Dictionary<string, InternalFunctionInfo> InternalFunctionLookup = new(StringComparer.OrdinalIgnoreCase)
         {
-            ["Abs"] = new InternalFunctionInfo(Abs, 1, 1), 
+            ["Abs"] = new InternalFunctionInfo(Abs, 1, 1),
             ["Acos"] = new InternalFunctionInfo(Acos, 1, 1),
             ["Asc"] = new InternalFunctionInfo(Asc, 1, 1),
             ["Atn"] = new InternalFunctionInfo(Atn, 1, 1),

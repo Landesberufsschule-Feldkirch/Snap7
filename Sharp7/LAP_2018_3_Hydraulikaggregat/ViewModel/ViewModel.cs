@@ -9,7 +9,7 @@
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            Hydraulikaggregat = new Model.Hydraulikaggregat();
+            Hydraulikaggregat = new Model.Hydraulikaggregat(mainWindow, this);
             ViAnzeige = new VisuAnzeigen(mainWindow, Hydraulikaggregat);
         }
 
@@ -17,6 +17,10 @@
         private ICommand _btnNachfuellen;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnNachfuellen => _btnNachfuellen ??= new RelayCommand(_ => Hydraulikaggregat.BtnNachfuellen(), _ => true);
+
+        private ICommand _btnUeberdruck;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnUeberdruck => _btnUeberdruck ??= new RelayCommand(_ => Hydraulikaggregat.BtnUeberdruck(), _ => true);
 
         private ICommand _btnF1;
         // ReSharper disable once UnusedMember.Global
@@ -38,6 +42,14 @@
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnQ1Q3 => _btnQ1Q3 ??= new RelayCommand(_ => ViAnzeige.BtnQ1Q3(), _ => true);
 
+        private ICommand _btnB4;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnB4 => _btnB4 ??= new RelayCommand(_ => ViAnzeige.BtnB4(), _ => true);
+
+        private ICommand _btnB5;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnB5 => _btnB5 ??= new RelayCommand(_ => ViAnzeige.BtnB5(), _ => true);
+
         private ICommand _btnS1;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnS1 => _btnS1 ??= new RelayCommand(_ => ViAnzeige.BtnS1(), _ => true);
@@ -49,5 +61,22 @@
         private ICommand _btnS3;
         // ReSharper disable once UnusedMember.Global
         public ICommand BtnS3 => _btnS3 ??= new RelayCommand(_ => ViAnzeige.BtnS3(), _ => true);
+
+        private ICommand _btnS4;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnS4 => _btnS4 ??= new RelayCommand(_ => ViAnzeige.BtnS4(), _ => true);
+
+
+        private ICommand _erweiterungOelkuehler;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand ErweiterungOelkuehler => _erweiterungOelkuehler ??= new RelayCommand(_ => Hydraulikaggregat.CheckErweiterungOelkuehler(), _ => true);
+
+        private ICommand _erweiterungZylinder;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand ErweiterungZylinder => _erweiterungZylinder ??= new RelayCommand(_ => Hydraulikaggregat.CheckErweiterungZylinder(), _ => true);
+
+        private ICommand _erweiterungOelfilter;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand ErweiterungOelfilter => _erweiterungOelfilter ??= new RelayCommand(_ => Hydraulikaggregat.CheckErweiterungOelfilter(), _ => true);
     }
 }

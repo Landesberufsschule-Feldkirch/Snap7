@@ -13,7 +13,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             Fertig
         }
 
-        public Rechteck EineDose { get; set; }
+        public Rechteck Dose { get; set; }
         public int Id { get; set; }
         public bool Sichtbar { get; set; }
 
@@ -35,7 +35,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
             Sichtbar = true;
             _bewegungSchritt = BewegungSchritt.Oberhalb;
             _startPosition = new Punkt(_foerderbandLinks.X, _vereinzelnerVentil.Y - Id * DoseHoehe);
-            EineDose = new Rechteck(_startPosition.Clone(), DoseBreite, DoseHoehe);
+            Dose = new Rechteck(_startPosition.Clone(), DoseBreite, DoseHoehe);
         }
         public void DosenVereinzeln()
         {
@@ -48,11 +48,11 @@ namespace LAP_2010_4_Abfuellanlage.Model
             {
                 case BewegungSchritt.Oberhalb:
                     var yNeu = _vereinzelnerVentil.Y - DoseHoehe * (Id - aktuelleDose);
-                    if (EineDose.GetOben() < yNeu) EineDose.SetSenkrechtSchieben(BewegungIncrement);
+                    if (Dose.GetOben() < yNeu) Dose.SetSenkrechtSchieben(BewegungIncrement);
                     break;
 
                 case BewegungSchritt.Vereinzeln:
-                    if (EineDose.GetOben() < _foerderbandLinks.Y) EineDose.SetSenkrechtSchieben(BewegungIncrement);
+                    if (Dose.GetOben() < _foerderbandLinks.Y) Dose.SetSenkrechtSchieben(BewegungIncrement);
                     else
                     {
                         _bewegungSchritt = BewegungSchritt.Fahren;
@@ -63,13 +63,13 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 case BewegungSchritt.Fahren:
                     if (m1)
                     {
-                        if (EineDose.GetLinks() < _foerderbandRechts.X) EineDose.SetWaagrechtSchieben(BewegungIncrement);
+                        if (Dose.GetLinks() < _foerderbandRechts.X) Dose.SetWaagrechtSchieben(BewegungIncrement);
                         else _bewegungSchritt = BewegungSchritt.Runtergefallen;
                     }
                     break;
 
                 case BewegungSchritt.Runtergefallen:
-                    if (EineDose.GetOben() < _boden.Y) EineDose.SetSenkrechtSchieben(BewegungIncrement);
+                    if (Dose.GetOben() < _boden.Y) Dose.SetSenkrechtSchieben(BewegungIncrement);
                     else _bewegungSchritt = BewegungSchritt.Fertig;
                     break;
 
@@ -79,18 +79,18 @@ namespace LAP_2010_4_Abfuellanlage.Model
 
                 default:
                     _bewegungSchritt = BewegungSchritt.Vereinzeln;
-                    EineDose.SetPosition(_startPosition);
+                    Dose.SetPosition(_startPosition);
                     break;
             }
 
-            if (EineDose.GetLinks() > _sensorB2Links.X && EineDose.GetLinks() < _sensorB2Rechts.X) return (true, aktuelleDose);
+            if (Dose.GetLinks() > _sensorB2Links.X && Dose.GetLinks() < _sensorB2Rechts.X) return (true, aktuelleDose);
             return (false, aktuelleDose);
         }
         internal void Reset()
         {
             _bewegungSchritt = BewegungSchritt.Oberhalb;
             Sichtbar = true;
-            EineDose.SetPosition(_startPosition);
+            Dose.SetPosition(_startPosition);
         }
     }
 }

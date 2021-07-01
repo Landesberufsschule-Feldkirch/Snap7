@@ -44,5 +44,5 @@ IF (NOT "DigInput".B2) OR (NOT "DigInput".F1) THEN
 END_IF;
 
 "DigOutput".P1 := (NOT "DigInput".B2) OR (NOT "DigInput".F1) OR ("Clock_1.25Hz" AND #StoerungAktiv);
-"DigOutput".P2 := NOT #StoerungAktiv AND NOT "DigOutput".Q1;
+"DigOutput".P2 := NOT #StoerungAktiv AND NOT #KompressorEin;
 

@@ -37,20 +37,49 @@ main()
 
     var Maske_P1_P2_Q1_Q2_Q3 = P1 + P2 + Q1 + Q2 + Q3
 
-    SetDataGridBitAnzahl 0, 0
+    SetDataGridBitAnzahl 8, 8
     VersionAnzeigen
+
+    SetDiagrammZeitbereich "T#10s"
 
     Sleep("T#100ms")
     UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+    UpdateAnzeige "Kommentar", "Störungen zurücksetzen"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (B1 + B2 + F1)
+    ResetStopwatch
+    BitmusterTesten P2, Maske_P1_P2_Q1_Q2_Q3, "T#5s", "Störungen zurücksetzen?"
+    IncrementDataGridId
+
+    SetDigitaleEingaenge (B1 + B2 + F1 + S1)
+    ResetStopwatch
+    BitmusterTesten P2, Maske_P1_P2_Q1_Q2_Q3, "T#5s", "Betriebsbereit?"
     IncrementDataGridId
 
 
 
 
 
+    UpdateAnzeige "Kommentar", "Ohne Störung Stern-Dreieck-Anlauf testen"
+    IncrementDataGridId
+
+        setArray = {
+            {B1 + B2 + F1 + S1 + S2,    "T#100ms",  "S2 drücken"},
+            {B1 + B2 + F1 + S1,         "-",        ""}
+        }
+
+        testArray = {
+            {Q1 + Q2,   Maske_P1_P2_Q1_Q2_Q3,   "T#1s",     0.1,  "T#5s", "Netz- und Sternschütz"},
+            {Q1,        Maske_P1_P2_Q1_Q2_Q3,   "T#500ms",  0.1,  "T#5s", "Umschaltpause"},
+            {Q1 + Q3,   Maske_P1_P2_Q1_Q2_Q3,   "T#1s",     0.1,  "T#5s", "Netz- und Dreieckschütz"}
+        }
+
+    TestAblauf setArray, testArray
 
 
 
-
-    UpdateAnzeige "Erfolgreich", "30ms"
+    UpdateAnzeige "Test abgeschlossen", " "
 }

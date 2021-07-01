@@ -3,7 +3,7 @@
     public class TestAusgabe
     {
         public int Nr { get; set; }
-        public  string Zeit { get; set; }
+        public string Zeit { get; set; }
         public AutoTester.TestErgebnis Ergebnis { get; set; }
         public string DigInput { get; set; }
         public string DigOutSoll { get; set; }

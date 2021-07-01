@@ -19,7 +19,7 @@ namespace _AlleManConfigTesten.Model
         public ManConfigTesten.PlcEinUndAusgaengeTypen Type { get; set; }
         public string Bezeichnung { get; set; }
         public string Kommentar { get; set; }
-        
+
         public AaEinstellungen()
         {
             LaufendeNr = 0;

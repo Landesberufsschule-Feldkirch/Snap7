@@ -37,7 +37,7 @@ namespace DisplayPlc
             ///////////////////////////////////////////////////////////////////
             //  obere Hälfte zeichnen
             ///////////////////////////////////////////////////////////////////
-             
+
             Formen.LabelZeichnen(3, 1, 5, 1, Brushes.White, schriftGross, "DI", 0, "-", VisibilityProperty, grid);
             Formen.LabelZeichnen(4, 1, 5, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, grid);
             for (var i = 0; i < 8; i++)
@@ -68,7 +68,7 @@ namespace DisplayPlc
             ///////////////////////////////////////////////////////////////////
             //  untere Hälfte zeichnen
             ///////////////////////////////////////////////////////////////////
-            
+
             Formen.PlcBorderZeichnen(3, 8, 9, 3, 3, 3, 3, 0, Brushes.White, grid);
             Formen.LabelZeichnen(3, 1, 9, 1, Brushes.White, schriftGross, "DQ", 0, "-", VisibilityProperty, grid);
             Formen.LabelZeichnen(4, 1, 9, 1, Brushes.White, schriftKlein, "a", 0, "-", VisibilityProperty, grid);
@@ -89,7 +89,7 @@ namespace DisplayPlc
             for (var i = 0; i < 8; i++)
             {
                 Formen.LabelZeichnen(13 + i, 1, 10, 1, Brushes.White, schriftKlein, $".{i}", 8 + i, "Da", VisibilityProperty, grid);
-                Formen.PlcButtonZeichnen(13 + i, 11, 10 + i, "FarbeDa", backgroundProperty, grid);
+                Formen.PlcButtonZeichnen(13 + i, 11, 8 + i, "FarbeDa", backgroundProperty, grid);
 
                 var (anzeigen, bezeichnung, kommentar) = DaGetBezeichnung(configPlc, 8 + i);
                 if (!anzeigen) continue;

@@ -1,5 +1,6 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,7 +8,7 @@ namespace LAP_2010_2_Transportwagen
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
@@ -39,7 +40,16 @@ namespace LAP_2010_2_Transportwagen
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
             TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, Plc);

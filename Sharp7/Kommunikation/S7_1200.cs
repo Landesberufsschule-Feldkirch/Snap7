@@ -8,31 +8,27 @@ using System.Threading;
 
 namespace Kommunikation
 {
-    public class S71200
+    public class S71200 : IPlc
     {
         public const int SpsTimeout = 1000;
 
         private readonly S7Client _client = new S7Client();
-        private readonly Action<Datenstruktur> _callbackInput;
-        private readonly Action<Datenstruktur> _callbackOutput;
+        private readonly Action<Datenstruktur, bool> _callbackRangieren;
         private readonly Datenstruktur _datenstruktur;
-        private readonly IpAdressen _spsClient;
+        private readonly IpAdressenSiemens _spsClient;
 
         private string _spsStatus = "Keine Verbindung zur S7-1200!";
         private bool _spsError;
 
-        public S71200(Datenstruktur datenstruktur, Action<Datenstruktur> cbInput, Action<Datenstruktur> cbOutput)
+        public S71200(Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
         {
-            _spsClient = JsonConvert.DeserializeObject<IpAdressen>(File.ReadAllText("IpAdressen.json"));
-
+            _spsClient = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
             _datenstruktur = datenstruktur;
+            _callbackRangieren = cbRangieren;
 
-            _callbackInput = cbInput;
-            _callbackOutput = cbOutput;
-
-            System.Threading.Tasks.Task.Run(SPS_Pingen_Task);
+            System.Threading.Tasks.Task.Run(SpsKommunikationTask);
         }
-        public void SPS_Pingen_Task()
+        public void SpsKommunikationTask()
         {
             while (true)
             {
@@ -41,7 +37,7 @@ namespace Kommunikation
 
                 var verzoegerung = 0;
 
-                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackInput(_datenstruktur); // zum Testen ohne SPS
+                if (_datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest) _callbackRangieren(_datenstruktur, true); // zum Testen ohne SPS
                 if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
@@ -52,7 +48,7 @@ namespace Kommunikation
                         {
                             var fehlerAktiv = false;
 
-                            if (_datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation) _callbackInput(_datenstruktur);
+                            _callbackRangieren(_datenstruktur, _datenstruktur.BetriebsartProjekt == BetriebsartProjekt.Simulation);
 
                             if (verzoegerung > 10)
                             {
@@ -96,7 +92,6 @@ namespace Kommunikation
                                 fehlerAktiv |= FehlerAktiv(_client.DBRead((int)Datenbausteine.AnOut, 0, _datenstruktur.AnzahlByteAnalogOutput, _datenstruktur.AnalogOutput));
                             }
 
-                            _callbackOutput(_datenstruktur);
 
                             if (fehlerAktiv)
                             {
@@ -111,15 +106,13 @@ namespace Kommunikation
                     }
                     else
                     {
-                        ErrorAnzeigen(res.GetValueOrDefault());
+                        _spsStatus = ErrorAnzeigen(res.GetValueOrDefault());
                     }
                 }
                 else
                 {
                     _spsStatus = "Keine Verbindung zur S7-1200!";
                 }
-
-                _callbackOutput(_datenstruktur);// zum Testen ohne SPS
 
                 Thread.Sleep(50);
             }
@@ -145,6 +138,23 @@ namespace Kommunikation
             var enc = new ASCIIEncoding();
             return enc.GetString(_datenstruktur.VersionInputSps, 2, textLaenge);
         }
+        public string GetPlcModus()
+        {
+            throw new NotImplementedException();
+        }
+        public string GetPlcBezeichnung() => _spsClient.Description;
+        public void SetPlcModus(string modus)
+        {
+            throw new NotImplementedException();
+        }
+        public void SetTaskRunning(bool active)
+        {
+            throw new NotImplementedException();
+        }
+        public void SetZyklusZeitKommunikation(int zeit)
+        {
+            throw new NotImplementedException();
+        }
         public string GetSpsStatus() => _spsStatus;
         public bool GetSpsError() => _spsError;
         public int ColdStart() => _client.PlcColdStart();
@@ -152,9 +162,73 @@ namespace Kommunikation
         public (int retval, int status) GetStatus()
         {
             var status = 0;
-            var retval = 0;
-            retval = _client.PlcGetStatus(ref status);
+            var retval = _client.PlcGetStatus(ref status);
             return (retval, status);
+        }
+
+        public bool GetBitAt(byte[] buffer, int bitPos)
+        {
+            byte[] mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
+
+            var bit = bitPos % 8;
+            var pos = bitPos / 8;
+
+            if (bit < 0) bit = 0;
+            if (bit > 7) bit = 7;
+            return (buffer[pos] & mask[bit]) != 0;
+        }
+        public int GetSIntAt(byte[] buffer, int pos)
+        {
+            int value = buffer[pos];
+            if (value < 128) return value;
+            return value - 256;
+
+        }
+        public byte GetUsIntAt(byte[] buffer, int pos)
+        {
+            return buffer[pos];
+        }
+        public short GetIntAt(byte[] buffer, int pos)
+        {
+            return (short)((buffer[pos] << 8) | buffer[pos + 1]);
+        }
+        public ushort GetUIntAt(byte[] buffer, int pos)
+        {
+            return (ushort)((buffer[pos] << 8) | buffer[pos + 1]);
+        }
+
+        public void SetBitAt(byte[] buffer, int bitPos, bool value)
+        {
+            byte[] mask = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
+
+            var bit = bitPos % 8;
+            var pos = bitPos / 8;
+
+            if (bit < 0) bit = 0;
+            if (bit > 7) bit = 7;
+
+            if (value) buffer[pos] = (byte)(buffer[pos] | mask[bit]);
+            else buffer[pos] = (byte)(buffer[pos] & ~mask[bit]);
+        }
+        public void SetSIntAt(byte[] buffer, int pos, int value)
+        {
+            if (value < -128) value = -128;
+            if (value > 127) value = 127;
+            buffer[pos] = (byte)value;
+        }
+        public void SetUsIntAt(byte[] buffer, int pos, byte value)
+        {
+            buffer[pos] = value;
+        }
+        public void SetIntAt(byte[] buffer, int pos, short value)
+        {
+            buffer[pos] = (byte)(value >> 8);
+            buffer[pos + 1] = (byte)(value & 0x00FF);
+        }
+        public void SetUIntAt(byte[] buffer, int pos, ushort value)
+        {
+            buffer[pos] = (byte)(value >> 8);
+            buffer[pos + 1] = (byte)(value & 0x00FF);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Kommunikation;
-using System.Text;
-using System.Windows;
+using System;
 
 namespace VoltmeterMitSiebenSegmentAnzeige
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -25,10 +24,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
 
@@ -37,7 +33,14 @@ namespace VoltmeterMitSiebenSegmentAnzeige
             DataContext = viewModel;
             InitializeComponent();
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }

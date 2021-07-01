@@ -1,0 +1,22 @@
+﻿{
+  "DaBeschriftung": [
+      {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "Q1",
+      "Kommentar": "Linearachse Rechtslauf"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "Q2",
+      "Kommentar": "Linearachse Linkslauf"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "P4",
+      "Kommentar": "Meldeleuchte (grün)"
+    }
+  ]
+}

@@ -34,7 +34,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
             VisibilityKurzschluss = Visibility.Hidden;
 
-            VersionNr = "V0.0";
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -64,7 +63,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
@@ -81,17 +79,6 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         internal void BtnS2() => _kompressoranlage.S2 = ClickModeButtonS2();
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal

@@ -1,16 +1,65 @@
 ﻿{
   "DiBeschriftung": [
+   {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Füllstand Ölbehälter"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Druck erreicht"
+    },
     {
       "Byte": 0,
       "Bit": 2,
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster Aus ( ⓪ )"
+
+      "Bezeichnung": "B3",
+      "Kommentar": "Überdruck (Öffner)"
     },
     {
       "Byte": 0,
       "Bit": 3,
+      "Bezeichnung": "B4",
+      "Kommentar": "Temperatur Ölbehälter (Öffner)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "B5",
+      "Kommentar": "Druckschalter Ölfilter (Öffner)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "F1",
+      "Kommentar": "Störung Motorschutzschalter (Öffner)"
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
       "Bezeichnung": "S1",
-      "Kommentar": "Taster Ein ( ① )"
+      "Kommentar": "Taster Start"
+    },
+    {
+      "Byte": 0,
+      "Bit": 7,
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster Stop"
+    },
+    {
+      "Byte": 1,
+      "Bit": 0,
+      "Bezeichnung": "S3",
+      "Kommentar": "Taster Quittieren"
+    },
+    {
+      "Byte": 1,
+      "Bit": 1,
+      "Bezeichnung": "S4",
+      "Kommentar": "Taster Zyklinder"
     }
   ]
 }

@@ -4,6 +4,7 @@ namespace Schleifmaschine.Model
 {
     public class Schleifmaschine
     {
+        public bool B1 { get; set; }    // Störung "Motor Übersynchron"
         public bool F1 { get; set; }    // Thermorelais langsame Drehzahl
         public bool F2 { get; set; }    // Thermorelais schnelle Drehzahl
         public bool S0 { get; set; }    // Taster ( ⓪ ) 
@@ -20,10 +21,14 @@ namespace Schleifmaschine.Model
         public double WinkelSchleifmaschine { get; set; }
         public double DrehzahlSchleifmaschine { get; set; }
 
-        private const double GeschwindigkeitSchleifmaschineLangsam = 1000;
-        private const double GeschwindigkeitSchleifmaschineSchnell = 3000;
-        private const double Beschleunigung = 0.01;
-        private const double Verzoegerung = 0.999;
+        private const double SynchrondrehzahlLangsam = 1000;
+        private const double SynchrondrehzahlSchnell = 3000;
+        private const double BeschleunigungLangsam = 0.01;
+        private const double BeschleunigungSchnell = 0.01;
+        private const double VerzoegerungDrehzahl = 0.999;
+
+        private const double DrehzahlWinkelFaktor = 0.002;
+
 
         public Schleifmaschine()
         {
@@ -38,11 +43,17 @@ namespace Schleifmaschine.Model
         {
             while (true)
             {
-                if (Q1) WinkelSchleifmaschine += GeschwindigkeitSchleifmaschineSchnell;
-                if (Q2) WinkelSchleifmaschine += GeschwindigkeitSchleifmaschineLangsam;
+                if (Q1) DrehzahlSchleifmaschine += (SynchrondrehzahlLangsam - DrehzahlSchleifmaschine) * BeschleunigungLangsam;
+                if (Q2) DrehzahlSchleifmaschine += (SynchrondrehzahlSchnell - DrehzahlSchleifmaschine) * BeschleunigungSchnell;
+
+                DrehzahlSchleifmaschine *= VerzoegerungDrehzahl;
+
+                WinkelSchleifmaschine += DrehzahlSchleifmaschine * DrehzahlWinkelFaktor;
 
                 if (WinkelSchleifmaschine > 360) WinkelSchleifmaschine -= 360;
                 if (WinkelSchleifmaschine < 0) WinkelSchleifmaschine += 360;
+
+                if (Q1 & DrehzahlSchleifmaschine > SynchrondrehzahlLangsam) B1 = true;
 
                 Thread.Sleep(10);
             }
@@ -50,5 +61,6 @@ namespace Schleifmaschine.Model
         }
         internal void ThermorelaisF1() => F1 = !F1;
         internal void ThermorelaisF2() => F2 = !F2;
+        internal void TasterS3() => S3 = !S3;
     }
 }

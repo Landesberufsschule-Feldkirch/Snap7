@@ -5,6 +5,12 @@ namespace LAP_2018_2_Abfuellanlage.Model
 {
     public class Abfuellanlage
     {
+        public enum Bier
+        {
+            Fohrenburger = 0,
+            Mohren
+        }
+        public Bier AktuellesBier { get; set; }
         public List<Flaschen> AlleFlaschen { get; set; }
         public bool B1 { get; set; }
         public bool F1 { get; set; }
@@ -19,6 +25,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
         public bool P2 { get; set; }
         public bool Q1 { get; set; }
 
+        public int FlaschenInDerKiste { get; set; }
         public double Pegel { get; set; }
 
         private readonly int _anzahlFlaschen;
@@ -62,19 +69,27 @@ namespace LAP_2018_2_Abfuellanlage.Model
                     B1 |= lichtschranke;
                 }
 
+                var anzahlInDerKiste = 0;
+                foreach (var flasche in AlleFlaschen)
+                {
+                    if (flasche.GetBewegungSchritt() == Model.Flaschen.BewegungSchritt.Fertig) anzahlInDerKiste++;
+                }
+
+                FlaschenInDerKiste = anzahlInDerKiste;
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
 
         internal void TasterNachfuellen() => Pegel = 1;
-
         internal void TasterF1() => F1 = !F1;
-
         internal void AllesReset()
         {
             Pegel = 0.4;
             _aktuelleFlasche = 0;
+            AktuellesBier = AktuellesBier == Bier.Fohrenburger ? Bier.Mohren : Bier.Fohrenburger;
+
             foreach (var flasche in AlleFlaschen) { flasche.Reset(); }
         }
     }

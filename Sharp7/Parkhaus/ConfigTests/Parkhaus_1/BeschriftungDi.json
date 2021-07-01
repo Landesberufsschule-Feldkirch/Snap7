@@ -1,0 +1,52 @@
+﻿{
+  "DiBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "PS1",
+      "Kommentar": "Parkhaus Spalte 1"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "PS2",
+      "Kommentar": "Parkhaus Spalte 2"
+    },
+    {
+      "Byte": 0,
+      "Bit": 2,
+      "Bezeichnung": "PS3",
+      "Kommentar": "Parkhaus Spalte 3"
+    },
+    {
+      "Byte": 0,
+      "Bit": 3,
+      "Bezeichnung": "PS4",
+      "Kommentar": "Parkhaus Spalte 4"
+    },
+    {
+      "Byte": 0,
+      "Bit": 4,
+      "Bezeichnung": "PS5",
+      "Kommentar": "Parkhaus Spalte 5"
+    },
+    {
+      "Byte": 0,
+      "Bit": 5,
+      "Bezeichnung": "PS6",
+      "Kommentar": "Parkhaus Spalte 6"
+    },
+    {
+      "Byte": 0,
+      "Bit": 6,
+      "Bezeichnung": "PS7",
+      "Kommentar": "Parkhaus Spalte 7"
+    },
+    {
+      "Byte": 0,
+      "Bit": 7,
+      "Bezeichnung": "PS8",
+      "Kommentar": "Parkhaus Spalte 8"
+    }
+  ]
+}

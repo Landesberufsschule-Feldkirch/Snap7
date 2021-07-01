@@ -2,15 +2,13 @@
 using ScottPlot;
 using System;
 using System.Drawing;
-using System.Text;
-using System.Windows;
 using System.Windows.Threading;
 
 namespace Blinker
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; } 
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -39,7 +37,14 @@ namespace Blinker
             InitializeComponent();
             DataContext = _viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 

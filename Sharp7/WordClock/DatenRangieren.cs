@@ -1,10 +1,11 @@
-﻿namespace WordClock
-{
-    using Sharp7;
+﻿using Kommunikation;
 
+namespace WordClock
+{
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         private enum BytePosition
         {
@@ -18,23 +19,24 @@
             Byte8
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            S7.SetUIntAt(datenstruktur.DigInput, (int)BytePosition.Byte0, _viewModel.Zeiten.DatumJahr);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte2, _viewModel.Zeiten.DatumMonat);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte3, _viewModel.Zeiten.DatumTag);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte4, _viewModel.Zeiten.DatumWochentag);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte5, _viewModel.Zeiten.Stunde);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte6, _viewModel.Zeiten.Minute);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte7, _viewModel.Zeiten.Sekunde);
-            S7.SetUSIntAt(datenstruktur.DigInput, (int)BytePosition.Byte8, 0);
-        }
+            if (eingaengeRangieren)
+            {
+                _plc.SetUIntAt(datenstruktur.DigInput, (int)BytePosition.Byte0, _viewModel.Zeiten.DatumJahr);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte2, _viewModel.Zeiten.DatumMonat);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte3, _viewModel.Zeiten.DatumTag);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte4, _viewModel.Zeiten.DatumWochentag);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte5, _viewModel.Zeiten.Stunde);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte6, _viewModel.Zeiten.Minute);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte7, _viewModel.Zeiten.Sekunde);
+                _plc.SetUsIntAt(datenstruktur.DigInput, (int)BytePosition.Byte8, 0);
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
-            //
+
         }
 
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

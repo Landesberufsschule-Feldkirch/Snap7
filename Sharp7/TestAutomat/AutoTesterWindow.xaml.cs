@@ -40,19 +40,22 @@ namespace TestAutomat
                     // ReSharper disable once ConvertSwitchStatementToSwitchExpression
                     row.Background = AutoTesterDataGrid[zeile].Ergebnis switch
                     {
-                        AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
+                        AutoTester.TestErgebnis.Aktiv => Brushes.White,
+                        AutoTester.TestErgebnis.AufBitmusterWarten=>Brushes.Yellow,
                         AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
                         AutoTester.TestErgebnis.CompilerError => Brushes.Red,
-                        AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
-                        AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
-                        AutoTester.TestErgebnis.Aktiv => Brushes.White,
-                        AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
                         AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
-                        AutoTester.TestErgebnis.Timeout => Brushes.Orange,
                         AutoTester.TestErgebnis.Fehler => Brushes.Red,
+                        AutoTester.TestErgebnis.ImpulsWarZuKurz => Brushes.LawnGreen,
+                        AutoTester.TestErgebnis.ImpulsWarZuLang => Brushes.LawnGreen,
+                        AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
                         AutoTester.TestErgebnis.Kommentar => Brushes.White,
-                        AutoTester.TestErgebnis.Version => Brushes.White,
+                        AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
+                        AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
+                        AutoTester.TestErgebnis.Timeout => Brushes.Orange,
                         AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
+                        AutoTester.TestErgebnis.Version => Brushes.White,
+                        AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
                         _ => throw new ArgumentOutOfRangeException()
                     };
                 }

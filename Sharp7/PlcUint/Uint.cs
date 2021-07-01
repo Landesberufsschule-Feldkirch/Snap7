@@ -10,7 +10,6 @@ namespace PlcDatenTypen
         {
             _uintDec = zahl;
         }
-
         public Uint(string zahl)
         {
 
@@ -41,9 +40,8 @@ namespace PlcDatenTypen
 
             _uintDec = Convert.ToUInt64(zahl);
         }
-
+        
         public ulong GetDec() => _uintDec;
-
         public string GetBin4Bit()
         {
             if (_uintDec > Math.Pow(2, 4) - 1) return "uuups - zu große Zahl!";
@@ -107,7 +105,6 @@ namespace PlcDatenTypen
             if (anzahlBit < 13) return GetBin12Bit();
             return anzahlBit < 17 ? GetBin16Bit() : GetBin32Bit();
         }
-
         public string GetHex4Bit()
         {
             if (_uintDec > Math.Pow(2, 4) - 1) return "uuups - zu große Zahl!";
@@ -161,8 +158,6 @@ namespace PlcDatenTypen
             if (anzahlBit < 13) return GetHex12Bit();
             return anzahlBit < 17 ? GetHex16Bit() : GetHex32Bit();
         }
-
-
         public uint GetAnzahlBit()
         {
             if (_uintDec == 0) return 0;

@@ -1,23 +1,27 @@
 ﻿using Kommunikation;
-using System.Text;
+using System;
 using System.Windows;
+using System.Windows.Controls;
+using BeschriftungPlc;
 
 namespace Parkhaus
 {
     public partial class MainWindow
     {
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
-        public Datenstruktur Datenstruktur { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
-
+        public Datenstruktur Datenstruktur { get; set; }
+        public TestAutomat.TestAutomat TestAutomat { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
         private const int AnzByteDigInput = 2;
         private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 2;
-        private const int AnzByteAnalogOutput = 0;
+        private const int AnzByteAnalogInput = 0;
+        private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
         {
@@ -25,10 +29,7 @@ namespace Parkhaus
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             var viewModel = new ViewModel.ViewModel(this);
             DatenRangieren = new DatenRangieren(viewModel);
@@ -36,9 +37,53 @@ namespace Parkhaus
             InitializeComponent();
             DataContext = viewModel;
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, Plc);
+            TestAutomat.SetTestConfig("./ConfigTests/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+
+            Closing += (_, e) =>
+            {
+                e.Cancel = true;
+                Schliessen();
+            };
+        }
+        private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is not TabControl tc) return;
+
+            // ReSharper disable once ConvertSwitchStatementToSwitchExpression
+            switch (tc.SelectedIndex)
+            {
+                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
+            }
+
+            DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
+        }
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
+        }
+        private void Schliessen()
+        {
+            DisplayPlc.TaskBeenden();
+            TestAutomat.TaskBeenden();
+            Application.Current.Shutdown();
         }
     }
 }

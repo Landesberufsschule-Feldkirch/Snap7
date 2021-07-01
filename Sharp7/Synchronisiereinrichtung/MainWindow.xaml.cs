@@ -1,7 +1,6 @@
 ﻿using Kommunikation;
 using ScottPlot;
 using System;
-using System.Text;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -10,7 +9,7 @@ namespace Synchronisiereinrichtung
     public partial class MainWindow
     {
         public bool DebugWindowAktiv { get; set; }
-        public S71200 Plc { get; set; }
+        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
@@ -47,10 +46,7 @@ namespace Synchronisiereinrichtung
             VersionNummer = "V2.0";
             VersionInfoLokal = versionText + " " + VersionNummer;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput)
-            {
-                VersionInputSps = Encoding.ASCII.GetBytes(VersionInfoLokal)
-            };
+            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
             _viewModel = new ViewModel.ViewModel(this);
 
@@ -59,7 +55,15 @@ namespace Synchronisiereinrichtung
 
             DatenRangieren = new DatenRangieren(this, _viewModel);
 
-            Plc = new S71200(Datenstruktur, DatenRangieren.RangierenInput, DatenRangieren.RangierenOutput);
+            var befehlszeile = Environment.GetCommandLineArgs();
+            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
+                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
+                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+
+            DatenRangieren.ReferenzUebergeben(Plc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
         }

@@ -1,9 +1,12 @@
-﻿namespace AutomatischesLagersystem
+﻿using Kommunikation;
+
+namespace AutomatischesLagersystem
 {
     public class DatenRangieren
     {
         private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
+        private IPlc _plc;
 
         private enum BitPosAusgang
         {
@@ -19,31 +22,32 @@
             S2      // Ab
         }
 
-        public void RangierenInput(Kommunikation.Datenstruktur datenstruktur)
+        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
-            /*
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, viewModel.paternosterlager.B1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, viewModel.paternosterlager.B2);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
-            S7.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
+            if (eingaengeRangieren)
+            {
+                /*
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B1, viewModel.paternosterlager.B1);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B2, viewModel.paternosterlager.B2);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, viewModel.paternosterlager.S1);
+            _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, viewModel.paternosterlager.S2);
 
-            S7.SetUSIntAt(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
+            _plc.SetUSIntAt(digInput, 1, (byte)viewModel.paternosterlager.Zeichen);
     */
-        }
+            }
 
-        public void RangierenOutput(Kommunikation.Datenstruktur datenstruktur)
-        {
+
             if (!_mainWindow.DebugWindowAktiv)
             {
                 /*
-  viewModel.paternosterlager.Q1 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
-  viewModel.paternosterlager.Q2 = S7.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
+  viewModel.paternosterlager.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
+  viewModel.paternosterlager.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
   */
             }
 
             /*
-            viewModel.paternosterlager.IstPos = S7.GetUSIntAt(digOutput, 1);
-            viewModel.paternosterlager.SollPos = S7.GetUSIntAt(digOutput, 2);
+            viewModel.paternosterlager.IstPos = _plc.GetUSIntAt(digOutput, 1);
+            viewModel.paternosterlager.SollPos = _plc.GetUSIntAt(digOutput, 2);
             */
         }
 
@@ -52,5 +56,6 @@
             _mainWindow = mw;
             _viewModel = vm;
         }
+        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

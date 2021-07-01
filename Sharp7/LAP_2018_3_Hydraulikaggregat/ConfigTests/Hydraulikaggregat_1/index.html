@@ -48,10 +48,10 @@
 </head>
 
 <body>
-    <h1>Motorschaltungen 1 - 1 (Getriebemotor)</h1>
+    <h1>LAP 2018/3 Hydraulikaggregat</h1>
     <br>
     <div class="text_schwarz">
-        <a href="https://www.linderonline.at/fk/drucker.php?ID=574" target="_blank">&rarr; Linderonline/FK</a>
+        <a href="https://www.linderonline.at/fk/drucker.php?ID=567" target="_blank">&rarr; Linderonline/FK</a>
         <br><br>
         <span class="beschreibung">Beschreibung</span>
         <br><br>
@@ -59,28 +59,39 @@
 
         <br><br>
 
-        <table>
-            <tr>
-                <td>SPS </td>
-                <td>Bezeichnung </td>
-                <td>Kommentar </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.0 </td>
-                <td>-S1 </td>
-                <td>Taster Aus </td>
-            </tr>
-            <tr class="di">
-                <td>DI 0.1 </td>
-                <td>-S2 </td>
-                <td>Taster Ein </td>
-            </tr>
-            <tr class="dq">
-                <td>DQ 0.5 </td>
-                <td>-P2 </td>
-                <td>Motorschütz (grün)</td>
-            </tr>
-        </table>
+  <table style="border: 1px; padding: 5px;">
+    <tr>
+      <td>Klemme		</td>     
+      <td>Betriebsmittel	</td>
+      <td>Kommentar		</td>
+    </tr> 
+    <tr class="di">		<td>DigInput.B1 </td>  <td>-B1	</td>	<td>Füllstand Ölbehälter                </td> </tr>
+    <tr class="di">		<td>DigInput.B2 </td>  <td>-B2	</td>	<td>Öldruck erreicht                    </td> </tr>
+    <tr class="di">		<td>DigInput.B3 </td>  <td>-B3	</td>	<td>Überdruck (Öffner)                  </td> </tr>
+    <tr class="di">		<td>DigInput.B4 </td>  <td>-B4  </td>	<td>Temperatur Ölbehälter               </td> </tr>
+    <tr class="di">		<td>DigInput.B5 </td>  <td>-B5  </td>	<td>Druckschalter "Ölfilter"            </td> </tr>
+    <tr class="di">		<td>DigInput.F1 </td>  <td>-F1	</td>	<td>Thermorelais Motor                  </td> </tr>
+	<tr class="di">		<td>DigInput.S1 </td>  <td>-S1	</td>	<td>Taster Start                        </td> </tr>
+	<tr class="di">		<td>DigInput.S2 </td>  <td>-S2	</td>	<td>Taster Stop                         </td> </tr>
+    <tr class="di">		<td>DigInput.S3 </td>  <td>-S3	</td>	<td>Taster Quittieren                   </td> </tr>	
+    <tr class="di">		<td>DigInput.S4 </td>  <td>-S4 </td>	<td>Taster Zylinder			            </td> </tr>	
+
+    <tr class="dq">		<td>DigOutput.K1 </td>  <td>-K1 </td>	<td>Ventil "Zylinder ausfahren"         </td> </tr>
+    <tr class="dq">		<td>DigOutput.K2 </td>  <td>-K2</td>	<td>Ventil "Zylinder einfahren"         </td> </tr>
+
+    <tr class="dq">	    <td>DigOutput.P1 </td>  <td>-P1 </td>	<td>Meldeleuchte "Betriebsbereit"	    </td> </tr>
+    <tr class="dq">	    <td>DigOutput.P2 </td>  <td>-P2 </td>	<td>Meldeleuchte "Sammelstörung"		</td> </tr>
+    <tr class="dq">	    <td>DigOutput.P3 </td>  <td>-P3 </td>	<td>Meldeleuchte "Störung Motor"		</td> </tr>
+    <tr class="dq">	    <td>DigOutput.P4 </td>  <td>-P4 </td>	<td>Meldeleuchte "Überdruck"			</td> </tr>
+    <tr class="dq">	    <td>DigOutput.P5 </td>  <td>-P5 </td>	<td>Meldeleuchte Druck erreicht" 	    </td> </tr>
+    <tr class="dq">	    <td>DigOutput.P6 </td>  <td>-P6 </td>	<td>Meldeleuchte "Ölstand min."		    </td> </tr>
+    <tr class="dq">     <td>DigOutput.P7 </td>  <td>-P7 </td>	<td>Meldeleuchte "Lüfter Ölkühler" 	    </td> </tr>
+    <tr class="dq">     <td>DigOutput.P8 </td>  <td>-P8 </td>	<td>Meldeleuchte "Ölfilter wechseln"    </td> </tr>
+	<tr class="dq">		<td>DigOutput.Q1 </td>  <td>-Q1	</td>	<td>Netzschütz                          </td> </tr>
+	<tr class="dq">		<td>DigOutput.Q2 </td>  <td>-Q2	</td>	<td>Sternschütz                         </td> </tr>
+	<tr class="dq">		<td>DigOutput.Q3 </td>  <td>-Q3	</td>	<td>Dreieckschütz                       </td> </tr>
+    <tr class="dq">		<td>DigOutput.Q4 </td>  <td>-Q4 </td>	<td>Lüfter (Ölkühler)                   </td> </tr>
+</table>
     </div>
     <br><br>
 </body>

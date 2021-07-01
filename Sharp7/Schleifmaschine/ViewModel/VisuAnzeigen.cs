@@ -23,11 +23,14 @@ namespace Schleifmaschine.ViewModel
             for (var i = 0; i < 20; i++) ClickModeBtn.Add(ClickMode.Press);
 
             WinkelSchleifmaschine = 10;
+            AktuelleDrehzahl = 0;
 
-            ColorThermorelaisF1 = Brushes.LawnGreen;
-            ColorThermorelaisF2 = Brushes.LawnGreen;
+            ColorThermorelaisF1 = Brushes.Lavender;
+            ColorThermorelaisF2 = Brushes.Lavender;
+            ColorTasterS3 = Brushes.Lavender;
 
-            VersionNr = "V0.0";
+            VisUebersynchron = Visibility.Hidden;
+
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
@@ -48,12 +51,15 @@ namespace Schleifmaschine.ViewModel
                 FarbeP1(_schleifmaschine.P1);
                 FarbeP2(_schleifmaschine.P2);
                 FarbeP3(_schleifmaschine.P3);
+                FarbeTasterS3(_schleifmaschine.S3);
 
+                AktuelleDrehzahl = _schleifmaschine.DrehzahlSchleifmaschine;
                 SchleifmaschineDrehzahl = "n=" + _schleifmaschine.DrehzahlSchleifmaschine;
+
+                VisUebersynchron = _schleifmaschine.B1 ? Visibility.Visible : Visibility.Hidden;
 
                 if (_mainWindow.Plc != null)
                 {
-                    VersionNr = _mainWindow.VersionNummer;
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
                     SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
@@ -68,18 +74,6 @@ namespace Schleifmaschine.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-
-        private string _versionNr;
-
-        public string VersionNr
-        {
-            get => _versionNr;
-            set
-            {
-                _versionNr = value;
-                OnPropertyChanged(nameof(VersionNr));
-            }
-        }
 
         private string _spsVersionLokal;
 
@@ -142,18 +136,27 @@ namespace Schleifmaschine.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        private double _schleifmaschineDrehzahl;
+        private Visibility _visUebersynchron;
+        public Visibility VisUebersynchron
+        {
+            get => _visUebersynchron;
+            set
+            {
+                _visUebersynchron = value;
+                OnPropertyChanged(nameof(VisUebersynchron));
+            }
+        }
 
+        private double _schleifmaschineDrehzahl;
         public string SchleifmaschineDrehzahl
         {
             get => "n=" + _schleifmaschineDrehzahl;
             set
             {
-                _schleifmaschineDrehzahl = Convert.ToDouble(value.Substring(2));
+                _schleifmaschineDrehzahl = Math.Floor(Convert.ToDouble(value.Substring(2)));
                 OnPropertyChanged(nameof(SchleifmaschineDrehzahl));
             }
         }
-
 
 
         private double _winkelSchleifmaschine;
@@ -167,6 +170,30 @@ namespace Schleifmaschine.ViewModel
             }
         }
 
+        private double _aktuelleDrehzahl;
+        public double AktuelleDrehzahl
+        {
+            get => _aktuelleDrehzahl;
+            set
+            {
+                _aktuelleDrehzahl = value;
+                OnPropertyChanged(nameof(AktuelleDrehzahl));
+            }
+        }
+
+
+        public void FarbeTasterS3(bool val) => ColorTasterS3 = val ? Brushes.LawnGreen : Brushes.Red;
+
+        private Brush _colorTasterS3;
+        public Brush ColorTasterS3
+        {
+            get => _colorTasterS3;
+            set
+            {
+                _colorTasterS3 = value;
+                OnPropertyChanged(nameof(ColorTasterS3));
+            }
+        }
 
         public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
 
@@ -249,8 +276,10 @@ namespace Schleifmaschine.ViewModel
                 case 0: _schleifmaschine.S0 = !gedrueckt; break;
                 case 1: _schleifmaschine.S1 = gedrueckt; break;
                 case 2: _schleifmaschine.S2 = gedrueckt; break;
-                case 3: _schleifmaschine.S3 = !gedrueckt; break;
-                case 4: _schleifmaschine.S4 = gedrueckt; break;
+                case 4:
+                    _schleifmaschine.S4 = gedrueckt;
+                    _schleifmaschine.B1 = false;
+                    break;
             }
         }
 

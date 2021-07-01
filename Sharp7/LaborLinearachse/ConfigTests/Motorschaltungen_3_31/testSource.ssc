@@ -1,0 +1,94 @@
+///////////////////////////////////////////////////////////////
+//
+// Motorschaltungen 2 - 21 (Linearachse)
+//
+///////////////////////////////////////////////////////////////
+
+// Eingänge:
+var DI_0_0 = "2#0001" // B1   Linearachse Endlage links → Öffner
+var DI_0_1 = "2#0010" // B2   Linearachse Endlage rechts → Öffner
+var DI_0_2 = "2#0100" // S2   Taster(⓪) → Öffner
+var DI_0_3 = "2#1000" // S1   Taster(①) → Schliesser
+
+var DI_0_4 = "2#0001_0000" // S4   Taster(Ⅱ) → Schliesser
+var DI_0_5 = "2#0010_0000" // S3   Taster(Ⅰ) → Schliesser
+var DI_0_6 = "2#0100_0000" // S6   Taster(↓) → Schliesser
+var DI_0_7 = "2#1000_0000" // S5   Taster(↑) → Schliesser
+
+var DI_1_0 = "2#0001_0000_0000" // S8   Taster(－) → Schliesser
+var DI_1_1 = "2#0010_0000_0000" // S7   Taster(+) → Schliesser
+var DI_1_2 = "2#0100_0000_0000" // S9   Taster(STOP) → Öffner
+var DI_1_3 = "2#1000_0000_0000" // S10  Not-Halt → Öffner
+
+var DI_1_4 = "2#0001_0000_0000_0000" // S11  Not-Halt → Schliesser
+
+// Ausgänge:
+var DQ_0_0 = "2#0001" // Q1   Linearachse Rechtslauf
+var DQ_0_1 = "2#0010" // Q2   Linearachse Linkslauf
+var DQ_0_2 = "2#0100" // P1   Meldeleuchte im Taster S1/S2(weiß)
+var DQ_0_3 = "2#1000" // P2   Meldeleuchte weiß
+
+var DQ_0_4 = "2#0001_0000" // P3   Meldeleuchte rot
+var DQ_0_5 = "2#0010_0000" // P4   Meldeleuchte grün
+
+main()
+{
+    var S1 = Plc2Dec(DI_0_3) // Start
+    var S2 = Plc2Dec(DI_0_2) // Stop
+
+    var AllesAus = 0
+    var P4 = Plc2Dec(DQ_0_5) // grün
+    var Q1 = Plc2Dec(DQ_0_0) // Linearachse Rechtslauf
+    var Q2 = Plc2Dec(DQ_0_1) // Linearachse Linkslauf
+
+
+    var Maske_P4_Q1_Q2 = P4 + Q1 + Q2
+
+    SetDiagrammZeitbereich "T#5s"
+
+    SetDataGridBitAnzahl 0, 8
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+    SetDigitaleEingaenge 0
+    ResetStopwatch
+    BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
+    IncrementDataGridId
+
+    UpdateAnzeige "Kommentar", "Einen kompletten Zyklus testen"
+    IncrementDataGridId
+
+   setArray = {
+        {S1 + S2,   "T#1s",         "S1 drücken"},
+        {S2,        "T#5s500ms",    ""},
+        {0,         "",             ""}
+    }
+
+    testArray = {
+        {P4 + Q1,   Maske_P4_Q1_Q2, "T#2s",     0.1,    "T#5s", "Linearachse Rechtslauf"},
+        {P4,        Maske_P4_Q1_Q2, "T#1s",     0.1,    "T#5s", "Pause"},
+        {P4 + Q2,   Maske_P4_Q1_Q2, "T#2s",     0.1,    "T#5s", "Linearachse Linkslauf"},
+        {P4,        Maske_P4_Q1_Q2, "T#500ms",  0.1,    "T#5s", "Pause"}
+    }
+
+    TestAblauf setArray, testArray
+
+    SetDigitaleEingaenge 0
+    Sleep("T#500ms")
+
+    UpdateAnzeige "Kommentar", "Einen kompletten Zyklus mit Aus"
+    IncrementDataGridId
+
+
+
+    SetDigitaleEingaenge 0
+    ResetStopwatch
+    BitmusterTesten AllesAus, Maske_P4_Q1_Q2, "T#5s", "Linearachse Aus?"
+    IncrementDataGridId
+
+    UpdateAnzeige "Test abgeschlossen", " "
+
+}

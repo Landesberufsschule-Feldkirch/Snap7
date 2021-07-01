@@ -294,8 +294,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value <= 0) { value = 0; }
-                else if (value >= 100) { value = 100; }
+                value = value switch
+                {
+                    <= 0 => 0,
+                    >= 100 => 100,
+                    _ => value
+                };
                 _gaugeTextOpacity = value / 100;
                 ChangeLabels();
             }
@@ -406,8 +410,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value <= 0) { value = 0; }
-                else if (value >= 100) { value = 100; }
+                value = value switch
+                {
+                    <= 0 => 0,
+                    >= 100 => 100,
+                    _ => value
+                };
                 value /= 100;
                 _labelOpacity = value;
                 ChangeLabels();
@@ -421,8 +429,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value <= 6) { value = 6; }
-                else if (value >= 72) { value = 72; }
+                value = value switch
+                {
+                    <= 6 => 6,
+                    >= 72 => 72,
+                    _ => value
+                };
                 _fontSize = value;
                 ChangeLabels();
             }
@@ -562,8 +574,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value >= MaxW) { value = MaxW; }
-                else if (value <= MinW) { value = MinW; }
+                value = value switch
+                {
+                    >= MaxW => MaxW,
+                    <= MinW => MinW,
+                    _ => value
+                };
                 Back.Width = BackFront.Width = value;
                 Front.Width = FrontBack.Width = GlassCanvas.Width = value - 20;
                 FrontBackMask.Width = value - 45;
@@ -577,8 +593,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value >= MaxH) { value = MaxH; }
-                else if (value <= MinH) { value = MinH; }
+                value = value switch
+                {
+                    >= MaxH => MaxH,
+                    <= MinH => MinH,
+                    _ => value
+                };
                 Back.Height = BackFront.Height = value;
                 Front.Height = FrontBack.Height = GlassCanvas.Height = value - 20;
                 FrontBackMask.Height = value - 45;
@@ -592,8 +612,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value <= 0) { value = 0; }
-                else if (value >= 100) { value = 100; }
+                value = value switch
+                {
+                    <= 0 => 0,
+                    >= 100 => 100,
+                    _ => value
+                };
                 _arcOpacity = value;
                 SetStyle();
             }
@@ -751,8 +775,12 @@ namespace GaugeControl
         {
             set
             {
-                if (value <= 0) { value = 0; }
-                else if (value >= 360) { value = 360; }
+                value = value switch
+                {
+                    <= 0 => 0,
+                    >= 360 => 360,
+                    _ => value
+                };
                 _arcLength = value;
                 SetStyle();
             }

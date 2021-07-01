@@ -5,7 +5,7 @@ namespace PlcDatenTypen
 {
     public class ZeitDauer
     {
-        private readonly long _dauerMs;
+        public long DauerMs { get;}
 
         public ZeitDauer(string dauer)
         {
@@ -13,6 +13,11 @@ namespace PlcDatenTypen
             const long dauer1M = 60 * dauer1S;
             const long dauer1H = 60 * dauer1M;
             const long dauer1D = 24 * dauer1H;
+            if (dauer.Length == 0)
+            {
+                DauerMs = 0;
+                return;
+            }
 
             if (dauer.StartsWith("T#", StringComparison.OrdinalIgnoreCase))
 
@@ -25,33 +30,33 @@ namespace PlcDatenTypen
                 var posS = iecZeit.IndexOf("S", StringComparison.Ordinal);
                 var posMs = iecZeit.IndexOf("MS", StringComparison.Ordinal);
 
-                _dauerMs = 0;
+                DauerMs = 0;
                 var anfangZahl = 0;
                 if (posD > -1)
                 {
                     var tage = iecZeit.Substring(anfangZahl, posD);
-                    _dauerMs = long.Parse(tage) * dauer1D;
+                    DauerMs = long.Parse(tage) * dauer1D;
                     anfangZahl = posD + 1;
                 }
 
                 if (posH > -1)
                 {
                     var stunden = iecZeit.Substring(anfangZahl, posH - anfangZahl);
-                    _dauerMs += long.Parse(stunden) * dauer1H;
+                    DauerMs += long.Parse(stunden) * dauer1H;
                     anfangZahl = posH + 1;
                 }
 
                 if (posM > -1 && posM != posMs)
                 {
                     var minuten = iecZeit.Substring(anfangZahl, posM - anfangZahl);
-                    _dauerMs += long.Parse(minuten) * dauer1M;
+                    DauerMs += long.Parse(minuten) * dauer1M;
                     anfangZahl = posM + 1;
                 }
 
                 if (posS > -1 && posS != posMs + 1)
                 {
                     var sekunden = iecZeit.Substring(anfangZahl, posS - anfangZahl);
-                    _dauerMs += long.Parse(sekunden) * dauer1S;
+                    DauerMs += long.Parse(sekunden) * dauer1S;
                     anfangZahl = posS + 1;
                 }
 
@@ -59,17 +64,14 @@ namespace PlcDatenTypen
                 if (posMs > -1)
                 {
                     var milliSekunden = iecZeit.Substring(anfangZahl, posMs - anfangZahl);
-                    _dauerMs += long.Parse(milliSekunden);
+                    DauerMs += long.Parse(milliSekunden);
                 }
             }
             else
             {
-                _dauerMs = dauer.All(char.IsDigit) ? long.Parse(dauer) : 0;
+                DauerMs = dauer.All(char.IsDigit) ? long.Parse(dauer) : 0;
             }
         }
-
-        public long GetZeitDauerMs() => _dauerMs;
-
         public static string ConvertLong2Ms(long zeit)
         {
             if (zeit < 1000) return $"{zeit}ms";

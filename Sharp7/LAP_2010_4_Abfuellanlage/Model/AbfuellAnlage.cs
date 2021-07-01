@@ -50,7 +50,7 @@ namespace LAP_2010_4_Abfuellanlage.Model
                 foreach (var dose in AlleDosen)
                 {
                     bool lichtschranke;
-                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose); 
+                    (lichtschranke, _aktuelleDose) = dose.DosenBewegen(Q1, _anzahlDosen, _aktuelleDose);
                     B2 |= lichtschranke;
                 }
 

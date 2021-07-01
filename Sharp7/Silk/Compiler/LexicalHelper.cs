@@ -102,7 +102,7 @@ namespace SoftCircuits.Silk
             int pos = (Index + count);
             return (pos < Text.Length) ? Text[pos] : NullChar;
         }
-        
+
         /// <summary>
         /// Moves the current position ahead one character. The position will not
         /// be placed beyond the end of the text being parsed.
@@ -302,7 +302,7 @@ namespace SoftCircuits.Silk
             return true;
         }
 
-#endregion
+        #endregion
 
         #region Operator overloads
 

@@ -19,7 +19,7 @@ namespace Tiefgarage.ViewModel
 
         private ICommand _btnDraussenParken;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnDraussenParken => _btnDraussenParken ??= new RelayCommand(_=> AlleFahrzeugePersonen.DraussenParken(), _ => true);
+        public ICommand BtnDraussenParken => _btnDraussenParken ??= new RelayCommand(_ => AlleFahrzeugePersonen.DraussenParken(), _ => true);
 
 
         private ICommand _btnDrinnenParken;

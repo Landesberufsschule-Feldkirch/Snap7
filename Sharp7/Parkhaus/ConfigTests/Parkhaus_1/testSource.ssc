@@ -1,0 +1,56 @@
+///////////////////////////////////////////////////////////////
+//
+// Parkgarage
+//
+///////////////////////////////////////////////////////////////
+
+
+// Eingänge:
+var DI_0_0 = "2#0000_0001"  // PS1  Parkplätze Spalte 1
+var DI_0_1 = "2#0000_0010"  // PS2  Parkplätze Spalte 2
+var DI_0_2 = "2#0000_0100"  // PS3  Parkplätze Spalte 3
+var DI_0_3 = "2#0000_1000"  // PS4  Parkplätze Spalte 4
+
+var DI_0_4 = "2#0001_0000"  // PS5  Parkplätze Spalte 5
+var DI_0_5 = "2#0010_0000"  // PS6  Parkplätze Spalte 6
+var DI_0_6 = "2#0100_0000"  // PS7  Parkplätze Spalte 7
+var DI_0_7 = "2#1000_0000"  // PS8  Parkplätze Spalte 8
+
+// Ausgänge:
+var DQ_0_0 = "2#0001"       // PR1  Parkplätze Reihe 1 
+var DQ_0_1 = "2#0010"       // PR2  Parkplätze Reihe 2 
+var DQ_0_2 = "2#0100"       // PR3  Parkplätze Reihe 3 
+var DQ_0_3 = "2#1000"       // PR4  Parkplätze Reihe 4 
+
+
+main()
+{
+    var PS1 = Plc2Dec(DI_0_0)   // Parkplätze Spalte 1
+    var PS2 = Plc2Dec(DI_0_1)   // Parkplätze Spalte 2
+    var PS3 = Plc2Dec(DI_0_2)   // Parkplätze Spalte 3
+    var PS4 = Plc2Dec(DI_0_3)   // Parkplätze Spalte 4
+    var PS5 = Plc2Dec(DI_0_4)   // Parkplätze Spalte 5
+    var PS6 = Plc2Dec(DI_0_5)   // Parkplätze Spalte 6
+    var PS7 = Plc2Dec(DI_0_6)   // Parkplätze Spalte 7
+    var PS8 = Plc2Dec(DI_0_7)   // Parkplätze Spalte 8
+
+    // Ausgänge:
+    var PR1 = Plc2Dec(DQ_0_0)   // Parkplätze Reihe 1 
+    var PR2 = Plc2Dec(DQ_0_1)   // Parkplätze Reihe 2 
+    var PR3 = Plc2Dec(DQ_0_2)   // Parkplätze Reihe 3 
+    var PR4 = Plc2Dec(DQ_0_3)   // Parkplätze Reihe 4 
+
+    var AllesAus = 0
+
+    SetDataGridBitAnzahl 8, 4
+    VersionAnzeigen
+
+    Sleep("T#100ms")
+    UpdateAnzeige "Init", ""
+    IncrementDataGridId
+
+
+
+
+    UpdateAnzeige "Test abgeschlossen", " "
+}
