@@ -1,12 +1,14 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System;
+using System.ComponentModel;
+using System.Threading;
 
 namespace LAP_2010_3_Ofentuersteuerung.ViewModel
 {
-    using System;
-    using System.ComponentModel;
-    using System.Threading;
+
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -32,10 +34,10 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             ColorQ1 = Brushes.LawnGreen;
             ColorQ2 = Brushes.LawnGreen;
 
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
-            ClickModeBtnB3 = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
 
             VisibilityB1Ein = Visibility.Visible;
             VisibilityB1Aus = Visibility.Hidden;
@@ -47,7 +49,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -79,14 +80,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void SetS1() => _ofentuerSteuerung.S1 = !ClickModeButtonS1();
-
-        internal void SetS2() => _ofentuerSteuerung.S2 = ClickModeButtonS2();
-
-        internal void SetS3() => _ofentuerSteuerung.S3 = ClickModeButtonS3();
-
-        internal void SetB3() => _ofentuerSteuerung.B3 = !ClickModeButtonB3();
 
         #region SPS Version, Status und Farbe
 
@@ -153,9 +146,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ZahnradWinkel
-
         private double _zahnradWinkel;
-
         public double ZahnradWinkel
         {
             get => _zahnradWinkel;
@@ -165,13 +156,10 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(ZahnradWinkel));
             }
         }
-
         #endregion ZahnradWinkel
 
         #region ZahnstangePosition
-
         private double _zahnstangePosition;
-
         public double ZahnstangePosition
         {
             get => _zahnstangePosition;
@@ -181,13 +169,10 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(ZahnstangePosition));
             }
         }
-
         #endregion ZahnstangePosition
 
         #region OfentuerePosition
-
         private double _ofentuerePosition;
-
         public double OfentuerePosition
         {
             get => _ofentuerePosition;
@@ -197,15 +182,11 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(OfentuerePosition));
             }
         }
-
         #endregion OfentuerePosition
 
-        #region Color P1
-
+        #region Farben
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorP1;
-
         public Brush ColorP1
         {
             get => _colorP1;
@@ -216,14 +197,8 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             }
         }
 
-        #endregion Color P1
-
-        #region Color Q1
-
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorQ1;
-
         public Brush ColorQ1
         {
             get => _colorQ1;
@@ -234,14 +209,8 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             }
         }
 
-        #endregion Color Q1
-
-        #region Color Q2
-
         public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorQ2;
-
         public Brush ColorQ2
         {
             get => _colorQ2;
@@ -251,123 +220,9 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorQ2));
             }
         }
+        #endregion Farben
 
-        #endregion Color Q2
-
-        #region ClickModeBtnS1
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS2
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-        #endregion ClickModeBtnS2
-
-        #region ClickModeBtnS3
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        #endregion ClickModeBtnS3
-
-        #region ClickModeBtnB3
-
-        public bool ClickModeButtonB3()
-        {
-            if (ClickModeBtnB3 == ClickMode.Press)
-            {
-                ClickModeBtnB3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnB3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnB3;
-
-        public ClickMode ClickModeBtnB3
-        {
-            get => _clickModeBtnB3;
-            set
-            {
-                _clickModeBtnB3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnB3));
-            }
-        }
-
-        #endregion ClickModeBtnB3
-
-        #region Sichtbarkeit B1
-
+        #region Sichtbarkeit 
         public void SichtbarkeitB1(bool val)
         {
             if (val)
@@ -383,7 +238,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         }
 
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -393,9 +247,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
-
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -405,10 +257,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
 
         public void SichtbarkeitB2(bool val)
         {
@@ -423,9 +271,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB2Ein;
-
         public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
@@ -435,9 +281,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Ein));
             }
         }
-
         private Visibility _visibilityB2Aus;
-
         public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
@@ -447,10 +291,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-
-        #endregion Sichtbarkeit B2
-
-        #region Sichtbarkeit B3
 
         public void SichtbarkeitB3(bool val)
         {
@@ -465,9 +305,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 VisibilityB3Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB3Ein;
-
         public Visibility VisibilityB3Ein
         {
             get => _visibilityB3Ein;
@@ -477,9 +315,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB3Ein));
             }
         }
-
         private Visibility _visibilityB3Aus;
-
         public Visibility VisibilityB3Aus
         {
             get => _visibilityB3Aus;
@@ -490,12 +326,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             }
         }
 
-        #endregion Sichtbarkeit B3
-
-        #region VisibilityKurzschluss
-
         private Visibility _visibilityKurzschluss;
-
         public Visibility VisibilityKurzschluss
         {
             get => _visibilityKurzschluss;
@@ -505,8 +336,48 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityKurzschluss));
             }
         }
+        #endregion Sichtbarkeit 
 
-        #endregion VisibilityKurzschluss
+        #region Taster
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 1: _ofentuerSteuerung.S1 = !gedrueckt; break;
+                case 2: _ofentuerSteuerung.S2 = gedrueckt; break;
+                case 3: _ofentuerSteuerung.S3 = gedrueckt; break;
+                case 4: _ofentuerSteuerung.B3 = !gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+        #endregion Taster
 
         #region iNotifyPeropertyChanged Members
 
