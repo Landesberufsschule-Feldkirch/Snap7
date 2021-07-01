@@ -96,11 +96,11 @@
                         </Polygon>
                     </Canvas>
 
-                    <Button Grid.Column="15" Grid.Row="2" Content="Hand"        ClickMode="Press" Command="{Binding BtnTasterHand}" />
-                    <Button Grid.Column="16" Grid.Row="2" Content="Aus"         ClickMode="Press" Command="{Binding BtnTasterAus}" />
-                    <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press" Command="{Binding BtnTasterAutomatik}" />
+                    <Button Grid.Column="15" Grid.Row="2" Content="Hand"        ClickMode="Press"  Command="{Binding BtnTaster}" CommandParameter="0"  />
+                    <Button Grid.Column="16" Grid.Row="2" Content="Aus"         ClickMode="Press"  Command="{Binding BtnTaster}" CommandParameter="1"  />
+                    <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press"  Command="{Binding BtnTaster}" CommandParameter="2"  />
 
-                    <Button Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="14pt">
+                    <Button Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -152,7 +152,7 @@
                     <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
                     <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
 
-                    <Button Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" Command="{Binding BtnVentilY1}" />
+                    <Button Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" Command="{Binding BtnSchalter}" CommandParameter="6" />
                     <Image Source="Bilder/VentilElektrischEinWeiss.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnzeige.VisibilityY1Ein}" />
                     <Image Source="Bilder/VentilElektrischAusWeiss.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnzeige.VisibilityY1Aus}" />
 

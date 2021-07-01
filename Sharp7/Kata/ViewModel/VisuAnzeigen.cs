@@ -160,6 +160,7 @@ namespace Kata.ViewModel
             }
         }
 
+        #region Taster/Schalter
         internal void Taster(object id)
         {
             if (id is not string ascii) return;
@@ -214,6 +215,7 @@ namespace Kata.ViewModel
                 OnPropertyChanged(nameof(ClickModeBtn));
             }
         }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
 

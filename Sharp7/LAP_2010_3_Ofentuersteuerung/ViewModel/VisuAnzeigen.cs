@@ -115,7 +115,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -127,7 +126,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -137,10 +135,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
-        // ReSharper disable once UnusedMember.Global
-        internal void BtnS3() => throw new NotImplementedException();
-
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ZahnradWinkel

@@ -1,12 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.ComponentModel;
+using System.Threading;
+using System.Windows;
 
 namespace LAP_2010_5_Pumpensteuerung.ViewModel
 {
-    using System.ComponentModel;
-    using System.Threading;
-    using System.Windows;
-
     public class VisuAnzeigen : INotifyPropertyChanged
     {
         private const double HoeheFuellBalken = 9 * 35;
@@ -25,7 +26,10 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            ClickModeBtnS3 = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
 
             ColorThermorelaisF1 = Brushes.LawnGreen;
 
@@ -91,9 +95,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void SetS3() => _pumpensteuerung.S3 = ClickModeButtonS3();
-
-
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
@@ -130,7 +131,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -140,9 +140,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(SpsStatus));
             }
         }
-
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -152,11 +150,9 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region SchalterWinkel
-
         private void SchalterWinkel(bool s1, bool s2)
         {
             WinkelSchalter = 0;
@@ -165,7 +161,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         }
 
         private int _winkelSchalter;
-
         public int WinkelSchalter
         {
             get => _winkelSchalter;
@@ -175,43 +170,11 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(WinkelSchalter));
             }
         }
-
         #endregion SchalterWinkel
 
-        #region ClickModeButtonS3
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        #endregion ClickModeButtonS3
-
-        #region Color Thermorelais F1
-
+        #region Farben
         public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorThermorelaisF1;
-
         public Brush ColorThermorelaisF1
         {
             get => _colorThermorelaisF1;
@@ -222,12 +185,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color Thermorelais F1
-
-        #region Color P1
-
         public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
         private Brush _colorCircleP1;
         public Brush ColorCircleP1
         {
@@ -239,12 +197,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color P1
-
-        #region Color P2
-
         public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Brushes.Red : Brushes.LightGray;
-
         private Brush _colorCircleP2;
         public Brush ColorCircleP2
         {
@@ -256,12 +209,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color P2
-
-        #region Color AbleitungOben
-
         public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? Brushes.Blue : Brushes.LightBlue;
-
         private Brush _colorAbleitungOben;
         public Brush ColorAbleitungOben
         {
@@ -273,12 +221,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color AbleitungOben
-
-        #region Color AbleitungUnten
-
         public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? Brushes.Blue : Brushes.LightBlue;
-
         private Brush _colorAbleitungUnten;
         public Brush ColorAbleitungUnten
         {
@@ -290,12 +233,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color AbleitungUnten
-
-        #region Color ZuleitungLinksWaagrecht
-
         public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
-
         private Brush _colorZuleitungLinksWaagrecht;
         public Brush ColorZuleitungLinksWaagrecht
         {
@@ -307,12 +245,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color ZuleitungLinksWaagrecht
-
-        #region Color ZuleitungLinksSenkrecht
-
         public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
-
         private Brush _colorZuleitungLinksSenkrecht;
         public Brush ColorZuleitungLinksSenkrecht
         {
@@ -324,10 +257,9 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
         }
 
-        #endregion Color ZuleitungLinksSenkrecht
+        #endregion Farben
 
-        #region Sichtbarkeit Q1
-
+        #region Sichtbarkeit 
         public void SichtbarkeitQ1(bool val)
         {
             if (val)
@@ -341,9 +273,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 VisibilityQ1Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityQ1Ein;
-
         public Visibility VisibilityQ1Ein
         {
             get => _visibilityQ1Ein;
@@ -353,9 +283,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ1Ein));
             }
         }
-
         private Visibility _visibilityQ1Aus;
-
         public Visibility VisibilityQ1Aus
         {
             get => _visibilityQ1Aus;
@@ -365,10 +293,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ1Aus));
             }
         }
-
-        #endregion Sichtbarkeit Q1
-
-        #region Sichtbarkeit B1
 
         public void SichtbarkeitB1(bool val)
         {
@@ -383,9 +307,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 VisibilityB1Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -395,9 +317,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Ein));
             }
         }
-
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -407,10 +327,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
 
         public void SichtbarkeitB2(bool val)
         {
@@ -425,9 +341,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 VisibilityB2Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityB2Ein;
-
         public Visibility VisibilityB2Ein
         {
             get => _visibilityB2Ein;
@@ -439,7 +353,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         }
 
         private Visibility _visibilityB2Aus;
-
         public Visibility VisibilityB2Aus
         {
             get => _visibilityB2Aus;
@@ -449,10 +362,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityB2Aus));
             }
         }
-
-        #endregion Sichtbarkeit B2
-
-        #region Sichtbarkeit Y1
 
         public void SichtbarkeitY1(bool val)
         {
@@ -467,9 +376,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 VisibilityY1Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityY1Ein;
-
         public Visibility VisibilityY1Ein
         {
             get => _visibilityY1Ein;
@@ -479,9 +386,7 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityY1Ein));
             }
         }
-
         private Visibility _visibilityY1Aus;
-
         public Visibility VisibilityY1Aus
         {
             get => _visibilityY1Aus;
@@ -491,18 +396,14 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityY1Aus));
             }
         }
-
-        #endregion Sichtbarkeit Y1
+        #endregion Sichtbarkeit 
 
         #region Margin1
-
         public void Margin_1(double pegel)
         {
             Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
         }
-
         private Thickness _margin1;
-
         public Thickness Margin1
         {
             get => _margin1;
@@ -512,15 +413,66 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 OnPropertyChanged(nameof(Margin1));
             }
         }
-
         #endregion Margin1
 
+        #region Taster/Schalter
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 0: _pumpensteuerung.TasterHand(); break;
+                case 1: _pumpensteuerung.TasterAus(); break;
+                case 2: _pumpensteuerung.TasterAutomatik(); break;
+                case 3: _pumpensteuerung.S3 = !gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 5: _pumpensteuerung.F1 = !_pumpensteuerung.F1; break;
+                case 6: _pumpensteuerung.Y1 = !_pumpensteuerung.Y1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+
+        #endregion Taster/Schalter
+
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

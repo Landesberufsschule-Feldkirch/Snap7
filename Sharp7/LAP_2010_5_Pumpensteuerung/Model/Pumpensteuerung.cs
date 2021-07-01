@@ -23,7 +23,6 @@ namespace LAP_2010_5_Pumpensteuerung.Model
 
             System.Threading.Tasks.Task.Run(PumpensteuerungTask);
         }
-
         private void PumpensteuerungTask()
         {
             const double fuellGeschwindigkeit = 0.002;
@@ -44,25 +43,16 @@ namespace LAP_2010_5_Pumpensteuerung.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void ThermorelaisF1() => F1 = !F1;
-
-        internal void SetManualQ1() => Q1 = !Q1;
-
-        internal void VentilY1() => Y1 = !Y1;
-
         internal void TasterHand()
         {
             S1 = true;
             S2 = false;
         }
-
         internal void TasterAus()
         {
             S1 = false;
             S2 = false;
         }
-
         internal void TasterAutomatik()
         {
             S1 = false;
