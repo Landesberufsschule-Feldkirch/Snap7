@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using PlcDatenTypen;
-using Sharp7;
 
 namespace LAP_2018_1_Silosteuerung
 {
@@ -45,7 +44,6 @@ namespace LAP_2018_1_Silosteuerung
 
                 _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Silosteuerung.Silo.GetFuellstand(), 1));
             }
-
 
             _foerderanlageViewModel.Silosteuerung.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _foerderanlageViewModel.Silosteuerung.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);

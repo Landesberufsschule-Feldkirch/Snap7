@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
@@ -37,10 +38,10 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             ColorQ1 = Brushes.LawnGreen;
             ColorS2 = Brushes.Red;
 
-            ClickModeBtnS0 = ClickMode.Press;
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
 
             Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
@@ -91,7 +92,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 FarbeS2(Silosteuerung.S2);
                 FarbeLagerSilo(Silosteuerung.RutscheVoll);
 
-
                 TxtLagerSiloVoll = Silosteuerung.RutscheVoll ? "LagerSilo Voll" : "LagerSilo Leer";
 
                 SichtbarkeitB1(Silosteuerung.B1);
@@ -119,11 +119,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void BtnS0() => Silosteuerung.S0 = !ClickModeButtonS0();
-        internal void BtnS1() => Silosteuerung.S1 = ClickModeButtonS1();
-        internal void BtnS2() => Silosteuerung.S2 = !ClickModeButtonS2();
-        internal void BtnS3() => Silosteuerung.S3 = ClickModeButtonS3();
 
         #region SPS Version, Status und Farbe
 
@@ -183,13 +178,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
         #endregion SPS Versionsinfo, Status und Farbe
-
-
-
+        
         #region Füllstand Silo
-
         private string _txtRutscheVoll;
         public string TxtLagerSiloVoll
         {
@@ -201,7 +192,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
         private string _fuellstandProzent;
         public string FuellstandProzent
         {
@@ -212,7 +202,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(FuellstandProzent));
             }
         }
-
 
         public void FuellstandSilo(double pegel)
         {
@@ -339,8 +328,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
-
         public void SichtbarkeitQ1(bool val)
         {
             if (val)
@@ -366,9 +353,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ1Ein));
             }
         }
-
         private Visibility _visibilityQ1Aus;
-
         public Visibility VisibilityQ1Aus
         {
             get => _visibilityQ1Aus;
@@ -378,9 +363,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ1Aus));
             }
         }
-
-
-
         public void SichtbarkeitXfu(bool val)
         {
             if (val)
@@ -396,7 +378,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private Visibility _visibilityQ2Ein;
-
         public Visibility VisibilityQ2Ein
         {
             get => _visibilityQ2Ein;
@@ -406,9 +387,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ2Ein));
             }
         }
-
         private Visibility _visibilityQ2Aus;
-
         public Visibility VisibilityQ2Aus
         {
             get => _visibilityQ2Aus;
@@ -418,7 +397,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityQ2Aus));
             }
         }
-
 
         public void SichtbarkeitY1(bool val)
         {
@@ -435,7 +413,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private Visibility _visibilityY1Ein;
-
         public Visibility VisibilityY1Ein
         {
             get => _visibilityY1Ein;
@@ -447,7 +424,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private Visibility _visibilityY1Aus;
-
         public Visibility VisibilityY1Aus
         {
             get => _visibilityY1Aus;
@@ -457,11 +433,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(VisibilityY1Aus));
             }
         }
-
-        #endregion
+        #endregion Sichtbarkeit
 
         #region Farben
-
         public void FarbeLagerSilo(bool val) => LagerSiloFarbe = val ? Brushes.Firebrick : Brushes.LightGray;
         private Brush _lagerSiloFarbe;
         public Brush LagerSiloFarbe
@@ -473,9 +447,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(LagerSiloFarbe));
             }
         }
-
         public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorF1;
         public Brush ColorF1
         {
@@ -488,7 +460,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         public void FarbeF2(bool val) => ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorF2;
         public Brush ColorF2
         {
@@ -501,7 +472,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorP1;
         public Brush ColorP1
         {
@@ -514,7 +484,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
-
         private Brush _colorP2;
         public Brush ColorP2
         {
@@ -527,7 +496,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-
         private Brush _colorQ1;
         public Brush ColorQ1
         {
@@ -539,11 +507,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-
         public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
 
         private Brush _colorS2;
-
         public Brush ColorS2
         {
             get => _colorS2;
@@ -553,121 +519,15 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(ColorS2));
             }
         }
+        #endregion Farben
 
-        #endregion
-
-        #region ClickMode Button
-
-        public bool ClickModeButtonS0()
-        {
-            if (ClickModeBtnS0 == ClickMode.Press)
-            {
-                ClickModeBtnS0 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS0 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS0;
-
-        public ClickMode ClickModeBtnS0
-        {
-            get => _clickModeBtnS0;
-            set
-            {
-                _clickModeBtnS0 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS0));
-            }
-        }
-
-
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        #endregion
-
-        #region Wagen
-        public void PositionWagenBeschriftung(Punkt pos)
+        #region Wagenpublic
+        private void PositionWagenBeschriftung(Punkt pos)
         {
             PosWagenBeschriftungLeft = pos.X + 74;
             PosWagenBeschriftungTop = pos.Y + 106;
         }
-
         private double _posWagenBeschriftungLeft;
-
         public double PosWagenBeschriftungLeft
         {
             get => _posWagenBeschriftungLeft;
@@ -679,7 +539,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private double _posWagenBeschriftungTop;
-
         public double PosWagenBeschriftungTop
         {
             get => _posWagenBeschriftungTop;
@@ -689,17 +548,13 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenBeschriftungTop));
             }
         }
-
-
-
+        
         public void PositionWagen(Punkt pos)
         {
             PosWagenLeft = pos.X;
             PosWagenTop = pos.Y;
         }
-
         private double _posWagenLeft;
-
         public double PosWagenLeft
         {
             get => _posWagenLeft;
@@ -711,7 +566,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private double _posWagenTop;
-
         public double PosWagenTop
         {
             get => _posWagenTop;
@@ -721,16 +575,13 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenTop));
             }
         }
-
-
+        
         public void PositionWagenInhalt(Punkt pos, double fuellstand)
         {
             PosWagenInhaltLeft = pos.X + 12;
             PosWagenInhaltTop = pos.Y + 10 + 88 - fuellstand;
         }
-
         private double _posWagenInhaltLeft;
-
         public double PosWagenInhaltLeft
         {
             get => _posWagenInhaltLeft;
@@ -742,7 +593,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
 
         private double _posWagenInhaltTop;
-
         public double PosWagenInhaltTop
         {
             get => _posWagenInhaltTop;
@@ -752,11 +602,9 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenInhaltTop));
             }
         }
-
-
+        
 
         private double _wagenFuellstand;
-
         public double WagenFuellstand
         {
             get => _wagenFuellstand;
@@ -766,14 +614,68 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(WagenFuellstand));
             }
         }
+        #endregion Wagenpublic 
 
+        #region Taster/Schalter
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
 
-        #endregion
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 0: Silosteuerung.S0 = !gedrueckt; break;
+                case 1: Silosteuerung.S1 = gedrueckt; break;
+                case 3: Silosteuerung.S3 = gedrueckt; break;
+                case 10: Silosteuerung.WagenNachLinks(); break;
+                case 11: Silosteuerung.WagenNachRechts(); break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 2: Silosteuerung.S2 = !Silosteuerung.S2; break;
+                case 5: Silosteuerung.F1 = !Silosteuerung.F1; break;
+                case 6: Silosteuerung.F2 = !Silosteuerung.F2; break;
+                case 12: Silosteuerung.RutscheVoll = !Silosteuerung.RutscheVoll; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         #endregion iNotifyPeropertyChanged Members
