@@ -59,7 +59,7 @@ namespace AutomatischesLagersystem.ViewModel
             VisibilityB2Ein = Visibility.Visible;
             VisibilityB2Aus = Visibility.Hidden;
 
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -156,7 +156,7 @@ namespace AutomatischesLagersystem.ViewModel
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
@@ -199,14 +199,14 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 

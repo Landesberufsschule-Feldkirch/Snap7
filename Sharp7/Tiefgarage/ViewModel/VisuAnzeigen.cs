@@ -17,7 +17,7 @@ namespace Tiefgarage.ViewModel
             _mainWindow = mw;
             _alleFahrzeugePersonen = aFp;
 
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -91,7 +91,7 @@ namespace Tiefgarage.ViewModel
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -125,14 +125,14 @@ namespace Tiefgarage.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 

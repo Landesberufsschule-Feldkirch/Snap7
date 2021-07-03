@@ -21,7 +21,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             _mainWindow = mw;
             Silosteuerung = st;
 
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -144,14 +144,14 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 
