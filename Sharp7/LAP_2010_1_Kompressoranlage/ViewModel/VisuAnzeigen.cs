@@ -22,21 +22,11 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
             for (var i = 0; i < 100; i++)
             {
-                ClickModeBtn.Add(ClickMode.Press);
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
             }
-
-            ColorB2 = Brushes.LawnGreen;
-            ColorF1 = Brushes.LawnGreen;
-            ColorP1 = Brushes.LawnGreen;
-            ColorP2 = Brushes.LawnGreen;
-            ColorQ1 = Brushes.LawnGreen;
-            ColorQ2 = Brushes.LawnGreen;
-            ColorQ3 = Brushes.LawnGreen;
-
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityKurzschluss = Visibility.Hidden;
 
             SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -51,17 +41,16 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             while (true)
             {
-                FarbeB2(_kompressoranlage.B2);
-                FarbeF1(_kompressoranlage.F1);
-                FarbeP1(_kompressoranlage.P1);
-                FarbeP2(_kompressoranlage.P2);
-                FarbeQ1(_kompressoranlage.Q1);
-                FarbeQ2(_kompressoranlage.Q2);
-                FarbeQ3(_kompressoranlage.Q3);
+                FarbeUmschalten(_kompressoranlage.B2, 5, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_kompressoranlage.F1, 6, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_kompressoranlage.P1, 7, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.P2, 8, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q1, 9, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q2, 10, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q3, 11, Brushes.LawnGreen, Brushes.White);
 
-                SichtbarkeitB1(_kompressoranlage.B1);
-
-                if (_kompressoranlage.Q2 && _kompressoranlage.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
+                SichtbarkeitUmschalten(_kompressoranlage.B1, 4);
+                SichtbarkeitUmschalten(_kompressoranlage.Q2 && _kompressoranlage.Q3, 12);
 
                 AktuellerDruck = _kompressoranlage.Druck;
 
@@ -78,6 +67,48 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+        internal void FarbeUmschalten(bool val, int i, SolidColorBrush farbe1, SolidColorBrush farbe2)
+        {
+            Farbe[i] = val ? farbe1 : farbe2;
+        }
+
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 1: _kompressoranlage.S1 = !gedrueckt; break;
+                case 2: _kompressoranlage.S2 = gedrueckt; break;
+
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 5: _kompressoranlage.B2 = !_kompressoranlage.B2; break;
+                case 6: _kompressoranlage.F1 = !_kompressoranlage.F1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
+
 
         #region SPS Version, Status und Farbe
 
@@ -138,137 +169,43 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
+
         #region Sichtbarkeit
-        public void SichtbarkeitB1(bool val)
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityB1Ein;
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
+            get => _sichtbarEin;
             set
             {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
-            }
-        }
-        private Visibility _visibilityB1Aus;
-        public Visibility VisibilityB1Aus
-        {
-            get => _visibilityB1Aus;
-            set
-            {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-        private Visibility _visibilityKurzschluss;
-        public Visibility VisibilityKurzschluss
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _visibilityKurzschluss;
+            get => _sichtbarAus;
             set
             {
-                _visibilityKurzschluss = value;
-                OnPropertyChanged(nameof(VisibilityKurzschluss));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
-        #endregion Sichtbarkeit
+        #endregion
 
         #region Farbe
-        public void FarbeB2(bool val) => ColorB2 = val ? Brushes.LawnGreen : Brushes.Red;
-        private Brush _colorB2;
-        public Brush ColorB2
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            get => _colorB2;
+            get => _farbe;
             set
             {
-                _colorB2 = value;
-                OnPropertyChanged(nameof(ColorB2));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
-
-        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-        private Brush _colorF1;
-        public Brush ColorF1
-        {
-            get => _colorF1;
-            set
-            {
-                _colorF1 = value;
-                OnPropertyChanged(nameof(ColorF1));
-            }
-        }
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.Red : Brushes.White;
-        private Brush _colorP1;
-
-        public Brush ColorP1
-        {
-            get => _colorP1;
-            set
-            {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
-            }
-        }
-        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorP2;
-        public Brush ColorP2
-        {
-            get => _colorP2;
-            set
-            {
-                _colorP2 = value;
-                OnPropertyChanged(nameof(ColorP2));
-            }
-        }
-
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ1;
-        public Brush ColorQ1
-        {
-            get => _colorQ1;
-            set
-            {
-                _colorQ1 = value;
-                OnPropertyChanged(nameof(ColorQ1));
-            }
-        }
-
-        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ2;
-        public Brush ColorQ2
-        {
-            get => _colorQ2;
-            set
-            {
-                _colorQ2 = value;
-                OnPropertyChanged(nameof(ColorQ2));
-            }
-        }
-
-        public void FarbeQ3(bool val) => ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ3;
-        public Brush ColorQ3
-        {
-            get => _colorQ3;
-            set
-            {
-                _colorQ3 = value;
-                OnPropertyChanged(nameof(ColorQ3));
-            }
-        }
-        #endregion Farbe
+        #endregion
 
         #region Aktueller Druck
         private double _aktuellerDruck;
@@ -283,60 +220,30 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         }
         #endregion Aktueller Druck
 
-        #region Schalter / Taster
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 1: _kompressoranlage.S1 = !gedrueckt; break;
-                case 2: _kompressoranlage.S2 = gedrueckt; break;
-
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
-
-        internal void Schalter(object id)
-        {
-            if (id is not string ascii) return;
-
-            var schalterId = short.Parse(ascii);
-
-            switch (schalterId)
-            {
-                case 5: _kompressoranlage.B2 = !_kompressoranlage.B2; break;
-                case 6: _kompressoranlage.F1 = !_kompressoranlage.F1; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
+        #region Taster/Schalter
         public bool ClickModeButton(int tasterId)
         {
-            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            if (ClkMode[tasterId] == ClickMode.Press)
             {
-                ClickModeBtn[tasterId] = ClickMode.Release;
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[tasterId] = ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
-        #endregion
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
 

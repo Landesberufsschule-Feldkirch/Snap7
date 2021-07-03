@@ -141,7 +141,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
         private void KisteAnzeigen(int anzahlFlaschen)
         {
-
             var alleFohrenburgerKisten = new Visibility[10];
             var alleMohrenKisten = new Visibility[10];
 
@@ -151,7 +150,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 alleMohrenKisten[i] = Visibility.Hidden;
             }
 
-
             if (_abfuellanlage.AktuellesBier == Abfuellanlage.Bier.Fohrenburger)
             {
                 alleFohrenburgerKisten[anzahlFlaschen] = Visibility.Visible;
@@ -160,7 +158,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             {
                 alleMohrenKisten[anzahlFlaschen] = Visibility.Visible;
             }
-
 
             VisibilityFohrenburger0 = alleFohrenburgerKisten[0];
             VisibilityFohrenburger1 = alleFohrenburgerKisten[1];
@@ -178,7 +175,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             VisibilityMohren5 = alleMohrenKisten[5];
             VisibilityMohren6 = alleMohrenKisten[6];
         }
-
 
         #region SPS Version, Status und Farbe
 
