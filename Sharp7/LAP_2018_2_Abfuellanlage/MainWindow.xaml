@@ -71,9 +71,9 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
+                    <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" ClickMode="{Binding ViAnzeige.ClickModeBtn[5]}" Command="{Binding BtnTaster}" CommandParameter="5" />
 
-                    <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98">
+                    <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnzeige.ClickModeBtn[6]}" Command="{Binding BtnTaster}" CommandParameter="6" FontSize="14pt" Panel.ZIndex="98">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -84,7 +84,7 @@
                     <!--#region  Bedienung rechts -->
                     <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
-                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="{Binding ViAnzeige.ClickModeBtnS1}" Command="{Binding BtnTasterS1}" FontSize="14pt">
+                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1"  FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -92,7 +92,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  ClickMode="{Binding ViAnzeige.ClickModeBtnS2}" Command="{Binding BtnTasterS2}" FontSize="14pt">
+                    <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2"  FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -100,7 +100,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtnS3}" Command="{Binding BtnTasterS3}" FontSize="10pt">
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3"  FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -108,7 +108,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  ClickMode="{Binding ViAnzeige.ClickModeBtnS4}" Command="{Binding BtnTasterS4}" FontSize="10pt">
+                    <Button Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4"  FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -116,7 +116,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" ClickMode="Press" Background="{Binding  ViAnzeige.ColorCircleF1}"  Command="{Binding BtnTasterF1}" FontSize="9pt">
+                    <Button Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Content="Motorschutz" ClickMode="Press" Background="{Binding  ViAnzeige.ColorCircleF1}"  Command="{Binding BtnSchalter}" CommandParameter="10" FontSize="9pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />

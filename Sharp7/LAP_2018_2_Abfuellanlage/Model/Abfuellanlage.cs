@@ -82,7 +82,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void TasterNachfuellen() => Pegel = 1;
+        internal void TankNachfuellen() => Pegel = 1;
         internal void TasterF1() => F1 = !F1;
         internal void AllesReset()
         {

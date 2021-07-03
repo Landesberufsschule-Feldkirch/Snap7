@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Media;
 using LAP_2018_2_Abfuellanlage.Model;
 using System.ComponentModel;
@@ -10,14 +12,14 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Abfuellanlage _alleFlaschen;
+        private readonly Abfuellanlage _abfuellanlage;
         private readonly MainWindow _mainWindow;
         private const double HoeheFuellBalken = 9 * 35;
 
         public VisuAnzeigen(MainWindow mw, Abfuellanlage af)
         {
             _mainWindow = mw;
-            _alleFlaschen = af;
+            _abfuellanlage = af;
 
             SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -25,13 +27,10 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
-            ClickModeBtnS4 = ClickMode.Press;
-            ClickModeBtnK1 = ClickMode.Press;
-            ClickModeBtnK2 = ClickMode.Press;
-            ClickModeBtnQ1 = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClickModeBtn.Add(ClickMode.Press);
+            }
 
             ImageTop1 = 10;
             ImageTop2 = 20;
@@ -91,42 +90,41 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-                PositionImage_1(_alleFlaschen.AlleFlaschen[0].Flasche.GetPosition());
-                PositionImage_2(_alleFlaschen.AlleFlaschen[1].Flasche.GetPosition());
-                PositionImage_3(_alleFlaschen.AlleFlaschen[2].Flasche.GetPosition());
-                PositionImage_4(_alleFlaschen.AlleFlaschen[3].Flasche.GetPosition());
-                PositionImage_5(_alleFlaschen.AlleFlaschen[4].Flasche.GetPosition());
-                PositionImage_6(_alleFlaschen.AlleFlaschen[5].Flasche.GetPosition());
+                PositionImage_1(_abfuellanlage.AlleFlaschen[0].Flasche.GetPosition());
+                PositionImage_2(_abfuellanlage.AlleFlaschen[1].Flasche.GetPosition());
+                PositionImage_3(_abfuellanlage.AlleFlaschen[2].Flasche.GetPosition());
+                PositionImage_4(_abfuellanlage.AlleFlaschen[3].Flasche.GetPosition());
+                PositionImage_5(_abfuellanlage.AlleFlaschen[4].Flasche.GetPosition());
+                PositionImage_6(_abfuellanlage.AlleFlaschen[5].Flasche.GetPosition());
 
-                VisibilityFlasche1(_alleFlaschen.AlleFlaschen[0].Sichtbar);
-                VisibilityFlasche2(_alleFlaschen.AlleFlaschen[1].Sichtbar);
-                VisibilityFlasche3(_alleFlaschen.AlleFlaschen[2].Sichtbar);
-                VisibilityFlasche4(_alleFlaschen.AlleFlaschen[3].Sichtbar);
-                VisibilityFlasche5(_alleFlaschen.AlleFlaschen[4].Sichtbar);
-                VisibilityFlasche6(_alleFlaschen.AlleFlaschen[5].Sichtbar);
+                VisibilityFlasche1(_abfuellanlage.AlleFlaschen[0].Sichtbar);
+                VisibilityFlasche2(_abfuellanlage.AlleFlaschen[1].Sichtbar);
+                VisibilityFlasche3(_abfuellanlage.AlleFlaschen[2].Sichtbar);
+                VisibilityFlasche4(_abfuellanlage.AlleFlaschen[3].Sichtbar);
+                VisibilityFlasche5(_abfuellanlage.AlleFlaschen[4].Sichtbar);
+                VisibilityFlasche6(_abfuellanlage.AlleFlaschen[5].Sichtbar);
 
-                VisibilitySensorB1(_alleFlaschen.B1);
-                VisibilityVentilK1(_alleFlaschen.K1);
-                VisibilityVentilK2(_alleFlaschen.K2);
-                VisibilityAbleitung(_alleFlaschen.K1 && _alleFlaschen.Pegel > 0.01);
+                VisibilitySensorB1(_abfuellanlage.B1);
+                VisibilityVentilK1(_abfuellanlage.K1);
+                VisibilityVentilK2(_abfuellanlage.K2);
+                VisibilityAbleitung(_abfuellanlage.K1 && _abfuellanlage.Pegel > 0.01);
 
-                KisteAnzeigen(_alleFlaschen.FlaschenInDerKiste);
+                KisteAnzeigen(_abfuellanlage.FlaschenInDerKiste);
 
-                FarbeCircle_F1(_alleFlaschen.F1);
-                FarbeCircle_Q1(_alleFlaschen.Q1);
-                FarbeCircle_P1(_alleFlaschen.P1);
-                FarbeCircle_P2(_alleFlaschen.P2);
+                FarbeCircle_F1(_abfuellanlage.F1);
+                FarbeCircle_Q1(_abfuellanlage.Q1);
+                FarbeCircle_P1(_abfuellanlage.P1);
+                FarbeCircle_P2(_abfuellanlage.P2);
 
-                FarbeRectangleZuleitung(_alleFlaschen.Pegel > 0.01);
+                FarbeRectangleZuleitung(_abfuellanlage.Pegel > 0.01);
 
-                Margin_1(_alleFlaschen.Pegel);
+                Margin_1(_abfuellanlage.Pegel);
 
-                FuellstandProzent = (100 * _alleFlaschen.Pegel).ToString("F0") + "%";
+                FuellstandProzent = (100 * _abfuellanlage.Pegel).ToString("F0") + "%";
 
                 if (_mainWindow.Plc != null)
                 {
@@ -141,7 +139,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
         private void KisteAnzeigen(int anzahlFlaschen)
         {
 
@@ -155,7 +152,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
 
 
-            if (_alleFlaschen.AktuellesBier == Abfuellanlage.Bier.Fohrenburger)
+            if (_abfuellanlage.AktuellesBier == Abfuellanlage.Bier.Fohrenburger)
             {
                 alleFohrenburgerKisten[anzahlFlaschen] = Visibility.Visible;
             }
@@ -182,19 +179,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             VisibilityMohren6 = alleMohrenKisten[6];
         }
 
-        internal void TasterS1() => _alleFlaschen.S1 = ClickModeButtonS1();
-
-        internal void TasterS2() => _alleFlaschen.S2 = !ClickModeButtonS2();
-
-        internal void TasterS3() => _alleFlaschen.S3 = ClickModeButtonS3();
-
-        internal void TasterS4() => _alleFlaschen.S4 = ClickModeButtonS4();
-
-        internal void SetManualK1() => _alleFlaschen.K1 = ClickModeButtonK1();
-
-        internal void SetManualK2() => _alleFlaschen.K2 = ClickModeButtonK2();
-
-        internal void SetManualQ1() => _alleFlaschen.Q1 = ClickModeButtonQ1();
 
         #region SPS Version, Status und Farbe
 
@@ -244,7 +228,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -257,7 +240,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
         private string _fuellstandProzent;
         public string FuellstandProzent
         {
@@ -268,205 +250,8 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(FuellstandProzent));
             }
         }
-
-        #region ClickModeBtnS1
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        #endregion ClickModeBtnS1
-
-        #region ClickModeBtnS2
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-        #endregion ClickModeBtnS2
-
-        #region ClickModeBtnS3
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        #endregion ClickModeBtnS3
-
-        #region ClickModeBtnS4
-
-        public bool ClickModeButtonS4()
-        {
-            if (ClickModeBtnS4 == ClickMode.Press)
-            {
-                ClickModeBtnS4 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS4 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS4;
-
-        public ClickMode ClickModeBtnS4
-        {
-            get => _clickModeBtnS4;
-            set
-            {
-                _clickModeBtnS4 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS4));
-            }
-        }
-
-        #endregion ClickModeBtnS4
-
-        #region ClickModeBtnK1
-
-        public bool ClickModeButtonK1()
-        {
-            if (ClickModeBtnK1 == ClickMode.Press)
-            {
-                ClickModeBtnK1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnK1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnK1;
-
-        public ClickMode ClickModeBtnK1
-        {
-            get => _clickModeBtnK1;
-            set
-            {
-                _clickModeBtnK1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnK1));
-            }
-        }
-
-        #endregion ClickModeBtnK1
-
-        #region ClickModeBtnK2
-
-        public bool ClickModeButtonK2()
-        {
-            if (ClickModeBtnK2 == ClickMode.Press)
-            {
-                ClickModeBtnK2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnK2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnK2;
-
-        public ClickMode ClickModeBtnK2
-        {
-            get => _clickModeBtnK2;
-            set
-            {
-                _clickModeBtnK2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnK2));
-            }
-        }
-
-        #endregion ClickModeBtnK2
-
-        #region ClickModeBtnQ1
-
-        public bool ClickModeButtonQ1()
-        {
-            if (ClickModeBtnQ1 == ClickMode.Press)
-            {
-                ClickModeBtnQ1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1;
-
-        public ClickMode ClickModeBtnQ1
-        {
-            get => _clickModeBtnQ1;
-            set
-            {
-                _clickModeBtnQ1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1));
-            }
-        }
-
-        #endregion ClickModeBtnQ1
-
-        #region Image1
-
+        
+        #region Bilder
         public void PositionImage_1(Punkt pos)
         {
             ImageLeft1 = pos.X;
@@ -496,11 +281,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageLeft1));
             }
         }
-
-        #endregion Image1
-
-        #region Image2
-
+        
         public void PositionImage_2(Punkt pos)
         {
             ImageLeft2 = pos.X;
@@ -530,11 +311,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageLeft2));
             }
         }
-
-        #endregion Image2
-
-        #region Image3
-
+        
         public void PositionImage_3(Punkt pos)
         {
             ImageLeft3 = pos.X;
@@ -542,7 +319,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private double _imageTop3;
-
         public double ImageTop3
         {
             get => _imageTop3;
@@ -564,11 +340,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageLeft3));
             }
         }
-
-        #endregion Image3
-
-        #region Image4
-
+        
         public void PositionImage_4(Punkt pos)
         {
             ImageLeft4 = pos.X;
@@ -586,9 +358,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageTop4));
             }
         }
-
         private double _imageLeft4;
-
         public double ImageLeft4
         {
             get => _imageLeft4;
@@ -598,11 +368,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageLeft4));
             }
         }
-
-        #endregion Image4
-
-        #region Image5
-
+        
         public void PositionImage_5(Punkt pos)
         {
             ImageLeft5 = pos.X;
@@ -610,7 +376,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private double _imageTop5;
-
         public double ImageTop5
         {
             get => _imageTop5;
@@ -632,11 +397,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageLeft5));
             }
         }
-
-        #endregion Image5
-
-        #region Image6
-
         public void PositionImage_6(Punkt pos)
         {
             ImageLeft6 = pos.X;
@@ -644,7 +404,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private double _imageTop6;
-
         public double ImageTop6
         {
             get => _imageTop6;
@@ -654,9 +413,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ImageTop6));
             }
         }
-
         private double _imageLeft6;
-
         public double ImageLeft6
         {
             get => _imageLeft6;
@@ -667,14 +424,12 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Image6
+        #endregion Bilder
 
-        #region Visibility 
-
+        #region Sichtbarkeit 
         public void VisibilityFlasche1(bool val) => VisibilityImage1 = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityImage1;
-
         public Visibility VisibilityImage1
         {
             get => _visibilityImage1;
@@ -684,12 +439,10 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityImage1));
             }
         }
-
-
+        
         public void VisibilityFlasche2(bool val) => VisibilityImage2 = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityImage2;
-
         public Visibility VisibilityImage2
         {
             get => _visibilityImage2;
@@ -699,8 +452,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityImage2));
             }
         }
-
-
+        
         public void VisibilityFlasche3(bool val) => VisibilityImage3 = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityImage3;
@@ -732,7 +484,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         public void VisibilityFlasche5(bool val) => VisibilityImage5 = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityImage5;
-
         public Visibility VisibilityImage5
         {
             get => _visibilityImage5;
@@ -742,7 +493,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityImage5));
             }
         }
-
 
         public void VisibilityFlasche6(bool val) => VisibilityImage6 = val ? Visibility.Visible : Visibility.Hidden;
 
@@ -773,7 +523,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityB1Ein;
-
         public Visibility VisibilityB1Ein
         {
             get => _visibilityB1Ein;
@@ -785,7 +534,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityB1Aus;
-
         public Visibility VisibilityB1Aus
         {
             get => _visibilityB1Aus;
@@ -795,7 +543,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityB1Aus));
             }
         }
-
 
         public void VisibilityVentilK1(bool val)
         {
@@ -824,7 +571,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityK1Aus;
-
         public Visibility VisibilityK1Aus
         {
             get => _visibilityK1Aus;
@@ -848,9 +594,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 VisibilityK2Aus = Visibility.Visible;
             }
         }
-
         private Visibility _visibilityK2Ein;
-
         public Visibility VisibilityK2Ein
         {
             get => _visibilityK2Ein;
@@ -862,7 +606,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         private Visibility _visibilityK2Aus;
-
         public Visibility VisibilityK2Aus
         {
             get => _visibilityK2Aus;
@@ -872,15 +615,10 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityK2Aus));
             }
         }
-
-        #endregion Visibility Ventil K2
-
-        #region Visibility Ableitung
-
+        
         public void VisibilityAbleitung(bool val) => VisibilityRectangleAbleitung = val ? Visibility.Visible : Visibility.Hidden;
 
         private Visibility _visibilityRectangleAbleitung;
-
         public Visibility VisibilityRectangleAbleitung
         {
             get => _visibilityRectangleAbleitung;
@@ -891,9 +629,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-
-
-
+        
         private Visibility _visibilityFohrenburger0;
         public Visibility VisibilityFohrenburger0
         {
@@ -904,8 +640,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityFohrenburger0));
             }
         }
-
-
+        
         private Visibility _visibilityFohrenburger1;
         public Visibility VisibilityFohrenburger1
         {
@@ -971,8 +706,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityFohrenburger6));
             }
         }
-
-
+        
 
         private Visibility _visibilityMohren0;
         public Visibility VisibilityMohren0
@@ -1050,16 +784,11 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(VisibilityMohren6));
             }
         }
+        #endregion Sichtbarkeit 
 
-
-        #endregion Visibility 
-
-        #region Color F1
-
+        #region Farben
         public void FarbeCircle_F1(bool val) => ColorCircleF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
         private Brush _colorCircleF1;
-
         public Brush ColorCircleF1
         {
             get => _colorCircleF1;
@@ -1070,14 +799,8 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
         }
 
-        #endregion Color F1
-
-        #region Color Q1
-
         public void FarbeCircle_Q1(bool val) => ColorCircleQ1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
         private Brush _colorCircleQ1;
-
         public Brush ColorCircleQ1
         {
             get => _colorCircleQ1;
@@ -1087,15 +810,9 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ColorCircleQ1));
             }
         }
-
-        #endregion Color Q1
-
-        #region Color P1
-
+        
         public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
         private Brush _colorCircleP1;
-
         public Brush ColorCircleP1
         {
             get => _colorCircleP1;
@@ -1105,15 +822,9 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ColorCircleP1));
             }
         }
-
-        #endregion Color P1
-
-        #region Color P2
-
+        
         public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Brushes.Red : Brushes.LightGray;
-
         private Brush _colorCircleP2;
-
         public Brush ColorCircleP2
         {
             get => _colorCircleP2;
@@ -1123,15 +834,9 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ColorCircleP2));
             }
         }
-
-        #endregion Color P2
-
-        #region Color Zuleitung
-
+        
         public void FarbeRectangleZuleitung(bool val) => ColorRectangleZuleitung = val ? Brushes.Blue : Brushes.LightBlue;
-
         private Brush _colorRectangleZuleitung;
-
         public Brush ColorRectangleZuleitung
         {
             get => _colorRectangleZuleitung;
@@ -1141,11 +846,9 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                 OnPropertyChanged(nameof(ColorRectangleZuleitung));
             }
         }
-
-        #endregion Color Zuleitung
+        #endregion Farben
 
         #region Margin1
-
         public void Margin_1(double pegel)
         {
             Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
@@ -1164,6 +867,63 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         #endregion Margin1
+
+        #region Taster/Schalter
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 1: _abfuellanlage.S1 = gedrueckt; break;
+                case 2: _abfuellanlage.S2 = !gedrueckt; break;
+                case 3: _abfuellanlage.S3 = gedrueckt; break;
+                case 4: _abfuellanlage.S4 = gedrueckt; break;
+                case 5: _abfuellanlage.TankNachfuellen(); break;
+                case 6: _abfuellanlage.AllesReset(); break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 10: _abfuellanlage.F1 = !_abfuellanlage.F1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            {
+                ClickModeBtn[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClickModeBtn[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        public ObservableCollection<ClickMode> ClickModeBtn
+        {
+            get => _clickModeBtn;
+            set
+            {
+                _clickModeBtn = value;
+                OnPropertyChanged(nameof(ClickModeBtn));
+            }
+        }
+        #endregion Taster/Schalter
+
 
         #region iNotifyPeropertyChanged Members
 
