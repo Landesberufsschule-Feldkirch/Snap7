@@ -26,6 +26,5 @@
             MaxWidth = 1800;
             FensterAktiv = true;
         }
-
     }
 }

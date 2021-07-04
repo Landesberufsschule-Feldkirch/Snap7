@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Threading;
+using ScottPlot;
 
 namespace TestAutomat
 {
@@ -56,8 +57,8 @@ namespace TestAutomat
         public double[] DatenDi14 { get; set; }
         public double[] DatenDi15 { get; set; }
 
-
         private PlotWindow _plotWindow;
+        private Plot _plot;
         private int _anzahlDatenpunkte = 1000; // Es werden alle 10ms Daten gespeichert
         private int _bisherigeAnzahlDatenpunkte;
         private const int MaxGroesseDatenArray = 2048;
@@ -67,6 +68,7 @@ namespace TestAutomat
         private void PlotInitialisieren()
         {
             _plotWindow = new PlotWindow();
+            _plot = new Plot();
 
             DatenpunktAktivDa = new bool[16];
             DatenpunktAktivDi = new bool[16];
@@ -101,7 +103,7 @@ namespace TestAutomat
                 OffsetDi[i] = 0;
             }
 
-            _plotWindow.WpfPlot.plt.Clear();
+            _plot.Clear();
 
             var offset = 2.5;
             if (BeschriftungenPlc.BeschriftungenStruktur.DaBeschriftungen != null) offset += 1.5 * BeschriftungenPlc.BeschriftungenStruktur.DaBeschriftungen.DaBeschriftung.Count;
@@ -154,8 +156,8 @@ namespace TestAutomat
                 DatenpunktDaPlotEinfuegen(15, daBeschriftung, DatenpunktAktivDa, DatenpunktAdresseDa, offset, OffsetDa, Color.Orange, DatenDa15);
             }
 
-            _plotWindow.WpfPlot.plt.Ticks(dateTimeX: true, dateTimeFormatStringX: "ss.fff");
-            _plotWindow.WpfPlot.plt.Legend();
+            _plot.XAxis.DateTimeFormat(true);
+            _plot.Legend();
 
         }
         private double DatenpunktDaPlotEinfuegen(int id, IReadOnlyList<DaDaten> daBeschriftung, IList<bool> datenpunktAktiv, IList<int> datenpunktAdresse, double offset, IList<double> offsetDatenpunkt, Color farbe, double[] datenPlot)
@@ -165,7 +167,7 @@ namespace TestAutomat
             datenpunktAktiv[id] = true;
             offsetDatenpunkt[id] = offset;
             datenpunktAdresse[id] = daBeschriftung[id].Bit + 8 * daBeschriftung[id].Byte;
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, datenPlot, farbe, 2, 5, daBeschriftung[id].Bezeichnung);
+            _plot.AddScatter(Zeitachse, datenPlot, farbe, 2, 5, MarkerShape.none, LineStyle.Solid, daBeschriftung[id].Bezeichnung);
             return offset - 1.5;
         }
         private double DatenpunktDiPlotEinfuegen(int id, IReadOnlyList<DiDaten> diBeschriftung, IList<bool> datenpunktAktiv, IList<int> datenpunktAdresse, double offset, IList<double> offsetDatenpunkt, Color farbe, double[] datenPlot)
@@ -175,7 +177,7 @@ namespace TestAutomat
             datenpunktAktiv[id] = true;
             offsetDatenpunkt[id] = offset;
             datenpunktAdresse[id] = diBeschriftung[id].Bit + 8 * diBeschriftung[id].Byte;
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, datenPlot, farbe, 2, 5, diBeschriftung[id].Bezeichnung);
+            _plot.AddScatter(Zeitachse, datenPlot, farbe, 2, 5, MarkerShape.none, LineStyle.Solid, diBeschriftung[id].Bezeichnung);
             return offset - 1.5;
         }
         private void UpdatePlotData(object sender, EventArgs e)
@@ -226,8 +228,10 @@ namespace TestAutomat
         }
         private void RenderPlot(object sender, EventArgs e)
         {
-            _plotWindow.WpfPlot.plt.AxisAuto(0);
-            _plotWindow.WpfPlot.Render(true);
+            _plot.Render();
+            // WpfPlot.Oeffnen();
+            //            _plot.XAxis..plt.AxisAuto(0);
+            //            _plot.re  .WpfPlot.Render(true);
         }
         private static bool BitTesten(IReadOnlyList<byte> datenArray, int i)
         {

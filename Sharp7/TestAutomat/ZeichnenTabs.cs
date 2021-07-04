@@ -1,4 +1,4 @@
-﻿using Kommunikation;
+using Kommunikation;
 using System;
 using System.Windows;
 using System.Windows.Controls;

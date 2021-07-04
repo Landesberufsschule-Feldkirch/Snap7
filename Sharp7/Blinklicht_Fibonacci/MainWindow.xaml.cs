@@ -1,11 +1,11 @@
-﻿using System;
+using BeschriftungPlc;
+using Kommunikation;
+using ScottPlot;
+using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using BeschriftungPlc;
-using Kommunikation;
-using ScottPlot;
 
 namespace Blinklicht_Fibonacci
 {
@@ -21,6 +21,8 @@ namespace Blinklicht_Fibonacci
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
+
+        private Plot _plot;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -69,11 +71,19 @@ namespace Blinklicht_Fibonacci
                 Schliessen();
             };
 
-            var zeitachse = DataGen.Consecutive(5000);
-            WpfPlot.plt.YLabel("Leuchtmelder");
-            WpfPlot.plt.XLabel("Zeit [ms]");
+            /*
+ WpfPlot.plt.YLabel("Leuchtmelder");
+                        WpfPlot.plt.XLabel("Zeit [ms]");
+                        WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
+            */
 
-            WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
+            var zeitachse = DataGen.Consecutive(5000);
+            _plot = new Plot();
+            _plot.XAxis.Label("Zeit [ms]");
+            _plot.YAxis.Label("Leuchtmelder");
+            _plot.AddScatter(zeitachse, WertLeuchtMelder, Color.Magenta, 1, 1, MarkerShape.none, LineStyle.Solid, "LED");
+           
+            
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
@@ -124,8 +134,9 @@ namespace Blinklicht_Fibonacci
         }
         private void Render(object sender, EventArgs e)
         {
-            WpfPlot.plt.AxisAuto(0);
-            WpfPlot.Render(true);
+            _plot.Render();
+         //   WpfPlot.plt.AxisAuto(0);
+          //  WpfPlot.Render(true);
         }
     }
 }
