@@ -74,78 +74,78 @@
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="11" Stroke="Black"   Margin="35,20,35,0" />
                     <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Content="Taster" FontSize="20pt"/>
 
-                    <Button Grid.Column="3" Grid.Row="4" Grid.RowSpan="2"  Content="S1" ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="6" Grid.RowSpan="2"  Content="S2" ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="8" Grid.RowSpan="2"  Content="S3" ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="20pt" Margin="0,10,0,10"  />
-                    <Button Grid.Column="3" Grid.Row="10" Grid.RowSpan="2"  Content="S4" ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4" FontSize="20pt" Margin="0,10,0,10"  />
+                    <Button Grid.Column="3" Grid.Row="4" Grid.RowSpan="2"  Content="S1" ClickMode="{Binding ViAnz.ClkMode[11]}" Command="{Binding BtnTaster}" CommandParameter="11" FontSize="20pt" Margin="0,10,0,10"  />
+                    <Button Grid.Column="3" Grid.Row="6" Grid.RowSpan="2"  Content="S2" ClickMode="{Binding ViAnz.ClkMode[12]}" Command="{Binding BtnTaster}" CommandParameter="12" FontSize="20pt" Margin="0,10,0,10"  />
+                    <Button Grid.Column="3" Grid.Row="8" Grid.RowSpan="2"  Content="S3" ClickMode="{Binding ViAnz.ClkMode[13]}" Command="{Binding BtnTaster}" CommandParameter="13" FontSize="20pt" Margin="0,10,0,10"  />
+                    <Button Grid.Column="3" Grid.Row="10" Grid.RowSpan="2"  Content="S4" ClickMode="{Binding ViAnz.ClkMode[14]}" Command="{Binding BtnTaster}" CommandParameter="14" FontSize="20pt" Margin="0,10,0,10"  />
 
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[1]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[11]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[11]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[2]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[12]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[12]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[3]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[3]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[13]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="8" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[13]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[4]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[4]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[14]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[14]}" Margin="0,5,50,5"/>
 
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="14" Grid.RowSpan="11" Stroke="Black"  Margin="35,0,35,0" />
                     <Label Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="15" Content="Schalter" FontSize="20pt"/>
 
-                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="5" Margin="45,5,0,5">
+                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="15" Margin="45,5,0,5">
                         <StackPanel>
-                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnz.SichtbarEin[5]}" Height="46" />
-                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnz.SichtbarAus[5]}" />
+                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnz.SichtbarEin[15]}" Height="46" />
+                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnz.SichtbarAus[15]}" />
                         </StackPanel>
                     </Button>
 
-                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="6" Margin="45,5,0,5">
+                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="16" Margin="45,5,0,5">
                         <StackPanel>
-                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnz.SichtbarEin[6]}" />
-                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnz.SichtbarAus[6]}" />
+                            <Image Source="Bilder/SchiebeSchalterOn.JPG" Visibility="{Binding ViAnz.SichtbarEin[16]}" />
+                            <Image Source="Bilder/SchiebeSchalterOff.JPG" Visibility="{Binding ViAnz.SichtbarAus[16]}" />
                         </StackPanel>
                     </Button>
 
-                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="7" Margin="45,5,0,5">
+                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2"   Command="{Binding BtnSchalter}" CommandParameter="17" Margin="45,5,0,5">
                         <StackPanel>
-                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnz.SichtbarAus[7]}" />
-                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnz.SichtbarEin[7]}" />
+                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnz.SichtbarAus[17]}" />
+                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnz.SichtbarEin[17]}" />
                         </StackPanel>
                     </Button>
 
-                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2"  Command="{Binding BtnSchalter}" CommandParameter="8" Margin="45,5,0,5">
+                    <Button Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2"  Command="{Binding BtnSchalter}" CommandParameter="18" Margin="45,5,0,5">
                         <StackPanel>
-                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnz.SichtbarAus[8]}" />
-                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnz.SichtbarEin[8]}" />
+                            <Image Source="Bilder/Kippschalter_On.JPG" Visibility="{Binding ViAnz.SichtbarAus[18]}" />
+                            <Image Source="Bilder/Kippschalter_Off.JPG" Visibility="{Binding ViAnz.SichtbarEin[18]}" />
                         </StackPanel>
                     </Button>
 
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[5]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[5]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[15]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="17" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[15]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[6]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[6]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[16]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[16]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[7]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[7]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[17]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[17]}" Margin="0,5,50,5"/>
 
-                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[8]}" Margin="0,5,50,5"/>
-                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[8]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_SchliesserHellgrau.jpg"  Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[18]}" Margin="0,5,50,5"/>
+                    <Image Source="Bilder\Taster_BetaetigtHellgrau.jpg"   Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="23" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[18]}" Margin="0,5,50,5"/>
 
 
-                    <Ellipse Grid.Column="10" Grid.Row="4" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[11]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[12]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[13]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[14]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="17" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[15]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="19" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[16]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="21" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[17]}" Margin="3,3,3,3"/>
-                    <Ellipse Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[18]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="4" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[1]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[2]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[3]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[4]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="17" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[5]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="19" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[6]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="21" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[7]}" Margin="3,3,3,3"/>
+                    <Ellipse Grid.Column="10" Grid.Row="23" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[8]}" Margin="3,3,3,3"/>
 
                     <Label Grid.Column="10" Grid.Row="4" Grid.RowSpan="2" Content="P1"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt"/>
                     <Label Grid.Column="10" Grid.Row="6" Grid.RowSpan="2" Content="P2"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20pt"/>

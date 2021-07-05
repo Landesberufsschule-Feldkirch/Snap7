@@ -22,8 +22,6 @@ namespace Blinklicht_Fibonacci
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
-        private Plot _plot;
-
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
         private const int AnzByteAnalogInput = 0;
@@ -57,7 +55,7 @@ namespace Blinklicht_Fibonacci
             DatenRangieren.ReferenzUebergeben(Plc);
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
-            
+
             BeschriftungenPlc = new BeschriftungenPlc();
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
@@ -71,19 +69,10 @@ namespace Blinklicht_Fibonacci
                 Schliessen();
             };
 
-            /*
- WpfPlot.plt.YLabel("Leuchtmelder");
-                        WpfPlot.plt.XLabel("Zeit [ms]");
-                        WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
-            */
-
             var zeitachse = DataGen.Consecutive(5000);
-            _plot = new Plot();
-            _plot.XAxis.Label("Zeit [ms]");
-            _plot.YAxis.Label("Leuchtmelder");
-            _plot.AddScatter(zeitachse, WertLeuchtMelder, Color.Magenta, 1, 1, MarkerShape.none, LineStyle.Solid, "LED");
-           
-            
+            WpfPlot.Plot.XAxis.Label("Zeit [ms]");
+            WpfPlot.Plot.YLabel("Leuchtmelder");
+            WpfPlot.Plot.AddScatter(zeitachse, WertLeuchtMelder, Color.Magenta, 1, 1, MarkerShape.none, LineStyle.Solid, "LED");
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
@@ -134,9 +123,8 @@ namespace Blinklicht_Fibonacci
         }
         private void Render(object sender, EventArgs e)
         {
-            _plot.Render();
-         //   WpfPlot.plt.AxisAuto(0);
-          //  WpfPlot.Render(true);
+            WpfPlot.Plot.Render();
+
         }
     }
 }

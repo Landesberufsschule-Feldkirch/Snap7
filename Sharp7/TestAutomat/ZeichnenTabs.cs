@@ -65,8 +65,14 @@ namespace TestAutomat
 
             btnplotterWindowOeffnen.Click += (_, _) =>
             {
-                if (_plotWindow.FensterAktiv) _plotWindow.Schliessen();
-                else _plotWindow.Oeffnen();
+                if (_plotWindow.FensterAktiv)
+                {
+                    _plotWindow.Schliessen();
+                }
+                else
+                {
+                    _plotWindow.Oeffnen();
+                }
             };
 
 
@@ -86,6 +92,7 @@ namespace TestAutomat
                 BorderBrush = new SolidColorBrush(Colors.Black),
                 Margin = new Thickness(3, 3, 3, 3)
             };
+
             btnStart.Click += (_, _) =>
             {
                 if (_testWurdeSchonMalGestartet)
@@ -105,8 +112,6 @@ namespace TestAutomat
             SetRow(btnStart, 1);
             autoTestGrid.Children.Add(btnStart);
 
-
-
             var btnEinzelSchritt = new Button
             {
                 Content = "Einzelschritt",
@@ -114,6 +119,7 @@ namespace TestAutomat
                 Visibility = Visibility.Hidden,
                 Background = Brushes.Silver
             };
+
             btnEinzelSchritt.Click += (_, _) =>
             {
                 if (_datenstruktur.BetriebsartTestablauf == BetriebsartTestablauf.Einzelschritt)
@@ -124,9 +130,7 @@ namespace TestAutomat
             SetColumn(btnEinzelSchritt, 6);
             SetRow(btnEinzelSchritt, 1);
             autoTestGrid.Children.Add(btnEinzelSchritt);
-
-
-
+            
             var lblSingleStep = new Label
             {
                 Content = "Single Step",
@@ -158,7 +162,6 @@ namespace TestAutomat
             SetRow(checkboxSingleStep, 1);
             autoTestGrid.Children.Add(checkboxSingleStep);
 
-
             var stackPanel = new StackPanel
             {
                 Name = "StackPanel",
@@ -169,8 +172,6 @@ namespace TestAutomat
             SetColumnSpan(stackPanel, 2);
             SetRow(stackPanel, 3);
             autoTestGrid.Children.Add(stackPanel);
-
-
 
             var webBrowser = new WebBrowser { Name = "WebBrowser" };
 

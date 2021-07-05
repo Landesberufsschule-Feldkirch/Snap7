@@ -49,10 +49,10 @@ namespace Blinker
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             var zeitachse = DataGen.Consecutive(5000);
-            WpfPlot.plt.YLabel("Leuchtmelder");
-            WpfPlot.plt.XLabel("Zeit [ms]");
+            WpfPlot.Plot.YLabel("Leuchtmelder");
+            WpfPlot.Plot.XLabel("Zeit [ms]");
 
-            WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
+            WpfPlot.Plot.AddScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
@@ -81,8 +81,8 @@ namespace Blinker
         }
         private void Render(object sender, EventArgs e)
         {
-            WpfPlot.plt.AxisAuto(0);
-            WpfPlot.Render(true);
+            WpfPlot.Plot.AxisAuto(0);
+            WpfPlot.Render();
         }
     }
 }

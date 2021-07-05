@@ -36,23 +36,23 @@ namespace Kata.ViewModel
         {
             while (true)
             {
-                SichtbarkeitUmschalten(_kata.S1, 1);
-                SichtbarkeitUmschalten(_kata.S2, 2);
-                SichtbarkeitUmschalten(_kata.S3, 3);
-                SichtbarkeitUmschalten(_kata.S4, 4);
-                SichtbarkeitUmschalten(_kata.S5, 5);
-                SichtbarkeitUmschalten(_kata.S6, 6);
-                SichtbarkeitUmschalten(_kata.S7, 7);
-                SichtbarkeitUmschalten(_kata.S8, 8);
+                SichtbarkeitUmschalten(_kata.S1, 11);
+                SichtbarkeitUmschalten(_kata.S2, 12);
+                SichtbarkeitUmschalten(_kata.S3, 13);
+                SichtbarkeitUmschalten(_kata.S4, 14);
+                SichtbarkeitUmschalten(_kata.S5, 15);
+                SichtbarkeitUmschalten(_kata.S6, 16);
+                SichtbarkeitUmschalten(_kata.S7, 17);
+                SichtbarkeitUmschalten(_kata.S8, 18);
 
-                FarbeUmschalten(_kata.P1, 11, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P2, 12, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P3, 13, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P4, 14, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P5, 15, Brushes.Yellow);
-                FarbeUmschalten(_kata.P6, 16, Brushes.Yellow);
-                FarbeUmschalten(_kata.P7, 17, Brushes.Red);
-                FarbeUmschalten(_kata.P8, 18, Brushes.Red);
+                FarbeUmschalten(_kata.P1, 1, Brushes.LawnGreen);
+                FarbeUmschalten(_kata.P2, 2, Brushes.LawnGreen);
+                FarbeUmschalten(_kata.P3, 3, Brushes.LawnGreen);
+                FarbeUmschalten(_kata.P4, 4, Brushes.LawnGreen);
+                FarbeUmschalten(_kata.P5, 5, Brushes.Yellow);
+                FarbeUmschalten(_kata.P6, 6, Brushes.Yellow);
+                FarbeUmschalten(_kata.P7, 7, Brushes.Red);
+                FarbeUmschalten(_kata.P8, 8, Brushes.Red);
 
                 Thread.Sleep(10);
             }
@@ -73,10 +73,10 @@ namespace Kata.ViewModel
 
             switch (tasterId)
             {
-                case 1: _kata.S1 = gedrueckt; break;
-                case 2: _kata.S2 = gedrueckt; break;
-                case 3: _kata.S3 = !gedrueckt; break;
-                case 4: _kata.S4 = !gedrueckt; break;
+                case 11: _kata.S1 = gedrueckt; break;
+                case 12: _kata.S2 = gedrueckt; break;
+                case 13: _kata.S3 = !gedrueckt; break;
+                case 14: _kata.S4 = !gedrueckt; break;
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
@@ -88,10 +88,10 @@ namespace Kata.ViewModel
 
             switch (schalterId)
             {
-                case 5: _kata.S5 = !_kata.S5; break;
-                case 6: _kata.S6 = !_kata.S6; break;
-                case 7: _kata.S7 = !_kata.S7; break;
-                case 8: _kata.S8 = !_kata.S8; break;
+                case 15: _kata.S5 = !_kata.S5; break;
+                case 16: _kata.S6 = !_kata.S6; break;
+                case 17: _kata.S7 = !_kata.S7; break;
+                case 18: _kata.S8 = !_kata.S8; break;
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }

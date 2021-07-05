@@ -56,7 +56,7 @@ namespace TestAutomat
                         AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
                         AutoTester.TestErgebnis.Version => Brushes.White,
                         AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
-                        _ => throw new ArgumentOutOfRangeException()
+                        _ => throw new ArgumentOutOfRangeException("Unbekanntés Ergebnis" + AutoTesterDataGrid[zeile].Ergebnis)
                     };
                 }
             };

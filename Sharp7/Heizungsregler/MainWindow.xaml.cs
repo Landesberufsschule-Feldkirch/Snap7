@@ -64,12 +64,12 @@ namespace Heizungsregler
             _plotWindow = new PlotWindow();
             _plotWindow.Show();
 
-            _plotWindow.WpfPlot.plt.YLabel("Temperatur");
-            _plotWindow.WpfPlot.plt.XLabel("Zeit");
+            _plotWindow.WpfPlot.Plot.YLabel("Temperatur");
+            _plotWindow.WpfPlot.Plot.XLabel("Zeit");
 
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, KesselTemperatur, Color.Magenta, label: "Kesseltemperatur");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, label: "VorlaufSolltemperatur");
-            _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, KesselTemperatur, Color.Magenta, 1,5,  label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, 1,5,label: "VorlaufSolltemperatur");
+            _plotWindow.WpfPlot.Plot.Legend();
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
@@ -97,7 +97,7 @@ namespace Heizungsregler
 
         private void Render(object sender, EventArgs e)
         {
-            _plotWindow.WpfPlot.plt.AxisAuto(0);
+            _plotWindow.WpfPlot.Plot.AxisAuto(0);
             _plotWindow.WpfPlot.Render(true);
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) => Application.Current.Shutdown();

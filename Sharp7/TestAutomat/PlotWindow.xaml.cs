@@ -7,6 +7,8 @@
         {
             InitializeComponent();
 
+            TestAutomatPlot.Plot.Clear();
+
             Closing += (_, e) =>
             {
                 e.Cancel = true;
