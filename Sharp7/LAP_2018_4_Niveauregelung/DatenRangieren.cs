@@ -50,7 +50,7 @@ namespace LAP_2018_4_Niveauregelung
             _viewModel.NiveauRegelung.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
         }
 
-        public DatenRangieren(LAP_2018_4_Niveauregelung.ViewModel.ViewModel vm) => _viewModel = vm;
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

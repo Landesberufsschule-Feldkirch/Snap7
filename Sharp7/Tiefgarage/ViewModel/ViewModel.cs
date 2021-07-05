@@ -7,12 +7,12 @@ namespace Tiefgarage.ViewModel
     {
         public Model.AlleFahrzeugePersonen AlleFahrzeugePersonen { get; }
 
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
             AlleFahrzeugePersonen = new Model.AlleFahrzeugePersonen();
-            ViAnzeige = new VisuAnzeigen(mainWindow, AlleFahrzeugePersonen);
+            ViAnz = new VisuAnzeigen(mainWindow, AlleFahrzeugePersonen);
         }
 
 

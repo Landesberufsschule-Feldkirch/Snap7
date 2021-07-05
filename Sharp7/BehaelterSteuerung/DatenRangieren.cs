@@ -28,7 +28,7 @@ namespace BehaelterSteuerung
             P1
         }
 
-        public DatenRangieren(BehaelterSteuerung.ViewModel.ViewModel behaelterViewModel) => _viewModel = behaelterViewModel;
+        public DatenRangieren(ViewModel.ViewModel behaelterViewModel) => _viewModel = behaelterViewModel;
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {

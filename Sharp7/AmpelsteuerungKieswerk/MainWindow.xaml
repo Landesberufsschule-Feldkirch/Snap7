@@ -72,19 +72,19 @@
         <Rectangle Grid.Column="16"                       Grid.Row="10" Grid.RowSpan="4"  Fill="DarkGray" Margin="0,0,50,0" />
 
         <Rectangle  Grid.Column="6"     Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"                                            Margin="-1,-1,34,-1" />
-        <Ellipse    Grid.Column="6"     Grid.Row="2"                    Fill="{Binding ViAnzeige.ColorLinksRot}"     Margin="2,2,37,2" />
-        <Ellipse    Grid.Column="6"     Grid.Row="3"                    Fill="{Binding ViAnzeige.ColorLinksGelb}"    Margin="2,2,37,2" />
-        <Ellipse    Grid.Column="6"     Grid.Row="4"                    Fill="{Binding ViAnzeige.ColorLinksGruen}"   Margin="2,2,37,2" />
+        <Ellipse    Grid.Column="6"     Grid.Row="2"                    Fill="{Binding ViAnz.ColorLinksRot}"     Margin="2,2,37,2" />
+        <Ellipse    Grid.Column="6"     Grid.Row="3"                    Fill="{Binding ViAnz.ColorLinksGelb}"    Margin="2,2,37,2" />
+        <Ellipse    Grid.Column="6"     Grid.Row="4"                    Fill="{Binding ViAnz.ColorLinksGruen}"   Margin="2,2,37,2" />
 
         <Rectangle  Grid.Column="16"    Grid.Row="2" Grid.RowSpan="3"   Fill="DarkSlateGray"                                            Margin="34,-1,-1,-1" />
-        <Ellipse    Grid.Column="16"    Grid.Row="2"                    Fill="{Binding ViAnzeige.ColorRechtsRot}"    Margin="37,2,2,2" />
-        <Ellipse    Grid.Column="16"    Grid.Row="3"                    Fill="{Binding ViAnzeige.ColorRechtsGelb}"   Margin="37,2,2,2" />
-        <Ellipse    Grid.Column="16"    Grid.Row="4"                    Fill="{Binding ViAnzeige.ColorRechtsGruen}"  Margin="37,2,2,2" />
+        <Ellipse    Grid.Column="16"    Grid.Row="2"                    Fill="{Binding ViAnz.ColorRechtsRot}"    Margin="37,2,2,2" />
+        <Ellipse    Grid.Column="16"    Grid.Row="3"                    Fill="{Binding ViAnz.ColorRechtsGelb}"   Margin="37,2,2,2" />
+        <Ellipse    Grid.Column="16"    Grid.Row="4"                    Fill="{Binding ViAnz.ColorRechtsGruen}"  Margin="37,2,2,2" />
 
-        <Ellipse    Grid.Column="5"     Grid.Row="9"                    Fill="{Binding ViAnzeige.ColorB1}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
-        <Ellipse    Grid.Column="6"     Grid.Row="9"                    Fill="{Binding ViAnzeige.ColorB2}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
-        <Ellipse    Grid.Column="16"    Grid.Row="9"                    Fill="{Binding ViAnzeige.ColorB3}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
-        <Ellipse    Grid.Column="17"    Grid.Row="9"                    Fill="{Binding ViAnzeige.ColorB4}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
+        <Ellipse    Grid.Column="5"     Grid.Row="9"                    Fill="{Binding ViAnz.ColorB1}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
+        <Ellipse    Grid.Column="6"     Grid.Row="9"                    Fill="{Binding ViAnz.ColorB2}"    Height="20" Stroke="Black"  Margin="50,15,0,0" />
+        <Ellipse    Grid.Column="16"    Grid.Row="9"                    Fill="{Binding ViAnz.ColorB3}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
+        <Ellipse    Grid.Column="17"    Grid.Row="9"                    Fill="{Binding ViAnz.ColorB4}"    Height="20" Stroke="Black"  Margin="0,15,50,0" />
 
         <Label Grid.Column="5"  Grid.Row="9" Content="B1" Margin="23,7,0,0" FontSize="12pt" />
         <Label Grid.Column="6"  Grid.Row="9" Content="B2" Margin="23,7,0,0" FontSize="12pt" />
@@ -93,55 +93,55 @@
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="21" Grid.Row="1" Grid.RowSpan="16">
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw1Left}" Canvas.Top="{Binding ViAnzeige.PosLkw1Top}" Command="{Binding BtnLkw1}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosLkw1Left}" Canvas.Top="{Binding ViAnz.PosLkw1Top}" Command="{Binding BtnLkw1}">
                 <Image Height="60" Source="Bilder/LKW_braun.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw1}" />
+                            <ScaleTransform ScaleX="{Binding ViAnz.DirectionLkw1}" />
                             <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw2Left}" Canvas.Top="{Binding ViAnzeige.PosLkw2Top}" Command="{Binding BtnLkw2}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosLkw2Left}" Canvas.Top="{Binding ViAnz.PosLkw2Top}" Command="{Binding BtnLkw2}">
                 <Image Height="60" Source="Bilder/LKW_gelb.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw2}" />
+                            <ScaleTransform ScaleX="{Binding ViAnz.DirectionLkw2}" />
                             <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw3Left}" Canvas.Top="{Binding ViAnzeige.PosLkw3Top}" Command="{Binding BtnLkw3}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosLkw3Left}" Canvas.Top="{Binding ViAnz.PosLkw3Top}" Command="{Binding BtnLkw3}">
                 <Image Height="60" Source="Bilder/LKW_gruen.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw3}" />
+                            <ScaleTransform ScaleX="{Binding ViAnz.DirectionLkw3}" />
                             <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw4Left}" Canvas.Top="{Binding ViAnzeige.PosLkw4Top}" Command="{Binding BtnLkw4}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosLkw4Left}" Canvas.Top="{Binding ViAnz.PosLkw4Top}" Command="{Binding BtnLkw4}">
                 <Image Height="60" Source="Bilder/LKW_pink.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw4}" />
+                            <ScaleTransform ScaleX="{Binding ViAnz.DirectionLkw4}" />
                             <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosLkw5Left}" Canvas.Top="{Binding ViAnzeige.PosLkw5Top}" Command="{Binding BtnLkw5}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosLkw5Left}" Canvas.Top="{Binding ViAnz.PosLkw5Top}" Command="{Binding BtnLkw5}">
                 <Image Height="60" Source="Bilder/LKW_rot.PNG"  RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="{Binding ViAnzeige.DirectionLkw5}" />
+                            <ScaleTransform ScaleX="{Binding ViAnz.DirectionLkw5}" />
                             <TranslateTransform />
                         </TransformGroup>
                     </Image.RenderTransform>
@@ -149,10 +149,10 @@
             </Button>
         </Canvas>
 
-        <Label Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <Label Grid.Column="8"     Grid.ColumnSpan="7" Grid.Row="13" Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
     </Grid>
 </Window>

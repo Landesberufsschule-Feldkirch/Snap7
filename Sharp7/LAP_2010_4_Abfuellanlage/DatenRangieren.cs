@@ -39,7 +39,7 @@ namespace LAP_2010_4_Abfuellanlage
             _abfuellanlageViewModel.AbfuellAnlage.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
         }
 
-        public DatenRangieren(LAP_2010_4_Abfuellanlage.ViewModel.ViewModel vm) => _abfuellanlageViewModel = vm;
+        public DatenRangieren(ViewModel.ViewModel vm) => _abfuellanlageViewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

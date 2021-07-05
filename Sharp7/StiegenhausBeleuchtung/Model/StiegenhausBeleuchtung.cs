@@ -56,7 +56,7 @@ namespace StiegenhausBeleuchtung.Model
             System.Threading.Tasks.Task.Run(StiegenhausBeleuchtungTask);
         }
 
-        internal void ProblemLoesen(VisuAnzeigen viAnzeige) => _visuAnzeigen = viAnzeige;
+        internal void ProblemLoesen(VisuAnzeigen ViAnz) => _visuAnzeigen = ViAnz;
         public bool GetBewegungsmelder(int index) => _alleBewegungsmelder[index];
         public void SetBewegungsmelder(int index, bool val) => _alleBewegungsmelder[index] = val;
         public void SetLampen(int index, bool val) => _alleLampen[index] = val;

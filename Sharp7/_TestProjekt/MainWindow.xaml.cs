@@ -18,10 +18,10 @@ namespace _TestProjekt
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox text) _viewModel.ViAnzeige.TextFeld = text.Text;
+            if (sender is TextBox text) _viewModel.ViAnz.TextFeld = text.Text;
         }
 
-        private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) => _viewModel.ViAnzeige.SliderValue = e.NewValue;
+        private void Slider_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) => _viewModel.ViAnz.SliderValue = e.NewValue;
 
         private void TabAutomatikManualChanged(object sender, System.Windows.RoutedEventArgs e)
         {

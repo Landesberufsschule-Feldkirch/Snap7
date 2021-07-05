@@ -6,15 +6,15 @@
     public class ViewModel
     {
         public Model.OfentuerSteuerung OfentuerSteuerung { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             OfentuerSteuerung = new Model.OfentuerSteuerung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, OfentuerSteuerung);
+            ViAnz = new VisuAnzeigen(mainWindow, OfentuerSteuerung);
         }
 
         private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnzeige.Taster);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

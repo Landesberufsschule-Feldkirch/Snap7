@@ -75,7 +75,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="15" Grid.ColumnSpan="6"  Grid.RowSpan="9" Grid.Row="2" />
 
-                    <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
+                    <Button Grid.Column="16" Grid.Row="3"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnz.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -83,7 +83,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
+                    <Button Grid.Column="18" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnz.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -94,13 +94,13 @@
                     <Label Content="S1 " Grid.Column="15" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,17,0,17" />
                     <Label Content="S2 " Grid.Column="17" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,17,0,17" />
 
-                    <Ellipse Grid.Column="16" Grid.Row="7" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnzeige.ColorP1}" />
+                    <Ellipse Grid.Column="16" Grid.Row="7" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP1}" />
                     <Label Content="P1 " Grid.Column="15" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" Margin="0,17,0,17" />
                     <Label Content="Füllstand" Grid.Column="16" Grid.Row="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22" Fill="#eeeeee" />
 
-                    <Button Grid.Column="11" Grid.Row="3"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt" Panel.ZIndex="98">
+                    <Button Grid.Column="11" Grid.Row="3"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnz.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt" Panel.ZIndex="98">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -111,27 +111,27 @@
                     <Rectangle Fill="DarkGray" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="12" Margin="61,0,59,0" />
                     <Rectangle Fill="DarkGray" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="12" Margin="60,0,60,0" />
 
-                    <Image Source="Bilder\VentilElektrischAusHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Aus}" />
-                    <Image Source="Bilder\VentilElektrischEinHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityK1Ein}" />
+                    <Image Source="Bilder\VentilElektrischAusHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityK1Aus}" />
+                    <Image Source="Bilder\VentilElektrischEinHellgrau.jpg" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityK1Ein}" />
                     <Label Content="K1" Grid.Column="4" Grid.Row="14" Margin="32,5,4,0" FontSize="14pt"/>
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="10"  Grid.ColumnSpan="2" Grid.Row="9" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Ein}" />
                     <Label Content="B1" Grid.Column="10" Grid.Row="9" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
                     <Rectangle Fill="#fcdada"   Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9" />
-                    <Rectangle Fill="Coral"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnzeige.Margin1}" />
-                    <Button Grid.Column="7" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
-                    <Rectangle Fill="{Binding ViAnzeige.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
+                    <Rectangle Fill="Coral"        Grid.Column="6" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="9"  Margin="{Binding ViAnz.Margin1}" />
+                    <Button Grid.Column="7" Grid.Row="3" Content="Nachfüllen" FontSize="14pt" Grid.ColumnSpan="2" ClickMode="{Binding ViAnz.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
+                    <Rectangle Fill="{Binding ViAnz.ColorRectangleZuleitung}"          Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="11" Grid.RowSpan="2"   Margin="53,0,51,0" />
 
-                    <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Aus}" />
-                    <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnzeige.VisibilityK2Ein}" />
+                    <Image Source="Bilder/VentilElektrischAusHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnz.VisibilityK2Aus}" />
+                    <Image Source="Bilder/VentilElektrischEinHellgrau.jpg"  Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="2" Margin="50,0,19,0" Visibility="{Binding ViAnz.VisibilityK2Ein}" />
                     <Label Content="K2" Grid.Column="7" Grid.Row="14" Margin="10,5,24,0" FontSize="14pt"/>
 
-                    <Rectangle Fill="Coral" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0" Visibility="{Binding ViAnzeige.VisibilityRectangleAbleitung}" />
+                    <Rectangle Fill="Coral" Grid.Column="7" Grid.Row="15" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="63,0,62,0" Visibility="{Binding ViAnz.VisibilityRectangleAbleitung}" />
 
                     <Ellipse Fill="LightGray" Grid.Column="2" Grid.Row="19" Grid.RowSpan="2" />
-                    <Ellipse Grid.Column="2" Grid.Row="19" Grid.RowSpan="2" Height="60" Width="60" Fill="{Binding ViAnzeige.ColorQ1}" Panel.ZIndex="5" />
+                    <Ellipse Grid.Column="2" Grid.Row="19" Grid.RowSpan="2" Height="60" Width="60" Fill="{Binding ViAnz.ColorQ1}" Panel.ZIndex="5" />
                     <Label Content="Q1" Grid.Column="2" Grid.Row="19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14pt" Panel.ZIndex="10" />
 
                     <Ellipse Fill="LightGray" Grid.Column="10" Grid.Row="19" Grid.RowSpan="2" />
@@ -139,8 +139,8 @@
                     <Rectangle Fill="LightGray" Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="19" Margin="35,0,35,27" />
                     <Rectangle Fill="LightGray" Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="20" Margin="35,27,35,0" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"   Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Aus}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"    Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="21" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Ein}" />
                     <Label Content="B2" Grid.Column="7" Grid.Row="21" Grid.RowSpan="2" FontSize="14pt" Margin="0,21,38,13" />
 
                     <Button Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Height="40" Click="PlcButton_OnClick" >
@@ -150,18 +150,18 @@
                     </Button>
 
 
-                    <Label Grid.Column="15"                        Grid.Row="23"  Grid.ColumnSpan="6" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsSichtbar}" Fill="Red" />
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+                    <Label Grid.Column="15"                        Grid.Row="23"  Grid.ColumnSpan="6" Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
 
                     <Canvas Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22">
-                        <Image x:Name="Dose1" Source="Bilder/dose1.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[0]}" Canvas.Top="{Binding ViAnzeige.TopDose[0]}"  Visibility="{Binding ViAnzeige.VisDose[1]}" />
-                        <Image x:Name="Dose2" Source="Bilder/dose2.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[1]}" Canvas.Top="{Binding ViAnzeige.TopDose[1]}"  Visibility="{Binding ViAnzeige.VisDose[1]}" />
-                        <Image x:Name="Dose3" Source="Bilder/dose3.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[2]}" Canvas.Top="{Binding ViAnzeige.TopDose[2]}"  Visibility="{Binding ViAnzeige.VisDose[2]}" />
-                        <Image x:Name="Dose4" Source="Bilder/dose4.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[3]}" Canvas.Top="{Binding ViAnzeige.TopDose[3]}"  Visibility="{Binding ViAnzeige.VisDose[3]}" />
-                        <Image x:Name="Dose5" Source="Bilder/dose5.jpg" Height="80" Canvas.Left="{Binding ViAnzeige.LeftDose[4]}" Canvas.Top="{Binding ViAnzeige.TopDose[4]}"  Visibility="{Binding ViAnzeige.VisDose[4]}" />
+                        <Image x:Name="Dose1" Source="Bilder/dose1.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[0]}" Canvas.Top="{Binding ViAnz.TopDose[0]}"  Visibility="{Binding ViAnz.VisDose[1]}" />
+                        <Image x:Name="Dose2" Source="Bilder/dose2.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[1]}" Canvas.Top="{Binding ViAnz.TopDose[1]}"  Visibility="{Binding ViAnz.VisDose[1]}" />
+                        <Image x:Name="Dose3" Source="Bilder/dose3.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[2]}" Canvas.Top="{Binding ViAnz.TopDose[2]}"  Visibility="{Binding ViAnz.VisDose[2]}" />
+                        <Image x:Name="Dose4" Source="Bilder/dose4.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[3]}" Canvas.Top="{Binding ViAnz.TopDose[3]}"  Visibility="{Binding ViAnz.VisDose[3]}" />
+                        <Image x:Name="Dose5" Source="Bilder/dose5.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[4]}" Canvas.Top="{Binding ViAnz.TopDose[4]}"  Visibility="{Binding ViAnz.VisDose[4]}" />
                     </Canvas>
                 </Grid>
             </TabItem>

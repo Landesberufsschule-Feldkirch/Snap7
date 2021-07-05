@@ -2,10 +2,10 @@
 {
     public class ViewModel
     {
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel()
         {
-            ViAnzeige = new VisuAnzeigen();
+            ViAnz = new VisuAnzeigen();
         }
     }
 }

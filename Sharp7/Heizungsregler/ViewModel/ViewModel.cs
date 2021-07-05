@@ -5,7 +5,7 @@
 
     public class ViewModel
     {
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         private readonly MainWindow _mainWindow;
 
@@ -13,7 +13,7 @@
         {
             _mainWindow = mw;
 
-            ViAnzeige = new VisuAnzeigen(_mainWindow);
+            ViAnz = new VisuAnzeigen(_mainWindow);
         }
 
 

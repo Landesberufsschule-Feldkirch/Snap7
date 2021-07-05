@@ -5,12 +5,12 @@ namespace ThermischeSolarAnlage.ViewModel
     public class ViewModel
     {
         public Test Test { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         public ViewModel()
         {
             Test = new Test();
-            ViAnzeige = new VisuAnzeigen();
+            ViAnz = new VisuAnzeigen();
         }
     }
 }

@@ -6,19 +6,19 @@
     public class ViewModel
     {
         public Model.Pumpensteuerung Pumpensteuerung { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Pumpensteuerung = new Model.Pumpensteuerung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, Pumpensteuerung);
+            ViAnz = new VisuAnzeigen(mainWindow, Pumpensteuerung);
         }
 
         private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnzeige.Taster);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
 
         private ICommand _btnSchalter;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnSchalter => _btnSchalter ??= new RelayCommand(ViAnzeige.Schalter);
+        public ICommand BtnSchalter => _btnSchalter ??= new RelayCommand(ViAnz.Schalter);
     }
 }

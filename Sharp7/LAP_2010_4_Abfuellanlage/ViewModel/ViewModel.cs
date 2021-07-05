@@ -7,15 +7,15 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
     public class ViewModel
     {
         public Model.AbfuellAnlage AbfuellAnlage { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             AbfuellAnlage = new Model.AbfuellAnlage();
-            ViAnzeige = new VisuAnzeigen(mainWindow, AbfuellAnlage);
+            ViAnz = new VisuAnzeigen(mainWindow, AbfuellAnlage);
         }
 
         private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnzeige.Taster);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

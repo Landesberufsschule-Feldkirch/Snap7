@@ -458,7 +458,7 @@ namespace Synchronisiereinrichtung.ViewModel
 
         #region Messgerät
 
-        //"{Binding Kraftwerk.ViAnzeige.MessgeraetOptimalerBereich}"
+        //"{Binding Kraftwerk.ViAnz.MessgeraetOptimalerBereich}"
 
         private double _messgeraetOptimalerBereich;
         public double MessgeraetOptimalerBereich

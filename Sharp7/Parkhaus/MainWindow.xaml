@@ -88,14 +88,14 @@
                     <Rectangle Grid.Column="15" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
                     <Rectangle Grid.Column="17" Grid.Row="1" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
 
-                    <Ellipse Grid.Column="2"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[0]}"/>
-                    <Ellipse Grid.Column="4 " Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[1]}"/>
-                    <Ellipse Grid.Column="6"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[2]}"/>
-                    <Ellipse Grid.Column="8"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[3]}"/>
-                    <Ellipse Grid.Column="10" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[4]}"/>
-                    <Ellipse Grid.Column="12" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[5]}"/>
-                    <Ellipse Grid.Column="14" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[6]}"/>
-                    <Ellipse Grid.Column="16" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[7]}"/>
+                    <Ellipse Grid.Column="2"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[0]}"/>
+                    <Ellipse Grid.Column="4 " Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[1]}"/>
+                    <Ellipse Grid.Column="6"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[2]}"/>
+                    <Ellipse Grid.Column="8"  Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[3]}"/>
+                    <Ellipse Grid.Column="10" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[4]}"/>
+                    <Ellipse Grid.Column="12" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[5]}"/>
+                    <Ellipse Grid.Column="14" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[6]}"/>
+                    <Ellipse Grid.Column="16" Grid.Row="1" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[7]}"/>
 
                     <Label Grid.Column="2" Grid.Row="2" Content="B00" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
                     <Label Grid.Column="4" Grid.Row="2" Content="B01" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
@@ -107,28 +107,28 @@
                     <Label Grid.Column="16" Grid.Row="2" Content="B07" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
 
                     <Button  Grid.Column="2"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="0" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[0]}" />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[0]}" />
                     </Button>
                     <Button  Grid.Column="4"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="1" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[1]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[1]}"  />
                     </Button>
                     <Button  Grid.Column="6"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="2" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[2]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[2]}"  />
                     </Button>
                     <Button  Grid.Column="8"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="3" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[3]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[3]}"  />
                     </Button>
                     <Button  Grid.Column="10"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="4" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[4]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[4]}"  />
                     </Button>
                     <Button  Grid.Column="12"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="5" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[5]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[5]}"  />
                     </Button>
                     <Button  Grid.Column="14"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="6" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[6]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[6]}"  />
                     </Button>
                     <Button  Grid.Column="16"   Grid.Row="3" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="7" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[7]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[7]}"  />
                     </Button>
 
                     <!--#endregion-->
@@ -147,14 +147,14 @@
                     <Rectangle Grid.Column="17" Grid.Row="8" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
 
 
-                    <Ellipse Grid.Column="2"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[8]}"/>
-                    <Ellipse Grid.Column="4 " Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[9]}"/>
-                    <Ellipse Grid.Column="6"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[10]}"/>
-                    <Ellipse Grid.Column="8"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[11]}"/>
-                    <Ellipse Grid.Column="10" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[12]}"/>
-                    <Ellipse Grid.Column="12" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[13]}"/>
-                    <Ellipse Grid.Column="14" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[14]}"/>
-                    <Ellipse Grid.Column="16" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[15]}"/>
+                    <Ellipse Grid.Column="2"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[8]}"/>
+                    <Ellipse Grid.Column="4 " Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[9]}"/>
+                    <Ellipse Grid.Column="6"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[10]}"/>
+                    <Ellipse Grid.Column="8"  Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[11]}"/>
+                    <Ellipse Grid.Column="10" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[12]}"/>
+                    <Ellipse Grid.Column="12" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[13]}"/>
+                    <Ellipse Grid.Column="14" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[14]}"/>
+                    <Ellipse Grid.Column="16" Grid.Row="11" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[15]}"/>
 
                     <Label Grid.Column="2" Grid.Row="11" Grid.RowSpan="2" Content="B10" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40" />
                     <Label Grid.Column="4" Grid.Row="11" Grid.RowSpan="2" Content="B11" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
@@ -167,7 +167,7 @@
 
 
                     <Button  Grid.Column="2"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="8" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[8]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[8]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -177,7 +177,7 @@
                     </Button>
 
                     <Button  Grid.Column="4"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="9" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[9]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[9]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -188,7 +188,7 @@
 
 
                     <Button  Grid.Column="6"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="10" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[10]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[10]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -198,7 +198,7 @@
                     </Button>
 
                     <Button  Grid.Column="8"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="11" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[11]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[11]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -209,7 +209,7 @@
 
 
                     <Button  Grid.Column="10"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="12" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[12]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[12]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -219,7 +219,7 @@
                     </Button>
 
                     <Button  Grid.Column="12"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="13" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[13]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[13]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -230,7 +230,7 @@
 
 
                     <Button  Grid.Column="14"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="14" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[14]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[14]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -240,7 +240,7 @@
                     </Button>
 
                     <Button  Grid.Column="16"   Grid.Row="8" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="15" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[15]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[15]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -264,14 +264,14 @@
                     <Rectangle Grid.Column="15" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
                     <Rectangle Grid.Column="17" Grid.Row="13" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
 
-                    <Ellipse Grid.Column="2"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[16]}"/>
-                    <Ellipse Grid.Column="4 " Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[17]}"/>
-                    <Ellipse Grid.Column="6"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[18]}"/>
-                    <Ellipse Grid.Column="8"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[19]}"/>
-                    <Ellipse Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[20]}"/>
-                    <Ellipse Grid.Column="12" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[21]}"/>
-                    <Ellipse Grid.Column="14" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[22]}"/>
-                    <Ellipse Grid.Column="16" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnzeige.FarbeSensor[23]}"/>
+                    <Ellipse Grid.Column="2"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[16]}"/>
+                    <Ellipse Grid.Column="4 " Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[17]}"/>
+                    <Ellipse Grid.Column="6"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[18]}"/>
+                    <Ellipse Grid.Column="8"  Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[19]}"/>
+                    <Ellipse Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[20]}"/>
+                    <Ellipse Grid.Column="12" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[21]}"/>
+                    <Ellipse Grid.Column="14" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[22]}"/>
+                    <Ellipse Grid.Column="16" Grid.Row="13" Grid.RowSpan="2" Margin="25,5,25,20" Fill="{Binding ViAnz.FarbeSensor[23]}"/>
 
                     <Label Grid.Column="2" Grid.Row="14" Content="B20" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
                     <Label Grid.Column="4" Grid.Row="14" Content="B21" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
@@ -283,28 +283,28 @@
                     <Label Grid.Column="16" Grid.Row="14" Content="B27" FontSize="14pt" Margin="0,5,0,0" HorizontalAlignment="Center" Width="40"/>
 
                     <Button  Grid.Column="2"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="16" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[16]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[16]}"  />
                     </Button>
                     <Button  Grid.Column="4"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="17" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[17]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[17]}"  />
                     </Button>
                     <Button  Grid.Column="6"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="18" >
-                        <Image Source="Bilder/CarGreen.jpg"  Visibility="{Binding ViAnzeige.AutoSichtbar[18]}" />
+                        <Image Source="Bilder/CarGreen.jpg"  Visibility="{Binding ViAnz.AutoSichtbar[18]}" />
                     </Button>
                     <Button  Grid.Column="8"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="19" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[19]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[19]}"  />
                     </Button>
                     <Button  Grid.Column="10"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="20" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[20]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[20]}"  />
                     </Button>
                     <Button  Grid.Column="12"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="21" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[21]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[21]}"  />
                     </Button>
                     <Button  Grid.Column="14"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="22" >
-                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[22]}"  />
+                        <Image Source="Bilder/CarGreen.jpg" Visibility="{Binding ViAnz.AutoSichtbar[22]}"  />
                     </Button>
                     <Button  Grid.Column="16"   Grid.Row="15" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="23" >
-                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnzeige.AutoSichtbar[23]}"  />
+                        <Image Source="Bilder/CarYellow.jpg" Visibility="{Binding ViAnz.AutoSichtbar[23]}"  />
                     </Button>
                     <!--#endregion-->
 
@@ -322,14 +322,14 @@
                     <Rectangle Grid.Column="17" Grid.Row="20" Grid.RowSpan="5" Fill="LightGray" Margin="3,0,3,0"/>
 
 
-                    <Ellipse Grid.Column="2"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[24]}"/>
-                    <Ellipse Grid.Column="4 " Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[25]}"/>
-                    <Ellipse Grid.Column="6"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[26]}"/>
-                    <Ellipse Grid.Column="8"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[27]}"/>
-                    <Ellipse Grid.Column="10" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[28]}"/>
-                    <Ellipse Grid.Column="12" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[29]}"/>
-                    <Ellipse Grid.Column="14" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[30]}"/>
-                    <Ellipse Grid.Column="16" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnzeige.FarbeSensor[31]}"/>
+                    <Ellipse Grid.Column="2"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[24]}"/>
+                    <Ellipse Grid.Column="4 " Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[25]}"/>
+                    <Ellipse Grid.Column="6"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[26]}"/>
+                    <Ellipse Grid.Column="8"  Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[27]}"/>
+                    <Ellipse Grid.Column="10" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[28]}"/>
+                    <Ellipse Grid.Column="12" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[29]}"/>
+                    <Ellipse Grid.Column="14" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[30]}"/>
+                    <Ellipse Grid.Column="16" Grid.Row="23" Margin="25,5,25,10" Fill="{Binding ViAnz.FarbeSensor[31]}"/>
 
                     <Label Grid.Column="2" Grid.Row="23" Grid.RowSpan="2" Content="B30" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40" />
                     <Label Grid.Column="4" Grid.Row="23" Grid.RowSpan="2" Content="B31" FontSize="14pt" Margin="0,15,0,0" HorizontalAlignment="Center" Width="40"/>
@@ -342,7 +342,7 @@
 
 
                     <Button  Grid.Column="2"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="24" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[24]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[24]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -352,7 +352,7 @@
                     </Button>
 
                     <Button  Grid.Column="4"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="25" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[25]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[25]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -363,7 +363,7 @@
 
 
                     <Button  Grid.Column="6"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="26" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[26]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[26]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -373,7 +373,7 @@
                     </Button>
 
                     <Button  Grid.Column="8"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="27" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[27]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[27]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -384,7 +384,7 @@
 
 
                     <Button  Grid.Column="10"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="28" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[28]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[28]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -394,7 +394,7 @@
                     </Button>
 
                     <Button  Grid.Column="12"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="29" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[29]}"  >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[29]}"  >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -405,7 +405,7 @@
 
 
                     <Button  Grid.Column="14"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="30" >
-                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[30]}" >
+                        <Image Source="Bilder/CarYellow.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[30]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -415,7 +415,7 @@
                     </Button>
 
                     <Button  Grid.Column="16"   Grid.Row="20" Grid.RowSpan="3" Background="White" Command="{Binding BtnAuto}" CommandParameter="31" >
-                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnzeige.AutoSichtbar[31]}" >
+                        <Image Source="Bilder/CarGreen.jpg" RenderTransformOrigin="0.5,0.5" Visibility="{Binding ViAnz.AutoSichtbar[31]}" >
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="-1"/>
@@ -432,17 +432,17 @@
                         </Button.Background>
                     </Button>
 
-                    <Label Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="23"  Background="{Binding ViAnzeige.SpsColor}"   Content="{Binding ViAnzeige.SpsStatus}" />
-                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsSichtbar}" Fill="Red" />
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+                    <Label Grid.Column="19" Grid.ColumnSpan="3"  Grid.Row="23"  Background="{Binding ViAnz.SpsColor}"   Content="{Binding ViAnz.SpsStatus}" />
+                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
 
                     <Label Grid.Column="19" Grid.Row="4" Content="Freie Parkplätzte:" FontSize="14pt" />
-                    <Label Grid.Column="20" Grid.Row="4" Content="{Binding ViAnzeige.AnzahlFreieParkplaetze}"  HorizontalAlignment="Center" FontSize="14pt" />
-                    <Label Grid.Column="20" Grid.Row="5" Content="{Binding ViAnzeige.AnzahlFreieParkplaetzeSoll}" HorizontalAlignment="Center" FontSize="14pt" />
+                    <Label Grid.Column="20" Grid.Row="4" Content="{Binding ViAnz.AnzahlFreieParkplaetze}"  HorizontalAlignment="Center" FontSize="14pt" />
+                    <Label Grid.Column="20" Grid.Row="5" Content="{Binding ViAnz.AnzahlFreieParkplaetzeSoll}" HorizontalAlignment="Center" FontSize="14pt" />
                     
-                    <Button Grid.Column="19" Grid.Row="8" Content="Zufall" FontSize="14pt" ClickMode="{Binding ViAnzeige.ClickModeBtnZufall}" Command="{Binding BtnTasterZufall}" Margin="0,10,0,25" Grid.RowSpan="2"/>
+                    <Button Grid.Column="19" Grid.Row="8" Content="Zufall" FontSize="14pt" ClickMode="{Binding ViAnz.ClickModeBtnZufall}" Command="{Binding BtnTasterZufall}" Margin="0,10,0,25" Grid.RowSpan="2"/>
                 </Grid>
             </TabItem>
 

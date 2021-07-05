@@ -6,13 +6,13 @@
     public class ViewModel
     {
         public Model.StiegenhausBeleuchtung StiegenhausBeleuchtung { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
             StiegenhausBeleuchtung = new Model.StiegenhausBeleuchtung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, StiegenhausBeleuchtung);
-            StiegenhausBeleuchtung.ProblemLoesen(ViAnzeige);
+            ViAnz = new VisuAnzeigen(mainWindow, StiegenhausBeleuchtung);
+            StiegenhausBeleuchtung.ProblemLoesen(ViAnz);
         }
 
         private ICommand _btnStart;
@@ -21,6 +21,6 @@
 
         private ICommand _btnBewegungsmelder;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ??= new RelayCommand(ViAnzeige.BtnBewegungsmelder);
+        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ??= new RelayCommand(ViAnz.BtnBewegungsmelder);
     }
 }

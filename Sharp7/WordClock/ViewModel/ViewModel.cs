@@ -7,11 +7,11 @@ namespace WordClock.ViewModel
     public class ViewModel
     {
         public Model.Zeiten Zeiten { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Zeiten = new Model.Zeiten();
-            ViAnzeige = new VisuAnzeigen(mainWindow, Zeiten);
+            ViAnz = new VisuAnzeigen(mainWindow, Zeiten);
         }
 
         private ICommand _btnSetCurrentTime;

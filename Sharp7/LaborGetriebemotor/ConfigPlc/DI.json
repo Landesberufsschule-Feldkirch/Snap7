@@ -7,7 +7,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S1",
-      "Kommentar": "Taster ( ⓪ ) → Öffner"
+      "Kommentar":"Taster ( ① ) → Schliesser" 
     },
     {
       "LaufendeNr": 1,
@@ -16,7 +16,7 @@
       "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S2",
-      "Kommentar": "Taster ( ① ) → Schliesser"
+      "Kommentar": "Taster ( ⓪ ) → Öffner"
     },
     {
       "LaufendeNr": 2,

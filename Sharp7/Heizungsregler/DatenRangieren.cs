@@ -21,9 +21,7 @@ namespace Heizungsregler
             S1 = 0, // Kraftwerk Starten
             S2      // Kraftwerk Stoppen
         }
-
-
-
+        
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
@@ -45,15 +43,13 @@ namespace Heizungsregler
 
                 _plc.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
                 */
-
             }
 
             if (_mainWindow.WohnHaus == null) return;
 
             _mainWindow.WohnHaus.HeizungsPumpe = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _mainWindow.WohnHaus.BrennerEin = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-
-
+            
 
             if (_mainWindow.WohnHaus.DreiwegeVentil == null) return;
 
@@ -67,6 +63,5 @@ namespace Heizungsregler
             _viewModel = vm;
         }
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
-
     }
 }

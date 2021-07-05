@@ -6,11 +6,11 @@ namespace Synchronisiereinrichtung.ViewModel
     public class ViewModel
     {
         public Kraftwerk.Model.Kraftwerk Kraftwerk { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Kraftwerk = new Kraftwerk.Model.Kraftwerk();
-            ViAnzeige = new VisuAnzeigen(mainWindow, Kraftwerk);
+            ViAnz = new VisuAnzeigen(mainWindow, Kraftwerk);
         }
 
 

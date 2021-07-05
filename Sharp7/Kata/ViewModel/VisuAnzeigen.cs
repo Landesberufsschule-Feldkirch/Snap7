@@ -45,20 +45,20 @@ namespace Kata.ViewModel
                 SichtbarkeitUmschalten(_kata.S7, 17);
                 SichtbarkeitUmschalten(_kata.S8, 18);
 
-                FarbeUmschalten(_kata.P1, 1, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P2, 2, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P3, 3, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P4, 4, Brushes.LawnGreen);
-                FarbeUmschalten(_kata.P5, 5, Brushes.Yellow);
-                FarbeUmschalten(_kata.P6, 6, Brushes.Yellow);
-                FarbeUmschalten(_kata.P7, 7, Brushes.Red);
-                FarbeUmschalten(_kata.P8, 8, Brushes.Red);
+                FarbeUmschalten(_kata.P1, 1, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P2, 2, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P3, 3, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P4, 4, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P5, 5, Brushes.Yellow, Brushes.White);
+                FarbeUmschalten(_kata.P6, 6, Brushes.Yellow, Brushes.White);
+                FarbeUmschalten(_kata.P7, 7, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_kata.P8, 8, Brushes.Red, Brushes.White);
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
-        internal void FarbeUmschalten(bool val, int i, Brush farbe) => Farbe[i] = val ? farbe : Brushes.White;
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)
         {
             SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;

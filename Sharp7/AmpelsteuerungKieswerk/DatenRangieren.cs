@@ -63,7 +63,7 @@ namespace AmpelsteuerungKieswerk
         public DatenRangieren(ViewModel.ViewModel vm)
         {
             _viewModel = vm;
-            AmpelChangedEvent += _viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
+            AmpelChangedEvent += _viewModel.ViAnz.DatenRangieren_AmpelChangedEvent;
         }
 
         private void OnAmpelChanged(AmpelZustandEventArgs e)

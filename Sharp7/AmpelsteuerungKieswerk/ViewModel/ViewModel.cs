@@ -7,12 +7,12 @@
     {
         public Model.AlleLastKraftWagen AlleLastKraftWagen { get; }
 
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
             AlleLastKraftWagen = new Model.AlleLastKraftWagen();
-            ViAnzeige = new VisuAnzeigen(mainWindow, AlleLastKraftWagen);
+            ViAnz = new VisuAnzeigen(mainWindow, AlleLastKraftWagen);
         }
 
 

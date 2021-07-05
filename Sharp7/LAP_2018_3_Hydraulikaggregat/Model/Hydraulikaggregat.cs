@@ -141,18 +141,18 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         internal void CheckErweiterungOelkuehler()
         {
             _erweiterungOelkuehlerAktiv = _mainWindow.ChkOelkuehler.IsChecked != null && (bool)_mainWindow.ChkOelkuehler.IsChecked;
-            _viewModel.ViAnzeige.OelkuehlerAbgedeckt = _erweiterungOelkuehlerAktiv ? Visibility.Hidden : Visibility.Visible;
+            _viewModel.ViAnz.OelkuehlerAbgedeckt = _erweiterungOelkuehlerAktiv ? Visibility.Hidden : Visibility.Visible;
         }
         internal void CheckErweiterungZylinder()
         {
             _erweiterungZylinderAktiv = _mainWindow.ChZylinder.IsChecked != null && (bool)_mainWindow.ChZylinder.IsChecked;
-            _viewModel.ViAnzeige.ZylinderAbgedeckt = _erweiterungZylinderAktiv ? Visibility.Hidden : Visibility.Visible;
+            _viewModel.ViAnz.ZylinderAbgedeckt = _erweiterungZylinderAktiv ? Visibility.Hidden : Visibility.Visible;
 
         }
         internal void CheckErweiterungOelfilter()
         {
             _erweiterungOelfilterAktiv = _mainWindow.ChkOelfilter.IsChecked != null && (bool)_mainWindow.ChkOelfilter.IsChecked;
-            _viewModel.ViAnzeige.OelfilterAbgedeckt = _erweiterungOelfilterAktiv ? Visibility.Hidden : Visibility.Visible;
+            _viewModel.ViAnz.OelfilterAbgedeckt = _erweiterungOelfilterAktiv ? Visibility.Hidden : Visibility.Visible;
         }
 
         internal void BtnF1() => F1 = !F1;

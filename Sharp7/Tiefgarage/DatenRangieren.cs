@@ -26,7 +26,7 @@ namespace Tiefgarage
             _viewModel.AlleFahrzeugePersonen.AnzahlPersonen = _plc.GetUsIntAt(datenstruktur.DigOutput, 1);
         }
 
-        public DatenRangieren(Tiefgarage.ViewModel.ViewModel vm) => _viewModel = vm;
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

@@ -63,8 +63,8 @@
         <Button Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="4"   Content="Drinnen parken!"       Command="{Binding BtnDrinnenParken}" />
 
         <Rectangle Fill="White" Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1"  Grid.RowSpan="21" Stroke="Black" Panel.ZIndex="-1" />
-        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9"   Content="{Binding ViAnzeige.AnzahlAutos}" />
-        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11"  Content="{Binding ViAnzeige.AnzahlPersonen}" />
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="9"   Content="{Binding ViAnz.AnzahlAutos}" />
+        <Label  Grid.Column="14" Grid.ColumnSpan="4" Grid.Row="11"  Content="{Binding ViAnz.AnzahlPersonen}" />
 
         <Rectangle Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
         <Rectangle Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10"                   Fill="DarkGray" Margin="0,0,0,20" />
@@ -80,50 +80,50 @@
         <Label      Grid.Column="5" Grid.Row="10"                              Margin="25,10,20,0" Content="P1" />
         <Label      Grid.Column="5" Grid.Row="12"                              Margin="30,0,15,10" Content="P2" />
 
-        <Ellipse    Grid.Column="8" Grid.Row="10"  Fill="{Binding ViAnzeige.ColorB1}" Stroke="Black"    Margin="40,15,10,0" />
-        <Ellipse    Grid.Column="8" Grid.Row="12"  Fill="{Binding ViAnzeige.ColorB2}" Stroke="Black"    Margin="40,0,10,15" />
+        <Ellipse    Grid.Column="8" Grid.Row="10"  Fill="{Binding ViAnz.ColorB1}" Stroke="Black"    Margin="40,15,10,0" />
+        <Ellipse    Grid.Column="8" Grid.Row="12"  Fill="{Binding ViAnz.ColorB2}" Stroke="Black"    Margin="40,0,10,15" />
         <Label      Grid.Column="8" Grid.Row="10"                                                       Margin="18,10,26,0"     Content="B1" />
         <Label      Grid.Column="8" Grid.Row="12"                                                       Margin="18,0,26,10"     Content="B2" />
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosAuto1Left}" Canvas.Top="{Binding ViAnzeige.PosAuto1Top}" Command="{Binding BtnAuto1}"  IsEnabled="{Binding ViAnzeige.EnableAuto1}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto1Left}" Canvas.Top="{Binding ViAnz.PosAuto1Top}" Command="{Binding BtnAuto1}"  IsEnabled="{Binding ViAnz.EnableAuto1}">
                 <Image Width="80" Source="Bilder/auto_1.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosAuto2Left}" Canvas.Top="{Binding ViAnzeige.PosAuto2Top}" Command="{Binding BtnAuto2}"  IsEnabled="{Binding ViAnzeige.EnableAuto2}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto2Left}" Canvas.Top="{Binding ViAnz.PosAuto2Top}" Command="{Binding BtnAuto2}"  IsEnabled="{Binding ViAnz.EnableAuto2}">
                 <Image Width="80" Source="Bilder/auto_2.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosAuto3Left}" Canvas.Top="{Binding ViAnzeige.PosAuto3Top}" Command="{Binding BtnAuto3}"  IsEnabled="{Binding ViAnzeige.EnableAuto3}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto3Left}" Canvas.Top="{Binding ViAnz.PosAuto3Top}" Command="{Binding BtnAuto3}"  IsEnabled="{Binding ViAnz.EnableAuto3}">
                 <Image Width="80" Source="Bilder/auto_3.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosAuto4Left}" Canvas.Top="{Binding ViAnzeige.PosAuto4Top}" Command="{Binding BtnAuto4}"  IsEnabled="{Binding ViAnzeige.EnableAuto4}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto4Left}" Canvas.Top="{Binding ViAnz.PosAuto4Top}" Command="{Binding BtnAuto4}"  IsEnabled="{Binding ViAnz.EnableAuto4}">
                 <Image Width="80" Source="Bilder/auto_4.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosPerson1Left}" Canvas.Top="{Binding ViAnzeige.PosPerson1Top}" Command="{Binding BtnPerson1}"  IsEnabled="{Binding ViAnzeige.EnablePerson1}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosPerson1Left}" Canvas.Top="{Binding ViAnz.PosPerson1Top}" Command="{Binding BtnPerson1}"  IsEnabled="{Binding ViAnz.EnablePerson1}">
                 <Image Height="50" Source="Bilder/mensch_1.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosPerson2Left}" Canvas.Top="{Binding ViAnzeige.PosPerson2Top}" Command="{Binding BtnPerson2}"  IsEnabled="{Binding ViAnzeige.EnablePerson2}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosPerson2Left}" Canvas.Top="{Binding ViAnz.PosPerson2Top}" Command="{Binding BtnPerson2}"  IsEnabled="{Binding ViAnz.EnablePerson2}">
                 <Image Height="50" Source="Bilder/mensch_2.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosPerson3Left}" Canvas.Top="{Binding ViAnzeige.PosPerson3Top}" Command="{Binding BtnPerson3}"  IsEnabled="{Binding ViAnzeige.EnablePerson3}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosPerson3Left}" Canvas.Top="{Binding ViAnz.PosPerson3Top}" Command="{Binding BtnPerson3}"  IsEnabled="{Binding ViAnz.EnablePerson3}">
                 <Image Height="50" Source="Bilder/mensch_3.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnzeige.PosPerson4Left}" Canvas.Top="{Binding ViAnzeige.PosPerson4Top}" Command="{Binding BtnPerson4}"  IsEnabled="{Binding ViAnzeige.EnablePerson4}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosPerson4Left}" Canvas.Top="{Binding ViAnz.PosPerson4Top}" Command="{Binding BtnPerson4}"  IsEnabled="{Binding ViAnz.EnablePerson4}">
                 <Image Height="50" Source="Bilder/mensch_4.jpg" />
             </Button>
         </Canvas>
 
-        <Label Grid.Column="8"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <Label Grid.Column="8"                         Grid.Row="23"  Grid.ColumnSpan="4" Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
     </Grid>
 </Window>
