@@ -365,13 +365,13 @@ namespace LAP_2010_2_Transportwagen.ViewModel
         }
         public bool ClickModeButton(int tasterId)
         {
-            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            if (ClkMode[tasterId] == ClickMode.Press)
             {
-                ClickModeBtn[tasterId] = ClickMode.Release;
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[tasterId] = ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 

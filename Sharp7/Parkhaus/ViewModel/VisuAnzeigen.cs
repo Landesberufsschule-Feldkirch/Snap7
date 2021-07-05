@@ -241,13 +241,13 @@ namespace Parkhaus.ViewModel
         // ReSharper disable once UnusedMember.Global
         public bool ClickModeButton(int asciiCode)
         {
-            if (ClickModeBtn[asciiCode] == ClickMode.Press)
+            if (ClkMode[asciiCode] == ClickMode.Press)
             {
-                ClickModeBtn[asciiCode] = ClickMode.Release;
+                ClkMode[asciiCode] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[asciiCode] = ClickMode.Press;
+            ClkMode[asciiCode] = ClickMode.Press;
             return false;
         }
 

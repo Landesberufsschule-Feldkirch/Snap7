@@ -20,7 +20,7 @@ namespace Schleifmaschine.ViewModel
 
             SchleifmaschineDrehzahl = "n=0";
 
-            for (var i = 0; i < 20; i++) ClickModeBtn.Add(ClickMode.Press);
+            for (var i = 0; i < 20; i++) ClickMode.Add(System.Windows.Controls.ClickMode.Press);
 
             WinkelSchleifmaschine = 10;
             AktuelleDrehzahl = 0;
@@ -285,24 +285,24 @@ namespace Schleifmaschine.ViewModel
 
         public bool ClickModeButton(int tasterId)
         {
-            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            if (System.Windows.Controls.ClkMode[tasterId] == System.Windows.Controls.ClickMode.Press)
             {
-                ClickModeBtn[tasterId] = ClickMode.Release;
+                System.Windows.Controls.ClkMode[tasterId] = System.Windows.Controls.ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[tasterId] = ClickMode.Press;
+            System.Windows.Controls.ClkMode[tasterId] = System.Windows.Controls.ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clickMode = new();
+        public ObservableCollection<ClickMode> ClickMode
         {
-            get => _clickModeBtn;
+            get => _clickMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clickMode = value;
+                OnPropertyChanged(nameof(ClickMode));
             }
         }
 

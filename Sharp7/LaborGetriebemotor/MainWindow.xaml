@@ -129,7 +129,7 @@
 
                     <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="①" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[11]}" Command="{Binding BtnTaster}" CommandParameter="11" >
+                            ClickMode="{Binding ViAnz.ClkMode[11]}" Command="{Binding BtnTaster}" CommandParameter="11" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -139,7 +139,7 @@
 
                     <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="⓪" FontSize="50pt" Background="Red" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[12]}" Command="{Binding BtnTaster}" CommandParameter="12" >
+                            ClickMode="{Binding ViAnz.ClkMode[12]}" Command="{Binding BtnTaster}" CommandParameter="12" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -155,7 +155,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅰ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[13]}" Command="{Binding BtnTaster}" CommandParameter="13" >
+                            ClickMode="{Binding ViAnz.ClkMode[13]}" Command="{Binding BtnTaster}" CommandParameter="13" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -165,7 +165,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="13"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" Background="Red" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[14]}" Command="{Binding BtnTaster}" CommandParameter="14" >
+                            ClickMode="{Binding ViAnz.ClkMode[14]}" Command="{Binding BtnTaster}" CommandParameter="14" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -175,7 +175,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅱ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[15]}" Command="{Binding BtnTaster}" CommandParameter="15" >
+                            ClickMode="{Binding ViAnz.ClkMode[15]}" Command="{Binding BtnTaster}" CommandParameter="15" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -191,7 +191,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="←" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[16]}" Command="{Binding BtnTaster}" CommandParameter="16" >
+                            ClickMode="{Binding ViAnz.ClkMode[16]}" Command="{Binding BtnTaster}" CommandParameter="16" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -201,7 +201,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="13"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" 
-                            Background="Red" ClickMode="{Binding ViAnz.ClickModeBtn[17]}" Command="{Binding BtnTaster}" CommandParameter="17" >
+                            Background="Red" ClickMode="{Binding ViAnz.ClkMode[17]}" Command="{Binding BtnTaster}" CommandParameter="17" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -211,7 +211,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="→" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClickModeBtn[18]}" Command="{Binding BtnTaster}" CommandParameter="18" >
+                            ClickMode="{Binding ViAnz.ClkMode[18]}" Command="{Binding BtnTaster}" CommandParameter="18" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />

@@ -71,9 +71,9 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" ClickMode="{Binding ViAnz.ClickModeBtn[5]}" Command="{Binding BtnTaster}" CommandParameter="5" />
+                    <Button Content="Nachfüllen" Grid.Column="11" Grid.Row="4" FontSize="14pt" ClickMode="{Binding ViAnz.ClkMode[5]}" Command="{Binding BtnTaster}" CommandParameter="5" />
 
-                    <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnz.ClickModeBtn[6]}" Command="{Binding BtnTaster}" CommandParameter="6" FontSize="14pt" Panel.ZIndex="98">
+                    <Button Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2" Content="RESET" Background="LightCyan"  ClickMode="{Binding ViAnz.ClkMode[6]}" Command="{Binding BtnTaster}" CommandParameter="6" FontSize="14pt" Panel.ZIndex="98">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -84,7 +84,7 @@
                     <!--#region  Bedienung rechts -->
                     <Rectangle Fill="LightGray" Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="2"  Grid.RowSpan="18" />
 
-                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="{Binding ViAnz.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1"  FontSize="14pt">
+                    <Button Grid.Column="15" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="Green" ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1"  FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -92,7 +92,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  ClickMode="{Binding ViAnz.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2"  FontSize="14pt">
+                    <Button Grid.Column="17" Grid.Row="3"  Grid.RowSpan="2" Content="Stop" Background="Red"  ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2"  FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -100,7 +100,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3"  FontSize="10pt">
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Vereinzeln" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3"  FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -108,7 +108,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  ClickMode="{Binding ViAnz.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4"  FontSize="10pt">
+                    <Button Grid.Column="17" Grid.Row="6"  Grid.RowSpan="2" Content="Quittieren" Background="MediumPurple"  ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4"  FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />

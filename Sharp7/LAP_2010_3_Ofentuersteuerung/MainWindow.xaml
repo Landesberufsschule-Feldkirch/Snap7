@@ -68,7 +68,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
-                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnz.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -76,7 +76,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnz.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -84,7 +84,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="10pt">
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -113,7 +113,7 @@
                     <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Aus}" />
                     <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Ein}" />
                     <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
-                    <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnz.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
+                    <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
 
                     <MediaElement Name="MyMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
                         <MediaElement.Triggers>

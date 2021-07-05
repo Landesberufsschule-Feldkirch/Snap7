@@ -22,7 +22,7 @@ namespace StiegenhausBeleuchtung.ViewModel
             ReiseStart = "sadf:-";
             ReiseZiel = "sadf:-";
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
+            for (var i = 0; i < 100; i++) ClickMode.Add(System.Windows.Controls.ClickMode.Press);
             for (var i = 0; i < 100; i++) ColorLampe.Add(Brushes.Yellow);
 
             SpsSichtbar = Visibility.Hidden;
@@ -44,7 +44,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                 {
                     for (var i = 0; i < 100; i++)
                     {
-                        if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = ClickMode.Release; else ClickModeBtn[i] = ClickMode.Press;
+                        if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) System.Windows.Controls.ClkMode[i] = System.Windows.Controls.ClickMode.Release; else System.Windows.Controls.ClkMode[i] = System.Windows.Controls.ClickMode.Press;
                     }
                 }
 
@@ -180,25 +180,25 @@ namespace StiegenhausBeleuchtung.ViewModel
 
         public bool ClickModeButton(int bewegungsmelder)
         {
-            if (ClickModeBtn[bewegungsmelder] == ClickMode.Press)
+            if (System.Windows.Controls.ClkMode[bewegungsmelder] == System.Windows.Controls.ClickMode.Press)
             {
-                ClickModeBtn[bewegungsmelder] = ClickMode.Release;
+                System.Windows.Controls.ClkMode[bewegungsmelder] = System.Windows.Controls.ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[bewegungsmelder] = ClickMode.Press;
+            System.Windows.Controls.ClkMode[bewegungsmelder] = System.Windows.Controls.ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
+        private ObservableCollection<ClickMode> _clickMode = new();
 
-        public ObservableCollection<ClickMode> ClickModeBtn
+        public ObservableCollection<ClickMode> ClickMode
         {
-            get => _clickModeBtn;
+            get => _clickMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clickMode = value;
+                OnPropertyChanged(nameof(ClickMode));
             }
         }
 

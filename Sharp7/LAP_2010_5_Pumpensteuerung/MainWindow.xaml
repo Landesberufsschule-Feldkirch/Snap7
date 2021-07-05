@@ -100,7 +100,7 @@
                     <Button Grid.Column="16" Grid.Row="2" Content="Aus"         ClickMode="Press"  Command="{Binding BtnTaster}" CommandParameter="1"  />
                     <Button Grid.Column="17" Grid.Row="2" Content="Automatik"   ClickMode="Press"  Command="{Binding BtnTaster}" CommandParameter="2"  />
 
-                    <Button Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnz.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
+                    <Button Grid.Column="15" Grid.Row="11"  Grid.RowSpan="2" Content="Reset" Background="Red" ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />

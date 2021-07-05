@@ -27,11 +27,6 @@ namespace LaborGetriebemotor.ViewModel
                 Farbe.Add(Brushes.White);
             }
 
-            ClkMode[12] = ClickMode.Release;     // Öffner
-            ClkMode[14] = ClickMode.Release;
-            ClkMode[17] = ClickMode.Release;
-            ClkMode[19] = ClickMode.Release;
-
             WinkelGetriebemotor = 10;
 
             SpsSichtbar = Visibility.Hidden;

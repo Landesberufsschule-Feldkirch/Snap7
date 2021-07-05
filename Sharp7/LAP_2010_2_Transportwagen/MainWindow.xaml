@@ -69,7 +69,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
-                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnz.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Start" Background="LawnGreen" ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -85,7 +85,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
