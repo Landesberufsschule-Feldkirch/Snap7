@@ -68,7 +68,7 @@
 
                     <Rectangle Fill="LightGray" Grid.Column="12" Grid.ColumnSpan="5" Grid.Row="2"  Grid.RowSpan="12" />
 
-                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="3"  Grid.RowSpan="2" Content="Halt" Background="Red" ClickMode="{Binding ViAnz.ClkMode[11]}" Command="{Binding BtnTaster}" CommandParameter="11" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -76,7 +76,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2" FontSize="14pt">
+                    <Button Grid.Column="13" Grid.Row="6"  Grid.RowSpan="2" Content="Öffnen" Background="LawnGreen" ClickMode="{Binding ViAnz.ClkMode[12]}" Command="{Binding BtnTaster}" CommandParameter="12" FontSize="14pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -84,7 +84,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" FontSize="10pt">
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Schliessen" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[13]}" Command="{Binding BtnTaster}" CommandParameter="13" FontSize="10pt">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -96,24 +96,24 @@
                     <Label Content="S2 " Grid.Column="12" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
                     <Label Content="S3 " Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
 
-                    <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP1}" />
+                    <Ellipse Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[4]}" />
                     <Label Content="P1 " Grid.Column="12" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
                     <Label Content="Schliessen" Grid.Column="13" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="10pt" />
 
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="9" Grid.Row="2" Grid.RowSpan="16" Fill="#eeeeee" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[1]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="6" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" />
                     <Label Content="B1"                                Grid.Column="5" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[2]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="10" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" />
                     <Label Content="B2"                                Grid.Column="9" Grid.Row="10" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,18,0,18" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[3]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="8" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[3]}" />
                     <Label Content="B3"                                Grid.Column="7" Grid.Row="11" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="33,15,0,21" />
-                    <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
+                    <Button Grid.Column="8" Grid.Row="10" Content="Lichtschranke" Background="Yellow" ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" />
 
                     <MediaElement Name="MyMediaElement" Grid.Column="7" Grid.ColumnSpan="3"  Grid.Row="5" Grid.RowSpan="3">
                         <MediaElement.Triggers>
@@ -143,11 +143,11 @@
                         </Image>
                     </Canvas>
 
-                    <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnz.ColorQ1}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
-                    <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnz.ColorQ2}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="2" Grid.Row="13" Background="{Binding ViAnz.Farbe[5]}" Content="Q1 (LL)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="3" Grid.Row="13" Background="{Binding ViAnz.Farbe[6]}" Content="Q2 ( RL )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
-                    <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnz.VisibilityKurzschluss}" />
-                    <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnz.VisibilityKurzschluss}" />
+                    <Ellipse Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="14" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnz.SichtbarEin[20]}" />
+                    <Label Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnz.SichtbarEin[20]}" />
 
                     <Button Grid.Column="18" Grid.Row="2" Width="60" Height="40" Click="PlcButton_OnClick" >
                         <Button.Background>

@@ -28,22 +28,13 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             ZahnstangePosition = _ofentuerSteuerung.PositionZahnstange;
             OfentuerePosition = _ofentuerSteuerung.PositionOfentuere;
 
-            ColorP1 = Brushes.LawnGreen;
-            ColorQ1 = Brushes.LawnGreen;
-            ColorQ2 = Brushes.LawnGreen;
-
             for (var i = 0; i < 100; i++)
             {
-                ClickModeBtn.Add(ClickMode.Press);
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
             }
-
-            VisibilityB1Ein = Visibility.Visible;
-            VisibilityB1Aus = Visibility.Hidden;
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
-            VisibilityB3Ein = Visibility.Visible;
-            VisibilityB3Aus = Visibility.Hidden;
-            VisibilityKurzschluss = Visibility.Hidden;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -55,15 +46,15 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 ZahnstangePosition = _ofentuerSteuerung.PositionZahnstange;
                 ZahnradWinkel = _ofentuerSteuerung.WinkelZahnrad;
 
-                SichtbarkeitB1(_ofentuerSteuerung.B1);
-                SichtbarkeitB2(_ofentuerSteuerung.B2);
-                SichtbarkeitB3(_ofentuerSteuerung.B3);
 
-                FarbeP1(_ofentuerSteuerung.P1);
-                FarbeQ1(_ofentuerSteuerung.Q1);
-                FarbeQ2(_ofentuerSteuerung.Q2);
+                SichtbarkeitUmschalten(_ofentuerSteuerung.B1, 1);
+                SichtbarkeitUmschalten(_ofentuerSteuerung.B2, 2);
+                SichtbarkeitUmschalten(_ofentuerSteuerung.B3, 3);
+                SichtbarkeitUmschalten(_ofentuerSteuerung.Q1 && _ofentuerSteuerung.Q2, 20);
 
-                if (_ofentuerSteuerung.Q1 && _ofentuerSteuerung.Q2) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
+                FarbeUmschalten(_ofentuerSteuerung.P1, 4, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_ofentuerSteuerung.Q1, 5, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_ofentuerSteuerung.Q2, 6, Brushes.LawnGreen, Brushes.White);
 
                 if (_mainWindow.Plc != null)
                 {
@@ -78,6 +69,32 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 3: _ofentuerSteuerung.B3 = !gedrueckt; break;
+                case 11: _ofentuerSteuerung.S1 = !gedrueckt; break;
+                case 12: _ofentuerSteuerung.S2 = gedrueckt; break;
+                case 13: _ofentuerSteuerung.S3 = gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
+
 
         #region SPS Version, Status und Farbe
 
@@ -176,177 +193,44 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
         }
         #endregion OfentuerePosition
 
-        #region Farben
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorP1;
-        public Brush ColorP1
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            get => _colorP1;
+            get => _sichtbarEin;
             set
             {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ1;
-        public Brush ColorQ1
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _colorQ1;
+            get => _sichtbarAus;
             set
             {
-                _colorQ1 = value;
-                OnPropertyChanged(nameof(ColorQ1));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
+        #endregion
 
-        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ2;
-        public Brush ColorQ2
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            get => _colorQ2;
+            get => _farbe;
             set
             {
-                _colorQ2 = value;
-                OnPropertyChanged(nameof(ColorQ2));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
-        #endregion Farben
+        #endregion
 
-        #region Sichtbarkeit 
-        public void SichtbarkeitB1(bool val)
-        {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB1Ein;
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
-            set
-            {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
-            }
-        }
-        private Visibility _visibilityB1Aus;
-        public Visibility VisibilityB1Aus
-        {
-            get => _visibilityB1Aus;
-            set
-            {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
-            }
-        }
-
-        public void SichtbarkeitB2(bool val)
-        {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityB2Ein;
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
-            set
-            {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
-            }
-        }
-        private Visibility _visibilityB2Aus;
-        public Visibility VisibilityB2Aus
-        {
-            get => _visibilityB2Aus;
-            set
-            {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
-            }
-        }
-
-        public void SichtbarkeitB3(bool val)
-        {
-            if (val)
-            {
-                VisibilityB3Ein = Visibility.Visible;
-                VisibilityB3Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB3Ein = Visibility.Hidden;
-                VisibilityB3Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityB3Ein;
-        public Visibility VisibilityB3Ein
-        {
-            get => _visibilityB3Ein;
-            set
-            {
-                _visibilityB3Ein = value;
-                OnPropertyChanged(nameof(VisibilityB3Ein));
-            }
-        }
-        private Visibility _visibilityB3Aus;
-        public Visibility VisibilityB3Aus
-        {
-            get => _visibilityB3Aus;
-            set
-            {
-                _visibilityB3Aus = value;
-                OnPropertyChanged(nameof(VisibilityB3Aus));
-            }
-        }
-
-        private Visibility _visibilityKurzschluss;
-        public Visibility VisibilityKurzschluss
-        {
-            get => _visibilityKurzschluss;
-            set
-            {
-                _visibilityKurzschluss = value;
-                OnPropertyChanged(nameof(VisibilityKurzschluss));
-            }
-        }
-        #endregion Sichtbarkeit 
-
-        #region Taster
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 1: _ofentuerSteuerung.S1 = !gedrueckt; break;
-                case 2: _ofentuerSteuerung.S2 = gedrueckt; break;
-                case 3: _ofentuerSteuerung.S3 = gedrueckt; break;
-                case 4: _ofentuerSteuerung.B3 = !gedrueckt; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
+        #region Taster/Schalter
         public bool ClickModeButton(int tasterId)
         {
             if (ClkMode[tasterId] == ClickMode.Press)
@@ -359,24 +243,21 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-        #endregion Taster
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }
