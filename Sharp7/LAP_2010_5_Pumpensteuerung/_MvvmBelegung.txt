@@ -1,18 +1,24 @@
 
-1		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
-2		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus			
-3		S3		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
-4		S4		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
-5		S5						BtnSchalter			SichtbarEin		SichtbarAus			
-6		S6						BtnSchalter			SichtbarEin		SichtbarAus			
-7		S7						BtnSchalter			SichtbarEin		SichtbarAus			
-8		S8						BtnSchalter			SichtbarEin		SichtbarAus	
+1       B1      			                        SichtbarEin		SichtbarAus
+2       B2      			                        SichtbarEin		SichtbarAus
 
-11		P1		Farbe
-12		P2		Farbe
-13		P3		Farbe
-14		P4		Farbe
-15		P5		Farbe
-16		P6		Farbe
-17		P7		Farbe
-18		P8		Farbe
+3		F1		Farbe			BtnSchalter
+
+4		P1		Farbe
+5		P2		Farbe
+
+6		Q1		Farbe
+
+
+10      Hand
+11		Aus	    ClkMode			BtnTaster
+12		Auto	ClkMode			BtnTaster
+13		S3		ClkMode			BtnTaster
+
+14      Y1                      BtnSchalter
+
+
+20      ZuleitungLinksWaagrecht		Farbe
+21      ZuleitungLinksSenkrecht		Farbe
+22      AbleitungOben		        Farbe
+23      AbleitungUnten		        Farbe

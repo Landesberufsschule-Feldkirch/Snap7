@@ -28,30 +28,11 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
 
             for (var i = 0; i < 100; i++)
             {
-                ClickModeBtn.Add(ClickMode.Press);
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
             }
-
-            ColorThermorelaisF1 = Brushes.LawnGreen;
-
-            ColorAbleitungOben = Brushes.LightBlue;
-            ColorAbleitungUnten = Brushes.LightBlue;
-            ColorZuleitungLinksWaagrecht = Brushes.LightBlue;
-            ColorZuleitungLinksSenkrecht = Brushes.LightBlue;
-
-            ColorCircleP1 = Brushes.LightGray;
-            ColorCircleP2 = Brushes.LightGray;
-
-            VisibilityQ1Ein = Visibility.Visible;
-            VisibilityQ1Aus = Visibility.Hidden;
-
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
-
-            VisibilityY1Ein = Visibility.Visible;
-            VisibilityY1Aus = Visibility.Hidden;
 
             WinkelSchalter = 0;
 
@@ -64,18 +45,19 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         {
             while (true)
             {
-                FarbeTherorelais_F1(_pumpensteuerung.F1);
-                FarbeCircle_P1(_pumpensteuerung.P1);
-                FarbeCircle_P2(_pumpensteuerung.P2);
-                FarbeZuleitungLinksWaagrecht(_pumpensteuerung.Q1);
-                FarbeZuleitungLinksSenkrecht(_pumpensteuerung.Q1);
-                FarbeAbleitungOben(_pumpensteuerung.Pegel > 0.01);
-                FarbeAbleitungUnten(_pumpensteuerung.Pegel > 0.01 && _pumpensteuerung.Y1);
+                FarbeUmschalten(_pumpensteuerung.F1, 3, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_pumpensteuerung.P1, 4, Brushes.LawnGreen, Brushes.LightGray);
+                FarbeUmschalten(_pumpensteuerung.P2, 5, Brushes.Red, Brushes.LightGray);
 
-                SichtbarkeitQ1(_pumpensteuerung.Q1);
-                SichtbarkeitB1(_pumpensteuerung.B1);
-                SichtbarkeitB2(_pumpensteuerung.B2);
-                SichtbarkeitY1(_pumpensteuerung.Y1);
+                FarbeUmschalten(_pumpensteuerung.Q1, 20, Brushes.Blue, Brushes.LightBlue);//FarbeZuleitungLinksWaagrecht
+                FarbeUmschalten(_pumpensteuerung.Q1, 21, Brushes.Blue, Brushes.LightBlue);//FarbeZuleitungLinksSenkrecht
+                FarbeUmschalten(_pumpensteuerung.Pegel > 0.01, 22, Brushes.Blue, Brushes.LightBlue);//FarbeAbleitungOben
+                FarbeUmschalten(_pumpensteuerung.Pegel > 0.01 && _pumpensteuerung.Y1, 23, Brushes.Blue, Brushes.LightBlue);//FarbeAbleitungUnten
+
+                SichtbarkeitUmschalten(_pumpensteuerung.B1, 1);
+                SichtbarkeitUmschalten(_pumpensteuerung.B2, 2);
+                SichtbarkeitUmschalten(_pumpensteuerung.Q1, 6);
+                SichtbarkeitUmschalten(_pumpensteuerung.Y1, 14);
 
                 Margin_1(_pumpensteuerung.Pegel);
 
@@ -93,6 +75,43 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+
+
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 10: _pumpensteuerung.TasterHand(); break;
+                case 11: _pumpensteuerung.TasterAus(); break;
+                case 12: _pumpensteuerung.TasterAutomatik(); break;
+                case 13: _pumpensteuerung.S3 = !gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 3: _pumpensteuerung.F1 = !_pumpensteuerung.F1; break;
+                case 14: _pumpensteuerung.Y1 = !_pumpensteuerung.Y1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
         }
 
         #region SPS Version, Status und Farbe
@@ -172,232 +191,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         }
         #endregion SchalterWinkel
 
-        #region Farben
-        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
-        private Brush _colorThermorelaisF1;
-        public Brush ColorThermorelaisF1
-        {
-            get => _colorThermorelaisF1;
-            set
-            {
-                _colorThermorelaisF1 = value;
-                OnPropertyChanged(nameof(ColorThermorelaisF1));
-            }
-        }
-
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-        private Brush _colorCircleP1;
-        public Brush ColorCircleP1
-        {
-            get => _colorCircleP1;
-            set
-            {
-                _colorCircleP1 = value;
-                OnPropertyChanged(nameof(ColorCircleP1));
-            }
-        }
-
-        public void FarbeCircle_P2(bool val) => ColorCircleP2 = val ? Brushes.Red : Brushes.LightGray;
-        private Brush _colorCircleP2;
-        public Brush ColorCircleP2
-        {
-            get => _colorCircleP2;
-            set
-            {
-                _colorCircleP2 = value;
-                OnPropertyChanged(nameof(ColorCircleP2));
-            }
-        }
-
-        public void FarbeAbleitungOben(bool val) => ColorAbleitungOben = val ? Brushes.Blue : Brushes.LightBlue;
-        private Brush _colorAbleitungOben;
-        public Brush ColorAbleitungOben
-        {
-            get => _colorAbleitungOben;
-            set
-            {
-                _colorAbleitungOben = value;
-                OnPropertyChanged(nameof(ColorAbleitungOben));
-            }
-        }
-
-        public void FarbeAbleitungUnten(bool val) => ColorAbleitungUnten = val ? Brushes.Blue : Brushes.LightBlue;
-        private Brush _colorAbleitungUnten;
-        public Brush ColorAbleitungUnten
-        {
-            get => _colorAbleitungUnten;
-            set
-            {
-                _colorAbleitungUnten = value;
-                OnPropertyChanged(nameof(ColorAbleitungUnten));
-            }
-        }
-
-        public void FarbeZuleitungLinksWaagrecht(bool val) => ColorZuleitungLinksWaagrecht = val ? Brushes.Blue : Brushes.LightBlue;
-        private Brush _colorZuleitungLinksWaagrecht;
-        public Brush ColorZuleitungLinksWaagrecht
-        {
-            get => _colorZuleitungLinksWaagrecht;
-            set
-            {
-                _colorZuleitungLinksWaagrecht = value;
-                OnPropertyChanged(nameof(ColorZuleitungLinksWaagrecht));
-            }
-        }
-
-        public void FarbeZuleitungLinksSenkrecht(bool val) => ColorZuleitungLinksSenkrecht = val ? Brushes.Blue : Brushes.LightBlue;
-        private Brush _colorZuleitungLinksSenkrecht;
-        public Brush ColorZuleitungLinksSenkrecht
-        {
-            get => _colorZuleitungLinksSenkrecht;
-            set
-            {
-                _colorZuleitungLinksSenkrecht = value;
-                OnPropertyChanged(nameof(ColorZuleitungLinksSenkrecht));
-            }
-        }
-
-        #endregion Farben
-
-        #region Sichtbarkeit 
-        public void SichtbarkeitQ1(bool val)
-        {
-            if (val)
-            {
-                VisibilityQ1Ein = Visibility.Visible;
-                VisibilityQ1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityQ1Ein = Visibility.Hidden;
-                VisibilityQ1Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityQ1Ein;
-        public Visibility VisibilityQ1Ein
-        {
-            get => _visibilityQ1Ein;
-            set
-            {
-                _visibilityQ1Ein = value;
-                OnPropertyChanged(nameof(VisibilityQ1Ein));
-            }
-        }
-        private Visibility _visibilityQ1Aus;
-        public Visibility VisibilityQ1Aus
-        {
-            get => _visibilityQ1Aus;
-            set
-            {
-                _visibilityQ1Aus = value;
-                OnPropertyChanged(nameof(VisibilityQ1Aus));
-            }
-        }
-
-        public void SichtbarkeitB1(bool val)
-        {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityB1Ein;
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
-            set
-            {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
-            }
-        }
-        private Visibility _visibilityB1Aus;
-        public Visibility VisibilityB1Aus
-        {
-            get => _visibilityB1Aus;
-            set
-            {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
-            }
-        }
-
-        public void SichtbarkeitB2(bool val)
-        {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityB2Ein;
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
-            set
-            {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
-            }
-        }
-
-        private Visibility _visibilityB2Aus;
-        public Visibility VisibilityB2Aus
-        {
-            get => _visibilityB2Aus;
-            set
-            {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
-            }
-        }
-
-        public void SichtbarkeitY1(bool val)
-        {
-            if (val)
-            {
-                VisibilityY1Ein = Visibility.Visible;
-                VisibilityY1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityY1Ein = Visibility.Hidden;
-                VisibilityY1Aus = Visibility.Visible;
-            }
-        }
-        private Visibility _visibilityY1Ein;
-        public Visibility VisibilityY1Ein
-        {
-            get => _visibilityY1Ein;
-            set
-            {
-                _visibilityY1Ein = value;
-                OnPropertyChanged(nameof(VisibilityY1Ein));
-            }
-        }
-        private Visibility _visibilityY1Aus;
-        public Visibility VisibilityY1Aus
-        {
-            get => _visibilityY1Aus;
-            set
-            {
-                _visibilityY1Aus = value;
-                OnPropertyChanged(nameof(VisibilityY1Aus));
-            }
-        }
-        #endregion Sichtbarkeit 
-
         #region Margin1
         public void Margin_1(double pegel)
         {
@@ -415,36 +208,44 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
         }
         #endregion Margin1
 
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
+        {
+            get => _sichtbarEin;
+            set
+            {
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
+            }
+        }
+
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
+        {
+            get => _sichtbarAus;
+            set
+            {
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
+            }
+        }
+        #endregion
+
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
+        {
+            get => _farbe;
+            set
+            {
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
+            }
+        }
+        #endregion
+
         #region Taster/Schalter
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 0: _pumpensteuerung.TasterHand(); break;
-                case 1: _pumpensteuerung.TasterAus(); break;
-                case 2: _pumpensteuerung.TasterAutomatik(); break;
-                case 3: _pumpensteuerung.S3 = !gedrueckt; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
-        internal void Schalter(object id)
-        {
-            if (id is not string ascii) return;
-
-            var schalterId = short.Parse(ascii);
-
-            switch (schalterId)
-            {
-                case 5: _pumpensteuerung.F1 = !_pumpensteuerung.F1; break;
-                case 6: _pumpensteuerung.Y1 = !_pumpensteuerung.Y1; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
         public bool ClickModeButton(int tasterId)
         {
             if (ClkMode[tasterId] == ClickMode.Press)
@@ -457,17 +258,16 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
         #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members

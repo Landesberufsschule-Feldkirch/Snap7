@@ -19,6 +19,7 @@ namespace LAP_2010_5_Pumpensteuerung.Model
         public Pumpensteuerung()
         {
             F1 = true;
+            S3 = true;
             Pegel = 0.95;
 
             System.Threading.Tasks.Task.Run(PumpensteuerungTask);
