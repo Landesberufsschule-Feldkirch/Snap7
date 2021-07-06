@@ -1,13 +1,18 @@
 
-1		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
-2		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
 
-4       B1                                          SichtbarEin     SichtbarAus
-5		B2						BtnSchalter			SichtbarEin		SichtbarAus         Farbe			
-6		F1						BtnSchalter					                            Farbe	
-7       P1                                                                              Farbe
-8       P2                                                                              Farbe
-9       Q1                                                                              Farbe
-10      Q2                                                                              Farbe
-11      Q3                                                                              Farbe
-12      Kurzschluß                                  SichtbarEin		SichtbarAus 
+1       B1                                          SichtbarEin     SichtbarAus
+2		B2						BtnSchalter			SichtbarEin		SichtbarAus         Farbe	
+		
+3		F1						BtnSchalter					                            Farbe	
+
+4       P1                                                                              Farbe
+5       P2                                                                              Farbe
+
+6       Q1                                                                              Farbe
+7		Q2                                                                              Farbe
+8		Q3                                                                              Farbe
+
+11		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+12		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+
+20      Kurzschluß                                  SichtbarEin		SichtbarAus 

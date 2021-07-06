@@ -41,16 +41,16 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
         {
             while (true)
             {
-                FarbeUmschalten(_kompressoranlage.B2, 5, Brushes.LawnGreen, Brushes.Red);
-                FarbeUmschalten(_kompressoranlage.F1, 6, Brushes.LawnGreen, Brushes.Red);
-                FarbeUmschalten(_kompressoranlage.P1, 7, Brushes.Red, Brushes.White);
-                FarbeUmschalten(_kompressoranlage.P2, 8, Brushes.LawnGreen, Brushes.White);
-                FarbeUmschalten(_kompressoranlage.Q1, 9, Brushes.LawnGreen, Brushes.White);
-                FarbeUmschalten(_kompressoranlage.Q2, 10, Brushes.LawnGreen, Brushes.White);
-                FarbeUmschalten(_kompressoranlage.Q3, 11, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.B2, 2, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_kompressoranlage.F1, 3, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_kompressoranlage.P1, 4, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.P2, 5, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q1, 6, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q2, 7, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kompressoranlage.Q3, 8, Brushes.LawnGreen, Brushes.White);
 
-                SichtbarkeitUmschalten(_kompressoranlage.B1, 4);
-                SichtbarkeitUmschalten(_kompressoranlage.Q2 && _kompressoranlage.Q3, 12);
+                SichtbarkeitUmschalten(_kompressoranlage.B1, 1);
+                SichtbarkeitUmschalten(_kompressoranlage.Q2 && _kompressoranlage.Q3, 20);   // Kurzschluß
 
                 AktuellerDruck = _kompressoranlage.Druck;
 
@@ -87,8 +87,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
             switch (tasterId)
             {
-                case 1: _kompressoranlage.S1 = !gedrueckt; break;
-                case 2: _kompressoranlage.S2 = gedrueckt; break;
+                case 11: _kompressoranlage.S1 = !gedrueckt; break;
+                case 12: _kompressoranlage.S2 = gedrueckt; break;
 
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
@@ -102,8 +102,8 @@ namespace LAP_2010_1_Kompressoranlage.ViewModel
 
             switch (schalterId)
             {
-                case 5: _kompressoranlage.B2 = !_kompressoranlage.B2; break;
-                case 6: _kompressoranlage.F1 = !_kompressoranlage.F1; break;
+                case 2: _kompressoranlage.B2 = !_kompressoranlage.B2; break;
+                case 3: _kompressoranlage.F1 = !_kompressoranlage.F1; break;
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
