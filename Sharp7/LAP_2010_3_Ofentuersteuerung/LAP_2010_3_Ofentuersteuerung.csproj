@@ -64,6 +64,9 @@
     <None Update="ConfigTests\Ofentuersteuerung_1\testEaBelegung.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ConfigTests\Ofentuersteuerung_1\testProgramm.scl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ConfigTests\Ofentuersteuerung_1\testProgramm.st">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
