@@ -72,7 +72,7 @@ namespace LAP_2018_2_Abfuellanlage.Model
                 var anzahlInDerKiste = 0;
                 foreach (var flasche in AlleFlaschen)
                 {
-                    if (flasche.GetBewegungSchritt() == Model.Flaschen.BewegungSchritt.Fertig) anzahlInDerKiste++;
+                    if (flasche.GetBewegungSchritt() == Flaschen.BewegungSchritt.Fertig) anzahlInDerKiste++;
                 }
 
                 FlaschenInDerKiste = anzahlInDerKiste;
@@ -83,7 +83,6 @@ namespace LAP_2018_2_Abfuellanlage.Model
         }
 
         internal void TankNachfuellen() => Pegel = 1;
-        internal void TasterF1() => F1 = !F1;
         internal void AllesReset()
         {
             Pegel = 0.4;
