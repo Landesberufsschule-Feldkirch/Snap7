@@ -10,23 +10,25 @@ namespace LAP_2018_1_Silosteuerung
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Anlage Ein
-            P2,     // Sammelstörung
-            Q1,     // Motorschütz Förderband M1 
-            Q2,     // Freigabe FU M2 (Schneckenförderer)
-            Y1      // Mangnetventil
+            P1 = 0,     // Anlage Ein
+            P2 = 1,     // Sammelstörung
+            Q1 = 2,     // Motorschütz Förderband M1 
+            Q2 = 3,     // Freigabe FU M2 (Schneckenförderer)
+            Y1 = 4      // Mangnetventil
+
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Wagen vorhanden
-            B2,     // Wagen voll
-            F1,     // Motorschutzschalter Förderband
-            F2,     // Motorschutzschalter Schneckenförderer
-            S0,     // Taster Anlage Aus
-            S1,     // Taster Anlage Ein
-            S2,     // Not-Halt
-            S3      // Störungen quittieren
+            B1 = 0,     // Wagen vorhanden
+            B2 = 1,     // Wagen voll
+            F1 = 2,     // Motorschutzschalter Förderband
+            F2 = 3,     // Motorschutzschalter Schneckenförderer
+            S0 = 4,     // Taster Anlage Aus
+            S1 = 5,     // Taster Anlage Ein
+            S2 = 6,     // Not-Halt
+            S3 = 7      // Störungen quittieren
+
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

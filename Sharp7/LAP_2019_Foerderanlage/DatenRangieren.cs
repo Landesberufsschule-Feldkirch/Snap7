@@ -12,28 +12,30 @@ namespace LAP_2019_Foerderanlage
 
         private enum BitPosAusgang
         {
-            K1 = 0, // Materialschieber Silo
-            P1,     // Anlage Ein
-            P2,     //Sammelstörung
-            Q1,  //Förderband Rechtslauf
-            Q2,  // Förderband Linkslauf
-            T1      // Freigabe FU (Schneckenförderer)
+            K1 = 0,     // Materialschieber Silo
+            P1 = 1,     // Anlage Ein
+            P2 = 2,     //Sammelstörung
+            Q1 = 3,     //Förderband Rechtslauf
+            Q2 = 4,     // Förderband Linkslauf
+            T1= 5       // Freigabe FU (Schneckenförderer)
+
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Wagen Position rechts
-            B2,     // Wagen voll
-            F1,     // Störung Motorschutzschalter
-            S0,     // Anlage Aus
-            S1,     // Anlage Ein
-            S2,     // Not-Halt
-            S3,     // Schalter Automatikbetrieb
-            S4,     // Schalter Handbetrieb
-            S5,     // Handbetrieb Förderband RL
-            S6,     // Handbetrieb Förderband LL
-            S7,     // Handbetrieb Schneckenförderer
-            S8      // Handbetrieb Materialschieber
+            B1 = 0,     // Wagen Position rechts
+            B2 = 1,     // Wagen voll
+            F1 = 2,     // Störung Motorschutzschalter
+            S0 = 3,     // Anlage Aus
+            S1 = 4,     // Anlage Ein
+            S2 = 5,     // Not-Halt
+            S3 = 6,     // Schalter Automatikbetrieb
+            S4 = 7,     // Schalter Handbetrieb
+            S5 = 8,     // Handbetrieb Förderband RL
+            S6 = 9,     // Handbetrieb Förderband LL
+            S7 = 10,    // Handbetrieb Schneckenförderer
+            S8= 11      // Handbetrieb Materialschieber
+
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

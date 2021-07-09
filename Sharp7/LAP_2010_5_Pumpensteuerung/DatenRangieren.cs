@@ -9,19 +9,21 @@ namespace LAP_2010_5_Pumpensteuerung
 
         private enum BitPosAusgang
         {
-            P1 = 0, // "Pumpe Ein"
-            P2,     // "Störung"
-            Q1      // Motor Pumpe
+            P1 = 0,     // "Pumpe Ein"
+            P2 = 1,     // "Störung"
+            Q1= 2       // Motor Pumpe
+
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Schwimmerschalter oben
-            B2,     // Schwimmerschalter unten
-            F1,     // Thermorelais
-            S1,     // Wahlschalter Hand
-            S2,     // Wahlschalter Automatik
-            S3      // Störung quittieren
+            B1 = 0,     // Schwimmerschalter oben
+            B2 = 1,     // Schwimmerschalter unten
+            F1 = 2,     // Thermorelais
+            S1 = 3,     // Wahlschalter Hand
+            S2 = 4,     // Wahlschalter Automatik
+            S3 = 5      // Störung quittieren
+
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

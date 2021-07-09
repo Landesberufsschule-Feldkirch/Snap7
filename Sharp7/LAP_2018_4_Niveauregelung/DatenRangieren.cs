@@ -10,22 +10,22 @@ namespace LAP_2018_4_Niveauregelung
         private enum BitPosAusgang
         {
             P1 = 0,
-            P2,
-            P3,
-            Q1,
-            Q2
+            P2 = 1,
+            P3 = 2,
+            Q1 = 3,
+            Q2 = 4
         }
 
         private enum BitPosEingang
         {
             B1 = 0,
-            B2,
-            B3,
-            F1,
-            F2,
-            S1,
-            S2,
-            S3
+            B2 = 1,
+            B3 = 2,
+            F1 = 3,
+            F2 = 4,
+            S1 = 5,
+            S2 = 6,
+            S3 = 7
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

@@ -14,11 +14,11 @@ namespace Blinker
 
         private enum BitPosEingang
         {
-            S1 = 0,  // Frequenz weniger
-            S2,     // f +
-            S3,     // Tastverhältnis weniger
-            S4,     // t +
-            S5      // Reset
+            S1 = 0,     // Frequenz weniger
+            S2 = 1,     // f +
+            S3 = 2,     // Tastverhältnis weniger
+            S4 = 3,     // t +
+            S5 = 4      // Reset
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

@@ -16,20 +16,21 @@ namespace AmpelsteuerungKieswerk
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Ampel links rot
-            P2,     // Ampel links gelb
-            P3,     // Ampel links grün
-            P4,     // Ampel rechts rot
-            P5,     // Ampel rechts gelb
-            P6      // Ampel rechts grün
+            P1 = 0,     // Ampel links rot
+            P2 = 1,     // Ampel links gelb
+            P3 = 2,     // Ampel links grün
+            P4 = 3,     // Ampel rechts rot
+            P5 = 4,     // Ampel rechts gelb
+            P6= 5       // Ampel rechts grün
+
         }
 
         private enum BitPosEingang
         {
             B1 = 0,
-            B2,
-            B3,
-            B4
+            B2 = 1,
+            B3 = 2,
+            B4 = 3
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

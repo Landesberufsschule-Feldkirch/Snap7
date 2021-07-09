@@ -10,16 +10,17 @@ namespace Heizungsregler
 
         private enum BitPosAusgang
         {
-            K1, // Ventil öffnen
-            K2, // Ventil schliessen
-            Q1, // Schütz Kesselpumpe
-            Q2 // Öl-/Gasbrenner
+            K1 = 0, // Ventil öffnen
+            K2 = 1, // Ventil schliessen
+            Q1 = 2, // Schütz Kesselpumpe
+            Q2 = 3  // Öl-/Gasbrenner
         }
 
         private enum BitPosEingang
         {
-            S1 = 0, // Kraftwerk Starten
-            S2      // Kraftwerk Stoppen
+            S1 = 0,     // Kraftwerk Starten
+            S2 = 1     // Kraftwerk Stoppen
+
         }
         
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

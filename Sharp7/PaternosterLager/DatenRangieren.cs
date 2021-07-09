@@ -11,16 +11,16 @@ namespace PaternosterLager
 
         private enum BitPosAusgang
         {
-            Q1 = 0, // Aufwärts
-            Q2      // Abwärts
+            Q1 = 0,     // Aufwärts
+            Q2 = 1      // Abwärts
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Initiator Regal 0
-            B2,     // Initiator irgendein Regal
-            S1,     // Auf
-            S2      // Ab
+            B1 = 0,     // Initiator Regal 0
+            B2 = 1,     // Initiator irgendein Regal
+            S1 = 2,     // Auf
+            S2 = 3      // Ab
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

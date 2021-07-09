@@ -11,20 +11,20 @@ namespace LAP_2018_2_Abfuellanlage
         private enum BitPosAusgang
         {
             K1 = 0,
-            K2,
-            P1,
-            P2,
-            Q1
+            K2 = 1,
+            P1 = 2,
+            P2 = 3,
+            Q1 = 4
         }
 
         private enum BitPosEingang
         {
             B1 = 0,
-            F1,
-            S1,
-            S2,
-            S3,
-            S4
+            F1 = 1,
+            S1 = 2,
+            S2 = 3,
+            S3 = 4,
+            S4 = 5
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

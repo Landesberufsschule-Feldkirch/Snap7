@@ -27,40 +27,18 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            TxtLagerSiloVoll = "Rutsche Voll";
-
-            LagerSiloFarbe = Brushes.Silver;
-
-            ColorF1 = Brushes.LawnGreen;
-            ColorF2 = Brushes.LawnGreen;
-            ColorP1 = Brushes.White;
-            ColorP2 = Brushes.White;
-            ColorQ1 = Brushes.LawnGreen;
-            ColorS2 = Brushes.Red;
-
             for (var i = 0; i < 100; i++)
             {
-                ClickModeBtn.Add(ClickMode.Press);
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
             }
+
+            TxtLagerSiloVoll = "Rutsche Voll";
 
             Margin1 = new Thickness(0, MaterialSiloHoehe * 0.1, 0, 0);
 
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
-
-            VisibilityQ1Ein = Visibility.Visible;
-            VisibilityQ1Aus = Visibility.Hidden;
-
-            VisibilityQ2Ein = Visibility.Visible;
-
-            VisibilityY1Ein = Visibility.Hidden;
-            VisibilityY1Aus = Visibility.Visible;
-
-            VisibilityMaterialOben = Visibility.Hidden;
-            VisibilityMaterialUnten = Visibility.Hidden;
 
             PosWagenBeschriftungLeft = 74;
             PosWagenBeschriftungTop = 106;
@@ -82,26 +60,26 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             {
                 FuellstandSilo(Silosteuerung.Silo.GetFuellstand());
 
-                FarbeF1(Silosteuerung.F1);
-                FarbeF2(Silosteuerung.F2);
+                FarbeUmschalten(Silosteuerung.F1, 3, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(Silosteuerung.F2, 4, Brushes.LawnGreen, Brushes.Red);
 
-                FarbeP1(Silosteuerung.P1);
-                FarbeP2(Silosteuerung.P2);
-                FarbeQ1(Silosteuerung.Q1);
+                FarbeUmschalten(Silosteuerung.P1, 5, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(Silosteuerung.P2, 6, Brushes.Red, Brushes.White);
+                FarbeUmschalten(Silosteuerung.Q1, 7, Brushes.LawnGreen, Brushes.White);
 
-                FarbeS2(Silosteuerung.S2);
-                FarbeLagerSilo(Silosteuerung.RutscheVoll);
+                FarbeUmschalten(Silosteuerung.S2, 12, Brushes.LawnGreen, Brushes.Red);
+
+                FarbeUmschalten(Silosteuerung.RutscheVoll, 32, Brushes.Firebrick, Brushes.LightGray);
+
+                SichtbarkeitUmschalten(Silosteuerung.B1, 1);
+                SichtbarkeitUmschalten(Silosteuerung.B2, 2);
+                SichtbarkeitUmschalten(Silosteuerung.Q1, 7);
+                SichtbarkeitUmschalten(Silosteuerung.Q2, 8);
+                SichtbarkeitUmschalten(Silosteuerung.Y1, 20);
+                SichtbarkeitUmschalten(Silosteuerung.Silo.GetFuellstand() > 0.01, 30);
+                SichtbarkeitUmschalten(Silosteuerung.Silo.GetFuellstand() > 0.01 && Silosteuerung.Y1, 31);
 
                 TxtLagerSiloVoll = Silosteuerung.RutscheVoll ? "LagerSilo Voll" : "LagerSilo Leer";
-
-                SichtbarkeitB1(Silosteuerung.B1);
-                SichtbarkeitB2(Silosteuerung.B2);
-                SichtbarkeitQ1(Silosteuerung.Q1);
-                SichtbarkeitXfu(Silosteuerung.Q2);
-                SichtbarkeitY1(Silosteuerung.Y1);
-
-                SichtbarkeitMaterialOben(Silosteuerung.Silo.GetFuellstand() > 0.01);
-                SichtbarkeitMaterialUnten(Silosteuerung.Silo.GetFuellstand() > 0.01 && Silosteuerung.Y1);
 
                 PositionWagenBeschriftung(Silosteuerung.Wagen.GetPosition());
                 PositionWagen(Silosteuerung.Wagen.GetPosition());
@@ -119,6 +97,46 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 10: Silosteuerung.S0 = !gedrueckt; break;
+                case 11: Silosteuerung.S1 = gedrueckt; break;
+                case 13: Silosteuerung.S3 = gedrueckt; break;
+                case 14: Silosteuerung.WagenNachLinks(); break;
+                case 15: Silosteuerung.WagenNachRechts(); break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 3: Silosteuerung.F1 = !Silosteuerung.F1; break;
+                case 4: Silosteuerung.F2 = !Silosteuerung.F2; break;
+                case 12: Silosteuerung.S2 = !Silosteuerung.S2; break;
+                case 40: Silosteuerung.RutscheVoll = !Silosteuerung.RutscheVoll; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
 
         #region SPS Version, Status und Farbe
 
@@ -179,7 +197,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             }
         }
         #endregion SPS Versionsinfo, Status und Farbe
-        
+
         #region Füllstand Silo
         private string _txtRutscheVoll;
         public string TxtLagerSiloVoll
@@ -221,306 +239,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
         #endregion
 
-        #region Sichtbarkeit
-
-        public void SichtbarkeitMaterialOben(bool val) => VisibilityMaterialOben = val ? Visibility.Visible : Visibility.Hidden;
-
-        private Visibility _visibilityMaterialOben;
-
-        public Visibility VisibilityMaterialOben
-        {
-            get => _visibilityMaterialOben;
-            set
-            {
-                _visibilityMaterialOben = value;
-                OnPropertyChanged(nameof(VisibilityMaterialOben));
-            }
-        }
-
-        public void SichtbarkeitMaterialUnten(bool val) => VisibilityMaterialUnten = val ? Visibility.Visible : Visibility.Hidden;
-
-        private Visibility _visibilityMaterialUnten;
-
-        public Visibility VisibilityMaterialUnten
-        {
-            get => _visibilityMaterialUnten;
-            set
-            {
-                _visibilityMaterialUnten = value;
-                OnPropertyChanged(nameof(VisibilityMaterialUnten));
-            }
-        }
-
-        public void SichtbarkeitB1(bool val)
-        {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB1Ein;
-
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
-            set
-            {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
-            }
-        }
-
-        private Visibility _visibilityB1Aus;
-
-        public Visibility VisibilityB1Aus
-        {
-            get => _visibilityB1Aus;
-            set
-            {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
-            }
-        }
-
-        // ReSharper disable once UnusedMember.Global
-        public void SichtbarkeitB2(bool val)
-        {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB2Ein;
-
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
-            set
-            {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
-            }
-        }
-
-        private Visibility _visibilityB2Aus;
-
-        public Visibility VisibilityB2Aus
-        {
-            get => _visibilityB2Aus;
-            set
-            {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
-            }
-        }
-
-        public void SichtbarkeitQ1(bool val)
-        {
-            if (val)
-            {
-                VisibilityQ1Ein = Visibility.Visible;
-                VisibilityQ1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityQ1Ein = Visibility.Hidden;
-                VisibilityQ1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityQ1Ein;
-
-        public Visibility VisibilityQ1Ein
-        {
-            get => _visibilityQ1Ein;
-            set
-            {
-                _visibilityQ1Ein = value;
-                OnPropertyChanged(nameof(VisibilityQ1Ein));
-            }
-        }
-        private Visibility _visibilityQ1Aus;
-        public Visibility VisibilityQ1Aus
-        {
-            get => _visibilityQ1Aus;
-            set
-            {
-                _visibilityQ1Aus = value;
-                OnPropertyChanged(nameof(VisibilityQ1Aus));
-            }
-        }
-        public void SichtbarkeitXfu(bool val)
-        {
-            if (val)
-            {
-                VisibilityQ2Ein = Visibility.Visible;
-                VisibilityQ2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityQ2Ein = Visibility.Hidden;
-                VisibilityQ2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityQ2Ein;
-        public Visibility VisibilityQ2Ein
-        {
-            get => _visibilityQ2Ein;
-            set
-            {
-                _visibilityQ2Ein = value;
-                OnPropertyChanged(nameof(VisibilityQ2Ein));
-            }
-        }
-        private Visibility _visibilityQ2Aus;
-        public Visibility VisibilityQ2Aus
-        {
-            get => _visibilityQ2Aus;
-            set
-            {
-                _visibilityQ2Aus = value;
-                OnPropertyChanged(nameof(VisibilityQ2Aus));
-            }
-        }
-
-        public void SichtbarkeitY1(bool val)
-        {
-            if (val)
-            {
-                VisibilityY1Ein = Visibility.Visible;
-                VisibilityY1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityY1Ein = Visibility.Hidden;
-                VisibilityY1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityY1Ein;
-        public Visibility VisibilityY1Ein
-        {
-            get => _visibilityY1Ein;
-            set
-            {
-                _visibilityY1Ein = value;
-                OnPropertyChanged(nameof(VisibilityY1Ein));
-            }
-        }
-
-        private Visibility _visibilityY1Aus;
-        public Visibility VisibilityY1Aus
-        {
-            get => _visibilityY1Aus;
-            set
-            {
-                _visibilityY1Aus = value;
-                OnPropertyChanged(nameof(VisibilityY1Aus));
-            }
-        }
-        #endregion Sichtbarkeit
-
-        #region Farben
-        public void FarbeLagerSilo(bool val) => LagerSiloFarbe = val ? Brushes.Firebrick : Brushes.LightGray;
-        private Brush _lagerSiloFarbe;
-        public Brush LagerSiloFarbe
-        {
-            get => _lagerSiloFarbe;
-            set
-            {
-                _lagerSiloFarbe = value;
-                OnPropertyChanged(nameof(LagerSiloFarbe));
-            }
-        }
-        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-        private Brush _colorF1;
-        public Brush ColorF1
-        {
-            get => _colorF1;
-            set
-            {
-                _colorF1 = value;
-                OnPropertyChanged(nameof(ColorF1));
-            }
-        }
-
-        public void FarbeF2(bool val) => ColorF2 = val ? Brushes.LawnGreen : Brushes.Red;
-        private Brush _colorF2;
-        public Brush ColorF2
-        {
-            get => _colorF2;
-            set
-            {
-                _colorF2 = value;
-                OnPropertyChanged(nameof(ColorF2));
-            }
-        }
-
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorP1;
-        public Brush ColorP1
-        {
-            get => _colorP1;
-            set
-            {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
-            }
-        }
-
-        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
-        private Brush _colorP2;
-        public Brush ColorP2
-        {
-            get => _colorP2;
-            set
-            {
-                _colorP2 = value;
-                OnPropertyChanged(nameof(ColorP2));
-            }
-        }
-
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-        private Brush _colorQ1;
-        public Brush ColorQ1
-        {
-            get => _colorQ1;
-            set
-            {
-                _colorQ1 = value;
-                OnPropertyChanged(nameof(ColorQ1));
-            }
-        }
-
-        public void FarbeS2(bool val) => ColorS2 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorS2;
-        public Brush ColorS2
-        {
-            get => _colorS2;
-            set
-            {
-                _colorS2 = value;
-                OnPropertyChanged(nameof(ColorS2));
-            }
-        }
-        #endregion Farben
-
         #region Wagenpublic
         private void PositionWagenBeschriftung(Punkt pos)
         {
@@ -548,7 +266,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenBeschriftungTop));
             }
         }
-        
+
         public void PositionWagen(Punkt pos)
         {
             PosWagenLeft = pos.X;
@@ -575,7 +293,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenTop));
             }
         }
-        
+
         public void PositionWagenInhalt(Punkt pos, double fuellstand)
         {
             PosWagenInhaltLeft = pos.X + 12;
@@ -602,7 +320,7 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
                 OnPropertyChanged(nameof(PosWagenInhaltTop));
             }
         }
-        
+
 
         private double _wagenFuellstand;
         public double WagenFuellstand
@@ -616,40 +334,44 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         }
         #endregion Wagenpublic 
 
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
+        {
+            get => _sichtbarEin;
+            set
+            {
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
+            }
+        }
+
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
+        {
+            get => _sichtbarAus;
+            set
+            {
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
+            }
+        }
+        #endregion
+
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
+        {
+            get => _farbe;
+            set
+            {
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
+            }
+        }
+        #endregion
+
         #region Taster/Schalter
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 0: Silosteuerung.S0 = !gedrueckt; break;
-                case 1: Silosteuerung.S1 = gedrueckt; break;
-                case 3: Silosteuerung.S3 = gedrueckt; break;
-                case 10: Silosteuerung.WagenNachLinks(); break;
-                case 11: Silosteuerung.WagenNachRechts(); break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
-
-        internal void Schalter(object id)
-        {
-            if (id is not string ascii) return;
-
-            var schalterId = short.Parse(ascii);
-
-            switch (schalterId)
-            {
-                case 2: Silosteuerung.S2 = !Silosteuerung.S2; break;
-                case 5: Silosteuerung.F1 = !Silosteuerung.F1; break;
-                case 6: Silosteuerung.F2 = !Silosteuerung.F2; break;
-                case 12: Silosteuerung.RutscheVoll = !Silosteuerung.RutscheVoll; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
         public bool ClickModeButton(int tasterId)
         {
             if (ClkMode[tasterId] == ClickMode.Press)
@@ -662,14 +384,14 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
         #endregion Taster/Schalter
@@ -677,7 +399,6 @@ namespace LAP_2018_1_Silosteuerung.ViewModel
         #region iNotifyPeropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }
