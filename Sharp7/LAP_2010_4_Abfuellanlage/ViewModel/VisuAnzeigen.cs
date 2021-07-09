@@ -28,13 +28,17 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                 SichtbarEin.Add(Visibility.Hidden);
                 SichtbarAus.Add(Visibility.Visible);
                 Farbe.Add(Brushes.White);
+                PosLinks.Add(0.0);
+                PosOben.Add(0.0);
             }
 
-            Margin1 = new Thickness(0, 30, 0, 0);
+            PosBilder(new Punkt(10, 10), 31);
+            PosBilder(new Punkt(20, 20), 32);
+            PosBilder(new Punkt(30, 30), 33);
+            PosBilder(new Punkt(40, 40), 34);
+            PosBilder(new Punkt(50, 50), 35);
 
-            for (var i = 0; i < 10; i++) VisDose.Add(Visibility.Visible);
-            for (var i = 0; i < 10; i++) TopDose.Add(10 + i * 10);
-            for (var i = 0; i < 10; i++) LeftDose.Add(10 + i * 10);
+            Margin1 = new Thickness(0, 30, 0, 0);
 
             SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -51,7 +55,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             {
                 FarbeUmschalten(_abfuellAnlage.P1, 5, Brushes.Red, Brushes.White);
                 FarbeUmschalten(_abfuellAnlage.Q1, 6, Brushes.LawnGreen, Brushes.LightGray);
-                FarbeUmschalten(_abfuellAnlage.Pegel > 0.01, 21,Brushes.Coral, Brushes.LightCoral);
+                FarbeUmschalten(_abfuellAnlage.Pegel > 0.01, 21, Brushes.Coral, Brushes.LightCoral);
 
                 SichtbarkeitUmschalten(_abfuellAnlage.B1, 1);
                 SichtbarkeitUmschalten(_abfuellAnlage.B2, 2);
@@ -63,8 +67,8 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
                 for (var i = 0; i < 5; i++)
                 {
-                    VisibilityDose1(_abfuellAnlage.AlleDosen[i].Sichtbar, i);
-                    PositionDose(_abfuellAnlage.AlleDosen[i].Dose.GetPosition(), i);
+                    SichtbarkeitUmschalten(_abfuellAnlage.AlleDosen[i].Sichtbar, 31 + i);
+                    PosBilder(_abfuellAnlage.AlleDosen[i].Dose.GetPosition(), 31 + i);
                 }
 
                 if (_mainWindow.Plc != null)
@@ -163,48 +167,6 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region EineDose Dosen
-        private void VisibilityDose1(bool v, int id) => VisDose[id] = v ? Visibility.Visible : Visibility.Hidden;
-        private void PositionDose(Punkt p, int id)
-        {
-            LeftDose[id] = (int)p.X;
-            TopDose[id] = (int)p.Y;
-        }
-        private ObservableCollection<int> _topDose = new();
-        public ObservableCollection<int> TopDose
-        {
-            get => _topDose;
-            set
-            {
-                _topDose = value;
-                OnPropertyChanged(nameof(TopDose));
-            }
-        }
-
-        private ObservableCollection<int> _leftDose = new();
-        public ObservableCollection<int> LeftDose
-        {
-            get => _leftDose;
-            set
-            {
-                _leftDose = value;
-                OnPropertyChanged(nameof(LeftDose));
-            }
-        }
-
-        private ObservableCollection<Visibility> _visDose = new();
-        public ObservableCollection<Visibility> VisDose
-        {
-            get => _visDose;
-            set
-            {
-                _visDose = value;
-                OnPropertyChanged(nameof(VisDose));
-            }
-        }
-
-        #endregion EineDose Dosen
-
         #region Margin1
         public void Margin_1(double pegel)
         {
@@ -221,6 +183,37 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             }
         }
         #endregion Margin1
+
+        #region Positionen
+        internal void PosBilder(Punkt pos, Index i)
+        {
+            PosLinks[i] = pos.X;
+            PosOben[i] = pos.Y;
+        }
+
+        private ObservableCollection<double> _posOben = new();
+        public ObservableCollection<double> PosOben
+        {
+            get => _posOben;
+            set
+            {
+                _posOben = value;
+                OnPropertyChanged("PosOben");
+            }
+        }
+
+        private ObservableCollection<double> _posLinks = new();
+        public ObservableCollection<double> PosLinks
+        {
+            get => _posLinks;
+            set
+            {
+                _posLinks = value;
+                OnPropertyChanged("PosLinks");
+            }
+        }
+
+        #endregion Positionen
 
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();

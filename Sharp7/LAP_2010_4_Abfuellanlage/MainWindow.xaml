@@ -157,11 +157,11 @@
                     <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
 
                     <Canvas Grid.Column="2" Grid.ColumnSpan="11" Grid.Row="2" Grid.RowSpan="22">
-                        <Image x:Name="Dose1" Source="Bilder/dose1.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[0]}" Canvas.Top="{Binding ViAnz.TopDose[0]}"  Visibility="{Binding ViAnz.VisDose[1]}" />
-                        <Image x:Name="Dose2" Source="Bilder/dose2.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[1]}" Canvas.Top="{Binding ViAnz.TopDose[1]}"  Visibility="{Binding ViAnz.VisDose[1]}" />
-                        <Image x:Name="Dose3" Source="Bilder/dose3.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[2]}" Canvas.Top="{Binding ViAnz.TopDose[2]}"  Visibility="{Binding ViAnz.VisDose[2]}" />
-                        <Image x:Name="Dose4" Source="Bilder/dose4.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[3]}" Canvas.Top="{Binding ViAnz.TopDose[3]}"  Visibility="{Binding ViAnz.VisDose[3]}" />
-                        <Image x:Name="Dose5" Source="Bilder/dose5.jpg" Height="80" Canvas.Left="{Binding ViAnz.LeftDose[4]}" Canvas.Top="{Binding ViAnz.TopDose[4]}"  Visibility="{Binding ViAnz.VisDose[4]}" />
+                        <Image x:Name="Dose1" Source="Bilder/dose1.jpg" Height="80" Canvas.Left="{Binding ViAnz.PosLinks[31]}" Canvas.Top="{Binding ViAnz.PosOben[31]}"  Visibility="{Binding ViAnz.SichtbarEin[31]}" />
+                        <Image x:Name="Dose2" Source="Bilder/dose2.jpg" Height="80" Canvas.Left="{Binding ViAnz.PosLinks[32]}" Canvas.Top="{Binding ViAnz.PosOben[32]}"  Visibility="{Binding ViAnz.SichtbarEin[32]}" />
+                        <Image x:Name="Dose3" Source="Bilder/dose3.jpg" Height="80" Canvas.Left="{Binding ViAnz.PosLinks[33]}" Canvas.Top="{Binding ViAnz.PosOben[33]}"  Visibility="{Binding ViAnz.SichtbarEin[33]}" />
+                        <Image x:Name="Dose4" Source="Bilder/dose4.jpg" Height="80" Canvas.Left="{Binding ViAnz.PosLinks[34]}" Canvas.Top="{Binding ViAnz.PosOben[34]}"  Visibility="{Binding ViAnz.SichtbarEin[34]}" />
+                        <Image x:Name="Dose5" Source="Bilder/dose5.jpg" Height="80" Canvas.Left="{Binding ViAnz.PosLinks[35]}" Canvas.Top="{Binding ViAnz.PosOben[35]}"  Visibility="{Binding ViAnz.SichtbarEin[35]}" />
                     </Canvas>
                 </Grid>
             </TabItem>

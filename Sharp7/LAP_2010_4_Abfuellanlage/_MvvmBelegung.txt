@@ -16,3 +16,10 @@
 
 20      Ableitung   		                        SichtbarEin		SichtbarAus	
 21      Zuleitung                   Farbe
+
+31		Dose 1
+32		Dose 2
+33		Dose 3
+34		Dose 4
+35		Dose 5
+36		Dose 6
