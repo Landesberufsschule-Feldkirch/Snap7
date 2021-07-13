@@ -14,9 +14,8 @@
             ViAnz = new VisuAnzeigen(mainWindow, Nadeltelegraph);
         }
 
-
-        private ICommand _btnBuchstabe;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBuchstabe => _btnBuchstabe ??= new RelayCommand(ViAnz.Buchstabe);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }
