@@ -22,8 +22,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             Q1 = 10,    // Netzschütz
             Q2 = 11,    // Sternschütz
             Q3 = 12,    // Dreieckschütz
-            Q4= 13      // Lüfter (Ölkühler)
-
+            Q4 = 13      // Lüfter (Ölkühler)
         }
 
         private enum BitPosEingang
@@ -37,8 +36,7 @@ namespace LAP_2018_3_Hydraulikaggregat
             S1 = 6,     // Taster Start
             S2 = 7,     // Taster Stop
             S3 = 8,     // Taster Quittieren
-            S4= 9       // Taster Zylinder
-
+            S4 = 9      // Taster Zylinder
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

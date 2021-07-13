@@ -85,7 +85,7 @@
                     <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="1"  Grid.RowSpan="11" />
 
                     <Label Content="S2 " Grid.Column="18" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Button Grid.Column="19" Grid.Row="2"  Grid.RowSpan="2" Content="Stop" Background="Red" ClickMode="{Binding ViAnz.ClickModeBtnS2}" Command="{Binding BtnS2}" FontSize="14pt" Margin="0,10,0,10">
+                    <Button Grid.Column="19" Grid.Row="2"  Grid.RowSpan="2" Content="Stop" Background="Red" ClickMode="{Binding ViAnz.ClkMode[32]}" Command="{Binding BtnTaster}" CommandParameter="32" FontSize="14pt" Margin="0,10,0,10">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -94,7 +94,7 @@
                     </Button>
 
                     <Label Content="S1 " Grid.Column="16" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Button Grid.Column="17" Grid.Row="2"  Grid.RowSpan="2" Content="Start" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClickModeBtnS1}" Command="{Binding BtnS1}" FontSize="14pt" Margin="0,10,0,10">
+                    <Button Grid.Column="17" Grid.Row="2"  Grid.RowSpan="2" Content="Start" Background="LawnGreen"  ClickMode="{Binding ViAnz.ClkMode[31]}" Command="{Binding BtnTaster}" CommandParameter="31" FontSize="14pt" Margin="0,10,0,10">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -103,7 +103,7 @@
                     </Button>
 
                     <Label Content="S3 " Grid.Column="18" Grid.Row="4" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-                    <Button Grid.Column="19" Grid.Row="4"  Grid.RowSpan="2" Content="Quittieren" Background="White" ClickMode="{Binding ViAnz.ClickModeBtnS3}" Command="{Binding BtnS3}" FontSize="12pt" Margin="0,10,0,0" Height="50" VerticalAlignment="Top">
+                    <Button Grid.Column="19" Grid.Row="4"  Grid.RowSpan="2" Content="Quittieren" Background="White" ClickMode="{Binding ViAnz.ClkMode[33]}" Command="{Binding BtnTaster}" CommandParameter="33" FontSize="12pt" Margin="0,10,0,0" Height="50" VerticalAlignment="Top">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -113,30 +113,30 @@
 
 
                     <Label Content="P1 " Grid.Column="16" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="17" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP1}" Margin="05,5,5,5" />
+                    <Ellipse Grid.Column="17" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[11]}" Margin="05,5,5,5" />
                     <Label Content="Betriebs-" Grid.Column="17" Grid.Row="6" Grid.RowSpan="2" HorizontalAlignment="Center" FontSize="12pt" Margin="0,13,0,0"/>
                     <Label Content="bereit" Grid.Column="17" Grid.Row="6" Grid.RowSpan="2"  HorizontalAlignment="Center" FontSize="12pt" Margin="0,26,0,0"/>
 
                     <Label Content="P2 " Grid.Column="18" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="19" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP2}" Margin="5,5,5,5" />
+                    <Ellipse Grid.Column="19" Grid.Row="6" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[12]}" Margin="5,5,5,5" />
                     <Label Content="Sammel-" Grid.Column="19" Grid.Row="6" Grid.RowSpan="2" HorizontalAlignment="Center" FontSize="11pt" Margin="0,13,0,0" />
                     <Label Content="störung" Grid.Column="19" Grid.Row="6" Grid.RowSpan="2"  HorizontalAlignment="Center" FontSize="11pt" Margin="0,26,0,0" />
 
                     <Label Content="P3 " Grid.Column="16" Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="17" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP3}" Margin="5,5,5,5" />
+                    <Ellipse Grid.Column="17" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[13]}" Margin="5,5,5,5" />
                     <Label Content="Motor-" Grid.Column="17" Grid.Row="8" Grid.RowSpan="2"  HorizontalAlignment="Center" FontSize="11pt" Margin="0,13,0,0"/>
                     <Label Content="störung" Grid.Column="17" Grid.Row="8" Grid.RowSpan="2"  HorizontalAlignment="Center" FontSize="11pt" Margin="0,26,0,0"/>
 
                     <Label Content="P4 " Grid.Column="18" Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="19" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP4}" Margin="5,5,5,5" />
+                    <Ellipse Grid.Column="19" Grid.Row="8" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[14]}" Margin="5,5,5,5" />
                     <Label Content="Überdruck" Grid.Column="19" Grid.Row="8" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="9pt" />
 
                     <Label Content="P5 " Grid.Column="16" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="17" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP5}" Margin="5,5,5,5" />
+                    <Ellipse Grid.Column="17" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[15]}" Margin="5,5,5,5" />
                     <Label Content="Öldruck" Grid.Column="17" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt"/>
 
                     <Label Content="P6 " Grid.Column="18" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt"/>
-                    <Ellipse Grid.Column="19" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorP6}" Margin="5,5,5,5" />
+                    <Ellipse Grid.Column="19" Grid.Row="10" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[16]}" Margin="5,5,5,5" />
                     <Label Content="Ölstand" Grid.Column="19" Grid.Row="10" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" />
                     <!--#endregion Bedienung-->
 
@@ -145,15 +145,15 @@
                     <CheckBox x:Name="ChkOelkuehler" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="12" Grid.RowSpan="2" 
                               Content="Erweiterung Ölkühler" Command="{Binding ErweiterungOelkuehler}" FontSize="14pt" Margin="10,28,0,0"  />
 
-                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="14" Background="{Binding ViAnz.ColorB4}" FontSize="14pt" Content="B4" Command="{Binding BtnB4}" Margin="25,0,0,0" Visibility="Visible" />
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="14" Background="{Binding ViAnz.Farbe[4]}" FontSize="14pt" Content="B4" Command="{Binding BtnSchalter}" CommandParameter="4" Margin="25,0,0,0" Visibility="Visible" />
 
                     <Label Content="P7 " Grid.Column="18" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14pt" Margin="33,0,0,0"/>
-                    <Ellipse Grid.Column="19" Grid.Row="13" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnz.ColorP7}" Margin="5,22,5,23" IsEnabled="False" />
+                    <Ellipse Grid.Column="19" Grid.Row="13" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnz.Farbe[17]}" Margin="5,22,5,23" IsEnabled="False" />
                     <Label Content="Lüfter" Grid.Column="19" Grid.Row="14" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" />
 
                     <Label Content="Q4 " Grid.Column="18" Grid.Row="16" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-                    <Label Grid.Column="19" Grid.Row="16" Background="{Binding ViAnz.ColorQ4}" Content="Lüfter" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
-                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="13" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnz.OelkuehlerAbgedeckt}" />
+                    <Label Grid.Column="19" Grid.Row="16" Background="{Binding ViAnz.Farbe[24]}" Content="Lüfter" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="13" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnz.SichtbarAus[41]}" />
                     <!--#endregion Ölkühler -->
 
                     <!--#region  Zylinder-->
@@ -161,15 +161,15 @@
                     <CheckBox x:Name="ChZylinder" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="18" Grid.RowSpan="2" 
                               Content="Erweiterung Zylinder" Command="{Binding ErweiterungZylinder}" FontSize="14pt" Margin="10,28,0,0"  />
 
-                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="20" Background="{Binding ViAnz.ColorS4}" FontSize="14pt" Content="S4" ClickMode="{Binding ViAnz.ClickModeBtnS4}" Command="{Binding BtnS4}" Margin="25,0,0,0" />
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="20" Background="{Binding ViAnz.Farbe[34]}" FontSize="14pt" Content="S4" ClickMode="{Binding ViAnz.ClkMode[34]}" Command="{Binding BtnTaster}" CommandParameter="34" Margin="25,0,0,0" />
 
                     <Label Content="K1 " Grid.Column="18" Grid.Row="20" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-                    <Label Grid.Column="19" Grid.Row="20" Background="{Binding ViAnz.ColorK1}" Content="Ausfahren" FontSize="9pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
+                    <Label Grid.Column="19" Grid.Row="20" Background="{Binding ViAnz.Farbe[7]}" Content="Ausfahren" FontSize="9pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
 
 
                     <Label Content="K2 " Grid.Column="18" Grid.Row="22" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14pt" />
-                    <Label Grid.Column="19" Grid.Row="22" Background="{Binding ViAnz.ColorK2}" Content="Einfahren" FontSize="9pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
-                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="19" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnz.ZylinderAbgedeckt}" />
+                    <Label Grid.Column="19" Grid.Row="22" Background="{Binding ViAnz.Farbe[8]}" Content="Einfahren" FontSize="9pt" HorizontalContentAlignment="Center"  BorderThickness="1" BorderBrush="Black" />
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="19" Grid.RowSpan="5" Margin="0,22,0,0" Visibility="{Binding ViAnz.SichtbarAus[42]}" />
                     <!--#endregion Zylinder -->
 
                     <!--#region  Ölfilter-->
@@ -177,12 +177,12 @@
                     <CheckBox x:Name="ChkOelfilter" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="24" Grid.RowSpan="2" 
                               Content="Erweiterung Ölfilter" Command="{Binding ErweiterungOelfilter}" FontSize="14pt" Margin="10,28,0,0"  />
 
-                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="26" Background="{Binding ViAnz.ColorB5}" FontSize="14pt" Content="B5" Command="{Binding BtnB5}" Margin="25,0,0,0" />
+                    <Button Grid.Column="16" Grid.ColumnSpan="2" Grid.Row="26" Background="{Binding ViAnz.Farbe[5]}" FontSize="14pt" Content="B5" Command="{Binding BtnSchalter}" CommandParameter="5" Margin="25,0,0,0" />
 
                     <Label Content="P8 " Grid.Column="18" Grid.Row="26" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14pt" Margin="33,0,0,0"/>
-                    <Ellipse Grid.Column="19" Grid.Row="25" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnz.ColorP8}" Margin="5,22,5,23" />
+                    <Ellipse Grid.Column="19" Grid.Row="25" Grid.RowSpan="3" Stroke="Black" Fill="{Binding ViAnz.Farbe[18]}" Margin="5,22,5,23" />
                     <Label Content="Filter" Grid.Column="19" Grid.Row="26" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12pt" />
-                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="25" Grid.RowSpan="3" Margin="0,22,0,0" Visibility="{Binding ViAnz.OelfilterAbgedeckt}" />
+                    <Rectangle Fill="LightGray" Grid.Column="16" Grid.ColumnSpan="5" Grid.Row="25" Grid.RowSpan="3" Margin="0,22,0,0" Visibility="{Binding ViAnz.SichtbarAus[43]}" />
                     <!--#endregion Ölfilter -->
 
                     <!--#endregion rechte Spalte -->
@@ -207,19 +207,19 @@
                     </Border>
                     <Rectangle Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="11" Grid.RowSpan="12" Fill="LightBlue" Margin="{Binding ViAnz.Margin1}" />
 
-                    <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnNachfuellen}" />
+                    <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="12" Content="Nachfüllen!" FontSize="14pt" Command="{Binding BtnTaster}" CommandParameter="35" />
 
 
 
                     <!--#region Motor -->
-                    <Label Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="19" Background="{Binding ViAnz.ColorQ1}" Content="Q1 (Netz)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
-                    <Label Grid.Column="11" Grid.Row="20" Background="{Binding ViAnz.ColorQ2}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
-                    <Label Grid.Column="12" Grid.Row="20" Background="{Binding ViAnz.ColorQ3}" Content="Q3 (△)" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="19" Background="{Binding ViAnz.Farbe[21]}" Content="Q1 (Netz)" FontSize="14pt" HorizontalContentAlignment="Center" BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="11" Grid.Row="20" Background="{Binding ViAnz.Farbe[22]}" Content="Q2 ( Y )" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
+                    <Label Grid.Column="12" Grid.Row="20" Background="{Binding ViAnz.Farbe[23]}" Content="Q3 (△)" FontSize="14pt" HorizontalContentAlignment="Center"  BorderThickness="2" BorderBrush="Black" />
 
-                    <Ellipse Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="18" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnz.VisibilityKurzschluss}" />
-                    <Label Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnz.VisibilityKurzschluss}" Margin="0,18,0,10" />
+                    <Ellipse Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="18" Grid.RowSpan="4" Fill="Red"  Visibility="{Binding ViAnz.SichtbarEin[40]}" />
+                    <Label Grid.Column="13" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="2" VerticalAlignment="Center" FontSize="18pt" Content="Kurzschluss!"  Visibility="{Binding ViAnz.SichtbarEin[40]}" Margin="0,18,0,10" />
 
-                    <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="22" Background="{Binding ViAnz.ColorF1}" FontSize="14pt" Content="F1" Command="{Binding BtnF1}" />
+                    <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="22" Background="{Binding ViAnz.Farbe[6]}" FontSize="14pt" Content="F1" Command="{Binding BtnSchalter}" CommandParameter="6" />
                     <!--#endregion Motor-->
 
                     <Border Grid.Column="7" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="12">
@@ -258,20 +258,20 @@
                         </Polygon.Points>
                     </Polygon>
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[1]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="7" Grid.Row="15" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" />
                     <Label Content="B1"                                Grid.Column="6" Grid.Row="15" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[2]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="13" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" />
                     <Label Content="B2"                                Grid.Column="9" Grid.Row="13" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[3]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="10" Grid.Row="16" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[3]}" />
                     <Label Content="B3"                                Grid.Column="9" Grid.Row="16" FontSize="14pt" Grid.RowSpan="2" VerticalAlignment="Center" Margin="38,10,0,25" />
 
-                    <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="2" Background="{Binding ViAnz.ColorUeberdruck}" FontSize="14pt" 
-                            Content="Überdruck" Command="{Binding BtnUeberdruck}" Margin="5,12,5,12" />
+                    <Button Grid.Column="11" Grid.ColumnSpan="2" Grid.Row="16" Grid.RowSpan="2" Background="{Binding ViAnz.Farbe[3]}" FontSize="14pt" 
+                            Content="Überdruck" Command="{Binding BtnSchalter}" CommandParameter="3" Margin="5,12,5,12" />
 
                     <gaugeControl:GaugeControl x:Name="DruckAnzeige" Grid.Column="10" Grid.ColumnSpan="5"  Grid.Row="3" Grid.RowSpan="9" Margin="20,0,0,0"
                                    GaugeText="Druck" GaugeTextFont="Arial Rounded MT Bold" 

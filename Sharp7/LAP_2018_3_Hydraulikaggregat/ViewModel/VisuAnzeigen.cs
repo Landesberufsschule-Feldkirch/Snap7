@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace LAP_2018_3_Hydraulikaggregat.ViewModel
@@ -22,59 +24,15 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
 
             Druck = 1.1;
 
-            ClickModeBtnB4 = ClickMode.Press;
-            ClickModeBtnB5 = ClickMode.Press;
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            ClickModeBtnQ2 = ClickMode.Press;
-            ClickModeBtnQ3 = ClickMode.Press;
-            ClickModeBtnQ1Q3 = ClickMode.Press;
-
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
-            ClickModeBtnS4 = ClickMode.Press;
-
-            ColorUeberdruck = Brushes.LawnGreen;
-            ColorB4 = Brushes.LawnGreen;
-            ColorB5 = Brushes.LawnGreen;
-
-            ColorK1 = Brushes.LawnGreen;
-            ColorK2 = Brushes.LawnGreen;
-
-            ColorP1 = Brushes.LawnGreen;
-            ColorP2 = Brushes.LawnGreen;
-            ColorP3 = Brushes.LawnGreen;
-            ColorP4 = Brushes.LawnGreen;
-            ColorP5 = Brushes.LawnGreen;
-            ColorP6 = Brushes.LawnGreen;
-            ColorP7 = Brushes.LawnGreen;
-            ColorP8 = Brushes.LawnGreen;
-
-            ColorQ1 = Brushes.LawnGreen;
-            ColorQ2 = Brushes.LawnGreen;
-            ColorQ3 = Brushes.LawnGreen;
-            ColorQ4 = Brushes.LawnGreen;
-
-            ColorS4 = Brushes.LawnGreen;
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
+            }
 
             Margin1 = new Thickness(42, 0, 32, 0);
-
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
-
-            VisibilityB2Ein = Visibility.Hidden;
-            VisibilityB2Aus = Visibility.Visible;
-
-            VisibilityB3Ein = Visibility.Hidden;
-            VisibilityB3Aus = Visibility.Visible;
-
-            VisibilityKurzschluss = Visibility.Hidden;
-
-
-            OelkuehlerAbgedeckt = Visibility.Visible;
-            ZylinderAbgedeckt = Visibility.Visible;
-            OelfilterAbgedeckt = Visibility.Visible;
 
             SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -91,39 +49,38 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             {
                 Druck = _hydraulikaggregat.Druck;
 
-                FarbeUeberdruck(_hydraulikaggregat.B3);
+                FarbeUmschalten(_hydraulikaggregat.B3, 3, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_hydraulikaggregat.B4, 4, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_hydraulikaggregat.B5, 5, Brushes.LawnGreen, Brushes.Red);
 
-                FarbeB4(_hydraulikaggregat.B4);
-                FarbeB5(_hydraulikaggregat.B5);
+                FarbeUmschalten(_hydraulikaggregat.F1, 6, Brushes.LawnGreen, Brushes.Red);
 
-                FarbeF1(_hydraulikaggregat.F1);
+                FarbeUmschalten(_hydraulikaggregat.K1, 7, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.K2, 8, Brushes.Red, Brushes.White);
 
-                FarbeK1(_hydraulikaggregat.K1);
-                FarbeK2(_hydraulikaggregat.K2);
+                FarbeUmschalten(_hydraulikaggregat.P1, 11, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P2, 12, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P3, 13, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P4, 14, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P5, 15, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P6, 16, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P7, 17, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.P8, 18, Brushes.Red, Brushes.White);
 
-                FarbeP1(_hydraulikaggregat.P1);
-                FarbeP2(_hydraulikaggregat.P2);
-                FarbeP3(_hydraulikaggregat.P3);
-                FarbeP4(_hydraulikaggregat.P4);
-                FarbeP5(_hydraulikaggregat.P5);
-                FarbeP6(_hydraulikaggregat.P6);
-                FarbeP7(_hydraulikaggregat.P7);
-                FarbeP8(_hydraulikaggregat.P8);
+                FarbeUmschalten(_hydraulikaggregat.Q1, 21, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.Q2, 22, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.Q3, 23, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_hydraulikaggregat.Q4, 24, Brushes.LawnGreen, Brushes.White);
 
-                FarbeQ1(_hydraulikaggregat.Q1);
-                FarbeQ2(_hydraulikaggregat.Q2);
-                FarbeQ3(_hydraulikaggregat.Q3);
-                FarbeQ4(_hydraulikaggregat.Q4);
+                FarbeUmschalten(_hydraulikaggregat.S4, 34, Brushes.LawnGreen, Brushes.White);
 
-                FarbeS4(_hydraulikaggregat.S4);
+                SichtbarkeitUmschalten(_hydraulikaggregat.B1, 1);
+                SichtbarkeitUmschalten(_hydraulikaggregat.B2, 2);
+                SichtbarkeitUmschalten(_hydraulikaggregat.B3, 3);
 
+                SichtbarkeitUmschalten(_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3, 40);
+             
                 Margin_1(_hydraulikaggregat.Pegel);
-
-                SichtbarkeitB1(_hydraulikaggregat.B1);
-                SichtbarkeitB2(_hydraulikaggregat.B2);
-                SichtbarkeitB3(_hydraulikaggregat.B3);
-
-                if (_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3) VisibilityKurzschluss = Visibility.Visible; else VisibilityKurzschluss = Visibility.Hidden;
 
                 if (_mainWindow.Plc != null)
                 {
@@ -139,39 +96,47 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-
-        internal void BtnQ1Q3()
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        public void SichtbarkeitUmschalten(bool val, int i)
         {
-            if (ClickModeButtonQ1Q3())
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
             {
-                _hydraulikaggregat.Q1 = true;
-                _hydraulikaggregat.Q3 = true;
-            }
-            else
-            {
-                _hydraulikaggregat.Q1 = false;
-                _hydraulikaggregat.Q3 = false;
+                case 31: _hydraulikaggregat.S1 = gedrueckt; break;
+                case 32: _hydraulikaggregat.S2 = !gedrueckt; break;
+                case 33:
+                    _hydraulikaggregat.S3 = gedrueckt;
+                    _hydraulikaggregat.Stopwatch.Restart(); break;
+                case 34: _hydraulikaggregat.S4 = gedrueckt; break;
+                case 35: _hydraulikaggregat.Pegel = 1; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-
-        internal void BtnS1() => _hydraulikaggregat.S1 = ClickModeButtonS1();
-        internal void BtnS2() => _hydraulikaggregat.S2 = !ClickModeButtonS2();
-
-        internal void BtnS3()
+        internal void Schalter(object id)
         {
-            _hydraulikaggregat.Stopwatch.Restart();
-            _hydraulikaggregat.S3 = ClickModeButtonS3();
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 3: _hydraulikaggregat.B3 = !_hydraulikaggregat.B3; break;
+                case 4: _hydraulikaggregat.B4 = !_hydraulikaggregat.B4; break;
+                case 5: _hydraulikaggregat.B5 = !_hydraulikaggregat.B5; break;
+                case 6: _hydraulikaggregat.F1 = !_hydraulikaggregat.F1; break;
+
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
         }
-
-        internal void BtnS4() => _hydraulikaggregat.S4 = ClickModeButtonS4();
-        internal void BtnB4() => _hydraulikaggregat.B4 = ClickModeButtonB4();
-        internal void BtnB5() => _hydraulikaggregat.B5 = ClickModeButtonB5();
-        internal void BtnQ1() => _hydraulikaggregat.Q1 = ClickModeButtonQ1();
-        internal void BtnQ2() => _hydraulikaggregat.Q2 = ClickModeButtonQ2();
-        internal void BtnQ3() => _hydraulikaggregat.Q3 = ClickModeButtonQ3();
-
-
-
 
 
         #region SPS Version, Status und Farbe
@@ -234,534 +199,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
-
-        #region ClickMode
-
-
-        public bool ClickModeButtonB4()
-        {
-            if (ClickModeBtnB4 == ClickMode.Press)
-            {
-                ClickModeBtnB4 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnB4 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnB4;
-
-        public ClickMode ClickModeBtnB4
-        {
-            get => _clickModeBtnB4;
-            set
-            {
-                _clickModeBtnB4 = value;
-                OnPropertyChanged(nameof(ClickModeBtnB4));
-            }
-        }
-
-        public bool ClickModeButtonB5()
-        {
-            if (ClickModeBtnB5 == ClickMode.Press)
-            {
-                ClickModeBtnB5 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnB5 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnB5;
-
-        public ClickMode ClickModeBtnB5
-        {
-            get => _clickModeBtnB5;
-            set
-            {
-                _clickModeBtnB5 = value;
-                OnPropertyChanged(nameof(ClickModeBtnB5));
-            }
-        }
-
-        public bool ClickModeButtonQ1()
-        {
-            if (ClickModeBtnQ1 == ClickMode.Press)
-            {
-                ClickModeBtnQ1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1;
-
-        public ClickMode ClickModeBtnQ1
-        {
-            get => _clickModeBtnQ1;
-            set
-            {
-                _clickModeBtnQ1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1));
-            }
-        }
-
-
-        public bool ClickModeButtonQ2()
-        {
-            if (ClickModeBtnQ2 == ClickMode.Press)
-            {
-                ClickModeBtnQ2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ2;
-
-        public ClickMode ClickModeBtnQ2
-        {
-            get => _clickModeBtnQ2;
-            set
-            {
-                _clickModeBtnQ2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ2));
-            }
-        }
-
-        public bool ClickModeButtonQ3()
-        {
-            if (ClickModeBtnQ3 == ClickMode.Press)
-            {
-                ClickModeBtnQ3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ3;
-
-        public ClickMode ClickModeBtnQ3
-        {
-            get => _clickModeBtnQ3;
-            set
-            {
-                _clickModeBtnQ3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ3));
-            }
-        }
-
-
-        public bool ClickModeButtonQ1Q3()
-        {
-            if (ClickModeBtnQ1Q3 == ClickMode.Press)
-            {
-                ClickModeBtnQ1Q3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnQ1Q3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnQ1Q3;
-
-        public ClickMode ClickModeBtnQ1Q3
-        {
-            get => _clickModeBtnQ1Q3;
-            set
-            {
-                _clickModeBtnQ1Q3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnQ1Q3));
-            }
-        }
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        public bool ClickModeButtonS4()
-        {
-            if (ClickModeBtnS4 == ClickMode.Press)
-            {
-                ClickModeBtnS4 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS4 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS4;
-
-        public ClickMode ClickModeBtnS4
-        {
-            get => _clickModeBtnS4;
-            set
-            {
-                _clickModeBtnS4 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS4));
-            }
-        }
-
-        #endregion ClickMode
-
-        #region Color
-
-        public void FarbeB4(bool val) => ColorB4 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorB4;
-        public Brush ColorB4
-        {
-            get => _colorB4;
-            set
-            {
-                _colorB4 = value;
-                OnPropertyChanged(nameof(ColorB4));
-            }
-        }
-
-
-        public void FarbeB5(bool val) => ColorB5 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorB5;
-        public Brush ColorB5
-        {
-            get => _colorB5;
-            set
-            {
-                _colorB5 = value;
-                OnPropertyChanged(nameof(ColorB5));
-            }
-        }
-
-        public void FarbeF1(bool val) => ColorF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorF1;
-
-        public Brush ColorF1
-        {
-            get => _colorF1;
-            set
-            {
-                _colorF1 = value;
-                OnPropertyChanged(nameof(ColorF1));
-            }
-        }
-
-
-
-
-
-        public void FarbeUeberdruck(bool val) => ColorUeberdruck = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorUeberdruck;
-        public Brush ColorUeberdruck
-        {
-            get => _colorUeberdruck;
-            set
-            {
-                _colorUeberdruck = value;
-                OnPropertyChanged(nameof(ColorUeberdruck));
-            }
-        }
-
-
-        public void FarbeK1(bool val) => ColorK1 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorK1;
-        public Brush ColorK1
-        {
-            get => _colorK1;
-            set
-            {
-                _colorK1 = value;
-                OnPropertyChanged(nameof(ColorK1));
-            }
-        }
-
-        public void FarbeK2(bool val) => ColorK2 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorK2;
-
-        public Brush ColorK2
-        {
-            get => _colorK2;
-            set
-            {
-                _colorK2 = value;
-                OnPropertyChanged(nameof(ColorK2));
-            }
-        }
-
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorP1;
-
-        public Brush ColorP1
-        {
-            get => _colorP1;
-            set
-            {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
-            }
-        }
-
-
-        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorP2;
-
-        public Brush ColorP2
-        {
-            get => _colorP2;
-            set
-            {
-                _colorP2 = value;
-                OnPropertyChanged(nameof(ColorP2));
-            }
-        }
-
-
-        public void FarbeP3(bool val) => ColorP3 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorP3;
-
-        public Brush ColorP3
-        {
-            get => _colorP3;
-            set
-            {
-                _colorP3 = value;
-                OnPropertyChanged(nameof(ColorP3));
-            }
-        }
-
-
-        public void FarbeP4(bool val) => ColorP4 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorP4;
-
-        public Brush ColorP4
-        {
-            get => _colorP4;
-            set
-            {
-                _colorP4 = value;
-                OnPropertyChanged(nameof(ColorP4));
-            }
-        }
-
-
-        public void FarbeP5(bool val) => ColorP5 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorP5;
-
-        public Brush ColorP5
-        {
-            get => _colorP5;
-            set
-            {
-                _colorP5 = value;
-                OnPropertyChanged(nameof(ColorP5));
-            }
-        }
-
-
-        public void FarbeP6(bool val) => ColorP6 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorP6;
-
-        public Brush ColorP6
-        {
-            get => _colorP6;
-            set
-            {
-                _colorP6 = value;
-                OnPropertyChanged(nameof(ColorP6));
-            }
-        }
-
-        public void FarbeP7(bool val) => ColorP7 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorP7;
-        public Brush ColorP7
-        {
-            get => _colorP7;
-            set
-            {
-                _colorP7 = value;
-                OnPropertyChanged(nameof(ColorP7));
-            }
-        }
-
-        public void FarbeP8(bool val) => ColorP8 = val ? Brushes.Red : Brushes.White;
-
-        private Brush _colorP8;
-        public Brush ColorP8
-        {
-            get => _colorP8;
-            set
-            {
-                _colorP8 = value;
-                OnPropertyChanged(nameof(ColorP8));
-            }
-        }
-
-
-
-        public void FarbeQ1(bool val) => ColorQ1 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorQ1;
-
-        public Brush ColorQ1
-        {
-            get => _colorQ1;
-            set
-            {
-                _colorQ1 = value;
-                OnPropertyChanged(nameof(ColorQ1));
-            }
-        }
-
-
-        public void FarbeQ2(bool val) => ColorQ2 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorQ2;
-
-        public Brush ColorQ2
-        {
-            get => _colorQ2;
-            set
-            {
-                _colorQ2 = value;
-                OnPropertyChanged(nameof(ColorQ2));
-            }
-        }
-
-
-        public void FarbeQ3(bool val) => ColorQ3 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorQ3;
-
-        public Brush ColorQ3
-        {
-            get => _colorQ3;
-            set
-            {
-                _colorQ3 = value;
-                OnPropertyChanged(nameof(ColorQ3));
-            }
-        }
-
-        public void FarbeQ4(bool val) => ColorQ4 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorQ4;
-
-        public Brush ColorQ4
-        {
-            get => _colorQ4;
-            set
-            {
-                _colorQ4 = value;
-                OnPropertyChanged(nameof(ColorQ4));
-            }
-        }
-
-
-        public void FarbeS4(bool val) => ColorS4 = val ? Brushes.LawnGreen : Brushes.White;
-
-        private Brush _colorS4;
-        public Brush ColorS4
-        {
-            get => _colorS4;
-            set
-            {
-                _colorS4 = value;
-                OnPropertyChanged(nameof(ColorS4));
-            }
-        }
-
-        #endregion Color
-
+        
         #region Druck
 
         private double _druck;
@@ -798,177 +236,72 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
         #endregion Margin1
-
-        #region Sichtbarkeiten
-
-        public void SichtbarkeitB1(bool val)
+        
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB1Ein;
-
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
+            get => _sichtbarEin;
             set
             {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-        private Visibility _visibilityB1Aus;
-
-        public Visibility VisibilityB1Aus
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _visibilityB1Aus;
+            get => _sichtbarAus;
             set
             {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
+        #endregion
 
-        public void SichtbarkeitB2(bool val)
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB2Ein;
-
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
+            get => _farbe;
             set
             {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
+        #endregion
 
-        private Visibility _visibilityB2Aus;
-
-        public Visibility VisibilityB2Aus
+        #region Taster/Schalter
+        public bool ClickModeButton(int tasterId)
         {
-            get => _visibilityB2Aus;
+            if (ClkMode[tasterId] == ClickMode.Press)
+            {
+                ClkMode[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClkMode[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
+        {
+            get => _clkMode;
             set
             {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
-        public void SichtbarkeitB3(bool val)
-        {
-            if (val)
-            {
-                VisibilityB3Ein = Visibility.Visible;
-                VisibilityB3Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB3Ein = Visibility.Hidden;
-                VisibilityB3Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB3Ein;
-
-        public Visibility VisibilityB3Ein
-        {
-            get => _visibilityB3Ein;
-            set
-            {
-                _visibilityB3Ein = value;
-                OnPropertyChanged(nameof(VisibilityB3Ein));
-            }
-        }
-
-        private Visibility _visibilityB3Aus;
-
-        public Visibility VisibilityB3Aus
-        {
-            get => _visibilityB3Aus;
-            set
-            {
-                _visibilityB3Aus = value;
-                OnPropertyChanged(nameof(VisibilityB3Aus));
-            }
-        }
-
-
-        private Visibility _visibilityKurzschluss;
-
-        public Visibility VisibilityKurzschluss
-        {
-            get => _visibilityKurzschluss;
-            set
-            {
-                _visibilityKurzschluss = value;
-                OnPropertyChanged(nameof(VisibilityKurzschluss));
-            }
-        }
-
-        private Visibility _oelkuehlerAbgedeckt;
-        public Visibility OelkuehlerAbgedeckt
-        {
-            get => _oelkuehlerAbgedeckt;
-            set
-            {
-                _oelkuehlerAbgedeckt = value;
-                OnPropertyChanged(nameof(OelkuehlerAbgedeckt));
-            }
-        }
-
-        private Visibility _zylinderAbgedeckt;
-        public Visibility ZylinderAbgedeckt
-        {
-            get => _zylinderAbgedeckt;
-            set
-            {
-                _zylinderAbgedeckt = value;
-                OnPropertyChanged(nameof(ZylinderAbgedeckt));
-            }
-        }
-
-        private Visibility _oelfilterAbgedeckt;
-        public Visibility OelfilterAbgedeckt
-        {
-            get => _oelfilterAbgedeckt;
-            set
-            {
-                _oelfilterAbgedeckt = value;
-                OnPropertyChanged(nameof(OelfilterAbgedeckt));
-            }
-        }
-
-        #endregion Sichtbarkeit
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }
