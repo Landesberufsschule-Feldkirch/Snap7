@@ -16,8 +16,8 @@ namespace Blinklicht_Fibonacci.ViewModel
             ViAnz = new VisuAnzeigen(mainWindow, BlinklichtFibonacci);
         }
 
-        private ICommand _btnTasterS1;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS1 => _btnTasterS1 ??= new RelayCommand(_ => ViAnz.TasterS1(), _ => true);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(_ => ViAnz.Taster(), _ => true);
     }
 }

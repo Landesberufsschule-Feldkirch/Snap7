@@ -124,7 +124,11 @@ namespace Blinklicht_Fibonacci
         private void Render(object sender, EventArgs e)
         {
             WpfPlot.Plot.Render();
-
+        }
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

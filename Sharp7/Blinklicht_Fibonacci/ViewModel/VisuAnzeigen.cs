@@ -21,9 +21,9 @@ namespace Blinklicht_Fibonacci.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            ClickModeBtnS1 = ClickMode.Press;
+            ClkMode = ClickMode.Press;
 
-            ColorCircleP1 = Brushes.LightGray;
+            Farbe = Brushes.LightGray;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -41,14 +41,14 @@ namespace Blinklicht_Fibonacci.ViewModel
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
 
-                FarbeCircle_P1(_blinklichtFibonacci.P1);
+                FarbeUmschalten(_blinklichtFibonacci.P1);
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void TasterS1() => _blinklichtFibonacci.S1 = ClickModeButtonS1();
+        internal void Taster() => _blinklichtFibonacci.S1 = ClickModeButton();
 
         #region SPS Version, Status und Farbe
 
@@ -112,37 +112,37 @@ namespace Blinklicht_Fibonacci.ViewModel
         #endregion SPS Versionsinfo, Status und Farbe
 
 
-        public bool ClickModeButtonS1()
+        public bool ClickModeButton()
         {
-            if (ClickModeBtnS1 == ClickMode.Press)
+            if (ClkMode == ClickMode.Press)
             {
-                ClickModeBtnS1 = ClickMode.Release;
+                ClkMode = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtnS1 = ClickMode.Press;
+            ClkMode = ClickMode.Press;
             return false;
         }
-        private ClickMode _clickModeBtnS1;
-        public ClickMode ClickModeBtnS1
+        private ClickMode _clkMode;
+        public ClickMode ClkMode
         {
-            get => _clickModeBtnS1;
+            get => _clkMode;
             set
             {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-        private Brush _colorCircleP1;
+        public void FarbeUmschalten(bool val) => Farbe = val ? Brushes.LawnGreen : Brushes.LightGray;
+        private Brush _farbe;
 
-        public Brush ColorCircleP1
+        public Brush Farbe
         {
-            get => _colorCircleP1;
+            get => _farbe;
             set
             {
-                _colorCircleP1 = value;
-                OnPropertyChanged(nameof(ColorCircleP1));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
 
