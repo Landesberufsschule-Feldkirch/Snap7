@@ -14,8 +14,7 @@ namespace Schleifmaschine
             P2 = 1,     // 0.1  Meldeleuchte "Taster schnell"
             P3 = 2,     // 0.2  Meldeleuchte "Störung"
             Q1 = 3,     // 0.3  Schleifmaschine Langsam
-            Q2= 4       // 0.4  Schleifmaschine Schnell
-
+            Q2 = 4      // 0.4  Schleifmaschine Schnell
         }
 
         private enum BitPosEingang
@@ -27,8 +26,7 @@ namespace Schleifmaschine
             S1 = 4,     // 0.4 Taster ( Ⅰ )  
             S2 = 5,     // 0.5 Taster ( Ⅱ )  
             S3 = 6,     // 0.6 Not-Halt
-            S4= 7       // 0.7 Störung quittieren
-
+            S4 = 7      // 0.7 Störung quittieren
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

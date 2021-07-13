@@ -20,16 +20,16 @@ namespace Schleifmaschine.ViewModel
 
             SchleifmaschineDrehzahl = "n=0";
 
-            for (var i = 0; i < 20; i++) ClickMode.Add(System.Windows.Controls.ClickMode.Press);
-
             WinkelSchleifmaschine = 10;
             AktuelleDrehzahl = 0;
 
-            ColorThermorelaisF1 = Brushes.Lavender;
-            ColorThermorelaisF2 = Brushes.Lavender;
-            ColorTasterS3 = Brushes.Lavender;
-
-            VisUebersynchron = Visibility.Hidden;
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
+            }
 
             SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
@@ -44,19 +44,18 @@ namespace Schleifmaschine.ViewModel
             while (true)
             {
                 WinkelSchleifmaschine = _schleifmaschine.WinkelSchleifmaschine;
-
-                FarbeTherorelais_F1(_schleifmaschine.F1);
-                FarbeTherorelais_F2(_schleifmaschine.F2);
-
-                FarbeP1(_schleifmaschine.P1);
-                FarbeP2(_schleifmaschine.P2);
-                FarbeP3(_schleifmaschine.P3);
-                FarbeTasterS3(_schleifmaschine.S3);
-
                 AktuelleDrehzahl = _schleifmaschine.DrehzahlSchleifmaschine;
                 SchleifmaschineDrehzahl = "n=" + _schleifmaschine.DrehzahlSchleifmaschine;
 
-                VisUebersynchron = _schleifmaschine.B1 ? Visibility.Visible : Visibility.Hidden;
+                SichtbarkeitUmschalten(_schleifmaschine.B1, 20);
+
+                FarbeUmschalten(_schleifmaschine.F1, 2, Brushes.LawnGreen, Brushes.Red);
+                FarbeUmschalten(_schleifmaschine.F2, 3, Brushes.LawnGreen, Brushes.Red);
+
+                FarbeUmschalten(_schleifmaschine.P1, 4, Brushes.White, Brushes.LightGray);
+                FarbeUmschalten(_schleifmaschine.P2, 5, Brushes.LawnGreen, Brushes.LightGray);
+                FarbeUmschalten(_schleifmaschine.P3, 6, Brushes.Red, Brushes.LightGray);
+                FarbeUmschalten(_schleifmaschine.S3, 13, Brushes.LawnGreen, Brushes.Red);
 
                 if (_mainWindow.Plc != null)
                 {
@@ -73,6 +72,49 @@ namespace Schleifmaschine.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
+
+
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 10: _schleifmaschine.S0 = !gedrueckt; break;
+                case 11: _schleifmaschine.S1 = gedrueckt; break;
+                case 12: _schleifmaschine.S2 = gedrueckt; break;
+                case 14:
+                    _schleifmaschine.S4 = gedrueckt;
+                    _schleifmaschine.B1 = false;
+                    break;
+
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 2: _schleifmaschine.F1 = !_schleifmaschine.F1; break;
+                case 3: _schleifmaschine.F2 = !_schleifmaschine.F2; break;
+                case 13: _schleifmaschine.S3 = !_schleifmaschine.S3; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
@@ -136,17 +178,6 @@ namespace Schleifmaschine.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        private Visibility _visUebersynchron;
-        public Visibility VisUebersynchron
-        {
-            get => _visUebersynchron;
-            set
-            {
-                _visUebersynchron = value;
-                OnPropertyChanged(nameof(VisUebersynchron));
-            }
-        }
-
         private double _schleifmaschineDrehzahl;
         public string SchleifmaschineDrehzahl
         {
@@ -180,140 +211,72 @@ namespace Schleifmaschine.ViewModel
                 OnPropertyChanged(nameof(AktuelleDrehzahl));
             }
         }
-
-
-        public void FarbeTasterS3(bool val) => ColorTasterS3 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorTasterS3;
-        public Brush ColorTasterS3
+        
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            get => _colorTasterS3;
+            get => _sichtbarEin;
             set
             {
-                _colorTasterS3 = value;
-                OnPropertyChanged(nameof(ColorTasterS3));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-        public void FarbeTherorelais_F1(bool val) => ColorThermorelaisF1 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorThermorelaisF1;
-
-        public Brush ColorThermorelaisF1
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _colorThermorelaisF1;
+            get => _sichtbarAus;
             set
             {
-                _colorThermorelaisF1 = value;
-                OnPropertyChanged(nameof(ColorThermorelaisF1));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
+        #endregion
 
-
-        public void FarbeTherorelais_F2(bool val) => ColorThermorelaisF2 = val ? Brushes.LawnGreen : Brushes.Red;
-
-        private Brush _colorThermorelaisF2;
-
-        public Brush ColorThermorelaisF2
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            get => _colorThermorelaisF2;
+            get => _farbe;
             set
             {
-                _colorThermorelaisF2 = value;
-                OnPropertyChanged(nameof(ColorThermorelaisF2));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
+        #endregion
 
-        public void FarbeP1(bool val) => ColorP1 = val ? Brushes.White : Brushes.LightGray;
-
-        private Brush _colorP1;
-        public Brush ColorP1
-        {
-            get => _colorP1;
-            set
-            {
-                _colorP1 = value;
-                OnPropertyChanged(nameof(ColorP1));
-            }
-        }
-
-        public void FarbeP2(bool val) => ColorP2 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
-        private Brush _colorP2;
-        public Brush ColorP2
-        {
-            get => _colorP2;
-            set
-            {
-                _colorP2 = value;
-                OnPropertyChanged(nameof(ColorP2));
-            }
-        }
-
-        public void FarbeP3(bool val) => ColorP3 = val ? Brushes.Red : Brushes.LightGray;
-
-        private Brush _colorP3;
-        public Brush ColorP3
-        {
-            get => _colorP3;
-            set
-            {
-                _colorP3 = value;
-                OnPropertyChanged(nameof(ColorP3));
-            }
-        }
-
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 0: _schleifmaschine.S0 = !gedrueckt; break;
-                case 1: _schleifmaschine.S1 = gedrueckt; break;
-                case 2: _schleifmaschine.S2 = gedrueckt; break;
-                case 4:
-                    _schleifmaschine.S4 = gedrueckt;
-                    _schleifmaschine.B1 = false;
-                    break;
-            }
-        }
-
+        #region Taster/Schalter
         public bool ClickModeButton(int tasterId)
         {
-            if (System.Windows.Controls.ClkMode[tasterId] == System.Windows.Controls.ClickMode.Press)
+            if (ClkMode[tasterId] == ClickMode.Press)
             {
-                System.Windows.Controls.ClkMode[tasterId] = System.Windows.Controls.ClickMode.Release;
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            System.Windows.Controls.ClkMode[tasterId] = System.Windows.Controls.ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickMode = new();
-        public ObservableCollection<ClickMode> ClickMode
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickMode;
+            get => _clkMode;
             set
             {
-                _clickMode = value;
-                OnPropertyChanged(nameof(ClickMode));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
+        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         #endregion iNotifyPeropertyChanged Members
     }
 }

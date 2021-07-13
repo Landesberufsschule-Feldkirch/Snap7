@@ -107,7 +107,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="15" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅰ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" >
+                            ClickMode="{Binding ViAnz.ClkMode[11]}" Command="{Binding BtnTaster}" CommandParameter="11" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -117,7 +117,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="18"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" Background="Red" 
-                            ClickMode="{Binding ViAnz.ClkMode[0]}" Command="{Binding BtnTaster}" CommandParameter="0" >
+                            ClickMode="{Binding ViAnz.ClkMode[10]}" Command="{Binding BtnTaster}" CommandParameter="10" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -127,7 +127,7 @@
 
                     <Button Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="19" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅱ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2" >
+                            ClickMode="{Binding ViAnz.ClkMode[12]}" Command="{Binding BtnTaster}" CommandParameter="12" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -139,7 +139,7 @@
 
                     <Button Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3" Margin="5,5,5,5" 
                             Content="RESET" FontSize="18pt" Background="Red" 
-                            ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4" Height="85" VerticalAlignment="Center" >
+                            ClickMode="{Binding ViAnz.ClkMode[14]}" Command="{Binding BtnTaster}" CommandParameter="14" Height="85" VerticalAlignment="Center" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -148,30 +148,30 @@
                     </Button>
 
                     
-                    <Rectangle Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisUebersynchron}" Fill="Red"/>
-                    <Label Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Content="Schleifmaschine Übersynchron!" Visibility="{Binding ViAnz.VisUebersynchron}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20pt" />
+                    <Rectangle Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[20]}" Fill="Red"/>
+                    <Label Grid.Column="4" Grid.ColumnSpan="14" Grid.Row="11" Grid.RowSpan="2" Content="Schleifmaschine Übersynchron!" Visibility="{Binding ViAnz.SichtbarEin[20]}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20pt" />
 
 
                     <Label  Grid.Column="11" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3" Content="-P1" FontSize="20pt" VerticalAlignment="Center"  />
                     <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2" />
-                    <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Fill="{Binding ViAnz.ColorP1}" />
+                    <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[4]}" />
                     <Label  Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="15" Grid.RowSpan="3"  Content="langsam" FontSize="18pt" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
 
                     <Label  Grid.Column="11" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3" Content="-P2" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2"/>
-                    <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="{Binding ViAnz.ColorP2}" />
+                    <Ellipse   Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[5]}" />
                     <Label  Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Content="schnell" FontSize="18pt" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                     <Label  Grid.Column="28" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3" Content="-P3" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="30" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2"/>
-                    <Ellipse   Grid.Column="30" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="{Binding ViAnz.ColorP3}" />
+                    <Ellipse   Grid.Column="30" Grid.ColumnSpan="3" Grid.Row="19" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[6]}" />
 
                     <Label  Grid.Column="22" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3" Content="-F1" FontSize="20pt" VerticalAlignment="Center" />
                     <Label  Grid.Column="22" Grid.ColumnSpan="3" Grid.Row="13" Grid.RowSpan="3" Content="-F2" FontSize="20pt" VerticalAlignment="Center" />
                     <Label  Grid.Column="22" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3" Content="-S3" FontSize="20pt" VerticalAlignment="Center" />
 
-                    <Button Grid.Column="24" Grid.ColumnSpan="3"  Grid.Row="10" Grid.RowSpan="3" Background="{Binding ViAnz.ColorThermorelaisF1}" Command="{Binding BtnThermorelaisF1}" Margin="0,15,0,15" >
+                    <Button Grid.Column="24" Grid.ColumnSpan="3"  Grid.Row="10" Grid.RowSpan="3" Background="{Binding ViAnz.Farbe[2]}" Command="{Binding BtnSchalter}" CommandParameter="2" Margin="0,15,0,15" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -179,7 +179,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="24" Grid.ColumnSpan="3"  Grid.Row="13" Grid.RowSpan="3" Background="{Binding ViAnz.ColorThermorelaisF2}"  Command="{Binding BtnThermorelaisF2}" Margin="0,15,0,15">
+                    <Button Grid.Column="24" Grid.ColumnSpan="3"  Grid.Row="13" Grid.RowSpan="3" Background="{Binding ViAnz.Farbe[3]}"  Command="{Binding BtnSchalter}" CommandParameter="3" Margin="0,15,0,15">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -190,7 +190,7 @@
                     <Ellipse Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3"  Fill="Black" />
                     <Ellipse Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3"  Fill="Yellow" Margin="3,3,3,3"/>
                     <Button Grid.Column="24" Grid.ColumnSpan="3" Grid.Row="16" Grid.RowSpan="3" Margin="8,8,8,8"  
-                            Background="{Binding ViAnz.ColorTasterS3}" Command="{Binding BtnS3}" >
+                            Background="{Binding ViAnz.Farbe[13]}" Command="{Binding BtnSchalter}" CommandParameter="13" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50" />

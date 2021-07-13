@@ -1,0 +1,21 @@
+
+1		B1						SichtbarEin		SichtbarAus	
+
+2		F1		Farbe       BtnSchalter
+3       F2      Farbe       BtnSchalter
+
+4		P1		Farbe
+5		P2		Farbe
+6		P3		Farbe
+
+7       Q1		Farbe
+8       Q2		Farbe
+
+10		S0		ClkMode			BtnTaster
+11		S1		ClkMode			BtnTaster
+12		S2		ClkMode			BtnTaster			
+13		S3		ClkMode			BtnTaster	
+14		S4		ClkMode			BtnTaster
+
+
+20      Übersyncrhon		SichtbarEin		SichtbarAus	

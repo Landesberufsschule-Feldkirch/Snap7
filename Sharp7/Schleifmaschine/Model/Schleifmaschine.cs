@@ -59,8 +59,5 @@ namespace Schleifmaschine.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-        internal void ThermorelaisF1() => F1 = !F1;
-        internal void ThermorelaisF2() => F2 = !F2;
-        internal void TasterS3() => S3 = !S3;
     }
 }
