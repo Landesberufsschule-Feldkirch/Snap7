@@ -99,11 +99,5 @@ namespace Blinker
             if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
             else DisplayPlc.Oeffnen();
         }
-        private void Schliessen()
-        {
-            DisplayPlc.TaskBeenden();
-            //TestAutomat.TaskBeenden();
-            Application.Current.Shutdown();
-        }
     }
 }
