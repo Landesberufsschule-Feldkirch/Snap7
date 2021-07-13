@@ -2,7 +2,9 @@
 using ScottPlot;
 using System;
 using System.Drawing;
+using System.Windows;
 using System.Windows.Threading;
+using BeschriftungPlc;
 
 namespace Blinker
 {
@@ -12,6 +14,8 @@ namespace Blinker
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
         public double[] WertLeuchtMelder { get; set; } = new double[5_000];
         public DatenRangieren DatenRangieren { get; set; }
@@ -37,6 +41,9 @@ namespace Blinker
             InitializeComponent();
             DataContext = _viewModel;
 
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
             var befehlszeile = Environment.GetCommandLineArgs();
             Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
                 ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
@@ -46,6 +53,8 @@ namespace Blinker
 
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+            
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             var zeitachse = DataGen.Consecutive(5000);
@@ -83,6 +92,18 @@ namespace Blinker
         {
             WpfPlot.Plot.AxisAuto(0);
             WpfPlot.Render();
+        }
+
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
+        }
+        private void Schliessen()
+        {
+            DisplayPlc.TaskBeenden();
+            //TestAutomat.TaskBeenden();
+            Application.Current.Shutdown();
         }
     }
 }

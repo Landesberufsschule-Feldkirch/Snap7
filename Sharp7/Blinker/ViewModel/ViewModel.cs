@@ -15,26 +15,8 @@ namespace Blinker.ViewModel
             Blinker = new Model.Blinker();
             ViAnz = new VisuAnzeigen(mainWindow, Blinker);
         }
-
-
-        private ICommand _btnTasterS1;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS1 => _btnTasterS1 ??= new RelayCommand(_ => ViAnz.TasterS1(), _ => true);
-
-        private ICommand _btnTasterS2;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS2 => _btnTasterS2 ??= new RelayCommand(_ => ViAnz.TasterS2(), _ => true);
-
-        private ICommand _btnTasterS3;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS3 => _btnTasterS3 ??= new RelayCommand(_ => ViAnz.TasterS3(), _ => true);
-
-        private ICommand _btnTasterS4;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS4 => _btnTasterS4 ??= new RelayCommand(_ => ViAnz.TasterS4(), _ => true);
-
-        private ICommand _btnTasterS5;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS5 => _btnTasterS5 ??= new RelayCommand(_ => ViAnz.TasterS5(), _ => true);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

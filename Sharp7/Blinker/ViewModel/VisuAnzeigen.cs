@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,13 +23,11 @@ namespace Blinker.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            ClickModeBtnS1 = ClickMode.Press;
-            ClickModeBtnS2 = ClickMode.Press;
-            ClickModeBtnS3 = ClickMode.Press;
-            ClickModeBtnS4 = ClickMode.Press;
-            ClickModeBtnS5 = ClickMode.Press;
-
-            ColorCircleP1 = Brushes.LightGray;
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                Farbe.Add(Brushes.White);
+            }
 
             FrequenzAnzeige = "Frequenz: 0Hz";
             TastverhaeltnisAnzeige = "Tastverhältnis: 50%";
@@ -55,18 +55,34 @@ namespace Blinker.ViewModel
                     AusZeitAnzeige = "Auszeit: " + _blinker.AusZeit + "ms";
                 }
 
-                FarbeCircle_P1(_blinker.P1);
+                FarbeUmschalten(_blinker.P1, 1, Brushes.LawnGreen, Brushes.LightGray);
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void TasterS1() => _blinker.S1 = ClickModeButtonS1();
-        internal void TasterS2() => _blinker.S2 = ClickModeButtonS2();
-        internal void TasterS3() => _blinker.S3 = ClickModeButtonS3();
-        internal void TasterS4() => _blinker.S4 = ClickModeButtonS4();
-        internal void TasterS5() => _blinker.S5 = ClickModeButtonS5();
+
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 11: _blinker.S1 = gedrueckt; break;
+                case 12: _blinker.S2 = gedrueckt; break;
+                case 13: _blinker.S3 = gedrueckt; break;
+                case 14: _blinker.S4 = gedrueckt; break;
+                case 15: _blinker.S5 = gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+
 
         #region SPS Version, Status und Farbe
 
@@ -128,144 +144,7 @@ namespace Blinker.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
-
-        #region Buttons
-
-        public bool ClickModeButtonS1()
-        {
-            if (ClickModeBtnS1 == ClickMode.Press)
-            {
-                ClickModeBtnS1 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS1 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS1;
-        public ClickMode ClickModeBtnS1
-        {
-            get => _clickModeBtnS1;
-            set
-            {
-                _clickModeBtnS1 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS1));
-            }
-        }
-
-        public bool ClickModeButtonS2()
-        {
-            if (ClickModeBtnS2 == ClickMode.Press)
-            {
-                ClickModeBtnS2 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS2 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS2;
-        public ClickMode ClickModeBtnS2
-        {
-            get => _clickModeBtnS2;
-            set
-            {
-                _clickModeBtnS2 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS2));
-            }
-        }
-
-        public bool ClickModeButtonS3()
-        {
-            if (ClickModeBtnS3 == ClickMode.Press)
-            {
-                ClickModeBtnS3 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS3 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS3;
-        public ClickMode ClickModeBtnS3
-        {
-            get => _clickModeBtnS3;
-            set
-            {
-                _clickModeBtnS3 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS3));
-            }
-        }
-
-        public bool ClickModeButtonS4()
-        {
-            if (ClickModeBtnS4 == ClickMode.Press)
-            {
-                ClickModeBtnS4 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS4 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS4;
-        public ClickMode ClickModeBtnS4
-        {
-            get => _clickModeBtnS4;
-            set
-            {
-                _clickModeBtnS4 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS4));
-            }
-        }
-
-        public bool ClickModeButtonS5()
-        {
-            if (ClickModeBtnS5 == ClickMode.Press)
-            {
-                ClickModeBtnS5 = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnS5 = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnS5;
-
-        public ClickMode ClickModeBtnS5
-        {
-            get => _clickModeBtnS5;
-            set
-            {
-                _clickModeBtnS5 = value;
-                OnPropertyChanged(nameof(ClickModeBtnS5));
-            }
-        }
-        #endregion
-
-        #region Circle
-
-        public void FarbeCircle_P1(bool val) => ColorCircleP1 = val ? Brushes.LawnGreen : Brushes.LightGray;
-
-        private Brush _colorCircleP1;
-
-        public Brush ColorCircleP1
-        {
-            get => _colorCircleP1;
-            set
-            {
-                _colorCircleP1 = value;
-                OnPropertyChanged(nameof(ColorCircleP1));
-            }
-        }
-
-        #endregion
-
+        
         #region Texte
 
         private string _frequenzAnzeige;
@@ -312,13 +191,48 @@ namespace Blinker.ViewModel
             }
         }
         #endregion
+        
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
+        {
+            get => _farbe;
+            set
+            {
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
+            }
+        }
+        #endregion
+
+        #region Taster/Schalter
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClkMode[tasterId] == ClickMode.Press)
+            {
+                ClkMode[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClkMode[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
+        {
+            get => _clkMode;
+            set
+            {
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
+            }
+        }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

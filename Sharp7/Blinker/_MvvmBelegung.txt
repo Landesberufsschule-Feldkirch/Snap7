@@ -1,0 +1,9 @@
+
+1		P1		Farbe
+
+
+11		S1		ClkMode			BtnTaster
+12		S2		ClkMode			BtnTaster			
+13		S3		ClkMode			BtnTaster	
+14		S4		ClkMode			BtnTaster
+15		S5		ClkMode			BtnTaster
