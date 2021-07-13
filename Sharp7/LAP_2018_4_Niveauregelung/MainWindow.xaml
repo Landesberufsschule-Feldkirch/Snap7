@@ -75,7 +75,7 @@
 
                     <Rectangle Fill="LightGray"         Grid.Column="13" Grid.ColumnSpan="6" Grid.Row="1"  Grid.RowSpan="17" />
 
-                    <Button Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" ClickMode="{Binding ViAnz.ClickModeBtnS1}" Command="{Binding BtnTasterS1}"  Margin="0,30,0,5">
+                    <Button Grid.Column="15" Grid.Row="2"  Grid.RowSpan="3" Content="Start" Background="Green" ClickMode="{Binding ViAnz.ClkMode[21]}" Command="{Binding BtnTaster}" CommandParameter="21" Margin="0,30,0,5">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -83,7 +83,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="17" Grid.Row="2"  Grid.RowSpan="3" Content="Stop" Background="Red" ClickMode="{Binding ViAnz.ClickModeBtnS2}" Command="{Binding BtnTasterS2}"  Margin="0,30,0,5">
+                    <Button Grid.Column="17" Grid.Row="2"  Grid.RowSpan="3" Content="Stop" Background="Red" ClickMode="{Binding ViAnz.ClkMode[22]}" Command="{Binding BtnTaster}" CommandParameter="22"  Margin="0,30,0,5">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -91,7 +91,7 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="{Binding ViAnz.ClickModeBtnS3}" Command="{Binding BtnTasterS3}">
+                    <Button Grid.Column="15" Grid.Row="6"  Grid.RowSpan="2" Content="Reset" Background="BlueViolet" ClickMode="{Binding ViAnz.ClkMode[23]}" Command="{Binding BtnTaster}" CommandParameter="23">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="25" />
@@ -103,9 +103,9 @@
                     <Label Content="S2" Grid.Column="16" Grid.Row="3" Grid.RowSpan="2" Margin="22,22,5,22" />
                     <Label Content="S3" Grid.Column="14" Grid.Row="6" Grid.RowSpan="2" Margin="22,22,5,22" />
 
-                    <Ellipse Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorCircleP1}" />
-                    <Ellipse Grid.Column="15" Grid.Row="12" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorCircleP2}" />
-                    <Ellipse Grid.Column="15" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.ColorCircleP3}" />
+                    <Ellipse Grid.Column="15" Grid.Row="9"  Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[11]}" />
+                    <Ellipse Grid.Column="15" Grid.Row="12" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[12]}" />
+                    <Ellipse Grid.Column="15" Grid.Row="15" Grid.RowSpan="2" Stroke="Black" Fill="{Binding ViAnz.Farbe[13]}" />
 
                     <Label Content="P1" Grid.Column="14"    Grid.Row="9"  Grid.RowSpan="2" Margin="22,22,5,22" />
                     <Label Content="P2" Grid.Column="14"    Grid.Row="12" Grid.RowSpan="2" Margin="22,22,5,22" />
@@ -115,31 +115,31 @@
                     <Label Content="Betrieb"    Grid.Column="15"    Grid.Row="12"   Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     <Label Content="Füllstand"  Grid.Column="15"    Grid.Row="15"   Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                    <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnz.ColorThermorelaisF1}" Command="{Binding BtnThermorelaisF1}" />
-                    <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding ViAnz.ColorThermorelaisF2}" Command="{Binding BtnThermorelaisF2}" />
+                    <Button Grid.Column="4" Grid.ColumnSpan="2"  Grid.Row="2" Content="F1" Background="{Binding ViAnz.Farbe[4]}" Command="{Binding BtnSchalter}" CommandParameter="4" />
+                    <Button Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="2" Content="F2" Background="{Binding ViAnz.Farbe[5]}" Command="{Binding BtnSchalter}" CommandParameter="5"/>
 
                     <Label Content="Q1" Grid.Column="4" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
                     <Label Content="Q2" Grid.Column="8" HorizontalAlignment="Left" Height="35" Grid.Row="4" VerticalAlignment="Top" Width="44" />
 
-                    <Image Source="Bilder/Pumpe_EinWeiss.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.VisibilityQ1Ein}">
+                    <Image Source="Bilder/Pumpe_EinWeiss.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.SichtbarEin[14]}">
                         <Image.RenderTransform>
                             <RotateTransform Angle="90" />
                         </Image.RenderTransform>
                     </Image>
 
-                    <Image Source="Bilder/Pumpe_AusWeiss.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.VisibilityQ1Aus}">
+                    <Image Source="Bilder/Pumpe_AusWeiss.jpg" Grid.Column="5" Grid.ColumnSpan="2"  Grid.Row="4" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.SichtbarAus[14]}">
                         <Image.RenderTransform>
                             <RotateTransform Angle="90" />
                         </Image.RenderTransform>
                     </Image>
 
-                    <Image Source="Bilder/Pumpe_EinWeiss.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding ViAnz.VisibilityQ2Ein}">
+                    <Image Source="Bilder/Pumpe_EinWeiss.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2"  Panel.ZIndex="9" Visibility="{Binding ViAnz.SichtbarEin[15]}">
                         <Image.RenderTransform>
                             <RotateTransform Angle="270" />
                         </Image.RenderTransform>
                     </Image>
 
-                    <Image Source="Bilder/Pumpe_AusWeiss.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.VisibilityQ2Aus}">
+                    <Image Source="Bilder/Pumpe_AusWeiss.jpg" Grid.Column="8" Grid.ColumnSpan="2"  Grid.Row="6" Grid.RowSpan="2" Panel.ZIndex="9" Visibility="{Binding ViAnz.SichtbarAus[15]}">
                         <Image.RenderTransform>
                             <RotateTransform Angle="270" />
                         </Image.RenderTransform>
@@ -162,16 +162,16 @@
                     <Label Content="B2" Grid.Column="9" Grid.Row="12"  Margin="0,10,0,0"  Panel.ZIndex="9" />
                     <Label Content="B3" Grid.Column="9" Grid.Row="8"  Margin="0,10,0,0"  Panel.ZIndex="9" />
 
-                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Aus}" />
-                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB1Ein}" />
+                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" />
+                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="14" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" />
 
-                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Aus}" />
-                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB2Ein}" />
+                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" />
+                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="11" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" />
 
-                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Aus}" />
-                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnz.VisibilityB3Ein}" />
+                    <Image Source="Bilder/SchwimmerschalterWeiss.jpg"              Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[3]}" />
+                    <Image Source="Bilder/Schwimmerschalter_BetaetigtWeiss.jpg"    Grid.Column="9" Grid.Row="7"  Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[3]}" />
 
-                    <Button Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" Command="{Binding BtnVentilY1}" />
+                    <Button Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" Command="{Binding BtnSchalter}" CommandParameter="30" />
                     <Image Source="Bilder/VentilElektrischEinWeiss.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnz.VisibilityVentilEin}" />
                     <Image Source="Bilder/VentilElektrischAusWeiss.jpg" Grid.Column="6" Grid.ColumnSpan="2"  Grid.Row="17" Visibility="{Binding ViAnz.VisibilityVentilAus}" />
 
