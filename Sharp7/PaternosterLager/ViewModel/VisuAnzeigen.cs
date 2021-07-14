@@ -18,27 +18,24 @@ namespace PaternosterLager.ViewModel
             _mainWindow = mw;
             _paternosterlager = pa;
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
-
-            ClickModeBtnAuf = ClickMode.Press;
-            ClickModeBtnAb = ClickMode.Press;
-
             IstPosition = "00";
             SollPosition = "00";
-            VisibilityB1Ein = Visibility.Hidden;
-            VisibilityB1Aus = Visibility.Visible;
 
-            VisibilityB2Ein = Visibility.Visible;
-            VisibilityB2Aus = Visibility.Hidden;
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+            }
+
+            AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
+            for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
 
             SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
-
-            AlleKettengliedRegale = new ObservableCollection<KettengliedRegal>();
-            for (var i = 0; i < anzahlKisten; i++) AlleKettengliedRegale.Add(new KettengliedRegal(i, anzahlKisten));
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -52,8 +49,8 @@ namespace PaternosterLager.ViewModel
                 IstPosition = _paternosterlager.IstPos.ToString("D2");
                 SollPosition = _paternosterlager.SollPos.ToString("D2");
 
-                SichtbarkeitB1(_paternosterlager.B1);
-                SichtbarkeitB2(_paternosterlager.B2);
+                SichtbarkeitUmschalten(_paternosterlager.B1, 1);
+                SichtbarkeitUmschalten(_paternosterlager.B2, 2);
 
                 if (_mainWindow.FensterAktiv)
                 {
@@ -77,18 +74,29 @@ namespace PaternosterLager.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void Buchstabe(object buchstabe)
+       
+        internal void SichtbarkeitUmschalten(bool val, int i)
         {
-            if (!(buchstabe is string ascii)) return;
-
-            var asciiCode = ascii[0];
-            _paternosterlager.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
         }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
 
-        internal void TasterAuf() => _paternosterlager.ManualAuf = ClickModeButtonAuf();
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+            var asciiCode = ascii[0];
 
-        internal void TasterAb() => _paternosterlager.ManualAb = ClickModeButtonAb();
+            if (tasterId == 99)
+            {
+                _paternosterlager.Position = 0;
+            }
+            else
+            {
+                _paternosterlager.Zeichen = gedrueckt ? asciiCode : ' ';
+            }
+        }
 
         #region SPS Version, Status und Farbe
 
@@ -126,7 +134,6 @@ namespace PaternosterLager.ViewModel
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -138,7 +145,6 @@ namespace PaternosterLager.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -148,97 +154,10 @@ namespace PaternosterLager.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region Sichtbarkeit B1
-
-        public void SichtbarkeitB1(bool val)
-        {
-            if (val)
-            {
-                VisibilityB1Ein = Visibility.Visible;
-                VisibilityB1Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB1Ein = Visibility.Hidden;
-                VisibilityB1Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB1Ein;
-
-        public Visibility VisibilityB1Ein
-        {
-            get => _visibilityB1Ein;
-            set
-            {
-                _visibilityB1Ein = value;
-                OnPropertyChanged(nameof(VisibilityB1Ein));
-            }
-        }
-
-        private Visibility _visibilityB1Aus;
-
-        public Visibility VisibilityB1Aus
-        {
-            get => _visibilityB1Aus;
-            set
-            {
-                _visibilityB1Aus = value;
-                OnPropertyChanged(nameof(VisibilityB1Aus));
-            }
-        }
-
-        #endregion Sichtbarkeit B1
-
-        #region Sichtbarkeit B2
-
-        public void SichtbarkeitB2(bool val)
-        {
-            if (val)
-            {
-                VisibilityB2Ein = Visibility.Visible;
-                VisibilityB2Aus = Visibility.Hidden;
-            }
-            else
-            {
-                VisibilityB2Ein = Visibility.Hidden;
-                VisibilityB2Aus = Visibility.Visible;
-            }
-        }
-
-        private Visibility _visibilityB2Ein;
-
-        public Visibility VisibilityB2Ein
-        {
-            get => _visibilityB2Ein;
-            set
-            {
-                _visibilityB2Ein = value;
-                OnPropertyChanged(nameof(VisibilityB2Ein));
-            }
-        }
-
-        private Visibility _visibilityB2Aus;
-
-        public Visibility VisibilityB2Aus
-        {
-            get => _visibilityB2Aus;
-            set
-            {
-                _visibilityB2Aus = value;
-                OnPropertyChanged(nameof(VisibilityB2Aus));
-            }
-        }
-
-        #endregion Sichtbarkeit B2
-
         #region KettengliederRegale
-
         private ObservableCollection<KettengliedRegal> _alleKettengliedRegale = new();
-
         public ObservableCollection<KettengliedRegal> AlleKettengliedRegale
         {
             get => _alleKettengliedRegale;
@@ -248,96 +167,11 @@ namespace PaternosterLager.ViewModel
                 OnPropertyChanged(nameof(AlleKettengliedRegale));
             }
         }
-
         #endregion KettengliederRegale
+        
 
-        #region ClickModeAlleButtons
-
-        public bool ClickModeButton(int asciiCode)
-        {
-            if (ClkMode[asciiCode] == ClickMode.Press)
-            {
-                ClkMode[asciiCode] = ClickMode.Release;
-                return true;
-            }
-
-            ClkMode[asciiCode] = ClickMode.Press;
-            return false;
-        }
-
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
-        {
-            get => _clickModeBtn;
-            set
-            {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
-            }
-        }
-
-        #endregion ClickModeAlleButtons
-
-        #region ClickModeBtnAuf
-
-        public bool ClickModeButtonAuf()
-        {
-            if (ClickModeBtnAuf == ClickMode.Press)
-            {
-                ClickModeBtnAuf = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnAuf = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnAuf;
-
-        public ClickMode ClickModeBtnAuf
-        {
-            get => _clickModeBtnAuf;
-            set
-            {
-                _clickModeBtnAuf = value;
-                OnPropertyChanged(nameof(ClickModeBtnAuf));
-            }
-        }
-
-        #endregion ClickModeBtnAuf
-
-        #region ClickModeBtnAb
-
-        public bool ClickModeButtonAb()
-        {
-            if (ClickModeBtnAb == ClickMode.Press)
-            {
-                ClickModeBtnAb = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnAb = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnAb;
-
-        public ClickMode ClickModeBtnAb
-        {
-            get => _clickModeBtnAb;
-            set
-            {
-                _clickModeBtnAb = value;
-                OnPropertyChanged(nameof(ClickModeBtnAb));
-            }
-        }
-
-        #endregion ClickModeBtnAb
-
-        #region IstPosition
-
+        #region Position
         private string _istPosition;
-
         public string IstPosition
         {
             get => _istPosition;
@@ -348,12 +182,7 @@ namespace PaternosterLager.ViewModel
             }
         }
 
-        #endregion IstPosition
-
-        #region SollPosition
-
         private string _sollPosition;
-
         public string SollPosition
         {
             get => _sollPosition;
@@ -363,15 +192,60 @@ namespace PaternosterLager.ViewModel
                 OnPropertyChanged(nameof(SollPosition));
             }
         }
+        #endregion Position
 
-        #endregion SollPosition
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
+        {
+            get => _sichtbarEin;
+            set
+            {
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
+            }
+        }
+
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
+        {
+            get => _sichtbarAus;
+            set
+            {
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
+            }
+        }
+        #endregion
+
+        #region Taster/Schalter
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClkMode[tasterId] == ClickMode.Press)
+            {
+                ClkMode[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClkMode[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
+        {
+            get => _clkMode;
+            set
+            {
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
+            }
+        }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

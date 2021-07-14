@@ -2,8 +2,6 @@
 
 namespace PaternosterLager
 {
-    using Sharp7;
-
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;
@@ -35,14 +33,12 @@ namespace PaternosterLager
                 _plc.SetUsIntAt(datenstruktur.DigInput, 1, (byte)_viewModel.Paternosterlager.Zeichen);
             }
 
-
             _viewModel.Paternosterlager.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Paternosterlager.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
             _viewModel.Paternosterlager.IstPos = _plc.GetUsIntAt(datenstruktur.DigOutput, 1);
             _viewModel.Paternosterlager.SollPos = _plc.GetUsIntAt(datenstruktur.DigOutput, 2);
         }
-
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }

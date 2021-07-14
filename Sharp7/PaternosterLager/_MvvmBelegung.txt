@@ -1,0 +1,18 @@
+
+
+1		B1						SichtbarEin		SichtbarAus	
+2		B2						SichtbarEin		SichtbarAus	
+
+
+13      START               BtnTaster
+48      "0"                 BtnTaster
+49      "1"                 BtnTaster
+50      "2"                 BtnTaster
+51      "3"                 BtnTaster
+52      "4"                 BtnTaster
+53      "5"                 BtnTaster
+54      "6"                 BtnTaster
+55      "7"                 BtnTaster
+56      "8"                 BtnTaster
+57      "9"                 BtnTaster
+99      RESET               BtnTaster
