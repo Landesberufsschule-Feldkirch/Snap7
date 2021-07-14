@@ -24,16 +24,13 @@ namespace Parkhaus.Model
         public bool ParkhausSpalte7 { get; set; }
         public bool ParkhausSpalte8 { get; set; }
 
-
         public Parkhaus()
         {
             var random = new Random();
             random.NextBytes(BesetzteParkPlaetze);
 
             System.Threading.Tasks.Task.Run(ParkhausTask);
-
         }
-
         private void ParkhausTask()
         {
             while (true)
@@ -55,8 +52,7 @@ namespace Parkhaus.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal int GesetzteBitZaehlen(byte wert)
+        internal static int GesetzteBitZaehlen(byte wert)
         {
             var ergebnis = 0;
             for (var i = 0; i < 8; i++)
@@ -66,9 +62,7 @@ namespace Parkhaus.Model
             }
             return ergebnis;
         }
-
-        internal (bool b0, bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7) AlleBitLesen(
-            byte parkPlaetzte)
+        internal static (bool b0, bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7) AlleBitLesen(byte parkPlaetzte)
         {
             var b0 = BitMaskierenByte(parkPlaetzte, 0);
             var b1 = BitMaskierenByte(parkPlaetzte, 1);
@@ -81,12 +75,10 @@ namespace Parkhaus.Model
 
             return (b0, b1, b2, b3, b4, b5, b6, b7);
         }
-
-        internal bool BitMaskierenByte(byte parkPlaetzte, int i)
+        internal static bool BitMaskierenByte(byte parkPlaetzte, int i)
         {
             var bitMuster = (byte)(1 << i % 8);
             return (parkPlaetzte & bitMuster) == bitMuster;
         }
-
     }
 }

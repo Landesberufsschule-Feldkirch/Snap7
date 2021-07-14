@@ -87,19 +87,19 @@
 
         <Canvas Grid.Column="1" Grid.ColumnSpan="11" Grid.Row="1" Grid.RowSpan="11">
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto1Left}" Canvas.Top="{Binding ViAnz.PosAuto1Top}" Command="{Binding BtnAuto1}"  IsEnabled="{Binding ViAnz.EnableAuto1}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto1Left}" Canvas.Top="{Binding ViAnz.PosAuto1Top}" Command="{{Binding BtnTaster1}"  IsEnabled="{Binding ViAnz.EnableAuto1}">
                 <Image Width="80" Source="Bilder/auto_1.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto2Left}" Canvas.Top="{Binding ViAnz.PosAuto2Top}" Command="{Binding BtnAuto2}"  IsEnabled="{Binding ViAnz.EnableAuto2}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto2Left}" Canvas.Top="{Binding ViAnz.PosAuto2Top}" Command="{{Binding BtnTaster2}"  IsEnabled="{Binding ViAnz.EnableAuto2}">
                 <Image Width="80" Source="Bilder/auto_2.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto3Left}" Canvas.Top="{Binding ViAnz.PosAuto3Top}" Command="{Binding BtnAuto3}"  IsEnabled="{Binding ViAnz.EnableAuto3}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto3Left}" Canvas.Top="{Binding ViAnz.PosAuto3Top}" Command="{{Binding BtnTaster3}"  IsEnabled="{Binding ViAnz.EnableAuto3}">
                 <Image Width="80" Source="Bilder/auto_3.jpg" />
             </Button>
 
-            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto4Left}" Canvas.Top="{Binding ViAnz.PosAuto4Top}" Command="{Binding BtnAuto4}"  IsEnabled="{Binding ViAnz.EnableAuto4}">
+            <Button Background="White" Foreground="White" BorderBrush="White" Canvas.Left="{Binding ViAnz.PosAuto4Left}" Canvas.Top="{Binding ViAnz.PosAuto4Top}" Command="{{Binding BtnTaster4}"  IsEnabled="{Binding ViAnz.EnableAuto4}">
                 <Image Width="80" Source="Bilder/auto_4.jpg" />
             </Button>
 

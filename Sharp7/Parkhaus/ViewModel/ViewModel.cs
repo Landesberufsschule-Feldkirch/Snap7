@@ -13,14 +13,8 @@
             ViAnz = new VisuAnzeigen(mainWindow, Parkhaus);
         }
 
-
-        private ICommand _btnAuto;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnAuto => _btnAuto ??= new RelayCommand(ViAnz.ClickAuto);
-
-
-        private ICommand _btnTasterZufall;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterZufall => _btnTasterZufall ??= new RelayCommand(_ => ViAnz.TasterZufall(), _ => true);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

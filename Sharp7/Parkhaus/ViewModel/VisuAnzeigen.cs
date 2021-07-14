@@ -28,29 +28,28 @@ namespace Parkhaus.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            for (var i = 0; i < 100; i++) FarbeSensor.Add(Brushes.LightGray);
-            for (var i = 0; i < 100; i++) AutoSichtbar.Add(Visibility.Visible);
-
-            ColorP0 = Brushes.LightGray;
-            ClickModeBtnZufall = ClickMode.Press;
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
+            }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
 
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-
                 AnzahlFreieParkplaetze = _parkhaus.FreieParkplaetze.ToString();
                 AnzahlFreieParkplaetzeSoll = $"( {_parkhaus.FreieParkplaetzeSoll} )";
 
                 for (var i = 0; i < 50; i++)
                 {
-                    AutoSichtbar[i] = BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i) ? Visibility.Visible : Visibility.Hidden;
-
-                    FarbeSensor[i] = AutoSichtbar[i] == Visibility.Visible ? Brushes.Red : Brushes.LawnGreen;
+                    SichtbarkeitUmschalten(BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i), i);
+                    FarbeUmschalten(BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i), i, Brushes.Red, Brushes.LawnGreen);
                 }
 
                 if (_mainWindow.Plc != null)
@@ -67,15 +66,22 @@ namespace Parkhaus.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
+        internal static void BitInvertieren(byte[] besetzteParkPlaetzte, int i)
+        {
+            var ibyte = i / 8;
+            var bitMuster = (byte)(1 << i % 8);
 
-        internal bool BitMaskierenArray(byte[] besetzteParkPlaetzte, int i)
+            if ((besetzteParkPlaetzte[ibyte] & bitMuster) == bitMuster) besetzteParkPlaetzte[ibyte] &= (byte)~bitMuster;
+            else besetzteParkPlaetzte[ibyte] |= bitMuster;
+        }
+
+        internal static bool BitMaskierenArray(byte[] besetzteParkPlaetzte, int i)
         {
             var ibyte = i / 8;
             var bitMuster = (byte)(1 << i % 8);
 
             return (besetzteParkPlaetzte[ibyte] & bitMuster) == bitMuster;
         }
-
 
         #region SPS Version, Status und Farbe
 
@@ -138,53 +144,31 @@ namespace Parkhaus.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
-
-        internal void TasterZufall()
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
         {
-            if (ClickModeButtonZufall())
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+            var tasterId = short.Parse(ascii);
+            if (!ClickModeButton(tasterId)) return;
+
+            switch (tasterId)
             {
-                // eine neue Anordnung der Auto errechnen
-                _random.NextBytes(_parkhaus.BesetzteParkPlaetze);
+                case < 40:
+                    BitInvertieren(_parkhaus.BesetzteParkPlaetze, tasterId);
+                    break;
+                case 99:
+                    _random.NextBytes(_parkhaus.BesetzteParkPlaetze);
+                    break;
             }
         }
 
-
-        public bool ClickModeButtonZufall()
-        {
-            if (ClickModeBtnZufall == ClickMode.Press)
-            {
-                ClickModeBtnZufall = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtnZufall = ClickMode.Press;
-            return false;
-        }
-
-        private ClickMode _clickModeBtnZufall;
-        public ClickMode ClickModeBtnZufall
-        {
-            get => _clickModeBtnZufall;
-            set
-            {
-                _clickModeBtnZufall = value;
-                OnPropertyChanged(nameof(ClickModeBtnZufall));
-            }
-        }
-
-
-        internal void ClickAuto(object auto)
-        {
-            if (!(auto is string nrAuto)) return;
-
-            var autoNummer = Convert.ToInt32(nrAuto);
-            AutoSichtbar[autoNummer] = AutoSichtbar[autoNummer] == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
-        }
-
-
+        #region Freie Parkplätze
         private string _anzahlFreieParkplaetze;
-
         public string AnzahlFreieParkplaetze
         {
             get => _anzahlFreieParkplaetze;
@@ -196,7 +180,6 @@ namespace Parkhaus.ViewModel
         }
 
         private string _anzahlFreieParkplaetzeSoll;
-
         public string AnzahlFreieParkplaetzeSoll
         {
             get => _anzahlFreieParkplaetzeSoll;
@@ -206,93 +189,73 @@ namespace Parkhaus.ViewModel
                 OnPropertyChanged(nameof(AnzahlFreieParkplaetzeSoll));
             }
         }
+        #endregion
 
-        private ObservableCollection<Visibility> _autoSichtbar = new();
-        public ObservableCollection<Visibility> AutoSichtbar
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            get => _autoSichtbar;
+            get => _sichtbarEin;
             set
             {
-                _autoSichtbar = value;
-                OnPropertyChanged(nameof(AutoSichtbar));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-
-
-        private ObservableCollection<Brush> _farbeSensor = new();
-        public ObservableCollection<Brush> FarbeSensor
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _farbeSensor;
+            get => _sichtbarAus;
             set
             {
-                _farbeSensor = value;
-                OnPropertyChanged(nameof(FarbeSensor));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
+        #endregion
 
-
-
-
-
-
-        #region ClickModeAlleButtons
-
-        // ReSharper disable once UnusedMember.Global
-        public bool ClickModeButton(int asciiCode)
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            if (ClkMode[asciiCode] == ClickMode.Press)
+            get => _farbe;
+            set
             {
-                ClkMode[asciiCode] = ClickMode.Release;
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
+            }
+        }
+        #endregion
+
+        #region Taster/Schalter        
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClkMode[tasterId] == ClickMode.Press)
+            {
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            ClkMode[asciiCode] = ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
-        #endregion ClickModeAlleButtons
-
-        #region Color P0
-
-        // ReSharper disable once UnusedMember.Global
-        public void FarbeP0(bool val) => ColorP0 = val ? Brushes.Red : Brushes.LightGray;
-
-        private Brush _colorP0;
-        public Brush ColorP0
-        {
-            get => _colorP0;
-            set
-            {
-                _colorP0 = value;
-                OnPropertyChanged(nameof(ColorP0));
-            }
-        }
-
-        #endregion Color P0          
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
-
-        public void Auto(object obj)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
