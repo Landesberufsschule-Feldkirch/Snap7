@@ -39,7 +39,6 @@ namespace PaternosterLager.ViewModel
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
         private void VisuAnzeigenTask()
         {
             _paternosterlager.GesamtLaenge = AlleKettengliedRegale[0].GetGesamtLaenge();
@@ -74,7 +73,6 @@ namespace PaternosterLager.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-       
         internal void SichtbarkeitUmschalten(bool val, int i)
         {
             SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
@@ -99,7 +97,6 @@ namespace PaternosterLager.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -168,7 +165,6 @@ namespace PaternosterLager.ViewModel
             }
         }
         #endregion KettengliederRegale
-        
 
         #region Position
         private string _istPosition;

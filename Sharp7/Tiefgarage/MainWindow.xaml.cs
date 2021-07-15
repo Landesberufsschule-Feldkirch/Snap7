@@ -1,5 +1,7 @@
 ﻿using Kommunikation;
 using System;
+using System.Windows;
+using BeschriftungPlc;
 
 namespace Tiefgarage
 {
@@ -10,8 +12,9 @@ namespace Tiefgarage
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
-
-        private readonly ViewModel.ViewModel _viewModel;
+        public ConfigPlc.Plc ConfigPlc { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 2;
@@ -26,11 +29,11 @@ namespace Tiefgarage
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
-            _viewModel = new ViewModel.ViewModel(this);
-            DatenRangieren = new DatenRangieren(_viewModel);
-            
+            var viewModel = new ViewModel.ViewModel(this);
+            DatenRangieren = new DatenRangieren(viewModel);
+
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
             var befehlszeile = Environment.GetCommandLineArgs();
             Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
@@ -40,6 +43,18 @@ namespace Tiefgarage
             DatenRangieren.ReferenzUebergeben(Plc);
 
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+
+            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+        }
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

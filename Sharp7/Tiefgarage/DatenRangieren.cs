@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Sharp7;
 
 namespace Tiefgarage
 {
@@ -11,7 +10,7 @@ namespace Tiefgarage
         private enum BitPosEingang
         {
             B1 = 0,
-            B2
+            B2 = 1
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

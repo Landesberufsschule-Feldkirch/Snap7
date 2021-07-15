@@ -1,0 +1,16 @@
+﻿{
+  "DiBeschriftung": [
+    {
+      "Byte": 0,
+      "Bit": 0,
+      "Bezeichnung": "B1",
+      "Kommentar": "Lichtschranke innen"
+    },
+    {
+      "Byte": 0,
+      "Bit": 1,
+      "Bezeichnung": "B2",
+      "Kommentar": "Lichtschranke außen"
+    }
+  ]
+}

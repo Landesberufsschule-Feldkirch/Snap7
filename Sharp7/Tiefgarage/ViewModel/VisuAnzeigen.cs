@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Tiefgarage.ViewModel
@@ -23,69 +25,36 @@ namespace Tiefgarage.ViewModel
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            ColorB1 = Brushes.LightGray;
-            ColorB2 = Brushes.LightGray;
-
-            EnableAuto1 = true;
-            EnableAuto2 = true;
-            EnableAuto3 = true;
-            EnableAuto4 = true;
-            EnablePerson1 = true;
-            EnablePerson2 = true;
-            EnablePerson3 = true;
-            EnablePerson4 = true;
-
-            PosAuto1Left = 0;
-            PosAuto1Top = 0;
-            PosAuto2Left = 0;
-            PosAuto2Top = 0;
-            PosAuto3Left = 0;
-            PosAuto3Top = 0;
-            PosAuto4Left = 0;
-            PosAuto4Top = 0;
-
-            PosPerson1Left = 0;
-            PosPerson1Top = 0;
-            PosPerson2Left = 0;
-            PosPerson2Top = 0;
-            PosPerson3Left = 0;
-            PosPerson3Top = 0;
-            PosPerson4Left = 0;
-            PosPerson4Top = 0;
+            for (var i = 0; i < 100; i++)
+            {
+                Farbe.Add(Brushes.White);
+                Enable.Add(false);
+                PosLinks.Add(0);
+                PosOben.Add(0);
+            }
 
             AnzahlAutos = "Autos in der Tiefgarage: 123";
             AnzahlPersonen = "Personen in der Tiefgarage: 123";
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-                FarbeB1(_alleFahrzeugePersonen.B1);
-                FarbeB2(_alleFahrzeugePersonen.B2);
-
                 AnzahlAutosInDerTiefgarage(_alleFahrzeugePersonen.AnzahlAutos);
                 AnzahlPersonenInDerTiefgarage(_alleFahrzeugePersonen.AnzahlPersonen);
 
-                PositionAuto1(_alleFahrzeugePersonen.AllePkwPersonen[0].AktuellePosition);
-                PositionAuto2(_alleFahrzeugePersonen.AllePkwPersonen[1].AktuellePosition);
-                PositionAuto3(_alleFahrzeugePersonen.AllePkwPersonen[2].AktuellePosition);
-                PositionAuto4(_alleFahrzeugePersonen.AllePkwPersonen[3].AktuellePosition);
-                PositionPerson1(_alleFahrzeugePersonen.AllePkwPersonen[4].AktuellePosition);
-                PositionPerson2(_alleFahrzeugePersonen.AllePkwPersonen[5].AktuellePosition);
-                PositionPerson3(_alleFahrzeugePersonen.AllePkwPersonen[6].AktuellePosition);
-                PositionPerson4(_alleFahrzeugePersonen.AllePkwPersonen[7].AktuellePosition);
+                FarbeUmschalten(_alleFahrzeugePersonen.B1, 1, Brushes.Red, Brushes.LightGray);
+                FarbeUmschalten(_alleFahrzeugePersonen.B2, 2, Brushes.Red, Brushes.LightGray);
 
-                EnableAuto1 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto2 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto3 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnableAuto4 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson1 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson2 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson3 = _alleFahrzeugePersonen.AllesInParkposition;
-                EnablePerson4 = _alleFahrzeugePersonen.AllesInParkposition;
+                for (var i = 0; i < 4; i++)
+                {
+                    PositionSetzen(_alleFahrzeugePersonen.AllePkwPersonen[i].AktuellePosition, i + 11);
+                    PositionSetzen(_alleFahrzeugePersonen.AllePkwPersonen[i + 4].AktuellePosition, i + 21);
+                    Enable[11 + i] = _alleFahrzeugePersonen.AllesInParkposition;
+                    Enable[21 + i] = _alleFahrzeugePersonen.AllesInParkposition;
+                }
 
                 if (_mainWindow.Plc != null)
                 {
@@ -99,6 +68,35 @@ namespace Tiefgarage.ViewModel
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
+        }
+        internal void PositionSetzen(Punkt pos, int i)
+        {
+            PosLinks[i] = pos.X;
+            PosOben[i] = pos.Y;
+        }
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+            var tasterId = short.Parse(ascii);
+
+            switch (tasterId)
+            {
+                case 11:
+                case 12:
+                case 13:
+                case 14: _alleFahrzeugePersonen.AllePkwPersonen[tasterId - 11].Losfahren(); break;
+
+                case 21:
+                case 22:
+                case 23:
+                case 24: _alleFahrzeugePersonen.AllePkwPersonen[tasterId - 17].Losfahren(); break;
+
+                case 51: _alleFahrzeugePersonen.DraussenParken(); break;
+                case 52: _alleFahrzeugePersonen.DrinnenParken(); break;
+
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
         }
 
         #region SPS Version, Status und Farbe
@@ -162,448 +160,9 @@ namespace Tiefgarage.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        #region Color B1
-
-        public void FarbeB1(bool val) => ColorB1 = val ? Brushes.Red : Brushes.LightGray;
-
-        private Brush _colorB1;
-
-        public Brush ColorB1
-        {
-            get => _colorB1;
-            set
-            {
-                _colorB1 = value;
-                OnPropertyChanged(nameof(ColorB1));
-            }
-        }
-
-        #endregion Color B1
-
-        #region Color B2
-
-        public void FarbeB2(bool val) => ColorB2 = val ? Brushes.Red : Brushes.LightGray;
-
-        private Brush _colorB2;
-
-        public Brush ColorB2
-        {
-            get => _colorB2;
-            set
-            {
-                _colorB2 = value;
-                OnPropertyChanged(nameof(ColorB2));
-            }
-        }
-
-        #endregion Color B2
-
-        #region EnableAuto1
-
-        private bool _enableAuto1;
-
-        public bool EnableAuto1
-        {
-            get => _enableAuto1;
-            set
-            {
-                _enableAuto1 = value;
-                OnPropertyChanged(nameof(EnableAuto1));
-            }
-        }
-
-        #endregion EnableAuto1
-
-        #region EnableAuto2
-
-        private bool _enableAuto2;
-
-        public bool EnableAuto2
-        {
-            get => _enableAuto2;
-            set
-            {
-                _enableAuto2 = value;
-                OnPropertyChanged(nameof(EnableAuto2));
-            }
-        }
-
-        #endregion EnableAuto2
-
-        #region EnableAuto3
-
-        private bool _enableAuto3;
-
-        public bool EnableAuto3
-        {
-            get => _enableAuto3;
-            set
-            {
-                _enableAuto3 = value;
-                OnPropertyChanged(nameof(EnableAuto3));
-            }
-        }
-
-        #endregion EnableAuto3
-
-        #region EnableAuto4
-
-        private bool _enableAuto4;
-
-        public bool EnableAuto4
-        {
-            get => _enableAuto4;
-            set
-            {
-                _enableAuto4 = value;
-                OnPropertyChanged(nameof(EnableAuto4));
-            }
-        }
-
-        #endregion EnableAuto4
-
-        #region EnablePerson1
-
-        private bool _enablePerson1;
-
-        public bool EnablePerson1
-        {
-            get => _enablePerson1;
-            set
-            {
-                _enablePerson1 = value;
-                OnPropertyChanged(nameof(EnablePerson1));
-            }
-        }
-
-        #endregion EnablePerson1
-
-        #region EnablePerson2
-
-        private bool _enablePerson2;
-
-        public bool EnablePerson2
-        {
-            get => _enablePerson2;
-            set
-            {
-                _enablePerson2 = value;
-                OnPropertyChanged(nameof(EnablePerson2));
-            }
-        }
-
-        #endregion EnablePerson2
-
-        #region EnablePerson3
-
-        private bool _enablePerson3;
-
-        public bool EnablePerson3
-        {
-            get => _enablePerson3;
-            set
-            {
-                _enablePerson3 = value;
-                OnPropertyChanged(nameof(EnablePerson3));
-            }
-        }
-
-        #endregion EnablePerson3
-
-        #region EnablePerson4
-
-        private bool _enablePerson4;
-
-        public bool EnablePerson4
-        {
-            get => _enablePerson4;
-            set
-            {
-                _enablePerson4 = value;
-                OnPropertyChanged(nameof(EnablePerson4));
-            }
-        }
-
-        #endregion EnablePerson4
-
-        #region PositionAuto1
-
-        public void PositionAuto1(Punkt pos)
-        {
-            PosAuto1Left = pos.X;
-            PosAuto1Top = pos.Y;
-        }
-
-        private double _posAuto1Left;
-
-        public double PosAuto1Left
-        {
-            get => _posAuto1Left;
-            set
-            {
-                _posAuto1Left = value;
-                OnPropertyChanged(nameof(PosAuto1Left));
-            }
-        }
-
-        private double _posAuto1Top;
-
-        public double PosAuto1Top
-        {
-            get => _posAuto1Top;
-            set
-            {
-                _posAuto1Top = value;
-                OnPropertyChanged(nameof(PosAuto1Top));
-            }
-        }
-
-        #endregion PositionAuto1
-
-        #region PositionAuto2
-
-        public void PositionAuto2(Punkt pos)
-        {
-            PosAuto2Left = pos.X;
-            PosAuto2Top = pos.Y;
-        }
-
-        private double _posAuto2Left;
-
-        public double PosAuto2Left
-        {
-            get => _posAuto2Left;
-            set
-            {
-                _posAuto2Left = value;
-                OnPropertyChanged(nameof(PosAuto2Left));
-            }
-        }
-
-        private double _posAuto2Top;
-
-        public double PosAuto2Top
-        {
-            get => _posAuto2Top;
-            set
-            {
-                _posAuto2Top = value;
-                OnPropertyChanged(nameof(PosAuto2Top));
-            }
-        }
-
-        #endregion PositionAuto2
-
-        #region PositionAuto3
-
-        public void PositionAuto3(Punkt pos)
-        {
-            PosAuto3Left = pos.X;
-            PosAuto3Top = pos.Y;
-        }
-
-        private double _posAuto3Left;
-
-        public double PosAuto3Left
-        {
-            get => _posAuto3Left;
-            set
-            {
-                _posAuto3Left = value;
-                OnPropertyChanged(nameof(PosAuto3Left));
-            }
-        }
-
-        private double _posAuto3Top;
-
-        public double PosAuto3Top
-        {
-            get => _posAuto3Top;
-            set
-            {
-                _posAuto3Top = value;
-                OnPropertyChanged(nameof(PosAuto3Top));
-            }
-        }
-
-        #endregion PositionAuto3
-
-        #region PositionAuto4
-
-        public void PositionAuto4(Punkt pos)
-        {
-            PosAuto4Left = pos.X;
-            PosAuto4Top = pos.Y;
-        }
-
-        private double _posAuto4Left;
-
-        public double PosAuto4Left
-        {
-            get => _posAuto4Left;
-            set
-            {
-                _posAuto4Left = value;
-                OnPropertyChanged(nameof(PosAuto4Left));
-            }
-        }
-
-        private double _posAuto4Top;
-
-        public double PosAuto4Top
-        {
-            get => _posAuto4Top;
-            set
-            {
-                _posAuto4Top = value;
-                OnPropertyChanged(nameof(PosAuto4Top));
-            }
-        }
-
-        #endregion PositionAuto4
-
-        #region PositionPerson1
-
-        public void PositionPerson1(Punkt pos)
-        {
-            PosPerson1Left = pos.X;
-            PosPerson1Top = pos.Y;
-        }
-
-        private double _posPerson1Left;
-
-        public double PosPerson1Left
-        {
-            get => _posPerson1Left;
-            set
-            {
-                _posPerson1Left = value;
-                OnPropertyChanged(nameof(PosPerson1Left));
-            }
-        }
-
-        private double _posPerson1Top;
-
-        public double PosPerson1Top
-        {
-            get => _posPerson1Top;
-            set
-            {
-                _posPerson1Top = value;
-                OnPropertyChanged(nameof(PosPerson1Top));
-            }
-        }
-
-        #endregion PositionPerson1
-
-        #region PositionPerson2
-
-        public void PositionPerson2(Punkt pos)
-        {
-            PosPerson2Left = pos.X;
-            PosPerson2Top = pos.Y;
-        }
-
-        private double _posPerson2Left;
-
-        public double PosPerson2Left
-        {
-            get => _posPerson2Left;
-            set
-            {
-                _posPerson2Left = value;
-                OnPropertyChanged(nameof(PosPerson2Left));
-            }
-        }
-
-        private double _posPerson2Top;
-
-        public double PosPerson2Top
-        {
-            get => _posPerson2Top;
-            set
-            {
-                _posPerson2Top = value;
-                OnPropertyChanged(nameof(PosPerson2Top));
-            }
-        }
-
-        #endregion PositionPerson2
-
-        #region PositionPerson3
-
-        public void PositionPerson3(Punkt pos)
-        {
-            PosPerson3Left = pos.X;
-            PosPerson3Top = pos.Y;
-        }
-
-        private double _posPerson3Left;
-
-        public double PosPerson3Left
-        {
-            get => _posPerson3Left;
-            set
-            {
-                _posPerson3Left = value;
-                OnPropertyChanged(nameof(PosPerson3Left));
-            }
-        }
-
-        private double _posPerson3Top;
-
-        public double PosPerson3Top
-        {
-            get => _posPerson3Top;
-            set
-            {
-                _posPerson3Top = value;
-                OnPropertyChanged(nameof(PosPerson3Top));
-            }
-        }
-
-        #endregion PositionPerson3
-
-        #region PositionPerson4
-
-        public void PositionPerson4(Punkt pos)
-        {
-            PosPerson4Left = pos.X;
-            PosPerson4Top = pos.Y;
-        }
-
-        private double _posPerson4Left;
-
-        public double PosPerson4Left
-        {
-            get => _posPerson4Left;
-            set
-            {
-                _posPerson4Left = value;
-                OnPropertyChanged(nameof(PosPerson4Left));
-            }
-        }
-
-        private double _posPerson4Top;
-
-        public double PosPerson4Top
-        {
-            get => _posPerson4Top;
-            set
-            {
-                _posPerson4Top = value;
-                OnPropertyChanged(nameof(PosPerson4Top));
-            }
-        }
-
-        #endregion PositionPerson4
-
-        #region AnzahlAutos
-
+        #region Anzahl Autos / Personen
         public void AnzahlAutosInDerTiefgarage(int val) => AnzahlAutos = "Autos in der Tiefgarage: " + val;
-
         private string _anzahlAutos;
-
         public string AnzahlAutos
         {
             get => _anzahlAutos;
@@ -614,14 +173,8 @@ namespace Tiefgarage.ViewModel
             }
         }
 
-        #endregion AnzahlAutos
-
-        #region AnzahlPersonen
-
         public void AnzahlPersonenInDerTiefgarage(int val) => AnzahlPersonen = "Personen in der Tiefgarage: " + val;
-
         private string _anzahlPersonen;
-
         public string AnzahlPersonen
         {
             get => _anzahlPersonen;
@@ -631,15 +184,61 @@ namespace Tiefgarage.ViewModel
                 OnPropertyChanged(nameof(AnzahlPersonen));
             }
         }
+        #endregion Anzahl Autos / Personen
 
-        #endregion AnzahlPersonen
+        #region Enable
+        private ObservableCollection<bool> _enable = new();
+        public ObservableCollection<bool> Enable
+        {
+            get => _enable;
+            set
+            {
+                _enable = value;
+                OnPropertyChanged(nameof(Enable));
+            }
+        }
+        #endregion Enable
+
+        #region Positionen
+        private ObservableCollection<double> _posLinks = new();
+        public ObservableCollection<double> PosLinks
+        {
+            get => _posLinks;
+            set
+            {
+                _posLinks = value;
+                OnPropertyChanged(nameof(PosLinks));
+            }
+        }
+
+        private ObservableCollection<double> _posOben = new();
+        public ObservableCollection<double> PosOben
+        {
+            get => _posOben;
+            set
+            {
+                _posOben = value;
+                OnPropertyChanged(nameof(PosOben));
+            }
+        }
+        #endregion
+
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
+        {
+            get => _farbe;
+            set
+            {
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
+            }
+        }
+        #endregion
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

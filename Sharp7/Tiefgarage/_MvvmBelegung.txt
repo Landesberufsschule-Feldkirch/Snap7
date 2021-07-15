@@ -1,0 +1,19 @@
+
+1		B1		Farbe
+2		B2		Farbe
+
+
+11      Auto 1    PosLinks  PosOben Enable		BtnTaster
+12      Auto 2    PosLinks  PosOben Enable		BtnTaster
+13      Auto 3    PosLinks  PosOben Enable		BtnTaster
+14      Auto 4    PosLinks  PosOben Enable		BtnTaster
+
+21      Person 1    PosLinks  PosOben Enable		BtnTaster
+22      Person 2    PosLinks  PosOben Enable		BtnTaster
+23      Person 3    PosLinks  PosOben Enable		BtnTaster
+24      Person 4    PosLinks  PosOben Enable		BtnTaster
+
+
+
+51      DraußenParken		ClkMode			BtnTaster
+52      DrinnenParken		ClkMode			BtnTaster
