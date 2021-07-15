@@ -56,7 +56,7 @@ namespace StiegenhausBeleuchtung.Model
             System.Threading.Tasks.Task.Run(StiegenhausBeleuchtungTask);
         }
 
-        internal void ProblemLoesen(VisuAnzeigen ViAnz) => _visuAnzeigen = ViAnz;
+        internal void ProblemLoesen(VisuAnzeigen viAnz) => _visuAnzeigen = viAnz;
         public bool GetBewegungsmelder(int index) => _alleBewegungsmelder[index];
         public void SetBewegungsmelder(int index, bool val) => _alleBewegungsmelder[index] = val;
         public void SetLampen(int index, bool val) => _alleLampen[index] = val;
@@ -72,10 +72,9 @@ namespace StiegenhausBeleuchtung.Model
             // ReSharper disable once FunctionNeverReturns
         }
 
-        internal void BtnStart(object _)
+        internal void AblaufStarten()
         {
-            if (_visuAnzeigen.ReiseStart == "-" || _visuAnzeigen.ReiseZiel == "-" ||
-                _visuAnzeigen.ReiseStart == _visuAnzeigen.ReiseZiel) return;
+            if (_visuAnzeigen.ReiseStart == "-" || _visuAnzeigen.ReiseZiel == "-" || _visuAnzeigen.ReiseStart == _visuAnzeigen.ReiseZiel) return;
 
             _ortAktuell = _topologie[_visuAnzeigen.ReiseStart];
             _ortZiel = _topologie[_visuAnzeigen.ReiseZiel];
@@ -132,7 +131,7 @@ namespace StiegenhausBeleuchtung.Model
             var (raum, stock) = aktuell;
             if (raum == -10 || stock == -10) return;
 
-            var bewegungsmelder = 3 + raum + 10 * stock;
+            var bewegungsmelder = 3 + raum + (10 * stock);
             _alleBewegungsmelder[bewegungsmelder] = true;
         }
     }

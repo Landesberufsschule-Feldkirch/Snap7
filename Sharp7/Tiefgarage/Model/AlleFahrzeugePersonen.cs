@@ -11,7 +11,6 @@
         public int AnzahlAutos { get; set; }
         public int AnzahlPersonen { get; set; }
         public List<FahrzeugPerson> AllePkwPersonen { get; set; }
-        
         public AlleFahrzeugePersonen()
         {
             AllesInParkposition = true;

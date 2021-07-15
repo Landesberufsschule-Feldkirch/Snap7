@@ -72,11 +72,11 @@ namespace Tiefgarage.Model
             if (FpRolle == Rolle.Fahrzeug)
             {
                 yOben = _fahrzeugOben.Y;
-                xOben = _fahrzeugOben.X + wievieltesFahrzeugPerson * _fahrzeug.X;
+                xOben = _fahrzeugOben.X + (wievieltesFahrzeugPerson * _fahrzeug.X);
                 if (wievieltesFahrzeugPerson < 4)
                 {
                     xUnten = _fahrzeugUntenLinks.X;
-                    yUnten = _fahrzeugUntenLinks.Y + wievieltesFahrzeugPerson * _fahrzeug.Y;
+                    yUnten = _fahrzeugUntenLinks.Y + (wievieltesFahrzeugPerson * _fahrzeug.Y);
 
                     kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);
                     kontrollPunktUnten2 = new Punkt(xUnten + 100, yUnten);
@@ -84,7 +84,7 @@ namespace Tiefgarage.Model
                 else
                 {
                     xUnten = _fahrzeugUntenRechts.X;
-                    yUnten = _fahrzeugUntenRechts.Y + (wievieltesFahrzeugPerson - 4) * _fahrzeug.Y;
+                    yUnten = _fahrzeugUntenRechts.Y + ((wievieltesFahrzeugPerson - 4) * _fahrzeug.Y);
 
                     kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);
                     kontrollPunktUnten2 = new Punkt(xUnten - 100, yUnten);
@@ -93,8 +93,8 @@ namespace Tiefgarage.Model
             else
             {
                 yOben = _personOben.Y;
-                xOben = _personOben.X + wievieltesFahrzeugPerson * _person.X;
-                xUnten = _personUnten.X + wievieltesFahrzeugPerson * _person.X;
+                xOben = _personOben.X + (wievieltesFahrzeugPerson * _person.X);
+                xUnten = _personUnten.X + (wievieltesFahrzeugPerson * _person.X);
                 yUnten = _personUnten.Y;
 
                 kontrollPunktUnten1 = new Punkt(_fahrspurUnten.X, _fahrspurUnten.Y + 100);

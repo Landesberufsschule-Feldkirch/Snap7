@@ -1,0 +1,229 @@
+﻿{
+  "DigitaleEingaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B01",
+      "Kommentar": "Bewegungsmelder B01 "
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B02",
+      "Kommentar": "Bewegungsmelder B02 "
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B03",
+      "Kommentar": "Bewegungsmelder B03 "
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B04",
+      "Kommentar": "Bewegungsmelder B04 "
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B05",
+      "Kommentar": "Bewegungsmelder B05 "
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B11",
+      "Kommentar": "Bewegungsmelder B11 "
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B12",
+      "Kommentar": "Bewegungsmelder B12 "
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B13",
+      "Kommentar": "Bewegungsmelder B13 "
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B14",
+      "Kommentar": "Bewegungsmelder B14 "
+    },
+    {
+      "LaufendeNr": 9,
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B15",
+      "Kommentar": "Bewegungsmelder B15 "
+    },
+    {
+      "LaufendeNr": 10,
+      "StartByte": 1,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B21",
+      "Kommentar": "Bewegungsmelder B21 "
+    },
+    {
+      "LaufendeNr": 11,
+      "StartByte": 1,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B22",
+      "Kommentar": "Bewegungsmelder B22 "
+    },
+    {
+      "LaufendeNr": 12,
+      "StartByte": 1,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B23",
+      "Kommentar": "Bewegungsmelder B23 "
+    },
+    {
+      "LaufendeNr": 13,
+      "StartByte": 1,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B24",
+      "Kommentar": "Bewegungsmelder B24 "
+    },
+    {
+      "LaufendeNr": 14,
+      "StartByte": 1,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B25",
+      "Kommentar": "Bewegungsmelder B25 "
+    },
+    {
+      "LaufendeNr": 15,
+      "StartByte": 1,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B31",
+      "Kommentar": "Bewegungsmelder B31 "
+    },
+    {
+      "LaufendeNr": 16,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B32",
+      "Kommentar": "Bewegungsmelder B32 "
+    },
+    {
+      "LaufendeNr": 17,
+      "StartByte": 2,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B33",
+      "Kommentar": "Bewegungsmelder B33 "
+    },
+    {
+      "LaufendeNr": 18,
+      "StartByte": 2,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B34",
+      "Kommentar": "Bewegungsmelder B34 "
+    },
+    {
+      "LaufendeNr": 19,
+      "StartByte": 2,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B35",
+      "Kommentar": "Bewegungsmelder B35 "
+    },
+    {
+      "LaufendeNr": 20,
+      "StartByte": 2,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B41",
+      "Kommentar": "Bewegungsmelder B41 "
+    },
+    {
+      "LaufendeNr": 21,
+      "StartByte": 2,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B42",
+      "Kommentar": "Bewegungsmelder B42 "
+    },
+    {
+      "LaufendeNr": 22,
+      "StartByte": 2,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B43",
+      "Kommentar": "Bewegungsmelder B43 "
+    },
+    {
+      "LaufendeNr": 23,
+      "StartByte": 2,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B44",
+      "Kommentar": "Bewegungsmelder B44 "
+    },
+    {
+      "LaufendeNr": 24,
+      "StartByte": 3,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "B45",
+      "Kommentar": "Bewegungsmelder B45 "
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+
+01		B01     P01     Farbe   ClkMode   // Lampen und Bewegungsmelder im EG
+02		B02     P02     Farbe   ClkMode
+03		B03     P03     Farbe   ClkMode
+04		B04     P04     Farbe   ClkMode
+05		B05     P05     Farbe   ClkMode
+
+11		B11     P11     Farbe   ClkMode    // Lampen und Bewegungsmelder im OG 1
+12		B12     P12     Farbe   ClkMode
+13		B13     P13     Farbe   ClkMode
+14		B14     P14     Farbe   ClkMode
+15		B15     P15     Farbe   ClkMode
+
+21		B21     P21     Farbe   ClkMode    // Lampen und Bewegungsmelder im OG 2
+22		B22     P22     Farbe   ClkMode
+23		B23     P23     Farbe   ClkMode
+24		B24     P24     Farbe   ClkMode
+25		B25     P25     Farbe   ClkMode
+
+31		B31     P31     Farbe   ClkMode    // Lampen und Bewegungsmelder im OG 3
+32		B32     P32     Farbe   ClkMode
+33		B33     P33     Farbe   ClkMode
+34		B34     P34     Farbe   ClkMode
+35		B35     P35     Farbe   ClkMode
+
+41		B41     P41     Farbe   ClkMode    // Lampen und Bewegungsmelder im OG 4
+42		B42     P42     Farbe   ClkMode
+43		B43     P43     Farbe   ClkMode
+44		B44     P44     Farbe   ClkMode
+45		B45     P45     Farbe   ClkMode

@@ -15,12 +15,8 @@
             StiegenhausBeleuchtung.ProblemLoesen(ViAnz);
         }
 
-        private ICommand _btnStart;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnStart => _btnStart ??= new RelayCommand(StiegenhausBeleuchtung.BtnStart);
-
-        private ICommand _btnBewegungsmelder;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnBewegungsmelder => _btnBewegungsmelder ??= new RelayCommand(ViAnz.BtnBewegungsmelder);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

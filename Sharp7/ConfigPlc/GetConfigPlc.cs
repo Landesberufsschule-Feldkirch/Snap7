@@ -24,7 +24,7 @@ namespace ConfigPlc
         {
             if (reader.Value == null) return default;
             var token = reader.Value as string ?? reader.Value.ToString();
-            var stripped = Regex.Replace(token!, @"<[^>]+>", string.Empty);
+            var stripped = Regex.Replace(token!, "<[^>]+>", string.Empty);
             return Enum.TryParse<PlcEinUndAusgaengeTypen>(stripped, out var result) ? result : default;
         }
         public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer) => writer.WriteValue(value.ToString());

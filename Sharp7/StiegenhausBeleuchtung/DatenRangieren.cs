@@ -9,60 +9,60 @@ namespace StiegenhausBeleuchtung
 
         private enum BitPosAusgang
         {
-            P01 = 0,   // Lampen im EG
-            P02,
-            P03,
-            P04,
-            P05,
-            P11,       // Lampen im OG 1
-            P12,
-            P13,
-            P14,
-            P15,
-            P21,       // Lampen im OG 2
-            P22,
-            P23,
-            P24,
-            P25,
-            P31,       // Lampen im OG 3
-            P32,
-            P33,
-            P34,
-            P35,
-            P41,       // Lampen im OG 4
-            P42,
-            P43,
-            P44,
-            P45
+            P01 = 0,    // Lampen im EG
+            P02 = 1,
+            P03 = 2,
+            P04 = 3,
+            P05 = 4,
+            P11 = 5,    // Lampen im OG 1
+            P12 = 6,
+            P13 = 7,
+            P14 = 8,
+            P15 = 9,
+            P21 = 10,   // Lampen im OG 2
+            P22 = 11,
+            P23 = 12,
+            P24 = 13,
+            P25 = 14,
+            P31 = 15,   // Lampen im OG 3
+            P32 = 16,
+            P33 = 17,
+            P34 = 18,
+            P35 = 19,
+            P41 = 20,   // Lampen im OG 4
+            P42 = 21,
+            P43 = 22,
+            P44 = 23,
+            P45 = 24
         }
 
         private enum BitPosEingang
         {
             B01 = 0,   // Bewegungsmelder im EG
-            B02,
-            B03,
-            B04,
-            B05,
-            B11,       // Bewegungsmelder im OG 1
-            B12,
-            B13,
-            B14,
-            B15,
-            B21,       // Bewegungsmelder im OG 2
-            B22,
-            B23,
-            B24,
-            B25,
-            B31,       // Bewegungsmelder im OG 3
-            B32,
-            B33,
-            B34,
-            B35,
-            B41,       // Bewegungsmelder im OG 4
-            B42,
-            B43,
-            B44,
-            B45
+            B02 = 1,
+            B03 = 2,
+            B04 = 3,
+            B05 = 4,
+            B11 = 5,    // Bewegungsmelder im OG 1
+            B12 = 6,
+            B13 = 7,
+            B14 = 8,
+            B15 = 9,
+            B21 = 10,   // Bewegungsmelder im OG 2
+            B22 = 11,
+            B23 = 12,
+            B24 = 13,
+            B25 = 14,
+            B31 = 15,   // Bewegungsmelder im OG 3
+            B32 = 16,
+            B33 = 17,
+            B34 = 18,
+            B35 = 19,
+            B41 = 20,   // Bewegungsmelder im OG 4
+            B42 = 21,
+            B43 = 22,
+            B44 = 23,
+            B45 = 24
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
@@ -99,7 +99,6 @@ namespace StiegenhausBeleuchtung
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B44, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(44));
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B45, _viewModel.StiegenhausBeleuchtung.GetBewegungsmelder(45));
             }
-
 
             _viewModel.StiegenhausBeleuchtung.SetLampen(1, _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P01));
             _viewModel.StiegenhausBeleuchtung.SetLampen(2, _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P02));
