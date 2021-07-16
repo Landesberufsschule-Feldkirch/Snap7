@@ -1,11 +1,10 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
+using System.Threading;
+using Utilities;
 
 namespace AmpelsteuerungKieswerk.Model
 {
-    using System.Collections.Generic;
-    using System.Threading;
-    using Utilities;
-
     public class AlleLastKraftWagen
     {
         public bool B1 { get; set; }
@@ -26,11 +25,8 @@ namespace AmpelsteuerungKieswerk.Model
 
             System.Threading.Tasks.Task.Run(AlleLastKraftWagenTask);
         }
-
         public Punkt GetPositionLkw(int index) => _alleLkw[index].Lkw.GetPosition();
-
         public LastKraftWagen.LkwRichtungen GetRichtungLkw(int index) => _alleLkw[index].LkwRichtung;
-
         private void AlleLastKraftWagenTask()
         {
             while (true)
@@ -54,7 +50,6 @@ namespace AmpelsteuerungKieswerk.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
         private bool KollisionErkennen(LastKraftWagen laster)
         {
             var stop = false;
@@ -71,23 +66,12 @@ namespace AmpelsteuerungKieswerk.Model
 
             return stop;
         }
-
-        internal void TasterLkw1() => _alleLkw[0].Losfahren();
-
-        internal void TasterLkw2() => _alleLkw[1].Losfahren();
-
-        internal void TasterLkw3() => _alleLkw[2].Losfahren();
-
-        internal void TasterLkw4() => _alleLkw[3].Losfahren();
-
-        internal void TasterLkw5() => _alleLkw[4].Losfahren();
-
-        internal void TasterLinksParken()
+        public void LkwLosfahren(int i) => _alleLkw[i].Losfahren();
+        internal void LinksParken()
         {
             foreach (var lkw in _alleLkw) lkw.LkwPosition = LastKraftWagen.LkwPositionen.LinksGeparkt;
         }
-
-        internal void TasterRechtsParken()
+        internal void RechtsParken()
         {
             foreach (var lkw in _alleLkw) lkw.LkwPosition = LastKraftWagen.LkwPositionen.RechtsGeparkt;
         }

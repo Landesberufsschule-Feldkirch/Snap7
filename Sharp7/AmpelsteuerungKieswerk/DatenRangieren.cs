@@ -1,10 +1,9 @@
-﻿using Kommunikation;
+﻿using AmpelsteuerungKieswerk.Model;
+using Kommunikation;
+using System;
 
 namespace AmpelsteuerungKieswerk
 {
-    using Model;
-    using System;
-
     public class DatenRangieren
     {
         public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
@@ -21,10 +20,9 @@ namespace AmpelsteuerungKieswerk
             P3 = 2,     // Ampel links grün
             P4 = 3,     // Ampel rechts rot
             P5 = 4,     // Ampel rechts gelb
-            P6= 5       // Ampel rechts grün
+            P6 = 5       // Ampel rechts grün
 
         }
-
         private enum BitPosEingang
         {
             B1 = 0,
@@ -43,7 +41,6 @@ namespace AmpelsteuerungKieswerk
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B4, _viewModel.AlleLastKraftWagen.B4);
             }
 
-
             var p1LinksRot = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             var p2LinksGelb = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             var p3LinksGruen = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
@@ -60,18 +57,15 @@ namespace AmpelsteuerungKieswerk
             _ampelRechts = rechteAmpel;
             _ampelLinks = linkeAmpel;
         }
-
         public DatenRangieren(ViewModel.ViewModel vm)
         {
             _viewModel = vm;
             AmpelChangedEvent += _viewModel.ViAnz.DatenRangieren_AmpelChangedEvent;
         }
-
         private void OnAmpelChanged(AmpelZustandEventArgs e)
         {
             AmpelChangedEvent?.Invoke(this, e);
         }
-
         private static AmpelZustand GetAmpelZustand(bool rot, bool gelb, bool gruen)
         {
             if (rot && gelb) return AmpelZustand.RotUndGelb;

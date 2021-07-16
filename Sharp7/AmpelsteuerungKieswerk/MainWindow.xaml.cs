@@ -1,5 +1,7 @@
 ﻿using Kommunikation;
 using System;
+using System.Windows;
+using BeschriftungPlc;
 
 namespace AmpelsteuerungKieswerk
 {
@@ -8,7 +10,10 @@ namespace AmpelsteuerungKieswerk
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
 
         public DatenRangieren DatenRangieren { get; set; }
         private const int AnzByteDigInput = 1;
@@ -37,10 +42,20 @@ namespace AmpelsteuerungKieswerk
 
             DatenRangieren.ReferenzUebergeben(Plc);
 
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             DatenRangieren.ReferenzUebergeben(Plc);
             Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
+        }
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

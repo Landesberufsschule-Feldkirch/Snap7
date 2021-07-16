@@ -1,27 +1,26 @@
 ﻿using System;
+using Utilities;
 
 namespace AmpelsteuerungKieswerk.Model
 {
-    using Utilities;
-
     public class LastKraftWagen
     {
         public enum LkwRichtungen
         {
-            NachRechts = 0,
-            NachLinks
+            NachRechts = 1,
+            NachLinks = -1
         }
 
         public enum LkwPositionen
         {
             LinksGeparkt = 0,
-            LrLinkeKurve,
-            LrWaagrecht,
-            LrRechtKurve,
-            RechtsGeparkt,
-            RlRechteKurve,
-            RlWaagrecht,
-            RlLinkeKurve
+            LrLinkeKurve = 1,
+            LrWaagrecht = 2,
+            LrRechtKurve = 3,
+            RechtsGeparkt = 4,
+            RlRechteKurve = 5,
+            RlWaagrecht = 6,
+            RlLinkeKurve = 7
         }
 
         public LkwPositionen LkwPosition { get; set; }
@@ -42,8 +41,8 @@ namespace AmpelsteuerungKieswerk.Model
         private readonly Punkt _parkpositionRechts = new(1340, 10);
         private readonly Punkt _endeLinkeKurve = new(250, 200);
         private readonly Punkt _anfangRechteKurve = new(1100, 200);
-        private readonly double _breiteLkw = 100;
-        private readonly double _hoeheLkw = 80;
+        private const double BreiteLkw = 100;
+        private const double HoeheLkw = 80;
         private readonly Punkt _positionB1 = new(275, 0);
         private readonly Punkt _positionB2 = new(350, 0);
         private readonly Punkt _positionB3 = new(1000, 0);
@@ -59,7 +58,7 @@ namespace AmpelsteuerungKieswerk.Model
             _richtungX = Rechteck.RichtungX.Steht;
             _richtungY = Rechteck.RichtungY.Steht;
 
-            var yLkwParkposition = _parkpositionLinks.Y + id * (10 + _hoeheLkw);
+            var yLkwParkposition = _parkpositionLinks.Y + (id * (10 + HoeheLkw));
 
             _parkPosLinks = new Punkt(_parkpositionLinks.X, yLkwParkposition);
             var kontrollPunktLinks1 = new Punkt(_parkpositionLinks.X + 100, yLkwParkposition);
@@ -75,23 +74,19 @@ namespace AmpelsteuerungKieswerk.Model
             _linkeKurve = new BezierCurve(_parkPosLinks, kontrollPunktLinks1, kontrollPunktLinks2, wegPosLinks);
             _rechteKurve = new BezierCurve(wegPosRechts, kontrollPunktRechts1, kontrollPunktRechts2, _parkPosRechts);
 
-            Lkw = new Rechteck(_parkpositionLinks, _breiteLkw, _hoeheLkw);
+            Lkw = new Rechteck(_parkpositionLinks, BreiteLkw, HoeheLkw);
         }
-
         public (Rechteck.RichtungX, Rechteck.RichtungY) GetRichtung() => (_richtungX, _richtungY);
-
         public void Losfahren()
         {
             if (LkwPosition == LkwPositionen.LinksGeparkt) LkwPosition = LkwPositionen.LrLinkeKurve;
             if (LkwPosition == LkwPositionen.RechtsGeparkt) LkwPosition = LkwPositionen.RlRechteKurve;
         }
-
         private bool LichtschrankeUnterbrochen(double xPos)
         {
             if (Lkw.GetRechts() < xPos) return false;
             return Lkw.GetLinks() <= xPos;
         }
-
         public (bool b1, bool b2, bool b3, bool b4) LastwagenFahren(bool stop)
         {
             _richtungX = Rechteck.RichtungX.Steht;
@@ -159,7 +154,7 @@ namespace AmpelsteuerungKieswerk.Model
                     if (_kurvePosition <= 0) LkwPosition = LkwPositionen.LinksGeparkt;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(LkwPosition));
+                    throw new ArgumentOutOfRangeException(LkwPosition.ToString());
             }
 
             return (LichtschrankeUnterbrochen(_positionB1.X), LichtschrankeUnterbrochen(_positionB2.X), LichtschrankeUnterbrochen(_positionB3.X), LichtschrankeUnterbrochen(_positionB4.X));

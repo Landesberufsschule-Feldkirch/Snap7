@@ -1,0 +1,22 @@
+
+
+1		B1						Farbe
+2		B2						Farbe
+3		B3						Farbe
+4		B4						Farbe
+
+11      LinksRot                Farbe
+12      LinksGelb               Farbe
+13      LinksGrün               Farbe
+14      RechtsRot               Farbe
+15      RechtsGelb              Farbe
+16      RechtsGrün              Farbe
+
+21		LKW 1		PosLinks    PosOben     BtnTaster
+22		LKW 2		PosLinks    PosOben     BtnTaster
+23		LKW 3		PosLinks    PosOben     BtnTaster
+24		LKW 4		PosLinks    PosOben     BtnTaster
+25		LKW 5		PosLinks    PosOben     BtnTaster
+
+50      LinksParken             BtnTaster	
+51      RechtsParken            BtnTaster			
