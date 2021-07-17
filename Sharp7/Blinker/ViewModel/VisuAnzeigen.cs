@@ -144,7 +144,7 @@ namespace Blinker.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
-        
+
         #region Texte
 
         private string _frequenzAnzeige;
@@ -191,7 +191,7 @@ namespace Blinker.ViewModel
             }
         }
         #endregion
-        
+
         #region Farbe
         private ObservableCollection<Brush> _farbe = new();
         public ObservableCollection<Brush> Farbe

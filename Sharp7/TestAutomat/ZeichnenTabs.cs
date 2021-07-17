@@ -50,7 +50,6 @@ namespace TestAutomat
             SetRowSpan(btnPlcWindowOeffnen, 2);
             autoTestGrid.Children.Add(btnPlcWindowOeffnen);
 
-
             var imgPlotter = new BitmapImage(new Uri(@"Bilder\IconPlotter.jpg", UriKind.Relative));
             var btnplotterWindowOeffnen = new Button
             {
@@ -74,7 +73,6 @@ namespace TestAutomat
                     _plotWindow.Oeffnen();
                 }
             };
-
 
             SetColumn(btnplotterWindowOeffnen, 8);
             SetRow(btnplotterWindowOeffnen, 0);
@@ -130,7 +128,7 @@ namespace TestAutomat
             SetColumn(btnEinzelSchritt, 6);
             SetRow(btnEinzelSchritt, 1);
             autoTestGrid.Children.Add(btnEinzelSchritt);
-            
+
             var lblSingleStep = new Label
             {
                 Content = "Single Step",
@@ -150,14 +148,13 @@ namespace TestAutomat
                     _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Einzelschritt;
                     btnEinzelSchritt.Visibility = Visibility.Visible;
                 }
-
                 else
                 {
                     _datenstruktur.BetriebsartTestablauf = BetriebsartTestablauf.Automatik;
                     btnEinzelSchritt.Visibility = Visibility.Hidden;
                 }
-
             };
+
             SetColumn(checkboxSingleStep, 5);
             SetRow(checkboxSingleStep, 1);
             autoTestGrid.Children.Add(checkboxSingleStep);

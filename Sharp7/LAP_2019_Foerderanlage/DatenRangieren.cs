@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using PlcDatenTypen;
-using Sharp7;
 
 namespace LAP_2019_Foerderanlage
 {
@@ -17,7 +16,7 @@ namespace LAP_2019_Foerderanlage
             P2 = 2,     //Sammelstörung
             Q1 = 3,     //Förderband Rechtslauf
             Q2 = 4,     // Förderband Linkslauf
-            T1= 5       // Freigabe FU (Schneckenförderer)
+            T1 = 5       // Freigabe FU (Schneckenförderer)
 
         }
 
@@ -34,7 +33,7 @@ namespace LAP_2019_Foerderanlage
             S5 = 8,     // Handbetrieb Förderband RL
             S6 = 9,     // Handbetrieb Förderband LL
             S7 = 10,    // Handbetrieb Schneckenförderer
-            S8= 11      // Handbetrieb Materialschieber
+            S8 = 11      // Handbetrieb Materialschieber
 
         }
 
@@ -57,7 +56,6 @@ namespace LAP_2019_Foerderanlage
 
                 _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_foerderanlageViewModel.Foerderanlage.Silo.GetFuellstand(), 1));
             }
-
 
             if (_mainWindow.DebugWindowAktiv) return;
 

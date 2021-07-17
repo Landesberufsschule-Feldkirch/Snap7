@@ -45,12 +45,11 @@ namespace Schleifmaschine
 
             _viewModel.Schleifmaschine.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Schleifmaschine.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
-            _viewModel.Schleifmaschine.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);            
+            _viewModel.Schleifmaschine.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);
             _viewModel.Schleifmaschine.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _viewModel.Schleifmaschine.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
 
             _plc.SetIntAt(datenstruktur.AnalogInput, 0, Simatic.Analog_2_Int16(_viewModel.Schleifmaschine.DrehzahlSchleifmaschine, 10000));
-
         }
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;

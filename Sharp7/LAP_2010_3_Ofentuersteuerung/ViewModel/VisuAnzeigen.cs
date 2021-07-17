@@ -1,10 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System;
-using System.ComponentModel;
-using System.Threading;
 
 namespace LAP_2010_3_Ofentuersteuerung.ViewModel
 {
@@ -46,7 +46,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 ZahnstangePosition = _ofentuerSteuerung.PositionZahnstange;
                 ZahnradWinkel = _ofentuerSteuerung.WinkelZahnrad;
 
-
                 SichtbarkeitUmschalten(_ofentuerSteuerung.B1, 1);
                 SichtbarkeitUmschalten(_ofentuerSteuerung.B2, 2);
                 SichtbarkeitUmschalten(_ofentuerSteuerung.B3, 3);
@@ -70,7 +69,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-
         internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)
         {
@@ -93,8 +91,6 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-
-
 
         #region SPS Version, Status und Farbe
 

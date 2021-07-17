@@ -1,6 +1,5 @@
 ﻿using Kommunikation;
 using PlcDatenTypen;
-using Sharp7;
 
 namespace Synchronisiereinrichtung
 {
@@ -47,7 +46,6 @@ namespace Synchronisiereinrichtung
 
                 _plc.SetIntAt(datenstruktur.AnalogInput, 18, Simatic.Analog_2_Int16(_viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
             }
-
 
             if (_mainWindow.DebugWindowAktiv) return;
 

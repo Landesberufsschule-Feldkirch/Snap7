@@ -11,7 +11,7 @@ namespace LAP_2010_5_Pumpensteuerung
         {
             P1 = 0,     // "Pumpe Ein"
             P2 = 1,     // "Störung"
-            Q1= 2       // Motor Pumpe
+            Q1 = 2       // Motor Pumpe
 
         }
 

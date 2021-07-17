@@ -1,8 +1,8 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using BeschriftungPlc;
 
 namespace Schleifmaschine
 {
@@ -40,7 +40,6 @@ namespace Schleifmaschine
 
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
-
 
             var befehlszeile = Environment.GetCommandLineArgs();
             Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")

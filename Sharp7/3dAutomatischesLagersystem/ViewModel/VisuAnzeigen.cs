@@ -231,7 +231,7 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-         private Brush _spsColor;
+        private Brush _spsColor;
         public Brush SpsColor
         {
             get => _spsColor;

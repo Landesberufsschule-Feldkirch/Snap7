@@ -1,14 +1,13 @@
 ﻿using BeschriftungPlc;
+using ScottPlot;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Threading;
-using ScottPlot;
 
 namespace TestAutomat
 {
-
     public partial class TestAutomat
     {
         public bool DatenArraysGueltig { get; set; }
@@ -107,7 +106,6 @@ namespace TestAutomat
             if (BeschriftungenPlc.BeschriftungenStruktur.DaBeschriftungen != null) offset += 1.5 * BeschriftungenPlc.BeschriftungenStruktur.DaBeschriftungen.DaBeschriftung.Count;
             if (BeschriftungenPlc.BeschriftungenStruktur.DiBeschriftungen != null) offset += 1.5 * BeschriftungenPlc.BeschriftungenStruktur.DiBeschriftungen.DiBeschriftung.Count;
 
-
             if (BeschriftungenPlc.BeschriftungenStruktur.DiBeschriftungen != null)
             {
                 var diBeschriftung = BeschriftungenPlc.BeschriftungenStruktur.DiBeschriftungen.DiBeschriftung;
@@ -156,7 +154,6 @@ namespace TestAutomat
 
             _plotWindow.TestAutomatPlot.Plot.XAxis.DateTimeFormat(true);
             _plotWindow.TestAutomatPlot.Plot.Legend();
-
         }
         private double DatenpunktDaPlotEinfuegen(int id, IReadOnlyList<DaDaten> daBeschriftung, IList<bool> datenpunktAktiv, IList<int> datenpunktAdresse, double offset, IList<double> offsetDatenpunkt, Color farbe, double[] datenPlot)
         {

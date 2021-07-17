@@ -23,7 +23,7 @@ namespace LAP_2010_1_Kompressoranlage
             B2 = 1,     // Temperaturfühler Kompressor
             F1 = 2,     // Störung Motorschutzschalter
             S1 = 3,     // Taster Aus
-            S2= 4       // Taster Ein
+            S2 = 4       // Taster Ein
 
         }
 
@@ -37,7 +37,6 @@ namespace LAP_2010_1_Kompressoranlage
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Kompressoranlage.S1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Kompressoranlage.S2);
             }
-
 
             _viewModel.Kompressoranlage.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Kompressoranlage.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);

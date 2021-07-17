@@ -67,8 +67,8 @@ namespace Heizungsregler
             _plotWindow.WpfPlot.Plot.YLabel("Temperatur");
             _plotWindow.WpfPlot.Plot.XLabel("Zeit");
 
-            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, KesselTemperatur, Color.Magenta, 1,5,  label: "Kesseltemperatur");
-            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, 1,5,label: "VorlaufSolltemperatur");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, KesselTemperatur, Color.Magenta, 1, 5, label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, VorlaufSolltemperatur, Color.Green, 1, 5, label: "VorlaufSolltemperatur");
             _plotWindow.WpfPlot.Plot.Legend();
 
             // create a timer to modify the data

@@ -1,10 +1,10 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using ScottPlot;
 using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Threading;
-using BeschriftungPlc;
 
 namespace Blinker
 {
@@ -54,7 +54,7 @@ namespace Blinker
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
-            
+
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             var zeitachse = DataGen.Consecutive(5000);

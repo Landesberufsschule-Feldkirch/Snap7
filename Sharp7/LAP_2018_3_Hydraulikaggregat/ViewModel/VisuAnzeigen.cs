@@ -79,7 +79,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 SichtbarkeitUmschalten(_hydraulikaggregat.B3, 3);
 
                 SichtbarkeitUmschalten(_hydraulikaggregat.Q2 && _hydraulikaggregat.Q3, 40);
-             
+
                 Margin_1(_hydraulikaggregat.Pegel);
 
                 if (_mainWindow.Plc != null)
@@ -137,7 +137,6 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-
 
         #region SPS Version, Status und Farbe
 
@@ -199,7 +198,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
-        
+
         #region Druck
 
         private double _druck;
@@ -236,7 +235,7 @@ namespace LAP_2018_3_Hydraulikaggregat.ViewModel
         }
 
         #endregion Margin1
-        
+
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();
         public ObservableCollection<Visibility> SichtbarEin

@@ -22,7 +22,7 @@ namespace Heizungsregler
             S2 = 1     // Kraftwerk Stoppen
 
         }
-        
+
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
             if (eingaengeRangieren)
@@ -50,7 +50,7 @@ namespace Heizungsregler
 
             _mainWindow.WohnHaus.HeizungsPumpe = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _mainWindow.WohnHaus.BrennerEin = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-            
+
 
             if (_mainWindow.WohnHaus.DreiwegeVentil == null) return;
 

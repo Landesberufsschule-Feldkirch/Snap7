@@ -1,5 +1,5 @@
-﻿using System;
-using LaborGetriebemotor.Model;
+﻿using LaborGetriebemotor.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
@@ -106,7 +106,6 @@ namespace LaborGetriebemotor.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-
 
         #region SPS Version, Status und Farbe
 

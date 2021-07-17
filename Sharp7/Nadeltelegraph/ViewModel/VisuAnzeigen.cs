@@ -30,12 +30,12 @@ namespace Nadeltelegraph.ViewModel
                 AlleWinkel.Add(0);
                 AlleBreiten.Add(0);
             }
-            
+
             ColorP0 = Brushes.LightGray;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-        
+
         private void VisuAnzeigenTask()
         {
             while (true)
@@ -132,7 +132,6 @@ namespace Nadeltelegraph.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
         private ObservableCollection<int> _alleWinkel = new();
         public ObservableCollection<int> AlleWinkel
         {
@@ -143,7 +142,6 @@ namespace Nadeltelegraph.ViewModel
                 OnPropertyChanged(nameof(AlleWinkel));
             }
         }
-
 
         private ObservableCollection<int> _alleBreiten = new();
         public ObservableCollection<int> AlleBreiten

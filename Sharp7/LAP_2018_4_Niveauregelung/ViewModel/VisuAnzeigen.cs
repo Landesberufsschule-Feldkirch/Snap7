@@ -57,13 +57,12 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
                 FarbeUmschalten(_niveauRegelung.Q2, 35, Brushes.Blue, Brushes.LightBlue);
                 FarbeUmschalten(_niveauRegelung.Q2, 36, Brushes.Blue, Brushes.LightBlue);
 
-
-                SichtbarkeitUmschalten(_niveauRegelung.B1,1);
-                SichtbarkeitUmschalten(_niveauRegelung.B2,2);
-                SichtbarkeitUmschalten(_niveauRegelung.B3,3);
-                SichtbarkeitUmschalten(_niveauRegelung.Q1,14);
-                SichtbarkeitUmschalten(_niveauRegelung.Q2,15);
-                SichtbarkeitUmschalten(_niveauRegelung.Y1,30);
+                SichtbarkeitUmschalten(_niveauRegelung.B1, 1);
+                SichtbarkeitUmschalten(_niveauRegelung.B2, 2);
+                SichtbarkeitUmschalten(_niveauRegelung.B3, 3);
+                SichtbarkeitUmschalten(_niveauRegelung.Q1, 14);
+                SichtbarkeitUmschalten(_niveauRegelung.Q2, 15);
+                SichtbarkeitUmschalten(_niveauRegelung.Y1, 30);
 
                 Margin_1(_niveauRegelung.Pegel);
 
@@ -115,7 +114,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-        
+
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
@@ -176,7 +175,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
         }
 
         #endregion SPS Versionsinfo, Status und Farbe
-        
+
         #region Margin1
 
         public void Margin_1(double pegel) => Margin1 = new Thickness(0, HoeheFuellBalken * (1 - pegel), 0, 0);
@@ -194,7 +193,7 @@ namespace LAP_2018_4_Niveauregelung.ViewModel
         }
 
         #endregion Margin1
-        
+
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();
         public ObservableCollection<Visibility> SichtbarEin

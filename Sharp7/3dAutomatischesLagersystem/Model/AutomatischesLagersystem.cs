@@ -6,7 +6,7 @@ namespace AutomatischesLagersystem.Model
     {
         private readonly MainWindow _mainWindow;
 
-        public  bool B1 { get; set; } // irgendein Eingang - dummy
+        public bool B1 { get; set; } // irgendein Eingang - dummy
 
         public bool K1 { get; set; } // Regalbediengerät hinein
         public bool K2 { get; set; } // Regalbediengerät heraus

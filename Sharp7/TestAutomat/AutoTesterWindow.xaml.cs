@@ -41,7 +41,7 @@ namespace TestAutomat
                     row.Background = AutoTesterDataGrid[zeile].Ergebnis switch
                     {
                         AutoTester.TestErgebnis.Aktiv => Brushes.White,
-                        AutoTester.TestErgebnis.AufBitmusterWarten=>Brushes.Yellow,
+                        AutoTester.TestErgebnis.AufBitmusterWarten => Brushes.Yellow,
                         AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
                         AutoTester.TestErgebnis.CompilerError => Brushes.Red,
                         AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,

@@ -5,7 +5,7 @@ namespace PlcDatenTypen
 {
     public class ZeitDauer
     {
-        public long DauerMs { get;}
+        public long DauerMs { get; }
 
         public ZeitDauer(string dauer)
         {

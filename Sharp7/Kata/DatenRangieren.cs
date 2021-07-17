@@ -44,7 +44,7 @@ namespace Kata
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S7, _viewModel.Kata.S7);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S8, _viewModel.Kata.S8);
             }
-            
+
             _viewModel.Kata.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Kata.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
             _viewModel.Kata.P3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P3);

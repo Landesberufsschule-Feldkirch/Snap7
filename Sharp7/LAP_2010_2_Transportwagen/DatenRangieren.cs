@@ -11,7 +11,7 @@ namespace LAP_2010_2_Transportwagen
         {
             P1 = 0,     // Störung
             Q1 = 1,     // Motor LL
-            Q2= 2       // Motor RL
+            Q2 = 2       // Motor RL
 
         }
 
@@ -22,7 +22,7 @@ namespace LAP_2010_2_Transportwagen
             F1 = 2,     // Thermorelais
             S1 = 3,     // Taster "Start"
             S2 = 4,     // NotHalt
-            S3= 5       // Taster Reset
+            S3 = 5       // Taster Reset
 
         }
 
@@ -37,7 +37,6 @@ namespace LAP_2010_2_Transportwagen
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _transportwagenViewModel.Transportwagen.S2);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _transportwagenViewModel.Transportwagen.S3);
             }
-
 
             _transportwagenViewModel.Transportwagen.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _transportwagenViewModel.Transportwagen.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace LAP_2010_5_Pumpensteuerung.ViewModel
 {
@@ -76,7 +76,6 @@ namespace LAP_2010_5_Pumpensteuerung.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
 
         internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)

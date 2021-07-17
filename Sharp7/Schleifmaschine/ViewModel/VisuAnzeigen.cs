@@ -71,9 +71,6 @@ namespace Schleifmaschine.ViewModel
 
             // ReSharper disable once FunctionNeverReturns
         }
-
-
-
         internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)
         {
@@ -114,7 +111,7 @@ namespace Schleifmaschine.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-        
+
         #region SPS Version, Status und Farbe
 
         private string _spsVersionLokal;
@@ -184,11 +181,10 @@ namespace Schleifmaschine.ViewModel
             get => "n=" + _schleifmaschineDrehzahl;
             set
             {
-                _schleifmaschineDrehzahl = Math.Floor(Convert.ToDouble(value.Substring(2)));
+                _schleifmaschineDrehzahl = Math.Floor(Convert.ToDouble(value[2..]));
                 OnPropertyChanged(nameof(SchleifmaschineDrehzahl));
             }
         }
-
 
         private double _winkelSchleifmaschine;
         public double WinkelSchleifmaschine
@@ -211,7 +207,7 @@ namespace Schleifmaschine.ViewModel
                 OnPropertyChanged(nameof(AktuelleDrehzahl));
             }
         }
-        
+
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();
         public ObservableCollection<Visibility> SichtbarEin

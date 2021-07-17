@@ -1,10 +1,10 @@
 ﻿using AmpelsteuerungKieswerk.Model;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Media;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows;
+using System.Windows.Media;
 using Utilities;
 
 namespace AmpelsteuerungKieswerk.ViewModel
@@ -197,7 +197,7 @@ namespace AmpelsteuerungKieswerk.ViewModel
 
         internal void RichtungSetzen(LastKraftWagen.LkwRichtungen r, int i)
         {
-            Richtung[i] = (int) r;
+            Richtung[i] = (int)r;
         }
         internal void PositionSetzen(Punkt pos, int i)
         {

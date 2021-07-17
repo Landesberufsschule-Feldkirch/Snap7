@@ -1,11 +1,11 @@
-﻿using System;
+﻿using LAP_2018_2_Abfuellanlage.Model;
+using System;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using System.Windows.Media;
-using LAP_2018_2_Abfuellanlage.Model;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Utilities;
 
 namespace LAP_2018_2_Abfuellanlage.ViewModel
@@ -96,7 +96,6 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
 
         internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)
@@ -247,7 +246,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             set
             {
                 _posOben = value;
-                OnPropertyChanged("PosOben");
+                OnPropertyChanged(nameof(PosOben));
             }
         }
 
@@ -258,7 +257,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
             set
             {
                 _posLinks = value;
-                OnPropertyChanged("PosLinks");
+                OnPropertyChanged(nameof(PosLinks));
             }
         }
 
@@ -283,7 +282,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
         }
 
         #endregion Margin1
-        
+
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();
         public ObservableCollection<Visibility> SichtbarEin

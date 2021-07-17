@@ -1,5 +1,5 @@
-﻿using System.Windows.Input;
-using Kata.Commands;
+﻿using Kata.Commands;
+using System.Windows.Input;
 
 namespace Kata.ViewModel
 {

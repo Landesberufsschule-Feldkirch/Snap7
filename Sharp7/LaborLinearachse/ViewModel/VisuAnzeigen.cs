@@ -1,5 +1,5 @@
-﻿using System;
-using LaborLinearachse.Model;
+﻿using LaborLinearachse.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
@@ -50,7 +50,6 @@ namespace LaborLinearachse.ViewModel
                 FarbeUmschalten(_linearachse.P3, 5, Brushes.Red, Brushes.LightGray);
                 FarbeUmschalten(_linearachse.P4, 6, Brushes.GreenYellow, Brushes.LightGray);
 
-
                 if (_mainWindow.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
@@ -65,8 +64,6 @@ namespace LaborLinearachse.ViewModel
 
             // ReSharper disable once FunctionNeverReturns
         }
-
-
 
         internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
         internal void SichtbarkeitUmschalten(bool val, int i)
@@ -110,8 +107,6 @@ namespace LaborLinearachse.ViewModel
                 default: throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
-
-
 
         #region SPS Version, Status und Farbe
 
@@ -184,7 +179,6 @@ namespace LaborLinearachse.ViewModel
             }
         }
         #endregion
-        
 
         #region Sichtbarkeit
         private ObservableCollection<Visibility> _sichtbarEin = new();

@@ -1,5 +1,5 @@
-﻿using System.Windows.Input;
-using Blinklicht_Fibonacci.Commands;
+﻿using Blinklicht_Fibonacci.Commands;
+using System.Windows.Input;
 
 namespace Blinklicht_Fibonacci.ViewModel
 {

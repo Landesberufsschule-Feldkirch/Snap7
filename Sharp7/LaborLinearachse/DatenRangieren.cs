@@ -14,7 +14,7 @@ namespace LaborLinearachse
             P1 = 2,     // 0.2  Meldeleuchte im Taster S1/S2 (weiß) 
             P2 = 3,     // 0.3  Meldeleuchte weiß
             P3 = 4,     // 0.4  Meldeleuchte rot
-            P4= 5       // 0.5  Meldeleuchte grün
+            P4 = 5       // 0.5  Meldeleuchte grün
 
         }
 
@@ -32,7 +32,7 @@ namespace LaborLinearachse
             S7 = 9,     // 1.1  Taster ( + ) → Schliesser 
             S9 = 10,    // 1.2  Taster ( STOP ) → Öffner 
             S10 = 11,   // 1.3  Not-Halt → Öffner
-            S11= 12     // 1.4  Not-Halt → Schliesser 
+            S11 = 12     // 1.4  Not-Halt → Schliesser 
 
         }
 
@@ -54,7 +54,6 @@ namespace LaborLinearachse
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S10, _viewModel.Linearachse.S10);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S11, _viewModel.Linearachse.S11);
             }
-
 
             _viewModel.Linearachse.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Linearachse.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);

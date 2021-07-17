@@ -2,8 +2,6 @@
 
 namespace ElektronischesZahlenschloss
 {
-    using Sharp7;
-
     public class DatenRangieren
     {
         private readonly ViewModel.ViewModel _viewModel;

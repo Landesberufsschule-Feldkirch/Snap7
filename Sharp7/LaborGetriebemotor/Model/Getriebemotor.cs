@@ -34,7 +34,7 @@ namespace LaborGetriebemotor.Model
             S4 = true;
             S7 = true;
             S92 = true;
-            
+
             System.Threading.Tasks.Task.Run(GetriebemotorTask);
         }
         private void GetriebemotorTask()
