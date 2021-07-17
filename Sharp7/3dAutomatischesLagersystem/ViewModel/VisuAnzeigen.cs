@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Globalization;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace AutomatischesLagersystem.ViewModel
@@ -16,7 +17,7 @@ namespace AutomatischesLagersystem.ViewModel
         public const int Regalbediengeraet = 3;
         public const int Kisten = 4;
         public const int AnzahlEintraege = 5;
-    };
+    }
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
@@ -59,7 +60,8 @@ namespace AutomatischesLagersystem.ViewModel
             VisibilityB2Ein = Visibility.Visible;
             VisibilityB2Aus = Visibility.Hidden;
 
-            SpsSichtbar = Visibility.Hidden;
+            VersionNr = "V0.0";
+            SpsVersionsInfoSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -74,7 +76,7 @@ namespace AutomatischesLagersystem.ViewModel
             YPosSlider = 0;
             ZPosSlider = 0;
             _mainWindow.DreiD.EineEinzigeKisteAufDemRegalbediengeraet();
-            _mainWindow.viewPort3d.Children[_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet]].Transform = _mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
+            _mainWindow.ViewPort3d.Children[_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet]].Transform = _mainWindow.KistenStartPositionen[0].Transform(-1750, 1400, -100);
         }
 
         internal void SetButtonsAktiv()
@@ -111,7 +113,7 @@ namespace AutomatischesLagersystem.ViewModel
         {
             while (true)
             {
-                if (_mainWindow.DebugWindowAktiv && (VisibilitySlidersAktiv == Visibility.Visible))
+                if (_mainWindow.DebugWindowAktiv && VisibilitySlidersAktiv == Visibility.Visible)
                 {
                     _mainWindow.RegalBedienGeraet.SetX(XPosSlider);  // Zahlenbereich 0 .. 1
                     _mainWindow.RegalBedienGeraet.SetY(YPosSlider);  // Zahlenbereich -1 .. 1
@@ -120,43 +122,41 @@ namespace AutomatischesLagersystem.ViewModel
 
                 FarbeKollisionRegalMitSchlitten(_automatischesLagersystem.KollisionRegal.GetKollisionRegalMitSchlitten());
 
-                if (_mainWindow.viewPort3d != null)
+                if (_mainWindow.ViewPort3d != null)
                 {
                     _mainWindow.Dispatcher.Invoke(() =>
-                   {
-                       if (_mainWindow.FensterAktiv)
-                       {
-                           if (_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
-                           {
-                               //Bediengerät
-                               _mainWindow.viewPort3d.Children[197].Transform = _mainWindow.BediengeraetStartpositionen[0].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
+                    {
+                        if (!_mainWindow.FensterAktiv) return;
+                        if (_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
+                        {
+                            //Bediengerät
+                            _mainWindow.ViewPort3d.Children[197].Transform = _mainWindow.BediengeraetStartpositionen[0].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
 
-                               // Schlitten senkrecht
-                               _mainWindow.viewPort3d.Children[198].Transform = _mainWindow.BediengeraetStartpositionen[1].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, _mainWindow.RegalBedienGeraet.GetZPosition());
+                            // Schlitten senkrecht
+                            _mainWindow.ViewPort3d.Children[198].Transform = _mainWindow.BediengeraetStartpositionen[1].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, _mainWindow.RegalBedienGeraet.GetZPosition());
 
-                               // Schlitten waagrecht Zwischenteil
-                               _mainWindow.viewPort3d.Children[199].Transform = _mainWindow.BediengeraetStartpositionen[2].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * _mainWindow.RegalBedienGeraet.GetYPosition() / 2, _mainWindow.RegalBedienGeraet.GetZPosition());
+                            // Schlitten waagrecht Zwischenteil
+                            _mainWindow.ViewPort3d.Children[199].Transform = _mainWindow.BediengeraetStartpositionen[2].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), -1 * _mainWindow.RegalBedienGeraet.GetYPosition() / 2, _mainWindow.RegalBedienGeraet.GetZPosition());
 
-                               // Schlitten waagrecht
-                               _mainWindow.viewPort3d.Children[200].Transform = _mainWindow.BediengeraetStartpositionen[3].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), (-1) * _mainWindow.RegalBedienGeraet.GetYPosition(), _mainWindow.RegalBedienGeraet.GetZPosition());
+                            // Schlitten waagrecht
+                            _mainWindow.ViewPort3d.Children[200].Transform = _mainWindow.BediengeraetStartpositionen[3].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), -1 * _mainWindow.RegalBedienGeraet.GetYPosition(), _mainWindow.RegalBedienGeraet.GetZPosition());
 
-                               XPosition = (_mainWindow.BediengeraetStartpositionen[3].GetX() + _mainWindow.RegalBedienGeraet.GetXPosition()).ToString();
-                               YPosition = (_mainWindow.BediengeraetStartpositionen[3].GetY() + _mainWindow.RegalBedienGeraet.GetYPosition()).ToString();
-                               ZPosition = (_mainWindow.BediengeraetStartpositionen[3].GetZ() + _mainWindow.RegalBedienGeraet.GetZPosition()).ToString();
-                           }
-                           else
-                           {
-                               MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
-                           }
-                       }
-                   });
+                            XPosition = (_mainWindow.BediengeraetStartpositionen[3].GetX() + _mainWindow.RegalBedienGeraet.GetXPosition()).ToString(CultureInfo.InvariantCulture);
+                            YPosition = (_mainWindow.BediengeraetStartpositionen[3].GetY() + _mainWindow.RegalBedienGeraet.GetYPosition()).ToString(CultureInfo.InvariantCulture);
+                            ZPosition = (_mainWindow.BediengeraetStartpositionen[3].GetZ() + _mainWindow.RegalBedienGeraet.GetZPosition()).ToString(CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                        }
+                    });
                 }
 
                 if (_mainWindow.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
 
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
@@ -164,18 +164,28 @@ namespace AutomatischesLagersystem.ViewModel
 
                 Thread.Sleep(100);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         internal void Buchstabe(object buchstabe)
         {
-            if (buchstabe is string ascii)
-            {
-                var asciiCode = ascii[0];
-                _automatischesLagersystem.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
-            }
+            if (!(buchstabe is string ascii)) return;
+            var asciiCode = ascii[0];
+            _automatischesLagersystem.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
         }
 
         #region SPS Version, Status und Farbe
+
+        private string _versionNr;
+        public string VersionNr
+        {
+            get => _versionNr;
+            set
+            {
+                _versionNr = value;
+                OnPropertyChanged(nameof(VersionNr));
+            }
+        }
 
         private string _spsVersionLokal;
         public string SpsVersionLokal
@@ -199,14 +209,14 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-        private Visibility _spsSichtbar;
-        public Visibility SpsSichtbar
+        private Visibility _spsVersionsInfoSichtbar;
+        public Visibility SpsVersionsInfoSichtbar
         {
-            get => _spsSichtbar;
+            get => _spsVersionsInfoSichtbar;
             set
             {
-                _spsSichtbar = value;
-                OnPropertyChanged(nameof(SpsSichtbar));
+                _spsVersionsInfoSichtbar = value;
+                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
             }
         }
 
@@ -221,7 +231,7 @@ namespace AutomatischesLagersystem.ViewModel
             }
         }
 
-        private Brush _spsColor;
+         private Brush _spsColor;
         public Brush SpsColor
         {
             get => _spsColor;
@@ -379,10 +389,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK1 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK1 = ClickMode.Press;
-            }
+
+            ClickModeBtnK1 = ClickMode.Press;
             return false;
         }
 
@@ -409,10 +417,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK2 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK2 = ClickMode.Press;
-            }
+
+            ClickModeBtnK2 = ClickMode.Press;
             return false;
         }
 
@@ -439,10 +445,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK3 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK3 = ClickMode.Press;
-            }
+
+            ClickModeBtnK3 = ClickMode.Press;
             return false;
         }
 
@@ -469,10 +473,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK4 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK4 = ClickMode.Press;
-            }
+
+            ClickModeBtnK4 = ClickMode.Press;
             return false;
         }
 
@@ -499,10 +501,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK5 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK5 = ClickMode.Press;
-            }
+
+            ClickModeBtnK5 = ClickMode.Press;
             return false;
         }
 
@@ -529,10 +529,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtnK6 = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtnK6 = ClickMode.Press;
-            }
+
+            ClickModeBtnK6 = ClickMode.Press;
             return false;
         }
 
@@ -559,10 +557,8 @@ namespace AutomatischesLagersystem.ViewModel
                 ClickModeBtn[asciiCode] = ClickMode.Release;
                 return true;
             }
-            else
-            {
-                ClickModeBtn[asciiCode] = ClickMode.Press;
-            }
+
+            ClickModeBtn[asciiCode] = ClickMode.Press;
             return false;
         }
 
