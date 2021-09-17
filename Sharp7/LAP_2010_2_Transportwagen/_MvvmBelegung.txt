@@ -1,0 +1,21 @@
+
+
+1       B1      			                    SichtbarEin		SichtbarAus
+2       B2      			                    SichtbarEin		SichtbarAus
+
+3       F1                      BtnSchalter     Farbe
+
+4		P1		Farbe
+
+5		Q1		Farbe
+6		Q2		Farbe
+
+
+
+
+11		S1		ClkMode			BtnTaster
+12		S2		 			    BtnSchalter			Farbe
+13		S3		ClkMode			BtnTaster
+
+20      Fuellen                                     SichtbarEin
+21      Kurzschluß                                  SichtbarEin

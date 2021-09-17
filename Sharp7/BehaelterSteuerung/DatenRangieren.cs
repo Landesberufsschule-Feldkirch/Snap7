@@ -10,25 +10,25 @@ namespace BehaelterSteuerung
         private enum BitPosEingang
         {
             B1 = 0,
-            B2,
-            B3,
-            B4,
-            B5,
-            B6,
-            B7,
-            B8
+            B2 = 1,
+            B3 = 2,
+            B4 = 3,
+            B5 = 4,
+            B6 = 5,
+            B7 = 6,
+            B8 = 7
         }
 
         private enum BitPosAusgang
         {
             Q1 = 0,
-            Q3,
-            Q5,
-            Q7,
-            P1
+            Q3 = 1,
+            Q5 = 2,
+            Q7 = 3,
+            P1 = 4
         }
 
-        public DatenRangieren(BehaelterSteuerung.ViewModel.ViewModel behaelterViewModel) => _viewModel = behaelterViewModel;
+        public DatenRangieren(ViewModel.ViewModel behaelterViewModel) => _viewModel = behaelterViewModel;
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {

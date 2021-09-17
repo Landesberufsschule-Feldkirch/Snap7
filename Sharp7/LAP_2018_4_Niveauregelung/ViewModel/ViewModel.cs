@@ -6,45 +6,19 @@
     public class ViewModel
     {
         public Model.NiveauRegelung NiveauRegelung { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             NiveauRegelung = new Model.NiveauRegelung();
-            ViAnzeige = new VisuAnzeigen(mainWindow, NiveauRegelung);
+            ViAnz = new VisuAnzeigen(mainWindow, NiveauRegelung);
         }
 
-
-
-        private ICommand _btnTasterS1;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS1 => _btnTasterS1 ??= new RelayCommand(_ => ViAnzeige.TasterS1(), _ => true);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
 
-        private ICommand _btnTasterS2;
+        private ICommand _btnSchalter;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS2 => _btnTasterS2 ??= new RelayCommand(_ => ViAnzeige.TasterS2(), _ => true);
-
-        private ICommand _btnTasterS3;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterS3 => _btnTasterS3 ??= new RelayCommand(_ => ViAnzeige.TasterS3(), _ => true);
-
-        private ICommand _btnThermorelaisF1;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnThermorelaisF1 => _btnThermorelaisF1 ??= new RelayCommand(_ => NiveauRegelung.ThermorelaisF1(), _ => true);
-
-        private ICommand _btnThermorelaisF2;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnThermorelaisF2 => _btnThermorelaisF2 ??= new RelayCommand(_ => NiveauRegelung.ThermorelaisF2(), _ => true);
-
-        private ICommand _btnVentilY1;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnVentilY1 => _btnVentilY1 ??= new RelayCommand(_ => NiveauRegelung.VentilY1(), _ => true);
-
-        private ICommand _btnSetManualQ1;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnSetManualQ1 => _btnSetManualQ1 ??= new RelayCommand(_ => NiveauRegelung.SetManualQ1(), _ => true);
-
-        private ICommand _btnSetManualQ2;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnSetManualQ2 => _btnSetManualQ2 ??= new RelayCommand(_ => NiveauRegelung.SetManualQ2(), _ => true);
+        public ICommand BtnSchalter => _btnSchalter ??= new RelayCommand(ViAnz.Schalter);
     }
 }

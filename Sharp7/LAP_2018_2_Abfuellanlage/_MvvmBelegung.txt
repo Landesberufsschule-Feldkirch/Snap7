@@ -1,0 +1,48 @@
+
+1       B1  			SichtbarEin		SichtbarAus	
+
+2       F1              BtnSchalter
+
+3       K1
+4       K2
+
+5		P1		Farbe
+6		P2		Farbe
+
+7		Q1		Farbe
+
+
+
+11		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+12		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus			
+13		S3		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+14		S4		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+15      TankNachfuellen
+16      AllesReset
+
+20      Ableitung
+21      Zuleitung
+
+31      Flasche 1
+32      Flasche 2
+33      Flasche 3
+34      Flasche 4
+35      Flasche 5
+36      Flasche 6
+
+
+40      Fohrenburger 0
+41      Fohrenburger 1
+42      Fohrenburger 2
+43      Fohrenburger 3
+44      Fohrenburger 4
+45      Fohrenburger 5
+46      Fohrenburger 6
+
+50      Mohren 0
+51      Mohren 1
+52      Mohren 2
+53      Mohren 3
+54      Mohren 4
+55      Mohren 5
+56      Mohren 6

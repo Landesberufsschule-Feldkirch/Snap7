@@ -1,0 +1,57 @@
+
+0		Parkplatz / Auto 00 						SichtbarEin		SichtbarAus	
+1		Parkplatz / Auto 01 						SichtbarEin		SichtbarAus	
+2		Parkplatz / Auto 02 						SichtbarEin		SichtbarAus	
+3		Parkplatz / Auto 03 						SichtbarEin		SichtbarAus	
+4		Parkplatz / Auto 04 						SichtbarEin		SichtbarAus	
+5		Parkplatz / Auto 05 						SichtbarEin		SichtbarAus
+6		Parkplatz / Auto 06 						SichtbarEin		SichtbarAus	
+7		Parkplatz / Auto 07 						SichtbarEin		SichtbarAus	
+
+10		Parkplatz / Auto 10 						SichtbarEin		SichtbarAus	
+11		Parkplatz / Auto 11 						SichtbarEin		SichtbarAus	
+12		Parkplatz / Auto 12 						SichtbarEin		SichtbarAus	
+13		Parkplatz / Auto 13 						SichtbarEin		SichtbarAus	
+14		Parkplatz / Auto 14 						SichtbarEin		SichtbarAus	
+15		Parkplatz / Auto 15 						SichtbarEin		SichtbarAus
+16		Parkplatz / Auto 16 						SichtbarEin		SichtbarAus	
+17		Parkplatz / Auto 17 						SichtbarEin		SichtbarAus	
+
+20		Parkplatz / Auto 20 						SichtbarEin		SichtbarAus	
+21		Parkplatz / Auto 21 						SichtbarEin		SichtbarAus	
+22		Parkplatz / Auto 22 						SichtbarEin		SichtbarAus	
+23		Parkplatz / Auto 23 						SichtbarEin		SichtbarAus	
+24		Parkplatz / Auto 24 						SichtbarEin		SichtbarAus	
+25		Parkplatz / Auto 25 						SichtbarEin		SichtbarAus
+26		Parkplatz / Auto 26 						SichtbarEin		SichtbarAus	
+27		Parkplatz / Auto 27 						SichtbarEin		SichtbarAus	
+
+30		Parkplatz / Auto 30 						SichtbarEin		SichtbarAus	
+31		Parkplatz / Auto 31 						SichtbarEin		SichtbarAus	
+32		Parkplatz / Auto 32 						SichtbarEin		SichtbarAus	
+33		Parkplatz / Auto 33 						SichtbarEin		SichtbarAus	
+34		Parkplatz / Auto 34 						SichtbarEin		SichtbarAus	
+35		Parkplatz / Auto 35 						SichtbarEin		SichtbarAus
+36		Parkplatz / Auto 36 						SichtbarEin		SichtbarAus	
+37		Parkplatz / Auto 37 						SichtbarEin		SichtbarAus	
+
+
+
+
+
+3		P1		Farbe
+4		P2		Farbe
+5		P3		Farbe
+6		P4		Farbe
+
+
+11		S1		ClkMode			BtnTaster
+12		S2		ClkMode			BtnTaster			
+13		S3		ClkMode			BtnTaster	
+14		S4		ClkMode			BtnTaster
+15		S5						BtnTaster		
+16		S6						BtnTaster		
+17		S7						BtnTaster		
+18		S8						BtnTaster
+19		S9						BtnTaster	
+20		S10 (S11)				BtnSchalter			

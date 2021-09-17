@@ -43,7 +43,6 @@ namespace LAP_2018_1_Silosteuerung.Model
         {
             while (true)
             {
-
                 Wagen.WagenTask();
                 B1 = Wagen.IstWagenRechts();
                 B2 = Wagen.IstWagenVoll();
@@ -58,10 +57,6 @@ namespace LAP_2018_1_Silosteuerung.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-        internal void BtnLagerSiloVoll() => RutscheVoll = !RutscheVoll;
-        internal void BtnF1() => F1 = !F1;
-        internal void BtnF2() => F2 = !F2;
         internal void WagenNachLinks() => Wagen.NachLinks();
         internal void WagenNachRechts() => Wagen.NachRechts();
     }

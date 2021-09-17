@@ -15,10 +15,10 @@ namespace _AlleManConfigTesten
 
             alleManConfigTesten.AlleConfigEinlesen();
 
-            DataGridAa.ItemsSource = viewModel.ViAnzeige.AaAlleDaten;
-            DataGridAi.ItemsSource = viewModel.ViAnzeige.AiAlleDaten;
-            DataGridDa.ItemsSource = viewModel.ViAnzeige.DaAlleDaten;
-            DataGridDi.ItemsSource = viewModel.ViAnzeige.DiAlleDaten;
+            DataGridAa.ItemsSource = viewModel.ViAnz.AaAlleDaten;
+            DataGridAi.ItemsSource = viewModel.ViAnz.AiAlleDaten;
+            DataGridDa.ItemsSource = viewModel.ViAnz.DaAlleDaten;
+            DataGridDi.ItemsSource = viewModel.ViAnz.DiAlleDaten;
         }
     }
 }

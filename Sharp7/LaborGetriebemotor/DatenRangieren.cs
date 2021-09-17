@@ -4,33 +4,33 @@ namespace LaborGetriebemotor
 {
     public class DatenRangieren
     {
-        private readonly LaborGetriebemotor.ViewModel.ViewModel _viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
         private IPlc _plc;
 
         private enum BitPosAusgang
         {
-            Q1 = 0, // 0.0  Getriebemotor Schnell Rechtslauf
-            Q2,     // 0.1  Getriebemotor Linkslauf
-            Q3,     // 0.2  Getriebemotor Langsam Rechtslauf
-            P1 = 4, // 0.4  Meldeleuchte weiß
-            P2,     // 0.5  Meldeleuchte grün
-            P3      // 0.6  Meldeleuchte rot
+            Q1 = 0,     // 0.0  Getriebemotor Schnell Rechtslauf
+            Q2 = 1,     // 0.1  Getriebemotor Linkslauf
+            Q3 = 2,     // 0.2  Getriebemotor Langsam Rechtslauf
+            P1 = 4,     // 0.4  Meldeleuchte weiß
+            P2 = 5,     // 0.5  Meldeleuchte grün
+            P3 = 6      // 0.6  Meldeleuchte rot
         }
 
         private enum BitPosEingang
         {
-            S2 = 0, // 0.0  Taster ( ⓪ ) → Öffner
-            S1,     // 0.1  Taster ( ① ) → Schliesser
-            S4,     // 0.2  Taster ( STOP ) → Öffner 
-            S3,     // 0.3  Taster ( Ⅰ ) → Schliesser 
-            S5,     // 0.4  Taster ( Ⅱ ) → Schliesser 
-            S7,     // 0.5  Taster (STOP) → Öffner
-            S6,     // 0.6  Taster (←) → Schliesser
-            S8,     // 0.7  Taster (→) → Schliesser
-            S91,    // 1.0  Not-Halt → Schliesser 
-            S92,    // 1.1  Not-Halt → Öffner
-            B1,     // 1.2  Lichtschranke 0°
-            B2      // 1.3  Lichtschranke 45° CCW 
+            S1 = 0,     // 0.0  Taster ( ① ) → Schliesser
+            S2 = 1,     // 0.1  Taster ( ⓪ ) → Öffner
+            S4 = 2,     // 0.2  Taster ( STOP ) → Öffner 
+            S3 = 3,     // 0.3  Taster ( Ⅰ ) → Schliesser 
+            S5 = 4,     // 0.4  Taster ( Ⅱ ) → Schliesser 
+            S7 = 5,     // 0.5  Taster (STOP) → Öffner
+            S6 = 6,     // 0.6  Taster (←) → Schliesser
+            S8 = 7,     // 0.7  Taster (→) → Schliesser
+            S91 = 8,    // 1.0  Not-Halt → Schliesser 
+            S92 = 9,    // 1.1  Not-Halt → Öffner
+            B1 = 10,    // 1.2  Lichtschranke 0°
+            B2 = 11     // 1.3  Lichtschranke 45° CCW 
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
@@ -58,7 +58,7 @@ namespace LaborGetriebemotor
             _viewModel.Getriebemotor.Q2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
             _viewModel.Getriebemotor.Q3 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q3);
         }
-        public DatenRangieren(LaborGetriebemotor.ViewModel.ViewModel vm) => _viewModel = vm;
+        public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

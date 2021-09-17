@@ -79,26 +79,26 @@ namespace Synchronisiereinrichtung
             _plotWindow = new PlotWindow.PlotWindow();
             _plotWindow.Show();
 
-            _plotWindow.WpfPlot.plt.YLabel("Ventilöffnung Y");
-            _plotWindow.WpfPlot.plt.YLabel("Erregerstrom IE");
-            _plotWindow.WpfPlot.plt.YLabel("Frequenz f");
-            _plotWindow.WpfPlot.plt.YLabel("Generatorspannung UG");
-            _plotWindow.WpfPlot.plt.YLabel("Spannungsdifferenz Ud");
-            _plotWindow.WpfPlot.plt.YLabel("Leistung P");
+            _plotWindow.WpfPlot.Plot.YLabel("Ventilöffnung Y");
+            _plotWindow.WpfPlot.Plot.YLabel("Erregerstrom IE");
+            _plotWindow.WpfPlot.Plot.YLabel("Frequenz f");
+            _plotWindow.WpfPlot.Plot.YLabel("Generatorspannung UG");
+            _plotWindow.WpfPlot.Plot.YLabel("Spannungsdifferenz Ud");
+            _plotWindow.WpfPlot.Plot.YLabel("Leistung P");
 
-            _plotWindow.WpfPlot.plt.XLabel("Zeit");
+            _plotWindow.WpfPlot.Plot.XLabel("Zeit");
 
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotVentilOeffnung, label: "Kesseltemperatur");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotErregerstrom, label: "Erregerstrom");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotFrequenz, label: "Frequenz");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotGeneratorSpannung, label: "Generatorspannung");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotSpannungsdifferenz, label: "Spannungsdifferenz");
-            _plotWindow.WpfPlot.plt.PlotScatter(Zeitachse, PlotLeistung, label: "Leistung");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotVentilOeffnung, label: "Kesseltemperatur");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotErregerstrom, label: "Erregerstrom");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotFrequenz, label: "Frequenz");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotGeneratorSpannung, label: "Generatorspannung");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotSpannungsdifferenz, label: "Spannungsdifferenz");
+            _plotWindow.WpfPlot.Plot.AddScatter(Zeitachse, PlotLeistung, label: "Leistung");
 
-            _plotWindow.WpfPlot.plt.Legend(fixedLineWidth: false);
+            _plotWindow.WpfPlot.Plot.Legend();
 
-            _plotWindow.WpfPlot.plt.XLabel("Zeit");
-            _plotWindow.WpfPlot.plt.YLabel("Y");
+            _plotWindow.WpfPlot.Plot.XLabel("Zeit");
+            _plotWindow.WpfPlot.Plot.YLabel("Y");
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
@@ -127,7 +127,7 @@ namespace Synchronisiereinrichtung
 
         private void Render(object sender, EventArgs e)
         {
-            _plotWindow.WpfPlot.plt.AxisAuto(0);
+            _plotWindow.WpfPlot.Plot.AxisAuto(0);
             _plotWindow.WpfPlot.Render();
         }
     }

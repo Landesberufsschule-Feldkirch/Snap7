@@ -1,10 +1,9 @@
-﻿using Kommunikation;
+﻿using AmpelsteuerungKieswerk.Model;
+using Kommunikation;
+using System;
 
 namespace AmpelsteuerungKieswerk
 {
-    using Model;
-    using System;
-
     public class DatenRangieren
     {
         public event EventHandler<AmpelZustandEventArgs> AmpelChangedEvent;
@@ -16,20 +15,20 @@ namespace AmpelsteuerungKieswerk
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Ampel links rot
-            P2,     // Ampel links gelb
-            P3,     // Ampel links grün
-            P4,     // Ampel rechts rot
-            P5,     // Ampel rechts gelb
-            P6      // Ampel rechts grün
-        }
+            P1 = 0,     // Ampel links rot
+            P2 = 1,     // Ampel links gelb
+            P3 = 2,     // Ampel links grün
+            P4 = 3,     // Ampel rechts rot
+            P5 = 4,     // Ampel rechts gelb
+            P6 = 5       // Ampel rechts grün
 
+        }
         private enum BitPosEingang
         {
             B1 = 0,
-            B2,
-            B3,
-            B4
+            B2 = 1,
+            B3 = 2,
+            B4 = 3
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
@@ -41,7 +40,6 @@ namespace AmpelsteuerungKieswerk
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B3, _viewModel.AlleLastKraftWagen.B3);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.B4, _viewModel.AlleLastKraftWagen.B4);
             }
-
 
             var p1LinksRot = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             var p2LinksGelb = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
@@ -59,18 +57,15 @@ namespace AmpelsteuerungKieswerk
             _ampelRechts = rechteAmpel;
             _ampelLinks = linkeAmpel;
         }
-
         public DatenRangieren(ViewModel.ViewModel vm)
         {
             _viewModel = vm;
-            AmpelChangedEvent += _viewModel.ViAnzeige.DatenRangieren_AmpelChangedEvent;
+            AmpelChangedEvent += _viewModel.ViAnz.DatenRangieren_AmpelChangedEvent;
         }
-
         private void OnAmpelChanged(AmpelZustandEventArgs e)
         {
             AmpelChangedEvent?.Invoke(this, e);
         }
-
         private static AmpelZustand GetAmpelZustand(bool rot, bool gelb, bool gruen)
         {
             if (rot && gelb) return AmpelZustand.RotUndGelb;

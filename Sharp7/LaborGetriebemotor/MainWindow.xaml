@@ -109,17 +109,17 @@
                     <Rectangle Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" Fill="Yellow" Margin="25,0,25,20" RenderTransformOrigin="0.5,2.1" >
                         <Rectangle.RenderTransform>
                             <TransformGroup>
-                                <RotateTransform Angle="{Binding ViAnzeige.WinkelGetriebemotor}"/>
+                                <RotateTransform Angle="{Binding ViAnz.WinkelGetriebemotor}"/>
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB1Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[1]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="5"                     Grid.Row="1" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[1]}" />
                     <Label Content="B1"                                        Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" FontSize="14pt" VerticalAlignment="Center"  />
 
-                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Aus}" />
-                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnzeige.VisibilityB2Ein}" />
+                    <Image Source="Bilder\Initiatoren_SchliesserHellgrau.jpg"  Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarAus[2]}" />
+                    <Image Source="Bilder\Initiatoren_BetaetigtHellgrau.jpg"   Grid.Column="9"                     Grid.Row="3" Grid.RowSpan="2" Visibility="{Binding ViAnz.SichtbarEin[2]}" />
                     <Label Content="B2"                                        Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="2" FontSize="14pt"  VerticalAlignment="Center"   />
 
                     <Rectangle Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="7" Fill="Silver"  />
@@ -129,7 +129,7 @@
 
                     <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="①" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnTaster}" CommandParameter="1" >
+                            ClickMode="{Binding ViAnz.ClkMode[11]}" Command="{Binding BtnTaster}" CommandParameter="11" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -139,7 +139,7 @@
 
                     <Button Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="⓪" FontSize="50pt" Background="Red" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnTaster}" CommandParameter="2" >
+                            ClickMode="{Binding ViAnz.ClkMode[12]}" Command="{Binding BtnTaster}" CommandParameter="12" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -155,7 +155,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅰ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnTaster}" CommandParameter="3" >
+                            ClickMode="{Binding ViAnz.ClkMode[13]}" Command="{Binding BtnTaster}" CommandParameter="13" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -165,7 +165,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="13"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" Background="Red" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnTaster}" CommandParameter="4" >
+                            ClickMode="{Binding ViAnz.ClkMode[14]}" Command="{Binding BtnTaster}" CommandParameter="14" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -175,7 +175,7 @@
 
                     <Button Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="Ⅱ" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[5]}" Command="{Binding BtnTaster}" CommandParameter="5" >
+                            ClickMode="{Binding ViAnz.ClkMode[15]}" Command="{Binding BtnTaster}" CommandParameter="15" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -191,7 +191,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="←" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[6]}" Command="{Binding BtnTaster}" CommandParameter="6" >
+                            ClickMode="{Binding ViAnz.ClkMode[16]}" Command="{Binding BtnTaster}" CommandParameter="16" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -201,7 +201,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="13"  Margin="5,0,5,0" 
                             Content="STOP" FontSize="18pt" 
-                            Background="Red" ClickMode="{Binding ViAnzeige.ClickModeBtn[7]}" Command="{Binding BtnTaster}" CommandParameter="7" >
+                            Background="Red" ClickMode="{Binding ViAnz.ClkMode[17]}" Command="{Binding BtnTaster}" CommandParameter="17" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5" />
@@ -211,7 +211,7 @@
 
                     <Button Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="14" Grid.RowSpan="3"  Margin="5,5,5,5" 
                             Content="→" FontSize="50pt" Background="LawnGreen" 
-                            ClickMode="{Binding ViAnzeige.ClickModeBtn[8]}" Command="{Binding BtnTaster}" CommandParameter="8" >
+                            ClickMode="{Binding ViAnz.ClkMode[18]}" Command="{Binding BtnTaster}" CommandParameter="18" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="20" />
@@ -222,22 +222,22 @@
 
                     <Label  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Content="-P1" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2" />
-                    <Ellipse   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnzeige.ColorP1}" />
+                    <Ellipse   Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[3]}" />
 
                     <Label  Grid.Column="7" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Content="-P2" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2"/>
-                    <Ellipse   Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnzeige.ColorP2}" />
+                    <Ellipse   Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[4]}" />
 
                     <Label  Grid.Column="13" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Content="-P3" FontSize="20pt" VerticalAlignment="Center" />
                     <Ellipse   Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="LightGray" Stroke="Black" StrokeThickness="2" Margin="-2,-2,-2,-2"/>
-                    <Ellipse   Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnzeige.ColorP3}" />
+                    <Ellipse   Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3"  Fill="{Binding ViAnz.Farbe[5]}" />
 
                     <Label  Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="2" Content="-S9.1" FontSize="20pt" VerticalAlignment="Center" />
                     <Label  Grid.Column="19" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" Content="-S9.2" FontSize="20pt" VerticalAlignment="Center" />
 
                     <Ellipse Grid.Column="21" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" Fill="Yellow" />
                     <Button Grid.Column="21" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"  Margin="10,10,10,10" 
-                            Content="-" Background="Red" Command="{Binding BtnTaster}" CommandParameter="9" >
+                            Content="-" Background="Red" Command="{Binding BtnSchalter}" CommandParameter="19" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="50" />
@@ -255,11 +255,11 @@
                         </Button.Background>
                     </Button>
 
-                    <Label Grid.Column="19" Grid.ColumnSpan="10"  Grid.Row="23" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+                    <Label Grid.Column="19" Grid.ColumnSpan="10"  Grid.Row="23" FontSize="14pt"  Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+                    <Rectangle  Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+                    <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
 
                 </Grid>
             </TabItem>

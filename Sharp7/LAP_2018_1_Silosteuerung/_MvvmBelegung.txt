@@ -1,0 +1,27 @@
+
+1       B1			                                SichtbarEin		SichtbarAus	
+2       B2			                                SichtbarEin		SichtbarAus	
+
+3       F1		Farbe           BtnSchalter        
+4       F2		Farbe           BtnSchalter  
+
+
+5		P1		Farbe
+6		P2		Farbe
+7		Q1		                                    SichtbarEin
+8		Q2		                                    SichtbarEin
+
+10		S0		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+11		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+12		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus			
+13		S3					    BtnSchalter			Farbe
+14      WagenNachLinks      ClkMode			BtnTaster
+15      WagenNachRechts     ClkMode			BtnTaster
+
+20		Y1		                                    SichtbarEin		SichtbarAus	
+
+30      MaterialUnten                               SichtbarEin
+31      MaterialOben                                SichtbarEin
+32      LagerSilo               Farbe
+
+40      RutscheVoll             BtnSchalter

@@ -6,8 +6,8 @@
       "StartBit": 0,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "F1",
-      "Kommentar": "Thermorelais langsame Drehzahl"
+      "Bezeichnung": "B1",
+      "Kommentar": "Störung Übersynchron"
     },
     {
       "LaufendeNr": 1,
@@ -15,8 +15,8 @@
       "StartBit": 1,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "F2",
-      "Kommentar": "Thermorelais schnelle Drehzahl"
+      "Bezeichnung": "F1",
+      "Kommentar": "Thermorelais langsame Drehzahl"
     },
     {
       "LaufendeNr": 2,
@@ -24,8 +24,8 @@
       "StartBit": 2,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S0",
-      "Kommentar": "Taster ( ⓪ )"
+      "Bezeichnung": "F2",
+      "Kommentar": "Thermorelais schnelle Drehzahl"
     },
     {
       "LaufendeNr": 3,
@@ -33,8 +33,8 @@
       "StartBit": 3,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S1",
-      "Kommentar": "Taster ( Ⅰ )"
+      "Bezeichnung": "S0",
+      "Kommentar": "Taster ( ⓪ )"
     },
     {
       "LaufendeNr": 4,
@@ -42,23 +42,32 @@
       "StartBit": 4,
       "AnzahlBit": 1,
       "Type": "Default",
-      "Bezeichnung": "S2",
-      "Kommentar": "Taster ( Ⅱ )"
+      "Bezeichnung": "S1",
+      "Kommentar": "Taster ( Ⅰ )"
     },
     {
       "LaufendeNr": 5,
       "StartByte": 0,
-      "StartBit": 0,
-      "AnzahlBit": 5,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "S2",
+      "Kommentar": "Taster ( Ⅱ )"
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S3",
       "Kommentar": "Not-halt"
     },
     {
-      "LaufendeNr": 6,
+      "LaufendeNr": 7,
       "StartByte": 0,
-      "StartBit": 0,
-      "AnzahlBit": 6,
+      "StartBit": 7,
+      "AnzahlBit": 1,
       "Type": "Default",
       "Bezeichnung": "S4",
       "Kommentar": "Störungen quittieren"

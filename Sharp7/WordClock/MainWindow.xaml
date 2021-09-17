@@ -43,7 +43,7 @@
         <Button Grid.Column="7"  Grid.ColumnSpan="2" Grid.Row="5" Content="Aktuelle Zeit übernehmen!" Background="LawnGreen"  Command="{Binding BtnSetCurrentTime}" />
 
         <Label Name="LblGeschwindigkeit" Content="Geschwindigkeit"  Grid.Column="7" Grid.ColumnSpan="2"     Grid.Row="7" />
-        <Slider                                                     Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnzeige.GeschwindigkeitSlider, Mode=TwoWay}" />
+        <Slider                                                     Grid.Column="7" Grid.ColumnSpan="4"     Grid.Row="8" Minimum="1" Maximum="10000" SmallChange="1" Background="LawnGreen" Value="{Binding ViAnz.GeschwindigkeitSlider, Mode=TwoWay}" />
 
         <Canvas x:Name="CanvasUhr"  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="9">
             <Ellipse Fill="White" Canvas.Left="0" Canvas.Top="0" Width="300" Height="300" />
@@ -51,7 +51,7 @@
             <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" Fill="Black" RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
-                        <RotateTransform Angle="{Binding  ViAnzeige.WinkelStunden}" />
+                        <RotateTransform Angle="{Binding  ViAnz.WinkelStunden}" />
                     </TransformGroup>
                 </Polygon.RenderTransform>
                 <Polygon.Points>
@@ -67,7 +67,7 @@
             <Polygon Width="20" Height="300" Canvas.Left="140" Canvas.Top="0"  Fill="Black"  RenderTransformOrigin="0.5,0.5">
                 <Polygon.RenderTransform>
                     <TransformGroup>
-                        <RotateTransform Angle="{Binding  ViAnzeige.WinkelMinuten}" />
+                        <RotateTransform Angle="{Binding  ViAnz.WinkelMinuten}" />
                         <TranslateTransform />
                     </TransformGroup>
                 </Polygon.RenderTransform>
@@ -84,7 +84,7 @@
             <Path Fill="Red" Width="20" Height="300" Canvas.Left="140" Canvas.Top="0" RenderTransformOrigin="0.5,0.5">
                 <Path.RenderTransform>
                     <TransformGroup>
-                        <RotateTransform Angle="{Binding  ViAnzeige.WinkelSekunden}" />
+                        <RotateTransform Angle="{Binding  ViAnz.WinkelSekunden}" />
                         <TranslateTransform />
                     </TransformGroup>
                 </Path.RenderTransform>
@@ -101,10 +101,10 @@
             </Path>
         </Canvas>
 
-        <Label      Grid.Column="7"  Grid.ColumnSpan="4"   Grid.Row="10" Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <Label      Grid.Column="7"  Grid.ColumnSpan="4"   Grid.Row="10" Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
     </Grid>
 </Window>

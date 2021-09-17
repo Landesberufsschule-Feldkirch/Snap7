@@ -82,19 +82,19 @@
         <Rectangle Grid.Column="23"                         Grid.Row="1"    Grid.RowSpan="21"       Fill="Gray" />
         <Rectangle Grid.Column="29"                         Grid.Row="1"    Grid.RowSpan="22"       Fill="Gray" />
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[41]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="11"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[42]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="15"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[43]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="19"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[44]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="25"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[45]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="5"                         Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[41]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="11"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[42]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="15"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[43]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="19"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[44]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="25"                        Grid.Row="1"    Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[45]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
 
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="1"                  Fill="Gray" />
 
-        <local:ImageButton Grid.Column="2"  Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[41]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="41" />
-        <local:ImageButton Grid.Column="8"  Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[42]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="42" />
-        <local:ImageButton Grid.Column="16" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[43]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="43" />
-        <local:ImageButton Grid.Column="22" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[44]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="44" />
-        <local:ImageButton Grid.Column="28" Grid.Row="2" ClickMode="{Binding ViAnzeige.ClickModeBtn[45]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="45" />
+        <local:ImageButton Grid.Column="2"  Grid.Row="2" ClickMode="{Binding ViAnz.ClkMode[41]}" Command="{Binding BtnTaster}" CommandParameter="41" />
+        <local:ImageButton Grid.Column="8"  Grid.Row="2" ClickMode="{Binding ViAnz.ClkMode[42]}" Command="{Binding BtnTaster}" CommandParameter="42" />
+        <local:ImageButton Grid.Column="16" Grid.Row="2" ClickMode="{Binding ViAnz.ClkMode[43]}" Command="{Binding BtnTaster}" CommandParameter="43" />
+        <local:ImageButton Grid.Column="22" Grid.Row="2" ClickMode="{Binding ViAnz.ClkMode[44]}" Command="{Binding BtnTaster}" CommandParameter="44" />
+        <local:ImageButton Grid.Column="28" Grid.Row="2" ClickMode="{Binding ViAnz.ClkMode[45]}" Command="{Binding BtnTaster}" CommandParameter="45" />
 
         <Rectangle  Grid.Column="3"     Grid.Row="3"                        Fill="WhiteSmoke" />
         <Rectangle  Grid.Column="5"     Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
@@ -139,19 +139,19 @@
         <Rectangle  Grid.Column="25"    Grid.Row="3"    Grid.RowSpan="2"    Fill="SaddleBrown" />
         <Label      Grid.Column="25"    Grid.Row="3"    Content="Top 4.4"   FontSize="14pt"/>
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[31]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="11"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[32]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="15"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[33]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="19"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[34]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="25"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[35]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="5"                         Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[31]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="11"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[32]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="15"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[33]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="19"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[34]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="25"                        Grid.Row="5" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[35]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
 
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="5"                  Fill="Gray" />
 
-        <local:ImageButton Grid.Column="2"  Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[31]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="31" />
-        <local:ImageButton Grid.Column="8"  Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[32]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="32" />
-        <local:ImageButton Grid.Column="16" Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[33]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="33" />
-        <local:ImageButton Grid.Column="22" Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[34]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="34" />
-        <local:ImageButton Grid.Column="28" Grid.Row="6"    ClickMode="{Binding ViAnzeige.ClickModeBtn[35]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="35" />
+        <local:ImageButton Grid.Column="2"  Grid.Row="6"    ClickMode="{Binding ViAnz.ClkMode[31]}" Command="{Binding BtnTaster}" CommandParameter="31" />
+        <local:ImageButton Grid.Column="8"  Grid.Row="6"    ClickMode="{Binding ViAnz.ClkMode[32]}" Command="{Binding BtnTaster}" CommandParameter="32" />
+        <local:ImageButton Grid.Column="16" Grid.Row="6"    ClickMode="{Binding ViAnz.ClkMode[33]}" Command="{Binding BtnTaster}" CommandParameter="33" />
+        <local:ImageButton Grid.Column="22" Grid.Row="6"    ClickMode="{Binding ViAnz.ClkMode[34]}" Command="{Binding BtnTaster}" CommandParameter="34" />
+        <local:ImageButton Grid.Column="28" Grid.Row="6"    ClickMode="{Binding ViAnz.ClkMode[35]}" Command="{Binding BtnTaster}" CommandParameter="35" />
 
         <Rectangle  Grid.Column="3"     Grid.Row="7"                        Fill="WhiteSmoke" />
         <Rectangle  Grid.Column="5"     Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
@@ -196,18 +196,18 @@
         <Rectangle  Grid.Column="25"    Grid.Row="7"    Grid.RowSpan="2"    Fill="SaddleBrown" />
         <Label      Grid.Column="25"    Grid.Row="7"    Content="Top 3.4"   FontSize="14pt"/>
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[21]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="11"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[22]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="15"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[23]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="19"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[24]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="25"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[25]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="5"                         Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[21]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="11"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[22]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="15"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[23]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="19"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[24]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="25"                        Grid.Row="9" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[25]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="9"                  Fill="Gray" />
 
-        <local:ImageButton Grid.Column="2"  Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[21]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="21" />
-        <local:ImageButton Grid.Column="8"  Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[22]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="22" />
-        <local:ImageButton Grid.Column="16" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[23]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="23" />
-        <local:ImageButton Grid.Column="22" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[24]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="24" />
-        <local:ImageButton Grid.Column="28" Grid.Row="10"  ClickMode="{Binding ViAnzeige.ClickModeBtn[25]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="25" />
+        <local:ImageButton Grid.Column="2"  Grid.Row="10"  ClickMode="{Binding ViAnz.ClkMode[21]}" Command="{Binding BtnTaster}" CommandParameter="21" />
+        <local:ImageButton Grid.Column="8"  Grid.Row="10"  ClickMode="{Binding ViAnz.ClkMode[22]}" Command="{Binding BtnTaster}" CommandParameter="22" />
+        <local:ImageButton Grid.Column="16" Grid.Row="10"  ClickMode="{Binding ViAnz.ClkMode[23]}" Command="{Binding BtnTaster}" CommandParameter="23" />
+        <local:ImageButton Grid.Column="22" Grid.Row="10"  ClickMode="{Binding ViAnz.ClkMode[24]}" Command="{Binding BtnTaster}" CommandParameter="24" />
+        <local:ImageButton Grid.Column="28" Grid.Row="10"  ClickMode="{Binding ViAnz.ClkMode[25]}" Command="{Binding BtnTaster}" CommandParameter="25" />
 
         <Rectangle  Grid.Column="3"     Grid.Row="11"                       Fill="WhiteSmoke" />
         <Rectangle  Grid.Column="5"     Grid.Row="11"   Grid.RowSpan="2"    Fill="SaddleBrown" />
@@ -252,18 +252,18 @@
         <Rectangle  Grid.Column="25"    Grid.Row="11"    Grid.RowSpan="2"   Fill="SaddleBrown" />
         <Label      Grid.Column="25"    Grid.Row="11"   Content="Top 2.4"   FontSize="14pt"/>
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[11]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="11"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[12]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="15"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[13]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="19"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[14]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="25"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[15]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="5"                         Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[11]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="11"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[12]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="15"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[13]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="19"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[14]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="25"                        Grid.Row="13" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[15]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="13"                  Fill="Gray" />
 
-        <local:ImageButton Grid.Column="2"  Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[11]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="11" />
-        <local:ImageButton Grid.Column="8"  Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[12]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="12" />
-        <local:ImageButton Grid.Column="16" Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[13]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="13" />
-        <local:ImageButton Grid.Column="22" Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[14]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="14" />
-        <local:ImageButton Grid.Column="28" Grid.Row="14"   ClickMode="{Binding ViAnzeige.ClickModeBtn[15]}"  Command="{Binding BtnBewegungsmelder}" CommandParameter="15" />
+        <local:ImageButton Grid.Column="2"  Grid.Row="14"   ClickMode="{Binding ViAnz.ClkMode[11]}"  Command="{Binding BtnTaster}" CommandParameter="11" />
+        <local:ImageButton Grid.Column="8"  Grid.Row="14"   ClickMode="{Binding ViAnz.ClkMode[12]}"  Command="{Binding BtnTaster}" CommandParameter="12" />
+        <local:ImageButton Grid.Column="16" Grid.Row="14"   ClickMode="{Binding ViAnz.ClkMode[13]}"  Command="{Binding BtnTaster}" CommandParameter="13" />
+        <local:ImageButton Grid.Column="22" Grid.Row="14"   ClickMode="{Binding ViAnz.ClkMode[14]}"  Command="{Binding BtnTaster}" CommandParameter="14" />
+        <local:ImageButton Grid.Column="28" Grid.Row="14"   ClickMode="{Binding ViAnz.ClkMode[15]}"  Command="{Binding BtnTaster}" CommandParameter="15" />
 
         <Rectangle  Grid.Column="3"     Grid.Row="15"                       Fill="WhiteSmoke" />
         <Rectangle  Grid.Column="5"     Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
@@ -308,18 +308,18 @@
         <Rectangle  Grid.Column="25"    Grid.Row="15"   Grid.RowSpan="2"    Fill="SaddleBrown" />
         <Label      Grid.Column="25"    Grid.Row="15"   Content="Top 1.4"   FontSize="14pt"/>
 
-        <Ellipse    Grid.Column="5"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[1]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="11"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[2]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="15"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[3]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="19"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[4]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
-        <Ellipse    Grid.Column="25"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnzeige.ColorLampe[5]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="5"                         Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[1]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="11"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[2]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="15"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[3]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="19"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[4]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
+        <Ellipse    Grid.Column="25"                        Grid.Row="17" Grid.RowSpan="2" Fill="{Binding ViAnz.Farbe[5]}" Stroke="Black" StrokeThickness="2" Margin="0,0,0,10" />
         <Rectangle  Grid.Column="2"  Grid.ColumnSpan="28"   Grid.Row="17"                  Fill="Gray" />
 
-        <local:ImageButton Grid.Column="2"  Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[1]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="1" />
-        <local:ImageButton Grid.Column="8"  Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[2]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="2" />
-        <local:ImageButton Grid.Column="16" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[3]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="3" />
-        <local:ImageButton Grid.Column="22" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[4]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="4" />
-        <local:ImageButton Grid.Column="28" Grid.Row="18"  ClickMode="{Binding ViAnzeige.ClickModeBtn[5]}" Command="{Binding BtnBewegungsmelder}" CommandParameter="5" />
+        <local:ImageButton Grid.Column="2"  Grid.Row="18"  ClickMode="{Binding ViAnz.ClkMode[1]}" Command="{Binding BtnTaster}" CommandParameter="1" />
+        <local:ImageButton Grid.Column="8"  Grid.Row="18"  ClickMode="{Binding ViAnz.ClkMode[2]}" Command="{Binding BtnTaster}" CommandParameter="2" />
+        <local:ImageButton Grid.Column="16" Grid.Row="18"  ClickMode="{Binding ViAnz.ClkMode[3]}" Command="{Binding BtnTaster}" CommandParameter="3" />
+        <local:ImageButton Grid.Column="22" Grid.Row="18"  ClickMode="{Binding ViAnz.ClkMode[4]}" Command="{Binding BtnTaster}" CommandParameter="4" />
+        <local:ImageButton Grid.Column="28" Grid.Row="18"  ClickMode="{Binding ViAnz.ClkMode[5]}" Command="{Binding BtnTaster}" CommandParameter="5" />
 
         <Rectangle  Grid.Column="3"     Grid.Row="19"                       Fill="WhiteSmoke" />
         <Rectangle  Grid.Column="5"     Grid.Row="19"   Grid.RowSpan="2"    Fill="SaddleBrown" />
@@ -368,8 +368,8 @@
 
         <Rectangle  Grid.Column="31"  Grid.ColumnSpan="5"   Grid.Row="1"  Grid.RowSpan="21"    Fill="LightGray" />
 
-        <Label Grid.Column="32" Grid.Row="3" Content="Start:" FontSize="14pt"/>
-        <ComboBox Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="3"  SelectedValue="{Binding ViAnzeige.ReiseStart, Mode=TwoWay}" FontSize="14pt" Margin="0,0,0,60">
+        <Label Grid.Column="32" Grid.Row="7" Content="Start:" FontSize="14pt"/>
+        <ComboBox Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="7"  SelectedValue="{Binding ViAnz.ReiseStart, Mode=TwoWay}" FontSize="14pt" Margin="0,0,0,60">
             <ComboBoxItem>EG</ComboBoxItem>
             <ComboBoxItem>Top 0.1</ComboBoxItem>
             <ComboBoxItem>Top 0.2</ComboBoxItem>
@@ -397,8 +397,8 @@
             <ComboBoxItem>Top 4.4</ComboBoxItem>
         </ComboBox>
 
-        <Label Grid.Column="32" Grid.Row="4" Content="Ziel:" FontSize="14pt"/>
-        <ComboBox Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="4"  SelectedValue="{Binding ViAnzeige.ReiseZiel, Mode=TwoWay}" FontSize="14pt">
+        <Label Grid.Column="32" Grid.Row="8" Content="Ziel:" FontSize="14pt"/>
+        <ComboBox Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="8"  SelectedValue="{Binding ViAnz.ReiseZiel, Mode=TwoWay}" FontSize="14pt">
             <ComboBoxItem>EG</ComboBoxItem>
             <ComboBoxItem>Top 0.1</ComboBoxItem>
             <ComboBoxItem>Top 0.2</ComboBoxItem>
@@ -426,12 +426,25 @@
             <ComboBoxItem>Top 4.4</ComboBoxItem>
         </ComboBox>
 
-        <Button Grid.Column="32" Grid.Row="7" Content="Los gehts!" Background="LawnGreen" Command="{Binding BtnStart}" CommandParameter="start" FontSize="14pt" Grid.ColumnSpan="3">
+        <Button Grid.Column="32" Grid.Row="11" Content="Los gehts!" Background="LawnGreen" Command="{Binding BtnTaster}" CommandParameter="99" FontSize="14pt" Grid.ColumnSpan="3">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25" />
                 </Style>
             </Button.Resources>
         </Button>
+
+        <Button Grid.Column="33" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"  Width="60" Height="40"  Click="PlcButton_OnClick" VerticalAlignment="Top" HorizontalAlignment="Right" >
+            <Button.Background>
+                <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
+            </Button.Background>
+        </Button>
+
+        <Label Grid.Column="31" Grid.ColumnSpan="5"  Grid.Row="20" FontSize="14pt"  Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="12"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="11"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
+
     </Grid>
 </Window>

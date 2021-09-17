@@ -7,12 +7,12 @@ namespace BehaelterSteuerung.ViewModel
     {
         public Model.AlleBehaelter AlleBehaelter { get; }
 
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
 
         public ViewModel(MainWindow mainWindow)
         {
             AlleBehaelter = new Model.AlleBehaelter();
-            ViAnzeige = new VisuAnzeigen(mainWindow, AlleBehaelter);
+            ViAnz = new VisuAnzeigen(mainWindow, AlleBehaelter);
         }
 
 

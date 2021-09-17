@@ -47,10 +47,6 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         private readonly MainWindow _mainWindow;
         private readonly ViewModel.ViewModel _viewModel;
 
-        private bool _erweiterungOelkuehlerAktiv;
-        private bool _erweiterungZylinderAktiv;
-        private bool _erweiterungOelfilterAktiv;
-
         public Hydraulikaggregat(MainWindow mainWindow, ViewModel.ViewModel viewModel)
         {
             _mainWindow = mainWindow;
@@ -92,19 +88,20 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
                 if (Druck > DruckMin) Pegel *= PegelVerlust;
                 B1 = Pegel > PegelMin;
 
-                ErweiterungOelkuehler();
-                ErweiterungZylinder();
-                ErweiterungOelfilter();
+                if (_viewModel.ViAnz != null)
+                {
+                    ErweiterungOelkuehler();
+                    ErweiterungZylinder();
+                    ErweiterungOelfilter();
+                }
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
-
         internal void ErweiterungOelkuehler()
         {
-            if (_erweiterungOelkuehlerAktiv)
+            if (_viewModel.ViAnz.SichtbarEin[41] == Visibility.Visible)
             {
                 //
             }
@@ -113,10 +110,9 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
                 P7 = false;
             }
         }
-
         internal void ErweiterungZylinder()
         {
-            if (_erweiterungZylinderAktiv)
+            if (_viewModel.ViAnz.SichtbarEin[42] == Visibility.Visible)
             {
                 //
             }
@@ -126,10 +122,9 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
                 K2 = false;
             }
         }
-
         internal void ErweiterungOelfilter()
         {
-            if (_erweiterungOelfilterAktiv)
+            if (_viewModel.ViAnz.SichtbarEin[43] == Visibility.Visible)
             {
                 //
             }
@@ -140,23 +135,17 @@ namespace LAP_2018_3_Hydraulikaggregat.Model
         }
         internal void CheckErweiterungOelkuehler()
         {
-            _erweiterungOelkuehlerAktiv = _mainWindow.ChkOelkuehler.IsChecked != null && (bool)_mainWindow.ChkOelkuehler.IsChecked;
-            _viewModel.ViAnzeige.OelkuehlerAbgedeckt = _erweiterungOelkuehlerAktiv ? Visibility.Hidden : Visibility.Visible;
+            _viewModel.ViAnz.SichtbarkeitUmschalten(_mainWindow.ChkOelkuehler.IsChecked != null && (bool)_mainWindow.ChkOelkuehler.IsChecked, 41);
         }
         internal void CheckErweiterungZylinder()
         {
-            _erweiterungZylinderAktiv = _mainWindow.ChZylinder.IsChecked != null && (bool)_mainWindow.ChZylinder.IsChecked;
-            _viewModel.ViAnzeige.ZylinderAbgedeckt = _erweiterungZylinderAktiv ? Visibility.Hidden : Visibility.Visible;
-
+            _viewModel.ViAnz.SichtbarkeitUmschalten(
+                _mainWindow.ChZylinder.IsChecked != null && (bool)_mainWindow.ChZylinder.IsChecked, 42);
         }
         internal void CheckErweiterungOelfilter()
         {
-            _erweiterungOelfilterAktiv = _mainWindow.ChkOelfilter.IsChecked != null && (bool)_mainWindow.ChkOelfilter.IsChecked;
-            _viewModel.ViAnzeige.OelfilterAbgedeckt = _erweiterungOelfilterAktiv ? Visibility.Hidden : Visibility.Visible;
+            _viewModel.ViAnz.SichtbarkeitUmschalten(
+                _mainWindow.ChkOelfilter.IsChecked != null && (bool)_mainWindow.ChkOelfilter.IsChecked, 43);
         }
-
-        internal void BtnF1() => F1 = !F1;
-        internal void BtnUeberdruck() => B3 = !B3;
-        internal void BtnNachfuellen() => Pegel = 1;
     }
 }

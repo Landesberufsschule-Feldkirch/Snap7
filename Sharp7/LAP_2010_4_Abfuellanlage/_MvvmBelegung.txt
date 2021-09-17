@@ -1,0 +1,25 @@
+
+1       B1      		                            SichtbarEin		SichtbarAus	
+2       B2      		                            SichtbarEin		SichtbarAus	
+
+3       K1    		                                SichtbarEin		SichtbarAus
+4       K2    		                                SichtbarEin		SichtbarAus
+
+5       P1                          Farbe
+
+6       Q1  
+
+11		S1		    ClkMode			BtnTaster						
+12		S2		    ClkMode			BtnTaster						
+13      Reset       ClkMode			BtnTaster	
+14      Nachfüllen  ClkMode			BtnTaster	
+
+20      Ableitung   		                        SichtbarEin		SichtbarAus	
+21      Zuleitung                   Farbe
+
+31		Dose 1
+32		Dose 2
+33		Dose 3
+34		Dose 4
+35		Dose 5
+36		Dose 6

@@ -9,34 +9,34 @@ namespace LAP_2018_3_Hydraulikaggregat
 
         private enum BitPosAusgang
         {
-            K1 = 0, // Ventil "Zylinder ausfahren"
-            K2,     // Ventil "Zylinder einfahren"
-            P1,     // Meldeleuchte "Betriebsbereit"
-            P2,     // Meldeleuchte "Sammelstörung
-            P3,     // Meldeleuchte "Störung Motor"
-            P4,     // Meldeleuchte "Überdruck"
-            P5,     // Meldeleuchte "Druck erreicht"
-            P6,     // Meldeleuchte "Ölstand min"
-            P7,     // Meldeleuchte "Lüfter Ölkühler"
-            P8,     // Meldeleuchte "Ölfilter welchseln"
-            Q1,     // Netzschütz
-            Q2,     // Sternschütz
-            Q3,     // Dreieckschütz
-            Q4      // Lüfter (Ölkühler)
+            K1 = 0,     // Ventil "Zylinder ausfahren"
+            K2 = 1,     // Ventil "Zylinder einfahren"
+            P1 = 2,     // Meldeleuchte "Betriebsbereit"
+            P2 = 3,     // Meldeleuchte "Sammelstörung
+            P3 = 4,     // Meldeleuchte "Störung Motor"
+            P4 = 5,     // Meldeleuchte "Überdruck"
+            P5 = 6,     // Meldeleuchte "Druck erreicht"
+            P6 = 7,     // Meldeleuchte "Ölstand min"
+            P7 = 8,     // Meldeleuchte "Lüfter Ölkühler"
+            P8 = 9,     // Meldeleuchte "Ölfilter welchseln"
+            Q1 = 10,    // Netzschütz
+            Q2 = 11,    // Sternschütz
+            Q3 = 12,    // Dreieckschütz
+            Q4 = 13      // Lüfter (Ölkühler)
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Sensor Ölstand
-            B2,     // Sensor Druck erreicht
-            B3,     // Sensor Überdruck
-            B4,     // Temperatur Ölbehälter
-            B5,     // Motorschutzschalter
-            F1,     // Motorstörung
-            S1,     // Taster Start
-            S2,     // Taster Stop
-            S3,     // Taster Quittieren
-            S4      // Taster Zylinder
+            B1 = 0,     // Sensor Ölstand
+            B2 = 1,     // Sensor Druck erreicht
+            B3 = 2,     // Sensor Überdruck
+            B4 = 3,     // Temperatur Ölbehälter
+            B5 = 4,     // Motorschutzschalter
+            F1 = 5,     // Motorstörung
+            S1 = 6,     // Taster Start
+            S2 = 7,     // Taster Stop
+            S3 = 8,     // Taster Quittieren
+            S4 = 9      // Taster Zylinder
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

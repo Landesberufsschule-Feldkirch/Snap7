@@ -1,0 +1,24 @@
+
+1       B1      			                        SichtbarEin		SichtbarAus
+2       B2      			                        SichtbarEin		SichtbarAus
+
+3		F1		Farbe			BtnSchalter
+
+4		P1		Farbe
+5		P2		Farbe
+
+6		Q1		Farbe
+
+
+10      Hand
+11		Aus	    ClkMode			BtnTaster
+12		Auto	ClkMode			BtnTaster
+13		S3		ClkMode			BtnTaster
+
+14      Y1                      BtnSchalter
+
+
+20      ZuleitungLinksWaagrecht		Farbe
+21      ZuleitungLinksSenkrecht		Farbe
+22      AbleitungOben		        Farbe
+23      AbleitungUnten		        Farbe

@@ -18,26 +18,22 @@ namespace Nadeltelegraph.ViewModel
             _mainWindow = mw;
             _nadeltelegraph = nt;
 
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
-            for (var i = 0; i < 10; i++) AlleWinkel.Add(0);
-            for (var i = 0; i < 100; i++) AlleBreiten.Add(0);
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                AlleWinkel.Add(0);
+                AlleBreiten.Add(0);
+            }
 
             ColorP0 = Brushes.LightGray;
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
-        }
-
-        internal void Buchstabe(object buchstabe)
-        {
-            if (!(buchstabe is string ascii)) return;
-            var asciiCode = ascii[0];
-            _nadeltelegraph.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
         }
 
         private void VisuAnzeigenTask()
@@ -65,7 +61,7 @@ namespace Nadeltelegraph.ViewModel
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -99,14 +95,14 @@ namespace Nadeltelegraph.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 
@@ -136,7 +132,6 @@ namespace Nadeltelegraph.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-
         private ObservableCollection<int> _alleWinkel = new();
         public ObservableCollection<int> AlleWinkel
         {
@@ -147,8 +142,6 @@ namespace Nadeltelegraph.ViewModel
                 OnPropertyChanged(nameof(AlleWinkel));
             }
         }
-
-
 
         private ObservableCollection<int> _alleBreiten = new();
         public ObservableCollection<int> AlleBreiten
@@ -161,42 +154,8 @@ namespace Nadeltelegraph.ViewModel
             }
         }
 
-
-
-
-
-
-        #region ClickModeAlleButtons
-
-        public bool ClickModeButton(int asciiCode)
-        {
-            if (ClickModeBtn[asciiCode] == ClickMode.Press)
-            {
-                ClickModeBtn[asciiCode] = ClickMode.Release;
-                return true;
-            }
-
-            ClickModeBtn[asciiCode] = ClickMode.Press;
-            return false;
-        }
-
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
-        {
-            get => _clickModeBtn;
-            set
-            {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
-            }
-        }
-
-        #endregion ClickModeAlleButtons
-
         #region Color P0
-
         public void FarbeP0(bool val) => ColorP0 = val ? Brushes.Red : Brushes.LightGray;
-
         private Brush _colorP0;
         public Brush ColorP0
         {
@@ -207,8 +166,40 @@ namespace Nadeltelegraph.ViewModel
                 OnPropertyChanged(nameof(ColorP0));
             }
         }
+        #endregion Color P0        
 
-        #endregion Color P0          
+        #region Taster/Schalter
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
+
+            var asciiCode = ascii[0];
+            _nadeltelegraph.Zeichen = ClickModeButton(asciiCode) ? asciiCode : ' ';
+        }
+
+        public bool ClickModeButton(int tasterId)
+        {
+            if (ClkMode[tasterId] == ClickMode.Press)
+            {
+                ClkMode[tasterId] = ClickMode.Release;
+                return true;
+            }
+
+            ClkMode[tasterId] = ClickMode.Press;
+            return false;
+        }
+
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
+        {
+            get => _clkMode;
+            set
+            {
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
+            }
+        }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
 

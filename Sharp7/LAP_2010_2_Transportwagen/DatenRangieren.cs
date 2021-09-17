@@ -9,19 +9,21 @@ namespace LAP_2010_2_Transportwagen
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Störung
-            Q1,     // Motor LL
-            Q2      // Motor RL
+            P1 = 0,     // Störung
+            Q1 = 1,     // Motor LL
+            Q2 = 2       // Motor RL
+
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Endschalter Links
-            B2,     // Endschalter Rechts
-            F1,     // Thermorelais
-            S1,     // Taster "Start"
-            S2,     // NotHalt
-            S3      // Taster Reset
+            B1 = 0,     // Endschalter Links
+            B2 = 1,     // Endschalter Rechts
+            F1 = 2,     // Thermorelais
+            S1 = 3,     // Taster "Start"
+            S2 = 4,     // NotHalt
+            S3 = 5       // Taster Reset
+
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
@@ -35,7 +37,6 @@ namespace LAP_2010_2_Transportwagen
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _transportwagenViewModel.Transportwagen.S2);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S3, _transportwagenViewModel.Transportwagen.S3);
             }
-
 
             _transportwagenViewModel.Transportwagen.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _transportwagenViewModel.Transportwagen.Q1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);

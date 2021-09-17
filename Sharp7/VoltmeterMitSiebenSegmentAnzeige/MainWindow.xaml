@@ -98,10 +98,10 @@
         <Label Grid.Column="8" Grid.ColumnSpan="3" Grid.Row="6"  Grid.RowSpan="2"  Background="{Binding VAnzeige.SpsColor}" Content="{Binding VAnzeige.SpsStatus}" />
 
 
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="6"   Grid.Row="3"  Grid.RowSpan="3" Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Fill="Red"   />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding VAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding VAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding VAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="6"   Grid.Row="3"  Grid.RowSpan="3" Visibility="{Binding VAnzeige.SpsSichtbar}" Fill="Red"   />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding VAnzeige.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding VAnzeige.SpsSichtbar}" Content="{Binding VAnzeige.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding VAnzeige.SpsSichtbar}" Content="{Binding VAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
 
     </Grid>
 </Window>

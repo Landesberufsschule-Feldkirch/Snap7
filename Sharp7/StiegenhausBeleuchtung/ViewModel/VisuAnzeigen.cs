@@ -10,26 +10,28 @@ namespace StiegenhausBeleuchtung.ViewModel
 
     public class VisuAnzeigen : INotifyPropertyChanged
     {
-        private readonly Model.StiegenhausBeleuchtung _stiegenhausBeleuchtung;
+        private readonly Model.StiegenhausBeleuchtung _stiegenhaus;
         private readonly MainWindow _mainWindow;
-        private bool _bewegungAktiv;
 
         public VisuAnzeigen(MainWindow mw, Model.StiegenhausBeleuchtung stiegenhaus)
         {
             _mainWindow = mw;
-            _stiegenhausBeleuchtung = stiegenhaus;
+            _stiegenhaus = stiegenhaus;
 
             ReiseStart = "sadf:-";
             ReiseZiel = "sadf:-";
 
-            for (var i = 0; i < 100; i++) ClickModeBtn.Add(ClickMode.Press);
-            for (var i = 0; i < 100; i++) ColorLampe.Add(Brushes.Yellow);
-
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
             SpsColor = Brushes.LightBlue;
+
+            for (var i = 0; i < 100; i++)
+            {
+                ClkMode.Add(ClickMode.Press);
+                Farbe.Add(Brushes.White);
+            }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
@@ -38,23 +40,16 @@ namespace StiegenhausBeleuchtung.ViewModel
         {
             while (true)
             {
-                for (var i = 0; i < 100; i++) FarbeAlleLampen(i, _stiegenhausBeleuchtung.GetLampen(i));
-
-                if (_bewegungAktiv)
+                for (var i = 0; i < 100; i++)
                 {
-                    for (var i = 0; i < 100; i++)
-                    {
-                        if (_stiegenhausBeleuchtung.GetBewegungsmelder(i)) ClickModeBtn[i] = ClickMode.Release; else ClickModeBtn[i] = ClickMode.Press;
-                    }
+                    FarbeUmschalten(_stiegenhaus.GetLampen(i), i, Brushes.Yellow, Brushes.White);
                 }
-
-                _bewegungAktiv = _stiegenhausBeleuchtung.JobAktiv;
 
                 if (_mainWindow.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
-                    SpsVersionsInfoSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
@@ -64,8 +59,19 @@ namespace StiegenhausBeleuchtung.ViewModel
             // ReSharper disable once FunctionNeverReturns
         }
 
-        #region SPS Version, Status und Farbe
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
 
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            if (tasterId == 99) _stiegenhaus.AblaufStarten();
+            else _stiegenhaus.SetBewegungsmelder(tasterId, gedrueckt);
+        }
+
+        #region SPS Version, Status und Farbe
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -88,19 +94,18 @@ namespace StiegenhausBeleuchtung.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 
         private string _spsStatus;
-
         public string SpsStatus
         {
             get => _spsStatus;
@@ -112,7 +117,6 @@ namespace StiegenhausBeleuchtung.ViewModel
         }
 
         private Brush _spsColor;
-
         public Brush SpsColor
         {
             get => _spsColor;
@@ -122,13 +126,10 @@ namespace StiegenhausBeleuchtung.ViewModel
                 OnPropertyChanged(nameof(SpsColor));
             }
         }
-
         #endregion SPS Versionsinfo, Status und Farbe
 
         #region ReiseStart
-
         private string _reiseStart;
-
         public string ReiseStart
         {
             get => _reiseStart;
@@ -139,13 +140,10 @@ namespace StiegenhausBeleuchtung.ViewModel
                 OnPropertyChanged(nameof(ReiseStart));
             }
         }
-
         #endregion ReiseStart
 
         #region ReiseZiel
-
         private string _reiseZiel;
-
         public string ReiseZiel
         {
             get => _reiseZiel;
@@ -156,72 +154,49 @@ namespace StiegenhausBeleuchtung.ViewModel
                 OnPropertyChanged(nameof(ReiseZiel));
             }
         }
-
         #endregion ReiseZiel
 
-        #region FarbeAlleLampen
-
-        public void FarbeAlleLampen(int lampe, bool val) => ColorLampe[lampe] = val ? Brushes.Yellow : Brushes.White;
-
-        private ObservableCollection<Brush> _colorLampe = new();
-        public ObservableCollection<Brush> ColorLampe
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            get => _colorLampe;
+            get => _farbe;
             set
             {
-                _colorLampe = value;
-                OnPropertyChanged(nameof(ColorLampe));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
+        #endregion
 
-        #endregion FarbeAlleLampen
-
-        #region ClickModeAlleButtons
-
-        public bool ClickModeButton(int bewegungsmelder)
+        #region Taster/Schalter
+        public bool ClickModeButton(int tasterId)
         {
-            if (ClickModeBtn[bewegungsmelder] == ClickMode.Press)
+            if (ClkMode[tasterId] == ClickMode.Press)
             {
-                ClickModeBtn[bewegungsmelder] = ClickMode.Release;
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[bewegungsmelder] = ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
-
-        #endregion ClickModeAlleButtons
-
-        #region BtnBewegungsmelder
-
-        internal void BtnBewegungsmelder(object buttonName)
-        {
-            if (buttonName is int bewegungsmelder)
-            {
-                _stiegenhausBeleuchtung.SetBewegungsmelder(bewegungsmelder, ClickModeButton(bewegungsmelder));
-            }
-        }
-
-        #endregion BtnBewegungsmelder
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

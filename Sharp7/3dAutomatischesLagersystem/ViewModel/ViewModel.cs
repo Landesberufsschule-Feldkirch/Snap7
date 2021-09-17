@@ -5,13 +5,13 @@ namespace AutomatischesLagersystem.ViewModel
 {
     public class ViewModel
     {
-        private readonly AutomatischesLagersystem.Model.AutomatischesLagersystem _automatischesLagersystem;
-        public Model.AutomatischesLagersystem AutomatischesLagersystem => _automatischesLagersystem;
+        public Model.AutomatischesLagersystem AutomatischesLagersystem { get; }
+
         public VisuAnzeigen ViAnzeige { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
-            _automatischesLagersystem = new Model.AutomatischesLagersystem(mainWindow);
-            ViAnzeige = new VisuAnzeigen(mainWindow, _automatischesLagersystem);
+            AutomatischesLagersystem = new Model.AutomatischesLagersystem(mainWindow);
+            ViAnzeige = new VisuAnzeigen(mainWindow, AutomatischesLagersystem);
         }
 
 

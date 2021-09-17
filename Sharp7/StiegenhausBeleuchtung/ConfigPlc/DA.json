@@ -1,0 +1,229 @@
+﻿{
+  "DigitaleAusgaenge": [
+    {
+      "LaufendeNr": 0,
+      "StartByte": 0,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P01",
+      "Kommentar": "Lampe P01 "
+    },
+    {
+      "LaufendeNr": 1,
+      "StartByte": 0,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P02",
+      "Kommentar": "Lampe P02 "
+    },
+    {
+      "LaufendeNr": 2,
+      "StartByte": 0,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P03",
+      "Kommentar": "Lampe P03 "
+    },
+    {
+      "LaufendeNr": 3,
+      "StartByte": 0,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P04",
+      "Kommentar": "Lampe P04 "
+    },
+    {
+      "LaufendeNr": 4,
+      "StartByte": 0,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P05",
+      "Kommentar": "Lampe P05 "
+    },
+    {
+      "LaufendeNr": 5,
+      "StartByte": 0,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P11",
+      "Kommentar": "Lampe P11 "
+    },
+    {
+      "LaufendeNr": 6,
+      "StartByte": 0,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P12",
+      "Kommentar": "Lampe P12 "
+    },
+    {
+      "LaufendeNr": 7,
+      "StartByte": 0,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P13",
+      "Kommentar": "Lampe P13 "
+    },
+    {
+      "LaufendeNr": 8,
+      "StartByte": 1,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P14",
+      "Kommentar": "Lampe P14 "
+    },
+    {
+      "LaufendeNr": 9,
+      "StartByte": 1,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P15",
+      "Kommentar": "Lampe P15 "
+    },
+    {
+      "LaufendeNr": 10,
+      "StartByte": 1,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P21",
+      "Kommentar": "Lampe P21 "
+    },
+    {
+      "LaufendeNr": 11,
+      "StartByte": 1,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P22",
+      "Kommentar": "Lampe P22 "
+    },
+    {
+      "LaufendeNr": 12,
+      "StartByte": 1,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P23",
+      "Kommentar": "Lampe P23 "
+    },
+    {
+      "LaufendeNr": 13,
+      "StartByte": 1,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P24",
+      "Kommentar": "Lampe P24 "
+    },
+    {
+      "LaufendeNr": 14,
+      "StartByte": 1,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P25",
+      "Kommentar": "Lampe P25 "
+    },
+    {
+      "LaufendeNr": 15,
+      "StartByte": 1,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P31",
+      "Kommentar": "Lampe P31 "
+    },
+    {
+      "LaufendeNr": 16,
+      "StartByte": 2,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P32",
+      "Kommentar": "Lampe P32 "
+    },
+    {
+      "LaufendeNr": 17,
+      "StartByte": 2,
+      "StartBit": 1,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P33",
+      "Kommentar": "Lampe P33 "
+    },
+    {
+      "LaufendeNr": 18,
+      "StartByte": 2,
+      "StartBit": 2,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P34",
+      "Kommentar": "Lampe P34 "
+    },
+    {
+      "LaufendeNr": 19,
+      "StartByte": 2,
+      "StartBit": 3,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P35",
+      "Kommentar": "Lampe P35 "
+    },
+    {
+      "LaufendeNr": 20,
+      "StartByte": 2,
+      "StartBit": 4,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P41",
+      "Kommentar": "Lampe P41 "
+    },
+    {
+      "LaufendeNr": 21,
+      "StartByte": 2,
+      "StartBit": 5,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P42",
+      "Kommentar": "Lampe P42 "
+    },
+    {
+      "LaufendeNr": 22,
+      "StartByte": 2,
+      "StartBit": 6,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P43",
+      "Kommentar": "Lampe P43 "
+    },
+    {
+      "LaufendeNr": 23,
+      "StartByte": 2,
+      "StartBit": 7,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P44",
+      "Kommentar": "Lampe P44 "
+    },
+    {
+      "LaufendeNr": 24,
+      "StartByte": 3,
+      "StartBit": 0,
+      "AnzahlBit": 1,
+      "Type": "Default",
+      "Bezeichnung": "P45",
+      "Kommentar": "Lampe P45 "
+    }
+  ]
+}

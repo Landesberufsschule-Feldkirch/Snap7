@@ -13,7 +13,7 @@ namespace TestAutomat.Silk
         }
         private static void SetDigitaleEingaenge(FunctionEventArgs e)
         {
-            SetDigitaleEingaengeWord (new Uint((ulong)e.Parameters[0].ToInteger()));
+            SetDigitaleEingaengeWord(new Uint((ulong)e.Parameters[0].ToInteger()));
             Thread.Sleep(100);
         }
         private static void SetAnalogerEingang(FunctionEventArgs e)

@@ -6,13 +6,10 @@ namespace PlcDatenTypen
     {
         private readonly ulong _uintDec;
 
-        public Uint(ulong zahl)
-        {
-            _uintDec = zahl;
-        }
+        public Uint(ulong zahl) => _uintDec = zahl;
+
         public Uint(string zahl)
         {
-
             if (zahl.Contains("#"))
             {
                 // ReSharper disable once ConvertIfStatementToSwitchStatement
@@ -40,7 +37,7 @@ namespace PlcDatenTypen
 
             _uintDec = Convert.ToUInt64(zahl);
         }
-        
+
         public ulong GetDec() => _uintDec;
         public string GetBin4Bit()
         {

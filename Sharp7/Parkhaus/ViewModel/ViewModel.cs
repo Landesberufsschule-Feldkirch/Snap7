@@ -6,21 +6,15 @@
     public class ViewModel
     {
         public Model.Parkhaus Parkhaus { get; }
-        public VisuAnzeigen ViAnzeige { get; set; }
+        public VisuAnzeigen ViAnz { get; set; }
         public ViewModel(MainWindow mainWindow)
         {
             Parkhaus = new Model.Parkhaus();
-            ViAnzeige = new VisuAnzeigen(mainWindow, Parkhaus);
+            ViAnz = new VisuAnzeigen(mainWindow, Parkhaus);
         }
 
-
-        private ICommand _btnAuto;
+        private ICommand _btnTaster;
         // ReSharper disable once UnusedMember.Global
-        public ICommand BtnAuto => _btnAuto ??= new RelayCommand(ViAnzeige.ClickAuto);
-
-
-        private ICommand _btnTasterZufall;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTasterZufall => _btnTasterZufall ??= new RelayCommand(_ => ViAnzeige.TasterZufall(), _ => true);
+        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
     }
 }

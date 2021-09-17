@@ -6,6 +6,8 @@ namespace AutomatischesLagersystem.Model
     {
         private readonly MainWindow _mainWindow;
 
+        public bool B1 { get; set; } // irgendein Eingang - dummy
+
         public bool K1 { get; set; } // Regalbediengerät hinein
         public bool K2 { get; set; } // Regalbediengerät heraus
         public bool K3 { get; set; } // Regalbediengerät links
@@ -13,7 +15,7 @@ namespace AutomatischesLagersystem.Model
         public bool K5 { get; set; } // Regalbediengerät aufwärts
         public bool K6 { get; set; } // Regalbediengerät abwärts
 
-        private readonly double _geschwindigkeit = 0.0001; //0.001;
+        private const double Geschwindigkeit = 0.0001;
 
         public KollisionRegalBestimmen KollisionRegal { get; set; }
 
@@ -30,12 +32,12 @@ namespace AutomatischesLagersystem.Model
         {
             while (true)
             {
-                if (K1) _mainWindow.RegalBedienGeraet.FahreX(_geschwindigkeit);
-                if (K2) _mainWindow.RegalBedienGeraet.FahreX(-_geschwindigkeit);
-                if (K3) _mainWindow.RegalBedienGeraet.FahreY(-_geschwindigkeit);
-                if (K4) _mainWindow.RegalBedienGeraet.FahreY(_geschwindigkeit);
-                if (K5) _mainWindow.RegalBedienGeraet.FahreZ(_geschwindigkeit);
-                if (K6) _mainWindow.RegalBedienGeraet.FahreZ(-_geschwindigkeit);
+                if (K1) _mainWindow.RegalBedienGeraet.FahreX(Geschwindigkeit);
+                if (K2) _mainWindow.RegalBedienGeraet.FahreX(-Geschwindigkeit);
+                if (K3) _mainWindow.RegalBedienGeraet.FahreY(-Geschwindigkeit);
+                if (K4) _mainWindow.RegalBedienGeraet.FahreY(Geschwindigkeit);
+                if (K5) _mainWindow.RegalBedienGeraet.FahreZ(Geschwindigkeit);
+                if (K6) _mainWindow.RegalBedienGeraet.FahreZ(-Geschwindigkeit);
 
                 if (_mainWindow.BediengeraetStartpositionen[3] != null)
                 {
@@ -47,6 +49,7 @@ namespace AutomatischesLagersystem.Model
 
                 Thread.Sleep(10);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
 
         public char Zeichen { get; internal set; }

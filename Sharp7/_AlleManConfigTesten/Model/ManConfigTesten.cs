@@ -105,7 +105,7 @@ namespace _AlleManConfigTesten.Model
 
                 foreach (var analogAusgang in aaConfig.AnalogeAusgaenge)
                 {
-                    _viewModel.ViAnzeige.AddAaDaten(new AaDaten(
+                    _viewModel.ViAnz.AddAaDaten(new AaDaten(
                         dateiName, analogAusgang.LaufendeNr,
                         analogAusgang.StartByte, analogAusgang.StartBit, analogAusgang.AnzahlBit,
                         analogAusgang.MinimalWert, analogAusgang.MaximalWert, analogAusgang.Schrittweite,
@@ -124,7 +124,7 @@ namespace _AlleManConfigTesten.Model
 
                 foreach (var analogEingang in aiConfig.AnalogeEingaenge)
                 {
-                    _viewModel.ViAnzeige.AddAiDaten(new AiDaten(
+                    _viewModel.ViAnz.AddAiDaten(new AiDaten(
                         dateiName, analogEingang.LaufendeNr,
                         analogEingang.StartByte, analogEingang.StartBit, analogEingang.AnzahlBit,
                         analogEingang.Type,
@@ -143,7 +143,7 @@ namespace _AlleManConfigTesten.Model
 
                 foreach (var digitalAusgang in daConfig.DigitaleAusgaenge)
                 {
-                    _viewModel.ViAnzeige.AddDaDaten(new DaDaten(
+                    _viewModel.ViAnz.AddDaDaten(new DaDaten(
                         dateiName, digitalAusgang.LaufendeNr,
                         digitalAusgang.StartByte, digitalAusgang.StartBit, digitalAusgang.AnzahlBit,
                         digitalAusgang.Type,
@@ -162,7 +162,7 @@ namespace _AlleManConfigTesten.Model
 
                 foreach (var digitalEingang in diConfig.DigitaleEingaenge)
                 {
-                    _viewModel.ViAnzeige.AddDiDaten(new DiDaten(dateiName, digitalEingang.LaufendeNr, digitalEingang.StartByte, digitalEingang.StartBit, digitalEingang.AnzahlBit, digitalEingang.Type, digitalEingang.Bezeichnung, digitalEingang.Kommentar));
+                    _viewModel.ViAnz.AddDiDaten(new DiDaten(dateiName, digitalEingang.LaufendeNr, digitalEingang.StartByte, digitalEingang.StartBit, digitalEingang.AnzahlBit, digitalEingang.Type, digitalEingang.Bezeichnung, digitalEingang.Kommentar));
                 }
             }
         }

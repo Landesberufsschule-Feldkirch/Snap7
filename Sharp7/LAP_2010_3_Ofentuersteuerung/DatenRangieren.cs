@@ -9,19 +9,19 @@ namespace LAP_2010_3_Ofentuersteuerung
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Meldeleuchte "Schliessen"
-            Q1,     // Motor LL (Öffnen)
-            Q2      // Motor RL (Schliessen)
+            P1 = 0,     // Meldeleuchte "Schliessen"
+            Q1 = 1,     // Motor LL (Öffnen)
+            Q2 = 2      // Motor RL (Schliessen)
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Endschalter Offen
-            B2,     // Endschalter Geschlossen
-            B3,     // Lichtschranke
-            S1,     // Taster "Halt"
-            S2,     // Taster "Öffnen"
-            S3      // Taster "Schliessen"
+            B1 = 0,     // Endschalter Offen
+            B2 = 1,     // Endschalter Geschlossen
+            B3 = 2,     // Lichtschranke
+            S1 = 3,     // Taster "Halt"
+            S2 = 4,     // Taster "Öffnen"
+            S3 = 5      // Taster "Schliessen"
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

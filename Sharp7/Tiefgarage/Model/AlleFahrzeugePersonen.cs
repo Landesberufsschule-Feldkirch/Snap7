@@ -11,7 +11,6 @@
         public int AnzahlAutos { get; set; }
         public int AnzahlPersonen { get; set; }
         public List<FahrzeugPerson> AllePkwPersonen { get; set; }
-
         public AlleFahrzeugePersonen()
         {
             AllesInParkposition = true;
@@ -30,7 +29,6 @@
 
             System.Threading.Tasks.Task.Run(AlleFahrzeugePersonenTask);
         }
-
         private void AlleFahrzeugePersonenTask()
         {
             while (true)
@@ -52,31 +50,13 @@
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
         internal void DrinnenParken()
         {
             foreach (var fp in AllePkwPersonen) fp.DrinnenParken();
         }
-
         internal void DraussenParken()
         {
             foreach (var fp in AllePkwPersonen) fp.DraussenParken();
         }
-
-        internal void Auto1() => AllePkwPersonen[0].Losfahren();
-
-        internal void Auto2() => AllePkwPersonen[1].Losfahren();
-
-        internal void Auto3() => AllePkwPersonen[2].Losfahren();
-
-        internal void Auto4() => AllePkwPersonen[3].Losfahren();
-
-        internal void Person1() => AllePkwPersonen[4].Losfahren();
-
-        internal void Person2() => AllePkwPersonen[5].Losfahren();
-
-        internal void Person3() => AllePkwPersonen[6].Losfahren();
-
-        internal void Person4() => AllePkwPersonen[7].Losfahren();
     }
 }

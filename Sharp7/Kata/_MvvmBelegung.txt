@@ -1,0 +1,18 @@
+
+1		P1		Farbe
+2		P2		Farbe
+3		P3		Farbe
+4		P4		Farbe
+5		P5		Farbe
+6		P6		Farbe
+7		P7		Farbe
+8		P8		Farbe
+
+11		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+12		S2		ClkMode			BtnTaster			SichtbarEin		SichtbarAus			
+13		S3		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+14		S4		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+15		S5						BtnSchalter			SichtbarEin		SichtbarAus			
+16		S6						BtnSchalter			SichtbarEin		SichtbarAus			
+17		S7						BtnSchalter			SichtbarEin		SichtbarAus			
+18		S8						BtnSchalter			SichtbarEin		SichtbarAus	

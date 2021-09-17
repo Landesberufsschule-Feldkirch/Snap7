@@ -1,5 +1,7 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using System;
+using System.Windows;
 
 namespace StiegenhausBeleuchtung
 {
@@ -8,10 +10,11 @@ namespace StiegenhausBeleuchtung
         public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
-
-        private readonly ViewModel.ViewModel _viewModel;
 
         private const int AnzByteDigInput = 1;
         private const int AnzByteDigOutput = 1;
@@ -26,11 +29,14 @@ namespace StiegenhausBeleuchtung
 
             Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
-            _viewModel = new ViewModel.ViewModel(this);
-            DatenRangieren = new DatenRangieren(_viewModel);
+            var viewModel = new ViewModel.ViewModel(this);
+            DatenRangieren = new DatenRangieren(viewModel);
 
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
+
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
 
             var befehlszeile = Environment.GetCommandLineArgs();
             Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
@@ -40,6 +46,13 @@ namespace StiegenhausBeleuchtung
             DatenRangieren.ReferenzUebergeben(Plc);
 
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+        }
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

@@ -10,19 +10,18 @@ namespace Heizungsregler
 
         private enum BitPosAusgang
         {
-            K1, // Ventil öffnen
-            K2, // Ventil schliessen
-            Q1, // Schütz Kesselpumpe
-            Q2 // Öl-/Gasbrenner
+            K1 = 0, // Ventil öffnen
+            K2 = 1, // Ventil schliessen
+            Q1 = 2, // Schütz Kesselpumpe
+            Q2 = 3  // Öl-/Gasbrenner
         }
 
         private enum BitPosEingang
         {
-            S1 = 0, // Kraftwerk Starten
-            S2      // Kraftwerk Stoppen
+            S1 = 0,     // Kraftwerk Starten
+            S2 = 1     // Kraftwerk Stoppen
+
         }
-
-
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
         {
@@ -45,14 +44,12 @@ namespace Heizungsregler
 
                 _plc.SetIntAt(anInput, 18, Simatic.Simatic_Analog_2_Int16(viewModel.Kraftwerk.SpannungsdifferenzGeneratorNetz, 1000));
                 */
-
             }
 
             if (_mainWindow.WohnHaus == null) return;
 
             _mainWindow.WohnHaus.HeizungsPumpe = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q1);
             _mainWindow.WohnHaus.BrennerEin = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.Q2);
-
 
 
             if (_mainWindow.WohnHaus.DreiwegeVentil == null) return;
@@ -67,6 +64,5 @@ namespace Heizungsregler
             _viewModel = vm;
         }
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
-
     }
 }

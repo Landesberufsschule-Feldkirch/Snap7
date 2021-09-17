@@ -11,21 +11,21 @@ namespace Parkhaus
         public enum BitPosAusgang
         {
             Pr1 = 0,    // Reihe 1
-            Pr2,
-            Pr3,
-            Pr4
+            Pr2 = 1,
+            Pr3 = 2,
+            Pr4 = 3
         }
 
         private enum BitPosEingang
         {
             Ps1 = 0, // Spalte 1
-            Ps2,
-            Ps3,
-            Ps4,
-            Ps5,
-            Ps6,
-            Ps7,
-            Ps8
+            Ps2 = 1,
+            Ps3 = 2,
+            Ps4 = 3,
+            Ps5 = 4,
+            Ps6 = 5,
+            Ps7 = 6,
+            Ps8 = 7
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)

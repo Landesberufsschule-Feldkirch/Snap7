@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Media;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Kata.ViewModel
 {
@@ -16,7 +16,7 @@ namespace Kata.ViewModel
         {
             _kata = kata;
 
-            SpsVersionsInfoSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -24,46 +24,79 @@ namespace Kata.ViewModel
 
             for (var i = 0; i < 100; i++)
             {
-                ClickModeBtn.Add(ClickMode.Press);
-                VisibilityEin.Add(Visibility.Hidden);
-                VisibilityAus.Add(Visibility.Visible);
-                ColorLampe.Add(Brushes.White);
+                ClkMode.Add(ClickMode.Press);
+                SichtbarEin.Add(Visibility.Hidden);
+                SichtbarAus.Add(Visibility.Visible);
+                Farbe.Add(Brushes.White);
             }
 
             System.Threading.Tasks.Task.Run(VisuAnzeigenTask);
         }
-
         private void VisuAnzeigenTask()
         {
             while (true)
             {
-                SichtbarkeitKontakt(_kata.S1, 1);
-                SichtbarkeitKontakt(_kata.S2, 2);
-                SichtbarkeitKontakt(_kata.S3, 3);
-                SichtbarkeitKontakt(_kata.S4, 4);
-                SichtbarkeitKontakt(_kata.S5, 5);
-                SichtbarkeitKontakt(_kata.S6, 6);
-                SichtbarkeitKontakt(_kata.S7, 7);
-                SichtbarkeitKontakt(_kata.S8, 8);
+                SichtbarkeitUmschalten(_kata.S1, 11);
+                SichtbarkeitUmschalten(_kata.S2, 12);
+                SichtbarkeitUmschalten(_kata.S3, 13);
+                SichtbarkeitUmschalten(_kata.S4, 14);
+                SichtbarkeitUmschalten(_kata.S5, 15);
+                SichtbarkeitUmschalten(_kata.S6, 16);
+                SichtbarkeitUmschalten(_kata.S7, 17);
+                SichtbarkeitUmschalten(_kata.S8, 18);
 
-                FarbeAendern(_kata.P1, 1, Brushes.LawnGreen);
-                FarbeAendern(_kata.P2, 2, Brushes.LawnGreen);
-                FarbeAendern(_kata.P3, 3, Brushes.LawnGreen);
-                FarbeAendern(_kata.P4, 4, Brushes.LawnGreen);
-                FarbeAendern(_kata.P5, 5, Brushes.Yellow);
-                FarbeAendern(_kata.P6, 6, Brushes.Yellow);
-                FarbeAendern(_kata.P7, 7, Brushes.Red);
-                FarbeAendern(_kata.P8, 8, Brushes.Red);
+                FarbeUmschalten(_kata.P1, 1, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P2, 2, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P3, 3, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P4, 4, Brushes.LawnGreen, Brushes.White);
+                FarbeUmschalten(_kata.P5, 5, Brushes.Yellow, Brushes.White);
+                FarbeUmschalten(_kata.P6, 6, Brushes.Yellow, Brushes.White);
+                FarbeUmschalten(_kata.P7, 7, Brushes.Red, Brushes.White);
+                FarbeUmschalten(_kata.P8, 8, Brushes.Red, Brushes.White);
 
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
         }
+        internal void FarbeUmschalten(bool val, int i, Brush farbe1, Brush farbe2) => Farbe[i] = val ? farbe1 : farbe2;
+        internal void SichtbarkeitUmschalten(bool val, int i)
+        {
+            SichtbarEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
+            SichtbarAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
+        }
+        internal void Taster(object id)
+        {
+            if (id is not string ascii) return;
 
-        private void FarbeAendern(bool val, int i, Brush farbe) => ColorLampe[i] = val ? farbe : Brushes.White;
+            var tasterId = short.Parse(ascii);
+            var gedrueckt = ClickModeButton(tasterId);
+
+            switch (tasterId)
+            {
+                case 11: _kata.S1 = gedrueckt; break;
+                case 12: _kata.S2 = gedrueckt; break;
+                case 13: _kata.S3 = !gedrueckt; break;
+                case 14: _kata.S4 = !gedrueckt; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
+        internal void Schalter(object id)
+        {
+            if (id is not string ascii) return;
+
+            var schalterId = short.Parse(ascii);
+
+            switch (schalterId)
+            {
+                case 15: _kata.S5 = !_kata.S5; break;
+                case 16: _kata.S6 = !_kata.S6; break;
+                case 17: _kata.S7 = !_kata.S7; break;
+                case 18: _kata.S8 = !_kata.S8; break;
+                default: throw new ArgumentOutOfRangeException(nameof(id));
+            }
+        }
 
         #region SPS Version, Status und Farbe
-
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -86,14 +119,14 @@ namespace Kata.ViewModel
             }
         }
 
-        private Visibility _spsVersionsInfoSichtbar;
-        public Visibility SpsVersionsInfoSichtbar
+        private Visibility _spsSichtbar;
+        public Visibility SpsSichtbar
         {
-            get => _spsVersionsInfoSichtbar;
+            get => _spsSichtbar;
             set
             {
-                _spsVersionsInfoSichtbar = value;
-                OnPropertyChanged(nameof(SpsVersionsInfoSichtbar));
+                _spsSichtbar = value;
+                OnPropertyChanged(nameof(SpsSichtbar));
             }
         }
 
@@ -121,106 +154,71 @@ namespace Kata.ViewModel
 
         #endregion SPS Versionsinfo, Status und Farbe
 
-        internal void SichtbarkeitKontakt(bool val, int i)
+        #region Sichtbarkeit
+        private ObservableCollection<Visibility> _sichtbarEin = new();
+        public ObservableCollection<Visibility> SichtbarEin
         {
-            VisibilityEin[i] = val ? Visibility.Visible : Visibility.Collapsed;
-            VisibilityAus[i] = val ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        private ObservableCollection<Visibility> _visibilityEin = new();
-        public ObservableCollection<Visibility> VisibilityEin
-        {
-            get => _visibilityEin;
+            get => _sichtbarEin;
             set
             {
-                _visibilityEin = value;
-                OnPropertyChanged(nameof(VisibilityEin));
+                _sichtbarEin = value;
+                OnPropertyChanged(nameof(SichtbarEin));
             }
         }
 
-        private ObservableCollection<Visibility> _visibilityAus = new();
-        public ObservableCollection<Visibility> VisibilityAus
+        private ObservableCollection<Visibility> _sichtbarAus = new();
+        public ObservableCollection<Visibility> SichtbarAus
         {
-            get => _visibilityAus;
+            get => _sichtbarAus;
             set
             {
-                _visibilityAus = value;
-                OnPropertyChanged(nameof(VisibilityAus));
+                _sichtbarAus = value;
+                OnPropertyChanged(nameof(SichtbarAus));
             }
         }
+        #endregion
 
-        private ObservableCollection<Brush> _colorLampe = new();
-        public ObservableCollection<Brush> ColorLampe
+        #region Farbe
+        private ObservableCollection<Brush> _farbe = new();
+        public ObservableCollection<Brush> Farbe
         {
-            get => _colorLampe;
+            get => _farbe;
             set
             {
-                _colorLampe = value;
-                OnPropertyChanged(nameof(ColorLampe));
+                _farbe = value;
+                OnPropertyChanged(nameof(Farbe));
             }
         }
+        #endregion
 
-        internal void Taster(object id)
-        {
-            if (id is not string ascii) return;
-
-            var tasterId = short.Parse(ascii);
-            var gedrueckt = ClickModeButton(tasterId);
-
-            switch (tasterId)
-            {
-                case 1: _kata.S1 = gedrueckt; break;
-                case 2: _kata.S2 = gedrueckt; break;
-                case 3: _kata.S3 = !gedrueckt; break;
-                case 4: _kata.S4 = !gedrueckt; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
-
-        internal void Schalter(object id)
-        {
-            if (id is not string ascii) return;
-
-            var schalterId = short.Parse(ascii);
-
-            switch (schalterId)
-            {
-                case 5: _kata.S5 = !_kata.S5; break;
-                case 6: _kata.S6 = !_kata.S6; break;
-                case 7: _kata.S7 = !_kata.S7; break;
-                case 8: _kata.S8 = !_kata.S8; break;
-                default: throw new ArgumentOutOfRangeException(nameof(id));
-            }
-        }
+        #region Taster/Schalter
         public bool ClickModeButton(int tasterId)
         {
-            if (ClickModeBtn[tasterId] == ClickMode.Press)
+            if (ClkMode[tasterId] == ClickMode.Press)
             {
-                ClickModeBtn[tasterId] = ClickMode.Release;
+                ClkMode[tasterId] = ClickMode.Release;
                 return true;
             }
 
-            ClickModeBtn[tasterId] = ClickMode.Press;
+            ClkMode[tasterId] = ClickMode.Press;
             return false;
         }
 
-        private ObservableCollection<ClickMode> _clickModeBtn = new();
-        public ObservableCollection<ClickMode> ClickModeBtn
+        private ObservableCollection<ClickMode> _clkMode = new();
+        public ObservableCollection<ClickMode> ClkMode
         {
-            get => _clickModeBtn;
+            get => _clkMode;
             set
             {
-                _clickModeBtn = value;
-                OnPropertyChanged(nameof(ClickModeBtn));
+                _clkMode = value;
+                OnPropertyChanged(nameof(ClkMode));
             }
         }
+        #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

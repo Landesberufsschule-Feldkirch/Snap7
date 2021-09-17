@@ -1,7 +1,9 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using ScottPlot;
 using System;
 using System.Drawing;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace Blinker
@@ -12,6 +14,8 @@ namespace Blinker
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
         public double[] WertLeuchtMelder { get; set; } = new double[5_000];
         public DatenRangieren DatenRangieren { get; set; }
@@ -37,6 +41,9 @@ namespace Blinker
             InitializeComponent();
             DataContext = _viewModel;
 
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
             var befehlszeile = Environment.GetCommandLineArgs();
             Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
                 ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
@@ -46,13 +53,15 @@ namespace Blinker
 
             Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
 
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
 
             var zeitachse = DataGen.Consecutive(5000);
-            WpfPlot.plt.YLabel("Leuchtmelder");
-            WpfPlot.plt.XLabel("Zeit [ms]");
+            WpfPlot.Plot.YLabel("Leuchtmelder");
+            WpfPlot.Plot.XLabel("Zeit [ms]");
 
-            WpfPlot.plt.PlotScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
+            WpfPlot.Plot.AddScatter(zeitachse, WertLeuchtMelder, Color.Magenta, label: "LED");
 
             // create a timer to modify the data
             var updateDataTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
@@ -81,8 +90,14 @@ namespace Blinker
         }
         private void Render(object sender, EventArgs e)
         {
-            WpfPlot.plt.AxisAuto(0);
-            WpfPlot.Render(true);
+            WpfPlot.Plot.AxisAuto(0);
+            WpfPlot.Render();
+        }
+
+        private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
+            else DisplayPlc.Oeffnen();
         }
     }
 }

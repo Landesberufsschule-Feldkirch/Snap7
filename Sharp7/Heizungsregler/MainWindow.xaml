@@ -126,7 +126,7 @@
 
         <Rectangle Grid.Column="36" Grid.Row="10" Fill="AliceBlue" Grid.ColumnSpan="2" Grid.RowSpan="2" />
         <Label Grid.Column="36" Grid.Row="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="ϑ" FontSize="20pt" HorizontalAlignment="Center" />
-        <Label Grid.Column="36" Grid.Row="11" Grid.ColumnSpan="2" Content="{Binding ViAnzeige.WitterungsTempMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
+        <Label Grid.Column="36" Grid.Row="11" Grid.ColumnSpan="2" Content="{Binding ViAnz.WitterungsTempMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
 
         <Rectangle Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="20" Grid.RowSpan="5" Stroke="Black" StrokeThickness="2">
             <Rectangle.Fill>
@@ -137,7 +137,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Rectangle  Grid.Column="9" Grid.Row="22" Fill="{Binding ViAnzeige.ColorOelGasBrenner}" />
+        <Rectangle  Grid.Column="9" Grid.Row="22" Fill="{Binding ViAnz.ColorOelGasBrenner}" />
         <Label  Grid.Column="9" Grid.Row="22" BorderThickness="1px" BorderBrush="Black" Content="Q2" FontSize="14pt" />
 
         <Rectangle Grid.Column="9"  Grid.ColumnSpan="6" Grid.Row="20" Fill="Red" Margin="0,20,0,0" />
@@ -147,13 +147,13 @@
 
         <Rectangle Grid.Column="16"  Grid.ColumnSpan="9" Grid.Row="20" Fill="Red" Margin="0,20,0,0" />
 
-        <Label Grid.Column="5"  Grid.ColumnSpan="9" Grid.Row="19" Content="{Binding ViAnzeige.KesselTemperaturMitEinheit}" FontSize="14pt"/>
+        <Label Grid.Column="5"  Grid.ColumnSpan="9" Grid.Row="19" Content="{Binding ViAnz.KesselTemperaturMitEinheit}" FontSize="14pt"/>
 
-        <Label Grid.Column="14"  Grid.ColumnSpan="3" Grid.Row="19" Content="{Binding ViAnzeige.VentilStellungMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
+        <Label Grid.Column="14"  Grid.ColumnSpan="3" Grid.Row="19" Content="{Binding ViAnz.VentilStellungMitEinheit}" FontSize="14pt" HorizontalAlignment="Center" />
 
         <Label Grid.Column="21"  Grid.ColumnSpan="5" Grid.Row="21" Content="Vorlauftemperatur" FontSize="14pt"/>
-        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="21" Content="{Binding ViAnzeige.VorlaufSollMitAllem}" FontSize="14pt"/>
-        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="22" Content="{Binding ViAnzeige.VorlaufIstMitAllem}" FontSize="14pt"/>
+        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="21" Content="{Binding ViAnz.VorlaufSollMitAllem}" FontSize="14pt"/>
+        <Label Grid.Column="26"  Grid.ColumnSpan="4" Grid.Row="22" Content="{Binding ViAnz.VorlaufIstMitAllem}" FontSize="14pt"/>
 
         <Polygon Grid.Column="14" Grid.ColumnSpan="3" Grid.Row="20" Grid.RowSpan="3" Fill="White" Stroke="Black" StrokeThickness="2">
             <Polygon.Points>
@@ -172,7 +172,7 @@
         <Ellipse Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="White" Stroke="Black" StrokeThickness="2" Margin="0,28,0,7" />
         <Label  Grid.Column="19" Grid.Row="19" Content="Q1" FontSize="14pt" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
 
-        <Polygon Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="{Binding ViAnzeige.ColorPumpe}" Stroke="Black" StrokeThickness="2">
+        <Polygon Grid.Column="19" Grid.ColumnSpan="2" Grid.Row="19" Grid.RowSpan="3" Fill="{Binding ViAnz.ColorPumpe}" Stroke="Black" StrokeThickness="2">
             <Polygon.Points>
                 <Point X="15" Y="38" />
                 <Point X="68" Y="62" />
@@ -253,20 +253,20 @@
 
         <TextBlock      Grid.Column="41"                        Grid.Row="3" FontSize="16pt" Grid.ColumnSpan="3">Betriebsart</TextBlock>
         <StackPanel Orientation="Vertical" Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="4" Grid.RowSpan="4">
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Tag}">Tag</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Nacht}">Nacht</RadioButton>
-            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnzeige.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnz.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Aus}">Aus</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnz.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Tag}">Tag</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnz.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Nacht}">Nacht</RadioButton>
+            <RadioButton GroupName="RbAuswahl" FontSize="14pt" IsChecked="{Binding Path=ViAnz.BetriebsartAuswahl, Converter = {StaticResource EnumBooleanConverter}, ConverterParameter=Hand}">Hand</RadioButton>
         </StackPanel>
 
         <Label Content="Witterungstemperatur"   Grid.Column="41" Grid.ColumnSpan="6"    Grid.Row="11" VerticalAlignment="Center" FontSize="14pt"/>
 
-        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="-20"   Maximum="40" TickFrequency="1"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnzeige.WitterungsTemperaturSlider, Mode=TwoWay}" />
+        <Slider Grid.Column="41" Grid.ColumnSpan="5"    Grid.Row="12" Minimum="-20"   Maximum="40" TickFrequency="1"   IsSnapToTickEnabled="True"  Value="{Binding  ViAnz.WitterungsTemperaturSlider, Mode=TwoWay}" />
 
-        <Label Grid.Column="40" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnzeige.SpsColor}" Content="{Binding ViAnzeige.SpsStatus}" />
-        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Fill="Red" />
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionLokal}" FontSize="14pt"/>
-        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnzeige.SpsVersionsInfoSichtbar}" Content="{Binding ViAnzeige.SpsVersionEntfernt}" FontSize="14pt"/>
+        <Label Grid.Column="40" Grid.ColumnSpan="7"  Grid.Row="22" FontSize="14pt"  Background="{Binding ViAnz.SpsColor}" Content="{Binding ViAnz.SpsStatus}" />
+        <Rectangle  Grid.Column="1"  Grid.ColumnSpan="7"   Grid.Row="1"  Grid.RowSpan="4" Visibility="{Binding ViAnz.SpsSichtbar}" Fill="Red" />
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="2"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="Falsche Software / Version auf der SPS" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="3"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionLokal}" FontSize="14pt"/>
+        <Label      Grid.Column="2"  Grid.ColumnSpan="5"   Grid.Row="4"                   Visibility="{Binding ViAnz.SpsSichtbar}" Content="{Binding ViAnz.SpsVersionEntfernt}" FontSize="14pt"/>
     </Grid>
 </Window>

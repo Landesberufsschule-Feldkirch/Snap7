@@ -6,6 +6,6 @@
         mc:Ignorable="d"
         Title="PlotWindow" Height="800" Width="1800">
     <Grid>
-        <WpfPlot x:Name="WpfPlot" Background="AliceBlue"  />
+        <WpfPlot x:Name="TestAutomatPlot" Background="AliceBlue"  />
     </Grid>
 </Window>

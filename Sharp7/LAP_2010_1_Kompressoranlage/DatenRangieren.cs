@@ -9,20 +9,22 @@ namespace LAP_2010_1_Kompressoranlage
 
         private enum BitPosAusgang
         {
-            P1 = 0, // Störung
-            P2,     // Betriebsbereit
-            Q1,     // Netzschütz
-            Q2,     // Sternschütz
-            Q3      // Dreieckschütz
+            P1 = 0,     // Störung
+            P2 = 1,     // Betriebsbereit
+            Q1 = 2,     // Netzschütz
+            Q2 = 3,     // Sternschütz
+            Q3 = 4      // Dreieckschütz
+
         }
 
         private enum BitPosEingang
         {
-            B1 = 0, // Druckschalter
-            B2,     // Temperaturfühler Kompressor
-            F1,     // Störung Motorschutzschalter
-            S1,     // Taster Aus
-            S2      // Taster Ein
+            B1 = 0,     // Druckschalter
+            B2 = 1,     // Temperaturfühler Kompressor
+            F1 = 2,     // Störung Motorschutzschalter
+            S1 = 3,     // Taster Aus
+            S2 = 4       // Taster Ein
+
         }
 
         public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
@@ -35,7 +37,6 @@ namespace LAP_2010_1_Kompressoranlage
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S1, _viewModel.Kompressoranlage.S1);
                 _plc.SetBitAt(datenstruktur.DigInput, (int)BitPosEingang.S2, _viewModel.Kompressoranlage.S2);
             }
-
 
             _viewModel.Kompressoranlage.P1 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P1);
             _viewModel.Kompressoranlage.P2 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P2);
