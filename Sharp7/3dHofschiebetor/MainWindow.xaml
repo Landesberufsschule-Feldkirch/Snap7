@@ -3,9 +3,78 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:h="http://helix-toolkit.org/wpf"
         mc:Ignorable="d"
-        Title="3d Hofschiebetor" Height="450" Width="800">
+        Title="3d Hofschiebetor" Height="1050" Width="1900">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+
+
+        <h:HelixViewport3D x:Name="ViewPort3d"
+                               Grid.Column="1" Grid.ColumnSpan="18" Grid.Row="1" Grid.RowSpan="22"
+                               Background="White"
+                               ZoomExtentsWhenLoaded="True"
+                               IsHeadLightEnabled="True">
+            <h:DefaultLights x:Name="Lichtquelle" />
+        </h:HelixViewport3D>
+
     </Grid>
 </Window>
