@@ -68,7 +68,13 @@
 
         <Button x:Name="BtnDebugWindow" Content="set manual" Grid.Column="10" Grid.Row="1" Click="DebugWindowOeffnen" Background="Aquamarine" />
 
-
+        <Button Grid.Column="12" Grid.Row="1" Content="RESET" Background="LightCyan"  Command="{Binding BtnReset}" FontSize="14pt" Panel.ZIndex="98" Margin="67,2,0,48" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="25" />
+                </Style>
+            </Button.Resources>
+        </Button>
 
         <h:HelixViewport3D x:Name="ViewPort3d"
                                Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="3" Grid.RowSpan="20"

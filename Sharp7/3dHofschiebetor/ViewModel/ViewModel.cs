@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using _3dHofschiebetor.Commands;
 
 namespace _3dHofschiebetor.ViewModel
 {
@@ -13,7 +14,9 @@ namespace _3dHofschiebetor.ViewModel
             ViAnzeige = new VisuAnzeigen(mainWindow, HofSchiebeTor);
         }
 
-
+        private ICommand _btnReset;
+        // ReSharper disable once UnusedMember.Global
+        public ICommand BtnReset => _btnReset ?? (_btnReset = new RelayCommand(p => ViAnzeige.AllesReset(), p => true));
 
 
     }
