@@ -17,13 +17,31 @@ namespace _3dHofschiebetor.DreiD
 
             _mainWindow.ViewPort3d.RotateGesture = new MouseGesture(MouseAction.LeftClick);
             
-            var garagentorStationaer = new ModelVisual3D { Content = Display3d("DreiDModelle/garagentorStationaer.STL", Colors.Brown) };
+
+            _mainWindow.ViewPort3d.Camera = new PerspectiveCamera
+            {
+                Position = new Point3D(3, 3, 5),
+                LookDirection = new Vector3D(-3, -3, -5),
+                UpDirection = new Vector3D(0, 1, 0),
+                FarPlaneDistance = 5000000
+            };
+
+            var garagentorStationaer = new ModelVisual3D
+            {
+                Content = Display3d("DreiDModelle/garagentorStationaer.STL", Colors.OrangeRed)
+            };
             _mainWindow.ViewPort3d.Children.Add(garagentorStationaer);
 
-            var garagentorBeweglich = new ModelVisual3D { Content = Display3d("DreiDModelle/garagentorBeweglich.STL", Colors.YellowGreen) };
+            var garagentorBeweglich = new ModelVisual3D
+            {
+                Content = Display3d("DreiDModelle/garagentorBeweglich.STL", Colors.YellowGreen)
+            };
             _mainWindow.ViewPort3d.Children.Add(garagentorBeweglich);
 
-            var volvoLkw3d = new ModelVisual3D {Content = Display3d("DreiDModelle/volvoLkw.STL", Colors.CadetBlue)};
+            var volvoLkw3d = new ModelVisual3D
+            {
+                Content = Display3d("DreiDModelle/volvoLkw.STL", Colors.CadetBlue)
+            };
             _mainWindow.ViewPort3d.Children.Add(volvoLkw3d);
         }
 

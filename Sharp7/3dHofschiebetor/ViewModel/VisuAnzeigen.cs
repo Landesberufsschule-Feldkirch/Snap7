@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -34,6 +35,44 @@ namespace _3dHofschiebetor.ViewModel
             while (true)
             {
 
+
+                if (_mainWindow.ViewPort3d != null)
+                {
+                    _mainWindow.Dispatcher.Invoke(() =>
+                    {
+                        if (!_mainWindow.FensterAktiv) return;
+                      
+                        /*
+                         if (_mainWindow.DreiDModelleIds[IdEintraege.Regalbediengeraet] == 201)
+                         
+                        {
+                            //Bediengerät
+                            _mainWindow.ViewPort3d.Children[197].Transform = _mainWindow.BediengeraetStartpositionen[0].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, 0);
+
+                            // Schlitten senkrecht
+                            _mainWindow.ViewPort3d.Children[198].Transform = _mainWindow.BediengeraetStartpositionen[1].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), 0, _mainWindow.RegalBedienGeraet.GetZPosition());
+
+                            // Schlitten waagrecht Zwischenteil
+                            _mainWindow.ViewPort3d.Children[199].Transform = _mainWindow.BediengeraetStartpositionen[2].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), -1 * _mainWindow.RegalBedienGeraet.GetYPosition() / 2, _mainWindow.RegalBedienGeraet.GetZPosition());
+
+                            // Schlitten waagrecht
+                            _mainWindow.ViewPort3d.Children[200].Transform = _mainWindow.BediengeraetStartpositionen[3].Transform(_mainWindow.RegalBedienGeraet.GetXPosition(), -1 * _mainWindow.RegalBedienGeraet.GetYPosition(), _mainWindow.RegalBedienGeraet.GetZPosition());
+
+                            XPosition = (_mainWindow.BediengeraetStartpositionen[3].GetX() + _mainWindow.RegalBedienGeraet.GetXPosition()).ToString(CultureInfo.InvariantCulture);
+                            YPosition = (_mainWindow.BediengeraetStartpositionen[3].GetY() + _mainWindow.RegalBedienGeraet.GetYPosition()).ToString(CultureInfo.InvariantCulture);
+                            ZPosition = (_mainWindow.BediengeraetStartpositionen[3].GetZ() + _mainWindow.RegalBedienGeraet.GetZPosition()).ToString(CultureInfo.InvariantCulture);
+                        }
+                        */
+                        else
+                        {
+                            MessageBox.Show("Es hat sich die Anzahl der 3D Objekte geändert!!!");
+                        }
+                    });
+                }
+
+
+
+
                 if (_mainWindow.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
@@ -43,6 +82,10 @@ namespace _3dHofschiebetor.ViewModel
                     SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.Plc?.GetSpsStatus();
                 }
+
+
+
+
 
                 Thread.Sleep(100);
             }

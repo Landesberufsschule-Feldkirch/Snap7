@@ -9,6 +9,7 @@ namespace _3dHofschiebetor
     public partial class MainWindow
     {
         public IPlc Plc { get; set; }
+        public DreiDElemente[] HofDreiDElementes { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public IPlc S71200 { get; set; }
         public bool FensterAktiv { get; set; }

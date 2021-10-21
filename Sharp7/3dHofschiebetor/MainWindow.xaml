@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:h="http://helix-toolkit.org/wpf"
         mc:Ignorable="d"
-        Title="3d Hofschiebetor" Height="1050" Width="1000">
+        Title="3d Hofschiebetor" Height="1050" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -24,18 +24,7 @@
             <ColumnDefinition Width="75" />
             <ColumnDefinition Width="75" />
             <ColumnDefinition Width="75" />
-            <ColumnDefinition Width="75" />
-            <ColumnDefinition Width="75" />
-            <ColumnDefinition Width="75" />
             <ColumnDefinition />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -44,11 +33,8 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="10" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
@@ -77,11 +63,14 @@
         </Button>
 
         <h:HelixViewport3D x:Name="ViewPort3d"
-                               Grid.Column="1" Grid.ColumnSpan="13" Grid.Row="3" Grid.RowSpan="20"
+                               Grid.Column="1" Grid.ColumnSpan="14" Grid.Row="3" Grid.RowSpan="17"
                                Background="White"
                                ZoomExtentsWhenLoaded="True"
                                IsHeadLightEnabled="True">
             <h:DefaultLights x:Name="Lichtquelle" />
+            
+            <h:GridLinesVisual3D />
+            <h:SunLight />
         </h:HelixViewport3D>
 
         <Label Grid.Column="27" Grid.Row="1" HorizontalAlignment="Right" Width="36" Content="{Binding ViAnzeige.VersionNr}" Margin="0,0,14,0" />
