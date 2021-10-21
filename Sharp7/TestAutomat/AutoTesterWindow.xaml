@@ -8,15 +8,24 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="*" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.Row="1" FontSize="14pt" />
+        <Canvas x:Name="CanvasDigitalInput" Grid.Column="2" Grid.Row="1" />
+        <Canvas x:Name="CanvasDigitalOutputSoll" Grid.Column="3" Grid.Row="1" />
+        <Canvas x:Name="CanvasDigitalOutputIst" Grid.Column="4" Grid.Row="1" />
+
+        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="2" FontSize="14pt"  />
     </Grid>
 </Window>

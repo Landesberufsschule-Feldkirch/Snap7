@@ -15,7 +15,7 @@ namespace TestAutomat
             if (!_autoTesterWindowAktiv)
             {
                 _autoTesterWindowAktiv = true;
-                _autoTesterWindow = new AutoTesterWindow();
+                _autoTesterWindow = new AutoTesterWindow(BeschriftungenPlc);
                 _autoTesterWindow.Show();
             }
             else

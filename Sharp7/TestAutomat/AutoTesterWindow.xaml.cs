@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using BeschriftungPlc;
 using TestAutomat.Model;
 
 namespace TestAutomat
@@ -18,11 +19,15 @@ namespace TestAutomat
             if (AutoTesterDataGrid.Count <= zeile) AutoTesterDataGrid.Add(data);
             else AutoTesterDataGrid[zeile] = data;
         });
-        public AutoTesterWindow()
+        public AutoTesterWindow(BeschriftungenPlc beschriftungenPlc)
         {
             AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
 
             InitializeComponent();
+
+            BeschriftungDigitalInput(CanvasDigitalInput, beschriftungenPlc);
+            BeschriftungDigitalOutputIst(CanvasDigitalOutputIst, beschriftungenPlc);
+            BeschriftungDigitalOutputSoll(CanvasDigitalOutputSoll, beschriftungenPlc);
 
             DataGrid.ItemsSource = AutoTesterDataGrid;
             DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
