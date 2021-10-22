@@ -10,8 +10,8 @@ namespace AmpelsteuerungKieswerk
 
         private readonly ViewModel.ViewModel _viewModel;
         private IPlc _plc;
-        private AmpelZustand _ampelLinks = AmpelZustand.Rot;
-        private AmpelZustand _ampelRechts = AmpelZustand.Rot;
+        private AmpelZustand _ampelLinks;
+        private AmpelZustand _ampelRechts;
 
         private enum BitPosAusgang
         {
@@ -20,8 +20,9 @@ namespace AmpelsteuerungKieswerk
             P3 = 2,     // Ampel links grün
             P4 = 3,     // Ampel rechts rot
             P5 = 4,     // Ampel rechts gelb
-            P6 = 5       // Ampel rechts grün
-
+            P6 = 5,     // Ampel rechts grün
+            P7 = 6,     // Oranges Licht links
+            P8 = 7      // Oranges Licht rechts
         }
         private enum BitPosEingang
         {
@@ -47,6 +48,8 @@ namespace AmpelsteuerungKieswerk
             var p4RechtsRot = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P4);
             var p5RechtsGelb = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P5);
             var p6RechtsGruen = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P6);
+            _viewModel.AlleLastKraftWagen.P7 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P7);
+            _viewModel.AlleLastKraftWagen.P8 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P8);
 
             var linkeAmpel = GetAmpelZustand(p1LinksRot, p2LinksGelb, p3LinksGruen);
             var rechteAmpel = GetAmpelZustand(p4RechtsRot, p5RechtsGelb, p6RechtsGruen);

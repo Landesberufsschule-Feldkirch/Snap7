@@ -12,6 +12,9 @@
 15      RechtsGelb              Farbe
 16      RechtsGrün              Farbe
 
+17		P7 LinksOrange			Farbe
+18		P8 RechtsOrange			Farbe
+
 21		LKW 1		PosLinks    PosOben     BtnTaster
 22		LKW 2		PosLinks    PosOben     BtnTaster
 23		LKW 3		PosLinks    PosOben     BtnTaster
