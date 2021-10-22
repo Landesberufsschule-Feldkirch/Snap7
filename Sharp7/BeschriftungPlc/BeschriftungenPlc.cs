@@ -8,8 +8,8 @@
 
         public void UpdateBeschriftungen(string ordnerConfigTests)
         {
-            BeschriftungenStruktur.PlcDaBeschriftungen($"{ordnerConfigTests}\\beschriftungDa.json");
-            BeschriftungenStruktur.PlcDiBeschriftungen($"{ordnerConfigTests}\\beschriftungDi.json");
+            BeschriftungenStruktur.PlcDaBeschriftungen(@$"{ordnerConfigTests}\beschriftungDa.json");
+            BeschriftungenStruktur.PlcDiBeschriftungen(@$"{ordnerConfigTests}\beschriftungDi.json");
         }
     }
 }

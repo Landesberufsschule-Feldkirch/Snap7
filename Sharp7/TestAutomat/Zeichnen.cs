@@ -16,10 +16,12 @@ namespace TestAutomat
             {
                 _autoTesterWindowAktiv = true;
                 _autoTesterWindow = new AutoTesterWindow();
+                _autoTesterWindow.PlcBeschriftungAktualisieren(BeschriftungenPlc);
                 _autoTesterWindow.Show();
             }
             else
             {
+                _autoTesterWindow.PlcBeschriftungAktualisieren(BeschriftungenPlc);
                 _autoTesterWindow.AutoTesterDataGrid.Clear();
                 _autoTesterWindow.DataGridId = 0;
             }

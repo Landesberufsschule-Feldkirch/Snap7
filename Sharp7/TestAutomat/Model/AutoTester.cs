@@ -56,7 +56,7 @@ namespace TestAutomat.Model
                  " "));
 
             SilkStopwatch.Start();
-            (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(aktuellesProjekt + "\\testSource.ssc");
+            (_compilerlaufErfolgreich, compiler, _compiledProgram) = Silk.Silk.Compile(@$"{aktuellesProjekt}\testSource.ssc");
 
             if (_compilerlaufErfolgreich)
             {

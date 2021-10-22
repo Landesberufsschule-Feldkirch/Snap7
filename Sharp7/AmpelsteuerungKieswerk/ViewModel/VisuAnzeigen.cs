@@ -69,6 +69,9 @@ namespace AmpelsteuerungKieswerk.ViewModel
         {
             if (_mainWindow == null) return;
 
+            FarbeUmschalten(_alleLastKraftWagen.P7, 17, Brushes.Orange, Brushes.White);
+            FarbeUmschalten(_alleLastKraftWagen.P8, 18, Brushes.Orange, Brushes.White);
+
             switch (e.AmpelZustandLinks)
             {
                 case AmpelZustand.Rot:
