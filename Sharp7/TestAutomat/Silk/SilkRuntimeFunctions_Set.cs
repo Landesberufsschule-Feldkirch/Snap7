@@ -32,10 +32,10 @@ namespace TestAutomat.Silk
         {
             Datenstruktur.DiagrammZeitbereich = e.Parameters[0].ToInteger();
         }
-        private static void SetDataGridBitAnzahl(FunctionEventArgs e)
+        private static void SetDataGridBitAnzahl()
         {
-            _anzahlBitEingaenge = e.Parameters[0].ToInteger();
-            _anzahlBitAusgaenge = e.Parameters[1].ToInteger();
+            _anzahlBitEingaenge = 16;   // e.Parameters[0].ToInteger();
+            _anzahlBitAusgaenge = 16;   // e.Parameters[1].ToInteger();
         }
     }
 }

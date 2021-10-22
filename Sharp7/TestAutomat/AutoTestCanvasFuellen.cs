@@ -1,66 +1,64 @@
-﻿using System.Windows;
+﻿using BeschriftungPlc;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using BeschriftungPlc;
 
 namespace TestAutomat
 {
     public partial class AutoTesterWindow
     {
-        private static void BeschriftungDigitalInput(Canvas canvas, BeschriftungenPlc beschriftungenPlc)
+        private const int ZeilenAbstand = 10;
+        private const int SpaltenBreite = 300 - 15; // rechter Rand
+
+        public void PlcBeschriftungAktualisieren(BeschriftungenPlc beschriftungenPlc)
         {
+            BeschriftungDigitalInput(CanvasDigitalInput, beschriftungenPlc);
+            BeschriftungDigitalOutput(CanvasDigitalOutputIst, beschriftungenPlc);
+            BeschriftungDigitalOutput(CanvasDigitalOutputSoll, beschriftungenPlc);
+        }
+        private static void BeschriftungDigitalInput(Panel canvas, BeschriftungenPlc beschriftungenPlc)
+        {
+            if (canvas.Children.Count > 0) canvas.Children.Clear();
+
             foreach (var diDaten in beschriftungenPlc.BeschriftungenStruktur.DiBeschriftungen.DiBeschriftung)
             {
+                var bitPos = diDaten.Bit + 8 * diDaten.Byte;
                 var label = new Label
                 {
-                    Content = diDaten.Bezeichnung,
-                    FontSize = 16,
+                    Content = $"{bitPos:D2}: {diDaten.Bezeichnung}",
+                    FontSize = 12,
+                    FontFamily = new FontFamily("Courier New"),
                     Padding = new Thickness(0),
                     BorderThickness = new Thickness(0),
                     LayoutTransform = new RotateTransform(270)
                 };
 
-                Canvas.SetLeft(label, 250 - 12 * (diDaten.Byte * 8 + diDaten.Bit));
+                Canvas.SetLeft(label, SpaltenBreite - ZeilenAbstand * (bitPos + bitPos / 4));
                 Canvas.SetBottom(label, 5);
-                canvas.Children.Add(label);
+                _ = canvas.Children.Add(label);
             }
         }
 
-        private static void BeschriftungDigitalOutputIst(Canvas canvas, BeschriftungenPlc beschriftungenPlc)
+        private static void BeschriftungDigitalOutput(Panel canvas, BeschriftungenPlc beschriftungenPlc)
         {
-            for (var i = 0; i < 10; i++)
+            if (canvas.Children.Count > 0) canvas.Children.Clear();
+
+            foreach (var daDaten in beschriftungenPlc.BeschriftungenStruktur.DaBeschriftungen.DaBeschriftung)
             {
+                var bitPos = daDaten.Bit + 8 * daDaten.Byte;
                 var label = new Label
                 {
-                    Content = "Digital Output Ist " + i,
-                    FontSize = 16,
+                    Content = $"{bitPos:D2}: {daDaten.Bezeichnung}",
+                    FontSize = 12,
+                    FontFamily = new FontFamily("Courier New"),
                     Padding = new Thickness(0),
                     BorderThickness = new Thickness(0),
                     LayoutTransform = new RotateTransform(270)
                 };
 
-                Canvas.SetLeft(label, 10 * i);
+                Canvas.SetLeft(label, SpaltenBreite - ZeilenAbstand * (bitPos + bitPos / 4));
                 Canvas.SetBottom(label, 5);
-                canvas.Children.Add(label);
-            }
-        }
-
-        private static void BeschriftungDigitalOutputSoll(Canvas canvas, BeschriftungenPlc beschriftungenPlc)
-        {
-            for (var i = 0; i < 10; i++)
-            {
-                var label = new Label
-                {
-                    Content = "Digital Output Soll " + i,
-                    FontSize = 16,
-                    Padding = new Thickness(0),
-                    BorderThickness = new Thickness(0),
-                    LayoutTransform = new RotateTransform(270)
-                };
-
-                Canvas.SetLeft(label, 10 * i);
-                Canvas.SetBottom(label, 5);
-                canvas.Children.Add(label);
+                _ = canvas.Children.Add(label);
             }
         }
     }

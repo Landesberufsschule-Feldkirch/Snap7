@@ -28,20 +28,18 @@ namespace TestAutomat.Silk
         {
             var silkTestergebnis = e.Parameters[0].ToString();
             var silkKommentar = e.Parameters[1].ToString();
-            AutoTester.TestErgebnis ergebnis;
 
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
-            switch (silkTestergebnis)
+            var ergebnis = silkTestergebnis switch
             {
-                case "Kommentar": ergebnis = AutoTester.TestErgebnis.Kommentar; break;
-                case "Aktiv": ergebnis = AutoTester.TestErgebnis.Aktiv; break;
-                case "Init": ergebnis = AutoTester.TestErgebnis.Init; break;
-                case "Erfolgreich": ergebnis = AutoTester.TestErgebnis.Erfolgreich; break;
-                case "Timeout": ergebnis = AutoTester.TestErgebnis.Timeout; break;
-                case "Fehler": ergebnis = AutoTester.TestErgebnis.Fehler; break;
-
-                default: ergebnis = AutoTester.TestErgebnis.UnbekanntesErgebnis; break;
-            }
+                "Kommentar" => AutoTester.TestErgebnis.Kommentar,
+                "Aktiv" => AutoTester.TestErgebnis.Aktiv,
+                "Init" => AutoTester.TestErgebnis.Init,
+                "Erfolgreich" => AutoTester.TestErgebnis.Erfolgreich,
+                "Timeout" => AutoTester.TestErgebnis.Timeout,
+                "Fehler" => AutoTester.TestErgebnis.Fehler,
+                _ => AutoTester.TestErgebnis.UnbekanntesErgebnis
+            };
 
             DataGridAnzeigeUpdaten(ergebnis, 0, silkKommentar);
         }

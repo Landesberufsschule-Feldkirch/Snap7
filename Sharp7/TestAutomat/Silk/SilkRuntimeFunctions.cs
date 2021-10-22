@@ -20,7 +20,7 @@ namespace TestAutomat.Silk
                 case "PlcHotStart": PlcHotStart(); break;
                 case "ResetStopwatch": ResetStopwatch(); break;
                 case "SetAnalogerEingang": SetAnalogerEingang(e); break;
-                case "SetDataGridBitAnzahl": SetDataGridBitAnzahl(e); break;
+                case "SetDataGridBitAnzahl": SetDataGridBitAnzahl(); break; // Anzeige mit 16 bit 
                 case "SetDiagrammZeitbereich": SetDiagrammZeitbereich(e); break;
                 case "SetDigitaleEingaenge": SetDigitaleEingaenge(e); break;
                 case "Sleep": Sleep(e); break;
