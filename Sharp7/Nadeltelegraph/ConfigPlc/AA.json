@@ -5,7 +5,7 @@
       "StartByte": 0,
       "StartBit": 0,
       "AnzahlBit": 32,
-      "Type":  "-",
+      "Type":  "Default",
       "Bezeichnung": "AA0",
       "Kommentar": "Dummy analog Ausgang 0"
     }

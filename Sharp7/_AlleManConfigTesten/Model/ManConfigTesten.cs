@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace _AlleManConfigTesten.Model
 {
@@ -21,20 +21,9 @@ namespace _AlleManConfigTesten.Model
             SiemensAnalogwertProzent,
             SiemensAnalogwertPromille,
             BitmusterByte,
-            Schieberegler
+            Schieberegler,
+            SiemensAnalogwertSchieberegler
             // ReSharper restore UnusedMember.Global
-        }
-
-        internal class MyEnumConverter : JsonConverter<PlcEinUndAusgaengeTypen>
-        {
-            public override PlcEinUndAusgaengeTypen ReadJson(JsonReader reader, Type objectType, PlcEinUndAusgaengeTypen existingValue, bool hasExistingValue, JsonSerializer serializer)
-            {
-                if (reader.Value == null) return default;
-                var token = reader.Value as string ?? reader.Value.ToString();
-                var stripped = Regex.Replace(token!, @"<[^>]+>", string.Empty);
-                return Enum.TryParse<PlcEinUndAusgaengeTypen>(stripped, out var result) ? result : default;
-            }
-            public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer) => writer.WriteValue(value.ToString());
         }
 
         private readonly IEnumerable<string> _aaDateiListe;
@@ -45,15 +34,20 @@ namespace _AlleManConfigTesten.Model
         public ManConfigTesten(ViewModel.ViewModel viewModel)
         {
             _viewModel = viewModel;
-
-            Einstellungen = JsonConvert.DeserializeObject<Einstellungen>(File.ReadAllText("Einstellungen.json"));
+            try
+            {
+                Einstellungen = JsonConvert.DeserializeObject<Einstellungen>(File.ReadAllText("Einstellungen.json"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datei nicht gefunden: Einstellungen.json" + " --> " + ex);
+            }
 
             _aaDateiListe = DateiListenEinlesen("AA.json");
             _aiDateiListe = DateiListenEinlesen("AI.json");
             _daDateiListe = DateiListenEinlesen("DA.json");
             _diDateiListe = DateiListenEinlesen("DI.json");
         }
-
         private IEnumerable<string> DateiListenEinlesen(string jsonFile)
         {
             var quellOrdner = "";
@@ -87,7 +81,6 @@ namespace _AlleManConfigTesten.Model
                     t.dateiName.Contains(jsonFile))
                 .Select(t => t.t.file.FullName).ToList();
         }
-
         internal void AlleConfigEinlesen()
         {
             AaConfigLesen();
@@ -95,77 +88,101 @@ namespace _AlleManConfigTesten.Model
             DaConfigLesen();
             DiConfigLesen();
         }
-
         internal void AaConfigLesen()
         {
             foreach (var dateiName in _aaDateiListe)
             {
-                var aaConfig = JsonConvert.DeserializeObject<AaConfig>(File.ReadAllText(dateiName), new MyEnumConverter());
-                if (!(aaConfig?.AnalogeAusgaenge.Count > 0)) continue;
-
-                foreach (var analogAusgang in aaConfig.AnalogeAusgaenge)
+                try
                 {
-                    _viewModel.ViAnz.AddAaDaten(new AaDaten(
-                        dateiName, analogAusgang.LaufendeNr,
-                        analogAusgang.StartByte, analogAusgang.StartBit, analogAusgang.AnzahlBit,
-                        analogAusgang.MinimalWert, analogAusgang.MaximalWert, analogAusgang.Schrittweite,
-                        analogAusgang.Type,
-                        analogAusgang.Bezeichnung, analogAusgang.Kommentar));
+                    var aaConfig = JsonConvert.DeserializeObject<AaConfig>(File.ReadAllText(dateiName));
+                    if (!(aaConfig?.AnalogeAusgaenge.Count > 0)) continue;
+
+                    foreach (var analogAusgang in aaConfig.AnalogeAusgaenge)
+                    {
+                        _viewModel.ViAnz.AddAaDaten(new AaDaten(
+                            dateiName, analogAusgang.LaufendeNr,
+                            analogAusgang.StartByte, analogAusgang.StartBit, analogAusgang.AnzahlBit,
+                            analogAusgang.MinimalWert, analogAusgang.MaximalWert, analogAusgang.Schrittweite,
+                            analogAusgang.Type,
+                            analogAusgang.Bezeichnung, analogAusgang.Kommentar));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Datei nicht gefunden:" + dateiName + " --> " + ex);
                 }
             }
         }
-
         internal void AiConfigLesen()
         {
             foreach (var dateiName in _aiDateiListe)
             {
-                var aiConfig = JsonConvert.DeserializeObject<AiConfig>(File.ReadAllText(dateiName), new MyEnumConverter());
-                if (!(aiConfig?.AnalogeEingaenge.Count > 0)) continue;
-
-                foreach (var analogEingang in aiConfig.AnalogeEingaenge)
+                try
                 {
-                    _viewModel.ViAnz.AddAiDaten(new AiDaten(
-                        dateiName, analogEingang.LaufendeNr,
-                        analogEingang.StartByte, analogEingang.StartBit, analogEingang.AnzahlBit,
-                        analogEingang.Type,
-                        analogEingang.Bezeichnung, analogEingang.Kommentar));
+                    var aiConfig = JsonConvert.DeserializeObject<AiConfig>(File.ReadAllText(dateiName));
+
+                    if (!(aiConfig?.AnalogeEingaenge.Count > 0)) continue;
+
+                    foreach (var analogEingang in aiConfig.AnalogeEingaenge)
+                    {
+                        _viewModel.ViAnz.AddAiDaten(new AiDaten(
+                            dateiName, analogEingang.LaufendeNr,
+                            analogEingang.StartByte, analogEingang.StartBit, analogEingang.AnzahlBit,
+                            analogEingang.Type,
+                            analogEingang.Bezeichnung, analogEingang.Kommentar));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Datei nicht gefunden:" + dateiName + " --> " + ex);
                 }
             }
         }
-
         internal void DaConfigLesen()
         {
             foreach (var dateiName in _daDateiListe)
             {
-                var daConfig = JsonConvert.DeserializeObject<DaConfig>(File.ReadAllText(dateiName), new MyEnumConverter());
-
-                if (!(daConfig?.DigitaleAusgaenge.Count > 0)) continue;
-
-                foreach (var digitalAusgang in daConfig.DigitaleAusgaenge)
+                try
                 {
-                    _viewModel.ViAnz.AddDaDaten(new DaDaten(
-                        dateiName, digitalAusgang.LaufendeNr,
-                        digitalAusgang.StartByte, digitalAusgang.StartBit, digitalAusgang.AnzahlBit,
-                        digitalAusgang.Type,
-                        digitalAusgang.Bezeichnung, digitalAusgang.Kommentar));
+                    var daConfig = JsonConvert.DeserializeObject<DaConfig>(File.ReadAllText(dateiName));
+
+                    if (!(daConfig?.DigitaleAusgaenge.Count > 0)) continue;
+
+                    foreach (var digitalAusgang in daConfig.DigitaleAusgaenge)
+                    {
+                        _viewModel.ViAnz.AddDaDaten(new DaDaten(
+                            dateiName, digitalAusgang.LaufendeNr,
+                            digitalAusgang.StartByte, digitalAusgang.StartBit, digitalAusgang.AnzahlBit,
+                            digitalAusgang.Type,
+                            digitalAusgang.Bezeichnung, digitalAusgang.Kommentar));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Datei nicht gefunden:" + dateiName + " --> " + ex);
                 }
             }
         }
-
         internal void DiConfigLesen()
         {
             foreach (var dateiName in _diDateiListe)
             {
-                var diConfig = JsonConvert.DeserializeObject<DiConfig>(File.ReadAllText(dateiName), new MyEnumConverter());
-
-                if (!(diConfig?.DigitaleEingaenge.Count > 0)) continue;
-
-                foreach (var digitalEingang in diConfig.DigitaleEingaenge)
+                try
                 {
-                    _viewModel.ViAnz.AddDiDaten(new DiDaten(dateiName, digitalEingang.LaufendeNr, digitalEingang.StartByte, digitalEingang.StartBit, digitalEingang.AnzahlBit, digitalEingang.Type, digitalEingang.Bezeichnung, digitalEingang.Kommentar));
+                    var diConfig = JsonConvert.DeserializeObject<DiConfig>(File.ReadAllText(dateiName));
+
+                    if (!(diConfig?.DigitaleEingaenge.Count > 0)) continue;
+
+                    foreach (var digitalEingang in diConfig.DigitaleEingaenge)
+                    {
+                        _viewModel.ViAnz.AddDiDaten(new DiDaten(dateiName, digitalEingang.LaufendeNr, digitalEingang.StartByte, digitalEingang.StartBit, digitalEingang.AnzahlBit, digitalEingang.Type, digitalEingang.Bezeichnung, digitalEingang.Kommentar));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Datei nicht gefunden:" + dateiName + " --> " + ex);
                 }
             }
         }
-
     }
 }

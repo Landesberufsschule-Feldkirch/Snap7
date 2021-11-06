@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Bilder\IconPlotter.jpg" />
+    <None Remove="Bilder\S7_1200.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -22,12 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Bilder\IconPlotter.jpg">
+    <Resource Include="Bilder\IconPlotter.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Bilder\S7_1200.jpg">
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Bilder\Snap7.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -77,9 +77,9 @@
                     <Button Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="7" Grid.RowSpan="2"  Command="{Binding BtnSchalter}" CommandParameter="51" />
                     <Label Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="7"  Grid.RowSpan="2"  Content="Bitte drücken!"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30pt" />
 
-                    <Button Grid.Column="15" Grid.Row="1" Height="40" Click="PlcButton_OnClick" Margin="0,30,0,0"   >
+                    <Button Grid.Column="15" Grid.Row="1" Height="40" Click="PlcButton_OnClick" Margin="0,30,0,0" >
                         <Button.Background>
-                            <ImageBrush ImageSource="Bilder/S7_1200.jpg"  />
+                            <ImageBrush ImageSource="Bilder/S7_1200.jpg"/>
                         </Button.Background>
                     </Button>
 

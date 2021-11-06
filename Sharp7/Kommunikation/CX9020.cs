@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using TwinCAT.Ads;
 
 namespace Kommunikation
@@ -32,8 +33,14 @@ namespace Kommunikation
         {
             _datenstruktur = datenstruktur;
             _callbackRangieren = cbRangieren;
-
-            _spsClient = JsonConvert.DeserializeObject<IpAdressenBeckhoff>(File.ReadAllText("IpAdressenBeckhoff.json"));
+            try
+            {
+                _spsClient = JsonConvert.DeserializeObject<IpAdressenBeckhoff>(File.ReadAllText("IpAdressenBeckhoff.json"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datei nicht gefunden: IpAdressenBeckhoff.json" + " --> " + ex);
+            }
             _adsClient = new AdsClient();
 
             _spsError = false;

@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
+using System.Windows;
 
 namespace Kommunikation
 {
@@ -22,7 +23,14 @@ namespace Kommunikation
 
         public S71200(Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
         {
-            _spsClient = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
+            try
+            {
+                _spsClient = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datei nicht gefunden: IpAdressenSiemens.json" + " --> " + ex);
+            }
             _datenstruktur = datenstruktur;
             _callbackRangieren = cbRangieren;
 
