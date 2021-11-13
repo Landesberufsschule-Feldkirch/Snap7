@@ -1,7 +1,7 @@
 ﻿using Synchronisiereinrichtung.Model;
 using Xunit;
 
-namespace SynchronisiereinrichtungTests
+namespace Synchronisiereinrichtung.Tests
 {
     public class LogikFunktionen
     {

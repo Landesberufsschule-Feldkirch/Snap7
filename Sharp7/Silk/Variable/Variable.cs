@@ -1,12 +1,13 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     [Flags]
     internal enum CompilerFlag : byte
@@ -219,7 +220,7 @@ namespace SoftCircuits.Silk
         /// Gets the variable at the specified position of a list.
         /// </summary>
         /// <param name="index">0-based list position.</param>
-        public Variable GetAt(int index) => (Value is ListValue listValue) ? listValue.GetAt(index) : (index == 0) ? this : new Variable();
+        public Variable GetAt(int index) => Value is ListValue listValue ? listValue.GetAt(index) : index == 0 ? this : new Variable();
 
         /// <summary>
         /// Returns the items from this variable's list. Returns a single item if
@@ -405,7 +406,7 @@ namespace SoftCircuits.Silk
 
         public override bool Equals(object? value) => Equals(value as Variable);
 
-        public bool Equals(Variable? value) => (value is not null) && Value.Equals(value.Value);
+        public bool Equals(Variable? value) => value is not null && Value.Equals(value.Value);
 
         public override int GetHashCode() => Value.GetHashCode();
 

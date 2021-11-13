@@ -1,12 +1,14 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
+using Silk.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SoftCircuits.Silk
+namespace Silk.Runtime
 {
     public class Runtime
     {
@@ -82,7 +84,7 @@ namespace SoftCircuits.Silk
                 if (Program.LineNumbers != null)
                 {
                     Debug.Assert(Program.LineNumbers.Length == Program.ByteCodes.Length);
-                    int ip = (Reader.IP - 1);
+                    int ip = Reader.IP - 1;
                     if (ip >= 0 && ip < Program.LineNumbers.Length)
                     {
                         string s = $"\"{ex.Message}\" exception on line {Program.LineNumbers[ip]}. See inner exception for details.";

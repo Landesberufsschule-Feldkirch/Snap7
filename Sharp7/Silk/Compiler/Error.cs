@@ -4,7 +4,7 @@
 using System;
 using System.ComponentModel;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     public enum ErrorLevel
     {

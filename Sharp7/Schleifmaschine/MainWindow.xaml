@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         mc:Ignorable="d"
-        Title="Schleifmaschine mit zwei Drehzahlen" Height="885" Width="1200">
+        Title="{Binding ViAnz.FensterTitel}" Height="885" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     /// <summary>
     /// Base class for value types.
@@ -18,13 +18,13 @@ namespace SoftCircuits.Silk
         public abstract int ToInteger();
         public abstract double ToFloat();
 
-        public static int Div(int val1, int val2) => (val2 != 0) ? val1 / val2 : 0;
+        public static int Div(int val1, int val2) => val2 != 0 ? val1 / val2 : 0;
 
-        public static double Div(double val1, double val2) => (val2 != 0) ? val1 / val2 : 0.0;
+        public static double Div(double val1, double val2) => val2 != 0 ? val1 / val2 : 0.0;
 
-        public static int Mod(int val1, int val2) => (val2 != 0) ? val1 % val2 : 0;
+        public static int Mod(int val1, int val2) => val2 != 0 ? val1 % val2 : 0;
 
-        public static double Mod(double val1, double val2) => (val2 != 0) ? val1 % val2 : 0.0;
+        public static double Mod(double val1, double val2) => val2 != 0 ? val1 % val2 : 0.0;
 
         /// <summary>
         /// Returns true if this variable contains a FloatValue, or a StringValue representation

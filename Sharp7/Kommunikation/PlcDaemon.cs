@@ -11,15 +11,11 @@ namespace Kommunikation
     {
         public IPlc Plc { get; set; }
 
-
         private readonly IpAdressenSiemens _spsS7_1200;
         private readonly IpAdressenBeckhoff _spsCx9020;
         private PlcDaemonStatus _status;
-
         private readonly Action<Datenstruktur, bool> _callbackRangieren;
-
         private readonly Datenstruktur _datenstruktur;
-
 
         private enum PlcDaemonStatus
         {

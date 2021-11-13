@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
+using Silk.Variable;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
-namespace SoftCircuits.Silk
+namespace Silk.Runtime
 {
     public class CompiledProgram
     {
@@ -113,7 +115,7 @@ namespace SoftCircuits.Silk
             // Reserve room for future changes
             writer.Write(0);
             // Write file flags
-            writer.Write((LineNumbers != null) ? (int)FileFlag.HasLineNumbers : (int)FileFlag.None);
+            writer.Write(LineNumbers != null ? (int)FileFlag.HasLineNumbers : (int)FileFlag.None);
             // Write byte codes
             writer.Write(ByteCodes.Length);
             foreach (int value in ByteCodes)
@@ -303,7 +305,7 @@ namespace SoftCircuits.Silk
 
         /// <summary>
         /// Creates a <see cref="CompiledProgram"/> from one that was saved to a file.
-        /// The target file must have been created using <see cref="CompiledProgram.Save(string)"/>.
+        /// The target file must have been created using <see cref="Save(string)"/>.
         /// </summary>
         /// <param name="path">The filename and path.</param>
         /// <returns>The <see cref="CompiledProgram"/>.</returns>

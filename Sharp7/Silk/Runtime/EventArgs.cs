@@ -1,9 +1,10 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
 using System;
 
-namespace SoftCircuits.Silk
+namespace Silk.Runtime
 {
     public class BeginEventArgs : EventArgs
     {

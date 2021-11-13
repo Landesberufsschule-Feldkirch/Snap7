@@ -1,13 +1,16 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
+using Silk.Utility;
+using Silk.Variable;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace SoftCircuits.Silk
+namespace Silk.Runtime
 {
     internal class InternalFunctionInfo
     {
@@ -245,7 +248,7 @@ namespace SoftCircuits.Silk
         private static void InStr(Variable[] parameters, Variable returnValue)
         {
             Debug.Assert(parameters.Length >= 2);
-            int start = (parameters.Length >= 3) ? Math.Max(parameters[2].ToInteger() - 1, 0) : 0;
+            int start = parameters.Length >= 3 ? Math.Max(parameters[2].ToInteger() - 1, 0) : 0;
             int match = parameters[0].ToString().IndexOf(parameters[1].ToString(), start);
             returnValue.SetValue(match + 1);
         }
@@ -341,7 +344,7 @@ namespace SoftCircuits.Silk
             Debug.Assert(parameters.Length >= 2);
             string s = parameters[0].ToString();
             int start = Math.Max(parameters[1].ToInteger() - 1, 0);
-            int count = (parameters.Length > 2) ? Math.Min(parameters[2].ToInteger(), s.Length - start) : (s.Length - start);
+            int count = parameters.Length > 2 ? Math.Min(parameters[2].ToInteger(), s.Length - start) : s.Length - start;
             returnValue.SetValue(s.Substring(start, count));
         }
 
@@ -451,7 +454,7 @@ namespace SoftCircuits.Silk
         private static void String(Variable[] parameters, Variable returnValue)
         {
             Debug.Assert(parameters.Length == 2);
-            string s = (parameters[0].Type == VarType.String) ?
+            string s = parameters[0].Type == VarType.String ?
                 parameters[0].ToString() :
                 ((char)parameters[0].ToInteger()).ToString();
             StringBuilder builder = new(s.Length * Math.Max(0, parameters[1].ToInteger()));

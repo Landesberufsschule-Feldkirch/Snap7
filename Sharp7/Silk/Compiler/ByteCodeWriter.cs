@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     /// <summary>
     /// Represents a bytecode entry. Additional properties used primarily for
@@ -73,7 +73,7 @@ namespace SoftCircuits.Silk
         public ByteCodeWriter(LexicalAnalyzer lexer)
         {
             // Bytecode size must not change (won't be able to read saved compiled data)
-            Debug.Assert(sizeof(ByteCode) == sizeof(Int32));
+            Debug.Assert(sizeof(ByteCode) == sizeof(int));
             ByteCodeEntries = new List<ByteCodeEntry>();
             Counters = new List<int>();
             Lexer = lexer ?? throw new ArgumentNullException(nameof(lexer));

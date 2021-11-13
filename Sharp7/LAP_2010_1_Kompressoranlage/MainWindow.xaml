@@ -6,7 +6,7 @@
         xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         x:Class="LAP_2010_1_Kompressoranlage.MainWindow"
         mc:Ignorable="d" 
-        Title="LAP 2010/1 Kompressoranlage" Height="885" Width="1200">
+        Title="{Binding ViAnz.FensterTitel}" Height="885" Width="1200">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

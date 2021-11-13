@@ -1,9 +1,10 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Utility;
 using System;
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     internal class StringValue : Value
     {
@@ -42,23 +43,23 @@ namespace SoftCircuits.Silk
 
         #region Operations
 
-        public override Variable Add(Variable value) => (IsFloat() || value.IsFloat()) ? new Variable(ToFloat() + value.ToFloat()) : new Variable(ToInteger() + value.ToInteger());
-        public override Variable Add(string value) => (IsFloat() || IsFloat(value)) ? new Variable(ToFloat() + ToFloat(value)) : new Variable(ToInteger() + ToInteger(value));
+        public override Variable Add(Variable value) => IsFloat() || value.IsFloat() ? new Variable(ToFloat() + value.ToFloat()) : new Variable(ToInteger() + value.ToInteger());
+        public override Variable Add(string value) => IsFloat() || IsFloat(value) ? new Variable(ToFloat() + ToFloat(value)) : new Variable(ToInteger() + ToInteger(value));
         public override Variable Add(int value) => IsFloat() ? new Variable(ToFloat() + value) : new Variable(ToInteger() + value);
         public override Variable Add(double value) => new(ToFloat() + value);
 
-        public override Variable Subtract(Variable value) => (IsFloat() || value.IsFloat()) ? new Variable(ToFloat() - value.ToFloat()) : new Variable(ToInteger() - value.ToInteger());
-        public override Variable Subtract(string value) => (IsFloat() || IsFloat(value)) ? new Variable(ToFloat() - ToFloat(value)) : new Variable(ToInteger() - ToInteger(value));
+        public override Variable Subtract(Variable value) => IsFloat() || value.IsFloat() ? new Variable(ToFloat() - value.ToFloat()) : new Variable(ToInteger() - value.ToInteger());
+        public override Variable Subtract(string value) => IsFloat() || IsFloat(value) ? new Variable(ToFloat() - ToFloat(value)) : new Variable(ToInteger() - ToInteger(value));
         public override Variable Subtract(int value) => IsFloat() ? new Variable(ToFloat() - value) : new Variable(ToInteger() - value);
         public override Variable Subtract(double value) => new(ToFloat() - value);
 
-        public override Variable Multiply(Variable value) => (IsFloat() || value.IsFloat()) ? new Variable(ToFloat() * value.ToFloat()) : new Variable(ToInteger() * value.ToInteger());
-        public override Variable Multiply(string value) => (IsFloat() || IsFloat(value)) ? new Variable(ToFloat() * ToFloat(value)) : new Variable(ToInteger() * ToInteger(value));
+        public override Variable Multiply(Variable value) => IsFloat() || value.IsFloat() ? new Variable(ToFloat() * value.ToFloat()) : new Variable(ToInteger() * value.ToInteger());
+        public override Variable Multiply(string value) => IsFloat() || IsFloat(value) ? new Variable(ToFloat() * ToFloat(value)) : new Variable(ToInteger() * ToInteger(value));
         public override Variable Multiply(int value) => IsFloat() ? new Variable(ToFloat() * value) : new Variable(ToInteger() * value);
         public override Variable Multiply(double value) => new(ToFloat() * value);
 
-        public override Variable Divide(Variable value) => (IsFloat() || value.IsFloat()) ? new Variable(Div(ToFloat(), value.ToFloat())) : new Variable(Div(ToInteger(), value.ToInteger()));
-        public override Variable Divide(string value) => (IsFloat() || IsFloat(value)) ? new Variable(Div(ToFloat(), ToFloat(value))) : new Variable(Div(ToInteger(), ToInteger(value)));
+        public override Variable Divide(Variable value) => IsFloat() || value.IsFloat() ? new Variable(Div(ToFloat(), value.ToFloat())) : new Variable(Div(ToInteger(), value.ToInteger()));
+        public override Variable Divide(string value) => IsFloat() || IsFloat(value) ? new Variable(Div(ToFloat(), ToFloat(value))) : new Variable(Div(ToInteger(), ToInteger(value)));
         public override Variable Divide(int value) => IsFloat() ? new Variable(Div(ToFloat(), value)) : new Variable(Div(ToInteger(), value));
         public override Variable Divide(double value) => new(Div(ToFloat(), value));
 
@@ -67,8 +68,8 @@ namespace SoftCircuits.Silk
         public override Variable Power(int value) => new(Math.Pow(ToFloat(), value));
         public override Variable Power(double value) => new(Math.Pow(ToFloat(), value));
 
-        public override Variable Modulus(Variable value) => (IsFloat() || value.IsFloat()) ? new Variable(Mod(ToFloat(), value.ToFloat())) : new Variable(Mod(ToInteger(), value.ToInteger()));
-        public override Variable Modulus(string value) => (IsFloat() || IsFloat(value)) ? new Variable(Mod(ToFloat(), ToFloat(value))) : new Variable(Mod(ToInteger(), ToInteger(value)));
+        public override Variable Modulus(Variable value) => IsFloat() || value.IsFloat() ? new Variable(Mod(ToFloat(), value.ToFloat())) : new Variable(Mod(ToInteger(), value.ToInteger()));
+        public override Variable Modulus(string value) => IsFloat() || IsFloat(value) ? new Variable(Mod(ToFloat(), ToFloat(value))) : new Variable(Mod(ToInteger(), ToInteger(value)));
         public override Variable Modulus(int value) => IsFloat() ? new Variable(Mod(ToFloat(), value)) : new Variable(Mod(ToInteger(), value));
         public override Variable Modulus(double value) => new(Mod(ToFloat(), value));
 

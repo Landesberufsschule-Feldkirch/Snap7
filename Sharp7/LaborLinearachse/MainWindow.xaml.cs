@@ -1,6 +1,5 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,9 +8,7 @@ namespace LaborLinearachse
     public partial class MainWindow
     {
         public PlcDaemon PlcDaemon { get; set; }
-        //public IPlc Plc { get; set; }
-        public string VersionNummer { get; set; }
-        public string VersionText { get; set; } = "Labor Linearachse";
+        public string VersionInfoLokal { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
         public TestAutomat.TestAutomat TestAutomat { get; set; }
@@ -19,41 +16,30 @@ namespace LaborLinearachse
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
-        private const int AnzByteDigInput = 2;
-        private const int AnzByteDigOutput = 1;
-        private const int AnzByteAnalogInput = 0;
-        private const int AnzByteAnalogOutput = 0;
 
         public MainWindow()
         {
+            const string versionNummer = "V2.0";
+            const string versionText = "Labor Linearachse";
 
-            VersionNummer = "V2.0";
-                       
+            const int anzByteDigInput = 2;
+            const int anzByteDigOutput = 1;
+            const int anzByteAnalogInput = 0;
+            const int anzByteAnalogOutput = 0;
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
+            VersionInfoLokal = versionText + " " + versionNummer;
+
+            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
-
 
             var viewModel = new ViewModel.ViewModel(this);
             InitializeComponent();
             DataContext = viewModel;
 
             DatenRangieren = new DatenRangieren(viewModel);
-
             PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
-            /*
-
-            var befehlszeile = Environment.GetCommandLineArgs();
-            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
-                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
-                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
-
-Title = PlcDaemon.Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
-                    
- */
             DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
-
 
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 

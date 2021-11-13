@@ -1,10 +1,11 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Utility;
 using System;
 using System.Globalization;
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     internal class FloatValue : Value
     {

@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     /// <summary>
     /// Provides low-level support for the lexical analyzer.
@@ -99,8 +99,8 @@ namespace SoftCircuits.Silk
         /// <returns>The character at the specified position.</returns>
         public char Peek(int count)
         {
-            int pos = (Index + count);
-            return (pos < Text.Length) ? Text[pos] : NullChar;
+            int pos = Index + count;
+            return pos < Text.Length ? Text[pos] : NullChar;
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace SoftCircuits.Silk
         /// <param name="s">String to find.</param>
         public bool MoveTo(string s)
         {
-            while (Index <= (Text.Length - s.Length))
+            while (Index <= Text.Length - s.Length)
             {
                 if (MatchesCurrentPosition(s))
                     return true;

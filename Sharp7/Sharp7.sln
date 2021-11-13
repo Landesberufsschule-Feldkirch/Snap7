@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BehaelterSteuerung", "BehaelterSteuerung\BehaelterSteuerung.csproj", "{A825B70B-5261-4DC2-A0B9-92D371EA2D83}"
 EndProject
@@ -44,8 +44,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAP_2018_1_Silosteuerung", "LAP_2018_1_Silosteuerung\LAP_2018_1_Silosteuerung.csproj", "{ED26FB48-6326-4FD4-9CA9-EB861673C62C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaternosterLager", "PaternosterLager\PaternosterLager.csproj", "{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dAutomatischesLagersystem", "3dAutomatischesLagersystem\3dAutomatischesLagersystem.csproj", "{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElektronischesZahlenschloss", "ElektronischesZahlenschloss\ElektronischesZahlenschloss.csproj", "{FC259A79-C919-464D-81A1-CF2071FE8FC5}"
 EndProject
@@ -106,9 +104,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blinklicht_Fibonacci", "Bli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata", "Kata\Kata.csproj", "{BD0F5E4A-D0D8-4BF4-AB68-7D2814CA3E3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3dHofschiebetor", "3dHofschiebetor\3dHofschiebetor.csproj", "{ED2BFB30-6F29-4BA5-B5DC-4E30F9108A66}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ampel_Verbania", "Ampel_Verbania\Ampel_Verbania.csproj", "{E6473E70-3F70-4677-AA48-3B5281DC1139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ampel_Verbania", "Ampel_Verbania\Ampel_Verbania.csproj", "{E6473E70-3F70-4677-AA48-3B5281DC1139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,10 +196,6 @@ Global
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B3375A1-E2EF-4D2C-B603-FE6361F094AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5B8B595-FE90-4CB1-BF6D-578878B05AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC259A79-C919-464D-81A1-CF2071FE8FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -312,10 +304,6 @@ Global
 		{BD0F5E4A-D0D8-4BF4-AB68-7D2814CA3E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD0F5E4A-D0D8-4BF4-AB68-7D2814CA3E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD0F5E4A-D0D8-4BF4-AB68-7D2814CA3E3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED2BFB30-6F29-4BA5-B5DC-4E30F9108A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED2BFB30-6F29-4BA5-B5DC-4E30F9108A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED2BFB30-6F29-4BA5-B5DC-4E30F9108A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED2BFB30-6F29-4BA5-B5DC-4E30F9108A66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6473E70-3F70-4677-AA48-3B5281DC1139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6473E70-3F70-4677-AA48-3B5281DC1139}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6473E70-3F70-4677-AA48-3B5281DC1139}.Release|Any CPU.ActiveCfg = Release|Any CPU

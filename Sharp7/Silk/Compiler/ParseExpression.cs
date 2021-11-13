@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
+using Silk.Variable;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

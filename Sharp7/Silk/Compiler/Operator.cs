@@ -3,7 +3,7 @@
 //
 using System.Collections.Generic;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     internal class Operator
     {

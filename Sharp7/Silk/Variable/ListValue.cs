@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     internal class ListValue : Value
     {
@@ -119,7 +119,7 @@ namespace SoftCircuits.Silk
         public override bool IsTrue() => GetAt(0).IsTrue();
         public override bool IsFalse() => GetAt(0).IsFalse();
 
-        public override bool Equals(Value value) => value is ListValue arrayValue && Enumerable.SequenceEqual(Value, arrayValue.Value);
+        public override bool Equals(Value value) => value is ListValue arrayValue && Value.SequenceEqual(arrayValue.Value);
 
         #endregion
 

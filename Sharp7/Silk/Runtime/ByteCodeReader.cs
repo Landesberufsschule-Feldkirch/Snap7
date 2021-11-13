@@ -1,11 +1,12 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Compiler;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SoftCircuits.Silk
+namespace Silk.Runtime
 {
     /// <summary>
     /// Helper class for reading bytecode data.
@@ -27,7 +28,7 @@ namespace SoftCircuits.Silk
             IP = 0;
         }
 
-        public bool EndOfFile => (IP >= ByteCodes.Length);
+        public bool EndOfFile => IP >= ByteCodes.Length;
 
         public ByteCode GetNext()
         {

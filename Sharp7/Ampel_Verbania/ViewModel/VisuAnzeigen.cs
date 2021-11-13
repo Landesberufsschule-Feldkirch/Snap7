@@ -93,6 +93,16 @@ namespace Ampel_Verbania.ViewModel
         }
    
         #region SPS Version, Status und Farbe
+                private string fensterTitel;
+        public string FensterTitel
+        {
+            get => fensterTitel;
+            set
+            {
+                fensterTitel = value;
+                OnPropertyChanged(nameof(FensterTitel));
+            }
+        }
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {

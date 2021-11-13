@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using LAP_2019_Foerderanlage.SetManual;
 using System;
 using System.Windows;
@@ -8,46 +9,53 @@ namespace LAP_2019_Foerderanlage
 {
     public partial class MainWindow
     {
+        public PlcDaemon PlcDaemon { get; set; }
+        public ConfigPlc.Plc ConfigPlc { get; set; }
         public SetManualWindow SetManualWindow { get; set; }
         public bool DebugWindowAktiv { get; set; }
         public bool AnimationGestartet { get; set; }
         public ImageAnimationController Controller { get; set; }
-        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
-        public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
+
         private readonly ViewModel.ViewModel _viewModel;
-        private const int AnzByteDigInput = 2;
-        private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 2;
-        private const int AnzByteAnalogOutput = 2;
+
 
         public MainWindow()
         {
             const string versionText = "LAP 2019 Foerderanlage";
-            VersionNummer = "V2.0";
-            VersionInfoLokal = versionText + " " + VersionNummer;
+            const string versionNummer = "V2.0";
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
+            const int anzByteDigInput = 2;
+            const int anzByteDigOutput = 2;
+            const int anzByteAnalogInput = 2;
+            const int anzByteAnalogOutput = 2;
 
-            _viewModel = new ViewModel.ViewModel(this);
-            DatenRangieren = new DatenRangieren(this, _viewModel);
 
+            VersionInfoLokal = versionText + " " + versionNummer;
+
+            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
+            var viewModel = new ViewModel.ViewModel(this);
             InitializeComponent();
-            DataContext = _viewModel;
+            DataContext = viewModel;
 
-            var befehlszeile = Environment.GetCommandLineArgs();
-            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
-                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
-                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+            DatenRangieren = new DatenRangieren(this, viewModel);
+            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 
-            DatenRangieren.ReferenzUebergeben(Plc);
+            /*
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
-
-            Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+            TestAutomat.SetTestConfig("./ConfigTests/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+            */
         }
 
         private void DebugWindowOeffnen(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     internal class LoopContext : IDisposable
     {

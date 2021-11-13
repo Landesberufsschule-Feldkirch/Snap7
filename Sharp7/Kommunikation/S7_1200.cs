@@ -1,5 +1,4 @@
-﻿using Sharp7;
-using System;
+﻿using System;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;

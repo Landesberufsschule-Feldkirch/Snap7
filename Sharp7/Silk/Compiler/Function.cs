@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,7 @@ using System.Diagnostics.CodeAnalysis;
 /// A function defined within the SILK library and made available to the SILK program when
 /// <see cref="Compiler.EnableInternalFunctions"></see> is set to true.
 /// </remarks>
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     /// <summary>
     /// Base class for several function classes. Also defines some function-related
@@ -52,7 +53,7 @@ namespace SoftCircuits.Silk
         /// <summary>
         /// 
         /// </summary>
-        public virtual bool IsIntrinsic => (this is IntrinsicFunction);
+        public virtual bool IsIntrinsic => this is IntrinsicFunction;
 
         /// <summary>
         /// Initializes base class.
@@ -102,7 +103,7 @@ namespace SoftCircuits.Silk
         public OrderedDictionary<string, Variable> Parameters { get; set; }
         public Stack<LoopContext> LoopContexts { get; private set; }
 
-        public LoopContext? GetLoopContext() => (LoopContexts.Count > 0) ? LoopContexts.Peek() : null;
+        public LoopContext? GetLoopContext() => LoopContexts.Count > 0 ? LoopContexts.Peek() : null;
 
         public CompileTimeUserFunction(string name, int ip)
             : base(name, ip)

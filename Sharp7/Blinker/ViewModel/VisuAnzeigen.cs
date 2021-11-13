@@ -41,19 +41,21 @@ namespace Blinker.ViewModel
         {
             while (true)
             {
-                if (_mainWindow.Plc != null)
+ if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
                     SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
-                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+                    SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }         
+
+ FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
                     TastverhaeltnisAnzeige = "Tastverhältnis: " + _blinker.Tastverhaeltnis.ToString("F1") + "%";
                     EinZeitAnzeige = "Einzeit: " + _blinker.EinZeit + "ms";
                     AusZeitAnzeige = "Auszeit: " + _blinker.AusZeit + "ms";
-                }
 
                 FarbeUmschalten(_blinker.P1, 1, Brushes.LawnGreen, Brushes.LightGray);
 
@@ -85,7 +87,16 @@ namespace Blinker.ViewModel
 
 
         #region SPS Version, Status und Farbe
-
+        private string fensterTitel;
+        public string FensterTitel
+        {
+            get => fensterTitel;
+            set
+            {
+                fensterTitel = value;
+                OnPropertyChanged(nameof(FensterTitel));
+            }
+        }
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {

@@ -51,18 +51,16 @@ namespace LaborLinearachse.ViewModel
                 FarbeUmschalten(_linearachse.P3, 5, Brushes.Red, Brushes.LightGray);
                 FarbeUmschalten(_linearachse.P4, 6, Brushes.GreenYellow, Brushes.LightGray);
                 
-
                 if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
                 {
-                    SpsVersionLokal = _mainWindow.VersionText + " " + _mainWindow.VersionNummer;
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
                     SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
                     SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionText + " " +_mainWindow.VersionNummer;
-                }
-                
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }                
 
                 Thread.Sleep(10);
             }

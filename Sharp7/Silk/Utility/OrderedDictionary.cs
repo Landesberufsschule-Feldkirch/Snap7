@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace SoftCircuits.Silk
+namespace Silk.Utility
 {
     /// <summary>
     /// Implements a dictionary that also manages an ordered, indexable

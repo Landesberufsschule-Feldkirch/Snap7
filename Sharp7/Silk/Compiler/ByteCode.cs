@@ -3,7 +3,7 @@
 //
 using System;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     [Flags]
     internal enum ByteCodeVariableType
@@ -75,6 +75,6 @@ namespace SoftCircuits.Silk
         public static bool IsGlobalVariable(int value) => ((ByteCodeVariableType)value).HasFlag(ByteCodeVariableType.Global);
         public static bool IsLocalVariable(int value) => ((ByteCodeVariableType)value).HasFlag(ByteCodeVariableType.Local);
         public static bool IsFunctionParameterVariable(int value) => ((ByteCodeVariableType)value).HasFlag(ByteCodeVariableType.Parameter);
-        public static int GetVariableIndex(int value) => (value & ~(int)ByteCodeVariableType.All);
+        public static int GetVariableIndex(int value) => value & ~(int)ByteCodeVariableType.All;
     }
 }

@@ -2,7 +2,7 @@
 // Licensed under the MIT license.
 //
 
-namespace SoftCircuits.Silk
+namespace Silk.Variable
 {
     public enum VarType
     {

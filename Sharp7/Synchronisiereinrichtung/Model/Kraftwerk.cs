@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using Utilities;
 
-namespace Synchronisiereinrichtung
+namespace Synchronisiereinrichtung.Model
 {
     public class EnumBooleanConverter : IValueConverter
     {

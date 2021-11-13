@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     /// <summary>
     /// Enum of supported keywords.
@@ -106,7 +106,7 @@ namespace SoftCircuits.Silk
         {
             Debug.Assert(IsValidSymbolName(name));
             return IsKeyword(name) ||
-                (name.Equals(Function.Main, StringComparison.OrdinalIgnoreCase));
+                name.Equals(Function.Main, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SoftCircuits.Silk;
+﻿using Silk.Compiler;
+using SoftCircuits.Silk;
 
 namespace TestAutomat.Silk
 {

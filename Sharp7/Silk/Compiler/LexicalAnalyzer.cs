@@ -1,10 +1,12 @@
 ﻿// Copyright (c) 2019-2021 Jonathan Wood (www.softcircuits.com)
 // Licensed under the MIT license.
 //
+using Silk.Runtime;
+using Silk.Utility;
 using System;
 using System.Collections.Generic;
 
-namespace SoftCircuits.Silk
+namespace Silk.Compiler
 {
     /// <summary>
     /// Converts a string of characters to tokens.
@@ -165,7 +167,7 @@ namespace SoftCircuits.Silk
                 {
                     // Decimal literal
                     count = 1;
-                    bool gotDecimal = (c == '.');
+                    bool gotDecimal = c == '.';
                     gotDigit = char.IsDigit(c);
 
                     while (true)
