@@ -13,7 +13,7 @@ namespace DisplayPlc.Config
         {
             try
             {
-                PlcBelegung = Newtonsoft.Json.JsonConvert.DeserializeObject<PlcBelegung>(File.ReadAllText(pfad));
+                PlcBelegung = Newtonsoft.Json.JsonConvert.DeserializeObject<PlcBelegung>(File.ReadAllText(pfad), new PlcBelegung.MyUintConverter());
             }
             catch (Exception ex)
             {

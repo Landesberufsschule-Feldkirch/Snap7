@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace ConfigPlc
 {
+    [JsonConverter(typeof(MyEnumConverter))]
     public enum PlcEinUndAusgaengeTypen
     {
         Default,
@@ -15,6 +17,17 @@ namespace ConfigPlc
         SiemensAnalogwertPromille,
         SiemensAnalogwertSchieberegler
         // ReSharper restore UnusedMember.Global
+    }
+    internal class MyEnumConverter : JsonConverter<PlcEinUndAusgaengeTypen>
+    {
+        public override PlcEinUndAusgaengeTypen ReadJson(JsonReader reader, Type objectType, PlcEinUndAusgaengeTypen existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            if (reader.Value == null) return default;
+            var token = reader.Value as string ?? reader.Value.ToString();
+            var stripped = Regex.Replace(token!, "<[^>]+>", string.Empty);
+            return Enum.TryParse<PlcEinUndAusgaengeTypen>(stripped, out var result) ? result : default;
+        }
+        public override void WriteJson(JsonWriter writer, PlcEinUndAusgaengeTypen value, JsonSerializer serializer) => writer.WriteValue(value.ToString());
     }
     public class GetConfigPlc
     {
