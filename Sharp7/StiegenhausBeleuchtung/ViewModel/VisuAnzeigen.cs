@@ -45,7 +45,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                     FarbeUmschalten(_stiegenhaus.GetLampen(i), i, Brushes.Yellow, Brushes.White);
                 }
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -54,7 +54,7 @@ namespace StiegenhausBeleuchtung.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 Thread.Sleep(10);
             }
@@ -74,7 +74,7 @@ namespace StiegenhausBeleuchtung.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-                private string fensterTitel;
+        private string fensterTitel;
         public string FensterTitel
         {
             get => fensterTitel;

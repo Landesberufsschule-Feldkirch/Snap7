@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace Kommunikation
+﻿namespace Kommunikation
 {
     public class SharedCode
     {

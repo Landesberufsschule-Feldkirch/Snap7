@@ -55,7 +55,7 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                 FarbeUmschalten(_ofentuerSteuerung.Q1, 5, Brushes.LawnGreen, Brushes.White);
                 FarbeUmschalten(_ofentuerSteuerung.Q2, 6, Brushes.LawnGreen, Brushes.White);
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -63,8 +63,8 @@ namespace LAP_2010_3_Ofentuersteuerung.ViewModel
                     SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " +_mainWindow.VersionInfoLokal;
-                }         
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
 
                 Thread.Sleep(10);
             }

@@ -1,6 +1,5 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,7 +34,7 @@ namespace Ampel_Verbania
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
 
-            var viewModel = new ViewModel.ViewModel();
+            var viewModel = new ViewModel.ViewModel(this);
             InitializeComponent();
             DataContext = viewModel;
 

@@ -83,7 +83,7 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
 
                 FuellstandProzent = (100 * _abfuellanlage.Pegel).ToString("F0") + "%";
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -91,8 +91,8 @@ namespace LAP_2018_2_Abfuellanlage.ViewModel
                     SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " +_mainWindow.VersionInfoLokal;
-                }         
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
 
                 Thread.Sleep(10);
             }

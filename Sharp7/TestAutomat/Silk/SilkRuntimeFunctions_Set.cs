@@ -1,5 +1,5 @@
 ﻿using PlcDatenTypen;
-using Silk.Runtime;
+using SoftCircuits.Silk;
 using System.Threading;
 
 namespace TestAutomat.Silk

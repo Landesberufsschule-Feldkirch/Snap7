@@ -56,7 +56,7 @@ namespace Tiefgarage.ViewModel
                     Enable[21 + i] = _alleFahrzeugePersonen.AllesInParkposition;
                 }
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -65,7 +65,7 @@ namespace Tiefgarage.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 Thread.Sleep(10);
             }

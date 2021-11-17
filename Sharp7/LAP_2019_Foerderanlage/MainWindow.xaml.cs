@@ -1,7 +1,6 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
 using LAP_2019_Foerderanlage.SetManual;
-using System;
 using System.Windows;
 using WpfAnimatedGif;
 
@@ -41,11 +40,11 @@ namespace LAP_2019_Foerderanlage
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
 
-            var viewModel = new ViewModel.ViewModel(this);
+            _viewModel = new ViewModel.ViewModel(this);
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
-            DatenRangieren = new DatenRangieren(this, viewModel);
+            DatenRangieren = new DatenRangieren(this, _viewModel);
             PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
             DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 

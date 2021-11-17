@@ -258,15 +258,12 @@ namespace DisplayPlc.ViewModel
                 OnPropertyChanged(nameof(LabelDi));
             }
         }
-
         #endregion
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
         // ReSharper disable once UnusedMember.Local
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
 
         private static bool BitTesten(IReadOnlyList<byte> datenArray, int i)

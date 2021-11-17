@@ -1,5 +1,4 @@
 ﻿using Kommunikation;
-using Silk.Runtime;
 using SoftCircuits.Silk;
 using System.Diagnostics;
 

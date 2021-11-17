@@ -1,6 +1,5 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
-using System;
 
 namespace VoltmeterMitSiebenSegmentAnzeige
 {

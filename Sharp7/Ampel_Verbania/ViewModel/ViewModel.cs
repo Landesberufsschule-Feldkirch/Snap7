@@ -1,5 +1,5 @@
-﻿using System.Windows.Input;
-using Ampel_Verbania.Commands;
+﻿using Ampel_Verbania.Commands;
+using System.Windows.Input;
 
 namespace Ampel_Verbania.ViewModel
 {
@@ -8,10 +8,10 @@ namespace Ampel_Verbania.ViewModel
         public Model.AmpelVerbania Kata { get; }
         public VisuAnzeigen ViAnz { get; set; }
 
-        public ViewModel()
+        public ViewModel(MainWindow mainWindow)
         {
             Kata = new Model.AmpelVerbania();
-            ViAnz = new VisuAnzeigen(Kata);
+            ViAnz = new VisuAnzeigen(mainWindow, Kata);
         }
 
         private ICommand _btnTaster;

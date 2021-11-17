@@ -3,10 +3,21 @@ using Kommunikation;
 using ScottPlot;
 using System;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Threading;
 
 namespace Synchronisiereinrichtung
 {
+
+    public enum SynchronisierungAuswahl
+    {
+        Uf = 0,
+        UfPhase = 1,
+        UfPhaseLeistung = 2,
+        UfPhaseLeistungsfaktor = 3
+    }
+
+
     public partial class MainWindow
     {
         public PlcDaemon PlcDaemon { get; set; }
@@ -136,5 +147,27 @@ namespace Synchronisiereinrichtung
             _plotWindow.WpfPlot.Plot.AxisAuto(0);
             _plotWindow.WpfPlot.Render();
         }
+
+        public class EnumBooleanConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                var parameterString = parameter.ToString();
+                if (parameterString == null) return DependencyProperty.UnsetValue;
+                if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
+
+                var parameterValue = Enum.Parse(value.GetType(), parameterString);
+
+                return parameterValue.Equals(value);
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+            {
+                var parameterString = parameter.ToString();
+                return parameterString == null ? DependencyProperty.UnsetValue : Enum.Parse(targetType, parameterString);
+            }
+        }
+
+
     }
 }

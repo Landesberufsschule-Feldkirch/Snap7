@@ -38,7 +38,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
 
             while (true)
             {
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -47,7 +47,7 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 HintergrundFarbe = (_voltmeter.AlleVoltmeter[0] & bitmusterHintergrundfarbe) == bitmusterHintergrundfarbe ? Brushes.Chartreuse : Brushes.WhiteSmoke;
                 SegmentFarbe = (_voltmeter.AlleVoltmeter[0] & bitmusterSegmentfarbe) == bitmusterSegmentfarbe ? Brushes.Red : Brushes.Green;
@@ -175,12 +175,9 @@ namespace VoltmeterMitSiebenSegmentAnzeige.ViewModel
             }
         }
 
-
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

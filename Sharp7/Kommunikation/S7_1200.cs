@@ -81,7 +81,7 @@ namespace Kommunikation
                                 }
                             }
 
-                            if (_anzAi> 0 && !fehlerAktiv)
+                            if (_anzAi > 0 && !fehlerAktiv)
                             {
                                 fehlerAktiv |= FehlerAktiv(_client.DBWrite((int)Datenbausteine.AnIn, 0, _anzAi, _datenstruktur.AnalogInput));
                             }

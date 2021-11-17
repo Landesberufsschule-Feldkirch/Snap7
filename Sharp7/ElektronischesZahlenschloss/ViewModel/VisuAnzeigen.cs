@@ -43,7 +43,7 @@ namespace ElektronischesZahlenschloss.ViewModel
 
                 CodeAnzeige = _zahlenschloss.CodeAnzeige.ToString("D5");
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -52,7 +52,7 @@ namespace ElektronischesZahlenschloss.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 Thread.Sleep(100);
             }
@@ -61,7 +61,7 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         internal void Buchstabe(object buchstabe)
         {
-            if (!(buchstabe is string ascii)) return;
+            if (buchstabe is not string ascii) return;
             var asciiCode = int.Parse(ascii);
             _zahlenschloss.Zeichen = ClickModeButton(asciiCode) ? (char)asciiCode : ' ';
         }
@@ -212,15 +212,11 @@ namespace ElektronischesZahlenschloss.ViewModel
                 OnPropertyChanged(nameof(CodeAnzeige));
             }
         }
-
         #endregion CodeAnzeige
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

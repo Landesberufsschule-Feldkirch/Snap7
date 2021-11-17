@@ -57,7 +57,7 @@ namespace Nadeltelegraph.ViewModel
                     AlleBreiten[40 + i] = _nadeltelegraph.AlleZeiger[i].GetBreiteDownRight();
                 }
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -66,7 +66,7 @@ namespace Nadeltelegraph.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 Thread.Sleep(10);
             }
@@ -213,11 +213,8 @@ namespace Nadeltelegraph.ViewModel
         #endregion Taster/Schalter
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ScottPlot.WPF" Version="4.1.16" />
+    <PackageReference Include="ScottPlot.WPF" Version="4.1.27" />
+    <PackageReference Include="SoftCircuits.Silk" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,7 +15,6 @@
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
-    <ProjectReference Include="..\Silk\Silk.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
   </ItemGroup>
 

@@ -1,40 +1,9 @@
-﻿using Synchronisiereinrichtung.Model;
+﻿
+using Synchronisiereinrichtung.Model;
 using System;
 using System.Threading;
-using System.Windows;
-using System.Windows.Data;
 using Utilities;
 
-namespace Synchronisiereinrichtung.Model
-{
-    public class EnumBooleanConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            var parameterString = parameter.ToString();
-            if (parameterString == null) return DependencyProperty.UnsetValue;
-            if (!Enum.IsDefined(value.GetType(), value)) return DependencyProperty.UnsetValue;
-
-            var parameterValue = Enum.Parse(value.GetType(), parameterString);
-
-            return parameterValue.Equals(value);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            var parameterString = parameter.ToString();
-            return parameterString == null ? DependencyProperty.UnsetValue : Enum.Parse(targetType, parameterString);
-        }
-    }
-
-    public enum SynchronisierungAuswahl
-    {
-        Uf = 0,
-        UfPhase,
-        UfPhaseLeistung,
-        UfPhaseLeistungsfaktor
-    }
-}
 
 namespace Synchronisiereinrichtung.Kraftwerk.Model
 {
@@ -69,10 +38,9 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
         public Kraftwerk()
         {
             FrequenzDifferenz = 5;
-            KraftwerkStatemachine = new Statemachine(this);
+            KraftwerkStatemachine = new Synchronisiereinrichtung.Model.Statemachine(this);
             System.Threading.Tasks.Task.Run(KraftwerkTask);
         }
-
         public void KraftwerkTask()
         {
             const double zeitdauer = 10;//ms
@@ -82,13 +50,13 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
 
             while (true)
             {
-                KraftwerkStatemachine.Fire(Statemachine.Trigger.Aktualisieren);
+                KraftwerkStatemachine.Fire(Synchronisiereinrichtung.Model.Statemachine.Trigger.Aktualisieren);
 
-                netzWinkel = DrehstromZeiger.WinkelBerechnen(zeitdauer, NetzF, netzWinkel);
-                generatorWinkel = DrehstromZeiger.WinkelBerechnen(zeitdauer, GeneratorF, generatorWinkel);
+                netzWinkel = Synchronisiereinrichtung.Model.DrehstromZeiger.WinkelBerechnen(zeitdauer, NetzF, netzWinkel);
+                generatorWinkel = Synchronisiereinrichtung.Model.DrehstromZeiger.WinkelBerechnen(zeitdauer, GeneratorF, generatorWinkel);
 
-                var netzMomentanspannung = DrehstromZeiger.GetSpannung(netzWinkel, NetzU);
-                var generatorMomentanspannung = DrehstromZeiger.GetSpannung(generatorWinkel, GeneratorU);
+                var netzMomentanspannung = Synchronisiereinrichtung.Model.DrehstromZeiger.GetSpannung(netzWinkel, NetzU);
+                var generatorMomentanspannung = Synchronisiereinrichtung.Model.DrehstromZeiger.GetSpannung(generatorWinkel, GeneratorU);
 
                 FrequenzDifferenz = Math.Abs(NetzF - GeneratorF);
                 var spannungsDiff = new Zeiger(generatorMomentanspannung, netzMomentanspannung);
@@ -114,21 +82,17 @@ namespace Synchronisiereinrichtung.Kraftwerk.Model
             }
             // ReSharper disable once FunctionNeverReturns
         }
-
         internal void Starten()
         {
             KraftwerkStarten = true;
             KraftwerkStoppen = false;
         }
-
         internal void Stoppen()
         {
             KraftwerkStoppen = true;
             KraftwerkStarten = false;
         }
-
-        internal void Synchronisieren() => KraftwerkStatemachine.Fire(Statemachine.Trigger.Synchronisieren);
-
-        internal void Reset() => KraftwerkStatemachine.Fire(Statemachine.Trigger.Reset);
+        internal void Synchronisieren() => KraftwerkStatemachine.Fire(Synchronisiereinrichtung.Model.Statemachine.Trigger.Synchronisieren);
+        internal void Reset() => KraftwerkStatemachine.Fire(Synchronisiereinrichtung.Model.Statemachine.Trigger.Reset);
     }
 }

@@ -36,7 +36,7 @@ namespace Heizungsregler.ViewModel
         {
             while (true)
             {
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -45,11 +45,11 @@ namespace Heizungsregler.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 if (_mainWindow.WohnHaus != null)
                 {
-                    WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1") + "°C";
+                    WitterungsTempMitEinheit = SliderWitterungstemperatur().ToString("F1");
                     _mainWindow.WohnHaus.WitterungsTemperatur = WitterungsTemperaturSlider;
                     _mainWindow.WohnHaus.Betriebsart = BetriebsartAuswahl;
 
@@ -251,7 +251,7 @@ namespace Heizungsregler.ViewModel
 
         public string WitterungsTempMitEinheit
         {
-            get => SliderWitterungstemperatur() + "°C";
+            get => _witterungsTempMitEinheit+ "°C";
             set
             {
                 _witterungsTempMitEinheit = value;
@@ -273,15 +273,11 @@ namespace Heizungsregler.ViewModel
                 OnPropertyChanged(nameof(BetriebsartAuswahl));
             }
         }
-
         #endregion BetriebsartAuswahl
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

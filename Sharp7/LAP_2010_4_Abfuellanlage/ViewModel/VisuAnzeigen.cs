@@ -71,7 +71,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                     PosBilder(_abfuellAnlage.AlleDosen[i].Dose.GetPosition(), 31 + i);
                 }
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -80,7 +80,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
                 Thread.Sleep(10);
             }
@@ -112,7 +112,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
 
 
         #region SPS Version, Status und Farbe
-                private string fensterTitel;
+        private string fensterTitel;
         public string FensterTitel
         {
             get => fensterTitel;
@@ -210,7 +210,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             set
             {
                 _posOben = value;
-                OnPropertyChanged("PosOben");
+                OnPropertyChanged(nameof(PosOben));
             }
         }
 
@@ -221,7 +221,7 @@ namespace LAP_2010_4_Abfuellanlage.ViewModel
             set
             {
                 _posLinks = value;
-                OnPropertyChanged("PosLinks");
+                OnPropertyChanged(nameof(PosLinks));
             }
         }
 

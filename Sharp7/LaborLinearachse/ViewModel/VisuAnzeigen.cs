@@ -29,7 +29,7 @@ namespace LaborLinearachse.ViewModel
             PositionSchlitten = 200;
 
             FensterTitel = "uups";
-                        SpsSichtbar = Visibility.Hidden;
+            SpsSichtbar = Visibility.Hidden;
             SpsVersionLokal = "fehlt";
             SpsVersionEntfernt = "fehlt";
             SpsStatus = "x";
@@ -50,8 +50,8 @@ namespace LaborLinearachse.ViewModel
                 FarbeUmschalten(_linearachse.P2, 4, Brushes.White, Brushes.LightGray);
                 FarbeUmschalten(_linearachse.P3, 5, Brushes.Red, Brushes.LightGray);
                 FarbeUmschalten(_linearachse.P4, 6, Brushes.GreenYellow, Brushes.LightGray);
-                
-                if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -60,7 +60,7 @@ namespace LaborLinearachse.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }                
+                }
 
                 Thread.Sleep(10);
             }

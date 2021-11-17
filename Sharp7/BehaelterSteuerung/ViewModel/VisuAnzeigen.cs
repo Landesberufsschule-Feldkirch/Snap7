@@ -138,7 +138,7 @@ namespace BehaelterSteuerung.ViewModel
 
                 DropDownEnabled = _alleBehaelter.AutomatikModusAktiv() ? "false" : "true";
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -146,8 +146,8 @@ namespace BehaelterSteuerung.ViewModel
                     SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " +_mainWindow.VersionInfoLokal;
-                }         
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
 
                 Thread.Sleep(10);
             }
@@ -155,7 +155,7 @@ namespace BehaelterSteuerung.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-                private string fensterTitel;
+        private string fensterTitel;
         public string FensterTitel
         {
             get => fensterTitel;
@@ -1021,15 +1021,11 @@ namespace BehaelterSteuerung.ViewModel
                 OnPropertyChanged(nameof(Margin4));
             }
         }
-
         #endregion Margin4
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

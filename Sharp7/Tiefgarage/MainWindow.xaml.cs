@@ -1,6 +1,5 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
-using System;
 using System.Windows;
 
 namespace Tiefgarage

@@ -9,10 +9,12 @@ namespace Ampel_Verbania.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
+        private readonly MainWindow _mainWindow;
         private readonly Model.AmpelVerbania _kata;
 
-        public VisuAnzeigen(Model.AmpelVerbania kata)
+        public VisuAnzeigen(MainWindow mainWindow, Model.AmpelVerbania kata)
         {
+            _mainWindow = mainWindow;
             _kata = kata;
 
             AnzeigeWert = "--";
@@ -60,6 +62,17 @@ namespace Ampel_Verbania.ViewModel
                     _ => Brushes.White
                 };
 
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
+                {
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
+
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns
@@ -89,11 +102,11 @@ namespace Ampel_Verbania.ViewModel
             var tasterId = short.Parse(ascii);
             var gedrueckt = ClickModeButton(tasterId);
 
-            if (tasterId == 51)_kata.S1 = gedrueckt;
+            if (tasterId == 51) _kata.S1 = gedrueckt;
         }
-   
+
         #region SPS Version, Status und Farbe
-                private string fensterTitel;
+        private string fensterTitel;
         public string FensterTitel
         {
             get => fensterTitel;

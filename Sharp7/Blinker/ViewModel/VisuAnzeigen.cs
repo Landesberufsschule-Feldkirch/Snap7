@@ -41,7 +41,7 @@ namespace Blinker.ViewModel
         {
             while (true)
             {
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -50,12 +50,12 @@ namespace Blinker.ViewModel
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
                     FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
-                }         
+                }
 
- FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
-                    TastverhaeltnisAnzeige = "Tastverhältnis: " + _blinker.Tastverhaeltnis.ToString("F1") + "%";
-                    EinZeitAnzeige = "Einzeit: " + _blinker.EinZeit + "ms";
-                    AusZeitAnzeige = "Auszeit: " + _blinker.AusZeit + "ms";
+                FrequenzAnzeige = "Frequenz: " + _blinker.Frequenz.ToString("F1") + "Hz";
+                TastverhaeltnisAnzeige = "Tastverhältnis: " + _blinker.Tastverhaeltnis.ToString("F1") + "%";
+                EinZeitAnzeige = "Einzeit: " + _blinker.EinZeit + "ms";
+                AusZeitAnzeige = "Auszeit: " + _blinker.AusZeit + "ms";
 
                 FarbeUmschalten(_blinker.P1, 1, Brushes.LawnGreen, Brushes.LightGray);
 

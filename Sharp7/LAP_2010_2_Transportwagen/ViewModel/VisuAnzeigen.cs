@@ -61,7 +61,7 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                 PositionRadRechts = _transportwagen.Position + _transportwagen.AbstandRadRechts + abstandRadWagen;
                 PositionWagenkasten = _transportwagen.Position;
 
- if ( _mainWindow.PlcDaemon != null &&  _mainWindow.PlcDaemon.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
                     SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
@@ -69,8 +69,8 @@ namespace LAP_2010_2_Transportwagen.ViewModel
                     SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
                     SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
 
-                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " +_mainWindow.VersionInfoLokal;
-                }         
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
 
                 Thread.Sleep(10);
             }

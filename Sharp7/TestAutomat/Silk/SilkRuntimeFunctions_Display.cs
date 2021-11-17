@@ -1,6 +1,6 @@
 ﻿using Kommunikation;
 using PlcDatenTypen;
-using Silk.Runtime;
+using SoftCircuits.Silk;
 using System.Text;
 using System.Threading;
 using TestAutomat.Model;

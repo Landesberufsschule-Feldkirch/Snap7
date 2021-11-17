@@ -47,10 +47,10 @@ namespace Heizungsregler
             InitializeComponent();
             DataContext = viewModel;
 
-            DatenRangieren = new DatenRangieren(this, viewModel);
+            DatenRangieren = new DatenRangieren(this);
             PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
             DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
-            
+
             /*
             DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
@@ -58,6 +58,8 @@ namespace Heizungsregler
             TestAutomat.SetTestConfig("./ConfigTests/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
             */
+
+            WohnHaus = new WohnHaus();
         }
 
         private void PlotWindowOeffnen(object sender, RoutedEventArgs e)

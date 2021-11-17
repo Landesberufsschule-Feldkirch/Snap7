@@ -1,6 +1,5 @@
 ﻿using BeschriftungPlc;
 using Kommunikation;
-using System;
 
 namespace PaternosterLager
 {
@@ -14,10 +13,9 @@ namespace PaternosterLager
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-
         public DatenRangieren DatenRangieren { get; set; }
-        private readonly ViewModel.ViewModel _viewModel;
 
+        private readonly ViewModel.ViewModel _viewModel;
 
         public MainWindow()
         {
@@ -36,11 +34,11 @@ namespace PaternosterLager
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
             BeschriftungenPlc = new BeschriftungenPlc();
 
-            var viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
+            _viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
             InitializeComponent();
-            DataContext = viewModel;
+            DataContext = _viewModel;
 
-            DatenRangieren = new DatenRangieren(viewModel);
+            DatenRangieren = new DatenRangieren(_viewModel);
             PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
             DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 
@@ -52,6 +50,8 @@ namespace PaternosterLager
             TestAutomat.SetTestConfig("./ConfigTests/");
             TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
             */
+
+            FensterAktiv = true;
         }
 
         private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => _viewModel.Paternosterlager.S1 = true;

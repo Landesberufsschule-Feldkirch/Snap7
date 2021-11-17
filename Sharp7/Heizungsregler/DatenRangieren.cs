@@ -4,7 +4,6 @@ namespace Heizungsregler
 {
     public class DatenRangieren
     {
-        private readonly Heizungsregler.ViewModel.ViewModel _viewModel;
         private readonly MainWindow _mainWindow;
         private IPlc _plc;
 
@@ -58,10 +57,9 @@ namespace Heizungsregler
             _mainWindow.WohnHaus.DreiwegeVentil.VentilSchliessen(_plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.K2));
         }
 
-        public DatenRangieren(MainWindow mw, Heizungsregler.ViewModel.ViewModel vm)
+        public DatenRangieren(MainWindow mw)
         {
             _mainWindow = mw;
-            _viewModel = vm;
         }
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }

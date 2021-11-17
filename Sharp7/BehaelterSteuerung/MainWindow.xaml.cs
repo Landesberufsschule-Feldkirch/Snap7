@@ -1,7 +1,6 @@
 ﻿using BehaelterSteuerung.Model;
 using BeschriftungPlc;
 using Kommunikation;
-using System;
 
 namespace BehaelterSteuerung
 {
@@ -14,9 +13,6 @@ namespace BehaelterSteuerung
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
         public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
-
-        private readonly ViewModel.ViewModel _viewModel;
-
 
 
         public MainWindow()
