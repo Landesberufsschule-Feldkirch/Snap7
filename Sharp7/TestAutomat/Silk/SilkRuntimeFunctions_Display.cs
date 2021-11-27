@@ -38,6 +38,7 @@ namespace TestAutomat.Silk
                 "Erfolgreich" => AutoTester.TestErgebnis.Erfolgreich,
                 "Timeout" => AutoTester.TestErgebnis.Timeout,
                 "Fehler" => AutoTester.TestErgebnis.Fehler,
+                "Test abgeschlossen"=>AutoTester.TestErgebnis.Kommentar,
                 _ => AutoTester.TestErgebnis.UnbekanntesErgebnis
             };
 
