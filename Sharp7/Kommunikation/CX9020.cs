@@ -17,7 +17,7 @@ namespace Kommunikation
         private readonly int _anzAi;
         private readonly int _anzAa;
         private readonly Action<Datenstruktur, bool> _callbackRangieren;
-        private IpAdressenBeckhoff _spsCx9020;
+        private readonly IpAdressenBeckhoff _spsCx9020;
         private readonly Datenstruktur _datenstruktur;
         private string _spsStatus = "Keine Verbindung zur CX9020!";
         private string _plcModus = "CX9020";

@@ -8,7 +8,7 @@ namespace Kommunikation
     public class S71200 : IPlc
     {
         private readonly S7Client _client = new S7Client();
-        private readonly IpAdressenSiemens _spsS7_1200;
+        private readonly IpAdressenSiemens _spsS71200;
         private readonly Datenstruktur _datenstruktur;
         private readonly Action<Datenstruktur, bool> _callbackRangieren;
         private readonly int _anzDi;
@@ -19,9 +19,9 @@ namespace Kommunikation
         private bool _spsError;
         private const int SpsTimeout = 1000;
 
-        public S71200(IpAdressenSiemens spsS7_1200, Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
+        public S71200(IpAdressenSiemens spsS71200, Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
         {
-            _spsS7_1200 = spsS7_1200;
+            _spsS71200 = spsS71200;
             _datenstruktur = datenstruktur;
             _callbackRangieren = cbRangieren;
 
@@ -37,7 +37,7 @@ namespace Kommunikation
             while (true)
             {
                 var pingSender = new Ping();
-                var reply = pingSender.Send(_spsS7_1200.Adress, SpsTimeout);
+                var reply = pingSender.Send(_spsS71200.Adress, SpsTimeout);
 
                 var verzoegerung = 0;
 
@@ -45,7 +45,7 @@ namespace Kommunikation
                 if (reply?.Status == IPStatus.Success)
                 {
                     _spsStatus = "S7-1200 sichtbar (Ping: " + reply.RoundtripTime + "ms)";
-                    var res = _client?.ConnectTo(_spsS7_1200.Adress, 0, 1);
+                    var res = _client?.ConnectTo(_spsS71200.Adress, 0, 1);
                     if (res == 0)
                     {
                         while (true)
@@ -143,7 +143,7 @@ namespace Kommunikation
             return enc.GetString(_datenstruktur.VersionInputSps, 2, textLaenge);
         }
         public string GetPlcModus() => throw new NotImplementedException();
-        public string GetPlcBezeichnung() => _spsS7_1200.Description;
+        public string GetPlcBezeichnung() => _spsS71200.Description;
         public void SetPlcModus(string modus) => throw new NotImplementedException();
         public void SetTaskRunning(bool active) => throw new NotImplementedException();
         public string GetSpsStatus() => _spsStatus;

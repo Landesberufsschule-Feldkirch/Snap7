@@ -11,7 +11,7 @@ namespace Kommunikation
     {
         public IPlc Plc { get; set; }
 
-        private readonly IpAdressenSiemens _spsS7_1200;
+        private readonly IpAdressenSiemens _spsS71200;
         private readonly IpAdressenBeckhoff _spsCx9020;
         private PlcDaemonStatus _status;
         private readonly Action<Datenstruktur, bool> _callbackRangieren;
@@ -33,7 +33,7 @@ namespace Kommunikation
 
             try
             {
-                _spsS7_1200 = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
+                _spsS71200 = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
             }
             catch (Exception ex)
             {
@@ -55,8 +55,8 @@ namespace Kommunikation
         private void PlcDaemonTask()
         {
 
-            Ping pingBeckhoff = new Ping();
-            Ping pingSiemens = new Ping();
+            var pingBeckhoff = new Ping();
+            var pingSiemens = new Ping();
 
             while (true)
             {
@@ -66,10 +66,10 @@ namespace Kommunikation
                         try
                         {
                             var replyBeckhoff = pingBeckhoff.Send(_spsCx9020.IpAdresse);
-                            var replySiemens = pingBeckhoff.Send(_spsS7_1200.Adress);
+                            var replySiemens = pingSiemens.Send(_spsS71200.Adress);
 
-                            if (replyBeckhoff.Status == IPStatus.Success) _status = PlcDaemonStatus.SpsBeckhoff;
-                            if (replySiemens.Status == IPStatus.Success) _status = PlcDaemonStatus.SpsSiemens;
+                            if (replyBeckhoff != null && replyBeckhoff.Status == IPStatus.Success) _status = PlcDaemonStatus.SpsBeckhoff;
+                            if (replySiemens != null && replySiemens.Status == IPStatus.Success) _status = PlcDaemonStatus.SpsSiemens;
                         }
                         catch (Exception ex)
                         {
@@ -83,12 +83,14 @@ namespace Kommunikation
                         break;
 
                     case PlcDaemonStatus.SpsSiemens:
-                        Plc = new S71200(_spsS7_1200, _datenstruktur, _callbackRangieren);
+                        Plc = new S71200(_spsS71200, _datenstruktur, _callbackRangieren);
                         _status = PlcDaemonStatus.SpsAktiv;
                         break;
 
                     case PlcDaemonStatus.SpsAktiv:
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
 
                 Thread.Sleep(10);
