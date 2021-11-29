@@ -1,4 +1,5 @@
-﻿using Kommunikation;
+﻿using BeschriftungPlc;
+using Kommunikation;
 using ScottPlot;
 using System;
 using System.Windows;
@@ -6,13 +7,22 @@ using System.Windows.Threading;
 
 namespace Synchronisiereinrichtung
 {
+    public enum SynchronisierungAuswahl
+    {
+        Uf = 0,
+        UfPhase = 1,
+        UfPhaseLeistung = 2,
+        UfPhaseLeistungsfaktor = 3
+    }
+
     public partial class MainWindow
     {
+        public PlcDaemon PlcDaemon { get; set; }
         public bool DebugWindowAktiv { get; set; }
-        public IPlc Plc { get; set; }
         public string VersionInfoLokal { get; set; }
-        public string VersionNummer { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
 
         public double[] Zeitachse { get; set; }
@@ -27,10 +37,7 @@ namespace Synchronisiereinrichtung
         private int _nextDataIndex = 1;
         private PlotWindow.PlotWindow _plotWindow;
         private readonly ViewModel.ViewModel _viewModel;
-        private const int AnzByteDigInput = 1;
-        private const int AnzByteDigOutput = 1;
-        private const int AnzByteAnalogInput = 20;
-        private const int AnzByteAnalogOutput = 4;
+
 
         public MainWindow()
         {
@@ -43,29 +50,36 @@ namespace Synchronisiereinrichtung
             PlotLeistung = new double[1000];
 
             const string versionText = "Synchronisiereinrichtung";
-            VersionNummer = "V2.0";
-            VersionInfoLokal = versionText + " " + VersionNummer;
+            const string versionNummer = "V2.0";
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
+            const int anzByteDigInput = 1;
+            const int anzByteDigOutput = 1;
+            const int anzByteAnalogInput = 20;
+            const int anzByteAnalogOutput = 4;
 
-            _viewModel = new ViewModel.ViewModel(this);
+            VersionInfoLokal = versionText + " " + versionNummer;
 
-            InitializeComponent();
-            DataContext = _viewModel;
-
-            DatenRangieren = new DatenRangieren(this, _viewModel);
-
-            var befehlszeile = Environment.GetCommandLineArgs();
-            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
-                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
-                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
-
-            DatenRangieren.ReferenzUebergeben(Plc);
-
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
-
-
+            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
             ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
+            var viewModel = new ViewModel.ViewModel(this);
+            InitializeComponent();
+            DataContext = viewModel;
+
+            DatenRangieren = new DatenRangieren(this, viewModel);
+            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
+
+
+
+            /*
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+              
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+            TestAutomat.SetTestConfig("./ConfigTests/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+            */
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -130,5 +144,9 @@ namespace Synchronisiereinrichtung
             _plotWindow.WpfPlot.Plot.AxisAuto(0);
             _plotWindow.WpfPlot.Render();
         }
+
+       
+
+
     }
 }

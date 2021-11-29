@@ -13,7 +13,6 @@ namespace LaborLinearachse.Model
         public bool S6 { get; set; }    // Taster ( ↓ ) → Schliesser
         public bool S5 { get; set; }    // Taster ( ↑ ) → Schliesser 
 
-
         public bool S8 { get; set; }    // Taster ( － ) → Schliesser 
         public bool S7 { get; set; }    // Taster ( + ) → Schliesser 
         public bool S9 { get; set; }    // Taster ( STOP ) → Öffner 
@@ -29,7 +28,7 @@ namespace LaborLinearachse.Model
 
         public double PositionSchlitten { get; set; }
 
-        private const double GeschwindigkeitSchlitten = 0.2;
+        private const double GeschwindigkeitSchlitten = 0.4;
         private const double SchlittenBreite = 525;
         private const double SchlittenEndschalterBreite = 10;
         private const double SchlittenLinkerRand = SchlittenEndschalterBreite;

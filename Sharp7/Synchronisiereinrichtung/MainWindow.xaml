@@ -6,7 +6,7 @@
         xmlns:gaugeControl="clr-namespace:GaugeControl;assembly=GaugeControl"
         mc:Ignorable="d"
         xmlns:src="clr-namespace:Synchronisiereinrichtung"
-        Title="Synchronisiereinrichtung" Height="1000" Width="1700" Closing="Window_Closing">
+        Title="{Binding ViAnz.FensterTitel}" Height="1000" Width="1700" Closing="Window_Closing">
 
     <Grid>
         <Grid.Resources>

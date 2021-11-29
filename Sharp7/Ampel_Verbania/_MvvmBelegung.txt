@@ -1,0 +1,12 @@
+
+1		P11		Farbe
+2		P12		Farbe
+3		P13		Farbe
+3		P21		Farbe
+4		P22		Farbe
+5		P23		Farbe
+
+10		Anzeige	Farbe	SichtbarEin
+
+51		S1		ClkMode			BtnTaster			SichtbarEin		SichtbarAus	
+

@@ -6,7 +6,7 @@
         xmlns:segmentdisplay="clr-namespace:SegmentDisplay;assembly=SegmentDisplay"
         x:Class="VoltmeterMitSiebenSegmentAnzeige.MainWindow"
         mc:Ignorable="d"
-        Title="Voltmeter mit 7-Segment Anzeige" Height="500" Width="800">
+        Title="{Binding ViAnz.FensterTitel}" Height="500" Width="800">
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />

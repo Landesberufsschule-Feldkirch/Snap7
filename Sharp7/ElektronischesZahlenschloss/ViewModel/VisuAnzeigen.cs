@@ -43,13 +43,15 @@ namespace ElektronischesZahlenschloss.ViewModel
 
                 CodeAnzeige = _zahlenschloss.CodeAnzeige.ToString("D5");
 
-                if (_mainWindow.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
                     SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
-                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+                    SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
+
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
                 }
 
                 Thread.Sleep(100);
@@ -59,13 +61,22 @@ namespace ElektronischesZahlenschloss.ViewModel
 
         internal void Buchstabe(object buchstabe)
         {
-            if (!(buchstabe is string ascii)) return;
+            if (buchstabe is not string ascii) return;
             var asciiCode = int.Parse(ascii);
             _zahlenschloss.Zeichen = ClickModeButton(asciiCode) ? (char)asciiCode : ' ';
         }
 
         #region SPS Version, Status und Farbe
-
+        private string fensterTitel;
+        public string FensterTitel
+        {
+            get => fensterTitel;
+            set
+            {
+                fensterTitel = value;
+                OnPropertyChanged(nameof(FensterTitel));
+            }
+        }
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -201,15 +212,11 @@ namespace ElektronischesZahlenschloss.ViewModel
                 OnPropertyChanged(nameof(CodeAnzeige));
             }
         }
-
         #endregion CodeAnzeige
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

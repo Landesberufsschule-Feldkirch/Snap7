@@ -52,13 +52,15 @@ namespace Parkhaus.ViewModel
                     FarbeUmschalten(BitMaskierenArray(_parkhaus.BesetzteParkPlaetze, i), i, Brushes.Red, Brushes.LawnGreen);
                 }
 
-                if (_mainWindow.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
                     SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
-                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+                    SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
+
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
                 }
 
                 Thread.Sleep(10);
@@ -84,7 +86,16 @@ namespace Parkhaus.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-
+        private string fensterTitel;
+        public string FensterTitel
+        {
+            get => fensterTitel;
+            set
+            {
+                fensterTitel = value;
+                OnPropertyChanged(nameof(FensterTitel));
+            }
+        }
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {

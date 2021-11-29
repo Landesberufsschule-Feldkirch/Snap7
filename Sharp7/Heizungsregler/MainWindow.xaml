@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:model="clr-namespace:Heizungsregler.Model"
-        Title="Heizungsregler" Height="1000" Width="1700" Closing="Window_Closing">
+        Title="{Binding ViAnz.FensterTitel}" Height="1000" Width="1700" Closing="Window_Closing">
     <Grid>
         <Grid.Resources>
             <model:EnumBooleanConverter  x:Key="EnumBooleanConverter" />

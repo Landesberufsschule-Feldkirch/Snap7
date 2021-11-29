@@ -1,50 +1,57 @@
-﻿using Kommunikation;
-using System;
+﻿using BeschriftungPlc;
+using Kommunikation;
 
 namespace PaternosterLager
 {
     public partial class MainWindow
     {
+        public PlcDaemon PlcDaemon { get; set; }
         public ConfigPlc.Plc ConfigPlc { get; set; }
-        public IPlc Plc { get; set; }
         public bool FensterAktiv { get; set; }
         public string VersionInfoLokal { get; set; }
-        public string VersionNummer { get; set; }
         public const double AnzahlKisten = 16;
+        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public Datenstruktur Datenstruktur { get; set; }
-
         public DatenRangieren DatenRangieren { get; set; }
+
         private readonly ViewModel.ViewModel _viewModel;
-        private const int AnzByteDigInput = 2;
-        private const int AnzByteDigOutput = 2;
-        private const int AnzByteAnalogInput = 2;
-        private const int AnzByteAnalogOutput = 2;
 
         public MainWindow()
         {
             const string versionText = "Paternosterlager";
-            VersionNummer = "V2.0";
-            VersionInfoLokal = versionText + " " + VersionNummer;
+            const string versionNummer = "V2.0";
 
-            Datenstruktur = new Datenstruktur(AnzByteDigInput, AnzByteDigOutput, AnzByteAnalogInput, AnzByteAnalogOutput);
 
-            FensterAktiv = true;
+            const int anzByteDigInput = 2;
+            const int anzByteDigOutput = 2;
+            const int anzByteAnalogInput = 2;
+            const int anzByteAnalogOutput = 2;
+
+            VersionInfoLokal = versionText + " " + versionNummer;
+
+            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            BeschriftungenPlc = new BeschriftungenPlc();
+
             _viewModel = new ViewModel.ViewModel(this, AnzahlKisten);
-            DatenRangieren = new DatenRangieren(_viewModel);
-
             InitializeComponent();
             DataContext = _viewModel;
 
-            var befehlszeile = Environment.GetCommandLineArgs();
-            Plc = befehlszeile.Length == 2 && befehlszeile[1].Contains("CX9020")
-                ? new Cx9020(Datenstruktur, DatenRangieren.Rangieren)
-                : new S71200(Datenstruktur, DatenRangieren.Rangieren);
+            DatenRangieren = new DatenRangieren(_viewModel);
+            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 
-            DatenRangieren.ReferenzUebergeben(Plc);
 
-            Title = Plc.GetPlcBezeichnung() + ": " + versionText + " " + VersionNummer;
+            /*  
+            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+              
+            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+            TestAutomat.SetTestConfig("./ConfigTests/");
+            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+            */
 
-            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            FensterAktiv = true;
         }
 
         private void PolygonAufPressed(object sender, System.Windows.Input.MouseButtonEventArgs e) => _viewModel.Paternosterlager.S1 = true;

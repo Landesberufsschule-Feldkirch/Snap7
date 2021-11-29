@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="LAP 2019 Förderanlage" Height="980" Width="1400">
+        Title="{Binding ViAnz.FensterTitel}" Height="980" Width="1400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />

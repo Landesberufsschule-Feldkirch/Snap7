@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows8.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Snap7.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Bilder\IconPlotter.jpg" />
+    <None Remove="Bilder\S7_1200.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
+    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
+    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
+    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
+    <ProjectReference Include="..\PlcUint\PlcDatenTypen.csproj" />
+    <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
+    <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\IconPlotter.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Bilder\S7_1200.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Bilder\Snap7.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\AA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\AI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\DA.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigPlc\DI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\beschriftungDa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\BeschriftungDi.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\testEaBelegung.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\testProgramm.st">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigTests\AmpelVerbania_1\testSource.ssc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

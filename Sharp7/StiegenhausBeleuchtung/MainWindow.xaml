@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StiegenhausBeleuchtung"
         mc:Ignorable="d"
-        Title="Stiegenhausbeleuchtung" Height="970" Width="1800">
+        Title="{Binding ViAnz.FensterTitel}" Height="970" Width="1800">
 
     <Grid>
         <Grid.ColumnDefinitions>

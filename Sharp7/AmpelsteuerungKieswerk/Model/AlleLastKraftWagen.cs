@@ -11,9 +11,9 @@ namespace AmpelsteuerungKieswerk.Model
         public bool B2 { get; set; }
         public bool B3 { get; set; }
         public bool B4 { get; set; }
-        public  bool P7 { get; set; }   // oranges Licht links
-        public  bool P8 { get; set; }   // oranges Licht rechts
-        
+        public bool P7 { get; set; }   // oranges Licht links
+        public bool P8 { get; set; }   // oranges Licht rechts
+
         private readonly List<LastKraftWagen> _alleLkw = new();
         private readonly int _anzahlLkw;
 

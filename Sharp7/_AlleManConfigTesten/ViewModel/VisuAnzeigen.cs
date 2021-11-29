@@ -56,11 +56,8 @@ namespace _AlleManConfigTesten.ViewModel
         }
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

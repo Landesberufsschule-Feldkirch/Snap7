@@ -107,13 +107,15 @@ namespace Synchronisiereinrichtung.ViewModel
                         break;
                 }
 
-                if (_mainWindow.Plc != null)
+                if (_mainWindow.PlcDaemon != null && _mainWindow.PlcDaemon.Plc != null)
                 {
                     SpsVersionLokal = _mainWindow.VersionInfoLokal;
-                    SpsVersionEntfernt = _mainWindow.Plc.GetVersion();
+                    SpsVersionEntfernt = _mainWindow.PlcDaemon.Plc.GetVersion();
                     SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
-                    SpsColor = _mainWindow.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
-                    SpsStatus = _mainWindow.Plc?.GetSpsStatus();
+                    SpsColor = _mainWindow.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.PlcDaemon.Plc?.GetSpsStatus();
+
+                    FensterTitel = _mainWindow.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
                 }
 
                 Thread.Sleep(10);
@@ -122,7 +124,16 @@ namespace Synchronisiereinrichtung.ViewModel
         }
 
         #region SPS Version, Status und Farbe
-
+        private string fensterTitel;
+        public string FensterTitel
+        {
+            get => fensterTitel;
+            set
+            {
+                fensterTitel = value;
+                OnPropertyChanged(nameof(FensterTitel));
+            }
+        }
         private string _spsVersionLokal;
         public string SpsVersionLokal
         {
@@ -314,7 +325,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "cos φ=" + _generatorCosPhiString;
             set
             {
-                _generatorCosPhiString = Convert.ToDouble(value.Substring(6));
+                _generatorCosPhiString = Convert.ToDouble(value[6..]);
                 OnPropertyChanged(nameof(GeneratorCosPhiString));
             }
         }
@@ -325,7 +336,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "cos φ=" + _netzCosPhiString;
             set
             {
-                _netzCosPhiString = Convert.ToDouble(value.Substring(6));
+                _netzCosPhiString = Convert.ToDouble(value[6..]);
                 OnPropertyChanged(nameof(NetzCosPhiString));
             }
         }
@@ -344,7 +355,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "P=" + _generatorLeistungString + "W";
             set
             {
-                _generatorLeistungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorLeistungString = Convert.ToDouble(value[2..^1]);
                 OnPropertyChanged(nameof(GeneratorLeistungString));
             }
         }
@@ -355,7 +366,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "P=" + _netzLeistungString + "W";
             set
             {
-                _netzLeistungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzLeistungString = Convert.ToDouble(value[2..^1]);
                 OnPropertyChanged(nameof(NetzLeistungString));
             }
         }
@@ -374,7 +385,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "f=" + _generatorFrequenzString + "Hz";
             set
             {
-                _generatorFrequenzString = Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _generatorFrequenzString = Convert.ToDouble(value[2..^2]);
                 OnPropertyChanged(nameof(GeneratorFrequenzString));
             }
         }
@@ -385,7 +396,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "f=" + _netzFrequenzString + "Hz";
             set
             {
-                _netzFrequenzString = Convert.ToDouble(value.Substring(2, value.Length - 4));
+                _netzFrequenzString = Convert.ToDouble(value[2..^2]);
                 OnPropertyChanged(nameof(NetzFrequenzString));
             }
         }
@@ -404,7 +415,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "U=" + _generatorSpannungString + "V";
             set
             {
-                _generatorSpannungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _generatorSpannungString = Convert.ToDouble(value[2..^1]);
                 OnPropertyChanged(nameof(GeneratorSpannungString));
             }
         }
@@ -415,7 +426,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "U=" + _netzSpannungString + "V";
             set
             {
-                _netzSpannungString = Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _netzSpannungString = Convert.ToDouble(value[2..^1]);
                 OnPropertyChanged(nameof(NetzSpannungString));
             }
         }
@@ -432,7 +443,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "IE=" + _erregerstrom + "A";
             set
             {
-                _erregerstrom = Convert.ToDouble(value.Substring(3, value.Length - 4));
+                _erregerstrom = Convert.ToDouble(value[3..^1]);
                 OnPropertyChanged(nameof(Erregerstrom));
             }
         }
@@ -449,7 +460,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "n=" + _drehzahl + "RPM";
             set
             {
-                _drehzahl = Convert.ToDouble(value.Substring(2, value.Length - 5));
+                _drehzahl = Convert.ToDouble(value[2..^3]);
                 OnPropertyChanged(nameof(Drehzahl));
             }
         }
@@ -560,7 +571,7 @@ namespace Synchronisiereinrichtung.ViewModel
             get => "Y=" + _ventilPosition + "%";
             set
             {
-                _ventilPosition = Convert.ToDouble(value.Substring(2, value.Length - 3));
+                _ventilPosition = Convert.ToDouble(value[2..^1]);
                 OnPropertyChanged(nameof(VentilPosition));
             }
         }
@@ -619,15 +630,11 @@ namespace Synchronisiereinrichtung.ViewModel
                 OnPropertyChanged(nameof(KraftwerkStatus));
             }
         }
-
         #endregion Kraftwerk Status
 
         #region iNotifyPeropertyChanged Members
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         #endregion iNotifyPeropertyChanged Members
     }
 }

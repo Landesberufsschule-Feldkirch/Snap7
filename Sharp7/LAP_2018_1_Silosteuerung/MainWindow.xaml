@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="clr-namespace:WpfAnimatedGif;assembly=WpfAnimatedGif"
         mc:Ignorable="d"
-        Title="LAP 2018/1 Silosteuerung mit Förderband und Wiegeeinrichtung" Height="1020" Width="1400">
+        Title="{Binding ViAnz.FensterTitel}" Height="1020" Width="1400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
