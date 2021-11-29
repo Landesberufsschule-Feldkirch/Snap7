@@ -104,9 +104,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kata", "Kata\Kata.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ampel_Verbania", "Ampel_Verbania\Ampel_Verbania.csproj", "{E6473E70-3F70-4677-AA48-3B5281DC1139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regelstrecken", "Regelstrecken\Regelstrecken.csproj", "{41D7D60F-E55E-4F2D-A750-704078E8D039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regelstrecken", "Regelstrecken\Regelstrecken.csproj", "{41D7D60F-E55E-4F2D-A750-704078E8D039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regelstrecken.Tests", "Regelstrecken.Tests\Regelstrecken.Tests.csproj", "{398476EE-4C0C-45BD-959F-EA2A1CB54842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Regelstrecken.Tests", "Regelstrecken.Tests\Regelstrecken.Tests.csproj", "{398476EE-4C0C-45BD-959F-EA2A1CB54842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{FEC2669D-D468-46A9-AADB-A7C3AAACD17D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -314,6 +316,10 @@ Global
 		{398476EE-4C0C-45BD-959F-EA2A1CB54842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{398476EE-4C0C-45BD-959F-EA2A1CB54842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{398476EE-4C0C-45BD-959F-EA2A1CB54842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC2669D-D468-46A9-AADB-A7C3AAACD17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC2669D-D468-46A9-AADB-A7C3AAACD17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC2669D-D468-46A9-AADB-A7C3AAACD17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC2669D-D468-46A9-AADB-A7C3AAACD17D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
