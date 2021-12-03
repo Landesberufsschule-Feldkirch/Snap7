@@ -1,9 +1,11 @@
 ﻿using Kommunikation;
+using System;
 
 namespace Kata
 {
     public class DatenRangieren
     {
+        private Kata.Model.Kata _kata;
         private readonly ViewModel.ViewModel _viewModel;
         private IPlc _plc;
 
@@ -55,7 +57,15 @@ namespace Kata
             _viewModel.Kata.P8 = _plc.GetBitAt(datenstruktur.DigOutput, (int)BitPosAusgang.P8);
         }
 
+        internal void SetReferenzModel(Model.Kata kata) => _kata = kata;
+
         public DatenRangieren(ViewModel.ViewModel vm) => _viewModel = vm;
+
+        public DatenRangieren()
+        {
+
+        }
+
         public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
 }

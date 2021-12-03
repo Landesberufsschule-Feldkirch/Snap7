@@ -1,4 +1,6 @@
 ﻿using System.Threading;
+using DigitalerZwillingMitAutoTests;
+using Kommunikation;
 
 namespace Kata.Model
 {
@@ -22,8 +24,12 @@ namespace Kata.Model
         public bool P7 { get; set; }
         public bool P8 { get; set; }
 
-        public Kata()
+        private static DatenRangieren _datenRangieren;
+
+        public Kata(DtAutoTests dtAutoTests)
         {
+            _datenRangieren = new DatenRangieren(this, dtAutoTests);
+
             S3 = true;
             S4 = true;
             S7 = true;
@@ -31,10 +37,13 @@ namespace Kata.Model
 
             System.Threading.Tasks.Task.Run(KataTask);
         }
+
         private static void KataTask()
         {
             while (true)
             {
+                _datenRangieren.Rangieren();
+
                 Thread.Sleep(10);
             }
             // ReSharper disable once FunctionNeverReturns

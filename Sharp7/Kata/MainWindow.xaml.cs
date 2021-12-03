@@ -2,19 +2,18 @@
 using Kommunikation;
 using System.Windows;
 using System.Windows.Controls;
+using DigitalerZwillingMitAutoTests;
+
 
 namespace Kata
 {
     public partial class MainWindow
     {
-        public PlcDaemon PlcDaemon { get; set; }
+
+        public DtAutoTests DtAutoTests;
         public string VersionInfoLokal { get; set; }
         public string VersionNummer { get; set; }
-        public ConfigPlc.Plc ConfigPlc { get; set; }
-        public Datenstruktur Datenstruktur { get; set; }
-        public TestAutomat.TestAutomat TestAutomat { get; set; }
         public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
-        public BeschriftungenPlc BeschriftungenPlc { get; set; }
         public DatenRangieren DatenRangieren { get; set; }
 
 
@@ -31,23 +30,37 @@ namespace Kata
 
             VersionInfoLokal = versionText + " " + versionNummer;
 
-            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
-            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
-            BeschriftungenPlc = new BeschriftungenPlc();
 
-            var viewModel = new ViewModel.ViewModel();
+            var viewModel = new ViewModel.ViewModel(this);
             InitializeComponent();
             DataContext = viewModel;
+            
 
-            DatenRangieren = new DatenRangieren(viewModel);
-            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
-            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
+            DtAutoTests = new DtAutoTests();
 
-            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+            DtAutoTests.SetTabItemAutoTests(TabItemAutomatischerSoftwareTest);
+            DtAutoTests.SetConfigPlc("./ConfigPlc");
+            DtAutoTests.SetConfigTests("./ConfigTests/");
+            DtAutoTests.SetInputOutput(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+          //  DtAutoTests.SetDatenRangierenCallback(DatenRangieren.Rangieren);
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
-            TestAutomat.SetTestConfig("./ConfigTests/");
-            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+            DtAutoTests.Starten();
+
+         //   DatenRangieren.ReferenzUebergeben(DtAutoTests.PlcDaemon.Plc);
+
+ DatenRangieren = new DatenRangieren();
+            DatenRangieren.SetReferenzModel(viewModel.Kata);
+
+
+            //   Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+            //  ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+            //  BeschriftungenPlc = new BeschriftungenPlc();
+            //  PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+            //DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+
+            //   TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+            //   TestAutomat.SetTestConfig("./ConfigTests/");
+            //    TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
 
 
             Closing += (_, e) =>
@@ -63,21 +76,21 @@ namespace Kata
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch (tc.SelectedIndex)
             {
-                case 0: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
-                case 1: Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
+                case 0: DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation; break;
+                case 1: DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest; break;
             }
 
-            DisplayPlc.SetBetriebsartProjekt(Datenstruktur);
+            DtAutoTests?.DisplayPlc.SetBetriebsartProjekt(DtAutoTests.Datenstruktur);
         }
         private void PlcButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (DisplayPlc.FensterAktiv) DisplayPlc.Schliessen();
-            else DisplayPlc.Oeffnen();
+            if (DtAutoTests.DisplayPlc.FensterAktiv) DtAutoTests.DisplayPlc.Schliessen();
+            else DtAutoTests.DisplayPlc.Oeffnen();
         }
         private void Schliessen()
         {
-            DisplayPlc.TaskBeenden();
-            TestAutomat.TaskBeenden();
+            DtAutoTests.DisplayPlc.TaskBeenden();
+            DtAutoTests.TestAutomat.TaskBeenden();
             Application.Current.Shutdown();
         }
     }

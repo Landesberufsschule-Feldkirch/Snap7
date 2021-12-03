@@ -10,10 +10,12 @@ namespace Kata.ViewModel
 {
     public class VisuAnzeigen : INotifyPropertyChanged
     {
+        private readonly MainWindow _mainWindow;
         private readonly Model.Kata _kata;
 
-        public VisuAnzeigen(Model.Kata kata)
+        public VisuAnzeigen(MainWindow mainWindow, Model.Kata kata)
         {
+            _mainWindow= mainWindow;
             _kata = kata;
 
             SpsSichtbar = Visibility.Hidden;
@@ -53,6 +55,17 @@ namespace Kata.ViewModel
                 FarbeUmschalten(_kata.P6, 6, Brushes.Yellow, Brushes.White);
                 FarbeUmschalten(_kata.P7, 7, Brushes.Red, Brushes.White);
                 FarbeUmschalten(_kata.P8, 8, Brushes.Red, Brushes.White);
+
+                if (_mainWindow != null && _mainWindow.DtAutoTests != null && _mainWindow.DtAutoTests.PlcDaemon != null && _mainWindow.DtAutoTests.PlcDaemon.Plc != null)
+                {
+                    SpsVersionLokal = _mainWindow.VersionInfoLokal;
+                    SpsVersionEntfernt = _mainWindow.DtAutoTests.PlcDaemon.Plc.GetVersion();
+                    SpsSichtbar = SpsVersionLokal == SpsVersionEntfernt ? Visibility.Hidden : Visibility.Visible;
+                    SpsColor = _mainWindow.DtAutoTests.PlcDaemon.Plc.GetSpsError() ? Brushes.Red : Brushes.LightGray;
+                    SpsStatus = _mainWindow.DtAutoTests.PlcDaemon.Plc?.GetSpsStatus();
+
+                    FensterTitel = _mainWindow.DtAutoTests.PlcDaemon.Plc.GetPlcBezeichnung() + ": " + _mainWindow.VersionInfoLokal;
+                }
 
                 Thread.Sleep(10);
             }

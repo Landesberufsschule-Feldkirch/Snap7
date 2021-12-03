@@ -11,11 +11,11 @@ namespace Kommunikation
     {
         public IPlc Plc { get; set; }
 
-        private readonly IpAdressenSiemens _spsS71200;
-        private readonly IpAdressenBeckhoff _spsCx9020;
+        private IpAdressenSiemens _spsS71200;
+        private IpAdressenBeckhoff _spsCx9020;
         private PlcDaemonStatus _status;
-        private readonly Action<Datenstruktur, bool> _callbackRangieren;
-        private readonly Datenstruktur _datenstruktur;
+        private Action<Datenstruktur, bool> _callbackRangieren;
+        private Datenstruktur _datenstruktur;
 
         private enum PlcDaemonStatus
         {
@@ -23,6 +23,34 @@ namespace Kommunikation
             SpsBeckhoff = 1,
             SpsSiemens = 2,
             SpsAktiv = 3
+        }
+
+        public PlcDaemon()
+        {
+            Plc = new KeineSps();
+        }
+
+        public void Starten()
+        {
+            try
+            {
+                _spsS71200 = JsonConvert.DeserializeObject<IpAdressenSiemens>(File.ReadAllText("IpAdressenSiemens.json"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datei nicht gefunden: IpAdressenSiemens.json" + " --> " + ex);
+            }
+
+            try
+            {
+                _spsCx9020 = JsonConvert.DeserializeObject<IpAdressenBeckhoff>(File.ReadAllText("IpAdressenBeckhoff.json"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datei nicht gefunden: IpAdressenBeckhoff.json" + " --> " + ex);
+            }
+
+            System.Threading.Tasks.Task.Run(PlcDaemonTask);
         }
 
         public PlcDaemon(Datenstruktur datenstruktur, Action<Datenstruktur, bool> cbRangieren)
@@ -51,6 +79,8 @@ namespace Kommunikation
 
             System.Threading.Tasks.Task.Run(PlcDaemonTask);
         }
+
+
 
         private void PlcDaemonTask()
         {
@@ -97,5 +127,12 @@ namespace Kommunikation
             }
             // ReSharper disable once FunctionNeverReturns
         }
+
+        public void SetReferenzDatenstruktur(Datenstruktur datenstruktur) => _datenstruktur = datenstruktur;
+        public void SetCallback(Action<Datenstruktur, bool> callbackRangieren) => _callbackRangieren = callbackRangieren;
+
+
+
+
     }
 }

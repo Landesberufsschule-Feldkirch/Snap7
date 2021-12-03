@@ -8,10 +8,10 @@ namespace Kata.ViewModel
         public Model.Kata Kata { get; }
         public VisuAnzeigen ViAnz { get; set; }
 
-        public ViewModel()
+        public ViewModel(MainWindow mainWindow)
         {
-            Kata = new Model.Kata();
-            ViAnz = new VisuAnzeigen(Kata);
+            Kata = new Model.Kata(mainWindow.DtAutoTests);
+            ViAnz = new VisuAnzeigen(mainWindow,Kata);
         }
 
         private ICommand _btnTaster;
