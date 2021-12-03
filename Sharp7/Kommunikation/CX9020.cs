@@ -108,12 +108,14 @@ namespace Kommunikation
             return enc.GetString(Versionsinfo, 0, textLaenge);
         }
 
-        public string GetSpsStatus() => _spsStatus;
-        public bool GetSpsError() => _spsError;
+public string GetPlcBezeichnung() => _spsCx9020.Description;
+        public string GetSpsStatus() => _spsStatus;        
         public string GetPlcModus() => _plcModus;
-        public string GetPlcBezeichnung() => _spsCx9020.Description;
+        public bool GetSpsError() => _spsError;
+        
         public void SetPlcModus(string modus) => _plcModus = modus;
         public void SetTaskRunning(bool active) => _taskRunning = active;
+
         public bool GetBitAt(byte[] buffer, int bitPos) => SharedCode.GetBitAtPosition(buffer, bitPos);
         public int GetSIntAt(byte[] buffer, int pos) => SharedCode.GetSIntAtPosition(buffer, pos);
         public byte GetUsIntAt(byte[] buffer, int pos) => buffer[pos];

@@ -129,10 +129,7 @@ namespace Kommunikation
         }
 
         public void SetReferenzDatenstruktur(Datenstruktur datenstruktur) => _datenstruktur = datenstruktur;
-        public void SetCallback(Action<Datenstruktur, bool> callbackRangieren) => _callbackRangieren = callbackRangieren;
-
-
-
+      
 
     }
 }

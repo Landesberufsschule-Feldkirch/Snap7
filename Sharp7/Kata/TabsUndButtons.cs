@@ -1,0 +1,45 @@
+﻿using System.Windows;
+using System.Windows.Controls;
+using Kommunikation;
+
+namespace Kata;
+
+public partial class MainWindow
+{
+    private void BetriebsartProjektChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is not TabControl tc) return;
+
+        // ReSharper disable once ConvertSwitchStatementToSwitchExpression
+        switch (tc.SelectedIndex)
+        {
+            case 0:
+                DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
+                break;
+            case 1:
+                DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest;
+                break;
+        }
+
+        DtAutoTests?.DisplayPlc?.SetBetriebsartProjekt(DtAutoTests?.Datenstruktur);
+    }
+
+    private void PlcButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (DtAutoTests == null) return;
+
+        // ReSharper disable once PossibleNullReferenceException
+        if (DtAutoTests.DisplayPlc.FensterAktiv) DtAutoTests.DisplayPlc.Schliessen();
+        else DtAutoTests.DisplayPlc.Oeffnen();
+    }
+
+    private void Schliessen()
+    {
+        if (DtAutoTests == null) return;
+
+        DtAutoTests.DisplayPlc?.TaskBeenden();
+        DtAutoTests.TestAutomat?.TaskBeenden();
+        Application.Current.Shutdown();
+
+    }
+}
