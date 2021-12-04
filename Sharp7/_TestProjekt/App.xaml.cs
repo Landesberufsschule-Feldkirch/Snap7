@@ -1,6 +1,5 @@
-﻿namespace _TestProjekt
+﻿namespace _TestProjekt;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

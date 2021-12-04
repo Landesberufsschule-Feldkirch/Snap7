@@ -1,22 +1,21 @@
-﻿namespace AmpelsteuerungKieswerk.ViewModel
+﻿namespace AmpelsteuerungKieswerk.ViewModel;
+
+using Commands;
+using System.Windows.Input;
+
+public class ViewModel
 {
-    using Commands;
-    using System.Windows.Input;
+    public Model.AlleLastKraftWagen AlleLastKraftWagen { get; }
 
-    public class ViewModel
+    public VisuAnzeigen ViAnz { get; set; }
+
+    public ViewModel(MainWindow mainWindow)
     {
-        public Model.AlleLastKraftWagen AlleLastKraftWagen { get; }
-
-        public VisuAnzeigen ViAnz { get; set; }
-
-        public ViewModel(MainWindow mainWindow)
-        {
-            AlleLastKraftWagen = new Model.AlleLastKraftWagen();
-            ViAnz = new VisuAnzeigen(mainWindow, AlleLastKraftWagen);
-        }
-
-        private ICommand _btnTaster;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
+        AlleLastKraftWagen = new Model.AlleLastKraftWagen();
+        ViAnz = new VisuAnzeigen(mainWindow, AlleLastKraftWagen);
     }
+
+    private ICommand _btnTaster;
+    // ReSharper disable once UnusedMember.Global
+    public ICommand BtnTaster => _btnTaster ??= new RelayCommand(ViAnz.Taster);
 }

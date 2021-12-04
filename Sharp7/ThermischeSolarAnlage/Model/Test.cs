@@ -1,23 +1,22 @@
 ﻿using System.Threading;
 
-namespace ThermischeSolarAnlage.Model
+namespace ThermischeSolarAnlage.Model;
+
+public class Test
 {
-    public class Test
+
+
+
+    public Test() => System.Threading.Tasks.Task.Run(TestTask);
+    private static void TestTask()
     {
 
-
-
-        public Test() => System.Threading.Tasks.Task.Run(TestTask);
-        private static void TestTask()
+        while (true)
         {
 
-            while (true)
-            {
 
-
-                Thread.Sleep(10);
-            }
-            // ReSharper disable once FunctionNeverReturns
+            Thread.Sleep(10);
         }
+        // ReSharper disable once FunctionNeverReturns
     }
 }

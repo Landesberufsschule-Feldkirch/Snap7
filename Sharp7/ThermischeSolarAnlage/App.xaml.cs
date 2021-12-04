@@ -1,6 +1,5 @@
-﻿namespace ThermischeSolarAnlage
+﻿namespace ThermischeSolarAnlage;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

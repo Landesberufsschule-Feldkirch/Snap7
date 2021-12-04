@@ -3,35 +3,34 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace BeschriftungPlc
+namespace BeschriftungPlc;
+
+public class BeschriftungenStruktur
 {
-    public class BeschriftungenStruktur
+    public Da DaBeschriftungen { get; set; }
+    public Di DiBeschriftungen { get; set; }
+
+    internal void PlcDaBeschriftungen(string pfad)
     {
-        public Da DaBeschriftungen { get; set; }
-        public Di DiBeschriftungen { get; set; }
-
-        internal void PlcDaBeschriftungen(string pfad)
+        try
         {
-            try
-            {
-                DaBeschriftungen = JsonConvert.DeserializeObject<Da>(File.ReadAllText(pfad));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
-            }
+            DaBeschriftungen = JsonConvert.DeserializeObject<Da>(File.ReadAllText(pfad));
         }
-
-        public void PlcDiBeschriftungen(string pfad)
+        catch (Exception ex)
         {
-            try
-            {
-                DiBeschriftungen = JsonConvert.DeserializeObject<Di>(File.ReadAllText(pfad));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
-            }
+            MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
+        }
+    }
+
+    public void PlcDiBeschriftungen(string pfad)
+    {
+        try
+        {
+            DiBeschriftungen = JsonConvert.DeserializeObject<Di>(File.ReadAllText(pfad));
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
         }
     }
 }

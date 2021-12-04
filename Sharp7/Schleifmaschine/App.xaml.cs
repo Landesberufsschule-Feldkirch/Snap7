@@ -1,6 +1,5 @@
-﻿namespace Schleifmaschine
+﻿namespace Schleifmaschine;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

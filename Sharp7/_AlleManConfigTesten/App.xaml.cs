@@ -1,6 +1,5 @@
-﻿namespace _AlleManConfigTesten
+﻿namespace _AlleManConfigTesten;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

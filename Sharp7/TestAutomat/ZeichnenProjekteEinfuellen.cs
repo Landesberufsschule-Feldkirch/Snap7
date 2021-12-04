@@ -4,54 +4,53 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace TestAutomat
+namespace TestAutomat;
+
+public partial class TestAutomat
 {
-    public partial class TestAutomat
+    public void TestProjekteEinfuellen(Button btnStart, StackPanel stackPanel, WebBrowser webBrowser)
     {
-        public void TestProjekteEinfuellen(Button btnStart, StackPanel stackPanel, WebBrowser webBrowser)
+        foreach (var projekt in ConfigOrdner.AlleTestOrdner)
         {
-            foreach (var projekt in ConfigOrdner.AlleTestOrdner)
+            var rdo = new RadioButton
             {
-                var rdo = new RadioButton
-                {
-                    GroupName = "TestProjekte",
-                    Name = projekt.Name,
-                    FontSize = 14,
-                    Content = projekt.Name,
-                    VerticalAlignment = VerticalAlignment.Top,
-                    Tag = projekt
-                };
+                GroupName = "TestProjekte",
+                Name = projekt.Name,
+                FontSize = 14,
+                Content = projekt.Name,
+                VerticalAlignment = VerticalAlignment.Top,
+                Tag = projekt
+            };
 
-                rdo.Checked += (sender, _) =>
-                {
-                    if (!(sender is RadioButton { Tag: DirectoryInfo } rb)) return;
+            rdo.Checked += (sender, _) =>
+            {
+                if (!(sender is RadioButton { Tag: DirectoryInfo } rb)) return;
 
-                    btnStart.IsEnabled = true;
-                    btnStart.Background = new SolidColorBrush(Colors.LawnGreen);
+                btnStart.IsEnabled = true;
+                btnStart.Background = new SolidColorBrush(Colors.LawnGreen);
 
-                    AktuellesProjekt = rb.Tag as DirectoryInfo;
+                AktuellesProjekt = rb.Tag as DirectoryInfo;
 
-                    if (AktuellesProjekt == null) return;
+                if (AktuellesProjekt == null) return;
 
-                    BeschriftungenPlc.UpdateBeschriftungen(AktuellesProjekt.FullName);
+                BeschriftungenPlc.UpdateBeschriftungen(AktuellesProjekt.FullName);
 
-                    UpdatePlot();
+                UpdatePlot();
 
-                    _datenstruktur.TestProjektOrdner = AktuellesProjekt.FullName;
-                    _callbackPlcWindow?.Invoke(_datenstruktur);
+                _datenstruktur.TestProjektOrdner = AktuellesProjekt.FullName;
+                _callbackPlcWindow?.Invoke(_datenstruktur);
 
-                    var dateiName = $@"{AktuellesProjekt.FullName}\index.html";
+                var dateiName = $@"{AktuellesProjekt.FullName}\index.html";
 
-                    var htmlSeite = File.Exists(dateiName) ? File.ReadAllText(dateiName) : "--??--";
+                var htmlSeite = File.Exists(dateiName) ? File.ReadAllText(dateiName) : "--??--";
 
-                    var dataHtmlSeite = Encoding.UTF8.GetBytes(htmlSeite);
-                    var stmHtmlSeite = new MemoryStream(dataHtmlSeite, 0, dataHtmlSeite.Length);
+                var dataHtmlSeite = Encoding.UTF8.GetBytes(htmlSeite);
+                var stmHtmlSeite = new MemoryStream(dataHtmlSeite, 0, dataHtmlSeite.Length);
 
-                    webBrowser.NavigateToStream(stmHtmlSeite);
-                };
+                webBrowser.NavigateToStream(stmHtmlSeite);
+            };
 
-                stackPanel.Children.Add(rdo);
-            }
+            stackPanel.Children.Add(rdo);
         }
     }
 }

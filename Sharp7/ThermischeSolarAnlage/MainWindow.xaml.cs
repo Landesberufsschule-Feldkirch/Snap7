@@ -1,10 +1,9 @@
-﻿namespace ThermischeSolarAnlage
+﻿namespace ThermischeSolarAnlage;
+
+public partial class MainWindow
 {
-    public partial class MainWindow
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

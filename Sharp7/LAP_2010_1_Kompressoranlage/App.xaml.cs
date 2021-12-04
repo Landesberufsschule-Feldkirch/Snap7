@@ -1,6 +1,5 @@
-﻿namespace LAP_2010_1_Kompressoranlage
+﻿namespace LAP_2010_1_Kompressoranlage;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

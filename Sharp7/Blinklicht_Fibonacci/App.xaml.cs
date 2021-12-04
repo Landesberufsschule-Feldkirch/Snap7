@@ -1,6 +1,5 @@
-﻿namespace Blinklicht_Fibonacci
+﻿namespace Blinklicht_Fibonacci;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

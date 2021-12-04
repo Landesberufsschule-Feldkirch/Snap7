@@ -1,6 +1,5 @@
-﻿namespace Tiefgarage
+﻿namespace Tiefgarage;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

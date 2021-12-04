@@ -1,6 +1,5 @@
-﻿namespace Nadeltelegraph
+﻿namespace Nadeltelegraph;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

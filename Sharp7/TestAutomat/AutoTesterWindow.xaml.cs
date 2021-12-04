@@ -5,67 +5,66 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using TestAutomat.Model;
 
-namespace TestAutomat
+namespace TestAutomat;
+
+public partial class AutoTesterWindow
 {
-    public partial class AutoTesterWindow
+    public int DataGridId { get; set; }
+    public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
+    public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
     {
-        public int DataGridId { get; set; }
-        public ObservableCollection<TestAusgabe> AutoTesterDataGrid { get; set; }
-        public void UpdateDataGrid(TestAusgabe data) => Dispatcher.Invoke(() =>
+        var zeile = data.Nr;
+
+        if (AutoTesterDataGrid.Count <= zeile) AutoTesterDataGrid.Add(data);
+        else AutoTesterDataGrid[zeile] = data;
+    });
+    public AutoTesterWindow()
+    {
+        AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
+
+        InitializeComponent();
+
+        DataGrid.ItemsSource = AutoTesterDataGrid;
+        DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
         {
-            var zeile = data.Nr;
+            if (DataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated) return;
 
-            if (AutoTesterDataGrid.Count <= zeile) AutoTesterDataGrid.Add(data);
-            else AutoTesterDataGrid[zeile] = data;
-        });
-        public AutoTesterWindow()
-        {
-            AutoTesterDataGrid = new ObservableCollection<TestAusgabe>();
+            var count = AutoTesterDataGrid.Count;
+            if (count < 1) return;
 
-            InitializeComponent();
-
-            DataGrid.ItemsSource = AutoTesterDataGrid;
-            DataGrid.ItemContainerGenerator.StatusChanged += (_, _) =>
+            for (var zeile = 0; zeile < count; zeile++)
             {
-                if (DataGrid.ItemContainerGenerator.Status != GeneratorStatus.ContainersGenerated) return;
+                var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(zeile);
+                if (row == null) continue;
 
-                var count = AutoTesterDataGrid.Count;
-                if (count < 1) return;
-
-                for (var zeile = 0; zeile < count; zeile++)
+                // ReSharper disable once ConvertSwitchStatementToSwitchExpression
+                row.Background = AutoTesterDataGrid[zeile].Ergebnis switch
                 {
-                    var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(zeile);
-                    if (row == null) continue;
+                    AutoTester.TestErgebnis.Aktiv => Brushes.White,
+                    AutoTester.TestErgebnis.AufBitmusterWarten => Brushes.Yellow,
+                    AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
+                    AutoTester.TestErgebnis.CompilerError => Brushes.Red,
+                    AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
+                    AutoTester.TestErgebnis.Fehler => Brushes.Red,
+                    AutoTester.TestErgebnis.ImpulsWarZuKurz => Brushes.LawnGreen,
+                    AutoTester.TestErgebnis.ImpulsWarZuLang => Brushes.LawnGreen,
+                    AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
+                    AutoTester.TestErgebnis.Kommentar => Brushes.White,
+                    AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
+                    AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
+                    AutoTester.TestErgebnis.Timeout => Brushes.Orange,
+                    AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
+                    AutoTester.TestErgebnis.Version => Brushes.White,
+                    AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
+                    _ => throw new ArgumentOutOfRangeException("Unbekanntés Ergebnis" + AutoTesterDataGrid[zeile].Ergebnis)
+                };
+            }
+        };
 
-                    // ReSharper disable once ConvertSwitchStatementToSwitchExpression
-                    row.Background = AutoTesterDataGrid[zeile].Ergebnis switch
-                    {
-                        AutoTester.TestErgebnis.Aktiv => Brushes.White,
-                        AutoTester.TestErgebnis.AufBitmusterWarten => Brushes.Yellow,
-                        AutoTester.TestErgebnis.CompilerErfolgreich => Brushes.LawnGreen,
-                        AutoTester.TestErgebnis.CompilerError => Brushes.Red,
-                        AutoTester.TestErgebnis.Erfolgreich => Brushes.LawnGreen,
-                        AutoTester.TestErgebnis.Fehler => Brushes.Red,
-                        AutoTester.TestErgebnis.ImpulsWarZuKurz => Brushes.LawnGreen,
-                        AutoTester.TestErgebnis.ImpulsWarZuLang => Brushes.LawnGreen,
-                        AutoTester.TestErgebnis.Init => Brushes.Aquamarine,
-                        AutoTester.TestErgebnis.Kommentar => Brushes.White,
-                        AutoTester.TestErgebnis.TestEnde => Brushes.CornflowerBlue,
-                        AutoTester.TestErgebnis.TestStart => Brushes.CornflowerBlue,
-                        AutoTester.TestErgebnis.Timeout => Brushes.Orange,
-                        AutoTester.TestErgebnis.UnbekanntesErgebnis => Brushes.Red,
-                        AutoTester.TestErgebnis.Version => Brushes.White,
-                        AutoTester.TestErgebnis.CompilerStart => Brushes.Cyan,
-                        _ => throw new ArgumentOutOfRangeException("Unbekanntés Ergebnis" + AutoTesterDataGrid[zeile].Ergebnis)
-                    };
-                }
-            };
-
-            Closing += (_, e) =>
-            {
-                e.Cancel = true;
-                Hide();
-            };
-        }
+        Closing += (_, e) =>
+        {
+            e.Cancel = true;
+            Hide();
+        };
     }
 }

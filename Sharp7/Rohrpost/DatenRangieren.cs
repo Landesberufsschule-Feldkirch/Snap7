@@ -1,22 +1,21 @@
 ﻿using Kommunikation;
 
-namespace Rohrpost
+namespace Rohrpost;
+
+public class DatenRangieren
 {
-    public class DatenRangieren
+    private readonly MainWindow mainWindow;
+    private IPlc _plc;
+
+    public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
     {
-        private readonly MainWindow mainWindow;
-        private IPlc _plc;
-
-        public void Rangieren(Datenstruktur datenstruktur, bool eingaengeRangieren)
+        if (eingaengeRangieren)
         {
-            if (eingaengeRangieren)
-            {
-                //
-            }
-
+            //
         }
 
-        public DatenRangieren(MainWindow window) => mainWindow = window;
-        public void ReferenzUebergeben(IPlc plc) => _plc = plc;
     }
+
+    public DatenRangieren(MainWindow window) => mainWindow = window;
+    public void ReferenzUebergeben(IPlc plc) => _plc = plc;
 }

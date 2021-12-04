@@ -1,10 +1,9 @@
-﻿namespace StiegenhausBeleuchtung
+﻿namespace StiegenhausBeleuchtung;
+
+public partial class ImageButton
 {
-    public partial class ImageButton
+    public ImageButton()
     {
-        public ImageButton()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

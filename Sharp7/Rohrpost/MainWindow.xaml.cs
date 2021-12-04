@@ -1,16 +1,15 @@
-﻿namespace Rohrpost
+﻿namespace Rohrpost;
+
+public partial class MainWindow
 {
-    public partial class MainWindow
+    private Logikfunktionen _logikfunktionen;
+    private DatenRangieren _datenRangieren;
+
+    public MainWindow()
     {
-        private Logikfunktionen _logikfunktionen;
-        private DatenRangieren _datenRangieren;
+        _logikfunktionen = new Logikfunktionen(this);
+        _datenRangieren = new DatenRangieren(this);
 
-        public MainWindow()
-        {
-            _logikfunktionen = new Logikfunktionen(this);
-            _datenRangieren = new DatenRangieren(this);
-
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

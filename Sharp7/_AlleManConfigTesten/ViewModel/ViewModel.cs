@@ -1,11 +1,10 @@
-﻿namespace _AlleManConfigTesten.ViewModel
+﻿namespace _AlleManConfigTesten.ViewModel;
+
+public class ViewModel
 {
-    public class ViewModel
+    public VisuAnzeigen ViAnz { get; set; }
+    public ViewModel()
     {
-        public VisuAnzeigen ViAnz { get; set; }
-        public ViewModel()
-        {
-            ViAnz = new VisuAnzeigen();
-        }
+        ViAnz = new VisuAnzeigen();
     }
 }

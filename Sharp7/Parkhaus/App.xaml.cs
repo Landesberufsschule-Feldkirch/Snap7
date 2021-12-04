@@ -1,6 +1,5 @@
-﻿namespace Parkhaus
+﻿namespace Parkhaus;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

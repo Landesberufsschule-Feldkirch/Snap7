@@ -4,76 +4,75 @@ using LAP_2019_Foerderanlage.SetManual;
 using System.Windows;
 using WpfAnimatedGif;
 
-namespace LAP_2019_Foerderanlage
+namespace LAP_2019_Foerderanlage;
+
+public partial class MainWindow
 {
-    public partial class MainWindow
+    public PlcDaemon PlcDaemon { get; set; }
+    public ConfigPlc.Plc ConfigPlc { get; set; }
+    public SetManualWindow SetManualWindow { get; set; }
+    public bool DebugWindowAktiv { get; set; }
+    public bool AnimationGestartet { get; set; }
+    public ImageAnimationController Controller { get; set; }
+    public string VersionInfoLokal { get; set; }
+    public Datenstruktur Datenstruktur { get; set; }
+    public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+    public BeschriftungenPlc BeschriftungenPlc { get; set; }
+    public DatenRangieren DatenRangieren { get; set; }
+
+    private readonly ViewModel.ViewModel _viewModel;
+
+
+    public MainWindow()
     {
-        public PlcDaemon PlcDaemon { get; set; }
-        public ConfigPlc.Plc ConfigPlc { get; set; }
-        public SetManualWindow SetManualWindow { get; set; }
-        public bool DebugWindowAktiv { get; set; }
-        public bool AnimationGestartet { get; set; }
-        public ImageAnimationController Controller { get; set; }
-        public string VersionInfoLokal { get; set; }
-        public Datenstruktur Datenstruktur { get; set; }
-        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
-        public BeschriftungenPlc BeschriftungenPlc { get; set; }
-        public DatenRangieren DatenRangieren { get; set; }
+        const string versionText = "LAP 2019 Foerderanlage";
+        const string versionNummer = "V2.0";
 
-        private readonly ViewModel.ViewModel _viewModel;
+        const int anzByteDigInput = 2;
+        const int anzByteDigOutput = 2;
+        const int anzByteAnalogInput = 2;
+        const int anzByteAnalogOutput = 2;
 
 
-        public MainWindow()
-        {
-            const string versionText = "LAP 2019 Foerderanlage";
-            const string versionNummer = "V2.0";
+        VersionInfoLokal = versionText + " " + versionNummer;
 
-            const int anzByteDigInput = 2;
-            const int anzByteDigOutput = 2;
-            const int anzByteAnalogInput = 2;
-            const int anzByteAnalogOutput = 2;
+        Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+        ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+        BeschriftungenPlc = new BeschriftungenPlc();
 
+        _viewModel = new ViewModel.ViewModel(this);
+        InitializeComponent();
+        DataContext = _viewModel;
 
-            VersionInfoLokal = versionText + " " + versionNummer;
+        DatenRangieren = new DatenRangieren(this, _viewModel);
+        PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+        DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 
-            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
-            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
-            BeschriftungenPlc = new BeschriftungenPlc();
+        /*
+        DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
-            _viewModel = new ViewModel.ViewModel(this);
-            InitializeComponent();
-            DataContext = _viewModel;
+        TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+        TestAutomat.SetTestConfig("./ConfigTests/");
+        TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+        */
+    }
 
-            DatenRangieren = new DatenRangieren(this, _viewModel);
-            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
-            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
+    private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
+    {
+        DebugWindowAktiv = true;
+        SetManualWindow = new SetManualWindow(_viewModel);
+        SetManualWindow.Show();
+    }
 
-            /*
-            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+    private void AnimatedLoaded(object sender, RoutedEventArgs e)
+    {
+        AnimationGestartet = true;
+        Controller = ImageBehavior.GetAnimationController(ImgSchneckenfoerderer);
+    }
 
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
-            TestAutomat.SetTestConfig("./ConfigTests/");
-            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
-            */
-        }
-
-        private void DebugWindowOeffnen(object sender, RoutedEventArgs e)
-        {
-            DebugWindowAktiv = true;
-            SetManualWindow = new SetManualWindow(_viewModel);
-            SetManualWindow.Show();
-        }
-
-        private void AnimatedLoaded(object sender, RoutedEventArgs e)
-        {
-            AnimationGestartet = true;
-            Controller = ImageBehavior.GetAnimationController(ImgSchneckenfoerderer);
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private void TabItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
-        {
-            //
-        }
+    // ReSharper disable once UnusedParameter.Local
+    private void TabItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+    {
+        //
     }
 }

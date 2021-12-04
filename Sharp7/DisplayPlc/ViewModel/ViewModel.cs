@@ -2,12 +2,11 @@
 using ConfigPlc;
 using Kommunikation;
 
-namespace DisplayPlc.ViewModel
+namespace DisplayPlc.ViewModel;
+
+public class ViewModel
 {
-    public class ViewModel
-    {
-        public VisuAnzeigen DisplayPlcAnzeige { get; set; }
-        public ViewModel(Datenstruktur datenstruktur, Plc configPlc, BeschriftungenPlc beschriftungenPlc,
-            DisplayPlc displayPlc) => DisplayPlcAnzeige = new VisuAnzeigen(datenstruktur, configPlc, beschriftungenPlc, displayPlc);
-    }
+    public VisuAnzeigen DisplayPlcAnzeige { get; set; }
+    public ViewModel(Datenstruktur datenstruktur, Plc configPlc, BeschriftungenPlc beschriftungenPlc,
+        DisplayPlc displayPlc) => DisplayPlcAnzeige = new VisuAnzeigen(datenstruktur, configPlc, beschriftungenPlc, displayPlc);
 }

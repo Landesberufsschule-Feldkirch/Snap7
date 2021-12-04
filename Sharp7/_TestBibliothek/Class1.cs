@@ -1,6 +1,5 @@
-namespace _TestBibliothek
+namespace _TestBibliothek;
+
+public class Class1
 {
-    public class Class1
-    {
-    }
 }

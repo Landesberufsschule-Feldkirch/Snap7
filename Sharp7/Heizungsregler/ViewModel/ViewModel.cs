@@ -1,24 +1,23 @@
-﻿namespace Heizungsregler.ViewModel
+﻿namespace Heizungsregler.ViewModel;
+
+using Commands;
+using System.Windows.Input;
+
+public class ViewModel
 {
-    using Commands;
-    using System.Windows.Input;
+    public VisuAnzeigen ViAnz { get; set; }
 
-    public class ViewModel
+    private readonly MainWindow _mainWindow;
+
+    public ViewModel(MainWindow mw)
     {
-        public VisuAnzeigen ViAnz { get; set; }
+        _mainWindow = mw;
 
-        private readonly MainWindow _mainWindow;
-
-        public ViewModel(MainWindow mw)
-        {
-            _mainWindow = mw;
-
-            ViAnz = new VisuAnzeigen(_mainWindow);
-        }
-
-
-        private ICommand _btnReset;
-        // ReSharper disable once UnusedMember.Global
-        public ICommand BtnReset => _btnReset ??= new RelayCommand(_ => _mainWindow.WohnHaus.Reset(), _ => true);
+        ViAnz = new VisuAnzeigen(_mainWindow);
     }
+
+
+    private ICommand _btnReset;
+    // ReSharper disable once UnusedMember.Global
+    public ICommand BtnReset => _btnReset ??= new RelayCommand(_ => _mainWindow.WohnHaus.Reset(), _ => true);
 }

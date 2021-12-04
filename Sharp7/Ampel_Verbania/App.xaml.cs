@@ -1,6 +1,5 @@
-﻿namespace Ampel_Verbania
+﻿namespace Ampel_Verbania;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

@@ -1,10 +1,9 @@
-﻿namespace Heizungsregler
+﻿namespace Heizungsregler;
+
+public partial class PlotWindow
 {
-    public partial class PlotWindow
+    public PlotWindow()
     {
-        public PlotWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

@@ -1,6 +1,5 @@
-﻿namespace Blinker
+﻿namespace Blinker;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

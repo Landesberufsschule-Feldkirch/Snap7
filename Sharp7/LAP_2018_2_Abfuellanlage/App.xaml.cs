@@ -1,6 +1,5 @@
-﻿namespace LAP_2018_2_Abfuellanlage
+﻿namespace LAP_2018_2_Abfuellanlage;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

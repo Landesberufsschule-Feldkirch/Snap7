@@ -1,6 +1,5 @@
-﻿namespace AmpelsteuerungKieswerk
+﻿namespace AmpelsteuerungKieswerk;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

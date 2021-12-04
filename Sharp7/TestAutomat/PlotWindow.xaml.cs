@@ -1,32 +1,31 @@
-﻿namespace TestAutomat
+﻿namespace TestAutomat;
+
+public partial class PlotWindow
 {
-    public partial class PlotWindow
+    public bool FensterAktiv { get; set; }
+    public PlotWindow()
     {
-        public bool FensterAktiv { get; set; }
-        public PlotWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            TestAutomatPlot.Plot.Clear();
+        TestAutomatPlot.Plot.Clear();
 
-            Closing += (_, e) =>
-            {
-                e.Cancel = true;
-                Schliessen();
-            };
-        }
+        Closing += (_, e) =>
+        {
+            e.Cancel = true;
+            Schliessen();
+        };
+    }
 
-        public void Schliessen()
-        {
-            FensterAktiv = false;
-            Hide();
-        }
-        public void Oeffnen()
-        {
-            Show();
-            Title = "Plotter";
-            MaxWidth = 1800;
-            FensterAktiv = true;
-        }
+    public void Schliessen()
+    {
+        FensterAktiv = false;
+        Hide();
+    }
+    public void Oeffnen()
+    {
+        Show();
+        Title = "Plotter";
+        MaxWidth = 1800;
+        FensterAktiv = true;
     }
 }

@@ -1,6 +1,5 @@
-﻿namespace BehaelterSteuerung
+﻿namespace BehaelterSteuerung;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

@@ -1,6 +1,5 @@
-﻿namespace LAP_2018_4_Niveauregelung
+﻿namespace LAP_2018_4_Niveauregelung;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

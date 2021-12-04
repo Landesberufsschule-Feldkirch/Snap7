@@ -2,52 +2,51 @@
 using BeschriftungPlc;
 using Kommunikation;
 
-namespace BehaelterSteuerung
+namespace BehaelterSteuerung;
+
+public partial class MainWindow
 {
-    public partial class MainWindow
+    public PlcDaemon PlcDaemon { get; set; }
+    public string VersionInfoLokal { get; set; }
+    public ConfigPlc.Plc ConfigPlc { get; set; }
+    public Datenstruktur Datenstruktur { get; set; }
+    public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
+    public BeschriftungenPlc BeschriftungenPlc { get; set; }
+    public DatenRangieren DatenRangieren { get; set; }
+
+
+    public MainWindow()
     {
-        public PlcDaemon PlcDaemon { get; set; }
-        public string VersionInfoLokal { get; set; }
-        public ConfigPlc.Plc ConfigPlc { get; set; }
-        public Datenstruktur Datenstruktur { get; set; }
-        public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
-        public BeschriftungenPlc BeschriftungenPlc { get; set; }
-        public DatenRangieren DatenRangieren { get; set; }
+        var johnsonTrotter = new JohnsonTrotter();
 
+        const string versionText = "Behaeltersteuerung";
+        const string versionNummer = "V2.0";
 
-        public MainWindow()
-        {
-            var johnsonTrotter = new JohnsonTrotter();
+        const int anzByteDigInput = 1;
+        const int anzByteDigOutput = 1;
+        const int anzByteAnalogInput = 0;
+        const int anzByteAnalogOutput = 0;
 
-            const string versionText = "Behaeltersteuerung";
-            const string versionNummer = "V2.0";
+        VersionInfoLokal = versionText + " " + versionNummer;
 
-            const int anzByteDigInput = 1;
-            const int anzByteDigOutput = 1;
-            const int anzByteAnalogInput = 0;
-            const int anzByteAnalogOutput = 0;
+        Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
+        ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
+        BeschriftungenPlc = new BeschriftungenPlc();
 
-            VersionInfoLokal = versionText + " " + versionNummer;
+        var viewModel = new ViewModel.ViewModel(this);
+        InitializeComponent();
+        DataContext = viewModel;
 
-            Datenstruktur = new Datenstruktur(anzByteDigInput, anzByteDigOutput, anzByteAnalogInput, anzByteAnalogOutput);
-            ConfigPlc = new ConfigPlc.Plc("./ConfigPlc");
-            BeschriftungenPlc = new BeschriftungenPlc();
+        DatenRangieren = new DatenRangieren(viewModel);
+        PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
+        DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
 
-            var viewModel = new ViewModel.ViewModel(this);
-            InitializeComponent();
-            DataContext = viewModel;
+        /*
+        DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
-            DatenRangieren = new DatenRangieren(viewModel);
-            PlcDaemon = new PlcDaemon(Datenstruktur, DatenRangieren.Rangieren);
-            DatenRangieren.ReferenzUebergeben(PlcDaemon.Plc);
-
-            /*
-            DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
-
-            TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
-            TestAutomat.SetTestConfig("./ConfigTests/");
-            TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
-            */
-        }
+        TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+        TestAutomat.SetTestConfig("./ConfigTests/");
+        TestAutomat.TabItemFuellen(TabItemAutomatischerSoftwareTest, DisplayPlc);
+        */
     }
 }

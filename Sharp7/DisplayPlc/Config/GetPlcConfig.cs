@@ -2,23 +2,22 @@
 using System.IO;
 using System.Windows;
 
-namespace DisplayPlc.Config
-{
-    public class GetPlcConfig
-    {
-        public PlcBelegung PlcBelegung { get; set; }
+namespace DisplayPlc.Config;
 
-        public GetPlcConfig(FileSystemInfo aktuellesProjekt) => SetEaBelegung(@$"{aktuellesProjekt.FullName}\testEaBelegung.json");
-        private void SetEaBelegung(string pfad)
+public class GetPlcConfig
+{
+    public PlcBelegung PlcBelegung { get; set; }
+
+    public GetPlcConfig(FileSystemInfo aktuellesProjekt) => SetEaBelegung(@$"{aktuellesProjekt.FullName}\testEaBelegung.json");
+    private void SetEaBelegung(string pfad)
+    {
+        try
         {
-            try
-            {
-                PlcBelegung = Newtonsoft.Json.JsonConvert.DeserializeObject<PlcBelegung>(File.ReadAllText(pfad), new PlcBelegung.MyUintConverter());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
-            }
+            PlcBelegung = Newtonsoft.Json.JsonConvert.DeserializeObject<PlcBelegung>(File.ReadAllText(pfad), new PlcBelegung.MyUintConverter());
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Datei nicht gefunden:" + pfad + " --> " + ex);
         }
     }
 }

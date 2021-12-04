@@ -1,6 +1,5 @@
-﻿namespace LAP_2010_4_Abfuellanlage
+﻿namespace LAP_2010_4_Abfuellanlage;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

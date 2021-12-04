@@ -19,23 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
-    <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\DigitalerZwillingMitAutoTests\DigitalerZwillingMitAutoTests.csproj" />
-    <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
-    <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
-    <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Bilder\IconPlotter.jpg" />
     <Resource Include="Bilder\Kippschalter_Off.JPG" />
     <Resource Include="Bilder\Kippschalter_On.JPG" />
+    <Resource Include="Bilder\S7_1200.jpg" />
     <Resource Include="Bilder\SchiebeSchalterOff.JPG" />
     <Resource Include="Bilder\SchiebeSchalterOn.JPG" />
     <Resource Include="Bilder\Taster_BetaetigtHellgrau.jpg" />
     <Resource Include="Bilder\Taster_SchliesserHellgrau.jpg" />
-    <Resource Include="Bilder\S7_1200.jpg" />
   </ItemGroup>
 
   <ItemGroup>

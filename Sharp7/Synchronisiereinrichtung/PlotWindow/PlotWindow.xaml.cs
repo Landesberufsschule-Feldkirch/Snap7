@@ -1,10 +1,9 @@
-﻿namespace Synchronisiereinrichtung.PlotWindow
+﻿namespace Synchronisiereinrichtung.PlotWindow;
+
+public partial class PlotWindow
 {
-    public partial class PlotWindow
+    public PlotWindow()
     {
-        public PlotWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

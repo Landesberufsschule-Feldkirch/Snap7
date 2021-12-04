@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -6,13 +6,34 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+   <ItemGroup>
     <ProjectReference Include="..\BeschriftungPlc\BeschriftungPlc.csproj" />
     <ProjectReference Include="..\ConfigPlc\ConfigPlc.csproj" />
     <ProjectReference Include="..\DisplayPlc\DisplayPlc.csproj" />
     <ProjectReference Include="..\Kommunikation\Kommunikation.csproj" />
     <ProjectReference Include="..\TestAutomat\TestAutomat.csproj" />
     <ProjectReference Include="..\Utilties\Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\IconPlotter.jpg" />
+    <Resource Include="Resources\S7_1200.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AlleBilder.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AlleBilder.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AlleBilder.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AlleBilder.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
-﻿namespace ElektronischesZahlenschloss
+﻿namespace ElektronischesZahlenschloss;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

@@ -1,6 +1,5 @@
-﻿namespace Heizungsregler
+﻿namespace Heizungsregler;
+
+public partial class App
 {
-    public partial class App
-    {
-    }
 }

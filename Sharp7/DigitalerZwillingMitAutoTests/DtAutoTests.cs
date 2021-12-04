@@ -9,27 +9,24 @@ public class DtAutoTests
 {
     public Datenstruktur Datenstruktur { get; set; }
     public BeschriftungenPlc BeschriftungenPlc { get; set; }
-    public Plc? ConfigPlc { get; set; }
-    public DisplayPlc.DisplayPlc? DisplayPlc { get; set; }
+    public Plc ConfigPlc { get; set; }
+    public DisplayPlc.DisplayPlc DisplayPlc { get; set; }
     public PlcDaemon PlcDaemon { get; set; }
-    public TestAutomat.TestAutomat? TestAutomat { get; set; }
+    public TestAutomat.TestAutomat TestAutomat { get; set; }
 
     private string? _versionLokal;
     private string? _pathConfigPlc;
     private string? _pathConfigTests;
     private TabItem? _tabItemAutoTest;
 
-    private int _anzByteDigInput;
-    private int _anzByteDigOutput;
-    private int _anzByteAnalogInput;
-    private int _anzByteAnalogOutput;
-
-
     public DtAutoTests()
     {
         Datenstruktur = new Datenstruktur();
+        ConfigPlc = new Plc();
         PlcDaemon = new PlcDaemon();
         BeschriftungenPlc = new BeschriftungenPlc();
+        DisplayPlc = new DisplayPlc.DisplayPlc();
+        TestAutomat = new TestAutomat.TestAutomat();
     }
 
     public string? GetVersionLokal() => _versionLokal;
@@ -40,28 +37,27 @@ public class DtAutoTests
     public void SetConfigTests(string configtests) => _pathConfigTests = configtests;
     public void SetInputOutput(int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
     {
-        _anzByteDigInput = anzByteDigInput;
-        _anzByteDigOutput = anzByteDigOutput;
-        _anzByteAnalogInput = anzByteAnalogInput;
-        _anzByteAnalogOutput = anzByteAnalogOutput;
+        Datenstruktur.SetDigInput(anzByteDigInput);
+        Datenstruktur.SetDigOutput(anzByteDigOutput);
+        Datenstruktur.SetAnalogInput(anzByteAnalogInput);
+        Datenstruktur.SetAnalogOutput(anzByteAnalogOutput);
     }
 
     public void Starten()
     {
-        Datenstruktur.SetDigInput(_anzByteDigInput);
-        Datenstruktur.SetDigOutput(_anzByteDigOutput);
-        Datenstruktur.SetAnalogInput(_anzByteAnalogInput);
-        Datenstruktur.SetAnalogOutput(_anzByteAnalogOutput);
+        ConfigPlc.SetPath(_pathConfigPlc);
 
-        ConfigPlc = new Plc(_pathConfigPlc);
-
-        DisplayPlc = new DisplayPlc.DisplayPlc(Datenstruktur, ConfigPlc, BeschriftungenPlc);
+        DisplayPlc.Start(Datenstruktur, ConfigPlc, BeschriftungenPlc);
 
         PlcDaemon.SetReferenzDatenstruktur(Datenstruktur);
         PlcDaemon.Starten();
 
-        TestAutomat = new TestAutomat.TestAutomat(Datenstruktur, DisplayPlc.EventBeschriftungAktualisieren, BeschriftungenPlc, PlcDaemon.Plc);
+        TestAutomat.SetRefDatenstruktur(Datenstruktur);
+        TestAutomat.SetRefEvent(DisplayPlc.EventBeschriftungAktualisieren);
+        TestAutomat.SetRefBeschriftungPlc(BeschriftungenPlc);
+        TestAutomat.SetRefPlcDaemon(PlcDaemon.Plc);
         TestAutomat.SetTestConfig(_pathConfigTests);
         TestAutomat.TabItemFuellen(_tabItemAutoTest, DisplayPlc);
+        TestAutomat.Starten();
     }
 }
