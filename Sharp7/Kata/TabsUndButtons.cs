@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Kommunikation;
 
 namespace Kata;
 
@@ -14,14 +13,14 @@ public partial class MainWindow
         switch (tc.SelectedIndex)
         {
             case 0:
-                DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
+                DtAutoTests.SetBetriebsartProjektSimulation();
                 break;
             case 1:
-                DtAutoTests.Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest;
+                DtAutoTests.SetBetriebsartProjektAutoTest();
                 break;
         }
 
-        DtAutoTests?.DisplayPlc?.SetBetriebsartProjekt(DtAutoTests?.Datenstruktur);
+        DtAutoTests?.DisplayPlc.SetBetriebsartProjekt(DtAutoTests?.Datenstruktur);
     }
 
     private void PlcButton_OnClick(object sender, RoutedEventArgs e)
@@ -29,16 +28,15 @@ public partial class MainWindow
         if (DtAutoTests == null) return;
 
         // ReSharper disable once PossibleNullReferenceException
-        if (DtAutoTests.DisplayPlc.FensterAktiv) DtAutoTests.DisplayPlc.Schliessen();
-        else DtAutoTests.DisplayPlc.Oeffnen();
+        if (DtAutoTests.DisplayPlc.FensterAktiv) DtAutoTests.DisplayPlcFensterClose(); else DtAutoTests.DisplayPlcFensterOpen();
     }
 
     private void Schliessen()
     {
         if (DtAutoTests == null) return;
 
-        DtAutoTests.DisplayPlc?.TaskBeenden();
-        DtAutoTests.TestAutomat?.TaskBeenden();
+        DtAutoTests.DisplayPlc.TaskBeenden();
+        DtAutoTests.TestAutomat.TaskBeenden();
         Application.Current.Shutdown();
 
     }

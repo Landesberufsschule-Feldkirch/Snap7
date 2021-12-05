@@ -1,4 +1,5 @@
 ﻿using DigitalerZwillingMitAutoTests;
+using Kommunikation;
 
 namespace Kata.Model;
 
@@ -15,7 +16,6 @@ internal class DatenRangieren
         P7 = 6,
         P8 = 7
     }
-
     private enum BitPosEingang
     {
         S1 = 0,
@@ -28,11 +28,9 @@ internal class DatenRangieren
         S8 = 7
     }
 
-  
     private readonly Kata _kata;
     private readonly DtAutoTests _dtAutoTests;
-        
-
+       
     public DatenRangieren(Kata kata, DtAutoTests dtAutoTests)
     {
         _kata = kata;
@@ -43,7 +41,7 @@ internal class DatenRangieren
     {
         if (_dtAutoTests is not { Datenstruktur: { } }) return;
 
-        if (true)//eingaengeRangieren
+        if (_dtAutoTests.Datenstruktur.BetriebsartProjekt != BetriebsartProjekt.AutomatischerSoftwareTest)
         {
             _dtAutoTests.PlcDaemon.Plc.SetBitAt(_dtAutoTests.Datenstruktur.DigInput, (int)BitPosEingang.S1, _kata.S1);
             _dtAutoTests.PlcDaemon.Plc.SetBitAt(_dtAutoTests.Datenstruktur.DigInput, (int)BitPosEingang.S2, _kata.S2);
@@ -64,7 +62,5 @@ internal class DatenRangieren
         _kata.P6 = _dtAutoTests.PlcDaemon.Plc.GetBitAt(_dtAutoTests.Datenstruktur.DigOutput, (int)BitPosAusgang.P6);
         _kata.P7 = _dtAutoTests.PlcDaemon.Plc.GetBitAt(_dtAutoTests.Datenstruktur.DigOutput, (int)BitPosAusgang.P7);
         _kata.P8 = _dtAutoTests.PlcDaemon.Plc.GetBitAt(_dtAutoTests.Datenstruktur.DigOutput, (int)BitPosAusgang.P8);
-
-
     }
 }

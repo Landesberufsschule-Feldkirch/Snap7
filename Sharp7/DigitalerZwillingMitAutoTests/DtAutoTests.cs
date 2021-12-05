@@ -16,6 +16,8 @@ public class DtAutoTests
 
     private string? _versionLokal;
     private string? _pathConfigPlc;
+
+
     private string? _pathConfigTests;
     private TabItem? _tabItemAutoTest;
 
@@ -29,18 +31,26 @@ public class DtAutoTests
         TestAutomat = new TestAutomat.TestAutomat();
     }
 
+    
+
     public string? GetVersionLokal() => _versionLokal;
 
+    public void DisplayPlcFensterOpen() => DisplayPlc.Oeffnen();
+    public void DisplayPlcFensterClose()=> DisplayPlc.Schliessen();
+
+    public void SetBetriebsartProjektLaborplatte() => Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.LaborPlatte;
+    public void SetBetriebsartProjektSimulation() => Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.Simulation;
+    public void SetBetriebsartProjektAutoTest() => Datenstruktur.BetriebsartProjekt = BetriebsartProjekt.AutomatischerSoftwareTest;
     public void SetVersionLokal(string version) => _versionLokal = version;
     public void SetTabItemAutoTests(TabItem tabItemAutoTest) => _tabItemAutoTest = tabItemAutoTest;
     public void SetConfigPlc(string pathConfigPlc) => _pathConfigPlc = pathConfigPlc;
     public void SetConfigTests(string configtests) => _pathConfigTests = configtests;
-    public void SetInputOutput(int anzByteDigInput, int anzByteDigOutput, int anzByteAnalogInput, int anzByteAnalogOutput)
+    public void SetInputOutput(int anzByteDi, int anzByteDo, int anzByteAi, int anzByteAo)
     {
-        Datenstruktur.SetDigInput(anzByteDigInput);
-        Datenstruktur.SetDigOutput(anzByteDigOutput);
-        Datenstruktur.SetAnalogInput(anzByteAnalogInput);
-        Datenstruktur.SetAnalogOutput(anzByteAnalogOutput);
+        Datenstruktur.SetDigInput(anzByteDi);
+        Datenstruktur.SetDigOutput(anzByteDo);
+        Datenstruktur.SetAnalogInput(anzByteAi);
+        Datenstruktur.SetAnalogOutput(anzByteAo);
     }
 
     public void Starten()
