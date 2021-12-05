@@ -26,27 +26,6 @@ public class Kata
     private static DatenRangieren _datenRangieren;
     private DtAutoTests _dtAutoTests;
 
-    public Kata()
-    {
-
-
-    }
-
-    public Kata(DtAutoTests dtAutoTests)
-    {
-        _dtAutoTests = dtAutoTests;
-        _datenRangieren = new DatenRangieren(this, _dtAutoTests);
-
-        S3 = true;
-        S4 = true;
-        S7 = true;
-        S8 = true;
-
-        System.Threading.Tasks.Task.Run(KataTask);
-    }
-
-
-
     private static void KataTask()
     {
         while (true)
@@ -57,7 +36,6 @@ public class Kata
         }
         // ReSharper disable once FunctionNeverReturns
     }
-
     internal void SetDtAutoTests(DtAutoTests dtAutoTests)
     {
         _dtAutoTests = dtAutoTests;
@@ -69,7 +47,5 @@ public class Kata
         S8 = true;
 
         System.Threading.Tasks.Task.Run(KataTask);
-
     }
-
 }

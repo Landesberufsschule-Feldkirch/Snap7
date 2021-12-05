@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using DigitalerZwillingMitAutoTests;
 
 namespace LaborLinearachse.Model;
 
@@ -33,14 +34,9 @@ public class Linearachse
     private const double SchlittenEndschalterBreite = 10;
     private const double SchlittenLinkerRand = SchlittenEndschalterBreite;
     private const double SchlittenRechterRand = SchlittenBreite - SchlittenEndschalterBreite;
-    public Linearachse()
-    {
-        S2 = true;
-        S9 = true;
-        S10 = true;
 
-        System.Threading.Tasks.Task.Run(LinearachseTask);
-    }
+    private static DatenRangieren _datenRangieren;
+    private DtAutoTests _dtAutoTests;
 
     private void LinearachseTask()
     {
@@ -55,8 +51,21 @@ public class Linearachse
             B1 = PositionSchlitten > SchlittenLinkerRand;   // Öffner
             B2 = PositionSchlitten < SchlittenRechterRand;  //Öffner
 
+            _datenRangieren.Rangieren();
+
             Thread.Sleep(10);
         }
         // ReSharper disable once FunctionNeverReturns
+    }
+    internal void SetDtAutoTests(DtAutoTests dtAutoTests)
+    {
+        _dtAutoTests = dtAutoTests;
+        _datenRangieren = new DatenRangieren(this, _dtAutoTests);
+
+        S2 = true;
+        S9 = true;
+        S10 = true;
+
+        System.Threading.Tasks.Task.Run(LinearachseTask);
     }
 }
